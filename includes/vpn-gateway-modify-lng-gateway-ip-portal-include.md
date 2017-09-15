@@ -1,32 +1,32 @@
-### <a name="gwipnoconnection"></a> Изменение IP-адреса шлюза локальной сети без подключения к шлюзу
+### <span data-ttu-id="1f835-101"><a name="gwipnoconnection"></a> Изменение IP-адреса шлюза локальной сети без подключения к шлюзу</span><span class="sxs-lookup"><span data-stu-id="1f835-101"><a name="gwipnoconnection"></a> To modify the local network gateway IP address - no gateway connection</span></span>
 
-Используйте пример ниже, чтобы изменить шлюз локальной сети, к которому нет подключения. При изменении этого значения вы также можете изменить префиксы адресов.
+<span data-ttu-id="1f835-102">Используйте пример ниже, чтобы изменить шлюз локальной сети, к которому нет подключения.</span><span class="sxs-lookup"><span data-stu-id="1f835-102">Use the example to modify a local network gateway that does not have a gateway connection.</span></span> <span data-ttu-id="1f835-103">При изменении этого значения вы также можете изменить префиксы адресов.</span><span class="sxs-lookup"><span data-stu-id="1f835-103">When modifying this value, you can also modify the address prefixes at the same time.</span></span>
 
-1. В ресурсе "Шлюз локальной сети" в разделе **Параметры** щелкните **Конфигурации**.
-2. В поле **IP-адрес** измените IP-адрес.
-3. Нажмите кнопку **Сохранить** , чтобы сохранить параметры.
+1. <span data-ttu-id="1f835-104">В ресурсе "Шлюз локальной сети" в разделе **Параметры** щелкните **Конфигурации**.</span><span class="sxs-lookup"><span data-stu-id="1f835-104">On the Local Network Gateway resource, in the **Settings** section, click **Configuration**.</span></span>
+2. <span data-ttu-id="1f835-105">В поле **IP-адрес** измените IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="1f835-105">In the **IP address** box, modify the IP address.</span></span>
+3. <span data-ttu-id="1f835-106">Нажмите кнопку **Сохранить** , чтобы сохранить параметры.</span><span class="sxs-lookup"><span data-stu-id="1f835-106">Click **Save** to save the settings.</span></span>
 
-### <a name="gwipwithconnection"></a>Изменение IP-адреса шлюза локальной сети с подключением к шлюзу
+### <span data-ttu-id="1f835-107"><a name="gwipwithconnection"></a>Изменение IP-адреса шлюза локальной сети с подключением к шлюзу</span><span class="sxs-lookup"><span data-stu-id="1f835-107"><a name="gwipwithconnection"></a>To modify the local network gateway gateway IP address - existing gateway connection</span></span>
 
-Чтобы изменить шлюз локальной сети с установленным подключением, необходимо сначала удалить это подключение. Затем вы сможете изменить IP-адрес шлюза и создать новое подключение. При этом вы также можете изменить префиксы адресов. После этого VPN-подключение будет некоторое время недоступно. Не удаляйте VPN-шлюз при изменении IP-адреса шлюза. Необходимо удалить только подключение.
+<span data-ttu-id="1f835-108">Чтобы изменить шлюз локальной сети с установленным подключением, необходимо сначала удалить это подключение.</span><span class="sxs-lookup"><span data-stu-id="1f835-108">To modify a local network gateway that has a connection, you need to first remove the connection.</span></span> <span data-ttu-id="1f835-109">Затем вы сможете изменить IP-адрес шлюза и создать новое подключение.</span><span class="sxs-lookup"><span data-stu-id="1f835-109">After the connection is removed, you can modify the gateway IP address and recreate a new connection.</span></span> <span data-ttu-id="1f835-110">При этом вы также можете изменить префиксы адресов.</span><span class="sxs-lookup"><span data-stu-id="1f835-110">You can also modify the address prefixes at the same time.</span></span> <span data-ttu-id="1f835-111">После этого VPN-подключение будет некоторое время недоступно.</span><span class="sxs-lookup"><span data-stu-id="1f835-111">This results in some downtime for your VPN connection.</span></span> <span data-ttu-id="1f835-112">Не удаляйте VPN-шлюз при изменении IP-адреса шлюза.</span><span class="sxs-lookup"><span data-stu-id="1f835-112">When modifying the gateway IP address, you don't need to delete the VPN gateway.</span></span> <span data-ttu-id="1f835-113">Необходимо удалить только подключение.</span><span class="sxs-lookup"><span data-stu-id="1f835-113">You only need to remove the connection.</span></span>
  
-#### <a name="1-remove-the-connection"></a>1. Удалите подключение.
+#### <a name="1-remove-the-connection"></a><span data-ttu-id="1f835-114">1. Удалите подключение.</span><span class="sxs-lookup"><span data-stu-id="1f835-114">1. Remove the connection.</span></span>
 
-1. В ресурсе "Шлюз локальной сети" в разделе **Параметры** щелкните **Подключения**.
-2. Нажмите кнопку **...** в строке подключения, а затем — кнопку **Удалить**.
-3. Нажмите кнопку **Save** (Сохранить), чтобы сохранить настройки.
+1. <span data-ttu-id="1f835-115">В ресурсе "Шлюз локальной сети" в разделе **Параметры** щелкните **Подключения**.</span><span class="sxs-lookup"><span data-stu-id="1f835-115">On the Local Network Gateway resource, in the **Settings** section, click **Connections**.</span></span>
+2. <span data-ttu-id="1f835-116">Нажмите кнопку **...** в строке подключения, а затем — кнопку **Удалить**.</span><span class="sxs-lookup"><span data-stu-id="1f835-116">Click the **...** on the line for the connection, then click **Delete**.</span></span>
+3. <span data-ttu-id="1f835-117">Нажмите кнопку **Save** (Сохранить), чтобы сохранить настройки.</span><span class="sxs-lookup"><span data-stu-id="1f835-117">Click **Save** to save your settings.</span></span>
 
-#### <a name="2-modify-the-ip-address"></a>2. Изменение IP-адреса.
+#### <a name="2-modify-the-ip-address"></a><span data-ttu-id="1f835-118">2. Изменение IP-адреса.</span><span class="sxs-lookup"><span data-stu-id="1f835-118">2. Modify the IP address.</span></span>
 
-При этом вы также можете изменить префиксы адресов.
+<span data-ttu-id="1f835-119">При этом вы также можете изменить префиксы адресов.</span><span class="sxs-lookup"><span data-stu-id="1f835-119">You can also modify the address prefixes at the same time.</span></span>
 
-1. В поле **IP-адрес** измените IP-адрес.
-2. Нажмите кнопку **Сохранить** , чтобы сохранить параметры.
+1. <span data-ttu-id="1f835-120">В поле **IP-адрес** измените IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="1f835-120">In the **IP address** box, modify the IP address.</span></span>
+2. <span data-ttu-id="1f835-121">Нажмите кнопку **Сохранить** , чтобы сохранить параметры.</span><span class="sxs-lookup"><span data-stu-id="1f835-121">Click **Save** to save the settings.</span></span>
 
-#### <a name="3-recreate-the-connection"></a>3. Повторное создание подключения.
+#### <a name="3-recreate-the-connection"></a><span data-ttu-id="1f835-122">3. Повторное создание подключения.</span><span class="sxs-lookup"><span data-stu-id="1f835-122">3. Recreate the connection.</span></span>
 
-1. Перейдите к шлюзу вашей виртуальной сети (не шлюзу локальной сети).
-2. В ресурсе "Шлюз виртуальной сети" в разделе **Параметры** щелкните **Подключения**.
-3. Щелкните **+Добавить**, чтобы открыть колонку **Добавление подключения**.
-4. Заново создайте подключение.
-5. Нажмите кнопку **ОК**, чтобы создать подключение.
+1. <span data-ttu-id="1f835-123">Перейдите к шлюзу вашей виртуальной сети</span><span class="sxs-lookup"><span data-stu-id="1f835-123">Navigate to the Virtual Network Gateway for your VNet.</span></span> <span data-ttu-id="1f835-124">(не шлюзу локальной сети).</span><span class="sxs-lookup"><span data-stu-id="1f835-124">(Not the Local Network Gateway.)</span></span>
+2. <span data-ttu-id="1f835-125">В ресурсе "Шлюз виртуальной сети" в разделе **Параметры** щелкните **Подключения**.</span><span class="sxs-lookup"><span data-stu-id="1f835-125">On the Virtual Network Gateway, in the **Settings** section, click **Connections**.</span></span>
+3. <span data-ttu-id="1f835-126">Щелкните **+Добавить**, чтобы открыть колонку **Добавление подключения**.</span><span class="sxs-lookup"><span data-stu-id="1f835-126">Click the **+ Add** to open the **Add connection** blade.</span></span>
+4. <span data-ttu-id="1f835-127">Заново создайте подключение.</span><span class="sxs-lookup"><span data-stu-id="1f835-127">Recreate your connection.</span></span>
+5. <span data-ttu-id="1f835-128">Нажмите кнопку **ОК**, чтобы создать подключение.</span><span class="sxs-lookup"><span data-stu-id="1f835-128">Click **OK** to create the connection.</span></span>

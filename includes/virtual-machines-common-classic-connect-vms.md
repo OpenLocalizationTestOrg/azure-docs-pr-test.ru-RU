@@ -2,41 +2,41 @@
 
 ![Виртуальные машины в автономной облачной службе](./media/virtual-machines-common-classic-connect-vms/CloudServiceExample.png)
 
-Если разместить виртуальные машины в виртуальной сети, можно варьировать количество облачных служб, используемых для балансировки нагрузки и групп доступности. Кроме того, можно упорядочить виртуальные машины в подсетях таким же образом, как в локальной сети и подключить виртуальную сеть к локальной сети. Ниже приведен пример:
+<span data-ttu-id="fa231-102">Если разместить виртуальные машины в виртуальной сети, можно варьировать количество облачных служб, используемых для балансировки нагрузки и групп доступности.</span><span class="sxs-lookup"><span data-stu-id="fa231-102">If you place your virtual machines in a virtual network, you can decide how many cloud services you want to use for load balancing and availability sets.</span></span> <span data-ttu-id="fa231-103">Кроме того, можно упорядочить виртуальные машины в подсетях таким же образом, как в локальной сети и подключить виртуальную сеть к локальной сети.</span><span class="sxs-lookup"><span data-stu-id="fa231-103">Additionally, you can organize the virtual machines on subnets in the same way as your on-premises network and connect the virtual network to your on-premises network.</span></span> <span data-ttu-id="fa231-104">Ниже приведен пример:</span><span class="sxs-lookup"><span data-stu-id="fa231-104">Here's an example:</span></span>
 
 ![Виртуальные машины в виртуальной сети](./media/virtual-machines-common-classic-connect-vms/VirtualNetworkExample.png)
 
-Виртуальные сети — рекомендуемый способ подключения виртуальных машин в Azure. Рекомендуется настраивать каждый уровень приложения в отдельной облачной службе. Вместе с тем, для соответствия максимальному количеству облачных служб для одной подписки (200 служб) может потребоваться объединить некоторые виртуальные машины из различных уровней приложения в одной облачной службе. Сведения об этом и других ограничениях можно найти в разделе [Подписка Azure, границы, квоты и ограничения службы](../articles/azure-subscription-service-limits.md).
+<span data-ttu-id="fa231-106">Виртуальные сети — рекомендуемый способ подключения виртуальных машин в Azure.</span><span class="sxs-lookup"><span data-stu-id="fa231-106">Virtual networks are the recommended way to connect virtual machines in Azure.</span></span> <span data-ttu-id="fa231-107">Рекомендуется настраивать каждый уровень приложения в отдельной облачной службе.</span><span class="sxs-lookup"><span data-stu-id="fa231-107">The best practice is to configure each tier of your application in a separate cloud service.</span></span> <span data-ttu-id="fa231-108">Вместе с тем, для соответствия максимальному количеству облачных служб для одной подписки (200 служб) может потребоваться объединить некоторые виртуальные машины из различных уровней приложения в одной облачной службе.</span><span class="sxs-lookup"><span data-stu-id="fa231-108">However, you may need to combine some virtual machines from different application tiers into the same cloud service to remain within the maximum of 200 cloud services per subscription.</span></span> <span data-ttu-id="fa231-109">Сведения об этом и других ограничениях можно найти в разделе [Подписка Azure, границы, квоты и ограничения службы](../articles/azure-subscription-service-limits.md).</span><span class="sxs-lookup"><span data-stu-id="fa231-109">To review this and other limits, see [Azure Subscription and Service Limits, Quotas, and Constraints](../articles/azure-subscription-service-limits.md).</span></span>
 
-## <a name="connect-vms-in-a-virtual-network"></a>Подключение виртуальных машин в виртуальной сети
-Для подключения виртуальных машин в виртуальной сети необходимо выполнить следующие действия.
+## <a name="connect-vms-in-a-virtual-network"></a><span data-ttu-id="fa231-110">Подключение виртуальных машин в виртуальной сети</span><span class="sxs-lookup"><span data-stu-id="fa231-110">Connect VMs in a virtual network</span></span>
+<span data-ttu-id="fa231-111">Для подключения виртуальных машин в виртуальной сети необходимо выполнить следующие действия.</span><span class="sxs-lookup"><span data-stu-id="fa231-111">To connect virtual machines in a virtual network:</span></span>
 
-1. Создайте виртуальную сеть на [портале Azure](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md) и выберите классическую модель развертывания.
-2. Создайте набор облачных служб для вашего развертывания, отражающих структуру групп доступности и балансировки нагрузки. На портале Azure для каждой облачной службы последовательно щелкните **Создать > Среда выполнения приложений > Облачная служба**.
+1. <span data-ttu-id="fa231-112">Создайте виртуальную сеть на [портале Azure](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md) и выберите классическую модель развертывания.</span><span class="sxs-lookup"><span data-stu-id="fa231-112">Create the virtual network in the [Azure portal](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md) and specify 'classic deployment'.</span></span>
+2. <span data-ttu-id="fa231-113">Создайте набор облачных служб для вашего развертывания, отражающих структуру групп доступности и балансировки нагрузки.</span><span class="sxs-lookup"><span data-stu-id="fa231-113">Create the set of cloud services for your deployment to reflect your design for availability sets and load balancing.</span></span> <span data-ttu-id="fa231-114">На портале Azure для каждой облачной службы последовательно щелкните **Создать > Среда выполнения приложений > Облачная служба**.</span><span class="sxs-lookup"><span data-stu-id="fa231-114">In the Azure portal, click **New > Compute > Cloud service** for each cloud service.</span></span>
 
-  Указав сведения об облачной службе, выберите ту же _группу ресурсов_, которая используется для виртуальной сети.
+  <span data-ttu-id="fa231-115">Указав сведения об облачной службе, выберите ту же _группу ресурсов_, которая используется для виртуальной сети.</span><span class="sxs-lookup"><span data-stu-id="fa231-115">As you fill out the cloud service details, choose the same _resource group_ used with the virtual network.</span></span>
 
-3. Для создания каждой новой виртуальной машины последовательно щелкните **Создать > Среда выполнения приложений**. Затем в списке **Подборка приложений** выберите подходящий образ виртуальной машины.
+3. <span data-ttu-id="fa231-116">Для создания каждой новой виртуальной машины последовательно щелкните **Создать > Среда выполнения приложений**. Затем в списке **Подборка приложений** выберите подходящий образ виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="fa231-116">To create each new virtual machine, click **New > Compute**, then select the appropriate VM image from the **Featured apps**.</span></span>
 
-  В колонке **Основные** виртуальной машины выберите ту же _группу ресурсов_, которая используется для виртуальной сети.
+  <span data-ttu-id="fa231-117">В колонке **Основные** виртуальной машины выберите ту же _группу ресурсов_, которая используется для виртуальной сети.</span><span class="sxs-lookup"><span data-stu-id="fa231-117">In the VM **Basics** blade, choose the same _resource group_ used with the virtual network.</span></span>
 
   ![Колонка "Основные" виртуальной машины при использовании виртуальной сети](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_VN.png)
 
-4. Задав **параметры** виртуальной машины, выберите для нее соответствующую _облачную службу_ или _виртуальную сеть_.
+4. <span data-ttu-id="fa231-119">Задав **параметры** виртуальной машины, выберите для нее соответствующую _облачную службу_ или _виртуальную сеть_.</span><span class="sxs-lookup"><span data-stu-id="fa231-119">As you fill out the VM **Settings**, choose the correct _Cloud service_ or _virtual network_ for the VM.</span></span>
 
-  Azure выберет остальные элементы на основе указанных вами.
+  <span data-ttu-id="fa231-120">Azure выберет остальные элементы на основе указанных вами.</span><span class="sxs-lookup"><span data-stu-id="fa231-120">Azure will select the other item based on your selection.</span></span>
 
   ![Колонка "Параметры" виртуальной машины при использовании виртуальной сети](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_VN.png)
 
 
-## <a name="connect-vms-in-a-standalone-cloud-service"></a>Подключение виртуальных машин в автономной облачной службе
-Подключение виртуальных машин в автономной облачной службе:
+## <a name="connect-vms-in-a-standalone-cloud-service"></a><span data-ttu-id="fa231-122">Подключение виртуальных машин в автономной облачной службе</span><span class="sxs-lookup"><span data-stu-id="fa231-122">Connect VMs in a standalone cloud service</span></span>
+<span data-ttu-id="fa231-123">Подключение виртуальных машин в автономной облачной службе:</span><span class="sxs-lookup"><span data-stu-id="fa231-123">To connect virtual machines in a standalone cloud service:</span></span>
 
-1. Создайте облачную службу на [портале Azure](http://portal.azure.com). Последовательно щелкните **Создать > Среда выполнения приложений > Облачная служба**. Создать облачную службу для развертывания также можно в момент создания первой виртуальной машины.
-2. При создании виртуальных машин выбирайте ту же группу ресурсов, которая используется для облачной службы.
+1. <span data-ttu-id="fa231-124">Создайте облачную службу на [портале Azure](http://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="fa231-124">Create the cloud service in the [Azure portal](http://portal.azure.com).</span></span> <span data-ttu-id="fa231-125">Последовательно щелкните **Создать > Среда выполнения приложений > Облачная служба**.</span><span class="sxs-lookup"><span data-stu-id="fa231-125">Click **New > Compute > Cloud service**.</span></span> <span data-ttu-id="fa231-126">Создать облачную службу для развертывания также можно в момент создания первой виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="fa231-126">Or, you can create the cloud service for your deployment when you create your first virtual machine.</span></span>
+2. <span data-ttu-id="fa231-127">При создании виртуальных машин выбирайте ту же группу ресурсов, которая используется для облачной службы.</span><span class="sxs-lookup"><span data-stu-id="fa231-127">When you create the virtual machines, choose the same resource group used with the cloud service.</span></span>
 
   ![Добавление виртуальной машины в существующую облачную службу](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_SA.png)
 
-3.  Указав сведения о виртуальной машине, выберите имя облачной службы, созданной на первом шаге.
+3.  <span data-ttu-id="fa231-129">Указав сведения о виртуальной машине, выберите имя облачной службы, созданной на первом шаге.</span><span class="sxs-lookup"><span data-stu-id="fa231-129">As you fill out the VM details, choose the name of cloud service created in the first step.</span></span>
 
   ![Выбор облачной службы для виртуальной машины](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_SA.png)

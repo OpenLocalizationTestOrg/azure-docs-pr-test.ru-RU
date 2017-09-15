@@ -1,18 +1,18 @@
-### <a name="prerequisites"></a>Предварительные требования
-* Учетная запись Wunderlist  
+### <a name="prerequisites"></a><span data-ttu-id="9c6e1-101">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="9c6e1-101">Prerequisites</span></span>
+* <span data-ttu-id="9c6e1-102">Учетная запись Wunderlist</span><span class="sxs-lookup"><span data-stu-id="9c6e1-102">A Wunderlist account</span></span>  
 
-Чтобы использовать учетную запись Wunderlist в приложении логики, вы должны авторизовать приложение логики для подключения к вашей учетной записи Wunderlist. К счастью, это можно легко сделать из приложения логики на портале Azure. 
+<span data-ttu-id="9c6e1-103">Чтобы использовать учетную запись Wunderlist в приложении логики, вы должны авторизовать приложение логики для подключения к вашей учетной записи Wunderlist.</span><span class="sxs-lookup"><span data-stu-id="9c6e1-103">Before you can use your Wunderlist account in a Logic app, you must authorize the Logic app to connect to your Wunderlist account.</span></span> <span data-ttu-id="9c6e1-104">К счастью, это можно легко сделать из приложения логики на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="9c6e1-104">Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span> 
 
-Ниже приведены инструкции по авторизации приложения логики для подключения к учетной записи Wunderlist.
+<span data-ttu-id="9c6e1-105">Ниже приведены инструкции по авторизации приложения логики для подключения к учетной записи Wunderlist.</span><span class="sxs-lookup"><span data-stu-id="9c6e1-105">Here are the steps to authorize your Logic app to connect to your Wunderlist account:</span></span>
 
-1. Чтобы создать подключение к Wunderlist, в конструкторе приложений логики в раскрывающемся списке выберите параметр **Показать API, управляемые Майкрософт**, а затем введите в поле поиска *Wunderlist*. Выберите триггер или действие, которые хотите использовать:   
+1. <span data-ttu-id="9c6e1-106">Чтобы создать подключение к Wunderlist, в конструкторе приложений логики в раскрывающемся списке выберите параметр **Показать API, управляемые Майкрософт**, а затем введите в поле поиска *Wunderlist*.</span><span class="sxs-lookup"><span data-stu-id="9c6e1-106">To create a connection to Wunderlist, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Wunderlist* in the search box.</span></span> <span data-ttu-id="9c6e1-107">Выберите триггер или действие, которые хотите использовать: </span><span class="sxs-lookup"><span data-stu-id="9c6e1-107">Select the trigger or action you'll like to use:</span></span>  
    ![](./media/connectors-create-api-wunderlist/wunderlist-0.png)
-2. Если вы ранее не создавали подключения к Wunderlist, вам будет предложено ввести учетные данные Wunderlist. Эти учетные данные будут использоваться для авторизации приложения логики, чтобы оно могло подключиться и получить доступ к данным вашей учетной записи Wunderlist.   
+2. <span data-ttu-id="9c6e1-108">Если вы ранее не создавали подключения к Wunderlist, вам будет предложено ввести учетные данные Wunderlist.</span><span class="sxs-lookup"><span data-stu-id="9c6e1-108">If you haven't created any connections to Wunderlist before, you'll get prompted to provide your Wunderlist credentials.</span></span> <span data-ttu-id="9c6e1-109">Эти учетные данные будут использоваться для авторизации приложения логики, чтобы оно могло подключиться и получить доступ к данным вашей учетной записи Wunderlist.</span><span class="sxs-lookup"><span data-stu-id="9c6e1-109">These credentials will be used to authorize your Logic app to connect to, and access your Wunderlist account's data:</span></span>   
    ![](./media/connectors-create-api-wunderlist/wunderlist-1.png)  
-3. Укажите учетные данные, а затем нажмите кнопку для входа.  
+3. <span data-ttu-id="9c6e1-110">Укажите учетные данные, а затем нажмите кнопку для входа.</span><span class="sxs-lookup"><span data-stu-id="9c6e1-110">Provide your credentials then select the button to sign in</span></span>  
    ![](./media/connectors-create-api-wunderlist/wunderlist-2.png)  
-4. Вы увидите сообщение о том, что логическое приложение имеет разрешения на доступ к вашей учетной записи Wunderlist. Если вы согласны, нажмите кнопку для подтверждения. 
+4. <span data-ttu-id="9c6e1-111">Вы увидите сообщение о том, что логическое приложение имеет разрешения на доступ к вашей учетной записи Wunderlist.</span><span class="sxs-lookup"><span data-stu-id="9c6e1-111">You'll then be told what the Logic app will have permissions to do with your Wunderlist account.</span></span> <span data-ttu-id="9c6e1-112">Если вы согласны, нажмите кнопку для подтверждения.</span><span class="sxs-lookup"><span data-stu-id="9c6e1-112">If you agree, select the button to indicate your agreement.</span></span> 
    ![](./media/connectors-create-api-wunderlist/wunderlist-4.png)  
-5. Наконец, нажмите кнопку **Авторизовать**.  
+5. <span data-ttu-id="9c6e1-113">Наконец, нажмите кнопку **Авторизовать**.</span><span class="sxs-lookup"><span data-stu-id="9c6e1-113">Finally, select the **Authorize** button</span></span>  
    ![](./media/connectors-create-api-wunderlist/wunderlist-5.png)  
 

@@ -1,18 +1,18 @@
-| Ресурс | Ограничение по умолчанию | Примечание |
+| <span data-ttu-id="f9df9-101">Ресурс</span><span class="sxs-lookup"><span data-stu-id="f9df9-101">Resource</span></span> | <span data-ttu-id="f9df9-102">Ограничение по умолчанию</span><span class="sxs-lookup"><span data-stu-id="f9df9-102">Default limit</span></span> | <span data-ttu-id="f9df9-103">Примечание</span><span class="sxs-lookup"><span data-stu-id="f9df9-103">Note</span></span> |
 | --- | --- | --- |
-| Шлюз приложений |50 на подписку | |
-| Конфигурации IP внешнего интерфейса |2 |1 открытая и 1 закрытая |
-| Порты внешнего интерфейса |20 | |
-| Пулы адресов серверной части |20 | |
-| Внутренних серверов на пул |100 | |
-| HTTP-прослушиватели |20 | |
-| Правила балансировки нагрузки HTTP |200 |число прослушивателей HTTP * n, n = 10 по умолчанию |
-| Параметры HTTP серверной части |20 |1 для каждого пула адресов серверной части |
-| Экземпляров на шлюз |10 | |
-| SSL-сертификаты |20 |1 на HTTP-прослушиватель |
-| Сертификаты аутентификации клиента |5 | Макс. 10 |
-| Минимальное время ожидания запроса |1 с | |
-| Максимальное время ожидания запроса |24 часа | |
-| Количество сайтов |20 |1 на HTTP-прослушиватель |
-| Сопоставлений URL-адреса на прослушиватель |1 | |
+| <span data-ttu-id="f9df9-104">Шлюз приложений</span><span class="sxs-lookup"><span data-stu-id="f9df9-104">Application Gateway</span></span> |<span data-ttu-id="f9df9-105">50 на подписку</span><span class="sxs-lookup"><span data-stu-id="f9df9-105">50 per subscription</span></span> | |
+| <span data-ttu-id="f9df9-106">Конфигурации IP внешнего интерфейса</span><span class="sxs-lookup"><span data-stu-id="f9df9-106">Frontend IP Configurations</span></span> |<span data-ttu-id="f9df9-107">2</span><span class="sxs-lookup"><span data-stu-id="f9df9-107">2</span></span> |<span data-ttu-id="f9df9-108">1 открытая и 1 закрытая</span><span class="sxs-lookup"><span data-stu-id="f9df9-108">1 public and 1 private</span></span> |
+| <span data-ttu-id="f9df9-109">Порты внешнего интерфейса</span><span class="sxs-lookup"><span data-stu-id="f9df9-109">Frontend Ports</span></span> |<span data-ttu-id="f9df9-110">20</span><span class="sxs-lookup"><span data-stu-id="f9df9-110">20</span></span> | |
+| <span data-ttu-id="f9df9-111">Пулы адресов серверной части</span><span class="sxs-lookup"><span data-stu-id="f9df9-111">Backend Address Pools</span></span> |<span data-ttu-id="f9df9-112">20</span><span class="sxs-lookup"><span data-stu-id="f9df9-112">20</span></span> | |
+| <span data-ttu-id="f9df9-113">Внутренних серверов на пул</span><span class="sxs-lookup"><span data-stu-id="f9df9-113">Backend Servers per pool</span></span> |<span data-ttu-id="f9df9-114">100</span><span class="sxs-lookup"><span data-stu-id="f9df9-114">100</span></span> | |
+| <span data-ttu-id="f9df9-115">HTTP-прослушиватели</span><span class="sxs-lookup"><span data-stu-id="f9df9-115">HTTP Listeners</span></span> |<span data-ttu-id="f9df9-116">20</span><span class="sxs-lookup"><span data-stu-id="f9df9-116">20</span></span> | |
+| <span data-ttu-id="f9df9-117">Правила балансировки нагрузки HTTP</span><span class="sxs-lookup"><span data-stu-id="f9df9-117">HTTP load balancing rules</span></span> |<span data-ttu-id="f9df9-118">200</span><span class="sxs-lookup"><span data-stu-id="f9df9-118">200</span></span> |<span data-ttu-id="f9df9-119">число прослушивателей HTTP * n, n = 10 по умолчанию</span><span class="sxs-lookup"><span data-stu-id="f9df9-119"># of HTTP Listeners * n, n=10 Default</span></span> |
+| <span data-ttu-id="f9df9-120">Параметры HTTP серверной части</span><span class="sxs-lookup"><span data-stu-id="f9df9-120">Backend HTTP settings</span></span> |<span data-ttu-id="f9df9-121">20</span><span class="sxs-lookup"><span data-stu-id="f9df9-121">20</span></span> |<span data-ttu-id="f9df9-122">1 для каждого пула адресов серверной части</span><span class="sxs-lookup"><span data-stu-id="f9df9-122">1 per Backend Address Pool</span></span> |
+| <span data-ttu-id="f9df9-123">Экземпляров на шлюз</span><span class="sxs-lookup"><span data-stu-id="f9df9-123">Instances per gateway</span></span> |<span data-ttu-id="f9df9-124">10</span><span class="sxs-lookup"><span data-stu-id="f9df9-124">10</span></span> | |
+| <span data-ttu-id="f9df9-125">SSL-сертификаты</span><span class="sxs-lookup"><span data-stu-id="f9df9-125">SSL certificates</span></span> |<span data-ttu-id="f9df9-126">20</span><span class="sxs-lookup"><span data-stu-id="f9df9-126">20</span></span> |<span data-ttu-id="f9df9-127">1 на HTTP-прослушиватель</span><span class="sxs-lookup"><span data-stu-id="f9df9-127">1 per HTTP Listeners</span></span> |
+| <span data-ttu-id="f9df9-128">Сертификаты аутентификации клиента</span><span class="sxs-lookup"><span data-stu-id="f9df9-128">Authentication certificates</span></span> |<span data-ttu-id="f9df9-129">5</span><span class="sxs-lookup"><span data-stu-id="f9df9-129">5</span></span> | <span data-ttu-id="f9df9-130">Макс. 10</span><span class="sxs-lookup"><span data-stu-id="f9df9-130">Maximum 10</span></span> |
+| <span data-ttu-id="f9df9-131">Минимальное время ожидания запроса</span><span class="sxs-lookup"><span data-stu-id="f9df9-131">Request timeout min</span></span> |<span data-ttu-id="f9df9-132">1 с</span><span class="sxs-lookup"><span data-stu-id="f9df9-132">1 second</span></span> | |
+| <span data-ttu-id="f9df9-133">Максимальное время ожидания запроса</span><span class="sxs-lookup"><span data-stu-id="f9df9-133">Request timeout max</span></span> |<span data-ttu-id="f9df9-134">24 часа</span><span class="sxs-lookup"><span data-stu-id="f9df9-134">24hrs</span></span> | |
+| <span data-ttu-id="f9df9-135">Количество сайтов</span><span class="sxs-lookup"><span data-stu-id="f9df9-135">Number of sites</span></span> |<span data-ttu-id="f9df9-136">20</span><span class="sxs-lookup"><span data-stu-id="f9df9-136">20</span></span> |<span data-ttu-id="f9df9-137">1 на HTTP-прослушиватель</span><span class="sxs-lookup"><span data-stu-id="f9df9-137">1 per HTTP Listeners</span></span> |
+| <span data-ttu-id="f9df9-138">Сопоставлений URL-адреса на прослушиватель</span><span class="sxs-lookup"><span data-stu-id="f9df9-138">URL Maps per listener</span></span> |<span data-ttu-id="f9df9-139">1</span><span class="sxs-lookup"><span data-stu-id="f9df9-139">1</span></span> | |
 

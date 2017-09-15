@@ -1,12 +1,12 @@
-## <a name="vpn-gateway"></a>VPN-шлюз
-Ресурс VPN-шлюза позволяет создать безопасное подключение между локальным центром обработки данных и Azure. Ресурс VPN-шлюза можно настроить тремя способами:
+## <a name="vpn-gateway"></a><span data-ttu-id="d095f-101">VPN-шлюз</span><span class="sxs-lookup"><span data-stu-id="d095f-101">VPN Gateway</span></span>
+<span data-ttu-id="d095f-102">Ресурс VPN-шлюза позволяет создать безопасное подключение между локальным центром обработки данных и Azure.</span><span class="sxs-lookup"><span data-stu-id="d095f-102">A VPN gateway resource enables you to create a secure connection between their on-premises data center and Azure.</span></span> <span data-ttu-id="d095f-103">Ресурс VPN-шлюза можно настроить тремя способами:</span><span class="sxs-lookup"><span data-stu-id="d095f-103">A VPN gateway resource can be configured in three different ways:</span></span>
 
-* **Точка — сайт** : для безопасного доступа к ресурсам Azure, размещенным в виртуальной сети, вы можете использовать VPN-клиент на любом компьютере. 
-* **Подключение нескольких сайтов** : из локальных центров обработки данных можно безопасно подключаться к ресурсам в виртуальной сети. 
-* **Виртуальная сеть — виртуальная сеть** : вы можете безопасно подключаться из одной виртуальной сети Azure к другой в том же или другом регионе, чтобы обеспечить географическую избыточность рабочих нагрузок.
+* <span data-ttu-id="d095f-104">**Точка — сайт** : для безопасного доступа к ресурсам Azure, размещенным в виртуальной сети, вы можете использовать VPN-клиент на любом компьютере.</span><span class="sxs-lookup"><span data-stu-id="d095f-104">**Point to Site** – you can securely access your Azure resources hosted in a VNET by using a VPN client from any computer.</span></span> 
+* <span data-ttu-id="d095f-105">**Подключение нескольких сайтов** : из локальных центров обработки данных можно безопасно подключаться к ресурсам в виртуальной сети.</span><span class="sxs-lookup"><span data-stu-id="d095f-105">**Multi-site connection** – you can securely connect from your on-premises data centers to resources running in a VNET.</span></span> 
+* <span data-ttu-id="d095f-106">**Виртуальная сеть — виртуальная сеть** : вы можете безопасно подключаться из одной виртуальной сети Azure к другой в том же или другом регионе, чтобы обеспечить географическую избыточность рабочих нагрузок.</span><span class="sxs-lookup"><span data-stu-id="d095f-106">**VNET to VNET** – you can securely connect across Azure VNETS within the same region, or across regions to build workloads with geo-redundancy.</span></span>
 
-К основным свойствам VPN-шлюза относятся:
+<span data-ttu-id="d095f-107">К основным свойствам VPN-шлюза относятся:</span><span class="sxs-lookup"><span data-stu-id="d095f-107">Key properties of a VPN gateway include:</span></span>
 
-* **Тип шлюза** : с динамической или статической маршрутизацией. 
-* **Префикс пула адресов VPN-клиентов** : IP-адреса, которые должны назначаться клиентам, подключающимся в конфигурации "точка — сайт".
+* <span data-ttu-id="d095f-108">**Тип шлюза** : с динамической или статической маршрутизацией.</span><span class="sxs-lookup"><span data-stu-id="d095f-108">**Gateway type** - dynamically routed or a static routed gateway.</span></span> 
+* <span data-ttu-id="d095f-109">**Префикс пула адресов VPN-клиентов** : IP-адреса, которые должны назначаться клиентам, подключающимся в конфигурации "точка — сайт".</span><span class="sxs-lookup"><span data-stu-id="d095f-109">**VPN Client Address Pool Prefix** – IP addresses to be assigned to clients connecting in a point to site configuration.</span></span>
 

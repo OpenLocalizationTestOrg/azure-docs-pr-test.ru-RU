@@ -1,16 +1,16 @@
-Вот как использовать триггер **Service Bus - When a message is received in a queue** (Служебная шина — при поступлении сообщения в очередь) для запуска рабочего процесса приложения логики при отправке нового элемента в очередь служебной шины.  
+<span data-ttu-id="1cc2c-101">Вот как использовать триггер **Service Bus - When a message is received in a queue** (Служебная шина — при поступлении сообщения в очередь) для запуска рабочего процесса приложения логики при отправке нового элемента в очередь служебной шины.</span><span class="sxs-lookup"><span data-stu-id="1cc2c-101">Here's how to use the **Service Bus - When a message is received in a queue** trigger to initiate a logic app workflow when a new item is sent to a Service Bus queue.</span></span>  
 
 > [!NOTE]
-> Вам будет предложено войти с помощью строки подключения к служебной шине, если вы еще не создали подключение к ней.  
+> <span data-ttu-id="1cc2c-102">Вам будет предложено войти с помощью строки подключения к служебной шине, если вы еще не создали подключение к ней.</span><span class="sxs-lookup"><span data-stu-id="1cc2c-102">You will be prompted to sign in with your Service Bus connection string if you have not already created a connection to Service Bus.</span></span>  
 > 
 > 
 
-1. В поле поиска конструктора Logic Apps введите **service bus**. Затем выберите триггер **Service Bus - When a message is received in a queue** (Служебная шина — при поступлении сообщения в очередь).  
-   ![Триггер служебной шины, изображение 1](./media/connectors-create-api-servicebus/trigger-1.png)   
-2. Отобразится диалоговое окно **When a message is received in a queue** (При поступлении сообщения в очередь).  
-   ![Триггер служебной шины, изображение 2](./media/connectors-create-api-servicebus/trigger-2.png)   
-3. Введите имя очереди служебной шины, которую должен отслеживать триггер.   
+1. <span data-ttu-id="1cc2c-103">В поле поиска конструктора Logic Apps введите **service bus**.</span><span class="sxs-lookup"><span data-stu-id="1cc2c-103">In the search box on the logic apps designer, enter **service bus**.</span></span> <span data-ttu-id="1cc2c-104">Затем выберите триггер **Service Bus - When a message is received in a queue** (Служебная шина — при поступлении сообщения в очередь).</span><span class="sxs-lookup"><span data-stu-id="1cc2c-104">Then select the **Service Bus - When a message is received in a queue** trigger.</span></span>  
+   <span data-ttu-id="1cc2c-105">![Триггер служебной шины, изображение 1](./media/connectors-create-api-servicebus/trigger-1.png)</span><span class="sxs-lookup"><span data-stu-id="1cc2c-105">![Service Bus trigger image 1](./media/connectors-create-api-servicebus/trigger-1.png)</span></span>   
+2. <span data-ttu-id="1cc2c-106">Отобразится диалоговое окно **When a message is received in a queue** (При поступлении сообщения в очередь).</span><span class="sxs-lookup"><span data-stu-id="1cc2c-106">The **When a message is received in a queue** dialog box is displayed.</span></span>  
+   <span data-ttu-id="1cc2c-107">![Триггер служебной шины, изображение 2](./media/connectors-create-api-servicebus/trigger-2.png)</span><span class="sxs-lookup"><span data-stu-id="1cc2c-107">![Service Bus trigger image 2](./media/connectors-create-api-servicebus/trigger-2.png)</span></span>   
+3. <span data-ttu-id="1cc2c-108">Введите имя очереди служебной шины, которую должен отслеживать триггер.</span><span class="sxs-lookup"><span data-stu-id="1cc2c-108">Enter the name of the Service Bus queue you would like the trigger to monitor.</span></span>   
    ![Триггер служебной шины, изображение 3](./media/connectors-create-api-servicebus/trigger-3.png)   
 
-Теперь ваше приложение логики настроено с помощью триггера. Он будет активировать другие триггеры и действия в рабочем процессе при поступлении нового элемента в выбранную вами очередь.    
+<span data-ttu-id="1cc2c-110">Теперь ваше приложение логики настроено с помощью триггера.</span><span class="sxs-lookup"><span data-stu-id="1cc2c-110">At this point, your logic app has been configured with a trigger.</span></span> <span data-ttu-id="1cc2c-111">Он будет активировать другие триггеры и действия в рабочем процессе при поступлении нового элемента в выбранную вами очередь.</span><span class="sxs-lookup"><span data-stu-id="1cc2c-111">When a new item is received in the queue you selected, the trigger will begin a run of the other triggers and actions in the workflow.</span></span>    
 

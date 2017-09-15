@@ -1,4 +1,4 @@
 > [!div class="op_single_selector"]
-> * [Портал](../articles/virtual-network/virtual-network-manage-nsg-arm-portal.md)
-> * [PowerShell](../articles/virtual-network/virtual-network-manage-nsg-arm-ps.md)
-> * [Интерфейс командной строки Azure](../articles/virtual-network/virtual-network-manage-nsg-arm-cli.md)
+> * [<span data-ttu-id="68a57-101">Портал</span><span class="sxs-lookup"><span data-stu-id="68a57-101">Portal</span></span>](../articles/virtual-network/virtual-network-manage-nsg-arm-portal.md)
+> * [<span data-ttu-id="68a57-102">PowerShell</span><span class="sxs-lookup"><span data-stu-id="68a57-102">PowerShell</span></span>](../articles/virtual-network/virtual-network-manage-nsg-arm-ps.md)
+> * [<span data-ttu-id="68a57-103">Интерфейс командной строки Azure</span><span class="sxs-lookup"><span data-stu-id="68a57-103">Azure CLI</span></span>](../articles/virtual-network/virtual-network-manage-nsg-arm-cli.md)

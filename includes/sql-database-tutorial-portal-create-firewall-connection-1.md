@@ -1,102 +1,102 @@
-## <a name="log-in-to-the-azure-portal"></a>Войдите на портал Azure.
+## <a name="log-in-to-the-azure-portal"></a><span data-ttu-id="22683-101">Войдите на портал Azure.</span><span class="sxs-lookup"><span data-stu-id="22683-101">Log in to the Azure portal</span></span>
 
-Войдите на [портал Azure](https://portal.azure.com/).
+<span data-ttu-id="22683-102">Войдите на [портал Azure](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="22683-102">Log in to the [Azure portal](https://portal.azure.com/).</span></span>
 
-## <a name="create-a-blank-sql-database-using-the-azure-portal"></a>Создание пустой базы данных SQL Azure с помощью портала Azure
+## <a name="create-a-blank-sql-database-using-the-azure-portal"></a><span data-ttu-id="22683-103">Создание пустой базы данных SQL Azure с помощью портала Azure</span><span class="sxs-lookup"><span data-stu-id="22683-103">Create a blank SQL database using the Azure portal</span></span>
 
-База данных Azure SQL создается с определенным набором [вычислительных ресурсов и ресурсов хранения](../articles/sql-database/sql-database-service-tiers.md). База данных создается в пределах [группы ресурсов Azure](../articles/azure-resource-manager/resource-group-overview.md) и [логического сервера базы данных SQL Azure](../articles/sql-database/sql-database-features.md). 
+<span data-ttu-id="22683-104">База данных Azure SQL создается с определенным набором [вычислительных ресурсов и ресурсов хранения](../articles/sql-database/sql-database-service-tiers.md).</span><span class="sxs-lookup"><span data-stu-id="22683-104">An Azure SQL database is created with a defined set of [compute and storage resources](../articles/sql-database/sql-database-service-tiers.md).</span></span> <span data-ttu-id="22683-105">База данных создается в пределах [группы ресурсов Azure](../articles/azure-resource-manager/resource-group-overview.md) и [логического сервера базы данных SQL Azure](../articles/sql-database/sql-database-features.md).</span><span class="sxs-lookup"><span data-stu-id="22683-105">The database is created within an [Azure resource group](../articles/azure-resource-manager/resource-group-overview.md) and in an [Azure SQL Database logical server](../articles/sql-database/sql-database-features.md).</span></span> 
 
-Чтобы создать пустую базу данных SQL, выполните приведенные ниже действия. 
+<span data-ttu-id="22683-106">Чтобы создать пустую базу данных SQL, выполните приведенные ниже действия.</span><span class="sxs-lookup"><span data-stu-id="22683-106">Follow these steps to create a blank SQL database.</span></span> 
 
-1. Щелкните **Создать** в верхнем левом углу портала Azure.
+1. <span data-ttu-id="22683-107">Щелкните **Создать** в верхнем левом углу портала Azure.</span><span class="sxs-lookup"><span data-stu-id="22683-107">Click the **New** button found on the upper left-hand corner of the Azure portal.</span></span>
 
-2. Выберите **Базы данных** на странице **создания** и щелкните **База данных SQL** на странице **Базы данных**. 
+2. <span data-ttu-id="22683-108">Выберите **Базы данных** на странице **создания** и щелкните **База данных SQL** на странице **Базы данных**.</span><span class="sxs-lookup"><span data-stu-id="22683-108">Select **Databases** from the **New** page, and select **SQL Database** from the **Databases** page.</span></span> 
 
    ![Создание пустой базы данных](../articles/sql-database/media/sql-database-design-first-database/create-empty-database.png)
 
-3. Заполните форму базы данных SQL, указав следующую информацию, как показано на предыдущем рисунке.   
+3. <span data-ttu-id="22683-110">Заполните форму базы данных SQL, указав следующую информацию, как показано на предыдущем рисунке.</span><span class="sxs-lookup"><span data-stu-id="22683-110">Fill out the SQL Database form with the following information, as shown on the preceding image:</span></span>   
 
-   | Настройка | Рекомендуемое значение | Описание |
+   | <span data-ttu-id="22683-111">Настройка</span><span class="sxs-lookup"><span data-stu-id="22683-111">Setting</span></span> | <span data-ttu-id="22683-112">Рекомендуемое значение</span><span class="sxs-lookup"><span data-stu-id="22683-112">Suggested value</span></span> | <span data-ttu-id="22683-113">Описание</span><span class="sxs-lookup"><span data-stu-id="22683-113">Description</span></span> |
    | --------| --------------- | ----------- | 
-   | **Database name** (Имя базы данных) | mySampleDatabase | Допустимые имена баз данных см. в статье об [идентификаторах базы данных](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). | 
-   | **Подписка** | Ваша подписка  | Дополнительные сведения о подписках см. [здесь](https://account.windowsazure.com/Subscriptions). |
-   | **Группа ресурсов** | myResourceGroup | Допустимые имена групп ресурсов см. в статье о [правилах и ограничениях именования](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
-   | **Выбрать источник** | Пустая база данных | Указывает, что должна быть создана пустая база данных. |
+   | <span data-ttu-id="22683-114">**Database name** (Имя базы данных)</span><span class="sxs-lookup"><span data-stu-id="22683-114">**Database name**</span></span> | <span data-ttu-id="22683-115">mySampleDatabase</span><span class="sxs-lookup"><span data-stu-id="22683-115">mySampleDatabase</span></span> | <span data-ttu-id="22683-116">Допустимые имена баз данных см. в статье об [идентификаторах базы данных](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).</span><span class="sxs-lookup"><span data-stu-id="22683-116">For valid database names, see [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).</span></span> | 
+   | <span data-ttu-id="22683-117">**Подписка**</span><span class="sxs-lookup"><span data-stu-id="22683-117">**Subscription**</span></span> | <span data-ttu-id="22683-118">Ваша подписка</span><span class="sxs-lookup"><span data-stu-id="22683-118">Your subscription</span></span>  | <span data-ttu-id="22683-119">Дополнительные сведения о подписках см. [здесь](https://account.windowsazure.com/Subscriptions).</span><span class="sxs-lookup"><span data-stu-id="22683-119">For details about your subscriptions, see [Subscriptions](https://account.windowsazure.com/Subscriptions).</span></span> |
+   | <span data-ttu-id="22683-120">**Группа ресурсов**</span><span class="sxs-lookup"><span data-stu-id="22683-120">**Resource group**</span></span> | <span data-ttu-id="22683-121">myResourceGroup</span><span class="sxs-lookup"><span data-stu-id="22683-121">myResourceGroup</span></span> | <span data-ttu-id="22683-122">Допустимые имена групп ресурсов см. в статье о [правилах и ограничениях именования](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).</span><span class="sxs-lookup"><span data-stu-id="22683-122">For valid resource group names, see [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).</span></span> |
+   | <span data-ttu-id="22683-123">**Выбрать источник**</span><span class="sxs-lookup"><span data-stu-id="22683-123">**Select source**</span></span> | <span data-ttu-id="22683-124">Пустая база данных</span><span class="sxs-lookup"><span data-stu-id="22683-124">Blank database</span></span> | <span data-ttu-id="22683-125">Указывает, что должна быть создана пустая база данных.</span><span class="sxs-lookup"><span data-stu-id="22683-125">Specifies that a blank database should be created.</span></span> |
    ||||
 
-4. Щелкните **Сервер**, чтобы создать и настроить новый сервер для новой базы данных. Заполните форму для **создания сервера**, указав следующую информацию. 
+4. <span data-ttu-id="22683-126">Щелкните **Сервер**, чтобы создать и настроить новый сервер для новой базы данных.</span><span class="sxs-lookup"><span data-stu-id="22683-126">Click **Server** to create and configure a new server for your new database.</span></span> <span data-ttu-id="22683-127">Заполните форму для **создания сервера**, указав следующую информацию.</span><span class="sxs-lookup"><span data-stu-id="22683-127">Fill out the **New server form** with the following information:</span></span> 
 
-   | Настройка | Рекомендуемое значение | Описание |
+   | <span data-ttu-id="22683-128">Настройка</span><span class="sxs-lookup"><span data-stu-id="22683-128">Setting</span></span> | <span data-ttu-id="22683-129">Рекомендуемое значение</span><span class="sxs-lookup"><span data-stu-id="22683-129">Suggested value</span></span> | <span data-ttu-id="22683-130">Описание</span><span class="sxs-lookup"><span data-stu-id="22683-130">Description</span></span> |
    | --------| --------------- | ----------- | 
-   | **Server name** (Имя сервера) | Любое глобально уникальное имя | Допустимые имена серверов см. в статье о [правилах и ограничениях именования](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). | 
-   | **Имя для входа администратора сервера** | Любое допустимое имя | Допустимые имена входа см. в статье об [идентификаторах базы данных](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
-   | **Пароль** | Любой допустимый пароль | Длина пароля должна составлять минимум 8 символов. Пароль должен содержать символы трех категорий из перечисленных: прописные буквы, строчные буквы, цифры и специальные символы. |
-   | **Расположение** | Любое допустимое расположение | Дополнительные сведения о регионах Azure см. [здесь](https://azure.microsoft.com/regions/). |
+   | <span data-ttu-id="22683-131">**Server name** (Имя сервера)</span><span class="sxs-lookup"><span data-stu-id="22683-131">**Server name**</span></span> | <span data-ttu-id="22683-132">Любое глобально уникальное имя</span><span class="sxs-lookup"><span data-stu-id="22683-132">Any globally unique name.</span></span> | <span data-ttu-id="22683-133">Допустимые имена серверов см. в статье о [правилах и ограничениях именования](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).</span><span class="sxs-lookup"><span data-stu-id="22683-133">For valid server names, see [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).</span></span> | 
+   | <span data-ttu-id="22683-134">**Имя для входа администратора сервера**</span><span class="sxs-lookup"><span data-stu-id="22683-134">**Server admin login**</span></span> | <span data-ttu-id="22683-135">Любое допустимое имя</span><span class="sxs-lookup"><span data-stu-id="22683-135">Any valid name.</span></span> | <span data-ttu-id="22683-136">Допустимые имена входа см. в статье об [идентификаторах базы данных](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).</span><span class="sxs-lookup"><span data-stu-id="22683-136">For valid login names, see [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).</span></span>|
+   | <span data-ttu-id="22683-137">**Пароль**</span><span class="sxs-lookup"><span data-stu-id="22683-137">**Password**</span></span> | <span data-ttu-id="22683-138">Любой допустимый пароль</span><span class="sxs-lookup"><span data-stu-id="22683-138">Any valid password.</span></span> | <span data-ttu-id="22683-139">Длина пароля должна составлять минимум 8 символов. Пароль должен содержать символы трех категорий из перечисленных: прописные буквы, строчные буквы, цифры и специальные символы.</span><span class="sxs-lookup"><span data-stu-id="22683-139">Your password must have at least eight characters and must contain characters from three of the following categories: upper case characters, lower case characters, numbers, and non-alphanumeric characters.</span></span> |
+   | <span data-ttu-id="22683-140">**Расположение**</span><span class="sxs-lookup"><span data-stu-id="22683-140">**Location**</span></span> | <span data-ttu-id="22683-141">Любое допустимое расположение</span><span class="sxs-lookup"><span data-stu-id="22683-141">Any valid location.</span></span> | <span data-ttu-id="22683-142">Дополнительные сведения о регионах Azure см. [здесь](https://azure.microsoft.com/regions/).</span><span class="sxs-lookup"><span data-stu-id="22683-142">For information about regions, see [Azure Regions](https://azure.microsoft.com/regions/).</span></span> |
    ||||
 
    ![Создание базы данных — сервер](../articles/sql-database/media/sql-database-design-first-database/create-database-server.png)
 
-5. Нажмите кнопку **Выбрать**.
+5. <span data-ttu-id="22683-144">Нажмите кнопку **Выбрать**.</span><span class="sxs-lookup"><span data-stu-id="22683-144">Click **Select**.</span></span>
 
-6. Щелкните **Ценовая категория**, чтобы указать уровень производительности и уровень служб для новой базы данных. Для этого руководства выберите значения **20 DTU** и **250** ГБ хранилища.
+6. <span data-ttu-id="22683-145">Щелкните **Ценовая категория**, чтобы указать уровень производительности и уровень служб для новой базы данных.</span><span class="sxs-lookup"><span data-stu-id="22683-145">Click **Pricing tier** to specify the service tier and performance level for your new database.</span></span> <span data-ttu-id="22683-146">Для этого руководства выберите значения **20 DTU** и **250** ГБ хранилища.</span><span class="sxs-lookup"><span data-stu-id="22683-146">For this tutorial, select **20 DTUs** and **250** GB of storage.</span></span>
 
    ![Создание базы данных — s1](../articles/sql-database/media/sql-database-design-first-database/create-empty-database-pricing-tier.png)
 
-7. Нажмите кнопку **Применить**.  
+7. <span data-ttu-id="22683-148">Нажмите кнопку **Применить**.</span><span class="sxs-lookup"><span data-stu-id="22683-148">Click **Apply**.</span></span>  
 
-8. Укажите **параметры сортировки** для пустой базы данных. В этом руководстве используйте значение по умолчанию. Дополнительные сведения о параметрах сортировки см. в [этой статье](https://docs.microsoft.com/sql/t-sql/statements/collations).
+8. <span data-ttu-id="22683-149">Укажите **параметры сортировки** для пустой базы данных. В этом руководстве используйте значение по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="22683-149">Select a **collation** for the blank database (for this tutorial, use the default value).</span></span> <span data-ttu-id="22683-150">Дополнительные сведения о параметрах сортировки см. в [этой статье](https://docs.microsoft.com/sql/t-sql/statements/collations).</span><span class="sxs-lookup"><span data-stu-id="22683-150">For more information about collations, see [Collations](https://docs.microsoft.com/sql/t-sql/statements/collations)</span></span>
 
-9. Нажмите кнопку **Создать**, чтобы подготовить базу данных. Подготовка занимает около полутора минут. 
+9. <span data-ttu-id="22683-151">Нажмите кнопку **Создать**, чтобы подготовить базу данных.</span><span class="sxs-lookup"><span data-stu-id="22683-151">Click **Create** to provision the database.</span></span> <span data-ttu-id="22683-152">Подготовка занимает около полутора минут.</span><span class="sxs-lookup"><span data-stu-id="22683-152">Provisioning takes about a minute and a half to complete.</span></span> 
 
-10. На панели инструментов щелкните **Уведомления**, чтобы отслеживать процесс развертывания.
+10. <span data-ttu-id="22683-153">На панели инструментов щелкните **Уведомления**, чтобы отслеживать процесс развертывания.</span><span class="sxs-lookup"><span data-stu-id="22683-153">On the toolbar, click **Notifications** to monitor the deployment process.</span></span>
 
    ![уведомление](../articles/sql-database/media/sql-database-get-started-portal/notification.png)
 
-## <a name="create-a-server-level-firewall-rule-using-the-azure-portal"></a>Создание правила брандмауэра на уровне сервера с помощью портала Azure
+## <a name="create-a-server-level-firewall-rule-using-the-azure-portal"></a><span data-ttu-id="22683-155">Создание правила брандмауэра на уровне сервера с помощью портала Azure</span><span class="sxs-lookup"><span data-stu-id="22683-155">Create a server-level firewall rule using the Azure portal</span></span>
 
-Служба базы данных SQL создает брандмауэр на уровне сервера. Изначально брандмауэр предотвращает подключение внешних средств и приложений к серверу или к базам данных на сервере. Подключение становится возможным только после создания правила брандмауэра, разрешающего доступ определенным IP-адресам. Выполните следующие действия, чтобы создать [правило брандмауэра уровня сервера базы данных SQL](../articles/sql-database/sql-database-firewall-configure.md) для IP-адреса вашего клиента и разрешить внешнее подключение через брандмауэр базы данных SQL только с вашего IP-адреса. 
+<span data-ttu-id="22683-156">Служба базы данных SQL создает брандмауэр на уровне сервера.</span><span class="sxs-lookup"><span data-stu-id="22683-156">The SQL Database service creates a firewall at the server-level.</span></span> <span data-ttu-id="22683-157">Изначально брандмауэр предотвращает подключение внешних средств и приложений к серверу или к базам данных на сервере.</span><span class="sxs-lookup"><span data-stu-id="22683-157">Initially the firewall prevents external tools and applications from connecting to the server, or to any databases on the server.</span></span> <span data-ttu-id="22683-158">Подключение становится возможным только после создания правила брандмауэра, разрешающего доступ определенным IP-адресам.</span><span class="sxs-lookup"><span data-stu-id="22683-158">Connections are allowed after a firewall rule is created to open specific IP addresses.</span></span> <span data-ttu-id="22683-159">Выполните следующие действия, чтобы создать [правило брандмауэра уровня сервера базы данных SQL](../articles/sql-database/sql-database-firewall-configure.md) для IP-адреса вашего клиента и разрешить внешнее подключение через брандмауэр базы данных SQL только с вашего IP-адреса.</span><span class="sxs-lookup"><span data-stu-id="22683-159">Follow these steps to create a [SQL Database server-level firewall rule](../articles/sql-database/sql-database-firewall-configure.md) for your client's IP address, and to enable external connectivity through the SQL Database firewall for your IP address only.</span></span> 
 
 
 > [!NOTE]
-> База данных SQL обменивается данными через порт 1433. Подключиться к базе данных SQL можно только после того, как брандмауэр сети начнет пропускать исходящий трафик через порт 1433.
+> <span data-ttu-id="22683-160">База данных SQL обменивается данными через порт 1433.</span><span class="sxs-lookup"><span data-stu-id="22683-160">Azure SQL Database communicates over port 1433.</span></span> <span data-ttu-id="22683-161">Подключиться к базе данных SQL можно только после того, как брандмауэр сети начнет пропускать исходящий трафик через порт 1433.</span><span class="sxs-lookup"><span data-stu-id="22683-161">You can connect to SQL Database only after the firewall of your network allows outbound traffic through port 1433.</span></span>
 
 
-1. По завершении развертывания щелкните раздел **Базы данных SQL** в меню слева и выберите **mySampleDatabase** на странице **баз данных SQL**. Откроется страница с общими сведениями о базе данных, где будет указано полное имя сервера (например, **mynewserver20170313.database.windows.net**) и предоставлены параметры для дальнейшей настройки. Скопируйте полное имя сервера для использования в дальнейшем.
+1. <span data-ttu-id="22683-162">По завершении развертывания щелкните раздел **Базы данных SQL** в меню слева и выберите **mySampleDatabase** на странице **баз данных SQL**.</span><span class="sxs-lookup"><span data-stu-id="22683-162">After the deployment completes, click **SQL databases** from the left-hand menu and then click **mySampleDatabase** on the **SQL databases** page.</span></span> <span data-ttu-id="22683-163">Откроется страница с общими сведениями о базе данных, где будет указано полное имя сервера (например, **mynewserver20170313.database.windows.net**) и предоставлены параметры для дальнейшей настройки.</span><span class="sxs-lookup"><span data-stu-id="22683-163">The overview page for your database opens, showing you the fully qualified server name (such as **mynewserver20170313.database.windows.net**) and provides options for further configuration.</span></span> <span data-ttu-id="22683-164">Скопируйте полное имя сервера для использования в дальнейшем.</span><span class="sxs-lookup"><span data-stu-id="22683-164">Copy this fully qualified server name for use later.</span></span>
 
    > [!IMPORTANT]
-   > Полное имя сервера понадобится вам при работе с последующими руководствами для подключения к серверу и к базам данных.
+   > <span data-ttu-id="22683-165">Полное имя сервера понадобится вам при работе с последующими руководствами для подключения к серверу и к базам данных.</span><span class="sxs-lookup"><span data-stu-id="22683-165">You need this fully qualified server name to connect to your server and its databases in subsequent quick starts.</span></span>
    > 
 
    ![Имя сервера](../articles/sql-database/media/sql-database-get-started-portal/server-name.png) 
 
-2. Щелкните **Настройка брандмауэра для сервера** на панели инструментов, как показано на предыдущем рисунке. Откроется страница **параметров брандмауэра** для сервера базы данных SQL. 
+2. <span data-ttu-id="22683-167">Щелкните **Настройка брандмауэра для сервера** на панели инструментов, как показано на предыдущем рисунке.</span><span class="sxs-lookup"><span data-stu-id="22683-167">Click **Set server firewall** on the toolbar as shown in the previous image.</span></span> <span data-ttu-id="22683-168">Откроется страница **параметров брандмауэра** для сервера базы данных SQL.</span><span class="sxs-lookup"><span data-stu-id="22683-168">The **Firewall settings** page for the SQL Database server opens.</span></span> 
 
    ![правило брандмауэра для сервера](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 
-3. На панели инструментов щелкните **Добавить IP-адрес клиента**, чтобы добавить текущий IP-адрес в новое правило брандмауэра. С использованием правила брандмауэра можно открыть порт 1433 для одного IP-адреса или диапазона IP-адресов.
+3. <span data-ttu-id="22683-170">На панели инструментов щелкните **Добавить IP-адрес клиента**, чтобы добавить текущий IP-адрес в новое правило брандмауэра.</span><span class="sxs-lookup"><span data-stu-id="22683-170">Click **Add client IP** on the toolbar to add your current IP address to a new firewall rule.</span></span> <span data-ttu-id="22683-171">С использованием правила брандмауэра можно открыть порт 1433 для одного IP-адреса или диапазона IP-адресов.</span><span class="sxs-lookup"><span data-stu-id="22683-171">A firewall rule can open port 1433 for a single IP address or a range of IP addresses.</span></span>
 
-4. Щелкните **Сохранить**. Для текущего IP-адреса будет создано правило брандмауэра уровня сервера, с помощью которого можно открыть порт 1433 логического сервера.
+4. <span data-ttu-id="22683-172">Щелкните **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="22683-172">Click **Save**.</span></span> <span data-ttu-id="22683-173">Для текущего IP-адреса будет создано правило брандмауэра уровня сервера, с помощью которого можно открыть порт 1433 логического сервера.</span><span class="sxs-lookup"><span data-stu-id="22683-173">A server-level firewall rule is created for your current IP address opening port 1433 on the logical server.</span></span>
 
    ![Настройка правила брандмауэра для сервера](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule-set.png) 
 
-4. Нажмите кнопку **ОК**, а затем закройте страницу **Параметры брандмауэра**.
+4. <span data-ttu-id="22683-175">Нажмите кнопку **ОК**, а затем закройте страницу **Параметры брандмауэра**.</span><span class="sxs-lookup"><span data-stu-id="22683-175">Click **OK** and then close the **Firewall settings** page.</span></span>
 
-Теперь можно подключиться к серверу базы данных SQL Azure и ее базам данных с помощью такого средства, как SQL Server Management Studio (SSMS). Подключение установлено с этого IP-адреса, при этом используется созданная ранее учетная запись администратора сервера.
+<span data-ttu-id="22683-176">Теперь можно подключиться к серверу базы данных SQL Azure и ее базам данных с помощью такого средства, как SQL Server Management Studio (SSMS).</span><span class="sxs-lookup"><span data-stu-id="22683-176">You can now connect to the Azure SQL Database server and its databases by using a tool such as SQL Server Management Studio (SSMS).</span></span> <span data-ttu-id="22683-177">Подключение установлено с этого IP-адреса, при этом используется созданная ранее учетная запись администратора сервера.</span><span class="sxs-lookup"><span data-stu-id="22683-177">The connection is from this IP address, and it uses the server admin account created previously.</span></span>
 
 
 > [!IMPORTANT]
-> По умолчанию доступ через брандмауэр базы данных SQL включен для всех служб Azure. На этой странице щелкните **Откл.**, чтобы отключить доступ для всех служб Azure.
+> <span data-ttu-id="22683-178">По умолчанию доступ через брандмауэр базы данных SQL включен для всех служб Azure.</span><span class="sxs-lookup"><span data-stu-id="22683-178">By default, access through the SQL Database firewall is enabled for all Azure services.</span></span> <span data-ttu-id="22683-179">На этой странице щелкните **Откл.**, чтобы отключить доступ для всех служб Azure.</span><span class="sxs-lookup"><span data-stu-id="22683-179">Click **OFF** on this page to disable for all Azure services.</span></span>
 
 
-## <a name="get-connection-string-values-using-the-azure-portal"></a>Получение значений строки подключения с помощью портала Azure
+## <a name="get-connection-string-values-using-the-azure-portal"></a><span data-ttu-id="22683-180">Получение значений строки подключения с помощью портала Azure</span><span class="sxs-lookup"><span data-stu-id="22683-180">Get connection string values using the Azure portal</span></span>
 
-Получите полное имя сервера для сервера базы данных SQL Azure на портале Azure. Используйте полное имя сервера, чтобы подключиться к серверу с помощью SQL Server Management Studio.
+<span data-ttu-id="22683-181">Получите полное имя сервера для сервера базы данных SQL Azure на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="22683-181">Get the fully qualified server name for your Azure SQL Database server in the Azure portal.</span></span> <span data-ttu-id="22683-182">Используйте полное имя сервера, чтобы подключиться к серверу с помощью SQL Server Management Studio.</span><span class="sxs-lookup"><span data-stu-id="22683-182">You use the fully qualified server name to connect to your server using SQL Server Management Studio.</span></span>
 
-1. Войдите на [портал Azure](https://portal.azure.com/).
+1. <span data-ttu-id="22683-183">Войдите на [портал Azure](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="22683-183">Log in to the [Azure portal](https://portal.azure.com/).</span></span>
 
-2. В меню слева выберите **Базы данных SQL** и на странице **Базы данных SQL** щелкните имя своей базы данных. 
+2. <span data-ttu-id="22683-184">В меню слева выберите **Базы данных SQL** и на странице **Базы данных SQL** щелкните имя своей базы данных.</span><span class="sxs-lookup"><span data-stu-id="22683-184">Select **SQL Databases** from the left-hand menu, and click your database on the **SQL databases** page.</span></span> 
 
-3. На странице портала Azure вашей базы данных в области **Основные компоненты** найдите и скопируйте **имя сервера**.
+3. <span data-ttu-id="22683-185">На странице портала Azure вашей базы данных в области **Основные компоненты** найдите и скопируйте **имя сервера**.</span><span class="sxs-lookup"><span data-stu-id="22683-185">In the **Essentials** pane in the Azure portal page for your database, locate and then copy the **Server name**.</span></span>
 
    ![Сведения о подключении](../articles/sql-database/media/sql-database-get-started-portal/server-name.png) 

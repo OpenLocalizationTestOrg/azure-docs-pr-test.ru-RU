@@ -1,21 +1,21 @@
-При добавлении дисков данных на виртуальную машину Linux вы можете столкнуться с ошибками, если в LUN 0 не существует диска. Если вы добавляете диск вручную с помощью команды `azure vm disk attach-new` и указываете LUN (`--lun`) вместо того, чтобы разрешить платформе Azure самой определить соответствующий LUN, то обратите внимание на то, что в LUN 0 уже существует или будет существовать диск. 
+<span data-ttu-id="4ba50-101">При добавлении дисков данных на виртуальную машину Linux вы можете столкнуться с ошибками, если в LUN 0 не существует диска.</span><span class="sxs-lookup"><span data-stu-id="4ba50-101">When adding data disks to a Linux VM, you may encounter errors if a disk does not exist at LUN 0.</span></span> <span data-ttu-id="4ba50-102">Если вы добавляете диск вручную с помощью команды `azure vm disk attach-new` и указываете LUN (`--lun`) вместо того, чтобы разрешить платформе Azure самой определить соответствующий LUN, то обратите внимание на то, что в LUN 0 уже существует или будет существовать диск.</span><span class="sxs-lookup"><span data-stu-id="4ba50-102">If you are adding a disk manually using the `azure vm disk attach-new` command and you specify a LUN (`--lun`) rather than allowing the Azure platform to determine the appropriate LUN, take care that a disk already exists / will exist at LUN 0.</span></span> 
 
-Рассмотрим следующий пример, демонстрирующий фрагмент выходных данных из `lsscsi`:
+<span data-ttu-id="4ba50-103">Рассмотрим следующий пример, демонстрирующий фрагмент выходных данных из `lsscsi`:</span><span class="sxs-lookup"><span data-stu-id="4ba50-103">Consider the following example showing a snippet of the output from `lsscsi`:</span></span>
 
 ```bash
 [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc 
 [5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd 
 ```
 
-Существует два диска данных в LUN 0 и LUN 1 (первый столбец в выходных данных `lsscsi` `[host:channel:target:lun]`). Оба диска должны быть доступными из виртуальной машины. Если вы вручную указали первый диск для добавления в LUN 1, а второй диск — в LUN 2, то эти диски могут не отображаться корректно из виртуальной машины.
+<span data-ttu-id="4ba50-104">Существует два диска данных в LUN 0 и LUN 1 (первый столбец в выходных данных `lsscsi` `[host:channel:target:lun]`).</span><span class="sxs-lookup"><span data-stu-id="4ba50-104">The two data disks exist at LUN 0 and LUN 1 (the first column in the `lsscsi` output details `[host:channel:target:lun]`).</span></span> <span data-ttu-id="4ba50-105">Оба диска должны быть доступными из виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="4ba50-105">Both disks should be accessbile from within the VM.</span></span> <span data-ttu-id="4ba50-106">Если вы вручную указали первый диск для добавления в LUN 1, а второй диск — в LUN 2, то эти диски могут не отображаться корректно из виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="4ba50-106">If you had manually specified the first disk to be added at LUN 1 and the second disk at LUN 2, you may not see the disks correctly from within your VM.</span></span>
 
 > [!NOTE]
-> В этих примерах значение `host` Azure равно 5, однако оно может меняться в зависимости от выбранного типа хранилища.
+> <span data-ttu-id="4ba50-107">В этих примерах значение `host` Azure равно 5, однако оно может меняться в зависимости от выбранного типа хранилища.</span><span class="sxs-lookup"><span data-stu-id="4ba50-107">The Azure `host` value is 5 in these examples, but this may vary depending on the type of storage you select.</span></span>
 > 
 > 
 
-Такое поведение дисков имеет место не из-за проблемы в Azure, а из-за того, что ядро Linux следует спецификациям SCSI. Когда ядро Linux выполняет на шине SCSI поиск подключенных устройств, в LUN 0 должно быть какое-то устройство, чтобы система могла продолжить поиск других устройств. Учитывая вышесказанное, выполните следующие действия.
+<span data-ttu-id="4ba50-108">Такое поведение дисков имеет место не из-за проблемы в Azure, а из-за того, что ядро Linux следует спецификациям SCSI.</span><span class="sxs-lookup"><span data-stu-id="4ba50-108">This disk behavior is not an Azure problem, but the way in which the Linux kernel follows the SCSI specifications.</span></span> <span data-ttu-id="4ba50-109">Когда ядро Linux выполняет на шине SCSI поиск подключенных устройств, в LUN 0 должно быть какое-то устройство, чтобы система могла продолжить поиск других устройств.</span><span class="sxs-lookup"><span data-stu-id="4ba50-109">When the Linux kernel scans the SCSI bus for attached devices, a device must be found at LUN 0 in order for the system to continue scanning for additional devices.</span></span> <span data-ttu-id="4ba50-110">Учитывая вышесказанное, выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="4ba50-110">As such:</span></span>
 
-* После добавления диска данных просмотрите выходные данные `lsscsi` и убедитесь, что в LUN 0 есть диск.
-* Если диск не отображается корректно из виртуальной машины, проверьте, существует ли диск в LUN 0.
+* <span data-ttu-id="4ba50-111">После добавления диска данных просмотрите выходные данные `lsscsi` и убедитесь, что в LUN 0 есть диск.</span><span class="sxs-lookup"><span data-stu-id="4ba50-111">Review the output of `lsscsi` after adding a data disk to verify that you have a disk at LUN 0.</span></span>
+* <span data-ttu-id="4ba50-112">Если диск не отображается корректно из виртуальной машины, проверьте, существует ли диск в LUN 0.</span><span class="sxs-lookup"><span data-stu-id="4ba50-112">If your disk does not show up correctly within your VM, verify a disk exists at LUN 0.</span></span>
 

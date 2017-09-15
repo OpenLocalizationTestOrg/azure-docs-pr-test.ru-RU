@@ -1,15 +1,15 @@
-1. Скопируйте установку на сервер и откройте установщик.
-2. В колонке **параметров установки** выберите **Install Mobility Service** (Установить Mobility Service).
+1. <span data-ttu-id="17cc9-101">Скопируйте установку на сервер и откройте установщик.</span><span class="sxs-lookup"><span data-stu-id="17cc9-101">Copy the installation to the server, and then open the installer.</span></span>
+2. <span data-ttu-id="17cc9-102">В колонке **параметров установки** выберите **Install Mobility Service** (Установить Mobility Service).</span><span class="sxs-lookup"><span data-stu-id="17cc9-102">On the **Installation Option** blade, select **Install Mobility Service**.</span></span>
 
-    ![Страница параметров установки службы Mobility Service ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
-3. Выберите расположение установки и щелкните **Установить**, чтобы начать процедуру установки.
+    ![<span data-ttu-id="17cc9-103">Страница параметров установки службы Mobility Service</span><span class="sxs-lookup"><span data-stu-id="17cc9-103">Mobility Service Install Option Page</span></span> ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
+3. <span data-ttu-id="17cc9-104">Выберите расположение установки и щелкните **Установить**, чтобы начать процедуру установки.</span><span class="sxs-lookup"><span data-stu-id="17cc9-104">Select the install location  and click **Install** to being the installation procedure.</span></span>
 
-    ![Страница расположения установки службы Mobility Service ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
-4. Чтобы следить за ходом установки, используйте страницу **хода выполнения установки**.
-    ![Ход выполнения установки службы Mobility Service](./media/site-recovery-install-mob-svc-gui/mobility3.png)
+    ![<span data-ttu-id="17cc9-105">Страница расположения установки службы Mobility Service</span><span class="sxs-lookup"><span data-stu-id="17cc9-105">Mobility Service Install Location Page</span></span> ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
+4. <span data-ttu-id="17cc9-106">Чтобы следить за ходом установки, используйте страницу **хода выполнения установки**.</span><span class="sxs-lookup"><span data-stu-id="17cc9-106">You can use **Installation Progress** page to monitor the installer's progress.</span></span>
+    <span data-ttu-id="17cc9-107">![Ход выполнения установки службы Mobility Service](./media/site-recovery-install-mob-svc-gui/mobility3.png)</span><span class="sxs-lookup"><span data-stu-id="17cc9-107">![Mobility Service Install Progress ](./media/site-recovery-install-mob-svc-gui/mobility3.png)</span></span>
 
-5. После завершения установки нажмите кнопку **Proceed to Configuration** (Перейти к конфигурации), чтобы зарегистрировать службу Mobility Service на сервере конфигурации.
-    ![Страница регистрации службы Mobility Service](./media/site-recovery-install-mob-svc-gui/mobility4.png)
+5. <span data-ttu-id="17cc9-108">После завершения установки нажмите кнопку **Proceed to Configuration** (Перейти к конфигурации), чтобы зарегистрировать службу Mobility Service на сервере конфигурации.</span><span class="sxs-lookup"><span data-stu-id="17cc9-108">Once installation is complete, click the **Proceed to Configuration** button to register the Mobility Service with your Configuration server.</span></span>
+    <span data-ttu-id="17cc9-109">![Страница регистрации службы Mobility Service](./media/site-recovery-install-mob-svc-gui/mobility4.png)</span><span class="sxs-lookup"><span data-stu-id="17cc9-109">![Mobility service Register Page ](./media/site-recovery-install-mob-svc-gui/mobility4.png)</span></span>
 
-6. Для завершения регистрации нажмите кнопку **Зарегистрировать**.
-    ![Страница регистрации службы Mobility Service](./media/site-recovery-install-mob-svc-gui/mobility5.png)
+6. <span data-ttu-id="17cc9-110">Для завершения регистрации нажмите кнопку **Зарегистрировать**.</span><span class="sxs-lookup"><span data-stu-id="17cc9-110">Click on the **Register** button to complete the registration.</span></span>
+    <span data-ttu-id="17cc9-111">![Страница регистрации службы Mobility Service](./media/site-recovery-install-mob-svc-gui/mobility5.png)</span><span class="sxs-lookup"><span data-stu-id="17cc9-111">![Mobility service Register Page ](./media/site-recovery-install-mob-svc-gui/mobility5.png)</span></span>

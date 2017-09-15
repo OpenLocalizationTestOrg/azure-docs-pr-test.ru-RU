@@ -1,10 +1,10 @@
-| Ресурс | Максимальное ограничение |
+| <span data-ttu-id="477da-101">Ресурс</span><span class="sxs-lookup"><span data-stu-id="477da-101">Resource</span></span> | <span data-ttu-id="477da-102">Максимальное ограничение</span><span class="sxs-lookup"><span data-stu-id="477da-102">Maximum Limit</span></span> |
 | --- | --- |
-| Максимальное количество новых заданий, которые могут быть отправлены каждые 30 секунд, на учетную запись службы автоматизации (незапланированные задания) |100 |
-| Максимальное количество параллельно выполняющихся заданий за то же время на учетную запись службы автоматизации (незапланированные задания) |200 |
-| Максимальное количество модулей, которые могут быть импортированы каждые 30 секунд, на учетную запись службы автоматизации |5 |
-| Максимальный размер модуля |100 МБ |
-| Время выполнения заданий — уровень "Бесплатный" |500 минут на подписку в календарный месяц |
-| Максимальный объем памяти, выделяемый для задания |400 МБ |
-| Максимально допустимое число сетевых сокетов на одно задание |1000 |
+| <span data-ttu-id="477da-103">Максимальное количество новых заданий, которые могут быть отправлены каждые 30 секунд, на учетную запись службы автоматизации (незапланированные задания)</span><span class="sxs-lookup"><span data-stu-id="477da-103">Max number of new jobs that can be submitted every 30 seconds per Automation Account (non Scheduled jobs)</span></span> |<span data-ttu-id="477da-104">100</span><span class="sxs-lookup"><span data-stu-id="477da-104">100</span></span> |
+| <span data-ttu-id="477da-105">Максимальное количество параллельно выполняющихся заданий за то же время на учетную запись службы автоматизации (незапланированные задания)</span><span class="sxs-lookup"><span data-stu-id="477da-105">Max number of concurrent running jobs at the same instance of time per Automation Account (non Scheduled jobs)</span></span> |<span data-ttu-id="477da-106">200</span><span class="sxs-lookup"><span data-stu-id="477da-106">200</span></span> |
+| <span data-ttu-id="477da-107">Максимальное количество модулей, которые могут быть импортированы каждые 30 секунд, на учетную запись службы автоматизации</span><span class="sxs-lookup"><span data-stu-id="477da-107">Max number of modules that can be imported every 30 seconds per Automation Account</span></span> |<span data-ttu-id="477da-108">5</span><span class="sxs-lookup"><span data-stu-id="477da-108">5</span></span> |
+| <span data-ttu-id="477da-109">Максимальный размер модуля</span><span class="sxs-lookup"><span data-stu-id="477da-109">Max size of a Module</span></span> |<span data-ttu-id="477da-110">100 МБ</span><span class="sxs-lookup"><span data-stu-id="477da-110">100 MB</span></span> |
+| <span data-ttu-id="477da-111">Время выполнения заданий — уровень "Бесплатный"</span><span class="sxs-lookup"><span data-stu-id="477da-111">Job Run Time - Free tier</span></span> |<span data-ttu-id="477da-112">500 минут на подписку в календарный месяц</span><span class="sxs-lookup"><span data-stu-id="477da-112">500 minutes per subscription per calendar month</span></span> |
+| <span data-ttu-id="477da-113">Максимальный объем памяти, выделяемый для задания</span><span class="sxs-lookup"><span data-stu-id="477da-113">Max amount of memory given to a job</span></span> |<span data-ttu-id="477da-114">400 МБ</span><span class="sxs-lookup"><span data-stu-id="477da-114">400 MB</span></span> |
+| <span data-ttu-id="477da-115">Максимально допустимое число сетевых сокетов на одно задание</span><span class="sxs-lookup"><span data-stu-id="477da-115">Max number of network sockets allowed per job</span></span> |<span data-ttu-id="477da-116">1000</span><span class="sxs-lookup"><span data-stu-id="477da-116">1000</span></span> |
 

@@ -1,26 +1,26 @@
-### <a name="prerequisites"></a>Предварительные требования
-* Учетная запись Twilio.
-* Проверенный номер телефона Twilio, на который можно получать SMS.
-* Проверенный номер телефона Twilio, с которого можно отправлять SMS.
+### <a name="prerequisites"></a><span data-ttu-id="e262c-101">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="e262c-101">Prerequisites</span></span>
+* <span data-ttu-id="e262c-102">Учетная запись Twilio.</span><span class="sxs-lookup"><span data-stu-id="e262c-102">A Twilio account</span></span>
+* <span data-ttu-id="e262c-103">Проверенный номер телефона Twilio, на который можно получать SMS.</span><span class="sxs-lookup"><span data-stu-id="e262c-103">A verified Twilio phone number that can receive SMS</span></span>
+* <span data-ttu-id="e262c-104">Проверенный номер телефона Twilio, с которого можно отправлять SMS.</span><span class="sxs-lookup"><span data-stu-id="e262c-104">A verified Twilio phone number that can send SMS</span></span>
 
 > [!NOTE]
-> Если используется пробная учетная запись Twilio, то SMS можно отправлять только на **проверенные** номера телефонов.  
+> <span data-ttu-id="e262c-105">Если используется пробная учетная запись Twilio, то SMS можно отправлять только на **проверенные** номера телефонов.</span><span class="sxs-lookup"><span data-stu-id="e262c-105">If you are using a Twilio trial account, you can only send SMS to **verified** phone numbers.</span></span>  
 > 
 > 
 
-Прежде чем использовать учетную запись Twilio в приложении логики, необходимо авторизовать приложение логики для подключения к вашей учетной записи Twilio. К счастью, это можно легко сделать из приложения логики на портале Azure. 
+<span data-ttu-id="e262c-106">Прежде чем использовать учетную запись Twilio в приложении логики, необходимо авторизовать приложение логики для подключения к вашей учетной записи Twilio.</span><span class="sxs-lookup"><span data-stu-id="e262c-106">Before you can use your Twilio account in a Logic app, you must authorize the Logic app to connect to your Twilio account.</span></span> <span data-ttu-id="e262c-107">К счастью, это можно легко сделать из приложения логики на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="e262c-107">Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span> 
 
-Ниже приведены указания по авторизации приложения логики для подключения к учетной записи Twilio.
+<span data-ttu-id="e262c-108">Ниже приведены указания по авторизации приложения логики для подключения к учетной записи Twilio.</span><span class="sxs-lookup"><span data-stu-id="e262c-108">Here are the steps to authorize your Logic app to connect to your Twilio account:</span></span>
 
-1. Чтобы создать подключение к Twilio, в конструкторе приложений логики в раскрывающемся списке выберите параметр **Показать API, управляемые Майкрософт**, а затем введите в поле поиска *Twilio*. Выберите триггер или действие, которые хотите использовать:   
+1. <span data-ttu-id="e262c-109">Чтобы создать подключение к Twilio, в конструкторе приложений логики в раскрывающемся списке выберите параметр **Показать API, управляемые Майкрософт**, а затем введите в поле поиска *Twilio*.</span><span class="sxs-lookup"><span data-stu-id="e262c-109">To create a connection to Twilio, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Twilio* in the search box.</span></span> <span data-ttu-id="e262c-110">Выберите триггер или действие, которые хотите использовать: </span><span class="sxs-lookup"><span data-stu-id="e262c-110">Select the trigger or action you'll like to use:</span></span>  
    ![](./media/connectors-create-api-twilio/twilio-0.png)
-2. Если вы ранее не создавали подключение к Twilio, вам будет предложено ввести учетные данные Twilio. Эти учетные данные будут использоваться для авторизации приложения логики, чтобы оно могло подключиться и получить доступ к данным вашей учетной записи Twilio.  
+2. <span data-ttu-id="e262c-111">Если вы ранее не создавали подключение к Twilio, вам будет предложено ввести учетные данные Twilio.</span><span class="sxs-lookup"><span data-stu-id="e262c-111">If you haven't created any connections to Twilio before, you'll get prompted to provide your Twilio credentials.</span></span> <span data-ttu-id="e262c-112">Эти учетные данные будут использоваться для авторизации приложения логики, чтобы оно могло подключиться и получить доступ к данным вашей учетной записи Twilio.</span><span class="sxs-lookup"><span data-stu-id="e262c-112">These credentials will be used to authorize your Logic app to connect to, and access your Twilio account's data:</span></span>  
    ![](./media/connectors-create-api-twilio/twilio-1.png)  
-3. Вам потребуется **идентификатор учетной записи Twilio** и **маркер доступа Twilio** с панели мониторинга Twilio. Войдите в учетную запись Twilio, чтобы получить эти сведения.  
+3. <span data-ttu-id="e262c-113">Вам потребуется **идентификатор учетной записи Twilio** и **маркер доступа Twilio** с панели мониторинга Twilio. Войдите в учетную запись Twilio, чтобы получить эти сведения.</span><span class="sxs-lookup"><span data-stu-id="e262c-113">You'll need the **Twilio account id** and **Twilio access token**  from the dashboard in Twilio, so log in to your Twilio account now to grab these two pieces of information:</span></span>  
    ![](./media/connectors-create-api-twilio/twilio-2.png)  
-4. В приложениях логики и Twilio используются разные имена для идентификации этих сведений. Их необходимо сопоставить в диалоговом окне приложения логики следующим образом: ![](./media/connectors-create-api-twilio/twilio-3.png)  
-5. Нажмите кнопку **Создать подключение**.  
+4. <span data-ttu-id="e262c-114">В приложениях логики и Twilio используются разные имена для идентификации этих сведений.</span><span class="sxs-lookup"><span data-stu-id="e262c-114">Twilio and Logic apps use different names to identify these two pieces of infomation.</span></span> <span data-ttu-id="e262c-115">Их необходимо сопоставить в диалоговом окне приложения логики следующим образом: ![](./media/connectors-create-api-twilio/twilio-3.png)</span><span class="sxs-lookup"><span data-stu-id="e262c-115">Here is how you must map them to the Logic apps dialog: ![](./media/connectors-create-api-twilio/twilio-3.png)</span></span>  
+5. <span data-ttu-id="e262c-116">Нажмите кнопку **Создать подключение**.</span><span class="sxs-lookup"><span data-stu-id="e262c-116">Select the **Create connection** button:</span></span>  
    ![](./media/connectors-create-api-twilio/twilio-4.png)
-6. Подключение создано, и теперь вы можете перейти к другим действиям в приложении логики:   
+6. <span data-ttu-id="e262c-117">Подключение создано, и теперь вы можете перейти к другим действиям в приложении логики: </span><span class="sxs-lookup"><span data-stu-id="e262c-117">Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:</span></span>  
    ![](./media/connectors-create-api-twilio/twilio-5.png)
 

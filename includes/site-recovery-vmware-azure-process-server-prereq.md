@@ -1,9 +1,9 @@
-В этой статье предполагается, что:
+<span data-ttu-id="1936f-101">В этой статье предполагается, что:</span><span class="sxs-lookup"><span data-stu-id="1936f-101">This article assumes that</span></span>
 
-1. Между локальной сетью и виртуальной сетью Azure установлено подключение **VPN типа "сеть — сеть"** или **ExpressRoute**.
-2. У вашей учетной записи есть разрешения на создание виртуальной машины в подписке Azure, в которую выполняется отработка отказа виртуальных машин.
-3. Ваша подписка имеет как минимум 4 доступных ядра для запуска новой виртуальной машины сервера обработки.
-4. **Парольная фраза сервера конфигурации** доступна.
+1. <span data-ttu-id="1936f-102">Между локальной сетью и виртуальной сетью Azure установлено подключение **VPN типа "сеть — сеть"** или **ExpressRoute**.</span><span class="sxs-lookup"><span data-stu-id="1936f-102">A **Site to Site VPN** or an **Express Route** connection between your on-premises network and the Azure Virtual Network has already been established.</span></span>
+2. <span data-ttu-id="1936f-103">У вашей учетной записи есть разрешения на создание виртуальной машины в подписке Azure, в которую выполняется отработка отказа виртуальных машин.</span><span class="sxs-lookup"><span data-stu-id="1936f-103">Your user account has permissions to create a new virtual machine in the Azure Subscription that the virtual machines have been failed over into.</span></span>
+3. <span data-ttu-id="1936f-104">Ваша подписка имеет как минимум 4 доступных ядра для запуска новой виртуальной машины сервера обработки.</span><span class="sxs-lookup"><span data-stu-id="1936f-104">Your subscription has a minimum of 4 Cores available to spin up a new Process Server virtual machine.</span></span>
+4. <span data-ttu-id="1936f-105">**Парольная фраза сервера конфигурации** доступна.</span><span class="sxs-lookup"><span data-stu-id="1936f-105">You have the **Configuration Server Passphrase** available.</span></span>
 
 > [!TIP]
-> Убедитесь, что можете подключиться к порту 443 сервера конфигурации (в локальной среде) из виртуальной сети Azure, в которую выполнена отработка отказа виртуальных машин.
+> <span data-ttu-id="1936f-106">Убедитесь, что можете подключиться к порту 443 сервера конфигурации (в локальной среде) из виртуальной сети Azure, в которую выполнена отработка отказа виртуальных машин.</span><span class="sxs-lookup"><span data-stu-id="1936f-106">Ensure that you are able to connect port 443 of the Configuration Server (running on-premises) from the Azure Virtual Network that the virtual machines have been failed over into.</span></span>

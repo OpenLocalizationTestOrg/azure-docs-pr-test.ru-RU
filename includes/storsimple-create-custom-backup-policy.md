@@ -1,27 +1,27 @@
 <!--author=SharS last changed: 9/15/15-->
 
-#### <a name="to-create-a-custom-backup-policy"></a>Создание пользовательской политики резервного копирования
-1. На странице **Устройства** выберите **Политики архивации** и нажмите кнопку **Добавить**.
-2. В диалоговом окне **Добавление политики архивации** в разделе **Определение политики архивации** выполните указанные ниже действия.
+#### <a name="to-create-a-custom-backup-policy"></a><span data-ttu-id="52a09-101">Создание пользовательской политики резервного копирования</span><span class="sxs-lookup"><span data-stu-id="52a09-101">To create a custom backup policy</span></span>
+1. <span data-ttu-id="52a09-102">На странице **Устройства** выберите **Политики архивации** и нажмите кнопку **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="52a09-102">On the **Devices** page, click **Backup Policies** and then click **Add**.</span></span>
+2. <span data-ttu-id="52a09-103">В диалоговом окне **Добавление политики архивации** в разделе **Определение политики архивации** выполните указанные ниже действия.</span><span class="sxs-lookup"><span data-stu-id="52a09-103">In the **Add a backup policy** dialog box, under **Define your backup policy**:</span></span>
    
-   1. Укажите название политики резервного копирования.
-   2. Выберите тома, которые нужно добавить в политику. В политику можно добавить несколько томов, выбрав их из раскрывающегося списка.
-   3. Щелкните значок галочки  ![значок галочки](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png).
+   1. <span data-ttu-id="52a09-104">Укажите название политики резервного копирования.</span><span class="sxs-lookup"><span data-stu-id="52a09-104">Specify a backup policy name.</span></span>
+   2. <span data-ttu-id="52a09-105">Выберите тома, которые нужно добавить в политику.</span><span class="sxs-lookup"><span data-stu-id="52a09-105">Select the volumes to be added to this policy.</span></span> <span data-ttu-id="52a09-106">В политику можно добавить несколько томов, выбрав их из раскрывающегося списка.</span><span class="sxs-lookup"><span data-stu-id="52a09-106">You can choose to add multiple volumes by selecting them from the drop-down list.</span></span>
+   3. <span data-ttu-id="52a09-107">Щелкните значок галочки </span><span class="sxs-lookup"><span data-stu-id="52a09-107">Click the check icon</span></span> ![значок галочки](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png)<span data-ttu-id="52a09-109">.</span><span class="sxs-lookup"><span data-stu-id="52a09-109">.</span></span>
       
-      После успешного создания политики вы получите уведомление. Страница с политиками резервного копирования также обновится с учетом созданной вами политики.
-3. Щелкните имя политики (первый столбец), чтобы открыть подробные сведения о созданной политике.
-4. Щелкните **Управление расписаниями**.
-5. В диалоговом окне **Управление расписаниями** выполните следующие действия:
+      <span data-ttu-id="52a09-110">После успешного создания политики вы получите уведомление.</span><span class="sxs-lookup"><span data-stu-id="52a09-110">You will be notified after the policy is created successfully.</span></span> <span data-ttu-id="52a09-111">Страница с политиками резервного копирования также обновится с учетом созданной вами политики.</span><span class="sxs-lookup"><span data-stu-id="52a09-111">The backup policies page will also be updated to show the newly created policy.</span></span>
+3. <span data-ttu-id="52a09-112">Щелкните имя политики (первый столбец), чтобы открыть подробные сведения о созданной политике.</span><span class="sxs-lookup"><span data-stu-id="52a09-112">Click the policy name (first column) to drill down into details of the policy you just created.</span></span>
+4. <span data-ttu-id="52a09-113">Щелкните **Управление расписаниями**.</span><span class="sxs-lookup"><span data-stu-id="52a09-113">Click **manage schedules**.</span></span>
+5. <span data-ttu-id="52a09-114">В диалоговом окне **Управление расписаниями** выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="52a09-114">In the **Manage Schedules** dialog box:</span></span>
    
-   1. Выберите **Создать** , чтобы добавить расписание.
-   2. Выберите в раскрывающемся списке тип архивации: **локальный** или **облачный** мгновенный снимок.
-   3. Укажите интервал резервного копирования в минутах, часах, днях или неделях.
-   4. Выберите период хранения. Возможные периоды удержания зависят от частоты резервного копирования.
-   5. Выберите время и дату начала применения политики.
-   6. Установите флажок, чтобы включить политику.
-6. Щелкните значок галочки  ![значок галочки](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) , чтобы завершить настройку.
-7. Вы вернетесь на страницу со сведениями о политике. Чтобы сохранить изменения, внесенные в политику, нажмите кнопку **Сохранить** . Когда политика будет сохранена, вы получите соответствующее уведомление.
-8. Вернитесь на страницу **Политики резервного копирования** . Таблица со списком политик резервного копирования будет обновлена с учетом внесенных вами изменений.
+   1. <span data-ttu-id="52a09-115">Выберите **Создать** , чтобы добавить расписание.</span><span class="sxs-lookup"><span data-stu-id="52a09-115">Select **Create new** to add another schedule.</span></span>
+   2. <span data-ttu-id="52a09-116">Выберите в раскрывающемся списке тип архивации: **локальный** или **облачный** мгновенный снимок.</span><span class="sxs-lookup"><span data-stu-id="52a09-116">From the drop-down list, choose the backup type as **local** or **cloud** snapshot.</span></span>
+   3. <span data-ttu-id="52a09-117">Укажите интервал резервного копирования в минутах, часах, днях или неделях.</span><span class="sxs-lookup"><span data-stu-id="52a09-117">Specify the backup frequency in minutes, hours, days, or weeks.</span></span>
+   4. <span data-ttu-id="52a09-118">Выберите период хранения.</span><span class="sxs-lookup"><span data-stu-id="52a09-118">Select a retention.</span></span> <span data-ttu-id="52a09-119">Возможные периоды удержания зависят от частоты резервного копирования.</span><span class="sxs-lookup"><span data-stu-id="52a09-119">The retention choices depend on the backup frequency.</span></span>
+   5. <span data-ttu-id="52a09-120">Выберите время и дату начала применения политики.</span><span class="sxs-lookup"><span data-stu-id="52a09-120">Select the starting time and date for the policy.</span></span>
+   6. <span data-ttu-id="52a09-121">Установите флажок, чтобы включить политику.</span><span class="sxs-lookup"><span data-stu-id="52a09-121">Select the check box to enable the policy.</span></span>
+6. <span data-ttu-id="52a09-122">Щелкните значок галочки </span><span class="sxs-lookup"><span data-stu-id="52a09-122">Click the check icon</span></span> ![значок галочки](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) <span data-ttu-id="52a09-124">, чтобы завершить настройку.</span><span class="sxs-lookup"><span data-stu-id="52a09-124">to finish.</span></span>
+7. <span data-ttu-id="52a09-125">Вы вернетесь на страницу со сведениями о политике.</span><span class="sxs-lookup"><span data-stu-id="52a09-125">You will return to the policy details.</span></span> <span data-ttu-id="52a09-126">Чтобы сохранить изменения, внесенные в политику, нажмите кнопку **Сохранить** .</span><span class="sxs-lookup"><span data-stu-id="52a09-126">Click **Save** to save the changes you made to this policy.</span></span> <span data-ttu-id="52a09-127">Когда политика будет сохранена, вы получите соответствующее уведомление.</span><span class="sxs-lookup"><span data-stu-id="52a09-127">You will be notified when the policy has been saved.</span></span>
+8. <span data-ttu-id="52a09-128">Вернитесь на страницу **Политики резервного копирования** .</span><span class="sxs-lookup"><span data-stu-id="52a09-128">Navigate back to the **Backup Policies** page.</span></span> <span data-ttu-id="52a09-129">Таблица со списком политик резервного копирования будет обновлена с учетом внесенных вами изменений.</span><span class="sxs-lookup"><span data-stu-id="52a09-129">The tabular listing of the backup policies will be updated to display the modified policy.</span></span>
    
-    ![Настраиваемая политика резервного копирования](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png).
+    ![Настраиваемая политика резервного копирования](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png)<span data-ttu-id="52a09-131">.</span><span class="sxs-lookup"><span data-stu-id="52a09-131">.</span></span>
 

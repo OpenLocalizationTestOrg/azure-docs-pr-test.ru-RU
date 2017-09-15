@@ -1,8 +1,8 @@
-Указанные ниже ограничения применяются только при использовании диспетчера ресурсов Azure и групп ресурсов Azure.
+<span data-ttu-id="f402f-101">Указанные ниже ограничения применяются только при использовании диспетчера ресурсов Azure и групп ресурсов Azure.</span><span class="sxs-lookup"><span data-stu-id="f402f-101">The following limits apply when using the Azure Resource Manager and Azure Resource Groups only.</span></span>
 
-| Ресурс | Ограничение по умолчанию |
+| <span data-ttu-id="f402f-102">Ресурс</span><span class="sxs-lookup"><span data-stu-id="f402f-102">Resource</span></span> | <span data-ttu-id="f402f-103">Ограничение по умолчанию</span><span class="sxs-lookup"><span data-stu-id="f402f-103">Default Limit</span></span> |
 | --- | --- |
-| Операций управления учетными записями хранения (чтение) |800 за 5 минут |
-| Операций управления учетными записями хранения (запись) |200 в час |
-| Операции управления учетными записями хранения (список) |100 за 5 минут |
+| <span data-ttu-id="f402f-104">Операций управления учетными записями хранения (чтение)</span><span class="sxs-lookup"><span data-stu-id="f402f-104">Storage account management operations (read)</span></span> |<span data-ttu-id="f402f-105">800 за 5 минут</span><span class="sxs-lookup"><span data-stu-id="f402f-105">800 per 5 minutes</span></span> |
+| <span data-ttu-id="f402f-106">Операций управления учетными записями хранения (запись)</span><span class="sxs-lookup"><span data-stu-id="f402f-106">Storage account management operations (write)</span></span> |<span data-ttu-id="f402f-107">200 в час</span><span class="sxs-lookup"><span data-stu-id="f402f-107">200 per hour</span></span> |
+| <span data-ttu-id="f402f-108">Операции управления учетными записями хранения (список)</span><span class="sxs-lookup"><span data-stu-id="f402f-108">Storage account management operations (list)</span></span> |<span data-ttu-id="f402f-109">100 за 5 минут</span><span class="sxs-lookup"><span data-stu-id="f402f-109">100 per 5 minutes</span></span> |
 

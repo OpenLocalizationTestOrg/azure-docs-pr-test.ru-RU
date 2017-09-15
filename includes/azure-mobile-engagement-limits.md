@@ -1,11 +1,11 @@
-| Ресурс | Максимальное ограничение |
+| <span data-ttu-id="3d266-101">Ресурс</span><span class="sxs-lookup"><span data-stu-id="3d266-101">Resource</span></span> | <span data-ttu-id="3d266-102">Максимальное ограничение</span><span class="sxs-lookup"><span data-stu-id="3d266-102">Maximum Limit</span></span> |
 | --- | --- |
-| Пользователей коллекции приложений |5 для каждой коллекции приложений |
-| Среднее число точек данных |200 на активного пользователя в день |
-| Средний набор сведений о приложении |50 на активного пользователя в день |
-| Среднее число передаваемых сообщений |20 на активного пользователя в день |
-| Сегменты |100 на каждое приложение |
-| Критериев на сегмент |10 |
-| Активных push-кампаний |50 на приложение |
-| Всего push-кампаний (включая активные и завершенные) |1000 на приложение |
+| <span data-ttu-id="3d266-103">Пользователей коллекции приложений</span><span class="sxs-lookup"><span data-stu-id="3d266-103">App Collection Users</span></span> |<span data-ttu-id="3d266-104">5 для каждой коллекции приложений</span><span class="sxs-lookup"><span data-stu-id="3d266-104">5 per App Collection</span></span> |
+| <span data-ttu-id="3d266-105">Среднее число точек данных</span><span class="sxs-lookup"><span data-stu-id="3d266-105">Average Data points</span></span> |<span data-ttu-id="3d266-106">200 на активного пользователя в день</span><span class="sxs-lookup"><span data-stu-id="3d266-106">200 per Active User/Day</span></span> |
+| <span data-ttu-id="3d266-107">Средний набор сведений о приложении</span><span class="sxs-lookup"><span data-stu-id="3d266-107">Average App-Info set</span></span> |<span data-ttu-id="3d266-108">50 на активного пользователя в день</span><span class="sxs-lookup"><span data-stu-id="3d266-108">50 per Active User/Day</span></span> |
+| <span data-ttu-id="3d266-109">Среднее число передаваемых сообщений</span><span class="sxs-lookup"><span data-stu-id="3d266-109">Average Messages pushed</span></span> |<span data-ttu-id="3d266-110">20 на активного пользователя в день</span><span class="sxs-lookup"><span data-stu-id="3d266-110">20 per Active User/Day</span></span> |
+| <span data-ttu-id="3d266-111">Сегменты</span><span class="sxs-lookup"><span data-stu-id="3d266-111">Segments</span></span> |<span data-ttu-id="3d266-112">100 на каждое приложение</span><span class="sxs-lookup"><span data-stu-id="3d266-112">100 per app</span></span> |
+| <span data-ttu-id="3d266-113">Критериев на сегмент</span><span class="sxs-lookup"><span data-stu-id="3d266-113">Criteria per segment</span></span> |<span data-ttu-id="3d266-114">10</span><span class="sxs-lookup"><span data-stu-id="3d266-114">10</span></span> |
+| <span data-ttu-id="3d266-115">Активных push-кампаний</span><span class="sxs-lookup"><span data-stu-id="3d266-115">Active Push Campaigns</span></span> |<span data-ttu-id="3d266-116">50 на приложение</span><span class="sxs-lookup"><span data-stu-id="3d266-116">50 per app</span></span> |
+| <span data-ttu-id="3d266-117">Всего push-кампаний (включая активные и завершенные)</span><span class="sxs-lookup"><span data-stu-id="3d266-117">Total Push Campaigns (includes Active & Completed)</span></span> |<span data-ttu-id="3d266-118">1000 на приложение</span><span class="sxs-lookup"><span data-stu-id="3d266-118">1000 per app</span></span> |
 

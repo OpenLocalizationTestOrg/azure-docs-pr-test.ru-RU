@@ -1,14 +1,14 @@
-### <a name="prerequisites"></a>Предварительные требования
-* Учетная запись [SMTP](https://wikipedia.org/wiki/Simple_Mail_Transfer_Protocol).  
+### <a name="prerequisites"></a><span data-ttu-id="6b28d-101">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="6b28d-101">Prerequisites</span></span>
+* <span data-ttu-id="6b28d-102">Учетная запись [SMTP](https://wikipedia.org/wiki/Simple_Mail_Transfer_Protocol).</span><span class="sxs-lookup"><span data-stu-id="6b28d-102">A [SMTP](https://wikipedia.org/wiki/Simple_Mail_Transfer_Protocol) account</span></span>  
 
-Перед использованием учетной записи SMTP в приложении логики необходимо авторизовать его для подключения к этой учетной записи. Это легко сделать в приложении логики на портале Azure.  
+<span data-ttu-id="6b28d-103">Перед использованием учетной записи SMTP в приложении логики необходимо авторизовать его для подключения к этой учетной записи. Это легко сделать в приложении логики на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="6b28d-103">Before you can use your SMTP account in a logic app, you must authorize the logic app to connect to your SMTP account.Fortunately, you can do this easily from within your logic app on the Azure Portal.</span></span>  
 
-Ниже приведены инструкции по авторизации приложения логики для подключения к учетной записи SMTP.  
+<span data-ttu-id="6b28d-104">Ниже приведены инструкции по авторизации приложения логики для подключения к учетной записи SMTP.</span><span class="sxs-lookup"><span data-stu-id="6b28d-104">Here are the steps to authorize your logic app to connect to your SMTP account:</span></span>  
 
-1. Чтобы создать подключение к SMTP, в конструкторе приложений логики в раскрывающемся списке выберите параметр **Показать API, управляемые Майкрософт**, а затем введите в поле поиска *SMTP*. Выберите триггер или действие, которые хотите использовать:   
+1. <span data-ttu-id="6b28d-105">Чтобы создать подключение к SMTP, в конструкторе приложений логики в раскрывающемся списке выберите параметр **Показать API, управляемые Майкрософт**, а затем введите в поле поиска *SMTP*.</span><span class="sxs-lookup"><span data-stu-id="6b28d-105">To create a connection to SMTP, in the logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *SMTP* in the search box.</span></span> <span data-ttu-id="6b28d-106">Выберите триггер или действие, которые хотите использовать: </span><span class="sxs-lookup"><span data-stu-id="6b28d-106">Select the trigger or action you'll like to use:</span></span>  
    ![](./media/connectors-create-api-smtp/smtp-1.png)  
-2. Если вы ранее не создавали подключения к SMTP, вам будет предложено ввести учетные данные SMTP. Эти учетные данные будут использоваться для авторизации приложения логики, чтобы оно могло подключиться и получить доступ к данным вашей учетной записи SMTP.  
+2. <span data-ttu-id="6b28d-107">Если вы ранее не создавали подключения к SMTP, вам будет предложено ввести учетные данные SMTP.</span><span class="sxs-lookup"><span data-stu-id="6b28d-107">If you haven't created any connections to SMTP before, you'll get prompted to provide your SMTP credentials.</span></span> <span data-ttu-id="6b28d-108">Эти учетные данные будут использоваться для авторизации приложения логики, чтобы оно могло подключиться и получить доступ к данным вашей учетной записи SMTP.</span><span class="sxs-lookup"><span data-stu-id="6b28d-108">These credentials will be used to authorize your logic app to connect to, and access your SMTP account's data:</span></span>  
    ![](./media/connectors-create-api-smtp/smtp-2.png)  
-3. Подключение создано, и теперь вы можете перейти к другим действиям в приложении логики.  
+3. <span data-ttu-id="6b28d-109">Подключение создано, и теперь вы можете перейти к другим действиям в приложении логики.</span><span class="sxs-lookup"><span data-stu-id="6b28d-109">Notice the connection has been created and you are now free to proceed with the other steps in your logic app:</span></span>  
    ![](./media/connectors-create-api-smtp/smtp-3.png)  
 

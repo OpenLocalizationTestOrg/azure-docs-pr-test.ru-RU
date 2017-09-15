@@ -1,3 +1,3 @@
-Чтобы переключиться на клиент Azure AD B2C, выберите каталог B2C в правом верхнем углу портала.
+<span data-ttu-id="21b29-101">Чтобы переключиться на клиент Azure AD B2C, выберите каталог B2C в правом верхнем углу портала.</span><span class="sxs-lookup"><span data-stu-id="21b29-101">To switch to your Azure AD B2C tenant, select the B2C directory in the top-right corner of the portal.</span></span>
 
 ![Переключение на клиент Azure AD B2C](./media/active-directory-b2c-switch-b2c-tenant/switch-to-b2c-tenant.png)

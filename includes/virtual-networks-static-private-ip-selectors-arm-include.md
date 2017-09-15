@@ -1,7 +1,7 @@
 > [!div class="op_single_selector"]
-> * [Портал Azure](../articles/virtual-network/virtual-networks-static-private-ip-arm-pportal.md)
-> * [PowerShell](../articles/virtual-network/virtual-networks-static-private-ip-arm-ps.md)
-> * [Интерфейс командной строки Azure](../articles/virtual-network/virtual-networks-static-private-ip-arm-cli.md)
-> * [Портал Azure (классическая модель)](../articles/virtual-network/virtual-networks-static-private-ip-classic-pportal.md)
-> * [PowerShell (классическая модель)](../articles/virtual-network/virtual-networks-static-private-ip-classic-ps.md)
-> * [Интерфейс командной строки Azure (классическая модель)](../articles/virtual-network/virtual-networks-static-private-ip-classic-cli.md)
+> * [<span data-ttu-id="28f85-101">Портал Azure</span><span class="sxs-lookup"><span data-stu-id="28f85-101">Azure portal</span></span>](../articles/virtual-network/virtual-networks-static-private-ip-arm-pportal.md)
+> * [<span data-ttu-id="28f85-102">PowerShell</span><span class="sxs-lookup"><span data-stu-id="28f85-102">PowerShell</span></span>](../articles/virtual-network/virtual-networks-static-private-ip-arm-ps.md)
+> * [<span data-ttu-id="28f85-103">Интерфейс командной строки Azure</span><span class="sxs-lookup"><span data-stu-id="28f85-103">Azure CLI</span></span>](../articles/virtual-network/virtual-networks-static-private-ip-arm-cli.md)
+> * [<span data-ttu-id="28f85-104">Портал Azure (классическая модель)</span><span class="sxs-lookup"><span data-stu-id="28f85-104">Azure portal (Classic)</span></span>](../articles/virtual-network/virtual-networks-static-private-ip-classic-pportal.md)
+> * [<span data-ttu-id="28f85-105">PowerShell (классическая модель)</span><span class="sxs-lookup"><span data-stu-id="28f85-105">PowerShell (Classic)</span></span>](../articles/virtual-network/virtual-networks-static-private-ip-classic-ps.md)
+> * [<span data-ttu-id="28f85-106">Интерфейс командной строки Azure (классическая модель)</span><span class="sxs-lookup"><span data-stu-id="28f85-106">Azure CLI (Classic)</span></span>](../articles/virtual-network/virtual-networks-static-private-ip-classic-cli.md)

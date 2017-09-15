@@ -1,3 +1,3 @@
 > [!div class="op_single_selector"]
-> * [Портал Azure](../articles/devtest-lab/devtest-lab-create-template.md)
-> * [PowerShell](../articles/devtest-lab/devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+> * [<span data-ttu-id="a114f-101">Портал Azure</span><span class="sxs-lookup"><span data-stu-id="a114f-101">Azure portal</span></span>](../articles/devtest-lab/devtest-lab-create-template.md)
+> * [<span data-ttu-id="a114f-102">PowerShell</span><span class="sxs-lookup"><span data-stu-id="a114f-102">PowerShell</span></span>](../articles/devtest-lab/devtest-lab-create-custom-image-from-vhd-using-powershell.md)

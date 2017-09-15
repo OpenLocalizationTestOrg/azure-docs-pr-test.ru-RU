@@ -1,43 +1,43 @@
 <!--author=alkohli last changed:02/22/16-->
 
-#### <a name="to-attach-the-sas-cables"></a>Чтобы присоединить кабели SAS:
-1. Определите, какой корпус основной, а какой EBOD. Корпуса можно идентифицировать, изучив их задние панели. Руководствуйтесь следующим рисунком. 
+#### <a name="to-attach-the-sas-cables"></a><span data-ttu-id="d709e-101">Чтобы присоединить кабели SAS:</span><span class="sxs-lookup"><span data-stu-id="d709e-101">To attach the SAS cables</span></span>
+1. <span data-ttu-id="d709e-102">Определите, какой корпус основной, а какой EBOD.</span><span class="sxs-lookup"><span data-stu-id="d709e-102">Identify the primary and the EBOD enclosures.</span></span> <span data-ttu-id="d709e-103">Корпуса можно идентифицировать, изучив их задние панели.</span><span class="sxs-lookup"><span data-stu-id="d709e-103">The two enclosures can be identified by looking at their respective back planes.</span></span> <span data-ttu-id="d709e-104">Руководствуйтесь следующим рисунком.</span><span class="sxs-lookup"><span data-stu-id="d709e-104">See the following image for guidance.</span></span> 
    
     ![Задняя панель основного корпуса и корпуса EBOD](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
    
-    **Задние панели основного корпуса и корпуса EBOD**
+    <span data-ttu-id="d709e-106">**Задние панели основного корпуса и корпуса EBOD**</span><span class="sxs-lookup"><span data-stu-id="d709e-106">**Back view of primary and EBOD enclosures**</span></span>
    
-   | Метка | Описание |
+   | <span data-ttu-id="d709e-107">Метка</span><span class="sxs-lookup"><span data-stu-id="d709e-107">Label</span></span> | <span data-ttu-id="d709e-108">Описание</span><span class="sxs-lookup"><span data-stu-id="d709e-108">Description</span></span> |
    |:--- |:--- |
-   | 1 |Основной корпус |
-   | 2 |Корпус EBOD |
-2. Найдите серийные номера на основном корпусе и корпусе EBOD. Наклейка с серийным номером расположена на задней консоли каждого корпуса. Серийные номера должны быть одинаковыми на обоих корпусах. [обратитесь в службу поддержки Майкрософт](../articles/storsimple/storsimple-contact-microsoft-support.md) , если серийные номера не совпадают. Расположение наклейки с серийным номером показано на следующем рисунке.
+   | <span data-ttu-id="d709e-109">1</span><span class="sxs-lookup"><span data-stu-id="d709e-109">1</span></span> |<span data-ttu-id="d709e-110">Основной корпус</span><span class="sxs-lookup"><span data-stu-id="d709e-110">Primary enclosure</span></span> |
+   | <span data-ttu-id="d709e-111">2</span><span class="sxs-lookup"><span data-stu-id="d709e-111">2</span></span> |<span data-ttu-id="d709e-112">Корпус EBOD</span><span class="sxs-lookup"><span data-stu-id="d709e-112">EBOD enclosure</span></span> |
+2. <span data-ttu-id="d709e-113">Найдите серийные номера на основном корпусе и корпусе EBOD.</span><span class="sxs-lookup"><span data-stu-id="d709e-113">Locate the serial numbers on the primary and the EBOD enclosures.</span></span> <span data-ttu-id="d709e-114">Наклейка с серийным номером расположена на задней консоли каждого корпуса.</span><span class="sxs-lookup"><span data-stu-id="d709e-114">The serial number sticker is affixed to the back ear of each enclosure.</span></span> <span data-ttu-id="d709e-115">Серийные номера должны быть одинаковыми на обоих корпусах.</span><span class="sxs-lookup"><span data-stu-id="d709e-115">The serial numbers must be identical on both enclosures.</span></span> <span data-ttu-id="d709e-116">[обратитесь в службу поддержки Майкрософт](../articles/storsimple/storsimple-contact-microsoft-support.md) , если серийные номера не совпадают.</span><span class="sxs-lookup"><span data-stu-id="d709e-116">[Contact Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) immediately if the serial numbers do not match.</span></span> <span data-ttu-id="d709e-117">Расположение наклейки с серийным номером показано на следующем рисунке.</span><span class="sxs-lookup"><span data-stu-id="d709e-117">See the following illustration to locate the serial numbers.</span></span>
    
     ![Вид корпуса сзади (показан серийный номер)](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
-    **Расположение наклейки с серийным номером**
+    <span data-ttu-id="d709e-119">**Расположение наклейки с серийным номером**</span><span class="sxs-lookup"><span data-stu-id="d709e-119">**Location of serial number sticker**</span></span>
    
-   | Метка | Описание |
+   | <span data-ttu-id="d709e-120">Метка</span><span class="sxs-lookup"><span data-stu-id="d709e-120">Label</span></span> | <span data-ttu-id="d709e-121">Описание</span><span class="sxs-lookup"><span data-stu-id="d709e-121">Description</span></span> |
    |:--- |:--- |
-   | 1 |Консоль корпуса |
-3. Используйте кабели SAS, поставляемые с устройством, для подключения корпуса EBOD к основному корпусу:
+   | <span data-ttu-id="d709e-122">1</span><span class="sxs-lookup"><span data-stu-id="d709e-122">1</span></span> |<span data-ttu-id="d709e-123">Консоль корпуса</span><span class="sxs-lookup"><span data-stu-id="d709e-123">Ear of the enclosure</span></span> |
+3. <span data-ttu-id="d709e-124">Используйте кабели SAS, поставляемые с устройством, для подключения корпуса EBOD к основному корпусу:</span><span class="sxs-lookup"><span data-stu-id="d709e-124">Use the provided SAS cables to connect the EBOD enclosure to the primary enclosure as follows:</span></span>
    
-   1. Найдите четыре порта SAS на основном корпусе и корпусе EBOD. Порты SAS помечены как EBOD на основном корпусе и соответствуют порту A на корпусе EBOD, как показано на рисунке подключения кабелей SAS ниже.
-   2. Используйте предоставленные кабели SAS для соединения портов EBOD и A.
-   3. Порт EBOD на контроллере 0 должен быть подключен к порту A EBOD контроллера 0. Порт EBOD на контроллере 1 должен быть подключен к порту A EBOD контроллера 1. Руководствуйтесь следующим рисунком. 
+   1. <span data-ttu-id="d709e-125">Найдите четыре порта SAS на основном корпусе и корпусе EBOD.</span><span class="sxs-lookup"><span data-stu-id="d709e-125">Identify the four SAS ports on the primary enclosure and the EBOD enclosure.</span></span> <span data-ttu-id="d709e-126">Порты SAS помечены как EBOD на основном корпусе и соответствуют порту A на корпусе EBOD, как показано на рисунке подключения кабелей SAS ниже.</span><span class="sxs-lookup"><span data-stu-id="d709e-126">The SAS ports are labeled as EBOD on the primary enclosure and correspond to port A on the EBOD enclosure, as shown in the SAS cabling illustration, below.</span></span>
+   2. <span data-ttu-id="d709e-127">Используйте предоставленные кабели SAS для соединения портов EBOD и A.</span><span class="sxs-lookup"><span data-stu-id="d709e-127">Use the provided SAS cables to connect the EBOD port to port A.</span></span>
+   3. <span data-ttu-id="d709e-128">Порт EBOD на контроллере 0 должен быть подключен к порту A EBOD контроллера 0.</span><span class="sxs-lookup"><span data-stu-id="d709e-128">The EBOD port on controller 0 should be connected to the port A on EBOD controller 0.</span></span> <span data-ttu-id="d709e-129">Порт EBOD на контроллере 1 должен быть подключен к порту A EBOD контроллера 1.</span><span class="sxs-lookup"><span data-stu-id="d709e-129">The EBOD port on controller 1 should be connected to the port A on EBOD controller 1.</span></span> <span data-ttu-id="d709e-130">Руководствуйтесь следующим рисунком.</span><span class="sxs-lookup"><span data-stu-id="d709e-130">See the following illustration for guidance.</span></span> 
       
       ![Подключение кабелей SAS к устройству](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
       
-      **Кабели SAS**
+      <span data-ttu-id="d709e-132">**Кабели SAS**</span><span class="sxs-lookup"><span data-stu-id="d709e-132">**SAS cabling**</span></span>
       
-      | Метка | Описание |
+      | <span data-ttu-id="d709e-133">Метка</span><span class="sxs-lookup"><span data-stu-id="d709e-133">Label</span></span> | <span data-ttu-id="d709e-134">Описание</span><span class="sxs-lookup"><span data-stu-id="d709e-134">Description</span></span> |
       |:--- |:--- |
-      | A |Основной корпус |
-      | B |Корпус EBOD |
-      | 1 |Контроллер 0 |
-      | 2 |Контроллер 1 |
-      | 3 |Контроллер EBOD 0 |
-      | 4 |Контроллер EBOD 1 |
-      | 5, 6 |Порты SAS на основном корпусе (с меткой EBOD) |
-      | 7, 8 |Порты SAS на корпусе EBOD (порт A) |
+      | <span data-ttu-id="d709e-135">A</span><span class="sxs-lookup"><span data-stu-id="d709e-135">A</span></span> |<span data-ttu-id="d709e-136">Основной корпус</span><span class="sxs-lookup"><span data-stu-id="d709e-136">Primary enclosure</span></span> |
+      | <span data-ttu-id="d709e-137">B</span><span class="sxs-lookup"><span data-stu-id="d709e-137">B</span></span> |<span data-ttu-id="d709e-138">Корпус EBOD</span><span class="sxs-lookup"><span data-stu-id="d709e-138">EBOD enclosure</span></span> |
+      | <span data-ttu-id="d709e-139">1</span><span class="sxs-lookup"><span data-stu-id="d709e-139">1</span></span> |<span data-ttu-id="d709e-140">Контроллер 0</span><span class="sxs-lookup"><span data-stu-id="d709e-140">Controller 0</span></span> |
+      | <span data-ttu-id="d709e-141">2</span><span class="sxs-lookup"><span data-stu-id="d709e-141">2</span></span> |<span data-ttu-id="d709e-142">Контроллер 1</span><span class="sxs-lookup"><span data-stu-id="d709e-142">Controller 1</span></span> |
+      | <span data-ttu-id="d709e-143">3</span><span class="sxs-lookup"><span data-stu-id="d709e-143">3</span></span> |<span data-ttu-id="d709e-144">Контроллер EBOD 0</span><span class="sxs-lookup"><span data-stu-id="d709e-144">EBOD Controller 0</span></span> |
+      | <span data-ttu-id="d709e-145">4</span><span class="sxs-lookup"><span data-stu-id="d709e-145">4</span></span> |<span data-ttu-id="d709e-146">Контроллер EBOD 1</span><span class="sxs-lookup"><span data-stu-id="d709e-146">EBOD Controller 1</span></span> |
+      | <span data-ttu-id="d709e-147">5, 6</span><span class="sxs-lookup"><span data-stu-id="d709e-147">5, 6</span></span> |<span data-ttu-id="d709e-148">Порты SAS на основном корпусе (с меткой EBOD)</span><span class="sxs-lookup"><span data-stu-id="d709e-148">SAS ports on primary enclosure (labeled EBOD)</span></span> |
+      | <span data-ttu-id="d709e-149">7, 8</span><span class="sxs-lookup"><span data-stu-id="d709e-149">7, 8</span></span> |<span data-ttu-id="d709e-150">Порты SAS на корпусе EBOD (порт A)</span><span class="sxs-lookup"><span data-stu-id="d709e-150">SAS ports on EBOD enclosure (Port A)</span></span> |
 

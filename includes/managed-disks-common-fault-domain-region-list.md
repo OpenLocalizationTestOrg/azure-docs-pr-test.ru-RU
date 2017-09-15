@@ -1,34 +1,34 @@
-### <a name="number-of-fault-domains-per-region"></a>Количество доменов сбоя по регионам
+### <a name="number-of-fault-domains-per-region"></a><span data-ttu-id="a9124-101">Количество доменов сбоя по регионам</span><span class="sxs-lookup"><span data-stu-id="a9124-101">Number of Fault Domains per region</span></span>
 
-| Регион              | Максимальное количество доменов сбоя  |
+| <span data-ttu-id="a9124-102">Регион</span><span class="sxs-lookup"><span data-stu-id="a9124-102">Region</span></span>              | <span data-ttu-id="a9124-103">Максимальное количество доменов сбоя</span><span class="sxs-lookup"><span data-stu-id="a9124-103">Max # of Fault Domains</span></span>  |
 |---------------------|-------------------------|
-| Восток США             | 3                       |
-| Восток США 2           | 3                       |
-| Запад США             | 3                       |
-| Западный регион США 2           | 2                       |
-| Центральный регион США          | 3                       |
-| Северо-центральный регион США    | 3                       |
-| Южно-центральный регион США    | 3                       |
-| Западно-центральная часть США     | 2                       |
-| Центральная Канада      | 2                       |
-| Восточная Канада         | 2                       |
+| <span data-ttu-id="a9124-104">Восток США</span><span class="sxs-lookup"><span data-stu-id="a9124-104">East US</span></span>             | <span data-ttu-id="a9124-105">3</span><span class="sxs-lookup"><span data-stu-id="a9124-105">3</span></span>                       |
+| <span data-ttu-id="a9124-106">Восток США 2</span><span class="sxs-lookup"><span data-stu-id="a9124-106">East US 2</span></span>           | <span data-ttu-id="a9124-107">3</span><span class="sxs-lookup"><span data-stu-id="a9124-107">3</span></span>                       |
+| <span data-ttu-id="a9124-108">Запад США</span><span class="sxs-lookup"><span data-stu-id="a9124-108">West US</span></span>             | <span data-ttu-id="a9124-109">3</span><span class="sxs-lookup"><span data-stu-id="a9124-109">3</span></span>                       |
+| <span data-ttu-id="a9124-110">Западный регион США 2</span><span class="sxs-lookup"><span data-stu-id="a9124-110">West US 2</span></span>           | <span data-ttu-id="a9124-111">2</span><span class="sxs-lookup"><span data-stu-id="a9124-111">2</span></span>                       |
+| <span data-ttu-id="a9124-112">Центральный регион США</span><span class="sxs-lookup"><span data-stu-id="a9124-112">Central US</span></span>          | <span data-ttu-id="a9124-113">3</span><span class="sxs-lookup"><span data-stu-id="a9124-113">3</span></span>                       |
+| <span data-ttu-id="a9124-114">Северо-центральный регион США</span><span class="sxs-lookup"><span data-stu-id="a9124-114">North Central US</span></span>    | <span data-ttu-id="a9124-115">3</span><span class="sxs-lookup"><span data-stu-id="a9124-115">3</span></span>                       |
+| <span data-ttu-id="a9124-116">Южно-центральный регион США</span><span class="sxs-lookup"><span data-stu-id="a9124-116">South Central US</span></span>    | <span data-ttu-id="a9124-117">3</span><span class="sxs-lookup"><span data-stu-id="a9124-117">3</span></span>                       |
+| <span data-ttu-id="a9124-118">Западно-центральная часть США</span><span class="sxs-lookup"><span data-stu-id="a9124-118">West Central US</span></span>     | <span data-ttu-id="a9124-119">2</span><span class="sxs-lookup"><span data-stu-id="a9124-119">2</span></span>                       |
+| <span data-ttu-id="a9124-120">Центральная Канада</span><span class="sxs-lookup"><span data-stu-id="a9124-120">Canada Central</span></span>      | <span data-ttu-id="a9124-121">2</span><span class="sxs-lookup"><span data-stu-id="a9124-121">2</span></span>                       |
+| <span data-ttu-id="a9124-122">Восточная Канада</span><span class="sxs-lookup"><span data-stu-id="a9124-122">Canada East</span></span>         | <span data-ttu-id="a9124-123">2</span><span class="sxs-lookup"><span data-stu-id="a9124-123">2</span></span>                       |
 |                     |                         |
-| Северная Европа        | 3                       |
-| Западная Европа         | 3                       |
-| Южная часть Великобритании            | 2                       |
-| Западная часть Великобритании             | 2                       |
+| <span data-ttu-id="a9124-124">Северная Европа</span><span class="sxs-lookup"><span data-stu-id="a9124-124">North Europe</span></span>        | <span data-ttu-id="a9124-125">3</span><span class="sxs-lookup"><span data-stu-id="a9124-125">3</span></span>                       |
+| <span data-ttu-id="a9124-126">Западная Европа</span><span class="sxs-lookup"><span data-stu-id="a9124-126">West Europe</span></span>         | <span data-ttu-id="a9124-127">3</span><span class="sxs-lookup"><span data-stu-id="a9124-127">3</span></span>                       |
+| <span data-ttu-id="a9124-128">Южная часть Великобритании</span><span class="sxs-lookup"><span data-stu-id="a9124-128">UK South</span></span>            | <span data-ttu-id="a9124-129">2</span><span class="sxs-lookup"><span data-stu-id="a9124-129">2</span></span>                       |
+| <span data-ttu-id="a9124-130">Западная часть Великобритании</span><span class="sxs-lookup"><span data-stu-id="a9124-130">UK West</span></span>             | <span data-ttu-id="a9124-131">2</span><span class="sxs-lookup"><span data-stu-id="a9124-131">2</span></span>                       |
 |                     |                         |
-| Восточная Азия           | 2                       |
-| Юго-Восточная Азия     | 2                       |
-| Восточная часть Японии          | 2                       |
-| Западная часть Японии          | 2                       |
-| Южная Индия         | 2                       |
-| Центральная Индия       | 2                       |
-| Западная Индия          | 2                       |
-| Центральная Корея       | 2                       |
-| Южная Корея         | 2                       |
+| <span data-ttu-id="a9124-132">Восточная Азия</span><span class="sxs-lookup"><span data-stu-id="a9124-132">East Asia</span></span>           | <span data-ttu-id="a9124-133">2</span><span class="sxs-lookup"><span data-stu-id="a9124-133">2</span></span>                       |
+| <span data-ttu-id="a9124-134">Юго-Восточная Азия</span><span class="sxs-lookup"><span data-stu-id="a9124-134">South East Asia</span></span>     | <span data-ttu-id="a9124-135">2</span><span class="sxs-lookup"><span data-stu-id="a9124-135">2</span></span>                       |
+| <span data-ttu-id="a9124-136">Восточная часть Японии</span><span class="sxs-lookup"><span data-stu-id="a9124-136">Japan East</span></span>          | <span data-ttu-id="a9124-137">2</span><span class="sxs-lookup"><span data-stu-id="a9124-137">2</span></span>                       |
+| <span data-ttu-id="a9124-138">Западная часть Японии</span><span class="sxs-lookup"><span data-stu-id="a9124-138">Japan West</span></span>          | <span data-ttu-id="a9124-139">2</span><span class="sxs-lookup"><span data-stu-id="a9124-139">2</span></span>                       |
+| <span data-ttu-id="a9124-140">Южная Индия</span><span class="sxs-lookup"><span data-stu-id="a9124-140">South India</span></span>         | <span data-ttu-id="a9124-141">2</span><span class="sxs-lookup"><span data-stu-id="a9124-141">2</span></span>                       |
+| <span data-ttu-id="a9124-142">Центральная Индия</span><span class="sxs-lookup"><span data-stu-id="a9124-142">Central India</span></span>       | <span data-ttu-id="a9124-143">2</span><span class="sxs-lookup"><span data-stu-id="a9124-143">2</span></span>                       |
+| <span data-ttu-id="a9124-144">Западная Индия</span><span class="sxs-lookup"><span data-stu-id="a9124-144">West India</span></span>          | <span data-ttu-id="a9124-145">2</span><span class="sxs-lookup"><span data-stu-id="a9124-145">2</span></span>                       |
+| <span data-ttu-id="a9124-146">Центральная Корея</span><span class="sxs-lookup"><span data-stu-id="a9124-146">Korea Central</span></span>       | <span data-ttu-id="a9124-147">2</span><span class="sxs-lookup"><span data-stu-id="a9124-147">2</span></span>                       |
+| <span data-ttu-id="a9124-148">Южная Корея</span><span class="sxs-lookup"><span data-stu-id="a9124-148">Korea South</span></span>         | <span data-ttu-id="a9124-149">2</span><span class="sxs-lookup"><span data-stu-id="a9124-149">2</span></span>                       |
 |                     |                         |
-| Восточная часть Австралии      | 2                       |
-| Юго-Восточная часть Австралии | 2                       |
+| <span data-ttu-id="a9124-150">Восточная часть Австралии</span><span class="sxs-lookup"><span data-stu-id="a9124-150">Australia East</span></span>      | <span data-ttu-id="a9124-151">2</span><span class="sxs-lookup"><span data-stu-id="a9124-151">2</span></span>                       |
+| <span data-ttu-id="a9124-152">Юго-Восточная часть Австралии</span><span class="sxs-lookup"><span data-stu-id="a9124-152">Australia Southeast</span></span> | <span data-ttu-id="a9124-153">2</span><span class="sxs-lookup"><span data-stu-id="a9124-153">2</span></span>                       |
 |                     |                         |
-| Южная часть Бразилии        | 2                       |
+| <span data-ttu-id="a9124-154">Южная часть Бразилии</span><span class="sxs-lookup"><span data-stu-id="a9124-154">Brazil South</span></span>        | <span data-ttu-id="a9124-155">2</span><span class="sxs-lookup"><span data-stu-id="a9124-155">2</span></span>                       |

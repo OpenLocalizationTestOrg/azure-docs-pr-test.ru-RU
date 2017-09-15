@@ -1,16 +1,16 @@
-### <a name="prerequisites"></a>Предварительные требования
-* Учетная запись [MailChimp](https://www.MailChimp.com/). 
+### <a name="prerequisites"></a><span data-ttu-id="80d3b-101">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="80d3b-101">Prerequisites</span></span>
+* <span data-ttu-id="80d3b-102">Учетная запись [MailChimp](https://www.MailChimp.com/).</span><span class="sxs-lookup"><span data-stu-id="80d3b-102">A [MailChimp](https://www.MailChimp.com/) account</span></span> 
 
-Чтобы использовать учетную запись MailChimp в приложении логики, вы должны авторизовать приложение логики для подключения к вашей учетной записи MailChimp. К счастью, это можно легко сделать из приложения логики на портале Azure. 
+<span data-ttu-id="80d3b-103">Чтобы использовать учетную запись MailChimp в приложении логики, вы должны авторизовать приложение логики для подключения к вашей учетной записи MailChimp.</span><span class="sxs-lookup"><span data-stu-id="80d3b-103">Before you can use your MailChimp account in a Logic app, you must authorize the Logic app to connect to your MailChimp account.</span></span> <span data-ttu-id="80d3b-104">К счастью, это можно легко сделать из приложения логики на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="80d3b-104">Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span> 
 
-Ниже приведены инструкции по авторизации приложения логики для подключения к учетной записи MailChimp.
+<span data-ttu-id="80d3b-105">Ниже приведены инструкции по авторизации приложения логики для подключения к учетной записи MailChimp.</span><span class="sxs-lookup"><span data-stu-id="80d3b-105">Here are the steps to authorize your Logic app to connect to your MailChimp account:</span></span>
 
-1. Чтобы создать подключение к MailChimp, в конструкторе приложений логики в раскрывающемся списке выберите параметр **Показать API, управляемые Майкрософт**, а затем введите в поле поиска *MailChimp*. Выберите триггер или действие, которые хотите использовать:   
-   ![MailChimp — шаг 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)
-2. Если вы ранее не создавали подключения к MailChimp, вам будет предложено ввести учетные данные MailChimp. Эти учетные данные будут использоваться для авторизации приложения логики, чтобы оно могло подключиться и получить доступ к данным вашей учетной записи MailChimp.  
+1. <span data-ttu-id="80d3b-106">Чтобы создать подключение к MailChimp, в конструкторе приложений логики в раскрывающемся списке выберите параметр **Показать API, управляемые Майкрософт**, а затем введите в поле поиска *MailChimp*.</span><span class="sxs-lookup"><span data-stu-id="80d3b-106">To create a connection to MailChimp, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *MailChimp* in the search box.</span></span> <span data-ttu-id="80d3b-107">Выберите триггер или действие, которые хотите использовать: </span><span class="sxs-lookup"><span data-stu-id="80d3b-107">Select the trigger or action you'll like to use:</span></span>  
+   <span data-ttu-id="80d3b-108">![MailChimp — шаг 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)</span><span class="sxs-lookup"><span data-stu-id="80d3b-108">![MailChimp step 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)</span></span>
+2. <span data-ttu-id="80d3b-109">Если вы ранее не создавали подключения к MailChimp, вам будет предложено ввести учетные данные MailChimp.</span><span class="sxs-lookup"><span data-stu-id="80d3b-109">If you haven't created any connections to MailChimp before, you'll get prompted to provide your MailChimp credentials.</span></span> <span data-ttu-id="80d3b-110">Эти учетные данные будут использоваться для авторизации приложения логики, чтобы оно могло подключиться и получить доступ к данным вашей учетной записи MailChimp.</span><span class="sxs-lookup"><span data-stu-id="80d3b-110">These credentials will be used to authorize your Logic app to connect to, and access your MailChimp account's data:</span></span>  
    ![MailChimp — шаг 2](./media/connectors-create-api-mailchimp/mailchimp-2.png)
-3. Укажите имя пользователя и пароль своей учетной записи MailChimp, чтобы авторизовать приложение логики.  
+3. <span data-ttu-id="80d3b-112">Укажите имя пользователя и пароль своей учетной записи MailChimp, чтобы авторизовать приложение логики.</span><span class="sxs-lookup"><span data-stu-id="80d3b-112">Provide your MailChimp user name and password to authorize your Logic app:</span></span>  
    ![MailChimp — шаг 3](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
-4. Подключение создано, и теперь вы можете перейти к другим действиям в приложении логики:   
+4. <span data-ttu-id="80d3b-114">Подключение создано, и теперь вы можете перейти к другим действиям в приложении логики: </span><span class="sxs-lookup"><span data-stu-id="80d3b-114">Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:</span></span>  
    ![MailChimp — шаг 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
 

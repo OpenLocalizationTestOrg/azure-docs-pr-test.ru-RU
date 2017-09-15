@@ -1,6 +1,6 @@
-|  | **Классическое развертывание** | **Развертывание диспетчера ресурсов** |
+|  | <span data-ttu-id="8dcb9-101">**Классическое развертывание**</span><span class="sxs-lookup"><span data-stu-id="8dcb9-101">**Classic Deployment**</span></span> | <span data-ttu-id="8dcb9-102">**Развертывание диспетчера ресурсов**</span><span class="sxs-lookup"><span data-stu-id="8dcb9-102">**Resource Manager Deployment**</span></span> |
 | --- | --- | --- |
-| **Классический портал** |Не поддерживается |Не поддерживается |
-| **Портал Azure** |Не поддерживается |Не поддерживается |
-| **PowerShell** |[Статья](../articles/expressroute/expressroute-howto-coexist-classic.md) |[Статья](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
+| <span data-ttu-id="8dcb9-103">**Классический портал**</span><span class="sxs-lookup"><span data-stu-id="8dcb9-103">**Classic Portal**</span></span> |<span data-ttu-id="8dcb9-104">Не поддерживается</span><span class="sxs-lookup"><span data-stu-id="8dcb9-104">Not Supported</span></span> |<span data-ttu-id="8dcb9-105">Не поддерживается</span><span class="sxs-lookup"><span data-stu-id="8dcb9-105">Not Supported</span></span> |
+| <span data-ttu-id="8dcb9-106">**Портал Azure**</span><span class="sxs-lookup"><span data-stu-id="8dcb9-106">**Azure Portal**</span></span> |<span data-ttu-id="8dcb9-107">Не поддерживается</span><span class="sxs-lookup"><span data-stu-id="8dcb9-107">Not Supported</span></span> |<span data-ttu-id="8dcb9-108">Не поддерживается</span><span class="sxs-lookup"><span data-stu-id="8dcb9-108">Not Supported</span></span> |
+| <span data-ttu-id="8dcb9-109">**PowerShell**</span><span class="sxs-lookup"><span data-stu-id="8dcb9-109">**PowerShell**</span></span> |[<span data-ttu-id="8dcb9-110">Статья</span><span class="sxs-lookup"><span data-stu-id="8dcb9-110">Article</span></span>](../articles/expressroute/expressroute-howto-coexist-classic.md) |[<span data-ttu-id="8dcb9-111">Статья</span><span class="sxs-lookup"><span data-stu-id="8dcb9-111">Article</span></span>](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
 

@@ -1,14 +1,14 @@
-### <a name="prerequisites"></a>Предварительные требования
-* Учетная запись [RSS](https://wikipedia.org/wiki/RSS).  
+### <a name="prerequisites"></a><span data-ttu-id="e2293-101">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="e2293-101">Prerequisites</span></span>
+* <span data-ttu-id="e2293-102">Учетная запись [RSS](https://wikipedia.org/wiki/RSS).</span><span class="sxs-lookup"><span data-stu-id="e2293-102">An [RSS](https://wikipedia.org/wiki/RSS) account</span></span>  
 
-Перед использованием учетной записи RSS в приложении логики необходимо авторизовать приложение логики для подключения к учетной записи RSS. Это легко сделать в приложении логики на портале Azure.  
+<span data-ttu-id="e2293-103">Перед использованием учетной записи RSS в приложении логики необходимо авторизовать приложение логики для подключения к учетной записи RSS. Это легко сделать в приложении логики на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="e2293-103">Before you can use your RSS account in a Logic app, you must authorize the Logic app to connect to your RSS account.Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span>  
 
-Ниже приведены инструкции по авторизации приложения логики для подключения к учетной записи RSS.  
+<span data-ttu-id="e2293-104">Ниже приведены инструкции по авторизации приложения логики для подключения к учетной записи RSS.</span><span class="sxs-lookup"><span data-stu-id="e2293-104">Here are the steps to authorize your Logic app to connect to your RSS account:</span></span>  
 
-1. Чтобы создать подключение к RSS, в конструкторе приложений логики в раскрывающемся списке выберите параметр **Показать API, управляемые Майкрософт**, а затем введите в поле поиска *RSS*. Выберите триггер или действие, которые хотите использовать:   
-   ![Этап создания подключения RSS](./media/connectors-create-api-rss/rss-1.png)  
-2. Выберите **Создать подключение**.  
-   ![Этап создания подключения RSS](./media/connectors-create-api-rss/rss-2.png)  
-3. Подключение создано, и теперь вы можете перейти к другим действиям в приложении логики:   
+1. <span data-ttu-id="e2293-105">Чтобы создать подключение к RSS, в конструкторе приложений логики в раскрывающемся списке выберите параметр **Показать API, управляемые Майкрософт**, а затем введите в поле поиска *RSS*.</span><span class="sxs-lookup"><span data-stu-id="e2293-105">To create a connection to RSS, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *RSS* in the search box.</span></span> <span data-ttu-id="e2293-106">Выберите триггер или действие, которые хотите использовать: </span><span class="sxs-lookup"><span data-stu-id="e2293-106">Select the trigger or action you'll like to use:</span></span>  
+   <span data-ttu-id="e2293-107">![Этап создания подключения RSS](./media/connectors-create-api-rss/rss-1.png)</span><span class="sxs-lookup"><span data-stu-id="e2293-107">![RSS connection creation step](./media/connectors-create-api-rss/rss-1.png)</span></span>  
+2. <span data-ttu-id="e2293-108">Выберите **Создать подключение**.</span><span class="sxs-lookup"><span data-stu-id="e2293-108">Select **Create connection** :</span></span>  
+   <span data-ttu-id="e2293-109">![Этап создания подключения RSS](./media/connectors-create-api-rss/rss-2.png)</span><span class="sxs-lookup"><span data-stu-id="e2293-109">![RSS connection creation step](./media/connectors-create-api-rss/rss-2.png)</span></span>  
+3. <span data-ttu-id="e2293-110">Подключение создано, и теперь вы можете перейти к другим действиям в приложении логики: </span><span class="sxs-lookup"><span data-stu-id="e2293-110">Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:</span></span>  
    ![Этап создания подключения RSS](./media/connectors-create-api-rss/rss-3.png)  
 

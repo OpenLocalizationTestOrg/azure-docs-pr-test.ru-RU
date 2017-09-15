@@ -1,4 +1,4 @@
-Следующие разделы помогут вам устранить проблемы. Чтобы устранить неполадки, см. инструкции по этим ссылкам.
+<span data-ttu-id="dd985-101">Следующие разделы помогут вам устранить проблемы.</span><span class="sxs-lookup"><span data-stu-id="dd985-101">The following top issues may help resolve your issue.</span></span> <span data-ttu-id="dd985-102">Чтобы устранить неполадки, см. инструкции по этим ссылкам.</span><span class="sxs-lookup"><span data-stu-id="dd985-102">To start troubleshooting, review these steps:</span></span>
 
-- [Этот кластер не поддерживает запрошенный размер виртуальной машины.](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-cannot-support-the-requested-vm-size)
-- [В кластере нет свободных ресурсов.](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-does-not-have-free-resources)
+- [<span data-ttu-id="dd985-103">Этот кластер не поддерживает запрошенный размер виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="dd985-103">The cluster cannot support the requested VM size</span></span>](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-cannot-support-the-requested-vm-size)
+- [<span data-ttu-id="dd985-104">В кластере нет свободных ресурсов.</span><span class="sxs-lookup"><span data-stu-id="dd985-104">The cluster does not have free resources</span></span>](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-does-not-have-free-resources)

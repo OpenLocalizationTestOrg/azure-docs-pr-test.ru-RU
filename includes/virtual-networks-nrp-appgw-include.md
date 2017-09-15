@@ -1,16 +1,16 @@
-## <a name="application-gateway"></a>Шлюз приложений
-Шлюз приложений обеспечивает управляемое Azure решение по балансировке нагрузки HTTP на основе технологии балансировки нагрузки на 7 уровне. Балансировка нагрузки приложения позволяет использовать правила маршрутизации для сетевого трафика в зависимости от HTTP. 
+## <a name="application-gateway"></a><span data-ttu-id="4e731-101">Шлюз приложений</span><span class="sxs-lookup"><span data-stu-id="4e731-101">Application Gateway</span></span>
+<span data-ttu-id="4e731-102">Шлюз приложений обеспечивает управляемое Azure решение по балансировке нагрузки HTTP на основе технологии балансировки нагрузки на 7 уровне.</span><span class="sxs-lookup"><span data-stu-id="4e731-102">Application Gateway provides an Azure-managed HTTP load balancing solution based on layer 7 load balancing.</span></span> <span data-ttu-id="4e731-103">Балансировка нагрузки приложения позволяет использовать правила маршрутизации для сетевого трафика в зависимости от HTTP.</span><span class="sxs-lookup"><span data-stu-id="4e731-103">Application load balancing allows the use of routing rules for network traffic based on HTTP.</span></span> 
 <BR>
 
-| Свойство | Описание |
+| <span data-ttu-id="4e731-104">Свойство</span><span class="sxs-lookup"><span data-stu-id="4e731-104">Property</span></span> | <span data-ttu-id="4e731-105">Описание</span><span class="sxs-lookup"><span data-stu-id="4e731-105">Description</span></span> |
 | --- | --- |
-| **backendAddressPools** |Список IP-адресов внутренних серверов. Указанные IP-адреса должны относиться к подсети виртуальной сети либо представлять собой общедоступные, виртуальные либо частные IP-адреса. |
-| **backendHttpSettingsCollection** |У каждого пула есть такие параметры, как порт, протокол и сходство на основе файлов cookie. Эти параметры привязываются к пулу и применяются ко всем серверам в этом пуле. |
-| **frontendPorts** |Общий порт, открытый в шлюзе приложений. Трафик поступает в этот порт, а затем перенаправляется на один из внутренних серверов. |
-| **httpListeners** |Прослушиватель имеет внешний порт, протокол (HTTP или HTTPS, с учетом регистра) и имя SSL-сертификата (если настраивается разгрузка SSL). |
-| **requestRoutingRules** |Связывает прослушиватель и пул внутренних серверов, а также определяет, в какой пул внутренних серверов следует направлять трафик. В настоящее время работает только по принципу циклического перебора. |
+| <span data-ttu-id="4e731-106">**backendAddressPools**</span><span class="sxs-lookup"><span data-stu-id="4e731-106">**backendAddressPools**</span></span> |<span data-ttu-id="4e731-107">Список IP-адресов внутренних серверов.</span><span class="sxs-lookup"><span data-stu-id="4e731-107">The list of IP addresses of the back end servers.</span></span> <span data-ttu-id="4e731-108">Указанные IP-адреса должны относиться к подсети виртуальной сети либо представлять собой общедоступные, виртуальные либо частные IP-адреса.</span><span class="sxs-lookup"><span data-stu-id="4e731-108">The IP addresses listed should either belong to the virtual network subnet, or should be a public IP/VIP or private IP</span></span> |
+| <span data-ttu-id="4e731-109">**backendHttpSettingsCollection**</span><span class="sxs-lookup"><span data-stu-id="4e731-109">**backendHttpSettingsCollection**</span></span> |<span data-ttu-id="4e731-110">У каждого пула есть такие параметры, как порт, протокол и сходство на основе файлов cookie.</span><span class="sxs-lookup"><span data-stu-id="4e731-110">Every pool has settings like port, protocol, and cookie based affinity.</span></span> <span data-ttu-id="4e731-111">Эти параметры привязываются к пулу и применяются ко всем серверам в этом пуле.</span><span class="sxs-lookup"><span data-stu-id="4e731-111">These settings are tied to a pool and are applied to all servers within the pool</span></span> |
+| <span data-ttu-id="4e731-112">**frontendPorts**</span><span class="sxs-lookup"><span data-stu-id="4e731-112">**frontendPorts**</span></span> |<span data-ttu-id="4e731-113">Общий порт, открытый в шлюзе приложений.</span><span class="sxs-lookup"><span data-stu-id="4e731-113">This port is the public port opened on the application gateway.</span></span> <span data-ttu-id="4e731-114">Трафик поступает в этот порт, а затем перенаправляется на один из внутренних серверов.</span><span class="sxs-lookup"><span data-stu-id="4e731-114">Traffic hits this port, and then gets redirected to one of the back end servers</span></span> |
+| <span data-ttu-id="4e731-115">**httpListeners**</span><span class="sxs-lookup"><span data-stu-id="4e731-115">**httpListeners**</span></span> |<span data-ttu-id="4e731-116">Прослушиватель имеет внешний порт, протокол (HTTP или HTTPS, с учетом регистра) и имя SSL-сертификата (если настраивается разгрузка SSL).</span><span class="sxs-lookup"><span data-stu-id="4e731-116">Listener has a frontend port, a protocol (Http or Https, these are case-sensitive), and the SSL certificate name (if configuring SSL offload)</span></span> |
+| <span data-ttu-id="4e731-117">**requestRoutingRules**</span><span class="sxs-lookup"><span data-stu-id="4e731-117">**requestRoutingRules**</span></span> |<span data-ttu-id="4e731-118">Связывает прослушиватель и пул внутренних серверов, а также определяет, в какой пул внутренних серверов следует направлять трафик.</span><span class="sxs-lookup"><span data-stu-id="4e731-118">The rule binds the listener and the back end server pool and defines which back end server pool the traffic should be directed.</span></span> <span data-ttu-id="4e731-119">В настоящее время работает только по принципу циклического перебора.</span><span class="sxs-lookup"><span data-stu-id="4e731-119">Currently works only as Round-robin</span></span> |
 
-Пример шаблона шлюза приложений в формате Json:
+<span data-ttu-id="4e731-120">Пример шаблона шлюза приложений в формате Json:</span><span class="sxs-lookup"><span data-stu-id="4e731-120">Example of an application gateway Json template:</span></span>
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -216,6 +216,6 @@
     }
 
 
-### <a name="additional-resources"></a>Дополнительные ресурсы
-Подробнее об этом см. в описании [REST API шлюза приложений](https://msdn.microsoft.com/library/azure/mt299388.aspx).
+### <a name="additional-resources"></a><span data-ttu-id="4e731-121">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="4e731-121">Additional resources</span></span>
+<span data-ttu-id="4e731-122">Подробнее об этом см. в описании [REST API шлюза приложений](https://msdn.microsoft.com/library/azure/mt299388.aspx).</span><span class="sxs-lookup"><span data-stu-id="4e731-122">Read [ application gateway REST API](https://msdn.microsoft.com/library/azure/mt299388.aspx) for more information.</span></span>
 

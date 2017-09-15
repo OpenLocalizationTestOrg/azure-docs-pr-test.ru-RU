@@ -1,27 +1,27 @@
-Чтобы добавить возможность регистрации в приложение, необходимо создать политику регистрации. Эта политика описывает действия, которые пользователь должен выполнить во время регистрации, и содержимое токенов, которые приложение получает при успешной регистрации.
+<span data-ttu-id="69bd6-101">Чтобы добавить возможность регистрации в приложение, необходимо создать политику регистрации.</span><span class="sxs-lookup"><span data-stu-id="69bd6-101">To enable sign-up on your application, you need to create a sign-up policy.</span></span> <span data-ttu-id="69bd6-102">Эта политика описывает действия, которые пользователь должен выполнить во время регистрации, и содержимое токенов, которые приложение получает при успешной регистрации.</span><span class="sxs-lookup"><span data-stu-id="69bd6-102">This policy describes the experiences that consumers go through during sign-up and the contents of tokens that the application receives on successful sign-ups.</span></span>
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-Щелкните **Политики регистрации**.
+<span data-ttu-id="69bd6-103">Щелкните **Политики регистрации**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-103">Click **Sign-up policies**.</span></span>
 
-Щелкните **+Добавить** в верхней части колонки.
+<span data-ttu-id="69bd6-104">Щелкните **+Добавить** в верхней части колонки.</span><span class="sxs-lookup"><span data-stu-id="69bd6-104">Click **+Add** at the top of the blade.</span></span>
 
-**Имя** определяет имя политики регистрации, используемое приложением. Например, введите **SiUp**.
+<span data-ttu-id="69bd6-105">**Имя** определяет имя политики регистрации, используемое приложением.</span><span class="sxs-lookup"><span data-stu-id="69bd6-105">The **Name** determines the sign-up policy name used by your application.</span></span> <span data-ttu-id="69bd6-106">Например, введите **SiUp**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-106">For example, enter **SiUp**.</span></span>
 
-Щелкните **Поставщики удостоверений** и выберите **Регистрация по электронной почте**. При необходимости можно также выбрать поставщиков удостоверений в социальных сетях, если они уже настроены. Нажмите кнопку **ОК**.
+<span data-ttu-id="69bd6-107">Щелкните **Поставщики удостоверений** и выберите **Регистрация по электронной почте**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-107">Click **Identity providers** and select **Email signup**.</span></span> <span data-ttu-id="69bd6-108">При необходимости можно также выбрать поставщиков удостоверений в социальных сетях, если они уже настроены.</span><span class="sxs-lookup"><span data-stu-id="69bd6-108">Optionally, you can also select social identity providers, if already configured.</span></span> <span data-ttu-id="69bd6-109">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-109">Click **OK**.</span></span>
 
-Щелкните **Атрибуты регистрации**. Здесь следует выбрать атрибуты, которые пользователь должен предоставить во время регистрации. Например, выберите **Страна или регион**, **Отображаемое имя** и **Почтовый индекс**. Нажмите кнопку **ОК**.
+<span data-ttu-id="69bd6-110">Щелкните **Атрибуты регистрации**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-110">Click **Sign-up attributes**.</span></span> <span data-ttu-id="69bd6-111">Здесь следует выбрать атрибуты, которые пользователь должен предоставить во время регистрации.</span><span class="sxs-lookup"><span data-stu-id="69bd6-111">Here you choose attributes that you want to collect from the consumer during sign-up.</span></span> <span data-ttu-id="69bd6-112">Например, выберите **Страна или регион**, **Отображаемое имя** и **Почтовый индекс**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-112">For example, select **Country/Region**, **Display Name**, and **Postal Code**.</span></span> <span data-ttu-id="69bd6-113">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-113">Click **OK**.</span></span>
 
-Щелкните **Утверждения приложения**. Здесь вы можете выбрать утверждения, которые необходимо возвращать в маркерах, отправляемых приложению после успешной регистрации. Например, выберите **Отображаемое имя**, **Поставщик удостоверений**, **Почтовый индекс**, **Новый пользователь** и **Идентификатор объекта пользователя**.
+<span data-ttu-id="69bd6-114">Щелкните **Утверждения приложения**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-114">Click **Application claims**.</span></span> <span data-ttu-id="69bd6-115">Здесь вы можете выбрать утверждения, которые необходимо возвращать в маркерах, отправляемых приложению после успешной регистрации.</span><span class="sxs-lookup"><span data-stu-id="69bd6-115">Here you choose claims that you want returned in the tokens sent back to your application after a successful sign-up experience.</span></span> <span data-ttu-id="69bd6-116">Например, выберите **Отображаемое имя**, **Поставщик удостоверений**, **Почтовый индекс**, **Новый пользователь** и **Идентификатор объекта пользователя**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-116">For example, select **Display Name**, **Identity Provider**, **Postal Code**, **User is new**, and **User's Object ID**.</span></span>
 
-Щелкните **Создать**. В колонке **политик регистрации** созданная политика отображается как **B2C_1_SiUp** (фрагмент **B2C\_1\_** добавляется автоматически).
+<span data-ttu-id="69bd6-117">Щелкните **Создать**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-117">Click **Create**.</span></span> <span data-ttu-id="69bd6-118">В колонке **политик регистрации** созданная политика отображается как **B2C_1_SiUp** (фрагмент **B2C\_1\_** добавляется автоматически).</span><span class="sxs-lookup"><span data-stu-id="69bd6-118">The policy created appears as **B2C_1_SiUp** (the **B2C\_1\_** fragment is automatically added) in the **Sign-up policies** blade.</span></span>
 
-Откройте политику, щелкнув **B2C_1_SiUp**.
+<span data-ttu-id="69bd6-119">Откройте политику, щелкнув **B2C_1_SiUp**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-119">Open the policy by clicking **B2C_1_SiUp**.</span></span>
 
-В раскрывающемся списке **Приложения** выберите пункт **Приложение B2C Contoso**, а в списке **URL-адрес ответа / URI перенаправления** — `https://localhost:44321/`.
+<span data-ttu-id="69bd6-120">В раскрывающемся списке **Приложения** выберите пункт **Приложение B2C Contoso**, а в списке **URL-адрес ответа / URI перенаправления** — `https://localhost:44321/`.</span><span class="sxs-lookup"><span data-stu-id="69bd6-120">Select **Contoso B2C app** in the **Applications** drop-down and `https://localhost:44321/` in the **Reply URL / Redirect URI** drop-down.</span></span>
 
-Щелкните **Запустить сейчас**. Откроется новая вкладка браузера, и вы сможете пройти процесс регистрации в своем приложении.
+<span data-ttu-id="69bd6-121">Щелкните **Запустить сейчас**.</span><span class="sxs-lookup"><span data-stu-id="69bd6-121">Click **Run now**.</span></span> <span data-ttu-id="69bd6-122">Откроется новая вкладка браузера, и вы сможете пройти процесс регистрации в своем приложении.</span><span class="sxs-lookup"><span data-stu-id="69bd6-122">A new browser tab opens, and you can run through the consumer experience of signing up for your application.</span></span>
 
 > [!NOTE]
-> Создание, обновление и вступление политики в силу занимает около минуты.
+> <span data-ttu-id="69bd6-123">Создание, обновление и вступление политики в силу занимает около минуты.</span><span class="sxs-lookup"><span data-stu-id="69bd6-123">It takes up to a minute for policy creation and updates to take effect.</span></span>
 >
