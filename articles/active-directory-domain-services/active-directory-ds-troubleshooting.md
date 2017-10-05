@@ -1,0 +1,159 @@
+---
+title: "Доменные службы Azure Active Directory: руководство по устранению неполадок | Документация Майкрософт"
+description: "Руководство по устранению неполадок для доменных служб Azure AD"
+services: active-directory-ds
+documentationcenter: 
+author: mahesh-unnikrishnan
+manager: stevenpo
+editor: curtand
+ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
+ms.service: active-directory-ds
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/06/2017
+ms.author: maheshu
+ms.openlocfilehash: d6695b0c40f56093e8701dfe6394143268114453
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 07/11/2017
+---
+# <a name="azure-ad-domain-services---troubleshooting-guide"></a><span data-ttu-id="bcc34-103">Доменные службы Azure AD: руководство по устранению неполадок</span><span class="sxs-lookup"><span data-stu-id="bcc34-103">Azure AD Domain Services - Troubleshooting guide</span></span>
+<span data-ttu-id="bcc34-104">В этой статье приводятся советы по устранению проблем, с которыми вы можете столкнуться при настройке или администрировании доменных служб Azure Active Directory (AD).</span><span class="sxs-lookup"><span data-stu-id="bcc34-104">This article provides troubleshooting hints for issues you may encounter when setting up or administering Azure Active Directory (AD) Domain Services.</span></span>
+
+## <a name="you-cannot-enable-azure-ad-domain-services-for-your-azure-ad-directory"></a><span data-ttu-id="bcc34-105">Не удается включить доменные службы Azure AD для каталога Azure AD</span><span class="sxs-lookup"><span data-stu-id="bcc34-105">You cannot enable Azure AD Domain Services for your Azure AD directory</span></span>
+<span data-ttu-id="bcc34-106">Предоставленные в этом разделе сведения помогут устранить неполадки, если попытка включить доменные службы Azure AD для каталога завершается сбоем или переключатель возвращается в положение "Отключено".</span><span class="sxs-lookup"><span data-stu-id="bcc34-106">This section helps you troubleshoot errors when you try to enable Azure AD Domain Services for your directory and it fails or gets toggled back to 'Disabled'.</span></span>
+
+<span data-ttu-id="bcc34-107">Выберите действия по устранению неполадок, соответствующие возникшему сообщению об ошибке.</span><span class="sxs-lookup"><span data-stu-id="bcc34-107">Pick the troubleshooting steps that correspond to the error message you encounter.</span></span>
+
+| <span data-ttu-id="bcc34-108">**Сообщение об ошибке**</span><span class="sxs-lookup"><span data-stu-id="bcc34-108">**Error Message**</span></span> | <span data-ttu-id="bcc34-109">**Способы устранения:**</span><span class="sxs-lookup"><span data-stu-id="bcc34-109">**Resolution**</span></span> |
+| --- |:--- |
+| <span data-ttu-id="bcc34-110">*Имя contoso100.com уже используется в этой сети. Введите неиспользуемое имя.*</span><span class="sxs-lookup"><span data-stu-id="bcc34-110">*The name contoso100.com is already in use on this network. Specify a name that is not in use.*</span></span> |[<span data-ttu-id="bcc34-111">Конфликт доменных имен в виртуальной сети</span><span class="sxs-lookup"><span data-stu-id="bcc34-111">Domain name conflict in the virtual network</span></span>](active-directory-ds-troubleshooting.md#domain-name-conflict) |
+| <span data-ttu-id="bcc34-112">*Не удалось включить доменные службы в этом клиенте Azure AD. У службы нет необходимых разрешений на доступ к приложению с именем Azure AD Domain Services Sync. Удалите приложение с именем Azure AD Domain Services Sync, а затем попробуйте снова включить доменные службы для своего клиента Azure AD.*</span><span class="sxs-lookup"><span data-stu-id="bcc34-112">*Domain Services could not be enabled in this Azure AD tenant. The service does not have adequate permissions to the application called 'Azure AD Domain Services Sync'. Delete the application called 'Azure AD Domain Services Sync' and then try to enable Domain Services for your Azure AD tenant.*</span></span> |[<span data-ttu-id="bcc34-113">У доменных служб нет необходимых разрешений на доступ к приложению Azure AD Domain Services Sync</span><span class="sxs-lookup"><span data-stu-id="bcc34-113">Domain Services does not have adequate permissions to the Azure AD Domain Services Sync application</span></span>](active-directory-ds-troubleshooting.md#inadequate-permissions) |
+| <span data-ttu-id="bcc34-114">*Не удалось включить доменные службы в этом клиенте Azure AD. У приложения доменных служб в клиенте Azure AD нет разрешений, необходимых для включения доменных служб. Удалите приложение с идентификатором d87dcbc6-a371-462e-88e3-28ad15ec4e64, а затем попробуйте снова включить доменные службы для своего клиента Azure AD.*</span><span class="sxs-lookup"><span data-stu-id="bcc34-114">*Domain Services could not be enabled in this Azure AD tenant. The Domain Services application in your Azure AD tenant does not have the required permissions to enable Domain Services. Delete the application with the application identifier d87dcbc6-a371-462e-88e3-28ad15ec4e64 and then try to enable Domain Services for your Azure AD tenant.*</span></span> |[<span data-ttu-id="bcc34-115">Приложение доменных служб в клиенте настроено неправильно</span><span class="sxs-lookup"><span data-stu-id="bcc34-115">The Domain Services application is not configured properly in your tenant</span></span>](active-directory-ds-troubleshooting.md#invalid-configuration) |
+| <span data-ttu-id="bcc34-116">*Не удалось включить доменные службы в этом клиенте Azure AD. Приложение Microsoft Azure AD отключено в клиенте Azure AD. Включите приложение с идентификатором 00000002-0000-0000-c000-000000000000, а затем попробуйте снова включить доменные службы для своего клиента Azure AD.*</span><span class="sxs-lookup"><span data-stu-id="bcc34-116">*Domain Services could not be enabled in this Azure AD tenant. The Microsoft Azure AD application is disabled in your Azure AD tenant. Enable the application with the application identifier 00000002-0000-0000-c000-000000000000 and then try to enable Domain Services for your Azure AD tenant.*</span></span> |[<span data-ttu-id="bcc34-117">Приложение Microsoft Graph отключено в клиенте Azure AD</span><span class="sxs-lookup"><span data-stu-id="bcc34-117">The Microsoft Graph application is disabled in your Azure AD tenant</span></span>](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
+
+### <a name="domain-name-conflict"></a><span data-ttu-id="bcc34-118">Конфликт доменных имен</span><span class="sxs-lookup"><span data-stu-id="bcc34-118">Domain Name conflict</span></span>
+<span data-ttu-id="bcc34-119">**Сообщение об ошибке:**</span><span class="sxs-lookup"><span data-stu-id="bcc34-119">**Error message:**</span></span>
+
+<span data-ttu-id="bcc34-120">*Имя contoso100.com уже используется в этой сети. Введите неиспользуемое имя.*</span><span class="sxs-lookup"><span data-stu-id="bcc34-120">*The name contoso100.com is already in use on this network. Specify a name that is not in use.*</span></span>
+
+<span data-ttu-id="bcc34-121">**Исправление:**</span><span class="sxs-lookup"><span data-stu-id="bcc34-121">**Remediation:**</span></span>
+
+<span data-ttu-id="bcc34-122">Убедитесь, что в этой виртуальной сети нет домена с таким же доменным именем.</span><span class="sxs-lookup"><span data-stu-id="bcc34-122">Ensure that you do not have an existing domain with the same domain name available on that virtual network.</span></span> <span data-ttu-id="bcc34-123">Например, предположим, что в выбранной виртуальной сети уже есть домен с именем contoso.com,</span><span class="sxs-lookup"><span data-stu-id="bcc34-123">For instance, assume you have a domain called 'contoso.com' already available on the selected virtual network.</span></span> <span data-ttu-id="bcc34-124">Позже вы попытаетесь включить в ней управляемый домен доменных служб Azure AD с таким же доменным именем (contoso.com).</span><span class="sxs-lookup"><span data-stu-id="bcc34-124">Later, you try to enable an Azure AD Domain Services managed domain with the same domain name (that is, 'contoso.com') on that virtual network.</span></span> <span data-ttu-id="bcc34-125">В таком случае попытка включить доменные службы Azure AD приведет к ошибке.</span><span class="sxs-lookup"><span data-stu-id="bcc34-125">You encounter a failure when trying to enable Azure AD Domain Services.</span></span>
+
+<span data-ttu-id="bcc34-126">Причина заключается в конфликте доменных имен в этой виртуальной сети.</span><span class="sxs-lookup"><span data-stu-id="bcc34-126">This failure is due to name conflicts for the domain name on that virtual network.</span></span> <span data-ttu-id="bcc34-127">В такой ситуации для настройки управляемого домена доменных служб Azure AD необходимо использовать другое имя.</span><span class="sxs-lookup"><span data-stu-id="bcc34-127">In this situation, you must use a different name to set up your Azure AD Domain Services managed domain.</span></span> <span data-ttu-id="bcc34-128">Кроме того, можно отменить подготовку существующего домена и включить доменные службы Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-128">Alternately, you can de-provision the existing domain and then proceed to enable Azure AD Domain Services.</span></span>
+
+### <a name="inadequate-permissions"></a><span data-ttu-id="bcc34-129">Недостаточно разрешений</span><span class="sxs-lookup"><span data-stu-id="bcc34-129">Inadequate permissions</span></span>
+<span data-ttu-id="bcc34-130">**Сообщение об ошибке:**</span><span class="sxs-lookup"><span data-stu-id="bcc34-130">**Error message:**</span></span>
+
+<span data-ttu-id="bcc34-131">*Не удалось включить доменные службы в этом клиенте Azure AD. У службы нет необходимых разрешений на доступ к приложению с именем Azure AD Domain Services Sync. Удалите приложение с именем Azure AD Domain Services Sync, а затем попробуйте снова включить доменные службы для своего клиента Azure AD.*</span><span class="sxs-lookup"><span data-stu-id="bcc34-131">*Domain Services could not be enabled in this Azure AD tenant. The service does not have adequate permissions to the application called 'Azure AD Domain Services Sync'. Delete the application called 'Azure AD Domain Services Sync' and then try to enable Domain Services for your Azure AD tenant.*</span></span>
+
+<span data-ttu-id="bcc34-132">**Исправление:**</span><span class="sxs-lookup"><span data-stu-id="bcc34-132">**Remediation:**</span></span>
+
+<span data-ttu-id="bcc34-133">Проверьте, есть ли в каталоге Azure AD приложение с именем Azure AD Domain Services Sync.</span><span class="sxs-lookup"><span data-stu-id="bcc34-133">Check to see if there is an application with the name 'Azure AD Domain Services Sync' in your Azure AD directory.</span></span> <span data-ttu-id="bcc34-134">Если такое приложение есть, удалите его, а затем повторно включите доменные службы Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-134">If this application exists, delete it and then re-enable Azure AD Domain Services.</span></span>
+
+<span data-ttu-id="bcc34-135">Выполните следующие действия, чтобы проверить наличие приложения и удалить его при необходимости.</span><span class="sxs-lookup"><span data-stu-id="bcc34-135">Perform the following steps to check for the presence of the application and to delete it, if the application exists:</span></span>
+
+1. <span data-ttu-id="bcc34-136">Перейдите на **классический портал Azure** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).</span><span class="sxs-lookup"><span data-stu-id="bcc34-136">Navigate to the **Azure classic portal** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).</span></span>
+2. <span data-ttu-id="bcc34-137">На панели слева выберите **Active Directory** .</span><span class="sxs-lookup"><span data-stu-id="bcc34-137">Select the **Active Directory** node on the left pane.</span></span>
+3. <span data-ttu-id="bcc34-138">Выберите клиента Azure AD (каталог), для которого требуется включить доменные службы Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-138">Select the Azure AD tenant (directory) for which you would like to enable Azure AD Domain Services.</span></span>
+4. <span data-ttu-id="bcc34-139">Откройте вкладку **Приложения** .</span><span class="sxs-lookup"><span data-stu-id="bcc34-139">Navigate to the **Applications** tab.</span></span>
+5. <span data-ttu-id="bcc34-140">В раскрывающемся списке выберите пункт **Приложения, которыми владеет моя компания** .</span><span class="sxs-lookup"><span data-stu-id="bcc34-140">Select the **Applications my company owns** option in the dropdown.</span></span>
+6. <span data-ttu-id="bcc34-141">Проверьте наличие приложения **Azure AD Domain Services Sync**.</span><span class="sxs-lookup"><span data-stu-id="bcc34-141">Check for an application called **Azure AD Domain Services Sync**.</span></span> <span data-ttu-id="bcc34-142">Если приложение есть, удалите его.</span><span class="sxs-lookup"><span data-stu-id="bcc34-142">If the application exists, proceed to delete it.</span></span>
+7. <span data-ttu-id="bcc34-143">Удалив приложение, попробуйте еще раз включить доменные службы Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-143">Once you have deleted the application, try to enable Azure AD Domain Services once again.</span></span>
+
+### <a name="invalid-configuration"></a><span data-ttu-id="bcc34-144">Недопустимая конфигурация</span><span class="sxs-lookup"><span data-stu-id="bcc34-144">Invalid configuration</span></span>
+<span data-ttu-id="bcc34-145">**Сообщение об ошибке:**</span><span class="sxs-lookup"><span data-stu-id="bcc34-145">**Error message:**</span></span>
+
+<span data-ttu-id="bcc34-146">*Не удалось включить доменные службы в этом клиенте Azure AD. У приложения доменных служб в клиенте Azure AD нет разрешений, необходимых для включения доменных служб. Удалите приложение с идентификатором d87dcbc6-a371-462e-88e3-28ad15ec4e64, а затем попробуйте снова включить доменные службы для своего клиента Azure AD.*</span><span class="sxs-lookup"><span data-stu-id="bcc34-146">*Domain Services could not be enabled in this Azure AD tenant. The Domain Services application in your Azure AD tenant does not have the required permissions to enable Domain Services. Delete the application with the application identifier d87dcbc6-a371-462e-88e3-28ad15ec4e64 and then try to enable Domain Services for your Azure AD tenant.*</span></span>
+
+<span data-ttu-id="bcc34-147">**Исправление:**</span><span class="sxs-lookup"><span data-stu-id="bcc34-147">**Remediation:**</span></span>
+
+<span data-ttu-id="bcc34-148">Проверьте, есть ли в каталоге Azure AD приложение с именем AzureActiveDirectoryDomainControllerServices (и идентификатором d87dcbc6-a371-462e-88e3-28ad15ec4e64).</span><span class="sxs-lookup"><span data-stu-id="bcc34-148">Check to see if you have an application with the name 'AzureActiveDirectoryDomainControllerServices' (with an application identifier of d87dcbc6-a371-462e-88e3-28ad15ec4e64) in your Azure AD directory.</span></span> <span data-ttu-id="bcc34-149">Если такое приложение есть, его нужно удалить, а затем повторно включить доменные службы Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-149">If this application exists, you need to delete it and then re-enable Azure AD Domain Services.</span></span>
+
+<span data-ttu-id="bcc34-150">Используйте следующий скрипт PowerShell, чтобы найти приложение и удалить его.</span><span class="sxs-lookup"><span data-stu-id="bcc34-150">Use the following PowerShell script to find the application and delete it.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="bcc34-151">В этом скрипте используются командлеты **Azure AD PowerShell версии 2**.</span><span class="sxs-lookup"><span data-stu-id="bcc34-151">This script uses **Azure AD PowerShell version 2** cmdlets.</span></span> <span data-ttu-id="bcc34-152">Полный список всех доступных командлетов и сведения по скачиванию модуля см. в [справочной документации по AzureAD PowerShell](https://msdn.microsoft.com/library/azure/mt757189.aspx).</span><span class="sxs-lookup"><span data-stu-id="bcc34-152">For a full list of all available cmdlets and to download the module, read the [AzureAD PowerShell reference documentation](https://msdn.microsoft.com/library/azure/mt757189.aspx).</span></span>
+>
+>
+
+```
+$InformationPreference = "Continue"
+$WarningPreference = "Continue"
+
+$aadDsSp = Get-AzureADServicePrincipal -Filter "AppId eq 'd87dcbc6-a371-462e-88e3-28ad15ec4e64'" -ErrorAction Ignore
+if ($aadDsSp -ne $null)
+{
+    Write-Information "Found Azure AD Domain Services application. Deleting it ..."
+    Remove-AzureADServicePrincipal -ObjectId $aadDsSp.ObjectId
+    Write-Information "Deleted the Azure AD Domain Services application."
+}
+
+$identifierUri = "https://sync.aaddc.activedirectory.windowsazure.com"
+$appFilter = "IdentifierUris eq '" + $identifierUri + "'"
+$app = Get-AzureADApplication -Filter $appFilter
+if ($app -ne $null)
+{
+    Write-Information "Found Azure AD Domain Services Sync application. Deleting it ..."
+    Remove-AzureADApplication -ObjectId $app.ObjectId
+    Write-Information "Deleted the Azure AD Domain Services Sync application."
+}
+
+$spFilter = "ServicePrincipalNames eq '" + $identifierUri + "'"
+$sp = Get-AzureADServicePrincipal -Filter $spFilter
+if ($sp -ne $null)
+{
+    Write-Information "Found Azure AD Domain Services Sync service principal. Deleting it ..."
+    Remove-AzureADServicePrincipal -ObjectId $sp.ObjectId
+    Write-Information "Deleted the Azure AD Domain Services Sync service principal."
+}
+```
+<br>
+
+### <a name="microsoft-graph-disabled"></a><span data-ttu-id="bcc34-153">Интерфейс Microsoft Graph отключен</span><span class="sxs-lookup"><span data-stu-id="bcc34-153">Microsoft Graph disabled</span></span>
+<span data-ttu-id="bcc34-154">**Сообщение об ошибке:**</span><span class="sxs-lookup"><span data-stu-id="bcc34-154">**Error message:**</span></span>
+
+<span data-ttu-id="bcc34-155">Не удалось включить доменные службы в этом клиенте Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-155">Domain Services could not be enabled in this Azure AD tenant.</span></span> <span data-ttu-id="bcc34-156">Приложение Microsoft Azure AD отключено в клиенте Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-156">The Microsoft Azure AD application is disabled in your Azure AD tenant.</span></span> <span data-ttu-id="bcc34-157">Включите приложение с идентификатором 00000002-0000-0000-c000-000000000000, а затем попробуйте снова включить доменные службы для своего клиента Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-157">Enable the application with the application identifier 00000002-0000-0000-c000-000000000000 and then try to enable Domain Services for your Azure AD tenant.</span></span>
+
+<span data-ttu-id="bcc34-158">**Исправление:**</span><span class="sxs-lookup"><span data-stu-id="bcc34-158">**Remediation:**</span></span>
+
+<span data-ttu-id="bcc34-159">Проверьте, отключено ли приложение с идентификатором 00000002-0000-0000-c000-000000000000.</span><span class="sxs-lookup"><span data-stu-id="bcc34-159">Check to see if you have disabled an application with the identifier 00000002-0000-0000-c000-000000000000.</span></span> <span data-ttu-id="bcc34-160">Это приложение Microsoft Azure AD, которое предоставляет доступ к API Graph вашему клиенту Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-160">This application is the Microsoft Azure AD application and provides Graph API access to your Azure AD tenant.</span></span> <span data-ttu-id="bcc34-161">Для доменных служб Azure AD требуется, чтобы это приложение было включено. В противном случае они не смогут синхронизировать ваш клиент Azure AD с управляемым доменом.</span><span class="sxs-lookup"><span data-stu-id="bcc34-161">Azure AD Domain Services needs this application to be enabled to synchronize your Azure AD tenant to your managed domain.</span></span>
+
+<span data-ttu-id="bcc34-162">Чтобы устранить эту ошибку, включите это приложение и попытайтесь включить доменные службы для своего клиента Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-162">To resolve this error, enable this application and then try to enable Domain Services for your Azure AD tenant.</span></span>
+
+## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a><span data-ttu-id="bcc34-163">Пользователи не могут войти в домен, находящийся под управлением доменных служб Azure AD</span><span class="sxs-lookup"><span data-stu-id="bcc34-163">Users are unable to sign in to the Azure AD Domain Services managed domain</span></span>
+<span data-ttu-id="bcc34-164">Если один или несколько пользователей клиента Azure AD не могут войти в только что созданный управляемый домен, выполните следующие действия по устранению неполадок.</span><span class="sxs-lookup"><span data-stu-id="bcc34-164">If one or more users in your Azure AD tenant are unable to sign in to the newly created managed domain, perform the following troubleshooting steps:</span></span>
+
+* <span data-ttu-id="bcc34-165">**Вход с использованием формата имени участника-пользователя.** Попробуйте выполнить вход, используя имя участника-пользователя (например, joeuser@contoso.com) вместо имени для входа в формате SAMAccountName (CONTOSO\joeuser).</span><span class="sxs-lookup"><span data-stu-id="bcc34-165">**Sign-in using UPN format:** Try to sign in using the UPN format (for example, 'joeuser@contoso.com') instead of the SAMAccountName format ('CONTOSO\joeuser').</span></span> <span data-ttu-id="bcc34-166">Имя для входа в формате SAMAccountName может создаваться автоматически для пользователей, префикс имени участника-пользователя которых слишком длинный или совпадает с именем другого пользователя в управляемом домене.</span><span class="sxs-lookup"><span data-stu-id="bcc34-166">The SAMAccountName may be automatically generated for users whose UPN prefix is overly long or is the same as another user on the managed domain.</span></span> <span data-ttu-id="bcc34-167">Формат имени участника-пользователя гарантирует уникальность пользователей в пределах клиента Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-167">The UPN format is guaranteed to be unique within an Azure AD tenant.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="bcc34-168">Мы рекомендуем использовать этот формат для входа в управляемый домен доменных служб Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-168">We recommend using the UPN format to sign in to the Azure AD Domain Services managed domain.</span></span>
+>
+>
+
+* <span data-ttu-id="bcc34-169">Убедитесь, что [включена синхронизация паролей](active-directory-ds-getting-started-password-sync.md) в соответствии с шагами, описанными на странице «Приступая к работе».</span><span class="sxs-lookup"><span data-stu-id="bcc34-169">Ensure that you have [enabled password synchronization](active-directory-ds-getting-started-password-sync.md) in accordance with the steps outlined in the Getting Started guide.</span></span>
+* <span data-ttu-id="bcc34-170">**Внешние учетные записи**. Убедитесь, что учетная запись пользователя не является внешней учетной записью клиента Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-170">**External accounts:** Ensure that the affected user account is not an external account in the Azure AD tenant.</span></span> <span data-ttu-id="bcc34-171">К примерам внешних учетных записей относятся учетные записи Майкрософт (например, joe@live.com) или учетные записи из внешнего каталога Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-171">Examples of external accounts include Microsoft accounts (for example, 'joe@live.com') or user accounts from an external Azure AD directory.</span></span> <span data-ttu-id="bcc34-172">Так как у доменных служб Azure AD нет учетных данных для этих учетных записей, эти пользователи не могут войти в управляемый домен.</span><span class="sxs-lookup"><span data-stu-id="bcc34-172">Since Azure AD Domain Services does not have credentials for such user accounts, these users cannot sign in to the managed domain.</span></span>
+* <span data-ttu-id="bcc34-173">**Синхронизированные учетные записи**. Если учетные записи пользователей синхронизируются из локального каталога, убедитесь в следующем.</span><span class="sxs-lookup"><span data-stu-id="bcc34-173">**Synced accounts:** If the affected user accounts are synchronized from an on-premises directory, verify that:</span></span>
+
+  * <span data-ttu-id="bcc34-174">Вы развернули или установили [последнюю рекомендуемую версию Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594).</span><span class="sxs-lookup"><span data-stu-id="bcc34-174">You have deployed or updated to the [latest recommended release of Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594).</span></span>
+  * <span data-ttu-id="bcc34-175">Вы включили в Azure AD Connect [выполнение полной синхронизации](active-directory-ds-getting-started-password-sync.md).</span><span class="sxs-lookup"><span data-stu-id="bcc34-175">You have configured Azure AD Connect to [perform a full synchronization](active-directory-ds-getting-started-password-sync.md).</span></span>
+  * <span data-ttu-id="bcc34-176">В зависимости от размера каталога на доступность учетных записей пользователей и хэшей учетных данных в доменных службах Azure AD может потребоваться некоторое время.</span><span class="sxs-lookup"><span data-stu-id="bcc34-176">Depending on the size of your directory, it may take a while for user accounts and credential hashes to be available in Azure AD Domain Services.</span></span> <span data-ttu-id="bcc34-177">Убедитесь, что вы подождали достаточно долго перед повторной попыткой аутентификации (в зависимости от размера каталога — от нескольких часов до одного-двух дней).</span><span class="sxs-lookup"><span data-stu-id="bcc34-177">Ensure you wait long enough before retrying authentication (depending on the size of your directory - a few hours to a day or two for large directories).</span></span>
+  * <span data-ttu-id="bcc34-178">Если проблема повторится после выполнения описанных выше действий, попытайтесь перезапустить службу Microsoft Azure AD Sync.</span><span class="sxs-lookup"><span data-stu-id="bcc34-178">If the issue persists after verifying the preceding steps, try restarting the Microsoft Azure AD Sync Service.</span></span> <span data-ttu-id="bcc34-179">На компьютере синхронизации откройте командную строку и выполните следующие команды.</span><span class="sxs-lookup"><span data-stu-id="bcc34-179">From your sync machine, launch a command prompt and execute the following commands:</span></span>
+
+    1. <span data-ttu-id="bcc34-180">net stop 'Microsoft Azure AD Sync'</span><span class="sxs-lookup"><span data-stu-id="bcc34-180">net stop 'Microsoft Azure AD Sync'</span></span>
+    2. <span data-ttu-id="bcc34-181">net start 'Microsoft Azure AD Sync'</span><span class="sxs-lookup"><span data-stu-id="bcc34-181">net start 'Microsoft Azure AD Sync'</span></span>
+* <span data-ttu-id="bcc34-182">**Учетные записи только в облаке**. Если учетная запись пользователя существует только в облаке, убедитесь, что пользователь изменил пароль после включения доменных служб Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-182">**Cloud-only accounts**: If the affected user account is a cloud-only user account, ensure that the user has changed their password after you enabled Azure AD Domain Services.</span></span> <span data-ttu-id="bcc34-183">Этот шаг вызывает создание сверток учетных данных, необходимых для доменных служб Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-183">This step causes the credential hashes required for Azure AD Domain Services to be generated.</span></span>
+
+## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a><span data-ttu-id="bcc34-184">Пользователи, удаленные из вашего клиента Azure AD, не удаляются из управляемого домена</span><span class="sxs-lookup"><span data-stu-id="bcc34-184">Users removed from your Azure AD tenant are not removed from your managed domain</span></span>
+<span data-ttu-id="bcc34-185">Azure AD обеспечивает защиту от случайного удаления объектов-пользователей.</span><span class="sxs-lookup"><span data-stu-id="bcc34-185">Azure AD protects you from accidental deletion of user objects.</span></span> <span data-ttu-id="bcc34-186">При удалении учетной записи пользователя из вашего клиента Azure AD соответствующий объект-пользователь перемещается в корзину.</span><span class="sxs-lookup"><span data-stu-id="bcc34-186">When you delete a user account from your Azure AD tenant, the corresponding user object is moved to the Recycle Bin.</span></span> <span data-ttu-id="bcc34-187">При синхронизации этой операции удаления с управляемым доменом соответствующая учетная запись пользователя помечается как отключенная.</span><span class="sxs-lookup"><span data-stu-id="bcc34-187">When this delete operation is synchronized to your managed domain, it causes the corresponding user account to be marked disabled.</span></span> <span data-ttu-id="bcc34-188">Эта функция позволяет восстановить или отменить удаление учетной записи пользователя позже.</span><span class="sxs-lookup"><span data-stu-id="bcc34-188">This feature helps you recover or undelete the user account later.</span></span>
+
+<span data-ttu-id="bcc34-189">Учетная запись пользователя остается в управляемом домене в отключенном состоянии, даже если в каталоге Azure AD повторно создать учетную запись с тем же именем участника-пользователя.</span><span class="sxs-lookup"><span data-stu-id="bcc34-189">The user account remains in the disabled state in your managed domain, even if you re-create a user account with the same UPN in your Azure AD directory.</span></span> <span data-ttu-id="bcc34-190">Чтобы удалить учетную запись пользователя из управляемого домена, принудительно удалите ее из своего клиента Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-190">To remove the user account from your managed domain, you need to force delete it from your Azure AD tenant.</span></span>
+
+<span data-ttu-id="bcc34-191">Чтобы полностью удалить учетную запись пользователя из управляемого домена, навсегда удалите пользователя из своего клиента Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bcc34-191">To remove the user account fully from your managed domain, delete the user permanently from your Azure AD tenant.</span></span> <span data-ttu-id="bcc34-192">Используйте командлет Remove-MsolUser PowerShell с параметром -RemoveFromRecycleBin, как описано в этой [статье MSDN](https://msdn.microsoft.com/library/azure/dn194132.aspx).</span><span class="sxs-lookup"><span data-stu-id="bcc34-192">Use the Remove-MsolUser PowerShell cmdlet with the '-RemoveFromRecycleBin' option, as described in this [MSDN article](https://msdn.microsoft.com/library/azure/dn194132.aspx).</span></span>
+
+## <a name="contact-us"></a><span data-ttu-id="bcc34-193">Свяжитесь с нами</span><span class="sxs-lookup"><span data-stu-id="bcc34-193">Contact Us</span></span>
+<span data-ttu-id="bcc34-194">Чтобы [оставить отзыв или обратиться за помощью](active-directory-ds-contact-us.md), свяжитесь с командой разработки продукта, отвечающей за доменные службы Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="bcc34-194">Contact the Azure Active Directory Domain Services product team to [share feedback or for support](active-directory-ds-contact-us.md).</span></span>
