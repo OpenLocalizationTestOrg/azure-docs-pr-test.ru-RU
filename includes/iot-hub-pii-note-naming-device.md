@@ -1,0 +1,3 @@
+> [!IMPORTANT]
+> <span data-ttu-id="1c009-101">Идентификатор устройства может отображаться в журналах, собранных для поддержки клиентов и устранения неполадок, поэтому не используйте конфиденциальную информацию, когда присваиваете ему имя.</span><span class="sxs-lookup"><span data-stu-id="1c009-101">The device ID may be visible in the logs collected for customer support and troubleshooting, so make sure to avoid any sensitive information while naming it.</span></span>
+>

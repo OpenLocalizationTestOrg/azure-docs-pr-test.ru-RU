@@ -1,0 +1,68 @@
+---
+title: "Пример сценария Azure CLI. Балансировка трафика на виртуальных машинах для обеспечения высокой доступности | Документация Майкрософт"
+description: "Пример сценария Azure CLI. Балансировка трафика на виртуальных машинах для обеспечения высокой доступности"
+services: load-balancer
+documentationcenter: load-balancer
+author: KumudD
+manager: timlt
+editor: tysonn
+tags: 
+ms.assetid: 
+ms.service: load-balancer
+ms.devlang: azurecli
+ms.topic: article
+ms.tgt_pltfrm: 
+ms.workload: infrastructure
+ms.date: 07/07/2017
+ms.author: kumud
+ms.openlocfilehash: 69a7753cc75b028e2bf093053d9a5fc0890562e8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 07/11/2017
+---
+# <a name="load-balance-traffic-to-vms-for-high-availability"></a><span data-ttu-id="90e16-103">Балансировка трафика на виртуальных машинах для обеспечения высокой доступности</span><span class="sxs-lookup"><span data-stu-id="90e16-103">Load balance traffic to VMs for high availability</span></span>
+
+<span data-ttu-id="90e16-104">Этот пример скрипта позволяет создать все необходимые компоненты для запуска нескольких виртуальных машин Ubuntu, настроенных в высокодоступной конфигурации с балансировкой нагрузки.</span><span class="sxs-lookup"><span data-stu-id="90e16-104">This script sample creates everything needed to run several Ubuntu virtual machines configured in a highly available and load balanced configuration.</span></span> <span data-ttu-id="90e16-105">После выполнения этого сценария будут созданы три виртуальные машины, которые будут добавлены в группу доступности Azure. Доступ к ним можно будет получить через Azure Load Balancer.</span><span class="sxs-lookup"><span data-stu-id="90e16-105">After running the script, you will have three virtual machines, joined to an Azure Availability Set, and accessible through an Azure Load Balancer.</span></span> 
+
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="sample-script"></a><span data-ttu-id="90e16-106">Пример скрипта</span><span class="sxs-lookup"><span data-stu-id="90e16-106">Sample script</span></span>
+
+<span data-ttu-id="90e16-107">[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.sh "Быстрое создание виртуальной машины")]</span><span class="sxs-lookup"><span data-stu-id="90e16-107">[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.sh "Quick Create VM")]</span></span>
+
+## <a name="clean-up-deployment"></a><span data-ttu-id="90e16-108">Очистка развертывания</span><span class="sxs-lookup"><span data-stu-id="90e16-108">Clean up deployment</span></span> 
+
+<span data-ttu-id="90e16-109">Выполните следующую команду, чтобы удалить группу ресурсов, виртуальную машину и все связанные с ней ресурсы.</span><span class="sxs-lookup"><span data-stu-id="90e16-109">Run the following command to remove the resource group, VM, and all related resources.</span></span>
+
+```azurecli
+az group delete --name myResourceGroup
+```
+
+## <a name="script-explanation"></a><span data-ttu-id="90e16-110">Описание скрипта</span><span class="sxs-lookup"><span data-stu-id="90e16-110">Script explanation</span></span>
+
+<span data-ttu-id="90e16-111">Для создания группы ресурсов, виртуальной машины, группы доступности, балансировщика нагрузки и всех связанных ресурсов этот скрипт использует следующие команды.</span><span class="sxs-lookup"><span data-stu-id="90e16-111">This script uses the following commands to create a resource group, virtual machine, availability set, load balancer, and all related resources.</span></span> <span data-ttu-id="90e16-112">Для каждой команды в таблице приведены ссылки на соответствующую документацию.</span><span class="sxs-lookup"><span data-stu-id="90e16-112">Each command in the table links to command specific documentation.</span></span>
+
+| <span data-ttu-id="90e16-113">Команда</span><span class="sxs-lookup"><span data-stu-id="90e16-113">Command</span></span> | <span data-ttu-id="90e16-114">Примечания</span><span class="sxs-lookup"><span data-stu-id="90e16-114">Notes</span></span> |
+|---|---|
+| [<span data-ttu-id="90e16-115">az group create</span><span class="sxs-lookup"><span data-stu-id="90e16-115">az group create</span></span>](https://docs.microsoft.com/cli/azure/group#create) | <span data-ttu-id="90e16-116">Создает группу ресурсов, в которой хранятся все ресурсы.</span><span class="sxs-lookup"><span data-stu-id="90e16-116">Creates a resource group in which all resources are stored.</span></span> |
+| [<span data-ttu-id="90e16-117">az network vnet create</span><span class="sxs-lookup"><span data-stu-id="90e16-117">az network vnet create</span></span>](https://docs.microsoft.com/cli/azure/network/vnet#create) | <span data-ttu-id="90e16-118">Создает виртуальную сеть и подсеть Azure.</span><span class="sxs-lookup"><span data-stu-id="90e16-118">Creates an Azure virtual network and subnet.</span></span> |
+| [<span data-ttu-id="90e16-119">az network public-ip create</span><span class="sxs-lookup"><span data-stu-id="90e16-119">az network public-ip create</span></span>](https://docs.microsoft.com/cli/azure/network/public-ip#create) | <span data-ttu-id="90e16-120">Создает общедоступный IP-адрес со статическим IP-адресом и связанным DNS-именем.</span><span class="sxs-lookup"><span data-stu-id="90e16-120">Creates a public IP address with a static IP address and an associated DNS name.</span></span> |
+| [<span data-ttu-id="90e16-121">az network lb create</span><span class="sxs-lookup"><span data-stu-id="90e16-121">az network lb create</span></span>](https://docs.microsoft.com/cli/azure/network/lb#create) | <span data-ttu-id="90e16-122">Создает службу Azure Load Balancer.</span><span class="sxs-lookup"><span data-stu-id="90e16-122">Creates an Azure load balancer.</span></span> |
+| [<span data-ttu-id="90e16-123">az network lb probe create</span><span class="sxs-lookup"><span data-stu-id="90e16-123">az network lb probe create</span></span>](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | <span data-ttu-id="90e16-124">Создает зонд подсистемы балансировки нагрузки.</span><span class="sxs-lookup"><span data-stu-id="90e16-124">Creates a load balancer probe.</span></span> <span data-ttu-id="90e16-125">Зонд подсистемы балансировки нагрузки используется для мониторинга каждой виртуальной машины в наборе подсистемы балансировки нагрузки.</span><span class="sxs-lookup"><span data-stu-id="90e16-125">A load balancer probe is used to monitor each VM in the load balancer set.</span></span> <span data-ttu-id="90e16-126">Если любая виртуальная машина становится недоступной, к ней не направляется трафик.</span><span class="sxs-lookup"><span data-stu-id="90e16-126">If any VM becomes inaccessible, traffic is not routed to the VM.</span></span> |
+| [<span data-ttu-id="90e16-127">az network lb rule create</span><span class="sxs-lookup"><span data-stu-id="90e16-127">az network lb rule create</span></span>](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | <span data-ttu-id="90e16-128">Создает правило подсистемы балансировки нагрузки.</span><span class="sxs-lookup"><span data-stu-id="90e16-128">Creates a load balancer rule.</span></span> <span data-ttu-id="90e16-129">В этом примере создается правило для порта 80.</span><span class="sxs-lookup"><span data-stu-id="90e16-129">In this sample, a rule is created for port 80.</span></span> <span data-ttu-id="90e16-130">Так как трафик HTTP поступает в подсистему балансировки нагрузки, он перенаправляется на порт 80 одной из виртуальных машин в наборе подсистемы балансировки нагрузки.</span><span class="sxs-lookup"><span data-stu-id="90e16-130">As HTTP traffic arrives at the load balancer, it is routed to port 80 one of the VMs in the LB set.</span></span> |
+| [<span data-ttu-id="90e16-131">az network lb inbound-nat-rule create</span><span class="sxs-lookup"><span data-stu-id="90e16-131">az network lb inbound-nat-rule create</span></span>](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) | <span data-ttu-id="90e16-132">Создает правило преобразования сетевых адресов (NAT) подсистемы балансировки нагрузки.</span><span class="sxs-lookup"><span data-stu-id="90e16-132">Creates load balancer Network Address Translation (NAT) rule.</span></span>  <span data-ttu-id="90e16-133">Правила NAT сопоставляют порт подсистемы балансировки нагрузки с портом виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="90e16-133">NAT rules map a port of the load balancer to a port on a VM.</span></span> <span data-ttu-id="90e16-134">В этом примере создается правило NAT для SSH-трафика к каждой виртуальной машине в наборе подсистемы балансировки нагрузки.</span><span class="sxs-lookup"><span data-stu-id="90e16-134">In this sample, a NAT rule is created for SSH traffic to each VM in the load balancer set.</span></span>  |
+| [<span data-ttu-id="90e16-135">az network nsg create</span><span class="sxs-lookup"><span data-stu-id="90e16-135">az network nsg create</span></span>](https://docs.microsoft.com/cli/azure/network/nsg#create) | <span data-ttu-id="90e16-136">Создает группу безопасности сети (NSG), которая выполняет роль периметра безопасности между Интернетом и виртуальной машиной.</span><span class="sxs-lookup"><span data-stu-id="90e16-136">Creates a network security group (NSG), which is a security boundary between the internet and the virtual machine.</span></span> |
+| [<span data-ttu-id="90e16-137">az network nsg rule create</span><span class="sxs-lookup"><span data-stu-id="90e16-137">az network nsg rule create</span></span>](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) | <span data-ttu-id="90e16-138">Создает правило NSG, разрешающее входящий трафик.</span><span class="sxs-lookup"><span data-stu-id="90e16-138">Creates an NSG rule to allow inbound traffic.</span></span> <span data-ttu-id="90e16-139">В этом примере открывается порт 22 для трафика SSH.</span><span class="sxs-lookup"><span data-stu-id="90e16-139">In this sample, port 22 is opened for SSH traffic.</span></span> |
+| [<span data-ttu-id="90e16-140">az network nic create</span><span class="sxs-lookup"><span data-stu-id="90e16-140">az network nic create</span></span>](https://docs.microsoft.com/cli/azure/network/nic#create) | <span data-ttu-id="90e16-141">Создает виртуальную сетевую карту и подключает ее к виртуальной сети, подсети и группе безопасности сети.</span><span class="sxs-lookup"><span data-stu-id="90e16-141">Creates a virtual network card and attaches it to the virtual network, subnet, and NSG.</span></span> |
+| [<span data-ttu-id="90e16-142">az vm availability-set create</span><span class="sxs-lookup"><span data-stu-id="90e16-142">az vm availability-set create</span></span>](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | <span data-ttu-id="90e16-143">Создает группу доступности.</span><span class="sxs-lookup"><span data-stu-id="90e16-143">Creates an availability set.</span></span> <span data-ttu-id="90e16-144">Группы доступности обеспечивают непрерывную работу приложения, распределяя виртуальные машины по физическим ресурсам. Таким образом, в случае сбоя он не затронет весь набор ресурсов.</span><span class="sxs-lookup"><span data-stu-id="90e16-144">Availability sets ensure application uptime by spreading the virtual machines across physical resources such that if failure occurs, the entire set is not effected.</span></span> |
+| [<span data-ttu-id="90e16-145">az vm create</span><span class="sxs-lookup"><span data-stu-id="90e16-145">az vm create</span></span>](/cli/azure/vm#create) | <span data-ttu-id="90e16-146">Создает виртуальную машину и подключает ее к сетевой карте, виртуальной сети, подсети и группе безопасности сети.</span><span class="sxs-lookup"><span data-stu-id="90e16-146">Creates the virtual machine and connects it to the network card, virtual network, subnet, and NSG.</span></span> <span data-ttu-id="90e16-147">Эта команда также указывает образ виртуальной машины, который будет использоваться, и учетные данные администратора.</span><span class="sxs-lookup"><span data-stu-id="90e16-147">This command also specifies the virtual machine image to be used and administrative credentials.</span></span>  |
+| [<span data-ttu-id="90e16-148">az group delete</span><span class="sxs-lookup"><span data-stu-id="90e16-148">az group delete</span></span>](https://docs.microsoft.com/cli/azure/vm/extension#set) | <span data-ttu-id="90e16-149">Удаляет группу ресурсов со всеми вложенными ресурсами.</span><span class="sxs-lookup"><span data-stu-id="90e16-149">Deletes a resource group including all nested resources.</span></span> |
+
+## <a name="next-steps"></a><span data-ttu-id="90e16-150">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="90e16-150">Next steps</span></span>
+
+<span data-ttu-id="90e16-151">Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="90e16-151">For more information on the Azure CLI, see [Azure CLI documentation](https://docs.microsoft.com/cli/azure/overview).</span></span>
+
+<span data-ttu-id="90e16-152">Дополнительные примеры сценариев Azure CLI для сетей Azure см. в [документации по сетям Azure](../cli-samples.md).</span><span class="sxs-lookup"><span data-stu-id="90e16-152">Additional Azure Networking CLI script samples can be found in the [Azure Networking documentation](../cli-samples.md).</span></span>

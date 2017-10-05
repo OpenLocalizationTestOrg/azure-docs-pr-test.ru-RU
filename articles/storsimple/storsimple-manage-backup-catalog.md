@@ -1,0 +1,93 @@
+---
+title: "Управление каталогом архивов StorSimple | Документация Майкрософт"
+description: "В этой статье описываются способы использования страницы каталога резервного копирования службы диспетчера StorSimple для перечисления, выбора и удаления резервных наборов данных для тома."
+services: storsimple
+documentationcenter: NA
+author: SharS
+manager: carmonm
+editor: 
+ms.assetid: ad81bee9-fe43-40b3-a384-b15fb274ecd9
+ms.service: storsimple
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: TBD
+ms.date: 04/28/2016
+ms.author: v-sharos
+ms.openlocfilehash: 5ee9855e1428c7a2d871d9c215d302c5c3b7101a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 07/11/2017
+---
+# <a name="use-the-storsimple-manager-service-to-manage-your-backup-catalog"></a><span data-ttu-id="aeb55-103">Использование службы диспетчера StorSimple для управления каталогом резервного копирования</span><span class="sxs-lookup"><span data-stu-id="aeb55-103">Use the StorSimple Manager service to manage your backup catalog</span></span>
+## <a name="overview"></a><span data-ttu-id="aeb55-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="aeb55-104">Overview</span></span>
+<span data-ttu-id="aeb55-105">На странице **Каталог резервного копирования** службы StorSimple Manager находятся все наборы резервных копий, созданных во время ручной или запланированной архивации.</span><span class="sxs-lookup"><span data-stu-id="aeb55-105">The StorSimple Manager service **Backup Catalog** page displays all the backup sets that are created when manual or scheduled backups are taken.</span></span> <span data-ttu-id="aeb55-106">Эта страница позволяет просмотреть все резервные копии для определенной политики резервного копирования или определенного тома, выбрать или удалить резервные копии или использовать резервную копию для восстановления или клонирования тома.</span><span class="sxs-lookup"><span data-stu-id="aeb55-106">You can use this page to list all the backups for a backup policy or a volume, select or delete backups, or use a backup to restore or clone a volume.</span></span>
+
+<span data-ttu-id="aeb55-107">В этом учебнике описывается, как выбирать и удалять резервный набор данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-107">This tutorial explains how to list, select, and delete a backup set.</span></span> <span data-ttu-id="aeb55-108">Сведения о восстановлении устройства из архива см. в разделе [Восстановление тома StorSimple из резервного набора данных](storsimple-restore-from-backup-set.md).</span><span class="sxs-lookup"><span data-stu-id="aeb55-108">To learn how to restore your device from backup, go to [Restore your device from a backup set](storsimple-restore-from-backup-set.md).</span></span> <span data-ttu-id="aeb55-109">Сведения о клонировании тома см. в разделе [Клонирование тома с помощью службы диспетчера StorSimple](storsimple-clone-volume.md).</span><span class="sxs-lookup"><span data-stu-id="aeb55-109">To learn how to clone a volume, go to [Clone a StorSimple volume](storsimple-clone-volume.md).</span></span>
+
+![Каталог резервного копирования](./media/storsimple-manage-backup-catalog/backupcatalog.png) 
+
+<span data-ttu-id="aeb55-111">На странице **Каталог резервного копирования** можно создать запрос, который поможет сузить спектр выбранных резервных наборов данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-111">The **Backup Catalog** page provides a query to narrow your backup set selection.</span></span> <span data-ttu-id="aeb55-112">Вы можете фильтровать полученные резервные наборы данных по следующим параметрам:</span><span class="sxs-lookup"><span data-stu-id="aeb55-112">You can filter the backup sets that are retrieved, based on the following parameters:</span></span>
+
+* <span data-ttu-id="aeb55-113">**Устройство** — устройство, на котором был создан резервный набор данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-113">**Device** – The device on which the backup set was created.</span></span>
+* <span data-ttu-id="aeb55-114">**Политика или том резервного копирования** — политика или том резервного копирования, связанные с этим резервным набором данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-114">**Backup Policy or Volume** – The backup policy or volume associated with this backup set.</span></span>
+* <span data-ttu-id="aeb55-115">**От и до** — диапазон дат и времени создания резервного набора данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-115">**From and To** – The date and time range when the backup set was created.</span></span>
+
+<span data-ttu-id="aeb55-116">Затем отфильтрованные резервные наборы данных будут представлены в табличной форме на основе следующих атрибутов:</span><span class="sxs-lookup"><span data-stu-id="aeb55-116">The filtered backup sets are then tabulated based on the following attributes:</span></span>
+
+* <span data-ttu-id="aeb55-117">**Имя** — имя политики резервного копирования или тома, связанное с резервным набором данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-117">**Name** – The name of the backup policy or volume associated with the backup set.</span></span>
+* <span data-ttu-id="aeb55-118">**Размер** — фактический размер резервного набора данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-118">**Size** – The actual size of the backup set.</span></span>
+* <span data-ttu-id="aeb55-119">**Создано** — дата и время создания резервных копий.</span><span class="sxs-lookup"><span data-stu-id="aeb55-119">**Created On** – The date and time when the backups were created.</span></span> 
+* <span data-ttu-id="aeb55-120">**Тип** — наборы резервного копирования могут представлять собой локальные моментальные снимки или облачные моментальные снимки.</span><span class="sxs-lookup"><span data-stu-id="aeb55-120">**Type** – Backup sets can be local snapshots or cloud snapshots.</span></span> <span data-ttu-id="aeb55-121">Локальный моментальный снимок — это резервная копия всех данных тома, которая хранится локально на устройстве, а облачный моментальный снимок — это резервная копия данных тома, хранящаяся в облаке.</span><span class="sxs-lookup"><span data-stu-id="aeb55-121">A local snapshot is a backup of all your volume data stored locally on the device, whereas a cloud snapshot refers to the backup of volume data residing in the cloud.</span></span> <span data-ttu-id="aeb55-122">Локальные моментальные снимки обеспечивают более быстрый доступ, а облачные моментальные снимки выбираются для обеспечения устойчивости данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-122">Local snapshots provide faster access, whereas cloud snapshots are chosen for data resiliency.</span></span>
+* <span data-ttu-id="aeb55-123">**Инициировано** — резервные копии могут инициироваться автоматически по расписанию или вручную пользователем.</span><span class="sxs-lookup"><span data-stu-id="aeb55-123">**Initiated By** – The backups can be initiated automatically by a schedule or manually by a user.</span></span> <span data-ttu-id="aeb55-124">Для планирования резервного копирования можно использовать политику резервного копирования.</span><span class="sxs-lookup"><span data-stu-id="aeb55-124">You can use a backup policy to schedule backups.</span></span> <span data-ttu-id="aeb55-125">Кроме того, можно использовать параметр **Создать резервную копию** для резервного копирования вручную.</span><span class="sxs-lookup"><span data-stu-id="aeb55-125">Alternatively, you can use the **Take backup** option to take a manual backup.</span></span>
+
+## <a name="list-backup-sets-for-a-volume"></a><span data-ttu-id="aeb55-126">Создание списка резервных наборов данных для тома</span><span class="sxs-lookup"><span data-stu-id="aeb55-126">List backup sets for a volume</span></span>
+<span data-ttu-id="aeb55-127">Выполните следующие действия, чтобы создать список всех резервных копий для тома.</span><span class="sxs-lookup"><span data-stu-id="aeb55-127">Complete the following steps to list all the backups for a volume.</span></span>
+
+#### <a name="to-list-backup-sets"></a><span data-ttu-id="aeb55-128">Для создания списка резервных наборов данных</span><span class="sxs-lookup"><span data-stu-id="aeb55-128">To list backup sets</span></span>
+1. <span data-ttu-id="aeb55-129">На странице службы диспетчера StorSimple щелкните вкладку **Каталог резервных копий** .</span><span class="sxs-lookup"><span data-stu-id="aeb55-129">On the StorSimple Manager service page, click the **Backup catalog** tab.</span></span>
+2. <span data-ttu-id="aeb55-130">Отфильтруйте выбранные элементы следующим образом:</span><span class="sxs-lookup"><span data-stu-id="aeb55-130">Filter the selections as follows:</span></span>
+   
+   1. <span data-ttu-id="aeb55-131">Выберите подходящее устройство.</span><span class="sxs-lookup"><span data-stu-id="aeb55-131">Select the appropriate device.</span></span>
+   2. <span data-ttu-id="aeb55-132">В раскрывающемся списке выберите том для просмотра соответствующих резервных копий.</span><span class="sxs-lookup"><span data-stu-id="aeb55-132">In the drop-down list, choose a volume to view the corresponding the backups.</span></span>
+   3. <span data-ttu-id="aeb55-133">Укажите интервал времени.</span><span class="sxs-lookup"><span data-stu-id="aeb55-133">Specify the time range.</span></span>
+   4. <span data-ttu-id="aeb55-134">Щелкните значок с изображением флажка </span><span class="sxs-lookup"><span data-stu-id="aeb55-134">Click the check icon</span></span> ![значок с изображением флажка](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) <span data-ttu-id="aeb55-136">, чтобы выполнить этот запрос.</span><span class="sxs-lookup"><span data-stu-id="aeb55-136">to execute this query.</span></span>
+      
+      <span data-ttu-id="aeb55-137">В списке резервных наборов данных должны отобразиться резервные копии, связанные с выбранным томом.</span><span class="sxs-lookup"><span data-stu-id="aeb55-137">The backups associated with the selected volume should appear in the list of backup sets.</span></span>
+
+## <a name="select-a-backup-set"></a><span data-ttu-id="aeb55-138">Выбор резервного набора данных</span><span class="sxs-lookup"><span data-stu-id="aeb55-138">Select a backup set</span></span>
+<span data-ttu-id="aeb55-139">Чтобы выбрать резервный набор данных для тома или политики резервного копирования, выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="aeb55-139">Complete the following steps to select a backup set for a volume or backup policy.</span></span>
+
+#### <a name="to-select-a-backup-set"></a><span data-ttu-id="aeb55-140">Для выбора резервного набора данных</span><span class="sxs-lookup"><span data-stu-id="aeb55-140">To select a backup set</span></span>
+1. <span data-ttu-id="aeb55-141">На странице службы диспетчера StorSimple щелкните вкладку **Каталог резервных копий** .</span><span class="sxs-lookup"><span data-stu-id="aeb55-141">On the StorSimple Manager service page, click the **Backup catalog** tab.</span></span>
+2. <span data-ttu-id="aeb55-142">Отфильтруйте выбранные элементы следующим образом:</span><span class="sxs-lookup"><span data-stu-id="aeb55-142">Filter the selections as follows:</span></span>
+   
+   1. <span data-ttu-id="aeb55-143">Выберите подходящее устройство.</span><span class="sxs-lookup"><span data-stu-id="aeb55-143">Select the appropriate device.</span></span>
+   2. <span data-ttu-id="aeb55-144">В раскрывающемся списке выберите том или политику резервного копирования для той резервной копии, которую нужно выбрать.</span><span class="sxs-lookup"><span data-stu-id="aeb55-144">In the drop-down list, choose the volume or backup policy for the backup that you wish to select.</span></span>
+   3. <span data-ttu-id="aeb55-145">Укажите интервал времени.</span><span class="sxs-lookup"><span data-stu-id="aeb55-145">Specify the time range.</span></span>
+   4. <span data-ttu-id="aeb55-146">Щелкните значок с изображением флажка </span><span class="sxs-lookup"><span data-stu-id="aeb55-146">Click the check icon</span></span> ![значок с изображением флажка](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) <span data-ttu-id="aeb55-148">, чтобы выполнить этот запрос.</span><span class="sxs-lookup"><span data-stu-id="aeb55-148">to execute this query.</span></span>
+      
+      <span data-ttu-id="aeb55-149">В списке резервных наборов данных должны отобразиться резервные копии, связанные с выбранным томом или политикой резервного копирования.</span><span class="sxs-lookup"><span data-stu-id="aeb55-149">The backups associated with the selected volume or backup policy should appear in the list of backup sets.</span></span>
+3. <span data-ttu-id="aeb55-150">Выберите и разверните резервный набор данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-150">Select and expand a backup set.</span></span> <span data-ttu-id="aeb55-151">Параметры **Восстановить** и **Удалить** отображаются в нижней части страницы.</span><span class="sxs-lookup"><span data-stu-id="aeb55-151">The **Restore** and **Delete** options are displayed at the bottom of the page.</span></span> <span data-ttu-id="aeb55-152">С выбранным резервным набором данных можно выполнить одно из следующих действий.</span><span class="sxs-lookup"><span data-stu-id="aeb55-152">You can perform either of these actions on the backup set that you selected.</span></span>
+
+## <a name="delete-a-backup-set"></a><span data-ttu-id="aeb55-153">Удаление резервного набора данных</span><span class="sxs-lookup"><span data-stu-id="aeb55-153">Delete a backup set</span></span>
+<span data-ttu-id="aeb55-154">Удаление резервной копии, если больше не требуется хранить связанные с ней данные.</span><span class="sxs-lookup"><span data-stu-id="aeb55-154">Delete a backup when you no longer wish to retain the data associated with it.</span></span> <span data-ttu-id="aeb55-155">Чтобы удалить резервный набор данных, выполните указанные ниже действия.</span><span class="sxs-lookup"><span data-stu-id="aeb55-155">Perform the following steps to delete a backup set.</span></span>
+
+#### <a name="to-delete-a-backup-set"></a><span data-ttu-id="aeb55-156">Чтобы удалить резервный набор данных</span><span class="sxs-lookup"><span data-stu-id="aeb55-156">To delete a backup set</span></span>
+1. <span data-ttu-id="aeb55-157">На странице службы диспетчера StorSimple откройте вкладку **Каталог резервного копирования**.</span><span class="sxs-lookup"><span data-stu-id="aeb55-157">On the StorSimple Manager service page, click the **Backup Catalog tab**.</span></span>
+2. <span data-ttu-id="aeb55-158">Отфильтруйте выбранные элементы следующим образом:</span><span class="sxs-lookup"><span data-stu-id="aeb55-158">Filter the selections as follows:</span></span>
+   
+   1. <span data-ttu-id="aeb55-159">Выберите подходящее устройство.</span><span class="sxs-lookup"><span data-stu-id="aeb55-159">Select the appropriate device.</span></span>
+   2. <span data-ttu-id="aeb55-160">В раскрывающемся списке выберите том или политику резервного копирования для той резервной копии, которую нужно выбрать.</span><span class="sxs-lookup"><span data-stu-id="aeb55-160">In the drop-down list, choose the volume or backup policy for the backup that you wish to select.</span></span>
+   3. <span data-ttu-id="aeb55-161">Укажите интервал времени.</span><span class="sxs-lookup"><span data-stu-id="aeb55-161">Specify the time range.</span></span>
+   4. <span data-ttu-id="aeb55-162">Щелкните значок с изображением флажка </span><span class="sxs-lookup"><span data-stu-id="aeb55-162">Click the check icon</span></span> ![значок с изображением флажка](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) <span data-ttu-id="aeb55-164">, чтобы выполнить этот запрос.</span><span class="sxs-lookup"><span data-stu-id="aeb55-164">to execute this query.</span></span>
+      
+      <span data-ttu-id="aeb55-165">В списке резервных наборов данных должны отобразиться резервные копии, связанные с выбранным томом или политикой резервного копирования.</span><span class="sxs-lookup"><span data-stu-id="aeb55-165">The backups associated with the selected volume or backup policy should appear in the list of backup sets.</span></span>
+3. <span data-ttu-id="aeb55-166">Выберите и разверните резервный набор данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-166">Select and expand a backup set.</span></span> <span data-ttu-id="aeb55-167">Параметры **Восстановить** и **Удалить** отображаются в нижней части страницы.</span><span class="sxs-lookup"><span data-stu-id="aeb55-167">The **Restore** and **Delete** options are displayed at the bottom of the page.</span></span> <span data-ttu-id="aeb55-168">Нажмите кнопку **Delete**(Удалить).</span><span class="sxs-lookup"><span data-stu-id="aeb55-168">Click **Delete**.</span></span>
+4. <span data-ttu-id="aeb55-169">Во время выполнения удаления и его успешного завершения вы получите уведомление.</span><span class="sxs-lookup"><span data-stu-id="aeb55-169">You will be notified when the deletion is in progress and when it has successfully finished.</span></span> <span data-ttu-id="aeb55-170">После завершения удаления обновите запрос на этой странице.</span><span class="sxs-lookup"><span data-stu-id="aeb55-170">After the deletion is done, refresh the query on this page.</span></span> <span data-ttu-id="aeb55-171">Удаленный резервный набор данных больше не будет отображаться в списке резервных наборов данных.</span><span class="sxs-lookup"><span data-stu-id="aeb55-171">The deleted backup set will no longer appear in the list of backup sets.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="aeb55-172">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="aeb55-172">Next steps</span></span>
+* <span data-ttu-id="aeb55-173">Узнайте об использовании каталога резервного копирования [для восстановления устройства с помощью набора архивации](storsimple-restore-from-backup-set.md).</span><span class="sxs-lookup"><span data-stu-id="aeb55-173">Learn how to [use the backup catalog to restore your device from a backup set](storsimple-restore-from-backup-set.md).</span></span>
+* <span data-ttu-id="aeb55-174">Узнайте об [использовании службы диспетчера StorSimple для администрирования устройства StorSimple](storsimple-manager-service-administration.md).</span><span class="sxs-lookup"><span data-stu-id="aeb55-174">Learn how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).</span></span>
+
