@@ -1,0 +1,71 @@
+---
+title: "Соединители прокси приложения Azure AD на классическом портале | Документация Майкрософт"
+description: "Этот раздел описывает создание групп соединителей в прокси приложения Azure AD и управление ими."
+services: active-directory
+documentationcenter: 
+author: kgremban
+manager: femila
+ms.assetid: b283796a-9679-4c79-b703-802bb850f65d
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/23/2017
+ms.author: kgremban
+ms.reviewer: harshja
+ms.custom: it-pro; oldportal
+ms.openlocfilehash: fc65c4053c45d9c16c62ee0fe65924133a4bb94a
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/03/2017
+---
+# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a><span data-ttu-id="82edd-103">Публикация приложений в отдельных сетях и расположениях с помощью групп соединителей</span><span class="sxs-lookup"><span data-stu-id="82edd-103">Publish applications on separate networks and locations using connector groups</span></span>
+> [!div class="op_single_selector"]
+> * [<span data-ttu-id="82edd-104">Портал Azure</span><span class="sxs-lookup"><span data-stu-id="82edd-104">Azure portal</span></span>](active-directory-application-proxy-connectors-azure-portal.md)
+> * [<span data-ttu-id="82edd-105">Классический портал Azure</span><span class="sxs-lookup"><span data-stu-id="82edd-105">Azure classic portal</span></span>](active-directory-application-proxy-connectors.md)
+>
+>
+
+<span data-ttu-id="82edd-106">Группы соединителей удобно использовать в нескольких сценариях, включая следующие:</span><span class="sxs-lookup"><span data-stu-id="82edd-106">Connector groups are useful for various scenarios, including:</span></span>
+
+* <span data-ttu-id="82edd-107">Сайты с несколькими взаимосвязанными центрами обработки данных.</span><span class="sxs-lookup"><span data-stu-id="82edd-107">Sites with multiple interconnected datacenters.</span></span> <span data-ttu-id="82edd-108">В этом сценарии требуется передавать за пределы центров обработки данных минимальный объем трафика и не использовать каналы связи между центрами, которые дороги и медленны.</span><span class="sxs-lookup"><span data-stu-id="82edd-108">In this case, you want to keep as much traffic within the datacenter as possible because cross-datacenter links are expensive and slow.</span></span> <span data-ttu-id="82edd-109">Вы можете развернуть соединители в каждом центре обработки данных для обслуживания только приложений, которые находятся в центре обработки данных.</span><span class="sxs-lookup"><span data-stu-id="82edd-109">You can deploy connectors in each datacenter to serve only the applications that reside within the datacenter.</span></span> <span data-ttu-id="82edd-110">Такой подход сводит к минимуму ссылки между центрами и предоставляет пользователям полностью прозрачное взаимодействие.</span><span class="sxs-lookup"><span data-stu-id="82edd-110">This approach minimizes cross-datacenter links and provides an entirely transparent experience to your users.</span></span>
+* <span data-ttu-id="82edd-111">Управление приложениями, которые установлены в изолированных сетях, не являющихся частью главной корпоративной сети.</span><span class="sxs-lookup"><span data-stu-id="82edd-111">Managing applications installed on isolated networks that are not part of the main corporate network.</span></span> <span data-ttu-id="82edd-112">Вы можете использовать группы соединителей для установки выделенных соединителей для изолированных сетей, чтобы ограничить область действия приложений соответствующей сетью.</span><span class="sxs-lookup"><span data-stu-id="82edd-112">You can use connector groups to install dedicated connectors on isolated networks to also isolate applications to the network.</span></span>
+* <span data-ttu-id="82edd-113">Для приложений, установленных в IaaS для доступа к облаку, группы соединителей обеспечивают общую службу для защиты доступа ко всем приложениям.</span><span class="sxs-lookup"><span data-stu-id="82edd-113">For applications installed on IaaS for cloud access, connector groups provide a common service to secure the access to all the apps.</span></span> <span data-ttu-id="82edd-114">Группы соединителей не создают дополнительную зависимость для корпоративной сети и не разделяют взаимодействие с приложениями.</span><span class="sxs-lookup"><span data-stu-id="82edd-114">Connector groups don't create additional dependency on your corporate network, or fragment the app experience.</span></span> <span data-ttu-id="82edd-115">Соединители можно установить в каждом облачном центре обработки данных для обслуживания только тех приложений, которые размещены в этой сети.</span><span class="sxs-lookup"><span data-stu-id="82edd-115">Connectors can be installed on every cloud datacenter and serve only applications that reside in this network.</span></span> <span data-ttu-id="82edd-116">Можно установить несколько соединителей для обеспечения высокой доступности.</span><span class="sxs-lookup"><span data-stu-id="82edd-116">You can install several connectors to achieve high availability.</span></span>
+* <span data-ttu-id="82edd-117">Поддержка сред с несколькими лесами, в которых для леса можно развернуть отдельные соединители, обрабатывающие определенные приложения.</span><span class="sxs-lookup"><span data-stu-id="82edd-117">Support for multi-forest environments in which specific connectors can be deployed per forest and set to serve specific applications.</span></span>
+* <span data-ttu-id="82edd-118">Группы соединителей могут применяться на сайтах аварийного восстановления для определения отработки отказа или в качестве резерва для основного сайта.</span><span class="sxs-lookup"><span data-stu-id="82edd-118">Connector groups can be used in Disaster Recovery sites to either detect failover or as backup for the main site.</span></span>
+* <span data-ttu-id="82edd-119">Группы соединителей также можно использовать для обслуживания нескольких компаний из одного клиента.</span><span class="sxs-lookup"><span data-stu-id="82edd-119">Connector groups can also be used to serve multiple companies from a single tenant.</span></span>
+
+## <a name="prerequisite-create-your-connectors"></a><span data-ttu-id="82edd-120">Необходимое условие: создание соединителей</span><span class="sxs-lookup"><span data-stu-id="82edd-120">Prerequisite: Create your connectors</span></span>
+<span data-ttu-id="82edd-121">Чтобы сгруппировать соединители, [установите несколько соединителей](active-directory-application-proxy-enable.md), введите имя и объедините их в группу.</span><span class="sxs-lookup"><span data-stu-id="82edd-121">To group your connectors, [install multiple connectors](active-directory-application-proxy-enable.md), then name and group them.</span></span> <span data-ttu-id="82edd-122">После этого их необходимо назначить конкретным приложениям.</span><span class="sxs-lookup"><span data-stu-id="82edd-122">Finally you have to assign them to specific apps.</span></span>
+
+## <a name="step-1-create-connector-groups"></a><span data-ttu-id="82edd-123">Шаг 1. Создание групп соединителей</span><span class="sxs-lookup"><span data-stu-id="82edd-123">Step 1: Create connector groups</span></span>
+<span data-ttu-id="82edd-124">Можно создать любое число групп соединителей.</span><span class="sxs-lookup"><span data-stu-id="82edd-124">You can create as many connector groups as you want.</span></span> <span data-ttu-id="82edd-125">Для создания группы соединителей используется классический портал Azure.</span><span class="sxs-lookup"><span data-stu-id="82edd-125">Connector group creation is accomplished in the Azure classic portal.</span></span>
+
+1. <span data-ttu-id="82edd-126">Выберите свой каталог и щелкните **Настройка**.</span><span class="sxs-lookup"><span data-stu-id="82edd-126">Select your directory and click **Configure**.</span></span>  
+    <span data-ttu-id="82edd-127">![Снимок экрана: настройка прокси приложения: выбор "Управление группами соединителей"](./media/active-directory-application-proxy-connectors/app_proxy_connectors_creategroup.png)</span><span class="sxs-lookup"><span data-stu-id="82edd-127">![Application proxy, configure screenshot - click manage connector groups](./media/active-directory-application-proxy-connectors/app_proxy_connectors_creategroup.png)</span></span>
+2. <span data-ttu-id="82edd-128">В разделе "Прокси приложения" щелкните **Управление группами соединителей** и создайте группу соединителей, указав ее имя.</span><span class="sxs-lookup"><span data-stu-id="82edd-128">Under Application Proxy, click **Manage Connector Groups** and create a connector group by giving the group a name.</span></span>  
+    <span data-ttu-id="82edd-129">![Снимок экрана групп соединителей прокси приложения: присвоение имени для новой группы](./media/active-directory-application-proxy-connectors/app_proxy_connectors_namegroup.png)</span><span class="sxs-lookup"><span data-stu-id="82edd-129">![Application proxy connector groups screenshot - name new group](./media/active-directory-application-proxy-connectors/app_proxy_connectors_namegroup.png)</span></span>
+
+## <a name="step-2-assign-connectors-to-your-groups"></a><span data-ttu-id="82edd-130">Шаг 2. Назначение соединителей группам</span><span class="sxs-lookup"><span data-stu-id="82edd-130">Step 2: Assign connectors to your groups</span></span>
+<span data-ttu-id="82edd-131">После создания групп соединителей переместите соединители в соответствующую группу.</span><span class="sxs-lookup"><span data-stu-id="82edd-131">Once the connector groups are created, move the connectors to the appropriate group.</span></span>
+
+1. <span data-ttu-id="82edd-132">В разделе **Прокси приложения** нажмите кнопку **Управление соединителями**.</span><span class="sxs-lookup"><span data-stu-id="82edd-132">Under **Application Proxy**, click **Manage Connectors**.</span></span>
+2. <span data-ttu-id="82edd-133">В столбце **Группа**выберите группу для каждого соединителя.</span><span class="sxs-lookup"><span data-stu-id="82edd-133">Under **Group**, select the group you want for each connector.</span></span> <span data-ttu-id="82edd-134">Для того, чтобы соединители стали активными в новой группе, может потребоваться до 10 минут.</span><span class="sxs-lookup"><span data-stu-id="82edd-134">It might take the connectors up to 10 minutes to become active in the new group.</span></span>  
+    <span data-ttu-id="82edd-135">![Снимок экрана соединителей прокси приложения: выбор группы из раскрывающегося меню](./media/active-directory-application-proxy-connectors/app_proxy_connectors_connectorlist.png)</span><span class="sxs-lookup"><span data-stu-id="82edd-135">![Application proxy connectors screenshot - select group from dropdown menu](./media/active-directory-application-proxy-connectors/app_proxy_connectors_connectorlist.png)</span></span>
+
+## <a name="step-3-assign-applications-to-your-connector-groups"></a><span data-ttu-id="82edd-136">Шаг 3. Назначение приложений группам соединителей</span><span class="sxs-lookup"><span data-stu-id="82edd-136">Step 3: Assign applications to your connector groups</span></span>
+<span data-ttu-id="82edd-137">Последний шаг — назначить каждое приложение той группе соединителей, которая будет его обслуживать.</span><span class="sxs-lookup"><span data-stu-id="82edd-137">The last step is to set each application to the connector group that serves it.</span></span>
+
+1. <span data-ttu-id="82edd-138">В своем каталоге на классическом портале Azure выберите приложение, которое необходимо назначить группе, и щелкните **Настройка**.</span><span class="sxs-lookup"><span data-stu-id="82edd-138">In the Azure classic portal, in your directory, select the Application you want to assign to the group and click **Configure**.</span></span>
+2. <span data-ttu-id="82edd-139">В разделе **Группа соединителей**выберите группу, которую должно использовать приложение.</span><span class="sxs-lookup"><span data-stu-id="82edd-139">Under **Connector group**, select the group you want the application to use.</span></span> <span data-ttu-id="82edd-140">Это изменение применяется немедленно.</span><span class="sxs-lookup"><span data-stu-id="82edd-140">This change is immediately applied.</span></span>  
+    <span data-ttu-id="82edd-141">![Снимок экрана группы соединителей прокси приложения: выбор группы из раскрывающегося меню](./media/active-directory-application-proxy-connectors/app_proxy_connectors_newgroup.png)</span><span class="sxs-lookup"><span data-stu-id="82edd-141">![Application proxy connector group screenshot - select group from dropdown menu](./media/active-directory-application-proxy-connectors/app_proxy_connectors_newgroup.png)</span></span>
+
+## <a name="see-also"></a><span data-ttu-id="82edd-142">Дополнительные материалы</span><span class="sxs-lookup"><span data-stu-id="82edd-142">See also</span></span>
+* [<span data-ttu-id="82edd-143">Включение прокси приложения</span><span class="sxs-lookup"><span data-stu-id="82edd-143">Enable Application Proxy</span></span>](active-directory-application-proxy-enable.md)
+* [<span data-ttu-id="82edd-144">Включение единого входа</span><span class="sxs-lookup"><span data-stu-id="82edd-144">Enable single-sign on</span></span>](active-directory-application-proxy-sso-using-kcd.md)
+* [<span data-ttu-id="82edd-145">Включение условного доступа</span><span class="sxs-lookup"><span data-stu-id="82edd-145">Enable conditional access</span></span>](active-directory-application-proxy-conditional-access.md)
+* [<span data-ttu-id="82edd-146">Устранение неполадок с прокси приложения</span><span class="sxs-lookup"><span data-stu-id="82edd-146">Troubleshoot issues you're having with Application Proxy</span></span>](active-directory-application-proxy-troubleshoot.md)
+
+<span data-ttu-id="82edd-147">Последние новости и обновления см. в [блоге, посвященном прокси приложения](http://blogs.technet.com/b/applicationproxyblog/).</span><span class="sxs-lookup"><span data-stu-id="82edd-147">For the latest news and updates, check out the [Application Proxy blog](http://blogs.technet.com/b/applicationproxyblog/)</span></span>

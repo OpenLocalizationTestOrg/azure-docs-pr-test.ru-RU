@@ -1,0 +1,112 @@
+---
+title: "Руководство по интеграции Azure Active Directory с песочницей Salesforce | Документация Майкрософт"
+description: "Узнайте, как настроить единый вход Azure Active Directory в песочнице Salesforce."
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: femila
+ms.assetid: bab73fda-6754-411d-9288-f73ecdaa486d
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/18/2017
+ms.author: jeedes
+ms.openlocfilehash: 7d3c655a754f83284c386d2007c604a731367814
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 07/11/2017
+---
+# <a name="tutorial-configuring-salesforce-sandbox-for-automatic-user-provisioning"></a><span data-ttu-id="41086-103">Руководство по настройке песочницы Salesforce для автоматической подготовки пользователей</span><span class="sxs-lookup"><span data-stu-id="41086-103">Tutorial: Configuring Salesforce Sandbox for Automatic User Provisioning</span></span>
+
+<span data-ttu-id="41086-104">Цель этого учебника — показать, как в песочнице Salesforce и Azure AD необходимо выполнять автоматическую подготовку и отмену подготовки учетных записей пользователей из Azure AD в песочницу Salesforce.</span><span class="sxs-lookup"><span data-stu-id="41086-104">The objective of this tutorial is to show you the steps you need to perform in Salesforce Sandbox and Azure AD to automatically provision and de-provision user accounts from Azure AD to Salesforce Sandbox.</span></span>
+
+## <a name="prerequisites"></a><span data-ttu-id="41086-105">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="41086-105">Prerequisites</span></span>
+
+<span data-ttu-id="41086-106">Сценарий, описанный в этом учебнике, предполагает, что у вас уже имеется:</span><span class="sxs-lookup"><span data-stu-id="41086-106">The scenario outlined in this tutorial assumes that you already have the following items:</span></span>
+
+*   <span data-ttu-id="41086-107">Клиент Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="41086-107">An Azure Active directory tenant.</span></span>
+*   <span data-ttu-id="41086-108">У вас должен быть действительный клиент для работы с песочницей Salesforce for Work или песочницей Salesforce for Education.</span><span class="sxs-lookup"><span data-stu-id="41086-108">You must have a valid tenant for Salesforce Sandbox for Work or Salesforce Sandbox for Education.</span></span> <span data-ttu-id="41086-109">Для любой из этих служб можно воспользоваться бесплатной пробной учетной записью.</span><span class="sxs-lookup"><span data-stu-id="41086-109">You may use a free trial     account for either service.</span></span>
+*   <span data-ttu-id="41086-110">Учетная запись пользователя в песочнице Salesforce с разрешениями администратора группы.</span><span class="sxs-lookup"><span data-stu-id="41086-110">A user account in Salesforce Sandbox with Team Admin permissions.</span></span>
+
+## <a name="assigning-users-to-salesforce-sandbox"></a><span data-ttu-id="41086-111">Назначение пользователей в песочнице Salesforce</span><span class="sxs-lookup"><span data-stu-id="41086-111">Assigning users to Salesforce Sandbox</span></span>
+
+<span data-ttu-id="41086-112">В Azure Active Directory для определения того, какие пользователи должны получать доступ к выбранным приложениям, используется концепция, называемая "назначение".</span><span class="sxs-lookup"><span data-stu-id="41086-112">Azure Active Directory uses a concept called "assignments" to determine which users should receive access to selected apps.</span></span> <span data-ttu-id="41086-113">В контексте автоматической подготовки учетной записи синхронизированы будут только те пользователи и группы, которые были "назначены" приложению в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="41086-113">In the context of automatic user account provisioning, only the users and groups that have been "assigned" to an application in Azure AD are synchronized.</span></span>
+
+<span data-ttu-id="41086-114">Перед настройкой и включением службы подготовки необходимо решить, какие пользователи или группы в Azure AD представляют пользователей, которым необходим доступ к песочнице Salesforce.</span><span class="sxs-lookup"><span data-stu-id="41086-114">Before configuring and enabling the provisioning service, you need to decide what users and/or groups in Azure AD represent the users who need access to your Salesforce Sandbox app.</span></span> <span data-ttu-id="41086-115">Когда этот вопрос будет решен, можно назначить этих пользователей песочнице Salesforce, следуя нижеперечисленным указаниям.</span><span class="sxs-lookup"><span data-stu-id="41086-115">Once decided, you can assign these users to your Salesforce Sandbox app by following the instructions here:</span></span>
+
+[<span data-ttu-id="41086-116">Назначение корпоративному приложению пользователя или группы</span><span class="sxs-lookup"><span data-stu-id="41086-116">Assign a user or group to an enterprise app</span></span>](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+
+### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a><span data-ttu-id="41086-117">Важные рекомендации по назначению пользователей в песочнице Salesforce</span><span class="sxs-lookup"><span data-stu-id="41086-117">Important tips for assigning users to Salesforce Sandbox</span></span>
+
+* <span data-ttu-id="41086-118">Рекомендуется назначить одного пользователя Azure AD в песочнице Salesforce для тестирования конфигурации подготовки.</span><span class="sxs-lookup"><span data-stu-id="41086-118">It is recommended that a single Azure AD user is assigned to Salesforce Sandbox to test the provisioning configuration.</span></span> <span data-ttu-id="41086-119">Дополнительные пользователи и/или группы можно назначить позднее.</span><span class="sxs-lookup"><span data-stu-id="41086-119">Additional users and/or groups may be assigned later.</span></span>
+
+* <span data-ttu-id="41086-120">При назначении пользователя в песочнице Salesforce необходимо выбрать допустимую роль пользователя.</span><span class="sxs-lookup"><span data-stu-id="41086-120">When assigning a user to Salesforce Sandbox, you must select a valid user role.</span></span> <span data-ttu-id="41086-121">Роль "Доступ по умолчанию" не работает для подготовки.</span><span class="sxs-lookup"><span data-stu-id="41086-121">The "Default Access" role does not work for provisioning.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="41086-122">Это приложение импортирует настраиваемые роли из песочницы Salesforce в рамках процесса подготовки, который клиент может выбрать при назначении пользователей.</span><span class="sxs-lookup"><span data-stu-id="41086-122">This app imports custom roles from Salesforce Sandbox as part of the provisioning process, which the customer may want to select when assigning users.</span></span>
+
+## <a name="enable-automated-user-provisioning"></a><span data-ttu-id="41086-123">Включение автоматической подготовки пользователей</span><span class="sxs-lookup"><span data-stu-id="41086-123">Enable Automated User Provisioning</span></span>
+
+<span data-ttu-id="41086-124">В этом разделе описывается подключение к API подготовки учетной записи пользователя Azure AD в песочнице Salesforce и настройка подготовки службы для создания, обновления и отмены назначения учетных записей пользователей в песочнице Salesforce на основе назначения пользователей и групп в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="41086-124">This section guides you through connecting your Azure AD to Salesforce Sandbox's user account provisioning API, and configuring the provisioning service to create, update, and disable assigned user accounts in Salesforce Sandbox based on user and group assignment in Azure AD.</span></span>
+
+>[!Tip]
+><span data-ttu-id="41086-125">Для песочницы Salesforce также можно включить единый вход на базе управления лицензиями. Для этого следуйте инструкциям, указанным на [портале Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="41086-125">You may also choose to enabled SAML-based Single Sign-On for Salesforce Sandbox, following the instructions provided in [Azure portal](https://portal.azure.com).</span></span> <span data-ttu-id="41086-126">Единый вход можно настроить независимо от автоматической подготовки, хотя эти две возможности дополняют друг друга.</span><span class="sxs-lookup"><span data-stu-id="41086-126">Single sign-on can be configured independently of automatic provisioning, though these two features compliment each other.</span></span>
+
+### <a name="to-configure-automatic-user-account-provisioning"></a><span data-ttu-id="41086-127">Настройка автоматической подготовки учетных записей пользователей:</span><span class="sxs-lookup"><span data-stu-id="41086-127">To configure automatic user account provisioning:</span></span>
+
+<span data-ttu-id="41086-128">В этом разделе показано, как включить подготовку учетных записей пользователей Active Directory для песочницы Salesforce.</span><span class="sxs-lookup"><span data-stu-id="41086-128">The objective of this section is to outline how to enable user provisioning of Active Directory user accounts to Salesforce Sandbox.</span></span>
+
+1. <span data-ttu-id="41086-129">На [портале Azure](https://portal.azure.com) перейдите в раздел **Azure Active Directory > Корпоративные приложения > Все приложения**.</span><span class="sxs-lookup"><span data-stu-id="41086-129">In the [Azure portal](https://portal.azure.com), browse to the **Azure Active Directory > Enterprise Apps > All applications** section.</span></span>
+
+2. <span data-ttu-id="41086-130">Если в песочнице Salesforce уже настроен единый вход, найдите свой экземпляр песочницы Salesforce с помощью поля поиска.</span><span class="sxs-lookup"><span data-stu-id="41086-130">If you have already configured Salesforce Sandbox for single sign-on, search for your instance of Salesforce Sandbox using the search field.</span></span> <span data-ttu-id="41086-131">В противном случае щелкните **Добавить** и выполните поиск **песочницы Salesforce** в коллекции приложений.</span><span class="sxs-lookup"><span data-stu-id="41086-131">Otherwise, select **Add** and search for **Salesforce Sandbox** in the application gallery.</span></span> <span data-ttu-id="41086-132">Выберите песочницу Salesforce в результатах поиска и добавьте ее в список приложений.</span><span class="sxs-lookup"><span data-stu-id="41086-132">Select Salesforce Sandbox from the search results, and add it to your list of applications.</span></span>
+
+3. <span data-ttu-id="41086-133">Выберите экземпляр песочницы Salesforce, а затем перейдите на вкладку **Подготовка**.</span><span class="sxs-lookup"><span data-stu-id="41086-133">Select your instance of Salesforce Sandbox, then select the **Provisioning** tab.</span></span>
+
+4. <span data-ttu-id="41086-134">Для параметра **Режим подготовки к работе** выберите значение **Automatic** (Автоматически).</span><span class="sxs-lookup"><span data-stu-id="41086-134">Set the **Provisioning Mode** to **Automatic**.</span></span> 
+    <span data-ttu-id="41086-135">![подготовка](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/provisioning.png)</span><span class="sxs-lookup"><span data-stu-id="41086-135">![provisioning](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/provisioning.png)</span></span>
+
+5. <span data-ttu-id="41086-136">В разделе **Учетные данные администратора** укажите следующие параметры конфигурации:</span><span class="sxs-lookup"><span data-stu-id="41086-136">Under the **Admin Credentials** section, provide the following configuration settings:</span></span>
+   
+    <span data-ttu-id="41086-137">а.</span><span class="sxs-lookup"><span data-stu-id="41086-137">a.</span></span> <span data-ttu-id="41086-138">В текстовом поле **Имя администратора** введите имя учетной записи песочницы Salesforce с профилем **системного администратора** в Salesforce.com.</span><span class="sxs-lookup"><span data-stu-id="41086-138">In the **Admin User Name** textbox, type a Salesforce Sandbox account name that has the **System Administrator** profile in Salesforce.com assigned.</span></span>
+   
+    <span data-ttu-id="41086-139">b.</span><span class="sxs-lookup"><span data-stu-id="41086-139">b.</span></span> <span data-ttu-id="41086-140">В текстовом поле **Пароль администратора** введите пароль для этой учетной записи.</span><span class="sxs-lookup"><span data-stu-id="41086-140">In the **Admin Password** textbox, type the password for this account.</span></span>
+
+6. <span data-ttu-id="41086-141">Для получения маркера безопасности песочницы Salesforce откройте новую вкладку и выполните вход с этой учетной записью администратора песочницы Salesforce.</span><span class="sxs-lookup"><span data-stu-id="41086-141">To get your Salesforce Sandbox security token, open a new tab and sign into the same Salesforce Sandbox admin account.</span></span> <span data-ttu-id="41086-142">В правом верхнем углу страницы щелкните свое имя и выберите команду **Мои параметры**.</span><span class="sxs-lookup"><span data-stu-id="41086-142">On the top right corner of the page, click your name, and then click **My Settings**.</span></span>
+
+     <span data-ttu-id="41086-143">![Включение автоматической подготовки пользователей](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Включение автоматической подготовки пользователей")</span><span class="sxs-lookup"><span data-stu-id="41086-143">![Enable automatic user provisioning](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")</span></span>
+7. <span data-ttu-id="41086-144">В области навигации слева щелкните **Personal** (Личное), чтобы развернуть соответствующий раздел, и выберите команду **Reset My Security Token** (Сброс маркера безопасности).</span><span class="sxs-lookup"><span data-stu-id="41086-144">On the left navigation pane, click **Personal** to expand the related section, and then click **Reset My Security Token**.</span></span>
+  
+    <span data-ttu-id="41086-145">![Включение автоматической подготовки пользователей](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Включение автоматической подготовки пользователей")</span><span class="sxs-lookup"><span data-stu-id="41086-145">![Enable automatic user provisioning](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")</span></span>
+8. <span data-ttu-id="41086-146">На странице **Reset My Security Token** (Сброс маркера безопасности) нажмите кнопку **Reset Security Token** (Сбросить маркер безопасности).</span><span class="sxs-lookup"><span data-stu-id="41086-146">On the **Reset My Security Token** page, click the **Reset Security Token** button.</span></span>
+
+    <span data-ttu-id="41086-147">![Включение автоматической подготовки пользователей](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Включение автоматической подготовки пользователей")</span><span class="sxs-lookup"><span data-stu-id="41086-147">![Enable automatic user provisioning](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")</span></span>
+9. <span data-ttu-id="41086-148">Проверьте входящие сообщения в почтовом ящике, связанном с этой учетной записью администратора.</span><span class="sxs-lookup"><span data-stu-id="41086-148">Check the email inbox associated with this admin account.</span></span> <span data-ttu-id="41086-149">Найдите сообщение от Salesforce Sandbox.com с новым маркером безопасности.</span><span class="sxs-lookup"><span data-stu-id="41086-149">Look for an email from Salesforce Sandbox.com that contains the new security token.</span></span>
+10. <span data-ttu-id="41086-150">Скопируйте маркер, перейдите к окну Azure AD и вставьте его в поле **Маркер сокета**.</span><span class="sxs-lookup"><span data-stu-id="41086-150">Copy the token, go to your Azure AD window, and paste it into the **Socket Token** field.</span></span>
+
+11. <span data-ttu-id="41086-151">На портале Azure щелкните **Проверить подключение** и убедитесь, что Azure AD может подключиться к песочнице Salesforce.</span><span class="sxs-lookup"><span data-stu-id="41086-151">In the Azure portal, click **Test Connection** to ensure Azure AD can connect to your Salesforce Sandbox app.</span></span>
+
+12. <span data-ttu-id="41086-152">В поле **Почтовое уведомление** введите адрес электронной почты пользователя или группы, которые должны получать уведомления об ошибках подготовки, а также установите флажок.</span><span class="sxs-lookup"><span data-stu-id="41086-152">In the **Notification Email** field, enter the email address of a person or group who should receive provisioning error notifications, and check the checkbox.</span></span>
+
+13. <span data-ttu-id="41086-153">Нажмите кнопку **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="41086-153">Click **Save.**</span></span>  
+    
+14.  <span data-ttu-id="41086-154">В разделе сопоставления выберите **Synchronize Azure Active Directory Users to Salesforce Sandbox** (Синхронизировать пользователей Azure Active Directory с песочницей Salesforce).</span><span class="sxs-lookup"><span data-stu-id="41086-154">Under the Mappings section, select **Synchronize Azure Active Directory Users to Salesforce Sandbox.**</span></span>
+
+15. <span data-ttu-id="41086-155">В разделе **Attribute Mappings** (Сопоставление атрибутов) просмотрите пользовательские атрибуты, которые синхронизированы из Azure AD в песочнице Salesforce.</span><span class="sxs-lookup"><span data-stu-id="41086-155">In the **Attribute Mappings** section, review the user attributes that are synchronized from Azure AD to Salesforce Sandbox.</span></span> <span data-ttu-id="41086-156">Обратите внимание, что атрибуты, которые выбраны в качестве свойств **Matching** (Сопоставление), будут использоваться для сопоставления учетных записей пользователей в песочнице Salesforce для операций обновления.</span><span class="sxs-lookup"><span data-stu-id="41086-156">The attributes selected as **Matching** properties are used to match the user accounts in Salesforce Sandbox for update operations.</span></span> <span data-ttu-id="41086-157">Нажмите кнопку "Сохранить", чтобы подтвердить все изменения.</span><span class="sxs-lookup"><span data-stu-id="41086-157">Select the Save button to commit any changes.</span></span>
+
+16. <span data-ttu-id="41086-158">Чтобы включить службу подготовки Azure AD для песочницы Salesforce, измените значение параметра **Provisioning Status** (Статус подготовки) на **On** (Включено) в разделе "Настройки".</span><span class="sxs-lookup"><span data-stu-id="41086-158">To enable the Azure AD provisioning service for Salesforce Sandbox, change the **Provisioning Status** to **On** in the Settings section</span></span>
+
+17. <span data-ttu-id="41086-159">Нажмите кнопку **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="41086-159">Click **Save.**</span></span>
+
+
+<span data-ttu-id="41086-160">После этого начнется начальная синхронизация всех пользователей и групп, назначенные в песочнице Salesforce в разделе "Пользователи и группы".</span><span class="sxs-lookup"><span data-stu-id="41086-160">It starts the initial synchronization of any users and/or groups assigned to Salesforce Sandbox in the Users and Groups section.</span></span> <span data-ttu-id="41086-161">Начальная синхронизация занимает больше времени, чем последующие операции синхронизации. Последующие операции синхронизации выполняются примерно каждые 20 минут, при условии, что служба запущена.</span><span class="sxs-lookup"><span data-stu-id="41086-161">The initial sync takes longer to perform than subsequent syncs, which occur approximately every 20 minutes as long as the service is running.</span></span> <span data-ttu-id="41086-162">В разделе **Сведения о синхронизации** можно отслеживать ход выполнения и переходить по ссылкам для просмотра отчетов по подготовке, в которых зафиксированы все действия, выполняемые в песочнице Salesforce службой подготовки.</span><span class="sxs-lookup"><span data-stu-id="41086-162">You can use the **Synchronization Details** section to monitor progress and follow links to provisioning activity reports, which describe all actions performed by the provisioning service on Salesforce Sandbox app.</span></span>
+
+<span data-ttu-id="41086-163">Теперь можно создать тестовую учетную запись.</span><span class="sxs-lookup"><span data-stu-id="41086-163">You can now create a test account.</span></span> <span data-ttu-id="41086-164">Подождите до 20 минут и убедитесь, что учетная запись синхронизирована с песочницей Salesforce.</span><span class="sxs-lookup"><span data-stu-id="41086-164">Wait for up to 20 minutes to verify that the account has been synchronized to salesforce.</span></span>
+
+## <a name="additional-resources"></a><span data-ttu-id="41086-165">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="41086-165">Additional resources</span></span>
+
+* [<span data-ttu-id="41086-166">Управление подготовкой учетных записей пользователей для корпоративных приложений</span><span class="sxs-lookup"><span data-stu-id="41086-166">Managing user account provisioning for Enterprise Apps</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="41086-167">Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="41086-167">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="41086-168">Настройка единого входа</span><span class="sxs-lookup"><span data-stu-id="41086-168">Configure Single Sign-on</span></span>](active-directory-saas-salesforcesandbox-tutorial.md)

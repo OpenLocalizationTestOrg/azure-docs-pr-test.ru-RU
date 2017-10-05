@@ -1,0 +1,82 @@
+---
+title: "Рекомендации по проектированию решений для гибридной идентификации Azure Active Directory ― определение требований к контролю доступа | Документация Майкрософт"
+description: "Описание ключевых компонентов идентификации и определение требований доступа к ресурсам для пользователей в гибридной среде."
+documentationcenter: 
+services: active-directory
+author: billmath
+manager: femila
+editor: 
+ms.assetid: e3b3b984-0d15-4654-93be-a396324b9f5e
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 07/18/2017
+ms.author: billmath
+ms.openlocfilehash: 6404940da460461632616fe49f055d50c2a7aba3
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/03/2017
+---
+# <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a><span data-ttu-id="ed31d-103">Определение требований к контролю доступа для решения гибридной идентификации</span><span class="sxs-lookup"><span data-stu-id="ed31d-103">Determine access control requirements for your hybrid identity solution</span></span>
+<span data-ttu-id="ed31d-104">При проектировании решения для гибридной идентификации организация может пересмотреть требования доступа к ресурсам, которые планируется сделать доступными для пользователей.</span><span class="sxs-lookup"><span data-stu-id="ed31d-104">When an organization is designing their hybrid identity solution they can also use this opportunity to review access requirements for the resources that they are planning to make it available for users.</span></span> <span data-ttu-id="ed31d-105">Доступ к данным объединяет все четыре ключевых компонента идентификации, к которым относятся:</span><span class="sxs-lookup"><span data-stu-id="ed31d-105">The data access cross all four pillars of identity, which are:</span></span>
+
+* <span data-ttu-id="ed31d-106">Администрирование</span><span class="sxs-lookup"><span data-stu-id="ed31d-106">Administration</span></span>
+* <span data-ttu-id="ed31d-107">Аутентификация</span><span class="sxs-lookup"><span data-stu-id="ed31d-107">Authentication</span></span>
+* <span data-ttu-id="ed31d-108">Авторизация</span><span class="sxs-lookup"><span data-stu-id="ed31d-108">Authorization</span></span>
+* <span data-ttu-id="ed31d-109">Аудит</span><span class="sxs-lookup"><span data-stu-id="ed31d-109">Auditing</span></span>
+
+<span data-ttu-id="ed31d-110">В следующих разделах будут подробно рассмотрены проверка подлинности и авторизация. Администрирование и аудит являются частью жизненного цикла гибридной идентификации.</span><span class="sxs-lookup"><span data-stu-id="ed31d-110">The sections that follows will cover authentication and authorization in more details, administration and auditing are part of the hybrid identity lifecycle.</span></span> <span data-ttu-id="ed31d-111">Подробнее об этих возможностях можно узнать в статье [Определение задач управления гибридной идентификацией](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).</span><span class="sxs-lookup"><span data-stu-id="ed31d-111">Read [Determine hybrid identity management tasks](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) for more information about these capabilities.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="ed31d-112">Подробнее о каждом из компонентов идентификации можно узнать в статье [Четыре ключевых компонента идентификации ― управление идентификацией в эпоху гибридных информационных технологий](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) .</span><span class="sxs-lookup"><span data-stu-id="ed31d-112">Read [The Four Pillars of Identity - Identity Management in the Age of Hybrid IT](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) for more information about each one of those pillars.</span></span>
+> 
+> 
+
+## <a name="authentication-and-authorization"></a><span data-ttu-id="ed31d-113">Аутентификация и авторизация</span><span class="sxs-lookup"><span data-stu-id="ed31d-113">Authentication and authorization</span></span>
+<span data-ttu-id="ed31d-114">Существуют различные сценарии проверки подлинности и авторизации. К этим сценариям применяются конкретные требования, которые должно удовлетворить решение для гибридной идентификации, готовое к применению компанией.</span><span class="sxs-lookup"><span data-stu-id="ed31d-114">There are different scenarios for authentication and authorization, these scenarios will have specific requirements that must be fulfilled by the hybrid identity solution that the company is going to adopt.</span></span> <span data-ttu-id="ed31d-115">Сценарии, включающие связи "бизнес-бизнес" (B2B), могут создать дополнительные сложности для ИТ-администраторов, так как им необходимо будет гарантировать, что метод проверки подлинности и авторизации, используемый в организации, может использоваться деловыми партнерами организации.</span><span class="sxs-lookup"><span data-stu-id="ed31d-115">Scenarios involving Business to Business (B2B) communication can add an extra challenge for IT Admins since they will need to ensure that the authentication and authorization method used by the organization can communicate with their business partners.</span></span> <span data-ttu-id="ed31d-116">При определении требований к проверке подлинности и авторизации необходимо дать ответы на следующие вопросы:</span><span class="sxs-lookup"><span data-stu-id="ed31d-116">During the designing process for authentication and authorization requirements, ensure that the following questions are answered:</span></span>
+
+* <span data-ttu-id="ed31d-117">Будут ли проверка подлинности и авторизация выполняться только для пользователей, входящих в систему управления идентификацией организации?</span><span class="sxs-lookup"><span data-stu-id="ed31d-117">Will your organization authenticate and authorize only users located at their identity management system?</span></span>
+  * <span data-ttu-id="ed31d-118">Планируется ли использование сценариев B2B?</span><span class="sxs-lookup"><span data-stu-id="ed31d-118">Are there any plans for B2B scenarios?</span></span>
+  * <span data-ttu-id="ed31d-119">Если да, то знаете ли вы, какие протоколы (SAML, OAuth, Kerberos, маркеры или сертификаты) будут использоваться для реализации связей "бизнес-бизнес"?</span><span class="sxs-lookup"><span data-stu-id="ed31d-119">If yes, do you already know which protocols (SAML, OAuth, Kerberos, Tokens or Certificates) will be used to connect both businesses?</span></span>
+* <span data-ttu-id="ed31d-120">Будут ли эти протоколы реализованы в решении для гибридной идентификации, которое вы собираетесь применить?</span><span class="sxs-lookup"><span data-stu-id="ed31d-120">Does the hybrid identity solution that you are going to adopt support those protocols?</span></span>
+
+<span data-ttu-id="ed31d-121">Также важно учитывать, где будет расположен репозиторий проверки подлинности, который будет использоваться пользователями и партнерами, и какая модель администрирования будет использована.</span><span class="sxs-lookup"><span data-stu-id="ed31d-121">Another important point to consider is where the authentication repository that will be used by users and partners will be located and the administrative model to be used.</span></span> <span data-ttu-id="ed31d-122">Рассмотрите два общепринятых варианта:</span><span class="sxs-lookup"><span data-stu-id="ed31d-122">Consider the following two core options:</span></span>
+
+* <span data-ttu-id="ed31d-123">Централизованное расположение: в этой модели учетные данные пользователей, политики и инструменты администрирования могут быть сосредоточены в локальном или облачном расположении.</span><span class="sxs-lookup"><span data-stu-id="ed31d-123">Centralized: in this model the user’s credentials, policies and administration can be centralized on-premises or in the cloud.</span></span>
+* <span data-ttu-id="ed31d-124">Гибридное расположение: в этой модели учетные данные пользователей, политики и инструменты администрирования будут сосредоточены в локальном расположении и реплицированы в облако.</span><span class="sxs-lookup"><span data-stu-id="ed31d-124">Hybrid: in this model the user’s credentials, policies and administration will be centralized on-premises and a replicated in the cloud.</span></span>
+
+<span data-ttu-id="ed31d-125">Модель, которую выберет ваша организация, будет различаться в зависимости от бизнес-требований организации. Чтобы определить, где будет размещаться система управления идентификацией и какой режим администрирования будет использоваться, необходимо ответить на следующие вопросы:</span><span class="sxs-lookup"><span data-stu-id="ed31d-125">Which model your organization will adopt will vary according to their business requirements, you want to answer the following questions to identify where the identity management system will reside and the administrative mode to use:</span></span>
+
+* <span data-ttu-id="ed31d-126">Есть ли у вашей организации локальная система управления идентификацией в настоящее время?</span><span class="sxs-lookup"><span data-stu-id="ed31d-126">Does your organization currently have an identity management on-premises?</span></span>
+  * <span data-ttu-id="ed31d-127">Если да, то планируется ли ее сохранить?</span><span class="sxs-lookup"><span data-stu-id="ed31d-127">If yes, do they plan to keep it?</span></span>
+  * <span data-ttu-id="ed31d-128">Существуют ли нормативные требования или требования по соответствию, определяющие расположение системы управления идентификацией, которые ваша организация должна выполнить?</span><span class="sxs-lookup"><span data-stu-id="ed31d-128">Are there any regulation or compliance requirements that your organization must follow that dictates where the identity management system should reside?</span></span>
+* <span data-ttu-id="ed31d-129">Использует ли ваша организация единый вход для приложений, расположенных локально или в облаке?</span><span class="sxs-lookup"><span data-stu-id="ed31d-129">Does your organization use single sign-on for apps located on-premises or in the cloud?</span></span>
+  * <span data-ttu-id="ed31d-130">Если да, повлияет ли внедрение модели гибридной идентификации на этот процесс?</span><span class="sxs-lookup"><span data-stu-id="ed31d-130">If yes, does the adoption of a hybrid identity model affect this process?</span></span>
+
+## <a name="access-control"></a><span data-ttu-id="ed31d-131">Контроль доступа</span><span class="sxs-lookup"><span data-stu-id="ed31d-131">Access Control</span></span>
+<span data-ttu-id="ed31d-132">Хотя проверка подлинности и авторизация являются основными компонентами, обеспечивающими доступ пользователя к корпоративным данным в результате его идентификации, важно также управлять уровнем доступа, который будут иметь эти пользователи, и уровнем доступа администраторов к ресурсам, которыми они управляют.</span><span class="sxs-lookup"><span data-stu-id="ed31d-132">While authentication and authorization are core elements to enable access to corporate data through user’s validation, it is also important to control the level of access that these users will have and the level of access administrators will have over the resources that they are managing.</span></span> <span data-ttu-id="ed31d-133">Ваше решение для гибридной идентификации должно иметь возможности предоставления выборочного доступа к ресурсам, делегирования и контроля доступа на основе ролей.</span><span class="sxs-lookup"><span data-stu-id="ed31d-133">Your hybrid identity solution must be able to provide granular access to resources, delegation and role base access control.</span></span> <span data-ttu-id="ed31d-134">В отношении контроля доступа необходимо дать ответы на следующие вопросы:</span><span class="sxs-lookup"><span data-stu-id="ed31d-134">Ensure that the following question are answered regarding access control:</span></span>
+
+* <span data-ttu-id="ed31d-135">Есть ли у организации несколько пользователей с повышенными привилегиями для управления системой идентификации?</span><span class="sxs-lookup"><span data-stu-id="ed31d-135">Does your company have more than one user with elevated privilege to manage your identity system?</span></span>
+  * <span data-ttu-id="ed31d-136">Если да, то все они должны иметь один и тот же уровень доступа?</span><span class="sxs-lookup"><span data-stu-id="ed31d-136">If yes, does each user need the same access level?</span></span>
+* <span data-ttu-id="ed31d-137">Необходимо ли организации делегировать права доступа пользователей для управления определенными ресурсами?</span><span class="sxs-lookup"><span data-stu-id="ed31d-137">Would your company need to delegate access to users to manage specific resources?</span></span>
+  * <span data-ttu-id="ed31d-138">Если да, то как часто это происходит?</span><span class="sxs-lookup"><span data-stu-id="ed31d-138">If yes, how frequently this happens?</span></span>
+* <span data-ttu-id="ed31d-139">Необходимо ли организации интегрировать возможности контроля доступа между локальными и облачными ресурсами?</span><span class="sxs-lookup"><span data-stu-id="ed31d-139">Would your company need to integrate access control capabilities between on-premises and cloud resources?</span></span>
+* <span data-ttu-id="ed31d-140">Необходимо ли организации ограничивать доступ к ресурсам в зависимости от некоторых условий?</span><span class="sxs-lookup"><span data-stu-id="ed31d-140">Would your company need to limit access to resources according to some conditions?</span></span>
+* <span data-ttu-id="ed31d-141">Будет ли у вашей организации какое-либо приложение с отдельными настройками доступа к некоторым ресурсам?</span><span class="sxs-lookup"><span data-stu-id="ed31d-141">Would your company have any application that needs custom control access to some resources?</span></span>
+  * <span data-ttu-id="ed31d-142">Если да, то где будут расположены такие приложения (локально или в облаке)?</span><span class="sxs-lookup"><span data-stu-id="ed31d-142">If yes, where are those apps located (on-premises or in the cloud)?</span></span>
+  * <span data-ttu-id="ed31d-143">Если да, то где будут расположены такие целевые ресурсы (локально или в облаке)?</span><span class="sxs-lookup"><span data-stu-id="ed31d-143">If yes, where are those target resources located (on-premises or in the cloud)?</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="ed31d-144">Составьте письменный ответ на каждый вопрос и убедитесь, что он логически обоснован.</span><span class="sxs-lookup"><span data-stu-id="ed31d-144">Make sure to take notes of each answer and understand the rationale behind the answer.</span></span> <span data-ttu-id="ed31d-145">[Определение стратегии защиты данных](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) .</span><span class="sxs-lookup"><span data-stu-id="ed31d-145">[Define Data Protection Strategy](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) will go over the options available and advantages/disadvantages of each option.</span></span>  <span data-ttu-id="ed31d-146">Ответив на эти вопросы, вы сможете выбрать тот вариант, который лучше всего подходит для вашего бизнеса.</span><span class="sxs-lookup"><span data-stu-id="ed31d-146">By answering those questions you will select which option best suits your business needs.</span></span>
+> 
+> 
+
+## <a name="next-steps"></a><span data-ttu-id="ed31d-147">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="ed31d-147">Next steps</span></span>
+[<span data-ttu-id="ed31d-148">Определение требований по реагированию на инциденты</span><span class="sxs-lookup"><span data-stu-id="ed31d-148">Determine incident response requirements</span></span>](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
+
+## <a name="see-also"></a><span data-ttu-id="ed31d-149">См. также</span><span class="sxs-lookup"><span data-stu-id="ed31d-149">See Also</span></span>
+[<span data-ttu-id="ed31d-150">Обзор рекомендаций по проектированию</span><span class="sxs-lookup"><span data-stu-id="ed31d-150">Design considerations overview</span></span>](active-directory-hybrid-identity-design-considerations-overview.md)
+

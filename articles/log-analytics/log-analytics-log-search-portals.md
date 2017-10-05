@@ -1,0 +1,53 @@
+---
+title: "Порталы для создания и изменения запросов к журналу в службе Azure Log Analytics | Документация Майкрософт"
+description: "В этой статье описываются порталы, которые можно использовать в службе Azure Log Analytics для создания и изменения запросов к журналу."
+services: log-analytics
+documentationcenter: 
+author: bwren
+manager: carmonm
+editor: 
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/25/2017
+ms.author: bwren
+ms.openlocfilehash: 29dfa31d38f85574f84ed351bc5c26224b1a7e16
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/29/2017
+---
+# <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a><span data-ttu-id="c7682-103">Порталы для создания и изменения запросов к журналу в службе Azure Log Analytics</span><span class="sxs-lookup"><span data-stu-id="c7682-103">Portals for creating and editing log queries in Azure Log Analytics</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="c7682-104">В этой статье описывается порталы Azure Log Analytics, использующие новые языки построения запросов.</span><span class="sxs-lookup"><span data-stu-id="c7682-104">This article describes portals in Azure Log Analytics using the new query language.</span></span>  <span data-ttu-id="c7682-105">Дополнительные сведения о новом языке и процедурах обновления рабочей области см. в [этой статье](log-analytics-log-search-upgrade.md).</span><span class="sxs-lookup"><span data-stu-id="c7682-105">You can learn more about the new language and get the procedure to upgrade your workspace at [Upgrade your Azure Log Analytics workspace to new log search](log-analytics-log-search-upgrade.md).</span></span>  
+>
+> <span data-ttu-id="c7682-106">Если вы еще не перевели рабочую область на новый язык запросов, используйте информацию из статьи [Поиск данных по журналам](log-analytics-log-searches.md), чтобы узнать текущую версию портала поиска по журналам.</span><span class="sxs-lookup"><span data-stu-id="c7682-106">If your workspace hasn't been upgraded to the new query language, you should refer to [Find data using log searches in Log Analytics](log-analytics-log-searches.md) for information on the current version of the Log Search portal.</span></span>
+
+<span data-ttu-id="c7682-107">Поиск по журналам можно использовать в нескольких местах службы Log Analytics для извлечения данных из рабочей области.</span><span class="sxs-lookup"><span data-stu-id="c7682-107">You use log searches in a variety of places throughout Log Analytics to retrieve data from the workspace.</span></span>  <span data-ttu-id="c7682-108">Помимо интерактивной обработки полученных данных, у вас есть два способа создать и редактировать запросы. Оба они описаны ниже.</span><span class="sxs-lookup"><span data-stu-id="c7682-108">For actually creating and editing queries in addition to working interactively with returned data though, you have two options that are described below.</span></span>  
+
+## <a name="log-search-portal"></a><span data-ttu-id="c7682-109">Портал поиска по журналам</span><span class="sxs-lookup"><span data-stu-id="c7682-109">Log search portal</span></span>
+<span data-ttu-id="c7682-110">Портал поиска по журналам доступен через портал Azure или портал OMS.</span><span class="sxs-lookup"><span data-stu-id="c7682-110">The Log Search portal is accessible from the Azure portal or the OMS portal.</span></span>  <span data-ttu-id="c7682-111">Он удобен для создания простых запросов, состоящих из одной строки.</span><span class="sxs-lookup"><span data-stu-id="c7682-111">It's suitable for creating basic queries that can be created on a single line.</span></span>  <span data-ttu-id="c7682-112">Портал поиска по журналам можно использовать и без запуска внешних порталов. С его помощью вы сможете выполнить множество операций с поиском по журналам, например создать правила оповещений, создать группы компьютеров или экспортировать результаты запроса.</span><span class="sxs-lookup"><span data-stu-id="c7682-112">The Log Search portal can be used without launching an external portal, and you can use it to perform a variety of functions with log searches including creating alert rules, creating computer groups, and exporting the results of the query.</span></span>  
+
+<span data-ttu-id="c7682-113">Портал поиска по журналам предоставляет много возможностей для редактирования запросов, даже если вы не полностью разбираетесь в языке запросов.</span><span class="sxs-lookup"><span data-stu-id="c7682-113">The Log Search portal provides multiple features for editing the query without having a full knowledge of the query language.</span></span>  <span data-ttu-id="c7682-114">Обзор этих функций вы найдете в статье в [Create log searches in Azure Log Analytics using the Log Search portal](log-analytics-log-search-log-search-portal.md) (Создание поисков по журналам в Azure Log Analytics с помощью портала поиска по журналам).</span><span class="sxs-lookup"><span data-stu-id="c7682-114">You can get a summary of these features in [Create log searches in Azure Log Analytics using the Log Search portal](log-analytics-log-search-log-search-portal.md).</span></span>
+
+
+![Портал поиска по журналам](media/log-analytics-log-search-portals/log-search-portal.png)
+
+## <a name="advanced-analytics-portal"></a><span data-ttu-id="c7682-116">Портал расширенной аналитики</span><span class="sxs-lookup"><span data-stu-id="c7682-116">Advanced Analytics portal</span></span>
+<span data-ttu-id="c7682-117">Портал расширенной аналитики представляет собой специализированный портал с расширенными функциональными возможностями, которые не доступны на портале поиска по журналам.</span><span class="sxs-lookup"><span data-stu-id="c7682-117">The Advanced Analytics portal is a dedicated portal that provides advanced functionality not available in the Log Search portal.</span></span>  <span data-ttu-id="c7682-118">В числе таких возможностей можно назвать редактирование многострочных запросов, выборочное исполнение кода, Intellisense с зависимостью от контекста и смарт-аналитика.</span><span class="sxs-lookup"><span data-stu-id="c7682-118">Features include the ability to edit a query on multiple lines, selectively execute code, context sensitive Intellisense, and Smart Analytics.</span></span>  <span data-ttu-id="c7682-119">Портал расширенной аналитики лучше всего подходит для разработки сложных запросов, которые затем можно сохранить в виде поиска по журналам или скопировать в другие элементы Log Analytics.</span><span class="sxs-lookup"><span data-stu-id="c7682-119">The Advanced Analytics portal is most suitable for designing complex queries that are either saved as a log search or copied and pasted into other Log Analytics elements.</span></span>  <span data-ttu-id="c7682-120">Чтобы открыть портал расширенной аналитики, используйте ссылку на портале поиска по журналам.</span><span class="sxs-lookup"><span data-stu-id="c7682-120">You launch the Advanced Analytics portal from a link in the Log Search portal.</span></span>
+
+![Портал расширенной аналитики](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
+
+
+<span data-ttu-id="c7682-122">Благодаря этим широким возможностям портал расширенной аналитики, скорее всего, станет для вас основным инструментом создания и редактирования запросов.</span><span class="sxs-lookup"><span data-stu-id="c7682-122">Because of its advanced features, you'll usually use the Advanced Analytics portal as your primary tool for creating and editing queries.</span></span>  <span data-ttu-id="c7682-123">Когда вы убедитесь, что запрос работает правильно, его можно скопировать и вставить в другой инструмент, например в портал поиска по журналам или в конструктор представлений.</span><span class="sxs-lookup"><span data-stu-id="c7682-123">Once you've determined that the query works as expected, then you'll copy and paste it elsewhere such as the Log Search portal or View Designer.</span></span>  <span data-ttu-id="c7682-124">Но не забывайте, что только портал расширенной аналитики может работать с многострочными запросами. В этой связи при копировании запросов следует учесть следующее.</span><span class="sxs-lookup"><span data-stu-id="c7682-124">Because the Advanced Analytics portal supports queries with multiple lines though, you need to take the following into consideration when copying a query from this portal.</span></span>
+
+- <span data-ttu-id="c7682-125">Удалите из запроса все комментарии, прежде чем копировать его и вставлять в другие инструменты.</span><span class="sxs-lookup"><span data-stu-id="c7682-125">Comments must be removed from the query before it's copied and pasted into another location.</span></span>  <span data-ttu-id="c7682-126">Комментарием считается любая строка, перед которой стоят две косые черты (//).</span><span class="sxs-lookup"><span data-stu-id="c7682-126">You can comment a line by preceding it with two slashes (//).</span></span>  <span data-ttu-id="c7682-127">Когда вы вставляете нескольких строк запроса в одну строку, разрывы строк удаляются.</span><span class="sxs-lookup"><span data-stu-id="c7682-127">When you paste a multiple line query into a single line, line breaks are removed.</span></span>  <span data-ttu-id="c7682-128">Если в этих строках останутся комментарии, все символы после первого комментария станут считаться комментарием.</span><span class="sxs-lookup"><span data-stu-id="c7682-128">If comments are included, all characters after the first comment are considered part of the comment.</span></span>
+
+
+## <a name="next-steps"></a><span data-ttu-id="c7682-129">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="c7682-129">Next steps</span></span>
+
+- <span data-ttu-id="c7682-130">Изучите пошаговые руководства по использованию [портала поиска по журналам](log-analytics-log-search-log-search-portal.md) или [портала расширенной аналитики](https://go.microsoft.com/fwlink/?linkid=856587), которые помогут вам в создать запросы.</span><span class="sxs-lookup"><span data-stu-id="c7682-130">Walk through a tutorial on using the [Log Search portal](log-analytics-log-search-log-search-portal.md) or the [Advanced Analytics portal](https://go.microsoft.com/fwlink/?linkid=856587) to create queries.</span></span>
+- <span data-ttu-id="c7682-131">Изучите [руководство по написанию запросов](https://go.microsoft.com/fwlink/?linkid=856078) на новом языке.</span><span class="sxs-lookup"><span data-stu-id="c7682-131">Check out a [tutorial on writing queries](https://go.microsoft.com/fwlink/?linkid=856078) using the new query language.</span></span>
