@@ -1,0 +1,76 @@
+---
+title: "Рекомендации по разработке архитектуры гибридной идентификации в Azure Active Directory ― определение требований к синхронизации каталогов | Документация Майкрософт"
+description: "Определите, какие требования необходимы для синхронизации всех локальных и облачных пользователей предприятия."
+documentationcenter: 
+services: active-directory
+author: billmath
+manager: femila
+editor: 
+ms.assetid: 593eaa71-17eb-4c16-8c98-43cc62987e65
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 07/18/2017
+ms.author: billmath
+ms.openlocfilehash: 5ef87e606f055359ca325befd6048353ce57ca2b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/03/2017
+---
+# <a name="determine-directory-synchronization-requirements"></a><span data-ttu-id="b76e4-103">Определение требований к синхронизации каталога</span><span class="sxs-lookup"><span data-stu-id="b76e4-103">Determine directory synchronization requirements</span></span>
+<span data-ttu-id="b76e4-104">Синхронизация предназначена для предоставления пользователям идентификации в облаке на основе их локальной идентификации.</span><span class="sxs-lookup"><span data-stu-id="b76e4-104">Synchronization is all about providing users an identity in the cloud based on their on-premises identity.</span></span> <span data-ttu-id="b76e4-105">Независимо от того, используют ли они синхронизированную учетную запись для проверки подлинности или федеративной проверки подлинности, пользователям по-прежнему будет нужно идентифицироваться в облаке.</span><span class="sxs-lookup"><span data-stu-id="b76e4-105">Whether or not they will use synchronized account for authentication or federated authentication, the users will still need to have an identity in the cloud.</span></span>  <span data-ttu-id="b76e4-106">Эту идентификацию будет необходимо поддерживать и периодически обновлять.</span><span class="sxs-lookup"><span data-stu-id="b76e4-106">This identity will need to be maintained and updated periodically.</span></span>  <span data-ttu-id="b76e4-107">Обновления могут принимать различные формы от изменения заголовка до изменения пароля.</span><span class="sxs-lookup"><span data-stu-id="b76e4-107">The updates can take many forms, from title changes to password changes.</span></span>  
+
+<span data-ttu-id="b76e4-108">Начните с оценки требований локального решения для идентификации организации и требований к пользователям.</span><span class="sxs-lookup"><span data-stu-id="b76e4-108">Start by evaluating the organizations on-premises identity solution and user requirements.</span></span> <span data-ttu-id="b76e4-109">Эта оценка важна для определения технических требований к созданию и хранения удостоверений пользователей в облаке.</span><span class="sxs-lookup"><span data-stu-id="b76e4-109">This evaluation is important to define the technical requirements for how user identities will be created and maintained in the cloud.</span></span>  <span data-ttu-id="b76e4-110">Для большинства организаций Active Directory является локальным каталогом, из которого синхронизируются пользователи, однако в некоторых случаях это не так.</span><span class="sxs-lookup"><span data-stu-id="b76e4-110">For a majority of organizations, Active Directory is on-premises and will be the on-premises directory that users will by synchronized from, however in some cases this will not be the case.</span></span>  
+
+<span data-ttu-id="b76e4-111">Дайте ответы на следующие вопросы:</span><span class="sxs-lookup"><span data-stu-id="b76e4-111">Make sure to answer the following questions:</span></span>
+
+* <span data-ttu-id="b76e4-112">Есть ли у вас один лес AD, несколько лесов или их нет?</span><span class="sxs-lookup"><span data-stu-id="b76e4-112">Do you have one AD forest, multiple, or none?</span></span>
+  
+  * <span data-ttu-id="b76e4-113">Сколько каталогов Azure AD будет использоваться для синхронизации?</span><span class="sxs-lookup"><span data-stu-id="b76e4-113">How many Azure AD directories will you be synchronizing to?</span></span>
+    
+    1. <span data-ttu-id="b76e4-114">Используется ли фильтрация?</span><span class="sxs-lookup"><span data-stu-id="b76e4-114">Are you using filtering?</span></span>
+    2. <span data-ttu-id="b76e4-115">Планируете ли вы использовать несколько серверов Azure AD Connect?</span><span class="sxs-lookup"><span data-stu-id="b76e4-115">Do you have multiple Azure AD Connect servers planned?</span></span>
+* <span data-ttu-id="b76e4-116">Есть ли у вас в настоящее время локальный инструмент для синхронизации?</span><span class="sxs-lookup"><span data-stu-id="b76e4-116">Do you currently have a synchronization tool on-premises?</span></span>
+  
+  * <span data-ttu-id="b76e4-117">Если да, то есть ли у пользователей виртуальный каталог или интеграция удостоверений?</span><span class="sxs-lookup"><span data-stu-id="b76e4-117">If yes, does your users if users have a virtual directory/integration of identities?</span></span>
+* <span data-ttu-id="b76e4-118">Есть ли у вас другой локальный каталог, который требуется синхронизировать (например, каталог LDAP, база данных отдела кадров и т.д.)?</span><span class="sxs-lookup"><span data-stu-id="b76e4-118">Do you have any other directory on-premises that you want to synchronize (e.g. LDAP Directory, HR database, etc)?</span></span>
+  * <span data-ttu-id="b76e4-119">Собираетесь ли вы использовать синхронизацию GALSync?</span><span class="sxs-lookup"><span data-stu-id="b76e4-119">Are you going to be doing any GALSync?</span></span>
+  * <span data-ttu-id="b76e4-120">Каково текущее состояние имен субъектов-пользователей в вашей организации?</span><span class="sxs-lookup"><span data-stu-id="b76e4-120">What is the current state of UPNs in your organization?</span></span> 
+  * <span data-ttu-id="b76e4-121">Есть ли у вас есть другой каталог, для которого пользователи проходят проверку подлинности?</span><span class="sxs-lookup"><span data-stu-id="b76e4-121">Do you have a different directory that users authenticate against?</span></span>
+  * <span data-ttu-id="b76e4-122">Использует ли ваша компания Microsoft Exchange?</span><span class="sxs-lookup"><span data-stu-id="b76e4-122">Does your company use Microsoft Exchange?</span></span>
+    * <span data-ttu-id="b76e4-123">Планируете ли вы использовать гибридное развертывание Exchange?</span><span class="sxs-lookup"><span data-stu-id="b76e4-123">Do they plan of having a hybrid exchange deployment?</span></span>
+
+<span data-ttu-id="b76e4-124">Теперь, когда вы получили представление о требованиях к синхронизации, необходимо определить, какой инструмент лучше всего подходит соблюдения этих требований.</span><span class="sxs-lookup"><span data-stu-id="b76e4-124">Now that you have an idea about your synchronization requirements, you need to determine which tool is the correct one to meet these requirements.</span></span>  <span data-ttu-id="b76e4-125">Корпорация Майкрософт предоставляет несколько инструментов для интеграции каталогов и синхронизации.</span><span class="sxs-lookup"><span data-stu-id="b76e4-125">Microsoft provides several tools to accomplish directory integration and synchronization.</span></span>  <span data-ttu-id="b76e4-126">Дополнительные сведения см. в [таблице сравнения инструментов интеграции для каталогов гибридных удостоверений](active-directory-hybrid-identity-design-considerations-tools-comparison.md).</span><span class="sxs-lookup"><span data-stu-id="b76e4-126">See the [Hybrid Identity directory integration tools comparison table](active-directory-hybrid-identity-design-considerations-tools-comparison.md) for more information.</span></span> 
+
+<span data-ttu-id="b76e4-127">Теперь, когда вы определились с требованиями к синхронизации для вашей организации и подходящим инструментом, необходимо оценить приложения, использующие эти службы каталогов.</span><span class="sxs-lookup"><span data-stu-id="b76e4-127">Now that you have your synchronization requirements and the tool that will accomplish this for your company, you need to evaluate the applications that use these directory services.</span></span> <span data-ttu-id="b76e4-128">Эта оценка важна для определения технических требований для интеграции этих приложений в облако.</span><span class="sxs-lookup"><span data-stu-id="b76e4-128">This evaluation is important to define the technical requirements to integrate these applications to the cloud.</span></span> <span data-ttu-id="b76e4-129">Дайте ответы на следующие вопросы:</span><span class="sxs-lookup"><span data-stu-id="b76e4-129">Make sure to answer the following questions:</span></span>
+
+* <span data-ttu-id="b76e4-130">Будут ли эти приложения перемещены в облако и будут ли они использовать каталог?</span><span class="sxs-lookup"><span data-stu-id="b76e4-130">Will these applications be moved to the cloud and use the directory?</span></span>
+* <span data-ttu-id="b76e4-131">Существуют ли специальные атрибуты, которые должны быть синхронизированы с облаком, чтобы эти приложения могли их использовать?</span><span class="sxs-lookup"><span data-stu-id="b76e4-131">Are there special attributes that need to be synchronized to the cloud so these applications can use them successfully?</span></span>
+* <span data-ttu-id="b76e4-132">Нужно ли перезаписать эти приложения, чтобы воспользоваться облачной проверкой подлинности?</span><span class="sxs-lookup"><span data-stu-id="b76e4-132">Will these applications need to be re-written to take advantage of cloud auth?</span></span>
+* <span data-ttu-id="b76e4-133">Будут ли эти приложения размещаться локально до тех пор, пока пользователи не воспользуются ими с помощью облачной идентификации?</span><span class="sxs-lookup"><span data-stu-id="b76e4-133">Will these applications continue to live on-premises while users access them using the cloud identity?</span></span>
+
+<span data-ttu-id="b76e4-134">Также необходимо определить требования к безопасности и ограничения к синхронизации каталога.</span><span class="sxs-lookup"><span data-stu-id="b76e4-134">You also need to determine the security requirements and constraints directory synchronization.</span></span> <span data-ttu-id="b76e4-135">Эта оценка важна для получения списка требований, которые потребуются для создания и настройки удостоверений пользователя в облаке.</span><span class="sxs-lookup"><span data-stu-id="b76e4-135">This evaluation is important to get a list of the requirements that will be needed in order to create and maintain user’s identities in the cloud.</span></span> <span data-ttu-id="b76e4-136">Дайте ответы на следующие вопросы:</span><span class="sxs-lookup"><span data-stu-id="b76e4-136">Make sure to answer the following questions:</span></span>
+
+* <span data-ttu-id="b76e4-137">Где будет размещен сервер синхронизации?</span><span class="sxs-lookup"><span data-stu-id="b76e4-137">Where will the synchronization server be located?</span></span>
+* <span data-ttu-id="b76e4-138">Будет ли он присоединен к домену?</span><span class="sxs-lookup"><span data-stu-id="b76e4-138">Will it be domain joined?</span></span>
+* <span data-ttu-id="b76e4-139">Будет ли этот сервер расположен в сети с ограниченным доступом с брандмауэром, например, в сети периметра?</span><span class="sxs-lookup"><span data-stu-id="b76e4-139">Will the server be located on a restricted network behind a firewall, such as a DMZ?</span></span>
+  * <span data-ttu-id="b76e4-140">Сможете ли вы открыть необходимые порты брандмауэра для поддержки синхронизации?</span><span class="sxs-lookup"><span data-stu-id="b76e4-140">Will you be able to open the required firewall ports to support synchronization?</span></span>
+* <span data-ttu-id="b76e4-141">Есть ли у вас план аварийного восстановления для сервера синхронизации?</span><span class="sxs-lookup"><span data-stu-id="b76e4-141">Do you have a disaster recovery plan for the synchronization server?</span></span>
+* <span data-ttu-id="b76e4-142">Есть ли у вас учетная запись с соответствующими правами для всех лесов, с которыми необходимо синхронизироваться?</span><span class="sxs-lookup"><span data-stu-id="b76e4-142">Do you have an account with the correct permissions for all forests you want to synch with?</span></span>
+  * <span data-ttu-id="b76e4-143">Если ваша компания не знает ответа на какой-либо из этих вопросов, обратитесь к разделу "Разрешения для синхронизации паролей" статьи [Установка службы Azure Active Directory Sync](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) и определите, есть ли у вас учетная запись с необходимыми разрешениями или ее нужно создать.</span><span class="sxs-lookup"><span data-stu-id="b76e4-143">If your company doesn’t know the answer for this question, review the section “Permissions for password synchronization” in the article [Install the Azure Active Directory Sync Service](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) and determine if you already have an account with these permissions or if you need to create one.</span></span>
+* <span data-ttu-id="b76e4-144">При синхронизации с несколькими лесами может ли сервер обратиться к каждому лесу?</span><span class="sxs-lookup"><span data-stu-id="b76e4-144">If you have mutli-forest sync is the sync server able to get to each forest?</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="b76e4-145">Составьте письменный ответ на каждый вопрос и убедитесь, что он логически обоснован.</span><span class="sxs-lookup"><span data-stu-id="b76e4-145">Make sure to take notes of each answer and understand the rationale behind the answer.</span></span> <span data-ttu-id="b76e4-146">[Определение требований по реагированию на инциденты](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) .</span><span class="sxs-lookup"><span data-stu-id="b76e4-146">[Determine incident response requirements](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) will go over the options available.</span></span> <span data-ttu-id="b76e4-147">Ответив на эти вопросы, вы сможете выбрать тот вариант, который лучше всего подходит для вашего бизнеса.</span><span class="sxs-lookup"><span data-stu-id="b76e4-147">By having answered those questions you will select which option best suits your business needs.</span></span>
+> 
+> 
+
+## <a name="next-steps"></a><span data-ttu-id="b76e4-148">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="b76e4-148">Next steps</span></span>
+[<span data-ttu-id="b76e4-149">Определение требований к многофакторной проверке подлинности</span><span class="sxs-lookup"><span data-stu-id="b76e4-149">Determine multi-factor authentication requirements</span></span>](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+
+## <a name="see-also"></a><span data-ttu-id="b76e4-150">Дополнительные материалы</span><span class="sxs-lookup"><span data-stu-id="b76e4-150">See also</span></span>
+[<span data-ttu-id="b76e4-151">Обзор рекомендаций по проектированию</span><span class="sxs-lookup"><span data-stu-id="b76e4-151">Design considerations overview</span></span>](active-directory-hybrid-identity-design-considerations-overview.md)
+

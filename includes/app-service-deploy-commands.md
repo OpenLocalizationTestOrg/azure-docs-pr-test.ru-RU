@@ -1,0 +1,8 @@
+
+<span data-ttu-id="9440f-101">Чтобы развернуть ресурсы в Azure, необходимо войти в учетную запись Azure и воспользоваться диспетчером ресурсов Azure.</span><span class="sxs-lookup"><span data-stu-id="9440f-101">To deploy the resources to Azure, you must be logged in to your Azure account and you must use the Azure Resource Manager module.</span></span> <span data-ttu-id="9440f-102">Информацию об использовании диспетчера ресурсов Azure с помощью Azure PowerShell или интерфейса командной строки Azure см. в следующих статьях:</span><span class="sxs-lookup"><span data-stu-id="9440f-102">To learn about using Azure Resource Manager with either Azure PowerShell or Azure CLI, see:</span></span>
+
+* [<span data-ttu-id="9440f-103">Использование Azure PowerShell с диспетчером ресурсов Azure</span><span class="sxs-lookup"><span data-stu-id="9440f-103">Using Azure PowerShell with Azure Resource Manager</span></span>](../articles/azure-resource-manager/powershell-azure-resource-manager.md)
+* <span data-ttu-id="9440f-104">[Использование интерфейса командной строки Azure для Mac, Linux и Windows со службой управления ресурсами Azure](../articles/azure-resource-manager/xplat-cli-azure-resource-manager.md).</span><span class="sxs-lookup"><span data-stu-id="9440f-104">[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management](../articles/azure-resource-manager/xplat-cli-azure-resource-manager.md).</span></span>
+
+<span data-ttu-id="9440f-105">В приведенных ниже примерах предполагается, что в вашей учетной записи уже есть группа ресурсов с указанным именем.</span><span class="sxs-lookup"><span data-stu-id="9440f-105">The following examples assume you already have a resource group in your account with the specified name.</span></span> 
+

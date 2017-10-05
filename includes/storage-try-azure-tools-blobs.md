@@ -1,0 +1,7 @@
+> [!TIP]
+> 
+> <span data-ttu-id="7167b-101">**Управление ресурсами хранилища BLOB-объектов Azure с помощью обозревателя службы хранилища Microsoft Azure**</span><span class="sxs-lookup"><span data-stu-id="7167b-101">**Manage Azure Blob Storage resources with Microsoft Azure Storage Explorer**</span></span>
+> 
+> <span data-ttu-id="7167b-102">[Обозреватель службы хранилища Microsoft Azure](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) — это бесплатное автономное приложение Майкрософт, обеспечивающее [управление ресурсами хранилища BLOB-объектов Azure](../articles/vs-azure-tools-storage-explorer-blobs.md).</span><span class="sxs-lookup"><span data-stu-id="7167b-102">[Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to [manage Azure Blob Storage resources](../articles/vs-azure-tools-storage-explorer-blobs.md).</span></span> <span data-ttu-id="7167b-103">С помощью обозревателя службы хранилища Microsoft Azure вы можете визуализировать, читать, обновлять и удалять контейнеры больших двоичных объектов и большие двоичные объекты, а также управлять доступом к ним.</span><span class="sxs-lookup"><span data-stu-id="7167b-103">Using Microsoft Azure Storage Explorer, you can visually create, read, update, and delete blob containers and blobs, as well as manage access to your blobs containers and blobs.</span></span>
+
+
