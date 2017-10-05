@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: c1857eb94fba13c30e7f07669616f5d0ab9953f4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Формат файла манифеста службы импорта и экспорта Azure
 Файл манифеста диска описывает сопоставление между большими двоичными объектами в хранилище BLOB-объектов Azure и файлами на диске, включая задание импорта или экспорта. Для операции импорта файл манифеста создается в рамках процесса подготовки диска и сохраняется на нем перед отправкой в центр обработки данных Azure. Во время операции экспорта манифест создается и сохраняется на диске службой импорта и экспорта Azure.  
