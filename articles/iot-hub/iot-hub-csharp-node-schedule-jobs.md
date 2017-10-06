@@ -1,6 +1,6 @@
 ---
-title: "Планирование заданий c помощью Центра Интернета вещей Azure (.NET или Node) | Документация Майкрософт"
-description: "Планирование заданий с помощью Центра Интернета вещей Azure для вызова прямого метода на нескольких устройствах. Используйте пакет SDK для устройств Azure IoT для Node.js, чтобы реализовать приложение имитации устройства, и пакет SDK для служб Azure IoT для .NET, чтобы реализовать приложение-службу, которое выполняет задание."
+title: "aaaSchedule заданий с центром IoT Azure (.NET или узел) | Документы Microsoft"
+description: "Как tooschedule центр IoT Azure заданий tooinvoke прямой метод на нескольких устройствах. Использовать устройства Azure IoT hello пакета SDK для Node.js tooimplement hello имитируемые приложения для устройств и hello Azure IoT служба пакета SDK для .NET tooimplement задание службы toorun приложения hello."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -14,76 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: juanpere
-ms.openlocfilehash: a8f4f34aa99c4a9966957cac213ec9170de80a46
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f6148b67129dde4580bfe9ccceafd6400fbc5976
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="schedule-and-broadcast-jobs-netnodejs"></a><span data-ttu-id="e4965-104">Планирование и трансляция заданий (.NET или Node.js)</span><span class="sxs-lookup"><span data-stu-id="e4965-104">Schedule and broadcast jobs (.NET/Node.js)</span></span>
+# <a name="schedule-and-broadcast-jobs-netnodejs"></a><span data-ttu-id="43425-104">Планирование и трансляция заданий (.NET или Node.js)</span><span class="sxs-lookup"><span data-stu-id="43425-104">Schedule and broadcast jobs (.NET/Node.js)</span></span>
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-<span data-ttu-id="e4965-105">Центр Интернета вещей Azure позволяет планировать и отслеживать задания по обновлению для миллионов устройств.</span><span class="sxs-lookup"><span data-stu-id="e4965-105">Use Azure IoT Hub to schedule and track jobs that update millions of devices.</span></span> <span data-ttu-id="e4965-106">Что можно сделать с помощью заданий?</span><span class="sxs-lookup"><span data-stu-id="e4965-106">Use jobs to:</span></span>
+<span data-ttu-id="43425-105">Используйте центр IoT Azure tooschedule и отслеживать задания, которые обновляют миллионов устройств.</span><span class="sxs-lookup"><span data-stu-id="43425-105">Use Azure IoT Hub tooschedule and track jobs that update millions of devices.</span></span> <span data-ttu-id="43425-106">Что можно сделать с помощью заданий?</span><span class="sxs-lookup"><span data-stu-id="43425-106">Use jobs to:</span></span>
 
-* <span data-ttu-id="e4965-107">Обновление требуемых свойств</span><span class="sxs-lookup"><span data-stu-id="e4965-107">Update desired properties</span></span>
-* <span data-ttu-id="e4965-108">Обновление тегов</span><span class="sxs-lookup"><span data-stu-id="e4965-108">Update tags</span></span>
-* <span data-ttu-id="e4965-109">Вызов прямых методов</span><span class="sxs-lookup"><span data-stu-id="e4965-109">Invoke direct methods</span></span>
+* <span data-ttu-id="43425-107">Обновление требуемых свойств</span><span class="sxs-lookup"><span data-stu-id="43425-107">Update desired properties</span></span>
+* <span data-ttu-id="43425-108">Обновление тегов</span><span class="sxs-lookup"><span data-stu-id="43425-108">Update tags</span></span>
+* <span data-ttu-id="43425-109">Вызов прямых методов</span><span class="sxs-lookup"><span data-stu-id="43425-109">Invoke direct methods</span></span>
 
-<span data-ttu-id="e4965-110">Задание выступает в роли оболочки для одного из этих действий и отслеживает его выполнение для определенного набора устройств в соответствии с запросом на двойнике устройства.</span><span class="sxs-lookup"><span data-stu-id="e4965-110">A job wraps one of these actions and tracks the execution against a set of devices that is defined by a device twin query.</span></span> <span data-ttu-id="e4965-111">Например, внутреннее приложение может использовать задание для вызова прямого метода перезапуска на 10 000 устройств.</span><span class="sxs-lookup"><span data-stu-id="e4965-111">For example, a back-end app can use a job to invoke a direct method on 10,000 devices that reboots the devices.</span></span> <span data-ttu-id="e4965-112">Вы можете определить набор устройств с помощью запроса на двойнике устройства и запланировать момент времени в будущем для выполнения задания.</span><span class="sxs-lookup"><span data-stu-id="e4965-112">You specify the set of devices with a device twin query and schedule the job to run at a future time.</span></span> <span data-ttu-id="e4965-113">Задание отслеживает ход выполнения по мере того, как каждое из устройств получает вызов и выполняет прямой метод перезагрузки.</span><span class="sxs-lookup"><span data-stu-id="e4965-113">The job tracks progress as each of the devices receive and execute the reboot direct method.</span></span>
+<span data-ttu-id="43425-110">Задание включает одно из следующих действий и отслеживает hello выполнения для набора устройств, определяется запрос двойных устройства.</span><span class="sxs-lookup"><span data-stu-id="43425-110">A job wraps one of these actions and tracks hello execution against a set of devices that is defined by a device twin query.</span></span> <span data-ttu-id="43425-111">Например приложение серверной части можно использовать tooinvoke задания прямой метод на 10 000 устройств, которые перезагрузки устройства hello.</span><span class="sxs-lookup"><span data-stu-id="43425-111">For example, a back-end app can use a job tooinvoke a direct method on 10,000 devices that reboots hello devices.</span></span> <span data-ttu-id="43425-112">Укажите hello устройств с помощью запроса двойных устройства и запланировать задание toorun hello в будущем.</span><span class="sxs-lookup"><span data-stu-id="43425-112">You specify hello set of devices with a device twin query and schedule hello job toorun at a future time.</span></span> <span data-ttu-id="43425-113">отслеживает ход выполнения задания Hello имени каждого из устройств hello получают и выполнить прямой метод перезагрузки hello.</span><span class="sxs-lookup"><span data-stu-id="43425-113">hello job tracks progress as each of hello devices receive and execute hello reboot direct method.</span></span>
 
-<span data-ttu-id="e4965-114">Дополнительные сведения об этих возможностях см. в указанных ниже статьях.</span><span class="sxs-lookup"><span data-stu-id="e4965-114">To learn more about each of these capabilities, see:</span></span>
+<span data-ttu-id="43425-114">toolearn Дополнительные сведения о каждой из этих возможностей см.:</span><span class="sxs-lookup"><span data-stu-id="43425-114">toolearn more about each of these capabilities, see:</span></span>
 
-* <span data-ttu-id="e4965-115">Двойники устройств и свойства: [Приступая к работе с двойниками устройств (предварительная версия)][lnk-get-started-twin] и [Руководство. Настройка устройств с помощью требуемых свойств (предварительная версия)][lnk-twin-props].</span><span class="sxs-lookup"><span data-stu-id="e4965-115">Device twin and properties: [Get started with device twins][lnk-get-started-twin] and [Tutorial: How to use device twin properties][lnk-twin-props]</span></span>
-* <span data-ttu-id="e4965-116">Прямые методы: [Общие сведения о прямых методах и информация о вызове этих методов из Центра Интернета вещей][lnk-dev-methods] и [Использование прямых методов на устройстве Интернета вещей (Node.js)][lnk-c2d-methods].</span><span class="sxs-lookup"><span data-stu-id="e4965-116">Direct methods: [IoT Hub developer guide - direct methods][lnk-dev-methods] and [Tutorial: Use direct methods][lnk-c2d-methods]</span></span>
+* <span data-ttu-id="43425-115">Двойных устройства и свойства: [Приступая к работе с устройством близнецы] [ lnk-get-started-twin] и [учебника: как свойства двойных toouse устройства][lnk-twin-props]</span><span class="sxs-lookup"><span data-stu-id="43425-115">Device twin and properties: [Get started with device twins][lnk-get-started-twin] and [Tutorial: How toouse device twin properties][lnk-twin-props]</span></span>
+* <span data-ttu-id="43425-116">Прямые методы: [Общие сведения о прямых методах и информация о вызове этих методов из Центра Интернета вещей][lnk-dev-methods] и [Использование прямых методов на устройстве Интернета вещей (Node.js)][lnk-c2d-methods].</span><span class="sxs-lookup"><span data-stu-id="43425-116">Direct methods: [IoT Hub developer guide - direct methods][lnk-dev-methods] and [Tutorial: Use direct methods][lnk-c2d-methods]</span></span>
 
-<span data-ttu-id="e4965-117">В этом учебнике описаны следующие процедуры.</span><span class="sxs-lookup"><span data-stu-id="e4965-117">This tutorial shows you how to:</span></span>
+<span data-ttu-id="43425-117">В этом учебнике описаны следующие процедуры.</span><span class="sxs-lookup"><span data-stu-id="43425-117">This tutorial shows you how to:</span></span>
 
-* <span data-ttu-id="e4965-118">Создание приложения для устройств, которое реализует прямой метод **lockDoor**, вызываемый внутренним приложением.</span><span class="sxs-lookup"><span data-stu-id="e4965-118">Create a device app that implements a direct method called **lockDoor** that can be called by the back-end app.</span></span> <span data-ttu-id="e4965-119">Приложение для устройств также получает от внутреннего приложения запросы на изменение свойств.</span><span class="sxs-lookup"><span data-stu-id="e4965-119">The device app also receives desired property changes from the back-end app.</span></span>
-* <span data-ttu-id="e4965-120">Создание внутреннего приложения, которое создает задание для вызова прямого метода **lockDoor** на нескольких устройствах.</span><span class="sxs-lookup"><span data-stu-id="e4965-120">Create a back-end app that creates a job to call the **lockDoor** direct method on multiple devices.</span></span> <span data-ttu-id="e4965-121">Еще одно задание отправляет обновления нужных свойств на несколько устройств.</span><span class="sxs-lookup"><span data-stu-id="e4965-121">Another job sends desired property updates to multiple devices.</span></span>
+* <span data-ttu-id="43425-118">Создание приложения для устройств, реализующий прямой метод с именем **lockDoor** , может быть вызван приложение hello серверной части.</span><span class="sxs-lookup"><span data-stu-id="43425-118">Create a device app that implements a direct method called **lockDoor** that can be called by hello back-end app.</span></span> <span data-ttu-id="43425-119">приложение Hello устройства также получает изменения требуемое свойство из серверной части приложения hello.</span><span class="sxs-lookup"><span data-stu-id="43425-119">hello device app also receives desired property changes from hello back-end app.</span></span>
+* <span data-ttu-id="43425-120">Создания серверной части приложения, которое создает задание toocall hello **lockDoor** прямой метод на нескольких устройствах.</span><span class="sxs-lookup"><span data-stu-id="43425-120">Create a back-end app that creates a job toocall hello **lockDoor** direct method on multiple devices.</span></span> <span data-ttu-id="43425-121">Требуемое свойство обновить устройства toomultiple отправляет другим заданием.</span><span class="sxs-lookup"><span data-stu-id="43425-121">Another job sends desired property updates toomultiple devices.</span></span>
 
-<span data-ttu-id="e4965-122">По завершении работы с этим руководством у вас будет консольное приложение устройства Node.js и консольное приложение серверной части .NET (C#).</span><span class="sxs-lookup"><span data-stu-id="e4965-122">At the end of this tutorial, you have a Node.js console device app and a .NET (C#) console back-end app:</span></span>
+<span data-ttu-id="43425-122">В конце этого учебника hello у вас есть приложение Node.js консоли устройства и консольного приложения серверной части .NET (C#):</span><span class="sxs-lookup"><span data-stu-id="43425-122">At hello end of this tutorial, you have a Node.js console device app and a .NET (C#) console back-end app:</span></span>
 
-<span data-ttu-id="e4965-123">**simDevice.js** подключается к Центру Интернета вещей, выполняет прямой метод **lockDoor** и обрабатывает изменения свойств.</span><span class="sxs-lookup"><span data-stu-id="e4965-123">**simDevice.js** that connects to your IoT hub, implements the **lockDoor** direct method, and handles desired property changes.</span></span>
+<span data-ttu-id="43425-123">**simDevice.js** , соединяет центр IoT tooyour, реализующий hello **lockDoor** прямой метод и обрабатывает требуемого свойства.</span><span class="sxs-lookup"><span data-stu-id="43425-123">**simDevice.js** that connects tooyour IoT hub, implements hello **lockDoor** direct method, and handles desired property changes.</span></span>
 
-<span data-ttu-id="e4965-124">**ScheduleJob** использует задания для вызова прямого метода **lockDoor** и для обновления на нескольких устройствах свойств, установленных на двойнике устройства.</span><span class="sxs-lookup"><span data-stu-id="e4965-124">**ScheduleJob** that uses jobs to call the **lockDoor** direct method and update the device twin desired properties on multiple devices.</span></span>
+<span data-ttu-id="43425-124">**ScheduleJob** , использующий hello задания toocall **lockDoor** прямой метод и обновление двойных hello устройства требуемого свойства на нескольких устройствах.</span><span class="sxs-lookup"><span data-stu-id="43425-124">**ScheduleJob** that uses jobs toocall hello **lockDoor** direct method and update hello device twin desired properties on multiple devices.</span></span>
 
-<span data-ttu-id="e4965-125">Для работы с этим учебником требуется:</span><span class="sxs-lookup"><span data-stu-id="e4965-125">To complete this tutorial, you need the following:</span></span>
+<span data-ttu-id="43425-125">toocomplete этого учебника требуется hello следующие:</span><span class="sxs-lookup"><span data-stu-id="43425-125">toocomplete this tutorial, you need hello following:</span></span>
 
-* <span data-ttu-id="e4965-126">Visual Studio 2015 или Visual Studio 2017.</span><span class="sxs-lookup"><span data-stu-id="e4965-126">Visual Studio 2015 or Visual Studio 2017.</span></span>
-* <span data-ttu-id="e4965-127">Node.js 0.12.x или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="e4965-127">Node.js version 0.12.x or later.</span></span> <span data-ttu-id="e4965-128">В статье [Prepare your development environment][lnk-dev-setup] (Подготовка среды разработки) описывается, как установить Node.js для работы с этим руководством в операционной системе Windows или Linux.</span><span class="sxs-lookup"><span data-stu-id="e4965-128">The article [Prepare your development environment][lnk-dev-setup] describes how to install Node.js for this tutorial on either Windows or Linux.</span></span>
-* <span data-ttu-id="e4965-129">Активная учетная запись Azure.</span><span class="sxs-lookup"><span data-stu-id="e4965-129">An active Azure account.</span></span> <span data-ttu-id="e4965-130">Если у вас нет учетной записи, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="e4965-130">If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.</span></span>
+* <span data-ttu-id="43425-126">Visual Studio 2015 или Visual Studio 2017.</span><span class="sxs-lookup"><span data-stu-id="43425-126">Visual Studio 2015 or Visual Studio 2017.</span></span>
+* <span data-ttu-id="43425-127">Node.js 0.12.x или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="43425-127">Node.js version 0.12.x or later.</span></span> <span data-ttu-id="43425-128">статья Hello [подготовить среду разработки] [ lnk-dev-setup] описывает способ tooinstall Node.js для этого учебника в Windows или Linux.</span><span class="sxs-lookup"><span data-stu-id="43425-128">hello article [Prepare your development environment][lnk-dev-setup] describes how tooinstall Node.js for this tutorial on either Windows or Linux.</span></span>
+* <span data-ttu-id="43425-129">Активная учетная запись Azure.</span><span class="sxs-lookup"><span data-stu-id="43425-129">An active Azure account.</span></span> <span data-ttu-id="43425-130">Если у вас нет учетной записи, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="43425-130">If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.</span></span>
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a><span data-ttu-id="e4965-131">Планирование заданий для вызова прямого метода и обновления свойств двойника устройства</span><span class="sxs-lookup"><span data-stu-id="e4965-131">Schedule jobs for calling a direct method and sending device twin updates</span></span>
+## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a><span data-ttu-id="43425-131">Планирование заданий для вызова прямого метода и обновления свойств двойника устройства</span><span class="sxs-lookup"><span data-stu-id="43425-131">Schedule jobs for calling a direct method and sending device twin updates</span></span>
 
-<span data-ttu-id="e4965-132">В этом разделе вы создадите консольное приложение .NET на языке C#, которое использует задания для вызова прямого метода **lockDoor** и для обновления свойств на нескольких устройствах.</span><span class="sxs-lookup"><span data-stu-id="e4965-132">In this section, you create a .NET console app (using C#) that uses jobs to call the **lockDoor** direct method and send desired property updates to multiple devices.</span></span>
+<span data-ttu-id="43425-132">В этом разделе создайте .NET консольного приложения (с помощью C#), использующий hello задания toocall **lockDoor** прямой метод и отправить требуемое свойство обновить toomultiple устройства.</span><span class="sxs-lookup"><span data-stu-id="43425-132">In this section, you create a .NET console app (using C#) that uses jobs toocall hello **lockDoor** direct method and send desired property updates toomultiple devices.</span></span>
 
-1. <span data-ttu-id="e4965-133">В Visual Studio добавьте в текущее решение проект классического приложения Windows на языке Visual C# с помощью шаблона проекта **консольного приложения** .</span><span class="sxs-lookup"><span data-stu-id="e4965-133">In Visual Studio, add a Visual C# Windows Classic Desktop project to the current solution by using the **Console Application** project template.</span></span> <span data-ttu-id="e4965-134">Назовите проект **ScheduleJob**.</span><span class="sxs-lookup"><span data-stu-id="e4965-134">Name the project **ScheduleJob**.</span></span>
+1. <span data-ttu-id="43425-133">В Visual Studio, добавить проект Visual C# Windows классического toohello текущее решение с помощью hello **консольное приложение** шаблона проекта.</span><span class="sxs-lookup"><span data-stu-id="43425-133">In Visual Studio, add a Visual C# Windows Classic Desktop project toohello current solution by using hello **Console Application** project template.</span></span> <span data-ttu-id="43425-134">Имя проекта hello **ScheduleJob**.</span><span class="sxs-lookup"><span data-stu-id="43425-134">Name hello project **ScheduleJob**.</span></span>
 
     ![Новый проект классического приложения Windows на языке Visual C#][img-createapp]
 
-1. <span data-ttu-id="e4965-136">В обозревателе решений щелкните правой кнопкой мыши проект **ScheduleJob** и выберите **Управление пакетами NuGet…**.</span><span class="sxs-lookup"><span data-stu-id="e4965-136">In Solution Explorer, right-click the **ScheduleJob** project, and then click **Manage NuGet Packages...**.</span></span>
-1. <span data-ttu-id="e4965-137">В окне **Диспетчер пакетов NuGet** нажмите кнопку **Обзор**, найдите **microsoft.azure.devices**, щелкните **Установить**, чтобы установить пакет **Microsoft.Azure.Devices**, и примите условия использования.</span><span class="sxs-lookup"><span data-stu-id="e4965-137">In the **NuGet Package Manager** window, select **Browse**, search for **microsoft.azure.devices**, select **Install** to install the **Microsoft.Azure.Devices** package, and accept the terms of use.</span></span> <span data-ttu-id="e4965-138">В результате выполняется скачивание и установка пакета NuGet [SDK для служб Интернета вещей Azure][lnk-nuget-service-sdk] и его зависимостей, а также добавляется соответствующая ссылка.</span><span class="sxs-lookup"><span data-stu-id="e4965-138">This step downloads, installs, and adds a reference to the [Azure IoT service SDK][lnk-nuget-service-sdk] NuGet package and its dependencies.</span></span>
+1. <span data-ttu-id="43425-136">В обозревателе решений щелкните правой кнопкой мыши hello **ScheduleJob** проекта, а затем нажмите кнопку **управление пакетами NuGet...** .</span><span class="sxs-lookup"><span data-stu-id="43425-136">In Solution Explorer, right-click hello **ScheduleJob** project, and then click **Manage NuGet Packages...**.</span></span>
+1. <span data-ttu-id="43425-137">В hello **диспетчера пакетов NuGet** выберите **Обзор**, поиск **microsoft.azure.devices**выберите **установить** tooinstall Hello **Microsoft.Azure.Devices** пакета и примите условия использования hello.</span><span class="sxs-lookup"><span data-stu-id="43425-137">In hello **NuGet Package Manager** window, select **Browse**, search for **microsoft.azure.devices**, select **Install** tooinstall hello **Microsoft.Azure.Devices** package, and accept hello terms of use.</span></span> <span data-ttu-id="43425-138">Этот шаг загрузки, устанавливает и добавляет toohello ссылки [пакета SDK службы Azure IoT] [ lnk-nuget-service-sdk] NuGet пакет и его зависимости.</span><span class="sxs-lookup"><span data-stu-id="43425-138">This step downloads, installs, and adds a reference toohello [Azure IoT service SDK][lnk-nuget-service-sdk] NuGet package and its dependencies.</span></span>
 
     ![Окно "Диспетчер пакетов NuGet"][img-servicenuget]
-1. <span data-ttu-id="e4965-140">Добавьте следующие инструкции `using` в начало файла **Program.cs** :</span><span class="sxs-lookup"><span data-stu-id="e4965-140">Add the following `using` statements at the top of the **Program.cs** file:</span></span>
+1. <span data-ttu-id="43425-140">Добавьте следующее hello `using` инструкции вверху hello hello **Program.cs** файла:</span><span class="sxs-lookup"><span data-stu-id="43425-140">Add hello following `using` statements at hello top of hello **Program.cs** file:</span></span>
     
     ```csharp
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. <span data-ttu-id="e4965-141">Добавьте следующую инструкцию `using`, если она отсутствует в инструкциях по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="e4965-141">Add the following `using` statement if not already present in the default statements.</span></span>
+1. <span data-ttu-id="43425-141">Добавьте следующее hello `using` инструкции, если он уже имеется в инструкциях по умолчанию hello.</span><span class="sxs-lookup"><span data-stu-id="43425-141">Add hello following `using` statement if not already present in hello default statements.</span></span>
 
     ```csharp
     using System.Threading.Tasks;
     ```
 
-1. <span data-ttu-id="e4965-142">Добавьте следующие поля в класс **Program** .</span><span class="sxs-lookup"><span data-stu-id="e4965-142">Add the following fields to the **Program** class.</span></span> <span data-ttu-id="e4965-143">Замените значение заполнителя строкой подключения Центра Интернета вещей, созданного в предыдущем разделе.</span><span class="sxs-lookup"><span data-stu-id="e4965-143">Replace the placeholder with the IoT Hub connection string for the hub that you created in the previous section.</span></span>
+1. <span data-ttu-id="43425-142">Добавьте следующие поля toohello hello **программы** класса.</span><span class="sxs-lookup"><span data-stu-id="43425-142">Add hello following fields toohello **Program** class.</span></span> <span data-ttu-id="43425-143">Замените заполнитель hello hello центра IoT строку подключения для hello концентратора, созданную в предыдущем разделе hello.</span><span class="sxs-lookup"><span data-stu-id="43425-143">Replace hello placeholder with hello IoT Hub connection string for hello hub that you created in hello previous section.</span></span>
 
     ```csharp
     static string connString = "{iot hub connection string}";
@@ -91,7 +91,7 @@ ms.lasthandoff: 08/03/2017
     static JobClient jobClient;
     ```
 
-1. <span data-ttu-id="e4965-144">Добавьте следующий метод в класс **Program** .</span><span class="sxs-lookup"><span data-stu-id="e4965-144">Add the following method to the **Program** class:</span></span>
+1. <span data-ttu-id="43425-144">Добавьте следующий метод toohello hello **программы** класса:</span><span class="sxs-lookup"><span data-stu-id="43425-144">Add hello following method toohello **Program** class:</span></span>
 
     ```csharp
     public static async Task MonitorJob(string jobId)
@@ -106,7 +106,7 @@ ms.lasthandoff: 08/03/2017
     }
     ```
 
-1. <span data-ttu-id="e4965-145">Добавьте следующий метод в класс **Program** .</span><span class="sxs-lookup"><span data-stu-id="e4965-145">Add the following method to the **Program** class:</span></span>
+1. <span data-ttu-id="43425-145">Добавьте следующий метод toohello hello **программы** класса:</span><span class="sxs-lookup"><span data-stu-id="43425-145">Add hello following method toohello **Program** class:</span></span>
 
     ```csharp
     public static async Task StartMethodJob(string jobId)
@@ -123,7 +123,7 @@ ms.lasthandoff: 08/03/2017
     }
     ```
 
-1. <span data-ttu-id="e4965-146">Добавьте следующий метод в класс **Program** .</span><span class="sxs-lookup"><span data-stu-id="e4965-146">Add the following method to the **Program** class:</span></span>
+1. <span data-ttu-id="43425-146">Добавьте следующий метод toohello hello **программы** класса:</span><span class="sxs-lookup"><span data-stu-id="43425-146">Add hello following method toohello **Program** class:</span></span>
 
     ```csharp
     public static async Task StartTwinUpdateJob(string jobId)
@@ -143,7 +143,7 @@ ms.lasthandoff: 08/03/2017
     }
     ```
 
-1. <span data-ttu-id="e4965-147">Наконец, добавьте следующие строки в метод **Main** :</span><span class="sxs-lookup"><span data-stu-id="e4965-147">Finally, add the following lines to the **Main** method:</span></span>
+1. <span data-ttu-id="43425-147">Наконец, добавьте следующие строки toohello hello **Main** метод:</span><span class="sxs-lookup"><span data-stu-id="43425-147">Finally, add hello following lines toohello **Main** method:</span></span>
 
     ```csharp
     jobClient = JobClient.CreateFromConnectionString(connString);
@@ -152,38 +152,38 @@ ms.lasthandoff: 08/03/2017
 
     StartMethodJob(methodJobId);
     MonitorJob(methodJobId).Wait();
-    Console.WriteLine("Press ENTER to run the next job.");
+    Console.WriteLine("Press ENTER toorun hello next job.");
     Console.ReadLine();
 
     string twinUpdateJobId = Guid.NewGuid().ToString();
 
     StartTwinUpdateJob(twinUpdateJobId);
     MonitorJob(twinUpdateJobId).Wait();
-    Console.WriteLine("Press ENTER to exit.");
+    Console.WriteLine("Press ENTER tooexit.");
     Console.ReadLine();
     ```
 
-1. <span data-ttu-id="e4965-148">В обозревателе решений откройте **Задать автозагружаемые проекты...** и задайте значение **Запустить** для параметра **Действие** проекта **ScheduleJob**.</span><span class="sxs-lookup"><span data-stu-id="e4965-148">In the Solution Explorer, open the **Set StartUp projects...** and make sure the **Action** for **ScheduleJob** project is **Start**.</span></span> <span data-ttu-id="e4965-149">Выполните сборку решения.</span><span class="sxs-lookup"><span data-stu-id="e4965-149">Build the solution.</span></span>
+1. <span data-ttu-id="43425-148">В hello обозревателе решений откройте hello **задать автозагружаемых проектов...**  и убедитесь, что hello **действия** для **ScheduleJob** проект является **запустить**.</span><span class="sxs-lookup"><span data-stu-id="43425-148">In hello Solution Explorer, open hello **Set StartUp projects...** and make sure hello **Action** for **ScheduleJob** project is **Start**.</span></span> <span data-ttu-id="43425-149">Выполните сборку решения hello.</span><span class="sxs-lookup"><span data-stu-id="43425-149">Build hello solution.</span></span>
 
-## <a name="create-a-simulated-device-app"></a><span data-ttu-id="e4965-150">Создание приложения виртуального устройства</span><span class="sxs-lookup"><span data-stu-id="e4965-150">Create a simulated device app</span></span>
+## <a name="create-a-simulated-device-app"></a><span data-ttu-id="43425-150">Создание приложения виртуального устройства</span><span class="sxs-lookup"><span data-stu-id="43425-150">Create a simulated device app</span></span>
 
-<span data-ttu-id="e4965-151">В этом разделе вы создадите консольное приложение Node.js, которое отвечает на прямой метод, вызываемый из облака. Этот метод запускает перезагрузку имитации устройства и использует сообщаемые свойства для определения устройств и времени их последней перезагрузки в запросах двойников устройства.</span><span class="sxs-lookup"><span data-stu-id="e4965-151">In this section, you create a Node.js console app that responds to a direct method called by the cloud, which triggers a simulated device reboot and uses the reported properties to enable device twin queries to identify devices and when they last rebooted.</span></span>
+<span data-ttu-id="43425-151">В этом разделе создайте консольное приложение Node.js, которое отвечает tooa прямой метод, вызываемый hello облака, активизирующий перезагрузка имитации устройства и использует hello выводятся свойства tooenable устройствами двойных запросы tooidentify устройства и когда они последней перезагрузки.</span><span class="sxs-lookup"><span data-stu-id="43425-151">In this section, you create a Node.js console app that responds tooa direct method called by hello cloud, which triggers a simulated device reboot and uses hello reported properties tooenable device twin queries tooidentify devices and when they last rebooted.</span></span>
 
-1. <span data-ttu-id="e4965-152">Создайте пустую папку с именем **simDevice**.</span><span class="sxs-lookup"><span data-stu-id="e4965-152">Create a new empty folder called **simDevice**.</span></span>  <span data-ttu-id="e4965-153">В папке **simDevice** создайте файл package.json, используя следующую команду в командной строке.</span><span class="sxs-lookup"><span data-stu-id="e4965-153">In the **simDevice** folder, create a package.json file using the following command at your command prompt.</span></span>  <span data-ttu-id="e4965-154">Примите значения по умолчанию:</span><span class="sxs-lookup"><span data-stu-id="e4965-154">Accept all the defaults:</span></span>
+1. <span data-ttu-id="43425-152">Создайте пустую папку с именем **simDevice**.</span><span class="sxs-lookup"><span data-stu-id="43425-152">Create a new empty folder called **simDevice**.</span></span>  <span data-ttu-id="43425-153">В hello **simDevice** папки, создайте файл package.json, используя следующую команду в командной строке hello.</span><span class="sxs-lookup"><span data-stu-id="43425-153">In hello **simDevice** folder, create a package.json file using hello following command at your command prompt.</span></span>  <span data-ttu-id="43425-154">Примите все значения по умолчанию hello:</span><span class="sxs-lookup"><span data-stu-id="43425-154">Accept all hello defaults:</span></span>
 
     ```cmd/sh
     npm init
     ```
 
-1. <span data-ttu-id="e4965-155">Чтобы установить пакеты **azure-iot-device** и **azure-iot-device-mqtt**, в командной строке в папке **simDevice** выполните следующую команду.</span><span class="sxs-lookup"><span data-stu-id="e4965-155">At your command prompt in the **simDevice** folder, run the following command to install the **azure-iot-device** and **azure-iot-device-mqtt** packages:</span></span>
+1. <span data-ttu-id="43425-155">В командной строке в hello **simDevice** папку, следующая команда tooinstall hello hello **azure iot устройства** и **azure iot устройства mqtt** пакетов:</span><span class="sxs-lookup"><span data-stu-id="43425-155">At your command prompt in hello **simDevice** folder, run hello following command tooinstall hello **azure-iot-device** and **azure-iot-device-mqtt** packages:</span></span>
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. <span data-ttu-id="e4965-156">В текстовом редакторе создайте файл **simDevice.js** в папке **simDevice**.</span><span class="sxs-lookup"><span data-stu-id="e4965-156">Using a text editor, create a new **simDevice.js** file in the **simDevice** folder.</span></span>
+1. <span data-ttu-id="43425-156">В текстовом редакторе создайте новый **simDevice.js** файла в hello **simDevice** папки.</span><span class="sxs-lookup"><span data-stu-id="43425-156">Using a text editor, create a new **simDevice.js** file in hello **simDevice** folder.</span></span>
 
-1. <span data-ttu-id="e4965-157">Добавьте следующие инструкции require в начало файла **simDevice.js**:</span><span class="sxs-lookup"><span data-stu-id="e4965-157">Add the following 'require' statements at the start of the **simDevice.js** file:</span></span>
+1. <span data-ttu-id="43425-157">Добавьте следующие hello «требовать» операторы в начале hello hello **simDevice.js** файла:</span><span class="sxs-lookup"><span data-stu-id="43425-157">Add hello following 'require' statements at hello start of hello **simDevice.js** file:</span></span>
 
     ```nodejs
     'use strict';
@@ -192,24 +192,24 @@ ms.lasthandoff: 08/03/2017
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-1. <span data-ttu-id="e4965-158">Добавьте переменную **connectionString**, чтобы создать с ее помощью экземпляр **клиента**.</span><span class="sxs-lookup"><span data-stu-id="e4965-158">Add a **connectionString** variable and use it to create a **Client** instance.</span></span> <span data-ttu-id="e4965-159">Замените заполнители значениями, подходящими для ваших настроек.</span><span class="sxs-lookup"><span data-stu-id="e4965-159">Make sure to replace the placeholders with values appropriate to your setup.</span></span>
+1. <span data-ttu-id="43425-158">Добавить **connectionString** переменной и использовать его toocreate **клиента** экземпляра.</span><span class="sxs-lookup"><span data-stu-id="43425-158">Add a **connectionString** variable and use it toocreate a **Client** instance.</span></span> <span data-ttu-id="43425-159">Сделайте заполнители hello убедиться, что tooreplace установки tooyour соответствующие значения.</span><span class="sxs-lookup"><span data-stu-id="43425-159">Make sure tooreplace hello placeholders with values appropriate tooyour setup.</span></span>
 
     ```nodejs
     var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-1. <span data-ttu-id="e4965-160">Добавьте следующую функцию для обработки метода **lockDoor**.</span><span class="sxs-lookup"><span data-stu-id="e4965-160">Add the following function to handle the **lockDoor** method.</span></span>
+1. <span data-ttu-id="43425-160">Добавить следующие функции hello toohandle hello **lockDoor** метод.</span><span class="sxs-lookup"><span data-stu-id="43425-160">Add hello following function toohandle hello **lockDoor** method.</span></span>
 
     ```nodejs
     var onLockDoor = function(request, response) {
    
-        // Respond the cloud app for the direct method
+        // Respond hello cloud app for hello direct method
         response.send(200, function(err) {
             if (!err) {
                 console.error('An error occured when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.');
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.');
             }
         });
    
@@ -217,47 +217,47 @@ ms.lasthandoff: 08/03/2017
     };
     ```
 
-1. <span data-ttu-id="e4965-161">Добавьте следующий код для регистрации обработчика для метода **lockDoor**.</span><span class="sxs-lookup"><span data-stu-id="e4965-161">Add the following code to register the handler for the **lockDoor** method.</span></span>
+1. <span data-ttu-id="43425-161">Добавьте следующий код обработчика hello tooregister для hello hello **lockDoor** метод.</span><span class="sxs-lookup"><span data-stu-id="43425-161">Add hello following code tooregister hello handler for hello **lockDoor** method.</span></span>
 
     ```nodejs
     client.open(function(err) {
         if (err) {
-            console.error('Could not connect to IotHub client.');
+            console.error('Could not connect tooIotHub client.');
         }  else {
-            console.log('Client connected to IoT Hub.  Waiting for lockDoor direct method.');
+            console.log('Client connected tooIoT Hub.  Waiting for lockDoor direct method.');
             client.onDeviceMethod('lockDoor', onLockDoor);
         }
     });
     ```
 
-1. <span data-ttu-id="e4965-162">Сохраните и закройте файл **simDevice.js**.</span><span class="sxs-lookup"><span data-stu-id="e4965-162">Save and close the **simDevice.js** file.</span></span>
+1. <span data-ttu-id="43425-162">Сохраните и закройте hello **simDevice.js** файла.</span><span class="sxs-lookup"><span data-stu-id="43425-162">Save and close hello **simDevice.js** file.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="e4965-163">Для простоты в этом руководстве не реализуются политики повтора.</span><span class="sxs-lookup"><span data-stu-id="e4965-163">To keep things simple, this tutorial does not implement any retry policy.</span></span> <span data-ttu-id="e4965-164">В рабочем коде следует реализовать политики повторных попыток (например, с экспоненциальной задержкой), как указано в статье [Обработка временного сбоя][lnk-transient-faults] на сайте MSDN.</span><span class="sxs-lookup"><span data-stu-id="e4965-164">In production code, you should implement retry policies (such as an exponential backoff), as suggested in the MSDN article [Transient Fault Handling][lnk-transient-faults].</span></span>
+> <span data-ttu-id="43425-163">простые действия tookeep, этот учебник не реализует никакую политику повтора.</span><span class="sxs-lookup"><span data-stu-id="43425-163">tookeep things simple, this tutorial does not implement any retry policy.</span></span> <span data-ttu-id="43425-164">В рабочем коде следует реализовать политики повтора (например экспоненциальную отсрочку), описанным в статье MSDN hello [обработка временных сбоев][lnk-transient-faults].</span><span class="sxs-lookup"><span data-stu-id="43425-164">In production code, you should implement retry policies (such as an exponential backoff), as suggested in hello MSDN article [Transient Fault Handling][lnk-transient-faults].</span></span>
 
-## <a name="run-the-apps"></a><span data-ttu-id="e4965-165">Запуск приложений</span><span class="sxs-lookup"><span data-stu-id="e4965-165">Run the apps</span></span>
+## <a name="run-hello-apps"></a><span data-ttu-id="43425-165">Запускайте приложения hello</span><span class="sxs-lookup"><span data-stu-id="43425-165">Run hello apps</span></span>
 
-<span data-ttu-id="e4965-166">Теперь все готово к запуску приложений.</span><span class="sxs-lookup"><span data-stu-id="e4965-166">You are now ready to run the apps.</span></span>
+<span data-ttu-id="43425-166">Теперь вы находитесь toorun готовности приложения hello.</span><span class="sxs-lookup"><span data-stu-id="43425-166">You are now ready toorun hello apps.</span></span>
 
-1. <span data-ttu-id="e4965-167">В командной строке в папке **simDevice** выполните следующую команду, чтобы начать прослушивание прямого метода перезагрузки:</span><span class="sxs-lookup"><span data-stu-id="e4965-167">At the command prompt in the **simDevice** folder, run the following command to begin listening for the reboot direct method.</span></span>
+1. <span data-ttu-id="43425-167">В командной строке hello в hello **simDevice** папки, запустите следующие команды toobegin прослушивание прямой метод перезагрузки hello hello.</span><span class="sxs-lookup"><span data-stu-id="43425-167">At hello command prompt in hello **simDevice** folder, run hello following command toobegin listening for hello reboot direct method.</span></span>
 
     ```cmd/sh
     node simDevice.js
     ```
 
-1. <span data-ttu-id="e4965-168">Запустите консольное приложение C# **ScheduleJob**. Щелкните правой кнопкой мыши проект **ScheduleJob**, выберите **Отладка** и **Запустить новый экземпляр**.</span><span class="sxs-lookup"><span data-stu-id="e4965-168">Run the C# console app **ScheduleJob** by right-clicking on the **ScheduleJob** project, then selecting **Debug** and **Start new instance**.</span></span>
+1. <span data-ttu-id="43425-168">Консольное приложение hello выполнения C# **ScheduleJob** , щелкнув hello **ScheduleJob** проект, выбрав **отладки** и **запустить новый экземпляр**.</span><span class="sxs-lookup"><span data-stu-id="43425-168">Run hello C# console app **ScheduleJob** by right-clicking on hello **ScheduleJob** project, then selecting **Debug** and **Start new instance**.</span></span>
 
-1. <span data-ttu-id="e4965-169">Отобразятся выходные данные с устройства и серверных приложений.</span><span class="sxs-lookup"><span data-stu-id="e4965-169">You see the output from both device and back-end apps.</span></span>
+1. <span data-ttu-id="43425-169">Вы видите hello выходные данные из устройства и серверной части приложения.</span><span class="sxs-lookup"><span data-stu-id="43425-169">You see hello output from both device and back-end apps.</span></span>
 
-    ![Выполнение приложений для планирования заданий][img-schedulejobs]
+    ![Запуск приложения hello tooschedule заданий][img-schedulejobs]
 
-## <a name="next-steps"></a><span data-ttu-id="e4965-171">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="e4965-171">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="43425-171">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="43425-171">Next steps</span></span>
 
-<span data-ttu-id="e4965-172">В этом учебнике описано использование задания для планирования прямого метода на устройстве и обновления свойств двойника устройства.</span><span class="sxs-lookup"><span data-stu-id="e4965-172">In this tutorial, you used a job to schedule a direct method to a device and the update of the device twin's properties.</span></span>
+<span data-ttu-id="43425-172">В этом учебнике используется задание tooschedule прямой метод tooa устройства и hello обновление свойств устройства двойных hello.</span><span class="sxs-lookup"><span data-stu-id="43425-172">In this tutorial, you used a job tooschedule a direct method tooa device and hello update of hello device twin's properties.</span></span>
 
-<span data-ttu-id="e4965-173">Чтобы продолжить знакомство с Центром Интернета вещей и шаблонами управления устройствами, такими как удаленное обновление встроенного ПО, ознакомьтесь с [этим руководством][lnk-fwupdate].</span><span class="sxs-lookup"><span data-stu-id="e4965-173">To continue getting started with IoT Hub and device management patterns such as remote over the air firmware update, read [Tutorial: How to do a firmware update][lnk-fwupdate].</span></span>
+<span data-ttu-id="43425-173">Приступая к работе с центр IoT и устройства управления шаблонами, например удаленного через обновление встроенного по воздуху hello, чтение toocontinue [учебника: как toodo встроенное по обновить][lnk-fwupdate].</span><span class="sxs-lookup"><span data-stu-id="43425-173">toocontinue getting started with IoT Hub and device management patterns such as remote over hello air firmware update, read [Tutorial: How toodo a firmware update][lnk-fwupdate].</span></span>
 
-<span data-ttu-id="e4965-174">Чтобы продолжить знакомство с Центром Интернета вещей, см. сведения в статье [Приступая к работе с архитектурой Edge Интернета вещей в Linux][lnk-iot-edge].</span><span class="sxs-lookup"><span data-stu-id="e4965-174">To continue getting started with IoT Hub, see [Getting started with IoT Edge][lnk-iot-edge].</span></span>
+<span data-ttu-id="43425-174">Приступая к работе с центром IoT toocontinue в разделе [Приступая к работе с краем IoT][lnk-iot-edge].</span><span class="sxs-lookup"><span data-stu-id="43425-174">toocontinue getting started with IoT Hub, see [Getting started with IoT Edge][lnk-iot-edge].</span></span>
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-schedule-jobs/servicesdknuget.png

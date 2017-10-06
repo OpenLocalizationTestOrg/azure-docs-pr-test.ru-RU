@@ -1,5 +1,5 @@
 ---
-title: "Приступая к работе с Azure AD версии 2 для Android. Настройка | Документация Майкрософт"
+title: "aaaAzure AD v2 Android начало работы — Настройка | Документы Microsoft"
 description: "Получение маркера доступа для приложения Android и вызов API Microsoft Graph или API, которые требуют маркер доступа, из конечной точки Azure Active Directory версии 2."
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,26 +15,26 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: c09937582118ebcc5b8cbc1f43a0a2019f2f7a89
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eaa41805c92212154ee8d51d3eb3aee1202eef1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="add-the-applications-registration-information-to-your-app"></a><span data-ttu-id="a4958-103">Добавление в приложение сведений о его регистрации</span><span class="sxs-lookup"><span data-stu-id="a4958-103">Add the application’s registration information to your app</span></span>
+## <a name="add-hello-applications-registration-information-tooyour-app"></a><span data-ttu-id="3b5de-103">Добавить приложение tooyour сведения о регистрации приложения hello</span><span class="sxs-lookup"><span data-stu-id="3b5de-103">Add hello application’s registration information tooyour app</span></span>
 
-<span data-ttu-id="a4958-104">На этом шаге вам нужно добавить идентификатор клиента в свой проект.</span><span class="sxs-lookup"><span data-stu-id="a4958-104">In this step, you need to add the Client ID to your project.</span></span>
+<span data-ttu-id="3b5de-104">На этом шаге необходимо tooadd hello идентификатор клиента tooyour проекта.</span><span class="sxs-lookup"><span data-stu-id="3b5de-104">In this step, you need tooadd hello Client ID tooyour project.</span></span>
 
-1.  <span data-ttu-id="a4958-105">Откройте `MainActivity` (выберите `app` > `java` > *`{host}.{namespace}`*).</span><span class="sxs-lookup"><span data-stu-id="a4958-105">Open `MainActivity` (under `app` > `java` > *`{host}.{namespace}`*)</span></span>
-2.  <span data-ttu-id="a4958-106">Замените строку, начинающуюся с `final static String CLIENT_ID`, следующей:</span><span class="sxs-lookup"><span data-stu-id="a4958-106">Replace the line starting with `final static String CLIENT_ID` with:</span></span>
+1.  <span data-ttu-id="3b5de-105">Откройте `MainActivity` (выберите `app` > `java` > *`{host}.{namespace}`*).</span><span class="sxs-lookup"><span data-stu-id="3b5de-105">Open `MainActivity` (under `app` > `java` > *`{host}.{namespace}`*)</span></span>
+2.  <span data-ttu-id="3b5de-106">Замените строку hello, начиная с `final static String CLIENT_ID` с:</span><span class="sxs-lookup"><span data-stu-id="3b5de-106">Replace hello line starting with `final static String CLIENT_ID` with:</span></span>
 ```java
-final static String CLIENT_ID = "[Enter the application Id here]";
+final static String CLIENT_ID = "[Enter hello application Id here]";
 ```
-3. <span data-ttu-id="a4958-107">Откройте: `app` > `manifests` > `AndroidManifest.xml`.</span><span class="sxs-lookup"><span data-stu-id="a4958-107">Open: `app` > `manifests` > `AndroidManifest.xml`</span></span>
-4. <span data-ttu-id="a4958-108">Добавьте следующее действие в узел `manifest\application`.</span><span class="sxs-lookup"><span data-stu-id="a4958-108">Add the following activity to `manifest\application` node.</span></span> <span data-ttu-id="a4958-109">Так вы зарегистрируете `BrowserTabActivity`, чтобы позволить операционной системе возобновить ваше приложение после завершения аутентификации.</span><span class="sxs-lookup"><span data-stu-id="a4958-109">This register a `BrowserTabActivity` to allow the OS to resume your application after completing the authentication:</span></span>
+3. <span data-ttu-id="3b5de-107">Откройте: `app` > `manifests` > `AndroidManifest.xml`.</span><span class="sxs-lookup"><span data-stu-id="3b5de-107">Open: `app` > `manifests` > `AndroidManifest.xml`</span></span>
+4. <span data-ttu-id="3b5de-108">Добавьте следующие действия слишком hello`manifest\application` узла.</span><span class="sxs-lookup"><span data-stu-id="3b5de-108">Add hello following activity too`manifest\application` node.</span></span> <span data-ttu-id="3b5de-109">Этот регистр `BrowserTabActivity` tooallow hello ОС tooresume приложения после завершения проверки подлинности hello:</span><span class="sxs-lookup"><span data-stu-id="3b5de-109">This register a `BrowserTabActivity` tooallow hello OS tooresume your application after completing hello authentication:</span></span>
 
 ```xml
-<!--Intent filter to capture System Browser calling back to our app after Sign In-->
+<!--Intent filter toocapture System Browser calling back tooour app after Sign In-->
 <activity
     android:name="com.microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -43,13 +43,13 @@ final static String CLIENT_ID = "[Enter the application Id here]";
         <category android:name="android.intent.category.BROWSABLE" />
 
         <!--Add in your scheme/host from registered redirect URI-->
-        <!--By default, the scheme should be similar to 'msal[appId]' -->
-        <data android:scheme="msal[Enter the application Id here]"
+        <!--By default, hello scheme should be similar too'msal[appId]' -->
+        <data android:scheme="msal[Enter hello application Id here]"
             android:host="auth" />
     </intent-filter>
 </activity>
 ```
 
-### <a name="what-is-next"></a><span data-ttu-id="a4958-110">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="a4958-110">What is Next</span></span>
+### <a name="what-is-next"></a><span data-ttu-id="3b5de-110">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="3b5de-110">What is Next</span></span>
 
-[<span data-ttu-id="a4958-111">Тестирование кода</span><span class="sxs-lookup"><span data-stu-id="a4958-111">Test and Validate</span></span>](active-directory-mobileanddesktopapp-android-test.md)
+[<span data-ttu-id="3b5de-111">Тестирование кода</span><span class="sxs-lookup"><span data-stu-id="3b5de-111">Test and Validate</span></span>](active-directory-mobileanddesktopapp-android-test.md)

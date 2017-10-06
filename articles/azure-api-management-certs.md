@@ -1,6 +1,6 @@
 ---
-title: "Отправка сертификата API управления в Azure | Документация Майкрософт"
-description: "Узнайте, как отправить сертификат API управления в Microsoft Azure."
+title: "aaaUpload сертификат API управления Azure | Документы Microsoft"
+description: "Узнайте, как сертификат tooupload athe API-Интерфейс управления для hello классический портал Azure."
 services: cloud-services
 documentationcenter: .net
 author: Thraka
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
-ms.openlocfilehash: 9dc438e927acd9aef38f06807fabf3dda9b021c9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8294d7131cfb01dba664bd4fd04b6fc22c1e93ac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-an-azure-management-api-management-certificate"></a><span data-ttu-id="48428-103">Отправка сертификата управления Azure для API управления</span><span class="sxs-lookup"><span data-stu-id="48428-103">Upload an Azure Management API Management Certificate</span></span>
-<span data-ttu-id="48428-104">Сертификаты управления позволяют выполнять аутентификацию с помощью классической модели развертывания Azure.</span><span class="sxs-lookup"><span data-stu-id="48428-104">Management certificates allow you to authenticate with the classic deployment model provided by Azure.</span></span> <span data-ttu-id="48428-105">Многие программы и инструменты (например, Visual Studio или пакет SDK Azure) будут использовать эти сертификаты для автоматизации настройки и развертывания разных служб Azure.</span><span class="sxs-lookup"><span data-stu-id="48428-105">Many programs and tools (such as Visual Studio or the Azure SDK) use these certificates to automate configuration and deployment of various Azure services.</span></span> 
+# <a name="upload-an-azure-management-api-management-certificate"></a><span data-ttu-id="7bdc1-103">Отправка сертификата управления Azure для API управления</span><span class="sxs-lookup"><span data-stu-id="7bdc1-103">Upload an Azure Management API Management Certificate</span></span>
+<span data-ttu-id="7bdc1-104">Сертификаты управления позволяют tooauthenticate с hello классической модели развертывания, предоставляемых Azure.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-104">Management certificates allow you tooauthenticate with hello classic deployment model provided by Azure.</span></span> <span data-ttu-id="7bdc1-105">Многие программы и средства (например, Visual Studio или hello Azure SDK) использовать эти сертификаты tooautomate конфигурации и развертывания различных служб Azure.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-105">Many programs and tools (such as Visual Studio or hello Azure SDK) use these certificates tooautomate configuration and deployment of various Azure services.</span></span> 
 
 > [!WARNING]
-> <span data-ttu-id="48428-106">Будьте осторожны!</span><span class="sxs-lookup"><span data-stu-id="48428-106">Be careful!</span></span> <span data-ttu-id="48428-107">Эти типы сертификатов позволяют каждому, кто прошел проверку подлинности, управлять подпиской, с которой они связаны.</span><span class="sxs-lookup"><span data-stu-id="48428-107">These types of certificates allow anyone who authenticates with them to manage the subscription they are associated with.</span></span>
+> <span data-ttu-id="7bdc1-106">Будьте осторожны!</span><span class="sxs-lookup"><span data-stu-id="7bdc1-106">Be careful!</span></span> <span data-ttu-id="7bdc1-107">Разрешить эти типы сертификатов всех, кто выполняет проверку подлинности с ними toomanage hello подписки, связанные с ними.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-107">These types of certificates allow anyone who authenticates with them toomanage hello subscription they are associated with.</span></span>
 >
 >
 
-<span data-ttu-id="48428-108">Дополнительные сведения о сертификатах Azure (включая сведения о создании самозаверяющего сертификата) см. в разделе [Что такое сертификаты управления](cloud-services/cloud-services-certs-create.md#what-are-management-certificates).</span><span class="sxs-lookup"><span data-stu-id="48428-108">If you'd like more information about Azure certificates (including creating a self-signed certificate), see [Certificates overview for Azure Cloud Services](cloud-services/cloud-services-certs-create.md#what-are-management-certificates).</span></span>
+<span data-ttu-id="7bdc1-108">Дополнительные сведения о сертификатах Azure (включая сведения о создании самозаверяющего сертификата) см. в разделе [Что такое сертификаты управления](cloud-services/cloud-services-certs-create.md#what-are-management-certificates).</span><span class="sxs-lookup"><span data-stu-id="7bdc1-108">If you'd like more information about Azure certificates (including creating a self-signed certificate), see [Certificates overview for Azure Cloud Services](cloud-services/cloud-services-certs-create.md#what-are-management-certificates).</span></span>
 
-<span data-ttu-id="48428-109">Для автоматизации проверки подлинности клиентского кода можно также использовать службу [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/).</span><span class="sxs-lookup"><span data-stu-id="48428-109">You can also use [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/) to authenticate client-code for automation purposes.</span></span>
+<span data-ttu-id="7bdc1-109">Можно также использовать [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/) tooauthenticate-код клиента в целях автоматизации.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-109">You can also use [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/) tooauthenticate client-code for automation purposes.</span></span>
 
-## <a name="upload-a-management-certificate"></a><span data-ttu-id="48428-110">Отправка сертификата управления</span><span class="sxs-lookup"><span data-stu-id="48428-110">Upload a management certificate</span></span>
-<span data-ttu-id="48428-111">Создав сертификат управления (CER-файл только с открытым ключом), передайте его на портал.</span><span class="sxs-lookup"><span data-stu-id="48428-111">Once you have a management certificate created, (.cer file with only the public key) you can upload it into the portal.</span></span> <span data-ttu-id="48428-112">Когда сертификат доступен на портале, любой пользователь с соответствующим сертификатом (закрытым ключом) сможет подключаться через API управления и работать с ресурсами связанной подписки.</span><span class="sxs-lookup"><span data-stu-id="48428-112">When the certificate is available in the portal, anyone with a matching certificate (private key) can connect through the Management API and access the resources for the associated subscription.</span></span>
+## <a name="upload-a-management-certificate"></a><span data-ttu-id="7bdc1-110">Отправка сертификата управления</span><span class="sxs-lookup"><span data-stu-id="7bdc1-110">Upload a management certificate</span></span>
+<span data-ttu-id="7bdc1-111">После создания сертификата управления, (CER-файл только hello открытым ключом) можно загрузить его в портал hello.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-111">Once you have a management certificate created, (.cer file with only hello public key) you can upload it into hello portal.</span></span> <span data-ttu-id="7bdc1-112">При наличии hello сертификатов на портале hello, имеющий соответствующий сертификат (закрытый ключ) могут подключаться через hello API управления и получения ресурсов hello для hello связанные подписки.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-112">When hello certificate is available in hello portal, anyone with a matching certificate (private key) can connect through hello Management API and access hello resources for hello associated subscription.</span></span>
 
-1. <span data-ttu-id="48428-113">Войдите на [портал Azure](http://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="48428-113">Log in to the [Azure portal](http://portal.azure.com).</span></span>
-2. <span data-ttu-id="48428-114">Щелкните **Больше служб** внизу списка служб Azure и выберите **Подписки** в группе служб _Общие_.</span><span class="sxs-lookup"><span data-stu-id="48428-114">Click **More services** at the bottom Azure service list, then select **Subscriptions** in the _General_ service group.</span></span>
+1. <span data-ttu-id="7bdc1-113">Войдите в toohello [портал Azure](http://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="7bdc1-113">Log in toohello [Azure portal](http://portal.azure.com).</span></span>
+2. <span data-ttu-id="7bdc1-114">Нажмите кнопку **дополнительные службы** в hello нижнем списке службы Azure, затем выберите **подписки** в hello _Общие_ группы служб.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-114">Click **More services** at hello bottom Azure service list, then select **Subscriptions** in hello _General_ service group.</span></span>
 
     ![Меню "Подписка"](./media/azure-api-management-certs/subscriptions_menu.png)
 
-3. <span data-ttu-id="48428-116">Обязательно выберите именно ту подписку, с которой необходимо связать сертификат.</span><span class="sxs-lookup"><span data-stu-id="48428-116">Make sure to select the correct subscription that you want to associate with the certificate.</span></span>     
-4. <span data-ttu-id="48428-117">Выбрав правильную подписку, щелкните **Сертификаты управления** в группе _Параметры_.</span><span class="sxs-lookup"><span data-stu-id="48428-117">After you have selected the correct subscription, press **Management certificates** in the _Settings_ group.</span></span>
+3. <span data-ttu-id="7bdc1-116">Убедитесь, что tooselect hello нужной подписки, которые должны tooassociate сертификатом hello.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-116">Make sure tooselect hello correct subscription that you want tooassociate with hello certificate.</span></span>     
+4. <span data-ttu-id="7bdc1-117">После того как выбрана правильная подписка hello, нажмите клавишу **сертификаты управления** в hello _параметры_ группы.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-117">After you have selected hello correct subscription, press **Management certificates** in hello _Settings_ group.</span></span>
 
     ![данных](./media/azure-api-management-certs/mgmtcerts_menu.png)
 
-5. <span data-ttu-id="48428-119">Нажмите кнопку **Отправить** .</span><span class="sxs-lookup"><span data-stu-id="48428-119">Press the **Upload** button.</span></span>
+5. <span data-ttu-id="7bdc1-119">Нажмите клавишу hello **отправить** кнопки.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-119">Press hello **Upload** button.</span></span>
 
     ![Кнопка "Отправить" на странице сертификатов](./media/azure-api-management-certs/certificates_page.png)
-6. <span data-ttu-id="48428-121">Укажите сведения в диалоговом окне и нажмите кнопку **Отправить**.</span><span class="sxs-lookup"><span data-stu-id="48428-121">Fill out the dialog information and press **Upload**.</span></span>
+6. <span data-ttu-id="7bdc1-121">Заполните данные в диалоговом окне приветствия и нажмите клавишу **отправить**.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-121">Fill out hello dialog information and press **Upload**.</span></span>
 
     ![данных](./media/azure-api-management-certs/certificate_details.png)
 
-## <a name="next-steps"></a><span data-ttu-id="48428-123">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="48428-123">Next steps</span></span>
-<span data-ttu-id="48428-124">Связав сертификат управления с подпиской и установив соответствующий сертификат локально, вы можете программно подключаться к [REST API классической модели управления](https://msdn.microsoft.com/library/azure/mt420159.aspx) и автоматизировать различные ресурсы Azure, связанные с этой же подпиской.</span><span class="sxs-lookup"><span data-stu-id="48428-124">Now that you have a management certificate associated with a subscription, you can (after you have installed the matching certificate locally) programmatically connect to the [classic deployment model REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) and automate the various Azure resources that are also associated with that subscription.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="7bdc1-123">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="7bdc1-123">Next steps</span></span>
+<span data-ttu-id="7bdc1-124">Теперь, когда сертификат управления, связанных с подпиской (после установки сопоставления локальный сертификат hello) программно подключением toohello [классической модели развертывания API-интерфейса REST](https://msdn.microsoft.com/library/azure/mt420159.aspx) и автоматизации Здравствуйте, различные ресурсы Azure, связанных с этой подпиской.</span><span class="sxs-lookup"><span data-stu-id="7bdc1-124">Now that you have a management certificate associated with a subscription, you can (after you have installed hello matching certificate locally) programmatically connect toohello [classic deployment model REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) and automate hello various Azure resources that are also associated with that subscription.</span></span>

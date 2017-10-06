@@ -1,6 +1,6 @@
 ---
-title: "Выполнение Azure CLI с помощью Jenkins | Документация Майкрософт"
-description: "Сведения об использовании Azure CLI для развертывания веб-приложения Java в Azure в конвейере Jenkins"
+title: "aaaExecute hello Azure CLI с Jenkins | Документы Microsoft"
+description: "Узнайте, как Azure CLI toouse toodeploy Java веб-приложения tooAzure в конвейере Jenkins"
 services: app-service\web
 documentationcenter: 
 author: mlearned
@@ -15,54 +15,54 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 5ca8338d4bf343f08fe70081cff755fa76a126a9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4bd1e12e6de1f010453ff51c835f84e7361962f4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a><span data-ttu-id="88fa8-103">Развертывание в службу приложений Azure с помощью Jenkins и Azure CLI</span><span class="sxs-lookup"><span data-stu-id="88fa8-103">Deploy to Azure App Service with Jenkins and the Azure CLI</span></span>
-<span data-ttu-id="88fa8-104">Для развертывания веб-приложения Java в Azure можно использовать Azure CLI в [конвейере Jenkins](https://jenkins.io/doc/book/pipeline/).</span><span class="sxs-lookup"><span data-stu-id="88fa8-104">To deploy a Java web app to Azure, you can use Azure CLI in [Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/).</span></span> <span data-ttu-id="88fa8-105">В этом учебнике мы создадим конвейер CI/CD на виртуальной машине Azure, включая следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="88fa8-105">In this tutorial, you create a CI/CD pipeline on an Azure VM including how to:</span></span>
+# <a name="deploy-tooazure-app-service-with-jenkins-and-hello-azure-cli"></a><span data-ttu-id="3b8a9-103">Развертывание службы приложений с Jenkins tooAzure и hello Azure CLI</span><span class="sxs-lookup"><span data-stu-id="3b8a9-103">Deploy tooAzure App Service with Jenkins and hello Azure CLI</span></span>
+<span data-ttu-id="3b8a9-104">toodeploy tooAzure Java web app, можно использовать Azure CLI в [Jenkins конвейера](https://jenkins.io/doc/book/pipeline/).</span><span class="sxs-lookup"><span data-stu-id="3b8a9-104">toodeploy a Java web app tooAzure, you can use Azure CLI in [Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/).</span></span> <span data-ttu-id="3b8a9-105">В этом учебнике мы создадим конвейер CI/CD на виртуальной машине Azure, включая следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-105">In this tutorial, you create a CI/CD pipeline on an Azure VM including how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="88fa8-106">Создание виртуальной машины Jenkins</span><span class="sxs-lookup"><span data-stu-id="88fa8-106">Create a Jenkins VM</span></span>
-> * <span data-ttu-id="88fa8-107">Настройка Jenkins</span><span class="sxs-lookup"><span data-stu-id="88fa8-107">Configure Jenkins</span></span>
-> * <span data-ttu-id="88fa8-108">Создание веб-приложения в Azure</span><span class="sxs-lookup"><span data-stu-id="88fa8-108">Create a web app in Azure</span></span>
-> * <span data-ttu-id="88fa8-109">Подготовка репозитория GitHub</span><span class="sxs-lookup"><span data-stu-id="88fa8-109">Prepare a GitHub repository</span></span>
-> * <span data-ttu-id="88fa8-110">Создание конвейера Jenkins</span><span class="sxs-lookup"><span data-stu-id="88fa8-110">Create Jenkins pipeline</span></span>
-> * <span data-ttu-id="88fa8-111">Запуск конвейера и проверка веб-приложения</span><span class="sxs-lookup"><span data-stu-id="88fa8-111">Run the pipeline and verify the web app</span></span>
+> * <span data-ttu-id="3b8a9-106">Создание виртуальной машины Jenkins</span><span class="sxs-lookup"><span data-stu-id="3b8a9-106">Create a Jenkins VM</span></span>
+> * <span data-ttu-id="3b8a9-107">Настройка Jenkins</span><span class="sxs-lookup"><span data-stu-id="3b8a9-107">Configure Jenkins</span></span>
+> * <span data-ttu-id="3b8a9-108">Создание веб-приложения в Azure</span><span class="sxs-lookup"><span data-stu-id="3b8a9-108">Create a web app in Azure</span></span>
+> * <span data-ttu-id="3b8a9-109">Подготовка репозитория GitHub</span><span class="sxs-lookup"><span data-stu-id="3b8a9-109">Prepare a GitHub repository</span></span>
+> * <span data-ttu-id="3b8a9-110">Создание конвейера Jenkins</span><span class="sxs-lookup"><span data-stu-id="3b8a9-110">Create Jenkins pipeline</span></span>
+> * <span data-ttu-id="3b8a9-111">Запустите конвейера hello и проверьте hello веб-приложения</span><span class="sxs-lookup"><span data-stu-id="3b8a9-111">Run hello pipeline and verify hello web app</span></span>
 
-<span data-ttu-id="88fa8-112">Для этого руководства требуется Azure CLI версии 2.0.4 или более поздней.</span><span class="sxs-lookup"><span data-stu-id="88fa8-112">This tutorial requires the Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="88fa8-113">Чтобы узнать версию, выполните команду `az --version`.</span><span class="sxs-lookup"><span data-stu-id="88fa8-113">To find the version, run `az --version`.</span></span> <span data-ttu-id="88fa8-114">Если вам необходимо выполнить обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="88fa8-114">If you need to upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span>
+<span data-ttu-id="3b8a9-112">Упражнений этого учебника требуется hello Azure CLI версия 2.0.4 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-112">This tutorial requires hello Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="3b8a9-113">версия toofind hello, запустите `az --version`.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-113">toofind hello version, run `az --version`.</span></span> <span data-ttu-id="3b8a9-114">Получить tooupgrade [установить CLI Azure 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="3b8a9-114">If you need tooupgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span>
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-and-configure-jenkins-instance"></a><span data-ttu-id="88fa8-115">Создание и настройка экземпляра Jenkins</span><span class="sxs-lookup"><span data-stu-id="88fa8-115">Create and Configure Jenkins instance</span></span>
-<span data-ttu-id="88fa8-116">Если у вас нет главного экземпляра, воспользуйтесь [шаблоном решений](install-jenkins-solution-template.md), который по умолчанию содержит необходимый подключаемый модуль [Учетные данные Azure](https://plugins.jenkins.io/azure-credentials).</span><span class="sxs-lookup"><span data-stu-id="88fa8-116">If you do not already have a Jenkins master, start with the [Solution Template](install-jenkins-solution-template.md), which includes the required [Azure Credentials](https://plugins.jenkins.io/azure-credentials) plugin by default.</span></span> 
+## <a name="create-and-configure-jenkins-instance"></a><span data-ttu-id="3b8a9-115">Создание и настройка экземпляра Jenkins</span><span class="sxs-lookup"><span data-stu-id="3b8a9-115">Create and Configure Jenkins instance</span></span>
+<span data-ttu-id="3b8a9-116">Если главный Jenkins еще нет начните с hello [шаблон решения](install-jenkins-solution-template.md), включающее необходимые hello [учетные данные Azure](https://plugins.jenkins.io/azure-credentials) подключаемого модуля по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-116">If you do not already have a Jenkins master, start with hello [Solution Template](install-jenkins-solution-template.md), which includes hello required [Azure Credentials](https://plugins.jenkins.io/azure-credentials) plugin by default.</span></span> 
 
-<span data-ttu-id="88fa8-117">Подключаемый модуль учетных данных Azure позволяет хранить учетные данные субъекта-службы Microsoft Azure в Jenkins.</span><span class="sxs-lookup"><span data-stu-id="88fa8-117">The Azure Credential plugin allows you to store Microsoft Azure service principal credentials in Jenkins.</span></span> <span data-ttu-id="88fa8-118">В версии 1.2 добавлена соответствующая поддержка, поэтому конвейер Jenkins может получать учетные данные Azure.</span><span class="sxs-lookup"><span data-stu-id="88fa8-118">In version 1.2, we added the support so that Jenkins Pipeline can get the Azure credentials.</span></span> 
+<span data-ttu-id="3b8a9-117">Подключаемый модуль Hello учетных данных Azure позволяет основной учетных данных службы Microsoft Azure toostore в Jenkins.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-117">hello Azure Credential plugin allows you toostore Microsoft Azure service principal credentials in Jenkins.</span></span> <span data-ttu-id="3b8a9-118">В версии 1.2 была добавлена поддержка hello, поэтому конвейера Jenkins можно получить hello учетных данных Azure.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-118">In version 1.2, we added hello support so that Jenkins Pipeline can get hello Azure credentials.</span></span> 
 
-<span data-ttu-id="88fa8-119">Убедитесь, что у вас установлена версия 1.2 или более поздняя:</span><span class="sxs-lookup"><span data-stu-id="88fa8-119">Ensure you have version 1.2 or later:</span></span>
-* <span data-ttu-id="88fa8-120">На панели мониторинга Jenkins последовательно выберите **Manage Jenkins -> Plugin Manager ->** (Управление Jenkins -> Диспетчер подключаемых модулей) и выполните поиск **учетных данных Azure**.</span><span class="sxs-lookup"><span data-stu-id="88fa8-120">Within the Jenkins dashboard, click **Manage Jenkins -> Plugin Manager ->** and search for **Azure Credential**.</span></span> 
-* <span data-ttu-id="88fa8-121">Если используется версия более ранняя, чем 1.2, обновите подключаемый модуль.</span><span class="sxs-lookup"><span data-stu-id="88fa8-121">Update the plugin if the version is earlier than 1.2.</span></span>
+<span data-ttu-id="3b8a9-119">Убедитесь, что у вас установлена версия 1.2 или более поздняя:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-119">Ensure you have version 1.2 or later:</span></span>
+* <span data-ttu-id="3b8a9-120">Панели мониторинга Jenkins hello, нажмите кнопку **Jenkins управления -> подключаемого модуля диспетчера ->** и выполните поиск **учетные данные Azure**.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-120">Within hello Jenkins dashboard, click **Manage Jenkins -> Plugin Manager ->** and search for **Azure Credential**.</span></span> 
+* <span data-ttu-id="3b8a9-121">Обновление подключаемого модуля hello, если hello версия более ранняя, чем 1.2.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-121">Update hello plugin if hello version is earlier than 1.2.</span></span>
 
-<span data-ttu-id="88fa8-122">В главном экземпляре Jenkins также требуются Java JDK и Maven.</span><span class="sxs-lookup"><span data-stu-id="88fa8-122">Java JDK and Maven are also required in the Jenkins master.</span></span> <span data-ttu-id="88fa8-123">Чтобы выполнить установку, войдите в главный экземпляр с помощью SSH-подключения и выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="88fa8-123">To install, log in to Jenkins master using SSH and run the following commands:</span></span>
+<span data-ttu-id="3b8a9-122">В базе данных master Jenkins hello также требуются Java JDK и Maven.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-122">Java JDK and Maven are also required in hello Jenkins master.</span></span> <span data-ttu-id="3b8a9-123">tooinstall, войдите в базе данных master tooJenkins с помощью SSH и запустите hello, следующие команды:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-123">tooinstall, log in tooJenkins master using SSH and run hello following commands:</span></span>
 ```bash
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
 ```
 
-## <a name="add-azure-service-principal-to-jenkins-credential"></a><span data-ttu-id="88fa8-124">Добавление субъекта-службы Azure в учетные данные Jenkins</span><span class="sxs-lookup"><span data-stu-id="88fa8-124">Add Azure service principal to Jenkins credential</span></span>
+## <a name="add-azure-service-principal-toojenkins-credential"></a><span data-ttu-id="3b8a9-124">Добавление учетных данных участника tooJenkins службы Azure</span><span class="sxs-lookup"><span data-stu-id="3b8a9-124">Add Azure service principal tooJenkins credential</span></span>
 
-<span data-ttu-id="88fa8-125">Для выполнения Azure CLI необходимы учетные данные Azure.</span><span class="sxs-lookup"><span data-stu-id="88fa8-125">An Azure credential is needed to execute Azure CLI.</span></span>
+<span data-ttu-id="3b8a9-125">Учетных данных Azure — необходимые tooexecute Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-125">An Azure credential is needed tooexecute Azure CLI.</span></span>
 
-* <span data-ttu-id="88fa8-126">На панели мониторинга Jenkins выберите **Credentials -> System ->**(Учетные данные -> Система).</span><span class="sxs-lookup"><span data-stu-id="88fa8-126">Within the Jenkins dashboard, click **Credentials -> System ->**.</span></span> <span data-ttu-id="88fa8-127">Щелкните **Global credentials (unrestricted)** (Глобальные учетные данные (неограниченные)).</span><span class="sxs-lookup"><span data-stu-id="88fa8-127">Click **Global credentials(unrestricted)**.</span></span>
-* <span data-ttu-id="88fa8-128">Щелкните **Add Credentials** (Добавить учетные данные), чтобы добавить [субъект-службу Microsoft Azure](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) путем ввода следующих значений: идентификатор подписки, идентификатор клиента, секрет клиента и конечная точка маркера OAuth 2.0.</span><span class="sxs-lookup"><span data-stu-id="88fa8-128">Click **Add Credentials** to add a [Microsoft Azure service principal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) by filling out the Subscription ID, Client ID, Client Secret, and OAuth 2.0 Token Endpoint.</span></span> <span data-ttu-id="88fa8-129">Укажите идентификатор, который будет использоваться в следующем шаге.</span><span class="sxs-lookup"><span data-stu-id="88fa8-129">Provide an ID for use in subsequent step.</span></span>
+* <span data-ttu-id="3b8a9-126">Панели мониторинга Jenkins hello, нажмите кнопку **учетные данные -> Система ->**.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-126">Within hello Jenkins dashboard, click **Credentials -> System ->**.</span></span> <span data-ttu-id="3b8a9-127">Щелкните **Global credentials (unrestricted)** (Глобальные учетные данные (неограниченные)).</span><span class="sxs-lookup"><span data-stu-id="3b8a9-127">Click **Global credentials(unrestricted)**.</span></span>
+* <span data-ttu-id="3b8a9-128">Нажмите кнопку **добавить учетные данные** tooadd [субъекта-службы Microsoft Azure](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) , заполнив hello идентификатор подписки, идентификатор клиента, секрет клиента и конечная точка маркера OAuth 2.0.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-128">Click **Add Credentials** tooadd a [Microsoft Azure service principal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) by filling out hello Subscription ID, Client ID, Client Secret, and OAuth 2.0 Token Endpoint.</span></span> <span data-ttu-id="3b8a9-129">Укажите идентификатор, который будет использоваться в следующем шаге.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-129">Provide an ID for use in subsequent step.</span></span>
 
 ![Добавить учетные данные](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 
-## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a><span data-ttu-id="88fa8-131">Создание службы приложений Azure для развертывания веб-приложения Java</span><span class="sxs-lookup"><span data-stu-id="88fa8-131">Create an Azure App Service for deploying the Java web app</span></span>
+## <a name="create-an-azure-app-service-for-deploying-hello-java-web-app"></a><span data-ttu-id="3b8a9-131">Создание службы приложения Azure для развертывания веб-приложения Java hello</span><span class="sxs-lookup"><span data-stu-id="3b8a9-131">Create an Azure App Service for deploying hello Java web app</span></span>
 
-<span data-ttu-id="88fa8-132">Создайте план службы приложений Azure с ценовой категорией **Бесплатный** с помощью команды CLI [az appservice plan create](/cli/azure/appservice/plan#create).</span><span class="sxs-lookup"><span data-stu-id="88fa8-132">Create an Azure App Service plan with the **FREE** pricing tier using the  [az appservice plan create](/cli/azure/appservice/plan#create) CLI command.</span></span> <span data-ttu-id="88fa8-133">От плана службы приложений зависят физические ресурсы, используемые для размещения приложений.</span><span class="sxs-lookup"><span data-stu-id="88fa8-133">The appservice plan defines the physical resources used to host your apps.</span></span> <span data-ttu-id="88fa8-134">Все приложения, назначенные плану службы приложений, совместно используют ресурсы, которые позволяют сэкономить при размещении нескольких приложений.</span><span class="sxs-lookup"><span data-stu-id="88fa8-134">All applications assigned to an appservice plan share these resources, allowing you to save cost when hosting multiple apps.</span></span> 
+<span data-ttu-id="3b8a9-132">Создать план службы приложений Azure с hello **FREE** ценовой категории с помощью hello [создать план служб приложений az](/cli/azure/appservice/plan#create) команду CLI.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-132">Create an Azure App Service plan with hello **FREE** pricing tier using hello  [az appservice plan create](/cli/azure/appservice/plan#create) CLI command.</span></span> <span data-ttu-id="3b8a9-133">план служб приложений Hello определяет toohost hello физические ресурсы, используемые приложения.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-133">hello appservice plan defines hello physical resources used toohost your apps.</span></span> <span data-ttu-id="3b8a9-134">Все приложения, назначенный tooan план служб приложений используют эти ресурсы, позволяя toosave затрат при размещении нескольких приложений.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-134">All applications assigned tooan appservice plan share these resources, allowing you toosave cost when hosting multiple apps.</span></span> 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -71,7 +71,7 @@ az appservice plan create \
     --sku FREE
 ```
 
-<span data-ttu-id="88fa8-135">После создания плана в Azure CLI отобразится приблизительно такой результат:</span><span class="sxs-lookup"><span data-stu-id="88fa8-135">When the plan is ready, the Azure CLI shows similar output to the following example:</span></span>
+<span data-ttu-id="3b8a9-135">При готовности плана hello hello Azure CLI показывает, как выходной toohello в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-135">When hello plan is ready, hello Azure CLI shows similar output toohello following example:</span></span>
 
 ```json
 { 
@@ -89,9 +89,9 @@ az appservice plan create \
 } 
 ``` 
 
-### <a name="create-an-azure-web-app"></a><span data-ttu-id="88fa8-136">Создание веб-приложения Azure</span><span class="sxs-lookup"><span data-stu-id="88fa8-136">Create an Azure Web app</span></span>
+### <a name="create-an-azure-web-app"></a><span data-ttu-id="3b8a9-136">Создание веб-приложения Azure</span><span class="sxs-lookup"><span data-stu-id="3b8a9-136">Create an Azure Web app</span></span>
 
- <span data-ttu-id="88fa8-137">С помощью команды CLI [az webapp create](/cli/azure/appservice/web#create) создайте определение веб-приложения в плане службы приложений `myAppServicePlan`.</span><span class="sxs-lookup"><span data-stu-id="88fa8-137">Use the [az webapp create](/cli/azure/appservice/web#create) CLI command to create a web app definition in the `myAppServicePlan` App Service plan.</span></span> <span data-ttu-id="88fa8-138">Определение веб-приложения предоставляет URL-адрес для доступа к приложению и настраивает несколько параметров для развертывания кода в Azure.</span><span class="sxs-lookup"><span data-stu-id="88fa8-138">The web app definition provides a URL to access your application with and configures several options to deploy your code to Azure.</span></span> 
+ <span data-ttu-id="3b8a9-137">Используйте hello [создать веб-приложение az](/cli/azure/appservice/web#create) toocreate команду CLI определение web app в hello `myAppServicePlan` план служб приложений.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-137">Use hello [az webapp create](/cli/azure/appservice/web#create) CLI command toocreate a web app definition in hello `myAppServicePlan` App Service plan.</span></span> <span data-ttu-id="3b8a9-138">Определение приложения Hello web предоставляет приложению tooaccess URL-адрес и настраивает некоторые параметры toodeploy tooAzure вашего кода.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-138">hello web app definition provides a URL tooaccess your application with and configures several options toodeploy your code tooAzure.</span></span> 
 
 ```azurecli-interactive
 az webapp create \
@@ -100,9 +100,9 @@ az webapp create \
     --plan myAppServicePlan
 ```
 
-<span data-ttu-id="88fa8-139">Замените заполнитель `<app_name>` уникальным именем своего приложения.</span><span class="sxs-lookup"><span data-stu-id="88fa8-139">Substitute the `<app_name>` placeholder with your own unique app name.</span></span> <span data-ttu-id="88fa8-140">Это уникальное имя используется в доменном имени по умолчанию для веб-приложения, поэтому оно должно быть уникальным для всех приложений в Azure.</span><span class="sxs-lookup"><span data-stu-id="88fa8-140">This unique name is part of the default domain name for the web app, so the name needs to be unique across all apps in Azure.</span></span> <span data-ttu-id="88fa8-141">Позже можно сопоставить запись личного доменного имени с веб-приложением, прежде чем предоставлять его пользователям.</span><span class="sxs-lookup"><span data-stu-id="88fa8-141">You can map a custom domain name entry to the web app before you expose it to your users.</span></span>
+<span data-ttu-id="3b8a9-139">Замена hello `<app_name>` заполнитель с именем собственный уникальный приложения.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-139">Substitute hello `<app_name>` placeholder with your own unique app name.</span></span> <span data-ttu-id="3b8a9-140">Это уникальное имя является частью hello имя домена по умолчанию для веб-приложения hello, поэтому hello имя должно toobe уникальным для всех приложений в Azure.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-140">This unique name is part of hello default domain name for hello web app, so hello name needs toobe unique across all apps in Azure.</span></span> <span data-ttu-id="3b8a9-141">Перед тем, как он tooyour пользователей можно сопоставить toohello входа пользовательского домена имя веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-141">You can map a custom domain name entry toohello web app before you expose it tooyour users.</span></span>
 
-<span data-ttu-id="88fa8-142">Когда вы создадите определение веб-приложения, в Azure CLI отобразятся следующие сведения:</span><span class="sxs-lookup"><span data-stu-id="88fa8-142">When the web app definition is ready, the Azure CLI shows information similar to the following example:</span></span> 
+<span data-ttu-id="3b8a9-142">При готовности определение приложения hello web hello Azure CLI показано toohello аналогичные сведения, следующий пример:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-142">When hello web app definition is ready, hello Azure CLI shows information similar toohello following example:</span></span> 
 
 ```json 
 {
@@ -119,11 +119,11 @@ az webapp create \
 }
 ```
 
-### <a name="configure-java"></a><span data-ttu-id="88fa8-143">Настройка Java</span><span class="sxs-lookup"><span data-stu-id="88fa8-143">Configure Java</span></span> 
+### <a name="configure-java"></a><span data-ttu-id="3b8a9-143">Настройка Java</span><span class="sxs-lookup"><span data-stu-id="3b8a9-143">Configure Java</span></span> 
 
-<span data-ttu-id="88fa8-144">Настройте конфигурацию среды выполнения Java, необходимую для работы приложения, с помощью команды [az appservice web config update](/cli/azure/appservice/web/config#update).</span><span class="sxs-lookup"><span data-stu-id="88fa8-144">Set up the Java runtime configuration that your app needs with the  [az appservice web config update](/cli/azure/appservice/web/config#update) command.</span></span>
+<span data-ttu-id="3b8a9-144">Настройка конфигурации среды выполнения Java hello, необходимый вашему приложению hello [обновление конфигурации web appservice az](/cli/azure/appservice/web/config#update) команды.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-144">Set up hello Java runtime configuration that your app needs with hello  [az appservice web config update](/cli/azure/appservice/web/config#update) command.</span></span>
 
-<span data-ttu-id="88fa8-145">Следующая команда настраивает веб-приложение для запуска в Java 8 JDK и [Apache Tomcat](http://tomcat.apache.org/) 8.0.</span><span class="sxs-lookup"><span data-stu-id="88fa8-145">The following command configures the web app to run on a recent Java 8 JDK and [Apache Tomcat](http://tomcat.apache.org/) 8.0.</span></span>
+<span data-ttu-id="3b8a9-145">Hello следующая команда настраивает hello web app toorun на последние Java JDK 8 и [Apache Tomcat](http://tomcat.apache.org/) 8.0.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-145">hello following command configures hello web app toorun on a recent Java 8 JDK and [Apache Tomcat](http://tomcat.apache.org/) 8.0.</span></span>
 
 ```azurecli-interactive
 az webapp config set \ 
@@ -134,79 +134,79 @@ az webapp config set \
     --java-container-version 8.0
 ```
 
-## <a name="prepare-a-github-repository"></a><span data-ttu-id="88fa8-146">Подготовка репозитория GitHub</span><span class="sxs-lookup"><span data-stu-id="88fa8-146">Prepare a GitHub Repository</span></span>
-<span data-ttu-id="88fa8-147">Откройте репозиторий [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) (Простое веб-приложение Java для Azure).</span><span class="sxs-lookup"><span data-stu-id="88fa8-147">Open the [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) repo.</span></span> <span data-ttu-id="88fa8-148">Чтобы создать разветвление репозитория для своей учетной записи GitHub, нажмите кнопку **Fork** (Разветвление) в правом верхнем углу.</span><span class="sxs-lookup"><span data-stu-id="88fa8-148">To fork the repo to your own GitHub account, click the **Fork** button in the top right-hand corner.</span></span>
+## <a name="prepare-a-github-repository"></a><span data-ttu-id="3b8a9-146">Подготовка репозитория GitHub</span><span class="sxs-lookup"><span data-stu-id="3b8a9-146">Prepare a GitHub Repository</span></span>
+<span data-ttu-id="3b8a9-147">Откройте hello [простого веб-приложения Java для Azure](https://github.com/azure-devops/javawebappsample) репозитория.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-147">Open hello [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) repo.</span></span> <span data-ttu-id="3b8a9-148">toofork hello репозитория tooyour владельцем учетной записи GitHub, нажмите кнопку hello **вилки** кнопку в правом верхнем углу hello.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-148">toofork hello repo tooyour own GitHub account, click hello **Fork** button in hello top right-hand corner.</span></span>
 
-* <span data-ttu-id="88fa8-149">В пользовательском веб-интерфейсе GitHub откройте файл **Jenkinsfile**.</span><span class="sxs-lookup"><span data-stu-id="88fa8-149">In GitHub web UI, open **Jenkinsfile** file.</span></span> <span data-ttu-id="88fa8-150">Щелкните значок с изображением карандаша, чтобы изменить этот файл для обновления группы ресурсов и имени веб-приложения в строках 20 и 21, соответственно.</span><span class="sxs-lookup"><span data-stu-id="88fa8-150">Click the pencil icon to edit this file to update the resource group and name of your web app on line 20 and 21 respectively.</span></span>
+* <span data-ttu-id="3b8a9-149">В пользовательском веб-интерфейсе GitHub откройте файл **Jenkinsfile**.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-149">In GitHub web UI, open **Jenkinsfile** file.</span></span> <span data-ttu-id="3b8a9-150">Нажмите кнопку tooedit значок карандаша hello этой группы ресурсов hello tooupdate файла и имя веб-приложения в строке, 20 и 21 соответственно.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-150">Click hello pencil icon tooedit this file tooupdate hello resource group and name of your web app on line 20 and 21 respectively.</span></span>
 
 ```java
 def resourceGroup = '<myResourceGroup>'
 def webAppName = '<app_name>'
 ```
 
-* <span data-ttu-id="88fa8-151">Измените строку 23 для обновления идентификатора учетных данных в вашем экземпляре Jenkins</span><span class="sxs-lookup"><span data-stu-id="88fa8-151">Change line 23 to update credential ID in your Jenkins instance</span></span>
+* <span data-ttu-id="3b8a9-151">Измените идентификатор учетных данных 23 tooupdate строки в вашем экземпляре Jenkins</span><span class="sxs-lookup"><span data-stu-id="3b8a9-151">Change line 23 tooupdate credential ID in your Jenkins instance</span></span>
 
 ```java
 withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ```
 
-## <a name="create-jenkins-pipeline"></a><span data-ttu-id="88fa8-152">Создание конвейера Jenkins</span><span class="sxs-lookup"><span data-stu-id="88fa8-152">Create Jenkins pipeline</span></span>
-<span data-ttu-id="88fa8-153">Откройте Jenkins в веб-браузере, щелкните **New Item** (Создать элемент).</span><span class="sxs-lookup"><span data-stu-id="88fa8-153">Open Jenkins in a web browser, click **New Item**.</span></span> 
+## <a name="create-jenkins-pipeline"></a><span data-ttu-id="3b8a9-152">Создание конвейера Jenkins</span><span class="sxs-lookup"><span data-stu-id="3b8a9-152">Create Jenkins pipeline</span></span>
+<span data-ttu-id="3b8a9-153">Откройте Jenkins в веб-браузере, щелкните **New Item** (Создать элемент).</span><span class="sxs-lookup"><span data-stu-id="3b8a9-153">Open Jenkins in a web browser, click **New Item**.</span></span> 
 
-* <span data-ttu-id="88fa8-154">Укажите имя задания и выберите **Pipeline** (Конвейер).</span><span class="sxs-lookup"><span data-stu-id="88fa8-154">Provide a name for the job and select **Pipeline**.</span></span> <span data-ttu-id="88fa8-155">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="88fa8-155">Click **OK**.</span></span>
-* <span data-ttu-id="88fa8-156">Откройте вкладку **Pipeline** (Конвейер), находящуюся рядом.</span><span class="sxs-lookup"><span data-stu-id="88fa8-156">Click the **Pipeline** tab next.</span></span> 
-* <span data-ttu-id="88fa8-157">Для параметра **Definition** (Определение) выберите значение **Pipeline script from SCM** (Сценарий конвейера из SCM).</span><span class="sxs-lookup"><span data-stu-id="88fa8-157">For **Definition**, select **Pipeline script from SCM**.</span></span>
-* <span data-ttu-id="88fa8-158">Для параметра **SCM** выберите значение **Git**.</span><span class="sxs-lookup"><span data-stu-id="88fa8-158">For **SCM**, select **Git**.</span></span>
-* <span data-ttu-id="88fa8-159">Введите URL-адрес GitHub для разветвленного репозитория: https:\<разветвленный репозиторий\>.git</span><span class="sxs-lookup"><span data-stu-id="88fa8-159">Enter the GitHub URL for your forked repo: https:\<your forked repo\>.git</span></span>
-* <span data-ttu-id="88fa8-160">Нажмите кнопку **Сохранить**</span><span class="sxs-lookup"><span data-stu-id="88fa8-160">Click **Save**</span></span>
+* <span data-ttu-id="3b8a9-154">Укажите имя для задания hello и выберите **конвейера**.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-154">Provide a name for hello job and select **Pipeline**.</span></span> <span data-ttu-id="3b8a9-155">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-155">Click **OK**.</span></span>
+* <span data-ttu-id="3b8a9-156">Нажмите кнопку hello **конвейера** вкладке рядом.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-156">Click hello **Pipeline** tab next.</span></span> 
+* <span data-ttu-id="3b8a9-157">Для параметра **Definition** (Определение) выберите значение **Pipeline script from SCM** (Сценарий конвейера из SCM).</span><span class="sxs-lookup"><span data-stu-id="3b8a9-157">For **Definition**, select **Pipeline script from SCM**.</span></span>
+* <span data-ttu-id="3b8a9-158">Для параметра **SCM** выберите значение **Git**.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-158">For **SCM**, select **Git**.</span></span>
+* <span data-ttu-id="3b8a9-159">Введите hello GitHub URL-адрес для вашего разветвленного репозитория: https:\<репозиторию разветвленного\>.git</span><span class="sxs-lookup"><span data-stu-id="3b8a9-159">Enter hello GitHub URL for your forked repo: https:\<your forked repo\>.git</span></span>
+* <span data-ttu-id="3b8a9-160">Нажмите кнопку **Сохранить**</span><span class="sxs-lookup"><span data-stu-id="3b8a9-160">Click **Save**</span></span>
 
-## <a name="test-your-pipeline"></a><span data-ttu-id="88fa8-161">Тестирование конвейера</span><span class="sxs-lookup"><span data-stu-id="88fa8-161">Test your pipeline</span></span>
-* <span data-ttu-id="88fa8-162">Перейдите созданный в конвейер и щелкните **Build Now** (Собрать).</span><span class="sxs-lookup"><span data-stu-id="88fa8-162">Go to the pipeline you created, click **Build Now**</span></span>
-* <span data-ttu-id="88fa8-163">Процесс должен завершиться в течение нескольких секунд, после чего можно перейти к сборке и щелкнуть **Console Output** (Вывод консоли), чтобы просмотреть подробные сведения.</span><span class="sxs-lookup"><span data-stu-id="88fa8-163">A build should succeed in a few seconds, and you can go to the build and click **Console Output** to see the details</span></span>
+## <a name="test-your-pipeline"></a><span data-ttu-id="3b8a9-161">Тестирование конвейера</span><span class="sxs-lookup"><span data-stu-id="3b8a9-161">Test your pipeline</span></span>
+* <span data-ttu-id="3b8a9-162">Go toohello конвейера, вы создали, щелкните **теперь построения**</span><span class="sxs-lookup"><span data-stu-id="3b8a9-162">Go toohello pipeline you created, click **Build Now**</span></span>
+* <span data-ttu-id="3b8a9-163">Сборка должна выполняться в течение нескольких секунд, и вы можете вернуться toohello построения и нажмите кнопку **вывод на консоль** toosee hello сведения</span><span class="sxs-lookup"><span data-stu-id="3b8a9-163">A build should succeed in a few seconds, and you can go toohello build and click **Console Output** toosee hello details</span></span>
 
-## <a name="verify-your-web-app"></a><span data-ttu-id="88fa8-164">Проверка веб-приложения</span><span class="sxs-lookup"><span data-stu-id="88fa8-164">Verify your web app</span></span>
-<span data-ttu-id="88fa8-165">Чтобы проверить успешное развертывание WAR-файла в веб-приложении:</span><span class="sxs-lookup"><span data-stu-id="88fa8-165">To verify the WAR file is deployed successfully to your web app.</span></span> <span data-ttu-id="88fa8-166">Откройте веб-браузер:</span><span class="sxs-lookup"><span data-stu-id="88fa8-166">Open a web browser:</span></span>
+## <a name="verify-your-web-app"></a><span data-ttu-id="3b8a9-164">Проверка веб-приложения</span><span class="sxs-lookup"><span data-stu-id="3b8a9-164">Verify your web app</span></span>
+<span data-ttu-id="3b8a9-165">tooverify hello WAR-файл успешно развернут tooyour веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-165">tooverify hello WAR file is deployed successfully tooyour web app.</span></span> <span data-ttu-id="3b8a9-166">Откройте веб-браузер:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-166">Open a web browser:</span></span>
 
-* <span data-ttu-id="88fa8-167">Перейдите по адресу: http://&lt;имя_приложения>.azurewebsites.net/api/calculator/ping.</span><span class="sxs-lookup"><span data-stu-id="88fa8-167">Go to http://&lt;app_name>.azurewebsites.net/api/calculator/ping</span></span>  
-<span data-ttu-id="88fa8-168">Вот что вы увидите:</span><span class="sxs-lookup"><span data-stu-id="88fa8-168">You see:</span></span>
+* <span data-ttu-id="3b8a9-167">Go toohttp: / /&lt;имя_приложения >.azurewebsites.net/api/calculator/ping</span><span class="sxs-lookup"><span data-stu-id="3b8a9-167">Go toohttp://&lt;app_name>.azurewebsites.net/api/calculator/ping</span></span>  
+<span data-ttu-id="3b8a9-168">Вот что вы увидите:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-168">You see:</span></span>
 
-        Welcome to Java Web App!!! This is updated!
+        Welcome tooJava Web App!!! This is updated!
         Sun Jun 17 16:39:10 UTC 2017
 
-* <span data-ttu-id="88fa8-169">Перейдите по адресу: http://&lt;имя_приложени>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (замените &lt;x> и &lt;y> любыми числами) для получения суммы x и y.</span><span class="sxs-lookup"><span data-stu-id="88fa8-169">Go to http://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (substitute &lt;x> and &lt;y> with any numbers) to get the sum of x and y</span></span>
+* <span data-ttu-id="3b8a9-169">Go toohttp: / /&lt;имя_приложения >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (подставьте &lt;x > и &lt;y > с любой цифры) сумма hello tooget x и y</span><span class="sxs-lookup"><span data-stu-id="3b8a9-169">Go toohttp://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (substitute &lt;x> and &lt;y> with any numbers) tooget hello sum of x and y</span></span>
 
 ![Калькулятор: сложение](./media/execute-cli-jenkins-pipeline/calculator-add.png)
 
-## <a name="deploy-to-azure-web-app-on-linux"></a><span data-ttu-id="88fa8-171">Развертывание в веб-приложении Azure на платформе Linux</span><span class="sxs-lookup"><span data-stu-id="88fa8-171">Deploy to Azure Web App on Linux</span></span>
-<span data-ttu-id="88fa8-172">Теперь, когда вы знаете, как использовать Azure CLI в конвейере Jenkins, можно изменить сценарий для развертывания в веб-приложении Azure в Linux.</span><span class="sxs-lookup"><span data-stu-id="88fa8-172">Now that you know how to use Azure CLI in your Jenkins pipeline, you can modify the script to deploy to an Azure Web App on Linux.</span></span>
+## <a name="deploy-tooazure-web-app-on-linux"></a><span data-ttu-id="3b8a9-171">Развертывание tooAzure веб-приложения в Linux</span><span class="sxs-lookup"><span data-stu-id="3b8a9-171">Deploy tooAzure Web App on Linux</span></span>
+<span data-ttu-id="3b8a9-172">Теперь, когда вы знаете, как конвейер toouse Azure CLI в вашей Jenkins, вы можете изменить tooan toodeploy hello скрипта веб-приложения Azure в Linux.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-172">Now that you know how toouse Azure CLI in your Jenkins pipeline, you can modify hello script toodeploy tooan Azure Web App on Linux.</span></span>
 
-<span data-ttu-id="88fa8-173">Для развертывания в веб-приложении в Linux поддерживается другой способ, который заключается в использовании Docker.</span><span class="sxs-lookup"><span data-stu-id="88fa8-173">Web App on Linux supports a different way to do the deployment, which is to use Docker.</span></span> <span data-ttu-id="88fa8-174">Чтобы выполнить развертывание, необходимо предоставить файл Dockerfile, который упаковывает веб-приложение со службой среды выполнения в образ Docker.</span><span class="sxs-lookup"><span data-stu-id="88fa8-174">To deploy, you need to provide a Dockerfile that packages your web app with service runtime into a Docker image.</span></span> <span data-ttu-id="88fa8-175">Затем подключаемый модуль создаст образ, отправит его в реестр Docker и развернет в веб-приложении.</span><span class="sxs-lookup"><span data-stu-id="88fa8-175">The plugin will then build the image, push it to a Docker registry and deploy the image to your web app.</span></span>
+<span data-ttu-id="3b8a9-173">Веб-приложения на платформе Linux поддерживает развертывание hello toodo другим способом, который является toouse Docker.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-173">Web App on Linux supports a different way toodo hello deployment, which is toouse Docker.</span></span> <span data-ttu-id="3b8a9-174">toodeploy, необходимо tooprovide Dockerfile, которая упаковывает веб-приложения в среде выполнения службы в Docker изображение.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-174">toodeploy, you need tooprovide a Dockerfile that packages your web app with service runtime into a Docker image.</span></span> <span data-ttu-id="3b8a9-175">Подключаемый модуль Hello затем сборки образа hello, принудительно отправить его tooa реестра Docker и развертывания hello изображения tooyour веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-175">hello plugin will then build hello image, push it tooa Docker registry and deploy hello image tooyour web app.</span></span>
 
-* <span data-ttu-id="88fa8-176">Выполните описанные [здесь](/azure/app-service-web/app-service-linux-how-to-create-web-app) действия по созданию веб-приложения Azure на платформе Linux.</span><span class="sxs-lookup"><span data-stu-id="88fa8-176">Follow the steps [here](/azure/app-service-web/app-service-linux-how-to-create-web-app) to create an Azure Web App running on Linux.</span></span>
-* <span data-ttu-id="88fa8-177">Установите Docker в экземпляре Jenkins, следуя инструкциям в этой [статье](https://docs.docker.com/engine/installation/linux/ubuntu/).</span><span class="sxs-lookup"><span data-stu-id="88fa8-177">Install Docker on your Jenkins instance by following the instructions in this [article](https://docs.docker.com/engine/installation/linux/ubuntu/).</span></span>
-* <span data-ttu-id="88fa8-178">Создайте реестр контейнеров на портале Azure, выполнив описанные [здесь](/azure/container-registry/container-registry-get-started-azure-cli) действия.</span><span class="sxs-lookup"><span data-stu-id="88fa8-178">Create a Container Registry in the Azure portal by using the steps [here](/azure/container-registry/container-registry-get-started-azure-cli).</span></span>
-* <span data-ttu-id="88fa8-179">В том же разветвленном репозитории [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) (Простое веб-приложение Java для Azure) измените файл **Jenkinsfile2**:</span><span class="sxs-lookup"><span data-stu-id="88fa8-179">In the same [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) repo you forked, edit the **Jenkinsfile2** file:</span></span>
-    * <span data-ttu-id="88fa8-180">В строках 18–21 обновите имена группы ресурсов, веб-приложения и ACR, соответственно.</span><span class="sxs-lookup"><span data-stu-id="88fa8-180">Line 18-21, update to the names of your resource group, web app, and ACR respectively.</span></span> 
+* <span data-ttu-id="3b8a9-176">Выполните действия hello [здесь](/azure/app-service-web/app-service-linux-how-to-create-web-app) toocreate на веб-приложения Azure, выполняемым на платформе Linux.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-176">Follow hello steps [here](/azure/app-service-web/app-service-linux-how-to-create-web-app) toocreate an Azure Web App running on Linux.</span></span>
+* <span data-ttu-id="3b8a9-177">Установка Docker Jenkins экземпляра в соответствии с инструкциями hello в этом [статьи](https://docs.docker.com/engine/installation/linux/ubuntu/).</span><span class="sxs-lookup"><span data-stu-id="3b8a9-177">Install Docker on your Jenkins instance by following hello instructions in this [article](https://docs.docker.com/engine/installation/linux/ubuntu/).</span></span>
+* <span data-ttu-id="3b8a9-178">Создание реестра контейнера в hello портал Azure с помощью действия hello [здесь](/azure/container-registry/container-registry-get-started-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="3b8a9-178">Create a Container Registry in hello Azure portal by using hello steps [here](/azure/container-registry/container-registry-get-started-azure-cli).</span></span>
+* <span data-ttu-id="3b8a9-179">В hello же [простого веб-приложения Java для Azure](https://github.com/azure-devops/javawebappsample) репозитория вы разделенными, изменить hello **Jenkinsfile2** файла:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-179">In hello same [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) repo you forked, edit hello **Jenkinsfile2** file:</span></span>
+    * <span data-ttu-id="3b8a9-180">Строка 18-21, соответственно обновить имена toohello группы ресурсов, веб-приложения и контроля доступа.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-180">Line 18-21, update toohello names of your resource group, web app, and ACR respectively.</span></span> 
         ```
         def webAppResourceGroup = '<myResourceGroup>'
         def webAppName = '<app_name>'
         def acrName = '<myRegistry>'
         ```
 
-    * <span data-ttu-id="88fa8-181">В строке 24 обновите \<azsrvprincipal\> значением идентификатора учетных данных.</span><span class="sxs-lookup"><span data-stu-id="88fa8-181">Line 24, update \<azsrvprincipal\> to your credential ID</span></span>
+    * <span data-ttu-id="3b8a9-181">Строка 24, обновление \<azsrvprincipal\> tooyour идентификатор учетных данных</span><span class="sxs-lookup"><span data-stu-id="3b8a9-181">Line 24, update \<azsrvprincipal\> tooyour credential ID</span></span>
         ```
         withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
         ```
 
-* <span data-ttu-id="88fa8-182">Создайте конвейер Jenkins, как вы делали это при развертывании в веб-приложение Azure в Windows, только на этот раз используйте **Jenkinsfile2**.</span><span class="sxs-lookup"><span data-stu-id="88fa8-182">Create a new Jenkins pipeline as you did when deploying to Azure web app in Windows, only this time, use **Jenkinsfile2** instead.</span></span>
-* <span data-ttu-id="88fa8-183">Запустите новое задание.</span><span class="sxs-lookup"><span data-stu-id="88fa8-183">Run your new job.</span></span>
-* <span data-ttu-id="88fa8-184">Чтобы осуществить проверку, в Azure CLI выполните следующую команду:</span><span class="sxs-lookup"><span data-stu-id="88fa8-184">To verify, in Azure CLI, run:</span></span>
+* <span data-ttu-id="3b8a9-182">Создать новый конвейер Jenkins, как это было сделано при развертывании tooAzure веб-приложения в Windows, только на этот раз используйте **Jenkinsfile2** вместо него.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-182">Create a new Jenkins pipeline as you did when deploying tooAzure web app in Windows, only this time, use **Jenkinsfile2** instead.</span></span>
+* <span data-ttu-id="3b8a9-183">Запустите новое задание.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-183">Run your new job.</span></span>
+* <span data-ttu-id="3b8a9-184">tooverify, в Azure CLI, выполните:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-184">tooverify, in Azure CLI, run:</span></span>
 
     ```
     az acr repository list -n <myRegistry> -o json
     ```
 
-    <span data-ttu-id="88fa8-185">Вы получите следующий результат:</span><span class="sxs-lookup"><span data-stu-id="88fa8-185">You get the following result:</span></span>
+    <span data-ttu-id="3b8a9-185">Вы получаете hello следующий результат:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-185">You get hello following result:</span></span>
     
     ```
     [
@@ -214,20 +214,20 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
     ]
     ```
     
-    <span data-ttu-id="88fa8-186">Перейдите по адресу: http://&lt;имя_приложения>.azurewebsites.net/api/calculator/ping.</span><span class="sxs-lookup"><span data-stu-id="88fa8-186">Go to http://&lt;app_name>.azurewebsites.net/api/calculator/ping.</span></span> <span data-ttu-id="88fa8-187">Отобразится сообщение:</span><span class="sxs-lookup"><span data-stu-id="88fa8-187">You see the message:</span></span> 
+    <span data-ttu-id="3b8a9-186">Go toohttp: / /&lt;имя_приложения >.azurewebsites.net/api/calculator/ping.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-186">Go toohttp://&lt;app_name>.azurewebsites.net/api/calculator/ping.</span></span> <span data-ttu-id="3b8a9-187">Отображается сообщение hello:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-187">You see hello message:</span></span> 
     
-        Welcome to Java Web App!!! This is updated!
+        Welcome tooJava Web App!!! This is updated!
         Sun Jul 09 16:39:10 UTC 2017
 
-    <span data-ttu-id="88fa8-188">Перейдите по адресу: http://&lt;имя_приложени>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (замените &lt;x> и &lt;y> любыми числами) для получения суммы x и y.</span><span class="sxs-lookup"><span data-stu-id="88fa8-188">Go to http://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (substitute &lt;x> and &lt;y> with any numbers) to get the sum of x and y</span></span>
+    <span data-ttu-id="3b8a9-188">Go toohttp: / /&lt;имя_приложения >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (подставьте &lt;x > и &lt;y > с любой цифры) сумма hello tooget x и y</span><span class="sxs-lookup"><span data-stu-id="3b8a9-188">Go toohttp://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (substitute &lt;x> and &lt;y> with any numbers) tooget hello sum of x and y</span></span>
     
-## <a name="next-steps"></a><span data-ttu-id="88fa8-189">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="88fa8-189">Next steps</span></span>
-<span data-ttu-id="88fa8-190">В этом руководстве вы настроили конвейер Jenkins, который извлекает исходный код в репозитории GitHub.</span><span class="sxs-lookup"><span data-stu-id="88fa8-190">In this tutorial, you configured a Jenkins pipeline that checks out the source code in GitHub repo.</span></span> <span data-ttu-id="88fa8-191">Он запускает Maven для построения WAR-файла, а затем использует Azure CLI для развертывания в службу приложений Azure.</span><span class="sxs-lookup"><span data-stu-id="88fa8-191">Runs Maven to build a war file and then uses Azure CLI to deploy to Azure App Service.</span></span> <span data-ttu-id="88fa8-192">Вы научились выполнять следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="88fa8-192">You learned how to:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="3b8a9-189">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="3b8a9-189">Next steps</span></span>
+<span data-ttu-id="3b8a9-190">В этом учебнике вы настроили Jenkins конвейера, который извлекает hello исходного кода в репозитории GitHub.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-190">In this tutorial, you configured a Jenkins pipeline that checks out hello source code in GitHub repo.</span></span> <span data-ttu-id="3b8a9-191">Выполняется Maven toobuild war-файл и затем использует Azure CLI toodeploy tooAzure службы приложений.</span><span class="sxs-lookup"><span data-stu-id="3b8a9-191">Runs Maven toobuild a war file and then uses Azure CLI toodeploy tooAzure App Service.</span></span> <span data-ttu-id="3b8a9-192">Вы научились выполнять следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="3b8a9-192">You learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="88fa8-193">Создание виртуальной машины Jenkins</span><span class="sxs-lookup"><span data-stu-id="88fa8-193">Create a Jenkins VM</span></span>
-> * <span data-ttu-id="88fa8-194">Настройка Jenkins</span><span class="sxs-lookup"><span data-stu-id="88fa8-194">Configure Jenkins</span></span>
-> * <span data-ttu-id="88fa8-195">Создание веб-приложения в Azure</span><span class="sxs-lookup"><span data-stu-id="88fa8-195">Create a web app in Azure</span></span>
-> * <span data-ttu-id="88fa8-196">Подготовка репозитория GitHub</span><span class="sxs-lookup"><span data-stu-id="88fa8-196">Prepare a GitHub repository</span></span>
-> * <span data-ttu-id="88fa8-197">Создание конвейера Jenkins</span><span class="sxs-lookup"><span data-stu-id="88fa8-197">Create Jenkins pipeline</span></span>
-> * <span data-ttu-id="88fa8-198">Запуск конвейера и проверка веб-приложения</span><span class="sxs-lookup"><span data-stu-id="88fa8-198">Run the pipeline and verify the web app</span></span>
+> * <span data-ttu-id="3b8a9-193">Создание виртуальной машины Jenkins</span><span class="sxs-lookup"><span data-stu-id="3b8a9-193">Create a Jenkins VM</span></span>
+> * <span data-ttu-id="3b8a9-194">Настройка Jenkins</span><span class="sxs-lookup"><span data-stu-id="3b8a9-194">Configure Jenkins</span></span>
+> * <span data-ttu-id="3b8a9-195">Создание веб-приложения в Azure</span><span class="sxs-lookup"><span data-stu-id="3b8a9-195">Create a web app in Azure</span></span>
+> * <span data-ttu-id="3b8a9-196">Подготовка репозитория GitHub</span><span class="sxs-lookup"><span data-stu-id="3b8a9-196">Prepare a GitHub repository</span></span>
+> * <span data-ttu-id="3b8a9-197">Создание конвейера Jenkins</span><span class="sxs-lookup"><span data-stu-id="3b8a9-197">Create Jenkins pipeline</span></span>
+> * <span data-ttu-id="3b8a9-198">Запустите конвейера hello и проверьте hello веб-приложения</span><span class="sxs-lookup"><span data-stu-id="3b8a9-198">Run hello pipeline and verify hello web app</span></span>

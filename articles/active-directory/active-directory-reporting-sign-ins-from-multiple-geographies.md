@@ -1,6 +1,6 @@
 ---
-title: "Операции входа из нескольких географических регионов"
-description: "В этом отчете содержится информация о пользователях, от имени которых были совершены две попытки входа из разных регионов, причем времени между этими попытками было недостаточно, чтобы пользователь мог добраться из одного региона в другой."
+title: "aaaSign модули из нескольких географических регионов"
+description: "Отчет, который указывает, где две попытки входа пользователей появлялись toooriginate из различных регионов и hello время между входами hello указывает на невозможность toohave пользователя hello переместиться из одной области."
 services: active-directory
 documentationcenter: 
 author: SSalahAhmed
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
-ms.openlocfilehash: 1de57f64692ade442f9ef8d1e3b587ffee35d7cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f7c2e9589558476f36f6ae319f807f151b6144e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sign-ins-from-multiple-geographies"></a><span data-ttu-id="00588-103">"Операции входа из нескольких географических регионов".</span><span class="sxs-lookup"><span data-stu-id="00588-103">Sign-ins from multiple geographies</span></span>
-<span data-ttu-id="00588-104">В этом отчете содержится информация об успешных попытках входа пользователя, от имени которого были совершены две попытки входа из разных регионов, причем времени между этими попытками было недостаточно, чтобы пользователь мог добраться из одного региона в другой.</span><span class="sxs-lookup"><span data-stu-id="00588-104">This report includes successful sign-ins from a user where two sign-ins appeared to originate from different regions and the time between the sign-ins makes it impossible for the user to have traveled between those regions.</span></span> <span data-ttu-id="00588-105">Возможные причины:</span><span class="sxs-lookup"><span data-stu-id="00588-105">Possible causes include:</span></span>
+# <a name="sign-ins-from-multiple-geographies"></a><span data-ttu-id="50075-103">"Операции входа из нескольких географических регионов".</span><span class="sxs-lookup"><span data-stu-id="50075-103">Sign-ins from multiple geographies</span></span>
+<span data-ttu-id="50075-104">Этот отчет включает успешного входа в систему пользователя, где два входа в систему присутствует toooriginate из других регионов, а hello время между входами hello делает невозможным toohave пользователя hello пути между этими регионами.</span><span class="sxs-lookup"><span data-stu-id="50075-104">This report includes successful sign-ins from a user where two sign-ins appeared toooriginate from different regions and hello time between hello sign-ins makes it impossible for hello user toohave traveled between those regions.</span></span> <span data-ttu-id="50075-105">Возможные причины:</span><span class="sxs-lookup"><span data-stu-id="50075-105">Possible causes include:</span></span>
 
-* <span data-ttu-id="00588-106">пользователь использует пароль совместно с другими пользователями;</span><span class="sxs-lookup"><span data-stu-id="00588-106">User is sharing their password with other users</span></span>
-* <span data-ttu-id="00588-107">для входа пользователь запускает браузер с помощью удаленного рабочего стола;</span><span class="sxs-lookup"><span data-stu-id="00588-107">User is using a remote desktop to launch a web browser for sign-in</span></span>
-* <span data-ttu-id="00588-108">злоумышленник вошел в учетную запись пользователя из другой страны;</span><span class="sxs-lookup"><span data-stu-id="00588-108">A hacker has signed in to the account of a user from a different country</span></span>
-* <span data-ttu-id="00588-109">пользователь использует VPN или прокси-сервер;</span><span class="sxs-lookup"><span data-stu-id="00588-109">User is using a VPN or proxy</span></span>
-* <span data-ttu-id="00588-110">пользователь выполнил вход сразу с нескольких устройств, например настольного ПК и мобильного телефона, и IP-адрес мобильного телефона необычен.</span><span class="sxs-lookup"><span data-stu-id="00588-110">User is signed in from multiple devices at the same time, such as a desktop and a mobile phone, and the IP address of the mobile phone is unusual.</span></span>
+* <span data-ttu-id="50075-106">пользователь использует пароль совместно с другими пользователями;</span><span class="sxs-lookup"><span data-stu-id="50075-106">User is sharing their password with other users</span></span>
+* <span data-ttu-id="50075-107">Пользователь с помощью удаленного рабочего стола toolaunch веб-браузер для входа в систему</span><span class="sxs-lookup"><span data-stu-id="50075-107">User is using a remote desktop toolaunch a web browser for sign-in</span></span>
+* <span data-ttu-id="50075-108">Злоумышленник вошел в учетную запись пользователя из другой страны toohello</span><span class="sxs-lookup"><span data-stu-id="50075-108">A hacker has signed in toohello account of a user from a different country</span></span>
+* <span data-ttu-id="50075-109">пользователь использует VPN или прокси-сервер;</span><span class="sxs-lookup"><span data-stu-id="50075-109">User is using a VPN or proxy</span></span>
+* <span data-ttu-id="50075-110">Пользователь входит в с разных устройств на hello же времени, таких как настольные и мобильный телефон и hello IP адрес hello мобильного телефона является необычным.</span><span class="sxs-lookup"><span data-stu-id="50075-110">User is signed in from multiple devices at hello same time, such as a desktop and a mobile phone, and hello IP address of hello mobile phone is unusual.</span></span>
 
-<span data-ttu-id="00588-111">В результатах этого отчета отображаются события успешного входа, время между входами, регионы, из которых предположительно они были выполнены, и примерное время перемещения между этими регионами.</span><span class="sxs-lookup"><span data-stu-id="00588-111">Results from this report will show you the successful sign-in events, together with the time between the sign-ins, the regions where the sign-ins appeared to originate from, and the estimated travel time between those regions.</span></span> <span data-ttu-id="00588-112">Показанное время представляет собой только оценочное значение и может отличаться от фактического времени перемещения между расположениями.</span><span class="sxs-lookup"><span data-stu-id="00588-112">The travel time shown is only an estimate and may be different from the actual travel time between the locations.</span></span>
+<span data-ttu-id="50075-111">В результатах этого отчета будет показано hello успешных событий, вместе с hello время между hello входа в систему, hello областях, где hello входы появлялись toooriginate из и hello предполагаемое время перемещения между этими регионами.</span><span class="sxs-lookup"><span data-stu-id="50075-111">Results from this report will show you hello successful sign-in events, together with hello time between hello sign-ins, hello regions where hello sign-ins appeared toooriginate from, and hello estimated travel time between those regions.</span></span> <span data-ttu-id="50075-112">показанное время Hello только оценка и может отличаться от hello время фактического перемещения между расположениями hello.</span><span class="sxs-lookup"><span data-stu-id="50075-112">hello travel time shown is only an estimate and may be different from hello actual travel time between hello locations.</span></span>
 
 ![Операции входа из нескольких географических регионов](./media/active-directory-reporting-sign-ins-from-multiple-geographies/signInsFromMultipleGeographies.PNG)
 

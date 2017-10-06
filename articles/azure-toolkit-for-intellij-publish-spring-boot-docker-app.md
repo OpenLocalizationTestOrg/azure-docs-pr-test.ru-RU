@@ -1,6 +1,6 @@
 ---
-title: "Публикация приложения Spring Boot в виде контейнера Docker с помощью набора средств Azure для IntelliJ | Документы Майкрософт"
-description: "Вы можете узнать, как опубликовать веб-приложение в Microsoft Azure в виде контейнера Docker с помощью набора средств Azure для IntelliJ."
+title: "aaaPublish Spring загрузки приложения в качестве контейнера Docker с помощью hello Azure Toolkit для IntelliJ | Документы Microsoft"
+description: "Узнайте, как toopublish tooMicrosoft приложения web Azure в качестве контейнера Docker с помощью hello Azure Toolkit для IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,222 +14,222 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: robmcm
-ms.openlocfilehash: b771238934183c953615ac33c42a275d80657556
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8964cb33fd8f61a39f091633ae9074d9658232fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="publish-a-spring-boot-app-as-a-docker-container-by-using-the-azure-toolkit-for-intellij"></a><span data-ttu-id="136b7-103">Публикация приложения Spring Boot в виде контейнера Docker с помощью набора средств Azure для IntelliJ</span><span class="sxs-lookup"><span data-stu-id="136b7-103">Publish a Spring Boot app as a Docker container by using the Azure Toolkit for IntelliJ</span></span>
+# <a name="publish-a-spring-boot-app-as-a-docker-container-by-using-hello-azure-toolkit-for-intellij"></a><span data-ttu-id="ae1e4-103">Опубликовать приложение Spring загрузки как контейнер Docker с помощью hello Azure Toolkit для IntelliJ</span><span class="sxs-lookup"><span data-stu-id="ae1e4-103">Publish a Spring Boot app as a Docker container by using hello Azure Toolkit for IntelliJ</span></span>
 
-<span data-ttu-id="136b7-104">[Spring Framework] — это решение с открытым исходным кодом, которое помогает разработчикам Java создавать приложения корпоративного класса.</span><span class="sxs-lookup"><span data-stu-id="136b7-104">The [Spring Framework] is an open-source solution that helps Java developers create enterprise-level applications.</span></span> <span data-ttu-id="136b7-105">Одним из самых популярных проектов, созданных на этой платформе, является проект [Spring Boot]. Он упрощает подход к созданию автономных приложений Java.</span><span class="sxs-lookup"><span data-stu-id="136b7-105">One of the more-popular projects that is built on top of that platform is [Spring Boot], which provides a simplified approach for creating standalone Java applications.</span></span>
+<span data-ttu-id="ae1e4-104">Hello [Spring Framework] — это решение открытым исходным кодом, разработчики Java могут создавать корпоративные приложения.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-104">hello [Spring Framework] is an open-source solution that helps Java developers create enterprise-level applications.</span></span> <span data-ttu-id="ae1e4-105">Один из проектов более популярных hello, построенных на основе этой платформы является [загрузки Spring], который предоставляет упрощенный подход для создания автономных приложений Java.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-105">One of hello more-popular projects that is built on top of that platform is [Spring Boot], which provides a simplified approach for creating standalone Java applications.</span></span>
 
-<span data-ttu-id="136b7-106">[Docker] — это решение с открытым исходным кодом, которое помогает разработчикам автоматизировать развертывание приложений, их масштабирование, а также управление приложениями, которые выполняются в контейнерах.</span><span class="sxs-lookup"><span data-stu-id="136b7-106">[Docker] is an open-source solution that helps developers automate the deployment, scaling, and management of their applications that are running in containers.</span></span>
+<span data-ttu-id="ae1e4-106">[Docker] — это решение открытым исходным кодом, которое помогает разработчикам автоматизировать развертывание hello, масштабирование и управление их приложений, выполняющихся в контейнерах.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-106">[Docker] is an open-source solution that helps developers automate hello deployment, scaling, and management of their applications that are running in containers.</span></span>
 
-<span data-ttu-id="136b7-107">В данном руководстве описывается процесс развертывания приложения Spring Boot в качестве контейнера Docker в Microsoft Azure с помощью набора средств Azure для IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="136b7-107">This tutorial walks you through the steps to deploy a Spring Boot application as a Docker container to Microsoft Azure by using the Azure Toolkit for IntelliJ.</span></span>
+<span data-ttu-id="ae1e4-107">Этот учебник поможет выполнить toodeploy действия hello приложение Spring загрузки как tooMicrosoft контейнера Docker Azure с помощью hello Azure Toolkit для IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-107">This tutorial walks you through hello steps toodeploy a Spring Boot application as a Docker container tooMicrosoft Azure by using hello Azure Toolkit for IntelliJ.</span></span>
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="clone-the-default-spring-boot-docker-repo"></a><span data-ttu-id="136b7-108">Клонирование репозитория по умолчанию приложения Docker Spring Boot</span><span class="sxs-lookup"><span data-stu-id="136b7-108">Clone the default Spring Boot Docker repo</span></span>
+## <a name="clone-hello-default-spring-boot-docker-repo"></a><span data-ttu-id="ae1e4-108">Клонировать репозиторий Docker Spring загрузки по умолчанию hello</span><span class="sxs-lookup"><span data-stu-id="ae1e4-108">Clone hello default Spring Boot Docker repo</span></span>
 
-<span data-ttu-id="136b7-109">Ниже рассмотрена процедура клонирования репозитория приложения Spring Boot Docker с помощью IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="136b7-109">The following steps walk you through cloning the Spring Boot Docker repo by using IntelliJ.</span></span> <span data-ttu-id="136b7-110">Процесс использования командной строки см. в разделе [Развертывание приложения Spring Boot в Linux в службе контейнеров Azure][Deploy Spring Boot on Linux in ACS].</span><span class="sxs-lookup"><span data-stu-id="136b7-110">If you want to use a command line, see [Deploy a Spring Boot application on Linux in Azure Container Service][Deploy Spring Boot on Linux in ACS].</span></span>
+<span data-ttu-id="ae1e4-109">Hello следующие шаги описывают клонирования репозитория hello Spring загрузки Docker с помощью IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-109">hello following steps walk you through cloning hello Spring Boot Docker repo by using IntelliJ.</span></span> <span data-ttu-id="ae1e4-110">Если toouse командной строки, см. [развернуть приложение в Linux в службе контейнера Azure Spring загрузки][Deploy Spring Boot on Linux in ACS].</span><span class="sxs-lookup"><span data-stu-id="ae1e4-110">If you want toouse a command line, see [Deploy a Spring Boot application on Linux in Azure Container Service][Deploy Spring Boot on Linux in ACS].</span></span>
 
-1. <span data-ttu-id="136b7-111">Откройте IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="136b7-111">Open IntelliJ.</span></span>
+1. <span data-ttu-id="ae1e4-111">Откройте IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-111">Open IntelliJ.</span></span>
 
-1. <span data-ttu-id="136b7-112">На экране приветствия выберите пункт **GitHub** из списка **Check out from Version Control (Извлечь из системы управления версиями)**.</span><span class="sxs-lookup"><span data-stu-id="136b7-112">On the welcome screen, select the **GitHub** option in the **Check out from Version Control** list.</span></span>
+1. <span data-ttu-id="ae1e4-112">На экране приветствия hello выберите hello **GitHub** параметр в hello **извлечь из системы управления версиями** списка.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-112">On hello welcome screen, select hello **GitHub** option in hello **Check out from Version Control** list.</span></span>
 
    ![Параметр GitHub для управления версиями][CL01]
 
-1. <span data-ttu-id="136b7-114">При появлении запроса на вход введите свои учетные данные.</span><span class="sxs-lookup"><span data-stu-id="136b7-114">Enter your credentials if you are prompted to log in.</span></span>
+1. <span data-ttu-id="ae1e4-114">Введите свои учетные данные, если запрос toolog в.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-114">Enter your credentials if you are prompted toolog in.</span></span>
 
-   * <span data-ttu-id="136b7-115">Если для входа в GitHub вы используете имя пользователя и пароль:</span><span class="sxs-lookup"><span data-stu-id="136b7-115">If you are using a username/password to log in to GitHub:</span></span>
+   * <span data-ttu-id="ae1e4-115">Если вы используете toolog имя пользователя и пароль в tooGitHub:</span><span class="sxs-lookup"><span data-stu-id="ae1e4-115">If you are using a username/password toolog in tooGitHub:</span></span>
 
       ![Диалоговое окно для ввода имени пользователя и пароля для входа в GitHub][CL02a]
 
-   * <span data-ttu-id="136b7-117">Если для входа в GitHub вы используете токен:</span><span class="sxs-lookup"><span data-stu-id="136b7-117">If you are using a token to log in to GitHub:</span></span>
+   * <span data-ttu-id="ae1e4-117">При использовании маркера toolog в tooGitHub:</span><span class="sxs-lookup"><span data-stu-id="ae1e4-117">If you are using a token toolog in tooGitHub:</span></span>
 
       ![Диалоговое окно для ввода токена GitHub][CL02b]
 
-1. <span data-ttu-id="136b7-119">В качестве URL-адреса репозитория введите **https://github.com/spring-guides/gs-spring-boot-docker.git**, укажите локальный путь и сведения о папке, а затем нажмите кнопку **Клонировать**.</span><span class="sxs-lookup"><span data-stu-id="136b7-119">Enter **https://github.com/spring-guides/gs-spring-boot-docker.git** for the repo URL, specify your local path and folder information, and then click **Clone**.</span></span>
+1. <span data-ttu-id="ae1e4-119">Введите **https://github.com/spring-guides/gs-spring-boot-docker.git** URL-адрес репозитория hello, укажите локальный путь и сведения о папке и нажмите кнопку **клон**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-119">Enter **https://github.com/spring-guides/gs-spring-boot-docker.git** for hello repo URL, specify your local path and folder information, and then click **Clone**.</span></span>
 
    ![Диалоговое окно "Clone Repository" (Клонирование репозитория)][CL03]
 
-1. <span data-ttu-id="136b7-121">При появлении запроса на создание проекта IntelliJ выберите **Нет**.</span><span class="sxs-lookup"><span data-stu-id="136b7-121">When you're prompted to create an IntelliJ project, select **No**.</span></span>
+1. <span data-ttu-id="ae1e4-121">При запросе toocreate IntelliJ проекта, выберите **нет**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-121">When you're prompted toocreate an IntelliJ project, select **No**.</span></span>
 
-   ![Отклонение создания проекта IntelliJ][CL04]
+   ![Отклонение toocreate проекте IntelliJ][CL04]
 
-1. <span data-ttu-id="136b7-123">На экране приветствия щелкните пункт **Импорт проекта**.</span><span class="sxs-lookup"><span data-stu-id="136b7-123">On the welcome page, click **Import Project**.</span></span>
+1. <span data-ttu-id="ae1e4-123">На начальной странице приветствия нажмите кнопку **Импорт проекта**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-123">On hello welcome page, click **Import Project**.</span></span>
 
    ![Пункт "Импорт проекта"][CL05]
 
-1. <span data-ttu-id="136b7-125">Найдите путь, по которому был клонирован репозиторий Spring Boot, выделите папку **complete** в корневом каталоге и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="136b7-125">Locate the path where you cloned the Spring Boot repo, select the **complete** folder under the root, and then click **OK**.</span></span>
+1. <span data-ttu-id="ae1e4-125">Найти путь hello, где клонирования репозитория загрузки Spring hello, выберите hello **завершения** папку в корневой hello, а затем щелкните **ОК**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-125">Locate hello path where you cloned hello Spring Boot repo, select hello **complete** folder under hello root, and then click **OK**.</span></span>
 
    ![Выбор папки для импорта][CL06]
 
-1. <span data-ttu-id="136b7-127">При появлении запроса выберите **Создать проект из существующих источников**.</span><span class="sxs-lookup"><span data-stu-id="136b7-127">When you're prompted, select **Create project from existing sources**.</span></span>
+1. <span data-ttu-id="ae1e4-127">При появлении запроса выберите **Создать проект из существующих источников**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-127">When you're prompted, select **Create project from existing sources**.</span></span>
 
-   ![Параметр для создания проекта из существующих источников][CL07]
+   ![Параметр toocreate проекта из существующих источников][CL07]
 
-1. <span data-ttu-id="136b7-129">Укажите имя проекта или примите имя по умолчанию, проверьте путь к папке **complete**, а затем нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="136b7-129">Specify your project name or accept the default, verify the correct path to the **complete** folder, and then click **Next**.</span></span>
+1. <span data-ttu-id="ae1e4-129">Укажите имя проекта или примите значение по умолчанию hello, проверьте hello правильный путь toohello **завершения** папки, а затем щелкните **Далее**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-129">Specify your project name or accept hello default, verify hello correct path toohello **complete** folder, and then click **Next**.</span></span>
 
-   ![Выбор имени проекта][CL08]
+   ![Укажите имя проекта hello][CL08]
 
-1. <span data-ttu-id="136b7-131">Настройте все каталоги для импорта и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="136b7-131">Customize any directories for importing, and then click **Next**.</span></span>
+1. <span data-ttu-id="ae1e4-131">Настройте все каталоги для импорта и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-131">Customize any directories for importing, and then click **Next**.</span></span>
 
    ![Выбор каталогов][CL09]
 
-1. <span data-ttu-id="136b7-133">Просмотрите библиотеки для импорта и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="136b7-133">Review the libraries to import, and then click **Next**.</span></span>
+1. <span data-ttu-id="ae1e4-133">Просмотрите tooimport hello библиотеки и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-133">Review hello libraries tooimport, and then click **Next**.</span></span>
 
    ![Просмотр библиотек проекта][CL10]
 
-1. <span data-ttu-id="136b7-135">Просмотрите структуру модулей и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="136b7-135">Review the module structure, and then click **Next**.</span></span>
+1. <span data-ttu-id="ae1e4-135">Просмотрите структуру модуля hello и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-135">Review hello module structure, and then click **Next**.</span></span>
 
    ![Просмотр структуры модулей][CL11]
 
-1. <span data-ttu-id="136b7-137">Укажите свой JDK и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="136b7-137">Specify your JDK, and then click **Next**.</span></span>
+1. <span data-ttu-id="ae1e4-137">Укажите свой JDK и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-137">Specify your JDK, and then click **Next**.</span></span>
 
    ![Указание JDK][CL12]
 
-1. <span data-ttu-id="136b7-139">Нажмите кнопку **Готово**</span><span class="sxs-lookup"><span data-stu-id="136b7-139">Click **Finish**.</span></span>
+1. <span data-ttu-id="ae1e4-139">Нажмите кнопку **Готово**</span><span class="sxs-lookup"><span data-stu-id="ae1e4-139">Click **Finish**.</span></span>
 
    ![Кнопка "Готово"][CL13]
 
-<span data-ttu-id="136b7-141">IntelliJ импортирует приложение Spring Boot в качестве проекта и по окончании отобразит структуру.</span><span class="sxs-lookup"><span data-stu-id="136b7-141">IntelliJ imports the Spring Boot app as a project and displays the structure when the import has finished.</span></span>
+<span data-ttu-id="ae1e4-141">IntelliJ импортирует приложение hello Spring загрузки как проект и отображает hello структуры после завершения импорта hello.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-141">IntelliJ imports hello Spring Boot app as a project and displays hello structure when hello import has finished.</span></span>
 
 ![Приложение Spring Boot в IntelliJ][CL14]
 
-## <a name="build-your-spring-boot-app"></a><span data-ttu-id="136b7-143">Создание приложения Spring Boot</span><span class="sxs-lookup"><span data-stu-id="136b7-143">Build your Spring Boot app</span></span>
+## <a name="build-your-spring-boot-app"></a><span data-ttu-id="ae1e4-143">Создание приложения Spring Boot</span><span class="sxs-lookup"><span data-stu-id="ae1e4-143">Build your Spring Boot app</span></span>
 
-### <a name="build-the-app-by-using-the-maven-pom"></a><span data-ttu-id="136b7-144">Создание приложения с помощью Maven POM</span><span class="sxs-lookup"><span data-stu-id="136b7-144">Build the app by using the Maven POM</span></span>
+### <a name="build-hello-app-by-using-hello-maven-pom"></a><span data-ttu-id="ae1e4-144">Сборка приложения hello с помощью hello Maven POM</span><span class="sxs-lookup"><span data-stu-id="ae1e4-144">Build hello app by using hello Maven POM</span></span>
 
-1. <span data-ttu-id="136b7-145">Откройте окно инструментов Maven, если это еще не сделано.</span><span class="sxs-lookup"><span data-stu-id="136b7-145">Open the Maven tool window if it is not already opened.</span></span> <span data-ttu-id="136b7-146">Последовательно выберите **Вид** > **Окна инструментов** > **Проекты Maven**.</span><span class="sxs-lookup"><span data-stu-id="136b7-146">Click **View** > **Tool Windows** > **Maven Projects**.</span></span>
+1. <span data-ttu-id="ae1e4-145">Если он еще не открыта, откройте окно инструментов Maven hello.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-145">Open hello Maven tool window if it is not already opened.</span></span> <span data-ttu-id="ae1e4-146">Последовательно выберите **Вид** > **Окна инструментов** > **Проекты Maven**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-146">Click **View** > **Tool Windows** > **Maven Projects**.</span></span>
 
    ![Окна инструментов и команды проектов Maven][BU01]
 
-1. <span data-ttu-id="136b7-148">В окне инструментов Maven щелкните правой кнопкой мыши **пакет** и выберите пункт **Выполнить сборку Maven**.</span><span class="sxs-lookup"><span data-stu-id="136b7-148">In the Maven tool window, right-click **package** and select **Run Maven Build**.</span></span> <span data-ttu-id="136b7-149">(Если проект Maven не отображается автоматически, щелкните значок **Повторный импорт** на панели инструментов Maven.)</span><span class="sxs-lookup"><span data-stu-id="136b7-149">(If your Maven project does not show up automatically, click the **Reimport** icon on the Maven toolbar.)</span></span>
+1. <span data-ttu-id="ae1e4-148">Щелкните правой кнопкой мыши в окне инструментов Maven hello, **пакета** и выберите **выполнить сборки Maven**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-148">In hello Maven tool window, right-click **package** and select **Run Maven Build**.</span></span> <span data-ttu-id="ae1e4-149">(Если Maven проекта не отображается автоматически, нажмите кнопку hello **повторный импорт** значок на панели инструментов Maven hello.)</span><span class="sxs-lookup"><span data-stu-id="ae1e4-149">(If your Maven project does not show up automatically, click hello **Reimport** icon on hello Maven toolbar.)</span></span>
 
    ![Команда "Запуск сборки Maven"][BU02]
 
-1. <span data-ttu-id="136b7-151">После успешного создания приложения Spring Boot IntelliJ отобразит сообщение **Сборка выполнена успешно**.</span><span class="sxs-lookup"><span data-stu-id="136b7-151">IntelliJ should display a **BUILD SUCCESS** message when your Spring Boot app is successfully created.</span></span>
+1. <span data-ttu-id="ae1e4-151">После успешного создания приложения Spring Boot IntelliJ отобразит сообщение **Сборка выполнена успешно**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-151">IntelliJ should display a **BUILD SUCCESS** message when your Spring Boot app is successfully created.</span></span>
 
    ![Сообщение "Сборка выполнена успешно"][BU03]
 
-### <a name="create-a-deployment-ready-artifact"></a><span data-ttu-id="136b7-153">Создание готового к развертыванию артефакта</span><span class="sxs-lookup"><span data-stu-id="136b7-153">Create a deployment-ready artifact</span></span>
+### <a name="create-a-deployment-ready-artifact"></a><span data-ttu-id="ae1e4-153">Создание готового к развертыванию артефакта</span><span class="sxs-lookup"><span data-stu-id="ae1e4-153">Create a deployment-ready artifact</span></span>
 
-<span data-ttu-id="136b7-154">Чтобы опубликовать приложение Spring Boot, необходимо создать готовый к развертыванию артефакт.</span><span class="sxs-lookup"><span data-stu-id="136b7-154">To publish your Spring Boot app, you need to create a deployment-ready artifact.</span></span> <span data-ttu-id="136b7-155">Выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="136b7-155">Use the following steps:</span></span>
+<span data-ttu-id="ae1e4-154">toopublish приложение Spring загрузки необходимо toocreate артефакта готовым к развертыванию.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-154">toopublish your Spring Boot app, you need toocreate a deployment-ready artifact.</span></span> <span data-ttu-id="ae1e4-155">Используйте следующие шаги hello.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-155">Use hello following steps:</span></span>
 
-1. <span data-ttu-id="136b7-156">Откройте проект веб-приложения в IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="136b7-156">Open your web app project in IntelliJ.</span></span>
+1. <span data-ttu-id="ae1e4-156">Откройте проект веб-приложения в IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-156">Open your web app project in IntelliJ.</span></span>
 
-1. <span data-ttu-id="136b7-157">В меню **File** (Файл) выберите **Project Structure** (Структура проекта).</span><span class="sxs-lookup"><span data-stu-id="136b7-157">Click **File**, and then click **Project Structure**.</span></span>
+1. <span data-ttu-id="ae1e4-157">В меню **File** (Файл) выберите **Project Structure** (Структура проекта).</span><span class="sxs-lookup"><span data-stu-id="ae1e4-157">Click **File**, and then click **Project Structure**.</span></span>
 
    ![Команда "Project Structure" (Структура проекта)][ART01]
 
-1. <span data-ttu-id="136b7-159">Щелкните зеленый знак "плюс" (**+**), чтобы добавить артефакт, затем щелкните **JAR** и **Empty** (пустой).</span><span class="sxs-lookup"><span data-stu-id="136b7-159">Click the green plus (**+**) symbol to add an artifact, click **JAR**, and then click **Empty**.</span></span>
+1. <span data-ttu-id="ae1e4-159">Щелкните зеленый плюс hello (**+**) символ tooadd артефакта, нажмите кнопку **JAR**и нажмите кнопку **пустой**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-159">Click hello green plus (**+**) symbol tooadd an artifact, click **JAR**, and then click **Empty**.</span></span>
 
    ![Добавление артефакта][ART02]
 
-1. <span data-ttu-id="136b7-161">Укажите имя артефакта без расширения JAR, а затем укажите целевую папку назначения для выходных данных Maven.</span><span class="sxs-lookup"><span data-stu-id="136b7-161">Name your artifact while making sure not to add the ".jar" extension, and then specify the target folder for the Maven output.</span></span>
+1. <span data-ttu-id="ae1e4-161">Имя вашего артефакта делая не tooadd hello расширение «.jar», а затем укажите hello целевую папку для вывода Maven приветствия.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-161">Name your artifact while making sure not tooadd hello ".jar" extension, and then specify hello target folder for hello Maven output.</span></span>
 
    ![Указание свойств артефакта][ART03]
 
-1. <span data-ttu-id="136b7-163">Создайте манифест для артефакта (необязательно).</span><span class="sxs-lookup"><span data-stu-id="136b7-163">Create a manifest for your artifact (optional):</span></span>
+1. <span data-ttu-id="ae1e4-163">Создайте манифест для артефакта (необязательно).</span><span class="sxs-lookup"><span data-stu-id="ae1e4-163">Create a manifest for your artifact (optional):</span></span>
 
-   <span data-ttu-id="136b7-164">а.</span><span class="sxs-lookup"><span data-stu-id="136b7-164">a.</span></span> <span data-ttu-id="136b7-165">Нажмите кнопку **Create Manifest** (Создать манифест).</span><span class="sxs-lookup"><span data-stu-id="136b7-165">Click **Create Manifest**.</span></span>
+   <span data-ttu-id="ae1e4-164">а.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-164">a.</span></span> <span data-ttu-id="ae1e4-165">Нажмите кнопку **Create Manifest** (Создать манифест).</span><span class="sxs-lookup"><span data-stu-id="ae1e4-165">Click **Create Manifest**.</span></span>
 
-      ![Кнопка "Создать манифест"][ART04a]
+      ![Нажмите кнопку Создать манифест hello][ART04a]
 
-   <span data-ttu-id="136b7-167">b.</span><span class="sxs-lookup"><span data-stu-id="136b7-167">b.</span></span> <span data-ttu-id="136b7-168">Выберите путь по умолчанию для артефакта и нажмите **ОК**.</span><span class="sxs-lookup"><span data-stu-id="136b7-168">Choose the default path for the artifact, and then click **OK**.</span></span>
+   <span data-ttu-id="ae1e4-167">b.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-167">b.</span></span> <span data-ttu-id="ae1e4-168">Выберите путь по умолчанию hello для hello артефакта и щелкните **ОК**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-168">Choose hello default path for hello artifact, and then click **OK**.</span></span>
 
       ![Указание пути к артефакту][ART04b]
 
-   <span data-ttu-id="136b7-170">c.</span><span class="sxs-lookup"><span data-stu-id="136b7-170">c.</span></span> <span data-ttu-id="136b7-171">Нажмите кнопку с многоточием (**...**) для указания основного класса (main).</span><span class="sxs-lookup"><span data-stu-id="136b7-171">Click the ellipsis (**...**) to locate the main class.</span></span>
+   <span data-ttu-id="ae1e4-170">c.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-170">c.</span></span> <span data-ttu-id="ae1e4-171">Нажмите кнопку с многоточием hello (**...** ) toolocate hello основного класса.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-171">Click hello ellipsis (**...**) toolocate hello main class.</span></span>
 
       ![Поиск основного (main) класса][ART04c]
 
-   <span data-ttu-id="136b7-173">d.</span><span class="sxs-lookup"><span data-stu-id="136b7-173">d.</span></span> <span data-ttu-id="136b7-174">Выберите основной класс и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="136b7-174">Choose your main class, and then click **OK**.</span></span>
+   <span data-ttu-id="ae1e4-173">d.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-173">d.</span></span> <span data-ttu-id="ae1e4-174">Выберите основной класс и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-174">Choose your main class, and then click **OK**.</span></span>
 
       ![Указание основного (main) класса][ART04d]
 
-1. <span data-ttu-id="136b7-176">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="136b7-176">Click **OK**.</span></span>
+1. <span data-ttu-id="ae1e4-176">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-176">Click **OK**.</span></span>
 
-   ![Закрытие диалогового окна "Project Structure" (Структура проекта)][ART05]
+   ![Закройте диалоговое окно структуры проекта hello][ART05]
 
 > [!NOTE]
-> <span data-ttu-id="136b7-178">Дополнительные сведения о создании артефактов в IntelliJ см. в разделе [Configuring Artifacts] (Настройка артефактов) на веб-сайте JetBrains.</span><span class="sxs-lookup"><span data-stu-id="136b7-178">For more information about creating artifacts in IntelliJ, see [Configuring Artifacts] on the JetBrains website.</span></span>
+> <span data-ttu-id="ae1e4-178">Дополнительные сведения о создании артефактов в IntelliJ см. в разделе [Настройка артефакты] на веб-сайте JetBrains hello.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-178">For more information about creating artifacts in IntelliJ, see [Configuring Artifacts] on hello JetBrains website.</span></span>
 >
 
-### <a name="build-the-artifact-for-deployment"></a><span data-ttu-id="136b7-179">Создание артефакта для развертывания</span><span class="sxs-lookup"><span data-stu-id="136b7-179">Build the artifact for deployment</span></span>
+### <a name="build-hello-artifact-for-deployment"></a><span data-ttu-id="ae1e4-179">Hello артефакт для развертывания сборки</span><span class="sxs-lookup"><span data-stu-id="ae1e4-179">Build hello artifact for deployment</span></span>
 
-1. <span data-ttu-id="136b7-180">Нажмите кнопку **Build** (Сборка), а затем кнопку **Artifacts** (Артефакты).</span><span class="sxs-lookup"><span data-stu-id="136b7-180">Click **Build**, and then click **Artifacts**.</span></span>
+1. <span data-ttu-id="ae1e4-180">Нажмите кнопку **Build** (Сборка), а затем кнопку **Artifacts** (Артефакты).</span><span class="sxs-lookup"><span data-stu-id="ae1e4-180">Click **Build**, and then click **Artifacts**.</span></span>
 
    ![Команда "Build Artifacts" (Создать артефакты)][BU04]
 
-1. <span data-ttu-id="136b7-182">При появлении контекстного меню **Build Artifact** (Создание артефактов) нажмите кнопку **Build** (Сборка).</span><span class="sxs-lookup"><span data-stu-id="136b7-182">When the **Build Artifact** context menu appears, click **Build**.</span></span>
+1. <span data-ttu-id="ae1e4-182">Здравствуйте, когда **артефактов сборки** контекстное меню, нажмите кнопку **сборки**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-182">When hello **Build Artifact** context menu appears, click **Build**.</span></span>
 
    ![Контекстное меню "Build Artifacts" (Создание артефакта)][BU05]
 
-<span data-ttu-id="136b7-184">IntelliJ должен отобразить созданный артефакт для приложения Spring Boot в окне инструментов проекта.</span><span class="sxs-lookup"><span data-stu-id="136b7-184">IntelliJ should display the completed artifact for your Spring Boot app in the project tool window.</span></span>
+<span data-ttu-id="ae1e4-184">В окне инструментов проекта hello IntelliJ отображать артефакта hello завершения Spring загрузки приложения.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-184">IntelliJ should display hello completed artifact for your Spring Boot app in hello project tool window.</span></span>
 
    ![Созданный артефакт][BU06]
 
-## <a name="publish-your-web-app-to-azure-by-using-a-docker-container"></a><span data-ttu-id="136b7-186">Публикация веб-приложения в Azure с помощью контейнера Docker</span><span class="sxs-lookup"><span data-stu-id="136b7-186">Publish your web app to Azure by using a Docker container</span></span>
+## <a name="publish-your-web-app-tooazure-by-using-a-docker-container"></a><span data-ttu-id="ae1e4-186">Публикация вашего tooAzure web app с помощью контейнера Docker</span><span class="sxs-lookup"><span data-stu-id="ae1e4-186">Publish your web app tooAzure by using a Docker container</span></span>
 
-1. <span data-ttu-id="136b7-187">Если вы еще не вошли в свою учетную запись Azure, выполните процедуру в статье [Инструкции по входу для набора средств Azure для IntelliJ][Azure Sign In for IntelliJ].</span><span class="sxs-lookup"><span data-stu-id="136b7-187">If you have not signed in to your Azure account, follow the steps in [Sign-in instructions for the Azure Toolkit for IntelliJ][Azure Sign In for IntelliJ].</span></span>
+1. <span data-ttu-id="ae1e4-187">Если вы не вошли в tooyour учетная запись Azure, следуйте указаниям hello [входа в инструкции для hello Azure Toolkit для IntelliJ][Azure Sign In for IntelliJ].</span><span class="sxs-lookup"><span data-stu-id="ae1e4-187">If you have not signed in tooyour Azure account, follow hello steps in [Sign-in instructions for hello Azure Toolkit for IntelliJ][Azure Sign In for IntelliJ].</span></span>
 
-1. <span data-ttu-id="136b7-188">В окне инструментов обозревателя проектов щелкните правой кнопкой мыши проект и выберите **Azure** > **Publish as Docker Container** (Опубликовать как контейнер Docker).</span><span class="sxs-lookup"><span data-stu-id="136b7-188">In the Project Explorer tool window, right-click the project, and then select **Azure** > **Publish as Docker Container**.</span></span>
+1. <span data-ttu-id="ae1e4-188">В окне инструментов обозревателя проектов hello, щелкните правой кнопкой мыши проект hello и выберите **Azure** > **опубликовать как контейнер Docker**.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-188">In hello Project Explorer tool window, right-click hello project, and then select **Azure** > **Publish as Docker Container**.</span></span>
 
    ![Команда публикации в виде контейнера Docker][PU01]
 
-1. <span data-ttu-id="136b7-190">Когда появится диалоговое окно **Развертывание контейнера Docker в Azure**, в нем будут отображаться все существующие узлы Docker.</span><span class="sxs-lookup"><span data-stu-id="136b7-190">When the **Deploy Docker Container on Azure** dialog box appears, any existing Docker hosts are displayed.</span></span> <span data-ttu-id="136b7-191">Если требуется развернуть на существующий узел, можно пропустить шаг 4.</span><span class="sxs-lookup"><span data-stu-id="136b7-191">If you choose to deploy to an existing host, you can skip to step 4.</span></span> <span data-ttu-id="136b7-192">В противном случае, чтобы создать узел, выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="136b7-192">Otherwise, use the following steps to create a host:</span></span>
+1. <span data-ttu-id="ae1e4-190">Здравствуйте, когда **развертывания контейнера Docker в Azure** откроется диалоговое окно, отображаются все существующие узлы Docker.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-190">When hello **Deploy Docker Container on Azure** dialog box appears, any existing Docker hosts are displayed.</span></span> <span data-ttu-id="ae1e4-191">Если выбрать существующий узел tooan toodeploy toostep 4 можно пропустить.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-191">If you choose toodeploy tooan existing host, you can skip toostep 4.</span></span> <span data-ttu-id="ae1e4-192">В противном случае используйте следующие шаги toocreate узел hello:</span><span class="sxs-lookup"><span data-stu-id="ae1e4-192">Otherwise, use hello following steps toocreate a host:</span></span>
 
-   <span data-ttu-id="136b7-193">а.</span><span class="sxs-lookup"><span data-stu-id="136b7-193">a.</span></span> <span data-ttu-id="136b7-194">Щелкните зеленый знак "плюс" (**+**).</span><span class="sxs-lookup"><span data-stu-id="136b7-194">Click the green plus (**+**) symbol.</span></span>
+   <span data-ttu-id="ae1e4-193">а.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-193">a.</span></span> <span data-ttu-id="ae1e4-194">Щелкните зеленый плюс hello (**+**) символов.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-194">Click hello green plus (**+**) symbol.</span></span>
 
       ![Добавление нового узла Docker][PU02]
 
-   <span data-ttu-id="136b7-196">b.</span><span class="sxs-lookup"><span data-stu-id="136b7-196">b.</span></span> <span data-ttu-id="136b7-197">При появлении диалогового окна **Создание узла Docker** можно принять значения по умолчанию или задать пользовательские параметры для нового узла Docker.</span><span class="sxs-lookup"><span data-stu-id="136b7-197">When the **Create Docker Host** dialog box appears, you can choose to accept the defaults, or you can specify any custom settings for your new Docker host.</span></span> <span data-ttu-id="136b7-198">(Подробное описание различных параметров см. в статье [Публикация веб-приложения в виде контейнера Docker с помощью набора средств Azure для IntelliJ][Publish Container with Azure Toolkit].) Нажмите кнопку **Next** (Далее) после задания используемых параметров.</span><span class="sxs-lookup"><span data-stu-id="136b7-198">(For detailed descriptions of the various settings, see [Publish a web app as a Docker container by using the Azure Toolkit for IntelliJ][Publish Container with Azure Toolkit].) Click **Next** when you have specified which settings to use.</span></span>
+   <span data-ttu-id="ae1e4-196">b.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-196">b.</span></span> <span data-ttu-id="ae1e4-197">Здравствуйте, когда **создать узел Docker** откроется диалоговое окно, можно выбрать значения по умолчанию hello tooaccept или можно задать пользовательские параметры для нового узла Docker.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-197">When hello **Create Docker Host** dialog box appears, you can choose tooaccept hello defaults, or you can specify any custom settings for your new Docker host.</span></span> <span data-ttu-id="ae1e4-198">(Подробное описание hello различные параметры в разделе [публикации веб-приложения как контейнер Docker с помощью hello Azure Toolkit для IntelliJ][Publish Container with Azure Toolkit].) Нажмите кнопку **Далее** после указания toouse какие параметры.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-198">(For detailed descriptions of hello various settings, see [Publish a web app as a Docker container by using hello Azure Toolkit for IntelliJ][Publish Container with Azure Toolkit].) Click **Next** when you have specified which settings toouse.</span></span>
 
       ![Задание параметров узла Docker][PU03a]
 
-   <span data-ttu-id="136b7-200">c.</span><span class="sxs-lookup"><span data-stu-id="136b7-200">c.</span></span> <span data-ttu-id="136b7-201">Можно использовать для входа в систему существующие учетные данные, хранящиеся в Azure Key Vault, или ввести новые учетные данные для входа в Docker.</span><span class="sxs-lookup"><span data-stu-id="136b7-201">You can choose to use existing login credentials from an Azure key vault, or you can choose to enter new Docker login credentials.</span></span> <span data-ttu-id="136b7-202">После задания параметров нажмите кнопку **Finish** (Готово).</span><span class="sxs-lookup"><span data-stu-id="136b7-202">Click **Finish** when you have specified your options.</span></span>
+   <span data-ttu-id="ae1e4-200">c.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-200">c.</span></span> <span data-ttu-id="ae1e4-201">Можно выбрать существующие учетные данные входа toouse хранилище ключей Azure или для выбора tooenter новые учетные данные входа Docker.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-201">You can choose toouse existing login credentials from an Azure key vault, or you can choose tooenter new Docker login credentials.</span></span> <span data-ttu-id="ae1e4-202">После задания параметров нажмите кнопку **Finish** (Готово).</span><span class="sxs-lookup"><span data-stu-id="ae1e4-202">Click **Finish** when you have specified your options.</span></span>
 
       ![Задание учетных данных узла Docker][PU03b]
 
-1. <span data-ttu-id="136b7-204">Выберите узел Docker и нажмите кнопку **Next** (Далее).</span><span class="sxs-lookup"><span data-stu-id="136b7-204">Select your Docker host, and then click **Next**.</span></span>
+1. <span data-ttu-id="ae1e4-204">Выберите узел Docker и нажмите кнопку **Next** (Далее).</span><span class="sxs-lookup"><span data-stu-id="ae1e4-204">Select your Docker host, and then click **Next**.</span></span>
 
-   ![Выбор используемого узла Docker][PU04]
+   ![Выберите узел toouse hello Docker][PU04]
 
-1. <span data-ttu-id="136b7-206">На последней странице диалогового окна **Deploy Docker Container on Azure** (Развертывание контейнера Docker в Azure) задайте следующие параметры.</span><span class="sxs-lookup"><span data-stu-id="136b7-206">On the last page of the **Deploy Docker Container on Azure** dialog box, specify the following options:</span></span>
+1. <span data-ttu-id="ae1e4-206">На последней странице hello hello **развертывания контейнера Docker в Azure** диалоговом окне укажите hello следующие параметры:</span><span class="sxs-lookup"><span data-stu-id="ae1e4-206">On hello last page of hello **Deploy Docker Container on Azure** dialog box, specify hello following options:</span></span>
 
-   <span data-ttu-id="136b7-207">а.</span><span class="sxs-lookup"><span data-stu-id="136b7-207">a.</span></span> <span data-ttu-id="136b7-208">Можно указать пользовательское имя для контейнера, в котором будет размещаться контейнер Docker, или принять значение по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="136b7-208">You can choose to specify a custom name for the container that will host your Docker container, or you can accept the default.</span></span>
+   <span data-ttu-id="ae1e4-207">а.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-207">a.</span></span> <span data-ttu-id="ae1e4-208">Вы можете toospecify пользовательское имя для hello контейнер, который будет содержать контейнер Docker, либо может принимать по умолчанию hello.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-208">You can choose toospecify a custom name for hello container that will host your Docker container, or you can accept hello default.</span></span>
 
-   <span data-ttu-id="136b7-209">b.</span><span class="sxs-lookup"><span data-stu-id="136b7-209">b.</span></span> <span data-ttu-id="136b7-210">Для узла Docker укажите TCP-порты с помощью следующего синтаксиса: *[внешний порт]*:*[внутренний порт]*.</span><span class="sxs-lookup"><span data-stu-id="136b7-210">Enter the TCP ports for your docker host by using the following syntax: *[external port]*:*[internal port]*.</span></span> <span data-ttu-id="136b7-211">Например, **80:8080** означает внешний порт "80" и внутренний порт Spring Boot по умолчанию "8080".</span><span class="sxs-lookup"><span data-stu-id="136b7-211">For example, **80:8080** specifies an external port of 80 and the default internal Spring Boot port of 8080.</span></span>
+   <span data-ttu-id="ae1e4-209">b.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-209">b.</span></span> <span data-ttu-id="ae1e4-210">Введите hello TCP-портов для узла docker с помощью hello, используя синтаксис: *[внешний порт]*:*[внутренний порт]*.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-210">Enter hello TCP ports for your docker host by using hello following syntax: *[external port]*:*[internal port]*.</span></span> <span data-ttu-id="ae1e4-211">Например **80:8080** указывает внешний порт 80 и hello по умолчанию внутренние загрузки Spring порт 8080.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-211">For example, **80:8080** specifies an external port of 80 and hello default internal Spring Boot port of 8080.</span></span>
    
-      <span data-ttu-id="136b7-212">После настройки внутреннего порта (например, с помощью файла application.yml) необходимо указать номер порта для обеспечения корректной маршрутизации в Azure.</span><span class="sxs-lookup"><span data-stu-id="136b7-212">If you have customized your internal port (for example, by editing the application.yml file), you need to specify the port number for the correct routing to occur in Azure.</span></span>
+      <span data-ttu-id="ae1e4-212">После настройки вашей внутренний порт (например, путем редактирования файла application.yml hello) для правильного маршрутизации toooccur hello в Azure необходимо номер порта toospecify hello.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-212">If you have customized your internal port (for example, by editing hello application.yml file), you need toospecify hello port number for hello correct routing toooccur in Azure.</span></span>
 
-   <span data-ttu-id="136b7-213">c.</span><span class="sxs-lookup"><span data-stu-id="136b7-213">c.</span></span> <span data-ttu-id="136b7-214">После настройки этих параметров щелкните **Finish** (Готово).</span><span class="sxs-lookup"><span data-stu-id="136b7-214">After you have configured these options, click **Finish**.</span></span>
+   <span data-ttu-id="ae1e4-213">c.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-213">c.</span></span> <span data-ttu-id="ae1e4-214">После настройки этих параметров щелкните **Finish** (Готово).</span><span class="sxs-lookup"><span data-stu-id="ae1e4-214">After you have configured these options, click **Finish**.</span></span>
 
    ![Развертывание контейнера Docker в Azure][PU05]
 
-1. <span data-ttu-id="136b7-216">После завершения публикации набора средств Azure в журнале действий Azure будет отображаться состояние **Опубликовано**.</span><span class="sxs-lookup"><span data-stu-id="136b7-216">When the Azure Toolkit has finished publishing, the Azure Activity Log displays **Published** for the status.</span></span>
+1. <span data-ttu-id="ae1e4-216">После завершения публикации hello Azure Toolkit hello отображается журнал действий Azure **опубликовано** статуса hello.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-216">When hello Azure Toolkit has finished publishing, hello Azure Activity Log displays **Published** for hello status.</span></span>
 
    ![Успешно развернутый узел Docker][PU06]
 
-## <a name="next-steps"></a><span data-ttu-id="136b7-218">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="136b7-218">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ae1e4-218">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="ae1e4-218">Next steps</span></span>
 
 [!INCLUDE [azure-toolkit-additional-resources](../includes/azure-toolkit-additional-resources.md)]
 
-<span data-ttu-id="136b7-219">Сведения о дополнительных методах создания приложений Spring Boot с помощью IntelliJ см. в разделе [Создание проектов Spring Boot](https://www.jetbrains.com/help/idea/creating-spring-boot-projects.html) на веб-сайте JetBrains.</span><span class="sxs-lookup"><span data-stu-id="136b7-219">To learn about additional methods for creating Spring Boot apps by using IntelliJ, see [Creating Spring Boot Projects](https://www.jetbrains.com/help/idea/creating-spring-boot-projects.html) on the JetBrains website.</span></span>
+<span data-ttu-id="ae1e4-219">. в разделе toolearn о дополнительных методов для создания загрузочного Spring приложений с помощью IntelliJ, [Создание проектов Spring загрузки](https://www.jetbrains.com/help/idea/creating-spring-boot-projects.html) на веб-сайте JetBrains hello.</span><span class="sxs-lookup"><span data-stu-id="ae1e4-219">toolearn about additional methods for creating Spring Boot apps by using IntelliJ, see [Creating Spring Boot Projects](https://www.jetbrains.com/help/idea/creating-spring-boot-projects.html) on hello JetBrains website.</span></span>
 
 <!-- URL List -->
 
 [Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Azure Sign In for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-<span data-ttu-id="136b7-220">[Configuring Artifacts]: https://www.jetbrains.com/help/idea/2016.1/configuring-artifacts.html</span><span class="sxs-lookup"><span data-stu-id="136b7-220">[Configuring Artifacts]: https://www.jetbrains.com/help/idea/2016.1/configuring-artifacts.html</span></span>
+[Настройка артефакты]: https://www.jetbrains.com/help/idea/2016.1/configuring-artifacts.html
 [Deploy Spring Boot on Linux in ACS]:container-service/kubernetes/container-service-deploy-spring-boot-app-on-linux.md
-<span data-ttu-id="136b7-221">[Docker]: https://www.docker.com/</span><span class="sxs-lookup"><span data-stu-id="136b7-221">[Docker]: https://www.docker.com/</span></span>
+[Docker]: https://www.docker.com/
 [Publish Container with Azure Toolkit]: ./azure-toolkit-for-intellij-publish-as-docker-container.md
-<span data-ttu-id="136b7-222">[Spring Boot]: http://projects.spring.io/spring-boot/</span><span class="sxs-lookup"><span data-stu-id="136b7-222">[Spring Boot]: http://projects.spring.io/spring-boot/</span></span>
-<span data-ttu-id="136b7-223">[Spring Framework]: https://spring.io/</span><span class="sxs-lookup"><span data-stu-id="136b7-223">[Spring Framework]: https://spring.io/</span></span>
+[загрузки Spring]: http://projects.spring.io/spring-boot/
+[Spring Framework]: https://spring.io/
 
 <!-- IMG List -->
 

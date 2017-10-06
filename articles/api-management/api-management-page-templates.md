@@ -1,6 +1,6 @@
 ---
-title: "Шаблоны страниц в службе управления API Azure | Документация Майкрософт"
-description: "Сведения о настройке содержимого страниц портала разработчика с использованием набора шаблонов в службе управления API Azure."
+title: "шаблоны aaaPage в службе управления API Azure | Документы Microsoft"
+description: "Узнайте, как toocustomize hello содержимое страницы портала разработчиков с помощью набора шаблонов в Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 7f9ef37a694bce786b6acaa428df83f0cb23c2dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 84bd971ad4bcacfdd36c2ebbe05b16063f2a547b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="page-templates-in-azure-api-management"></a><span data-ttu-id="d2e16-103">Шаблоны страниц в службе управления API Azure</span><span class="sxs-lookup"><span data-stu-id="d2e16-103">Page templates in Azure API Management</span></span>
-<span data-ttu-id="d2e16-104">Служба управления API Azure позволяет настраивать содержимое страниц портала разработчика с помощью набора шаблонов.</span><span class="sxs-lookup"><span data-stu-id="d2e16-104">Azure API Management provides you the ability to customize the content of developer portal pages using a set of templates that configure their content.</span></span> <span data-ttu-id="d2e16-105">С помощью синтаксиса [DotLiquid](http://dotliquidmarkup.org/), выбранного редактора, например [DotLiquid для разработчиков](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), и указанного набора локализованных [строковых ресурсов](api-management-template-resources.md#strings), [ресурсов глифов](api-management-template-resources.md#glyphs), а также [элементов управления на странице](api-management-page-controls.md) можно гибко настраивать содержимое страниц по своему усмотрению с использованием этих шаблонов.</span><span class="sxs-lookup"><span data-stu-id="d2e16-105">Using [DotLiquid](http://dotliquidmarkup.org/) syntax and the editor of your choice, such as [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), and a provided set of localized [String resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), and [Page controls](api-management-page-controls.md), you have great flexibility to configure the content of the pages as you see fit using these templates.</span></span>  
+# <a name="page-templates-in-azure-api-management"></a><span data-ttu-id="84497-103">Шаблоны страниц в службе управления API Azure</span><span class="sxs-lookup"><span data-stu-id="84497-103">Page templates in Azure API Management</span></span>
+<span data-ttu-id="84497-104">Управления API Azure предоставляет hello возможность toocustomize hello содержимое страницы портала разработчиков с помощью набора шаблонов, которые настраивают их содержимого.</span><span class="sxs-lookup"><span data-stu-id="84497-104">Azure API Management provides you hello ability toocustomize hello content of developer portal pages using a set of templates that configure their content.</span></span> <span data-ttu-id="84497-105">С помощью [DotLiquid](http://dotliquidmarkup.org/) синтаксис и hello редактора, таких как [DotLiquid для конструкторов](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), предоставленным набором локализации и [строковые ресурсы](api-management-template-resources.md#strings), [ Ресурсы глиф](api-management-template-resources.md#glyphs), и [страницы элементов управления](api-management-page-controls.md), у вас есть гибкость tooconfigure hello содержимого hello страниц по своему усмотрению, с помощью этих шаблонов.</span><span class="sxs-lookup"><span data-stu-id="84497-105">Using [DotLiquid](http://dotliquidmarkup.org/) syntax and hello editor of your choice, such as [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), and a provided set of localized [String resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), and [Page controls](api-management-page-controls.md), you have great flexibility tooconfigure hello content of hello pages as you see fit using these templates.</span></span>  
   
- <span data-ttu-id="d2e16-106">С помощью шаблонов в этом разделе вы сможете настроить содержимое страниц входа, регистрации и страницы с ошибкой "Страница не найдена" на портале разработчика.</span><span class="sxs-lookup"><span data-stu-id="d2e16-106">The templates in this section allow you to customize the content of the sign in, sign up, and page not found pages in the developer portal.</span></span>  
+ <span data-ttu-id="84497-106">шаблоны Hello в этом разделе позволяют toocustomize содержимое hello hello вход вход, копирование и страница не найдена страницы на портале разработчиков hello.</span><span class="sxs-lookup"><span data-stu-id="84497-106">hello templates in this section allow you toocustomize hello content of hello sign in, sign up, and page not found pages in hello developer portal.</span></span>  
   
--   [<span data-ttu-id="d2e16-107">Вход</span><span class="sxs-lookup"><span data-stu-id="d2e16-107">Sign in</span></span>](#SignIn)  
+-   [<span data-ttu-id="84497-107">Вход</span><span class="sxs-lookup"><span data-stu-id="84497-107">Sign in</span></span>](#SignIn)  
   
--   [<span data-ttu-id="d2e16-108">Регистрация</span><span class="sxs-lookup"><span data-stu-id="d2e16-108">Sign up</span></span>](#SignUp)  
+-   [<span data-ttu-id="84497-108">Регистрация</span><span class="sxs-lookup"><span data-stu-id="84497-108">Sign up</span></span>](#SignUp)  
   
--   [<span data-ttu-id="d2e16-109">Страница не найдена</span><span class="sxs-lookup"><span data-stu-id="d2e16-109">Page not found</span></span>](#PageNotFound)  
+-   [<span data-ttu-id="84497-109">Страница не найдена</span><span class="sxs-lookup"><span data-stu-id="84497-109">Page not found</span></span>](#PageNotFound)  
   
 > [!NOTE]
->  <span data-ttu-id="d2e16-110">Примеры шаблонов по умолчанию включены в следующую документацию, но могут в любой момент измениться, так как ведется постоянная работа по их улучшению.</span><span class="sxs-lookup"><span data-stu-id="d2e16-110">Sample default templates are included in the following documentation, but are subject to change due to continuous improvements.</span></span> <span data-ttu-id="d2e16-111">Актуальные шаблоны по умолчанию можно просмотреть на портале разработчика, перейдя к требуемому отдельному шаблону.</span><span class="sxs-lookup"><span data-stu-id="d2e16-111">You can view the live default templates in the developer portal by navigating to the desired individual templates.</span></span> <span data-ttu-id="d2e16-112">Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span><span class="sxs-lookup"><span data-stu-id="d2e16-112">For more information about working with templates, see [How to customize the API Management developer portal using templates](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span></span>  
+>  <span data-ttu-id="84497-110">Примеры шаблонов по умолчанию включены в следующие документации hello, но являются toochange субъекта из-за toocontinuous улучшения.</span><span class="sxs-lookup"><span data-stu-id="84497-110">Sample default templates are included in hello following documentation, but are subject toochange due toocontinuous improvements.</span></span> <span data-ttu-id="84497-111">Можно просмотреть шаблоны динамической по умолчанию hello в портал разработчиков hello, перейдя по toohello требуемого отдельных шаблонов.</span><span class="sxs-lookup"><span data-stu-id="84497-111">You can view hello live default templates in hello developer portal by navigating toohello desired individual templates.</span></span> <span data-ttu-id="84497-112">Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span><span class="sxs-lookup"><span data-stu-id="84497-112">For more information about working with templates, see [How toocustomize hello API Management developer portal using templates](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span></span>  
   
-##  <span data-ttu-id="d2e16-113"><a name="SignIn"></a> Вход</span><span class="sxs-lookup"><span data-stu-id="d2e16-113"><a name="SignIn"></a> Sign in</span></span>  
- <span data-ttu-id="d2e16-114">Шаблон **входа** позволяет настроить страницу входа на портале разработчика.</span><span class="sxs-lookup"><span data-stu-id="d2e16-114">The **sign in** template allows you to customize the sign in page in the developer portal.</span></span>  
+##  <span data-ttu-id="84497-113"><a name="SignIn"></a> Вход</span><span class="sxs-lookup"><span data-stu-id="84497-113"><a name="SignIn"></a> Sign in</span></span>  
+ <span data-ttu-id="84497-114">Hello **входа** шаблон позволяет toocustomize входа hello в портале разработчика hello.</span><span class="sxs-lookup"><span data-stu-id="84497-114">hello **sign in** template allows you toocustomize hello sign in page in hello developer portal.</span></span>  
   
- <span data-ttu-id="d2e16-115">![Страница входа](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "шаблоны страницы входа портала разработчика APIM")</span><span class="sxs-lookup"><span data-stu-id="d2e16-115">![Sign In Page](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM Sign In Page Developer Portal Templates")</span></span>  
+ <span data-ttu-id="84497-115">![Страница входа](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "шаблоны страницы входа портала разработчика APIM")</span><span class="sxs-lookup"><span data-stu-id="84497-115">![Sign In Page](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM Sign In Page Developer Portal Templates")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="d2e16-116">Шаблон по умолчанию</span><span class="sxs-lookup"><span data-stu-id="d2e16-116">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="84497-116">Шаблон по умолчанию</span><span class="sxs-lookup"><span data-stu-id="84497-116">Default template</span></span>  
   
 ```xml  
 <h2 class="text-center">{% localized "SigninStrings|WebAuthenticationSigninTitle" %}</h2>  
@@ -95,17 +95,17 @@ ms.lasthandoff: 07/11/2017
 </div>  
 ```  
   
-### <a name="controls"></a><span data-ttu-id="d2e16-117">Управление</span><span class="sxs-lookup"><span data-stu-id="d2e16-117">Controls</span></span>  
- <span data-ttu-id="d2e16-118">Шаблон может использовать следующие [элементы управления страницы](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="d2e16-118">This template may  use the following [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="84497-117">Управление</span><span class="sxs-lookup"><span data-stu-id="84497-117">Controls</span></span>  
+ <span data-ttu-id="84497-118">Этот шаблон может использовать следующие hello [страницы элементов управления](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="84497-118">This template may  use hello following [page controls](api-management-page-controls.md).</span></span>  
   
--   [<span data-ttu-id="d2e16-119">basic-signin</span><span class="sxs-lookup"><span data-stu-id="d2e16-119">basic-signin</span></span>](api-management-page-controls.md#basic-signin)  
+-   [<span data-ttu-id="84497-119">basic-signin</span><span class="sxs-lookup"><span data-stu-id="84497-119">basic-signin</span></span>](api-management-page-controls.md#basic-signin)  
   
--   [<span data-ttu-id="d2e16-120">providers</span><span class="sxs-lookup"><span data-stu-id="d2e16-120">providers</span></span>](api-management-page-controls.md#providers)  
+-   [<span data-ttu-id="84497-120">providers</span><span class="sxs-lookup"><span data-stu-id="84497-120">providers</span></span>](api-management-page-controls.md#providers)  
   
-### <a name="data-model"></a><span data-ttu-id="d2e16-121">Модель данных</span><span class="sxs-lookup"><span data-stu-id="d2e16-121">Data model</span></span>  
- <span data-ttu-id="d2e16-122">Сущность [входа пользователя](api-management-template-data-model-reference.md#UseSignIn).</span><span class="sxs-lookup"><span data-stu-id="d2e16-122">[User sign in](api-management-template-data-model-reference.md#UseSignIn) entity.</span></span>  
+### <a name="data-model"></a><span data-ttu-id="84497-121">Модель данных</span><span class="sxs-lookup"><span data-stu-id="84497-121">Data model</span></span>  
+ <span data-ttu-id="84497-122">Сущность [входа пользователя](api-management-template-data-model-reference.md#UseSignIn).</span><span class="sxs-lookup"><span data-stu-id="84497-122">[User sign in](api-management-template-data-model-reference.md#UseSignIn) entity.</span></span>  
   
-### <a name="sample-template-data"></a><span data-ttu-id="d2e16-123">Пример данных шаблона</span><span class="sxs-lookup"><span data-stu-id="d2e16-123">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="84497-123">Пример данных шаблона</span><span class="sxs-lookup"><span data-stu-id="84497-123">Sample template data</span></span>  
   
 ```json  
 {  
@@ -133,12 +133,12 @@ ms.lasthandoff: 07/11/2017
 }  
 ```  
   
-##  <span data-ttu-id="d2e16-124"><a name="SignUp"></a> Регистрация</span><span class="sxs-lookup"><span data-stu-id="d2e16-124"><a name="SignUp"></a> Sign up</span></span>  
- <span data-ttu-id="d2e16-125">Шаблон **регистрации** позволяет настроить страницу регистрации на портале разработчика.</span><span class="sxs-lookup"><span data-stu-id="d2e16-125">The **sign up** template allows you to customize the sign up page in the developer portal.</span></span>  
+##  <span data-ttu-id="84497-124"><a name="SignUp"></a> Регистрация</span><span class="sxs-lookup"><span data-stu-id="84497-124"><a name="SignUp"></a> Sign up</span></span>  
+ <span data-ttu-id="84497-125">Hello **зарегистрироваться** шаблон позволяет toocustomize hello страницу регистрации на портале разработчиков hello.</span><span class="sxs-lookup"><span data-stu-id="84497-125">hello **sign up** template allows you toocustomize hello sign up page in hello developer portal.</span></span>  
   
- <span data-ttu-id="d2e16-126">![Страница регистрации](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "шаблоны страницы регистрации на портале разработчика APIM")</span><span class="sxs-lookup"><span data-stu-id="d2e16-126">![Sign Up Page](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM Sign Up Page Developer Portal Templates")</span></span>  
+ <span data-ttu-id="84497-126">![Страница регистрации](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "шаблоны страницы регистрации на портале разработчика APIM")</span><span class="sxs-lookup"><span data-stu-id="84497-126">![Sign Up Page](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM Sign Up Page Developer Portal Templates")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="d2e16-127">Шаблон по умолчанию</span><span class="sxs-lookup"><span data-stu-id="d2e16-127">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="84497-127">Шаблон по умолчанию</span><span class="sxs-lookup"><span data-stu-id="84497-127">Default template</span></span>  
   
 ```xml  
 <h2 class="text-center">{% localized "SignupStrings|PageTitleSignup" %}</h2>  
@@ -154,15 +154,15 @@ ms.lasthandoff: 07/11/2017
 </div>  
 ```  
   
-### <a name="controls"></a><span data-ttu-id="d2e16-128">Управление</span><span class="sxs-lookup"><span data-stu-id="d2e16-128">Controls</span></span>  
- <span data-ttu-id="d2e16-129">Шаблон может использовать следующие [элементы управления страницы](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="d2e16-129">This template may  use the following [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="84497-128">Управление</span><span class="sxs-lookup"><span data-stu-id="84497-128">Controls</span></span>  
+ <span data-ttu-id="84497-129">Этот шаблон может использовать следующие hello [страницы элементов управления](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="84497-129">This template may  use hello following [page controls](api-management-page-controls.md).</span></span>  
   
--   [<span data-ttu-id="d2e16-130">sign-up</span><span class="sxs-lookup"><span data-stu-id="d2e16-130">sign-up</span></span>](api-management-page-controls.md#sign-up)  
+-   [<span data-ttu-id="84497-130">sign-up</span><span class="sxs-lookup"><span data-stu-id="84497-130">sign-up</span></span>](api-management-page-controls.md#sign-up)  
   
-### <a name="data-model"></a><span data-ttu-id="d2e16-131">Модель данных</span><span class="sxs-lookup"><span data-stu-id="d2e16-131">Data model</span></span>  
- <span data-ttu-id="d2e16-132">Сущность [регистрация пользователя](api-management-template-data-model-reference.md#UserSignUp).</span><span class="sxs-lookup"><span data-stu-id="d2e16-132">[User sign up](api-management-template-data-model-reference.md#UserSignUp) entity.</span></span>  
+### <a name="data-model"></a><span data-ttu-id="84497-131">Модель данных</span><span class="sxs-lookup"><span data-stu-id="84497-131">Data model</span></span>  
+ <span data-ttu-id="84497-132">Сущность [регистрация пользователя](api-management-template-data-model-reference.md#UserSignUp).</span><span class="sxs-lookup"><span data-stu-id="84497-132">[User sign up](api-management-template-data-model-reference.md#UserSignUp) entity.</span></span>  
   
-### <a name="sample-template-data"></a><span data-ttu-id="d2e16-133">Пример данных шаблона</span><span class="sxs-lookup"><span data-stu-id="d2e16-133">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="84497-133">Пример данных шаблона</span><span class="sxs-lookup"><span data-stu-id="84497-133">Sample template data</span></span>  
   
 ```json  
 {  
@@ -181,12 +181,12 @@ ms.lasthandoff: 07/11/2017
 }  
 ```  
   
-##  <span data-ttu-id="d2e16-134"><a name="PageNotFound"></a> Страница не найдена</span><span class="sxs-lookup"><span data-stu-id="d2e16-134"><a name="PageNotFound"></a> Page not found</span></span>  
- <span data-ttu-id="d2e16-135">Шаблон страницы с ошибкой **Страница не найдена** позволяет настроить страницу с ошибкой "Страница не найдена" на портале разработчика.</span><span class="sxs-lookup"><span data-stu-id="d2e16-135">The **page not found** template allows you to customize the page not found page in the developer portal.</span></span>  
+##  <span data-ttu-id="84497-134"><a name="PageNotFound"></a> Страница не найдена</span><span class="sxs-lookup"><span data-stu-id="84497-134"><a name="PageNotFound"></a> Page not found</span></span>  
+ <span data-ttu-id="84497-135">Hello **страница не найдена** шаблон позволяет вам toocustomize hello страница не найдена страница на портале разработчиков hello.</span><span class="sxs-lookup"><span data-stu-id="84497-135">hello **page not found** template allows you toocustomize hello page not found page in hello developer portal.</span></span>  
   
- <span data-ttu-id="d2e16-136">![Страница не найдена](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "шаблон страницы с ошибкой "Страница не найдена" на портале разработчика APIM")</span><span class="sxs-lookup"><span data-stu-id="d2e16-136">![Not Found Page](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM Not Found Page Developer Portal Templates")</span></span>  
+ <span data-ttu-id="84497-136">![Страница не найдена](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "шаблон страницы с ошибкой "Страница не найдена" на портале разработчика APIM")</span><span class="sxs-lookup"><span data-stu-id="84497-136">![Not Found Page](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM Not Found Page Developer Portal Templates")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="d2e16-137">Шаблон по умолчанию</span><span class="sxs-lookup"><span data-stu-id="d2e16-137">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="84497-137">Шаблон по умолчанию</span><span class="sxs-lookup"><span data-stu-id="84497-137">Default template</span></span>  
   
 ```xml  
 <h2>{% localized "NotFoundStrings|PageTitleNotFound" %}</h2>  
@@ -218,20 +218,20 @@ ms.lasthandoff: 07/11/2017
 </p>  
 ```  
   
-### <a name="controls"></a><span data-ttu-id="d2e16-138">Управление</span><span class="sxs-lookup"><span data-stu-id="d2e16-138">Controls</span></span>  
- <span data-ttu-id="d2e16-139">Этот шаблон не может использовать [элементы управления страницы](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="d2e16-139">This template may  not use any [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="84497-138">Управление</span><span class="sxs-lookup"><span data-stu-id="84497-138">Controls</span></span>  
+ <span data-ttu-id="84497-139">Этот шаблон не может использовать [элементы управления страницы](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="84497-139">This template may  not use any [page controls](api-management-page-controls.md).</span></span>  
   
-### <a name="data-model"></a><span data-ttu-id="d2e16-140">Модель данных</span><span class="sxs-lookup"><span data-stu-id="d2e16-140">Data model</span></span>  
+### <a name="data-model"></a><span data-ttu-id="84497-140">Модель данных</span><span class="sxs-lookup"><span data-stu-id="84497-140">Data model</span></span>  
   
-|<span data-ttu-id="d2e16-141">Свойство</span><span class="sxs-lookup"><span data-stu-id="d2e16-141">Property</span></span>|<span data-ttu-id="d2e16-142">Тип</span><span class="sxs-lookup"><span data-stu-id="d2e16-142">Type</span></span>|<span data-ttu-id="d2e16-143">Описание</span><span class="sxs-lookup"><span data-stu-id="d2e16-143">Description</span></span>|  
+|<span data-ttu-id="84497-141">Свойство</span><span class="sxs-lookup"><span data-stu-id="84497-141">Property</span></span>|<span data-ttu-id="84497-142">Тип</span><span class="sxs-lookup"><span data-stu-id="84497-142">Type</span></span>|<span data-ttu-id="84497-143">Описание</span><span class="sxs-lookup"><span data-stu-id="84497-143">Description</span></span>|  
 |--------------|----------|-----------------|  
-|<span data-ttu-id="d2e16-144">referenceCode</span><span class="sxs-lookup"><span data-stu-id="d2e16-144">referenceCode</span></span>|<span data-ttu-id="d2e16-145">строка</span><span class="sxs-lookup"><span data-stu-id="d2e16-145">string</span></span>|<span data-ttu-id="d2e16-146">Код формируется, если эта страница отобразилась в результате внутренней ошибки.</span><span class="sxs-lookup"><span data-stu-id="d2e16-146">Code generated if this page was displayed as the result of an internal error.</span></span>|  
-|<span data-ttu-id="d2e16-147">errorCode</span><span class="sxs-lookup"><span data-stu-id="d2e16-147">errorCode</span></span>|<span data-ttu-id="d2e16-148">строка</span><span class="sxs-lookup"><span data-stu-id="d2e16-148">string</span></span>|<span data-ttu-id="d2e16-149">Код формируется, если эта страница отобразилась в результате внутренней ошибки.</span><span class="sxs-lookup"><span data-stu-id="d2e16-149">Code generated if this page was displayed as the result of an internal error.</span></span>|  
-|<span data-ttu-id="d2e16-150">emailBody</span><span class="sxs-lookup"><span data-stu-id="d2e16-150">emailBody</span></span>|<span data-ttu-id="d2e16-151">строка</span><span class="sxs-lookup"><span data-stu-id="d2e16-151">string</span></span>|<span data-ttu-id="d2e16-152">Текст сообщения электронной почты формируется, если эта страница отобразилась в результате внутренней ошибки.</span><span class="sxs-lookup"><span data-stu-id="d2e16-152">Email body generated if this page was displayed as the result of an internal error.</span></span>|  
-|<span data-ttu-id="d2e16-153">requestedUrl</span><span class="sxs-lookup"><span data-stu-id="d2e16-153">requestedUrl</span></span>|<span data-ttu-id="d2e16-154">строка</span><span class="sxs-lookup"><span data-stu-id="d2e16-154">string</span></span>|<span data-ttu-id="d2e16-155">URL-адрес, запрашиваемый, если страница не найдена.</span><span class="sxs-lookup"><span data-stu-id="d2e16-155">The URL requested when the page was not found.</span></span>|  
-|<span data-ttu-id="d2e16-156">referrerUrl</span><span class="sxs-lookup"><span data-stu-id="d2e16-156">referrerUrl</span></span>|<span data-ttu-id="d2e16-157">строка</span><span class="sxs-lookup"><span data-stu-id="d2e16-157">string</span></span>|<span data-ttu-id="d2e16-158">URL-адрес источника ссылки для запрошенного URL-адреса.</span><span class="sxs-lookup"><span data-stu-id="d2e16-158">The referrer URL to the requested URL.</span></span>|  
+|<span data-ttu-id="84497-144">referenceCode</span><span class="sxs-lookup"><span data-stu-id="84497-144">referenceCode</span></span>|<span data-ttu-id="84497-145">string</span><span class="sxs-lookup"><span data-stu-id="84497-145">string</span></span>|<span data-ttu-id="84497-146">Код, созданный, если эта страница отображается как результат hello внутренней ошибки.</span><span class="sxs-lookup"><span data-stu-id="84497-146">Code generated if this page was displayed as hello result of an internal error.</span></span>|  
+|<span data-ttu-id="84497-147">errorCode</span><span class="sxs-lookup"><span data-stu-id="84497-147">errorCode</span></span>|<span data-ttu-id="84497-148">string</span><span class="sxs-lookup"><span data-stu-id="84497-148">string</span></span>|<span data-ttu-id="84497-149">Код, созданный, если эта страница отображается как результат hello внутренней ошибки.</span><span class="sxs-lookup"><span data-stu-id="84497-149">Code generated if this page was displayed as hello result of an internal error.</span></span>|  
+|<span data-ttu-id="84497-150">emailBody</span><span class="sxs-lookup"><span data-stu-id="84497-150">emailBody</span></span>|<span data-ttu-id="84497-151">string</span><span class="sxs-lookup"><span data-stu-id="84497-151">string</span></span>|<span data-ttu-id="84497-152">Текст, если отображается эта страница hello результате внутренней ошибки сообщения.</span><span class="sxs-lookup"><span data-stu-id="84497-152">Email body generated if this page was displayed as hello result of an internal error.</span></span>|  
+|<span data-ttu-id="84497-153">requestedUrl</span><span class="sxs-lookup"><span data-stu-id="84497-153">requestedUrl</span></span>|<span data-ttu-id="84497-154">string</span><span class="sxs-lookup"><span data-stu-id="84497-154">string</span></span>|<span data-ttu-id="84497-155">Когда страница hello не найдена Hello URL-адрес.</span><span class="sxs-lookup"><span data-stu-id="84497-155">hello URL requested when hello page was not found.</span></span>|  
+|<span data-ttu-id="84497-156">referrerUrl</span><span class="sxs-lookup"><span data-stu-id="84497-156">referrerUrl</span></span>|<span data-ttu-id="84497-157">string</span><span class="sxs-lookup"><span data-stu-id="84497-157">string</span></span>|<span data-ttu-id="84497-158">toohello URL-адрес источника ссылки Hello запрошенный URL-адрес.</span><span class="sxs-lookup"><span data-stu-id="84497-158">hello referrer URL toohello requested URL.</span></span>|  
   
-### <a name="sample-template-data"></a><span data-ttu-id="d2e16-159">Пример данных шаблона</span><span class="sxs-lookup"><span data-stu-id="d2e16-159">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="84497-159">Пример данных шаблона</span><span class="sxs-lookup"><span data-stu-id="84497-159">Sample template data</span></span>  
   
 ```json  
 {  
@@ -243,5 +243,5 @@ ms.lasthandoff: 07/11/2017
 }  
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="d2e16-160">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="d2e16-160">Next steps</span></span>
-<span data-ttu-id="d2e16-161">Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](api-management-developer-portal-templates.md).</span><span class="sxs-lookup"><span data-stu-id="d2e16-161">For more information about working with templates, see [How to customize the API Management developer portal using templates](api-management-developer-portal-templates.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="84497-160">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="84497-160">Next steps</span></span>
+<span data-ttu-id="84497-161">Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](api-management-developer-portal-templates.md).</span><span class="sxs-lookup"><span data-stu-id="84497-161">For more information about working with templates, see [How toocustomize hello API Management developer portal using templates](api-management-developer-portal-templates.md).</span></span>

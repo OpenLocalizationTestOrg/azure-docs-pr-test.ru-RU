@@ -1,6 +1,6 @@
 ---
-title: "Лимиты и ограничения службы Azure Active Directory"
-description: "Ограничения на использование и другие ограничения для службы Azure Active Directory"
+title: "ограничения и ограничения служб Active Directory aaaAzure"
+description: "Ограничения использования и другие ограничения службы hello службы Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,17 +15,17 @@ ms.workload: identity
 ms.date: 05/08/2017
 ms.author: curtand
 ms.custom: aaddev
-ms.openlocfilehash: 100cfb213917854b0bfbaccdd46ea625d721c59c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3971cb40ed53d6e0c11f124f334d1dc6a2cdf769
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-service-limits-and-restrictions"></a><span data-ttu-id="17f34-103">Ограничения службы Azure AD</span><span class="sxs-lookup"><span data-stu-id="17f34-103">Azure AD service limits and restrictions</span></span>
-<span data-ttu-id="17f34-104">В этой статье перечислены ограничения на использование и другие ограничения для службы Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="17f34-104">This article contains the usage constraints and other service limits for the Azure Active Directory (Azure AD) service.</span></span> <span data-ttu-id="17f34-105">Если вам нужен полный список ограничений для службы Microsoft Azure, ознакомьтесь со статьей [Подписка Azure, границы, квоты и ограничения службы](../azure-subscription-service-limits.md).</span><span class="sxs-lookup"><span data-stu-id="17f34-105">If you’re looking for the full set of Microsoft Azure service limits, see [Azure Subscription and Service Limits, Quotas, and Constraints](../azure-subscription-service-limits.md).</span></span>
+# <a name="azure-ad-service-limits-and-restrictions"></a><span data-ttu-id="aeb37-103">Ограничения службы Azure AD</span><span class="sxs-lookup"><span data-stu-id="aeb37-103">Azure AD service limits and restrictions</span></span>
+<span data-ttu-id="aeb37-104">Эта статья содержит ограничения использования hello и другие ограничения службы hello службы Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="aeb37-104">This article contains hello usage constraints and other service limits for hello Azure Active Directory (Azure AD) service.</span></span> <span data-ttu-id="aeb37-105">Если вы ищете hello полный набор ограничений службы Microsoft Azure, см. раздел [подписки Azure и ограничения служб, квоты и ограничения](../azure-subscription-service-limits.md).</span><span class="sxs-lookup"><span data-stu-id="aeb37-105">If you’re looking for hello full set of Microsoft Azure service limits, see [Azure Subscription and Service Limits, Quotas, and Constraints](../azure-subscription-service-limits.md).</span></span>
 
 [!INCLUDE [AAD-service-limits](../../includes/active-directory-service-limits-include.md)]
 
-## <a name="whats-next"></a><span data-ttu-id="17f34-106">Что дальше?</span><span class="sxs-lookup"><span data-stu-id="17f34-106">What's next</span></span>
-* [<span data-ttu-id="17f34-107">Регистрация организации в Azure</span><span class="sxs-lookup"><span data-stu-id="17f34-107">Sign up for Azure as an organization</span></span>](sign-up-organization.md)
-* [<span data-ttu-id="17f34-108">Как подписки Azure связаны с Azure AD</span><span class="sxs-lookup"><span data-stu-id="17f34-108">How Azure subscriptions are associated with Azure AD</span></span>](active-directory-how-subscriptions-associated-directory.md)
+## <a name="whats-next"></a><span data-ttu-id="aeb37-106">Что дальше?</span><span class="sxs-lookup"><span data-stu-id="aeb37-106">What's next</span></span>
+* [<span data-ttu-id="aeb37-107">Регистрация организации в Azure</span><span class="sxs-lookup"><span data-stu-id="aeb37-107">Sign up for Azure as an organization</span></span>](sign-up-organization.md)
+* [<span data-ttu-id="aeb37-108">Как подписки Azure связаны с Azure AD</span><span class="sxs-lookup"><span data-stu-id="aeb37-108">How Azure subscriptions are associated with Azure AD</span></span>](active-directory-how-subscriptions-associated-directory.md)

@@ -1,6 +1,6 @@
 ---
-title: "Публикация приложения в Azure RemoteApp | Документация Майкрософт"
-description: "Узнайте, как публиковать приложения и ресурсы в Azure RemoteApp."
+title: "приложение в Azure RemoteApp aaaPublish | Документы Microsoft"
+description: "Узнайте, как toopublish приложения и ресурсы в Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,33 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 4565fa498dbadd0601004c73bfee5171efe1fad1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7d92187e9ed999ac79554c9bb61f56a8eceeb31
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-publish-an-app-in-remoteapp"></a><span data-ttu-id="b5658-103">Публикация приложения в RemoteApp</span><span class="sxs-lookup"><span data-stu-id="b5658-103">How to publish an app in RemoteApp</span></span>
+# <a name="how-toopublish-an-app-in-remoteapp"></a><span data-ttu-id="6aa0d-103">Как toopublish приложения в удаленных приложений RemoteApp</span><span class="sxs-lookup"><span data-stu-id="6aa0d-103">How toopublish an app in RemoteApp</span></span>
 > [!IMPORTANT]
-> <span data-ttu-id="b5658-104">Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года.</span><span class="sxs-lookup"><span data-stu-id="b5658-104">Azure RemoteApp is being discontinued on August 31, 2017.</span></span> <span data-ttu-id="b5658-105">Дополнительные сведения см. в [объявлении](https://go.microsoft.com/fwlink/?linkid=821148).</span><span class="sxs-lookup"><span data-stu-id="b5658-105">Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.</span></span>
+> <span data-ttu-id="6aa0d-104">Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-104">Azure RemoteApp is being discontinued on August 31, 2017.</span></span> <span data-ttu-id="6aa0d-105">Чтение hello [объявления](https://go.microsoft.com/fwlink/?linkid=821148) подробные сведения.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-105">Read hello [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.</span></span>
 > 
 > 
 
-<span data-ttu-id="b5658-106">После создания коллекции RemoteApp необходимо опубликовать приложения или ресурсы, которые должны быть доступны пользователям.</span><span class="sxs-lookup"><span data-stu-id="b5658-106">After you create your RemoteApp collection, you need to publish the apps or resources that you want to make available for your users.</span></span> <span data-ttu-id="b5658-107">Образы шаблонов, входящие в подписку, по умолчанию содержат только некоторые приложения. Чтобы открыть доступ к другим приложениям, их необходимо опубликовать.</span><span class="sxs-lookup"><span data-stu-id="b5658-107">The template images provided with your subscription only have a few apps published by default - to share the other apps, you need to publish them.</span></span>
-
-> [!NOTE]
-> <span data-ttu-id="b5658-108">Если вы хотите обновить приложение,</span><span class="sxs-lookup"><span data-stu-id="b5658-108">Do you need to update an app?</span></span> <span data-ttu-id="b5658-109">сначала [обновите образ](remoteapp-update.md).</span><span class="sxs-lookup"><span data-stu-id="b5658-109">You'll need to [update the image](remoteapp-update.md) first.</span></span>
-> 
-> 
-
-<span data-ttu-id="b5658-110">На вкладке **Публикация** портала щелкните **Опубликовать**.</span><span class="sxs-lookup"><span data-stu-id="b5658-110">On the **Publishing** tab in the portal, click **Publish**.</span></span> <span data-ttu-id="b5658-111">Вы можете добавить приложение из меню **Пуск** образа шаблона или указать путь, по которому оно установлено в образе.</span><span class="sxs-lookup"><span data-stu-id="b5658-111">You can either add an app from your template image's **Start** menu or provide the path to where the app is installed on the template image.</span></span> <span data-ttu-id="b5658-112">При использовании меню **Пуск** выберите нужное приложение в списке.</span><span class="sxs-lookup"><span data-stu-id="b5658-112">If you choose to add from the **Start** menu, choose the app to publish from the list.</span></span> <span data-ttu-id="b5658-113">Если указывается путь к приложению, введите его имя и путь.</span><span class="sxs-lookup"><span data-stu-id="b5658-113">If you choose to provide the path to the app, enter a name for the app and the path to the app.</span></span> <span data-ttu-id="b5658-114">Используйте в пути переменные, например "%systemdrive%" вместо "c:\\".</span><span class="sxs-lookup"><span data-stu-id="b5658-114">Use variables in the path - for example, "%systemdrive%" instead of "c:\".</span></span>
+<span data-ttu-id="6aa0d-106">После создания коллекции RemoteApp необходимо приложения hello toopublish или ресурсы необходимо toomake доступны для пользователей.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-106">After you create your RemoteApp collection, you need toopublish hello apps or resources that you want toomake available for your users.</span></span> <span data-ttu-id="6aa0d-107">Hello образы шаблонов, предоставленного с подпиской достаточно нескольких приложений публикации по умолчанию - tooshare hello другие приложения, необходимо toopublish их.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-107">hello template images provided with your subscription only have a few apps published by default - tooshare hello other apps, you need toopublish them.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b5658-115">Если вы хотите добавить приложение из меню **Пуск**, необходимо заранее *добавить это приложение в меню **Пуск** в образе шаблона*.</span><span class="sxs-lookup"><span data-stu-id="b5658-115">If you want to add your app from the **Start** menu, you need to have *added that app to the **Start** menu on your template image.*</span></span> <span data-ttu-id="b5658-116">В противном случае RemoteApp распознает только те приложения, которые *добавлены* в меню **Пуск**.</span><span class="sxs-lookup"><span data-stu-id="b5658-116">Otherwise, RemoteApp will only see what *is* on the **Start** menu, and you will be confused.</span></span> 
+> <span data-ttu-id="6aa0d-108">Требуется tooupdate приложения?</span><span class="sxs-lookup"><span data-stu-id="6aa0d-108">Do you need tooupdate an app?</span></span> <span data-ttu-id="6aa0d-109">Вам потребуется слишком[обновление образа hello](remoteapp-update.md) первой.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-109">You'll need too[update hello image](remoteapp-update.md) first.</span></span>
 > 
-> <span data-ttu-id="b5658-117">Чтобы ваше приложение было размещено в меню **Пуск**, поместите файл ярлыка (**.lnk**) в папку %systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs.</span><span class="sxs-lookup"><span data-stu-id="b5658-117">To make sure your app is in the **Start** menu, place a shortcut file - **.lnk** - inside the %systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs folder.</span></span>
 > 
-> <span data-ttu-id="b5658-118">Если вы забыли добавить приложение в меню **Пуск** при создании шаблона, добавьте путь к приложению.</span><span class="sxs-lookup"><span data-stu-id="b5658-118">If you forgot to add the app to the **Start** menu when you created the template, choose to add the path to the app.</span></span> <span data-ttu-id="b5658-119">(или создайте образ шаблона заново, что потребует больше усилий).</span><span class="sxs-lookup"><span data-stu-id="b5658-119">(Or recreate your template image, but that's quite a bit more work.)</span></span>
+
+<span data-ttu-id="6aa0d-110">На hello **публикации** hello портала, нажмите кнопку **публикации**.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-110">On hello **Publishing** tab in hello portal, click **Publish**.</span></span> <span data-ttu-id="6aa0d-111">Можно либо добавить приложение из образа шаблона **запустить** меню или укажите приложение hello hello путь toowhere устанавливается на образ шаблона hello.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-111">You can either add an app from your template image's **Start** menu or provide hello path toowhere hello app is installed on hello template image.</span></span> <span data-ttu-id="6aa0d-112">Если выбрать tooadd hello **запустить** меню, выберите из списка hello toopublish приложения hello.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-112">If you choose tooadd from hello **Start** menu, choose hello app toopublish from hello list.</span></span> <span data-ttu-id="6aa0d-113">Если приложение toohello tooprovide hello путь, введите имя для приложения hello и toohello приложение hello путь.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-113">If you choose tooprovide hello path toohello app, enter a name for hello app and hello path toohello app.</span></span> <span data-ttu-id="6aa0d-114">Используйте переменные пути hello - например, «% systemdrive %» вместо «c:\".</span><span class="sxs-lookup"><span data-stu-id="6aa0d-114">Use variables in hello path - for example, "%systemdrive%" instead of "c:\".</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="6aa0d-115">Если требуется tooadd приложения hello **запустить** меню, необходимо toohave *добавлены toohello этого приложения **запустить** меню образ шаблона.*</span><span class="sxs-lookup"><span data-stu-id="6aa0d-115">If you want tooadd your app from hello **Start** menu, you need toohave *added that app toohello **Start** menu on your template image.*</span></span> <span data-ttu-id="6aa0d-116">В противном случае RemoteApp будет доступна только в том, что *—* на hello **запустить** меню и будет спутать.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-116">Otherwise, RemoteApp will only see what *is* on hello **Start** menu, and you will be confused.</span></span> 
+> 
+> <span data-ttu-id="6aa0d-117">toomake убедиться, что приложение установлено в hello **запустить** меню, поместите файл ярлыка - **.lnk** — в папке Menu\Programs %systemdrive%\ProgramData\Microsoft\Windows\Start hello.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-117">toomake sure your app is in hello **Start** menu, place a shortcut file - **.lnk** - inside hello %systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs folder.</span></span>
+> 
+> <span data-ttu-id="6aa0d-118">Если вы забыли toohello приложения hello tooadd **запустить** меню при создании шаблона hello, выберите приложение toohello tooadd hello пути.</span><span class="sxs-lookup"><span data-stu-id="6aa0d-118">If you forgot tooadd hello app toohello **Start** menu when you created hello template, choose tooadd hello path toohello app.</span></span> <span data-ttu-id="6aa0d-119">(или создайте образ шаблона заново, что потребует больше усилий).</span><span class="sxs-lookup"><span data-stu-id="6aa0d-119">(Or recreate your template image, but that's quite a bit more work.)</span></span>
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: "Документация по хранилищу данных SQL Azure. Руководства и справочник по API | Документация Майкрософт"
-description: "Узнайте, как использовать хранилище данных SQL для объединения SQL Server и вычислений с массовым параллелизмом. В документации описывается загрузка, анализ, контроль и экспорт данных."
+title: "aaaAzure документации хранилища данных SQL - учебники, справочник по API | Документы Microsoft"
+description: "Узнайте, как хранилище данных SQL, объединяя SQL Server с высокой степенью toouse параллельная обработка. Документации показано, как tooload, анализа, управления и экспортировать данные."
 services: sql-data-warehouse
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b9f5bc85d6fca466be7abbe67b400856e1635459
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a3deb9fe2dbd29cdc250510ca7368b4d71422658
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-data-warehouse-documentation"></a>Документация по хранилищу данных SQL
 
-Узнайте, как использовать хранилище данных SQL, в котором объединена реляционная база данных SQL Server и вычисления с массовым параллелизмом. В руководствах и другой документации показано, как загрузить данные в хранилище, а затем анализировать, экспортировать их и управлять ими.
+Дополнительные сведения о том, как toouse хранилище данных SQL, который объединяет в себе реляционной базы данных SQL Server hello с расширенной параллельной обработки. Учебники и другой документации показано, как tooload данных в хранилище hello, затем анализа, управления и экспортировать его.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -71,7 +71,7 @@ ms.lasthandoff: 07/19/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Начало работы с хранилищем данных SQL на портале Azure</h3>
+                        <h3>Приступая к созданию хранилища данных SQL с помощью портала Azure hello</h3>
                     </div>
                 </div>
             </div>

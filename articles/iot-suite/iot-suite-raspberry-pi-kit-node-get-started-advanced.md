@@ -1,6 +1,6 @@
 ---
-title: "Подключение устройства Raspberry Pi к Azure IoT Suite с помощью Node.js для поддержки обновлений встроенного ПО | Документация Майкрософт"
-description: "Используйте начальный набор Microsoft Azure IoT для Raspberry Pi 3, а также Azure IoT Suite. Используйте Node.js для подключения устройства Raspberry Pi к решению для удаленного мониторинга, отправляйте данные телеметрии с датчиков в облако, а также выполняйте удаленное обновление встроенного ПО."
+title: "обновляет IoT Suite, с помощью встроенного по Node.js toosupport aaaConnect tooAzure Raspberry Pi | Документы Microsoft"
+description: "Используйте hello Microsoft Azure IoT начального набора для hello Raspberry Pi 3 и Azure IoT Suite. Использовать Node.js tooconnect toohello вашей Raspberry Pi удаленного решением для мониторинга, отправка данных телеметрии с датчиками toohello облака и обновления удаленного встроенного."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -14,164 +14,164 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 54503d5d6a636239d240509d7d09cf334234bac7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 43bd3f16ee3d292cd9cffa8bfe7d4ca721e5c39c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a><span data-ttu-id="7e303-104">Подключение устройства Raspberry Pi 3 к решению для удаленного мониторинга и включение удаленных обновлений встроенного ПО с помощью Node.js</span><span class="sxs-lookup"><span data-stu-id="7e303-104">Connect your Raspberry Pi 3 to the remote monitoring solution and enable remote firmware updates using Node.js</span></span>
+# <a name="connect-your-raspberry-pi-3-toohello-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a><span data-ttu-id="229b9-104">Подключение toohello вашей Raspberry Pi 3 удаленного решением для мониторинга и включить обновление удаленного встроенного по, с помощью Node.js</span><span class="sxs-lookup"><span data-stu-id="229b9-104">Connect your Raspberry Pi 3 toohello remote monitoring solution and enable remote firmware updates using Node.js</span></span>
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-selector](../../includes/iot-suite-raspberry-pi-kit-selector.md)]
 
-<span data-ttu-id="7e303-105">В этом руководстве показано, как можно получить следующие возможности, используя начальный набор Интернета вещей Microsoft Azure для Raspberry Pi 3:</span><span class="sxs-lookup"><span data-stu-id="7e303-105">This tutorial shows you how to use the Microsoft Azure IoT Starter Kit for Raspberry Pi 3 to:</span></span>
+<span data-ttu-id="229b9-105">В этом учебнике показано, как toouse hello Microsoft Azure IoT начального набора для 3 Raspberry Pi, чтобы:</span><span class="sxs-lookup"><span data-stu-id="229b9-105">This tutorial shows you how toouse hello Microsoft Azure IoT Starter Kit for Raspberry Pi 3 to:</span></span>
 
-* <span data-ttu-id="7e303-106">Разработка средства чтения данных о температуре и влажности, которое может взаимодействовать с облаком.</span><span class="sxs-lookup"><span data-stu-id="7e303-106">Develop a temperature and humidity reader that can communicate with the cloud.</span></span>
-* <span data-ttu-id="7e303-107">Включение и выполнение удаленного обновления встроенного ПО для обновления клиентского приложения на устройстве Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="7e303-107">Enable and perform a remote firmware update to update the client application on the Raspberry Pi.</span></span>
+* <span data-ttu-id="229b9-106">Разработка температуры и влажности чтения, которая может обмениваться данными с облаком hello.</span><span class="sxs-lookup"><span data-stu-id="229b9-106">Develop a temperature and humidity reader that can communicate with hello cloud.</span></span>
+* <span data-ttu-id="229b9-107">Включить и выполнять клиентское приложение hello tooupdate обновления удаленного встроенного по на hello Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="229b9-107">Enable and perform a remote firmware update tooupdate hello client application on hello Raspberry Pi.</span></span>
 
-<span data-ttu-id="7e303-108">В руководстве используются следующие ресурсы:</span><span class="sxs-lookup"><span data-stu-id="7e303-108">The tutorial uses:</span></span>
+<span data-ttu-id="229b9-108">Hello учебнике используется:</span><span class="sxs-lookup"><span data-stu-id="229b9-108">hello tutorial uses:</span></span>
 
-- <span data-ttu-id="7e303-109">Операционная система Raspbian, язык программирования Node.js и пакет SDK Microsoft Azure IoT для Node.js для реализации примера устройства.</span><span class="sxs-lookup"><span data-stu-id="7e303-109">Raspbian OS, the Node.js programming language, and the Microsoft Azure IoT SDK for Node.js to implement a sample device.</span></span>
-- <span data-ttu-id="7e303-110">Предварительно настроенное решение для удаленного мониторинга IoT Suite в качестве облачного сервера.</span><span class="sxs-lookup"><span data-stu-id="7e303-110">The IoT Suite remote monitoring preconfigured solution as the cloud-based back end.</span></span>
+- <span data-ttu-id="229b9-109">ОС Raspbian hello Node.js языка программирования и hello Microsoft Azure IoT SDK для Node.js tooimplement устройства образца.</span><span class="sxs-lookup"><span data-stu-id="229b9-109">Raspbian OS, hello Node.js programming language, and hello Microsoft Azure IoT SDK for Node.js tooimplement a sample device.</span></span>
+- <span data-ttu-id="229b9-110">удаленный мониторинг Hello IoT Suite предварительно настроить решение в hello облачной серверной части.</span><span class="sxs-lookup"><span data-stu-id="229b9-110">hello IoT Suite remote monitoring preconfigured solution as hello cloud-based back end.</span></span>
 
-## <a name="overview"></a><span data-ttu-id="7e303-111">Обзор</span><span class="sxs-lookup"><span data-stu-id="7e303-111">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="229b9-111">Обзор</span><span class="sxs-lookup"><span data-stu-id="229b9-111">Overview</span></span>
 
-<span data-ttu-id="7e303-112">В этом руководстве выполняются следующие шаги:</span><span class="sxs-lookup"><span data-stu-id="7e303-112">In this tutorial, you complete the following steps:</span></span>
+<span data-ttu-id="229b9-112">В этом учебнике необходимо выполнить следующие шаги hello.</span><span class="sxs-lookup"><span data-stu-id="229b9-112">In this tutorial, you complete hello following steps:</span></span>
 
-- <span data-ttu-id="7e303-113">Развертывание экземпляра предварительно настроенного решения удаленного мониторинга в подписке Azure.</span><span class="sxs-lookup"><span data-stu-id="7e303-113">Deploy an instance of the remote monitoring preconfigured solution to your Azure subscription.</span></span> <span data-ttu-id="7e303-114">На этом шаге автоматически разворачивается и настраивается несколько служб Azure.</span><span class="sxs-lookup"><span data-stu-id="7e303-114">This step automatically deploys and configures multiple Azure services.</span></span>
-- <span data-ttu-id="7e303-115">Настройка устройства и датчиков для взаимодействия с компьютером и решением для удаленного мониторинга.</span><span class="sxs-lookup"><span data-stu-id="7e303-115">Set up your device and sensors to communicate with your computer and the remote monitoring solution.</span></span>
-- <span data-ttu-id="7e303-116">Обновление кода примера устройства для подключения к решению для удаленного мониторинга и отправка данных телеметрии, которые можно просмотреть на панели мониторинга решения.</span><span class="sxs-lookup"><span data-stu-id="7e303-116">Update the sample device code to connect to the remote monitoring solution, and send telemetry that you can view on the solution dashboard.</span></span>
-- <span data-ttu-id="7e303-117">Обновление клиентского приложения с помощью примера кода устройства.</span><span class="sxs-lookup"><span data-stu-id="7e303-117">Use the sample device code to update the client application.</span></span>
+- <span data-ttu-id="229b9-113">Разверните экземпляр hello удаленного мониторинга предварительно настроенных решений tooyour подписки Azure.</span><span class="sxs-lookup"><span data-stu-id="229b9-113">Deploy an instance of hello remote monitoring preconfigured solution tooyour Azure subscription.</span></span> <span data-ttu-id="229b9-114">На этом шаге автоматически разворачивается и настраивается несколько служб Azure.</span><span class="sxs-lookup"><span data-stu-id="229b9-114">This step automatically deploys and configures multiple Azure services.</span></span>
+- <span data-ttu-id="229b9-115">Настройка вашего устройства и датчики toocommunicate на компьютер и hello удаленного решением для мониторинга.</span><span class="sxs-lookup"><span data-stu-id="229b9-115">Set up your device and sensors toocommunicate with your computer and hello remote monitoring solution.</span></span>
+- <span data-ttu-id="229b9-116">Обновите hello образец кода tooconnect toohello удаленного мониторинга устройствами и отправлять данные телеметрии, можно просмотреть на панели мониторинга hello решения.</span><span class="sxs-lookup"><span data-stu-id="229b9-116">Update hello sample device code tooconnect toohello remote monitoring solution, and send telemetry that you can view on hello solution dashboard.</span></span>
+- <span data-ttu-id="229b9-117">Используйте hello образец кода устройства tooupdate hello клиентского приложения.</span><span class="sxs-lookup"><span data-stu-id="229b9-117">Use hello sample device code tooupdate hello client application.</span></span>
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-prerequisites](../../includes/iot-suite-raspberry-pi-kit-prerequisites.md)]
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> <span data-ttu-id="7e303-118">Решение для удаленного мониторинга подготавливает набор служб Azure в подписке Azure.</span><span class="sxs-lookup"><span data-stu-id="7e303-118">The remote monitoring solution provisions a set of Azure services in your Azure subscription.</span></span> <span data-ttu-id="7e303-119">Развертывание отражает реальную корпоративную архитектуру.</span><span class="sxs-lookup"><span data-stu-id="7e303-119">The deployment reflects a real enterprise architecture.</span></span> <span data-ttu-id="7e303-120">Чтобы избежать ненужных расходов на использование ресурсов Azure, удалите экземпляр предварительно настроенного решения на сайте azureiotsuite.com после завершения работы с ним.</span><span class="sxs-lookup"><span data-stu-id="7e303-120">To avoid unnecessary Azure consumption charges, delete your instance of the preconfigured solution at azureiotsuite.com when you have finished with it.</span></span> <span data-ttu-id="7e303-121">Если предварительно настроенное решение понадобится снова, его можно легко восстановить.</span><span class="sxs-lookup"><span data-stu-id="7e303-121">If you need the preconfigured solution again, you can easily recreate it.</span></span> <span data-ttu-id="7e303-122">Дополнительные сведения о сокращении затрат во время выполнения решения для удаленного мониторинга см. в статье [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config] (Настройка предварительно настроенных решений Azure IoT Suite для демонстрационных целей).</span><span class="sxs-lookup"><span data-stu-id="7e303-122">For more information about reducing consumption while the remote monitoring solution runs, see [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config].</span></span>
+> <span data-ttu-id="229b9-118">Hello удаленного мониторинга решения подготавливает набор служб Azure в подписке Azure.</span><span class="sxs-lookup"><span data-stu-id="229b9-118">hello remote monitoring solution provisions a set of Azure services in your Azure subscription.</span></span> <span data-ttu-id="229b9-119">Развертывание Hello отражает реальные корпоративной архитектуре.</span><span class="sxs-lookup"><span data-stu-id="229b9-119">hello deployment reflects a real enterprise architecture.</span></span> <span data-ttu-id="229b9-120">плата tooavoid ненужные использование Azure, удаление экземпляра hello предварительно настроенное решение в azureiotsuite.com после завершения с ним.</span><span class="sxs-lookup"><span data-stu-id="229b9-120">tooavoid unnecessary Azure consumption charges, delete your instance of hello preconfigured solution at azureiotsuite.com when you have finished with it.</span></span> <span data-ttu-id="229b9-121">Если предварительно настроенных решений требуется hello еще раз, то ее можно легко восстановить.</span><span class="sxs-lookup"><span data-stu-id="229b9-121">If you need hello preconfigured solution again, you can easily recreate it.</span></span> <span data-ttu-id="229b9-122">Дополнительные сведения о снижения объема используемой при hello удаленное наблюдение выполняется решение в разделе [Настройка Azure IoT Suite предварительно настроенных решений в целях демонстрации][lnk-demo-config].</span><span class="sxs-lookup"><span data-stu-id="229b9-122">For more information about reducing consumption while hello remote monitoring solution runs, see [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config].</span></span>
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-solution](../../includes/iot-suite-raspberry-pi-kit-view-solution.md)]
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-prepare-pi](../../includes/iot-suite-raspberry-pi-kit-prepare-pi.md)]
 
-## <a name="download-and-configure-the-sample"></a><span data-ttu-id="7e303-123">Скачивание и настройка примера</span><span class="sxs-lookup"><span data-stu-id="7e303-123">Download and configure the sample</span></span>
+## <a name="download-and-configure-hello-sample"></a><span data-ttu-id="229b9-123">Загрузить и настроить образец hello</span><span class="sxs-lookup"><span data-stu-id="229b9-123">Download and configure hello sample</span></span>
 
-<span data-ttu-id="7e303-124">Теперь можно скачать и настроить клиентское приложение для удаленного мониторинга на устройстве Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="7e303-124">You can now download and configure the remote monitoring client application on your Raspberry Pi.</span></span>
+<span data-ttu-id="229b9-124">Теперь можно загрузить и настроить hello удаленного мониторинга клиентского приложения на ваш Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="229b9-124">You can now download and configure hello remote monitoring client application on your Raspberry Pi.</span></span>
 
-### <a name="install-nodejs"></a><span data-ttu-id="7e303-125">Установка Node.js</span><span class="sxs-lookup"><span data-stu-id="7e303-125">Install Node.js</span></span>
+### <a name="install-nodejs"></a><span data-ttu-id="229b9-125">Установка Node.js</span><span class="sxs-lookup"><span data-stu-id="229b9-125">Install Node.js</span></span>
 
-<span data-ttu-id="7e303-126">Установите Node.js на устройстве Raspberry Pi, если вы это еще не сделали.</span><span class="sxs-lookup"><span data-stu-id="7e303-126">If you haven't done so already, install Node.js on your Raspberry Pi.</span></span> <span data-ttu-id="7e303-127">Для пакета SDK IoT для Node.js требуется версия Node.js 0.11.5 или более поздняя.</span><span class="sxs-lookup"><span data-stu-id="7e303-127">The IoT SDK for Node.js requires version 0.11.5 of Node.js or later.</span></span> <span data-ttu-id="7e303-128">Ниже описывается установка Node.js версии 6.10.2 на устройстве Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="7e303-128">The following steps show you how to install Node.js v6.10.2 on your Raspberry Pi:</span></span>
+<span data-ttu-id="229b9-126">Установите Node.js на устройстве Raspberry Pi, если вы это еще не сделали.</span><span class="sxs-lookup"><span data-stu-id="229b9-126">If you haven't done so already, install Node.js on your Raspberry Pi.</span></span> <span data-ttu-id="229b9-127">Hello IoT пакет SDK для Node.js требует 0.11.5 Node.js или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="229b9-127">hello IoT SDK for Node.js requires version 0.11.5 of Node.js or later.</span></span> <span data-ttu-id="229b9-128">Hello следующие шаги показывают, как tooinstall v6.10.2 Node.js на ваш Pi Raspberry:</span><span class="sxs-lookup"><span data-stu-id="229b9-128">hello following steps show you how tooinstall Node.js v6.10.2 on your Raspberry Pi:</span></span>
 
-1. <span data-ttu-id="7e303-129">Чтобы обновить устройство Raspberry Pi, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="7e303-129">Use the following command to update your Raspberry Pi:</span></span>
+1. <span data-ttu-id="229b9-129">Используйте hello следующая команда tooupdate вашей Pi Raspberry:</span><span class="sxs-lookup"><span data-stu-id="229b9-129">Use hello following command tooupdate your Raspberry Pi:</span></span>
 
     ```sh
     sudo apt-get update
     ```
 
-1. <span data-ttu-id="7e303-130">Чтобы скачать двоичные файлы Node.js на устройство Raspberry Pi, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="7e303-130">Use the following command to download the Node.js binaries to your Raspberry Pi:</span></span>
+1. <span data-ttu-id="229b9-130">Используйте следующие двоичные файлы Node.js tooyour Raspberry Pi команда toodownload hello hello.</span><span class="sxs-lookup"><span data-stu-id="229b9-130">Use hello following command toodownload hello Node.js binaries tooyour Raspberry Pi:</span></span>
 
     ```sh
     wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz
     ```
 
-1. <span data-ttu-id="7e303-131">Чтобы установить эти двоичные файлы, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="7e303-131">Use the following command to install the binaries:</span></span>
+1. <span data-ttu-id="229b9-131">Используйте следующие двоичные файлы hello tooinstall команда hello.</span><span class="sxs-lookup"><span data-stu-id="229b9-131">Use hello following command tooinstall hello binaries:</span></span>
 
     ```sh
     sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz
     ```
 
-1. <span data-ttu-id="7e303-132">Чтобы убедиться в успешной установке Node.js версии 6.10.2, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="7e303-132">Use the following command to verify you have installed Node.js v6.10.2 successfully:</span></span>
+1. <span data-ttu-id="229b9-132">Используйте hello следующая команда tooverify установки Node.js v6.10.2 успешно:</span><span class="sxs-lookup"><span data-stu-id="229b9-132">Use hello following command tooverify you have installed Node.js v6.10.2 successfully:</span></span>
 
     ```sh
     node --version
     ```
 
-### <a name="clone-the-repositories"></a><span data-ttu-id="7e303-133">Клонирование репозиториев</span><span class="sxs-lookup"><span data-stu-id="7e303-133">Clone the repositories</span></span>
+### <a name="clone-hello-repositories"></a><span data-ttu-id="229b9-133">Клонирование репозиториев hello</span><span class="sxs-lookup"><span data-stu-id="229b9-133">Clone hello repositories</span></span>
 
-<span data-ttu-id="7e303-134">Клонируйте необходимые репозитории (если вы еще не сделали этого), выполнив следующие команды на устройстве Pi:</span><span class="sxs-lookup"><span data-stu-id="7e303-134">If you haven't done so already, clone the required repositories by running the following commands on your Pi:</span></span>
+<span data-ttu-id="229b9-134">Если вы еще не сделали этого, клон hello необходимые hello репозиториев, выполнив следующие команды на ваш Pi:</span><span class="sxs-lookup"><span data-stu-id="229b9-134">If you haven't done so already, clone hello required repositories by running hello following commands on your Pi:</span></span>
 
 ```sh
 cd ~
 git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git
 ```
 
-### <a name="update-the-device-connection-string"></a><span data-ttu-id="7e303-135">Обновление строки подключения устройства</span><span class="sxs-lookup"><span data-stu-id="7e303-135">Update the device connection string</span></span>
+### <a name="update-hello-device-connection-string"></a><span data-ttu-id="229b9-135">Обновление строки подключения устройства hello</span><span class="sxs-lookup"><span data-stu-id="229b9-135">Update hello device connection string</span></span>
 
-<span data-ttu-id="7e303-136">Откройте пример файла конфигурации в редакторе **nano**, используя следующую команду:</span><span class="sxs-lookup"><span data-stu-id="7e303-136">Open the sample configuration file in the **nano** editor using the following command:</span></span>
+<span data-ttu-id="229b9-136">Привет открыть образец файла конфигурации в hello **nano** редактора с помощью hello следующую команду:</span><span class="sxs-lookup"><span data-stu-id="229b9-136">Open hello sample configuration file in hello **nano** editor using hello following command:</span></span>
 
 ```sh
 nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/config/deviceinfo
 ```
 
-<span data-ttu-id="7e303-137">Замените значения заполнителей идентификатором устройства и сведениями о Центре Интернета вещей, созданном и сохраненном в начале этого руководства.</span><span class="sxs-lookup"><span data-stu-id="7e303-137">Replace the placeholder values with the device id and IoT Hub information you created and saved at the start of this tutorial.</span></span>
+<span data-ttu-id="229b9-137">Замените значения заполнителей hello идентификатор устройства hello и сведения центр IoT был создан и сохранен в начале этого учебника hello.</span><span class="sxs-lookup"><span data-stu-id="229b9-137">Replace hello placeholder values with hello device id and IoT Hub information you created and saved at hello start of this tutorial.</span></span>
 
-<span data-ttu-id="7e303-138">По завершении содержимое файла deviceinfo должно выглядеть следующим образом:</span><span class="sxs-lookup"><span data-stu-id="7e303-138">When you are done, the contents of the deviceinfo file should look like the following example:</span></span>
+<span data-ttu-id="229b9-138">Когда вы закончите, hello содержимое файла deviceinfo hello должен выглядеть hello в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="229b9-138">When you are done, hello contents of hello deviceinfo file should look like hello following example:</span></span>
 
 ```conf
 yourdeviceid
 HostName=youriothubname.azure-devices.net;DeviceId=yourdeviceid;SharedAccessKey=yourdevicekey
 ```
 
-<span data-ttu-id="7e303-139">Сохраните изменения (клавиши **CTRL+O**, **ВВОД**) и закройте редактор (клавиши **CTRL+X**).</span><span class="sxs-lookup"><span data-stu-id="7e303-139">Save your changes (**Ctrl-O**, **Enter**) and exit the editor (**Ctrl-X**).</span></span>
+<span data-ttu-id="229b9-139">Сохранить изменения (**Ctrl-O**, **ввод**) и редактор hello выхода (**Ctrl-X**).</span><span class="sxs-lookup"><span data-stu-id="229b9-139">Save your changes (**Ctrl-O**, **Enter**) and exit hello editor (**Ctrl-X**).</span></span>
 
-## <a name="run-the-sample"></a><span data-ttu-id="7e303-140">Запуск примера</span><span class="sxs-lookup"><span data-stu-id="7e303-140">Run the sample</span></span>
+## <a name="run-hello-sample"></a><span data-ttu-id="229b9-140">Запуск образца hello</span><span class="sxs-lookup"><span data-stu-id="229b9-140">Run hello sample</span></span>
 
-<span data-ttu-id="7e303-141">Чтобы установить пакеты необходимых компонентов для примера, выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="7e303-141">Run the following commands to install the prerequisite packages for the sample:</span></span>
+<span data-ttu-id="229b9-141">Выполнения hello следующими командами tooinstall hello пакеты необходимых компонентов для образца hello:</span><span class="sxs-lookup"><span data-stu-id="229b9-141">Run hello following commands tooinstall hello prerequisite packages for hello sample:</span></span>
 
 ```sh
 cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advance/1.0
 npm install
 ```
 
-<span data-ttu-id="7e303-142">Теперь вы можете запустить пример программы на устройстве Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="7e303-142">You can now run the sample program on the Raspberry Pi.</span></span> <span data-ttu-id="7e303-143">Введите команду:</span><span class="sxs-lookup"><span data-stu-id="7e303-143">Enter the command:</span></span>
+<span data-ttu-id="229b9-142">Теперь можно запустить образец hello программы для hello Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="229b9-142">You can now run hello sample program on hello Raspberry Pi.</span></span> <span data-ttu-id="229b9-143">Введите команду hello:</span><span class="sxs-lookup"><span data-stu-id="229b9-143">Enter hello command:</span></span>
 
 ```sh
 sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/1.0/remote_monitoring.js
 ```
 
-<span data-ttu-id="7e303-144">Следующий пример с выходными данными отобразится в командной строке на устройстве Raspberry Pi:</span><span class="sxs-lookup"><span data-stu-id="7e303-144">The following sample output is an example of the output you see at the command prompt on the Raspberry Pi:</span></span>
+<span data-ttu-id="229b9-144">Hello следующий результат приводится пример hello выходные данные, отображаемые на hello Raspberry Pi hello командной строке:</span><span class="sxs-lookup"><span data-stu-id="229b9-144">hello following sample output is an example of hello output you see at hello command prompt on hello Raspberry Pi:</span></span>
 
 ![Выходные данные приложения Raspberry Pi][img-raspberry-output]
 
-<span data-ttu-id="7e303-146">Вы можете в любое время нажать комбинацию клавиш **CTRL+C**, чтобы выйти из программы.</span><span class="sxs-lookup"><span data-stu-id="7e303-146">Press **Ctrl-C** to exit the program at any time.</span></span>
+<span data-ttu-id="229b9-146">Нажмите клавишу **Ctrl-C** tooexit программа hello в любое время.</span><span class="sxs-lookup"><span data-stu-id="229b9-146">Press **Ctrl-C** tooexit hello program at any time.</span></span>
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-telemetry-advanced](../../includes/iot-suite-raspberry-pi-kit-view-telemetry-advanced.md)]
 
-1. <span data-ttu-id="7e303-147">На панели мониторинга решения щелкните **Устройства**, чтобы перейти на страницу **устройств**.</span><span class="sxs-lookup"><span data-stu-id="7e303-147">In the solution dashboard, click **Devices** to visit the **Devices** page.</span></span> <span data-ttu-id="7e303-148">Выберите Raspberry Pi в **списке устройств**.</span><span class="sxs-lookup"><span data-stu-id="7e303-148">Select your Raspberry Pi in the **Device List**.</span></span> <span data-ttu-id="7e303-149">Затем выберите **Методы**:</span><span class="sxs-lookup"><span data-stu-id="7e303-149">Then choose **Methods**:</span></span>
+1. <span data-ttu-id="229b9-147">В панели мониторинга hello решение, нажмите кнопку **устройств** toovisit hello **устройств** страницы.</span><span class="sxs-lookup"><span data-stu-id="229b9-147">In hello solution dashboard, click **Devices** toovisit hello **Devices** page.</span></span> <span data-ttu-id="229b9-148">Выберите ваш Pi Raspberry в hello **список устройств**.</span><span class="sxs-lookup"><span data-stu-id="229b9-148">Select your Raspberry Pi in hello **Device List**.</span></span> <span data-ttu-id="229b9-149">Затем выберите **Методы**:</span><span class="sxs-lookup"><span data-stu-id="229b9-149">Then choose **Methods**:</span></span>
 
     ![Список устройств на панели мониторинга][img-list-devices]
 
-1. <span data-ttu-id="7e303-151">На странице **Вызвать метод** в раскрывающемся списке **методов** выберите **InitiateFirmwareUpdate**.</span><span class="sxs-lookup"><span data-stu-id="7e303-151">On the **Invoke Method** page, choose **InitiateFirmwareUpdate** in the **Method** dropdown.</span></span>
+1. <span data-ttu-id="229b9-151">На hello **вызвать метод** выберите **InitiateFirmwareUpdate** в hello **метод** раскрывающегося списка.</span><span class="sxs-lookup"><span data-stu-id="229b9-151">On hello **Invoke Method** page, choose **InitiateFirmwareUpdate** in hello **Method** dropdown.</span></span>
 
-1. <span data-ttu-id="7e303-152">В поле **FWPackageURI** введите **https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**.</span><span class="sxs-lookup"><span data-stu-id="7e303-152">In the **FWPackageURI** field, enter **https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**.</span></span> <span data-ttu-id="7e303-153">Этот файл содержит реализацию встроенного ПО версии 2.0.</span><span class="sxs-lookup"><span data-stu-id="7e303-153">This file contains the implementation of version 2.0 of the firmware.</span></span>
+1. <span data-ttu-id="229b9-152">В hello **FWPackageURI** введите **https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**.</span><span class="sxs-lookup"><span data-stu-id="229b9-152">In hello **FWPackageURI** field, enter **https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**.</span></span> <span data-ttu-id="229b9-153">Этот файл содержит реализацию hello версии 2.0 hello встроенного по.</span><span class="sxs-lookup"><span data-stu-id="229b9-153">This file contains hello implementation of version 2.0 of hello firmware.</span></span>
 
-1. <span data-ttu-id="7e303-154">Выберите **InvokeMethod**.</span><span class="sxs-lookup"><span data-stu-id="7e303-154">Choose **InvokeMethod**.</span></span> <span data-ttu-id="7e303-155">Приложение на устройстве Raspberry Pi отправляет подтверждение обратно на панель мониторинга решения.</span><span class="sxs-lookup"><span data-stu-id="7e303-155">The app on the Raspberry Pi sends an acknowledgment back to the solution dashboard.</span></span> <span data-ttu-id="7e303-156">Затем запускается процесс обновления встроенного ПО путем скачивания новой версии встроенного ПО:</span><span class="sxs-lookup"><span data-stu-id="7e303-156">It then starts the firmware update process by downloading the new version of the firmware:</span></span>
+1. <span data-ttu-id="229b9-154">Выберите **InvokeMethod**.</span><span class="sxs-lookup"><span data-stu-id="229b9-154">Choose **InvokeMethod**.</span></span> <span data-ttu-id="229b9-155">приложение Hello на hello Raspberry Pi отправляет подтверждение задней toohello решений мониторинга.</span><span class="sxs-lookup"><span data-stu-id="229b9-155">hello app on hello Raspberry Pi sends an acknowledgment back toohello solution dashboard.</span></span> <span data-ttu-id="229b9-156">Затем она запускает процесс обновления встроенного по hello путем загрузки новой версии встроенного по hello hello:</span><span class="sxs-lookup"><span data-stu-id="229b9-156">It then starts hello firmware update process by downloading hello new version of hello firmware:</span></span>
 
     ![Просмотр журнала методов][img-method-history]
 
-## <a name="observe-the-firmware-update-process"></a><span data-ttu-id="7e303-158">Просмотр процесса обновления встроенного ПО</span><span class="sxs-lookup"><span data-stu-id="7e303-158">Observe the firmware update process</span></span>
+## <a name="observe-hello-firmware-update-process"></a><span data-ttu-id="229b9-158">Контролировать процесс обновления встроенного по hello</span><span class="sxs-lookup"><span data-stu-id="229b9-158">Observe hello firmware update process</span></span>
 
-<span data-ttu-id="7e303-159">Вы можете наблюдать за выполнением процесса обновления встроенного ПО на устройстве и просматривая сообщенные свойства на панели мониторинга решения:</span><span class="sxs-lookup"><span data-stu-id="7e303-159">You can observe the firmware update process as it runs on the device and by viewing the reported properties in the solution dashboard:</span></span>
+<span data-ttu-id="229b9-159">Можно наблюдать hello процесс обновления встроенного по, во время их выполнения на устройстве hello и просмотрев hello сообщил свойств в панели мониторинга hello решения:</span><span class="sxs-lookup"><span data-stu-id="229b9-159">You can observe hello firmware update process as it runs on hello device and by viewing hello reported properties in hello solution dashboard:</span></span>
 
-1. <span data-ttu-id="7e303-160">Ход выполнения процесса обновления можно просмотреть на устройстве Raspberry Pi:</span><span class="sxs-lookup"><span data-stu-id="7e303-160">You can view the progress in of the update process on the Raspberry Pi:</span></span>
+1. <span data-ttu-id="229b9-160">Можно просмотреть ход выполнения hello в процесс обновления hello на hello Raspberry Pi:</span><span class="sxs-lookup"><span data-stu-id="229b9-160">You can view hello progress in of hello update process on hello Raspberry Pi:</span></span>
 
     ![Отображение хода выполнения обновления][img-update-progress]
 
     > [!NOTE]
-    > <span data-ttu-id="7e303-162">После обновления приложение для удаленного мониторинга автоматически перезапускается.</span><span class="sxs-lookup"><span data-stu-id="7e303-162">The remote monitoring app restarts silently when the update completes.</span></span> <span data-ttu-id="7e303-163">Используйте команду `ps -ef`, чтобы проверить, выполняется ли процесс.</span><span class="sxs-lookup"><span data-stu-id="7e303-163">Use the command `ps -ef` to verify it is running.</span></span> <span data-ttu-id="7e303-164">Если вы хотите завершить процесс, используйте команду `kill` с идентификатором процесса.</span><span class="sxs-lookup"><span data-stu-id="7e303-164">If you want to terminate the process, use the `kill` command with the process id.</span></span>
+    > <span data-ttu-id="229b9-162">удаленного мониторинга приложение Hello автоматически перезагружается после завершения обновления hello.</span><span class="sxs-lookup"><span data-stu-id="229b9-162">hello remote monitoring app restarts silently when hello update completes.</span></span> <span data-ttu-id="229b9-163">Команда hello `ps -ef` tooverify его выполнения.</span><span class="sxs-lookup"><span data-stu-id="229b9-163">Use hello command `ps -ef` tooverify it is running.</span></span> <span data-ttu-id="229b9-164">Процесс tooterminate hello, используйте hello `kill` команду с идентификатором hello.</span><span class="sxs-lookup"><span data-stu-id="229b9-164">If you want tooterminate hello process, use hello `kill` command with hello process id.</span></span>
 
-1. <span data-ttu-id="7e303-165">Данные о состоянии обновления встроенного ПО, сообщаемые устройством, можно просмотреть на портале решения.</span><span class="sxs-lookup"><span data-stu-id="7e303-165">You can view the status of the firmware update, as reported by the device, in the solution portal.</span></span> <span data-ttu-id="7e303-166">На следующем снимке экрана показаны сведения о состоянии и продолжительности каждого этапа процесса обновления, а также сведения о новой версии встроенного ПО:</span><span class="sxs-lookup"><span data-stu-id="7e303-166">The following screenshot shows the status and duration of each stage of the update process, and the new firmware version:</span></span>
+1. <span data-ttu-id="229b9-165">Состояние hello hello обновление встроенного по, можно просмотреть, сообщаемые hello устройства, на портале решения hello.</span><span class="sxs-lookup"><span data-stu-id="229b9-165">You can view hello status of hello firmware update, as reported by hello device, in hello solution portal.</span></span> <span data-ttu-id="229b9-166">Hello следующем снимке экрана показано состояние hello и длительность каждого этапа процесса обновления hello и hello новой версии встроенного по:</span><span class="sxs-lookup"><span data-stu-id="229b9-166">hello following screenshot shows hello status and duration of each stage of hello update process, and hello new firmware version:</span></span>
 
     ![Отображение состояния задания][img-job-status]
 
-    <span data-ttu-id="7e303-168">При переходе к панели мониторинга можно проверить, отправляет ли устройство данные телеметрии после обновления встроенного ПО.</span><span class="sxs-lookup"><span data-stu-id="7e303-168">If you navigate back to the dashboard, you can verify the device is still sending telemetry following the firmware update.</span></span>
+    <span data-ttu-id="229b9-168">При переходе назад toohello панели мониторинга можно убедитесь, что устройство hello продолжает посылать телеметрии следующее обновление встроенного по hello.</span><span class="sxs-lookup"><span data-stu-id="229b9-168">If you navigate back toohello dashboard, you can verify hello device is still sending telemetry following hello firmware update.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="7e303-169">Если не завершить выполнение решения удаленного мониторинга в учетной записи Azure, вам будет выставлен счет.</span><span class="sxs-lookup"><span data-stu-id="7e303-169">If you leave the remote monitoring solution running in your Azure account, you are billed for the time it runs.</span></span> <span data-ttu-id="7e303-170">Дополнительные сведения о сокращении затрат во время выполнения решения для удаленного мониторинга см. в статье [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config] (Настройка предварительно настроенных решений Azure IoT Suite для демонстрационных целей).</span><span class="sxs-lookup"><span data-stu-id="7e303-170">For more information about reducing consumption while the remote monitoring solution runs, see [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config].</span></span> <span data-ttu-id="7e303-171">Прекратив использовать предварительно настроенное решение, удалите его из учетной записи Azure.</span><span class="sxs-lookup"><span data-stu-id="7e303-171">Delete the preconfigured solution from your Azure account when you have finished using it.</span></span>
+> <span data-ttu-id="229b9-169">Если оставить hello удаленное наблюдение решение, работающее в учетной записи Azure, взимается плата за hello выполнения задания.</span><span class="sxs-lookup"><span data-stu-id="229b9-169">If you leave hello remote monitoring solution running in your Azure account, you are billed for hello time it runs.</span></span> <span data-ttu-id="229b9-170">Дополнительные сведения о снижения объема используемой при hello удаленное наблюдение выполняется решение в разделе [Настройка Azure IoT Suite предварительно настроенных решений в целях демонстрации][lnk-demo-config].</span><span class="sxs-lookup"><span data-stu-id="229b9-170">For more information about reducing consumption while hello remote monitoring solution runs, see [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config].</span></span> <span data-ttu-id="229b9-171">Удаление hello предварительно настроенное решение из учетной записи Azure, после завершения его использования.</span><span class="sxs-lookup"><span data-stu-id="229b9-171">Delete hello preconfigured solution from your Azure account when you have finished using it.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="7e303-172">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="7e303-172">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="229b9-172">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="229b9-172">Next steps</span></span>
 
-<span data-ttu-id="7e303-173">Дополнительные примеры и документацию по Azure IoT можно найти в [Центре разработчиков Azure IoT](https://azure.microsoft.com/develop/iot/).</span><span class="sxs-lookup"><span data-stu-id="7e303-173">Visit the [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/) for more samples and documentation on Azure IoT.</span></span>
+<span data-ttu-id="229b9-173">Посетите hello [Центр разработчиков Azure IoT](https://azure.microsoft.com/develop/iot/) Дополнительные примеры и документация по Azure IoT.</span><span class="sxs-lookup"><span data-stu-id="229b9-173">Visit hello [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/) for more samples and documentation on Azure IoT.</span></span>
 
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-node-get-started-advanced/app-output.png

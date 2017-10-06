@@ -1,5 +1,5 @@
 ---
-title: "Документация по Помощнику по Azure. Руководства | Документация Майкрософт"
+title: "aaaAzure документацию помощника - учебные материалы | Документы Microsoft"
 description: 
 services: advisor
 author: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: ce00af5e7382a3d6e80903711bac86ca88191cff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1a1f8280c89b4e38af8c9cb2f5e55486a78186d3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-advisor-documentation"></a>Документация по Azure Advisor
 
-Azure Advisor — это персонализированный облачный консультант, который поможет следовать рекомендациям по оптимизации развернутых служб Azure. Он анализирует конфигурацию и данные телеметрии использования ресурсов. Затем он рекомендует решения, позволяющие повысить производительность, безопасность и уровень доступности ресурсов, выявляя при этом любые возможности сократить общие затраты на Azure.
+Azure консультант — консультант персонализированной облака, помогающая выполните лучшие методики toooptimize развертыванием Azure. Он анализирует конфигурацию и данные телеметрии использования ресурсов. Он затем рекомендует toohelp решений повышения hello производительности, безопасности и высокого уровня доступности ресурсов при поиске возможных сделок tooreduce общую Azure расходов.
 
 <ul class="panelContent cardsFTitle">
     <li>

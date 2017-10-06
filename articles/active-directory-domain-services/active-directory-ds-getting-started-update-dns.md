@@ -1,5 +1,5 @@
 ---
-title: "Доменные службы Azure Active Directory: обновление настроек DNS для виртуальной сети Azure | Документация Майкрософт"
+title: "Azure доменных служб Active Directory: Обновить параметры DNS для hello виртуальной сети Azure | Документы Microsoft"
 description: "Приступая к работе с доменными службами Azure Active Directory"
 services: active-directory-ds
 documentationcenter: 
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/27/2017
 ms.author: maheshu
-ms.openlocfilehash: 8bee2a25f196d645b27f30f21305b1550e44e07a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 484ff1a197a651bccb2b416448056acf69b0d8c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="update-dns-settings-for-the-azure-virtual-network"></a><span data-ttu-id="24eb6-103">Обновление настроек DNS для виртуальной сети Azure</span><span class="sxs-lookup"><span data-stu-id="24eb6-103">Update DNS settings for the Azure virtual network</span></span>
-## <a name="task-4-update-dns-settings-for-the-azure-virtual-network"></a><span data-ttu-id="24eb6-104">Задача 4. Обновление настроек DNS для виртуальной сети Azure</span><span class="sxs-lookup"><span data-stu-id="24eb6-104">Task 4: Update DNS settings for the Azure virtual network</span></span>
-<span data-ttu-id="24eb6-105">В предыдущих задачах по настройке вы успешно включили доменные службы Azure Active Directory для своего каталога.</span><span class="sxs-lookup"><span data-stu-id="24eb6-105">In the preceding configuration tasks, you have successfully enabled Azure Active Directory Domain Services for your directory.</span></span> <span data-ttu-id="24eb6-106">Следующая задача — сделать так, чтобы компьютеры в виртуальной сети могли подключаться к этим службам и использовать их.</span><span class="sxs-lookup"><span data-stu-id="24eb6-106">The next task is to ensure that computers within the virtual network can connect and consume these services.</span></span> <span data-ttu-id="24eb6-107">В этой статье мы обновим параметры DNS-сервера для виртуальной сети, указав два IP-адреса, по которым доменные службы Azure Active Directory доступны в виртуальной сети.</span><span class="sxs-lookup"><span data-stu-id="24eb6-107">In this article, you update the DNS server settings for your virtual network to point to the two IP addresses where Azure Active Directory Domain Services is available on the virtual network.</span></span>
+# <a name="update-dns-settings-for-hello-azure-virtual-network"></a><span data-ttu-id="ab66a-103">Обновите параметры DNS для hello виртуальной сети Azure</span><span class="sxs-lookup"><span data-stu-id="ab66a-103">Update DNS settings for hello Azure virtual network</span></span>
+## <a name="task-4-update-dns-settings-for-hello-azure-virtual-network"></a><span data-ttu-id="ab66a-104">Задача 4: Обновите параметры DNS для hello виртуальной сети Azure</span><span class="sxs-lookup"><span data-stu-id="ab66a-104">Task 4: Update DNS settings for hello Azure virtual network</span></span>
+<span data-ttu-id="ab66a-105">Hello предшествующей задачи настройки вы включили успешно Azure доменных служб Active Directory для вашего каталога.</span><span class="sxs-lookup"><span data-stu-id="ab66a-105">In hello preceding configuration tasks, you have successfully enabled Azure Active Directory Domain Services for your directory.</span></span> <span data-ttu-id="ab66a-106">Следующая задача Hello-tooensure, что компьютеры в hello виртуальной сети могут подключаться и этих служб.</span><span class="sxs-lookup"><span data-stu-id="ab66a-106">hello next task is tooensure that computers within hello virtual network can connect and consume these services.</span></span> <span data-ttu-id="ab66a-107">В этой статье обновление hello параметры DNS-сервера для вашей виртуальной сети toopoint toohello два IP-адреса доменных служб Active Directory Azure доступно hello виртуальной сети.</span><span class="sxs-lookup"><span data-stu-id="ab66a-107">In this article, you update hello DNS server settings for your virtual network toopoint toohello two IP addresses where Azure Active Directory Domain Services is available on hello virtual network.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="24eb6-108">После включения доменных служб Azure Active Directory для каталога запишите IP-адреса доменных служб Azure Active Directory, которые отображаются на вкладке **Настройка** вашего каталога.</span><span class="sxs-lookup"><span data-stu-id="24eb6-108">After you've enabled Azure Active Directory Domain Services for the directory, note the IP addresses for Azure Active Directory Domain Services that are displayed on the **Configure** tab of your directory.</span></span>
+> <span data-ttu-id="ab66a-108">После включения Azure доменных служб Active Directory для каталога hello, обратите внимание, hello IP-адресов для Azure доменных служб Active Directory, которые отображаются на hello **Настройка** вашего каталога.</span><span class="sxs-lookup"><span data-stu-id="ab66a-108">After you've enabled Azure Active Directory Domain Services for hello directory, note hello IP addresses for Azure Active Directory Domain Services that are displayed on hello **Configure** tab of your directory.</span></span>
 >
 >
 
-<span data-ttu-id="24eb6-109">Чтобы обновить параметр DNS-сервера для виртуальной сети, в которой включены доменные службы Azure Active Directory, сделайте следующее.</span><span class="sxs-lookup"><span data-stu-id="24eb6-109">To update the DNS server setting for the virtual network in which you have enabled Azure Active Directory Domain Services, complete the following steps:</span></span>
+<span data-ttu-id="ab66a-109">tooupdate hello параметров сервера DNS для hello виртуальной сети, в котором требуется включить Azure доменных служб Active Directory, полный hello, следующие шаги:</span><span class="sxs-lookup"><span data-stu-id="ab66a-109">tooupdate hello DNS server setting for hello virtual network in which you have enabled Azure Active Directory Domain Services, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="24eb6-110">Войдите на [классический портал Azure](https://manage.windowsazure.com).</span><span class="sxs-lookup"><span data-stu-id="24eb6-110">Go to the [Azure classic portal](https://manage.windowsazure.com).</span></span>
-2. <span data-ttu-id="24eb6-111">В левой области щелкните **Сети**.</span><span class="sxs-lookup"><span data-stu-id="24eb6-111">In the left pane, select **Networks**.</span></span>  
-    <span data-ttu-id="24eb6-112">Откроется окно **Сети**.</span><span class="sxs-lookup"><span data-stu-id="24eb6-112">The **Networks** window opens.</span></span>
+1. <span data-ttu-id="ab66a-110">Go toohello [классический портал Azure](https://manage.windowsazure.com).</span><span class="sxs-lookup"><span data-stu-id="ab66a-110">Go toohello [Azure classic portal](https://manage.windowsazure.com).</span></span>
+2. <span data-ttu-id="ab66a-111">Выберите в левой области hello **сетей**.</span><span class="sxs-lookup"><span data-stu-id="ab66a-111">In hello left pane, select **Networks**.</span></span>  
+    <span data-ttu-id="ab66a-112">Hello **сетей** открывается окно.</span><span class="sxs-lookup"><span data-stu-id="ab66a-112">hello **Networks** window opens.</span></span>
 
     ![Окно виртуальных сетей](./media/active-directory-domain-services-getting-started/virtual-network-select.png)
-3. <span data-ttu-id="24eb6-114">На вкладке **Виртуальные сети** выберите виртуальную сеть, в которой были включены доменные службы Azure Active Directory, чтобы просмотреть ее свойства.</span><span class="sxs-lookup"><span data-stu-id="24eb6-114">On the **Virtual Networks** tab, select the virtual network in which you enabled Azure Active Directory Domain Services to view its properties.</span></span>
-4. <span data-ttu-id="24eb6-115">Выберите вкладку **Настройка** .</span><span class="sxs-lookup"><span data-stu-id="24eb6-115">Click the **Configure** tab.</span></span>
+3. <span data-ttu-id="ab66a-114">На hello **виртуальных сетей** вкладке, выберите hello виртуальной сети, в котором требуется включить tooview доменных служб Active Directory Azure его свойства.</span><span class="sxs-lookup"><span data-stu-id="ab66a-114">On hello **Virtual Networks** tab, select hello virtual network in which you enabled Azure Active Directory Domain Services tooview its properties.</span></span>
+4. <span data-ttu-id="ab66a-115">Нажмите кнопку hello **Настройка** вкладки.</span><span class="sxs-lookup"><span data-stu-id="ab66a-115">Click hello **Configure** tab.</span></span>
 
     ![Окно виртуальных сетей](./media/active-directory-domain-services-getting-started/virtual-network-configure-tab.png)
-5. <span data-ttu-id="24eb6-117">В разделе **DNS-серверы** введите оба IP-адреса, которые отображались в разделе **Доменные службы** на вкладке **Настройка** вашего каталога.</span><span class="sxs-lookup"><span data-stu-id="24eb6-117">In the **DNS servers** section, enter both of the IP addresses that were displayed in the **Domain Services** section on the **Configure** tab of your directory.</span></span>
-6. <span data-ttu-id="24eb6-118">Чтобы сохранить параметры DNS-сервера для этой виртуальной сети, на панели задач в нижней части страницы щелкните **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="24eb6-118">To save the DNS server settings for this virtual network, in the task pane at the bottom of the window, click **Save**.</span></span>
+5. <span data-ttu-id="ab66a-117">В hello **DNS-серверы** введите оба hello IP-адресов, которые отображались в hello **доменных служб** раздела, посвященного hello **Настройка** вашего каталога.</span><span class="sxs-lookup"><span data-stu-id="ab66a-117">In hello **DNS servers** section, enter both of hello IP addresses that were displayed in hello **Domain Services** section on hello **Configure** tab of your directory.</span></span>
+6. <span data-ttu-id="ab66a-118">Нажмите кнопку Параметры toosave hello DNS-сервера для этой виртуальной сети, в области задач hello hello нижней части окна hello **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="ab66a-118">toosave hello DNS server settings for this virtual network, in hello task pane at hello bottom of hello window, click **Save**.</span></span>
 
-   ![Обновление параметров DNS-сервера для виртуальной сети.](./media/active-directory-domain-services-getting-started/update-dns.png)
+   ![Обновите параметры DNS-сервера hello для hello виртуальной сети](./media/active-directory-domain-services-getting-started/update-dns.png)
 
 > [!NOTE]
->  <span data-ttu-id="24eb6-120">Виртуальные машины в сети получат новые параметры DNS только после перезапуска.</span><span class="sxs-lookup"><span data-stu-id="24eb6-120">Virtual machines in the network only get the new DNS settings after a restart.</span></span> <span data-ttu-id="24eb6-121">Чтобы получить обновленные параметры DNS сразу, активируйте перезапуск с помощью портала, PowerShell или CLI.</span><span class="sxs-lookup"><span data-stu-id="24eb6-121">If you need them to get the updated DNS settings right away, trigger a restart either by the portal, PowerShell, or the CLI.</span></span>
+>  <span data-ttu-id="ab66a-120">Виртуальные машины в сети hello hello новых параметров DNS получить только после перезагрузки.</span><span class="sxs-lookup"><span data-stu-id="ab66a-120">Virtual machines in hello network only get hello new DNS settings after a restart.</span></span> <span data-ttu-id="ab66a-121">Если они вам требуются параметры DNS tooget hello обновить прямо сейчас, включать перезапуск портала hello, PowerShell или hello CLI.</span><span class="sxs-lookup"><span data-stu-id="ab66a-121">If you need them tooget hello updated DNS settings right away, trigger a restart either by hello portal, PowerShell, or hello CLI.</span></span>
 >
 >
 
-## <a name="next-steps"></a><span data-ttu-id="24eb6-122">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="24eb6-122">Next steps</span></span>
-<span data-ttu-id="24eb6-123">Задача 5. [Включение синхронизации паролей с доменными службами Azure AD](active-directory-ds-getting-started-password-sync.md)</span><span class="sxs-lookup"><span data-stu-id="24eb6-123">Task 5: [Enable password synchronization to Azure Active Directory Domain Services](active-directory-ds-getting-started-password-sync.md)</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ab66a-122">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="ab66a-122">Next steps</span></span>
+<span data-ttu-id="ab66a-123">Задача 5. [включить синхронизацию паролей tooAzure доменных служб Active Directory](active-directory-ds-getting-started-password-sync.md)</span><span class="sxs-lookup"><span data-stu-id="ab66a-123">Task 5: [Enable password synchronization tooAzure Active Directory Domain Services](active-directory-ds-getting-started-password-sync.md)</span></span>

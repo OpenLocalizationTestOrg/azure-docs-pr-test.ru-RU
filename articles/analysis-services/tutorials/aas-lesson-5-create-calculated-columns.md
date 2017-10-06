@@ -1,139 +1,121 @@
 ---
-title: "Учебник по службам Azure Analysis Services: занятие 5 \"Создание вычисляемых столбцов\" | Документы Майкрософт"
-description: "Описывает создание вычисляемых столбцов в учебном проекте служб Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 06/01/2017
-ms.author: owend
-ms.openlocfilehash: 893371145d77e156843271907aeef0c3756d0403
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+<span data-ttu-id="71da9-101">Заголовок: aaa» Azure Analysis Services tutorial занятие 5: Создание вычисляемых столбцов | Документы Microsoft» Описание: описание как toocreate вычисляемых столбцов в проект tutorial служб Azure Analysis Services hello.</span><span class="sxs-lookup"><span data-stu-id="71da9-101">title: aaa"Azure Analysis Services tutorial lesson 5: Create calculated columns | Microsoft Docs" description: Describes how toocreate calculated columns in hello Azure Analysis Services tutorial project.</span></span> <span data-ttu-id="71da9-102">службы: documentationcenter служб analysis services: '' Автор: диспетчер minewiskan: редактор erikre: '' теги: ''</span><span class="sxs-lookup"><span data-stu-id="71da9-102">services: analysis-services documentationcenter: '' author: minewiskan manager: erikre editor: '' tags: ''</span></span>
+
+<span data-ttu-id="71da9-103">MS.AssetId: ms.service: ms.devlang служб analysis services: н/д ms.topic: get-started-article ms.tgt_pltfrm: н/д ms.workload: н/д ms.date: ms.author 06/01/2017 г.: owend</span><span class="sxs-lookup"><span data-stu-id="71da9-103">ms.assetid: ms.service: analysis-services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 06/01/2017 ms.author: owend</span></span>
 ---
-# <a name="lesson-5-create-calculated-columns"></a><span data-ttu-id="ad5a9-103">Занятие 5. Создание вычисляемых столбцов</span><span class="sxs-lookup"><span data-stu-id="ad5a9-103">Lesson 5: Create calculated columns</span></span>
+# <a name="lesson-5-create-calculated-columns"></a><span data-ttu-id="71da9-104">Занятие 5. Создание вычисляемых столбцов</span><span class="sxs-lookup"><span data-stu-id="71da9-104">Lesson 5: Create calculated columns</span></span>
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-<span data-ttu-id="ad5a9-104">В этом занятии вы создадите в модели данные, добавив вычисляемые столбцы.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-104">In this lesson, you create data in your model by adding calculated columns.</span></span> <span data-ttu-id="ad5a9-105">Вычисляемые столбцы можно создать (в качестве настраиваемых столбцов) при использовании функции получения данных, с помощью редактора запросов или позднее в конструкторе моделей. Последним способом вы и воспользуетесь.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-105">You can create calculated columns (as custom columns) when using Get Data, by using the Query Editor, or later in the model designer like you do here.</span></span> <span data-ttu-id="ad5a9-106">Дополнительные сведения см. в разделе [Вычисляемые столбцы](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).</span><span class="sxs-lookup"><span data-stu-id="ad5a9-106">To learn more, see [Calculated columns](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).</span></span>
+<span data-ttu-id="71da9-105">В этом занятии вы создадите в модели данные, добавив вычисляемые столбцы.</span><span class="sxs-lookup"><span data-stu-id="71da9-105">In this lesson, you create data in your model by adding calculated columns.</span></span> <span data-ttu-id="71da9-106">Можно создать вычисляемые столбцы (как пользовательские столбцы) при использовании получение данных, с помощью hello редактора запросов или более поздней версии в конструкторе like hello модели выполните здесь.</span><span class="sxs-lookup"><span data-stu-id="71da9-106">You can create calculated columns (as custom columns) when using Get Data, by using hello Query Editor, or later in hello model designer like you do here.</span></span> <span data-ttu-id="71da9-107">toolearn более, в разделе [вычисляемых столбцов](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).</span><span class="sxs-lookup"><span data-stu-id="71da9-107">toolearn more, see [Calculated columns](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).</span></span>
   
-<span data-ttu-id="ad5a9-107">Вы создадите пять вычисляемых столбцов в трех разных таблицах.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-107">You create five new calculated columns in three different tables.</span></span> <span data-ttu-id="ad5a9-108">Шаги для каждой задачи немного отличаются, что позволяет продемонстрировать несколько способов создания и переименования столбцов, а также их перемещения в таблице.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-108">The steps are slightly different for each task showing there are several ways to create columns, rename them, and place them in various locations in a table.</span></span>  
+<span data-ttu-id="71da9-108">Вы создадите пять вычисляемых столбцов в трех разных таблицах.</span><span class="sxs-lookup"><span data-stu-id="71da9-108">You create five new calculated columns in three different tables.</span></span> <span data-ttu-id="71da9-109">шаги Hello немного отличаются для каждой задачи, показывающей, существует несколько способов toocreate столбцы, переименуйте их и разместить их в различных местах в таблице.</span><span class="sxs-lookup"><span data-stu-id="71da9-109">hello steps are slightly different for each task showing there are several ways toocreate columns, rename them, and place them in various locations in a table.</span></span>  
 
-<span data-ttu-id="ad5a9-109">Кроме того, на этом занятии вы впервые воспользуетесь выражениями анализа данных (DAX).</span><span class="sxs-lookup"><span data-stu-id="ad5a9-109">This lesson is also where you first use Data Analysis Expressions (DAX).</span></span> <span data-ttu-id="ad5a9-110">DAX — это специальный язык, позволяющий создавать сложные настраиваемые выражения формул для табличных моделей.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-110">DAX is a special language for creating highly customizable formula expressions for tabular models.</span></span> <span data-ttu-id="ad5a9-111">В этом руководстве вы будете использовать DAX для создания вычисляемых столбцов, мер и фильтров ролей.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-111">In this tutorial, you use DAX to create calculated columns, measures, and role filters.</span></span> <span data-ttu-id="ad5a9-112">Дополнительные сведения см. в разделе [DAX в табличных моделях](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular).</span><span class="sxs-lookup"><span data-stu-id="ad5a9-112">To learn more, see [DAX in tabular models](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular).</span></span> 
+<span data-ttu-id="71da9-110">Кроме того, на этом занятии вы впервые воспользуетесь выражениями анализа данных (DAX).</span><span class="sxs-lookup"><span data-stu-id="71da9-110">This lesson is also where you first use Data Analysis Expressions (DAX).</span></span> <span data-ttu-id="71da9-111">DAX — это специальный язык, позволяющий создавать сложные настраиваемые выражения формул для табличных моделей.</span><span class="sxs-lookup"><span data-stu-id="71da9-111">DAX is a special language for creating highly customizable formula expressions for tabular models.</span></span> <span data-ttu-id="71da9-112">В этом учебнике используется DAX toocreate вычисляемые столбцы, меры и фильтры.</span><span class="sxs-lookup"><span data-stu-id="71da9-112">In this tutorial, you use DAX toocreate calculated columns, measures, and role filters.</span></span> <span data-ttu-id="71da9-113">toolearn более, в разделе [DAX в табличных моделях](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular).</span><span class="sxs-lookup"><span data-stu-id="71da9-113">toolearn more, see [DAX in tabular models](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular).</span></span> 
   
-<span data-ttu-id="ad5a9-113">Предполагаемое время выполнения этого занятия: **15 минут**</span><span class="sxs-lookup"><span data-stu-id="ad5a9-113">Estimated time to complete this lesson: **15 minutes**</span></span>  
+<span data-ttu-id="71da9-114">Предполагаемое время toocomplete на этом занятии: **15 минут**</span><span class="sxs-lookup"><span data-stu-id="71da9-114">Estimated time toocomplete this lesson: **15 minutes**</span></span>  
   
-## <a name="prerequisites"></a><span data-ttu-id="ad5a9-114">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="ad5a9-114">Prerequisites</span></span>  
-<span data-ttu-id="ad5a9-115">Этот раздел входит в учебник по табличному моделированию, который следует изучать в предложенном порядке.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-115">This topic is part of a tabular modeling tutorial, which should be completed in order.</span></span> <span data-ttu-id="ad5a9-116">Прежде чем выполнять задачи в этом разделе, нужно завершить предыдущее занятие: [Занятие 4. Создание связей](../tutorials/aas-lesson-4-create-relationships.md).</span><span class="sxs-lookup"><span data-stu-id="ad5a9-116">Before performing the tasks in this lesson, you should have completed the previous lesson: [Lesson 4: Create relationships](../tutorials/aas-lesson-4-create-relationships.md).</span></span> 
+## <a name="prerequisites"></a><span data-ttu-id="71da9-115">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="71da9-115">Prerequisites</span></span>  
+<span data-ttu-id="71da9-116">Этот раздел входит в учебник по табличному моделированию, который следует изучать в предложенном порядке.</span><span class="sxs-lookup"><span data-stu-id="71da9-116">This topic is part of a tabular modeling tutorial, which should be completed in order.</span></span> <span data-ttu-id="71da9-117">Перед выполнением задачи hello на этом занятии, необходимо завершить предыдущее занятие hello: [занятия 4: Создание связей](../tutorials/aas-lesson-4-create-relationships.md).</span><span class="sxs-lookup"><span data-stu-id="71da9-117">Before performing hello tasks in this lesson, you should have completed hello previous lesson: [Lesson 4: Create relationships](../tutorials/aas-lesson-4-create-relationships.md).</span></span> 
   
-## <a name="create-calculated-columns"></a><span data-ttu-id="ad5a9-117">Создание вычисляемых столбцов</span><span class="sxs-lookup"><span data-stu-id="ad5a9-117">Create calculated columns</span></span>  
+## <a name="create-calculated-columns"></a><span data-ttu-id="71da9-118">Создание вычисляемых столбцов</span><span class="sxs-lookup"><span data-stu-id="71da9-118">Create calculated columns</span></span>  
   
-#### <a name="create-a-monthcalendar-calculated-column-in-the-dimdate-table"></a><span data-ttu-id="ad5a9-118">Создание вычисляемого столбца MonthCalendar в таблице DimDate</span><span class="sxs-lookup"><span data-stu-id="ad5a9-118">Create a MonthCalendar calculated column in the DimDate table</span></span>  
+#### <a name="create-a-monthcalendar-calculated-column-in-hello-dimdate-table"></a><span data-ttu-id="71da9-119">Создание вычисляемого столбца MonthCalendar таблицы DimDate hello</span><span class="sxs-lookup"><span data-stu-id="71da9-119">Create a MonthCalendar calculated column in hello DimDate table</span></span>  
   
-1.  <span data-ttu-id="ad5a9-119">Щелкните меню **Модель** и выберите **Представление модели** > **Представление данных**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-119">Click the **Model** menu > **Model View** > **Data View**.</span></span>  
+1.  <span data-ttu-id="71da9-120">Нажмите кнопку hello **модель** меню > **представление модели** > **представление данных**.</span><span class="sxs-lookup"><span data-stu-id="71da9-120">Click hello **Model** menu > **Model View** > **Data View**.</span></span>  
   
-    <span data-ttu-id="ad5a9-120">Вычисляемые столбцы можно создать только с помощью конструктора моделей в представлении данных.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-120">Calculated columns can only be created by using the model designer in Data View.</span></span>  
+    <span data-ttu-id="71da9-121">Вычисляемые столбцы могут создаваться только с помощью конструктора моделей hello в представлении данных.</span><span class="sxs-lookup"><span data-stu-id="71da9-121">Calculated columns can only be created by using hello model designer in Data View.</span></span>  
   
-2.  <span data-ttu-id="ad5a9-121">В конструкторе моделей щелкните таблицу **DimDate** (вкладка).</span><span class="sxs-lookup"><span data-stu-id="ad5a9-121">In the model designer, click the **DimDate** table (tab).</span></span>  
+2.  <span data-ttu-id="71da9-122">В конструкторе моделей hello щелкните hello **DimDate** таблицу (вкладку).</span><span class="sxs-lookup"><span data-stu-id="71da9-122">In hello model designer, click hello **DimDate** table (tab).</span></span>  
   
-3.  <span data-ttu-id="ad5a9-122">Щелкните правой кнопкой мыши заголовок столбца **CalendarQuarter** и выберите пункт **Вставить столбец**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-122">Right-click the **CalendarQuarter** column header, and then click **Insert Column**.</span></span>  
+3.  <span data-ttu-id="71da9-123">Щелкните правой кнопкой мыши hello **CalendarQuarter** заголовок столбца, а затем щелкните **вставить столбец**.</span><span class="sxs-lookup"><span data-stu-id="71da9-123">Right-click hello **CalendarQuarter** column header, and then click **Insert Column**.</span></span>  
   
-    <span data-ttu-id="ad5a9-123">Новый столбец с именем **Вычисляемый столбец 1** вставляется слева от столбца **Календарный квартал**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-123">A new column named **Calculated Column 1** is inserted to the left of the **Calendar Quarter** column.</span></span>  
+    <span data-ttu-id="71da9-124">Новый столбец с именем **вычисляемый столбец 1** — toohello вставленный слева от hello **Календарный квартал** столбца.</span><span class="sxs-lookup"><span data-stu-id="71da9-124">A new column named **Calculated Column 1** is inserted toohello left of hello **Calendar Quarter** column.</span></span>  
   
-4.  <span data-ttu-id="ad5a9-124">В строке формул над таблицей введите приведенную ниже формулу DAX. Компонент автозаполнения помогает вводить полные имена столбцов и таблиц и выводит список доступных функций.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-124">In the formula bar above the table, type the following DAX formula: AutoComplete helps you type the fully qualified names of columns and tables, and lists the functions that are available.</span></span>  
+4.  <span data-ttu-id="71da9-125">В hello формул над таблицей hello, введите следующую формулу DAX hello: Автозаполнение помогает ввести hello полные имена столбцов и таблиц и списков hello функций, доступных.</span><span class="sxs-lookup"><span data-stu-id="71da9-125">In hello formula bar above hello table, type hello following DAX formula: AutoComplete helps you type hello fully qualified names of columns and tables, and lists hello functions that are available.</span></span>  
   
     ```  
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  
     ``` 
   
-    <span data-ttu-id="ad5a9-125">После этого все строки в вычисляемом столбце заполняются значениями.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-125">Values are then populated for all the rows in the calculated column.</span></span> <span data-ttu-id="ad5a9-126">Если прокрутить содержимое таблицы вниз, вы увидите, что строки могут содержать разные значения для этого столбца, в зависимости от данных в каждой строке.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-126">If you scroll down through the table, you see rows can have different values for this column, based on the data in each row.</span></span>    
+    <span data-ttu-id="71da9-126">Для всех строк hello в вычисляемом столбце hello будут заполнены значениями.</span><span class="sxs-lookup"><span data-stu-id="71da9-126">Values are then populated for all hello rows in hello calculated column.</span></span> <span data-ttu-id="71da9-127">Если прокрутите через таблицу hello видно, что строки могут иметь разные значения для этого столбца на основе данных hello в каждой строке.</span><span class="sxs-lookup"><span data-stu-id="71da9-127">If you scroll down through hello table, you see rows can have different values for this column, based on hello data in each row.</span></span>    
   
-5.  <span data-ttu-id="ad5a9-127">Переименуйте этот столбец в **MonthCalendar**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-127">Rename this column to **MonthCalendar**.</span></span> 
+5.  <span data-ttu-id="71da9-128">Переименовать этот столбец слишком**MonthCalendar**.</span><span class="sxs-lookup"><span data-stu-id="71da9-128">Rename this column too**MonthCalendar**.</span></span> 
 
     ![aas-lesson5-newcolumn](../tutorials/media/aas-lesson5-newcolumn.png) 
   
-<span data-ttu-id="ad5a9-129">Вычисляемый столбец MonthCalendar содержит поддерживающее сортировку имя для месяца.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-129">The MonthCalendar calculated column provides a sortable name for Month.</span></span>  
+<span data-ttu-id="71da9-130">вычисляемый столбец MonthCalendar Hello содержит сортируемое имя для месяца.</span><span class="sxs-lookup"><span data-stu-id="71da9-130">hello MonthCalendar calculated column provides a sortable name for Month.</span></span>  
   
-#### <a name="create-a-dayofweek-calculated-column-in-the-dimdate-table"></a><span data-ttu-id="ad5a9-130">Создание вычисляемого столбца DayOfWeek в таблице DimDate</span><span class="sxs-lookup"><span data-stu-id="ad5a9-130">Create a DayOfWeek calculated column in the DimDate table</span></span>  
+#### <a name="create-a-dayofweek-calculated-column-in-hello-dimdate-table"></a><span data-ttu-id="71da9-131">Создание вычисляемого столбца DayOfWeek таблицы DimDate hello</span><span class="sxs-lookup"><span data-stu-id="71da9-131">Create a DayOfWeek calculated column in hello DimDate table</span></span>  
   
-1.  <span data-ttu-id="ad5a9-131">Пока таблица **DimDate** активна, откройте меню **Столбец** и выберите **Добавить столбец**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-131">With the **DimDate** table still active, click the **Column** menu, and then click **Add Column**.</span></span>  
+1.  <span data-ttu-id="71da9-132">С hello **DimDate** активной таблице, нажмите кнопку hello **столбца** меню, а затем нажмите **добавить столбец**.</span><span class="sxs-lookup"><span data-stu-id="71da9-132">With hello **DimDate** table still active, click hello **Column** menu, and then click **Add Column**.</span></span>  
   
-2.  <span data-ttu-id="ad5a9-132">В строке формул введите следующую формулу:</span><span class="sxs-lookup"><span data-stu-id="ad5a9-132">In the formula bar, type the following formula:</span></span>  
+2.  <span data-ttu-id="71da9-133">В строке формул hello введите следующую формулу hello:</span><span class="sxs-lookup"><span data-stu-id="71da9-133">In hello formula bar, type hello following formula:</span></span>  
     
     ```
     =RIGHT(" " & FORMAT([DayNumberOfWeek],"#0"), 2) & " - " & [EnglishDayNameOfWeek]  
     ```
     
-    <span data-ttu-id="ad5a9-133">Завершив составление формулы, нажмите клавишу ВВОД.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-133">When you've finished building the formula, press ENTER.</span></span> <span data-ttu-id="ad5a9-134">С правого края таблицы добавляется новый столбец.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-134">The new column is added to the far right of the table.</span></span>  
+    <span data-ttu-id="71da9-134">Завершив построение формулы hello, нажмите клавишу ВВОД.</span><span class="sxs-lookup"><span data-stu-id="71da9-134">When you've finished building hello formula, press ENTER.</span></span> <span data-ttu-id="71da9-135">toohello правого края hello таблицу добавляется новый столбец Hello.</span><span class="sxs-lookup"><span data-stu-id="71da9-135">hello new column is added toohello far right of hello table.</span></span>  
   
-3.  <span data-ttu-id="ad5a9-135">Переименуйте его в **DayOfWeek**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-135">Rename the column to **DayOfWeek**.</span></span>  
+3.  <span data-ttu-id="71da9-136">Переименовать столбец hello слишком**DayOfWeek**.</span><span class="sxs-lookup"><span data-stu-id="71da9-136">Rename hello column too**DayOfWeek**.</span></span>  
   
-4.  <span data-ttu-id="ad5a9-136">Щелкните заголовок столбца и перетащите его на место между столбцами **EnglishDayNameOfWeek** и **DayNumberOfMonth**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-136">Click the column heading, and then drag the column between the **EnglishDayNameOfWeek** column and the **DayNumberOfMonth** column.</span></span>  
+4.  <span data-ttu-id="71da9-137">Щелкните заголовок столбца hello, а затем перетащите столбец hello между hello **EnglishDayNameOfWeek** столбец и hello **DayNumberOfMonth** столбца.</span><span class="sxs-lookup"><span data-stu-id="71da9-137">Click hello column heading, and then drag hello column between hello **EnglishDayNameOfWeek** column and hello **DayNumberOfMonth** column.</span></span>  
   
     > [!TIP]  
-    > <span data-ttu-id="ad5a9-137">Перемещение столбцов в таблице облегчает навигацию.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-137">Moving columns in your table makes it easier to navigate.</span></span>  
+    > <span data-ttu-id="71da9-138">Перемещение столбцов в таблице позволяет упростить toonavigate.</span><span class="sxs-lookup"><span data-stu-id="71da9-138">Moving columns in your table makes it easier toonavigate.</span></span>  
   
-<span data-ttu-id="ad5a9-138">Вычисляемый столбец DayOfWeek содержит поддерживающее сортировку имя для дня недели.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-138">The DayOfWeek calculated column provides a sortable name for the day of week.</span></span>  
+<span data-ttu-id="71da9-139">вычисляемый столбец DayOfWeek Hello содержит сортируемое имя дня недели hello.</span><span class="sxs-lookup"><span data-stu-id="71da9-139">hello DayOfWeek calculated column provides a sortable name for hello day of week.</span></span>  
   
-#### <a name="create-a-productsubcategoryname-calculated-column-in-the-dimproduct-table"></a><span data-ttu-id="ad5a9-139">Создание вычисляемого столбца ProductSubcategoryName в таблице DimProduct</span><span class="sxs-lookup"><span data-stu-id="ad5a9-139">Create a ProductSubcategoryName calculated column in the DimProduct table</span></span>  
+#### <a name="create-a-productsubcategoryname-calculated-column-in-hello-dimproduct-table"></a><span data-ttu-id="71da9-140">Создание вычисляемого столбца ProductSubcategoryName в таблице DimProduct hello</span><span class="sxs-lookup"><span data-stu-id="71da9-140">Create a ProductSubcategoryName calculated column in hello DimProduct table</span></span>  
   
   
-1.  <span data-ttu-id="ad5a9-140">Прокрутите таблицу **DimProduct** до правого края.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-140">In the **DimProduct** table, scroll to the far right of the table.</span></span> <span data-ttu-id="ad5a9-141">Найдите крайний правый столбец с именем **Добавить столбец** (курсивом) и щелкните его заголовок.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-141">Notice the right-most column is named **Add Column** (italicized), click the column heading.</span></span>  
+1.  <span data-ttu-id="71da9-141">В hello **DimProduct** таблица, прокрутите toohello правому краю таблицы hello.</span><span class="sxs-lookup"><span data-stu-id="71da9-141">In hello **DimProduct** table, scroll toohello far right of hello table.</span></span> <span data-ttu-id="71da9-142">Обратите внимание hello самый правый столбец называется **добавить столбец** (курсивом), щелкните заголовок столбца hello.</span><span class="sxs-lookup"><span data-stu-id="71da9-142">Notice hello right-most column is named **Add Column** (italicized), click hello column heading.</span></span>  
   
-2.  <span data-ttu-id="ad5a9-142">В строке формул введите следующую формулу:</span><span class="sxs-lookup"><span data-stu-id="ad5a9-142">In the formula bar, type the following formula:</span></span>  
+2.  <span data-ttu-id="71da9-143">В строке формул hello введите следующую формулу hello:</span><span class="sxs-lookup"><span data-stu-id="71da9-143">In hello formula bar, type hello following formula:</span></span>  
     
     ```
     =RELATED('DimProductSubcategory'[EnglishProductSubcategoryName])  
     ```
   
-3.  <span data-ttu-id="ad5a9-143">Переименуйте столбец в **ProductSubcategoryName**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-143">Rename the column to **ProductSubcategoryName**.</span></span>  
+3.  <span data-ttu-id="71da9-144">Переименовать столбец hello слишком**ProductSubcategoryName**.</span><span class="sxs-lookup"><span data-stu-id="71da9-144">Rename hello column too**ProductSubcategoryName**.</span></span>  
   
-<span data-ttu-id="ad5a9-144">Вычисляемый столбец ProductSubcategoryName используется для создания иерархии в таблице DimProduct, которая включает данные из столбца EnglishProductSubcategoryName таблицы DimProductSubcategory.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-144">The ProductSubcategoryName calculated column is used to create a hierarchy in the DimProduct table, which includes data from the EnglishProductSubcategoryName column in the DimProductSubcategory table.</span></span> <span data-ttu-id="ad5a9-145">Иерархии не могут охватывать более одной таблицы.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-145">Hierarchies cannot span more than one table.</span></span> <span data-ttu-id="ad5a9-146">Вы создадите иерархии позднее в занятии 9.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-146">You create hierarchies later in Lesson 9.</span></span>  
+<span data-ttu-id="71da9-145">вычисляемый столбец Hello ProductSubcategoryName — используется toocreate иерархии в таблице DimProduct hello, которое включает данные из столбца EnglishProductSubcategoryName hello в таблице DimProductSubcategory hello.</span><span class="sxs-lookup"><span data-stu-id="71da9-145">hello ProductSubcategoryName calculated column is used toocreate a hierarchy in hello DimProduct table, which includes data from hello EnglishProductSubcategoryName column in hello DimProductSubcategory table.</span></span> <span data-ttu-id="71da9-146">Иерархии не могут охватывать более одной таблицы.</span><span class="sxs-lookup"><span data-stu-id="71da9-146">Hierarchies cannot span more than one table.</span></span> <span data-ttu-id="71da9-147">Вы создадите иерархии позднее в занятии 9.</span><span class="sxs-lookup"><span data-stu-id="71da9-147">You create hierarchies later in Lesson 9.</span></span>  
   
-#### <a name="create-a-productcategoryname-calculated-column-in-the-dimproduct-table"></a><span data-ttu-id="ad5a9-147">Создание вычисляемого столбца ProductCategoryName в таблице DimProduct</span><span class="sxs-lookup"><span data-stu-id="ad5a9-147">Create a ProductCategoryName calculated column in the DimProduct table</span></span>  
+#### <a name="create-a-productcategoryname-calculated-column-in-hello-dimproduct-table"></a><span data-ttu-id="71da9-148">Создание вычисляемого столбца ProductCategoryName в таблице DimProduct hello</span><span class="sxs-lookup"><span data-stu-id="71da9-148">Create a ProductCategoryName calculated column in hello DimProduct table</span></span>  
   
-1.  <span data-ttu-id="ad5a9-148">Пока таблица **DimProduct** активна, откройте меню **Столбец** и выберите элемент **Добавить столбец**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-148">With the **DimProduct** table still active, click the **Column** menu, and then click **Add Column**.</span></span>  
+1.  <span data-ttu-id="71da9-149">С hello **DimProduct** активной таблице, нажмите кнопку hello **столбца** меню, а затем нажмите **добавить столбец**.</span><span class="sxs-lookup"><span data-stu-id="71da9-149">With hello **DimProduct** table still active, click hello **Column** menu, and then click **Add Column**.</span></span>  
   
-2.  <span data-ttu-id="ad5a9-149">В строке формул введите следующую формулу:</span><span class="sxs-lookup"><span data-stu-id="ad5a9-149">In the formula bar, type the following formula:</span></span>  
+2.  <span data-ttu-id="71da9-150">В строке формул hello введите следующую формулу hello:</span><span class="sxs-lookup"><span data-stu-id="71da9-150">In hello formula bar, type hello following formula:</span></span>  
   
     ```
     =RELATED('DimProductCategory'[EnglishProductCategoryName]) 
     ```
     
-3.  <span data-ttu-id="ad5a9-150">Переименуйте столбец в **ProductCategoryName**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-150">Rename the column to **ProductCategoryName**.</span></span>  
+3.  <span data-ttu-id="71da9-151">Переименовать столбец hello слишком**ProductCategoryName**.</span><span class="sxs-lookup"><span data-stu-id="71da9-151">Rename hello column too**ProductCategoryName**.</span></span>  
   
-<span data-ttu-id="ad5a9-151">Вычисляемый столбец ProductCategoryName используется для создания иерархии в таблице DimProduct, которая включает данные из столбца EnglishProductCategoryName таблицы DimProductCategory.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-151">The ProductCategoryName calculated column is used to create a hierarchy in the DimProduct table, which includes data from the EnglishProductCategoryName column in the DimProductCategory table.</span></span> <span data-ttu-id="ad5a9-152">Иерархии не могут охватывать более одной таблицы.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-152">Hierarchies cannot span more than one table.</span></span>  
+<span data-ttu-id="71da9-152">вычисляемый столбец ProductCategoryName Hello — используется toocreate иерархии в таблице DimProduct hello, которое включает данные из столбца EnglishProductCategoryName hello в таблице DimProductCategory hello.</span><span class="sxs-lookup"><span data-stu-id="71da9-152">hello ProductCategoryName calculated column is used toocreate a hierarchy in hello DimProduct table, which includes data from hello EnglishProductCategoryName column in hello DimProductCategory table.</span></span> <span data-ttu-id="71da9-153">Иерархии не могут охватывать более одной таблицы.</span><span class="sxs-lookup"><span data-stu-id="71da9-153">Hierarchies cannot span more than one table.</span></span>  
   
-#### <a name="create-a-margin-calculated-column-in-the-factinternetsales-table"></a><span data-ttu-id="ad5a9-153">Создание вычисляемого столбца Margin в таблице FactInternetSales</span><span class="sxs-lookup"><span data-stu-id="ad5a9-153">Create a Margin calculated column in the FactInternetSales table</span></span>  
+#### <a name="create-a-margin-calculated-column-in-hello-factinternetsales-table"></a><span data-ttu-id="71da9-154">Создание вычисляемого столбца поля таблицы FactInternetSales hello</span><span class="sxs-lookup"><span data-stu-id="71da9-154">Create a Margin calculated column in hello FactInternetSales table</span></span>  
   
-1.  <span data-ttu-id="ad5a9-154">В конструкторе моделей выберите таблицу **FactInternetSales**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-154">In the model designer, select the **FactInternetSales** table.</span></span>  
+1.  <span data-ttu-id="71da9-155">Выберите в конструкторе моделей hello hello **FactInternetSales** таблицы.</span><span class="sxs-lookup"><span data-stu-id="71da9-155">In hello model designer, select hello **FactInternetSales** table.</span></span>  
   
-2.  <span data-ttu-id="ad5a9-155">Создайте вычисляемый столбец между столбцами **SalesAmount** и **TaxAmt**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-155">Create a new calculated column between the **SalesAmount** column and the **TaxAmt** column.</span></span>  
+2.  <span data-ttu-id="71da9-156">Создать новый вычисляемый столбец между hello **SalesAmount** столбец и hello **TaxAmt** столбца.</span><span class="sxs-lookup"><span data-stu-id="71da9-156">Create a new calculated column between hello **SalesAmount** column and hello **TaxAmt** column.</span></span>  
   
-3.  <span data-ttu-id="ad5a9-156">В строке формул введите следующую формулу:</span><span class="sxs-lookup"><span data-stu-id="ad5a9-156">In the formula bar, type the following formula:</span></span>  
+3.  <span data-ttu-id="71da9-157">В строке формул hello введите следующую формулу hello:</span><span class="sxs-lookup"><span data-stu-id="71da9-157">In hello formula bar, type hello following formula:</span></span>  
   
     ```
     =[SalesAmount]-[TotalProductCost]
     ``` 
 
-4.  <span data-ttu-id="ad5a9-157">Переименуйте столбец в **Margin**.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-157">Rename the column to **Margin**.</span></span>  
+4.  <span data-ttu-id="71da9-158">Переименовать столбец hello слишком**поля**.</span><span class="sxs-lookup"><span data-stu-id="71da9-158">Rename hello column too**Margin**.</span></span>  
  
       ![aas-lesson5-newmargin](../tutorials/media/aas-lesson5-newmargin.png)
       
-    <span data-ttu-id="ad5a9-159">Вычисляемый столбец Margin используется при анализе рентабельности для каждой продажи.</span><span class="sxs-lookup"><span data-stu-id="ad5a9-159">The Margin calculated column is used to analyze profit margins for each sale.</span></span>  
+    <span data-ttu-id="71da9-160">вычисляемый столбец Hello поля — используется tooanalyze прибыли для каждой продажи.</span><span class="sxs-lookup"><span data-stu-id="71da9-160">hello Margin calculated column is used tooanalyze profit margins for each sale.</span></span>  
   
-## <a name="whats-next"></a><span data-ttu-id="ad5a9-160">Что дальше?</span><span class="sxs-lookup"><span data-stu-id="ad5a9-160">What's next?</span></span>
-<span data-ttu-id="ad5a9-161">[Занятие 6. Создание мер](../tutorials/aas-lesson-6-create-measures.md).</span><span class="sxs-lookup"><span data-stu-id="ad5a9-161">[Lesson 6: Create measures](../tutorials/aas-lesson-6-create-measures.md).</span></span>
+## <a name="whats-next"></a><span data-ttu-id="71da9-161">Что дальше?</span><span class="sxs-lookup"><span data-stu-id="71da9-161">What's next?</span></span>
+<span data-ttu-id="71da9-162">[Занятие 6. Создание мер](../tutorials/aas-lesson-6-create-measures.md).</span><span class="sxs-lookup"><span data-stu-id="71da9-162">[Lesson 6: Create measures](../tutorials/aas-lesson-6-create-measures.md).</span></span>
   
   
   

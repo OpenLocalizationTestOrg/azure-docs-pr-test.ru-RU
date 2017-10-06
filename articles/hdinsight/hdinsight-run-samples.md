@@ -1,6 +1,6 @@
 ---
-title: "Выполнение учебных задач Hadoop в HDInsight — Azure | Документы Майкрософт"
-description: "Вы начнете использовать службу Azure HDInsight с помощью представленных примеров. Использование сценариев PowerShell, которые запускают программы MapReduce в кластерах данных."
+title: "образцы aaaRun hello Hadoop в HDInsight - Azure | Документы Microsoft"
+description: "Начало использования службы Azure HDInsight hello с предоставленными образцами hello. Использование сценариев PowerShell, которые запускают программы MapReduce в кластерах данных."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,58 +16,58 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 741cce6f2c81efed1e4bd0547fcb46a231815263
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 544856a2cdfe5154cbd9bf1fb05db081af86cd46
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a><span data-ttu-id="a007f-104">Выполнение примеров Hadoop MapReduce в HDInsight на базе Windows</span><span class="sxs-lookup"><span data-stu-id="a007f-104">Run Hadoop MapReduce samples in Windows-based HDInsight</span></span>
+# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a><span data-ttu-id="58db7-104">Выполнение примеров Hadoop MapReduce в HDInsight на базе Windows</span><span class="sxs-lookup"><span data-stu-id="58db7-104">Run Hadoop MapReduce samples in Windows-based HDInsight</span></span>
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-<span data-ttu-id="a007f-105">Предоставляется ряд примеров, которые помогут начать работу с заданиями MapReduce на кластерах Hadoop с использованием Azure HDInsight.</span><span class="sxs-lookup"><span data-stu-id="a007f-105">A set of samples are provided to help you get started running MapReduce jobs on Hadoop clusters using Azure HDInsight.</span></span> <span data-ttu-id="a007f-106">Эти примеры доступны на каждом создаваемом управляемом кластере HDInsight.</span><span class="sxs-lookup"><span data-stu-id="a007f-106">These samples are made available on each of the HDInsight managed clusters that you create.</span></span> <span data-ttu-id="a007f-107">Выполнение примеров позволит вам научиться использовать командлеты Azure PowerShell для запуска заданий в кластерах Hadoop.</span><span class="sxs-lookup"><span data-stu-id="a007f-107">Running these samples familiarize you with using Azure PowerShell cmdlets to run jobs on Hadoop clusters.</span></span>
+<span data-ttu-id="58db7-105">Набор образцов предоставляются toohelp, можно приступить к выполнению задания MapReduce в кластерах Hadoop с использованием Azure HDInsight.</span><span class="sxs-lookup"><span data-stu-id="58db7-105">A set of samples are provided toohelp you get started running MapReduce jobs on Hadoop clusters using Azure HDInsight.</span></span> <span data-ttu-id="58db7-106">Эти образцы доступны на каждом из hello HDInsight управляемого кластеры, создаваемые.</span><span class="sxs-lookup"><span data-stu-id="58db7-106">These samples are made available on each of hello HDInsight managed clusters that you create.</span></span> <span data-ttu-id="58db7-107">Выполнение этих образцов ознакомления с помощью задания toorun командлетов Azure PowerShell для кластеров Hadoop.</span><span class="sxs-lookup"><span data-stu-id="58db7-107">Running these samples familiarize you with using Azure PowerShell cmdlets toorun jobs on Hadoop clusters.</span></span>
 
-* <span data-ttu-id="a007f-108">[**Счетчик слов**][hdinsight-sample-wordcount]: подсчитывает количество вхождений слова в текстовом файле.</span><span class="sxs-lookup"><span data-stu-id="a007f-108">[**Word count**][hdinsight-sample-wordcount]: Counts word occurrences in a text file.</span></span>
-* <span data-ttu-id="a007f-109">[**Потоковый счетчик слов на C#**][hdinsight-sample-csharp-streaming]: подсчитывает количество вхождений слова в текстовом файле с использованием интерфейса потоковой передачи Hadoop.</span><span class="sxs-lookup"><span data-stu-id="a007f-109">[**C# streaming word count**][hdinsight-sample-csharp-streaming]: Counts word occurrences in a text file using the Hadoop streaming interface.</span></span>
-* <span data-ttu-id="a007f-110">[**Оценка числа пи**][hdinsight-sample-pi-estimator]: использует статистический метод (квази-Монте-Карло) для оценки значения числа пи.</span><span class="sxs-lookup"><span data-stu-id="a007f-110">[**Pi estimator**][hdinsight-sample-pi-estimator]: Uses a statistical (quasi-Monte Carlo) method to estimate the value of pi.</span></span>
-* <span data-ttu-id="a007f-111">[**Сортировка данных объемом 10 ГБ (Graysort)**][hdinsight-sample-10gb-graysort]: демонстрирует выполнение универсальной сортировки GraySort для файла размером 10 ГБ с помощью HDInsight.</span><span class="sxs-lookup"><span data-stu-id="a007f-111">[**10-GB Graysort**][hdinsight-sample-10gb-graysort]: Run a general-purpose GraySort on a 10 GB file by using HDInsight.</span></span> <span data-ttu-id="a007f-112">Выполняются три задания: Teragen создает данные, Terasort сортирует эти данных и Teravalidate проверяет правильность их сортировки.</span><span class="sxs-lookup"><span data-stu-id="a007f-112">There are three jobs to run: Teragen to generate the data, Terasort to sort the data, and Teravalidate to confirm that the data has been properly sorted.</span></span>
+* <span data-ttu-id="58db7-108">[**Счетчик слов**][hdinsight-sample-wordcount]: подсчитывает количество вхождений слова в текстовом файле.</span><span class="sxs-lookup"><span data-stu-id="58db7-108">[**Word count**][hdinsight-sample-wordcount]: Counts word occurrences in a text file.</span></span>
+* <span data-ttu-id="58db7-109">[**Потоковая передача количество слов в C#**][hdinsight-sample-csharp-streaming]: количества вхождений слова в текстовом файле с помощью hello интерфейс потоковой передачи Hadoop.</span><span class="sxs-lookup"><span data-stu-id="58db7-109">[**C# streaming word count**][hdinsight-sample-csharp-streaming]: Counts word occurrences in a text file using hello Hadoop streaming interface.</span></span>
+* <span data-ttu-id="58db7-110">[**Оценщик pi**][hdinsight-sample-pi-estimator]: использует статистические (реализация Монте Carlo) метод tooestimate hello число пи.</span><span class="sxs-lookup"><span data-stu-id="58db7-110">[**Pi estimator**][hdinsight-sample-pi-estimator]: Uses a statistical (quasi-Monte Carlo) method tooestimate hello value of pi.</span></span>
+* <span data-ttu-id="58db7-111">[**Сортировка данных объемом 10 ГБ (Graysort)**][hdinsight-sample-10gb-graysort]: демонстрирует выполнение универсальной сортировки GraySort для файла размером 10 ГБ с помощью HDInsight.</span><span class="sxs-lookup"><span data-stu-id="58db7-111">[**10-GB Graysort**][hdinsight-sample-10gb-graysort]: Run a general-purpose GraySort on a 10 GB file by using HDInsight.</span></span> <span data-ttu-id="58db7-112">Существует три задания toorun: hello Teragen toogenerate данных, данные hello toosort Terasort и tooconfirm Teravalidate должным образом отсортированы данные hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-112">There are three jobs toorun: Teragen toogenerate hello data, Terasort toosort hello data, and Teravalidate tooconfirm that hello data has been properly sorted.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a007f-113">Исходный код можно найти в приложении.</span><span class="sxs-lookup"><span data-stu-id="a007f-113">The source code can be found in the Appendix.</span></span>
+> <span data-ttu-id="58db7-113">Hello исходного кода можно найти в приложение hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-113">hello source code can be found in hello Appendix.</span></span>
 
-<span data-ttu-id="a007f-114">В Интернете есть много дополнительной документации по связанным с Hadoop технологиям, например по программированию и потоковой передаче MapReduce с использованием Java, а также документация по командлетам, используемым в сценариях PowerShell.</span><span class="sxs-lookup"><span data-stu-id="a007f-114">Much additional documentation exists on the web for Hadoop-related technologies, such as Java-based MapReduce programming and streaming, and documentation about the cmdlets that are used in Windows PowerShell scripting.</span></span> <span data-ttu-id="a007f-115">Дополнительную информацию об этих файлах см. в следующих разделах.</span><span class="sxs-lookup"><span data-stu-id="a007f-115">For more information about these resources, see:</span></span>
+<span data-ttu-id="58db7-114">Существует намного дополнительная документация по веб-сайта hello технологий, связанные с Hadoop, таких как программирование на языке Java MapReduce и потоковой передачи и документацию о командлетах, использованных в Windows PowerShell для hello сценариев.</span><span class="sxs-lookup"><span data-stu-id="58db7-114">Much additional documentation exists on hello web for Hadoop-related technologies, such as Java-based MapReduce programming and streaming, and documentation about hello cmdlets that are used in Windows PowerShell scripting.</span></span> <span data-ttu-id="58db7-115">Дополнительную информацию об этих файлах см. в следующих разделах.</span><span class="sxs-lookup"><span data-stu-id="58db7-115">For more information about these resources, see:</span></span>
 
-* [<span data-ttu-id="a007f-116">Разработка программ MapReduce на Java для Hadoop в HDInsight</span><span class="sxs-lookup"><span data-stu-id="a007f-116">Develop Java MapReduce programs for Hadoop in HDInsight</span></span>](hdinsight-develop-deploy-java-mapreduce-linux.md)
-* [<span data-ttu-id="a007f-117">Отправка заданий Hadoop в HDInsight</span><span class="sxs-lookup"><span data-stu-id="a007f-117">Submit Hadoop jobs in HDInsight</span></span>](hdinsight-submit-hadoop-jobs-programmatically.md)
-* <span data-ttu-id="a007f-118">[Введение в Azure HDInsight][hdinsight-introduction]</span><span class="sxs-lookup"><span data-stu-id="a007f-118">[Introduction to Azure HDInsight][hdinsight-introduction]</span></span>
+* [<span data-ttu-id="58db7-116">Разработка программ MapReduce на Java для Hadoop в HDInsight</span><span class="sxs-lookup"><span data-stu-id="58db7-116">Develop Java MapReduce programs for Hadoop in HDInsight</span></span>](hdinsight-develop-deploy-java-mapreduce-linux.md)
+* [<span data-ttu-id="58db7-117">Отправка заданий Hadoop в HDInsight</span><span class="sxs-lookup"><span data-stu-id="58db7-117">Submit Hadoop jobs in HDInsight</span></span>](hdinsight-submit-hadoop-jobs-programmatically.md)
+* <span data-ttu-id="58db7-118">[Введение tooAzure HDInsight][hdinsight-introduction]</span><span class="sxs-lookup"><span data-stu-id="58db7-118">[Introduction tooAzure HDInsight][hdinsight-introduction]</span></span>
 
-<span data-ttu-id="a007f-119">В настоящее время многие делают выбор в пользу Hive и Pig, а не MapReduce.</span><span class="sxs-lookup"><span data-stu-id="a007f-119">Nowadays, many people choose Hive and Pig over MapReduce.</span></span>  <span data-ttu-id="a007f-120">Дополнительные сведения можно найти в разделе </span><span class="sxs-lookup"><span data-stu-id="a007f-120">For more information, see:</span></span>
+<span data-ttu-id="58db7-119">В настоящее время многие делают выбор в пользу Hive и Pig, а не MapReduce.</span><span class="sxs-lookup"><span data-stu-id="58db7-119">Nowadays, many people choose Hive and Pig over MapReduce.</span></span>  <span data-ttu-id="58db7-120">Дополнительные сведения можно найти в разделе </span><span class="sxs-lookup"><span data-stu-id="58db7-120">For more information, see:</span></span>
 
-* [<span data-ttu-id="a007f-121">Использование Hive в HDInsight</span><span class="sxs-lookup"><span data-stu-id="a007f-121">Use Hive in HDInsight</span></span>](hdinsight-use-hive.md)
-* [<span data-ttu-id="a007f-122">Использование Pig в HDInsight</span><span class="sxs-lookup"><span data-stu-id="a007f-122">Use Pig in HDInsight</span></span>](hdinsight-use-pig.md)
+* [<span data-ttu-id="58db7-121">Использование Hive в HDInsight</span><span class="sxs-lookup"><span data-stu-id="58db7-121">Use Hive in HDInsight</span></span>](hdinsight-use-hive.md)
+* [<span data-ttu-id="58db7-122">Использование Pig в HDInsight</span><span class="sxs-lookup"><span data-stu-id="58db7-122">Use Pig in HDInsight</span></span>](hdinsight-use-pig.md)
 
-<span data-ttu-id="a007f-123">**Предварительные требования**:</span><span class="sxs-lookup"><span data-stu-id="a007f-123">**Prerequisites**:</span></span>
+<span data-ttu-id="58db7-123">**Предварительные требования**:</span><span class="sxs-lookup"><span data-stu-id="58db7-123">**Prerequisites**:</span></span>
 
-* <span data-ttu-id="a007f-124">**Подписка Azure**.</span><span class="sxs-lookup"><span data-stu-id="a007f-124">**An Azure subscription**.</span></span> <span data-ttu-id="a007f-125">Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="a007f-125">See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span></span>
-* <span data-ttu-id="a007f-126">**Кластер HDInsight**.</span><span class="sxs-lookup"><span data-stu-id="a007f-126">**an HDInsight cluster**.</span></span> <span data-ttu-id="a007f-127">Инструкции по различным способам создания таких кластеров см. в статье [Создание кластеров Hadoop под управлением Windows в HDInsight](hdinsight-hadoop-provision-linux-clusters.md).</span><span class="sxs-lookup"><span data-stu-id="a007f-127">For instructions on the various ways in which such clusters can be created, see [Create Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).</span></span>
-* <span data-ttu-id="a007f-128">**Рабочая станция с Azure PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="a007f-128">**A workstation with Azure PowerShell**.</span></span>
+* <span data-ttu-id="58db7-124">**Подписка Azure**.</span><span class="sxs-lookup"><span data-stu-id="58db7-124">**An Azure subscription**.</span></span> <span data-ttu-id="58db7-125">Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="58db7-125">See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span></span>
+* <span data-ttu-id="58db7-126">**Кластер HDInsight**.</span><span class="sxs-lookup"><span data-stu-id="58db7-126">**an HDInsight cluster**.</span></span> <span data-ttu-id="58db7-127">Инструкции hello различными способами, в которых могут создаваться таких кластеров см. в разделе [кластеров создать Hadoop в HDInsight](hdinsight-hadoop-provision-linux-clusters.md).</span><span class="sxs-lookup"><span data-stu-id="58db7-127">For instructions on hello various ways in which such clusters can be created, see [Create Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).</span></span>
+* <span data-ttu-id="58db7-128">**Рабочая станция с Azure PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="58db7-128">**A workstation with Azure PowerShell**.</span></span>
 
     > [!IMPORTANT]
-    > <span data-ttu-id="a007f-129">Поддержка Azure PowerShell для управления ресурсами HDInsight с помощью диспетчера служб Azure (ASM) объявлена **устаревшей** и будет прекращена с 1 января 2017 г.</span><span class="sxs-lookup"><span data-stu-id="a007f-129">Azure PowerShell support for managing HDInsight resources using Azure Service Manager is **deprecated**, and will be removed by January 1, 2017.</span></span> <span data-ttu-id="a007f-130">В описанных в этом документе инструкциях используются новые командлеты HDInsight, которые работают с Azure Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="a007f-130">The steps in this document use the new HDInsight cmdlets that work with Azure Resource Manager.</span></span>
+    > <span data-ttu-id="58db7-129">Поддержка Azure PowerShell для управления ресурсами HDInsight с помощью диспетчера служб Azure (ASM) объявлена **устаревшей** и будет прекращена с 1 января 2017 г.</span><span class="sxs-lookup"><span data-stu-id="58db7-129">Azure PowerShell support for managing HDInsight resources using Azure Service Manager is **deprecated**, and will be removed by January 1, 2017.</span></span> <span data-ttu-id="58db7-130">шаги Hello в этот документ используйте hello новые командлеты для HDInsight, работающие с помощью диспетчера ресурсов Azure.</span><span class="sxs-lookup"><span data-stu-id="58db7-130">hello steps in this document use hello new HDInsight cmdlets that work with Azure Resource Manager.</span></span>
     >
-    > <span data-ttu-id="a007f-131">Чтобы установить последнюю версию Azure PowerShell, выполните действия из статьи [Install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Установка и настройка Azure PowerShell).</span><span class="sxs-lookup"><span data-stu-id="a007f-131">Follow the steps in [Install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) to install the latest version of Azure PowerShell.</span></span> <span data-ttu-id="a007f-132">Если у вас есть сценарии, в которые нужно добавить новые командлеты, работающие с Azure Resource Manager, см. статью [Переход к средствам разработки на основе Azure Resource Manager для кластеров HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).</span><span class="sxs-lookup"><span data-stu-id="a007f-132">If you have scripts that need to be modified to use the new cmdlets that work with Azure Resource Manager, see [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](hdinsight-hadoop-development-using-azure-resource-manager.md).</span></span>
+    > <span data-ttu-id="58db7-131">Следуйте указаниям hello [Установка и настройка Azure PowerShell](/powershell/azureps-cmdlets-docs) tooinstall hello последнюю версию Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="58db7-131">Follow hello steps in [Install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) tooinstall hello latest version of Azure PowerShell.</span></span> <span data-ttu-id="58db7-132">При наличии скриптов, toobe необходимость изменить toouse hello новые дополнительные командлеты для работы с диспетчером ресурсов Azure см. в разделе [tooAzure перенос разработки на основе диспетчера ресурсов средства для кластеров HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).</span><span class="sxs-lookup"><span data-stu-id="58db7-132">If you have scripts that need toobe modified toouse hello new cmdlets that work with Azure Resource Manager, see [Migrating tooAzure Resource Manager-based development tools for HDInsight clusters](hdinsight-hadoop-development-using-azure-resource-manager.md).</span></span>
 
-## <span data-ttu-id="a007f-133"><a name="hdinsight-sample-wordcount"></a>Статистика — Java</span><span class="sxs-lookup"><span data-stu-id="a007f-133"><a name="hdinsight-sample-wordcount"></a>Word count - Java</span></span>
-<span data-ttu-id="a007f-134">Чтобы отправить проект MapReduce, сначала нужно создать определение задания MapReduce.</span><span class="sxs-lookup"><span data-stu-id="a007f-134">To submit a MapReduce project, you first create a MapReduce job definition.</span></span> <span data-ttu-id="a007f-135">В определении задания укажите JAR-файл программы MapReduce и расположение JAR-файла — **wasb:///example/jars/hadoop-mapreduce-examples.jar**, а также имя класса и аргументы.</span><span class="sxs-lookup"><span data-stu-id="a007f-135">In the job definition, you specify the MapReduce program jar file and the location of the jar file, which is **wasb:///example/jars/hadoop-mapreduce-examples.jar**, the class name, and the arguments.</span></span>  <span data-ttu-id="a007f-136">Программа подсчета слов MapReduce принимает два аргумента: исходный файл, используемый для подсчета слов, и расположение для выходных данных.</span><span class="sxs-lookup"><span data-stu-id="a007f-136">The wordcount MapReduce program takes two arguments: the source file that is used to count words, and the location for output.</span></span>
+## <span data-ttu-id="58db7-133"><a name="hdinsight-sample-wordcount"></a>Статистика — Java</span><span class="sxs-lookup"><span data-stu-id="58db7-133"><a name="hdinsight-sample-wordcount"></a>Word count - Java</span></span>
+<span data-ttu-id="58db7-134">toosubmit проекта MapReduce, сначала создать определение задания MapReduce.</span><span class="sxs-lookup"><span data-stu-id="58db7-134">toosubmit a MapReduce project, you first create a MapReduce job definition.</span></span> <span data-ttu-id="58db7-135">В определении задания hello, необходимо указать jar-файл программы MapReduce hello и расположение hello hello jar файла, который является **wasb:///example/jars/hadoop-mapreduce-examples.jar**hello имя класса и аргументы hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-135">In hello job definition, you specify hello MapReduce program jar file and hello location of hello jar file, which is **wasb:///example/jars/hadoop-mapreduce-examples.jar**, hello class name, and hello arguments.</span></span>  <span data-ttu-id="58db7-136">программу MapReduce wordcount Hello принимает два аргумента: hello исходного файла, который используется toocount слов и место hello выходных данных.</span><span class="sxs-lookup"><span data-stu-id="58db7-136">hello wordcount MapReduce program takes two arguments: hello source file that is used toocount words, and hello location for output.</span></span>
 
-<span data-ttu-id="a007f-137">Исходный код можно найти в [Приложении А](#apendix-a---the-word-count-MapReduce-program-in-java).</span><span class="sxs-lookup"><span data-stu-id="a007f-137">The source code can be found in the [Appendix A](#apendix-a---the-word-count-MapReduce-program-in-java).</span></span>
+<span data-ttu-id="58db7-137">Hello исходного кода можно найти в hello [приложение A](#apendix-a---the-word-count-MapReduce-program-in-java).</span><span class="sxs-lookup"><span data-stu-id="58db7-137">hello source code can be found in hello [Appendix A](#apendix-a---the-word-count-MapReduce-program-in-java).</span></span>
 
-<span data-ttu-id="a007f-138">Процедуру разработки MapReduce на Java программы см. [здесь](hdinsight-develop-deploy-java-mapreduce-linux.md).</span><span class="sxs-lookup"><span data-stu-id="a007f-138">For the procedure of developing a Java MapReduce program, see - [Develop Java MapReduce programs for Hadoop in HDInsight](hdinsight-develop-deploy-java-mapreduce-linux.md)</span></span>
+<span data-ttu-id="58db7-138">Процедура hello разработки Java MapReduce программы см. в разделе - [программ MapReduce разработка Java для Hadoop в HDInsight](hdinsight-develop-deploy-java-mapreduce-linux.md)</span><span class="sxs-lookup"><span data-stu-id="58db7-138">For hello procedure of developing a Java MapReduce program, see - [Develop Java MapReduce programs for Hadoop in HDInsight](hdinsight-develop-deploy-java-mapreduce-linux.md)</span></span>
 
-<span data-ttu-id="a007f-139">**Отправка задания MapReduce для подсчета слов**</span><span class="sxs-lookup"><span data-stu-id="a007f-139">**To submit a word count MapReduce job**</span></span>
+<span data-ttu-id="58db7-139">**toosubmit задание MapReduce число слов**</span><span class="sxs-lookup"><span data-stu-id="58db7-139">**toosubmit a word count MapReduce job**</span></span>
 
-1. <span data-ttu-id="a007f-140">Откройте **интегрированную среду сценариев Windows PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="a007f-140">Open **Windows PowerShell ISE**.</span></span> <span data-ttu-id="a007f-141">Инструкции по установке и настройке Azure PowerShell см. в статье [Установка и настройка служб Azure PowerShell][powershell-install-configure].</span><span class="sxs-lookup"><span data-stu-id="a007f-141">For instructions, see [Install and configure Azure PowerShell][powershell-install-configure].</span></span>
-2. <span data-ttu-id="a007f-142">Вставьте следующий сценарий PowerShell:</span><span class="sxs-lookup"><span data-stu-id="a007f-142">Paste the following PowerShell script:</span></span>
+1. <span data-ttu-id="58db7-140">Откройте **интегрированную среду сценариев Windows PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="58db7-140">Open **Windows PowerShell ISE**.</span></span> <span data-ttu-id="58db7-141">Инструкции по установке и настройке Azure PowerShell см. в статье [Установка и настройка служб Azure PowerShell][powershell-install-configure].</span><span class="sxs-lookup"><span data-stu-id="58db7-141">For instructions, see [Install and configure Azure PowerShell][powershell-install-configure].</span></span>
+2. <span data-ttu-id="58db7-142">Вставьте следующий сценарий PowerShell hello:</span><span class="sxs-lookup"><span data-stu-id="58db7-142">Paste hello following PowerShell script:</span></span>
 
     ```powershell
     $subscriptionName = "<Azure Subscription Name>"
@@ -76,14 +76,14 @@ ms.lasthandoff: 08/18/2017
 
     Select-AzureRmSubscription -SubscriptionName $subscriptionName
 
-    # Define the MapReduce job
+    # Define hello MapReduce job
     $mrJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
                                 -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
                                 -ClassName "wordcount" `
                                 -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
 
-    # Submit the job and wait for job completion
-    $cred = Get-Credential -Message "Enter the HDInsight cluster HTTP user credential:"
+    # Submit hello job and wait for job completion
+    $cred = Get-Credential -Message "Enter hello HDInsight cluster HTTP user credential:"
     $mrJob = Start-AzureRmHDInsightJob `
                         -ResourceGroupName $resourceGroupName `
                         -ClusterName $clusterName `
@@ -96,7 +96,7 @@ ms.lasthandoff: 08/18/2017
         -HttpCredential $cred `
         -JobId $mrJob.JobId
 
-    # Get the job output
+    # Get hello job output
     $cluster = Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
     $defaultStorageAccount = $cluster.DefaultStorageAccount -replace '.blob.core.windows.net'
     $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccount)[0].Value
@@ -112,36 +112,36 @@ ms.lasthandoff: 08/18/2017
         -JobId $mrJob.JobId `
         -DisplayOutputType StandardError
 
-    # Download the job output to the workstation
+    # Download hello job output toohello workstation
     $storageContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccount -StorageAccountKey $defaultStorageAccountKey
     Get-AzureStorageBlobContent -Container $defaultStorageContainer -Blob example/data/WordCountOutput/part-r-00000 -Context $storageContext -Force
 
-    # Display the output file
+    # Display hello output file
     cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
     ```
 
-    <span data-ttu-id="a007f-143">Задание MapReduce создает файл с именем *part-r-00000*, который содержит слова и их количество.</span><span class="sxs-lookup"><span data-stu-id="a007f-143">The MapReduce job produces a file named *part-r-00000*, which contains words and the counts.</span></span> <span data-ttu-id="a007f-144">В сценарии используется команда **findstr**, которая создает список всех слов, содержащих *there*.</span><span class="sxs-lookup"><span data-stu-id="a007f-144">The script uses the **findstr** command to list all the words that contains *"there"*.</span></span>
-3. <span data-ttu-id="a007f-145">Задайте первые три переменные и выполните сценарий.</span><span class="sxs-lookup"><span data-stu-id="a007f-145">Set the first three variables, and run the script.</span></span>
+    <span data-ttu-id="58db7-143">Hello задания MapReduce создает файл с именем *часть r-00000*, который содержит слова, и подсчитывает hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-143">hello MapReduce job produces a file named *part-r-00000*, which contains words and hello counts.</span></span> <span data-ttu-id="58db7-144">Hello скрипт использует hello **findstr** toolist hello все слова, команда содержит *«there»*.</span><span class="sxs-lookup"><span data-stu-id="58db7-144">hello script uses hello **findstr** command toolist all hello words that contains *"there"*.</span></span>
+3. <span data-ttu-id="58db7-145">Первые три переменные задать hello и запустите сценарий hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-145">Set hello first three variables, and run hello script.</span></span>
 
-## <span data-ttu-id="a007f-146"><a name="hdinsight-sample-csharp-streaming"></a>Статистика — потоковая передача на C#</span><span class="sxs-lookup"><span data-stu-id="a007f-146"><a name="hdinsight-sample-csharp-streaming"></a>Word count - C# streaming</span></span>
-<span data-ttu-id="a007f-147">Hadoop предоставляет API-интерфейс для MapReduce, позволяющий создавать функции map и reduce на языках, отличных от Java.</span><span class="sxs-lookup"><span data-stu-id="a007f-147">Hadoop provides a streaming API to MapReduce, which enables you to write map and reduce functions in languages other than Java.</span></span>
+## <span data-ttu-id="58db7-146"><a name="hdinsight-sample-csharp-streaming"></a>Статистика — потоковая передача на C#</span><span class="sxs-lookup"><span data-stu-id="58db7-146"><a name="hdinsight-sample-csharp-streaming"></a>Word count - C# streaming</span></span>
+<span data-ttu-id="58db7-147">Hadoop предоставляет tooMapReduce API потоковой передачи, что позволяет toowrite карты и уменьшить функциям в языках, отличных от Java.</span><span class="sxs-lookup"><span data-stu-id="58db7-147">Hadoop provides a streaming API tooMapReduce, which enables you toowrite map and reduce functions in languages other than Java.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a007f-148">Шаги, описанные в этом учебнике, можно применять только к кластерам HDInsight под управлением Windows.</span><span class="sxs-lookup"><span data-stu-id="a007f-148">The steps in this tutorial apply only to Windows-based HDInsight clusters.</span></span> <span data-ttu-id="a007f-149">Пример потоковой передачи для кластеров HDInsight под управлением Linux см. в статье [Разработка программ потоковой передачи на Python для HDInsight](hdinsight-hadoop-streaming-python.md).</span><span class="sxs-lookup"><span data-stu-id="a007f-149">For an example of streaming for Linux-based HDInsight clusters, see [Develop Python streaming programs for HDInsight](hdinsight-hadoop-streaming-python.md).</span></span>
+> <span data-ttu-id="58db7-148">Hello действия в этом учебнике применимы только на основе tooWindows кластеров HDInsight.</span><span class="sxs-lookup"><span data-stu-id="58db7-148">hello steps in this tutorial apply only tooWindows-based HDInsight clusters.</span></span> <span data-ttu-id="58db7-149">Пример потоковой передачи для кластеров HDInsight под управлением Linux см. в статье [Разработка программ потоковой передачи на Python для HDInsight](hdinsight-hadoop-streaming-python.md).</span><span class="sxs-lookup"><span data-stu-id="58db7-149">For an example of streaming for Linux-based HDInsight clusters, see [Develop Python streaming programs for HDInsight](hdinsight-hadoop-streaming-python.md).</span></span>
 
-<span data-ttu-id="a007f-150">В приведенном примере процедура map и процедура reduce являются исполняемыми файлами, которые считывают входные данные из [stdin][stdin-stdout-stderr] (построчно) и выводят выходные данные в [stdout][stdin-stdout-stderr].</span><span class="sxs-lookup"><span data-stu-id="a007f-150">In the example, the mapper and the reducer are executables that read the input from [stdin][stdin-stdout-stderr] (line-by-line) and emit the output to [stdout][stdin-stdout-stderr].</span></span> <span data-ttu-id="a007f-151">Программа подсчитывает все слова в тексте.</span><span class="sxs-lookup"><span data-stu-id="a007f-151">The program counts all the words in the text.</span></span>
+<span data-ttu-id="58db7-150">В примере hello hello сопоставления и редуктора hello, исполняемые файлы, которые считывают hello входные данные из [stdin] [ stdin-stdout-stderr] (строка за строкой) и вывести результаты hello слишком[stdout] [stdin-stdout-stderr].</span><span class="sxs-lookup"><span data-stu-id="58db7-150">In hello example, hello mapper and hello reducer are executables that read hello input from [stdin][stdin-stdout-stderr] (line-by-line) and emit hello output too[stdout][stdin-stdout-stderr].</span></span> <span data-ttu-id="58db7-151">Программа Hello подсчитывает все слова hello в тексте hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-151">hello program counts all hello words in hello text.</span></span>
 
-<span data-ttu-id="a007f-152">Если указан исполняемый файл для **процедур map**, то при инициализации процедуры map каждая задача процедуры map запускает исполняемый файл как отдельный процесс.</span><span class="sxs-lookup"><span data-stu-id="a007f-152">When an executable is specified for **mappers**, each mapper task launches the executable as a separate process when the mapper is initialized.</span></span> <span data-ttu-id="a007f-153">Модуль сопоставления во время выполнения заданий преобразует входные данные в строки и подает эти строки в процесс [stdin][stdin-stdout-stderr].</span><span class="sxs-lookup"><span data-stu-id="a007f-153">As the mapper task runs, it converts its input into lines, and feeds the lines to the [stdin][stdin-stdout-stderr] of the process.</span></span>
+<span data-ttu-id="58db7-152">При указании исполняемый файл для **модули сопоставления**, каждая задача сопоставления запускает исполняемый файл как отдельный процесс hello при инициализации модуля сопоставления hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-152">When an executable is specified for **mappers**, each mapper task launches hello executable as a separate process when hello mapper is initialized.</span></span> <span data-ttu-id="58db7-153">Запускает задачу hello сопоставления, он преобразует его входные данные в строках и веб-каналы hello toohello строки [stdin] [ stdin-stdout-stderr] процесса hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-153">As hello mapper task runs, it converts its input into lines, and feeds hello lines toohello [stdin][stdin-stdout-stderr] of hello process.</span></span>
 
-<span data-ttu-id="a007f-154">В то же время модуль сопоставления собирает выходные данные в виде строк из процесса stdout.</span><span class="sxs-lookup"><span data-stu-id="a007f-154">In the meantime, the mapper collects the line-oriented output from the stdout of the process.</span></span> <span data-ttu-id="a007f-155">Он преобразует каждую строку в пару «ключ-значение», которая собирается в качестве выходных данных модуля сопоставления.</span><span class="sxs-lookup"><span data-stu-id="a007f-155">It converts each line into a key/value pair, which is collected as the output of the mapper.</span></span> <span data-ttu-id="a007f-156">По умолчанию префикс строки до первого символа табуляции является ключом, а остальная часть строки (кроме символа табуляции) — это значение.</span><span class="sxs-lookup"><span data-stu-id="a007f-156">By default, the prefix of a line up to the first Tab character is the key, and the remainder of the line (excluding the Tab character) is the value.</span></span> <span data-ttu-id="a007f-157">Если в строке нет символа табуляции, вся строка рассматривается как ключ, а значение считается нулевым.</span><span class="sxs-lookup"><span data-stu-id="a007f-157">If there is no Tab character in the line, entire line is considered as the key, and the value is null.</span></span>
+<span data-ttu-id="58db7-154">В hello временем сопоставления hello сбор hello строк вывода stdout hello hello процесса.</span><span class="sxs-lookup"><span data-stu-id="58db7-154">In hello meantime, hello mapper collects hello line-oriented output from hello stdout of hello process.</span></span> <span data-ttu-id="58db7-155">Он преобразует каждую строку в пара ключ значение, в которой собирается hello выходные данные сопоставления hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-155">It converts each line into a key/value pair, which is collected as hello output of hello mapper.</span></span> <span data-ttu-id="58db7-156">По умолчанию hello префикс строку вверх toohello первый символ табуляции является ключом hello и hello остаток строки hello (за исключением hello символ табуляции) значение hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-156">By default, hello prefix of a line up toohello first Tab character is hello key, and hello remainder of hello line (excluding hello Tab character) is hello value.</span></span> <span data-ttu-id="58db7-157">Если строка hello не символ табуляции, вся строка будет рассматриваться как ключ hello и hello значение равно null.</span><span class="sxs-lookup"><span data-stu-id="58db7-157">If there is no Tab character in hello line, entire line is considered as hello key, and hello value is null.</span></span>
 
-<span data-ttu-id="a007f-158">Если указан исполняемый файл для **процедур reduce**, то при инициализации процедуры reduce каждая задача процедуры reduce запускает исполняемый файл как отдельный процесс.</span><span class="sxs-lookup"><span data-stu-id="a007f-158">When an executable is specified for **reducers**, each reducer task launches the executable as a separate process when the reducer is initialized.</span></span> <span data-ttu-id="a007f-159">Редуктор во время выполнения заданий преобразует входные пары "ключ-значение" в строки, а строки подает в процесс [stdin][stdin-stdout-stderr].</span><span class="sxs-lookup"><span data-stu-id="a007f-159">As the reducer task runs, it converts its input key/values pairs into lines, and it feeds the lines to the [stdin][stdin-stdout-stderr] of the process.</span></span>
+<span data-ttu-id="58db7-158">При указании исполняемый файл для **reducers**, каждая задача редуктора запускает исполняемый файл как отдельный процесс hello при инициализации hello редуктора.</span><span class="sxs-lookup"><span data-stu-id="58db7-158">When an executable is specified for **reducers**, each reducer task launches hello executable as a separate process when hello reducer is initialized.</span></span> <span data-ttu-id="58db7-159">Запускает задачу редуктора hello, преобразует его пары ввода ключа и значения в строки и веб-каналы toohello строки hello [stdin] [ stdin-stdout-stderr] процесса hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-159">As hello reducer task runs, it converts its input key/values pairs into lines, and it feeds hello lines toohello [stdin][stdin-stdout-stderr] of hello process.</span></span>
 
-<span data-ttu-id="a007f-160">В то же время редуктор собирает выходные данные в виде строк из процесса [stdout][stdin-stdout-stderr].</span><span class="sxs-lookup"><span data-stu-id="a007f-160">In the meantime, the reducer collects the line-oriented output from the [stdout][stdin-stdout-stderr] of the process.</span></span> <span data-ttu-id="a007f-161">Он преобразует каждую строку в пару «ключ-значение», которая собирается в качестве выходных данных модуля редукции.</span><span class="sxs-lookup"><span data-stu-id="a007f-161">It converts each line to a key/value pair, which is collected as the output of the reducer.</span></span> <span data-ttu-id="a007f-162">По умолчанию префикс строки до первого символа табуляции является ключом, а остальная часть строки (кроме символа табуляции) — это значение.</span><span class="sxs-lookup"><span data-stu-id="a007f-162">By default, the prefix of a line up to the first Tab character is the key, and the remainder of the line (excluding the Tab character) is the value.</span></span>
+<span data-ttu-id="58db7-160">В hello временем редуктора hello собирает hello строк вывода от hello [stdout] [ stdin-stdout-stderr] процесса hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-160">In hello meantime, hello reducer collects hello line-oriented output from hello [stdout][stdin-stdout-stderr] of hello process.</span></span> <span data-ttu-id="58db7-161">Он преобразует каждая пара ключ значение tooa строки, которой собираются в качестве выходных данных hello hello редуктора.</span><span class="sxs-lookup"><span data-stu-id="58db7-161">It converts each line tooa key/value pair, which is collected as hello output of hello reducer.</span></span> <span data-ttu-id="58db7-162">По умолчанию hello префикс строку вверх toohello первый символ табуляции является ключом hello и hello остаток строки hello (за исключением hello символ табуляции) значение hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-162">By default, hello prefix of a line up toohello first Tab character is hello key, and hello remainder of hello line (excluding hello Tab character) is hello value.</span></span>
 
-<span data-ttu-id="a007f-163">**Отправка задания подсчета слов, передаваемых в потоковом режиме, на C#**</span><span class="sxs-lookup"><span data-stu-id="a007f-163">**To submit a C# streaming word count job**</span></span>
+<span data-ttu-id="58db7-163">**Задание числа word потоковой передачи toosubmit C#**</span><span class="sxs-lookup"><span data-stu-id="58db7-163">**toosubmit a C# streaming word count job**</span></span>
 
-* <span data-ttu-id="a007f-164">Выполните процедуру, описанную в разделе [Счетчик слов — Java](#word-count-java), и замените определение задания на следующую строку:</span><span class="sxs-lookup"><span data-stu-id="a007f-164">Follow the procedure in [Word count - Java](#word-count-java), and replace the job definition with the following line:</span></span>
+* <span data-ttu-id="58db7-164">Выполните процедуру hello в [число - Java слов](#word-count-java)и замените определение задания hello hello, следующей строкой:</span><span class="sxs-lookup"><span data-stu-id="58db7-164">Follow hello procedure in [Word count - Java](#word-count-java), and replace hello job definition with hello following line:</span></span>
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -152,18 +152,18 @@ ms.lasthandoff: 08/18/2017
                             -OutputPath "/example/data/StreamingOutput/wc.txt"
     ```
 
-    <span data-ttu-id="a007f-165">Выходные данные должны выглядеть следующим образом.</span><span class="sxs-lookup"><span data-stu-id="a007f-165">The output file shall be:</span></span>
+    <span data-ttu-id="58db7-165">должны быть Hello выходной файл:</span><span class="sxs-lookup"><span data-stu-id="58db7-165">hello output file shall be:</span></span>
 
         example/data/StreamingOutput/wc.txt/part-00000
 
-## <span data-ttu-id="a007f-166"><a name="hdinsight-sample-pi-estimator"></a>Оценка числа пи</span><span class="sxs-lookup"><span data-stu-id="a007f-166"><a name="hdinsight-sample-pi-estimator"></a>PI estimator</span></span>
-<span data-ttu-id="a007f-167">В примере оценки числа пи используется статистический метод (квази-Монте-Карло) для оценки значения числа пи.</span><span class="sxs-lookup"><span data-stu-id="a007f-167">The pi estimator uses a statistical (quasi-Monte Carlo) method to estimate the value of pi.</span></span> <span data-ttu-id="a007f-168">Точки в произвольном порядке помещаются внутри единичного квадрата, а также попадают в круг, вписанный в этот квадрат, с вероятностью, равной площади круга, пи/4.</span><span class="sxs-lookup"><span data-stu-id="a007f-168">Points placed at random inside of a unit square also fall within a circle inscribed within that square with a probability equal to the area of the circle, pi/4.</span></span> <span data-ttu-id="a007f-169">Значение числа пи можно оценить по формуле 4R, где R — это отношение количества точек, находящихся внутри круга, к общему количеству точек, находящихся внутри квадрата.</span><span class="sxs-lookup"><span data-stu-id="a007f-169">The value of pi can be estimated from the value of 4R, where R is the ratio of the number of points that are inside the circle to the total number of points that are within the square.</span></span> <span data-ttu-id="a007f-170">Чем больше выборка используемых точек, тем точнее оценка.</span><span class="sxs-lookup"><span data-stu-id="a007f-170">The larger the sample of points used, the better the estimate is.</span></span>
+## <span data-ttu-id="58db7-166"><a name="hdinsight-sample-pi-estimator"></a>Оценка числа пи</span><span class="sxs-lookup"><span data-stu-id="58db7-166"><a name="hdinsight-sample-pi-estimator"></a>PI estimator</span></span>
+<span data-ttu-id="58db7-167">Оценщик pi Hello использует статистические (реализация Монте Carlo) метод tooestimate hello число пи.</span><span class="sxs-lookup"><span data-stu-id="58db7-167">hello pi estimator uses a statistical (quasi-Monte Carlo) method tooestimate hello value of pi.</span></span> <span data-ttu-id="58db7-168">Точки помещении в произвольном порядке в единое квадратная также попадают в круг с областью равно toohello вероятность круга hello в новом внутри этого квадрата pi/4.</span><span class="sxs-lookup"><span data-stu-id="58db7-168">Points placed at random inside of a unit square also fall within a circle inscribed within that square with a probability equal toohello area of hello circle, pi/4.</span></span> <span data-ttu-id="58db7-169">на основе значения hello 4R, где R — отношение hello hello количество точек, которые находятся внутри hello круг toohello общего количества точек, расположенных внутри квадратных hello можно оценить Hello число пи.</span><span class="sxs-lookup"><span data-stu-id="58db7-169">hello value of pi can be estimated from hello value of 4R, where R is hello ratio of hello number of points that are inside hello circle toohello total number of points that are within hello square.</span></span> <span data-ttu-id="58db7-170">Hello большего образец hello точек, используемых, является hello лучшую оценку hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-170">hello larger hello sample of points used, hello better hello estimate is.</span></span>
 
-<span data-ttu-id="a007f-171">Сценарий, предоставленный для этого примера, передает JAR-задание Hadoop и настраивается на выполнение со значением 16 задач map, каждая из которых необходима для вычисления выборки 10 миллионов точек по значениям параметров.</span><span class="sxs-lookup"><span data-stu-id="a007f-171">The script provided for this sample submits a Hadoop jar job and is set up to run with a value 16 maps, each of which is required to compute 10 million sample points by the parameter values.</span></span> <span data-ttu-id="a007f-172">Эти значения параметров могут изменяться для повышения точности оцениваемого значения числа пи.</span><span class="sxs-lookup"><span data-stu-id="a007f-172">These parameter values can be changed to improve the estimated value of pi.</span></span> <span data-ttu-id="a007f-173">Первые 10 десятичных знаков числа пи для справки: 3,1415926535.</span><span class="sxs-lookup"><span data-stu-id="a007f-173">For reference, the first 10 decimal places of pi are 3.1415926535.</span></span>
+<span data-ttu-id="58db7-171">Hello скрипт, предоставленный для данного образца отправляет задание Hadoop jar и настроены toorun со значением 16 карты, каждый из которых является toocompute требуется 10 миллионов точках образец hello значения параметров.</span><span class="sxs-lookup"><span data-stu-id="58db7-171">hello script provided for this sample submits a Hadoop jar job and is set up toorun with a value 16 maps, each of which is required toocompute 10 million sample points by hello parameter values.</span></span> <span data-ttu-id="58db7-172">Параметр, эти значения могут быть изменены tooimprove hello предполагаемое число пи.</span><span class="sxs-lookup"><span data-stu-id="58db7-172">These parameter values can be changed tooimprove hello estimated value of pi.</span></span> <span data-ttu-id="58db7-173">Справочник по hello первые 10 десятичных разрядов числа пи являются 3.1415926535.</span><span class="sxs-lookup"><span data-stu-id="58db7-173">For reference, hello first 10 decimal places of pi are 3.1415926535.</span></span>
 
-<span data-ttu-id="a007f-174">**Отправка задания оценки числа пи**</span><span class="sxs-lookup"><span data-stu-id="a007f-174">**To submit a pi estimator job**</span></span>
+<span data-ttu-id="58db7-174">**toosubmit задание оценки pi**</span><span class="sxs-lookup"><span data-stu-id="58db7-174">**toosubmit a pi estimator job**</span></span>
 
-* <span data-ttu-id="a007f-175">Выполните процедуру, описанную в разделе [Счетчик слов — Java](#word-count-java), и замените определение задания на следующую строку:</span><span class="sxs-lookup"><span data-stu-id="a007f-175">Follow the procedure in [Word count - Java](#word-count-java), and replace the job definition with the following line:</span></span>
+* <span data-ttu-id="58db7-175">Выполните процедуру hello в [число - Java слов](#word-count-java)и замените определение задания hello hello, следующей строкой:</span><span class="sxs-lookup"><span data-stu-id="58db7-175">Follow hello procedure in [Word count - Java](#word-count-java), and replace hello job definition with hello following line:</span></span>
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -172,26 +172,26 @@ ms.lasthandoff: 08/18/2017
                                 -Arguments "16", "10000000"
     ```
 
-## <span data-ttu-id="a007f-176"><a name="hdinsight-sample-10gb-graysort"></a>Сортировка Graysort 10 ГБ</span><span class="sxs-lookup"><span data-stu-id="a007f-176"><a name="hdinsight-sample-10gb-graysort"></a>10-GB Graysort</span></span>
-<span data-ttu-id="a007f-177">В этом примере используется небольшой объем данных, 10 ГБ, чтобы можно было выполнить сортировку достаточно быстро.</span><span class="sxs-lookup"><span data-stu-id="a007f-177">This sample uses a modest 10GB of data so that it can be run relatively quickly.</span></span> <span data-ttu-id="a007f-178">Используется приложение MapReduce, разработанное Оуэном О'Мэлли (Owen O'Malley) и Аруном Мёрти (Arun Murthy). Это приложение победило в 2009 г. на конкурсе приложений сортировки общего назначения (daytona) для больших объемов данных, показав скорость 0,578 ТБ/мин (100 ТБ за 173 минуты).</span><span class="sxs-lookup"><span data-stu-id="a007f-178">It uses the MapReduce applications developed by Owen O'Malley and Arun Murthy that won the annual general-purpose ("daytona") terabyte sort benchmark in 2009 with a rate of 0.578TB/min (100TB in 173 minutes).</span></span> <span data-ttu-id="a007f-179">Дополнительные сведения об этом и других измерениях производительности сортировки см. на веб-сайте [Sortbenchmark](http://sortbenchmark.org/).</span><span class="sxs-lookup"><span data-stu-id="a007f-179">For more information on this and other sorting benchmarks, see the [Sortbenchmark](http://sortbenchmark.org/) site.</span></span>
+## <span data-ttu-id="58db7-176"><a name="hdinsight-sample-10gb-graysort"></a>Сортировка Graysort 10 ГБ</span><span class="sxs-lookup"><span data-stu-id="58db7-176"><a name="hdinsight-sample-10gb-graysort"></a>10-GB Graysort</span></span>
+<span data-ttu-id="58db7-177">В этом примере используется небольшой объем данных, 10 ГБ, чтобы можно было выполнить сортировку достаточно быстро.</span><span class="sxs-lookup"><span data-stu-id="58db7-177">This sample uses a modest 10GB of data so that it can be run relatively quickly.</span></span> <span data-ttu-id="58db7-178">Она использует hello MapReduce приложения, разработанные с Owen O'Malley и Arun Murthy, выиграл hello годовой общего назначения («daytona») терабайт сортировки теста производительности в 2009 г. с частотой ТБ 0.578/мин (100 ТБ 173 минут).</span><span class="sxs-lookup"><span data-stu-id="58db7-178">It uses hello MapReduce applications developed by Owen O'Malley and Arun Murthy that won hello annual general-purpose ("daytona") terabyte sort benchmark in 2009 with a rate of 0.578TB/min (100TB in 173 minutes).</span></span> <span data-ttu-id="58db7-179">Дополнительные сведения об этом и других сортировки тестов производительности см. в разделе hello [Sortbenchmark](http://sortbenchmark.org/) сайта.</span><span class="sxs-lookup"><span data-stu-id="58db7-179">For more information on this and other sorting benchmarks, see hello [Sortbenchmark](http://sortbenchmark.org/) site.</span></span>
 
-<span data-ttu-id="a007f-180">В этом примере используются три набора программ MapReduce.</span><span class="sxs-lookup"><span data-stu-id="a007f-180">This sample uses three sets of MapReduce programs:</span></span>
+<span data-ttu-id="58db7-180">В этом примере используются три набора программ MapReduce.</span><span class="sxs-lookup"><span data-stu-id="58db7-180">This sample uses three sets of MapReduce programs:</span></span>
 
-1. <span data-ttu-id="a007f-181">**TeraGen** : программа MapReduce, с помощью которой можно создать строки данных для сортировки.</span><span class="sxs-lookup"><span data-stu-id="a007f-181">**TeraGen** is a MapReduce program that you can use to generate the rows of data to sort.</span></span>
-2. <span data-ttu-id="a007f-182">**TeraSort**: производит выборку входных данных и использует MapReduce для сортировки данных в общем порядке.</span><span class="sxs-lookup"><span data-stu-id="a007f-182">**TeraSort** samples the input data and uses MapReduce to sort the data into a total order.</span></span> <span data-ttu-id="a007f-183">TeraSort представляет стандартные функции MapReduce, за исключением настраиваемого разделителя, в котором используется отсортированный список выборки ключей N-1, определяющий диапазон ключей для каждой функции reduce.</span><span class="sxs-lookup"><span data-stu-id="a007f-183">TeraSort is a standard sort of MapReduce functions, except for a custom partitioner that uses a sorted list of N-1 sampled keys that define the key range for each reduce.</span></span> <span data-ttu-id="a007f-184">В частности, все ключи, подобные этому примеру [i-1] <= key < sample[i] отправляются для сокращения i.</span><span class="sxs-lookup"><span data-stu-id="a007f-184">In particular, all keys such that sample[i-1] <= key < sample[i] are sent to reduce i.</span></span> <span data-ttu-id="a007f-185">Это гарантирует, что все выходные данные сокращения i будут меньше, чем выходные данные i+1.</span><span class="sxs-lookup"><span data-stu-id="a007f-185">This guarantees that the outputs of reduce i are all less than the output of reduce i+1.</span></span>
-3. <span data-ttu-id="a007f-186">**TeraValidate** — программа MapReduce, которая проверяет глобальную сортировку выходных данных.</span><span class="sxs-lookup"><span data-stu-id="a007f-186">**TeraValidate** is a MapReduce program that validates that the output is globally sorted.</span></span> <span data-ttu-id="a007f-187">В выходном каталоге создается одна функция map для каждого файла, и каждая функция map гарантирует, что каждый ключ будет меньше или равен предыдущему.</span><span class="sxs-lookup"><span data-stu-id="a007f-187">It creates one map per file in the output directory, and each map ensures that each key is less than or equal to the previous one.</span></span> <span data-ttu-id="a007f-188">Функция map также создает записи первого и последнего ключей каждого файла, а функция reduce гарантирует, что первый ключ файла i больше последнего ключа файла i-1.</span><span class="sxs-lookup"><span data-stu-id="a007f-188">The map function also generates records of the first and last keys of each file, and the reduce function ensures that the first key of file i is greater than the last key of file i-1.</span></span> <span data-ttu-id="a007f-189">Все проблемы указываются в выходных данных функции reduce вместе с неотсортированными ключами.</span><span class="sxs-lookup"><span data-stu-id="a007f-189">Any problems are reported as an output of the reduce with the keys that are out of order.</span></span>
+1. <span data-ttu-id="58db7-181">**TeraGen** представляет собой программу MapReduce, которые можно использовать строки hello toogenerate toosort данных.</span><span class="sxs-lookup"><span data-stu-id="58db7-181">**TeraGen** is a MapReduce program that you can use toogenerate hello rows of data toosort.</span></span>
+2. <span data-ttu-id="58db7-182">**TeraSort** выборку hello входных данных и использует данные hello toosort MapReduce в общий порядок.</span><span class="sxs-lookup"><span data-stu-id="58db7-182">**TeraSort** samples hello input data and uses MapReduce toosort hello data into a total order.</span></span> <span data-ttu-id="58db7-183">TeraSort представляет собой стандартный MapReduce функции, за исключением пользовательского модуля разделения, использующий отсортированный список ключей выборки n-1, определяющие hello диапазона ключей для каждого редукции.</span><span class="sxs-lookup"><span data-stu-id="58db7-183">TeraSort is a standard sort of MapReduce functions, except for a custom partitioner that uses a sorted list of N-1 sampled keys that define hello key range for each reduce.</span></span> <span data-ttu-id="58db7-184">В частности, все ключи такого, образец [i-1] < = ключ < образец [i] отправляются tooreduce я.</span><span class="sxs-lookup"><span data-stu-id="58db7-184">In particular, all keys such that sample[i-1] <= key < sample[i] are sent tooreduce i.</span></span> <span data-ttu-id="58db7-185">Это гарантирует, что выходные данные hello уменьшить i, меньше, чем выходные данные hello уменьшить i + 1.</span><span class="sxs-lookup"><span data-stu-id="58db7-185">This guarantees that hello outputs of reduce i are all less than hello output of reduce i+1.</span></span>
+3. <span data-ttu-id="58db7-186">**TeraValidate** является глобально сортируется программу MapReduce, которая проверяет hello выходного файла.</span><span class="sxs-lookup"><span data-stu-id="58db7-186">**TeraValidate** is a MapReduce program that validates that hello output is globally sorted.</span></span> <span data-ttu-id="58db7-187">Он создает одно сопоставление каждого файла в выходной каталог hello, и каждая карта гарантирует, что каждый ключ меньше или равно toohello предыдущий.</span><span class="sxs-lookup"><span data-stu-id="58db7-187">It creates one map per file in hello output directory, and each map ensures that each key is less than or equal toohello previous one.</span></span> <span data-ttu-id="58db7-188">Функция сопоставления Hello также приводит к возникновению ошибки записи hello сначала и последний разделы для каждого файла и hello reduce-функция гарантирует, что hello первый ключ файла i больше, чем последний ключ файла i-1 hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-188">hello map function also generates records of hello first and last keys of each file, and hello reduce function ensures that hello first key of file i is greater than hello last key of file i-1.</span></span> <span data-ttu-id="58db7-189">Сообщено обо всех проблемах как выходные данные hello уменьшить hello ключей, которые выходят за пределы.</span><span class="sxs-lookup"><span data-stu-id="58db7-189">Any problems are reported as an output of hello reduce with hello keys that are out of order.</span></span>
 
-<span data-ttu-id="a007f-190">Формат ввода и вывода, используемый во всех трех приложениях, позволяет читать и записывать текстовые файлы в нужном формате.</span><span class="sxs-lookup"><span data-stu-id="a007f-190">The input and output format, used by all three applications, reads and writes the text files in the right format.</span></span> <span data-ttu-id="a007f-191">Для репликации выходных данных функции reduce указано значение 1, а не значение по умолчанию 3, поскольку при сравнительном измерении производительности не требуется репликация выходных данных на несколько узлов.</span><span class="sxs-lookup"><span data-stu-id="a007f-191">The output of the reduce has replication set to 1, instead of the default 3, because the benchmark contest does not require that the output data be replicated on to multiple nodes.</span></span>
+<span data-ttu-id="58db7-190">Hello входной и выходной формат, используемый все три приложения считывают и записывают hello текстовых файлов в правильный формат hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-190">hello input and output format, used by all three applications, reads and writes hello text files in hello right format.</span></span> <span data-ttu-id="58db7-191">выходные данные Hello hello уменьшить репликации задал too1, а не по умолчанию hello 3, поскольку проверкой hello тестирования производительности не требуется, hello выходные данные реплицировались на узлах toomultiple.</span><span class="sxs-lookup"><span data-stu-id="58db7-191">hello output of hello reduce has replication set too1, instead of hello default 3, because hello benchmark contest does not require that hello output data be replicated on toomultiple nodes.</span></span>
 
-<span data-ttu-id="a007f-192">Для примера необходимы три задачи, каждая из которых соответствует одной из программ MapReduce, описанных во введении:</span><span class="sxs-lookup"><span data-stu-id="a007f-192">Three tasks are required by the sample, each corresponding to one of the MapReduce programs described in the introduction:</span></span>
+<span data-ttu-id="58db7-192">В образце hello, каждого соответствующего tooone hello программ MapReduce, описанные в введение hello необходимо выполнить три задачи.</span><span class="sxs-lookup"><span data-stu-id="58db7-192">Three tasks are required by hello sample, each corresponding tooone of hello MapReduce programs described in hello introduction:</span></span>
 
-1. <span data-ttu-id="a007f-193">Создание данных для сортировки с помощью задания MapReduce **TeraGen** .</span><span class="sxs-lookup"><span data-stu-id="a007f-193">Generate the data for sorting by running the **TeraGen** MapReduce job.</span></span>
-2. <span data-ttu-id="a007f-194">Сортировка данных с помощью задания MapReduce **TeraSort** .</span><span class="sxs-lookup"><span data-stu-id="a007f-194">Sort the data by running the **TeraSort** MapReduce job.</span></span>
-3. <span data-ttu-id="a007f-195">Подтверждение правильной сортировки данных с помощью задания MapReduce **TeraValidate** .</span><span class="sxs-lookup"><span data-stu-id="a007f-195">Confirm that the data has been correctly sorted by running the **TeraValidate** MapReduce job.</span></span>
+1. <span data-ttu-id="58db7-193">Создать hello данные для сортировки, запустив hello **TeraGen** задания MapReduce.</span><span class="sxs-lookup"><span data-stu-id="58db7-193">Generate hello data for sorting by running hello **TeraGen** MapReduce job.</span></span>
+2. <span data-ttu-id="58db7-194">Сортировка данных hello, запустив hello **TeraSort** задания MapReduce.</span><span class="sxs-lookup"><span data-stu-id="58db7-194">Sort hello data by running hello **TeraSort** MapReduce job.</span></span>
+3. <span data-ttu-id="58db7-195">Убедитесь, правильно отсортированы данные hello, запустив hello **TeraValidate** задания MapReduce.</span><span class="sxs-lookup"><span data-stu-id="58db7-195">Confirm that hello data has been correctly sorted by running hello **TeraValidate** MapReduce job.</span></span>
 
-<span data-ttu-id="a007f-196">**Отправка заданий**</span><span class="sxs-lookup"><span data-stu-id="a007f-196">**To submit the jobs**</span></span>
+<span data-ttu-id="58db7-196">**toosubmit hello заданий**</span><span class="sxs-lookup"><span data-stu-id="58db7-196">**toosubmit hello jobs**</span></span>
 
-* <span data-ttu-id="a007f-197">Выполните процедуру, описанную в разделе [Счетчик слов — Java](#word-count-java), и используйте следующие определения заданий.</span><span class="sxs-lookup"><span data-stu-id="a007f-197">Follow the procedure in [Word count - Java](#word-count-java), and use the following job definitions:</span></span>
+* <span data-ttu-id="58db7-197">Выполните процедуру hello в [число - Java слов](#word-count-java), и используйте hello после определения заданий:</span><span class="sxs-lookup"><span data-stu-id="58db7-197">Follow hello procedure in [Word count - Java](#word-count-java), and use hello following job definitions:</span></span>
 
     ```powershell
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -210,16 +210,16 @@ ms.lasthandoff: 08/18/2017
                                 -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-output", "/example/data/10GB-sort-validate"
     ```
 
-## <a name="next-steps"></a><span data-ttu-id="a007f-198">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="a007f-198">Next steps</span></span>
-<span data-ttu-id="a007f-199">Из этой статьи, а также из статей, сопровождающих каждый пример, вы узнали, как с помощью среды Azure PowerShell выполнять примеры, включенные в кластеры HDInsight.</span><span class="sxs-lookup"><span data-stu-id="a007f-199">From this article and the articles in each of the samples, you learned how to run the samples included with the HDInsight clusters by using Azure PowerShell.</span></span> <span data-ttu-id="a007f-200">Учебники по использованию Pig, Hive и MapReduce в службе HDInsight см. в следующих статьях.</span><span class="sxs-lookup"><span data-stu-id="a007f-200">For tutorials about using Pig, Hive, and MapReduce with HDInsight, see the following topics:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="58db7-198">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="58db7-198">Next steps</span></span>
+<span data-ttu-id="58db7-199">Из этой статьи и статьи hello в каждом из примеров hello вы узнали, как образцы hello toorun состава hello кластеров HDInsight с помощью Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="58db7-199">From this article and hello articles in each of hello samples, you learned how toorun hello samples included with hello HDInsight clusters by using Azure PowerShell.</span></span> <span data-ttu-id="58db7-200">Руководства об использовании с HDInsight Pig, Hive и MapReduce см hello следующие вопросы:</span><span class="sxs-lookup"><span data-stu-id="58db7-200">For tutorials about using Pig, Hive, and MapReduce with HDInsight, see hello following topics:</span></span>
 
-* <span data-ttu-id="a007f-201">[Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux][hdinsight-get-started]</span><span class="sxs-lookup"><span data-stu-id="a007f-201">[Get started using Hadoop with Hive in HDInsight to analyze mobile handset use][hdinsight-get-started]</span></span>
-* <span data-ttu-id="a007f-202">[Использование Pig с Hadoop в HDInsight][hdinsight-use-pig]</span><span class="sxs-lookup"><span data-stu-id="a007f-202">[Use Pig with Hadoop on HDInsight][hdinsight-use-pig]</span></span>
-* <span data-ttu-id="a007f-203">[Использование Hive с Hadoop в HDInsight][hdinsight-use-hive]</span><span class="sxs-lookup"><span data-stu-id="a007f-203">[Use Hive with Hadoop on HDInsight][hdinsight-use-hive]</span></span>
-* <span data-ttu-id="a007f-204">[Отправка заданий Hadoop в HDInsight][hdinsight-submit-jobs]</span><span class="sxs-lookup"><span data-stu-id="a007f-204">[Submit Hadoop Jobs in HDInsight][hdinsight-submit-jobs]</span></span>
-* <span data-ttu-id="a007f-205">[Документация по пакету SDK для Azure HDInsight][hdinsight-sdk-documentation]</span><span class="sxs-lookup"><span data-stu-id="a007f-205">[Azure HDInsight SDK documentation][hdinsight-sdk-documentation]</span></span>
+* <span data-ttu-id="58db7-201">[Начало работы с Hadoop Hive используется мобильного телефона tooanalyze HDInsight][hdinsight-get-started]</span><span class="sxs-lookup"><span data-stu-id="58db7-201">[Get started using Hadoop with Hive in HDInsight tooanalyze mobile handset use][hdinsight-get-started]</span></span>
+* <span data-ttu-id="58db7-202">[Использование Pig с Hadoop в HDInsight][hdinsight-use-pig]</span><span class="sxs-lookup"><span data-stu-id="58db7-202">[Use Pig with Hadoop on HDInsight][hdinsight-use-pig]</span></span>
+* <span data-ttu-id="58db7-203">[Использование Hive с Hadoop в HDInsight][hdinsight-use-hive]</span><span class="sxs-lookup"><span data-stu-id="58db7-203">[Use Hive with Hadoop on HDInsight][hdinsight-use-hive]</span></span>
+* <span data-ttu-id="58db7-204">[Отправка заданий Hadoop в HDInsight][hdinsight-submit-jobs]</span><span class="sxs-lookup"><span data-stu-id="58db7-204">[Submit Hadoop Jobs in HDInsight][hdinsight-submit-jobs]</span></span>
+* <span data-ttu-id="58db7-205">[Документация по пакету SDK для Azure HDInsight][hdinsight-sdk-documentation]</span><span class="sxs-lookup"><span data-stu-id="58db7-205">[Azure HDInsight SDK documentation][hdinsight-sdk-documentation]</span></span>
 
-## <a name="appendix-a---the-word-count-source-code"></a><span data-ttu-id="a007f-206">Приложение А — исходный код для подсчета количества слов</span><span class="sxs-lookup"><span data-stu-id="a007f-206">Appendix A - The Word count source code</span></span>
+## <a name="appendix-a---hello-word-count-source-code"></a><span data-ttu-id="58db7-206">Приложение А hello Word count исходного кода.</span><span class="sxs-lookup"><span data-stu-id="58db7-206">Appendix A - hello Word count source code</span></span>
 
 ```java
 package org.apache.hadoop.examples;
@@ -291,11 +291,11 @@ System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 ```
 
-## <a name="appendix-b---the-word-count-streaming-source-code"></a><span data-ttu-id="a007f-207">Приложение Б — исходный код для подсчета количества слов, передаваемых в потоковом режиме</span><span class="sxs-lookup"><span data-stu-id="a007f-207">Appendix B - The word count streaming source code</span></span>
-<span data-ttu-id="a007f-208">В программе MapReduce используются приложение cat.exe как интерфейс сопоставления для потоковой передачи текста на консоль и приложение wc.exe как интерфейс редукции для подсчета количества слов, передаваемых в потоковом режиме из документа.</span><span class="sxs-lookup"><span data-stu-id="a007f-208">The MapReduce program uses the cat.exe application as a mapping interface to stream the text into the console and the wc.exe application as the reduce interface to count the number of words that are streamed from a document.</span></span> <span data-ttu-id="a007f-209">Модуль сопоставления и модуль редукции считывают символы (построчно) из стандартного входного потока (stdin) и записывают данные в стандартный выходной поток (stdout).</span><span class="sxs-lookup"><span data-stu-id="a007f-209">Both the mapper and reducer read characters, line-by-line, from the standard input stream (stdin) and write to the standard output stream (stdout).</span></span>
+## <a name="appendix-b---hello-word-count-streaming-source-code"></a><span data-ttu-id="58db7-207">Приложение Б. Статистика hello потоковой передачи исходного кода.</span><span class="sxs-lookup"><span data-stu-id="58db7-207">Appendix B - hello word count streaming source code</span></span>
+<span data-ttu-id="58db7-208">Hello MapReduce программой hello cat.exe как текст hello toostream сопоставление интерфейса в консоль hello и hello wc.exe приложениями как hello уменьшение интерфейс toocount hello число слов, которые передаются потоком из документа.</span><span class="sxs-lookup"><span data-stu-id="58db7-208">hello MapReduce program uses hello cat.exe application as a mapping interface toostream hello text into hello console and hello wc.exe application as hello reduce interface toocount hello number of words that are streamed from a document.</span></span> <span data-ttu-id="58db7-209">Hello сопоставления и редуктора считывание символов, строка за строкой, из стандартного входного потока hello (stdin) и записи toohello стандартного потока вывода (stdout).</span><span class="sxs-lookup"><span data-stu-id="58db7-209">Both hello mapper and reducer read characters, line-by-line, from hello standard input stream (stdin) and write toohello standard output stream (stdout).</span></span>
 
 ```csharp
-// The source code for the cat.exe (Mapper).
+// hello source code for hello cat.exe (Mapper).
 
 using System;
 using System.IO;
@@ -326,10 +326,10 @@ namespace cat
 }
 ```
 
-<span data-ttu-id="a007f-210">Код сопоставления в файле cat.cs использует объект [StreamReader][streamreader] для чтения знаков входящего потока на консоли. Этот объект записывает потоковые данные в стандартный выходной поток с помощью статического метода [Console.Writeline][console-writeline].</span><span class="sxs-lookup"><span data-stu-id="a007f-210">The mapper code in the cat.cs file uses a [StreamReader][streamreader] object to read the characters of the incoming stream to the console, which then writes the stream to the standard output stream with the static [Console.Writeline][console-writeline] method.</span></span>
+<span data-ttu-id="58db7-210">Здравствуйте сопоставления кода в файл использует hello cat.cs [StreamReader] [ streamreader] объекта символов hello tooread hello входящего потока toohello консоли Здравствуйте поток toohello стандартный выходной поток, который затем производит запись с помощью статических hello [Console.Writeline] [ console-writeline] метод.</span><span class="sxs-lookup"><span data-stu-id="58db7-210">hello mapper code in hello cat.cs file uses a [StreamReader][streamreader] object tooread hello characters of hello incoming stream toohello console, which then writes hello stream toohello standard output stream with hello static [Console.Writeline][console-writeline] method.</span></span>
 
 ```csharp
-// The source code for wc.exe (Reducer) is:
+// hello source code for wc.exe (Reducer) is:
 
 using System;
 using System.IO;
@@ -375,28 +375,28 @@ namespace wc
 }
 ```
 
-<span data-ttu-id="a007f-211">Код процедуры reduce в файле wc.cs использует объект [StreamReader][streamreader] для чтения знаков из стандартного входного потока, который является выходным потоком процедуры mapper в cat.exe.</span><span class="sxs-lookup"><span data-stu-id="a007f-211">The reducer code in the wc.cs file uses a [StreamReader][streamreader]   object to read characters from the standard input stream that have been output by the cat.exe mapper.</span></span> <span data-ttu-id="a007f-212">Поскольку этот объект читает знаки с помощью метода [Console.Writeline][console-writeline], он подсчитывает слова, считая пробелы и знаки конца строки в конце каждого слова.</span><span class="sxs-lookup"><span data-stu-id="a007f-212">As it reads the characters with the [Console.Writeline][console-writeline] method, it counts the words by counting spaces and end-of-line characters at the end of each word.</span></span> <span data-ttu-id="a007f-213">Общая сумма записывается в стандартный выходной поток с помощью метода [Console.Writeline][console-writeline].</span><span class="sxs-lookup"><span data-stu-id="a007f-213">It then writes the total to the standard output stream with the [Console.Writeline][console-writeline] method.</span></span>
+<span data-ttu-id="58db7-211">Здравствуйте редуктора кода в файл использует hello wc.cs [StreamReader] [ streamreader] объекта tooread символов из hello стандартный входной поток, были, получаемый в результате сопоставления cat.exe hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-211">hello reducer code in hello wc.cs file uses a [StreamReader][streamreader]   object tooread characters from hello standard input stream that have been output by hello cat.exe mapper.</span></span> <span data-ttu-id="58db7-212">При чтении символов hello с hello [Console.Writeline] [ console-writeline] метод, он считает слова hello путем подсчета пробелы и символы конца строки в конце каждого слова в hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-212">As it reads hello characters with hello [Console.Writeline][console-writeline] method, it counts hello words by counting spaces and end-of-line characters at hello end of each word.</span></span> <span data-ttu-id="58db7-213">Затем он записывает hello общее toohello стандартный выходной поток с hello [Console.Writeline] [ console-writeline] метод.</span><span class="sxs-lookup"><span data-stu-id="58db7-213">It then writes hello total toohello standard output stream with hello [Console.Writeline][console-writeline] method.</span></span>
 
-## <a name="appendix-c---the-pi-estimator-source-code"></a><span data-ttu-id="a007f-214">Приложение В — исходный код для оценки значения числа пи.</span><span class="sxs-lookup"><span data-stu-id="a007f-214">Appendix C - The Pi estimator source code</span></span>
-<span data-ttu-id="a007f-215">Ниже представлен для изучения код Java для оценки числа пи, содержащий программы mapper и reducer.</span><span class="sxs-lookup"><span data-stu-id="a007f-215">The pi estimator Java code that contains the mapper and reducer functions is available for inspection below.</span></span> <span data-ttu-id="a007f-216">Программа mapper создает указанное количество точек, размещаемых в произвольном порядке внутри единичного квадрата, а затем подсчитывает количество тех точек, которые оказались внутри круга.</span><span class="sxs-lookup"><span data-stu-id="a007f-216">The mapper program generates a specified number of points placed at random inside of a unit square and then counts the number of those points that are inside the circle.</span></span> <span data-ttu-id="a007f-217">Программа reducer суммирует точки, подсчитываемые программами mapper, а затем оценивает значение числа пи по формуле 4R, где R — это отношение количества точек внутри круга к общему количеству точек внутри квадрата.</span><span class="sxs-lookup"><span data-stu-id="a007f-217">The reducer program accumulates points counted by the mappers and then estimates the value of pi from the formula 4R, where R is the ratio of the number of points counted inside the circle to the total number of points that are within the square.</span></span>
+## <a name="appendix-c---hello-pi-estimator-source-code"></a><span data-ttu-id="58db7-214">Приложение В hello Pi оценки исходного кода.</span><span class="sxs-lookup"><span data-stu-id="58db7-214">Appendix C - hello Pi estimator source code</span></span>
+<span data-ttu-id="58db7-215">Оценщик pi Hello код Java, содержащий сопоставления и редуктора функции hello доступен для проверки ниже.</span><span class="sxs-lookup"><span data-stu-id="58db7-215">hello pi estimator Java code that contains hello mapper and reducer functions is available for inspection below.</span></span> <span data-ttu-id="58db7-216">Программа Hello сопоставления создает указанное число точек в произвольном порядке размещена внутри единичного квадрата и затем подсчитывает число hello те точки, где находятся внутри круг hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-216">hello mapper program generates a specified number of points placed at random inside of a unit square and then counts hello number of those points that are inside hello circle.</span></span> <span data-ttu-id="58db7-217">Программа редуктора Hello накапливает точки учитываются hello модули сопоставления и затем оценивает hello число пи из формул 4R hello, где R — отношение hello hello количество точек, учитываются внутри hello круг toohello общего количества точек, расположенных внутри квадратных hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-217">hello reducer program accumulates points counted by hello mappers and then estimates hello value of pi from hello formula 4R, where R is hello ratio of hello number of points counted inside hello circle toohello total number of points that are within hello square.</span></span>
 
 ```java
 /**
-* Licensed to the Apache Software Foundation (ASF) under one
-* or more contributor license agreements. See the NOTICE file
+* Licensed toohello Apache Software Foundation (ASF) under one
+* or more contributor license agreements. See hello NOTICE file
 * distributed with this work for additional information
-* regarding copyright ownership. The ASF licenses this file
-* to you under the Apache License, Version 2.0 (the
+* regarding copyright ownership. hello ASF licenses this file
+* tooyou under hello Apache License, Version 2.0 (the
 * "License"); you may not use this file except in compliance
-* with the License. You may obtain a copy of the License at
+* with hello License. You may obtain a copy of hello License at
 *
 * http://www.apache.org/licenses/LICENSE-2.0
 *
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* Unless required by applicable law or agreed tooin writing, software
+* distributed under hello License is distributed on an "AS IS" BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or     implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
+* See hello License for hello specific language governing permissions and
+* limitations under hello License.
 */
 
 package org.apache.hadoop.examples;
@@ -428,21 +428,21 @@ import org.apache.hadoop.mapred.SequenceFileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-//A Map-reduce program to estimate the value of Pi
+//A Map-reduce program tooestimate hello value of Pi
 //using quasi-Monte Carlo method.
 //
 //Mapper:
 //Generate points in a unit square
-//and then count points inside/outside of the inscribed circle of the square.
+//and then count points inside/outside of hello inscribed circle of hello square.
 //
 //Reducer:
-//Accumulate points inside/outside results from the mappers.
+//Accumulate points inside/outside results from hello mappers.
 //Let numTotal = numInside + numOutside.
-//The fraction numInside/numTotal is a rational approximation of
-//the value (Area of the circle)/(Area of the square),
-//where the area of the inscribed circle is Pi/4
-//and the area of unit square is 1.
-//Then, Pi is estimated value to be 4(numInside/numTotal).
+//hello fraction numInside/numTotal is a rational approximation of
+//hello value (Area of hello circle)/(Area of hello square),
+//where hello area of hello inscribed circle is Pi/4
+//and hello area of unit square is 1.
+//Then, Pi is estimated value toobe 4(numInside/numTotal).
 //
 
 public class PiEstimator extends Configured implements Tool {
@@ -451,8 +451,8 @@ static private final Path TMP_DIR = new Path(
 PiEstimator.class.getSimpleName() + "_TMP_3_141592654");
 
 //2-dimensional Halton sequence {H(i)},
-//where H(i) is a 2-dimensional point and i >= 1 is the index.
-//Halton sequence is used to generate sample points for Pi estimation.
+//where H(i) is a 2-dimensional point and i >= 1 is hello index.
+//Halton sequence is used toogenerate sample points for Pi estimation.
 private static class HaltonSequence {
 // Bases
 static final int[] P = {2, 3};
@@ -464,8 +464,8 @@ private double[] x;
 private double[][] q;
 private int[][] d;
 
-//Initialize to H(startindex),
-//so the sequence begins with H(startindex+1).
+//Initialize tooH(startindex),
+//so hello sequence begins with H(startindex+1).
 HaltonSequence(long startindex) {
 index = startindex;
 x = new double[K.length];
@@ -490,7 +490,7 @@ x[i] += d[i][j] * q[i][j];
 }
 
 //Compute next point.
-//Assume the current point is H(index).
+//Assume hello current point is H(index).
 //Compute H(index+1).
 //@return a 2-dimensional point with coordinates in [0,1)^2
 double[] nextPoint() {
@@ -512,13 +512,13 @@ return x;
 
 //Mapper class for Pi estimation.
 //Generate points in a unit square and then
-//count points inside/outside of the inscribed circle of the square.
+//count points inside/outside of hello inscribed circle of hello square.
 public static class PiMapper extends MapReduceBase
 implements Mapper<LongWritable, LongWritable, BooleanWritable, LongWritable> {
 
 //Map method.
-//@param offset samples starting from the (offset+1)th sample.
-//@param size the number of samples for this map
+//@param offset samples starting from hello (offset+1)th sample.
+//@param size hello number of samples for this map
 //@param out output {ture->numInside, false->numOutside}
 //@param reporter
 public void map(LongWritable offset,
@@ -534,7 +534,7 @@ for(long i = 0; i < size.get(); ) {
 //generate points in a unit square
 final double[] point = haltonsequence.nextPoint();
 
-//count points inside/outside of the inscribed circle of the square
+//count points inside/outside of hello inscribed circle of hello square
 final double x = point[0] - 0.5;
 final double y = point[1] - 0.5;
 if (x*x + y*y > 0.25) {
@@ -557,13 +557,13 @@ out.collect(new BooleanWritable(false), new LongWritable(numOutside));
 }
 
 //Reducer class for Pi estimation.
-//Accumulate points inside/outside results from the mappers.
+//Accumulate points inside/outside results from hello mappers.
 public static class PiReducer extends MapReduceBase
 implements Reducer<BooleanWritable, LongWritable, WritableComparable<?>, Writable> {
 
 private long numInside = 0;
 private long numOutside = 0;
-private JobConf conf; //configuration for accessing the file system
+private JobConf conf; //configuration for accessing hello file system
 
 //Store job configuration.
 @Override
@@ -571,9 +571,9 @@ public void configure(JobConf job) {
 conf = job;
 }
 
-// Accumulate number of points inside/outside results from the mappers.
-// @param isInside Is the points inside?
-// @param values An iterator to a list of point counts
+// Accumulate number of points inside/outside results from hello mappers.
+// @param isInside Is hello points inside?
+// @param values An iterator tooa list of point counts
 // @param output dummy, not used here.
 // @param reporter
 
@@ -588,10 +588,10 @@ for(; values.hasNext(); numOutside += values.next().get());
 }
 }
 
-//Reduce task done, write output to a file.
+//Reduce task done, write output tooa file.
 @Override
 public void close() throws IOException {
-//write output to a file
+//write output tooa file
 Path outDir = new Path(TMP_DIR, "out");
 Path outFile = new Path(outDir, "reduce-out");
 FileSystem fileSys = FileSystem.get(conf);
@@ -604,7 +604,7 @@ writer.close();
 }
 
 //Run a map/reduce job for estimating Pi.
-//@return the estimated value of Pi.
+//@return hello estimated value of Pi.
 public static BigDecimal estimate(int numMaps, long numPoints, JobConf jobConf
 )
 throws IOException {
@@ -624,7 +624,7 @@ jobConf.setReducerClass(PiReducer.class);
 jobConf.setNumReduceTasks(1);
 
 // turn off speculative execution, because DFS doesn't handle
-// multiple writers to the same file.
+// multiple writers toohello same file.
 jobConf.setSpeculativeExecution(false);
 
 //setup input/output directories
@@ -716,26 +716,26 @@ System.exit(ToolRunner.run(null, new PiEstimator(), argv));
 }
 ```
 
-## <a name="appendix-d---the-10gb-graysort-source-code"></a><span data-ttu-id="a007f-218">Приложение Г — исходный код для сортировки Graysort 10 ГБ</span><span class="sxs-lookup"><span data-stu-id="a007f-218">Appendix D - The 10gb graysort source code</span></span>
-<span data-ttu-id="a007f-219">В этом разделе предоставлен для изучения код программы MapReduce TeraSort.</span><span class="sxs-lookup"><span data-stu-id="a007f-219">The code for the TeraSort MapReduce program is presented for inspection in this section.</span></span>
+## <a name="appendix-d---hello-10gb-graysort-source-code"></a><span data-ttu-id="58db7-218">Приложение D - hello 10 ГБ graysort исходного кода</span><span class="sxs-lookup"><span data-stu-id="58db7-218">Appendix D - hello 10gb graysort source code</span></span>
+<span data-ttu-id="58db7-219">для изучения этого раздела представлены кода Hello для программы TeraSort MapReduce hello.</span><span class="sxs-lookup"><span data-stu-id="58db7-219">hello code for hello TeraSort MapReduce program is presented for inspection in this section.</span></span>
 
 ```java
 /**
-    * Licensed to the Apache Software Foundation (ASF) under one
-    * or more contributor license agreements.  See the NOTICE file
+    * Licensed toohello Apache Software Foundation (ASF) under one
+    * or more contributor license agreements.  See hello NOTICE file
     * distributed with this work for additional information
-    * regarding copyright ownership.  The ASF licenses this file
-    * to you under the Apache License, Version 2.0 (the
+    * regarding copyright ownership.  hello ASF licenses this file
+    * tooyou under hello Apache License, Version 2.0 (the
     * "License"); you may not use this file except in compliance
-    * with the License.  You may obtain a copy of the License at
+    * with hello License.  You may obtain a copy of hello License at
     *
     *     http://www.apache.org/licenses/LICENSE-2.0
     *
-    * Unless required by applicable law or agreed to in writing, software
-    * distributed under the License is distributed on an "AS IS" BASIS,
+    * Unless required by applicable law or agreed tooin writing, software
+    * distributed under hello License is distributed on an "AS IS" BASIS,
     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    * See the License for the specific language governing permissions and
-    * limitations under the License.
+    * See hello License for hello specific language governing permissions and
+    * limitations under hello License.
     */
 
 package org.apache.hadoop.examples.terasort;
@@ -763,10 +763,10 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 /**
-    * Generates the sampled split points, launches the job,
-    * and waits for it to finish.
+    * Generates hello sampled split points, launches hello job,
+    * and waits for it toofinish.
     * <p>
-    * To run the program:
+    * toorun hello program:
     * <b>bin/hadoop jar hadoop-examples-*.jar terasort in-dir out-dir</b>
     */
 
@@ -798,7 +798,7 @@ public class TeraSort extends Configured implements Tool {
     }
 
     /**
-        * An inner trie node that contains 256 children based on the next
+        * An inner trie node that contains 256 children based on hello next
         * character.
         */
     static class InnerTrieNode extends TrieNode {
@@ -832,7 +832,7 @@ public class TeraSort extends Configured implements Tool {
     }
 
     /**
-        * A leaf trie node that does string compares to figure out where the given
+        * A leaf trie node that does string compares toofigure out where hello given
         * key belongs between lower..upper.
         */
     static class LeafTrieNode extends TrieNode {
@@ -864,11 +864,11 @@ public class TeraSort extends Configured implements Tool {
     }
 
     /**
-        * Read the cut points from the given sequence file.
-        * @param fs the file system
-        * @param p the path to read
-        * @param job the job config
-        * @return the strings to split the partitions on
+        * Read hello cut points from hello given sequence file.
+        * @param fs hello file system
+        * @param p hello path tooread
+        * @param job hello job config
+        * @return hello strings toosplit hello partitions on
         * @throws IOException
         */
     private static Text[] readPartitions(FileSystem fs, Path p,
@@ -886,14 +886,14 @@ public class TeraSort extends Configured implements Tool {
     }
 
     /**
-        * Given a sorted set of cut points, build a trie that will find the correct
+        * Given a sorted set of cut points, build a trie that will find hello correct
         * partition quickly.
-        * @param splits the list of cut points
-        * @param lower the lower bound of partitions 0..numPartitions-1
-        * @param upper the upper bound of partitions 0..numPartitions-1
-        * @param prefix the prefix that we have already checked against
-        * @param maxDepth the maximum depth we will build a trie for
-        * @return the trie node that will divide the splits correctly
+        * @param splits hello list of cut points
+        * @param lower hello lower bound of partitions 0..numPartitions-1
+        * @param upper hello upper bound of partitions 0..numPartitions-1
+        * @param prefix hello prefix that we have already checked against
+        * @param maxDepth hello maximum depth we will build a trie for
+        * @return hello trie node that will divide hello splits correctly
         */
     private static TrieNode buildTrie(Text[] splits, int lower, int upper,
                                         Text prefix, int maxDepth) {
@@ -903,7 +903,7 @@ public class TeraSort extends Configured implements Tool {
         }
         InnerTrieNode result = new InnerTrieNode(depth);
         Text trial = new Text(prefix);
-        // append an extra byte on to the prefix
+        // append an extra byte on toohello prefix
         trial.append(new byte[1], 0, 1);
         int currentBound = lower;
         for(int ch = 0; ch < 255; ++ch) {
@@ -919,7 +919,7 @@ public class TeraSort extends Configured implements Tool {
         result.child[ch] = buildTrie(splits, lower, currentBound, trial,
                                         maxDepth);
         }
-        // pick up the rest
+        // pick up hello rest
         trial.getBytes()[depth] = 127;
         result.child[255] = buildTrie(splits, currentBound, upper, trial,
                                     maxDepth);

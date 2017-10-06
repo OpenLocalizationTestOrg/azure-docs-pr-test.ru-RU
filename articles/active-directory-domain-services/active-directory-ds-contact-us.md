@@ -1,6 +1,6 @@
 ---
 title: "Доменные службы Azure Active Directory — связь с нами | Документация Майкрософт"
-description: "Свяжитесь с к командой по доменным службам Azure AD."
+description: "Обратитесь в службу продукта hello доменные службы Azure AD"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.openlocfilehash: 0a4a08a58302c113405756ad7d3bb6487887a72a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7a23d50a392549f6c7e1182bcd9a328a28e74bff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-domain-services---contact-us"></a><span data-ttu-id="5b727-103">Доменные службы Azure AD — связь с нами</span><span class="sxs-lookup"><span data-stu-id="5b727-103">Azure AD Domain Services - Contact Us</span></span>
-## <a name="contact-the-product-team"></a><span data-ttu-id="5b727-104">Связь с группой разработка продукта</span><span class="sxs-lookup"><span data-stu-id="5b727-104">Contact the product team</span></span>
-<span data-ttu-id="5b727-105">Если у вас возникла проблема с управляемым доменом, попробуйте выполнить действия, описанные в [руководстве по устранению неполадок](active-directory-ds-troubleshooting.md) .</span><span class="sxs-lookup"><span data-stu-id="5b727-105">If you have issues with your managed domain, check to see if the steps outlined in the [Troubleshooting Guide](active-directory-ds-troubleshooting.md) resolve the issue.</span></span> <span data-ttu-id="5b727-106">Если устранить проблему не удалось, свяжитесь с нами.</span><span class="sxs-lookup"><span data-stu-id="5b727-106">If you're still having trouble, feel free to contact us.</span></span>
+# <a name="azure-ad-domain-services---contact-us"></a><span data-ttu-id="7b451-103">Доменные службы Azure AD — связь с нами</span><span class="sxs-lookup"><span data-stu-id="7b451-103">Azure AD Domain Services - Contact Us</span></span>
+## <a name="contact-hello-product-team"></a><span data-ttu-id="7b451-104">Обратитесь в службу hello разработчиков</span><span class="sxs-lookup"><span data-stu-id="7b451-104">Contact hello product team</span></span>
+<span data-ttu-id="7b451-105">При наличии проблем с доменом управляемого проверьте toosee hello шаги, описанные в hello [руководство по устранению неполадок](active-directory-ds-troubleshooting.md) устранить проблему hello.</span><span class="sxs-lookup"><span data-stu-id="7b451-105">If you have issues with your managed domain, check toosee if hello steps outlined in hello [Troubleshooting Guide](active-directory-ds-troubleshooting.md) resolve hello issue.</span></span> <span data-ttu-id="7b451-106">Если по-прежнему возникают проблемы, вы бесплатно toocontact нам.</span><span class="sxs-lookup"><span data-stu-id="7b451-106">If you're still having trouble, feel free toocontact us.</span></span>
 
-<span data-ttu-id="5b727-107">Вы можете написать нам электронное сообщение [с отзывом о доменных службах Azure AD](mailto:aaddsfb@microsoft.com).</span><span class="sxs-lookup"><span data-stu-id="5b727-107">You may email us at: [Azure AD Domain Services Feedback](mailto:aaddsfb@microsoft.com).</span></span>
+<span data-ttu-id="7b451-107">Вы можете написать нам электронное сообщение [с отзывом о доменных службах Azure AD](mailto:aaddsfb@microsoft.com).</span><span class="sxs-lookup"><span data-stu-id="7b451-107">You may email us at: [Azure AD Domain Services Feedback](mailto:aaddsfb@microsoft.com).</span></span>
 
-<span data-ttu-id="5b727-108">Чтобы мы могли изучить проблему, укажите следующие сведения:</span><span class="sxs-lookup"><span data-stu-id="5b727-108">Ensure that you include the following, so we can investigate the issue.</span></span>
+<span data-ttu-id="7b451-108">Убедитесь, что включены следующие hello, мы можно исследовать проблемы hello.</span><span class="sxs-lookup"><span data-stu-id="7b451-108">Ensure that you include hello following, so we can investigate hello issue.</span></span>
 
-* <span data-ttu-id="5b727-109">**Идентификатор клиента или каталога** для вашего каталога Azure AD.</span><span class="sxs-lookup"><span data-stu-id="5b727-109">The **tenant ID/directory ID** for your Azure AD directory.</span></span> <span data-ttu-id="5b727-110">Идентификатор клиента — это идентификатор GUID, который отображается в поле "Идентификатор каталога" на странице [Свойства](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) вашего каталога.</span><span class="sxs-lookup"><span data-stu-id="5b727-110">The tenant ID is the GUID you see in the directory ID field on the [Properties page for your directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)</span></span>
-* <span data-ttu-id="5b727-111">**доменное имя DNS** , настроенное для управляемого домена доменных служб Azure AD.</span><span class="sxs-lookup"><span data-stu-id="5b727-111">The **DNS domain name** you've configured for your AAD Domain Services managed domain.</span></span>
+* <span data-ttu-id="7b451-109">Hello **идентификатор ID или каталога клиента** для вашего каталога Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7b451-109">hello **tenant ID/directory ID** for your Azure AD directory.</span></span> <span data-ttu-id="7b451-110">ИД клиента Hello — hello GUID в поле ИД hello каталог на hello [страницы свойств для вашего каталога](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)</span><span class="sxs-lookup"><span data-stu-id="7b451-110">hello tenant ID is hello GUID you see in hello directory ID field on hello [Properties page for your directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)</span></span>
+* <span data-ttu-id="7b451-111">Hello **DNS-имя домена** настройки для вашего AAD управляемого домена доменных служб.</span><span class="sxs-lookup"><span data-stu-id="7b451-111">hello **DNS domain name** you've configured for your AAD Domain Services managed domain.</span></span>
 
-## <a name="provide-feedback"></a><span data-ttu-id="5b727-112">Отзывы</span><span class="sxs-lookup"><span data-stu-id="5b727-112">Provide Feedback</span></span>
-<span data-ttu-id="5b727-113">Мы будем рады получить ваши отзывы о доменных службах Azure AD через **[канал мнений пользователей об Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/)**.</span><span class="sxs-lookup"><span data-stu-id="5b727-113">We welcome your feedback about Azure AD Domain Services via the **[Azure Active Directory User Voice channel](https://feedback.azure.com/forums/169401-azure-active-directory/)**.</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="7b451-112">Отзывы</span><span class="sxs-lookup"><span data-stu-id="7b451-112">Provide Feedback</span></span>
+<span data-ttu-id="7b451-113">Мы рады вашим отзывам об доменные службы Azure AD через hello ** [канала Azure Active Directory User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/)**.</span><span class="sxs-lookup"><span data-stu-id="7b451-113">We welcome your feedback about Azure AD Domain Services via hello **[Azure Active Directory User Voice channel](https://feedback.azure.com/forums/169401-azure-active-directory/)**.</span></span>
 
-<span data-ttu-id="5b727-114">Чтобы мы получили ваш вопрос или отзыв, он должен начинаться со слова **AADDS**.</span><span class="sxs-lookup"><span data-stu-id="5b727-114">Ensure that you pre-pend your question or feedback with the words **'AADDS'**, for it to reach us.</span></span>
+<span data-ttu-id="7b451-114">Убедитесь, что вы pre поставит вопрос или сопровождение слова hello **«AADDS»**, для него tooreach нам.</span><span class="sxs-lookup"><span data-stu-id="7b451-114">Ensure that you pre-pend your question or feedback with hello words **'AADDS'**, for it tooreach us.</span></span>
