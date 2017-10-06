@@ -1,6 +1,6 @@
 ---
-title: "Выполнение Azure CLI с помощью Jenkins | Документация Майкрософт"
-description: "Сведения об использовании Azure CLI для развертывания веб-приложения Java в Azure в конвейере Jenkins"
+title: "aaaExecute hello Azure CLI с Jenkins | Документы Microsoft"
+description: "Узнайте, как Azure CLI toouse toodeploy Java веб-приложения tooAzure в конвейере Jenkins"
 services: app-service\web
 documentationcenter: 
 author: mlearned
@@ -15,14 +15,14 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 5ca8338d4bf343f08fe70081cff755fa76a126a9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4bd1e12e6de1f010453ff51c835f84e7361962f4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Развертывание в службу приложений Azure с помощью Jenkins и Azure CLI
-Для развертывания веб-приложения Java в Azure можно использовать Azure CLI в [конвейере Jenkins](https://jenkins.io/doc/book/pipeline/). В этом учебнике мы создадим конвейер CI/CD на виртуальной машине Azure, включая следующие задачи:
+# <a name="deploy-tooazure-app-service-with-jenkins-and-hello-azure-cli"></a>Развертывание службы приложений с Jenkins tooAzure и hello Azure CLI
+toodeploy tooAzure Java web app, можно использовать Azure CLI в [Jenkins конвейера](https://jenkins.io/doc/book/pipeline/). В этом учебнике мы создадим конвейер CI/CD на виртуальной машине Azure, включая следующие задачи:
 
 > [!div class="checklist"]
 > * Создание виртуальной машины Jenkins
@@ -30,39 +30,39 @@ ms.lasthandoff: 08/18/2017
 > * Создание веб-приложения в Azure
 > * Подготовка репозитория GitHub
 > * Создание конвейера Jenkins
-> * Запуск конвейера и проверка веб-приложения
+> * Запустите конвейера hello и проверьте hello веб-приложения
 
-Для этого руководства требуется Azure CLI версии 2.0.4 или более поздней. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Упражнений этого учебника требуется hello Azure CLI версия 2.0.4 или более поздней версии. версия toofind hello, запустите `az --version`. Получить tooupgrade [установить CLI Azure 2.0]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-and-configure-jenkins-instance"></a>Создание и настройка экземпляра Jenkins
-Если у вас нет главного экземпляра, воспользуйтесь [шаблоном решений](install-jenkins-solution-template.md), который по умолчанию содержит необходимый подключаемый модуль [Учетные данные Azure](https://plugins.jenkins.io/azure-credentials). 
+Если главный Jenkins еще нет начните с hello [шаблон решения](install-jenkins-solution-template.md), включающее необходимые hello [учетные данные Azure](https://plugins.jenkins.io/azure-credentials) подключаемого модуля по умолчанию. 
 
-Подключаемый модуль учетных данных Azure позволяет хранить учетные данные субъекта-службы Microsoft Azure в Jenkins. В версии 1.2 добавлена соответствующая поддержка, поэтому конвейер Jenkins может получать учетные данные Azure. 
+Подключаемый модуль Hello учетных данных Azure позволяет основной учетных данных службы Microsoft Azure toostore в Jenkins. В версии 1.2 была добавлена поддержка hello, поэтому конвейера Jenkins можно получить hello учетных данных Azure. 
 
 Убедитесь, что у вас установлена версия 1.2 или более поздняя:
-* На панели мониторинга Jenkins последовательно выберите **Manage Jenkins -> Plugin Manager ->** (Управление Jenkins -> Диспетчер подключаемых модулей) и выполните поиск **учетных данных Azure**. 
-* Если используется версия более ранняя, чем 1.2, обновите подключаемый модуль.
+* Панели мониторинга Jenkins hello, нажмите кнопку **Jenkins управления -> подключаемого модуля диспетчера ->** и выполните поиск **учетные данные Azure**. 
+* Обновление подключаемого модуля hello, если hello версия более ранняя, чем 1.2.
 
-В главном экземпляре Jenkins также требуются Java JDK и Maven. Чтобы выполнить установку, войдите в главный экземпляр с помощью SSH-подключения и выполните следующие команды:
+В базе данных master Jenkins hello также требуются Java JDK и Maven. tooinstall, войдите в базе данных master tooJenkins с помощью SSH и запустите hello, следующие команды:
 ```bash
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
 ```
 
-## <a name="add-azure-service-principal-to-jenkins-credential"></a>Добавление субъекта-службы Azure в учетные данные Jenkins
+## <a name="add-azure-service-principal-toojenkins-credential"></a>Добавление учетных данных участника tooJenkins службы Azure
 
-Для выполнения Azure CLI необходимы учетные данные Azure.
+Учетных данных Azure — необходимые tooexecute Azure CLI.
 
-* На панели мониторинга Jenkins выберите **Credentials -> System ->**(Учетные данные -> Система). Щелкните **Global credentials (unrestricted)** (Глобальные учетные данные (неограниченные)).
-* Щелкните **Add Credentials** (Добавить учетные данные), чтобы добавить [субъект-службу Microsoft Azure](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) путем ввода следующих значений: идентификатор подписки, идентификатор клиента, секрет клиента и конечная точка маркера OAuth 2.0. Укажите идентификатор, который будет использоваться в следующем шаге.
+* Панели мониторинга Jenkins hello, нажмите кнопку **учетные данные -> Система ->**. Щелкните **Global credentials (unrestricted)** (Глобальные учетные данные (неограниченные)).
+* Нажмите кнопку **добавить учетные данные** tooadd [субъекта-службы Microsoft Azure](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) , заполнив hello идентификатор подписки, идентификатор клиента, секрет клиента и конечная точка маркера OAuth 2.0. Укажите идентификатор, который будет использоваться в следующем шаге.
 
 ![Добавить учетные данные](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 
-## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Создание службы приложений Azure для развертывания веб-приложения Java
+## <a name="create-an-azure-app-service-for-deploying-hello-java-web-app"></a>Создание службы приложения Azure для развертывания веб-приложения Java hello
 
-Создайте план службы приложений Azure с ценовой категорией **Бесплатный** с помощью команды CLI [az appservice plan create](/cli/azure/appservice/plan#create). От плана службы приложений зависят физические ресурсы, используемые для размещения приложений. Все приложения, назначенные плану службы приложений, совместно используют ресурсы, которые позволяют сэкономить при размещении нескольких приложений. 
+Создать план службы приложений Azure с hello **FREE** ценовой категории с помощью hello [создать план служб приложений az](/cli/azure/appservice/plan#create) команду CLI. план служб приложений Hello определяет toohost hello физические ресурсы, используемые приложения. Все приложения, назначенный tooan план служб приложений используют эти ресурсы, позволяя toosave затрат при размещении нескольких приложений. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -71,7 +71,7 @@ az appservice plan create \
     --sku FREE
 ```
 
-После создания плана в Azure CLI отобразится приблизительно такой результат:
+При готовности плана hello hello Azure CLI показывает, как выходной toohello в следующем примере:
 
 ```json
 { 
@@ -91,7 +91,7 @@ az appservice plan create \
 
 ### <a name="create-an-azure-web-app"></a>Создание веб-приложения Azure
 
- С помощью команды CLI [az webapp create](/cli/azure/appservice/web#create) создайте определение веб-приложения в плане службы приложений `myAppServicePlan`. Определение веб-приложения предоставляет URL-адрес для доступа к приложению и настраивает несколько параметров для развертывания кода в Azure. 
+ Используйте hello [создать веб-приложение az](/cli/azure/appservice/web#create) toocreate команду CLI определение web app в hello `myAppServicePlan` план служб приложений. Определение приложения Hello web предоставляет приложению tooaccess URL-адрес и настраивает некоторые параметры toodeploy tooAzure вашего кода. 
 
 ```azurecli-interactive
 az webapp create \
@@ -100,9 +100,9 @@ az webapp create \
     --plan myAppServicePlan
 ```
 
-Замените заполнитель `<app_name>` уникальным именем своего приложения. Это уникальное имя используется в доменном имени по умолчанию для веб-приложения, поэтому оно должно быть уникальным для всех приложений в Azure. Позже можно сопоставить запись личного доменного имени с веб-приложением, прежде чем предоставлять его пользователям.
+Замена hello `<app_name>` заполнитель с именем собственный уникальный приложения. Это уникальное имя является частью hello имя домена по умолчанию для веб-приложения hello, поэтому hello имя должно toobe уникальным для всех приложений в Azure. Перед тем, как он tooyour пользователей можно сопоставить toohello входа пользовательского домена имя веб-приложения.
 
-Когда вы создадите определение веб-приложения, в Azure CLI отобразятся следующие сведения: 
+При готовности определение приложения hello web hello Azure CLI показано toohello аналогичные сведения, следующий пример: 
 
 ```json 
 {
@@ -121,9 +121,9 @@ az webapp create \
 
 ### <a name="configure-java"></a>Настройка Java 
 
-Настройте конфигурацию среды выполнения Java, необходимую для работы приложения, с помощью команды [az appservice web config update](/cli/azure/appservice/web/config#update).
+Настройка конфигурации среды выполнения Java hello, необходимый вашему приложению hello [обновление конфигурации web appservice az](/cli/azure/appservice/web/config#update) команды.
 
-Следующая команда настраивает веб-приложение для запуска в Java 8 JDK и [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+Hello следующая команда настраивает hello web app toorun на последние Java JDK 8 и [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set \ 
@@ -135,16 +135,16 @@ az webapp config set \
 ```
 
 ## <a name="prepare-a-github-repository"></a>Подготовка репозитория GitHub
-Откройте репозиторий [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) (Простое веб-приложение Java для Azure). Чтобы создать разветвление репозитория для своей учетной записи GitHub, нажмите кнопку **Fork** (Разветвление) в правом верхнем углу.
+Откройте hello [простого веб-приложения Java для Azure](https://github.com/azure-devops/javawebappsample) репозитория. toofork hello репозитория tooyour владельцем учетной записи GitHub, нажмите кнопку hello **вилки** кнопку в правом верхнем углу hello.
 
-* В пользовательском веб-интерфейсе GitHub откройте файл **Jenkinsfile**. Щелкните значок с изображением карандаша, чтобы изменить этот файл для обновления группы ресурсов и имени веб-приложения в строках 20 и 21, соответственно.
+* В пользовательском веб-интерфейсе GitHub откройте файл **Jenkinsfile**. Нажмите кнопку tooedit значок карандаша hello этой группы ресурсов hello tooupdate файла и имя веб-приложения в строке, 20 и 21 соответственно.
 
 ```java
 def resourceGroup = '<myResourceGroup>'
 def webAppName = '<app_name>'
 ```
 
-* Измените строку 23 для обновления идентификатора учетных данных в вашем экземпляре Jenkins
+* Измените идентификатор учетных данных 23 tooupdate строки в вашем экземпляре Jenkins
 
 ```java
 withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
@@ -153,60 +153,60 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ## <a name="create-jenkins-pipeline"></a>Создание конвейера Jenkins
 Откройте Jenkins в веб-браузере, щелкните **New Item** (Создать элемент). 
 
-* Укажите имя задания и выберите **Pipeline** (Конвейер). Нажмите кнопку **ОК**.
-* Откройте вкладку **Pipeline** (Конвейер), находящуюся рядом. 
+* Укажите имя для задания hello и выберите **конвейера**. Нажмите кнопку **ОК**.
+* Нажмите кнопку hello **конвейера** вкладке рядом. 
 * Для параметра **Definition** (Определение) выберите значение **Pipeline script from SCM** (Сценарий конвейера из SCM).
 * Для параметра **SCM** выберите значение **Git**.
-* Введите URL-адрес GitHub для разветвленного репозитория: https:\<разветвленный репозиторий\>.git
+* Введите hello GitHub URL-адрес для вашего разветвленного репозитория: https:\<репозиторию разветвленного\>.git
 * Нажмите кнопку **Сохранить**
 
 ## <a name="test-your-pipeline"></a>Тестирование конвейера
-* Перейдите созданный в конвейер и щелкните **Build Now** (Собрать).
-* Процесс должен завершиться в течение нескольких секунд, после чего можно перейти к сборке и щелкнуть **Console Output** (Вывод консоли), чтобы просмотреть подробные сведения.
+* Go toohello конвейера, вы создали, щелкните **теперь построения**
+* Сборка должна выполняться в течение нескольких секунд, и вы можете вернуться toohello построения и нажмите кнопку **вывод на консоль** toosee hello сведения
 
 ## <a name="verify-your-web-app"></a>Проверка веб-приложения
-Чтобы проверить успешное развертывание WAR-файла в веб-приложении: Откройте веб-браузер:
+tooverify hello WAR-файл успешно развернут tooyour веб-приложения. Откройте веб-браузер:
 
-* Перейдите по адресу: http://&lt;имя_приложения>.azurewebsites.net/api/calculator/ping.  
+* Go toohttp: / /&lt;имя_приложения >.azurewebsites.net/api/calculator/ping  
 Вот что вы увидите:
 
-        Welcome to Java Web App!!! This is updated!
+        Welcome tooJava Web App!!! This is updated!
         Sun Jun 17 16:39:10 UTC 2017
 
-* Перейдите по адресу: http://&lt;имя_приложени>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (замените &lt;x> и &lt;y> любыми числами) для получения суммы x и y.
+* Go toohttp: / /&lt;имя_приложения >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (подставьте &lt;x > и &lt;y > с любой цифры) сумма hello tooget x и y
 
 ![Калькулятор: сложение](./media/execute-cli-jenkins-pipeline/calculator-add.png)
 
-## <a name="deploy-to-azure-web-app-on-linux"></a>Развертывание в веб-приложении Azure на платформе Linux
-Теперь, когда вы знаете, как использовать Azure CLI в конвейере Jenkins, можно изменить сценарий для развертывания в веб-приложении Azure в Linux.
+## <a name="deploy-tooazure-web-app-on-linux"></a>Развертывание tooAzure веб-приложения в Linux
+Теперь, когда вы знаете, как конвейер toouse Azure CLI в вашей Jenkins, вы можете изменить tooan toodeploy hello скрипта веб-приложения Azure в Linux.
 
-Для развертывания в веб-приложении в Linux поддерживается другой способ, который заключается в использовании Docker. Чтобы выполнить развертывание, необходимо предоставить файл Dockerfile, который упаковывает веб-приложение со службой среды выполнения в образ Docker. Затем подключаемый модуль создаст образ, отправит его в реестр Docker и развернет в веб-приложении.
+Веб-приложения на платформе Linux поддерживает развертывание hello toodo другим способом, который является toouse Docker. toodeploy, необходимо tooprovide Dockerfile, которая упаковывает веб-приложения в среде выполнения службы в Docker изображение. Подключаемый модуль Hello затем сборки образа hello, принудительно отправить его tooa реестра Docker и развертывания hello изображения tooyour веб-приложения.
 
-* Выполните описанные [здесь](/azure/app-service-web/app-service-linux-how-to-create-web-app) действия по созданию веб-приложения Azure на платформе Linux.
-* Установите Docker в экземпляре Jenkins, следуя инструкциям в этой [статье](https://docs.docker.com/engine/installation/linux/ubuntu/).
-* Создайте реестр контейнеров на портале Azure, выполнив описанные [здесь](/azure/container-registry/container-registry-get-started-azure-cli) действия.
-* В том же разветвленном репозитории [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) (Простое веб-приложение Java для Azure) измените файл **Jenkinsfile2**:
-    * В строках 18–21 обновите имена группы ресурсов, веб-приложения и ACR, соответственно. 
+* Выполните действия hello [здесь](/azure/app-service-web/app-service-linux-how-to-create-web-app) toocreate на веб-приложения Azure, выполняемым на платформе Linux.
+* Установка Docker Jenkins экземпляра в соответствии с инструкциями hello в этом [статьи](https://docs.docker.com/engine/installation/linux/ubuntu/).
+* Создание реестра контейнера в hello портал Azure с помощью действия hello [здесь](/azure/container-registry/container-registry-get-started-azure-cli).
+* В hello же [простого веб-приложения Java для Azure](https://github.com/azure-devops/javawebappsample) репозитория вы разделенными, изменить hello **Jenkinsfile2** файла:
+    * Строка 18-21, соответственно обновить имена toohello группы ресурсов, веб-приложения и контроля доступа. 
         ```
         def webAppResourceGroup = '<myResourceGroup>'
         def webAppName = '<app_name>'
         def acrName = '<myRegistry>'
         ```
 
-    * В строке 24 обновите \<azsrvprincipal\> значением идентификатора учетных данных.
+    * Строка 24, обновление \<azsrvprincipal\> tooyour идентификатор учетных данных
         ```
         withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
         ```
 
-* Создайте конвейер Jenkins, как вы делали это при развертывании в веб-приложение Azure в Windows, только на этот раз используйте **Jenkinsfile2**.
+* Создать новый конвейер Jenkins, как это было сделано при развертывании tooAzure веб-приложения в Windows, только на этот раз используйте **Jenkinsfile2** вместо него.
 * Запустите новое задание.
-* Чтобы осуществить проверку, в Azure CLI выполните следующую команду:
+* tooverify, в Azure CLI, выполните:
 
     ```
     az acr repository list -n <myRegistry> -o json
     ```
 
-    Вы получите следующий результат:
+    Вы получаете hello следующий результат:
     
     ```
     [
@@ -214,15 +214,15 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
     ]
     ```
     
-    Перейдите по адресу: http://&lt;имя_приложения>.azurewebsites.net/api/calculator/ping. Отобразится сообщение: 
+    Go toohttp: / /&lt;имя_приложения >.azurewebsites.net/api/calculator/ping. Отображается сообщение hello: 
     
-        Welcome to Java Web App!!! This is updated!
+        Welcome tooJava Web App!!! This is updated!
         Sun Jul 09 16:39:10 UTC 2017
 
-    Перейдите по адресу: http://&lt;имя_приложени>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (замените &lt;x> и &lt;y> любыми числами) для получения суммы x и y.
+    Go toohttp: / /&lt;имя_приложения >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (подставьте &lt;x > и &lt;y > с любой цифры) сумма hello tooget x и y
     
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом руководстве вы настроили конвейер Jenkins, который извлекает исходный код в репозитории GitHub. Он запускает Maven для построения WAR-файла, а затем использует Azure CLI для развертывания в службу приложений Azure. Вы научились выполнять следующие задачи:
+В этом учебнике вы настроили Jenkins конвейера, который извлекает hello исходного кода в репозитории GitHub. Выполняется Maven toobuild war-файл и затем использует Azure CLI toodeploy tooAzure службы приложений. Вы научились выполнять следующие задачи:
 
 > [!div class="checklist"]
 > * Создание виртуальной машины Jenkins
@@ -230,4 +230,4 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 > * Создание веб-приложения в Azure
 > * Подготовка репозитория GitHub
 > * Создание конвейера Jenkins
-> * Запуск конвейера и проверка веб-приложения
+> * Запустите конвейера hello и проверьте hello веб-приложения

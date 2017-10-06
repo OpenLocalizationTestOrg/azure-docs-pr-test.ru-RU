@@ -1,6 +1,6 @@
 ---
-title: "Настройка DHCPv6 для виртуальных машин Linux | Документация Майкрософт"
-description: "Узнайте, как настроить DHCPv6 для виртуальных машин Linux."
+title: "aaaConfiguring DHCPv6 для виртуальных машин Linux | Документы Microsoft"
+description: "Как tooconfigure DHCPv6 для виртуальных машин Linux."
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: kumud
-ms.openlocfilehash: 5c591e7f1838c86ca74caea9dd3a5e8f874fd8a7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: abd5a98c3496b189946f59bab1d9c20dcd0aa2c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-dhcpv6-for-linux-vms"></a>Настройка DHCPv6 для виртуальных машин Linux
 
-В некоторых образах виртуальных машин Linux в Azure Marketplace протокол DHCPv6 не настроен по умолчанию. Для поддержки IPv6 в используемом дистрибутиве ОС Linux необходимо настроить DHCPv6. В разных дистрибутивах Linux для настройки DHCPv6 применяются различные способы, так как они используют разные пакеты.
+Некоторые образы виртуальных машин Linux hello в hello Azure Marketplace нет DHCPv6 настройки по умолчанию. IPv6, DHCPv6 toosupport должен находиться в hello ОС Linux распределение, которое вы используете. В разных дистрибутивах Linux для настройки DHCPv6 применяются различные способы, так как они используют разные пакеты.
 
 > [!NOTE]
-> В недавно выпущенных образах SUSE Linux и CoreOS в Azure Marketplace протокол DHCPv6 предварительно настроен. При использовании этих образов дополнительные изменения не требуются.
+> Последние SUSE Linux и CoreOS изображения в Azure Marketplace hello были предварительно настроенную DHCPv6. При использовании этих образов дополнительные изменения не требуются.
 
-В этом документе описывается, как включить DHCPv6, чтобы виртуальная машина Linux получила IPv6-адрес.
+В этом документе описывается способ tooenable DHCPv6 так, чтобы к виртуальной машине Linux получил IPv6-адрес.
 
 > [!WARNING]
-> Неправильное изменение файлов конфигурации сети может привести к тому, что виртуальная машина утратит доступ к сети. Рекомендуется сначала протестировать изменения конфигурации на нерабочих системах. Приведенные в этой статье инструкции были протестированы на последних версиях образов Linux в Azure Marketplace. Подробные инструкции см. в документации к своей версии Linux.
+> Неправильное редактирование файлов конфигурации сети может привести к вы toolose сетевого доступа tooyour виртуальной Машины. Рекомендуется сначала протестировать изменения конфигурации на нерабочих системах. инструкции Hello в этой статье были проверены на последние версии hello изображений Linux hello в hello Azure Marketplace. Hello документации по используемой версии ОС Linux более подробные инструкции.
 
 ## <a name="ubuntu"></a>Ubuntu
 
-1. Измените файл `/etc/dhcp/dhclient6.conf` , добавив следующую строку:
+1. Измените файл hello `/etc/dhcp/dhclient6.conf` и добавить hello, следующей строкой:
 
         timeout 10;
 
-2. Замените конфигурацию сети для интерфейса eth0 следующей конфигурацией:
+2. Измените конфигурацию сети hello интерфейс eth0 hello с hello следующая конфигурация:
 
-   * В **Ubuntu 12.04 и 14.04** измените файл `/etc/network/interfaces.d/eth0.cfg`.
-   * В **Ubuntu 16.04** измените файл `/etc/network/interfaces.d/50-cloud-init.cfg`.
+   * На **Ubuntu 12.04 и 14.04**, измените файл hello`/etc/network/interfaces.d/eth0.cfg`
+   * На **Ubuntu 16.04**, измените файл hello`/etc/network/interfaces.d/50-cloud-init.cfg`
 
          iface eth0 inet6 auto
              up sleep 5
@@ -56,11 +56,11 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="debian"></a>Debian
 
-1. Измените файл `/etc/dhcp/dhclient6.conf` , добавив следующую строку:
+1. Измените файл hello `/etc/dhcp/dhclient6.conf` и добавить hello, следующей строкой:
 
         timeout 10;
 
-2. Измените файл `/etc/network/interfaces` , добавив следующую конфигурацию:
+2. Измените файл hello `/etc/network/interfaces` и добавить hello следующая конфигурация:
 
         iface eth0 inet6 auto
             up sleep 5
@@ -74,11 +74,11 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="rhel--centos--oracle-linux"></a>RHEL / CentOS / Oracle Linux
 
-1. Измените файл `/etc/sysconfig/network` , добавив следующий параметр:
+1. Измените файл hello `/etc/sysconfig/network` и добавьте следующий параметр hello:
 
         NETWORKING_IPV6=yes
 
-2. Измените файл `/etc/sysconfig/network-scripts/ifcfg-eth0` , добавив следующие два параметра:
+2. Измените файл hello `/etc/sysconfig/network-scripts/ifcfg-eth0` и добавить hello, следующие два параметра:
 
         IPV6INIT=yes
         DHCPV6C=yes
@@ -91,19 +91,19 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="sles-11--opensuse-13"></a>SLES 11 и openSUSE 13
 
-В недавно выпущенных образах SLES и openSUSE в Azure протокол DHCPv6 предварительно настроен. При использовании этих образов дополнительные изменения не требуются. Если у вас есть виртуальная машина, использующая более старый или пользовательский образ SUSE, то выполните описанные ниже действия.
+В недавно выпущенных образах SLES и openSUSE в Azure протокол DHCPv6 предварительно настроен. При использовании этих образов дополнительные изменения не требуются. При наличии на основе SUSE старую или пользовательского образа виртуальной Машины, используйте hello следующие шаги:
 
-1. При необходимости установите пакет `dhcp-client` :
+1. Установка hello `dhcp-client` пакет, при необходимости:
 
     ```bash
     sudo zypper install dhcp-client
     ```
 
-2. Измените файл `/etc/sysconfig/network/ifcfg-eth0` , добавив следующий параметр:
+2. Измените файл hello `/etc/sysconfig/network/ifcfg-eth0` и добавьте следующий параметр hello:
 
         DHCLIENT6_MODE='managed'
 
-3. Обновите IPv6-адрес:
+3. Обновите hello IPv6-адрес:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -111,21 +111,21 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="sles-12-and-opensuse-leap"></a>SLES 12 и openSUSE Leap
 
-В недавно выпущенных образах SLES и openSUSE в Azure протокол DHCPv6 предварительно настроен. При использовании этих образов дополнительные изменения не требуются. Если у вас есть виртуальная машина, использующая более старый или пользовательский образ SUSE, то выполните описанные ниже действия.
+В недавно выпущенных образах SLES и openSUSE в Azure протокол DHCPv6 предварительно настроен. При использовании этих образов дополнительные изменения не требуются. При наличии на основе SUSE старую или пользовательского образа виртуальной Машины, используйте hello следующие шаги:
 
-1. Измените файл `/etc/sysconfig/network/ifcfg-eth0` , заменив параметр
+1. Измените файл hello `/etc/sysconfig/network/ifcfg-eth0` и замените этот параметр
 
         #BOOTPROTO='dhcp4'
 
-    следующим значением:
+    с hello следующие значения:
 
         BOOTPROTO='dhcp'
 
-2. Добавьте следующий параметр в `/etc/sysconfig/network/ifcfg-eth0`:
+2. Добавьте следующий параметр слишком hello`/etc/sysconfig/network/ifcfg-eth0`:
 
         DHCLIENT6_MODE='managed'
 
-3. Обновите IPv6-адрес:
+3. Обновите hello IPv6-адрес:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -133,9 +133,9 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="coreos"></a>CoreOS
 
-В недавно выпущенных образах CoreOS в Azure протокол DHCPv6 предварительно настроен. При использовании этих образов дополнительные изменения не требуются. Если у вас есть виртуальная машина, использующая более старый или пользовательский образ CoreOS, то выполните описанные ниже действия.
+В недавно выпущенных образах CoreOS в Azure протокол DHCPv6 предварительно настроен. При использовании этих образов дополнительные изменения не требуются. При наличии на основе CoreOS более раннюю версию или пользовательского образа виртуальной Машины, используйте hello следующие шаги:
 
-1. Измените файл `/etc/systemd/network/10_dhcp.network`
+1. Измените файл hello`/etc/systemd/network/10_dhcp.network`
 
         [Match]
         eth0
@@ -143,7 +143,7 @@ ms.lasthandoff: 07/11/2017
         [Network]
         DHCP=ipv6
 
-2. Обновите IPv6-адрес:
+2. Обновите hello IPv6-адрес:
 
     ```bash
     sudo systemctl restart systemd-networkd

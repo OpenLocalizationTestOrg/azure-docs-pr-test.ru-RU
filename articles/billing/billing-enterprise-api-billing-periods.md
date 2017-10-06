@@ -1,6 +1,6 @@
 ---
-title: "Интерфейсы API для выставления счетов Azure корпоративным клиентам: расчетные периоды | Документация Майкрософт"
-description: "Узнайте, как с помощью интерфейсов API отчетов для корпоративных клиентов Azure извлекать данные о потреблении программным способом."
+title: "Выставление счетов Enterprise API-интерфейсов - выставления счетов за периоды aaaAzure | Документы Microsoft"
+description: "Дополнительные сведения о hello API отчетов, которые программным образом включить корпоративных клиентов toopull потребления данных Azure."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: c6880b79189e0683387a7aafbd6fa4805b3b42ef
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d4e17f25b22729a7f213306fb019ee0dbeca87ff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---billing-periods"></a>Интерфейсы API отчетов для корпоративных клиентов: расчетные периоды
 
-API расчетных периодов возвращает список расчетных периодов, которые содержат данные о потреблении для определенной регистрации, приведенные в обратном хронологическом порядке. Каждый период содержит свойство, указывающее на маршрут API к четырем наборам данных: BalanceSummary, UsageDetails, MarketplaceCharges и PriceSheet. Если период не содержит данных, то соответствующее свойство имеет значение null. 
+Выставление счетов API периодов Привет возвращает список выставления счетов за периоды данных об энергопотреблении для hello указанных регистрации в обратном хронологическом порядке. Для каждого периода содержит свойство, указывающее toohello API маршрута для четырех наборов данных - BalanceSummary, UsageDetails, Marktplace расходы и PriceSheet hello. Если период hello не имеет данных, hello соответствующее свойство имеет значение null. 
 
 
 ##<a name="request"></a>Запрос 
-Общие свойства заголовка, которые необходимо добавить, указываются [здесь](billing-enterprise-api.md). 
+Задаются общие свойства заголовка, которые необходимо добавить toobe [здесь](billing-enterprise-api.md). 
 
 |Метод | URI запроса|
 |-|-|
 |ПОЛУЧЕНИЕ| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingperiods|
 
 > [!Note]
-> Чтобы использовать предварительную версию API, измените v2 на v1 в приведенном выше URL-адресе.
+> toouse hello предварительную версию API, замените v2 v1 в hello выше URL-адрес.
 >
 
 ## <a name="response"></a>Ответ
@@ -59,13 +59,13 @@ API расчетных периодов возвращает список рас
 
 |Имя свойства| Тип| Описание
 |-|-|-|
-|billingPeriodId| string| Уникальный идентификатор, представляющий определенный расчетный период|
-|billingStart| datetime;| Строка в формате ISO 8601, представляющая дату начала периода|
-|billingEnd| datetime;| Строка в формате ISO 8601, представляющая дату окончания периода|
-|balanceSummary| string| URL-адрес, ведущий к сводным данным баланса за указанный период|
-|usageDetails| string| URL-адрес, ведущий к сведениям об использовании за указанный период|
-|marketplaceCharges| string| URL-адрес, ведущий к сведениям о расходах на заказы Marketplace за указанный период|
-|priceSheet| string| URL-адрес, ведущий к данным прейскурантов за указанный период|
+|billingPeriodId| string| Hello уникальный идентификатор, представляющий определенного периода выставления счетов|
+|billingStart| datetime;| ISO 8601 строка, представляющая дату начала периода hello|
+|billingEnd| datetime;| ISO 8601 строка, представляющая дату окончания периода hello|
+|balanceSummary| string| Hello URL-пути, направляет toohello баланс сводные данные за этот период|
+|usageDetails| string| Hello URL-пути, передает данные, сведения об использовании toohello за этот период|
+|marketplaceCharges| string| Hello URL-адрес, который передает данные о расходах в Marketplace, toohello за этот период|
+|priceSheet| string| URL-адрес Hello, при котором toohello PriceSheet данные за этот период|
 
 <br/>
 ## <a name="see-also"></a>См. также

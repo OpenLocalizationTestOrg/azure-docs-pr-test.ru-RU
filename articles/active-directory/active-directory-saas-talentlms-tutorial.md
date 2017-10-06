@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с TalentLMS | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в TalentLMS."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory с TalentLMS."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: f28d6fbfad9dae578a20db7218b7e3b174ed859c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 25538086602e58fbaab0fbf223f5b03908a74922
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Руководство по интеграции Azure Active Directory с TalentLMS
 
-В этом руководстве описано, как интегрировать приложение TalentLMS с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate TalentLMS с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением TalentLMS обеспечивает следующие преимущества:
+Интеграция TalentLMS с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к TalentLMS.
-- Вы можете включить автоматический вход пользователей в TalentLMS (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooTalentLMS
+- Можно включить на пользователей tooautomatically get вошедшего tooTalentLMS (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с TalentLMS, вам потребуется:
+tooconfigure интеграция Azure AD с TalentLMS требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка TalentLMS с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление TalentLMS из коллекции.
+1. Добавление TalentLMS из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-talentlms-from-the-gallery"></a>Добавление TalentLMS из коллекции
-Чтобы настроить интеграцию TalentLMS с Azure AD, необходимо добавить TalentLMS из коллекции в список управляемых приложений SaaS.
+## <a name="adding-talentlms-from-hello-gallery"></a>Добавление TalentLMS из галереи hello
+tooconfigure hello интеграции TalentLMS в Azure AD, вы должны tooadd TalentLMS из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить TalentLMS из коллекции, выполните следующие действия.**
+**tooadd TalentLMS из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **TalentLMS**.
+4. Введите в поле поиска hello **TalentLMS**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_search.png)
 
-5. На панели результатов выберите **TalentLMS** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello выберите **TalentLMS**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в TalentLMS с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, Azure AD необходима информация о том, какой пользователь в TalentLMS соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в TalentLMS.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в TalentLMS является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в TalentLMS требуется toobe установлено.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в TalentLMS.
+В TalentLMS, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в TalentLMS, вам потребуется выполнить действия в следующих стандартных блоках.
+tooconfigure и теста Azure AD единого входа с TalentLMS, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя TalentLMS](#creating-a-talentlms-test-user)** требуется для того, чтобы в TalentLMS существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя TalentLMS](#creating-a-talentlms-test-user)**  -toohave аналог Саймон Britta в TalentLMS, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении TalentLMS.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в TalentLMS приложения.
 
-**Чтобы настроить единый вход Azure AD в TalentLMS, выполните следующие действия.**
+**Azure AD tooconfigure единого входа с TalentLMS, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **TalentLMS** щелкните **Единый вход**.
+1. В hello в hello портала Azure **TalentLMS** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения TalentLMS** сделайте следующее.
+3. На hello **URL-адреса и домена TalentLMS** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_url.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<tenant-name>.TalentLMSapp.com`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<tenant-name>.TalentLMSapp.com`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `http://<tenant-name>.talentlms.com`
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`http://<tenant-name>.talentlms.com`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить эти значения, обратитесь к [группе поддержки TalentLMS](https://www.talentlms.com/contact). 
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки клиент TalentLMS](https://www.talentlms.com/contact) tooget эти значения. 
  
-4. В разделе **Сертификат подписи SAML** скопируйте значение **Отпечаток** сертификата.
+4. На hello **сертификат подписи SAML** раздел, hello копирования **ОТПЕЧАТОК** значение на основе сертификата hello.
 
     ![Настройка единого входа](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_certificate.png) 
 
@@ -125,122 +125,122 @@ ms.lasthandoff: 08/03/2017
 
     ![Настройка единого входа](./media/active-directory-saas-talentlms-tutorial/tutorial_general_400.png)
 
-6. В разделе **Конфигурация TalentLMS** щелкните **Настроить TalentLMS**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML**  из раздела **Краткий справочник**.
+6. На hello **конфигурации TalentLMS** щелкните **Настройка TalentLMS** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_configure.png)  
 
-7. В другом окне веб-браузера войдите на свой корпоративный веб-сайт TalentLMS в качестве администратора.
+7. В другом окне браузера войти в корпоративный сайт TalentLMS tooyour с правами администратора.
 
-8. В разделе **Учетная запись и параметры** выберите вкладку **Пользователи**.
+8. В hello **учетная запись и параметры** щелкните hello **пользователей** вкладки.
    
     ![Учетная запись и параметры](./media/active-directory-saas-talentlms-tutorial/IC777296.png "Учетная запись и параметры")
 
 9. Щелкните **Единый вход**.
 
-10. В разделе "Единый вход" выполните следующие действия:
+10. В hello единым входом раздел выполните следующие шаги hello.
    
     ![Единый вход](./media/active-directory-saas-talentlms-tutorial/IC777297.png "Единый вход")   
 
-    а. Из списка **Тип интеграции единого входа** выберите **SAML 2.0**.
+    а. Из hello **тип интеграции единого входа** выберите **SAML 2.0**.
 
-    b. В текстовое поле **Identity Provider (IDP)** (Поставщик удостоверений (IdP)) вставьте значение **SAML Entity ID** (Идентификатор сущности SAML), скопированное на портале Azure.
+    b. В hello **поставщика удостоверений (IDP)** текстовое значение hello вставить **SAML идентификатор сущности**, который вы скопировали из портала Azure.
  
-    c. Вставьте значение **Отпечаток** с портала Azure в текстовое поле **Certificate Fingerprint** (Отпечаток сертификата).    
+    c. Вставить hello **отпечаток** значение из портала Azure в hello **отпечаток сертификата** текстового поля.    
 
-    г)  В текстовое поле **Remote sign-in URL** (URL-адрес удаленного входа) вставьте значение **SAML Single Sign-On Service URL** (URL-адрес службы единого входа SAML), скопированное на портале Azure.
+    d.  В hello **удаленный URL-адрес входа** текстовое значение hello вставить **SAML единого входа URL-адрес службы**, который вы скопировали из портала Azure.
  
-    д. В текстовое поле **Remote sign-out URL** (URL-адрес удаленного выхода) вставьте значение **URL-адрес выхода**, скопированное на портале Azure.
+    д. В hello **URL-адрес удаленного выхода** текстовое значение hello вставить **URL-адрес выхода**, который вы скопировали из портала Azure.
 
-    f. Укажите следующие сведения. 
+    f. Заполните следующие hello. 
 
-    * В текстовое поле **TargetedID** (Целевой идентификатор) введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    * В hello **TargetedID** текстовое поле, тип`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
      
-    * В текстовое поле **First Name** (Имя) введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    * В hello **имя** текстовое поле, тип`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
     
-    * В текстовое поле **Last Name** (Фамилия) введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    * В hello **Фамилия** текстовое поле, тип`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
     
-    * В текстовое поле **Email** (Электронная почта) введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    * В hello **электронной почты** текстовое поле, тип`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
     
 11. Щелкните **Сохранить**.
  
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-talentlms-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-talentlms-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-talentlms-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-talentlms-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-talentlms-test-user"></a>Создание тестового пользователя TalentLMS
 
-Чтобы пользователи Azure AD могли выполнить вход в TalentLMS, они должны быть подготовлены в TalentLMS. В случае использования TalentLMS подготовка выполняется вручную.
+Пользователи toolog tooenable Azure AD в tooTalentLMS, их необходимо подготовить в TalentLMS. В случае hello TalentLMS Подготовка выполняется вручную.
 
-**Чтобы подготовить учетную запись пользователя, сделайте следующее:**
+**tooprovision учетной записи пользователя, выполните следующие шаги hello.**
 
-1. Войдите в клиент **TalentLMS** .
+1. Войдите в tooyour **TalentLMS** клиента.
 
 2. Щелкните **Пользователи**, а затем — **Добавить пользователя**.
 
-3. На странице диалогового окна **Добавление пользователя** сделайте следующее:
+3. На hello **добавить пользователя** диалогового окна выполните следующие шаги hello:
    
     ![Добавление пользователя](./media/active-directory-saas-talentlms-tutorial/IC777299.png "Добавление пользователя")  
 
-    а. В текстовое поле **First name** (Имя) введите имя пользователя, например **Britta**.
+    а. В hello **имя** текстовом поле введите имя пользователя, такие как hello **Britta**.
 
-    b. В текстовое поле **Last name** (Фамилия) введите фамилию пользователя, например **Simon**.
+    b. В hello **Фамилия** текстовом поле введите фамилию пользователя как hello **Simon**.
  
-    c. В текстовое поле **Email address** (Адрес электронной почты) введите адрес электронной почты пользователя, например **brittasimon@contoso.com**.
+    c. В hello **адрес электронной почты** текстовом поле введите адрес электронной почты hello пользователя как  **brittasimon@contoso.com** .
 
-    г) Нажмите кнопку **Add User**(Добавить пользователя).
+    d. Нажмите кнопку **Add User**(Добавить пользователя).
 
 >[!NOTE]
->Вы можете использовать любые другие средства создания учетной записи пользователя TalentLMS или API-интерфейсы, предоставляемые TalentLMS для подготовки учетных записей пользователя AAD.
+>Можно использовать любые другие TalentLMS пользователя средства создания учетных записей или интерфейсы API, предоставляемые TalentLMS tooprovision учетных записей пользователей AAD.
  
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к TalentLMS.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooTalentLMS доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в TalentLMS, выполните следующие действия.**
+**tooassign tooTalentLMS Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **TalentLMS**.
+2. В списке приложений hello выберите **TalentLMS**.
 
     ![Настройка единого входа](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -248,7 +248,7 @@ ms.lasthandoff: 08/03/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -256,13 +256,13 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".
 
-Щелкнув элемент "TalentLMS" на панели доступа, вы автоматически войдете в приложение TalentLMS.
+При нажатии кнопки TalentLMS плитки в панели доступа hello приветствия, вы должны получить автоматически вошедшего tooyour TalentLMS приложения
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Шаблоны страниц в службе управления API Azure | Документация Майкрософт"
-description: "Сведения о настройке содержимого страниц портала разработчика с использованием набора шаблонов в службе управления API Azure."
+title: "шаблоны aaaPage в службе управления API Azure | Документы Microsoft"
+description: "Узнайте, как toocustomize hello содержимое страницы портала разработчиков с помощью набора шаблонов в Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 7f9ef37a694bce786b6acaa428df83f0cb23c2dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 84bd971ad4bcacfdd36c2ebbe05b16063f2a547b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="page-templates-in-azure-api-management"></a>Шаблоны страниц в службе управления API Azure
-Служба управления API Azure позволяет настраивать содержимое страниц портала разработчика с помощью набора шаблонов. С помощью синтаксиса [DotLiquid](http://dotliquidmarkup.org/), выбранного редактора, например [DotLiquid для разработчиков](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), и указанного набора локализованных [строковых ресурсов](api-management-template-resources.md#strings), [ресурсов глифов](api-management-template-resources.md#glyphs), а также [элементов управления на странице](api-management-page-controls.md) можно гибко настраивать содержимое страниц по своему усмотрению с использованием этих шаблонов.  
+Управления API Azure предоставляет hello возможность toocustomize hello содержимое страницы портала разработчиков с помощью набора шаблонов, которые настраивают их содержимого. С помощью [DotLiquid](http://dotliquidmarkup.org/) синтаксис и hello редактора, таких как [DotLiquid для конструкторов](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), предоставленным набором локализации и [строковые ресурсы](api-management-template-resources.md#strings), [ Ресурсы глиф](api-management-template-resources.md#glyphs), и [страницы элементов управления](api-management-page-controls.md), у вас есть гибкость tooconfigure hello содержимого hello страниц по своему усмотрению, с помощью этих шаблонов.  
   
- С помощью шаблонов в этом разделе вы сможете настроить содержимое страниц входа, регистрации и страницы с ошибкой "Страница не найдена" на портале разработчика.  
+ шаблоны Hello в этом разделе позволяют toocustomize содержимое hello hello вход вход, копирование и страница не найдена страницы на портале разработчиков hello.  
   
 -   [Вход](#SignIn)  
   
@@ -32,10 +32,10 @@ ms.lasthandoff: 07/11/2017
 -   [Страница не найдена](#PageNotFound)  
   
 > [!NOTE]
->  Примеры шаблонов по умолчанию включены в следующую документацию, но могут в любой момент измениться, так как ведется постоянная работа по их улучшению. Актуальные шаблоны по умолчанию можно просмотреть на портале разработчика, перейдя к требуемому отдельному шаблону. Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Примеры шаблонов по умолчанию включены в следующие документации hello, но являются toochange субъекта из-за toocontinuous улучшения. Можно просмотреть шаблоны динамической по умолчанию hello в портал разработчиков hello, перейдя по toohello требуемого отдельных шаблонов. Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="SignIn"></a> Вход  
- Шаблон **входа** позволяет настроить страницу входа на портале разработчика.  
+ Hello **входа** шаблон позволяет toocustomize входа hello в портале разработчика hello.  
   
  ![Страница входа](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "шаблоны страницы входа портала разработчика APIM")  
   
@@ -96,7 +96,7 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ### <a name="controls"></a>Управление  
- Шаблон может использовать следующие [элементы управления страницы](api-management-page-controls.md).  
+ Этот шаблон может использовать следующие hello [страницы элементов управления](api-management-page-controls.md).  
   
 -   [basic-signin](api-management-page-controls.md#basic-signin)  
   
@@ -134,7 +134,7 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ##  <a name="SignUp"></a> Регистрация  
- Шаблон **регистрации** позволяет настроить страницу регистрации на портале разработчика.  
+ Hello **зарегистрироваться** шаблон позволяет toocustomize hello страницу регистрации на портале разработчиков hello.  
   
  ![Страница регистрации](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "шаблоны страницы регистрации на портале разработчика APIM")  
   
@@ -155,7 +155,7 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ### <a name="controls"></a>Управление  
- Шаблон может использовать следующие [элементы управления страницы](api-management-page-controls.md).  
+ Этот шаблон может использовать следующие hello [страницы элементов управления](api-management-page-controls.md).  
   
 -   [sign-up](api-management-page-controls.md#sign-up)  
   
@@ -182,7 +182,7 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ##  <a name="PageNotFound"></a> Страница не найдена  
- Шаблон страницы с ошибкой **Страница не найдена** позволяет настроить страницу с ошибкой "Страница не найдена" на портале разработчика.  
+ Hello **страница не найдена** шаблон позволяет вам toocustomize hello страница не найдена страница на портале разработчиков hello.  
   
  ![Страница не найдена](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "шаблон страницы с ошибкой "Страница не найдена" на портале разработчика APIM")  
   
@@ -225,11 +225,11 @@ ms.lasthandoff: 07/11/2017
   
 |Свойство|Тип|Описание|  
 |--------------|----------|-----------------|  
-|referenceCode|строка|Код формируется, если эта страница отобразилась в результате внутренней ошибки.|  
-|errorCode|строка|Код формируется, если эта страница отобразилась в результате внутренней ошибки.|  
-|emailBody|строка|Текст сообщения электронной почты формируется, если эта страница отобразилась в результате внутренней ошибки.|  
-|requestedUrl|строка|URL-адрес, запрашиваемый, если страница не найдена.|  
-|referrerUrl|строка|URL-адрес источника ссылки для запрошенного URL-адреса.|  
+|referenceCode|string|Код, созданный, если эта страница отображается как результат hello внутренней ошибки.|  
+|errorCode|string|Код, созданный, если эта страница отображается как результат hello внутренней ошибки.|  
+|emailBody|string|Текст, если отображается эта страница hello результате внутренней ошибки сообщения.|  
+|requestedUrl|string|Когда страница hello не найдена Hello URL-адрес.|  
+|referrerUrl|string|toohello URL-адрес источника ссылки Hello запрошенный URL-адрес.|  
   
 ### <a name="sample-template-data"></a>Пример данных шаблона  
   
@@ -244,4 +244,4 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](api-management-developer-portal-templates.md).
+Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](api-management-developer-portal-templates.md).

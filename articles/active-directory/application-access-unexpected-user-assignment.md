@@ -1,6 +1,6 @@
 ---
-title: "Назначение пользователей приложениям | Документация Майкрософт"
-description: "Общие сведения о назначении пользователей для приложения в клиенте"
+title: "Пользователи tooapplications aaaHow tooAssign | Документы Microsoft"
+description: "Понять, как пользователи получить назначения tooan приложения в клиенте"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,49 +13,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 916238ba402a2555bac620d7f08e02799d981ae0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4df60c7d723140d0d1bbd6ba8b34aa4e762d1138
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-assign-users-to-applications"></a>Назначение пользователей для приложений
+# <a name="how-tooassign-users-tooapplications"></a>Как tooapplications tooassign пользователей
 
-В этой статье представлены общие сведения о назначении пользователей для приложения в клиенте.
+В этой статье помогут toounderstand получить назначение пользователей tooan приложения в клиенте.
 
-## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Как пользователи назначаются для приложений в Azure AD?
+## <a name="how-do-users-get-assigned-tooan-application-in-azure-ad"></a>Как пользователей получить назначения tooan приложения в Azure AD?
 
-Чтобы пользователь смог получить доступ к приложению, сначала его нужно любым образом назначить этому приложению. Это может сделать администратор, бизнес-делегат или, в некоторых случаях, сам пользователь. Ниже описаны способы назначения пользователя для приложения.
+Для tooaccess пользователя приложения их необходимо назначить tooit иным образом. Назначение может выполнять администратор, business делегата или в некоторых случаях пользователь hello сами. Ниже описываются способы hello, которые пользователи могут получить назначения tooapplications:
 
-1.  Администратор [назначает пользователей](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) непосредственно для приложения.
+1.  Администратор [назначает пользователя](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) toohello приложению напрямую
 
-2.  Администратор [назначает для приложения группу](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal), в которую входит пользователь. Ею может быть одна из следующих:
+2.  Администратор [Назначение группы](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) hello пользователя является членом toohello приложения, включая:
 
   * Группа, синхронизированная из локальной среды.
 
-  * Статическая группа безопасности, созданная в облаке.
+  * Безопасность статической группы в облаке hello
 
-  * [Динамическая группа безопасности](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal), созданная в облаке.
+  * Объект [динамической безопасности группы](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal) в облаке hello
 
-  * Группа Office 365, созданная в облаке.
+  * Группы Office 365, созданной в облаке hello
 
-  * Группа ["Все пользователи"](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups).
+  * Hello [всех пользователей](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) группы
 
-3.  Администратор включает [самостоятельный доступ к приложению](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access), чтобы позволить пользователю добавлять приложения, используя возможность **добавления приложения** на [панели доступа к приложениям](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **без бизнес-утверждения**.
+3.  Администратор включает [самообслуживания доступ к приложению](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) tooallow tooadd пользователя приложения с помощью hello [панели доступа приложения](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **добавить приложение** функция **без утверждения бизнеса**
 
-4.  Администратор включает [самостоятельный доступ к приложению](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access), чтобы позволить пользователю добавлять приложения, используя возможность **добавления приложения** на [панели доступа к приложениям](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **с предварительного разрешения выбранных утверждающих лиц**.
+4.  Администратор включает [самообслуживания доступ к приложению](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) tooallow tooadd пользователя приложения с помощью hello [панели доступа приложения](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **добавить приложение** компонент, но только w **i-ой предварительного разрешения из выбранного набора утверждающих бизнеса**
 
-5.  Администратор включает [самостоятельное управление группами](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), чтобы позволить пользователям присоединяться к группам, которым назначено приложение, **без бизнес-утверждения**.
+5.  Администратор включает [Самостоятельное управление группами](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) tooallow toojoin пользователем группы, назначенный приложению слишком**без утверждения бизнеса**
 
-6.  Администратор включает [самостоятельное управление группами](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), чтобы позволить пользователям присоединяться к группам, которым назначено приложение, только **с предварительного разрешения выбранных утверждающих лиц**.
+6.  Администратор включает [Самостоятельное управление группами](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) tooallow toojoin пользователя, назначенный приложению в, но только группы **с предварительного разрешения из выбранного набора утверждающих бизнеса**
 
-7.  Администратор назначает пользователю лицензии напрямую для приложений Майкрософт, например [Microsoft Office 365](http://products.office.com/).
+7.  Администратор назначает лицензии пользователя tooa непосредственно для первой стороной приложения, таких как [Microsoft Office 365](http://products.office.com/)
 
-8.  Администратор назначает группе, в которую входит пользователь, лицензию на приложение Майкрософт, например [Microsoft Office 365](http://products.office.com/).
+8.  Администратор назначает, tooa лицензионную группу, hello пользователь является членом tooa первой стороной приложения, как [Microsoft Office 365](http://products.office.com/)
 
-9.  [Администратор дает свое согласие на использование приложения](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) всеми пользователями, а затем пользователь входит в это приложение.
+9.  [Администратора согласии приложения tooan](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) toobe использовать все пользователи, а затем пользователь входит в приложении toohello
 
-10. Пользователь сам [дает согласие на использование приложения](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) при входе в него.
+10. Пользователь [согласии приложения tooan](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) сами при входе в приложение toohello
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Управление приложениями с помощью Azure Active Directory](active-directory-enable-sso-scenario.md)

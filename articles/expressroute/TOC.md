@@ -13,7 +13,7 @@
 ## [Рабочие процессы](expressroute-workflows.md)
 ## [Требования к маршрутизации](expressroute-routing.md)
 ## [Требования к QoS](expressroute-qos.md)
-## [Перенос цепей из классической модели развертывания в модель развертывания Resource Manager](expressroute-move.md)
+## [О перемещении из классической tooResource диспетчер каналов](expressroute-move.md)
 
 # Практическое руководство
 ## Создание и изменение канала
@@ -24,7 +24,7 @@
 ### [Портал Azure](expressroute-howto-routing-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-routing-arm.md)
 ### [Интерфейс командной строки Azure](howto-routing-cli.md)
-## Связывание виртуальной сети с каналом ExpressRoute
+## Связывание виртуальной сети tooan канал ExpressRoute
 ### [Портал Azure](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [Интерфейс командной строки Azure](howto-linkvnet-cli.md)
@@ -35,8 +35,8 @@
 ## Настройка фильтров маршрутов для пиринга Майкрософт
 ### [Портал Azure](how-to-routefilter-portal.md)
 ### [PowerShell](how-to-routefilter-powershell.md)
-## [Перемещение каналов из классического развертывания в развертывание с помощью Resource Manager](expressroute-howto-move-arm.md)
-## [Перенос связанных виртуальных сетей из классической модели развертывания в модель развертывания Resource Manager](expressroute-migration-classic-resource-manager.md)
+## [Переместить из классической tooResource диспетчера канала](expressroute-howto-move-arm.md)
+## [Миграция с tooResource классический Диспетчер связанных виртуальных сетях](expressroute-migration-classic-resource-manager.md)
 ## Настройка маршрутизатора для ExpressRoute
 ### [Настройка маршрутизатора](expressroute-config-samples-routing.md)
 ### [Примеры конфигурации маршрутизатора для NAT](expressroute-config-samples-nat.md)
@@ -75,12 +75,12 @@
 ## [СОГЛАШЕНИЕ ОБ УРОВНЕ ОБСЛУЖИВАНИЯ](https://azure.microsoft.com/support/legal/sla/)
 ## [Ограничения подписки и службы](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 ## [Видеоролики](https://azure.microsoft.com/documentation/videos/index/?services=expressroute)
-### [Подключение шлюза виртуальной сети к каналу](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
+### [Подключение канала tooa шлюза виртуальной сети](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [Создание виртуальной сети для ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)
 ### [Создание шлюза виртуальной сети для ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network/)
 ### [Создание канала ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
 ### [Развитие сетевой инфраструктуры для повышения качества подключений](https://go.microsoft.com/fwlink/p/?LinkId=615124)
-### [Как настроить частный пиринг для канала](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
+### [Как tooset копирование частного Пиринга для своего канала](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
 ### [Гибридные партнерства: реализация локальных сценариев](https://go.microsoft.com/fwlink/p/?LinkId=615125)
 ### [Настройка пиринга Майкрософт для канала](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
 ### [Настройка общедоступного пиринга для канала](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)

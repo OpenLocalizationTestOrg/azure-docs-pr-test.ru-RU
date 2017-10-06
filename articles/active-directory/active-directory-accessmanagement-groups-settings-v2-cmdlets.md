@@ -1,6 +1,6 @@
 ---
-title: "Примеры PowerShell для управления группами в Azure Active Directory | Документация Майкрософт"
-description: "На этой странице представлены примеры командлетов PowerShell, которые помогут вам управлять группами в Azure Active Directory."
+title: "Примеры aaaPowerShell для управления группами в Azure Active Directory | Документы Microsoft"
+description: "На этой странице представлены примеры toohelp PowerShell Управление группами в Azure Active Directory"
 keywords: "Azure AD, Azure Active Directory, PowerShell, группы, управление группами"
 services: active-directory
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: curtand
 ms.reviewer: rodejo
-ms.openlocfilehash: a81820bc778c26f6e8051e2817ebd2b9c24b697a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: ba049babc436e99a290f20899b3a87bcfa811d9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Командлеты Azure Active Directory версии 2 для управления группами
 > [!div class="op_single_selector"]
@@ -30,14 +30,14 @@ ms.lasthandoff: 08/18/2017
 >
 >
 
-В этой статье приведены примеры управления группами в Azure Active Directory (Azure AD) с помощью PowerShell.  Кроме того, в ней содержатся сведения о том, как выполнить настройки модуля Azure AD PowerShell. Во-первых, необходимо [скачать модуль Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
+Эта статья содержит примеры использования toouse PowerShell toomanage групп в Azure Active Directory (Azure AD).  Он также рассказывается, как настроить tooget с hello модуля Azure AD PowerShell. Во-первых, необходимо [загрузки модуля Azure AD PowerShell hello](https://www.powershellgallery.com/packages/AzureAD/).
 
-## <a name="installing-the-azure-ad-powershell-module"></a>Установка модуля Azure AD PowerShell
-Чтобы установить модуль Azure AD PowerShell, выполните следующие команды:
+## <a name="installing-hello-azure-ad-powershell-module"></a>Установка модуля Azure AD PowerShell hello
+hello tooinstall модуля Azure AD PowerShell, используйте hello, следующие команды:
 
     PS C:\Windows\system32> install-module azuread
 
-Чтобы проверить, установлен ли модуль, воспользуйтесь следующей командой:
+tooverify, hello модуля был установлен, выполните следующую команду hello.
 
     PS C:\Windows\system32> get-module azuread
 
@@ -45,33 +45,33 @@ ms.lasthandoff: 08/18/2017
     ---------- ---------    ----                                ----------------
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 
-Теперь можно начать использование командлетов в модуле. Полное описание командлетов в модуле Azure AD см. в электронной справочной документации по [PowerShell версии 2 для Azure Active Directory](/powershell/azure/install-adv2?view=azureadps-2.0).
+Теперь можно запустить с помощью командлетов hello в модуле hello. Полное описание командлетов hello в модуле hello Azure AD, можно найти toohello online справочную документацию по [Azure Active Directory PowerShell версии 2](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-## <a name="connecting-to-the-directory"></a>Подключение к каталогу
-Прежде чем приступить к управлению группами с помощью командлетов Azure AD PowerShell, необходимо подключить сеанс PowerShell к каталогу, которым вы хотите управлять. Используйте следующую команду:
+## <a name="connecting-toohello-directory"></a>Подключение toohello directory
+Прежде чем приступить к управлению группами с помощью командлетов Azure AD PowerShell, необходимо подключить каталог toohello сеанса PowerShell, требуется toomanage. Hello используйте следующую команду:
 
     PS C:\Windows\system32> Connect-AzureAD
 
-Командлет запросит ввести учетные данные, которые вы хотите использовать для доступа к каталогу. В этом примере для доступа к демонстрационному каталогу используется karen@drumkit.onmicrosoft.com . Командлет возвращает подтверждение, показывающее, что сеанс был успешно подключен к каталогу:
+Hello командлет предложит hello учетных данных вы хотите toouse tooaccess вашего каталога. В этом примере мы используем karen@drumkit.onmicrosoft.com tooaccess hello демонстрации каталога. Hello командлет возвращает подтверждение tooshow hello сеанс был подключен успешно tooyour каталога:
 
     Account                       Environment Tenant
     -------                       ----------- ------
     Karen@drumkit.onmicrosoft.com AzureCloud  85b5ff1e-0402-400c-9e3c-0f…
 
-Теперь можно начать использование командлетов Azure AD для управления группами в каталоге.
+Теперь можно запустить с помощью командлетов toomanage hello AzureAD групп в каталоге.
 
 ## <a name="retrieving-groups"></a>Получение сведений о группах
-Для получения сведений о существующих группах из каталога можно воспользоваться командлетом Get-AzureADGroups. Чтобы получить сведения о всех группах в каталоге, используйте командлет без параметров:
+существующие группы tooretrieve из каталога, используемого hello командлет Get-AzureADGroups. tooretrieve всех групп в каталоге hello, используйте командлет hello без параметров.
 
     PS C:\Windows\system32> get-azureadgroup
 
-Командлет возвращает сведения о всех группах в подключенном каталоге.
+Hello командлет возвращает все группы в подключенном каталоге hello.
 
-Для получения сведений о конкретной группе, для которой указывается идентификатор объекта, можно использовать параметр -objectID:
+Можно использовать tooretrieve параметра - objectID hello определенной группы, для которого задаются objectID hello группы:
 
     PS C:\Windows\system32> get-azureadgroup -ObjectId e29bae11-4ac0-450c-bc37-6dae8f3da61b
 
-Командлет возвращает сведения о группе, идентификатор objectID которой совпадает со значением введенного параметра:
+командлет Hello теперь возвращает objectID которого соответствует значению hello параметра hello введенный группы hello:
 
     DeletionTimeStamp            :
     ObjectId                     : e29bae11-4ac0-450c-bc37-6dae8f3da61b
@@ -88,7 +88,7 @@ ms.lasthandoff: 08/18/2017
     ProxyAddresses               : {}
     SecurityEnabled              : True
 
-Для поиска конкретной группы можно использовать параметр -filter. Этот параметр принимает предложение фильтра ODATA и возвращает сведения о всех группах, соответствующих фильтру, как показано в следующем примере:
+Можно выполнить поиск конкретной группы с помощью hello - параметр фильтра. Этот параметр принимает предложение фильтра ODATA и возвращает все группы, соответствующие фильтру hello, как следующий пример hello:
 
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
 
@@ -109,15 +109,15 @@ ms.lasthandoff: 08/18/2017
     SecurityEnabled              : True
 
 > [!NOTE] 
-> Командлеты AzureAD PowerShell используют стандарт запросов OData. Дополнительные сведения см. в разделе **$filter** статьи [OData system query options using the OData endpoint](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter) (Параметры системных запросов OData с использованием конечной точки OData).
+> командлеты AzureAD PowerShell Hello реализовать hello стандартных запросов OData. Дополнительные сведения см. в разделе **$filter** в [параметры запросов системы OData, с помощью конечной точки OData hello](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
 
 ## <a name="creating-groups"></a>Создание групп
-Чтобы создать новую группу в каталоге, используйте командлет New-AzureADGroup. Этот командлет создает новую группу безопасности с именем Marketing:
+toocreate новую группу в вашем каталоге, используйте командлет New-AzureADGroup hello. Этот командлет создает новую группу безопасности с именем Marketing:
 
     PS C:\Windows\system32> New-AzureADGroup -Description "Marketing" -DisplayName "Marketing" -MailEnabled $false -SecurityEnabled $true -MailNickName "Marketing"
 
 ## <a name="updating-groups"></a>Обновление групп
-Чтобы обновить существующую группу, используйте командлет Set-AzureADGroup. В этом примере изменяется свойство DisplayName группы Intune Administrators. Сначала с помощью командлета Get-AzureADGroup мы находим группу и фильтруем, используя атрибут DisplayName:
+tooupdate существующую группу, с помощью командлета Set AzureADGroup hello. В этом примере происходит изменение hello свойство DisplayName hello группы «Администраторы Intune». Во-первых мы поиск hello группы, с помощью командлета Get-AzureADGroup hello и фильтрация с помощью атрибут DisplayName hello:
 
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
 
@@ -137,11 +137,11 @@ ms.lasthandoff: 08/18/2017
     ProxyAddresses               : {}
     SecurityEnabled              : True
 
-Затем мы меняем свойство Description на новое значение — Intune Device Administrators:
+Далее мы происходит изменение hello описание toohello новое значение свойства «Администраторы устройств Intune»:
 
     PS C:\Windows\system32> Set-AzureADGroup -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -Description "Intune Device Administrators"
 
-Если теперь снова выполнить поиск группы, то мы увидим, что свойство Description обновилось и отражает новое значение:
+Теперь если мы найти группы hello мы увидим hello описание свойства является обновленные tooreflect hello новое значение:
 
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
 
@@ -162,18 +162,18 @@ ms.lasthandoff: 08/18/2017
     SecurityEnabled              : True
 
 ## <a name="deleting-groups"></a>Удаление групп
-Для удаления групп из каталога используйте командлет Remove-AzureADGroup, как показано ниже:
+toodelete групп из каталога, используйте командлет Remove-AzureADGroup hello следующим образом:
 
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
 
 ## <a name="managing-members-of-groups"></a>Управление членами групп
-Для добавления в группу новых членов используйте командлет Add-AzureADGroupMember. Эта команда добавляет члена в группу Intune Administrators, которую мы использовали в предыдущем примере:
+При необходимости tooadd новую группу tooa членов с помощью командлета Add AzureADGroupMember hello. Эта команда добавляет членом группы администраторов Intune toohello члена, которые были использованы в предыдущем примере hello:
 
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-Параметр -ObjectId — это идентификатор объекта группы, в которую требуется добавить члена, а -RefObjectId — это идентификатор объекта пользователя, которого требуется добавить в качестве члена группы.
+Hello параметра - ObjectId — hello ObjectID можем tooadd членом группы toowhich hello и hello - RefObjectId — hello ObjectID пользователя hello мы хотим tooadd как toohello элементов групп.
 
-Чтобы получить сведения о существующих членах группы, используйте командлет Get-AzureADGroupMember, как показано в этом примере:
+tooget hello существующие члены группы, используйте командлет Get-AzureADGroupMember hello, как показано в примере:
 
     PS C:\Windows\system32> Get-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 
@@ -182,19 +182,19 @@ ms.lasthandoff: 08/18/2017
                           72cd4bbd-2594-40a2-935c-016f3cfeeeea User
                           8120cc36-64b4-4080-a9e8-23aa98e8b34f User
 
-Чтобы удалить члена, ранее добавленного в группу, используйте командлет Remove-AzureADGroupMember, как показано здесь:
+tooremove hello мы ранее добавлен член группы toohello, используйте командлет Remove-AzureADGroupMember hello, как показано ниже:
 
     PS C:\Windows\system32> Remove-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -MemberId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-Чтобы проверить, является ли пользователь членом какой-либо группы, используйте командлет Select-AzureADGroupIdsUserIsMemberOf. В качестве параметров этот командлет принимает идентификатор объекта пользователя, для которого выполняется проверка членства в группах, и список групп, в которых проверяется членство. Список групп необходимо указать в форме сложной переменной типа Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck, поэтому сначала необходимо создать переменную с этим типом:
+tooverify hello группы участие пользователя, с помощью командлета Select AzureADGroupIdsUserIsMemberOf hello. Этот командлет принимает в качестве своих параметров hello ObjectId hello пользователя для членства в группах какие toocheck hello и список групп для hello какие toocheck членства. Hello список групп необходимо, предоставляемых в виде переменной сложного типа «Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck» hello, поэтому сначала необходимо создать переменную с этим типом.
 
     PS C:\Windows\system32> $g = new-object Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck
 
-Затем необходимо указать значения идентификаторов группы для регистрации атрибута GroupIds этой сложной переменной:
+Далее мы введите значения для toocheck groupIds hello в атрибуте hello «GroupIds» этой переменной комплексного:
 
     PS C:\Windows\system32> $g.GroupIds = "b11ca53e-07cc-455d-9a89-1fe3ab24566b", "31f1ff6c-d48c-4f8a-b2e1-abca7fd399df"
 
-Теперь, если требуется проверить членство пользователя с идентификатором объекта 72cd4bbd-2594-40a2-935c-016f3cfeeeea в группах в $g, используйте следующую команду:
+Теперь если мы хотим toocheck hello членства в группах пользователя с 72cd4bbd-2594-40a2-935c-016f3cfeeeea ObjectID для всех групп hello в $g, следует использовать:
 
     PS C:\Windows\system32> Select-AzureADGroupIdsUserIsMemberOf -ObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea -GroupIdsForMembershipCheck $g
 
@@ -203,31 +203,31 @@ ms.lasthandoff: 08/18/2017
     https://graph.windows.net/85b5ff1e-0402-400c-9e3c-0f9e965325d1/$metadata#Collection(Edm.String)             {31f1ff6c-d48c-4f8a-b2e1-abca7fd399df}
 
 
-Возвращаемое значение — это список групп, членом которых является данный пользователь. Этот метод также можно применять для проверки членства в контактах, группах или субъектах-службах для определенного списка групп. Для этого используйте командлеты Select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf и Select-AzureADGroupIdsServicePrincipalIsMemberOf.
+Hello возвращаемое значение списка групп, членом которых является этот пользователь. Вы также можете применять этот метод toocheck контакты, группы или субъекты-службы членства, заданному списку групп, с помощью Select-AzureADGroupIdsContactIsMemberOf Select AzureADGroupIdsGroupIsMemberOf или Выберите AzureADGroupIdsServicePrincipalIsMemberOf
 
 ## <a name="managing-owners-of-groups"></a>Управление владельцами групп
-Чтобы добавить в группу новых владельцев, воспользуйтесь командлетом Add-AzureADGroupOwner:
+Группа tooa владельцев tooadd, используйте командлет Add-AzureADGroupOwner hello:
 
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-Параметр -ObjectId — это идентификатор объекта группы, в которую требуется добавить владельца, а -RefObjectId — это идентификатор объекта пользователя, которого требуется добавить в качестве владельца группы.
+Hello параметра - ObjectId — hello ObjectID toowhich группы hello можем tooadd владельца и hello - RefObjectId — hello ObjectID пользователя hello мы хотим tooadd в качестве владельца группы hello.
 
-Для получения сведений о владельцах группы используйте командлет Get-AzureADGroupOwner:
+tooretrieve hello владельцев группы, используйте командлет Get-AzureADGroupOwner hello:
 
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 
-Командлет возвращает список владельцев для указанной группы:
+Hello командлет возвращает список владельцев для указанной группы hello hello.
 
     DeletionTimeStamp ObjectId                             ObjectType
     ----------------- --------                             ----------
                           e831b3fd-77c9-49c7-9fca-de43e109ef67 User
 
-Для удаления владельца из группы используйте командлет Remove-AzureADGroupOwner:
+Tooremove владельца из группы, используйте командлет Remove-AzureADGroupOwner hello:
 
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
 
 ## <a name="reserved-aliases"></a>Зарезервированные псевдонимы 
-После создания группы определенные конечные точки позволяют пользователю указать mailNickname или псевдоним, который можно использовать как часть адреса электронной почты группы. Группы с приведенными ниже привилегированными псевдонимами электронной почты может создавать только глобальный администратор Azure AD. 
+При создании группы определенные конечные точки позволяют toospecify конечного пользователя hello toobe mailNickname или псевдонима, используется в качестве части адреса электронной почты hello hello группы. Группы с hello следующие псевдонимы привилегированным электронной почты могут создаваться только глобальный администратор Azure AD. 
   
 * abuse 
 * admin 
@@ -244,5 +244,5 @@ ms.lasthandoff: 08/18/2017
 ## <a name="next-steps"></a>Дальнейшие действия
 Дополнительную документацию по PowerShell Azure Active Directory см. в разделе [Azure Active Directory Cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0) (Командлеты Azure Active Directory).
 
-* [Управление доступом к ресурсам с помощью групп Azure Active Directory](active-directory-manage-groups.md)
+* [Управление tooresources доступ с помощью групп Azure Active Directory](active-directory-manage-groups.md)
 * [Интеграция локальных удостоверений с Azure Active Directory](active-directory-aadconnect.md)

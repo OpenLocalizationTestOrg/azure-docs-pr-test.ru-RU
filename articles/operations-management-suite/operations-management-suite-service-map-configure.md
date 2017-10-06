@@ -1,6 +1,6 @@
 ---
-title: "Настройка схемы услуги в Operations Management Suite | Документы Майкрософт"
-description: "Схема услуги — это решение Operations Management Suite, которое автоматически обнаруживает компоненты приложений в системах Windows и Linux и сопоставляет взаимодействие между службами. В этой статье содержатся подробные сведения о развертывании схемы услуги в вашей среде и приведены разнообразные сценарии ее использования."
+title: "Схемы услуг в Operations Management Suite aaaConfigure | Документы Microsoft"
+description: "Схемы услуг — это решение Operations Management Suite, который автоматически обнаруживает компонентов приложений в Windows и системами Linux и карты hello обмен данными между службами. В этой статье содержатся подробные сведения о развертывании схемы услуги в вашей среде и приведены разнообразные сценарии ее использования."
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 0da0231f1a6c01ddd95ce7872e0e4aa47dc61f1b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3127f4440f2886370f8ff617c405c6d70a926eb8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Настройка схемы услуги в Operations Management Suite
-Служба схемы услуги автоматически обнаруживает компоненты приложений в системах Windows и Linux и сопоставляет взаимодействие между службами. Она позволяет рассматривать серверы как взаимосвязанные системы, предоставляющие важные службы. Схема услуги отображает сведения о подключениях между серверами, процессами и портами в любой подключенной по протоколу TCP архитектуре без дополнительной настройки. Пользователям требуется только установить агент.
+Схемы услуг автоматически обнаруживает компонентов приложений в системах Windows и Linux и maps hello обмен данными между службами. Его можно использовать tooview серверов как можно считать их--взаимосвязанных систем, доставляющих критически важных служб. Схема услуги отображает сведения о подключениях между серверами, процессами и портами в любой подключенной по протоколу TCP архитектуре без дополнительной настройки. Пользователям требуется только установить агент.
 
-В этой статье подробно описывается настройка схемы услуги и подключение агентов. Сведения об использовании схемы услуги см. в статье [Использование решения схемы услуги в Operations Management Suite](operations-management-suite-service-map.md).
+В этой статье приводятся сведения hello настройки агентов схемы услуг и адаптации. Сведения об использовании схемы услуг см. в разделе [использовать решение схемы услуг hello в Operations Management Suite](operations-management-suite-service-map.md).
 
 ## <a name="dependency-agent-downloads"></a>Скачиваемые файлы агента зависимостей
 | Файл | ОС | Version (версия) | SHA-256 |
@@ -33,86 +33,86 @@ ms.lasthandoff: 08/03/2017
 
 
 ## <a name="connected-sources"></a>Подключенные источники
-Схема услуги получает данные от агента зависимостей Майкрософт. Агент зависимостей является зависимым от агента OMS в плане подключений к Operations Management Suite. Это означает, что сначала на сервере нужно установить и настроить агент OMS, после чего можно будет установить агент зависимостей. В приведенной ниже таблице описаны подключенные источники, которые поддерживаются решением схемы услуги.
+Схемы услуг получает данные из hello агента Microsoft зависимостей. Hello агент зависимостей зависит от hello агента OMS для ее подключения tooOperations Management Suite. Это означает, что сервер должен иметь hello агента OMS, установить и настроить первыми, а затем можно установить агент зависимостей приветствия. Hello следующей таблице приведены источники hello подключен, поддерживаемых hello карту службы решения.
 
 | Подключенный источник | Поддерживаются | Описание |
 |:--|:--|:--|
-| Агенты Windows | Да | Служба схемы услуги анализирует и собирает данные с компьютеров с агентами Windows. <br><br>Помимо [агента OMS](../log-analytics/log-analytics-windows-agents.md) для агентов Windows необходим агент зависимостей Майкрософт. Полный список версий операционных систем см. в разделе [Поддерживаемые операционные системы](#supported-operating-systems). |
-| Агенты Linux | Да | Служба схемы услуги анализирует и собирает данные с компьютеров с агентами Linux. <br><br>Помимо [агента OMS](../log-analytics/log-analytics-linux-agents.md) для агентов Linux необходим агент зависимостей Майкрософт. Полный список версий операционных систем см. в разделе [Поддерживаемые операционные системы](#supported-operating-systems). |
-| Группа управления System Center Operations Manager | Да | Служба схемы услуги анализирует и собирает данные из агентов Windows и Linux в подключенной [группе управления System Center Operations Manager](../log-analytics/log-analytics-om-agents.md). <br><br>Требуется прямое подключение из агента System Center Operations Manager к Operations Management Suite. Данные пересылаются из группы управления в репозиторий Operations Management Suite.|
-| Учетная запись хранения Azure. | Нет | Служба схемы услуги собирает данные с компьютеров с агентом, поэтому данные из службы хранилища Azure не собираются. |
+| Агенты Windows | Да | Служба схемы услуги анализирует и собирает данные с компьютеров с агентами Windows. <br><br>В дополнение toohello [агента OMS](../log-analytics/log-analytics-windows-agents.md), агентов Windows требуют hello агента Microsoft зависимостей. В разделе hello [поддерживаемые операционные системы](#supported-operating-systems) полный список версий операционной системы. |
+| Агенты Linux | Да | Служба схемы услуги анализирует и собирает данные с компьютеров с агентами Linux. <br><br>В дополнение toohello [агента OMS](../log-analytics/log-analytics-linux-agents.md), агенты Linux требуется hello агента Microsoft зависимостей. В разделе hello [поддерживаемые операционные системы](#supported-operating-systems) полный список версий операционной системы. |
+| Группа управления System Center Operations Manager | Да | Служба схемы услуги анализирует и собирает данные из агентов Windows и Linux в подключенной [группе управления System Center Operations Manager](../log-analytics/log-analytics-om-agents.md). <br><br>Прямое подключение от tooOperations компьютера агента System Center Operations Manager hello Management Suite является обязательным. Данные будут отправлены из hello управления группы toohello Operations Management Suite репозитория.|
+| Учетная запись хранения Azure. | Нет | Схемы услуг собирает данные с компьютеров агентов, поэтому нет данных от него toocollect из хранилища Azure. |
 
 Схема услуги поддерживает только 64-разрядные платформы.
 
-В ОС Windows System Center Operations Manager и Operations Management Suite используют Microsoft Monitoring Agent (MMA) для сбора и отправки данных мониторинга. (В зависимости от контекста этот агент называется агентом System Center Operations Manager, агентом OMS, агентом Log Analytics, MMA или прямым агентом.) System Center Operations Manager и Operations Management Suite предоставляют различные готовые к использованию версии MMA. В каждой из этих версий предусмотрена возможность отправлять отчеты в System Center Operations Manager, Operations Management Suite или в оба решения.  
+В Windows hello агента наблюдения Майкрософт (MMA) используется toogather System Center Operations Manager и Operations Management Suite и отправки данных мониторинга. (Этот агент называется hello агента System Center Operations Manager, агент OMS, аналитика агента журнала, MMA или Direct Agent, в зависимости от контекста hello.) System Center Operations Manager и Operations Management Suite предоставляет различные поля out из hello версии hello MMA. Каждый эти версии можно отчет tooSystem Center Operations Manager, tooOperations Management Suite или tooboth.  
 
-В ОС Linux агент OMS для Linux собирает и отправляет данные мониторинга в Operations Management Suite. Схему услуги можно использовать на серверах с прямыми агентами OMS или на серверах, подключенных к Operations Management Suite через группы управления System Center Operations Manager.  
+В Linux hello агента OMS для Linux собирает и отправляет мониторинга данных tooOperations Management Suite. Схемы услуг можно использовать на серверах с установленными агентами OMS прямой или на серверах, подключенных tooOperations Management Suite через группы управления System Center Operations Manager.  
 
-В этой статье мы будем называть все эти агенты — как в Linux, так и в Windows, подключенные к группе управления System Center Operations Manager или непосредственно к Operations Management Suite — агентами OMS. Имя конкретного развернутого агента будет использоваться, только если оно требуется в контексте.
+В этой статье мы будете ссылаться агенты tooall--ли Linux или Windows, является ли подключается tooa группы управления System Center Operations Manager или напрямую tooOperations Management Suite — как hello «Агент OMS». Мы будем использовать имя конкретного развертывания hello агента hello только в том случае, если он необходим для контекста.
 
-Агент схемы услуги самостоятельно не передает данные и не требует внесения изменений в брандмауэры или порты. Данные схемы услуги всегда передаются агентом OMS в Operations Management Suite напрямую или через шлюз OMS.
+Hello схемы услуг агента не передает сами все данные и не требует изменения toofirewalls ни порты. данные Hello в схемы услуг всегда передается hello агента OMS tooOperations Management Suite, напрямую или через шлюз OMS hello.
 
 ![Агенты схемы услуги](media/oms-service-map/agents.png)
 
-Если вы являетесь пользователем System Center Operations Manager с группой управления, подключенной к Operations Management Suite:
+Если вы являетесь клиентом System Center Operations Manager с tooOperations подключено групп управления Management Suite:
 
-- Если у ваших агентов System Center Operations Manager есть доступ к Operations Management Suite через Интернет, никаких дополнительных настроек не требуется.  
-- Если у агентов System Center Operations Manager нет доступа к Operations Management Suite через Интернет, необходимо настроить шлюз OMS для работы с System Center Operations Manager.
+- Если агенты System Center Operations Manager можно получить доступ к hello Internet tooconnect tooOperations Management Suite, никаких дополнительных настроек не требуется.  
+- Если агенты System Center Operations Manager не удается получить доступ к Operations Management Suite через Интернет hello, необходимо toowork шлюза OMS hello tooconfigure с System Center Operations Manager.
   
-При использовании прямого агента OMS необходимо настроить агент OMS для подключения к Operations Management Suite или шлюзу OMS. Шлюз OMS можно скачать в [Центре загрузки Майкрософт](https://www.microsoft.com/download/details.aspx?id=52666).
+При использовании hello OMS Direct Agent необходим tooconfigure hello самого агента OMS tooconnect tooOperations Management Suite tooyour OMS шлюза. Hello OMS шлюза можно загрузить из hello [центра загрузки Майкрософт](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ### <a name="management-packs"></a>Пакеты управления
-Если схема услуги активирована в рабочей области Operations Management Suite, то на все серверы в этой рабочей области отправляется пакет управления размером 300 КБ. Если агенты System Center Operations Manager используются в [подключенной группе управления](../log-analytics/log-analytics-om-agents.md), то пакет управления схемы услуги развертывается из System Center Operations Manager. Если агенты подключены напрямую, пакет управления доставляется с помощью Operations Management Suite.
+При активации схемы услуг в рабочую область Operations Management Suite пакета управления 300 КБ отправляется серверов Windows hello tooall в этой рабочей области. Если вы используете System Center Operations Manager агентов в [подключенной группе управления](../log-analytics/log-analytics-om-agents.md), hello схемы услуг пакет управления, развернутых из System Center Operations Manager. Если непосредственно подключенные агенты hello, Operations Management Suite доставляет hello пакета управления.
 
-Пакет управления называется Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Он записывается в папку %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\. Источник данных, используемый пакетом управления, — %Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<Автоматически_созданный_идентификатор>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
+пакет управления Hello называется Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Он является письменного too%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\. Hello источника данных с использованием пакета управления hello — % Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID > \ Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
 ## <a name="installation"></a>Установка
-### <a name="install-the-dependency-agent-on-microsoft-windows"></a>Установка агента зависимостей в Microsoft Windows
-Для установки или удаления агента требуются права администратора.
+### <a name="install-hello-dependency-agent-on-microsoft-windows"></a>Установить агент зависимостей hello в Microsoft Windows
+Права администратора не требуется tooinstall или удалите агент hello.
 
-Агент зависимостей устанавливается на компьютерах Windows с помощью файла InstallDependencyAgent-Windows.exe. Если запустить этот исполняемый файл без параметров, запустится мастер для установки в интерактивном режиме.  
+Hello зависимостей агент устанавливается на компьютерах Windows с помощью InstallDependencyAgent Windows.exe. Если запустить этот исполняемый файл без параметров, запускается мастер интерактивно выполните tooinstall.  
 
-Выполните приведение шаги, чтобы установить агент зависимостей на каждом компьютере Windows.
+Используйте следующие шаги tooinstall hello зависимостей агента на каждом компьютере Windows hello:
 
-1.  Установите агент OMS, выполнив инструкции в разделе [Подключение компьютеров Windows к службе Log Analytics в Azure](../log-analytics/log-analytics-windows-agents.md).
-2.  Скачайте агент Windows и запустите его с помощью следующей команды. <br>`InstallDependencyAgent-Windows.exe`
-3.  Следуйте инструкциям мастера для установки агента.
-4.  Если агент зависимостей не запускается, просмотрите подробные сведения об ошибке в записях журналов. В агентах Windows каталогом журналов является %Programfiles%\Microsoft Dependency Agent\logs. 
+1.  Установка агента OMS hello с помощью инструкций hello в [toohello компьютеров Windows подключения службы анализа журналов в Azure](../log-analytics/log-analytics-windows-agents.md).
+2.  Скачать агент для Windows hello и запустите его с помощью hello следующую команду: <br>`InstallDependencyAgent-Windows.exe`
+3.  Выполните приветствия мастера tooinstall hello агента.
+4.  При сбое toostart hello агент зависимостей в журнале hello подробные сведения об ошибке. Для агентов Windows hello каталог журнала находится в %Programfiles%\Microsoft Agent\logs зависимостей. 
 
 #### <a name="windows-command-line"></a>Командная строка Windows
-Используйте параметры из следующей таблицы для установки из командной строки. Чтобы просмотреть список параметров установки, запустите установщик с параметром /? /? следующим образом.
+Используйте параметры из hello следующую таблицу tooinstall из командной строки. Список флагов установки hello, запустите установщик hello с помощью hello toosee /? /? следующим образом.
 
     InstallDependencyAgent-Windows.exe /?
 
 | Параметр | Описание |
 |:--|:--|
-| /? | Получение списка параметров командной строки. |
+| /? | Получение списка параметров командной строки hello. |
 | /S | Выполняет автоматическую установку без вывода сообщений для пользователя. |
 
-Файлы для агента зависимостей Windows по умолчанию размещаются в папке C:\Program Files\Microsoft Dependency Agent.
+Файлы для агента зависимостей Windows hello, помещаются в C:\Program Files\Microsoft зависимостей агента по умолчанию.
 
-### <a name="install-the-dependency-agent-on-linux"></a>Установка агента зависимостей в Linux
-Для установки или настройки агента требуется доступ с правами привилегированного пользователя.
+### <a name="install-hello-dependency-agent-on-linux"></a>Установить агент зависимостей hello в Linux
+Корневой доступ является обязательным tooinstall или настройки агента hello.
 
-Агент зависимостей устанавливается на компьютерах Linux с помощью файла InstallDependencyAgent-Linux64.bin. Это скрипт оболочки с самоизвлекающимся двоичным файлом. Вы можете запустить этот файл с помощью sh или добавить разрешения на выполнение в сам файл.
+Hello зависимостей агент устанавливается на компьютеров Linux с помощью InstallDependencyAgent Linux64.bin, сценарий оболочки с самораспаковывающийся двоичный файл. Можно выполнить с помощью sh hello файл или добавить выполнение сам файл toohello разрешения.
  
-Выполните приведение шаги, чтобы установить агент зависимостей на каждом компьютере Linux.
+Используйте следующие шаги tooinstall hello зависимостей агента на каждом компьютере Linux hello.
 
-1.  Установите агент OMS, выполнив инструкции, приведенные в статье [Подключение компьютеров Linux к Operations Management Suite (OMS)](https://technet.microsoft.com/library/mt622052.aspx).
-2.  Установите агент зависимостей Linux с правами привилегированного пользователя, используя следующую команду:<br>`sh InstallDependencyAgent-Linux64.bin`
-3.  Если агент зависимостей не запускается, просмотрите подробные сведения об ошибке в записях журналов. В агентах Linux каталог журналов находится в расположении /var/opt/microsoft/dependency-agent/log.
+1.  Установка агента OMS hello с помощью инструкций hello в [сбора данных и управления ими с компьютеров Linux](https://technet.microsoft.com/library/mt622052.aspx).
+2.  Установка агента Linux зависимостей hello корневым каталогом с помощью hello следующую команду:<br>`sh InstallDependencyAgent-Linux64.bin`
+3.  При сбое toostart hello агент зависимостей в журнале hello подробные сведения об ошибке. Каталог журнала hello является /var/opt/microsoft/dependency-agent/log агенты Linux.
 
-Чтобы просмотреть список параметров установки, запустите программу установки с параметров -help указанным ниже образом.
+Список флагов установки hello, запустите программу установки hello с toosee hello - справки флаг следующим образом.
 
     InstallDependencyAgent-Linux64.bin -help
 
 | Параметр | Описание |
 |:--|:--|
-| -help | Получение списка параметров командной строки. |
+| -help | Получение списка параметров командной строки hello. |
 | -s | Выполняет автоматическую установку без вывода сообщений для пользователя. |
-| --check | Проверяет разрешения и операционную систему, но не устанавливает агент. |
+| --check | Проверьте разрешения и hello операционной системы, но не устанавливать агент hello. |
 
-Файлы для агента зависимостей размещаются в следующих каталогах.
+Файлы для hello агент зависимостей помещаются в hello следующие каталоги:
 
 | Файлы | Расположение |
 |:--|:--|
@@ -123,7 +123,7 @@ ms.lasthandoff: 08/03/2017
 | Двоичные файлы хранилища | /var/opt/microsoft/dependency-agent/storage |
 
 ## <a name="installation-script-examples"></a>Примеры скриптов установки
-Чтобы легко развернуть агент зависимостей сразу на нескольких серверах, можно использовать скрипт. Для скачивания и установки агента зависимостей в Windows или Linux можно использовать приведенные ниже примеры скриптов.
+tooeasily развертывание hello зависимостей агент на нескольких серверах одновременно, он помогает toouse сценария. Можно использовать следующие примеры toodownload сценария hello и установить агент зависимостей hello на Windows или Linux.
 
 ### <a name="powershell-script-for-windows"></a>Скрипт PowerShell для Windows
 ```PowerShell
@@ -139,7 +139,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 ```
 
 ## <a name="desired-state-configuration"></a>Настройка требуемого состояния
-Чтобы развернуть агент зависимостей посредством Desired State Configuration, можно использовать модуль xPSDesiredStateConfiguration и небольшой фрагмент кода, как показано ниже.
+hello toodeploy агент зависимостей посредством настройки требуемого состояния можно использовать модуль xPSDesiredStateConfiguration hello и большой объем кода hello следующим образом:
 ```
 configuration ServiceMap {
 
@@ -149,7 +149,7 @@ $DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
 
 Node localhost
 { 
-    # Download and install the Dependency Agent
+    # Download and install hello Dependency Agent
     xRemoteFile DAPackage 
     {
         Uri = "https://aka.ms/dependencyagentwindows"
@@ -173,13 +173,13 @@ Node localhost
 ```
 
 ## <a name="uninstallation"></a>Удаление
-### <a name="uninstall-the-dependency-agent-on-windows"></a>Удаление агента зависимостей в Windows
-Администратор может удалить агент зависимостей для Windows через панель управления.
+### <a name="uninstall-hello-dependency-agent-on-windows"></a>Удаление агента зависимостей в ОС Windows hello
+Администратор может удалить hello зависимостей агент для Windows с панели управления.
 
-Для удаления агента зависимостей администратор может также запустить файл %Programfiles%\Microsoft Dependency Agent\Uninstall.exe.
+Администратор также можно запустить %Programfiles%\Microsoft Agent\Uninstall.exe зависимостей toouninstall hello агент зависимостей.
 
-### <a name="uninstall-the-dependency-agent-on-linux"></a>Удаление агента зависимостей в Linux
-Чтобы полностью удалить агент зависимостей в Linux, необходимо удалить сам агент и соединитель, который автоматически устанавливается с агентом. Удалить и то, и другое одновременно можно с помощью одной команды.
+### <a name="uninstall-hello-dependency-agent-on-linux"></a>Удаление hello агент зависимостей в Linux
+Удаление toocompletely Здравствуйте агент зависимостей от Linux, необходимо удалить самого агента hello и hello соединитель, который автоматически устанавливается вместе с агентом hello. Можно удалить с помощью hello, выполнив одну команду:
 
     rpm -e dependency-agent dependency-agent-connector
 
@@ -188,56 +188,56 @@ Node localhost
 
 ### <a name="dependency-agent-installation-problems"></a>Проблемы при установке агента зависимостей
 #### <a name="installer-asks-for-a-reboot"></a>Установщик запрашивает перезагрузку
-При установке или удалении агент зависимостей *обычно* не требует перезагрузки. Однако в некоторых редких случаях для продолжения установки Windows Server требуется перезагрузить. Это происходит, когда зависимость (как правило, распространяемые компоненты Microsoft VC ++) требует перезагрузки из-за заблокированного файла.
+Hello агент зависимостей *обычно* не требует перезагрузки после установки или удаления. Однако в некоторых редких случаях, Windows Server требует toocontinue перезагрузки при установке. Это происходит, когда зависимость, обычно hello Microsoft распространяемый пакет Visual C++, требующее перезагрузки из-за заблокированный файл.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Сообщение "Не удалось установить агент зависимостей: сбой установки библиотек среды выполнения Visual Studio (код = [номер_кода])"
+#### <a name="message-unable-tooinstall-dependency-agent-visual-studio-runtime-libraries-failed-tooinstall-code--codenumber-appears"></a>Сообщение «не удается tooinstall агент зависимостей: библиотеки среды выполнения Visual Studio не удалось выполнить tooinstall (код = [Номер_кода])» отображается
 
-Агент зависимостей Майкрософт создан на основе библиотек среды выполнения Microsoft Visual Studio. Если во время установки этих библиотек возникла проблема, вы получите сообщение. 
+Hello зависимостей агента Microsoft основана на hello библиотек времени выполнения Microsoft Visual Studio. Вы получите сообщение, если во время установки библиотек hello проблема. 
 
-Установщики библиотек среды выполнения создают журналы в папке %LOCALAPPDATA%\temp. Файл будет иметь вид dd_vcredist_arch_yyyymmddhhmmss.log, где вместо *arch* будет указано x86 или amd64, а вместо *yyyymmddhhmmss* — дата и время создания журнала (в 24-часовом формате). В журнале содержатся подробные сведения о проблеме, из-за которой блокируется установка.
+установщики библиотеки среды выполнения Hello создавать журналы в папке %LOCALAPPDATA%\temp hello. файл Hello является dd_vcredist_arch_yyyymmddhhmmss.log, где *arch* «x86» или «amd64» и *ггггммддччммсс* hello Дата и время (в 24-часовом формате) создания журнала hello. Hello журнал предоставляет подробные сведения о проблеме hello, блокирующего установку.
 
-Сначала лучше всего установить [последнюю версию библиотек среды выполнения](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
+Он может быть полезным tooinstall hello [последние библиотеки среды выполнения](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) самостоятельно первой.
 
-В таблице ниже приведены некоторые номера кодов и рекомендации по устранению проблем.
+Hello следующей таблице перечислены коды и рекомендуемые решения.
 
 | Код | Описание | Способы устранения: |
 |:--|:--|:--|
-| 0x17 | Установщику библиотек требуется обновление Windows, которое не было установлено. | Проверьте сведения в последнем журнале установщика библиотек.<br><br>Если после ссылки на Windows8.1-KB2999226-x64.msu следует строка "Ошибка 0x80240017: не удалось выполнить пакет MSU", значит, не установлены необходимые компоненты для установки обновления KB2999226. Следуйте инструкциям в разделе предварительных требований статьи [Обновление для универсальной среды выполнения C в Windows](https://support.microsoft.com/kb/2999226). Может потребоваться запустить Центр обновления Windows и несколько раз выполнить перезагрузку, чтобы установить необходимые компоненты.<br><br>Запустите установщик агента зависимостей Microsoft. |
+| 0x17 | Установщик библиотеки Hello требует обновления Windows, который не был установлен. | Просмотрите hello последнего журнала установщика библиотеки.<br><br>Ли ссылка слишком «Windows8.1-установлено KB2999226-x64.msu» следуют строки «ошибка 0x80240017: сбой tooexecute пакета MSU,» нет необходимых компонентов hello tooinstall установлено KB2999226. Следуйте инструкциям hello в разделе предварительных требований hello в [универсальная среда выполнения C в Windows](https://support.microsoft.com/kb/2999226). Может требуется toorun центра обновления Windows и перезагружаться несколько раз в предварительных требованиях hello tooinstall заказа.<br><br>Снова запустите установщик агента Microsoft зависимостей hello. |
 
 ### <a name="post-installation-issues"></a>Проблемы после установки
 #### <a name="server-doesnt-appear-in-service-map"></a>Сервер не отображается в службе схемы услуги
-Если агент зависимостей успешно установлен, но в решении "Схема услуги" не отображается сервер, ответьте на следующие вопросы:
-* Успешно ли установлен агент зависимостей? Для этого проверьте, установлена и запущена ли служба.<br><br>
-**Windows**: найдите службу с именем "Агент зависимостей (Майкрософт)".<br>
-**Linux**: найдите выполняющийся процесс microsoft-dependency-agent.
+Если зависимость агент установлен, но вы не видите нужного сервера hello карту службы решения:
+* Успешная установка hello зависимостей агента? Это можно проверить путем проверки toosee hello служба установлена и запущена.<br><br>
+**Windows**: поиске hello службы с именем «Агент зависимостей Microsoft».<br>
+**Linux**: поиск hello выполнения процесса «microsoft зависимостей агент».
 
-* Используете ли вы [ценовую категорию "Бесплатный" Operations Management Suite и Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? План "Бесплатный" предусматривает использование пяти уникальных серверов решения "Схема услуги". Все последующие серверы не будут отображаться в решении "Схема услуги", даже если предыдущие пять больше не отправляют данные.
+* Включены hello [бесплатной ценовой категории Operations Management Suite или журнала аналитики](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? план Free hello позволяет toofive уникальный схемы услуг серверов. Все последующие серверы, не отображаются в схемы услуг, даже если hello пяти предыдущих больше не отправляют данные.
 
-* Отправляет ли сервер данные журналов и данные по производительности в Operations Management Suite? Перейдите к поиску по журналам и выполните следующий запрос для своего компьютера: 
+* — Это сервер отправки журнала и данных производительности tooOperations Management Suite? Перейдите tooLog поиска и запустите hello в следующем запросе для компьютера: 
 
         * Computer="<your computer name here>" | measure count() by Type
         
-  Вы получили множество событий в результатах? Это последние данные? В этом случае агент OMS работает правильно и обменивается данными со службой Operations Management Suite. В противном случае проверьте агент OMS на сервере. См. статью [Устранение неполадок агента OMS для Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) или [Устранение неполадок агента OMS для Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
+  Можно попасть на ряд событий в результатах hello? — Это последние данные hello? В этом случае агент OMS функционировании и взаимодействия с hello службы Operations Management Suite. Если нет, проверьте hello агент OMS на сервере: [Устранение неполадок Windows для агента OMS](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) или [агента OMS для Linux, устранение неполадок](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Сервер отображается в решении "Схема услуги", но для него нет процессов
-Если сервер отображается в решении "Схема услуги", но для него нет процессов или данных о подключении, это означает, что агент зависимостей установлен и запущен, но не удалось загрузить драйвер ядра. 
+Если вы видите сервером для схемы услуг, но нет процесса или подключения данных, которое указывает, что hello зависимостей агента установлена и запущена, но не удалось загрузить драйвер ядра hello. 
 
-Проверьте файл C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log (Windows) или /var/opt/microsoft/dependency-agent/log/service.log (Linux). В последних строках файла должно быть указано, почему не удалось загрузить ядро. Например, если вы обновили ядро, оно может не поддерживаться в Linux.
+Проверьте файл C:\Program Files\Microsoft зависимостей Agent\logs\wrapper.log hello (Windows) или /var/opt/microsoft/dependency-agent/log/service.log (Linux). Hello последней строки файла hello должно быть указано, почему не удалось загрузить hello ядра. Например hello ядра может не поддерживаться в Linux при обновлении ядро.
 
 ## <a name="data-collection"></a>Сбор данных
-Каждый агент передает примерно 25 МБ данных в день в зависимости от сложности зависимостей системы. Каждый агент отправляет данные зависимостей схемы услуги каждые 15 секунд.  
+Можно ожидать, что каждый агент tootransmit приблизительно 25 МБ в день, в зависимости от сложности зависимостей системы. Каждый агент отправляет данные зависимостей схемы услуги каждые 15 секунд.  
 
-Агент зависимостей обычно потребляет 0,1 % системной памяти и 0,1 % ресурсов ЦП системы.
+Hello агент зависимостей обычно занимают 0,1% системной памяти и 0,1% ЦП системы.
 
 ## <a name="supported-azure-regions"></a>Поддерживаемые регионы Azure
-Схема услуги в настоящее время доступна в следующих регионах Azure:
+Карта службы в настоящее время доступна в следующих регионах Azure hello:
 - Восток США
 - Западная Европа
 - Западно-центральная часть США
 
 
 ## <a name="supported-operating-systems"></a>Поддерживаемые операционные системы
-В следующих разделах представлены поддерживаемые операционные системы для агента зависимостей. Схема услуги не поддерживает 32-разрядные архитектуры операционных систем.
+Hello следующих разделах перечислены hello поддерживаемые операционные системы для hello агент зависимостей. Схема услуги не поддерживает 32-разрядные архитектуры операционных систем.
 
 ### <a name="windows-server"></a>Windows Server
 - Windows Server 2016
@@ -253,7 +253,7 @@ Node localhost
 
 ### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux и Oracle Linux (с ядром RHEL)
 - Поддерживаются только версии ядра по умолчанию и SMP для Linux.
-- Нестандартные версии ядра, такие как PAE и Xen, не поддерживаются ни в одном дистрибутиве Linux. Например, система со строкой версии "2.6.16.21-0.8-xen" не поддерживается.
+- Нестандартные версии ядра, такие как PAE и Xen, не поддерживаются ни в одном дистрибутиве Linux. Например в системе с строку hello выпуска «2.6.16.21-0.8-xen» не поддерживается.
 - Пользовательские ядра, включая повторные компиляции стандартных ядер, не поддерживаются.
 - Ядро CentOSPlus не поддерживается.
 - Oracle Unbreakable Enterprise Kernel (UEK) рассматривается в разделе ниже.
@@ -325,11 +325,11 @@ Node localhost
 | 10 SP4 | 2.6.16.60 |
 
 ## <a name="diagnostic-and-usage-data"></a>Данные диагностики и использования
-Корпорация Майкрософт автоматически собирает данные об использовании и производительности с помощью службы схемы услуги. Эти данные используются, чтобы улучшить качество, повысить безопасность и целостность службы схемы услуги. Они включают в себя сведения о конфигурации программного обеспечения, такие как версия операционной системы. Они также включают в себя IP-адрес, DNS-имя и имя рабочей станции с целью предоставления возможностей для точного и эффективного устранения неполадок. Корпорация Майкрософт не собирает сведения об именах, адресах и другую контактную информацию.
+Корпорация Майкрософт автоматически собирает данные об использовании и производительности посредством использования hello схемы услуг службы. Корпорация Майкрософт использует этот tooprovide данных и повышения качества hello, безопасности и целостности hello схемы услуг службы. Данные включают сведения о конфигурации программного обеспечения, такие как версия операционной системы и hello. Также включает IP-адрес, DNS-имя и имя рабочей станции в порядке tooprovide точные и эффективный возможности по устранению неполадок. Корпорация Майкрософт не собирает сведения об именах, адресах и другую контактную информацию.
 
-Дополнительные сведения о сборе и использовании данных см. в [заявлении о конфиденциальности служб Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Дополнительные сведения о сборе и использовании данных см. в разделе hello [заявления о конфиденциальности Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-- Узнайте, как [использовать схему услуги](operations-management-suite-service-map.md) после ее развертывания и настройки.
+- Узнайте, каким образом слишком[использовать схемы услуг](operations-management-suite-service-map.md) после развертывания и настройки.

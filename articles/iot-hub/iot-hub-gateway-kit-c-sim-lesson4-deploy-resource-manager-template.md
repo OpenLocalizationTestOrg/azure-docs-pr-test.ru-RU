@@ -1,12 +1,12 @@
 ---
 title: "Приступая к работе с имитацией устройства и шлюзом Azure IoT. Урок 4. Сохранение сообщений | Документация Майкрософт"
-description: "Сохраняйте сообщения из Intel NUC в Центр Интернета вещей, записывайте их в Хранилище таблиц Azure, а затем читайте их из облака."
+description: "Сохранять сообщения из центра IoT tooyour Intel NUC, записывать их в хранилище таблиц tooAzure и затем прочитать их из облака hello."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "хранение данных в облаке, данные, хранящиеся в облаке, облачная служба Интернета вещей"
+keywords: "хранение данных в облаке hello, данные, хранящиеся в облаке, iot облачной службы"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: ffed0c2e-b092-40e1-9113-8196ec057d67
@@ -17,41 +17,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: c7fc47b07acede28ffe790debca7e38521726011
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 230f2708b62b89c6eed2e238efefc1c4da86e373
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-function-app-and-storage-account"></a>Создание приложения-функции Azure и учетной записи хранения Azure
 
-Функции Azure — это решение для быстрого запуска _функций_ (фрагментов кода) в облаке. Выполнение функций в Azure производится с помощью приложения-функции. 
+Функции Azure — это решение для запуска легко _функции_ (небольшие части кода) в облаке hello. Приложение Azure функция размещает hello выполнение функций в Azure. 
 
 ## <a name="what-you-will-do"></a>Выполняемая задача
 
-- С помощью шаблона Azure Resource Manager создайте приложение-функцию Azure и учетную запись хранения Azure. Приложение-функция Azure ожидает передачи событий Центра Интернета вещей Azure, обрабатывает входящие сообщения и записывает их в хранилище таблиц Azure.
+- Используйте toocreate шаблона диспетчера ресурсов Azure, приложение Azure функции и учетная запись хранилища Azure. приложение Azure функции Hello прослушивает события концентратора IoT tooAzure, обрабатывает входящие сообщения и записывает их в хранилище таблиц tooAzure.
 
-Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-gateway-kit-c-sim-troubleshooting.md).
+Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 
 
 ## <a name="what-you-will-learn"></a>Новые знания
 
 Из этого урока вы узнаете:
 
-- как использовать Azure Resource Manager для развертывания ресурсов в Azure;
-- как использовать приложение-функцию Azure для обработки сообщений Центра Интернета вещей и их записи в таблицу в Хранилище таблиц Azure.
+- Как Azure Resource Manager toodeploy toouse ресурсов Azure.
+- Как toouse Azure функцией tooprocess приложения центра IoT сообщения и записи таблицы tooa в хранилище таблиц Azure.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 
-Необходимо успешно пройти следующие уроки:
+Необходимо успешно выполнить предыдущие занятия hello:
 
 - [Урок 1. Настройка Intel NUC в качестве шлюза Интернета вещей](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)
 - [Урок 2. Подготовка главного компьютера и Центра Интернета вещей Azure](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
-- [Урок 3. Получение сообщений из имитации устройства и чтение сообщений из вашего Центра Интернета вещей](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
+- [Занятие 3: Получение сообщений от устройств, имитация hello и чтение сообщений в концентратор IoT](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
 
 ## <a name="open-a-sample-app"></a>Открытие примера приложения
 
-Перейдите в папку репозитория `iot-hub-c-intel-nuc-gateway-getting-started`, выполните инициализацию файлов конфигурации, а затем откройте пример проекта в Visual Studio Code, выполнив следующую команду:
+Go tooyour `iot-hub-c-intel-nuc-gateway-getting-started` репозитория папки, файлы конфигурации hello initialize и hello откройте образец проекта в Visual Studio Code, выполнив следующую команду hello:
 
 ```bash
 cd Lesson4
@@ -62,29 +62,29 @@ code .
 
 ![структура репозитория](media/iot-hub-gateway-kit-lessons/lesson4/arm_template.png)
 
-- Файл `arm-template.json` — шаблон Azure Resource Manager, содержащий приложение-функцию Azure и учетную запись хранения Azure.
-- Файл `arm-template-param.json` — файл конфигурации, используемый в шаблоне Azure Resource Manager.
-- Вложенная папка `ReceiveDeviceMessages` содержит код Node.js для функции Azure.
+- Hello `arm-template.json` файла является шаблон hello диспетчера ресурсов Azure, который содержит приложение Azure функции и учетная запись хранилища Azure.
+- Hello `arm-template-param.json` файл является файлом конфигурации hello, используемые hello шаблона диспетчера ресурсов Azure.
+- Hello `ReceiveDeviceMessages` вложенная папка содержит код Node.js hello Azure функции hello.
 
 ## <a name="configure-azure-resource-manager-templates-and-create-resources-in-azure"></a>Настройка шаблонов Azure Resource Manager и создание ресурсов в Azure
 
-Обновите файл `arm-template-param.json` в Visual Studio Code.
+Обновление hello `arm-template-param.json` файл в Visual Studio Code.
 
 ![JSON-файл шаблона ARM](media/iot-hub-gateway-kit-lessons/lesson4/arm_template_param.png)
 
 - Замените `[your IoT Hub name]` именем `{my hub name}`, указанным в уроке 2.
 
-После обновления файла `arm-template-param.json` разверните ресурсы в Azure, выполнив следующую команду:
+После обновления hello `arm-template-param.json` файлов, развертывание, выполнив следующую команду hello tooAzure ресурсы hello:
 
 ```bash
 az group deployment create --template-file arm-template.json --parameters @arm-template-param.json -g iot-gateway
 ```
 
-Используйте `iot-gateway` в качестве значения `{resource group name}`, если в уроке 2 значение не изменялось.
+Используйте `iot-gateway` в качестве значения hello `{resource group name}` Если вы не изменили значение hello в занятии 2.
 
 ## <a name="summary"></a>Сводка
 
-Вы создали приложение-функцию Azure для обработки сообщений Центра Интернета вещей и учетную запись хранения Azure для хранения этих сообщений. Теперь можно читать сообщения, отправленные шлюзом в Центр Интернета вещей.
+Вы создали вашей tooprocess приложения Azure функция IoT hub сообщений и учетной записи хранилища Azure toostore эти сообщения. Теперь можно считывать сообщения, отправляемые с вашего центра IoT tooyour шлюза.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Чтение сообщений, сохраненных в службе хранилища Azure](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md)

@@ -1,6 +1,6 @@
 ---
-title: "Управление приложениями Azure Service Fabric с помощью Azure CLI 2.0"
-description: "Узнайте, как развертывать приложения и удалить их из кластера с Azure Service Fabric с помощью Azure CLI 2.0."
+title: "приложения Azure Service Fabric aaaManage, с помощью Azure CLI 2.0"
+description: "Узнайте, как toodeploy и удаление приложений с Azure Service Fabric кластера с помощью Azure CLI 2.0."
 services: service-fabric
 author: samedder
 manager: timlt
@@ -8,78 +8,78 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: edwardsa
-ms.openlocfilehash: 5728339236e3819b301e428f9d7a8add08f02b3e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ae1ba19513978b0f95ffb65d5f1f7a21ed5f2894
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-cli-20"></a>Управление приложением Azure Service Fabric с помощью Azure CLI 2.0
 
-Узнайте, как создавать и удалять приложения, выполняющиеся в кластере Azure Service Fabric.
+Узнайте, как toocreate и удаление приложений, работающих в кластере Azure Service Fabric.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 * Установите Azure CLI 2.0 и выберите кластер Service Fabric. Дополнительные сведения можно найти в документации по [началу работы с Azure CLI 2.0](service-fabric-azure-cli-2-0.md).
 
-* Также требуется готовый к развертыванию пакет приложения Service Fabric. Дополнительные сведения о том, как создавать и упаковывать приложения, представлены в [документации по модели приложения Service Fabric](service-fabric-application-model.md).
+* У Service Fabric приложения пакет готов toobe развертывания. Дополнительные сведения о том, как tooauthor и пакет приложения, узнайте, как hello [модель приложения Service Fabric](service-fabric-application-model.md).
 
 ## <a name="overview"></a>Обзор
 
-Чтобы развернуть новое приложение, выполните указанные ниже действия.
+toodeploy нового приложения, выполните следующие действия.
 
-1. Отправьте пакет приложения в хранилище образов Service Fabric.
+1. Отправка образа хранилища Service Fabric toohello пакета приложений.
 2. Подготовьте тип приложения.
 3. Укажите приложение и создайте его.
 4. Укажите службы и создайте их.
 
-Чтобы удалить существующее приложение, выполните следующие действия.
+tooremove существующего приложения, выполните следующие действия.
 
-1. Удалите приложение.
-2. Отмените подготовку связанного типа приложения.
-3. Удалите содержимое из хранилища образов.
+1. Удаление приложения hello.
+2. Отключение hello связанный тип приложения.
+3. Удаляет содержимое хранилища hello изображения.
 
 ## <a name="deploy-a-new-application"></a>Развертывание нового приложения
 
-Чтобы развернуть новое приложение, выполните указанные ниже действия.
+toodeploy нового приложения, завершения hello следующие задачи.
 
-### <a name="upload-a-new-application-package-to-the-image-store"></a>Передача нового пакета приложения в хранилище образов
+### <a name="upload-a-new-application-package-toohello-image-store"></a>Отправить новый образ хранилище toohello приложения пакета
 
-Прежде чем создавать приложение, необходимо отправить пакет приложения в хранилище образов Service Fabric. 
+Прежде чем создавать приложения, отправьте изображение хранилище Service Fabric toohello hello приложения пакета. 
 
-Предположим, что пакет приложения существует в каталоге `app_package_dir`. Чтобы отправить каталог, выполните следующие команды:
+Например, если пакет приложения hello `app_package_dir` directory hello используйте следующие команды tooupload hello каталога:
 
 ```azurecli
 az sf application upload --path ~/app_package_dir
 ```
 
-Для больших пакетов приложений вы можете указать параметр `--show-progress`, чтобы отобразить ход передачи.
+Для больших пакетов приложений, вы можете указать hello `--show-progress` параметр toodisplay hello ход выполнения передачи hello.
 
-### <a name="provision-the-application-type"></a>Подготовка типа приложения
+### <a name="provision-hello-application-type"></a>Тип приложения hello подготовки
 
-По завершении отправки необходимо подготовить приложение. Чтобы подготовить приложение, выполните следующую команду:
+После завершения передачи hello подготовить приложение hello. приложение hello tooprovision, hello используйте следующую команду:
 
 ```azurecli
 az sf application provision --application-type-build-path app_package_dir
 ```
 
-Параметр `application-type-build-path` должен совпадать с именем каталога, содержащего пакет приложения, который был отправлен ранее.
+Здравствуйте, значение для `application-type-build-path` — имя hello hello каталога, где загруженный пакет приложения.
 
 ### <a name="create-an-application-from-an-application-type"></a>Создание приложения из типа приложения
 
-После подготовки приложения можно присвоить ему имя и создать приложение, выполнив следующую команду:
+После их инициализации приложения hello, используйте следующие команды tooname hello и создания приложения:
 
 ```azurecli
 az sf application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
-`app-name` — это имя, которое получит экземпляр приложения. Другие параметры можно найти с помощью манифеста приложения, который был подготовлен ранее.
+`app-name`— Имя hello, что требуется toouse для экземпляра приложения hello. Дополнительные параметры можно получить из манифеста предварительно подготовленные приложения hello.
 
-Имя приложения должно начинаться с префикса `fabric:/`.
+Имя приложения Hello должно начинаться с префикса hello `fabric:/`.
 
-### <a name="create-services-for-the-new-application"></a>Создание служб для нового приложения
+### <a name="create-services-for-hello-new-application"></a>Создание служб для нового приложения hello
 
-После создания приложения из него можно создавать службы. В этом примере мы создадим из приложения службу без отслеживания состояния. Службы, которые можно создать из приложения, определены в манифесте службы внутри подготовленного ранее пакета приложения.
+После создания приложения можно создайте службы из приложения hello. В следующем примере hello создадим новый без отслеживания состояния службы из нашего приложения. Hello служб, которые можно создать из приложения, определенные в манифест службы в пакет предварительно подготовленные приложения hello.
 
 ```azurecli
 az sf service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
@@ -88,14 +88,14 @@ az sf service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 ## <a name="verify-application-deployment-and-health"></a>Проверка развертывания и работоспособности приложения
 
-Чтобы проверить, что приложение и служба были успешно развернуты, убедитесь, что они отображаются:
+tooverify, что приложения и службы были успешно развернуты, проверьте, указаны hello приложения и службы:
 
 ```azurecli
 az sf application list
 az sf service list --application-list TestApp
 ```
 
-Чтобы проверить, что служба работоспособна, выполните аналогичные команды, чтобы получить сведения о работоспособности службы и приложения.
+tooverify, что служба hello находится в работоспособном состоянии, используйте аналогичные команды tooretrieve hello работоспособности hello службы и приложения hello.
 
 ```azurecli
 az sf application health --application-id TestApp
@@ -106,37 +106,37 @@ az sf service health --service-id TestApp/TestSvc
 
 ## <a name="remove-an-existing-application"></a>Удаление имеющегося приложения
 
-Чтобы удалить приложение, выполните указанные ниже действия.
+tooremove приложения, завершения hello следующие задачи.
 
-### <a name="delete-the-application"></a>Удаление приложения
+### <a name="delete-hello-application"></a>Удаление приложения hello
 
-Удалите приложение, выполнив следующую команду:
+приложение hello toodelete, hello используйте следующую команду:
 
 ```azurecli
 az sf application delete --application-id TestEdApp
 ```
 
-### <a name="unprovision-the-application-type"></a>Отмена подготовки типа приложения
+### <a name="unprovision-hello-application-type"></a>Отменить подготовку типа приложения hello
 
-После удаления приложения можно также отменить подготовку типа приложения (если он больше не требуется). Для этого выполните следующую команду:
+После удаления приложения hello, можно отменить подготовку типа приложения hello, если оно больше не требуется. Тип приложения hello toounprovision, hello используйте следующую команду:
 
 ```azurecli
 az sf application unprovision --application-type-name TestAppTye --application-type-version 1.0
 ```
 
-Имя и версия типа должны соответствовать имени и версии в манифесте приложения, который был подготовлен ранее.
+версия по имени и типа тип Hello должна соответствовать hello имени и версии в манифесте предварительно подготовленные приложения hello.
 
-### <a name="delete-the-application-package"></a>Удаление пакета приложения
+### <a name="delete-hello-application-package"></a>Удалить пакет приложения hello
 
-После того как подготовка типа приложения была отменена, пакет приложения можно удалить из хранилища образов (если он больше не требуется). Удалите пакеты приложения, чтобы освободить место на диске. 
+После отменил инициализацию типа приложения hello, можно удалить пакет приложения hello из хранилища образов hello, если оно больше не требуется. Удалите пакеты приложения, чтобы освободить место на диске. 
 
-Чтобы удалить пакет приложения из хранилища образов, выполните следующую команду:
+пакет приложения hello toodelete из хранилища образов hello, hello используйте следующую команду:
 
 ```azurecli
 az sf application package-delete --content-path app_package_dir
 ```
 
-Параметр `content-path` должен совпадать с именем каталога, загруженного при создании приложения.
+`content-path`должно быть именем hello hello каталога, который загружен при создании приложения hello.
 
 ## <a name="related-articles"></a>Связанные статьи
 

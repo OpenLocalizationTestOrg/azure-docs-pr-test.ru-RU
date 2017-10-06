@@ -1,94 +1,76 @@
 ---
-title: "Учебник по службам Azure Analysis Services: занятие 6 \"Создание мер\" | Документы Майкрософт"
-description: "Описывает создание мер в учебном проекте служб Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 06/01/2017
-ms.author: owend
-ms.openlocfilehash: 90833fa9744eac298b0da82cd3d12f27cc237510
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+Заголовок: aaa «занятие учебника Azure Analysis Services 6: создание мер | Документы Microsoft» Описание: описание как toocreate меры в проект tutorial служб Azure Analysis Services hello. службы: documentationcenter служб analysis services: '' Автор: диспетчер minewiskan: редактор erikre: '' теги: ''
+
+MS.AssetId: ms.service: ms.devlang служб analysis services: н/д ms.topic: get-started-article ms.tgt_pltfrm: н/д ms.workload: н/д ms.date: ms.author 06/01/2017 г.: owend
 ---
 # <a name="lesson-6-create-measures"></a>Занятие 6. Создание мер
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-В этом занятии вы будете создавать меры для включения в модель. Аналогично созданным вами вычисляемым столбцам, мера представляет собой расчет, создаваемый с помощью формулы DAX. Но в отличие от вычисляемых столбцов меры вычисляются на основе выбранного пользователем *фильтра*. Например, в поле "Метки строк" сводной таблицы добавляется имя определенного столбца или среза. Значение для каждой ячейки в фильтре вычисляется с учетом применимой меры. Меры — это эффективные и гибкие средства вычисления, которые пригодятся почти в любых табличных моделях для динамических расчетов с числовыми данными. Дополнительные сведения см. в статье [Меры](https://docs.microsoft.com/sql/analysis-services/tabular-models/measures-ssas-tabular).
+На этом занятии создается toobe меры, включенные в модель. Аналогичные toohello вычисляемые столбцы, созданные, мера представляет собой вычисление, созданное с помощью формулы DAX. Но в отличие от вычисляемых столбцов меры вычисляются на основе выбранного пользователем *фильтра*. Например, определенного столбца или среза toohello метки строк поле добавлено в сводной таблице. Значение для каждой ячейки в фильтре hello вычисляется по мере применения hello. Меры — это мощные гибкие вычисления, которые должны tooinclude в почти все динамические вычисления табличных моделей tooperform с числовыми данными. toolearn более, в разделе [меры](https://docs.microsoft.com/sql/analysis-services/tabular-models/measures-ssas-tabular).
   
-Для создания мер используйте *сетку мер*. По умолчанию в каждой таблице есть пустая сетка мер. Но меры обычно требуется создавать не для всех таблиц. Сетка мер отображается под таблицей в конструкторе моделей при использовании представления данных. Чтобы скрыть или отобразить сетку мер для таблицы, откройте меню **Таблица** и выберите **Показать сетку мер**.  
+меры toocreate использовать hello *сетку мер*. По умолчанию в каждой таблице есть пустая сетка мер. Но меры обычно требуется создавать не для всех таблиц. Hello сетка мер появляется внизу таблицы в конструкторе моделей hello в представлении данных. toohide или Показывать сетку мер hello для таблицы, щелкните hello **таблицы** меню, а затем нажмите **Показать сетку мер**.  
   
-Чтобы создать меру, щелкните пустую ячейку в сетке мер и введите формулу DAX в строке формул. После нажатия клавиши ВВОД для завершения формулы мера появится в ячейке. Кроме того, можно создать меры с помощью стандартной статистической функции, щелкнув столбец и нажав кнопку "Автосумма" (**∑**) на панели инструментов. Меры, созданные с помощью функции "Автосумма", появляются в ячейке сетки мер прямо под соответствующим столбцом, но их можно перемещать.  
+Можно создать меру, щелкнув пустую ячейку в сетке мер hello и введя DAX-формулы в строке формул hello. Если щелкните toocomplete hello ввод формулы, hello мер, то появится в ячейке hello. Можно также создать меры, используя стандартную статистическую функцию, щелкнув столбец и выбрав hello кнопки автосуммирования (**∑**) на панели инструментов hello. Меры, созданные с помощью функции автосуммирования hello отображается в ячейке сетки мер hello непосредственно под столбцом hello, но могут быть перемещены.  
   
-На этом занятии вы создадите меры путем ввода формулы DAX в строке формул и с помощью функции "Автосумма".  
+На этом занятии вы создаете меры обоих ввода формулы DAX в строке формул hello, а также с помощью функции автосуммирования hello.  
   
-Предполагаемое время выполнения этого занятия: **30 минут**  
+Предполагаемое время toocomplete на этом занятии: **30 минут**  
   
 ## <a name="prerequisites"></a>Предварительные требования  
-Этот раздел входит в учебник по табличному моделированию, который следует изучать в предложенном порядке. Прежде чем выполнять задачи в этом разделе, нужно завершить предыдущее занятие: [Занятие 5. Создание вычисляемых столбцов](../tutorials/aas-lesson-5-create-calculated-columns.md).  
+Этот раздел входит в учебник по табличному моделированию, который следует изучать в предложенном порядке. Перед выполнением задачи hello на этом занятии, необходимо завершить предыдущее занятие hello: [занятия 5: Создание вычисляемых столбцов](../tutorials/aas-lesson-5-create-calculated-columns.md).  
   
 ## <a name="create-measures"></a>Создание мер  
   
-#### <a name="to-create-a-dayscurrentquartertodate-measure-in-the-dimdate-table"></a>Создание меры DaysCurrentQuarterToDate в таблице DimDate  
+#### <a name="toocreate-a-dayscurrentquartertodate-measure-in-hello-dimdate-table"></a>toocreate DaysCurrentQuarterToDate мера в таблице DimDate hello  
   
-1.  В конструкторе моделей щелкните таблицу **DimDate**.  
+1.  В конструкторе моделей hello щелкните hello **DimDate** таблицы.  
   
-2.  В сетке мер щелкните верхнюю левую пустую ячейку.  
+2.  В сетке мер hello щелкните пустую ячейку в левом верхнем hello.  
   
-3.  В строке формул введите следующую формулу:  
+3.  В строке формул hello введите следующую формулу hello:  
   
     ```
     DaysCurrentQuarterToDate:=COUNTROWS( DATESQTD( 'DimDate'[Date])) 
     ```
   
-    Обратите внимание, что верхняя левая ячейка теперь содержит имя меры **DaysCurrentQuarterToDate** и результат **92**.
+    Обратите внимание hello верхняя левая ячейка теперь содержит имя меры, **DaysCurrentQuarterToDate**, а затем результат hello **92**.
     
       ![aas-lesson6-newmeasure](../tutorials/media/aas-lesson6-newmeasure.png) 
     
-    В отличие от вычисляемых столбцов для формул мер можно указать имя меры, затем двоеточие и затем выражение формулы.
+    В отличие от вычисляемых столбцов причем формулы для мер можно ввести имя меры hello, за которым следует двоеточие, следуют hello выражении формулы.
 
   
-#### <a name="to-create-a-daysincurrentquarter-measure-in-the-dimdate-table"></a>Создание меры DaysInCurrentQuarter в таблице DimDate  
+#### <a name="toocreate-a-daysincurrentquarter-measure-in-hello-dimdate-table"></a>toocreate DaysInCurrentQuarter мера в таблице DimDate hello  
   
-1.  Пока таблица **DimDate** активна в конструкторе моделей, щелкните пустую ячейку под созданной мерой в сетке мер.  
+1.  С hello **DimDate** таблицы все еще активна в конструкторе моделей hello в сетку мер hello, щелкните пустую ячейку hello ниже созданной мерой hello.  
   
-2.  В строке формул введите следующую формулу:  
+2.  В строке формул hello введите следующую формулу hello:  
   
     ```
     DaysInCurrentQuarter:=COUNTROWS( DATESBETWEEN( 'DimDate'[Date], STARTOFQUARTER( LASTDATE('DimDate'[Date])), ENDOFQUARTER('DimDate'[Date])))
     ```
   
-    При создании соотношения для сравнения одного неполного периода и предыдущего периода формула должна вычислить пропорцию истекшего периода и сравнить результат с такой же пропорцией предыдущего периода. В этом случае [DaysCurrentQuarterToDate]/[DaysInCurrentQuarter] дает пропорцию для текущего периода.  
+    Во время создания пропорции сравнения между одним неполным периодом и hello предыдущего периода. Формула Hello необходимо вычислить долю hello hello прошедшего времени периода и сравнивают его toohello же пропорция в hello предыдущего периода. В этом случае [DaysCurrentQuarterToDate] / [DaysInCurrentQuarter] дает hello соотношение времени текущего периода в hello.  
   
-#### <a name="to-create-an-internetdistinctcountsalesorder-measure-in-the-factinternetsales-table"></a>Создание меры InternetDistinctCountSalesOrder в таблице FactInternetSales  
+#### <a name="toocreate-an-internetdistinctcountsalesorder-measure-in-hello-factinternetsales-table"></a>toocreate InternetDistinctCountSalesOrder мера в таблице FactInternetSales hello  
   
-1.  Щелкните таблицу **FactInternetSales**.   
+1.  Нажмите кнопку hello **FactInternetSales** таблицы.   
   
-2.  Щелкните заголовок столбца **SalesOrderNumber**.  
+2.  Нажмите кнопку hello **SalesOrderNumber** заголовок столбца.  
   
-3.  На панели инструментов щелкните стрелку вниз рядом с кнопкой "Автосумма" (**∑**) и выберите **DistinctCount**.  
+3.  На панели инструментов hello, нажмите кнопку Далее toohello стрелка вниз hello автосуммирования (**∑**) и затем выберите **DistinctCount**.  
   
-    Функция "Автосумма" автоматически создает меру для выбранного столбца с помощью стандартной статистической формулы DistinctCount.  
+    Hello автосуммирования автоматически создаст меру для выбранного столбца hello, используя стандартную статистическую формулу DistinctCount hello.  
     
        ![aas-lesson6-newmeasure2](../tutorials/media/aas-lesson6-newmeasure2.png)
   
-4.  Щелкните новую меру в сетке мер, а затем в поле **Имя меры** окна **Свойства** переименуйте эту меру в **InternetDistinctCountSalesOrder**. 
+4.  В сетке мер hello, щелкните новую меру hello, а затем в hello **свойства** окна в **имя меры**, переименуйте меру hello слишком**InternetDistinctCountSalesOrder**. 
  
   
-#### <a name="to-create-additional-measures-in-the-factinternetsales-table"></a>Создание дополнительных мер в таблице FactInternetSales  
+#### <a name="toocreate-additional-measures-in-hello-factinternetsales-table"></a>toocreate дополнительных мер в таблицу FactInternetSales hello  
   
-1.  С помощью функции "Автосумма" создайте и назовите следующие меры:  
+1.  С помощью функции автосуммирования hello, создайте и назовите следующие меры hello.  
 
     |столбец|Имя меры|Автосумма (∑)|Формула|  
     |----------------|----------|-----------------|-----------|  
@@ -101,7 +83,7 @@ ms.lasthandoff: 07/11/2017
     |TaxAmt|InternetTotalTaxAmt|Sum|=SUM([TaxAmt])|  
     |Freight|InternetTotalFreight|Sum|=SUM([Freight])|  
   
-2.  Создайте следующие меры и присвойте им имена в указанном порядке, щелкнув пустую ячейку в сетке мер или используя строку формул:  
+2.  Щелкнув создайте пустую ячейку в сетке мер hello и с помощью строки формул hello, и hello следующее имя меры в порядке:  
   
       ```
       InternetPreviousQuarterMargin:=CALCULATE([InternetTotalMargin],PREVIOUSQUARTER('DimDate'[Date]))
@@ -127,7 +109,7 @@ ms.lasthandoff: 07/11/2017
       InternetPreviousQuarterSalesProportionToQTD:=[InternetPreviousQuarterSales]*([DaysCurrentQuarterToDate]/[DaysInCurrentQuarter])
       ```
   
-Меры, созданные для таблицы FactInternetSales, можно использовать для анализа критических финансовых данных, таких как продажи, затраты и удельная прибыль, для элементов, определенных с помощью выбранного пользователем фильтра.  
+Меры, созданные для таблицы FactInternetSales hello может быть используется tooanalyze критических финансовых данных, таких как продажи, издержки и маржа прибыли для элементов, которые определены по hello пользователя выбранного фильтра.  
   
 ## <a name="whats-next"></a>Что дальше?
 [Занятие 7. Создание ключевых показателей эффективности](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  

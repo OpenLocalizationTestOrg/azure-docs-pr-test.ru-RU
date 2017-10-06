@@ -1,6 +1,6 @@
 ---
-title: "Создание ODC-файла для подключения к серверу Azure Analysis Services | Документация Майкрософт"
-description: "Узнайте, как создать файл подключения к данным Office для подключения к серверу Analysis Services в Azure и получить от него данные."
+title: "aaaCreate .odc файл tooconnect tooan Azure сервер служб Analysis Services | Документы Microsoft"
+description: "Узнайте, как toocreate tooand tooconnect файла подключения к данным Office получить данные с сервера служб Analysis Services в Azure."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,30 +15,30 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/23/2017
 ms.author: owend
-ms.openlocfilehash: 530f3b5c9e90cb45ffb6e12d0d08a35f8d687471
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9c8c8df23b17f19905d7ec51af4eb63eb995045e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-office-data-connection-file"></a>Создание файла подключения к данным Office
 
-В этой статье описывается создание файла подключения к данным Office для подключения к серверу Azure Analysis Services из Excel 2016 (с номером версии 16.0.7369.2117 или ниже) либо Excel 2013. Обновленный [поставщик MSOLAP.7](analysis-services-data-providers.md) также является обязательным.
+Сведения в этой статье описывается, как создать подключение к данным Office файл tooconnect tooan Azure сервер служб Analysis Services из Excel 2016 номер версии 16.0.7369.2117 или более ранней версии, или Excel 2013. Обновленный [поставщик MSOLAP.7](analysis-services-data-providers.md) также является обязательным.
 
 
-1. Скопируйте пример файла подключения ниже и вставьте в текстовый редактор. 
+1. Скопируйте hello подключения ниже образец файла и вставить в текстовый редактор. 
 
-2. В `odc:ConnectionString` измените следующие свойства:
+2. В `odc:ConnectionString`, измените hello следующие свойства:
 
-    *   В `Data Source=asazure://<region>.asazure.windows.net/<servername>;` измените `<region>` на регион своего сервера Analysis Services, а `<servername>` на имя своего сервера.
+    *   В `Data Source=asazure://<region>.asazure.windows.net/<servername>;` изменить `<region>` toohello области сервера служб Analysis Services и `<servername>` toohello имя вашего сервера.
 
-    *   В `Initial Catalog=<database>;` измените `<database>` на имя своей базы данных.
+    *   В `Initial Catalog=<database>;` изменить `<database>` toohello имя базы данных.
 
-3. В `<odc:CommandText>Model</odc:CommandText>` измените `Model` на имя своей модели или перспективы. 
+3. В `<odc:CommandText>Model</odc:CommandText>` изменить `Model` toohello имя модели или перспективы. 
 
-4. Сохраните файл с расширением `.odc` в папку C:\Users\\*имя_пользователя*\Documents\My Data Sources.
+4. Сохраните файл hello с `.odc` toohello расширения C:\Users\\*username*папку \Documents\My источники данных.
 
-5. Щелкните этот файл правой кнопкой мыши и выберите **Открыть в Excel**. Или в Excel на ленте **Данные** щелкните **Существующие подключения**, выберите файл и нажмите кнопку **Открыть**.
+5. Щелкните правой кнопкой мыши файл hello и нажмите кнопку **открыть в Excel**. Или в Excel в hello **данные** ленты, нажмите кнопку **существующие подключения**, выберите файл и нажмите кнопку **откройте**.
 
 
 

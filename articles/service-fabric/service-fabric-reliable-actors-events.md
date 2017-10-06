@@ -1,6 +1,6 @@
 ---
-title: "События в микрослужбах Azure на основе субъектов | Документация Майкрософт"
-description: "Общие сведения о событиях для Reliable Actors Service Fabric."
+title: "aaaEvents в микрослужбами Azure на основе субъектов | Документы Microsoft"
+description: "Введение tooevents для службы структуры службы Reliable Actor."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/13/2017
 ms.author: amanbha
-ms.openlocfilehash: d936670c548ff709fc2e935d3f28d94e4bde8a04
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a51e41c35441a5fea508138968b36a35f0ba6699
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="actor-events"></a>События субъекта
-События субъекта — это способ отправки уведомлений от субъекта клиентам без гарантии доставки. Они предназначены для взаимодействия между субъектом и клиентами, и их не следует использовать для обмена данными между субъектами.
+Субъект события предоставляют уведомления оптимальным способом toosend от клиентов toohello hello субъекта. Они предназначены для взаимодействия между субъектом и клиентами, и их не следует использовать для обмена данными между субъектами.
 
-В следующих фрагментах кода показано, как использовать события субъекта в приложении.
+Hello следующем коде фрагменты Показать, как события toouse субъекта в приложении.
 
-Определите интерфейс, который описывает события, публикуемые субъектом. Он должен быть производным от интерфейса `IActorEvents` . Аргументы методов должны относиться к типу [сериализуемых контрактов данных](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). Методы не должны ничего возвращать, так как уведомления являются однонаправленными и их доставка не гарантируется.
+Определите интерфейс, который описывает события hello опубликованный hello actor. Этот интерфейс должен быть производным от hello `IActorEvents` интерфейса. аргументы Hello hello методов должны быть [контракта данных, сериализуемые](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). Hello методы должны возвращать значение void, как событие уведомления — это один из способов и все усилия.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -39,7 +39,7 @@ public interface GameEvents implements ActorEvents
     void gameScoreUpdated(UUID gameId, String currentScore);
 }
 ```
-Объявите события, публикуемые субъектом, в интерфейсе субъекта.
+Объявление событий hello, опубликованный actor hello в интерфейсе hello субъекта.
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -57,7 +57,7 @@ public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
     CompletableFuture<String> getGameScore();
 }
 ```
-На стороне клиента реализуйте обработчик событий.
+На стороне клиента hello Реализуйте обработчик событий hello.
 
 ```csharp
 class GameEventsHandler : IGameEvents
@@ -78,7 +78,7 @@ class GameEventsHandler implements GameEvents {
 }
 ```
 
-Также на стороне клиента создайте прокси-сервер для субъекта, который публикует события, и подпишитесь на его события.
+На клиентском компьютере hello создать субъект toohello прокси-сервера, который публикует события hello и подписываться tooits события.
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -93,9 +93,9 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-В случае отработки отказа субъект может переключиться на другой процесс или узел. Прокси-сервер субъекта управляет активными подписками и автоматически повторно выполняет подписывание на них. Чтобы изменить интервал между повторными операциями подписывания, используйте API `ActorProxyEventExtensions.SubscribeAsync<TEvent>` . Для отмены подписки используйте API `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` .
+В событии hello переход на другой ресурс hello субъект может переключиться tooa другого процесса или узла. Hello субъекта прокси-сервер управляет hello активных подписок и автоматически подписывается их повторно. Можно управлять hello интервал повторной подписки через hello `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API. toounsubscribe hello используйте `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API.
 
-На стороне субъекта достаточно просто публиковать события, когда они происходят. При наличии подписчиков на событие субъекта среда выполнения будет отправлять им уведомление.
+Субъект hello просто публикация событий hello мере их возникновения. Если подписчики toohello события, среда выполнения субъекты hello будет отправлено их hello уведомление.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();

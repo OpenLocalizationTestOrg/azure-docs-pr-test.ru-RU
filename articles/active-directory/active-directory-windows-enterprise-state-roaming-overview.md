@@ -1,6 +1,6 @@
 ---
-title: "Обзор службы Enterprise State Roaming | Документация Майкрософт"
-description: "Здесь содержится информация о параметрах Enterprise State Roaming для устройств Windows. Служба Enterprise State Roaming представляет собой единое решение для всех устройств Windows и сокращает процесс настройки нового устройства."
+title: "Общие сведения о состоянии aaaEnterprise перемещаемые | Документы Microsoft"
+description: "Здесь содержится информация о параметрах Enterprise State Roaming для устройств Windows. Enterprise State Roaming пользователям предоставляются унифицированного интерфейса на своих устройствах Windows и снижает hello время, необходимое для настройки нового устройства."
 services: active-directory
 keywords: "что такое Enterprise State Roaming, корпоративная синхронизация, облако Windows"
 documentationcenter: 
@@ -15,26 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: b3c01f8d332d26e92dc3052681a4b2c95142d440
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 436076383b70b7cd65a612e3928f62f26ac5fa84
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enterprise-state-roaming-overview"></a>Обзор службы Enterprise State Roaming
-Используя Windows 10, пользователи [Azure Active Directory (Azure AD)](active-directory-whatis.md) получают возможность безопасно синхронизировать свои параметры пользователя и данные параметров приложения в облаке. Служба Enterprise State Roaming представляет собой единое решение для всех устройств Windows и сокращает процесс настройки нового устройства. Enterprise State Roaming работает так же, как и стандартная [синхронизация параметров потребителя](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) , которая впервые представлена в Windows 8. Кроме того, Enterprise State Roaming обеспечивает следующее:
+С Windows 10 [Azure Active Directory (Azure AD)](active-directory-whatis.md) hello возможности пользователей рост toosecurely синхронизировать их параметров пользователя и облако toohello данных параметров приложения. Enterprise State Roaming пользователям предоставляются унифицированного интерфейса на своих устройствах Windows и снижает hello время, необходимое для настройки нового устройства. Enterprise State Roaming работает аналогично standard toohello [синхронизация параметров потребителя](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) , впервые появившийся в Windows 8. Кроме того, Enterprise State Roaming обеспечивает следующее:
 
 * **Разделение корпоративных и потребительских данных**. Организации управляют своими данными, поэтому корпоративные данные не попадают в облачную учетную запись потребителя, а данные потребителя — в корпоративную облачную учетную запись.
-* **Повышенная безопасность**. Перед отправкой с устройства Windows 10 данные шифруются с помощью службы управления правами Azure (Azure RMS) и остаются зашифрованными в облаке. Все содержимое, хранящееся в облаке, остается зашифрованным, кроме пространств имен, таких как имена параметров и приложений Windows.  
-* **Улучшенное управление и наблюдение**. Благодаря интеграции с порталом Azure AD обеспечиваются контроль и видимость, позволяющие определить, кто синхронизирует параметры в организации и на каких устройствах. 
+* **Усиленная безопасность** — данные автоматически шифруются перед выходом из устройства Windows 10 hello пользователя с помощью Azure Rights Management (Azure RMS), и данные остаются шифруются в неактивном состоянии в облаке hello. Все содержимое остается зашифрованным, хранящихся в облаке hello, за исключением hello пространства имен, такие как имена параметров и имена приложений Windows.  
+* **Более высокий уровень управления и мониторинга** — обеспечивает возможность управления и просмотра, синхронизируется параметры в вашей организации и на каких устройствах через интеграцию с портала Azure AD hello. 
 
-Служба Enterprise State Roaming доступна в различных регионах Azure. Обновленный список доступных регионов см. на странице [Регионы Azure — Службы по региону](https://azure.microsoft.com/regions/#services) в разделе Azure Active Directory.
+Служба Enterprise State Roaming доступна в различных регионах Azure. Можно найти hello обновить список доступных регионов на hello [служб Azure в регионах](https://azure.microsoft.com/regions/#services) страницы в Azure Active Directory.
 
 | Статья | Описание |
 | --- | --- |
-| [Включение службы Enterprise State Roaming в Azure Active Directory](active-directory-windows-enterprise-state-roaming-enable.md) |Служба Enterprise State Roaming доступна для любой компании с подпиской Azure Active Directory Premium (Azure AD). Дополнительные сведения о том, как получить подписку Azure AD, см. на странице продукта [Azure Active Directory](https://azure.microsoft.com/services/active-directory). |
+| [Включение службы Enterprise State Roaming в Azure Active Directory](active-directory-windows-enterprise-state-roaming-enable.md) |Enterprise State Roaming — доступные tooany организация с подпиской Premium Azure Active Directory (Azure AD). Дополнительные сведения о том, как tooget подписка на Azure AD, в разделе hello [продукта Azure AD](https://azure.microsoft.com/services/active-directory) страницы. |
 | [Часто задаваемые вопросы о перемещении параметров и данных](active-directory-windows-enterprise-state-roaming-faqs.md) |В этой статье содержится информация о синхронизации параметров и данных приложений, которая может быть полезной для ИТ-администраторов. |
-| [Group policy and MDM settings for settings sync (Параметры групповой политики и управления мобильными устройствами)](active-directory-windows-enterprise-state-roaming-group-policy-settings.md) |Windows 10 предоставляет параметры групповой политики и управления мобильными устройствами (MDM) для ограничения синхронизации параметров. |
-| [Справочник по перемещаемым параметрам в Windows 10](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md) |Ниже приведен полный список всех параметров, для которых в Windows 10 будет выполнено перемещение и/или резервное копирование. |
+| [Group policy and MDM settings for settings sync (Параметры групповой политики и управления мобильными устройствами)](active-directory-windows-enterprise-state-roaming-group-policy-settings.md) |Windows 10 предоставляет групповой политики и синхронизация параметров toolimit параметры политики мобильных устройств management (MDM). |
+| [Справочник по перемещаемым параметрам в Windows 10](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md) |Hello ниже приведен полный список всех параметров hello, которые будут иметь перемещаться и (или) резервных копий в Windows 10. |
 | [Устранение неполадок](active-directory-windows-enterprise-state-roaming-troubleshooting.md) |В этом разделе представлены основные инструкции по устранению неполадок, а также список известных проблем. |
 

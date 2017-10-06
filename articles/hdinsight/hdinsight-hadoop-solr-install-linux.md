@@ -1,6 +1,6 @@
 ---
-title: "Использование действия скрипта для установки Solr в кластере HDInsight на основе Linux — Azure | Документы Майкрософт"
-description: "Узнайте, как устанавливать Solr в кластерах HDInsight Hadoop на основе Linux с помощью действий сценария."
+title: "Действие сценария aaaUse tooinstall Solr на HDInsight под управлением Linux — в Azure | Документы Microsoft"
+description: "Узнайте, как tooinstall Solr на основе Linux HDInsight Hadoop кластеры, использующие действий скрипта."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,71 +16,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: larryfr
-ms.openlocfilehash: ad930ca023a36fa5874483873c82fdba11d117c7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4c179032b95ae187f1830d8927f8796372fa8ebe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Установка и использование Solr на кластерах HDInsight Hadoop
 
-Узнайте, как установить Solr в Azure HDInsight с помощью действия сценария. Solr представляет собой многофункциональную платформу поиска и предоставляет возможности поиска корпоративного уровня на основе данных, управляемых Hadoop.
+Узнайте, как tooinstall Solr на Azure HDInsight с помощью действия сценария. Solr представляет собой многофункциональную платформу поиска и предоставляет возможности поиска корпоративного уровня на основе данных, управляемых Hadoop.
 
 > [!IMPORTANT]
-    > Для выполнения действий, описанных в этом документе, необходим кластер HDInsight, который использует Linux. Linux — это единственная операционная система, используемая для работы с HDInsight 3.4 или более поздних версий. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+    > Hello в данном пошаговом руководстве требуется кластер HDInsight, использующий Linux. Linux — hello только операционную систему, используемую в HDInsight версии 3.4 или более поздней. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!IMPORTANT]
-> Пример скрипта, используемый в этом документе, устанавливает кластер Solr 4.9 с определенной конфигурацией. Если вы хотите настроить кластер Solr для использования других коллекций, сегментов, схем, реплик и т. п., необходимо соответствующим образом изменить сценарий и двоичные файлы Solr.
+> Пример сценария Hello, используемые в этом документе устанавливает Solr 4.9 с указанной конфигурацией. Следует tooconfigure hello Solr кластера с помощью различных коллекций, сегментами, схемы, реплики, т. д. необходимо изменить скрипт hello и двоичные файлы Solr.
 
 ## <a name="whatis"></a>Что такое Solr
 
-[Apache Solr](http://lucene.apache.org/solr/features.html) — это корпоративная платформа поиска, предоставляющая эффективные инструменты полнотекстового поиска данных. Если Hadoop обеспечивает хранение огромных объемов данных и управление ими, то Apache Solr предоставляет возможности поиска для быстрого извлечения этих данных.
+[Apache Solr](http://lucene.apache.org/solr/features.html) — это корпоративная платформа поиска, предоставляющая многофункциональные инструменты полнотекстового поиска данных. Хотя Hadoop позволяет хранения и управления огромный объем данных, Apache Solr предоставляет возможности поиска hello tooquickly извлекать данные hello.
 
 > [!WARNING]
-> Компоненты, поставляемые с кластером HDInsight, полностью поддерживаются корпорацией Майкрософт.
+> Компоненты, предоставляемые с кластером HDInsight hello полностью поддерживаются корпорацией Майкрософт.
 >
-> Настраиваемые компоненты, такие как Solr, получают ограниченную коммерчески оправданную поддержку, способствующую дальнейшей диагностике проблемы. Служба поддержки Майкрософт не всегда имеет возможность устранить проблемы с пользовательскими компонентами. Может потребоваться обратиться за помощью к сообществу разработчиков открытого кода. Можно использовать ряд сайтов сообществ, например [форум MSDN по HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) или [http://stackoverflow.com](http://stackoverflow.com). Кроме того, для проектов Apache есть соответствующие сайты, например [Hadoop](http://hadoop.apache.org/) на сайте [http://apache.org](http://apache.org).
+> Пользовательские компоненты, такие как Solr, получать toohelp ограниченную техническую поддержку вы toofurther устранить проблему hello. Службы поддержки Майкрософт не может быть может tooresolve проблемы при пользовательские компоненты. Может потребоваться tooengage hello сообществе открытого для получения помощи. Можно использовать ряд сайтов сообществ, например [форум MSDN по HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) или [http://stackoverflow.com](http://stackoverflow.com). Кроме того, для проектов Apache есть соответствующие сайты, например [Hadoop](http://hadoop.apache.org/) на сайте [http://apache.org](http://apache.org).
 
-## <a name="what-the-script-does"></a>Что делает сценарий
+## <a name="what-hello-script-does"></a>Какие hello скрипта
 
-Этот сценарий вносит следующие изменения в кластер HDInsight:
+Этот сценарий вносит следующие изменения кластера HDInsight toohello hello:
 
 * Устанавливает Solr 4.9 в `/usr/hdp/current/solr`.
-* Создает пользователя **solrusr**, используемого для запуска службы Solr.
-* Делает пользователя **solrusr** владельцем `/usr/hdp/current/solr`.
+* Создает пользователя, **solrusr**, являющееся hello используется toorun Solr службы
+* Наборы **solruser** как владелец hello`/usr/hdp/current/solr`
 * Добавляет конфигурацию [Upstart](http://upstart.ubuntu.com/), которая автоматически запускает Solr.
 
 ## <a name="install"></a>Установка Solr с помощью действий сценария
 
-Пример сценария для установки Solr в кластер HDInsight доступен по следующему адресу.
+Пример сценария tooinstall Solr в кластере HDInsight доступна на hello следующие расположения:
 
     https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
 
-Чтобы создать кластер с установленной платформой Solr, следуйте указаниям в документе [Создание кластеров под управлением Linux в HDInsight с помощью портала Azure](hdinsight-hadoop-create-linux-clusters-portal.md). Во время создания выполните приведенные ниже действия для установки Solr.
+toocreate кластер с Solr установлен hello используйте шаги в hello [HDInsight, создания кластеров](hdinsight-hadoop-create-linux-clusters-portal.md) документа. Во время процесса создания hello используйте следующие шаги tooinstall Solr hello.
 
-1. В колонке __Сводка кластера__ для кластера выберите __Дополнительные параметры__, а затем — __Действия скрипта__. Используйте следующие сведения, чтобы заполнить форму.
+1. Из hello __Сводка кластера__ колонки, select__Advanced settings__, затем __скрипт действия__. Используйте следующие сведения toopopulate hello формы hello.
 
-   * **ИМЯ**: введите понятное имя для действия сценария.
+   * **ИМЯ**: Введите понятное имя для действия сценария hello.
    * **Универсальный код ресурса скрипта**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/r-installer-v01.sh.
    * **ГОЛОВНОЙ**: установите флажок.
    * **Рабочая роль**: установите флажок.
-   * **ZooKeeper**: установите этот флажок для установки на узле Zookeeper.
+   * **ZOOKEEPER**: Проверьте tooinstall этот параметр на узле Zookeeper hello
    * **ПАРАМЕТРЫ**: оставьте это поле пустым.
 
-2. В нижней части колонки **Действия скрипта** нажмите кнопку **Выбрать**, чтобы сохранить конфигурацию. Наконец, нажмите кнопку **Далее**, чтобы вернуться в колонку __Сводка кластера__.
+2. Внизу hello hello **скрипт действия** колонки, используйте hello **выберите** конфигурация hello toosave кнопок. Наконец, используйте hello **Далее** toohello tooreturn кнопку __Сводка кластера__
 
-3. На странице __Сводка кластера__ щелкните __Создать__, чтобы создать кластер.
+3. Из hello __Сводка кластера__ выберите __создать__ toocreate hello кластера.
 
 ## <a name="usesolr"></a>Как использовать Solr в HDInsight
 
 > [!IMPORTANT]
-> Действия, описанные в этом разделе, демонстрируют базовые функциональные возможности Solr. Дополнительные сведения об использовании Solr см. на [сайте Apache Solr](http://lucene.apache.org/solr/).
+> Hello шаги в этом разделе показывают основные функциональные возможности Solr. Дополнительные сведения об использовании Solr см. в разделе hello [Apache Solr сайта](http://lucene.apache.org/solr/).
 
 ### <a name="index-data"></a>Данные индекса
 
-Выполните следующие действия, чтобы добавить демонстрационные данные в Solr и создать запрос к ним.
+Используйте следующие шаги tooadd пример данных tooSolr hello и затем запрос:
 
-1. Подключитесь к кластеру HDInsight с помощью протокола SSH:
+1. Подключите кластер HDInsight toohello с помощью SSH:
 
     ```bash
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
@@ -89,34 +89,34 @@ ms.lasthandoff: 08/03/2017
     Дополнительные сведения см. в статье [Использование SSH с Hadoop на основе Linux в HDInsight из Linux, Unix или OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
      > [!IMPORTANT]
-     > В действиях, описанных ниже, для подключения к пользовательскому веб-интерфейсу Solr используется туннель SSL. Чтобы выполнить эти действия, необходимо установить туннель SSL и настроить браузер для его использования.
+     > Позже в данном пошаговом руководстве используется SSL туннеля tooconnect toohello Solr пользовательского веб-интерфейса. toouse следующие действия, необходимо установить SSL туннелирования, а затем настройте Ваш браузер toouse его.
      >
-     > Дополнительные сведения см. в документе [Использование туннелирования SSH для доступа к веб-интерфейсу Ambari, JobHistory, NameNode, Oozie и другим веб-интерфейсам](hdinsight-linux-ambari-ssh-tunnel.md).
+     > Дополнительные сведения см. в разделе hello [использование SSH туннелирование с HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) документа.
 
-2. Используйте следующие команды, чтобы получить образец данных индекса Solr:
+2. Используйте hello, следующие команды toohave Solr индекс образец данных:
 
     ```bash
     cd /usr/hdp/current/solr/example/exampledocs
     java -jar post.jar solr.xml monitor.xml
     ```
 
-    В консоли отобразится результат следующего вида.
+    Hello следующие выходные данные возвращаются в консоли toohello:
 
         POSTing file solr.xml
         POSTing file monitor.xml
         2 files indexed.
-        COMMITting Solr index changes to http://localhost:8983/solr/update..
+        COMMITting Solr index changes toohttp://localhost:8983/solr/update..
         Time spent: 0:00:01.624
 
-    Служебная программа `post.jar` добавляет документы **solr.xml** и **monitor.xml** в индекс.
+    Hello `post.jar` программа добавляет hello **solr.xml** и **monitor.xml** документов toohello индекса.
   
-3. Для отправки запроса к REST API Solr используйте следующую команду.
+3. Используйте hello следующая команда hello tooquery Solr REST API:
 
     ```bash
     curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
     ```
 
-    Данная команда выполняет в **collection1** поиск документов, соответствующих **\*:\*** (кодируется как \*%3A\* в строке запроса). Ниже приведен документ JSON, представляющий собой пример возвращенного ответа.
+    Эта команда ищет **collection1** для документов, соответствующих  **\*:\***  (кодируются как \*% 3A\* в строке запроса hello). Следующий документ JSON Hello приведен пример ответа hello.
 
             "response": {
                 "numFound": 2,
@@ -125,7 +125,7 @@ ms.lasthandoff: 08/03/2017
                 "docs": [
                   {
                     "id": "SOLR1000",
-                    "name": "Solr, the Enterprise Search Server",
+                    "name": "Solr, hello Enterprise Search Server",
                     "manu": "Apache Software Foundation",
                     "cat": [
                       "software",
@@ -136,9 +136,9 @@ ms.lasthandoff: 08/03/2017
                       "Optimized for High Volume Web Traffic",
                       "Standards Based Open Interfaces - XML and HTTP",
                       "Comprehensive HTML Administration Interfaces",
-                      "Scalability - Efficient Replication to other Solr Search Servers",
+                      "Scalability - Efficient Replication tooother Solr Search Servers",
                       "Flexible and Adaptable with XML configuration and Schema",
-                      "Good unicode support: héllo (hello with an accent over the e)"
+                      "Good unicode support: héllo (hello with an accent over hello e)"
                     ],
                     "price": 0,
                     "price_c": "0,USD",
@@ -170,48 +170,48 @@ ms.lasthandoff: 08/03/2017
                 ]
               }
 
-### <a name="using-the-solr-dashboard"></a>Использование панели мониторинга Solr
+### <a name="using-hello-solr-dashboard"></a>С помощью панели мониторинга Solr hello
 
-Панель мониторинга Solr — это веб-интерфейс для работы с Solr через веб-браузер. Прямой доступ к панели мониторинга Solr через Интернет из кластера HDInsight невозможен. Для этого следует использовать туннель SSH. Дополнительные сведения об использовании туннеля SSH см. в документе [Использование туннелирования SSH для доступа к веб-интерфейсу Ambari, JobHistory, NameNode, Oozie и другим веб-интерфейсам](hdinsight-linux-ambari-ssh-tunnel.md).
+панель мониторинга Solr Hello является веб-интерфейса, который позволяет вам toowork с Solr через веб-браузере. панель мониторинга Solr Hello не представлено напрямую в hello Интернет из кластера HDInsight. Можно использовать tooaccess туннель SSH его. Дополнительные сведения об использовании туннель SSH см. в разделе hello [использование SSH туннелирование с HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) документа.
 
-Установив туннель SSH, выполните следующие действия, чтобы начать использовать панель мониторинга Solr.
+После установления туннель SSH, используйте следующие шаги toouse hello Solr мониторинга hello:
 
-1. Определите имя основного головного узла:
+1. Укажите имя узла hello для основной hello головному узлу:
 
-   1. Используйте протокол SSH, чтобы подключиться к головному узлу кластера. Например, `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
+   1. Использование SSH tooconnect toohello головного узла кластера. Например, `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
 
-       Дополнительные сведения об использовании протокола SSH см. в разделе [Подключение к HDInsight (Hadoop) с помощью SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+       Дополнительные сведения об использовании SSH см. в разделе hello [использование SSH с HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-   2. Чтобы получить полное имя узла, используйте следующую команду:
+   2. Используйте следующую команду, tooget hello полное имя узла hello.
 
         ```bash
         hostname -f
         ```
 
-        Эта команда возвращает значение имени узла следующего вида.
+        Эта команда возвращает значение аналогичные toohello, за которым следует имя узла:
 
             hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
-        Сохраните полученное значение, так как оно понадобится позже.
+        Сохраните возвращенное hello, как будет использоваться позднее.
 
-2. В окне браузера введите адрес **http://HOSTNAME:8983/solr/#/**, где **HOSTNAME** — это имя, определенное на предыдущих этапах.
+2. В окне браузера подключитесь слишком**http://HOSTNAME:8983/solr / #/**, где **HOSTNAME** является именем hello, определенным в предыдущих шагах hello.
 
-    Запрос направляется через туннель SSH к пользовательскому веб-интерфейсу Solr в кластере. Отображается страница, как показано на рисунке ниже.
+    Hello запросы направляются через hello SSH туннеля toohello Solr веб-интерфейса в кластере. Откроется страница приветствия аналогичные toohello после изображения:
 
     ![Изображение панели мониторинга Solr](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
 
-3. В левой части окна в раскрывающемся списке **Core Selector** (Базовый селектор) выберите **collection1**. В разделе **collection1** будет отображено несколько записей.
+3. В левой области hello, используйте hello **селектор Core** tooselect раскрывающегося списка **collection1**. В разделе **collection1** будет отображено несколько записей.
 
-4. В разделе **collection1** выберите элемент **Запрос**. На странице поиска введите следующие значения:
+4. В следующих операциях hello **collection1**выберите **запроса**. Используйте следующие страницы поиска значений toopopulate hello hello.
 
-   * В текстовом поле **q** введите **\*:**\*. Этот запрос возвращает все документы, индексированные в Solr. Если требуется найти в документах конкретную строку, ее также можно ввести в этом поле.
-   * В текстовом поле **wt** выберите формат выходных данных. По умолчанию используется **JSON**.
+   * В hello **q** текста введите  **\*:**\*. Этот запрос возвращает все документы hello, которые индексируются в Solr. Если требуется toosearch конкретную строку в документах hello, можно ввести здесь строку.
+   * В hello **wt** текстовое поле, выберите hello выходной формат. По умолчанию используется **JSON**.
 
-     Наконец, нажмите кнопку **Execute Query** (Выполнить запрос) в нижней части панели поиска.
+     Наконец, выберите hello **выполнить запрос** кнопку внизу hello pate поиска hello.
 
-     ![Использование действия сценария для настройки кластера](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
+     ![Используйте действие скрипта toocustomize кластера](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
 
-     В выходных данных возвращается два документа, которые вы ранее добавили в индекс. Выходные данные аналогичны приведенному ниже документу JSON.
+     Hello выходных данных возвращается hello, в которых два документа, что вы добавили toohello индекса более ранних версий. Hello выходные данные, аналогичные toohello следовать документ JSON:
 
            "response": {
                "numFound": 2,
@@ -220,7 +220,7 @@ ms.lasthandoff: 08/03/2017
                "docs": [
                  {
                    "id": "SOLR1000",
-                   "name": "Solr, the Enterprise Search Server",
+                   "name": "Solr, hello Enterprise Search Server",
                    "manu": "Apache Software Foundation",
                    "cat": [
                      "software",
@@ -231,9 +231,9 @@ ms.lasthandoff: 08/03/2017
                      "Optimized for High Volume Web Traffic",
                      "Standards Based Open Interfaces - XML and HTTP",
                      "Comprehensive HTML Administration Interfaces",
-                     "Scalability - Efficient Replication to other Solr Search Servers",
+                     "Scalability - Efficient Replication tooother Solr Search Servers",
                      "Flexible and Adaptable with XML configuration and Schema",
-                     "Good unicode support: héllo (hello with an accent over the e)"
+                     "Good unicode support: héllo (hello with an accent over hello e)"
                    ],
                    "price": 0,
                    "price_c": "0,USD",
@@ -267,7 +267,7 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="starting-and-stopping-solr"></a>Запуск и остановка Solr
 
-Чтобы вручную остановить или запустить Solr, используйте следующие команды.
+Используйте следующие команды toomanually остановить и запустить Solr hello.
 
 ```bash
 sudo stop solr
@@ -276,21 +276,21 @@ sudo start solr
 
 ## <a name="backup-indexed-data"></a>Резервное копирование индексированных данных
 
-Чтобы выполнить архивацию данных Solr в хранилище по умолчанию для кластера, выполните следующее.
+Используйте следующие шаги tooback хранилищ Solr данных toohello по умолчанию для кластера hello.
 
-1. Подключитесь к кластеру с помощью SSH, а затем используйте следующую команду, чтобы получить имя головного узла:
+1. Подключите кластер toohello с помощью SSH, а затем использовать после имени узла hello tooget команды для головного узла hello hello:
 
     ```bash
     hostname -f
     ```
 
-2. Чтобы создать моментальный снимок индексированных данных, используйте следующую команду. Замените **HOSTNAME** именем, полученным от предыдущей команды:
+2. Следующая команда toocreate моментальный снимок hello hello использование индексированных данных. Замените **HOSTNAME** с именем hello, возвращенные hello предыдущей команде:
 
     ```bash
     curl http://HOSTNAME:8983/solr/replication?command=backup
     ```
 
-    В результате вы получите код XML следующего вида.
+    Hello ответ — примерно toohello следующий XML-код:
 
         <?xml version="1.0" encoding="UTF-8"?>
         <response>
@@ -301,19 +301,19 @@ sudo start solr
           <str name="status">OK</str>
         </response>
 
-3. Перейдите в каталог `/usr/hdp/current/solr/example/solr`. В нем находятся подкаталоги для каждой коллекции. Каждый каталог коллекции содержит каталог `data`, в котором хранится моментальный снимок этой коллекции.
+3. Измените каталоги слишком`/usr/hdp/current/solr/example/solr`. В нем находятся подкаталоги для каждой коллекции. Каждый каталог коллекции содержит `data` каталог, содержащий hello моментальных снимков для hello коллекции.
 
-4. Создайте сжатый архив папки с моментальным снимком, используя следующую команду.
+4. toocreate собой сжатый архив папки моментальных снимков hello, hello используйте следующую команду:
 
     ```bash
     tar -zcf snapshot.20150806185338855.tgz snapshot.20150806185338855
     ```
 
-    Замените значения `snapshot.20150806185338855` именем моментального снимка коллекции.
+    Замените hello `snapshot.20150806185338855` значения с именем hello hello моментального снимка для коллекции.
 
-    Эта команда создаст архив **snapshot.20150806185338855.tgz**, в который будет помещено содержимое каталога **snapshot.20150806185338855**.
+    Эта команда создает архив с именем **snapshot.20150806185338855.tgz**, который содержит содержимое hello hello **snapshot.20150806185338855** каталога.
 
-5. Впоследствии вы сможете сохранить архив в основном хранилище кластера, используя следующую команду:
+5. Затем можно сохранить основное хранилище hello архив toohello кластера с помощью hello следующую команду:
 
     ```bash
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
@@ -323,8 +323,8 @@ sudo start solr
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Установка Giraph в кластерах HDInsight](hdinsight-hadoop-giraph-install-linux.md). Используйте настройки кластера для установки Giraph в кластерах HDInsight Hadoop. Giraph позволяет выполнять обработку графов с использованием Hadoop и может использоваться с Azure HDInsight.
+* [Установка Giraph в кластерах HDInsight](hdinsight-hadoop-giraph-install-linux.md). Используйте tooinstall настройки кластера кластеров Giraph на HDInsight Hadoop. Giraph дает graph tooperform обработки с помощью Hadoop и может использоваться с Azure HDInsight.
 
-* [Установка Hue в кластерах HDInsight](hdinsight-hadoop-hue-linux.md). Установить Hue в кластерах HDInsight Hadoop можно при помощи настройки кластера. Hue — это набор веб-приложений, используемых для взаимодействия с кластером Hadoop.
+* [Установка Hue в кластерах HDInsight](hdinsight-hadoop-hue-linux.md). Используйте оттенка tooinstall настройки кластера в кластерах HDInsight Hadoop. Цветовой тон представляет собой набор веб-приложений, используемых toointeract в кластере Hadoop.
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

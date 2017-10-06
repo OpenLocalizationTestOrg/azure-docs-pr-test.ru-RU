@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с аутентификацией на основе сертификата в Azure Active Directory | Документация Майкрософт"
-description: "Узнайте, как настроить в своей среде аутентификацию на основе сертификата."
+title: "Приступая к работе aaaAzure проверки подлинности на основе сертификатов Active Directory - | Документы Microsoft"
+description: "Узнайте, как tooconfigure на основе сертификатов проверки подлинности в вашей среде"
 author: MarkusVi
 documentationcenter: na
 manager: femila
@@ -13,71 +13,71 @@ ms.workload: identity
 ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 8ebc6f2dd7502fd75ffdd4d5d68338382cb1a46b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3c73bdf56018c0716085c923a61e9560dbe4004c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Приступая к работе с аутентификацией на основе сертификата в Azure Active Directory
 
-Аутентификация на основе сертификата позволяет Azure Active Directory выполнять аутентификацию с помощью сертификата клиента на устройстве Windows, Android или iOS при подключении учетной записи Exchange Online к: 
+Проверка подлинности на основе сертификатов обеспечивает toobe проверку подлинности Azure Active Directory с помощью сертификата клиента на устройстве Windows, Android или iOS при подключении учетную Exchange online с: 
 
 - мобильным приложениям Office, таким как Microsoft Outlook и Microsoft Word;   
 
 - клиентам Exchange ActiveSync (EAS). 
 
-Настройка данной функции избавляет от необходимости ввода имени пользователя и пароля в определенных почтовых клиентах и приложениях Microsoft Office на мобильных устройствах. 
+Эта настройка устраняет необходимость hello tooenter имя пользователя и пароль к нему в определенных почты и приложения Microsoft Office на мобильных устройствах. 
 
 В этой статье:
 
-- Показано, как настроить и использовать аутентификацию на основе сертификата для пользователей клиентов в тарифных планах Office 365 корпоративный, бизнес, для образования и для государственных организаций США. В тарифных планах Office 365 China, US Government Defense и US Government Federal доступна предварительная версия этой функции. 
+- Предоставляет вам hello tooconfigure шаги, чтобы использовать на основе сертификатов проверки подлинности для пользователей клиентов в Office 365 Enterprise, Business, образовательных учреждений и планы правительства США. В тарифных планах Office 365 China, US Government Defense и US Government Federal доступна предварительная версия этой функции. 
 
 - Предполагается, что у вас уже настроены [инфраструктура открытых ключей (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) и [AD FS](connect/active-directory-aadconnectfed-whatis.md).    
 
 
 ## <a name="requirements"></a>Требования
 
-Для настройки аутентификации на основе сертификата должны выполняться следующие условия:  
+tooconfigure сертификат проверки подлинности на основе hello должны выполняться следующие условия:  
 
-- Аутентификация на основе сертификата (CBA) поддерживается только для браузерных приложений и собственных клиентов в федеративных средах, использующих современную аутентификацию (ADAL). Единственным исключением является решение Exchange Active (EAS) для EXO, которое можно использовать для федеративных и управляемых учетных записей. 
+- Аутентификация на основе сертификата (CBA) поддерживается только для браузерных приложений и собственных клиентов в федеративных средах, использующих современную аутентификацию (ADAL). Hello единственное исключение — Exchange Active Sync (EAS) для EXO, который может использоваться для учетных записей, федеративным и управляемым. 
 
-- Корневой центр сертификации и все промежуточные центры сертификации должны быть настроены в Azure Active Directory.  
+- в Azure Active Directory необходимо включить Hello корневым центром сертификации и промежуточный центр сертификации.  
 
 - Каждый центр сертификации должен иметь список отзыва сертификатов (CRL), на который можно сослаться с помощью URL-адреса для Интернета.  
 
-- В Azure Active Directory должен быть настроен хотя бы один центр сертификации. Соответствующие действия описаны в разделе [Настройка центров сертификации](#step-2-configure-the-certificate-authorities).  
+- В Azure Active Directory должен быть настроен хотя бы один центр сертификации. Связанные действия можно найти в hello [Настройка центров сертификации hello](#step-2-configure-the-certificate-authorities) раздела.  
 
-- Для клиентов Exchange ActiveSync: в сертификате клиента в поле "Альтернативное имя субъекта" в качестве значения имени субъекта или имени RFC822 должен быть указан маршрутизируемый адрес электронной почты пользователя в Exchange Online. Azure Active Directory сопоставляет значение RFC822 с атрибутом прокси-адреса в каталоге.  
+- Для клиентов Exchange ActiveSync hello клиентский сертификат должен иметь hello маршрутизируемый адрес электронной почты пользователя адрес в Exchange online в любом hello имени участника-службы или hello имя RFC822 значение hello альтернативное имя субъекта. Azure Active Directory сопоставляет атрибут hello RFC822 значения toohello адрес прокси-сервера в каталоге hello.  
 
-- Устройство клиента должно иметь доступ хотя бы к одному центру сертификации, выдающему сертификаты клиента.  
+- Устройство клиента должны иметь доступ по крайней мере одно tooat центр сертификации, выдающий сертификаты клиента.  
 
-- Для аутентификации вашего клиента должен быть выдан сертификат клиента.  
+- Сертификат клиента для проверки подлинности клиента должен быть выдан tooyour клиента.  
 
 
 
 
 ## <a name="step-1-select-your-device-platform"></a>Шаг 1. Выбор платформы устройства
 
-При выборе платформы устройства для начала необходимо ознакомиться со следующими сведениями:
+В качестве первого шага для hello платформы устройств, которые вас интересуют, необходимы следующие tooreview hello.
 
-- Поддержка мобильных приложений Office 
-- Особые требования к реализации  
+- Поддержка мобильных приложений Office Hello 
+- требования к реализации Hello  
 
-Эта информация доступна для следующих платформ устройств:
+Привет, связанные с существует сведения для следующих платформ устройств hello:
 
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
 
-## <a name="step-2-configure-the-certificate-authorities"></a>Шаг 2. Настройка центров сертификации 
+## <a name="step-2-configure-hello-certificate-authorities"></a>Шаг 2: Настройка центров сертификации hello 
 
-Чтобы настроить в Azure Active Directory центры сертификации, для каждого центра сертификации отправьте следующие данные: 
+tooconfigure центров сертификации в Azure Active Directory для каждого центра сертификации передачи hello следующие: 
 
-* открытую часть сертификата в формате *CER* ; 
-* URL-адреса для Интернета, где находятся списки отзыва сертификатов (CRL).
+* Hello открытую часть сертификата hello в *.cer* формат 
+* Hello в Интернете URL-адреса, где hello списков отзыва сертификатов (CRL) находятся
 
-Схема для центра сертификации выглядит следующим образом: 
+Схема Hello для сертификации выглядит следующим образом: 
 
     class TrustedCAsForPasswordlessAuth 
     { 
@@ -101,34 +101,34 @@ ms.lasthandoff: 08/18/2017
         IntermediateAuthority = 1 
     } 
 
-Для настройки можно использовать [Azure Active Directory PowerShell версии 2](/powershell/azure/install-adv2?view=azureadps-2.0):  
+Для конфигурации hello, можно использовать hello [Azure Active Directory PowerShell версии 2](/powershell/azure/install-adv2?view=azureadps-2.0):  
 
 1. Запустите Windows PowerShell с правами администратора. 
-2. Установите модуль Azure AD. Необходимо установить версию [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) или более позднюю.  
+2. Установите модуль hello Azure AD. Требуется версия tooinstall [2.0.0.33 ](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) или более поздней версии.  
    
         Install-Module -Name AzureAD –RequiredVersion 2.0.0.33 
 
-В качестве первого шага настройки необходимо установить подключение к клиенту. Как только установлено подключение к клиенту, вы можете просмотреть, добавить, удалить или изменить доверенные центры сертификации, определенные в каталоге. 
+В конфигурации, сначала должны tooestablish соединение с клиентом. Как только клиент tooyour подключение существует, можно просмотреть, добавить, удалить и изменить hello доверенных центров сертификации, которые определены в каталоге. 
 
 ### <a name="connect"></a>Подключение
 
-Чтобы установить подключение к клиенту, используйте командлет [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0):
+соединение с клиентом, используйте hello tooestablish [Connect AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) командлета:
 
     Connect-AzureAD 
 
 
 ### <a name="retrieve"></a>Получение 
 
-Чтобы получить доверенные центры сертификации, определенные в каталоге, используйте командлет [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0): 
+tooretrieve hello доверенных центров сертификации, определенные в каталоге, использовать hello [Get AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) командлета. 
 
     Get-AzureADTrustedCertificateAuthority 
  
 
 ### <a name="add"></a>Добавить
 
-Чтобы создать доверенный центр сертификации, используйте командлет [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) и задайте правильное значение атрибута **crlDistributionPoint**. 
+toocreate доверенным центром сертификации, использовать hello [New AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) командлета и набор hello **crlDistributionPoint** tooa правильное значение атрибута: 
    
-    $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]" 
+    $cert=Get-Content -Encoding byte "[LOCATION OF hello CER FILE]" 
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation 
     $new_ca.AuthorityType=0 
     $new_ca.TrustedCertificate=$cert 
@@ -138,7 +138,7 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="remove"></a>Удалить
 
-Чтобы удалить доверенный центр сертификации, используйте командлет [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0):
+tooremove доверенным центром сертификации, использовать hello [AzureADTrustedCertificateAuthority удаление](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) командлета:
    
     $c=Get-AzureADTrustedCertificateAuthority 
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2] 
@@ -146,7 +146,7 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="modfiy"></a>Изменение
 
-Чтобы изменить доверенный центр сертификации, используйте командлет [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0):
+toomodify доверенным центром сертификации, использовать hello [AzureADTrustedCertificateAuthority набор](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) командлета:
 
     $c=Get-AzureADTrustedCertificateAuthority 
     $c[0].AuthorityType=1 
@@ -155,71 +155,71 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="step-3-configure-revocation"></a>Шаг 3. Настройка отзыва
 
-Чтобы отозвать сертификат клиента, Azure Active Directory извлекает список отзыва сертификатов (CRL) из URL-адресов, переданных вместе с информацией центра сертификации, и кэширует его. Метка времени последней публикации (свойство**Дата вступления в силу** ) в списке отзыва сертификатов обеспечивает допустимость этого списка. Список отзыва сертификатов периодически опрашивается для отзыва доступа к сертификатам, которые числятся в этом списке.
+toorevoke сертификат клиента Azure Active Directory выбирается сертификат hello список отзыва (CRL) из URL-адресов hello загружены как часть информации о центрах сертификации сертификат и кэширует его. Hello последней публикации отметки времени (**Дата вступления в силу** свойство) в список отзыва Сертификатов используется hello hello tooensure списка отзыва Сертификатов по-прежнему действителен. Hello CRL — toocertificates периодически упоминаемого toorevoke доступа, входящих в состав списка hello.
 
-Если требуется более быстрый отзыв (например, если пользователь потерял устройство), то маркер авторизации пользователя можно сделать недействительным. Чтобы сделать маркер авторизации недействительным, с помощью Windows PowerShell определите поле **StsRefreshTokenValidFrom** для этого пользователя. Поле **StsRefreshTokenValidFrom** необходимо обновить для каждого пользователя, доступ для которого будет отозван.
+При необходимости (например, в случае потери устройства) более быстрой отзыва, маркер авторизации hello hello пользователя может стать недействительным. tooinvalidate hello авторизации маркеров, задайте hello **StsRefreshTokenValidFrom** для данного пользователя с помощью Windows PowerShell. Необходимо обновить hello **StsRefreshTokenValidFrom** для каждого пользователя, который вы хотите получить доступ toorevoke для поля.
 
-Чтобы отзыв оставался в силе, для свойства **Дата вступления в силу** списка отзыва сертификатов необходимо указать дату, которая наступит после даты, заданной в поле **StsRefreshTokenValidFrom**, а также убедиться, что этот сертификат есть в списке отзыва сертификатов.
+tooensure отзыва hello сохраняется, необходимо задать hello **Дата вступления в силу** hello CRL tooa даты после hello значение, установленное **StsRefreshTokenValidFrom** и убедитесь в hello сертификата Hello списка отзыва Сертификатов.
 
-Ниже описан процесс обновления и аннулирования маркера авторизации с помощью поля **StsRefreshTokenValidFrom** . 
+Здравствуйте, следуйте процедуре hello структуры шаги для обновления и делает недействительными hello маркер авторизации, установка hello **StsRefreshTokenValidFrom** поля. 
 
-**Чтобы настроить отзыв сертификата, выполните следующие действия:** 
+**tooconfigure отзыва:** 
 
-1. Используя учетные данные администратора, подключитесь к службе MSOL: 
+1. Подключение со службой MSOL toohello учетные данные администратора: 
    
         $msolcred = get-credential 
         connect-msolservice -credential $msolcred 
 
-2. Получите текущее значение StsRefreshTokensValidFrom для пользователя: 
+2. Получить текущее значение StsRefreshTokensValidFrom hello для пользователя: 
    
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com` 
         $user.StsRefreshTokensValidFrom 
 
-3. Настройте новое значение StsRefreshTokensValidFrom для пользователя, равное текущей метке времени: 
+3. Настройка нового значения StsRefreshTokensValidFrom для пользователя hello равно toohello Текущая отметка времени: 
    
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 
-Задаваемая дата должна быть в будущем. Если дата не в будущем, свойство **StsRefreshTokensValidFrom** не будет задано. Если дата в будущем, для **StsRefreshTokensValidFrom** задается актуальное время (не дата, указанная командой Set-MsolUser). 
+Дата Hello, задать должна быть в будущем hello. Если дата hello не будущих hello, hello **StsRefreshTokensValidFrom** свойство не задано. Если дата hello в будущем, hello **StsRefreshTokensValidFrom** задано toohello текущее время (не hello даты, указанной командой Set-MsolUser). 
 
 
 ## <a name="step-4-test-your-configuration"></a>Шаг 4. Тестирование конфигурации
 
 ### <a name="testing-your-certificate"></a>Тестирование сертификата
 
-В качестве первой проверки конфигурации попытайтесь войти в [Outlook Web Access](https://outlook.office365.com) или [SharePoint Online](https://microsoft.sharepoint.com), используя **браузер на устройстве**.
+В качестве первой конфигурации теста, попробуйте toosign в слишком[Outlook Web Access](https://outlook.office365.com) или [SharePoint Online](https://microsoft.sharepoint.com) с помощью вашей **браузер на устройстве**.
 
 Успешный вход подтверждает, что:
 
-- для тестируемого устройства подготовлен сертификат пользователя;
+- сертификат пользователя Hello был подготовленных tooyour тестовое устройство
 - службы AD FS настроены правильно.  
 
 
 ### <a name="testing-office-mobile-applications"></a>Тестирование мобильных приложений Office
 
-**Чтобы протестировать аутентификацию на основе сертификата в мобильном приложении Office, выполните следующие действия:** 
+**tootest сертификат проверки подлинности на основе мобильного приложения Office:** 
 
 1. На тестируемом устройстве установите мобильное приложение Office (например, OneDrive).
-3. Запустите приложение. 
-4. Введите имя пользователя, а затем выберите сертификат пользователя, который хотите использовать. 
+3. Запуск приложения hello. 
+4. Введите имя пользователя и выберите сертификат пользователя hello, требуется toouse. 
 
 Вы должны без проблем войти в систему. 
 
 ### <a name="testing-exchange-activesync-client-applications"></a>Тестирование клиентских приложений Exchange ActiveSync
 
-Для доступа к Exchange ActiveSync (EAS) с использованием аутентификации на основе сертификата приложению должен быть доступен профиль EAS, содержащий сертификат клиента. 
+Доступные toohello приложения необходимо tooaccess Exchange ActiveSync (EAS) через сертификат проверки подлинности на основе профиля EAS, содержащий сертификат клиента hello. 
 
-В профиле EAS должны содержаться следующие сведения:
+Hello профиля EAS должен содержать hello следующую информацию:
 
-- сертификат пользователя, который будет использоваться для аутентификации; 
+- Здравствуйте, toobe сертификат пользователя, используемый для проверки подлинности 
 
-- конечная точка EAS (например, outlook.office365.com).
+- Конечная точка EAS Hello (например, outlook.office365.com)
 
-Профиль EAS можно настроить и поместить на устройство с помощью системы управления мобильными устройствами (MDM), такой как Intune, либо вручную поместить сертификат в профиль EAS на устройстве.  
+Можно настроить и разместить на устройстве hello путем использования hello управления мобильными устройствами (MDM) как Intune, или установив сертификат hello вручную в hello профиля EAS на устройстве hello профиля EAS.  
 
 ### <a name="testing-eas-client-applications-on-android"></a>Тестирование клиентских приложений EAS на Android
 
-**Чтобы протестировать аутентификацию на основе сертификата, выполните следующие действия:**  
+**Проверка подлинности сертификата tootest:**  
 
-1. Настройте профиль EAS в приложении, удовлетворяющем изложенным выше требованиям.  
-2. Откройте приложение и убедитесь, что почта синхронизируется. 
+1. Настройка профиля EAS приложения hello, удовлетворяющее требованиям hello выше.  
+2. Откройте приложение hello и убедитесь, что почта синхронизируются. 
 

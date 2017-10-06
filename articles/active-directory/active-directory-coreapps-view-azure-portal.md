@@ -1,6 +1,6 @@
 ---
-title: "Просмотр всех корпоративных приложений, которыми вы можете управлять в Azure Active Directory | Документы Майкрософт"
-description: "Узнайте, как просмотреть список корпоративных приложений, на управление которыми в Azure Active Directory у вас есть разрешение."
+title: "Здравствуйте, все корпоративные приложения, которые можно управлять в Azure Active Directory aaaView | Документы Microsoft"
+description: "Как toosee список hello корпоративных приложений, которые у вас есть hello toomanage разрешения в Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 14b335d14d893640d469508d6f34b4e7ec6bee8b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 269e9e5c7ed185a3f6ed9b020875db10bfaea039
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Просмотр всех корпоративных приложений, которыми вы можете управлять в Azure Active Directory
-Вы можете управлять корпоративными приложениями в Azure Active Directory (Azure AD). Можно просмотреть приложения, которыми вы можете управлять, назначить приложению пользователей или группы, хранить для приложения такие свойства, как имя приложения и логотип, и даже отключить приложение, чтобы пользователи не могли в него войти.
+# <a name="view-all-hello-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Просмотреть все hello корпоративных приложений можно управлять в Azure Active Directory
+Вы можете управлять свои корпоративные приложения в hello Azure Active Directory (Azure AD). Это включает в себя просмотр приложения hello, которыми можно управлять, присваивая tooan приложения пользователям или группам, обслуживание свойства для приложения hello, такие как имя приложения hello/эмблема и даже отключить приложение, чтобы пользователи не могли войти в tooit.
 
 ## <a name="how-do-i-view-all-my-apps"></a>Как можно просмотреть мои приложения?
-1. Войдите на [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Другие службы**, введите **Azure Active Directory** в текстовое поле, а затем нажмите клавишу **ВВОД**.
-3. В колонке **Azure Active Directory —** ***имя_каталога*** (то есть в колонке Azure AD для каталога, которым вы управляете) выберите **Корпоративные приложения**.
+1. Войдите в toohello [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **Azure Active Directory** в hello текстовое поле, а затем выберите **ввод**.
+3. На hello **Azure Active Directory —** ***directoryname*** колонке (то есть hello Azure AD колонке hello каталога, вы управляете) выберите **корпоративных приложений**.
 
     ![Открытие колонки "Корпоративные приложения"](./media/active-directory-coreapps-view-azure-portal/open-enterprise-apps.png)
-4. В колонке **Корпоративные приложения** выберите **Все приложения**. В этой колонке можно выбрать приложения для управления, изменить отображаемые столбцы или отфильтровать список, чтобы найти нужное приложение (например, можно отобразить только отключенные приложения).
+4. На hello **корпоративных приложений** колонке выберите **все приложения**. Из этой колонке выберите toomanage приложений, изменение столбцов, отображаемых hello или фильтрации hello списка toofind этого приложения (например, tooview только отключенные приложения).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Назначение корпоративному приложению пользователя или группы](active-directory-coreapps-assign-user-azure-portal.md)
+* [Назначить пользователю или группе tooan корпоративного приложения](active-directory-coreapps-assign-user-azure-portal.md)
 * [Удаление назначения пользователя или группы из корпоративного приложения](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [Отключение входа пользователя в корпоративное приложение](active-directory-coreapps-disable-app-azure-portal.md)
-* [Изменение имени или логотипа корпоративного приложения](active-directory-coreapps-change-app-logo-user-azure-portal.md)
+* [Изменение имени hello или логотип корпоративного приложения](active-directory-coreapps-change-app-logo-user-azure-portal.md)

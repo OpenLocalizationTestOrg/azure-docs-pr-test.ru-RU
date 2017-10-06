@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с Azure AD в .NET | Документация Майкрософт"
-description: "Практическое руководство по созданию классического приложения .NET Windows, которое интегрируется с Azure AD для входа в систему и вызывает программные интерфейсы приложения, защищенные Azure AD, по протоколу OAuth."
+title: "Приступая к работе .NET aaaAzure AD | Документы Microsoft"
+description: "Как toobuild .NET классическое приложение Windows, интегрируется с Azure AD для входа и вызывает Azure AD защищен с помощью OAuth API-интерфейсы."
 services: active-directory
 documentationcenter: .net
 author: jmprieur
@@ -15,64 +15,64 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7a252e0e5243c7b7489373845531cb913ca1f6aa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c09b358f24c7bfb371b34cf72ca48c0a45042f5f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-azure-ad-into-a-windows-desktop-wpf-app"></a>Интеграция Azure AD в классическое приложение Windows WPF
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-При разработке классического приложения служба Microsoft Azure Active Directory позволяет разработчику упростить проверку подлинности учетных записей пользователей в Active Directory.  Это также позволяет вашему приложению безопасно использовать любые веб-интерфейсы API, защищаемые с помощью Azure AD, например интерфейсы Office 365 API или Azure API.
+Если вы разрабатываете приложение рабочей среды, Azure AD упрощает простыми и понятными для вас tooauthenticate пользователей с их учетными записями Active Directory.  Toosecurely вашего приложения также позволяет использовать любой веб-API, защищенные Azure AD, таких как hello API Office 365 или hello Azure API.
 
-Клиентские нативные приложения для .NET, которым необходим доступ к защищенным ресурсам, могут использовать библиотеку проверки подлинности Azure AD (ADAL).  Единственное предназначение ADAL — упростить для разработчика процесс получения маркеров доступа.  Чтобы показать, насколько это просто, создадим приложение To Do List (ведение списка дел) для .NET WPF, которое:
+Для .NET собственных клиентов, которым требуется tooaccess защищенные ресурсы Azure AD предоставляет hello библиотеку аутентификации Active Directory или ADAL.  Единственной целью ADAL в жизни является toomake легко и маркеры доступа tooget вашего приложения.  toodemonstrate, насколько просто здесь мы создадим приложение .NET WPF задача список:
 
-* Получает маркеры доступа для вызова интерфейса Graph API Azure AD с помощью [протокола проверки подлинности OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+* Получает маркеры для вызова API Azure AD Graph hello, с помощью hello доступа [протокол проверки подлинности OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 * Осуществляет поиск пользователей в каталоге по псевдониму.
 * Обеспечивает функцию выхода пользователя из приложения.
 
-Для создания полного рабочего приложения необходимо:
+toobuild hello полное рабочее приложение, вам потребуется:
 
 1. Зарегистрировать приложение в Azure AD.
 2. установить и настроить ADAL;
-3. использовать ADAL для получения маркеров из Azure AD.
+3. Используйте ADAL tooget токены из Azure AD.
 
-Чтобы начать работу, [скачайте схему приложения](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/skeleton.zip) или [скачайте готовый пример](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip).  Вам также потребуется клиент Azure AD, в котором можно создавать пользователей и регистрировать приложение.  Если клиента нет, [узнайте, как его получить](active-directory-howto-tenant.md).
+tooget к работе, [загрузить каркас приложения hello](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/skeleton.zip) или [загрузить образец hello завершения](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip).  Вам также потребуется клиент Azure AD, в котором можно создавать пользователей и регистрировать приложение.  Если у вас еще нет клиента, [Узнайте, как один tooget](active-directory-howto-tenant.md).
 
-## <a name="1-register-the-directorysearcher-application"></a>1. Регистрация приложения DirectorySearcher
-Чтобы приложение могло получать маркеры, сначала необходимо его зарегистрировать в клиенте Azure AD и предоставить ему разрешение на доступ к интерфейсу Graph API Azure AD:
+## <a name="1-register-hello-directorysearcher-application"></a>1. Регистрация приложения DirectorySearcher hello
+tooenable маркеров tooget вашего приложения, сначала необходимо tooregister его в Azure AD клиента и предоставить ему разрешение tooaccess hello API Azure AD Graph:
 
-1. Войдите на [портал Azure](https://portal.azure.com).
-2. На верхней панели щелкните учетную запись и в списке **Каталог** выберите клиент Active Directory, в котором хотите зарегистрировать приложение.
-3. В левой области навигации щелкните **Другие службы** и выберите **Azure Active Directory**.
+1. Войдите в toohello [портал Azure](https://portal.azure.com).
+2. На верхней панели hello, нажмите кнопку в вашей учетной записи, а также в разделе hello **каталога** выберите hello клиента Active Directory, где будут tooregister приложения.
+3. Щелкните **более служб** в hello левую панель навигации и выберите **Azure Active Directory**.
 4. Щелкните **Регистрация приложений** и нажмите кнопку **Добавить**.
-5. Следуйте инструкциям на экране, а затем создайте новое **Собственное клиентское приложение**.
-  * **Имя** приложения отображает его описание конечным пользователям.
-  * **URI перенаправления** представляет собой сочетание схемы и строки, используемое Azure AD для возвращения любых маркеров, запрошенных приложением.  Укажите значение, специфичное для вашего приложения, например `http://DirectorySearcher`.
-6. После завершения регистрации служба Azure AD присваивает приложению уникальный идентификатор приложения.  Это значение вам понадобится в следующих разделах, поэтому не забудьте скопировать его на странице приложения.
-7. На странице **Параметры** выберите **Необходимые разрешения** и щелкните **Добавить**. Выберите **Microsoft Graph** в качестве интерфейса API и добавьте разрешение **Чтение данных каталога** в списке **Делегированные разрешения**.  Это позволит приложению запрашивать интерфейс Graph API для пользователей.
+5. Следуйте инструкциям hello и создайте новый **собственное клиентское приложение**.
+  * Hello **имя** из hello приложения будет описывать tooend пользователей вашего приложения
+  * Hello **Uri перенаправления** представляет собой комбинацию схему и строки, использование маркеров ответы tooreturn Azure AD.  Введите приложении tooyour определенного значения, например `http://DirectorySearcher`.
+6. После завершения регистрации служба Azure AD присваивает приложению уникальный идентификатор приложения.  Это значение необходимо в следующих разделах hello, поэтому скопируйте его со страницы приложения hello.
+7. Из hello **параметры** выберите **требуемые разрешения** и выберите **добавить**. Выберите hello **Microsoft Graph** как hello API и добавьте hello **чтение данных каталога** разрешение в списке **делегированные разрешения**.  Это позволит вашей hello tooquery приложения Graph API для пользователей.
 
-## <a name="2-install--configure-adal"></a>2) Установка и настройка ADAL
-Теперь, когда приложение зарегистрировано в Azure AD, можно установить библиотеку ADAL и написать код для работы с удостоверением.  Чтобы ADAL могла обмениваться информацией с Azure AD, необходимо предоставить некоторую информацию о регистрации вашего приложения.
+## <a name="2-install--configure-adal"></a>2. Установка и настройка ADAL
+Теперь, когда приложение зарегистрировано в Azure AD, можно установить библиотеку ADAL и написать код для работы с удостоверением.  Чтобы может toocommunicate ADAL toobe с Azure AD, необходимо tooprovide его с некоторые сведения о регистрации приложения.
 
-* Сначала добавьте ADAL в проект DirectorySearcher с помощью консоли диспетчера пакетов.
+* Сначала добавьте проект DirectorySearcher ADAL toohello с помощью консоли диспетчера пакетов hello.
 
 ```
 PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 ```
 
-* В проекте DirectorySearcher откройте `app.config`.  Замените значения элементов в разделе `<appSettings>` на значения, введенные на портале Azure.  Ваш код будет ссылаться на эти значения при каждом использовании ADAL.
-  * `ida:Tenant` — это домен вашего клиента Azure AD, например contoso.onmicrosoft.com
-  * `ida:ClientId` — это идентификатор clientId приложения, скопированный с портала.
-  * `ida:RedirectUri` — это URL-адрес перенаправления, зарегистрированный на портале.
+* В проекте DirectorySearcher hello откройте `app.config`.  Замените значения hello элементов hello в hello `<appSettings>` раздел tooreflect hello значения входных данных в hello портала Azure.  Ваш код будет ссылаться на эти значения при каждом использовании ADAL.
+  * Hello `ida:Tenant` hello домен вашего клиента Azure AD, например, contoso.onmicrosoft.com
+  * Hello `ida:ClientId` — hello clientId приложения скопирован с портала hello.
+  * Hello `ida:RedirectUri` — hello зарегистрирован в портале hello URL-адрес перенаправления.
 
-## <a name="3----use-adal-to-get-tokens-from-aad"></a>3.    Использование библиотеки ADAL для получения маркеров из AAD
-Основной принцип ADAL состоит в следующем: каждый раз, когда вашему приложению необходим маркер доступа, оно будет просто вызывать `authContext.AcquireTokenAsync(...)`, а ADAL сделает все остальное.  
+## <a name="3----use-adal-tooget-tokens-from-aad"></a>3.    Использование токенов ADAL tooGet из AAD
+Hello базовый принцип ADAL — что всякий раз, когда ваше приложение должно маркер доступа, он просто вызывает `authContext.AcquireTokenAsync(...)`, и ADAL hello rest.  
 
-* В проекте `DirectorySearcher` откройте `MainWindow.xaml.cs` и найдите метод `MainWindow()`.  Первый шаг состоит в инициализации `AuthenticationContext` — основного класса ADAL.  Здесь вы отправляете в библиотеку ADAL координаты, которые ей требуются для взаимодействия с Azure AD, и сообщаете о способе кэширования маркеров.
+* В hello `DirectorySearcher` откройте проект `MainWindow.xaml.cs` и найдите hello `MainWindow()` метод.  Hello первым шагом является tooinitialize приложения `AuthenticationContext` -ADAL основной класс.  Это происходит, где передается ADAL hello координаты, он должен toocommunicate с Azure AD и о том, как toocache маркеры.
 
 ```C#
 public MainWindow()
@@ -85,19 +85,19 @@ public MainWindow()
 }
 ```
 
-* Теперь найдите метод `Search(...)` , который будет вызываться при нажатии кнопки "Поиск" в пользовательском интерфейсе приложения.  Этот метод выполняет запрос GET в интерфейс Graph API службы Azure AD для запроса списка пользователей, чьи UPN начинаются с данного слова поиска.  Но для отправки запросов в Graph API необходимо включить access_token в заголовок `Authorization` запроса — именно отсюда ADAL начинает свою работу.
+* Теперь найдите hello `Search(...)` метод, который вызывается, если пользователь cliks hello hello кнопки «Поиск» в пользовательском Интерфейсе приложения hello.  Этот метод делает tooquery toohello API Azure AD Graph запрос GET для пользователей, имя участника-пользователя начинается с заданного условия поиска hello.  Но в порядке tooquery hello Graph API, необходимо tooinclude access_token в hello `Authorization` заголовок hello запрос — где вступает в дело ADAL.
 
 ```C#
 private async void Search(object sender, RoutedEventArgs e)
 {
-    // Validate the Input String
+    // Validate hello Input String
     if (string.IsNullOrEmpty(SearchText.Text))
     {
-        MessageBox.Show("Please enter a value for the To Do item name");
+        MessageBox.Show("Please enter a value for hello tooDo item name");
         return;
     }
 
-    // Get an Access Token for the Graph API
+    // Get an Access Token for hello Graph API
     AuthenticationResult result = null;
     try
     {
@@ -107,7 +107,7 @@ private async void Search(object sender, RoutedEventArgs e)
     }
     catch (AdalException ex)
     {
-        // An unexpected error occurred, or user canceled the sign in.
+        // An unexpected error occurred, or user canceled hello sign in.
         if (ex.ErrorCode != "access_denied")
             MessageBox.Show(ex.Message);
 
@@ -117,26 +117,26 @@ private async void Search(object sender, RoutedEventArgs e)
     ...
 }
 ```
-* Когда приложение запрашивает маркер путем вызова `AcquireTokenAsync(...)`, библиотека ADAL пытается вернуть маркер без запроса учетных данных пользователя.  Если ADAL решит, что пользователь должен войти в систему для получения маркера, то служба отобразит диалоговое окно входа, соберет учетные данные пользователя и вернет маркер после успешной проверки подлинности.  Если библиотеке ADAL не удастся по какой-либо причине вернуть маркер, она вызовет исключение `AdalException`.
-* Обратите внимание, что объект `AuthenticationResult` содержит объект `UserInfo`, который может использоваться для сбора сведений, необходимых приложению.  В DirectorySearcher объект `UserInfo` используется для настройки пользовательского интерфейса приложения на основе идентификатора пользователя.
-* Когда пользователь нажимает кнопку выхода, необходимо, чтобы при следующем вызове `AcquireTokenAsync(...)` пользователю было предложено войти.  С ADAL это так же просто, как и очистка кэша маркера:
+* Когда приложение запрашивает маркер путем вызова `AcquireTokenAsync(...)`, ADAL попытается tooreturn маркер без запроса учетных данных пользователя hello.  Если ADAL определит, что данный пользователь hello должен toosign в tooget маркер, оно отображает диалоговое окно входа в систему, собирать hello учетные данные пользователя и возвращает токен после успешной проверки подлинности.  Если не удается tooreturn токен ADAL для какой-либо причине, он будет вызывать `AdalException`.
+* Обратите внимание, что hello `AuthenticationResult` объект содержит `UserInfo` объект, который может быть toocollect используется информация приложения может потребоваться.  В hello DirectorySearcher `UserInfo` является приложение hello используется toocustomize пользовательского интерфейса с идентификатором hello пользователя.
+* Hello пользователь нажимает кнопку «Выйти» hello, мы хотим tooensure, слишком hello следующего вызова`AcquireTokenAsync(...)` запросит toosign пользователя hello в.  С помощью ADAL это так же легко, как очистить кэш токена hello:
 
 ```C#
 private void SignOut(object sender = null, RoutedEventArgs args = null)
 {
-    // Clear the token cache
+    // Clear hello token cache
     authContext.TokenCache.Clear();
 
     ...
 }
 ```
 
-* Если пользователь не нажимает кнопку выхода, то можно реализовать восстановление данных сеанса пользователя при следующем запуске приложения DirectorySearcher.  При запуске приложения можно проверить кэш маркеров библиотеки ADAL на наличие соответствующего маркера и соответственно обновить пользовательский интерфейс.  В методе `CheckForCachedToken()` выполните другой вызов `AcquireTokenAsync(...)`, на этот раз передав параметр `PromptBehavior.Never`.  `PromptBehavior.Never` сообщает ADAL, что пользователю не следует предлагать войти, и вместо этого библиотека ADAL должна породить исключение, если не удается вернуть маркер.
+* Тем не менее если пользователь hello не нажать кнопку hello «Выход», требуется toomaintain hello пользовательский сеанс для hello очередном запуске hello DirectorySearcher.  При запуске приложения hello, могут возвращать кэш токена ADAL для существующего маркера и соответствующим образом обновить hello пользовательского интерфейса.  В hello `CheckForCachedToken()` метода, выполнение другого вызова слишком`AcquireTokenAsync(...)`, на этот раз, передавая hello `PromptBehavior.Never` параметра.  `PromptBehavior.Never`сообщает ADAL hello пользователь не должен появиться запрос для входа, которое ADAL следует вместо создания исключения, если это не удается tooreturn маркер.
 
 ```C#
 public async void CheckForCachedToken() 
 {
-    // As the application starts, try to get an access token without prompting the user.  If one exists, show the user as signed in.
+    // As hello application starts, try tooget an access token without prompting hello user.  If one exists, show hello user as signed in.
     AuthenticationResult result = null;
     try
     {
@@ -150,21 +150,21 @@ public async void CheckForCachedToken()
             MessageBox.Show(ex.Message);
         }
 
-        // If user interaction is required, proceed to main page without singing the user in.
+        // If user interaction is required, proceed toomain page without singing hello user in.
         return;
     }
 
-    // A valid token is in the cache
+    // A valid token is in hello cache
     SignOutButton.Visibility = Visibility.Visible;
     UserNameLabel.Content = result.UserInfo.DisplayableId;
 }
 ```
 
-Поздравляем! Теперь у нас есть рабочее приложение .NET WPF, которое позволяет проверять подлинность пользователей, безопасно вызывать методы веб-интерфейсов API по протоколу OAuth 2.0 и получать основные сведения о пользователе.  Если же вы этого еще не сделали, пришло время добавить в клиент нескольких пользователей.  Запустите приложение DirectorySearcher и войдите как один из этих пользователей.  Осуществите поиск других пользователей по их имени участника-пользователя.  Закройте приложение и снова запустите его.  Обратите внимание на то, что пользовательский сеанс остался без изменений.  Выйдите и снова войдите от имени другого пользователя.
+Поздравляем! Теперь имеют работающее приложение .NET WPF hello возможность tooauthenticate пользователей, безопасно вызвать веб-API с помощью OAuth 2.0 и получить основные сведения о пользователе hello.  Если это еще не сделано, пришло время toopopulate hello вашего клиента с некоторым пользователям.  Запустите свое приложение DirectorySearcher и войдите под именем одного из таких пользователей.  Осуществите поиск других пользователей по их имени участника-пользователя.  Закройте приложение hello и выполните его повторно.  Обратите внимание на то, как hello пользовательского сеанса остается без изменений.  Выйдите и снова войдите под именем другого пользователя.
 
-ADAL упрощает процесс включения всех этих общих возможностей идентификации в приложение.  Он отвечает за всю грязную работу: управление кэшем, поддержку протокола OAuth, предоставление пользователю пользовательского интерфейса для входа, обновление истекших маркеров и многое другое.  Все, что вам действительно нужно знать, — это вызов интерфейса API `authContext.AcquireTokenAsync(...)`.
+ADAL упрощает легко tooincorporate все эти общие функции управления удостоверениями в приложения.  Он отвечает за всю работу dirty hello вам - управления кэша, поддержка протокола OAuth, предоставляя hello пользователя с именем входа пользовательского интерфейса, обновление маркеры с истекшим сроком действия и многое другое.  Действительно требуется tooknow всего в одном вызове API `authContext.AcquireTokenAsync(...)`.
 
-Завершенный образец (без ваших настроек) вы можете загрузить [отсюда](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip).  Теперь можно приступить к изучению других сценариев.  Можно попробовать:
+Справочник по образец hello завершена (без настройки) предоставляется [здесь](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip).  Теперь можно переходить на tooadditional сценариев.  Вы можете tootry:
 
 [Защита веб-API с помощью Azure AD для .NET >>](active-directory-devquickstarts-webapi-dotnet.md)
 

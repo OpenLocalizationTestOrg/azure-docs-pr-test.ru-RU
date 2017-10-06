@@ -1,6 +1,6 @@
 ---
-title: "Расширение диска данных, подключенного к виртуальной машине Windows в Azure | Документация Майкрософт"
-description: "Увеличение размера диска данных, подключенного к виртуальной машине, с помощью PowerShell."
+title: "aaaExpand диск данных присоединенного tooa виртуальной Машины Windows в Azure | Документы Microsoft"
+description: "Разверните hello размер диска данных, вложенные tooa Windows виртуальной машины с помощью PowerShell."
 services: virtual-machines-windows
 documentationcenter: na
 author: cynthn
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/02/2017
 ms.author: cynthn
-ms.openlocfilehash: 5529856c2ffcd2942fe3fc2b438f7e3fd16a67b2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b16ad0da9cff9dfffc9dc9ec7dd72891e7ddd745
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="increase-the-size-of-a-data-disk-attached-to-a-windows-vm"></a>Увеличение размера диска данных, подключенного к виртуальной машине Windows
+# <a name="increase-hello-size-of-a-data-disk-attached-tooa-windows-vm"></a>Увеличьте размер диска данных hello присоединенного tooa виртуальной Машины Windows
 
-Если необходимо увеличить размер диска данных, подключенного к виртуальной машине, это можно сделать с помощью PowerShell. После увеличения размера диска данных в параметрах виртуальной машины Azure необходимо также выделить новое дисковое пространство в виртуальной машине.
+При необходимости размер hello tooincrease hello данных подключен диск tooyour виртуальной машины, можно увеличить размер hello, с помощью PowerShell. После повышения hello размер диска данных hello в параметрах виртуальной Машины Azure hello, необходимо также tooallocate hello новый размер диска в течение hello виртуальной Машины.
 
 
-## <a name="use-powershell-to-increase-the-size-of-a-managed-data-disk"></a>Увеличение размера управляемого диска данных с помощью PowerShell
+## <a name="use-powershell-tooincrease-hello-size-of-a-managed-data-disk"></a>Используйте Powershell tooincrease hello размер диска управляемые данные
 
-Чтобы увеличить размер управляемого диска данные, используйте приведенные ниже командлеты PowerShell.
+размер hello tooincrease диска управляемые данные, hello используйте следующие командлеты PowerShell:
 
 |                                                                    |                                                            |
 |--------------------------------------------------------------------|------------------------------------------------------------|
@@ -37,18 +37,18 @@ ms.lasthandoff: 08/03/2017
  | [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm)             |
 <br>
 
-Следующий сценарий поможет получить сведения о виртуальной машине, выбрать диск данных и указать его новый размер.
+Hello следующий скрипт поможет выполнить получение сведений о hello виртуальной Машины, выбрав диск данных hello и указав новый размер hello.
 
 ```powershell
 # Select resource group
 
     $rg = Get-AzureRMResourceGroup | Out-GridView `
-        -Title "Select the resource group" `
+        -Title "Select hello resource group" `
         -PassThru
 
     $rgName = $rg.ResourceGroupName
 
-# Select the VM
+# Select hello VM
 
     $vm = Get-AzureRMVM -ResourceGroupName $rgName `
         | Out-GridView `
@@ -61,32 +61,32 @@ ms.lasthandoff: 08/03/2017
         -Title "Select a data disk" `
         -PassThru
 
-# Specify a larger size for the data disk
+# Specify a larger size for hello data disk
 
     $size =  Read-Host `
         -Prompt "New size in GB"
 
-# Stop and Deallocate VM prior to resizing data disk
+# Stop and Deallocate VM prior tooresizing data disk
 
     $vm | Stop-AzureRMVM -Force
 
-# Set the new disk size
+# Set hello new disk size
 
     $diskUpdateConfig = New-AzureRmDiskUpdateConfig -DiskSizeGB $size
 
-# Update the configuration in Azure
+# Update hello configuration in Azure
 
     $managedDisk = Get-AzureRmResource -ResourceId $disk.ManagedDisk.Id
     Update-AzureRmDisk -DiskName $managedDisk.ResourceName -ResourceGroupName $managedDisk.ResourceGroupName -DiskUpdate $diskUpdateConfig
 
-# Start the VM
+# Start hello VM
 
     Start-AzureRmVM -ResourceGroupName $rgName -VMName $vm.name
 ```
 
-## <a name="use-powershell-to-increase-the-size-of-an-unmanaged-data-disk"></a>Увеличение размера неуправляемого диска данных с помощью PowerShell
+## <a name="use-powershell-tooincrease-hello-size-of-an-unmanaged-data-disk"></a>Используйте PowerShell tooincrease hello размер диска неуправляемые данные
 
-Чтобы увеличить размер неуправляемых дисков данные в учетной записи хранения, используйте приведенные ниже командлеты PowerShell.
+размер hello tooincrease дисков неуправляемые данные в учетной записи хранения hello используйте следующие командлеты PowerShell:
 
 |                                                                    |                                                            |
 |--------------------------------------------------------------------|------------------------------------------------------------|
@@ -96,7 +96,7 @@ ms.lasthandoff: 08/03/2017
 
 <br>
 
-Следующий сценарий поможет получить сведения о виртуальной машине и учетной записи хранения, выбрать диск данных и указать его новый размер.
+Hello следующий скрипт поможет выполнить получение hello виртуальных Машин и хранилища сведения об учетной записи, выбрав диск данных hello и указав новый размер hello.
 
 ```powershell
 
@@ -109,18 +109,18 @@ ms.lasthandoff: 08/03/2017
 
     $rgName = $storageAccount.ResourceGroupName
 
-# Select the VM
+# Select hello VM
 
     $vm = Get-AzureRMVM `
     -ResourceGroupName $rgName | Out-GridView `
             -Title "Select a VM …" `
             -PassThru
 
-# Select Data Disk to resize
+# Select Data Disk tooresize
 
     $disk =
         $vm.DataDiskNames | Out-GridView `
-            -Title "Select a data disk to resize" `
+            -Title "Select a data disk tooresize" `
             -PassThru
 
 
@@ -129,28 +129,28 @@ ms.lasthandoff: 08/03/2017
     $size =  Read-Host `
         -Prompt "New size in GB"
 
-# Stop and Deallocate VM prior to resizing data disk
+# Stop and Deallocate VM prior tooresizing data disk
 
     $vm | Stop-AzureRMVM -Force
 
-# Set the new disk size
+# Set hello new disk size
 
     Set-AzureRmVMDataDisk -VM $vm -Name "$disk" `
         -DiskSizeInGB $size
 
-# Update the configuration in Azure
+# Update hello configuration in Azure
 
     Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
-# Start the VM
+# Start hello VM
     Start-AzureRmVM -ResourceGroupName $rgName `
     -VMName $vm.name
 
 ```
 
-## <a name="allocate-the-unallocated-disk-space"></a>Выделение нераспределенного дискового пространства
+## <a name="allocate-hello-unallocated-disk-space"></a>Выделить hello нераспределенное место на диске
 
-Увеличив размер диска, необходимо выделить для него новое нераспределенное дисковое пространство в виртуальной машине. Чтобы выделить это пространство, можно подключиться к виртуальной машине и использовать инструмент "Управление дисками" (diskmgmt.msc). Если при создании виртуальной машины вы установили на нее WinRM и сертификат, то вы можете инициализировать диск удаленно с помощью PowerShell. Можно также использовать расширение пользовательского сценария.
+После внесения hello диск большего размера, вам потребуется tooallocate hello незанятое пространство из внутри hello виртуальной Машины. tooallocate hello места, можно подключить toohello виртуальной Машины используйте Управление дисками (diskmgmt.msc). Или, если вы включили WinRM и сертификат на hello виртуальной Машины при ее создании, можно использовать удаленный диск hello tooinitialize PowerShell. Можно также использовать расширение пользовательского сценария.
 
 ```powershell
     $location = "location-name"
@@ -159,7 +159,7 @@ ms.lasthandoff: 08/03/2017
     Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
 
-Файл сценария может содержать код следующего вида, который увеличивает пространство, выделенное для диска, до максимального размера дисков.
+Hello файл скрипта может содержать нечто похожее на этот код tooincrease hello выделения toohello максимальный размер hello диски:
 
 ```powershell
 $driveLetter= "F"

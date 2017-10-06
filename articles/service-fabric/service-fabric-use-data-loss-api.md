@@ -1,6 +1,6 @@
 ---
-title: "Как вызвать потерю данных в службах Service Fabric | Документация Майкрософт"
-description: "Описывается, как использовать API потери данных."
+title: "aaaHow tooInvoke потери данных в службы структуры службы | Документы Microsoft"
+description: "Описывает, каким образом toouse hello потери данных api"
 services: service-fabric
 documentationcenter: .net
 author: LMWF
@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 09/19/2016
 ms.author: lemai
 redirect_url: /azure/service-fabric/service-fabric-testability-overview
-ms.openlocfilehash: 0c4791e56f84d0df38783a13c8d8c564fd25f55f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 014c7ebfd2c42d79a5fe1802ecc3fa0c1f26f9d7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-invoke-data-loss-on-services"></a>Как вызвать потерю данных в службах
+# <a name="how-tooinvoke-data-loss-on-services"></a>Как tooInvoke потери данных в службах
 > [!WARNING]
-> В этом документе описывается, как вызвать потерю данных в службах, поэтому он должен использоваться с осторожностью.
+> В этом документе описаны как toocause потери данных в службах и должны использоваться с осторожностью.
 > 
 > 
 
 ## <a name="introduction"></a>Введение
-Можно вызвать потерю данных в секции службы Service Fabric, вызвав StartPartitionDataLossAsync().  Этот API использует службу внесения ошибок и анализа для выполнения работы, чтобы создать условия для потери данных.
+Можно вызвать потерю данных в секции службы Service Fabric, вызвав StartPartitionDataLossAsync().  Этот api использует hello внесения ошибок и служб Analysis Service tooperform hello рабочих toocause данных потери условия.
 
-## <a name="using-the-fault-injection-and-analysis-service"></a>Использование службы внесения ошибок и анализа
-В настоящее время служба внесения ошибок и анализа поддерживает следующие интерфейсы API, перечисленные в таблице ниже.  В правой части диаграммы приведен соответствующий командлет PowerShell.  Чтобы получить дополнительные сведения о каждом API, обратитесь к соответствующей документации на сайте MSDN.
+## <a name="using-hello-fault-injection-and-analysis-service"></a>С помощью hello внесения ошибок и служб Analysis Services
+Hello внесения ошибок и служб Analysis Services в настоящее время поддерживает следующие интерфейсы API в представленной ниже диаграмме hello hello.  Hello правой части диаграммы hello показаны hello соответствующий командлет PowerShell.  Дополнительные сведения для каждого из них см. в документации msdn toohello на каждый API.
 
 | API C# | Командлет PowerShell |
 | --- | ---:|
@@ -40,41 +40,41 @@ ms.lasthandoff: 07/11/2017
 | [StartPartitionRestartAsync][rp] |[Start-ServiceFabricPartitionRestart][psrp] |
 
 ## <a name="conceptual-overview-of-running-a-command"></a>Принцип выполнения команды
-Служба внесения ошибок и анализа использует асинхронную модель, в которой вы начинаете с выполнения команды в одном API (т. н. API Start в этом документе), а затем проверяете ход выполнения этой команды с помощью API GetProgress, пока она не достигнет конечного состояния или не будет отменена вами.
-Чтобы выполнить команду, вызовите API Start для соответствующего API.  Этот API возвращается, если служба внесения ошибок и анализа приняла запрос.  Однако это не указывает, насколько выполнена команда или было ли вообще начато ее выполнение.  Чтобы проверить ход выполнения команды, вызовите API GetProgress, который соответствует ранее вызванному API Start.  API GetProgress вернет объект, указывающий в своем свойстве State текущее состояние команды.  Команда выполняется неограниченное время, пока не будет выполнено одно из следующих условий.
+Здравствуйте, внесения ошибок и служб Analysis Services использует асинхронную модель, где начинается hello команды с одного API называется tooas hello «Start» API-интерфейса в этом документе, а затем проверяет hello ход выполнения этой команды с помощью API «GetProgress» до достижения терминала состояние, или пока вы отмените его.
+toostart команду, при вызове API «Start» hello hello соответствующий API.  Этот API возвращает при hello внесения ошибок и служб Analysis Services принял запрос hello.  Однако это не указывает, насколько выполнена команда или было ли вообще начато ее выполнение.  В порядке toocheck ход выполнения команды вызовите hello «GetProgress» API, который соответствует вызван ранее API toohello «Start».  Hello «GetProgress» API-Интерфейс вернет объект, указывая hello текущее состояние команды hello внутри свойства его состояние.  Команда выполняется неограниченное время, пока не будет выполнено одно из следующих условий.
 
-1. Она полностью выполнена.  При вызове GetProgress в этом случае свойство State объекта хода выполнения будет иметь значение Completed.
-2. При выполнении возникла неустранимая ошибка.  При вызове GetProgress в этом случае свойство State объекта хода выполнения будет иметь значение Faulted.
-3. Вы отменили команду с помощью API [CancelTestCommandAsync][cancel] или командлета PowerShell [Stop-ServiceFabricTestCommand][cancelps].  При вызове GetProgress в этом случае свойство State объекта хода выполнения будет иметь значение Cancelled или ForceCancelled, в зависимости от аргумента данного API.  Обратитесь к документации по [CancelTestCommandAsync][cancel] для получения дополнительных сведений.
+1. Она полностью выполнена.  При вызове метода «GetProgress» на его таким образом, состояние объекта выполняется hello будет завершено.
+2. При выполнении возникла неустранимая ошибка.  При вызове метода «GetProgress» на его таким образом, произошел сбой состояния объекта выполняется hello
+3. Отменить его через hello [CancelTestCommandAsync] [ cancel] API, или [Stop ServiceFabricTestCommand] [ cancelps] командлета PowerShell.  При вызове метода «GetProgress» на его таким образом, hello объекта выполняется состояние будет отменено или ForceCancelled, в зависимости от аргумента toothat API.  В документации hello [CancelTestCommandAsync] [ cancel] для получения дополнительных сведений.
 
 ## <a name="details-of-running-a-command"></a>Подробное описание выполнения команды
-Чтобы начать выполнение команды, вызовите API Start с ожидаемыми аргументами.  У всех API Start есть аргумент Guid, называемый operationId.  Данный аргумент нужно отслеживать, так как он используется для отслеживания хода выполнения этой команды.  Его нужно передать в API GetProgress, чтобы отслеживать ход выполнения команды.  Значение operationId должно быть уникальным.
+В порядке toostart команду вызовите hello запустить API с аргументами hello ожидается.  У всех API Start есть аргумент Guid, называемый operationId.  Вы должны хранить список аргументов hello идентификатором операции, так как он используется tootrack ход выполнения этой команды.  Это должен быть передан в hello «GetProgress» API выполняется tootrack порядок hello команды.  идентификатором Hello операции должно быть уникальным.
 
-После успешного вызова API Start вызов API GetProgress должен осуществляться циклически, пока свойство State возвращаемого объекта хода выполнения не примет значение Completed.  Все исключения [FabricTransientException][fte] и OperationCanceledException должны быть обработаны путем повтора операции.
-Когда команда достигнет конечного состояния (Completed, Faulted или Cancelled), свойство Result возвращаемого объекта хода выполнения будет содержать дополнительные сведения.  Если состояние — Completed, то Result.SelectedPartition.PartitionId будет содержать идентификатор секции, которая была выбрана.  Result.Exception будет иметь значение NULL.  Если состояние — Faulted, то Result.Exception будет содержать причину, по которой служба внесения ошибок и анализа присвоила это состояние выполнения команды.  Result.SelectedPartition.PartitionId будет содержать идентификатор секции, которая была выбрана.  В некоторых ситуациях команда может быть выполнена недостаточно, чтобы можно было выбрать секцию.  В этом случае значение PartitionId будет равно 0.  Если состояние — Cancelled, то Result.Exception будет иметь значение NULL.  Как и в случае состояния Faulted, Result.SelectedPartition.PartitionId будет содержать идентификатор секции, которая была выбрана, но если команда была выполнена недостаточно для этого, этот идентификатор будет равен 0.  Ознакомьтесь также с примером ниже.
+После успешного вызова метода hello запустить API, hello, который должен вызываться в цикле GetProgress API до выполнения возврата hello объекта состояния завершения.  Все исключения [FabricTransientException][fte] и OperationCanceledException должны быть обработаны путем повтора операции.
+При достижении конечного состояния (завершено, Faulted или отменено) команда hello hello вернул свойство объекта выполняется результат будет иметь дополнительные сведения.  Если hello состояние завершения, Result.SelectedPartition.PartitionId будет содержать идентификатор секции hello, которая была выбрана.  Result.Exception будет иметь значение NULL.  Если hello состоянием является Faulted, Result.Exception будет иметь hello причина hello внесения ошибок и команда hello сбой службы Analysis.  Result.SelectedPartition.PartitionId будет иметь идентификатор секции hello, которая была выбрана.  В некоторых ситуациях hello команды может не продолжилось так toochoose секции.  В этом случае hello PartitionId будет 0.  При отмене состояния hello Result.Exception будет иметь значение null.  Как hello случай Faulted Result.SelectedPartition.PartitionId будет иметь идентификатор hello секции, которая была выбрана, но если команда hello не была выполнена так, toodo таким образом, оно будет равно 0.  Также см. Образец toohello ниже.
 
-В этом примере кода показано, как начать, а затем проверять выполнение команды, которая приводит к потере данных в определенном разделе.
+Hello в образце кода ниже показано, как toostart затем проверить выполнение команды toocause потеря данных в определенный раздел.
 
 ```csharp
     static async Task PerformDataLossSample()
     {
-        // Create a unique operation id for the command below
+        // Create a unique operation id for hello command below
         Guid operationId = Guid.NewGuid();
 
-        // Note: Use the appropriate overload for your configuration
+        // Note: Use hello appropriate overload for your configuration
         FabricClient fabricClient = new FabricClient();
 
-        // The name of the target service
+        // hello name of hello target service
         Uri targetServiceName = new Uri("fabric:/MyService");
 
-        // The id of the target partition inside the target service
+        // hello id of hello target partition inside hello target service
         Guid targetPartitionId = new Guid("00000000-0000-0000-0000-000002233445");
 
         PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(targetServiceName, targetPartitionId);
 
-        // Start the command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
-        // successfully it only means the Fault Injection and Analysis Service has saved the intent to perform this work.  It does not say anything about the progress
-        // of the command.
+        // Start hello command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
+        // successfully it only means hello Fault Injection and Analysis Service has saved hello intent tooperform this work.  It does not say anything about hello progress
+        // of hello command.
         while (true)
         {
             try
@@ -94,8 +94,8 @@ ms.lasthandoff: 07/11/2017
 
         PartitionDataLossProgress progress = null;
 
-        // Poll the progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
-        // the command won't be cancelled.        
+        // Poll hello progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
+        // hello command won't be cancelled.        
 
         while (true)
         {
@@ -116,13 +116,13 @@ ms.lasthandoff: 07/11/2017
             {
                 Console.WriteLine("Command '{0}' completed successfully", operationId);
 
-                // In a terminal state .Result.SelectedPartition.PartitionId will have the chosen partition
+                // In a terminal state .Result.SelectedPartition.PartitionId will have hello chosen partition
                 Console.WriteLine("  Printing selected partition='{0}'", progress.Result.SelectedPartition.PartitionId);
                 break;
             }
             else if (progress.State == TestCommandProgressState.Faulted)
             {
-                // If State is Faulted, the progress object's Result property's Exception property will have the reason why.
+                // If State is Faulted, hello progress object's Result property's Exception property will have hello reason why.
                 Console.WriteLine("Command '{0}' failed with '{1}'", operationId, progress.Result.Exception);
                 break;
             }
@@ -136,26 +136,26 @@ ms.lasthandoff: 07/11/2017
     }
 ```
 
-В примере ниже показано, как использовать PartitionSelector для выбора случайной секции заданной службы.
+Образец Hello ниже показано, как toouse hello PartitionSelector toochoose случайных секционирования из заданной службы.
 
 ```csharp
     static async Task PerformDataLossUseSelectorSample()
     {
-        // Create a unique operation id for the command below
+        // Create a unique operation id for hello command below
         Guid operationId = Guid.NewGuid();
 
-        // Note: Use the appropriate overload for your configuration
+        // Note: Use hello appropriate overload for your configuration
         FabricClient fabricClient = new FabricClient();
 
-        // The name of the target service
+        // hello name of hello target service
         Uri targetServiceName = new Uri("fabric:/SampleService ");
 
-        // Use a PartitionSelector that will have the Fault Injection and Analysis Service choose a random partition of “targetServiceName”
+        // Use a PartitionSelector that will have hello Fault Injection and Analysis Service choose a random partition of “targetServiceName”
         PartitionSelector partitionSelector = PartitionSelector.RandomOf(targetServiceName);
 
-        // Start the command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
-        // successfully it only means the Fault Injection and Analysis Service has saved the intent to perform this work.  It does not say anything about the progress
-        // of the command.
+        // Start hello command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
+        // successfully it only means hello Fault Injection and Analysis Service has saved hello intent tooperform this work.  It does not say anything about hello progress
+        // of hello command.
         while (true)
         {
             try
@@ -180,8 +180,8 @@ ms.lasthandoff: 07/11/2017
 
         PartitionDataLossProgress progress = null;
 
-        // Poll the progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
-        // the command won't be cancelled.
+        // Poll hello progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
+        // hello command won't be cancelled.
 
         while (true)
         {
@@ -209,7 +209,7 @@ ms.lasthandoff: 07/11/2017
             }
             else if (progress.State == TestCommandProgressState.Faulted)
             {
-                // If State is Faulted, the progress object's Result property's Exception property will have the reason why.
+                // If State is Faulted, hello progress object's Result property's Exception property will have hello reason why.
                 Console.WriteLine("Command '{0}' failed with '{1}', SelectedPartition {2}", operationId, progress.Result.Exception, progress.Result.SelectedPartition);
                 break;
             }
@@ -224,7 +224,7 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="history-and-truncation"></a>Журнал и усечение
-После достижения командой конечного состояния ее метаданные на какое-то время остаются в службе внесения ошибок и анализа, прежде чем будут удалены для экономии места.  Если после их удаления вызвать GetProgress с operationId этой команды, то будет возвращено исключение FabricException с кодом ErrorCode, равным KeyNotFound.
+После достижения конечного состояния команды свои метаданные сохранятся в hello внесения ошибок и служб Analysis Services для определенного времени, прежде чем он будет удален toosave пространства.  Если «GetProgress» вызывается с идентификатором hello операции команды, после он был удален, возвращается FabricException с ErrorCode KeyNotFound.
 
 [dl]: https://msdn.microsoft.com/library/azure/mt693569.aspx
 [ql]: https://msdn.microsoft.com/library/azure/mt693558.aspx

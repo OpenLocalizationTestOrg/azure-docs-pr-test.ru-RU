@@ -1,5 +1,5 @@
 ---
-title: "Приступая к работе с Azure AD версии 2 для Android. Настройка | Документация Майкрософт"
+title: "aaaAzure AD v2 Android начало работы — Настройка | Документы Microsoft"
 description: "Получение маркера доступа для приложения Android и вызов API Microsoft Graph или API, которые требуют маркер доступа, из конечной точки Azure Active Directory версии 2."
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,26 +15,26 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: c09937582118ebcc5b8cbc1f43a0a2019f2f7a89
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eaa41805c92212154ee8d51d3eb3aee1202eef1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="add-the-applications-registration-information-to-your-app"></a>Добавление в приложение сведений о его регистрации
+## <a name="add-hello-applications-registration-information-tooyour-app"></a>Добавить приложение tooyour сведения о регистрации приложения hello
 
-На этом шаге вам нужно добавить идентификатор клиента в свой проект.
+На этом шаге необходимо tooadd hello идентификатор клиента tooyour проекта.
 
 1.  Откройте `MainActivity` (выберите `app` > `java` > *`{host}.{namespace}`*).
-2.  Замените строку, начинающуюся с `final static String CLIENT_ID`, следующей:
+2.  Замените строку hello, начиная с `final static String CLIENT_ID` с:
 ```java
-final static String CLIENT_ID = "[Enter the application Id here]";
+final static String CLIENT_ID = "[Enter hello application Id here]";
 ```
 3. Откройте: `app` > `manifests` > `AndroidManifest.xml`.
-4. Добавьте следующее действие в узел `manifest\application`. Так вы зарегистрируете `BrowserTabActivity`, чтобы позволить операционной системе возобновить ваше приложение после завершения аутентификации.
+4. Добавьте следующие действия слишком hello`manifest\application` узла. Этот регистр `BrowserTabActivity` tooallow hello ОС tooresume приложения после завершения проверки подлинности hello:
 
 ```xml
-<!--Intent filter to capture System Browser calling back to our app after Sign In-->
+<!--Intent filter toocapture System Browser calling back tooour app after Sign In-->
 <activity
     android:name="com.microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -43,8 +43,8 @@ final static String CLIENT_ID = "[Enter the application Id here]";
         <category android:name="android.intent.category.BROWSABLE" />
 
         <!--Add in your scheme/host from registered redirect URI-->
-        <!--By default, the scheme should be similar to 'msal[appId]' -->
-        <data android:scheme="msal[Enter the application Id here]"
+        <!--By default, hello scheme should be similar too'msal[appId]' -->
+        <data android:scheme="msal[Enter hello application Id here]"
             android:host="auth" />
     </intent-filter>
 </activity>

@@ -1,5 +1,5 @@
 ---
-title: "Службы мобильного взаимодействия Azure: интеграция пакета SDK Reach для iOS | Документация Майкрософт"
+title: "aaaAzure iOS Mobile Engagement SDK-интеграция доступа | Документы Microsoft"
 description: "Последние обновления и указания для пакета SDK для iOS для Служб мобильного взаимодействия Azure"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,16 +14,16 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 40c9bfbdb475ab0b97bdbc9cea798a59cb8a71ac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-integrate-engagement-reach-on-ios"></a>Как интегрировать рекламные кампании Engagement в iOS
-Перед выполнением этого руководства вам следует выполнить процедуры по интеграции, описанные в статье [Интеграция службы Engagement в iOS](mobile-engagement-ios-integrate-engagement.md) .
+# <a name="how-toointegrate-engagement-reach-on-ios"></a>Как tooIntegrate Engagement Reach на iOS
+Необходимо выполнить процедуры интеграции hello, описанной в hello [как tooIntegrate Engagement документе iOS](mobile-engagement-ios-integrate-engagement.md) до следующего руководства.
 
-Также требуется установка XCode 8. Если вам крайне важно оставить версию XCode 7, то можете воспользоваться [пакетом SDK Служб взаимодействия для iOS версии 3.2.4](https://aka.ms/r6oouh). В предыдущей версии на устройствах iOS 10 выявлена ошибка: не приводятся в действие системные уведомления. Для исправления этой ошибки понадобится реализовать в делегате приложения устаревшую версию API `application:didReceiveRemoteNotification:` :
+Также требуется установка XCode 8. Если действительно зависят XCode 7, то вы можете использовать hello [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh). В предыдущей версии на устройствах iOS 10 выявлена ошибка: не приводятся в действие системные уведомления. toofix будет иметь tooimplement hello нерекомендуемый API `application:didReceiveRemoteNotification:` в вашем приложении делегат следующим образом:
 
     - (void)application:(UIApplication*)application
     didReceiveRemoteNotification:(NSDictionary*)userInfo
@@ -32,23 +32,23 @@ ms.lasthandoff: 08/03/2017
     }
 
 > [!IMPORTANT]
-> **Данный способ не является рекомендуемым** , так как это поведение может измениться с любым последующим (даже незначительным) обновлением версии iOS из-за того, что этот интерфейс API для iOS устарел. Рекомендуется перейти на XCode 8 как можно скорее.
+> **Данный способ не является рекомендуемым** , так как это поведение может измениться с любым последующим (даже незначительным) обновлением версии iOS из-за того, что этот интерфейс API для iOS устарел. Следует как можно быстрее перейти tooXCode 8.
 >
 >
 
-### <a name="enable-your-app-to-receive-silent-push-notifications"></a>Включение приложения для получения автоматических push-уведомлений
+### <a name="enable-your-app-tooreceive-silent-push-notifications"></a>Включить вашего приложения tooreceive автоматической Push-уведомления
 [!INCLUDE [mobile-engagement-ios-silent-push](../../includes/mobile-engagement-ios-silent-push.md)]
 
 ## <a name="integration-steps"></a>Этапы интеграции
-### <a name="embed-the-engagement-reach-sdk-into-your-ios-project"></a>Внедрение пакета SDK для Engagement Reach в проект iOS
-* Добавьте пакет SDK для рекламных кампаний в проект Xcode. В Xcode щелкните **Проект \> Добавить в проект** и выберите папку `EngagementReach`.
+### <a name="embed-hello-engagement-reach-sdk-into-your-ios-project"></a>Внедрение hello Engagement Reach SDK в проект iOS
+* Добавьте пакет sdk для Reach hello в своем проекте Xcode. В Xcode перейдите слишком**проекта \> добавить tooproject** и выберите hello `EngagementReach` папки.
 
 ### <a name="modify-your-application-delegate"></a>Изменение делегата приложения
-* Импортируйте модуль обработки рекламных кампаний службы Engagement в верхней части файла реализации:
+* Вверху hello файл реализации импортируйте модуль Engagement Reach hello:
 
       [...]
       #import "AEReachModule.h"
-* Создайте внутри метода `applicationDidFinishLaunching:` или `application:didFinishLaunchingWithOptions:` модуль обработки рекламных кампаний и передайте его в существующую строку инициализации службы Engagement:
+* Внутри метода `applicationDidFinishLaunching:` или `application:didFinishLaunchingWithOptions:`, создайте модуль reach и передать его tooyour существующую строку инициализации участия:
 
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
@@ -57,14 +57,14 @@ ms.lasthandoff: 08/03/2017
 
         return YES;
       }
-* Измените строку **icon.png** на имя изображения, которое вы хотите использовать в качестве значка уведомления.
-* Если вы хотите использовать параметр *Обновить значение индикатора событий* в рекламных кампаниях или применять кампании системных push-уведомлений \</SaaS/Reach API/Campaign format/Native Push\>, следует разрешить модулю обработки рекламных кампаний управлять значком индикатора событий (он будет автоматически очищать индикатор событий приложения и сбрасывать значение, хранимое службой Engagement, при каждом запуске приложения или его переключении на передний план). Для этого после инициализации модуля обработки рекламных кампаний необходимо добавить следующую строку:
+* Изменить **«icon.png»** строка, в которой имя образа hello, необходимо в качестве значка уведомления.
+* Если требуется, чтобы параметр hello toouse *обновление значения эмблемы* в кампании Reach и следует ли собственные Push-уведомления toouse \<SaaS или Reach API/кампании Push формат и машинным\> кампаний, предоставляется возможность управлять модулем hello Hello эмблемы сам значок (он будет автоматически сброшено эмблемы приложения hello и также сбросить значение hello охватом каждый раз приложения hello запущен» или «foregrounded). Это делается путем добавления следующей строкой после инициализации модуля Reach hello:
 
       [reach setAutoBadgeEnabled:YES];
-* Чтобы обрабатывать отправку данных рекламных кампаний, делегат приложения должен соответствовать протоколу `AEReachDataPushDelegate` . После инициализации модуля обработки рекламных кампаний добавьте следующую строку:
+* Принудительная отправка данных Reach toohandle следует должен дать вашему представителю приложения соответствует toohello `AEReachDataPushDelegate` протокола. Добавьте hello, следующей строкой после инициализации модуля Reach.
 
       [reach setDataPushDelegate:self];
-* Затем можно реализовать методы `onDataPushStringReceived:` и `onDataPushBase64ReceivedWithDecodedBody:andEncodedBody:` в делегате приложения:
+* Затем можно реализовать методы hello `onDataPushStringReceived:` и `onDataPushBase64ReceivedWithDecodedBody:andEncodedBody:` в делегате приложения:
 
       -(BOOL)didReceiveStringDataPushWithCategory:(NSString*)category body:(NSString*)body
       {
@@ -80,27 +80,27 @@ ms.lasthandoff: 08/03/2017
       }
 
 ### <a name="category"></a>Категория
-При создании кампании отправки данных параметр «Категория» является необязательным. Он позволяет фильтровать отправленные данные. Это удобно, если вам нужно принудительно отправлять различные данные `Base64` и определять их тип перед анализом.
+параметр категории Hello не является обязательным при создании кампании Push-данных и позволяет ваши данные toofilter помещает в стек. Это полезно, если требуется, чтобы различные типы toopush из `Base64` tooidentify данных и необходимо их типа перед синтаксическим анализом их.
 
-**Теперь приложение готово к получению и отображению содержимого рекламных кампаний!**
+**Приложение будет теперь готовы tooreceive и отображения достичь содержимое!**
 
-## <a name="how-to-receive-announcements-and-polls-at-any-time"></a>Как получать объявления и опросы в любое время
-С помощью службы push-уведомлений Apple служба Engagement может в любое время отправлять уведомления рекламных кампаний конечным пользователям.
+## <a name="how-tooreceive-announcements-and-polls-at-any-time"></a>Как tooreceive объявлений и для опросов в любое время
+Engagement можно отправлять уведомления Reach tooyour конечных пользователей в любое время с помощью hello Apple Push Notification Service.
 
-Чтобы включить эту функциональную возможность, необходимо подготовить приложение для push-уведомлений Apple и изменить его делегат.
+tooenable эта функция будет иметь tooprepare приложения для push-уведомлений Apple и изменения приложения делегата.
 
 ### <a name="prepare-your-application-for-apple-push-notifications"></a>Подготовка приложения для push-уведомлений Apple
-Следуйте указаниям в руководстве [Как подготовить приложение для работы с push-уведомлениями Apple](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
+Следуйте инструкциям в руководстве hello: [как tooPrepare приложения для Push-уведомлений Apple](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
 
-### <a name="add-the-necessary-client-code"></a>Добавление необходимого клиентского кода
-*На этом этапе для приложения должен быть зарегистрирован сертификат push-уведомлений Apple в интерфейсной части Engagement.*
+### <a name="add-hello-necessary-client-code"></a>Добавьте необходимые клиентского кода hello
+*На этом этапе приложение должно иметь зарегистрированный сертификат push Apple интерфейс Engagement hello.*
 
-Если он не зарегистрирован, необходимо зарегистрировать приложение для получения push-уведомлений.
+Если это не было сделано уже tooregister необходимо ваши приложения tooreceive push-уведомления.
 
-* Импортируйте платформу `User Notification` :
+* Импорт hello `User Notification` framework:
 
         #import <UserNotifications/UserNotifications.h>
-* Добавьте следующую строку при запуске приложения (обычно в `application:didFinishLaunchingWithOptions:`):
+* Добавьте следующие строки, при запуске приложения hello (обычно в `application:didFinishLaunchingWithOptions:`):
 
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
         {
@@ -118,14 +118,14 @@ ms.lasthandoff: 08/03/2017
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 
-Затем необходимо предоставить службе Engagement маркер устройства, возвращенный серверами Apple. Он указывается в делегате приложения в методе с именем `application:didRegisterForRemoteNotificationsWithDeviceToken:` :
+Затем необходимо устройство tooprovide tooEngagement hello токен, возвращенный серверами Apple. Это можно сделать в hello метод с именем `application:didRegisterForRemoteNotificationsWithDeviceToken:` в делегате приложения:
 
     - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
     {
         [[EngagementAgent shared] registerDeviceToken:deviceToken];
     }
 
-Наконец необходимо уведомить пакет SDK для службы Engagement о получении приложением удаленного уведомления. Для этого вызовите метод `applicationDidReceiveRemoteNotification:fetchCompletionHandler:` в делегате приложения:
+Наконец когда приложение получает уведомление об удаленном иметь hello tooinform Engagement SDK. Здравствуйте, toodo, вызовите метод `applicationDidReceiveRemoteNotification:fetchCompletionHandler:` в делегате приложения:
 
     - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
     {
@@ -133,7 +133,7 @@ ms.lasthandoff: 08/03/2017
     }
 
 > [!IMPORTANT]
-> По умолчанию completionHandler управляется Engagement Reach. Если вы хотите вручную отреагировать на блок `handler`в коде, можно передать nil для аргумента `handler` и управлять блоком завершения самостоятельно. Список возможных значений см. в описании типа `UIBackgroundFetchResult`.
+> По умолчанию Engagement Reach управляет hello completionHandler. Если требуется ответ toohello toomanually `handler` блока в коде, можно передать nil для hello `handler` блокировать завершение hello аргумента и управления самостоятельно. В разделе hello `UIBackgroundFetchResult` тип список возможных значений.
 >
 >
 
@@ -175,11 +175,11 @@ ms.lasthandoff: 08/03/2017
 
 *Если приложения или библиотеки сторонних производителей не реализуют `UNUserNotificationCenterDelegate`, то эту часть можно пропустить.*
 
-Делегат `UNUserNotificationCenter` используется пакетом SDK для отслеживания жизненного цикла уведомлений служб Engagement на устройствах, работающих под управлением iOS 10 или более поздней версии. Пакет SDK содержит собственную реализацию протокола `UNUserNotificationCenterDelegate`, однако в приложении может быть только один делегат `UNUserNotificationCenter`. Любой другой делегат, добавляемый в объект `UNUserNotificationCenter`, будет конфликтовать со службой Engagement. Если пакет SDK обнаружит ваш или другой делегат, он не будет применять собственную реализацию, чтобы дать вам возможность самому разрешить конфликт. Для разрешения конфликтов вам потребуется добавить приложение логики Engagement в собственный делегат.
+Объект `UNUserNotificationCenter` делегат используется hello SDK toomonitor hello жизненного цикла Engagement уведомлений на устройства под управлением IOS, 10 или более поздней. пакет SDK для Hello имеет собственную реализацию hello `UNUserNotificationCenterDelegate` протокола, но может быть только один `UNUserNotificationCenter` делегировать каждого приложения. Любого другого делегата добавлены toohello `UNUserNotificationCenter` объекта будут конфликтовать с hello Engagement один. Если hello SDK обнаруживает делегата к или любые другие третьих лиц, то не будет использовать собственную реализацию toogive вы tooresolve вероятность hello конфликтов. Вы должны будете tooadd hello Engagement логику tooyour владельцем делегата в порядке tooresolve hello конфликтов.
 
-Это достигается двумя способами.
+Существует два способа tooachieve это.
 
-Первый способ. Просто переадресуйте вызовы делегата в пакет SDK:
+Предложение 1, просто переадресующей делегат вызывает toohello SDK:
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -206,7 +206,7 @@ ms.lasthandoff: 08/03/2017
     }
     @end
 
-Второй способ. Воспользуйтесь наследованием из класса `AEUserNotificationHandler`:
+Или предложение 2, путем наследования от hello `AEUserNotificationHandler` класса
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -233,10 +233,10 @@ ms.lasthandoff: 08/03/2017
     @end
 
 > [!NOTE]
-> Можно определить, поступают ли уведомления из Служб взаимодействия, передав словарь `userInfo` в метод класса `isEngagementPushPayload:` агента.
+> Можно определить, откуда уведомление на работе или не путем передачи его `userInfo` toohello словарь агента `isEngagementPushPayload:` методу класса.
 
-Убедитесь, что в делегате приложения делегат объекта `UNUserNotificationCenter` имеет значение вашего делегата в методе `application:willFinishLaunchingWithOptions:` или `application:didFinishLaunchingWithOptions:`.
-Например, если вы воспользовались первым способом:
+Убедитесь в том, что hello `UNUserNotificationCenter` объекта делегата задается tooyour делегата в рамках либо hello `application:willFinishLaunchingWithOptions:` или hello `application:didFinishLaunchingWithOptions:` метод делегата вашего приложения.
+Например если реализовано hello выше предложение 1:
 
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         // Any other code
@@ -245,33 +245,33 @@ ms.lasthandoff: 08/03/2017
         return YES;
       }
 
-## <a name="how-to-customize-campaigns"></a>Как настраивать кампании
+## <a name="how-toocustomize-campaigns"></a>Как toocustomize кампании
 ### <a name="notifications"></a>Уведомления
 Существует два типа уведомлений: системные уведомления и уведомления в приложении.
 
 Системные уведомления обрабатываются iOS, и их невозможно настроить.
 
-Уведомления в приложении состоят из представления, которое динамически добавляется в текущее окно приложения. Это называется наложением уведомлений. Наложения уведомления прекрасно подходят для быстрой интеграции, так как для них не требуется изменять представления в приложении.
+Уведомления в приложения состоят из представления, который динамически добавляется toohello текущего окна приложения. Это называется наложением уведомлений. Уведомления наложений прекрасно подходят для быстрого интеграции так как они не требуют вы toomodify любого представления в приложении.
 
 #### <a name="layout"></a>Макет
-Чтобы настроить внешний вид уведомлений в приложении, вы можете просто изменить файл `AENotificationView.xib` в соответствии со своими потребностями, но при этом следует сохранить значения тегов и типы существующих вложенных представлений.
+toomodify вида hello уведомления в приложении, можно просто изменить файл hello `AENotificationView.xib` должен tooyour, при условии, что хранить значения тегов hello и типы hello существующих представлений.
 
-По умолчанию уведомления в приложении представлены в нижней части экрана. Если нужно, чтобы они отображались в верхней части экрана, отредактируйте предоставляемый файл `AENotificationView.xib` и измените свойство `AutoSizing` главного представления, чтобы оно располагалось в верхней части суперпредставления.
+По умолчанию hello нижней части экрана приветствия представлены уведомления в приложения. При желании toodisplay их hello верхней части экрана, изменить hello предоставленный `AENotificationView.xib` и измените hello `AutoSizing` hello в основном представлении, могут храниться вверху hello обзор его от свойства.
 
 #### <a name="categories"></a>Категории
-При изменении предоставляемого макета изменяется внешний вид всех уведомлений. С помощью категорий можно определять различные типы внешнего вида (возможно, виды поведения) для уведомлений. Категорию можно указать при создании рекламной кампании. Учтите, что категории также позволяют настраивать объявления и опросы. Это описано далее в этом документе.
+При изменении hello, предоставляемые макета, то изменить hello вида все уведомления. Категории позволяют вам toodefine, различные целевые ищет (возможно поведения) уведомления. Категорию можно указать при создании рекламной кампании. Учтите, что категории также позволяют настраивать объявления и опросы. Это описано далее в этом документе.
 
-Чтобы зарегистрировать обработчик категорий для уведомлений, необходимо добавить вызов после инициализации модуля обработки рекламных кампаний.
+tooregister обработчик категории для уведомления требуется tooadd инициализации вызов после hello доступа модуля.
 
     AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
     [reach registerNotifier:myNotifier forCategory:@"my_category"];
     ...
 
-`myNotifier` должен быть экземпляром объекта, который соответствует протоколу `AENotifier`.
+`myNotifier`должен быть экземпляр объекта, который соответствует протокол toohello `AENotifier`.
 
-Вы можете самостоятельно реализовать методы протокола или повторно реализовать существующий класс `AEDefaultNotifier`, который уже выполняет большую часть работы.
+Для реализации методов протокола hello можно самостоятельно или выбрать существующий класс tooreimplement hello `AEDefaultNotifier` которого уже выполняет большую часть работы hello.
 
-Например, если нужно переопределить представление уведомлений для определенной категории, можно использовать этот пример:
+Например если вы хотите tooredefine hello уведомления представление для определенной категории, можно выполнить в этом примере.
 
     #import "AEDefaultNotifier.h"
     #import "AENotificationView.h"
@@ -287,89 +287,89 @@ ms.lasthandoff: 08/03/2017
 
     @end
 
-В этом простом примере категории предполагается, что в основном наборе приложений есть файл с именем `MyNotificationView.xib` . Если методу не удается найти соответствующий файл `.xib`, уведомление не будет отображаться и служба Engagement выведет сообщение н консоли.
+В этом простом примере категории предполагается, что в основном наборе приложений есть файл с именем `MyNotificationView.xib` . Если метод hello не может toofind соответствующий `.xib`, не будет отображаться уведомление hello и Engagement будет выводить сообщение hello консоли.
 
-Предоставленный NIB-файл должен подчиняться следующим правилам:
+Hello предоставленный файл nib должны учитывать hello следующие правила:
 
 * он должен содержать только одно представление;
-* вложенные представления должны относиться к тому же типу, что и вложенные представления в предоставленном NIB-файле с именем `AENotificationView.xib`
-* вложенные представления должны содержать те же теги, что и вложенные представления в предоставленном NIB-файле с именем `AENotificationView.xib`.
+* Представлений должен быть таким же типы как hello областей внутри hello предоставленный nib файл с именем hello`AENotificationView.xib`
+* Представлений должны иметь одинаково теги как hello областей внутри hello предоставленный nib файл с именем hello`AENotificationView.xib`
 
 > [!TIP]
-> Просто скопируйте предоставленный NIB-файл с именем `AENotificationView.xib` и начните работу. Но будьте внимательны: представление в этом NIB-файле связано в классом `AENotificationView`. Этот класс переопределяет метод `layoutSubViews` , чтобы перемещать и изменять размер вложенных представлений в зависимости от контекста. Вы можете заменить его классом `UIView` или настраиваемым классом представления.
+> Просто скопируйте hello предоставленный nib файл с именем `AENotificationView.xib`и начала работы оттуда. Но будьте внимательны, hello представление внутри этого файла nib имеет связанный класс toohello `AENotificationView`. Этот класс переопределен метод hello `layoutSubViews` toomove и изменить его представлений, в соответствии с toocontext. Вы можете tooreplace с `UIView` или пользовательское представление класса.
 >
 >
 
-Если вам требуется расширенная настройка уведомлений (например, если вам нужно загружать представление непосредственно из кода), советуем просмотреть предоставленную документацию по исходному коду и классу для `Protocol ReferencesDefaultNotifier` и `AENotifier`.
+Если требуется более глубокого настройки уведомления (если для экземпляра tooload представление непосредственно из кода hello), рекомендуется tootake рассмотрим hello предоставленных исходного кода и класс документации `Protocol ReferencesDefaultNotifier` и `AENotifier`.
 
-Обратите внимание, что одно и то же средство уведомления можно использовать для нескольких категорий.
+Обратите внимание, что можно использовать hello же средство уведомления для нескольких категорий.
 
-Кроме того, можно переопределить средство уведомления по умолчанию следующим образом:
+Вы можете также переопределенное hello уведомляющий по умолчанию следующим образом:
 
     AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
     [reach registerNotifier:myNotifier forCategory:kAEReachDefaultCategory];
 
 ##### <a name="notification-handling"></a>Обработка уведомлений
-При использовании категории по умолчанию некоторые методы жизненного цикла вызываются для объекта `AEReachContent`, чтобы предоставить статистику и обновить состояние кампании:
+При использовании категории по умолчанию hello, некоторые методы жизненного цикла вызываются на hello `AEReachContent` объекта tooreport статистики и обновление hello кампании состояния:
 
-* При отображении уведомления в приложении `AEReachModule` вызывает метод `displayNotification` (который предоставляет статистику), если `handleNotification:` возвращает `YES`.
-* При закрытии уведомления вызывается метод `exitNotification` и предоставляется статистика, после чего можно обрабатывать следующие кампании.
-* По щелчку уведомления вызывается метод `actionNotification` , предоставляется статистика и выполняется соответствующее действие.
+* Здравствуйте, когда в приложении отображается уведомление hello, `displayNotification` (который предоставляет статистические данные) вызывается метод по `AEReachModule` Если `handleNotification:` возвращает `YES`.
+* При закрытии hello уведомления hello `exitNotification` вызывается метод, статистика выводится и далее кампаний теперь могут быть обработаны.
+* Если щелкнуть уведомление hello `actionNotification` — вызывается, статистика выводится и hello связанное действие выполняется.
 
-Если ваша реализация `AENotifier` обходит поведение по умолчанию, необходимо вызывать эти методы жизненного цикла самостоятельно. В следующих примерах показаны некоторые случаи обхода поведения по умолчанию.
+Если реализация `AENotifier` обходы hello поведение по умолчанию, вы получите toocall эти методы жизненного цикла по самостоятельно. Hello в следующих примерах показаны некоторые случаи, где пропускается hello поведение по умолчанию:
 
 * Вы не расширяли `AEDefaultNotifier`, например реализовали обработку категорий с нуля.
-* Вы переопределили `prepareNotificationView:forContent:`. Обязательно сопоставьте хотя бы `onNotificationActioned` или `onNotificationExited` с одним из элементов управления пользовательского интерфейса.
+* Вы используемое `prepareNotificationView:forContent:`, по крайней мере быть убедиться, что toomap `onNotificationActioned` или `onNotificationExited` tooone U.I элементов управления.
 
 > [!WARNING]
-> Если `handleNotification:` вызывает исключение, содержимое удаляется и вызывается `drop`. Затем это поведение регистрируется в статистике, после чего можно обрабатывать следующие кампании.
+> Если `handleNotification:` создает исключение, hello содержимого удаляется и `drop` — вызывается, это сообщение появляется в статистике и далее кампаний теперь могут быть обработаны.
 >
 >
 
 #### <a name="include-notification-as-part-of-an-existing-view"></a>Включение уведомления в состав существующего представления
 Наложения хорошо подходят для быстрой интеграции, но иногда могут быть неудобными или приводить к нежелательным побочным эффектам.
 
-Если вы не удовлетворены системой наложения в некоторых представлениях, ее можно настроить.
+Если вы не удовлетворены системы наложения hello в некоторых представлений, можно настроить его для этих представлений.
 
-Вы можете включить наш макет уведомлений в существующие представления. Это можно выполнить двумя способами:
+Решите, tooinclude нашей макета уведомления в существующие представления. toodo таким образом, есть два стиля реализации:
 
-1. Добавьте представление уведомлений с помощью конструктора интерфейса:
+1. Добавить представление hello уведомления, с помощью построителя интерфейса
 
    * Откройте *конструктор интерфейса*
-   * Разместите `UIView` размером 320 x 60 (или 768 x6 0 для iPad) там, где следует отображать уведомление.
-   * Задайте для параметра «Тег» значение **36822491**
-2. Добавьте представление уведомлений программно. Просто добавьте следующий код после инициализации представления:
+   * Поместите 320 x 60 (или если вы находитесь на iPad 768 x 60) `UIView` место tooappear уведомления hello
+   * Значение hello тег для этого представления слишком: **36822491**
+2. Добавьте представление уведомления hello программным способом. Просто добавьте следующий код, при инициализации представления hello:
 
-       UIView* notificationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)]; //Replace x and y coordinate values to your needs.
+       UIView* notificationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)]; //Replace x and y coordinate values tooyour needs.
        notificationView.tag = NOTIFICATION_AREA_VIEW_TAG;
        [self.view addSubview:notificationView];
 
 Макрос `NOTIFICATION_AREA_VIEW_TAG` можно найти в файле `AEDefaultNotifier.h`.
 
 > [!NOTE]
-> Средство уведомлений по умолчанию автоматически обнаруживает включение макета уведомлений в это представление и не будет добавлять наложение для него.
+> средство уведомления по умолчанию Hello автоматически обнаруживает макета hello уведомления включены в это представление и не будет добавлять наложение для него.
 >
 >
 
 ### <a name="announcements-and-polls"></a>Объявления и опросы
 #### <a name="layouts"></a>Макеты
-Вы можете изменить файлы `AEDefaultAnnouncementView.xib` и `AEDefaultPollView.xib`, сохранив при этом значения тегов и типы существующих вложенных представлений.
+Можно изменить файлы hello `AEDefaultAnnouncementView.xib` и `AEDefaultPollView.xib` до тех пор, пока сохранять значения тегов hello и типы hello существующих представлений.
 
 #### <a name="categories"></a>Категории
 ##### <a name="alternate-layouts"></a>Альтернативные макеты
-Так же, как и категорию уведомлений, категорию кампании можно использовать для получения альтернативных макетов для объявлений и опросов.
+Подобно уведомления категория кампании hello может быть используется toohave дополнительные раскладки для объявлений и опросов.
 
-Чтобы создать категорию для объявления, необходимо расширить **AEAnnouncementViewController** и зарегистрировать его после инициализации модуля обработки рекламных кампаний:
+toocreate категория для объявления, необходимо расширить **AEAnnouncementViewController** и зарегистрируйте его после инициализации модулем hello:
 
     AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
     [reach registerAnnouncementController:[MyCustomAnnouncementViewController class] forCategory:@"my_category"];
 
 > [!NOTE]
-> По каждому щелчку уведомления для объявления с категорией my\_category будет выполняться инициализация зарегистрированного контроллера представлений (в этом случае `MyCustomAnnouncementViewController`) путем вызова метода `initWithAnnouncement:`, а представление будет добавляться в текущее окно приложения.
+> Каждый раз, пользователь нажимает кнопку на уведомления для объявления с категорией hello «my\_категории», контроллер зарегистрированных представление (в этом случае `MyCustomAnnouncementViewController`) инициализируются с помощью вызова метода hello `initWithAnnouncement:` и будет представление hello добавлены toohello текущего окна приложения.
 >
 >
 
-В своей реализации класса `AEAnnouncementViewController` для инициализации вложенных представлений вам потребуется считать свойство `announcement`. Рассмотрите следующий пример, в котором две метки инициализируются с помощью свойств `title` и `body` класса `AEReachAnnouncement`:
+В такой реализации hello `AEAnnouncementViewController` классе имеется свойство hello tooread `announcement` tooinitialize вашей представлений. Рассмотрим hello ниже пример, где два метки инициализируются с помощью `title` и `body` свойства hello `AEReachAnnouncement` класса:
 
     -(void)loadView
     {
@@ -387,28 +387,28 @@ ms.lasthandoff: 08/03/2017
         [self.view addSubview:bodyLabel];
     }
 
-Если вместо того, чтобы загружать представления самостоятельно, вы хотите повторно использовать стандартный макет представления объявления по умолчанию, можно просто расширить предоставленный класс `AEDefaultAnnouncementViewController`с помощью пользовательского контролера представлений. Для этого продублируйте NIB-файл `AEDefaultAnnouncementView.xib` и переименуйте его, чтобы пользовательский контролер представлений мог загрузить его (для контроллера с именем `CustomAnnouncementViewController` NIB-файл нужно назвать `CustomAnnouncementView.xib`).
+Если вы не хотите tooload вашим представлениям в одиночку, но необходимо просто разметки представления объявления по умолчанию hello tooreuse, можно просто сделать контроллер пользовательское представление расширяет класс hello предоставленный `AEDefaultAnnouncementViewController`. В этом случае повторяющийся файл hello nib `AEDefaultAnnouncementView.xib` и переименуйте его, поэтому ее можно загрузить в контроллере пользовательское представление (для контроллера с именем `CustomAnnouncementViewController`, необходимо вызвать файла nib `CustomAnnouncementView.xib`).
 
-Чтобы заменить категорию объявлений по умолчанию, просто зарегистрируйте пользовательский контролер представлений для категории, определенной в `kAEReachDefaultCategory`:
+категории по умолчанию hello tooreplace объявлений, просто регистрации контроллера настраиваемого представления для hello категории, определенной в `kAEReachDefaultCategory`:
 
     [reach registerAnnouncementController:[MyCustomAnnouncementViewController class] forCategory:kAEReachDefaultCategory];
 
-Опросы можно настроить так же:
+Опрашивает может быть настроенный hello так же, как:
 
     AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
     [reach registerPollController:[MyCustomPollViewController class] forCategory:@"my_category"];
 
-В этом случае предоставленный `MyCustomPollViewController` должен расширять `AEPollViewController`. Или же можно расширить его с помощью контроллера по умолчанию: `AEDefaultPollViewController`.
+Это время, предоставляемые hello `MyCustomPollViewController` необходимо расширить `AEPollViewController`. Или можно выбрать tooextend контроллера по умолчанию hello: `AEDefaultPollViewController`.
 
 > [!IMPORTANT]
-> Прежде чем закрыть контролер представлений, обязательно вызовите метод `action` (`submitAnswers:` для пользовательских контроллеров представлений опросов) или `exit`. В противном случае статистика не будет отправлена (т. е. не будет получена аналитика по кампании) и, что важнее, следующие кампании не будут получать уведомления до перезапуска процесса приложения.
+> Не забывайте toocall либо `action` (`submitAnswers:` для контроллеров представления пользовательских опроса) или `exit` метод до закрытия hello представление-контроллер. В противном случае статистические данные не могут быть переданы (т. е. не analytics hello кампании) и не будет уведомлен дополнительные кампаний, что важно далее до перезапуска процесса приложения hello.
 >
 >
 
 ##### <a name="implementation-example"></a>Пример реализации
-В этой реализации пользовательское представление объявлений загружается из внешнего XIB-файла.
+В этой реализации представления пользовательских объявления hello загружается из файла внешних xib.
 
-Так же, как и для расширенной настройки уведомлений, мы советуем просмотреть исходный код в стандартной реализации.
+Как и для настройки дополнительных уведомлений рекомендуется toolook в исходный код hello hello стандартную реализацию.
 
 `CustomAnnouncementViewController.h`
 

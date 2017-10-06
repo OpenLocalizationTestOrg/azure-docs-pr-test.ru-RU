@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Benefitsolver | Документация Майкрософт"
-description: "Узнайте, как использовать Benefitsolver вместе с Azure Active Directory для реализации единого входа, автоматической подготовки пользователей и выполнения других задач."
+description: "Узнайте, как toouse Benefitsolver с Azure Active Directory tooenable единого входа, автоматизированной подготовки и многое другое!"
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,132 +13,132 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 8a13dd5ebd872f86247158379b28bc291a9c9d83
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5bb8511ef9be1e386956188a93e899d6ebe56ed5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>Руководство. Интеграция Azure Active Directory с Benefitsolver
-Цель данного учебника — показать интеграцию Azure и Benefitsolver.  
+Цель этого учебника Hello — tooshow hello интеграцию Azure и Benefitsolver.  
 
-Сценарий, описанный в этом учебнике, предполагает, что у вас уже имеется:
+Hello сценарий, описанный в этом руководстве предполагается, что уже hello следующих элементов:
 
-* действующая подписка Azure;
+* Действующая подписка на Azure
 * подписка на Benefitsolver с поддержкой единого входа.
 
-После завершения этого руководства пользователи Azure AD, назначенные Benefitsolver, будут иметь возможность единого входа в приложение с помощью инструкций из статьи [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).
+После завершения этого учебника, пользователи hello Azure AD, назначенные tooBenefitsolver будут может toosingle входа в приложение hello hello [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).
 
-Сценарий, описанный в этом учебнике, состоит из следующих блоков:
+Hello сценарий, описанный в этом руководстве состоит из hello следующие стандартные блоки.
 
-1. Включение интеграции приложений для Benefitsolver
+1. Включение интеграции приложений hello для Benefitsolver
 2. Настройка единого входа.
 3. Настройка подготовки учетных записей пользователей
 4. Назначение пользователей
 
 ![Сценарий](./media/active-directory-saas-benefitsolver-tutorial/IC804820.png "Сценарий")
 
-## <a name="enabling-the-application-integration-for-benefitsolver"></a>Включение интеграции приложений для Benefitsolver
-В этом разделе показано, как включить интеграцию приложений для Benefitsolver.
+## <a name="enabling-hello-application-integration-for-benefitsolver"></a>Включение интеграции приложений hello для Benefitsolver
+Hello цель этого раздела — toooutline как интеграции приложения hello tooenable для Benefitsolver.
 
-### <a name="to-enable-the-application-integration-for-benefitsolver-perform-the-following-steps"></a>Чтобы включить интеграцию приложений для Benefitsolver, выполните следующие действия.
-1. На классическом портале Azure в области навигации слева щелкните **Active Directory**.
+### <a name="tooenable-hello-application-integration-for-benefitsolver-perform-hello-following-steps"></a>интеграции приложения hello tooenable для Benefitsolver, выполните следующие шаги hello.
+1. В hello классический портал Azure, hello левой области навигации, выберите **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-benefitsolver-tutorial/IC700993.png "Active Directory")
-2. Из списка **Каталог** выберите каталог, для которого нужно включить интеграцию каталогов.
-3. Чтобы открыть представление приложений, в представлении каталога нажмите **Приложения** в верхнем меню.
+2. Из hello **каталога** список, выберите hello каталога, для которого требуется Интеграция каталогов tooenable.
+3. Щелкните представление приложения hello tooopen в представлении каталога hello **приложений** в верхнем меню hello.
    
    ![Приложения](./media/active-directory-saas-benefitsolver-tutorial/IC700994.png "Приложения")
-4. В нижней части страницы нажмите кнопку **Добавить** .
+4. Нажмите кнопку **добавить** hello нижней части страницы приветствия.
    
    ![Добавление приложения](./media/active-directory-saas-benefitsolver-tutorial/IC749321.png "Добавление приложения")
-5. В диалоговом окне **Что необходимо сделать?** щелкните **Добавить приложение из коллекции**.
+5. На hello **что вам требуется toodo** диалоговое окно, нажмите кнопку **добавить приложение из коллекции hello**.
    
    ![Добавление приложения из коллекции](./media/active-directory-saas-benefitsolver-tutorial/IC749322.png "Добавление приложения из коллекции")
-6. В **поле поиска** введите **Benefitsolver**.
+6. В hello **поле поиска**, тип **Benefitsolver**.
    
    ![Коллекция приложений](./media/active-directory-saas-benefitsolver-tutorial/IC804821.png "Коллекция приложений")
-7. В области результатов выберите **Benefitsolver** и нажмите кнопку **Завершить**, чтобы добавить приложение.
+7. В области результатов hello выберите **Benefitsolver**и нажмите кнопку **завершить** tooadd приложения hello.
    
    ![Benefitssolver](./media/active-directory-saas-benefitsolver-tutorial/IC804822.png "Benefitssolver")
    
 ## <a name="configure-single-sign-on"></a>Настройка единого входа
 
-В этом разделе показано, как разрешить пользователям проходить проверку подлинности в Benefitsolver со своей учетной записью Azure AD, используя федерацию на основе протокола SAML.  
+Цель этого раздела Hello — toooutline как tooBenefitsolver tooauthenticate tooenable пользователей с учетной записью в Azure AD, используя федерацию на основе hello SAML протокола.  
 
-Приложение Benefitsolver ожидает проверочные утверждения SAML в определенном формате, который требует добавить настраиваемые сопоставления атрибутов в вашу конфигурацию **атрибутов токена SAML** . 
+Приложение Benefitsolver ожидает утверждения SAML hello в определенном формате, требующий tooadd настраиваемого атрибута сопоставления tooyour **атрибутов токена saml** конфигурации. 
 
-На следующем снимке экрана приведен пример.
+пример Hello следующий снимок экрана для этого.
 
 ![Атрибуты](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "Атрибуты")
 
-**Чтобы настроить единый вход, выполните следующие действия:**
+**tooconfigure единого входа, выполните следующие шаги hello:**
 
-1. На классическом портале Azure на странице интеграции с приложением **Benefitsolver** щелкните **Настройка единого входа**, чтобы открыть диалоговое окно **Настройка единого входа**.
+1. В классический портал Azure, на hello hello **Benefitsolver** странице интеграции приложения щелкните **настроить единый вход** tooopen hello **Настройка единого входа** диалоговое окно.
    
    ![Настройка единого входа](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "Настройка единого входа")
-2. На странице **Как пользователи должны входить в Benefitsolver?** выберите **Единый вход Microsoft Azure AD** и нажмите кнопку **Далее**.
+2. На hello **предпочитаемый как toosign пользователей на tooBenefitsolver** выберите **Microsoft Azure AD Single Sign-On**, а затем нажмите кнопку **Далее**.
    
    ![Настройка единого входа](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "Настройка единого входа")
-3. На странице **Настройка параметров приложения** выполните следующие действия.
+3. На hello **Настройка параметров приложения** выполните следующие шаги hello:
    
    ![Настройка параметров приложения](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Настройка параметров приложения")
    
-   1. В текстовом поле **URL-адрес для входа** введите **http://azure.benefitsolver.com**.
-   2. В текстовом поле **URL-адрес ответа** введите **https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**.  
+   1. В hello **на URL-адрес входа** введите **http://azure.benefitsolver.com**.
+   2. В hello **URL-адрес ответа** введите **https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**.  
    3. Щелкните **Далее**.
-4. На странице **Настройка единого входа в Benefitsolver** щелкните **Скачать метаданные**, чтобы скачать метаданные, а затем сохраните файл метаданных на локальный компьютер.
+4. На hello **настроить единый вход в Benefitsolver** страницы, toodownload метаданные, нажмите кнопку **загрузить метаданные**, а затем сохраните файл метаданных hello на локальном компьютере.
    
    ![Настройка единого входа](./media/active-directory-saas-benefitsolver-tutorial/IC804827.png "Настройка единого входа")
-5. Отправьте загруженный файл метаданных в службу поддержки Benefitsolver.
+5. Отправьте hello загружены метаданные файла tooyour Benefitsolver поддержки.
    
    >[!NOTE]
-   >Настройка единого входа должна выполняться службой поддержки Benefitsolver. Как только единый вход для вашей подписки будет включен, вы получите уведомление.
+   >Сотрудники службы поддержки Benefitsolver имеет toodo hello фактическую настройку единого входа. Как только единый вход для вашей подписки будет включен, вы получите уведомление.
    >
 
-6. На классическом портале Azure выберите подтверждение конфигурации единого входа, а затем нажмите кнопку **Завершить**, чтобы закрыть диалоговое окно **Настройка единого входа**.
+6. На hello классический портал Azure, выберите Подтверждение настройки единого входа hello и нажмите кнопку **завершить** tooclose hello **Настройка единого входа** диалогового окна.
    
    ![Настройка единого входа](./media/active-directory-saas-benefitsolver-tutorial/IC804828.png "Настройка единого входа")
-7. В меню в верхней части экрана выберите пункт **Атрибуты** to open the **SAML Token Атрибуты** .
+7. В меню в верхней части hello hello выберите **атрибуты** tooopen hello **атрибутов токена SAML** диалогового окна.
    
    ![Атрибуты](./media/active-directory-saas-benefitsolver-tutorial/IC795920.png "Атрибуты")
-8. Чтобы добавить обязательные сопоставления атрибутов, выполните следующие действия.
+8. сопоставления атрибутов hello необходимые tooadd, выполните hello следующие шаги.
    
    ![Атрибуты](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "Атрибуты")
    
    | Имя атрибута | Значение атрибута |
    | --- | --- |
-   | ClientID |Это значение необходимо получить у службы поддержки Benefitsolver. |
-   | ClientKey |Это значение необходимо получить у службы поддержки Benefitsolver. |
-   | LogoutURL |Это значение необходимо получить у службы поддержки Benefitsolver. |
-   | EmployeeID |Это значение необходимо получить у службы поддержки Benefitsolver. |
+   | ClientID |Для команды поддержки Benefitsolver это значение требуется tooget. |
+   | ClientKey |Для команды поддержки Benefitsolver это значение требуется tooget. |
+   | LogoutURL |Для команды поддержки Benefitsolver это значение требуется tooget. |
+   | EmployeeID |Для команды поддержки Benefitsolver это значение требуется tooget. |
    
-   1. Для каждой строки данных в приведенной выше таблице нажмите кнопку **добавить атрибут пользователя**.
-   2. В текстовом поле **Имя атрибута** введите имя атрибута, отображаемое для этой строки.
-   3. В текстовом поле **Значение атрибута** выберите значение атрибута, отображаемое для этой строки.
+   1. Для каждой строки данных в таблице hello выше, щелкните **добавить атрибут пользователя**.
+   2. В hello **имя атрибута** в текстовое поле имя атрибута типа hello, показанный для этой строки.
+   3. В hello **значение атрибута** текстовое поле, значение атрибута выберите hello, показанный для этой строки.
    4. Нажмите **Завершено**.
 9. Нажмите кнопку **Применить изменения**.
 
-## <a name="configure-user-provisioning"></a>Настройка подготовки пользователей
-Чтобы пользователи Azure AD могли выполнять вход в Benefitsolver, они должны быть подготовлены для Benefitsolver.  
+## <a name="configure-user-provisioning"></a>Настроить подготовку учетных записей пользователей
+В порядке tooenable toolog пользователей Azure AD в Benefitsolver их необходимо подготовить в Benefitsolver.  
 
-При использовании Benefitsolver данные о сотрудниках находятся в приложении, которое заполняется с помощью файла переписи из вашей информационной системы персонала (обычно каждую ночь).  
+В случае Benefitsolver hello данные о сотрудниках — в приложении, который заполняется с использованием файла переписи населения из информационной системы Персонала системы (обычно ночное время).  
 
 >[!NOTE]
->Вы можете использовать любые другие средства создания учетной записи пользователя Benefitsolver или API, предоставляемые Benefitsolver для подготовки учетных записей пользователя AAD. 
+>Можно использовать любые другие Benefitsolver пользователя средства создания учетных записей или интерфейсы API, предоставляемые Benefitsolver tooprovision учетных записей пользователей AAD. 
 > 
 
 ## <a name="assigning-users"></a>Назначение пользователей
-Чтобы проверить свою конфигурацию, предоставьте пользователям Azure AD, которые должны использовать приложение, доступ путем их назначения.
+tootest конфигурацию, необходимо toogrant hello Azure AD пользователей с помощью tooit доступ вашего приложения путем назначения им tooallow.
 
-### <a name="to-assign-users-to-benefitsolver-perform-the-following-steps"></a>Чтобы назначить пользователей Benefitsolver, выполните следующие действия.
-1. На классическом портале Azure создайте тестовую учетную запись.
-2. На ** Benefitsolver ** странице интеграции приложения щелкните **назначить пользователей**.
+### <a name="tooassign-users-toobenefitsolver-perform-hello-following-steps"></a>tooBenefitsolver tooassign пользователей, выполните следующие шаги hello:
+1. В hello классический портал Azure создайте тестовую учетную запись.
+2. На hello ** Benefitsolver ** странице интеграции приложения щелкните **назначить пользователей**.
    
    ![Назначение пользователей](./media/active-directory-saas-benefitsolver-tutorial/IC804829.png "Назначение пользователей")
-3. Выберите тестового пользователя, нажмите кнопку **Назначить**, а затем — **Да**, чтобы подтвердить назначение.
+3. Выберите тестового пользователя, нажмите кнопку **назначить**, а затем нажмите кнопку **Да** tooconfirm назначения.
    
    ![Да](./media/active-directory-saas-benefitsolver-tutorial/IC767830.png "Да")
 
-Если вы хотите проверить параметры единого входа, откройте панель доступа. Дополнительные сведения о панели доступа можно найти в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).
+Tootest параметры единого входа, откройте панель доступа hello. Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).
 

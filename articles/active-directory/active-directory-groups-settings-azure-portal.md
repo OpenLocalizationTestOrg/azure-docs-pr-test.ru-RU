@@ -1,6 +1,6 @@
 ---
-title: "Управление свойствами группы в Azure Active Directory | Документы Майкрософт"
-description: "Узнайте, как изменить свойства и другие параметры конфигурации группы в Azure Active Directory."
+title: "Свойства группы aaaManage в Azure Active Directory | Документы Microsoft"
+description: "Как tooedit hello свойства и другие параметры конфигурации для группы в Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,28 +16,28 @@ ms.date: 08/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: b4baccafc0a9178223dbf64c664fc34ab9f7f916
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: aa17c62b4824e5c2de8adc1d34cd9618f3e722f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Управление параметрами группы в Azure Active Directory
-В этой статье объясняется, как управлять параметрами группы в Azure Active Directory (Azure AD).
+# <a name="manage-hello-settings-for-a-group-in-azure-active-directory"></a>Управление параметрами hello группы в Azure Active Directory
+В этой статье объясняется, как toochange hello параметров для группы в Azure Active Directory (Azure AD).
 
-## <a name="how-do-i-find-and-change-the-settings"></a>Как можно найти и изменить параметры?
-1. Войдите в [центр администрирования Azure AD](https://aad.portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Больше служб**, введите **Пользователи и группы** в текстовое поле, а затем нажмите клавишу **ВВОД**.
+## <a name="how-do-i-find-and-change-hello-settings"></a>Как найти и изменить параметры hello?
+1. Войдите в toohello [Центр администрирования Azure AD](https://aad.portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **пользователей и групп** в hello текстовое поле, а затем выберите **ввод**.
 
    ![Открытие колонки пользователей и групп](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
-3. В колонке **Пользователи и группы** выберите **Все группы**.
+3. На hello **пользователей и групп** колонке выберите **все группы**.
 
-   ![Открытие колонки всех групп](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
-4. Выберите группу в колонке **Пользователи и группы — Все группы** .
-5. В колонке **Группа — *имя_группы*** выберите **Свойства**.
+   ![Открытие hello всех групп колонку](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
+4. На hello **пользователей и групп — все группы** колонки, выберите группу.
+5. На hello **группа — *groupname* ** колонке выберите **свойства**.
 
-   ![Открытие колонки "Свойства"](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
-6. Завершив изменение свойств группы, щелкните **Сохранить**.    
+   ![Открытие hello свойства колонку](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
+6. После изменения свойств группы hello выберите **Сохранить**.    
 
    ![Сохранение изменений свойств](./media/active-directory-groups-settings-azure-portal/save-group-properties.png)
 

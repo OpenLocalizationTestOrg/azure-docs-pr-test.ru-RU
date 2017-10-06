@@ -1,5 +1,5 @@
 ---
-title: "Руководства по интеграции приложений SaaS с Azure AD | Документация Майкрософт"
+title: "учебники по интеграции приложений для использования с Azure AD aaaSaaS | Документы Microsoft"
 description: "Можно настроить интеграцию единого входа Azure Active Directory с различными сторонними приложениями SaaS."
 services: active-directory
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.date: 06/21/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 5bedead730e0538c4cad464a9aee7f97a5a8c3ef
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d99ec50ac2db52ab0f8547b2caaac19fd3a5a0d9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Интеграция приложений SaaS с Azure Active Directory
 
-Чтобы помочь вам интегрировать облачные приложения [(SaaS)](https://azure.microsoft.com/overview/what-is-saas/) с Azure Active Directory, мы разработали ряд руководств. В них описаны все необходимые этапы настройки.
+toohelp интеграции вашего облако [(SaaS)](https://azure.microsoft.com/overview/what-is-saas/) приложений с Azure Active Directory, мы разработали коллекцию учебники с пошаговыми руководствами для конфигурации.
 
-Если для приложения доступно руководство по подготовке пользователей, оно будет указано в столбце справа от руководства по этому приложению.
+Мы используем ваши подготовки вмешательства со стороны пользователя, мы включили учебника приложение для подготовки в правом столбце hello, следующее руководство toohello приложения пользователя.
 
-Полный список предварительно интегрированных в Azure AD приложений SaaS доступен в разделе [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
+Hello полный список приложений SaaS, которые были предварительно интегрированных в Azure AD см. в разделе hello [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
 
 ## <a name="saas-tutorials"></a>Руководства по SaaS
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 08/18/2017
 | ![Логотип](./media/active-directory-saas-tutorial-list/active-directory-saas-autotaskworkplace-tutorial.png)| [Autotask](active-directory-saas-autotaskworkplace-tutorial.md)|
 | ![Логотип](./media/active-directory-saas-tutorial-list/SaaSApp_BambooHR.png)| [Bamboo HR](active-directory-saas-bamboo-hr-tutorial.md)|
 | ![Логотип](./media/active-directory-saas-tutorial-list/saasapp_bambubysproutsocial.png)| [Bambu by Sprout Social](active-directory-saas-bambubysproutsocial-tutorial.md)|
-| ![Логотип](./media/active-directory-saas-tutorial-list/active-directory-saas-bcinthecloud-tutorial.png)| [BC in the Cloud](active-directory-saas-bcinthecloud-tutorial.md)
+| ![Логотип](./media/active-directory-saas-tutorial-list/active-directory-saas-bcinthecloud-tutorial.png)| [BC в облаке hello](active-directory-saas-bcinthecloud-tutorial.md)
 | ![Логотип](./media/active-directory-saas-tutorial-list/active-directory-saas-beeline-tutorial.png)| [BeeLine](active-directory-saas-beeline-tutorial.md)|
 | ![Логотип](./media/active-directory-saas-tutorial-list/active-directory-saas-benefithub-tutorial.png)| [BenefitHub](active-directory-saas-benefithub-tutorial.md)
 | ![Логотип](./media/active-directory-saas-tutorial-list/SaaSApp_Benefitssolver.png)| [Benefitsolver](active-directory-saas-benefitsolver-tutorial.md)|
@@ -349,7 +349,7 @@ ms.lasthandoff: 08/18/2017
 | ![Логотип](./media/active-directory-saas-tutorial-list/saasapp_teamphoria.png)| [Teamphoria](active-directory-saas-teamphoria-tutorial.md)|
 | ![Логотип](./media/active-directory-saas-tutorial-list/SaaSApp_TeamSeer.png)| [TeamSeer](active-directory-saas-teamseer-tutorial.md)|
 | ![Логотип](./media/active-directory-saas-tutorial-list/SaaSApp_Teamwork.png)| [Teamwork](active-directory-saas-teamwork-tutorial.md)
-| ![Логотип](./media/active-directory-saas-tutorial-list/active-directory-saas-thefundingportal-tutorial.png)| [The Funding Portal](active-directory-saas-thefundingportal-tutorial.md)|
+| ![Логотип](./media/active-directory-saas-tutorial-list/active-directory-saas-thefundingportal-tutorial.png)| [Hello Funding портала](active-directory-saas-thefundingportal-tutorial.md)|
 | ![Логотип](./media/active-directory-saas-tutorial-list/active-directory-saas-thirdlight-tutorial.png)| [ThirdLight](active-directory-saas-thirdlight-tutorial.md)|
 | ![Логотип](./media/active-directory-saas-tutorial-list/active-directory-saas-thoughtworks-mingle-tutorial.png)| [Thoughtworks Mingle](active-directory-saas-thoughtworks-mingle-tutorial.md)|
 | ![Логотип](./media/active-directory-saas-tutorial-list/active-directory-saas-thousandeyes-tutorial.png)| [ThousandEyes](active-directory-saas-thousandeyes-tutorial.md)|
@@ -403,4 +403,4 @@ ms.lasthandoff: 08/18/2017
 ## <a name="related-articles"></a>Связанные статьи
 
 * [Указатель статьей по управлению приложениями в Azure Active Directory](active-directory-apps-index.md)
-* [Список учебников по интеграции приложений SaaS](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS](active-directory-saas-tutorial-list.md)

@@ -1,5 +1,5 @@
 ---
-title: "Управление записями DNS в службе DNS Azure с помощью Azure PowerShell | Документация Майкрософт"
+title: "Записывает aaaManage DNS в Azure DNS, с помощью Azure PowerShell | Документы Microsoft"
 description: "Управляйте наборами записей и записями DNS в службе Azure DNS при размещении вашего домена в Azure DNS. Все команды PowerShell для операций с наборами записей и записями."
 services: dns
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
-ms.openlocfilehash: 2962e30e5d9c60b8e786e2ba79647cabfc5925cd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bfdf116e174d06db0514abdc0ec3f4fc4ee0a079
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Управление записями и наборами записей DNS в службе DNS Azure с помощью Azure PowerShell
 
@@ -28,13 +28,13 @@ ms.lasthandoff: 07/11/2017
 > * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-В этой статье описывается, как управлять записями DNS для зоны DNS с помощью Azure PowerShell. Записями DNS также можно управлять с помощью кроссплатформенного [интерфейса командной строки Azure](dns-operations-recordsets-cli.md) или [портала Azure](dns-operations-recordsets-portal.md).
+В этой статье показано, как записывает toomanage DNS для зоны DNS с помощью Azure PowerShell. DNS-записи можно также управлять с помощью hello кросс платформенных [Azure CLI](dns-operations-recordsets-cli.md) или hello [портал Azure](dns-operations-recordsets-portal.md).
 
-Для работы с руководством необходимо [установить Azure PowerShell, войти в учетную запись и создать зону DNS](dns-operations-dnszones.md).
+Hello в этой статье примерах уже имеется [Azure PowerShell, вход и создали зоны DNS](dns-operations-dnszones.md).
 
 ## <a name="introduction"></a>Введение
 
-Чтобы создавать записи DNS в Azure DNS, нужно понимать, как Azure DNS организует записи DNS в соответствующие наборы записей.
+Прежде чем создавать DNS-записи в Azure DNS, необходимо сначала toounderstand как Azure DNS организует DNS-записей в наборы записей DNS.
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
@@ -43,27 +43,27 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="create-a-new-dns-record"></a>Создание записи DNS
 
-Если вы создаете запись с такими же именем и типом, как у существующей записи, эту новую запись нужно [добавить в существующий набор записей](#add-a-record-to-an-existing-record-set). Если имя и тип новой и существующих записей отличаются, вам нужно создать другой набор записей. 
+Если новую запись имеет hello совпадают имя и тип в качестве существующей записи, необходимо слишком[добавьте его в существующий набор записей toohello](#add-a-record-to-an-existing-record-set). Если новую запись имеет разные имена и типы tooall существующие записи, то необходимо toocreate нового набора записей. 
 
 ### <a name="create-a-records-in-a-new-record-set"></a>Создание записей А в новом наборе записей
 
-Для создания наборов записей используется командлет `New-AzureRmDnsRecordSet`. Создавая набор записей, вам нужно определить для него имя, зону, срок жизни (TTL), тип записей и сами создаваемые записи.
+Создание наборов записей с помощью hello `New-AzureRmDnsRecordSet` командлета. При создании набора записей, необходимо имя набора записей toospecify hello, hello зоны, hello время toolive (TTL), тип записи hello и toobe записей hello.
 
-Параметры для добавления записей в набор записей зависят от типа набора записей. Например, при использовании набора записей типа A вам нужно указать IP-адрес с использованием параметра `-IPv4Address`. Другие параметры используются для других типов записей (см. [примеры других типов записей](#additional-record-type-examples)).
+Hello параметры для добавления набора записей tooa записей зависит от типа hello hello набор записей. Например, при использовании набора записей типа «A», требуется toospecify hello IP-адрес с помощью параметра hello `-IPv4Address`. Другие параметры используются для других типов записей (см. [примеры других типов записей](#additional-record-type-examples)).
 
-В следующем примере создается набор записей с относительным именем www в зоне DNS contoso.com. Полное доменное имя набора записей — www.contoso.com. Тип записи — A, а срок жизни — 3600 секунд. Каждый такой набор содержит одну запись с IP-адресом 1.2.3.4.
+Hello пример создает записей с hello относительное имя «www», в зону DNS «contoso.com» hello. Hello полное имя набора записей hello — «www.contoso.com». Тип записи Hello «A», который hello TTL 3600 секунд. набор записей Hello содержит одну запись, с IP-адресом "1.2.3.4».
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Чтобы создать набор записей на вершине зоны (в нашем примере — contoso.com), используйте имя записи @ (без кавычек):
+toocreate набор записей в зоне «вершине» hello (в данном случае «contoso.com»), используйте имя набора записей hello "@" (без кавычек):
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Чтобы создать набор записей, содержащий несколько записей, сначала создайте локальный массив и добавьте записи, а затем передайте этот массив в `New-AzureRmDnsRecordSet`:
+Если вам требуется toocreate набор записей, содержащий несколько записей, сначала создать локальный массив и добавить записи hello, а затем передать массив hello слишком`New-AzureRmDnsRecordSet` следующим образом:
 
 ```powershell
 $aRecords = @()
@@ -72,13 +72,13 @@ $aRecords += New-AzureRmDnsRecordConfig -IPv4Address "2.3.4.5"
 New-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyResourceGroup -Ttl 3600 -RecordType A -DnsRecords $aRecords
 ```
 
-[Метаданные набора записей](dns-zones-records.md#tags-and-metadata) используются для связывания данных приложения с каждым набором записей в виде пар "ключ — значение". В следующем примере показано, как создать набор с двумя записями метаданных: dept=finance и environment=production.
+[Набор записей метаданных](dns-zones-records.md#tags-and-metadata) может быть используется tooassociate данных приложения с каждым набором записей, как пары "ключ значение". Hello следующем примере показано, как toocreate набор записей с две записи метаданных "dept = процент" и "среды производственного =".
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
 ```
 
-В Azure DNS также поддерживаются пустые наборы записей, которые могут использоваться как заполнители для резервирования имен DNS перед созданием записей DNS. Пустые наборы записей, отображаются на панели управления Azure DNS и серверах имен Azure DNS. В следующем примере создается пустой набор записей.
+Azure DNS также поддерживает «empty» наборы записей, которые может выступать в качестве tooreserve заполнитель DNS-имя перед созданием записи DNS. Пустые наборы записей, отображаются в плоскости управления hello Azure DNS, но отображаться на hello Azure DNS-серверами. Следующий пример Hello создает пустой набор записей:
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords @()
@@ -86,11 +86,11 @@ New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -Resou
 
 ## <a name="create-records-of-other-types"></a>Создание записей других типов
 
-Вы уже узнали, как создавать записи типа А. В следующем примере показано, как создавать записи других типов, поддерживаемые в Azure DNS.
+Рассматривать подробно порядок записей toocreate «A» hello, в следующих примерах показано, как записи toocreate других записи типы, поддерживаемые системой Azure DNS.
 
-Мы покажем, как создать набор записей каждого типа, который будет содержать одну запись. Создавать наборы записей других типов (пустые наборы записей или содержащие несколько записей с метаданными) можно на основе представленных выше примеров с записями типа A.
+В каждом случае показано, как toocreate запись набор, содержащий одну запись. Hello предыдущих примерах для записей 'A' может быть адаптирован toocreate наборы записей других типов, содержащих несколько записей с метаданными, или пустая запись toocreate задает.
 
-Мы не включаем пример создания набора записей типа SOA, так как такие записи создаются и удаляются только вместе с соответствующей зоной DNS. Тем не менее [записи типа SOA можно изменять, как показано в примере ниже](#to-modify-an-SOA-record).
+Мы не предоставляем toocreate примере SOA набор записей, так как создаются SOA и удалены вместе с каждой зоны DNS и не удается создать или удалить отдельно. Тем не менее [SOA могут быть изменены, как показано в пример hello](#to-modify-an-SOA-record).
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>Создание набора записей типа AAAA с одной записью
 
@@ -101,7 +101,7 @@ New-AzureRmDnsRecordSet -Name "test-aaaa" -RecordType AAAA -ZoneName "contoso.co
 ### <a name="create-a-cname-record-set-with-a-single-record"></a>Создание набора записей типа CNAME с одной записью
 
 > [!NOTE]
-> Стандарты DNS не допускают использование записей типа CNAME на вершине зоны (`-Name '@'`), а также использование наборов записей, содержащих более одной записи.
+> Hello стандартах DNS не допускают записи CNAME на вершине hello зоны (`-Name '@'`), и не следует разрешать или запрещать наборы записей, содержащая более одной записи.
 > 
 > Дополнительные сведения см. в разделе [Записи типа CNAME](dns-zones-records.md#cname-records).
 
@@ -112,7 +112,7 @@ New-AzureRmDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.
 
 ### <a name="create-an-mx-record-set-with-a-single-record"></a>Создание набора записей типа MX с одной записью
 
-Чтобы создать запись MX на вершине зоны (в данном случае — contoso.com), в этом примере мы используем имя набора записей @.
+В этом примере мы используем имя набора записей hello ' @' toocreate MX-записи на вершине зоны hello (в данном случае «contoso.com»).
 
 
 ```powershell
@@ -127,7 +127,7 @@ New-AzureRmDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -
 
 ### <a name="create-a-ptr-record-set-with-a-single-record"></a>Создание набора записей типа PTR с одной записью
 
-В этом случае my-arpa-zone.com представляет зону обратного просмотра ARPA вашего диапазона IP-адресов. Каждая запись PTR в этой зоне соответствует IP-адресу в этом диапазоне. Имя записи 10 — это последний октет IP-адреса в этом диапазоне IP-адресов, представленном данной записью.
+В этом случае "my-arpa-zone.com" представляет hello ARPA зоны обратного просмотра, представляющий ваш диапазон IP-адресов. Каждая запись PTR в этой зоне соответствует tooan IP-адрес в этот диапазон IP-адресов. Имя записи Hello "10" представляет hello последний октет hello IP-адрес в этот диапазон IP-адресов, представленного данной записью.
 
 ```powershell
 New-AzureRmDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Ptrdname "myservice.contoso.com") 
@@ -135,7 +135,7 @@ New-AzureRmDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -R
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Создание набора записей типа SRV с одной записью
 
-Создавая [набор записей SRV](dns-zones-records.md#srv-records), укажите в его имени *\_службу* и *\_протокол*. Если набор записей SRV создается на вершине зоны, включать @ в имя набора записей не нужно.
+При создании [набор записей типа SRV](dns-zones-records.md#srv-records), укажите hello  *\_службы* и  *\_протокола* в hello имя набора записей. Нет нет необходимости tooinclude "@" в hello запись имя набора при создании записи SRV набора в вершине зоны hello.
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
@@ -144,7 +144,7 @@ New-AzureRmDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com
 
 ### <a name="create-a-txt-record-set-with-a-single-record"></a>Создание набора записей типа TXT с одной записью
 
-В следующем примере показано, как создать запись типа ТХТ. Дополнительные сведения о максимальной длине строки, поддерживаемой в записях типа TXT, см. в разделе [Записи типа TXT](dns-zones-records.md#txt-records).
+Hello следующем примере показано, как записать toocreate TXT. Дополнительные сведения о hello Максимальная длина строки поддерживается в записи TXT в разделе [записи TXT](dns-zones-records.md#txt-records).
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Value "This is a TXT record") 
@@ -153,17 +153,17 @@ New-AzureRmDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com"
 
 ## <a name="get-a-record-set"></a>Получение набора записей
 
-Чтобы извлечь существующий набор записей, используйте команду `Get-AzureRmDnsRecordSet`. Этот командлет возвращает локальный объект, представляющий набор записей в Azure DNS.
+использовать существующий набор записей, tooretrieve `Get-AzureRmDnsRecordSet`. Этот командлет возвращает локальный объект, представляющий hello записи в Azure DNS.
 
-Как и в случае с командлетом `New-AzureRmDnsRecordSet`, имя записи должно быть *относительным*, т. е. оно не должно содержать имя зоны. Также необходимо определить тип записи и зону, содержащую набор записей.
+Как и в `New-AzureRmDnsRecordSet`, должно быть имя набора записей hello *относительный* имя, то есть его необходимо исключить hello имя зоны. Необходимо также тип записи toospecify hello и hello зону, содержащую набор записей hello.
 
-В следующем примере показано, как получить набор записей. В этом примере зона определяется с помощью `-ZoneName` и `-ResourceGroupName` параметров.
+Hello примере показан способ tooretrieve набор записей. В этом примере hello зоны задается с помощью hello `-ZoneName` и `-ResourceGroupName` параметров.
 
 ```powershell
 $rs = Get-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Кроме того, зону можно указать с помощью объекта зоны, переданного с помощью параметра `-Zone`.
+Кроме того, можно также указать hello зоны с помощью объекта зоны, переданные с помощью hello `-Zone` параметра.
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -172,116 +172,116 @@ $rs = Get-AzureRmDnsRecordSet -Name "www" -RecordType A -Zone $zone
 
 ## <a name="list-record-sets"></a>Перечисление наборов записей
 
-Чтобы перечислить наборы записей в зоне, можно также использовать `Get-AzureRmDnsZone`, опустив параметры `-Name` или `-RecordType`.
+Можно также использовать `Get-AzureRmDnsZone` наборов toolist записей в зоне, пропустив hello `-Name` и/или `-RecordType` параметров.
 
-В следующем примере возвращаются все наборы записей в зоне:
+Hello следующий пример возвращает все записи задает в зоне hello.
 
 ```powershell
 $recordsets = Get-AzureRmDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-В следующем примере показано, как можно получить, все наборы записей нужного типа, указав тип набора записей и опустив его имя:
+Hello следующем примере показано, как все записи наборов данного типа, можно получить, указав тип записи hello, пока пропуск записи hello имя набора:
 
 ```powershell
 $recordsets = Get-AzureRmDnsRecordSet -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Чтобы получить все наборы записей разных типов с нужным именем, необходимо получить все наборы записей, а затем отфильтровать результаты:
+Задает все записи с заданным именем, tooretrieve разных типов записей, необходимо tooretrieve все наборы записей, а затем результаты hello фильтра:
 
 ```powershell
 $recordsets = Get-AzureRmDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | where {$_.Name.Equals("www")}
 ```
 
-Во всех этих примерах зону можно определить с помощью параметров `-ZoneName` и `-ResourceGroupName` (как и показано) или с помощью объекта зоны:
+В все hello выше примеры hello зоны может быть указан с помощью hello `-ZoneName` и `-ResourceGroupName`параметров (как показано), или путем указания объекта зоны:
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $recordsets = Get-AzureRmDnsRecordSet -Zone $zone
 ```
 
-## <a name="add-a-record-to-an-existing-record-set"></a>Добавление записи в существующий набор записей
+## <a name="add-a-record-tooan-existing-record-set"></a>Добавление записей tooan существующего набора записей
 
-Чтобы добавить запись в существующий набор записей, сделайте следующее.
+tooadd существующей записи записей tooan задать, выполните следующие три шага hello.
 
-1. Получите существующий набор записей.
+1. Получение существующего набора записей hello
 
     ```powershell
     $rs = Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. Добавьте новую запись в локальный набор записей. Эта операция выполняется в автономном режиме.
+2. Добавьте hello новых записей toohello локальный набор записей. Эта операция выполняется в автономном режиме.
 
     ```powershell
     Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Зафиксируйте изменения в службе Azure DNS. 
+3. Зафиксируйте hello изменений назад toohello служба Azure DNS. 
 
     ```powershell
     Set-AzureRmDnsRecordSet -RecordSet $rs
     ```
 
-С помощью `Set-AzureRmDnsRecordSet` существующий набор записей в Azure DNS (и все записи, которые он содержит) *будет заменен* указанным набором записей. [Проверки Etag](dns-zones-records.md#etags) помогают избежать перезаписи параллельных изменений. Чтобы отменить эти проверки, укажите необязательный параметр `-Overwrite`.
+С помощью `Set-AzureRmDnsRecordSet` *заменяет* hello существующих записей в Azure DNS (и все записи, он содержит) с указанного набора записей hello. [Проверяет eTag](dns-zones-records.md#etags) используются tooensure параллельных изменений не перезаписываются. Можно использовать необязательный hello `-Overwrite` переключения toosuppress этих проверок.
 
-Последовательность операций также можно *направить в конвейер*. Это значит, что объект набора записей передается с помощью конвейера, а не как параметр:
+Эта последовательность операций также может быть *по конвейеру*, то есть передать hello объекта набора записей, через канал hello вместо передачи его в качестве параметра:
 
 ```powershell
 Get-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-Приведенные выше примеры иллюстрируют добавление записи типа А в существующий набор записей типа A. Аналогичная последовательность операций используется и для добавления записей в наборы записей других типов. Для этого в `Add-AzureRmDnsRecordConfig` нужно просто заменить параметр `-Ipv4Address` параметром, соответствующим нужному типу записи. Как видно в [примерах с другими типами записей](#additional-record-type-examples) (см. выше), используемые для каждого типа записи параметры соответствуют параметрам в командлете `New-AzureRmDnsRecordConfig`.
+Hello примеры выше показывают, как задать tooadd 'A' записей tooan существующей записи типа «A». Аналогичные последовательности операций является наборов toorecord записей используется tooadd других типов, заменив hello `-Ipv4Address` параметр `Add-AzureRmDnsRecordConfig` с другим типом записи tooeach определенные параметры. Hello параметров для каждого типа записи являются hello же, как и для hello `New-AzureRmDnsRecordConfig` командлет, как показано в [примеры дополнительных тип записи](#additional-record-type-examples) выше.
 
-Наборы записей типа CNAME или SOA не могут содержать более одной записи. Это ограничение определяется общими стандартами DNS, а не Azure DNS.
+Наборы записей типа CNAME или SOA не могут содержать более одной записи. Это ограничение возникают из-за стандартах DNS hello. а не Azure DNS.
 
 ## <a name="remove-a-record-from-an-existing-record-set"></a>Удаление записи из существующего набора записей
 
-Процедура удаления записи из существующего набора записей аналогична процедуре добавления в такой набор.
+Hello tooremove процесс записи из набора записей — примерно toohello процесс, tooadd в существующие записи tooan записи набора:
 
-1. Получите существующий набор записей.
+1. Получение существующего набора записей hello
 
     ```powershell
     $rs = Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. Удалите запись из объекта локального набора записей. Эта операция выполняется в автономном режиме. Удаляемая запись должна точно соответствовать существующей записи по всем параметрам.
+2. Удалите запись hello из hello объекта локальный набор записей. Эта операция выполняется в автономном режиме. запись Hello, которое удаляется должно быть в точности совпадать с уже имеющейся записи для всех параметров.
 
     ```powershell
     Remove-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Зафиксируйте изменения в службе Azure DNS. Чтобы отменить [проверки Etag](dns-zones-records.md#etags) (проверки перезаписи параллельных изменений), используйте необязательный параметр `-Overwrite`.
+3. Зафиксируйте hello изменений назад toohello служба Azure DNS. Используйте hello необязательно `-Overwrite` переключения toosuppress [проверяет Etag](dns-zones-records.md#etags) для параллельных изменений.
 
     ```powershell
     Set-AzureRmDnsRecordSet -RecordSet $Rs
     ```
 
-Используя приведенную выше последовательность для удаления последней записи из набора, вы не удалите набор, а оставите его пустым. Как удалить сам набор записей, описано в разделе [Удаление набора записей](#delete-a-record-set).
+Hello выше последовательности tooremove hello последней записи из набора записей с помощью удаляет hello: набор записей, а остается пустой набор записей. см. набор записей, полностью tooremove [удалить набор записей](#delete-a-record-set).
 
-Как и при добавлении записей в набор записей, последовательность операций для удаления набора записей также можно объединить в конвейер:
+Аналогичным образом набора записи tooa tooadding записей последовательность hello tooremove операций, который также может быть выведен набор записей:
 
 ```powershell
 Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-Поддержку разных типов записей можно реализовать, передав в `Remove-AzureRmDnsRecordSet` соответствующие каждому типу параметры. Как видно в [примерах с другими типами записей](#additional-record-type-examples) (см. выше), используемые для каждого типа записи параметры соответствуют параметрам в командлете `New-AzureRmDnsRecordConfig`.
+Записей различных типов поддерживаются, передавая соответствующие параметры конкретного типа hello слишком`Remove-AzureRmDnsRecordSet`. Hello параметров для каждого типа записи являются hello же, как и для hello `New-AzureRmDnsRecordConfig` командлет, как показано в [примеры дополнительных тип записи](#additional-record-type-examples) выше.
 
 
 ## <a name="modify-an-existing-record-set"></a>Обновление существующего набора записей
 
-Процедура изменения существующего набора записей аналогична процедуре добавления записей в набор записей и их удаления оттуда.
+Hello действия по изменению существующего набора записей приведены действия, аналогичные toohello предпринять при добавлении или удалении записей из набора записей.
 
-1. Извлеките существующий набор записей, используя командлет `Get-AzureRmDnsRecordSet`.
-2. Чтобы изменить локальный объект набора записей, сделайте следующее:
+1. Получить задание с помощью существующей записи hello `Get-AzureRmDnsRecordSet`.
+2. Измените hello объекта локальный набор записей:
     * добавьте или удалите записи;
-    * измените параметры существующих записей;
-    * измените метаданные и время жизни (TTL) для набора записей.
-3. Зафиксируйте изменения с помощью командлета `Set-AzureRmDnsRecordSet` . Существующий набор записей в Azure DNS *будет заменен* указанным набором.
+    * Изменение параметров hello существующих записей
+    * Изменение записи hello набора метаданных и времени toolive (TTL)
+3. Фиксация изменений с помощью hello `Set-AzureRmDnsRecordSet` командлета. Это *заменяет* hello существующих записей в Azure DNS с указанного набора записей hello.
 
-При использовании `Set-AzureRmDnsRecordSet` избежать перезаписи параллельных изменений помогут [проверки Etag](dns-zones-records.md#etags). Чтобы отменить эти проверки, укажите необязательный параметр `-Overwrite`.
+При использовании `Set-AzureRmDnsRecordSet`, [проверяет Etag](dns-zones-records.md#etags) используются tooensure параллельных изменений не перезаписываются. Можно использовать необязательный hello `-Overwrite` переключения toosuppress этих проверок.
 
-### <a name="to-update-a-record-in-an-existing-record-set"></a>Обновление записи в существующем наборе записей
+### <a name="tooupdate-a-record-in-an-existing-record-set"></a>задать tooupdate записи в существующей записи
 
-В данном примере мы изменим IP-адрес существующей записи типа A:
+В этом примере мы изменяем hello IP-адрес существующего «запись»:
 
 ```powershell
 $rs = Get-AzureRmDnsRecordSet -name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -289,11 +289,11 @@ $rs.Records[0].Ipv4Address = "9.8.7.6"
 Set-AzureRmDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-an-soa-record"></a>Изменение записи типа SOA
+### <a name="toomodify-an-soa-record"></a>toomodify записи SOA
 
-В автоматически созданном наборе записей типа SOA на вершине зоны (`-Name "@"`, включая кавычки) добавлять или удалять записи нельзя. Однако вы можете изменить любые параметры в записи типа SOA (за исключением параметра "Узел") и TTL набора записей.
+Не удается добавить или удаления записей из hello автоматически создается на вершине зоны hello начальной записи (`-Name "@"`, включая кавычки). Однако вы можете изменить любые параметры hello в рамках hello начальной записи зоны (кроме «узел») и записи hello задать значение срока ЖИЗНИ.
 
-В следующем примере показано, как изменить свойство *Email* записи типа SOA:
+Следующий пример показывает как Hello toochange hello *электронной почты* свойство hello начальной записи зоны:
 
 ```powershell
 $rs = Get-AzureRmDnsRecordSet -Name "@" -RecordType SOA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -301,15 +301,15 @@ $rs.Records[0].Email = "admin.contoso.com"
 Set-AzureRmDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-ns-records-at-the-zone-apex"></a>Изменение записи NS на вершине зоны
+### <a name="toomodify-ns-records-at-hello-zone-apex"></a>записей toomodify NS на вершине зоны hello
 
-Набор записей типа NS на вершине зоны автоматически создается вместе с каждой зоной DNS. Он содержит имена DNS-серверов Azure, назначенные зоне.
+запись NS Hello на вершине зоны hello создается автоматически с каждой зоны DNS. Она содержит имена hello hello Azure имя серверов назначенного toohello зоны DNS.
 
-Вы можете добавить дополнительные имена серверов в этот набор записей NS, обеспечив поддержку совместного размещения доменов с использованием более чем одного поставщика DNS. Вы также можете изменить срок жизни и метаданные для этого набора записей. При этом вы не можете удалить или изменить предварительно заполненные серверы доменных имен Azure DNS.
+Можно добавить дополнительное имя серверов toothis NS: набор записей, toosupport совместное размещение домены с более чем одного поставщика DNS. Можно также изменить hello TTL и метаданные для этого набора записей. Тем не менее нельзя удалять или изменять hello предварительно заполненных Azure DNS-серверами.
 
-Обратите внимание, что это относится только к набору записей NS на вершине зоны. Другие наборы записей NS в зоне (используемые для делегирования дочерних зон) можно изменять без ограничений.
+Обратите внимание, что это применимо только toohello NS набора записей на вершине зоны hello. Другие NS наборов записей в зоне (как в дочерних зонах используется toodelegate) можно изменять без ограничений.
 
-В следующем примере показано, как добавить дополнительный сервер в набор записей NS на вершине зоны:
+Привет, в следующем примере показано, как tooadd запись NS toohello дополнительное имя сервера задать на вершине зоны hello:
 
 ```powershell
 $rs = Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -317,14 +317,14 @@ Add-AzureRmDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
 Set-AzureRmDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-record-set-metadata"></a>Изменение метаданных набора записей
+### <a name="toomodify-record-set-metadata"></a>набор записей toomodify метаданных
 
-[Метаданные набора записей](dns-zones-records.md#tags-and-metadata) используются для связывания данных приложения с каждым набором записей в виде пар "ключ — значение".
+[Набор записей метаданных](dns-zones-records.md#tags-and-metadata) может быть используется tooassociate данных приложения с каждым набором записей, как пары "ключ значение".
 
-В примере ниже показано, как изменить метаданные существующего набора записей:
+Hello ниже приведен пример настройки метаданных hello toomodify существующей записи.
 
 ```powershell
-# Get the record set
+# Get hello record set
 $rs = Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 
 # Add 'dept=finance' name-value pair
@@ -340,34 +340,34 @@ Set-AzureRmDnsRecordSet -RecordSet $rs
 
 ## <a name="delete-a-record-set"></a>Удаление набора записей
 
-Наборы записей можно удалять с помощью командлета `Remove-AzureRmDnsRecordSet` . При удалении набора записей также удаляются все содержащиеся в нем записи.
+Наборы записей можно удалить с помощью hello `Remove-AzureRmDnsRecordSet` командлета. При удалении набора записей также удаляются все записи в наборе записей hello.
 
 > [!NOTE]
-> Удалить наборы записей типа SOA и NS на вершине зоны (`-Name '@'`) нельзя.  Эти записи создаются и удаляются в Azure DNS автоматически вместе с зоной.
+> Не удается удалить hello SOA и NS наборов записей в вершине зоны hello (`-Name '@'`).  Azure DNS создается их автоматически при hello зона была создана и удаляет их автоматически при удалении hello зоны.
 
-В примере ниже показано, как удалить набор записей. В этом примере имя и тип набора записей, имя зоны и группа ресурсов указываются явным образом.
+Hello примере показан способ toodelete набор записей. В этом примере имя набора записей hello, набор записей типа, имени зоны и группы ресурсов каждого указаны явным образом.
 
 ```powershell
 Remove-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Также набор записей можно указать по имени, типу и зоне (определяется с помощью объекта):
+Кроме того hello набор записей может быть указан с именем и типом и hello зоны, указанный с помощью объекта:
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzureRmDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
-Либо же можно указать сам набор записей, используя объект набора записей:
+Как третий параметр — набора сам записей hello может быть задано с помощью объекта набора записей:
 
 ```powershell
 $rs = Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzureRmDnsRecordSet -RecordSet $rs
 ```
 
-Указывая набор удаляемых записей с помощью объекта, вы можете выполнить [проверки Etag](dns-zones-records.md#etags), чтобы избежать удаления параллельных изменений. Чтобы отменить эти проверки, укажите необязательный параметр `-Overwrite`.
+При указании toobe удалена с помощью объекта набора записей, набор записей hello [проверяет Etag](dns-zones-records.md#etags) используются tooensure параллельных изменений не удаляются. Можно использовать необязательный hello `-Overwrite` переключения toosuppress этих проверок.
 
-Объект набора записей также можно направить в конвейер, а не передать в качестве параметра:
+Hello объекта набора записей также можно направить вместо передан в качестве параметра:
 
 ```powershell
 Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzureRmDnsRecordSet
@@ -375,11 +375,11 @@ Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -Resourc
 
 ## <a name="confirmation-prompts"></a>Запросы на подтверждение
 
-Командлеты `New-AzureRmDnsRecordSet`, `Set-AzureRmDnsRecordSet` и `Remove-AzureRmDnsRecordSet` поддерживают запросы на подтверждение.
+Hello `New-AzureRmDnsRecordSet`, `Set-AzureRmDnsRecordSet`, и `Remove-AzureRmDnsRecordSet` все командлеты поддерживают запросы подтверждения.
 
-Каждый командлет запрашивает подтверждение, если привилегированная переменная `$ConfirmPreference` в PowerShell имеет значение `Medium` или ниже. Так как по умолчанию переменной `$ConfirmPreference` присвоено значение `High`, эти запросы не используются при использовании стандартных параметров PowerShell.
+Каждый командлет запрашивает подтверждение, если hello `$ConfirmPreference` PowerShell Привилегированная переменная имеет значение `Medium` или ниже. Так как значение по умолчанию hello `$ConfirmPreference` — `High`, не получают эти запросы при использовании параметров PowerShell по умолчанию hello.
 
-Текущее значение `$ConfirmPreference` можно переопределить с помощью параметра `-Confirm`. Если вы определите `-Confirm` или `-Confirm:$True`, командлет будет запрашивать подтверждение перед выполнением. Если вы определите `-Confirm:$False`, командлет не будет запрашивать подтверждение. 
+Можно переопределить текущего hello `$ConfirmPreference` параметр с помощью hello `-Confirm` параметра. При указании `-Confirm` или `-Confirm:$True` , hello командлет запросит подтверждение перед его запуска. При указании `-Confirm:$False` , командлет hello не запрашивает вашего подтверждения. 
 
 Дополнительные сведения об элементах `-Confirm` и `$ConfirmPreference` см. в статье о [привилегированных переменных](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
 
@@ -387,6 +387,6 @@ Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -Resourc
 
 См. дополнительные сведения о [зонах и записях в Azure DNS](dns-zones-records.md).
 <br>
-Узнайте, как [защитить зоны и записи](dns-protect-zones-recordsets.md) при использовании Azure DNS.
+Узнайте, каким образом слишком[защиты зоны и записи](dns-protect-zones-recordsets.md) при использовании Azure DNS.
 <br>
-Просмотрите [справочную документацию по Azure DNS PowerShell](/powershell/module/azurerm.dns).
+Просмотрите hello [справочная документация по Azure DNS PowerShell](/powershell/module/azurerm.dns).

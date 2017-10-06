@@ -1,6 +1,6 @@
 ---
-title: "Проблемы при настройке прокси приложения Azure AD"
-description: "Проблемы при настройке прокси приложения Azure AD"
+title: "Настройка aaaProblems hello прокси приложения Azure AD»"
+description: "Неполадки при настройке hello прокси приложения Azure AD»"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -12,42 +12,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a2cd51279476f0964164705cf60b9b4e177972fd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7b54c3c8703266fb34b7ad50336391dd892b4391
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="problems-configuring-the-azure-ad-application-proxy"></a>Проблемы при настройке прокси приложения Azure AD
+# <a name="problems-configuring-hello-azure-ad-application-proxy"></a>Неполадки при настройке hello прокси приложения Azure AD
 
 
 
-## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>Я могу загрузить свое приложение, но что-то на странице отображается некорректно
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
-  * [Я имею доступ к приложению, но его страница отображается неправильно](https://docs.microsoft.com/azure/active-directory/application-proxy-page-appearance-broken-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Я имею доступ к приложению, но оно слишком долго загружается](https://docs.microsoft.com/azure/active-directory/application-proxy-page-load-speed-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Я имею доступ к приложению, но ссылки на странице приложения не работают](https://docs.microsoft.com/azure/active-directory/application-proxy-page-links-broken-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="i-can-load-my-application-but-something-on-hello-page-looks-broken"></a>Можно загрузить приложение, но что-нибудь на странице приветствия выглядит неработающие
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
+  * [Получено toomy приложения, но не правильно отображаться страница приложения hello](https://docs.microsoft.com/azure/active-directory/application-proxy-page-appearance-broken-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Получено toomy приложения, но приложение hello занимает слишком много времени tooload](https://docs.microsoft.com/azure/active-directory/application-proxy-page-load-speed-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Получено toomy приложения, но не работают hello ссылки на странице приложения hello](https://docs.microsoft.com/azure/active-directory/application-proxy-page-links-broken-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>Возникла проблема с подключением моего приложения
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
-  * [Я не знаю, какие порты нужно открыть для моего приложения](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-ports-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
+  * [Я не знаю, какие порты tooopen для моего приложения](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-ports-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Возникла проблема из-за того, что в группе соединителей для моего приложения нет работающих соединителей](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-no-working-connector/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Возникла проблема при настройке прокси приложения Azure AD на портале администрирования
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
+## <a name="im-having-a-problem-configuring-hello-azure-ad-application-proxy-in-hello-admin-portal"></a>У меня возникли проблемы настройки hello прокси приложения Azure AD в портал администрирования hello
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
   * [Возникли сложности при настройке прокси приложения для приложения](https://docs.microsoft.com/azure/active-directory/application-proxy-config-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Я не знаю, как настроить единый вход на прокси приложения для моего приложения](https://docs.microsoft.com/azure/active-directory/application-proxy-config-sso-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Я не знаю, как tooconfigure единого входа toomy приложения прокси приложения](https://docs.microsoft.com/azure/active-directory/application-proxy-config-sso-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Возникла проблема при создании моего приложения на портале администрирования](https://docs.microsoft.com/azure/active-directory/application-proxy-config-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Возникла проблема при настройке внутренней аутентификации в моем приложении
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
-  * [Я не знаю, как настроить ограниченное делегирование Kerberos](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-kerberos-constrained-delegation-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Я не знаю, как настроить мое приложение для использования PingAccess](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-ping-access-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="im-having-a-problem-setting-up-back-end-authentication-toomy-application"></a>У меня возникли проблемы с настройкой приложения toomy внутренней проверки подлинности
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
+  * [Я не знаю, как tooconfigure ограниченное делегирование Kerberos](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-kerberos-constrained-delegation-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Я не знаю, как tooconfigure Мое приложение с PingAccess](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-ping-access-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Возникла проблема при входе в мое приложение
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
+## <a name="im-having-a-problem-when-signing-in-toomy-application"></a>У меня возникли проблемы при входе в приложение toomy
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
   * [Появляется сообщение об ошибке "Can't Access this Corporate Application" (Нет доступа к этому корпоративному приложению)](https://docs.microsoft.com/azure/active-directory/application-proxy-sign-in-bad-gateway-timeout-error/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Возникла проблема с соединителем агента прокси приложения
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
-  * [Возникли проблемы при установке соединителя агента прокси приложения](https://docs.microsoft.com/azure/active-directory/application-proxy-connector-installation-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="im-having-a-problem-with-hello-application-proxy-agent-connector"></a>У меня возникли проблемы с hello соединитель агента прокси приложения
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
+  * [У меня возникли проблемы с установкой hello соединитель агента прокси приложения](https://docs.microsoft.com/azure/active-directory/application-proxy-connector-installation-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)

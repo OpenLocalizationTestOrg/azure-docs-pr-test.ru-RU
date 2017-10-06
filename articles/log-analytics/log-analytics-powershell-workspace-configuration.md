@@ -1,5 +1,5 @@
 ---
-title: "Использование PowerShell для создания и настройки рабочей области Log Analytics | Документация Майкрософт"
+title: "aaaUse PowerShell tooCreate и настройка рабочей областью аналитики журналов | Документы Microsoft"
 description: "Log Analytics использует данные с серверов в вашей локальной или облачной инфраструктуре. При генерировании системой диагностики Azure можно брать данные компьютера из хранилища Azure."
 services: log-analytics
 documentationcenter: 
@@ -14,64 +14,64 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 6807ab67e3593da82c147669b29bfdae3b6c967c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a6d66194204cc58de6aafb687a19fe9611e0c58e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Управление Log Analytics с помощью PowerShell
-[Командлеты PowerShell Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) можно использовать для выполнения различных функций в Log Analytics как из командной строки, так и в составе сценария.  Примеры задач, которые можно выполнять с помощью PowerShell.
+Можно использовать hello [командлеты PowerShell аналитика журналов](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) tooperform различные функции в службе анализа журналов из командной строки или как часть сценария.  Примеры hello задачи, которые можно выполнять с помощью PowerShell.
 
 * Создание рабочей области
 * Добавление или удаление решения
 * Импорт и экспорт сохраненных поисков
 * Создание группы компьютеров
-* Включение сбора журналов IIS с компьютеров, на которых установлен агент Windows
+* Включить сбор журналов IIS с компьютеров с установленным агентом Windows hello
 * Сбор счетчиков производительности с компьютеров под управлением Linux и Windows
 * Сбор событий из системного журнала с компьютеров Linux 
 * Сбор событий из журналов событий Windows
 * Сбор пользовательских журналов событий
-* Добавление агента Log Analytics в виртуальную машину Azure
-* Настройка Log Analytics для индексирования данных, собранных системой диагностики Azure
+* Добавить hello журнала аналитика агента tooan виртуальной машины Azure
+* Настройка журнала аналитика tooindex собранные средствами диагностики Azure
 
-Эта статья содержит два примера кода, иллюстрирующих некоторые доступные в PowerShell функции.  Сведения о других функциях см. в [справочнике по командлетам PowerShell Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx).
+Эта статья содержит два образца кода, иллюстрирующие некоторых функций hello, которые можно выполнять из PowerShell.  Можно ссылаться toohello [Справочник по командлетам PowerShell аналитика журналов](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) для других функций.
 
 > [!NOTE]
-> Компонент Log Analytics раньше назывался Operational Insights, поэтому именно такое имя используется в командлетах.
+> Служба аналитики журналов был вызван ранее оперативной аналитики, поэтому это hello имя, используемое в командлетах hello.
 > 
 > 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Эти примеры работают с версией 2.3.0 или более поздней версией модуля AzureRm.OperationalInsights.
+Эти примеры работают с версию 2.3.0 или более поздней версии модуля AzureRm.OperationalInsights hello.
 
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Создание и настройка рабочей области Log Analytics
-Этот пример сценария иллюстрирует следующие задачи.
+Hello следующий скрипт образец показывает, как:
 
 1. Создание рабочей области
-2. Вывод списка доступных решений
-3. Добавление решений в рабочую область
+2. Список hello доступные решения
+3. Добавление рабочей области toohello решений
 4. Импорт сохраненных поисков
 5. Экспорт сохраненных поисков
 6. Создание группы компьютеров
-7. Включение сбора журналов IIS с компьютеров, на которых установлен агент Windows
+7. Включить сбор журналов IIS с компьютеров с установленным агентом Windows hello
 8. Сбор счетчиков производительности логического диска с компьютеров под управлением Linux ("Процент использования индексных дескрипторов"; "Свободно мегабайт"; "Процент используемого места"; "Количество обращений к диску (в секунду)"; "Количество обращений чтения или записи (в секунду))"
 9. Сбор событий из системного журнала с компьютеров Linux
-10. Сбор событий (ошибок и предупреждений) из журнала событий приложений с компьютеров Windows
+10. Собирать события ошибок и предупреждений из hello журнал событий приложений с компьютеров Windows
 11. Сбор данных счетчика производительности "Доступный объем памяти" (в МБ) с компьютеров Windows
 12. Сбор пользовательского журнала 
 
 ```
 
 $ResourceGroup = "oms-example"
-$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need toobe unique - Get-Random helps with this for hello example code
 $Location = "westeurope"
 
-# List of solutions to enable
+# List of solutions tooenable
 $Solutions = "Security", "Updates", "SQLAssessment"
 
-# Saved Searches to import
+# Saved Searches tooimport
 $ExportedSearches = @"
 [
     {
@@ -89,7 +89,7 @@ $ExportedSearches = @"
 ]
 "@ | ConvertFrom-Json
 
-# Custom Log to collect
+# Custom Log toocollect
 $CustomLog = @"
 {
     "customLogName": "sampleCustomLog1", 
@@ -127,14 +127,14 @@ $CustomLog = @"
     }
 "@
 
-# Create the resource group if needed
+# Create hello resource group if needed
 try {
     Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop
 } catch {
     New-AzureRmResourceGroup -Name $ResourceGroup -Location $Location
 }
 
-# Create the workspace
+# Create hello workspace
 New-AzureRmOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
 
 # List all solutions and their installation status
@@ -160,7 +160,7 @@ foreach ($search in $ExportedSearches) {
 # Create Computer Group based on a query
 New-AzureRmOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Web Servers" -DisplayName "Web Servers" -Category "My Saved Searches" -Query "Computer=""web*"" | distinct Computer" -Version 1
 
-# Create a computer group based on names (up to 5000)
+# Create a computer group based on names (up too5000)
 $computerGroup = """servername1.contoso.com"",""servername2.contoso.com"",""servername3.contoso.com"",""servername4.contoso.com"""
 New-AzureRmOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Named Servers" -DisplayName "Named Servers" -Category "My Saved Searches" -Query $computerGroup -Version 1
 
@@ -186,8 +186,8 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 ```
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Настройка Log Analytics для индексации системы диагностики Azure
-Для отслеживания ресурсов Azure без использования агента необходимо включить для этих ресурсов систему диагностики Azure и настроить ее для записи данных в рабочую область Log Analytics. Это позволяет отправлять данные непосредственно в Log Analytics, не записывая их в учетную запись хранения. Ниже перечислены поддерживаемые ресурсы.
+## <a name="configuring-log-analytics-tooindex-azure-diagnostics"></a>Настройка tooindex анализа журналов диагностики Azure
+Для безагентного отслеживания ресурсов Azure hello ресурсы требуют рабочей областью аналитики журналов tooa toohave диагностики Azure toowrite включен и настроен. Этот подход отправляет данные непосредственно tooLog Analytics и не требует toobe данных, записанных tooa учетной записи хранилища. Ниже перечислены поддерживаемые ресурсы.
 
 | Тип ресурса | Журналы | Метрики |
 | --- | --- | --- |
@@ -210,9 +210,9 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 | Веб-сайты               |     | Да |
 | Фермы веб-серверов        |     | Да |
 
-Дополнительные сведения о доступных метриках см. в разделе [Метрики, поддерживаемые Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Подробности hello доступных метрик hello ссылаться слишком[поддерживаемых метрик с помощью монитора Azure](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
-Дополнительные сведения о доступных журналах см. в разделе [Поддерживаемые службы и схемы для журналов диагностики](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
+Hello сведений о доступных журналов hello, см. в разделе слишком[поддерживается для журналов диагностики служб и схемы](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -222,27 +222,27 @@ $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUP
 Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-Кроме того, вы можете использовать предыдущий командлет для сбора журналов из ресурсов, которые находятся в разных подписках. Этот командлет может работать в нескольких подписках, так как вы предоставляете идентификаторы ресурса, для которого создаются журналы, и рабочей области, в которую они отправляются.
+Также можно использовать hello предшествующий командлет toocollect журналы из ресурсов, которые находятся в разных подписках. командлет Hello является может toowork между подписками, так как вы указываете идентификатор hello оба ресурса hello Создание журналов и отправляемые журналы hello hello рабочей области.
 
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics-from-storage"></a>Настройка Log Analytics для индексации системы диагностики Azure из хранилища
-Для сбора данных журнала из работающего экземпляра классической облачной службы или кластера Service Fabric необходимо сначала записать данные в службу хранилища Azure. После этого следует настроить Log Analytics для сбора журналов из учетной записи хранения. Ниже перечислены поддерживаемые ресурсы:
+## <a name="configuring-log-analytics-tooindex-azure-diagnostics-from-storage"></a>Настройка tooindex анализа журналов диагностики Azure из хранилища
+toocollect данных журнала из в выполняющемся экземпляре классический облачной службы или кластера service fabric, необходимо toofirst записи hello данных tooAzure хранилища. Служба аналитики журналов будет настроен toocollect hello журналов из учетной записи хранения hello. Ниже перечислены поддерживаемые ресурсы.
 
 * классические облачные службы (рабочие и веб-роли);
 * кластеры Service Fabric;
 
-В приведенном ниже примере показано, как выполнить следующие задачи.
+Следующий пример показывает как Hello для:
 
-1. Вывод списка существующих учетных записей хранения и расположений, откуда Log Analytics будет индексировать данные.
-2. Создание конфигурации для чтения из учетной записи хранения.
-3. Обновление созданной конфигурации для индексирования данных из дополнительных расположений
-4. Удаление созданной конфигурации.
+1. Список существующих учетных записей хранения hello и расположения, которые служба аналитики журналов будет индексировать данные из
+2. Создание tooread конфигурации из учетной записи хранения
+3. Вновь созданные tooindex данные конфигурации из дополнительных расположениях hello обновления
+4. Удалить конфигурацию только что созданный hello
 
 ```
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable" 
 $workspace = (Get-AzureRmOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to  
+# Update these two lines with hello storage account resource ID and hello storage account key for hello storage account you want tooLog Analytics too 
 $storageId = "/subscriptions/ec11ca60-1234-491e-5678-0ea07feae25c/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
 $key = "abcd=="
 
@@ -255,12 +255,12 @@ New-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resou
 # Update existing insight
 Set-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
 
-# Remove the insight
+# Remove hello insight
 Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" 
 
 ```
 
-Кроме того, вы можете использовать предыдущий сценарий для сбора журналов из учетных записей хранения, которые находятся в разных подписках. Этот сценарий может работать в нескольких подписках, так как вы предоставляете идентификатор ресурса учетной записи хранения и соответствующий ключ доступа. При изменении ключа доступа необходимо обновить данные хранилища с учетом нового ключа.
+Также можно использовать hello предшествует журналы toocollect сценариев из учетных записей хранения в разных подписках. сценарий Hello — может toowork между подписками, поскольку вы указываете идентификатор ресурса для учетной записи хранилища hello и соответствующий ключ доступа. При изменении ключа доступа hello необходимо tooupdate hello анализ toohave hello новый ключ хранилища.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия

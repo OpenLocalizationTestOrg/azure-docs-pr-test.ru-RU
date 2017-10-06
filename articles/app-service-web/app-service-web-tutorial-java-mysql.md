@@ -1,6 +1,6 @@
 ---
-title: "Создание веб-приложения Java в Azure с подключением к базе данных MySQL"
-description: "Узнайте, как создать приложение Java, которое подключается к службе базы данных MySQL в Azure и работает в службе приложений Azure."
+title: "aaaBuild веб-приложения Java и MySQL в Azure"
+description: "Узнайте, как tooget приложения Java, подключается служба базы данных MySQL в Azure toohello, работа в Azure службы приложений."
 services: app-service\web
 documentationcenter: Java
 author: bbenz
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: eb2d59939c4e4486bb14bb143a4a18f9bc1478e1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0820ee9c2b7bf8fcaa22287c27a7ab848a1c4927
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-a-java-and-mysql-web-app-in-azure"></a>Создание веб-приложения Java в Azure с подключением к базе данных MySQL
 
-В этом руководстве показано, как создать веб-приложение Java в Azure и подключить его к базе данных MySQL. Когда вы выполните инструкции руководства, у вас будет приложение [Spring Boot](https://projects.spring.io/spring-boot/), данные которого хранятся в [базе данных Azure для MySQL](https://docs.microsoft.com/azure/mysql/overview), которая работает в [веб-приложениях службы приложений Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview).
+Этот учебник показывает, как toocreate Java веб-приложения в Azure и соедините его tooa базы данных MySQL. Когда вы выполните инструкции руководства, у вас будет приложение [Spring Boot](https://projects.spring.io/spring-boot/), данные которого хранятся в [базе данных Azure для MySQL](https://docs.microsoft.com/azure/mysql/overview), которая работает в [веб-приложениях службы приложений Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview).
 
 ![Приложение Java, работающее в службе приложений Azure](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
@@ -31,44 +31,44 @@ ms.lasthandoff: 08/29/2017
 
 > [!div class="checklist"]
 > * Создание базы данных MySQL в Azure.
-> * Подключение примера приложения к базе данных
-> * Развертывание приложения в Azure
-> * Обновление и повторное развертывание приложения
+> * Подключение приложения toohello образца базы данных
+> * Развертывание tooAzure приложения hello
+> * Обновить и повторно развернуть приложение hello
 > * Потоковая передача журналов диагностики из Azure.
-> * Мониторинг приложения на портале Azure
+> * Мониторинг приложения hello в hello портал Azure
 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 1. [Скачайте и установите Git](https://git-scm.com/)
-1. [Скачайте и установите Java 7 JDK или более поздней версии](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+1. [Загрузите и установите hello Java 7 JDK или более поздней версии](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 1. [MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) (этот компонент потребуется запустить) 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="prepare-local-mysql"></a>Подготовка локальной базы данных MySQL 
 
-На этом шаге вы создадите базу данных на локальном сервере MySQL. Вы будете использовать ее для тестирования приложения на локальном компьютере.
+На этом шаге создания базы данных в локальный сервер MySQL для использования в проверочных приложение hello локально на компьютере.
 
-### <a name="connect-to-mysql-server"></a>Подключение к серверу MySQL
+### <a name="connect-toomysql-server"></a>Подключение сервера tooMySQL
 
-В окне терминала подключитесь к локальному серверу MySQL. Используйте это окно терминала для выполнения всех команд в рамках этого руководства.
+В окне терминала подключение tooyour локального сервера MySQL. Можно использовать это окно терминала toorun hello команды в этом учебнике.
 
 ```bash
 mysql -u root -p
 ```
 
-Если появится предложение ввести пароль, введите пароль для учетной записи `root`. Если вы не помните пароль учетной записи привилегированного пользователя, ознакомьтесь с разделом [MySQL: How to Reset the Root Password](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html) (MySQL: как сбросить пароль привилегированного пользователя).
+Если появится запрос пароля, введите пароль hello для hello `root` учетной записи. Если вы не помните пароль корневой учетной записи, см. раздел [MySQL: как tooReset hello пароль учетной записи Root](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
 
-Если команда выполнена успешно, значит, сервер MySQL уже работает. В противном случае обеспечьте запуск локального сервера MySQL, выполнив соответствующие [действия после установки MySQL](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html).
+Если команда выполнена успешно, значит, сервер MySQL уже работает. Если это не так, убедитесь в том, локальному серверу MySQL запущен из следующих hello [действий после установки MySQL](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html).
 
 ### <a name="create-a-database"></a>Создание базы данных 
 
-В командной строке `mysql` создайте базу данных и таблицу для элементов списка дел.
+В hello `mysql` запрос, создайте базу данных и таблицу для hello заданий для выполнения.
 
 ```sql
 CREATE DATABASE tododb;
@@ -80,49 +80,49 @@ CREATE DATABASE tododb;
 quit
 ```
 
-## <a name="create-and-run-the-sample-app"></a>Создание и запуск примера приложения 
+## <a name="create-and-run-hello-sample-app"></a>Создание и выполнение примера приложения hello 
 
-На этом шаге вы клонируете пример приложения Spring Boot, настроите его для использования локальной базы данных MySQL и запустите на компьютере. 
+На этом шаге клонировать загрузки Spring пример приложения, задана база данных локальной MySQL toouse hello и запустите его на компьютере. 
 
-### <a name="clone-the-sample"></a>Клонирования репозитория
+### <a name="clone-hello-sample"></a>Образец hello клонирования
 
-В окне терминала перейдите в рабочую папку и клонируйте репозиторий. 
+В окне терминала hello перейдите tooa работа каталога и клонирования репозитория образец hello. 
 
 ```bash
 git clone https://github.com/azure-samples/mysql-spring-boot-todo
 ```
 
-### <a name="configure-the-app-to-use-the-mysql-database"></a>Настройка приложения для использования базы данных MySQL
+### <a name="configure-hello-app-toouse-hello-mysql-database"></a>Настройте базу данных MySQL hello toouse приложения hello
 
-Замените `spring.datasource.password` и значение в каталоге *spring-boot-mysql-todo/src/main/resources/application.properties* корневым паролем, который вы использовали для открытия строки MySQL:
+Обновление hello `spring.datasource.password` и значение в *spring-boot-mysql-todo/src/main/resources/application.properties* с hello же корневой пароль, используемый tooopen hello MySQL строки:
 
 ```
 spring.datasource.password=mysqlpass
 ```
 
-### <a name="build-and-run-the-sample"></a>Сборка и запуск примера
+### <a name="build-and-run-hello-sample"></a>Построение и запуск образца hello
 
-Соберите и запустите пример с помощью оболочки Maven, включенной в репозиторий:
+Построение и запуск образца hello, с помощью программы-оболочки Maven hello, включенных в репозитории hello:
 
 ```bash
 cd spring-boot-mysql-todo
 mvnw package spring-boot:run
 ```
 
-Откройте в браузере адрес http://localhost:8080, чтобы увидеть пример в действии. По мере добавления задач в список используйте следующие команды SQL в строке MySQL, чтобы просмотреть данные, хранящиеся в базе данных MySQL.
+Откройте ваш браузер toohttp://localhost:8080 toosee в образце hello в действии. Добавление toohello список задач, используйте следующие команды SQL, в hello MySQL prompt tooview hello данные, хранящиеся в MySQL hello.
 
 ```SQL
 use testdb;
 select * from todo_item;
 ```
 
-Остановите приложение, нажав `Ctrl`+`C` в окне терминала. 
+Остановить приложение hello щелчком `Ctrl` + `C` в hello терминалов. 
 
 ## <a name="create-an-azure-mysql-database"></a>Создание базы данных MySQL в Azure
 
-На этом шаге вы создадите экземпляр [базы данных Azure для MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) с помощью [интерфейса командной строки Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Пример приложения для использования базы данных вы настроите позже в этом руководстве.
+На этом шаге вы создадите [базы данных Azure для MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) экземпляра, используя hello [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Настройке toouse приложения образец hello эта база данных позднее в учебнике hello.
 
-Используйте Azure CLI 2.0 в окне терминала, чтобы создать ресурсы, необходимые для размещения приложения Java в службе приложений Azure. Войдите в подписку Azure с помощью команды [az login](/cli/azure/#login) и следуйте инструкциям на экране. 
+Используйте hello Azure CLI 2.0 в окно терминала toocreate hello ресурсы, необходимые toohost приложения Java в Azure службы приложений. Войдите в подписку Azure совместно с hello tooyour [входа az](/cli/azure/#login) команды и выполните hello на экране инструкциям. 
 
 ```azurecli-interactive 
 az login 
@@ -130,20 +130,20 @@ az login
 
 ### <a name="create-a-resource-group"></a>Создание группы ресурсов
 
-Создайте [группу ресурсов](../azure-resource-manager/resource-group-overview.md) с помощью команды [az group create](/cli/azure/group#create). Группа ресурсов Azure — это логический контейнер, в котором происходит развертывание и администрирование связанных ресурсов (веб-приложений, баз данных и учетных записей хранения). 
+Создание [группы ресурсов](../azure-resource-manager/resource-group-overview.md) с hello [Создание группы az](/cli/azure/group#create) команды. Группа ресурсов Azure — это логический контейнер, в котором происходит развертывание и администрирование связанных ресурсов (веб-приложений, баз данных и учетных записей хранения). 
 
-В следующем примере создается группа ресурсов в регионе "Северная Европа".
+Hello следующий пример создает группу ресурсов в Северной Европе hello:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "North Europe"
 ```    
 
-Чтобы увидеть доступные значения для `--location`, выполните команду [az appservice list-locations](/cli/azure/appservice#list-locations).
+Возможные значения toosee hello можно использовать для `--location`, использовать hello [az appservice список расположений](/cli/azure/appservice#list-locations) команды.
 
 ### <a name="create-a-mysql-server"></a>Создание сервера MySQL
 
-Создайте сервер в базе данных Azure для MySQL (предварительная версия), выполнив команду [az mysql server create](/cli/azure/mysql/server#create).    
-В приведенной команде замените заполнитель `<mysql_server_name>` уникальным именем сервера MySQL. Это имя является частью имени узла сервера MySQL (`<mysql_server_name>.mysql.database.azure.com`), поэтому оно должно быть глобально уникальным. Кроме того, замените `<admin_user>` и `<admin_password>` собственными значениями.
+Создать сервер базы данных Azure для MySQL (Предварительная версия) с hello [создать сервер mysql az](/cli/azure/mysql/server#create) команды.    
+Замените собственное уникальное имя сервера MySQL, показывающий hello `<mysql_server_name>` заполнителя. Это имя является частью имени узла сервера MySQL, `<mysql_server_name>.mysql.database.azure.com`, поэтому ему toobe глобально уникальным. Кроме того, замените `<admin_user>` и `<admin_password>` собственными значениями.
 
 ```azurecli-interactive
 az mysql server create --name <mysql_server_name> \ 
@@ -153,7 +153,7 @@ az mysql server create --name <mysql_server_name> \
     --admin-password <admin_password>
 ```
 
-После создания сервера MySQL в Azure CLI отображаются следующие сведения.
+При создании сервера MySQL hello hello Azure CLI показано toohello аналогичные сведения, следующий пример:
 
 ```json
 {
@@ -171,7 +171,7 @@ az mysql server create --name <mysql_server_name> \
 
 ### <a name="configure-server-firewall"></a>Настройка брандмауэра сервера
 
-Создайте правило брандмауэра для сервера MySQL, чтобы разрешить подключения клиентов, выполнив команду [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#create). 
+Создать правило брандмауэра для MySQL server tooallow клиентских соединений с помощью hello [az mysql правила брандмауэра для сервера — создание](/cli/azure/mysql/server/firewall-rule#create) команды. 
 
 ```azurecli-interactive
 az mysql server firewall-rule create \
@@ -183,11 +183,11 @@ az mysql server firewall-rule create \
 ```
 
 > [!NOTE]
-> База данных Azure для MySQL (предварительная версия) пока не поддерживает автоматическое подключение из служб Azure. Так как IP-адреса в Azure назначаются динамически, на данный момент рекомендуется включить все IP-адреса. Так как служба находится на этапе предварительной версии, позднее будут добавлены более надежные методы защиты базы данных.
+> База данных Azure для MySQL (предварительная версия) пока не поддерживает автоматическое подключение из служб Azure. Как динамически назначаются IP-адресов в Azure, это лучше tooenable все IP-адреса теперь. По мере его предварительной версии службы hello лучше методы защиты базы данных будет включено.
 
-## <a name="configure-the-azure-mysql-database"></a>Настройка базы данных MySQL в Azure
+## <a name="configure-hello-azure-mysql-database"></a>Настройка базы данных MySQL в Azure hello
 
-В окне терминала на своем компьютере подключитесь к серверу MySQL в Azure. Используйте значение, указанное ранее для `<admin_user>` и `<mysql_server_name>`.
+В окне терминала hello на компьютере подключение toohello MySQL server в Azure. Используйте значение hello, указанную ранее `<admin_user>` и `<mysql_server_name>`.
 
 ```bash
 mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
@@ -195,7 +195,7 @@ mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.
 
 ### <a name="create-a-database"></a>Создание базы данных 
 
-В командной строке `mysql` создайте базу данных и таблицу для элементов списка дел.
+В hello `mysql` запрос, создайте базу данных и таблицу для hello заданий для выполнения.
 
 ```sql
 CREATE DATABASE tododb;
@@ -203,11 +203,11 @@ CREATE DATABASE tododb;
 
 ### <a name="create-a-user-with-permissions"></a>Создание пользователя с разрешениями
 
-Создайте пользователя базы данных и предоставьте ему все привилегии в базе данных `tododb`. Замените заполнители `<Javaapp_user>` и `<Javaapp_password>` уникальным именем своего приложения.
+Создание пользователя базы данных и присвойте ему все привилегии в hello `tododb` базы данных. Замените заполнители hello `<Javaapp_user>` и `<Javaapp_password>` приложения уникальное имя.
 
 ```sql
 CREATE USER '<Javaapp_user>' IDENTIFIED BY '<Javaapp_password>'; 
-GRANT ALL PRIVILEGES ON tododb.* TO '<Javaapp_user>';
+GRANT ALL PRIVILEGES ON tododb.* too'<Javaapp_user>';
 ```
 
 Завершите подключение к серверу, введя команду `quit`.
@@ -216,9 +216,9 @@ GRANT ALL PRIVILEGES ON tododb.* TO '<Javaapp_user>';
 quit
 ```
 
-## <a name="deploy-the-sample-to-azure-app-service"></a>Развертывание примера в службе приложений Azure
+## <a name="deploy-hello-sample-tooazure-app-service"></a>Развертывание образца hello tooAzure службы приложений
 
-Создайте план службы приложений Azure с ценовой категорией **Бесплатный** с помощью команды CLI [az appservice plan create](/cli/azure/appservice/plan#create). От плана службы приложений зависят физические ресурсы, используемые для размещения приложений. Все приложения, назначенные плану службы приложений, совместно используют ресурсы, которые позволяют сэкономить при размещении нескольких приложений. 
+Создать план службы приложений Azure с hello **FREE** ценовой категории с помощью hello [создать план служб приложений az](/cli/azure/appservice/plan#create) команду CLI. план служб приложений Hello определяет toohost hello физические ресурсы, используемые приложения. Все приложения, назначенный tooan план служб приложений используют эти ресурсы, позволяя toosave затрат при размещении нескольких приложений. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -227,7 +227,7 @@ az appservice plan create \
     --sku FREE
 ```
 
-После создания плана в Azure CLI отобразится приблизительно такой результат:
+При готовности плана hello hello Azure CLI показывает, как выходной toohello в следующем примере:
 
 ```json
 { 
@@ -247,7 +247,7 @@ az appservice plan create \
 
 ### <a name="create-an-azure-web-app"></a>Создание веб-приложения Azure
 
- С помощью команды CLI [az webapp create](/cli/azure/appservice/web#create) создайте определение веб-приложения в плане службы приложений `myAppServicePlan`. Определение веб-приложения предоставляет URL-адрес для доступа к приложению и настраивает несколько параметров для развертывания кода в Azure. 
+ Используйте hello [создать веб-приложение az](/cli/azure/appservice/web#create) toocreate команду CLI определение web app в hello `myAppServicePlan` план служб приложений. Определение приложения Hello web предоставляет приложению tooaccess URL-адрес и настраивает некоторые параметры toodeploy tooAzure вашего кода. 
 
 ```azurecli-interactive
 az webapp create \
@@ -256,9 +256,9 @@ az webapp create \
     --plan myAppServicePlan
 ```
 
-Замените заполнитель `<app_name>` уникальным именем своего приложения. Это уникальное имя используется в доменном имени по умолчанию для веб-приложения, поэтому оно должно быть уникальным для всех приложений в Azure. Позже можно сопоставить запись личного доменного имени с веб-приложением, прежде чем предоставлять его пользователям.
+Замена hello `<app_name>` заполнитель с именем собственный уникальный приложения. Это уникальное имя является частью hello имя домена по умолчанию для веб-приложения hello, поэтому hello имя должно toobe уникальным для всех приложений в Azure. Перед тем, как он tooyour пользователей можно сопоставить toohello входа пользовательского домена имя веб-приложения.
 
-Когда вы создадите определение веб-приложения, в Azure CLI отобразятся следующие сведения: 
+При готовности определение приложения hello web hello Azure CLI показано toohello аналогичные сведения, следующий пример: 
 
 ```json 
 {
@@ -277,9 +277,9 @@ az webapp create \
 
 ### <a name="configure-java"></a>Настройка Java 
 
-Настройте конфигурацию среды выполнения Java, необходимую для работы приложения, с помощью команды [az appservice web config update](/cli/azure/appservice/web/config#update).
+Настройка конфигурации среды выполнения Java hello, необходимый вашему приложению hello [обновление конфигурации web appservice az](/cli/azure/appservice/web/config#update) команды.
 
-Следующая команда настраивает веб-приложение для запуска в Java 8 JDK и [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+Hello следующая команда настраивает hello web app toorun на последние Java JDK 8 и [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set \ 
@@ -290,11 +290,11 @@ az webapp config set \
     --java-container-version 8.0
 ```
 
-### <a name="configure-the-app-to-use-the-azure-sql-database"></a>Настройка приложения для использования базы данных Azure SQL
+### <a name="configure-hello-app-toouse-hello-azure-sql-database"></a>Настройка базы данных Azure SQL hello toouse приложения hello
 
-Перед запуском примера приложения измените параметры веб-приложения, чтобы оно использовало базу данных Azure MySQL, созданную в Azure. Эти свойства доступны для веб-приложения как переменные среды. Они переопределяют значения, заданные в application.properties внутри упакованного веб-приложения. 
+Перед запуском пример приложения hello, настройте параметры приложения на hello веб-приложения toouse hello Azure MySQL база данных, созданные в Azure. Эти свойства предоставляется toohello веб-приложение как переменные среды и переопределить hello значения, заданные в application.properties hello внутри hello упакованных веб-приложения. 
 
-Задайте параметры приложения с помощью команды CLI [az webapp config appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings):
+Задайте параметры приложения с помощью [az webapp конфигурации appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) в hello CLI:
 
 ```azurecli-interactive
 az webapp config appsettings set \
@@ -318,9 +318,9 @@ az webapp config appsettings set \
 ```
 
 ### <a name="get-ftp-deployment-credentials"></a>Получение учетных данных FTP для развертывания 
-Для развертывания веб-приложения в службе приложений Azure можно использовать FTP, локальный репозиторий Git, GitHub, Visual Studio Team Services и BitBucket. В этом примере используется FTP для развертывания WAR-файла, ранее созданного на локальном компьютере в службе приложений Azure.
+Вы можете развернуть appservice tooAzure вашего приложения различными способами, включая FTP, локальный Git, GitHub, Visual Studio Team Services и BitBucket. В этом примере FTP toodeploy hello. WAR-файла, созданного ранее на ваш локальный компьютер tooAzure службы приложений.
 
-Чтобы определить, какие учетные данные передавать в команде ftp для веб-приложения, выполните команду [az appservice web deployment list-publishing-profiles](https://docs.microsoft.com/cli/azure/appservice/web/deployment#list-publishing-profiles): 
+toodetermine, что учетные данные toopass вдоль в ftp команда toohello веб-приложения используйте [az appservice web развертывания списка публикации профили-](https://docs.microsoft.com/cli/azure/appservice/web/deployment#list-publishing-profiles) команды: 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles \ 
@@ -340,13 +340,13 @@ az webapp deployment list-publishing-profiles \
 ]
 ```
 
-### <a name="upload-the-app-using-ftp"></a>Отправка приложения с помощью FTP
+### <a name="upload-hello-app-using-ftp"></a>Отправка приложения hello, с помощью протокола FTP
 
-Используйте любой FTP-клиент для развертывания WAR-файла в папку */site/wwwroot/webapps* по адресу сервера, который получен из поля `URL` в предыдущей команде. Удалите существующий каталог приложения по умолчанию (ROOT) и замените существующий файл ROOT.war WAR-файлом, созданном ранее в этом руководстве.
+С помощью вашего любимого hello toodeploy средство FTP. Файл toohello WAR */site/wwwroot/webapps* папку на адрес сервера hello, взяты из hello `URL` в предыдущей команде hello. Удалите hello существующий каталог приложений по умолчанию (ROOT) и замените существующие ROOT.war с hello hello. WAR-файл, встроенной в hello ранее в учебнике hello.
 
 ```bash
 ftp waws-prod-blu-069.ftp.azurewebsites.windows.net
-Connected to waws-prod-blu-069.drip.azurewebsites.windows.net.
+Connected toowaws-prod-blu-069.drip.azurewebsites.windows.net.
 220 Microsoft FTP Service
 Name (waws-prod-blu-069.ftp.azurewebsites.windows.net:raisa): app_name\$app_name
 331 Password required
@@ -357,26 +357,26 @@ rmdir ROOT/
 put target/TodoDemo-0.0.1-SNAPSHOT.war ROOT.war
 ```
 
-### <a name="test-the-web-app"></a>Тестирование веб-приложения
+### <a name="test-hello-web-app"></a>Веб-приложения hello теста
 
-Перейдите по адресу `http://<app_name>.azurewebsites.net/` и добавьте несколько задач в список. 
+Обзор слишком`http://<app_name>.azurewebsites.net/` и добавьте список toohello несколько задач. 
 
 ![Приложение Java, работающее в службе приложений Azure](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
 **Поздравляем!** Вы запустили управляемое данными приложение Java в службе приложений Azure.
 
-## <a name="update-the-app-and-redeploy"></a>Обновление и повторное развертывание приложения
+## <a name="update-hello-app-and-redeploy"></a>Приложение hello обновления и повторного развертывания
 
-Обновите приложение, чтобы включить в список дел дополнительный столбец для дня, когда был создан элемент. Приложение Spring Boot выполняет обновление схемы базы данных автоматически при изменении модели данных. При этом оно не меняет существующие записи базы данных.
+Обновление приложения hello tooinclude дополнительный столбец в список todo hello для какой день hello элемент был создан. Spring загрузки обрабатывает обновление схемы базы данных hello как hello изменений модели данных без изменения существующей записи базы данных.
 
-1. На локальном компьютере, откройте файл *src/main/java/com/example/fabrikam/TodoItem.java* и добавьте в класс следующие операции импорта:   
+1. На локальном компьютере, откройте *src/main/java/com/example/fabrikam/TodoItem.java* и добавьте следующие hello импортирует toohello класса:   
 
     ```java
     import java.text.SimpleDateFormat;
     import java.util.Calendar;
     ```
 
-2. Добавьте свойство `String` `timeCreated` в файл *src/main/java/com/example/fabrikam/TodoItem.java*, инициализируя его с отметкой времени создания объекта. Во время редактирования этого файла добавьте методы получения и задания для нового свойства `timeCreated`.
+2. Добавить `String` свойство `timeCreated` слишком*src/main/java/com/example/fabrikam/TodoItem.java*, инициализирует его с отметкой времени создания объекта. Добавьте методы получения и задания для нового hello `timeCreated` свойство при редактировании этого файла.
 
     ```java
     private String name;
@@ -400,7 +400,7 @@ put target/TodoDemo-0.0.1-SNAPSHOT.war ROOT.war
     }
     ```
 
-3. Добавьте в файле *src/main/java/com/example/fabrikam/TodoDemoController.java* строку в метод `updateTodo`, чтобы задать метку времени:
+3. Обновление *src/main/java/com/example/fabrikam/TodoDemoController.java* со строкой в hello `updateTodo` timestamp hello tooset метод:
 
     ```java
     item.setComplete(requestItem.isComplete());
@@ -409,7 +409,7 @@ put target/TodoDemo-0.0.1-SNAPSHOT.war ROOT.war
     repository.save(item);
     ```
 
-4. Добавьте поддержку нового поля в шаблоне Thymeleaf. Добавьте в файл *src/main/resources/templates/index.html* новый заголовок таблицы для отметки времени и новое поле для отображения значения отметки времени в каждой строке таблицы данных.
+4. Добавлена поддержка нового поля hello в шаблоне Thymeleaf hello. Обновление *src/main/resources/templates/index.html* с заголовком таблицы для отметки времени hello и новое значение поля toodisplay hello объекта hello timestamp в каждой строке таблицы данных.
 
     ```html
     <th>Name</th>
@@ -422,23 +422,23 @@ put target/TodoDemo-0.0.1-SNAPSHOT.war ROOT.war
     <td><input type="checkbox" th:checked="${item.complete} == true" th:field="*{todoList[__${i.index}__].complete}"/></td>
     ```
 
-5. Перестройте приложение:
+5. Повторное построение приложения hello:
 
     ```bash
     mvnw clean package 
     ```
 
-6. С помощью FTP удалите существующий каталог *site/wwwroot/webapps/ROOT* и файл *ROOT.war*, а затем отправьте обновленный. WAR-файл как файл ROOT.war. 
+6. Обновить hello FTP. WAR как до, удалив существующие hello */wwwroot или веб-приложения или корневого КАТАЛОГА сайта* каталога и *ROOT.war*, то передача hello обновлены. WAR-файл как ROOT.war. 
 
-После обновления приложения будет отображаться столбец **Время создания**. При добавлении новой задачи приложение заполнит отметку времени автоматически. Существующие задачи останутся без изменений и будут выполняться приложением, даже если исходная модель данных изменена. 
+При обновлении приложения hello **время создания** столбца является видимым. При добавлении новой задачи, приложение hello будет автоматически заполнять hello отметки времени. Существующие задачи остаются без изменений и работать с приложение hello, несмотря на то, что изменилось hello базовой модели данных. 
 
 ![Приложение Java, в которое добавлен новый столбец](./media/app-service-web-tutorial-java-mysql/appservice-updates-java.png)
       
 ## <a name="stream-diagnostic-logs"></a>Потоковая передача журналов диагностики 
 
-При запуске приложения Java в службе приложений Azure можно передавать журналы консоли прямо в свой терминал. Таким образом, вы будете получать те же диагностические сообщения, которые помогут устранить ошибки приложения.
+Во время работы приложения Java в службе приложений Azure, можно получить консоли hello журналы по конвейеру непосредственно tooyour терминала. Таким образом, можно получить hello же диагностические сообщения toohelp отладке ошибок приложения.
 
-Чтобы настроить потоки для журналов, выполните команду [az webapp log tail](/cli/azure/appservice/web/log#tail).
+Журнал toostart потоковой передачи, используйте hello [заключительного фрагмента журнала webapp az](/cli/azure/appservice/web/log#tail) команды.
 
 ```azurecli-interactive 
 az webapp log tail \
@@ -448,19 +448,19 @@ az webapp log tail \
 
 ## <a name="manage-your-azure-web-app"></a>Управление веб-приложением Azure
 
-Перейти на портал Azure, чтобы увидеть созданное веб-приложение.
+Go toohello hello Azure портала toosee веб-приложения, созданный.
 
-Для этого войдите на портал [https://portal.azure.com](https://portal.azure.com).
+toodo, вход слишком[https://portal.azure.com](https://portal.azure.com).
 
-В меню слева выберите **Служба приложений**, а затем щелкните имя своего веб-приложения Azure.
+Hello в левом меню, щелкните **службы приложений**, затем щелкните имя hello Azure веб-приложения.
 
-![Переход к веб-приложению Azure на портале](./media/app-service-web-tutorial-java-mysql/access-portal.png)
+![Веб-приложения портала навигации tooAzure](./media/app-service-web-tutorial-java-mysql/access-portal.png)
 
-По умолчанию колонка веб-приложения отображает страницу **обзора**. Здесь вы можете наблюдать за работой приложения. Вы также можете выполнять базовые задачи управления, например завершение, запуск, перезагрузку и удаление. На вкладках в левой части колонки отображаются различные страницы конфигурации, которые можно открыть.
+По умолчанию колонки веб-приложение отображает hello **Обзор** страницы. Здесь вы можете наблюдать за работой приложения. Вы также можете выполнять базовые задачи управления, например завершение, запуск, перезагрузку и удаление. Hello вкладках hello левой части колонки hello отображаются страницы hello другой конфигурации, которые можно открыть.
 
 ![Колонка службы приложений на портале Azure](./media/app-service-web-tutorial-java-mysql/web-app-blade.png)
 
-На вкладках в колонке содержится множество полезных функций, которые вы можете добавить в веб-приложение. Ниже представлены лишь некоторые из возможностей:
+Эти закладки в колонке hello показывают hello множеством замечательных функций, можно добавить tooyour веб-приложения. После списка Hello предоставляет несколько возможностей hello:
 * сопоставление настраиваемого DNS-имени;
 * привязка настраиваемого SSL-сертификата;
 * настройка непрерывного развертывания;
@@ -469,7 +469,7 @@ az webapp log tail \
 
 ## <a name="clean-up-resources"></a>Очистка ресурсов
 
-Если эти ресурсы не требуются для изучения другого руководства (см. раздел [Дальнейшие действия](#next)), их можно удалить, выполнив следующие команды: 
+Если эти ресурсы не требуется другой учебник (см. [дальнейшие действия](#next)), их можно удалить, выполнив следующую команду hello: 
   
 ```azurecli-interactive
 az group delete --name myResourceGroup 
@@ -481,13 +481,13 @@ az group delete --name myResourceGroup
 
 > [!div class="checklist"]
 > * Создание базы данных MySQL в Azure.
-> * Подключение примера приложения Java к базе данных MySQL
-> * Развертывание приложения в Azure
-> * Обновление и повторное развертывание приложения
+> * Подключение toohello приложения Java образец MySQL
+> * Развертывание tooAzure приложения hello
+> * Обновить и повторно развернуть приложение hello
 > * Потоковая передача журналов диагностики из Azure.
-> * Управление приложением на портале Azure.
+> * Управление приложение hello в hello портал Azure
 
-Перейдите к следующему руководству, чтобы научиться сопоставлять пользовательские DNS-имена с приложением.
+Переместить следующий учебник toolearn toohello как toomap пользовательские DNS название toohello приложения.
 
 > [!div class="nextstepaction"] 
-> [Сопоставление существующего настраиваемого DNS-имени с веб-приложениями Azure](app-service-web-tutorial-custom-domain.md)
+> [Сопоставьте существующий пользовательский DNS имя tooAzure веб-приложений](app-service-web-tutorial-custom-domain.md)

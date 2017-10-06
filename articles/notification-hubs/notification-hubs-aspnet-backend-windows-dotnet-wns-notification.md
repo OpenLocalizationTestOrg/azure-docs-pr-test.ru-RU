@@ -1,6 +1,6 @@
 ---
-title: "Уведомление пользователей посредством концентраторов уведомлений с помощью серверной части .NET"
-description: "Узнайте, как отправлять безопасные push-уведомления в Azure. Примеры кода написаны на C# с использованием API .NET."
+title: "aaaAzure пользователям уведомления концентраторов уведомлений с помощью серверного приложения .NET"
+description: "Узнайте, как безопасные toosend push-уведомления в Azure. Примеры кода на языке C# с использованием hello .NET API."
 documentationcenter: windows
 author: ysxu
 manager: erikre
@@ -14,32 +14,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: c0b963ef661612b1a176dd8e5f01d56e61eb5acb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a366181faa81e78adf4de61435ef2790c3aa29d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-notification-hubs-notify-users-with-net-backend"></a>Уведомление пользователей посредством концентраторов уведомлений с помощью серверной части .NET
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ## <a name="overview"></a>Обзор
-Поддержка push-уведомлений в Azure позволяет получить доступ к простой в использовании, многоплатформенной и масштабируемой инфраструктуре для отправки push-уведомлений, которая значительно упрощает реализацию push-уведомлений как для индивидуальных пользователей, так и для корпоративных приложений для мобильных платформ. В этом учебнике показано, как использовать концентраторы уведомлений Azure для отправки push-уведомлений пользователю определенного приложения на конкретном устройстве. Для проверки подлинности клиентов используется серверная часть веб-API ASP.NET. С помощью пользователя, прошедшего проверку подлинности клиента, тег будет добавляться автоматически на серверной части для регистрации уведомлений. Этот тег будет использоваться для отправки с серверной части для создания уведомлений конкретному пользователю. Дополнительные сведения о регистрации уведомлений с помощью серверной части приложения см. в разделе руководства [Регистрация из внутренней службы приложения](http://msdn.microsoft.com/library/dn743807.aspx). В этом руководстве используется центр уведомлений и проект, созданные вами при работе с руководством [Начало работы с Центрами уведомлений для приложений универсальной платформы Windows].
+Поддержка уведомлений Push в Azure позволяет tooaccess к использованию, многоплатформенных и масштабируемых push-инфраструктуру, которая значительно упрощает реализацию hello push-уведомлений для индивидуальных пользователей и корпоративных приложений для мобильных устройств платформы. Этот учебник показывает, как toosend toouse концентраторов уведомлений Azure push-уведомления tooa определенное приложение пользователя на конкретном устройстве. Внутренний ASP.NET WebAPI — используется tooauthenticate клиентов. Привет, прошедшие проверку подлинности пользователя клиента и тег, будут автоматически добавляться регистрацией toonotification hello серверной части. Этот тег будет используется toosend уведомлениями toogenerate hello серверной части для конкретного пользователя. Дополнительные сведения о регистрации для уведомлений с использованием внутреннего сервера приложения см. в разделе hello руководство [регистрации из серверной части приложения](http://msdn.microsoft.com/library/dn743807.aspx). Этот учебник построен на концентраторе уведомлений hello и проект, созданный в hello [приступить к работе с концентраторами уведомлений] учебника.
 
-Этот учебник также необходимо изучить перед обращением к учебнику [Безопасные push-уведомления] . После выполнения действий, о которых рассказывается в данном учебнике, вы можете приступать к работе с учебником [Безопасные push-уведомления] , в котором рассказывается, как изменить код, указанный в этом учебнике, для безопасной отправки push-уведомлений.
+Этот учебник содержит также hello готовности toohello [принудительной защиты] учебника. После завершения шагов hello в этом учебнике, вы можете перейти toohello [принудительной защиты] руководство, в котором показано, как toomodify hello код в этот учебник toosend push-уведомление безопасно.
 
 ## <a name="before-you-begin"></a>Перед началом работы
-Мы очень ценим ваши отзывы. Если у вас возникли трудности с выполнением действий, описанных в этой статье, или у вас есть рекомендации по улучшению этого материала, пожалуйста, поделитесь с нами своими наблюдениями, воспользовавшись формой в нижней части страницы.
+Мы очень ценим ваши отзывы. Если возникли проблемы, завершение работы этого раздела или рекомендации по улучшению это содержимое, мы ценим ваши отзывы hello нижней части страницы приветствия.
 
-Полный код для этого учебника можно найти на портале [GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers). 
+код завершения Hello в этом учебнике можно найти на GitHub [здесь](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers). 
 
 ## <a name="prerequisites"></a>Предварительные требования
 Перед началом работы с этим учебником необходимо изучить следующие учебники по мобильным службам.
 
-* [Начало работы с Центрами уведомлений для приложений универсальной платформы Windows]<br/>С помощью этого учебника вы создадите центр уведомлений, зарезервируете имя приложения и зарегистрируетесь для получения уведомлений. В этом учебнике предполагается, что следующие действия уже были предприняты. В противном случае выполните действия, описанные в статье [Начало работы с Центрами уведомлений для приложений универсальной платформы Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), в частности в разделах [Регистрация приложения для Магазина Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#register-your-app-for-the-windows-store) и [Настройка концентратора уведомлений](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub). Обязательно проверьте, что вы ввели на портале значения полей **SID пакета** и **Секрет клиента**, на вкладке **Настройка** для концентратора уведомлений. Эта процедура настройки описывается в разделе [Настройка концентратора уведомлений](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub). Этот шаг имеет большое значение: если учетные данные на портале не соответствуют учетным данным, указанным для выбранного имени приложения, push-уведомление не будет успешно выполнено.
+* [приступить к работе с концентраторами уведомлений]<br/>Создать концентратор уведомлений и зарезервировать имя приложения hello и зарегистрировать tooreceive уведомления в этом учебнике. В этом учебнике предполагается, что следующие действия уже были предприняты. В противном случае следуйте инструкциям hello [Приступая к работе с концентраторами уведомлений (магазин Windows)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md); в частности, hello разделы [регистрации приложения для магазина Windows hello](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#register-your-app-for-the-windows-store) и [Настройка Концентратор уведомлений](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub). В частности, убедитесь в том, что вы ввели hello **ИД безопасности пакета** и **секрет клиента** значения в hello hello портале **Настройка** вкладке концентратор уведомлений. Эта конфигурация процедура описана в разделе hello [настройки центра уведомлений](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub). Это важный шаг: Если hello учетные данные на портале hello не соответствуют указанной выбрать имя приложения hello, hello push-уведомление не будет выполнено.
 
 > [!NOTE]
-> Если вы используете мобильные приложения в службе приложений Azure в качестве внутренней службы, то перейдите к [версии этого учебника для мобильных приложений](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
+> При использовании мобильных приложений в службе приложений Azure как безопасности внутренней службы. в разделе hello [мобильные приложения версии](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) этого учебника.
 > 
 > 
 
@@ -47,18 +47,18 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="update-the-code-for-the-client-project"></a>Обновите код для клиентского проекта
-В этом разделе вы обновите код в проекте, который вы завершили при работе с учебником [Начало работы с Центрами уведомлений для приложений универсальной платформы Windows] . Проект уже должен быть связан с хранилищем и настроен под концентратор уведомлений. В этом разделе вы добавите код для вызова нового внутреннего веб-API и используете его для регистрации и отправки уведомлений.
+## <a name="update-hello-code-for-hello-client-project"></a>Обновление кода hello для проекта клиента hello
+В этом разделе, при обновлении кода hello в проекте hello, вы выполнили hello [приступить к работе с концентраторами уведомлений] учебника. Hello следует уже связанную с хранилищем hello и настроен для центра уведомлений. В этом разделе будет добавить новый внутренний WebAPI кода toocall hello и использовать его для регистрации и отправки уведомлений.
 
-1. В Visual Studio откройте решение, созданное при работе с учебником [Начало работы с Центрами уведомлений для приложений универсальной платформы Windows] .
-2. В обозревателе решений щелкните правой кнопкой мыши проект **(Windows 8.1)** и выберите **Управление пакетами NuGet**.
-3. В левой части окна выберите **В сети**.
-4. В текстовом поле **Поиск** введите **Клиент HTTP**.
-5. В списке результатов выберите **Клиентские библиотеки Microsoft HTTP** и нажмите **Установить**. Выполните установку.
-6. Вернитесь к полю NuGet **Поиск** и введите **Json.net**. Установите пакет **Json.NET** и затем закройте окно диспетчера пакетов NuGet.
-7. Повторите предыдущие шаги для проекта **(Windows Phone 8.1)**, чтобы установить пакет NuGet **JSON.NET** для проекта Windows Phone.
-8. В обозревателе решений в проекте **(Windows 8.1)** дважды щелкните файл **MainPage.xaml**, чтобы открыть его в редакторе Visual Studio.
-9. В XML-коде файла **MainPage.xaml** замените раздел `<Grid>` следующим кодом: Этот код добавляет текстовое поле имени пользователя и пароля, которые будут использоваться для проверки подлинности пользователя. Он также добавляет текстовые поля для сообщения уведомления и тег имени пользователя, который должен получать уведомления:
+1. В Visual Studio откройте решение hello hello, созданный для hello [приступить к работе с концентраторами уведомлений] учебника.
+2. В обозревателе решений щелкните правой кнопкой мыши hello **(Windows 8.1)** проект и выберите пункт **управление пакетами NuGet**.
+3. В левой части окна hello, выберите **Online**.
+4. В hello **поиска** введите **HTTP-клиент**.
+5. В списке результатов hello, нажмите кнопку **клиентских библиотек HTTP Майкрософт**, а затем нажмите кнопку **установить**. Завершить установку hello.
+6. Вернитесь в hello NuGet **поиска** введите **Json.net**. Установка hello **Json.NET** пакета и hello закройте окно диспетчера пакетов NuGet.
+7. Повторите приведенные выше действия hello для hello **(Windows Phone 8.1)** hello проекта tooinstall **JSON.NET** пакет NuGet для проекта Windows Phone hello.
+8. В обозревателе решений в hello **(Windows 8.1)** проекта, дважды щелкните **MainPage.xaml** tooopen его в редакторе Visual Studio hello.
+9. В hello **MainPage.xaml** XML-код, замените hello `<Grid>` раздел с hello, следующий код. Этот код добавляет текстовое поле имени пользователя и пароля, Здравствуйте, пользователь будет выполнять проверку подлинности с помощью. Он также добавляет текстовые поля для сообщения уведомления hello и тег hello имя пользователя, который должен получать уведомления hello.
    
         <Grid>
             <Grid.RowDefinitions>
@@ -100,7 +100,7 @@ ms.lasthandoff: 07/11/2017
                     <ToggleButton Name="toggleGCM" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Content="GCM" />
                     <ToggleButton Name="toggleAPNS" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" Content="APNS" />
    
-                    <TextBlock Grid.Row="6" Grid.ColumnSpan="3" Text="Username Tag To Send To" FontSize="24" Margin="20,0,20,0"/>
+                    <TextBlock Grid.Row="6" Grid.ColumnSpan="3" Text="Username Tag tooSend To" FontSize="24" Margin="20,0,20,0"/>
                     <TextBox Name="ToUserTagTextBox" Grid.Row="7" Grid.ColumnSpan="3" Margin="20,0,20,0" TextWrapping="Wrap" />
                     <TextBlock Grid.Row="8" Grid.ColumnSpan="3" Text="Enter Notification Message" FontSize="24" Margin="20,0,20,0"/>
                     <TextBox Name="NotificationMessageTextBox" Grid.Row="9" Grid.ColumnSpan="3" Margin="20,0,20,0" TextWrapping="Wrap" />
@@ -108,10 +108,10 @@ ms.lasthandoff: 07/11/2017
                 </Grid>
             </StackPanel>
         </Grid>
-10. В обозревателе решений в проекте **(Windows Phone 8.1)** откройте файл **MainPage.xaml** и замените раздел `<Grid>` Windows Phone 8.1 приведенным выше кодом. Интерфейс должен выглядеть приблизительно так.
+10. В обозревателе решений в hello **(Windows Phone 8.1)** откройте проект **MainPage.xaml** и замените hello Windows Phone 8.1 `<Grid>` раздел с этой же приведенный выше код. Hello интерфейс должен выглядеть примерно toowhats, показано ниже.
     
     ![][13]
-11. В обозревателе решений откройте файл **MainPage.xaml.cs** для проектов **(Windows 8.1)** и **(Windows Phone 8.1)**. В верхнюю часть каждого из файлов добавьте такие `using` операторы:
+11. В обозревателе решений откройте hello **MainPage.xaml.cs** файл для hello **(Windows 8.1)** и **(Windows Phone 8.1)** проектов. Добавьте следующее hello `using` инструкции вверху hello оба файла:
     
         using System.Net.Http;
         using Windows.Storage;
@@ -119,14 +119,14 @@ ms.lasthandoff: 07/11/2017
         using Windows.Networking.PushNotifications;
         using Windows.UI.Popups;
         using System.Threading.Tasks;
-12. В файле **MainPage.xaml.cs** для проектов **(Windows 8.1)** и **(Windows Phone 8.1)** добавьте в класс `MainPage` следующий элемент. Обязательно замените `<Enter Your Backend Endpoint>` фактической конечной точкой серверной части, полученной ранее. Например, `http://mybackend.azurewebsites.net`.
+12. В **MainPage.xaml.cs** для hello **(Windows 8.1)** и **(Windows Phone 8.1)** проектов, добавьте следующий член toohello hello `MainPage` класса. Убедиться, что tooreplace быть `<Enter Your Backend Endpoint>` с hello ранее полученный фактическое серверной конечной точки. Например, `http://mybackend.azurewebsites.net`.
     
         private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
-13. В файле **MainPage.xaml.cs** для проектов **(Windows 8.1)** и **(Windows Phone 8.1)** добавьте в класс MainPage приведенный ниже код.
+13. Добавьте код hello ниже класс MainPage toohello в **MainPage.xaml.cs** для hello **(Windows 8.1)** и **(Windows Phone 8.1)** проектов.
     
-    Метод `PushClick` является обработчиком нажатия для кнопки **Отправить push-уведомление** . Он обеспечивает отправку серверной частью уведомлений на все устройства с тегом имени пользователя, который соответствует параметру `to_tag` . Сообщение уведомления отправляется в виде JSON-содержимого в теле запроса.
+    Hello `PushClick` метод — hello обработчика для hello **принудительной отправки** кнопки. Он вызывает hello серверной tootrigger tooall уведомления устройств с помощью имени пользователя тег, который соответствует hello `to_tag` параметра. Hello отправляется уведомление как содержимое JSON в теле запроса hello.
     
-    Метод `LoginAndRegisterClick` является обработчиком нажатия для кнопки **Вход и регистрация** . Он сохраняет маркер проверки подлинности в локальном хранилище (обратите внимание, что это относится к любому маркеру, используемому в данной схеме проверки подлинности), а затем с помощью `RegisterClient` подписывается на получение уведомлений, используя серверную часть.
+    Hello `LoginAndRegisterClick` метод — hello обработчика для hello **вход и зарегистрируйте** кнопки. Он сохраняет hello basic токена проверки подлинности в локальном хранилище (Обратите внимание, что это касается любого токена, который использует схему проверки подлинности), затем использует `RegisterClient` tooregister для уведомлений с использованием внутреннего hello.
 
         private async void PushClick(object sender, RoutedEventArgs e)
         {
@@ -162,7 +162,7 @@ ms.lasthandoff: 07/11/2017
                 }
                 catch (Exception ex)
                 {
-                    MessageDialog alert = new MessageDialog(ex.Message, "Failed to send " + pns + " message");
+                    MessageDialog alert = new MessageDialog(ex.Message, "Failed toosend " + pns + " message");
                     alert.ShowAsync();
                 }
             }
@@ -174,12 +174,12 @@ ms.lasthandoff: 07/11/2017
 
             var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-            // The "username:<user name>" tag gets automatically added by the message handler in the backend.
-            // The tag passed here can be whatever other tags you may want to use.
+            // hello "username:<user name>" tag gets automatically added by hello message handler in hello backend.
+            // hello tag passed here can be whatever other tags you may want toouse.
             try
             {
-                // The device handle used will be different depending on the device and PNS. 
-                // Windows devices use the channel uri as the PNS handle.
+                // hello device handle used will be different depending on hello device and PNS. 
+                // Windows devices use hello channel uri as hello PNS handle.
                 await new RegisterClient(BACKEND_ENDPOINT).RegisterAsync(channel.Uri, new string[] { "myTag" });
 
                 var dialog = new MessageDialog("Registered as: " + UsernameTextBox.Text);
@@ -189,7 +189,7 @@ ms.lasthandoff: 07/11/2017
             }
             catch (Exception ex)
             {
-                MessageDialog alert = new MessageDialog(ex.Message, "Failed to register with RegisterClient");
+                MessageDialog alert = new MessageDialog(ex.Message, "Failed tooregister with RegisterClient");
                 alert.ShowAsync();
             }
         }
@@ -205,17 +205,17 @@ ms.lasthandoff: 07/11/2017
 
 
 
-1. В обозревателе решений в проекте **Shared** откройте файл **App.xaml.cs**. В обработчике событий `OnLaunched()` найдите вызов `InitNotificationsAsync()`: Закомментируйте или удалите вызов `InitNotificationsAsync()`. Обработчик кнопки, добавленный выше, инициализирует регистрацию уведомлений.
+1. В обозревателе решений в разделе hello **Shared** проект, откройте hello **App.xaml.cs** файла. Поиск вызова hello слишком`InitNotificationsAsync()` в hello `OnLaunched()` обработчика событий. Закомментируйте или удалите вызов hello слишком`InitNotificationsAsync()`. Обработчик кнопки Hello добавленных выше будет инициализировать регистрации уведомлений.
 
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             //InitNotificationsAsync();
 
 
-1. В обозревателе решений щелкните правой кнопкой мыши проект **Shared**, щелкните **Добавить**, а затем **Класс**. Присвойте классу имя **RegisterClient.cs**, затем нажмите кнопку **ОК**, чтобы создать класс.
+1. В обозревателе решений щелкните правой кнопкой мыши hello **Shared** проекта, а затем нажмите кнопку **добавить**, а затем нажмите кнопку **класса**. Имя класса hello **RegisterClient.cs**, нажмите кнопку **ОК** toogenerate hello класса.
    
-   Этот класс будет реализовать вызовы REST, необходимые для связи с серверной частью приложения, с целью регистрации в службе push-уведомлений. В данном случае также происходит локальное сохранение идентификаторов *registrationId* , созданных концентратором уведомлений в соответствии с описанием в разделе [Регистрация из серверной части приложения](http://msdn.microsoft.com/library/dn743807.aspx). Обратите внимание, что в данном случае используется маркер проверки подлинности, сохраненный в локальном хранилище при нажатии кнопки **Вход и регистрация** .
-2. Добавьте в начало файла RegisterClient.cs следующие операторы `using` :
+   Этот класс будет переноситься hello REST вызывает необходимые toocontact hello внутреннего сервера приложения, в порядке tooregister push-уведомления. Она также локально хранит hello *свойства Registrationid* созданные hello концентратор уведомлений, как описано в [регистрации из серверной части приложения](http://msdn.microsoft.com/library/dn743807.aspx). Обратите внимание, что он использует маркер авторизации, хранящихся в локальном хранилище, при нажатии кнопки hello **входа и регистрации** кнопки.
+2. Добавьте следующее hello `using` операторы в начале hello hello RegisterClient.cs файла:
    
        using Windows.Storage;
        using System.Net;
@@ -224,7 +224,7 @@ ms.lasthandoff: 07/11/2017
        using Newtonsoft.Json;
        using System.Threading.Tasks;
        using System.Linq;
-3. Добавьте в определение класса `RegisterClient` следующий код:
+3. Добавьте следующий код внутри hello hello `RegisterClient` определения класса.
    
        private string POST_URL;
    
@@ -311,23 +311,23 @@ ms.lasthandoff: 07/11/2017
        }
 4. Сохраните изменения.
 
-## <a name="testing-the-application"></a>Тестирование приложения
-1. Запустите приложение в Windows 8.1 и Windows Phone 8.1. Для Windows Phone 8.1 запустить экземпляр можно в эмуляторе или в самом устройстве.
-2. В экземпляре приложения Windows 8.1 введите **имя пользователя** и **пароль**, как показано ниже. Они должны отличаться от имени пользователя и пароля, вводимых в Windows Phone.
-3. Щелкните **Вход и регистрация** и убедитесь, что в диалоговом окне отображается подтверждение выполнения входа. Таким образом будет активирована кнопка **Отправить push-уведомление** .
+## <a name="testing-hello-application"></a>Тестирование приложения hello
+1. Запустите приложение hello на Windows 8.1 и Windows Phone 8.1. Для Windows Phone 8.1 можно запустить экземпляр hello в эмуляторе hello или само устройство.
+2. В экземпляре hello Windows 8.1 приложение hello, введите **Username** и **пароль** как показано ниже экрана приветствия. Она должна отличаться от hello имя пользователя и пароль, введенные на Windows Phone.
+3. Щелкните **Вход и регистрация** и убедитесь, что в диалоговом окне отображается подтверждение выполнения входа. Это также позволит hello **принудительной отправки** кнопки.
    
     ![][14]
-4. В экземпляре Windows Phone 8.1 введите строку с именем пользователя в поле **Имя пользователя** и в поле **Пароль**, затем щелкните **Вход и регистрация**.
-5. Затем в поле **Тег имени получателя** введите имя пользователя, зарегистрированное в Windows 8.1. Введите сообщение уведомления и нажмите кнопку **Отправить push-уведомление**.
+4. На экземпляре hello Windows Phone 8.1, введите строку имени пользователя в обоих hello **Username** и **пароль** поля, затем нажмите кнопку **входа и регистрации**.
+5. Затем в hello **тег Username получателя** введите имя пользователя hello, зарегистрированных в Windows 8.1. Введите сообщение уведомления и нажмите кнопку **Отправить push-уведомление**.
    
     ![][16]
-6. Сообщения уведомления могут получать только устройства с зарегистрированным соответствующим тегом имени получателя.
+6. Только hello устройства, которые регистрировались hello соответствующий тег username сообщение hello уведомления.
    
     ![][15]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Если необходимо разделить пользователей по группам интересов, см. раздел [Использование концентраторов уведомлений для передачи экстренных новостей].
-* Дополнительную информацию об использовании центров уведомлений можно найти в [руководстве по использованию центров уведомлений].
+* Если toosegment пользователям по группы интересов, см. [toosend использования концентраторов уведомлений, новости].
+* см. Дополнительные сведения о том, как toolearn toouse концентраторов уведомлений, [руководство концентраторы уведомлений].
 
 [9]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push9.png
 [10]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push10.png
@@ -341,7 +341,7 @@ ms.lasthandoff: 07/11/2017
 
 
 <!-- URLs. -->
-[Начало работы с Центрами уведомлений для приложений универсальной платформы Windows]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Безопасные push-уведомления]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
-[Использование концентраторов уведомлений для передачи экстренных новостей]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[руководстве по использованию центров уведомлений]: http://msdn.microsoft.com/library/jj927170.aspx
+[приступить к работе с концентраторами уведомлений]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[принудительной защиты]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
+[toosend использования концентраторов уведомлений, новости]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[руководство концентраторы уведомлений]: http://msdn.microsoft.com/library/jj927170.aspx

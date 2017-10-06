@@ -1,5 +1,5 @@
 ---
-title: "Пример скрипта Azure CLI. Масштабирование кластера ACS | Документы Майкрософт"
+title: "Пример сценария CLI - aaaAzure масштабировать кластер ACS | Документы Microsoft"
 description: "Пример скрипта Azure CLI. Масштабирование кластера ACS"
 services: container-service
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 0ea2c73436e650fdb37535538baccc565369fa9d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b1c214d7cca615257ec8cd6e9993cd15f694289b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scale-an-azure-container-service-cluster"></a>Масштабирование кластера службы контейнеров Azure
 
@@ -38,7 +38,7 @@ az acs scale --resource-group myResourceGroup --name myK8SCluster --new-agent-co
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполните следующую команду, чтобы удалить группу ресурсов, виртуальную машину и все связанные с ней ресурсы.
+Выполните следующие команды tooremove hello группы ресурсов, виртуальная машина и все связанные ресурсы hello.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -46,7 +46,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Чтобы создать развертывание, скрипт использует следующие команды. Для каждого элемента в таблице приведены ссылки на документацию по команде.
+Этот скрипт использует следующие команды toocreate hello развертывания hello. Каждый элемент в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
@@ -54,7 +54,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры скриптов CLI службы контейнеров Azure см. в [документации по службе контейнеров Azure](../cli-samples.md).
+Дополнительные образцы сценариев службы контейнера Azure CLI можно найти в hello [документации по службе Azure контейнер](../cli-samples.md).
 

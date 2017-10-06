@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Perception United States (Non-UltiPro) | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в Perception United States (Non-UltiPro)."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и восприятия США (Non-UltiPro)."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,226 +14,226 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e2f9f979f8b94e0c043d4db6e93bd7a53c3dd27
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 874b5da277b9c68504c4af2ac87ed90d2bbd93b3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Руководство по интеграции Azure Active Directory с Perception United States (Non-UltiPro)
 
-В этом руководстве вы узнаете, как интегрировать Perception United States (Non-UltiPro) с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate восприятии United States (Non-UltiPro) с Azure Active Directory (Azure AD).
 
-Интеграция Perception United States (Non-UltiPro) с Azure AD обеспечивает следующие преимущества:
+Интеграция впечатление США (Non-UltiPro) с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Perception United States (Non-UltiPro).
-- Вы можете включить автоматический вход пользователей в Perception United States (Non-UltiPro) (единый вход) с использованием их учетных записей Azure AD.
-- Вы можете управлять учетными записями централизованно — на портале Azure.
+- Можно управлять в Azure AD, имеющего доступ tooPerception США (Non-UltiPro).
+- Можно включить на пользователей tooautomatically get вошедшего tooPerception США (Non-UltiPro) (Single Sign-On) с помощью своих учетных записей Azure AD.
+- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с United States (Non-UltiPro) необходимо следующее:
+tooconfigure интеграция Azure AD с впечатление США (Non-UltiPro) требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Perception United States (Non-UltiPro) с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Perception United States (Non-UltiPro) из коллекции.
+1. Добавление впечатление США (Non-UltiPro) из коллекции hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-perception-united-states-non-ultipro-from-the-gallery"></a>Добавление Perception United States (Non-UltiPro) из коллекции
-Чтобы настроить интеграцию Perception United States (Non-UltiPro) с Azure AD, необходимо добавить Perception United States (Non-UltiPro) из коллекции в список управляемых приложений SaaS.
+## <a name="adding-perception-united-states-non-ultipro-from-hello-gallery"></a>Добавление впечатление США (Non-UltiPro) из коллекции hello
+tooconfigure hello интеграции для восприятия США (Non-UltiPro) в Azure AD, вы должны tooadd восприятии США (Non-UltiPro) из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Perception United States (Non-UltiPro) из коллекции, выполните следующие действия:**
+**tooadd восприятии United States (Non-UltiPro) из коллекции hello выполните hello следующие шаги.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
-    ![Колонка "Корпоративные приложения"][2]
+    ![Hello корпоративных приложений колонку][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Кнопка нового приложения Hello][3]
 
-4. В поле поиска введите **Perception United States (Non-UltiPro)**, выберите **Perception United States (Non-UltiPro)** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+4. Введите в поле поиска hello **восприятия США (Non-UltiPro)**выберите **восприятия США (Non-UltiPro)** из панели результатов щелкните **добавить** tooadd кнопку приложение Hello.
 
-    ![Perception United States (Non-UltiPro) в списке результатов](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_addfromgallery.png)
+    ![Впечатление United States (Non-UltiPro) в списке результатов hello](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в Perception United States (Non-UltiPro) с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Perception United States (Non-UltiPro) соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Perception United States (Non-UltiPro).
+Для единого входа toowork Azure AD необходима tooknow какие пользователь аналог hello в восприятии США (Non-UltiPro) является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в восприятии США (Non-UltiPro) должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Perception United States (Non-UltiPro).
+В восприятии США (Non-UltiPro), присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Perception United States (Non-UltiPro), вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и тестирования Azure AD единого входа с впечатление США (Non-UltiPro), необходимы следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Perception United States (Non-UltiPro)](#create-a-perception-united-states-non-ultipro-test-user)** требуется для создания пользователя Britta Simon в Perception United States (Non-UltiPro), связанного с соответствующим представлением пользователя в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя впечатление США (Non-UltiPro)](#create-a-perception-united-states-non-ultipro-test-user)**  -toohave аналог Саймон Britta в восприятии США (Non-UltiPro), являющийся представлением связанного toohello Azure AD пользователя.
+4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Perception United States (Non-UltiPro).
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении впечатление США (Non-UltiPro).
 
-**Чтобы настроить единый вход Azure AD в Perception United States (Non-UltiPro), выполните следующие действия:**
+**tooconfigure Azure AD единого входа с впечатление США (Non-UltiPro), выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Perception United States (Non-UltiPro)** щелкните **Единый вход**.
+1. В hello в hello портала Azure **восприятии США (Non-UltiPro)** странице интеграции приложения щелкните **единого входа**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Perception United States (Non-UltiPro)** выполните следующие действия:
+3. На hello **URL-адреса и домена впечатление США (Non-UltiPro)** выполните следующие шаги hello:
 
     ![Сведения о домене и URL-адресах единого входа для приложения Perception United States (Non-UltiPro)](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
 
-    а. В текстовом поле **Идентификатор** введите URL-адрес `https://perception.kanjoya.com/sp`.
+    а. В hello **идентификатор** текстовом поле введите URL-адрес hello:`https://perception.kanjoya.com/sp`
 
-    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://perception.kanjoya.com/sso?idp=<entity_id>`.
+    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://perception.kanjoya.com/sso?idp=<entity_id>`
 
     > [!NOTE] 
-    > Это значение приведено для примера. Вы замените это значение на фактический URL-адрес ответа, который описывается далее в этом учебнике.
+    > значение Hello не является вещественным числом. Значение hello будет обновляться hello фактический URL-адрес ответа, который описывается далее в учебнике hello.
  
-4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
-    ![Ссылка для скачивания сертификата](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_certificate.png) 
+    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_general_400.png)
 
-6. В разделе **Настройка Perception United States (Non-UltiPro)** щелкните **Настроить Perception United States (Non-UltiPro)**, чтобы открыть окно **Настройка единого входа**. Скопируйте значение **SAML Entity ID** (Идентификатор сущности SAML) из раздела **Краткий справочник**.
+6. На hello **конфигурации впечатление США (Non-UltiPro)** щелкните **настройки восприятия США (Non-UltiPro)** tooopen **Настройка входа** окно. Копировать hello **идентификатор сущности SAML** из hello **краткий справочник.**
 
-    а. Приложению **Perception United States (Non-UltiPro)** необходимо значение **идентификатора сущности SAML**, которое вы скопировали, чтобы закодировать в формате URI. Для получения значения, закодированного в формате URI, перейдите по следующей ссылке: **http://www.url-encode-decode.com/**.
+    а. Hello **восприятия США (Non-UltiPro)** приложению hello **идентификатор сущности SAML** закодированный toobe uri значение, которое вы скопировали. значения uri кодируются tooget hello, используйте hello следующей ссылке:**http://www.url-encode-decode.com/**.
 
-    b. Получив это значение, объедините его с **URL-адресом ответа**, как показано ниже:
+    b. После получения hello uri закодированное значение совместно с hello **URL-адрес ответа** описанным ниже -
 
     `https://perception.kanjoya.com/sso?idp=<URI encooded entity_id>`
     
-    c. Вставьте значение выше в текстовое поле **URL-адрес ответа** в разделе **Домены и URL-адреса приложения Perception United States (Non-UltiPro)**.
+    c. Вставить hello выше значения в hello **URL-адрес ответа** текстовое поле в **URL-адреса и домена впечатление США (Non-UltiPro)** раздела.
 
     ![Настройка Perception United States (Non-UltiPro)](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_configure.png) 
 
-7. В другом окне браузера войдите на корпоративный веб-сайт Perception United States (Non-UltiPro) с правами администратора.
+7. В другом окне браузера Войдите на сайт компании tooyour восприятии США (Non-UltiPro) с правами администратора.
 
-8. На главной панели инструментов щелкните **Account Settings** (Параметры учетной записи).
+8. На главной панели инструментов hello, щелкните **параметры учетной записи**.
 
     ![Пользователь Perception United States (Non-UltiPro)](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
-9. На странице **Account Settings** (Параметры учетной записи) выполните следующие действия:
+9. На hello **параметры учетной записи** выполните следующие шаги hello:
 
     ![Пользователь Perception United States (Non-UltiPro)](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    а. В текстовом поле **Company Name** (Название компании) введите название **компании**.
+    а. В hello **название компании** в текстовое поле имя типа hello hello **компании**.
     
-    b. В текстовом поле **Account Name** (Имя учетной записи) введите имя **учетной записи**.
+    b. В hello **имя учетной записи** в текстовое поле имя типа hello hello **учетной записи**.
 
-    c. В текстовом поле **Default Reply-To Email** (Электронная почта ответа по умолчанию) введите допустимый адрес **электронной почты**.
+    c. В **ответа по умолчанию-tooEmail** текстовое поле, тип hello допустимым **электронной почты**.
 
     d. Выберите для параметра **SSO Identity Provider** (Поставщик удостоверений единого входа) значение **SAML 2.0**.
 
-10. На странице **настройки единого входа** сделайте следующее:
+10. На hello **Настройка единого входа** выполните следующие шаги hello:
 
     ![Настройка единого входа Perception United States (Non-UltiPro)](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
 
     а. Выберите для параметра **SAML NameID Type** (Тип NameID SAML) значение **EMAIL** (Электронная почта).
 
-    b. В текстовом поле **SSO Configuration Name** (Имя конфигурации единого входа) введите имя своей **конфигурации**.
+    b. В hello **имя конфигурации единого входа** в текстовое поле имя типа hello вашей **конфигурации**.
     
-    c. В текстовое поле **Identity Provider Name** (Имя поставщика удостоверений) вставьте значение **идентификатора сущности SAML**, скопированное на портале Azure. 
+    c. В **имя поставщика удостоверений** текстовое значение hello вставить **идентификатор сущности SAML**, который вы скопировали из портала Azure. 
 
-    d. В **текстовое поле домена SAML** введите домен, например **@contoso.com**.
+    d. В **текстовое поле для домена SAML**, введите домен hello как  **@contoso.com** .
 
-    д. Нажмите кнопку **Upload Again** (Отправить еще раз), чтобы передать **XML-файл метаданных**.
+    д. Щелкните **попытку отправить** tooupload hello **метаданные в формате XML** файла.
 
     f. Нажмите кнопку **Обновить**.
 
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
 
-    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-perceptionunitedstates-tutorial/create_aaduser_01.png)
+    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-perceptionunitedstates-tutorial/create_aaduser_01.png)
 
-2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
 
-    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-perceptionunitedstates-tutorial/create_aaduser_02.png)
+    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-perceptionunitedstates-tutorial/create_aaduser_02.png)
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
 
-    ![Кнопка "Добавить"](./media/active-directory-saas-perceptionunitedstates-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-perceptionunitedstates-tutorial/create_aaduser_03.png)
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
 
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-perceptionunitedstates-tutorial/create_aaduser_04.png)
+    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-perceptionunitedstates-tutorial/create_aaduser_04.png)
 
-    а. В поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
 
-    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
 
-    г) Щелкните **Создать**.
+    d. Щелкните **Создать**.
   
 ### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Создание тестового пользователя Perception United States (Non-UltiPro)
 
-В этом разделе описано, как создать пользователя Britta Simon в приложении Perception United States (Non-UltiPro). Обратитесь в [службу поддержки Perception United States (Non-UltiPro)](http://www.ultimatesoftware.com/Contact/ContactUs), чтобы добавить пользователей на платформу Perception United States (Non-UltiPro).
+В этом разделе описано, как создать пользователя Britta Simon в приложении Perception United States (Non-UltiPro). Работать с [группа поддержки впечатление США (Non-UltiPro)](http://www.ultimatesoftware.com/Contact/ContactUs) tooadd hello пользователей на платформе hello впечатление США (Non-UltiPro).
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив ему доступ к Perception United States (Non-UltiPro).
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooPerception США (Non-UltiPro).
 
-![Назначение роли пользователя][200] 
+![Назначение пользователям ролей hello][200] 
 
-**Чтобы назначить пользователя Britta Simon в приложении Perception United States (Non-UltiPro), выполните следующие действия:**
+**tooassign Britta Simon tooPerception США (Non-UltiPro) выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Perception United States (Non-UltiPro)**.
+2. В списке приложений hello выберите **восприятии США (Non-UltiPro)**.
 
-    ![Ссылка на Perception United States (Non-UltiPro) в списке "Приложения"](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_app.png)  
+    ![ссылка впечатление США (Non-UltiPro) Hello в списке приложений hello](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_app.png)  
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202]
+    ![Hello ссылку «Пользователи и группы»][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Область "Добавление назначения"][203]
+    ![область назначения, добавьте Hello][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -241,14 +241,14 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув плитку Perception United States (Non-UltiPro) на панели доступа, вы автоматически войдете в приложение Perception United States (Non-UltiPro).
-Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
+При нажатии кнопки hello впечатление США (Non-UltiPro) плитки в панели доступа hello, вы должны получить tooyour автоматически подписан на восприятие США (Non-UltiPro) приложения.
+Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

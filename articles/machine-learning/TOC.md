@@ -17,7 +17,7 @@
 ### [Машинное обучение Azure](http://aka.ms/datascienceprocess)
 
 ## Студия машинного обучения
-### [Что такое студия?](machine-learning-what-is-ml-studio.md)
+### [Что такое hello Studio?](machine-learning-what-is-ml-studio.md)
 ### [Возможности студии](machine-learning-studio-overview-diagram.md)
 ### [Инфографика: основные сведения о машинном обучении](machine-learning-basics-infographic-with-algorithm-examples.md)
 
@@ -40,7 +40,7 @@
 ## Обработка и анализ данных для начинающих
 ### [1. Пять вопросов](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
 ### [2. Готовы ли данные?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
-### [3. Правильные вопросы](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
+### [3: задать правильный вопрос hello](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
 ### [4. Прогнозирование ответа](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
 ### [5. Копирование работ других пользователей](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 
@@ -54,8 +54,8 @@
 ### [Настройка Hadoop](machine-learning-data-science-customize-hadoop-cluster.md)
 ### Настройка виртуальной машины
 #### [Обзор виртуальных машин доменных служб](machine-learning-data-science-virtual-machine-overview.md)
-#### [Как использовать виртуальную машину доменных служб](machine-learning-data-science-vm-do-ten-things.md)
-#### [Подготовка виртуальной машины доменных служб](machine-learning-data-science-provision-vm.md)
+#### [Как toouse hello ВМ доменных служб Active Directory](machine-learning-data-science-vm-do-ten-things.md)
+#### [Hello подготовки виртуальной Машины доменных служб Active Directory](machine-learning-data-science-provision-vm.md)
 #### [Настройка виртуальной машины Azure](machine-learning-data-science-setup-virtual-machine.md)
 #### [Настройка виртуальной машины SQL](machine-learning-data-science-setup-sql-server-virtual-machine.md)
 #### [Подготовка виртуальной машины Linux](machine-learning-data-science-linux-dsvm-intro.md)
@@ -79,8 +79,8 @@
 #### [Использование AzCopy](machine-learning-data-science-move-data-to-azure-blob-using-azcopy.md)
 #### [Использование Python](machine-learning-data-science-move-data-to-azure-blob-using-python.md)
 #### [Использование SSIS](machine-learning-data-science-move-data-to-azure-blob-using-ssis.md)
-#### [Перемещение в виртуальную машину](machine-learning-data-science-move-sql-server-virtual-machine.md)
-#### [Перемещение в базу данных SQL](machine-learning-data-science-move-sql-azure.md)
+#### [Tooa перемещения виртуальной Машины](machine-learning-data-science-move-sql-server-virtual-machine.md)
+#### [Перемещение базы данных tooSQL](machine-learning-data-science-move-sql-azure.md)
 #### [Загрузка в таблицы Hive](machine-learning-data-science-move-hive-tables.md)
 #### [Загрузка из локальной базы данных SQL](machine-learning-data-science-move-sql-azure-adf.md)
 #### [Загрузка таблиц секционирования SQL](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)
@@ -119,7 +119,7 @@
 ### Создание и обучение моделей
 #### [Управление жизненным циклом эксперимента](machine-learning-version-control.md)
 #### [Управление итерациями](machine-learning-manage-experiment-iterations.md)
-#### [Создание моделей с помощью PowerShell](machine-learning-create-models-and-endpoints-with-powershell.md)
+#### [С помощью PowerShell toocreate моделей](machine-learning-create-models-and-endpoints-with-powershell.md)
 #### Выбор алгоритмов
 ##### [Выбор алгоритмов](machine-learning-algorithm-choice.md)
 ##### [Памятка по алгоритмам](machine-learning-algorithm-cheat-sheet.md)

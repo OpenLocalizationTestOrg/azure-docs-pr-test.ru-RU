@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: устранение неполадок с простым единым входом | Документы Майкрософт"
-description: "Этот раздел описывает устранение неполадок с простым единым входом Azure Active Directory (Azure AD)."
+description: "В этом разделе описывается способ tootroubleshoot Azure Active Directory прозрачную единого входа (Azure AD, эффективная SSO)."
 services: active-directory
 keywords: "что такое Azure AD Connect, установка Active Directory, необходимые компоненты для Azure AD, единый вход"
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: billmath
-ms.openlocfilehash: bc4ff9125553c8918df3a1f84041560a5b7d4cd8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f1c1c11522f22d5bc742c126fff483c5b06e1f06
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Устранение неполадок с простым единым входом Azure Active Directory
 
@@ -26,59 +26,59 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="known-issues"></a>Известные проблемы
 
-- При синхронизации 30 лесов AD и более простой единый вход через Azure AD Connect включить невозможно. Чтобы избежать этого, можно [вручную включить](#manual-reset-of-azure-ad-seamless-sso) эту функцию на своем клиенте.
-- Добавление URL-адресов службы Azure AD (https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net) в зону "Надежные сайты" вместо зоны "Местная интрасеть" **блокирует вход пользователей**.
+- При синхронизации 30 лесов AD и более простой единый вход через Azure AD Connect включить невозможно. Чтобы избежать этого, вы можете [вручную включить](#manual-reset-of-azure-ad-seamless-sso) функции hello на клиенте.
+- Добавление Azure AD службы URL-адреса (https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net) toohello «Надежные узлы» зоны вместо зону «Местная интрасеть» hello **блокирует пользователям входить в**.
 - Простой единый вход не работает в конфиденциальном режиме просмотра в Firefox и Edge, а также в Internet Explorer при включенном режиме повышенной защиты.
 
 >[!IMPORTANT]
->Мы недавно выполнили откат поддержки Edge, чтобы найти причину проблем, о которых сообщили клиенты.
+>Мы недавно откат поддержка Edge tooinvestigate устранения проблем клиента.
 
-## <a name="check-status-of-the-feature"></a>Проверка состояния функции
+## <a name="check-status-of-hello-feature"></a>Проверьте состояние функции hello
 
-Убедитесь, что функция простого единого входа по-прежнему **включена** в клиенте. Можно проверить состояние, перейдя в колонку **Azure AD Connect** в [центре администрирования Azure Active Directory](https://aad.portal.azure.com/).
+Убедитесь, этот компонент hello прозрачную единого входа по-прежнему **включено** на клиенте. Можно проверить состояние, будет toohello **Azure AD Connect** колонка на hello [Центр администрирования Azure Active Directory](https://aad.portal.azure.com/).
 
 ![Центр администрирования Active Directory Azure — колонка "Azure AD Connect"](./media/active-directory-aadconnect-sso/sso10.png)
 
-## <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Причины сбоя единого входа в центре администрирования Azure Active Directory
+## <a name="sign-in-failure-reasons-on-hello-azure-active-directory-admin-center"></a>Причины сбоя входа на Центр администрирования Azure Active Directory hello
 
-Лучше всего начать поиск неполадок со входом пользователей при использовании простого единого входа — проверить [отчет о действиях при входе](../active-directory-reporting-activity-sign-ins.md) в [центре администрирования Azure Active Directory](https://aad.portal.azure.com/).
+Хорошая toostart, устранения неполадок пользователя войти с помощью комплексной единого входа является toolook на hello [действия при входе отчетов](../active-directory-reporting-activity-sign-ins.md) на hello [Центр администрирования Azure Active Directory](https://aad.portal.azure.com/).
 
 ![Центр администрирования Azure Active Directory — отчет о действиях входа](./media/active-directory-aadconnect-sso/sso9.png)
 
-Перейдите в раздел **Azure Active Directory** -> **Вход в систему** в [центре администрирования Azure Active Directory](https://aad.portal.azure.com/) и щелкните конкретное действие пользователя при входе. Найдите поле **КОД ОШИБКИ ВХОДА**. Сопоставьте значение этого поля c причиной сбоя и способом разрешения с помощью следующей таблицы:
+Перейдите в слишком**Azure Active Directory** -> **входа в систему** на hello [Центр администрирования Azure Active Directory](https://aad.portal.azure.com/) и нажмите кнопку действия при входе определенного пользователя. Найдите hello **входа в код ошибки** поля. Сопоставьте значение hello, причина сбоя tooa поля и разрешение, с помощью hello в следующей таблице:
 
 |Код ошибки входа|Причина ошибки входа|Способы устранения:
 | --- | --- | ---
 | 81001 | Билет Kerberos пользователя слишком большой. | Сократите список членства пользователя в группах и повторите попытку.
-| 81002 | Не удалось проверить билет Kerberos пользователя. | См. [Контрольный список по устранению неполадок](#troubleshooting-checklist).
-| 81003 | Не удалось проверить билет Kerberos пользователя. | См. [Контрольный список по устранению неполадок](#troubleshooting-checklist).
+| 81002 | Не удается toovalidate пользователя билета Kerberos. | См. [Контрольный список по устранению неполадок](#troubleshooting-checklist).
+| 81003 | Не удается toovalidate пользователя билета Kerberos. | См. [Контрольный список по устранению неполадок](#troubleshooting-checklist).
 | 81004 | Проверка подлинности Kerberos завершилась сбоем. | См. [Контрольный список по устранению неполадок](#troubleshooting-checklist).
-| 81008 | Не удалось проверить билет Kerberos пользователя. | См. [Контрольный список по устранению неполадок](#troubleshooting-checklist).
-| 81009 | "Не удалось проверить билет Kerberos пользователя. | См. [Контрольный список по устранению неполадок](#troubleshooting-checklist).
-| 81010 | Не удалось выполнить простой единый вход, так как срок действия билета Kerberos пользователя истек или этот билет недопустим. | Пользователю следует войти с устройства, присоединенного к домену, в корпоративной сети.
-| 81011 | Не удалось найти объект пользователя на основе сведений в билете Kerberos пользователя. | Используйте Azure AD Connect для синхронизации сведений о пользователе с Azure AD.
-| 81012 | Пользователь, пытающийся войти в Azure AD, отличается от пользователя устройства. | Войдите с другого устройства.
-| 81013 | Не удалось найти объект пользователя на основе сведений в билете Kerberos пользователя. |Используйте Azure AD Connect для синхронизации сведений о пользователе с Azure AD. 
+| 81008 | Не удается toovalidate пользователя билета Kerberos. | См. [Контрольный список по устранению неполадок](#troubleshooting-checklist).
+| 81009 | «Не удается toovalidate пользователя билета Kerberos. | См. [Контрольный список по устранению неполадок](#troubleshooting-checklist).
+| 81010 | Эффективная единого входа не удалось, поскольку пользователь hello билета Kerberos истек или является недопустимым. | Пользователь должен toosign в из устройств, присоединенных к домену, в корпоративной сети.
+| 81011 | Не удается toofind объект пользователя, на основе информации из билета Kerberos пользователя hello. | Используйте Azure AD Connect toosynchronize пользовательские данные в Azure AD.
+| 81012 | Hello пользователя, пытающегося toosign в tooAzure AD отличается от пользователя hello вход hello устройство. | Войдите с другого устройства.
+| 81013 | Не удается toofind объект пользователя, на основе информации из билета Kerberos пользователя hello. |Используйте Azure AD Connect toosynchronize пользовательские данные в Azure AD. 
 
 ## <a name="troubleshooting-checklist"></a>Контрольный список по устранению неполадок
 
-Используйте следующий контрольный список для устранения неполадок простого единого входа.
+Используйте hello следующих ситуаций прозрачную SSO tootroubleshoot контрольный список:
 
-- Проверьте, включена ли функция простого единого входа в Azure AD Connect. Если функцию не удается включить (например, из-за заблокированного порта), обеспечьте соблюдение всех [предварительных требований](active-directory-aadconnect-sso-quick-start.md#step-1-check-prerequisites).
-- Оба URL-адреса службы Azure AD (https://autologon.microsoftazuread-sso.com и https://aadg.windows.net.nsatc.net) должны быть указаны в параметрах зоны интрасети пользователя.
-- Убедитесь, что корпоративное устройство присоединено к домену AD.
-- Убедитесь, что пользователь вошел на устройство по доменной учетной записи AD.
-- Убедитесь, что учетная запись пользователя относится к лесу AD, где настроен простой единый вход.
-- Убедитесь, что устройство подключено к корпоративной сети.
-- Убедитесь, что время на устройстве синхронизировано с временем в Active Directory, и разница между временем контроллеров домена не превышает пяти минут.
-- Перечислите существующие билеты Kerberos на устройстве с помощью команды **klist** из командной строки. Убедитесь в наличии билетов, выданных для учетной записи компьютера `AZUREADSSOACCT`. Билеты Kerberos пользователей обычно действительны в течение 12 часов. В вашем каталоге Active Directory могут быть заданы другие параметры.
-- Удалите имеющиеся билеты Kerberos с устройства с помощью команды **klist purge** и повторите попытку.
-- Чтобы определить наличие проблем, связанных с JavaScript, просмотрите журналы консоли из браузера (в разделе "Средства разработчика").
-- Просмотрите также [Журналы контроллеров домена](#domain-controller-logs).
+- Проверьте, включена ли возможность эффективной SSO hello в Azure AD Connect. Если не удается включить функцию hello (например, из-за tooa заблокирован порт), проверьте наличие всех hello [предварительным](active-directory-aadconnect-sso-quick-start.md#step-1-check-prerequisites) на месте.
+- Проверьте, если оба эти Azure AD URL-адреса (https://autologon.microsoftazuread-sso.com и https://aadg.windows.net.nsatc.net) являются частью настроек зоны hello пользователя.
+- Убедитесь, что домен toohello присоединены к домену AD hello корпоративных устройств.
+- Убедитесь, что hello в любом toohello устройства, с помощью учетной записи домена AD.
+- Убедитесь, что учетная запись пользователя hello из леса AD, где было прозрачную единого входа.
+- Убедитесь, что устройство hello подключено hello корпоративной сети.
+- Убедитесь, что время на устройстве hello синхронизируется с временем hello Active Directory и контроллеров домена hello и находится в пределах пяти минут.
+- Список существующих билеты Kerberos на устройстве hello, с помощью hello **klist** команду из командной строки. Проверьте билеты уведомления в случае hello `AZUREADSSOACCT` присутствуют учетной записи компьютера. Билеты Kerberos пользователей обычно действительны в течение 12 часов. В вашем каталоге Active Directory могут быть заданы другие параметры.
+- Очистить существующие билеты Kerberos с помощью hello устройства hello **Очистка klist** команды и повторите попытку.
+- toodetermine при наличии вопросов, связанных с JavaScript, просмотрите журналы консоли hello hello браузера (в разделе «средства разработчика»).
+- Просмотрите hello [контроллер домена регистрирует](#domain-controller-logs) также.
 
 ### <a name="domain-controller-logs"></a>Журналы контроллеров домена
 
-Если на контроллере домена включен аудит успешных попыток, то каждый раз, когда пользователь входит в систему с использованием простого единого входа, в журнал событий заносится запись безопасности. Можно найти эти события безопасности с помощью следующего запроса (например, ищем событие **4769**, связанное с учетной записью компьютера **AzureADSSOAcc$**):
+Если аудит успешных попыток включен на контроллере домена, затем каждый раз, пользователь выполняет вход с использованием SSO прозрачную запись безопасности записывается в журнал событий hello. Можно найти эти события безопасности с помощью приветствия при следующем запросе (Найдите событие **4769** связанные с учетной записью компьютера hello **AzureADSSOAcc$**):
 
 ```
     <QueryList>
@@ -88,33 +88,33 @@ ms.lasthandoff: 08/18/2017
     </QueryList>
 ```
 
-## <a name="manual-reset-of-the-feature"></a>Ручной сброс функции
+## <a name="manual-reset-of-hello-feature"></a>Ручного сброса функции hello
 
-Если устранение неполадок не помогло, можно сбросить вручную эту функцию на клиенте. Выполните следующие действия на локальном сервере, на котором выполняется Azure AD Connect:
+Если разрешение не помогла, можно вручную сбросить функции hello в клиенте. Выполните следующие действия hello на локальном сервере, на котором выполняется Azure AD Connect.
 
-### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Шаг 1. Импортируйте модуль PowerShell для простого единого входа
+### <a name="step-1-import-hello-seamless-sso-powershell-module"></a>Шаг 1: Импортируйте модуль hello прозрачную PowerShell для единого входа
 
-1. Для начала скачайте и установите [помощник по входу в Microsoft Online Services](http://go.microsoft.com/fwlink/?LinkID=286152).
-2. Затем скачайте и установите [64-разрядный модуль Azure Active Directory для Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
-3. Перейдите в папку `%programfiles%\Microsoft Azure Active Directory Connect`.
-4. Импортируйте модуль PowerShell для простого единого входа с помощью следующей команды: `Import-Module .\AzureADSSO.psd1`.
+1. Во-первых, загрузка и установка hello [Microsoft Online Services помощник по входу](http://go.microsoft.com/fwlink/?LinkID=286152).
+2. Затем загрузите и установите hello [64-разрядного модуля Azure Active Directory для Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
+3. Перейдите toohello `%programfiles%\Microsoft Azure Active Directory Connect` папки.
+4. Импорт hello прозрачную PowerShell единого входа модуля с помощью этой команды: `Import-Module .\AzureADSSO.psd1`.
 
-### <a name="step-2-get-the-list-of-ad-forests-on-which-seamless-sso-has-been-enabled"></a>Шаг 2. Получение списка лесов AD, для которых включен простой единый вход
+### <a name="step-2-get-hello-list-of-ad-forests-on-which-seamless-sso-has-been-enabled"></a>Шаг 2: Получение списка hello лесов AD, для которых включен прозрачную единого входа
 
 1. Запустите PowerShell от имени администратора. В PowerShell вызовите `New-AzureADSSOAuthenticationContext`. При запросе введите свои учетные данные глобального администратора клиента.
-2. Вызовите `Get-AzureADSSOStatus`. Эта команда выводит список лесов AD (см. список "Домены"), в которых включена эта функция.
+2. Вызовите `Get-AzureADSSOStatus`. Эта команда предоставляет Здравствуйте списке лесов AD (см. список доменов «hello»), на которых включена эта функция.
 
 ### <a name="step-3-disable-seamless-sso-for-each-ad-forest-that-it-was-set-it-up-on"></a>Шаг 3. Отключите простой единый вход для каждого леса AD, где он был настроен
 
-1. Вызовите `$creds = Get-Credential`. При запросе введите свои учетные данные администратора домена для нужного леса AD.
-2. Вызовите `Disable-AzureADSSOForest -OnPremCredentials $creds`. Эта команда удаляет учетную запись компьютера `AZUREADSSOACCT` с локального контроллера домена для конкретного леса AD.
-3. Повторите предыдущие шаги для каждого леса AD, где настроена эта функция.
+1. Вызовите `$creds = Get-Credential`. При появлении запроса введите учетные данные администратора домена hello hello предназначен леса AD.
+2. Вызовите `Disable-AzureADSSOForest -OnPremCredentials $creds`. Эта команда удаляет hello `AZUREADSSOACCT` учетную запись компьютера в hello локального контроллера домена для данного конкретного леса AD.
+3. Повторите предыдущих шагах для каждого леса AD, вы настроили функции hello на hello.
 
 ### <a name="step-4-enable-seamless-sso-for-each-ad-forest"></a>Шаг 4. Включение простого единого входа для каждого леса AD
 
-1. Вызовите `Enable-AzureADSSOForest`. При запросе введите свои учетные данные администратора домена для нужного леса AD.
-2. Повторите предыдущие шаги для каждого леса AD, где нужно настроить эту функцию.
+1. Вызовите `Enable-AzureADSSOForest`. При появлении запроса введите учетные данные администратора домена hello hello предназначен леса AD.
+2. Повторите hello предыдущих шагах для каждого леса AD нужного tooset копирование функции hello.
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>Шаг 5. Включить функцию в своем клиенте
+### <a name="step-5-enable-hello-feature-on-your-tenant"></a>Шаг 5. Включить функцию hello на клиенте
 
-Вызовите `Enable-AzureADSSO` и введите "true" в командной строке `Enable: ` для включения функции в клиенте.
+Вызовите `Enable-AzureADSSO` и введите «true» в hello `Enable: ` prompt tooturn функцию hello в клиенте.

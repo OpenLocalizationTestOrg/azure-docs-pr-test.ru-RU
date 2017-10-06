@@ -1,5 +1,5 @@
 ---
-title: "Основные сведения о токенах пользователей в службе совместной работы Azure AD B2B | Документация Майкрософт"
+title: "токены пользователя aaaUnderstand в совместной работы Azure AD B2B | Документы Microsoft"
 description: "Справочные материалы по токенам пользователей для службы совместной работы Azure Active Directory B2B."
 services: active-directory
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/25/2017
 ms.author: sasubram
-ms.openlocfilehash: 57b170539513953bd6a01ab4dd362a65cf905496
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 968af1c8d1ab6f4b3f50a82f6c998da3955ac364
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Основные сведения о токенах пользователей в службе совместной работы Azure AD B2B
 
-Если вам необходимо знать, как выглядит токен для пользователя службы совместной работы B2B, ниже приведены сведения о токене носителя и содержимое токена для гостевого пользователя Azure Active Directory (Azure AD) и гостевого пользователя учетной записи Майкрософт в клиенте ресурса (для tenantid 04dcc6ab-388a-4559-b527-fbec656300ea). Чтобы просмотреть содержимое токена JSON Web Token (JWT), воспользуйтесь сайтом [https://jwt.io](https://jwt.io/) или [http://calebb.net](http://calebb.net/).
+Следует tooknow выглядит какие hello маркер для совместной работы пользователя B2B ниже приведены сведения маркера носителя hello и содержимом маркера гостевых систем Azure Active Directory (Azure AD) и гостевой учетной записи Майкрософт в клиенте hello ресурсов (для идентификатора клиента 04dcc6ab-388a-4559-b527-fbec656300ea). содержимое JSON Web Token (JWT) toosee hello, используйте [https://jwt.io/](https://jwt.io/) или [http://calebb.net](http://calebb.net/).
 
 ## <a name="azure-ad-guest-token"></a>Токен гостевого пользователя Azure AD
 ```
@@ -42,7 +42,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ilk0dWVLMm9hSU
 
 * [Что такое служба совместной работы Azure AD B2B?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Свойства пользователя службы совместной работы Azure Active Directory B2B](active-directory-b2b-user-properties.md)
-* [Добавление пользователя службы совместной работы Azure Active Directory B2B в роль](active-directory-b2b-add-guest-to-role.md)
+* [Добавление роли пользователя tooa B2B совместной работы](active-directory-b2b-add-guest-to-role.md)
 * [Делегирование приглашений для службы совместной работы Azure Active Directory B2B](active-directory-b2b-delegate-invitations.md)
 * [Динамические группы и служба совместной работы Azure Active Directory B2B](active-directory-b2b-dynamic-groups.md)
 * [Примеры кода и команд PowerShell для службы совместной работы Azure Active Directory B2B](active-directory-b2b-code-samples.md)

@@ -14,48 +14,48 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
-ms.openlocfilehash: dc319c97e64e55861b84cc3943667418077a05d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 90a495029f48d70232ef3f99de4ea4d351395aa7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Пошаговое руководство. Интеграция обмена утверждениями REST API в пути взаимодействия пользователя Azure AD B2C как этап оркестрации
 
-Инфраструктура процедур идентификации, лежащая в основе Azure Active Directory B2C (Azure AD B2C), позволяет разработчикам служб удостоверений интегрировать взаимодействие с REST API в пути взаимодействия пользователя.  
+Hello удостоверения качества Framework (IEF), лежащей в основе Azure Active Directory B2C (Azure AD B2C) позволяет hello удостоверение разработчика toointegrate взаимодействия с API REST в пути пользователя.  
 
-В конце этого пошагового руководства вы сможете создать путь взаимодействия пользователя Azure AD B2C, который взаимодействует со службами RESTful.
+В конце этого пошагового руководства hello будет может toocreate путешествия пользователя Azure AD B2C взаимодействует с службы RESTful.
 
-Инфраструктура процедур идентификации отправляет и получает данные в утверждениях. Обмен утверждениями REST API:
+Hello IEF отправляет данные в утверждениях и получает данные обратно в заявках. Hello exchange утверждений REST API:
 
 - может разрабатываться как этап оркестрации;
 - может вызывать внешнее действие, например записывать событие во внешнюю базу данных;
-- может использоваться, чтобы получить значение, а затем сохранить его в базе данных пользователя.
+- Можно использовать toofetch значение и затем сохранить ее в базе данных пользователей hello.
 
-Полученные утверждения могут позже использоваться для изменения процедуры выполнения.
+Можно использовать утверждения hello получено более поздней версии toochange hello хода выполнения.
 
-Взаимодействие можно также реализовать как профиль проверки. Дополнительные сведения см. в статье [Пошаговое руководство. Интеграция обмена утверждениями REST API в путях взаимодействия пользователей Azure AD B2C как проверка входных данных](active-directory-b2c-rest-api-validation-custom.md).
+Можно также создать hello взаимодействия как профиль проверки. Дополнительные сведения см. в статье [Пошаговое руководство. Интеграция обмена утверждениями REST API в путях взаимодействия пользователей Azure AD B2C как проверка входных данных](active-directory-b2c-rest-api-validation-custom.md).
 
-В сценарии (когда пользователь изменяет профиль) выполняются следующие действия:
+Hello случае, когда пользователь выполняет изменить профиль, необходимо:
 
-1. Поиск пользователя во внешней системе.
-2. Получение места регистрации пользователя.
-3. Возвращение этого атрибута как утверждения обратно в приложение.
+1. Поиск пользователя hello во внешней системе.
+2. Получите Город hello, где зарегистрирован этот пользователь.
+3. Возвращает атрибут toohello приложения в утверждения.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Клиент Azure AD B2C, необходимый для регистрации или входа с использованием локальной учетной записи, как описано в статье [Azure Active Directory B2C. Приступая к работе с настраиваемыми политиками](active-directory-b2c-get-started-custom.md).
-- Конечная точка REST API, с которой устанавливается взаимодействие. В этом пошаговом руководстве в качестве примера используется простой веб-перехватчик приложения-функции Azure.
-- *Мы рекомендуем* ознакомиться с [пошаговым руководством по использованию обмена утверждениями REST API как проверки](active-directory-b2c-rest-api-validation-custom.md).
+- Toocomplete клиента Azure AD B2C локальную учетную запись регистрации-повышение/вход, как описано в [Приступая к работе](active-directory-b2c-get-started-custom.md).
+- Toointeract конечной точки REST API с. В этом пошаговом руководстве в качестве примера используется простой веб-перехватчик приложения-функции Azure.
+- *Рекомендуется*: полный hello [API-интерфейса REST утверждений Пошаговое руководство exchange в качестве этапа проверки](active-directory-b2c-rest-api-validation-custom.md).
 
-## <a name="step-1-prepare-the-rest-api-function"></a>Шаг 1. Подготовка функции REST API
+## <a name="step-1-prepare-hello-rest-api-function"></a>Шаг 1: Подготовка функции API-интерфейса REST hello
 
 > [!NOTE]
-> В рамках этой статьи настройка функций REST API не рассматривается. [Функции Azure](https://docs.microsoft.com/azure/azure-functions/functions-reference) предоставляют отличный набор инструментов для создания служб RESTful в облаке.
+> Настройка функций API-интерфейса REST находится за пределами hello рамки этой статьи. [Функции Azure](https://docs.microsoft.com/azure/azure-functions/functions-reference) обеспечивает лучший набор средств служб RESTful toocreate в облаке hello.
 
-Мы настроили функцию Azure, которая получает утверждение `email`, а затем возвращает утверждение `city` с присвоенным значением `Redmond`. Пример функции Azure можно найти на портале [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Мы настроили функцию Azure, которая получает заявку под названием `email`, и затем возвращает hello утверждения `city` со значением hello назначенный `Redmond`. Образец Hello Azure функция находится на [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
 
-Утверждение `userMessage`, возвращенное функцией Azure, является необязательным в этом контексте и будет игнорироваться инфраструктурой процедур идентификации. Потенциально его можно использовать в качестве сообщения, переданного приложению, а затем позже представленного пользователю.
+Hello `userMessage` утверждения с hello Azure функция возвращает является необязательным в этом контексте и hello IEF пропустит этот файл. Вы потенциально можно использовать как сообщение передается toohello приложения и описанных ниже toohello пользователя.
 
 ```csharp
 if (requestContentAsJObject.email == null)
@@ -78,14 +78,14 @@ return request.CreateResponse<ResponseContent>(
     "application/json");
 ```
 
-С помощью приложения-функции Azure можно легко получить URL-адрес функции, который включает идентификатор определенной функции. В этом случае URL-адрес — https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Вы можете его использовать для тестирования.
+Приложение Azure функция позволяет легко tooget hello функция URL-адрес, который включает идентификатор hello определенной функции hello. В этом случае является hello URL-адрес: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Вы можете его использовать для тестирования.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>Шаг 2. Настройка обмена утверждениями RESTful API как технического профиля в файле TrustFrameworkExtensions.xml
+## <a name="step-2-configure-hello-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>Шаг 2: Настройка exchange утверждений RESTful API hello как технические профиля в файле TrustFrameworExtensions.xml
 
-Технический профиль представляет собой полную конфигурацию обмена, заданную с помощью службы RESTful. Откройте файл TrustFrameworkExtensions.xml и добавьте следующий фрагмент XML-кода в элемент `<ClaimsProvider>`.
+Технические профиль является полной конфигурации hello обмена hello требуемого с hello службы RESTful. Откройте файл TrustFrameworkExtensions.xml hello и добавьте следующий фрагмент XML внутри hello hello `<ClaimsProvider>` элемента.
 
 > [!NOTE]
-> В следующем XML-коде поставщик RESTful `Version=1.0.0.0` описан как протокол. Рассматривайте его как функцию, которая будет взаимодействовать с внешней службой. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+> В следующий XML-код, RESTful поставщика hello `Version=1.0.0.0` говорится, что протокол hello. Рассматривайте его как hello функцию, которая будет взаимодействовать с внешней службы hello. <!-- TODO: A full definition of hello schema can be found...link tooRESTful Provider schema definition>-->
 
 ```XML
 <ClaimsProvider>
@@ -111,18 +111,18 @@ return request.CreateResponse<ResponseContent>(
 </ClaimsProvider>
 ```
 
-Элемент `<InputClaims>` определяет утверждения, которые отправляются из инфраструктуры процедур идентификации в службу REST. В этом примере содержимое утверждения `givenName` отправляется в службу REST как утверждение `email`.  
+Hello `<InputClaims>` элемент определяет hello утверждений, которые будут отправляться от службы REST toohello IEF hello. В этом примере hello содержимое утверждения hello `givenName` будут отправляться как hello утверждения службы REST toohello `email`.  
 
-Элемент `<OutputClaims>` определяет утверждения, которые инфраструктура процедур идентификации ожидает получить из службы REST. Несмотря на количество полученных утверждений, инфраструктура процедур идентификации будет использовать только те, которые указаны здесь. В этом примере утверждение, полученное как `city`, будет сопоставлено с утверждением инфраструктуры процедур идентификации `city`.
+Hello `<OutputClaims>` элемент определяет hello утверждений, hello IEF будет ожидать от службы REST hello. Независимо от числа утверждения, полученные hello hello IEF будет использовать только те, которые определены здесь. В этом примере полученные утверждения в качестве `city` сопоставленных tooan IEF утверждения будет вызван `city`.
 
-## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Шаг 3. Добавление нового утверждения `city` в схему файла TrustFrameworkExtensions.xml
+## <a name="step-3-add-hello-new-claim-city-toohello-schema-of-your-trustframeworkextensionsxml-file"></a>Шаг 3: Добавление нового утверждения hello `city` toohello схемы файла TrustFrameworkExtensions.xml
 
-Утверждение `city` еще нигде не определено в схеме. Поэтому добавьте определение внутрь элемента `<BuildingBlocks>`. Этот элемент можно найти в начале файла TrustFrameworkExtensions.xml.
+Утверждение Hello `city` еще не определен в любом месте в нашем схемы. Таким образом, добавьте определение внутри элемента hello `<BuildingBlocks>`. Можно найти этот элемент в начале файла TrustFrameworkExtensions.xml hello hello.
 
 ```XML
 <BuildingBlocks>
-    <!--The claimtype city must be added to the TrustFrameworkPolicy-->
-    <!-- You can add new claims in the BASE file Section III, or in the extensions file-->
+    <!--hello claimtype city must be added toohello TrustFrameworkPolicy-->
+    <!-- You can add new claims in hello BASE file Section III, or in hello extensions file-->
     <ClaimsSchema>
         <ClaimType Id="city">
             <DisplayName>City</DisplayName>
@@ -134,14 +134,14 @@ return request.CreateResponse<ResponseContent>(
 </BuildingBlocks>
 ```
 
-## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>Шаг 4. Включение обмена утверждениями службы REST как этап оркестрации в пути взаимодействия пользователя для изменения профиля в файле TrustFrameworkExtensions.xml
+## <a name="step-4-include-hello-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>Шаг 4: Включать hello REST службы утверждения exchange в качестве шага orchestration в поездке пользователя изменить профиль в TrustFrameworkExtensions.xml
 
-Добавьте этап в путь взаимодействия пользователя для изменения профиля после аутентификации пользователя (этапы оркестрации 1–4 в приведенном ниже XML-коде) и предоставления обновленных сведений о профиле (шаг 5).
+Добавьте шаг toohello профиль изменить пользователя пути после hello пользователя с проверкой подлинности (orchestration шагах 1-4 hello следующий XML-код) и hello пользователь предоставляет сведения о профиле hello обновлены (шаг 5).
 
 > [!NOTE]
-> Вызов REST API может использоваться как этап оркестрации в разных ситуациях. Как этап оркестрации он может использоваться в качестве обновления внешней системы после успешного выполнения пользователем задания, например первой регистрации или обновления профиля для синхронизации сведений. В этом случае вызов REST API используется для расширения сведений, предоставленных приложению после изменения профиля.
+> Существует множество вариантов использования, где hello вызова интерфейса API REST можно использовать в качестве шага orchestration. В качестве шага orchestration его можно использовать в качестве внешней системы tooan обновление после успешного завершения задачи, такой как первой регистрации или как профиль обновления tookeep сведения, синхронизированные. В этом случае это используется tooaugment hello информация toohello приложения вместо изменения профиля hello.
 
-Скопируйте XML-код пути взаимодействия пользователя для изменения профиля из файла TrustFrameworkBase.xml в файл TrustFrameworkExtensions.xml внутри элемента `<UserJourneys>`. А затем внесите необходимые изменения, описанные на шаге 6.
+Копировать профиль hello изменение пользователя пути XML-код из hello TrustFrameworkBase.xml tooyour TrustFrameworkExtensions.xml файла внутри hello `<UserJourneys>` элемента. Внесите изменения hello в шаге 6.
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -152,9 +152,9 @@ return request.CreateResponse<ResponseContent>(
 ```
 
 > [!IMPORTANT]
-> Если порядок не соответствует вашей версии, то вставьте этот код как этап перед типом `ClaimsExchange` `SendClaims`.
+> Если порядок hello не соответствует версии, убедитесь, что вставке кода hello в качестве шага hello перед hello `ClaimsExchange` типа `SendClaims`.
 
-Конечный XML-код пути взаимодействия пользователя должен выглядеть следующим образом:
+Hello последний XML для hello пользователя пути должен выглядеть следующим образом:
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -200,7 +200,7 @@ return request.CreateResponse<ResponseContent>(
                 <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
             </ClaimsExchanges>
         </OrchestrationStep>
-        <!-- Add a step 6 to the user journey before the JWT token is created-->
+        <!-- Add a step 6 toohello user journey before hello JWT token is created-->
         <OrchestrationStep Order="6" Type="ClaimsExchange">
             <ClaimsExchanges>
                 <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
@@ -212,11 +212,11 @@ return request.CreateResponse<ResponseContent>(
 </UserJourney>
 ```
 
-## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Шаг 5. Добавление утверждения `city` в файл политики проверяющей стороны для отправки утверждения приложению
+## <a name="step-5-add-hello-claim-city-tooyour-relying-party-policy-file-so-hello-claim-is-sent-tooyour-application"></a>Шаг 5: Добавление утверждений hello `city` политики проверяющей стороной tooyour файл, hello утверждения отправляется tooyour приложения
 
-Необходимо изменить файл проверяющей стороны ProfileEdit.xml, а также элемент `<TechnicalProfile Id="PolicyProfile">` для добавления `<OutputClaim ClaimTypeReferenceId="city" />`.
+Измените файл ProfileEdit.xml проверяющей стороны (RP) и измените hello `<TechnicalProfile Id="PolicyProfile">` hello следующий элемент tooadd: `<OutputClaim ClaimTypeReferenceId="city" />`.
 
-После добавления нового утверждения технический профиль должен выглядеть следующим образом:
+После добавления нового утверждения hello технические профиля hello выглядит следующим образом:
 
 ```XML
 <DisplayName>PolicyProfile</DisplayName>
@@ -231,15 +231,15 @@ return request.CreateResponse<ResponseContent>(
 
 ## <a name="step-6-upload-your-changes-and-test"></a>Шаг 6. Передача изменений и проверка
 
-Перезапишите существующие версии политики.
+Перезаписывать существующие версии hello hello политики.
 
-1.  (Необязательно) Прежде чем продолжить, сохраните существующую версию файла расширений (скачав ее). Чтобы не усложнять работу, не рекомендуется передавать несколько версий файла расширений.
-2.  (Необязательно) Переименуйте новую версию идентификатора политики для файла изменения политики, изменив `PolicyId="B2C_1A_TrustFrameworkProfileEdit"`.
-3.  Передайте файл расширений.
-4.  Отправьте файл проверяющей стороны для изменения политики.
-5.  Используйте параметр **Запустить сейчас**, чтобы проверить политику. Просмотрите маркер, возвращаемый инфраструктурой процедур идентификации в приложение.
+1.  (Необязательно:) Сохраните существующую версию hello (загрузка) расширения файла перед продолжением работы. tookeep hello начальной сложности низкий, мы рекомендуем не отправлять несколько версий hello расширения файла.
+2.  (Необязательно:) Переименуйте новую версию hello hello идентификатор политики для редактирования файла hello политику, изменив `PolicyId="B2C_1A_TrustFrameworkProfileEdit"`.
+3.  Отправьте файл расширения hello.
+4.  Отправьте файл RP редактирование политики hello.
+5.  Используйте **выполнить** tootest hello политики. Маркер проверки hello, hello IEF возвращает toohello приложения.
 
-Если все установлено правильно, токен будет содержать новое утверждение `city` со значением `Redmond`.
+Если все настроено правильно, hello маркер будет содержать новое утверждение hello `city`, со значением hello `Redmond`.
 
 ```JSON
 {
@@ -261,4 +261,4 @@ return request.CreateResponse<ResponseContent>(
 
 [Walkthrough: Integrate REST API claims exchanges in your Azure AD B2C user journeys as validation on user input](active-directory-b2c-rest-api-validation-custom.md) (Пошаговое руководство. Интеграция обмена утверждениями REST API в путях взаимодействия пользователей Azure AD B2C как проверка входных данных)
 
-[Azure Active Directory B2C. Создание и использование настраиваемых атрибутов в пользовательской политике изменения профиля](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+[Изменение hello редактирования toogather Дополнительные сведения о профиле от пользователей](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)

@@ -1,12 +1,12 @@
 ---
-title: "Подключение Intel Edison (Node) к Интернету вещей Azure. Урок 3. Создание приложения-функции | Документация Майкрософт"
-description: "Приложение-функция Azure ожидает передачи событий Центра Интернета вещей Azure, обрабатывает входящие сообщения и записывает их в хранилище таблиц Azure."
+title: "Подключение Edison Intel (узел) tooAzure IoT — занятия 3: Создание приложения функции | Документы Microsoft"
+description: "приложение Azure функции Hello прослушивает события концентратора IoT tooAzure, обрабатывает входящие сообщения и записывает их в хранилище таблиц tooAzure."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "хранение данных в облаке, данные, хранящиеся в облаке, облачная служба Интернета вещей"
+keywords: "хранение данных в облаке hello, данные, хранящиеся в облаке, iot облачной службы"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-node-get-started
 ms.assetid: 37ee5962-95ce-40e8-8162-17e735eaec21
@@ -17,30 +17,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 6ada1cbbb560f1373346eca561dceb28d7ca7242
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8ea0a4cdf978158d70e47eaed57e3de378b638d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-function-app-and-azure-storage-account"></a>Создание приложения-функции Azure и учетной записи хранения Azure
-[Функции Azure](../../articles/azure-functions/functions-overview.md) — это решение для быстрого запуска *функций* (фрагментов кода) в облаке. Выполнение функций в Azure производится с помощью приложения-функции.
+[Функции Azure](../../articles/azure-functions/functions-overview.md) — это решение для запуска легко *функции* (небольшие части кода) в облаке hello. Приложение Azure функция размещает hello выполнение функций в Azure.
 
 ## <a name="what-will-you-do"></a>Ваши действия
-С помощью шаблона Azure Resource Manager создайте приложение-функцию Azure и учетную запись хранения Azure. Приложение-функция Azure ожидает передачи событий Центра Интернета вещей Azure, обрабатывает входящие сообщения и записывает их в хранилище таблиц Azure. Учетная запись хранения используется для чтения сохраненных копий сообщений из таблицы Azure. Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок][troubleshooting].
+Используйте toocreate шаблона диспетчера ресурсов Azure, приложение Azure функции и учетная запись хранилища Azure. приложение Azure функции Hello прослушивает события концентратора IoT tooAzure, обрабатывает входящие сообщения и записывает их в хранилище таблиц tooAzure. Hello учетная запись хранения используется для чтения hello сохранения копии сообщений, из таблицы Azure. Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок][troubleshooting].
 
 ## <a name="what-will-you-learn"></a>Новые знания
 В этой статье вы узнаете следующее:
-* Использование [Azure Resource Manager](../../articles/azure-resource-manager/resource-group-overview.md) для развертывания ресурсов в Azure.
-* Использование приложения-функции Azure для обработки сообщений Центра Интернета вещей и их записи в таблицу в хранилище таблиц Azure.
+* Как toouse [диспетчера ресурсов Azure](../../articles/azure-resource-manager/resource-group-overview.md) toodeploy Azure ресурсы.
+* Как toouse Azure функцией приложения tooprocess IoT hub сообщения и записывать их в таблице tooa в хранилище таблиц Azure.
 
 ## <a name="what-do-you-need"></a>Требования
 Необходимо успешно выполнить инструкции, изложенные в следующих статьях:
 - [Начало работы с Intel Edison (Node.js)][get-started-with-your-intel-edison]
 - [Create your Azure IoT hub][create-your-azure-iot-hub] (Создание Центра Интернета вещей Azure)
 
-## <a name="open-the-sample-app"></a>Открытие примера приложения
-Откройте пример проекта в Visual Studio Code, выполнив следующие команды:
+## <a name="open-hello-sample-app"></a>Пример приложения Open hello
+Откройте образец hello проекта в Visual Studio Code, выполнив следующие команды hello:
 
 ```bash
 cd Lesson3
@@ -49,32 +49,32 @@ code .
 
 ![Структура репозитория][repo-structure]
 
-* Файл во вложенной папке `app` — ключевой файл исходного кода. Этот исходный файл содержит код для отправки сообщения 20 раз в центр Интернета вещей и мигания светодиода с каждым отправляемым сообщением.
-* Файл `arm-template.json` — шаблон Azure Resource Manager, содержащий приложение-функцию Azure и учетную запись хранения Azure.
-* Файл `arm-template-param.json` — файл конфигурации, используемый в шаблоне Azure Resource Manager.
-* Вложенная папка `ReceiveDeviceMessages` содержит код Node.js для функции Azure.
+* файл Hello в hello `app` подпапка является hello ключа исходного файла. Этот исходный файл содержит код hello toosend сообщение 20 раз tooyour IoT hub и blink hello Индикатора для каждого сообщения, он отправляет.
+* Hello `arm-template.json` файла является шаблон hello диспетчера ресурсов Azure, который содержит приложение Azure функции и учетная запись хранилища Azure.
+* Hello `arm-template-param.json` файл является файлом конфигурации hello, используемые hello шаблона диспетчера ресурсов Azure.
+* Hello `ReceiveDeviceMessages` вложенная папка содержит код Node.js hello Azure функции hello.
 
 ## <a name="configure-azure-resource-manager-templates-and-create-resources-in-azure"></a>Настройка шаблонов Azure Resource Manager и создание ресурсов в Azure
-Обновите файл `arm-template-param.json` в Visual Studio Code.
+Обновление hello `arm-template-param.json` файл в Visual Studio Code.
 
 ![Параметры шаблона Azure Resource Manager][arm-template-parameters]
 
 * Замените **[your IoT Hub name]** своим **{именем центра}**, которое вы указали при [создании Центра Интернета вещей и регистрации Intel Edison][created-your-iot-hub-and-registered-intel-edison].
-* Замените **[строку-префикс для новых ресурсов]** любым префиксом по вашему усмотрению. Префикс обеспечивает глобальную уникальность имени ресурса во избежание конфликта. Префикс не должен начинаться с дефиса или цифры.
+* Замените **[строку-префикс для новых ресурсов]** любым префиксом по вашему усмотрению. префикс Hello гарантирует, что имя ресурса hello является глобально уникальным tooavoid конфликт. Не используйте символы дефиса или номер начальной hello префикса.
 
-После обновления файла `arm-template-param.json` разверните ресурсы в Azure, выполнив следующую команду:
+После обновления hello `arm-template-param.json` файлов, развертывание, выполнив следующую команду hello tooAzure ресурсы hello:
 
 ```bash
 az group deployment create --template-file arm-template.json --parameters @arm-template-param.json -g iot-sample
 ```
 
-Создание этих ресурсов занимает около пяти минут. Пока ресурсы создаются, можно перейти к следующей статье.
+Занимает около пяти минут toocreate эти ресурсы. Во время создания ресурса hello можно переместить в следующей статье toohello.
 
 ## <a name="summary"></a>Сводка
-Вы создали приложение-функцию Azure для обработки сообщений Центра Интернета вещей и учетную запись хранения Azure для хранения этих сообщений. Теперь можно развернуть и запустить на устройстве Edison пример приложения для отправки сообщений c устройства в облако.
+Вы создали вашей tooprocess приложения Azure функция IoT hub сообщений и учетной записи хранилища Azure toostore эти сообщения. Теперь можно развернуть и запустить на Edison сообщения из устройства в облако toosend образец hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Run a sample application to send device-to-cloud messages][send-device-to-cloud-messages] (Запуск примера приложения для отправки сообщений с устройства в облако).
+[Запустите образец приложения toosend сообщения из устройства в облако на Intel Edison][send-device-to-cloud-messages].
 <!-- Images and links -->
 
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md

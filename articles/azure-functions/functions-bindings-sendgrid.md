@@ -1,5 +1,5 @@
 ---
-title: "Привязки SendGrid для Функций Azure | Документация Майкрософт"
+title: "привязки функции SendGrid aaaAzure | Документы Microsoft"
 description: "Справочник по привязкам SendGrid для Функций Azure."
 services: functions
 documentationcenter: na
@@ -12,35 +12,35 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/16/2017
 ms.author: rachelap
-ms.openlocfilehash: 445a40a884e648cdb2a57f8ef43bed4f8a3efcf2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 10a3837875eb6ae18e6c789bcf64cc401cf5f26a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Привязки SendGrid для Функций Azure
 
-В этой статье объясняется, как настроить и использовать привязки SendGrid в Функциях Azure. С помощью SendGrid можно использовать Функции Azure для программной отправки настраиваемой электронной почты.
+В этой статье объясняется, как tooconfigure и работать с привязками SendGrid в функциях Azure. С помощью SendGrid можно использовать функции Azure toosend настроить электронную программными средствами.
 
-Эта статья содержит справочные сведения для разработчиков Функций Azure. Если вы новичок в функциях Azure, начните со следующих ресурсов:
+Эта статья содержит справочные сведения для разработчиков Функций Azure. Если вы новые функции tooAzure, начните с hello следующие ресурсы:
 
 [Создание первой функции Azure](functions-create-first-azure-function.md). 
 Справочники разработчика по [C#](functions-reference-csharp.md), [F#](functions-reference-fsharp.md) или [Node](functions-reference-node.md).
 
 ## <a name="functionjson-for-sendgrid-bindings"></a>Файл function.json для привязок SendGrid
 
-Функции Azure предоставляют привязку для вывода для SendGrid. Привязка для вывода SendGrid дает возможность программно создавать и отправлять электронные сообщения. 
+Функции Azure предоставляют привязку для вывода для SendGrid. Hello SendGrid вывода привязка позволяет toocreate и отправить сообщение электронной почты программными средствами. 
 
-Привязка SendGrid поддерживает перечисленные ниже свойства.
+Hello SendGrid привязка поддерживает hello следующие свойства:
 
-- `name` (обязательное) — имя переменной, из которой в коде функции можно получить запрос или текст запроса. Это значение равно ```$return``` при наличии только одного возвращаемого значения. 
-- `type` (обязательное) — для этого свойства нужно задать значение SendGrid.
-- `direction` (обязательное) — для этого свойства нужно задать значение out.
-- `apiKey` (обязательное) — для этого свойства нужно задать имя ключа API, сохраненное в параметрах приложения-функции.
-- `to` — электронный адрес получателя.
-- `from` — электронный адрес отправителя.
-- `subject` — тема электронного сообщения.
-- `text` — содержимое электронного сообщения.
+- `name`— Обязательный - hello переменной имя, используемое в коде функция для запроса hello или текст запроса. Это значение равно ```$return``` при наличии только одного возвращаемого значения. 
+- `type`— Обязательный - должен быть задан слишком «sendGrid.»
+- `direction`— Обязательный - должно быть задано слишком «out».
+- `apiKey`— Обязательный - должно быть именем toohello набор ваш ключ API, хранящихся в параметрах приложения hello функции приложения.
+- `to`: hello адрес электронной почты получателя.
+- `from`: hello адрес электронной почты отправителя.
+- `subject`: hello субъекта hello электронной почты.
+- `text`: hello содержимое электронной почты.
 
 Ниже приведен пример файла **function.json**.
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-## <a name="c-example-of-the-sendgrid-output-binding"></a>Пример привязки для вывода SendGrid на C#
+## <a name="c-example-of-hello-sendgrid-output-binding"></a>Привязка для вывода C# пример hello SendGrid
 
 ```csharp
 #r "SendGrid"
@@ -92,7 +92,7 @@ public static Mail Run(TraceWriter log, string input, out Mail message)
 }
 ```
 
-## <a name="node-example-of-the-sendgrid-output-binding"></a>Пример привязки для вывода SendGrid на Node
+## <a name="node-example-of-hello-sendgrid-output-binding"></a>Пример узла hello SendGrid вывода привязки
 
 ```javascript
 module.exports = function (context, input) {    
@@ -115,6 +115,6 @@ module.exports = function (context, input) {
 Сведения о других привязках и триггерах для Функций Azure доступны в следующих разделах: 
 - [Справочник разработчика по триггерам и привязкам в Функциях Azure](functions-triggers-bindings.md)
 
-- [Рекомендации по Функциям Azure](functions-best-practices.md). Некоторые рекомендации по созданию функций Azure.
+- [Советы и рекомендации для функций Azure](functions-best-practices.md) приведены некоторые советы и рекомендации toouse при создании функций Azure.
 
 - [Руководство для разработчиков по Функциям Azure](functions-reference.md). Справочник программиста по созданию функций, а также определению триггеров и привязок.

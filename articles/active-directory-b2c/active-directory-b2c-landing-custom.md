@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 5/06/2017
 ms.author: parakhj
-ms.openlocfilehash: cb7a9f01e43d41eb7315cb37a41e69f044ce5566
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 28a39f282488b81fc9e2ab7841b5f2cb4cd58715
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies"></a>Azure Active Directory B2C. Регистрация и вход пользователей в приложения с помощью пользовательских политик
-Пользовательские политики — это файлы конфигурации, которые определяют поведение вашего клиента Azure AD B2C. Разработчик удостоверений может полностью их изменять для выполнения практически неограниченного количества задач.
+Настраиваемые политики, файлы конфигурации, которые определяют поведение hello вашего клиента Azure AD B2C. Их можно полностью изменить с помощью удостоверения разработчика toocomplete практически неограниченное количество задач.
 
-## <a name="how-to-articles"></a>Статьи с инструкциями
-Узнайте, как использовать отдельные функции Azure Active Directory B2C:
+## <a name="how-tooarticles"></a>Как tooarticles
+Узнайте, как отдельные функции Azure Active Directory B2C toouse:
 
 * [Приступая к работе](active-directory-b2c-overview-custom.md)
 * Настройка поставщиков OIDC, например [Azure AD](active-directory-b2c-setup-aad-custom.md).
@@ -39,7 +39,7 @@ ms.lasthandoff: 07/11/2017
 * Устранение неполадок за счет [сбора журналов с помощью Application Insights](active-directory-b2c-troubleshoot-custom.md).
 
 ## <a name="whats-new"></a>Новые возможности
-Регулярно просматривайте указанные ниже страницы и узнавайте о будущих изменениях в Azure Active Directory B2C. Кроме того, мы будем сообщать о нововведениях в Twitter под именем @AzureAD.
+Обратитесь к этому списку часто toolearn о будущих изменений toohello Azure Active Directory B2C. Кроме того, мы будем сообщать о нововведениях в Twitter под именем @AzureAD.
 
 
 

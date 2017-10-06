@@ -1,7 +1,7 @@
 ---
 ms.assetid: 
-title: "Ключи учетной записи хранения Azure Key Vault"
-description: "Ключи учетной записи хранения обеспечивают простую интеграцию между Azure Key Vault и доступом по ключу к учетной записи хранения Azure."
+title: "aaaAzure ключи учетной записи хранилища ключей"
+description: "Ключи учетной записи хранения укажите прозрачный интеграцию хранилища ключей Azure и доступ к ключу на основе tooAzure учетной записи хранилища."
 ms.topic: article
 services: key-vault
 ms.service: key-vault
@@ -9,23 +9,23 @@ author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
 ms.date: 07/25/2017
-ms.openlocfilehash: 3148088c88236c64e089fd25c98eb8ac7cdcbfea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: becdf97798a08164c48d3a7a14aea6ca54085c9a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Ключи учетной записи хранения Azure Key Vault
 
-До появления ключей учетной записи хранения Azure Key Vault разработчикам приходилось управлять ключами учетной записи хранения Azure (ASA) и сменять их вручную или с помощью внешних средств автоматизации. Сейчас ключи учетной записи хранения Key Vault реализованы в качестве [секретов Key Vault](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets) для проверки подлинности с помощью учетной записи хранения Azure. 
+Перед ключи учетной записи хранения хранилище ключей Azure разработчики имели toomanage свои собственные ключи учетной записи хранилища Azure (ASA) и повернуть их вручную или с помощью внешних автоматизации. Сейчас ключи учетной записи хранения Key Vault реализованы в качестве [секретов Key Vault](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets) для проверки подлинности с помощью учетной записи хранения Azure. 
 
-Функция ключа ASA управляет сменой секретов и устраняет необходимость прямого контакта с ключом ASA за счет использования подписанных URL-адресов (SAS). 
+ключевой особенностью ASA Hello управляет секретный поворота и удаляет hello потребность прямой связи с ключом ASA путем предоставления общего доступа подписи (SAS) как метод. 
 
 Дополнительные сведения об учетных записях хранения Azure см. в статье [Об учетных записях хранения Azure](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
 
 ## <a name="supporting-interfaces"></a>Поддержка интерфейсов
 
-Функция ключей учетной записи хранения Azure изначально доступна через интерфейсы REST, .NET, C# и PowerShell. Дополнительные сведения см. в разделе [Документация по хранилищу ключей](https://docs.microsoft.com/azure/key-vault/).
+Hello функция ключи учетной записи хранилища Azure изначально доступна через hello REST, .NET или C# и PowerShell интерфейсов. Дополнительные сведения см. в разделе [Документация по хранилищу ключей](https://docs.microsoft.com/azure/key-vault/).
 
 
 ## <a name="storage-account-keys-behavior"></a>Поведение ключей учетной записи хранения
@@ -36,11 +36,11 @@ ms.lasthandoff: 08/29/2017
 
 1. Служба хранилища Azure Key Vault управляет ключами учетной записи хранения Azure (ASA). 
     - На внутреннем уровне Azure Key Vault может выводить список (синхронизировать) ключи с помощью учетной записи хранения Azure.  
-    - Azure Key Vault периодически повторно создает (сменяет) ключи. 
-    - Значения ключей никогда не возвращаются в ответе вызывающему объекту. 
+    - Повторно создает хранилище ключей Azure (поворот) периодически ключи hello. 
+    - Ключевые значения никогда не возвращаются в toocaller ответа. 
     - Azure Key Vault управляет ключами как учетных записей хранения, так и классических учетных записей хранения. 
-2. Azure Key Vault позволяет владельцу хранилища или объекта создавать определения SAS (учетной записи или службы). 
-    - Значение SAS, созданное с помощью определения SAS, возвращается в качестве секрета через путь универсального кода ресурса (URI) REST. Дополнительные сведения см. в статье [Azure Key Vault storage account operations](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations) (Операции с учетными записями хранения Azure Key Vault).
+2. Хранилище ключей Azure позволяет вы, владелец объекта или хранилище hello, определения toocreate SAS (учетной записи или служба SAS). 
+    - Hello значение SAS с помощью определения SAS, возвращается как секрет по пути REST URI hello. Дополнительные сведения см. в статье [Azure Key Vault storage account operations](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations) (Операции с учетными записями хранения Azure Key Vault).
 
 ### <a name="naming-guidance"></a>Рекомендации по именованию
 
@@ -52,11 +52,11 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="before-azure-key-vault-storage-keys"></a>До появления ключей Azure Key Vault 
 
-Разработчикам приходилось применять следующие методы, чтобы получить доступ к хранилищу Azure с помощью ключа учетной записи хранения. 
+Разработчики использовали hello toodo tooneed методы с tooAzure хранилище tooget ключа доступа хранилища учетной записи. 
  
  ```
 //create storage account using connection string containing account name 
-// and the storage key 
+// and hello storage key 
 
 var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -65,10 +65,10 @@ var blobClient = storageAccount.CreateCloudBlobClient();
 ### <a name="after-azure-key-vault-storage-keys"></a>После появления ключей Azure Key Vault 
 
 ```
-//Please make sure to set storage permissions appropriately on your key vault
+//Please make sure tooset storage permissions appropriately on your key vault
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourVault' -ObjectId yourObjectId -PermissionsToStorage all
 
-//Use PowerShell command to get Secret URI 
+//Use PowerShell command tooget Secret URI 
 
 Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service -VaultName yourKV  
 -AccountName msak01 -Name blobsas1 -Protocol HttpsOnly -ValidityPeriod ([System.Timespan]::FromDays(1)) -Permission Read,List
@@ -77,17 +77,17 @@ Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Contain
 
 var secret = await kv.GetSecretAsync("SecretUri");
 
-// Create new storage credentials using the SAS token. 
+// Create new storage credentials using hello SAS token. 
 
 var accountSasCredential = new StorageCredentials(secret.Value); 
 
-// Use credentials and the Blob storage endpoint to create a new Blob service client. 
+// Use credentials and hello Blob storage endpoint toocreate a new Blob service client. 
 
 var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("https://myaccount.blob.core.windows.net/"), null, null, null); 
 
 var blobClientWithSas = accountWithSas.CreateCloudBlobClient(); 
  
-// If SAS token is about to expire then Get sasToken again from Key Vault and update it.
+// If SAS token is about tooexpire then Get sasToken again from Key Vault and update it.
 
 accountSasCredential.UpdateSASToken(sasToken);
 
@@ -95,47 +95,47 @@ accountSasCredential.UpdateSASToken(sasToken);
  
  ### <a name="developer-best-practices"></a>Рекомендации разработчикам 
 
-- Разрешите только Key Vault управлять ключами ASA. Не пытайтесь управлять ими самостоятельно. Это повлияет на процессы Key Vault. 
-- Ключи ASA не должны управляться более чем одним объектом Key Vault. 
-- Если необходимо вручную повторно создать ключи ASA, рекомендуем делать это через Key Vault. 
+- Разрешить toomanage хранилище ключей только ключи ASA. Не пытайтесь toomanage их самостоятельно, взаимодействовать с процессами хранилища ключей. 
+- Не разрешать ASA ключи toobe под управлением более одного объекта в хранилище ключей. 
+- Если вам требуется toomanually повторно создать ключи ASA, рекомендуется восстановить их помощью хранилище ключей. 
 
 ## <a name="getting-started"></a>Приступая к работе
 
 ### <a name="setup-for-role-based-access-control-rbac-permissions"></a>Настройка разрешений для управления доступом на основе ролей (RBAC)
 
-Для Key Vault необходимы разрешения для *вывода списка* и *повторного создания* ключей учетной записи хранения. Настройте эти разрешения, выполнив следующие действия:
+Хранилище ключей требуются разрешения слишком*списка* и *повторно создать* ключи для учетной записи хранилища. Настроить эти разрешения с помощью hello следующие шаги:
 
 - Получите ObjectId хранилища Key Vault: 
 
     `Get-AzureRmADServicePrincipal -SearchString "AzureKeyVault"`
 
-- Присвойте идентификатору Azure Key Vault роль оператора учетной записи хранения: 
+- Назначьте роль оператора Key хранилища tooAzure ключ хранилища удостоверений: 
 
     `New-AzureRmRoleAssignment -ObjectId <objectId of AzureKeyVault from previous command> -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope '<azure resource id of storage account>'`
 
     >[!NOTE]
-    > Для классической учетной записи задайте для параметра роли значение *Classic Storage Account Key Operator Service Role* (Роль службы оператора ключей классических учетных записей хранения).
+    > Для типа классический учетной записи, установите параметр роли hello слишком*«Классический хранилища учетной записи ключа оператор службы роли»*.
 
 ### <a name="storage-account-onboarding"></a>Подключение учетной записи хранения 
 
-Пример: владелец объекта Key Vault добавляет объект учетной записи хранилища в Azure Key Vault, чтобы подключить учетную запись хранения.
+Пример: Как владелец объекта хранилища ключей, добавьте хранилища учетной записи хранилища ключей Azure tooonboard объекта tooyour учетной записи хранилища.
 
-Во время подключения Key Vault проверяет, что удостоверение подключаемой учетной записи имеет разрешения на *перечисление* и *повторное создание* ключей хранилища. Чтобы проверить эти разрешения, Key Vault получает токен OBO (от имени) от службы аутентификации, указывает Azure Resource Manager в качестве целевой аудитории, а затем обращается к службе хранилища Azure для *получения списка*. Если *вызов списка* завершается неудачно, создание объекта Key Vault завершается ошибкой с кодом состояния HTTP *Запрещено*. Ключи, указанные таким способом, кэшируются с помощью хранилища сущностей хранилища ключей. 
+Во время адаптации, хранилище ключей требуется hello удостоверение учетной записи адаптации hello имеет разрешения слишком tooverify*списка* и слишком*повторно создать* хранилища ключей. В заказ tooverify эти разрешения, хранилище ключей возвращает OBO (по имени из) токен из службы проверки подлинности hello, аудитории задать tooAzure диспетчера ресурсов и делает *списка* ключа службой хранилища Azure toohello вызова. Если hello *списка* вызов завершается ошибкой, Здравствуйте, происходит сбой создания объекта с кодом состояния HTTP из хранилища ключей *запрещено*. разделы Hello, указанные таким образом кэшируются с хранилищем хранилища ключей сущности. 
 
-Key Vault необходимо убедиться, что идентификатор имеет разрешения на *повторное создание*, прежде чем предоставить ему права на повторное создание ключей. Чтобы убедиться, что идентификатор (через токен OBO), а также основной идентификатор Key Vault имеют следующие разрешения:
+Хранилище ключей должно убедитесь, что удостоверение hello имеет *повторно создать* разрешения, прежде чем он может стать владельцем повторное создание ключей. tooverify hello удостоверение через маркер OBO, а также hello удостоверение стороны хранилище ключей имеет следующие разрешения:
 
-- Key Vault выводит список разрешений RBAC в ресурсе учетной записи хранения.
-- Key Vault проверяет ответ через сопоставление регулярных выражений для определения действий и их отсутствия. 
+- Хранилище ключей список разрешений RBAC на ресурс учетной записи хранения hello.
+- Хранилище ключей проверяет hello ответу с помощью действий, а не действия сопоставление регулярных выражений. 
 
 Некоторые поддерживаемые примеры вы можете найти в разделе [Key Vault - Managed Storage Account Keys Samples](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/KeyVault/dataPlane/Microsoft.Azure.KeyVault.Samples/samples/HelloKeyVault/Program.cs#L167) (Key Vault — управляемая система хранения ключей учетных записей).
 
-Если удостоверение не имеет разрешение на *повторное создание* или основное удостоверение Key Vault не имеет разрешение на *перечисление* или *повторное создание*, тогда запрос на подключение завершается ошибкой с соответствующим кодом и сообщением. 
+Если удостоверение hello не имеет *повторно создать* разрешений или если удостоверение стороны хранилища ключей не *списка* или *повторно создать* разрешений, а затем адаптации hello запрос завершается неудачно, возвращая соответствующий код ошибки и сообщения. 
 
-Маркер OBO будет работать только при использовании основных, собственных клиентских приложений PowerShell или CLI.
+токен OBO Hello будет работать только при использовании в основном, собственные клиентские приложения, PowerShell или интерфейс командной строки.
 
 ## <a name="other-applications"></a>Другие приложения
 
-- Маркеры SAS, созданные с помощью ключей учетной записи хранения Key Vault, предоставляют более точный контроль доступа к учетной записи хранения Azure. Дополнительные сведения см. в статье [Использование подписанных URL-адресов (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1).
+- Маркеры SAS, создано с помощью ключа учетной записи хранилища ключей, предоставляют еще больше tooan управляемый доступ к ресурсам учетной записи хранилища Azure. Дополнительные сведения см. в статье [Использование подписанных URL-адресов (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1).
 
 ## <a name="see-also"></a>См. также
 

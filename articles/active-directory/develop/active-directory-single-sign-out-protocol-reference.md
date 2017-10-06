@@ -1,6 +1,6 @@
 ---
-title: "Протокол единого выхода SAML в Azure | Документация Майкрософт"
-description: "В этой статье описывается протокол единого выхода SAML в Azure Active Directory"
+title: "aaaAzure единого входа Out протокола SAML | Документы Microsoft"
+description: "В этой статье описывается hello одного протокола выхода SAML в Azure Active Directory"
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: 45e4705f53d80b5fe852c484b5e64d18a8e24f09
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 889c9b3397a601c16ba6971d2b15bfee305576de
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # Протокол единого выхода SAML
-Azure Active Directory (Azure AD) поддерживает профиль SAML 2.0 для единого выхода с использованием веб-браузера. Чтобы единый выход работал правильно, во время регистрации приложения необходимо явно зарегистрировать в Azure AD его **LogoutURL** (URL-адрес выхода). Azure AD использует этот URL-адрес для перенаправления пользователей после их выхода.
+Azure hello поддерживает Active Directory (Azure AD), SAML 2.0 веб-браузера единого выхода профиль. Правильно, один выход toowork hello **LogoutURL** для приложения hello должны быть явно зарегистрированы в Azure AD во время регистрации приложения. Azure AD использует hello LogoutURL tooredirect пользователей после выхода.
 
-Эта схема демонстрирует рабочий процесс единого выхода Azure AD.
+Эта диаграмма показывает рабочий процесс hello hello Azure AD едином процессе выхода.
 
 ![Рабочий процесс единого выхода](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
 
 ## LogoutRequest
-Облачная служба отправляет сообщение `LogoutRequest` в Azure AD, чтобы сообщить о завершении сеанса. Ниже приведен пример элемента `LogoutRequest` .
+Здравствуйте, облачная служба отправляет `LogoutRequest` tooindicate tooAzure AD сообщение, что сеанс завершен. Hello следующем фрагменте кода показан пример `LogoutRequest` элемента.
 
 ```
 <samlp:LogoutRequest xmlns="urn:oasis:names:tc:SAML:2.0:metadata" ID="idaa6ebe6839094fe4abc4ebd5281ec780" Version="2.0" IssueInstant="2013-03-28T07:10:49.6004822Z" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -39,20 +39,20 @@ Azure Active Directory (Azure AD) поддерживает профиль SAML 2
 ```
 
 ### LogoutRequest
-Элемент `LogoutRequest` , передаваемый в Azure AD, должен иметь следующие атрибуты.
+Hello `LogoutRequest` tooAzure, отправленный AD требует hello следующие атрибуты:
 
-* `ID` : признак запроса на выход. Значение `ID` не должно начинаться с цифры. Обычно здесь указывается строковое представление идентификатора GUID с добавлением перед ним строки **id** .
-* `Version` : установите для этого элемента значение **2.0**. Это обязательное значение.
+* `ID`: Это идентифицирует запрос выхода hello. Здравствуйте, значение `ID` не должно начинаться с цифры. Hello обычной практикой является tooappend **идентификатор** toohello строковое представление идентификатора GUID.
+* `Version`: Значение hello этого элемента слишком**2.0**. Это обязательное значение.
 * `IssueInstant`: это строка `DateTime` со значением в формате всемирного времени (UTC) и с [преобразованием без потери данных ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD ожидает значение такого типа, но не требует его наличия.
 
 ### Издатель
-Элемент `Issuer` в `LogoutRequest` должен точно соответствовать одному из имен из списка **ServicePrincipalNames** в облачной службе в Azure AD. Обычно здесь передается **URI идентификатора приложения** , указанный во время регистрации приложения.
+Hello `Issuer` элемент в `LogoutRequest` должен точно соответствовать одному из hello **ServicePrincipalNames** в облачной службе hello в Azure AD. Как правило, устанавливается toohello **URI идентификатора приложения** , указанным во время регистрации приложения.
 
 ### NameID
-Значение элемента `NameID` должно точно совпадать с параметром `NameID` для пользователя, выполняющего выход.
+Здравствуйте, значение hello `NameID` должно полностью совпадать с hello `NameID` hello пользователя, выполняющего выход.
 
 ## LogoutResponse
-Azure AD отправляет `LogoutResponse` в ответ на элемент `LogoutRequest`. Ниже приведен фрагмент кода с элементом `LogoutResponse`.
+Azure AD отправляет `LogoutResponse` в ответ tooa `LogoutRequest` элемента. Hello следующем фрагменте кода показан пример `LogoutResponse`.
 
 ```
 <samlp:LogoutResponse ID="_f0961a83-d071-4be5-a18c-9ae7b22987a4" Version="2.0" IssueInstant="2013-03-18T08:49:24.405Z" InResponseTo="iddce91f96e56747b5ace6d2e2aa9d4f8c" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -64,12 +64,12 @@ Azure AD отправляет `LogoutResponse` в ответ на элемент
 ```
 
 ### LogoutResponse
-Azure AD устанавливает значения `ID`, `Version` и `IssueInstant` для элемента `LogoutResponse`. Он также задает для элемента `InResponseTo` значение, взятое из атрибута `ID` для `LogoutRequest`, который запрашивал ответ.
+Azure AD присваивает Привет `ID`, `Version` и `IssueInstant` значения в hello `LogoutResponse` элемента. Этот параметр также устанавливает hello `InResponseTo` toohello имеет значение hello `ID` атрибут hello `LogoutRequest` , вызвавшего hello ответа.
 
 ### Издатель
-Azure AD устанавливает для него значение `https://login.microsoftonline.com/<TenantIdGUID>/`, где <TenantIdGUID> — это идентификатор клиента Azure AD.
+Azure AD присваивает этому параметру значение слишком`https://login.microsoftonline.com/<TenantIdGUID>/` где <TenantIdGUID> является hello идентификатор клиента hello Azure AD.
 
-Чтобы оценить значение элемента `Issuer` , используйте значение **URI идентификатора приложения** , указанное при регистрации приложения.
+значение hello tooevaluate hello `Issuer` элемент, используйте значение hello hello **URI идентификатора приложения** предоставленного во время регистрации приложения.
 
 ### Состояние
-Azure AD использует элемент `StatusCode`, содержащийся в элементе `Status`, чтобы указать, успешно ли выполнен выход. После неудачной попытки выхода элемент `StatusCode` может также содержать пользовательские сообщения об ошибках.
+Azure AD использует hello `StatusCode` элемент в hello `Status` элемент tooindicate hello успешности выхода. Когда hello неудачного выхода из системы, hello `StatusCode` элемент также может содержать пользовательские сообщения об ошибках.

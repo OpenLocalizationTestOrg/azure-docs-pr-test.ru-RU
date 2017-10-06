@@ -1,6 +1,6 @@
 ---
-title: "Бесплатная 30-дневная пробная версия Azure RemoteApp | Документация Майкрософт"
-description: "Испытайте бесплатную пробную версию Azure RemoteApp на 30 дней."
+title: "aaaFree 30-дневную пробную версию Azure RemoteApp | Документы Microsoft"
+description: "Извлечь hello 30-дневную бесплатную пробную версию для Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 1df0ba7204570d9687713ca11ce864ddf4e301c8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 03b881abeba3f00fc8bf79932060a75d47f2e0fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="free-30-day-trial-of-azure-remoteapp"></a>Бесплатная пробная версия Azure RemoteApp на 30 дней
 > [!IMPORTANT]
-> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Дополнительные сведения см. в [объявлении](https://go.microsoft.com/fwlink/?linkid=821148).
+> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Чтение hello [объявления](https://go.microsoft.com/fwlink/?linkid=821148) подробные сведения.
 > 
 > 
 
-Если у вас есть подписка Azure, вы можете получить бесплатную пробную версию [Azure RemoteApp на 30 дней](https://www.remoteapp.windowsazure.com/en/tour.aspx). Чтобы начать работу, просто войдите на портал управления Azure, перейдите к узлу Azure RemoteApp и создайте коллекцию. Это отличный способ протестировать все возможности администрирования перед переходом на платную подписку Azure RemoteApp.  
+Если у вас есть подписка Azure, вы можете получить бесплатную пробную версию [Azure RemoteApp на 30 дней](https://www.remoteapp.windowsazure.com/en/tour.aspx). toostart, просто войдите в портал управления Azure toohello, перейдите в узел Azure RemoteApp toohello и затем создать коллекцию. Это более хорошим способом tootest диск hello полные административные возможности перед преобразованием tooa платная подписка на Azure RemoteApp.  
 
-В режиме пробной версии можно создать две коллекции с ограничением в 10 пользователей на коллекцию. Другие ограничения отсутствуют. Вы можете преобразовать пробную версию в платную подписку в любое время. Если вы не преобразуете подписку в платную, то через 30 дней ваши коллекции будут отключены.
+В режиме пробной версии можно создать две коллекции с ограничением в 10 пользователей на коллекцию. Другие ограничения отсутствуют. Вы можете преобразовать вашей пробной версии tooa платную подписку в любое время. Через 30 дней коллекций переходит в отключенном состоянии, если не преобразовать toopaid подписки.
 
 > [!NOTE]
-> Соглашение об уровне обслуживания Azure не относится к коллекциям, созданным в режиме пробной версии.  
+> соглашения об уровне ОБСЛУЖИВАНИЯ Azure Hello не применяется toocollections, созданные в режиме пробной версии.  
 > 
 > 
 
-Не хотите ждать? Посмотрите краткое видео о [создании облачного развертывания](https://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/).
+Не хотите ждать? Посмотрите краткий видеоролик о том, как слишком[создайте Облачное развертывание](https://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/).
 
-Хотите отправить отзыв? Задайте вопросы на [форумах обсуждений](https://feedback.azure.com/forums/247748-azure-remoteapp/). Если у вас есть [план поддержки Azure](https://azure.microsoft.com/support/plans/), вы можете отправить обращение в службу поддержки. Любой пользователь может отправить отзыв на [форуме отзывов](https://feedback.azure.com/forums/247748-azure-remoteapp/).  
+Хотите отправить отзыв? POST вопросы слишком[hello дискуссионные форумы](https://feedback.azure.com/forums/247748-azure-remoteapp/). Если у вас есть [план поддержки Azure](https://azure.microsoft.com/support/plans/), вы можете отправить обращение в службу поддержки. Любой пользователь может отправить отзыв на [форуме отзывов](https://feedback.azure.com/forums/247748-azure-remoteapp/).  
 

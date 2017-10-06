@@ -1,6 +1,6 @@
 ---
-title: "Сброс паролей в Azure Active Directory | Документация Майкрософт"
-description: "В этом разделе описывается, как сбросить пароль пользователя в Azure Active Directory."
+title: "Сброс в Azure Active Directory aaaPassword | Документы Microsoft"
+description: "Объясняет, как tooreset hello пароль для пользователя в Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,36 +16,36 @@ ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e7c38c7f0d40a310dd0b6bd0e866d2d55115550
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4bb201803ffc50bcc937a309ae4f0d613da2ae4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Сброс пароля пользователя в Azure Active Directory
+# <a name="reset-hello-password-for-a-user-in-azure-active-directory"></a>Сброс пароля hello для пользователя в Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Портал Azure](active-directory-users-reset-password-azure-portal.md)
 > * [классическом портале Azure](active-directory-create-users-reset-password.md)
 >
 >
 
-## <a name="how-to-reset-the-password-for-a-user"></a>Сброс пароля для пользователя
-1. Войдите на [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Больше служб**, введите **Пользователи и группы** в текстовое поле, а затем нажмите клавишу **ВВОД**.
+## <a name="how-tooreset-hello-password-for-a-user"></a>Как tooreset hello пароля для пользователя
+1. Войдите в toohello [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **пользователей и групп** в hello текстовое поле, а затем выберите **ввод**.
 
    ![Открытие страницы "Управление пользователями"](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
-3. В колонке **Пользователи и группы** выберите **Пользователи**.
+3. На hello **пользователей и групп** колонке выберите **пользователей**.
 
-   ![Открытие колонки "Пользователи"](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
-4. В колонке **Пользователи и группы — Пользователи** выберите пользователя из списка.
-5. В колонке для выбранного пользователя щелкните **Обзор**, а затем на панели команд щелкните **Сбросить пароль**.
+   ![Открытие колонка "пользователи" hello](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
+4. На hello **пользователей и групп — пользователей** колонке выберите пользователя из списка hello.
+5. В колонке hello для выбранного пользователя hello, выберите **Обзор**и выберите в панели команд hello, **сброс пароля**.
 
-    ![Выбор команды "Сбросить пароль"](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
-6. В колонке **Сброс пароля** щелкните **Сбросить пароль**.
+    ![При выборе hello Reset, команда пароль](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
+6. На hello **сброс пароля** колонке выберите **сброс пароля**.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * [Добавление пользователей](active-directory-users-create-azure-portal.md)
-* [Назначение пользователей в предварительной версии Azure AD](active-directory-users-assign-role-azure-portal.md)
+* [Назначьте роль tooa пользователя в Azure AD](active-directory-users-assign-role-azure-portal.md)
 * [Изменение сведений о работе пользователя](active-directory-users-work-info-azure-portal.md)
 * [Управление профилями пользователей](active-directory-users-profile-azure-portal.md)
 * [Удаление пользователя из Azure AD](active-directory-users-delete-user-azure-portal.md)

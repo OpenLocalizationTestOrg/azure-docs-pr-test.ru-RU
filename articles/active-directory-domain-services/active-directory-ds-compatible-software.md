@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 1a4af8c9a5f30cf7ea24d587866d1b41ab9cfb2c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7c393eead91ff43dd862bbf10e3af44062ffeff9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Программное обеспечение сторонних производителей, которое совместимо с доменными службами Azure AD
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 07/11/2017
 
 ![One Identity](./media/compatible-software-icons/OneIdentity.png)
 
-Службы аутентификации One Identity позволяют системам Unix, Linux и Mac OS X использовать доступ, аутентификацию и авторизацию существующей инфраструктуры организации Active Directory (AD). Службы аутентификации теперь поддерживают доменные службы Azure Active Directory, позволяющие ресурсам, отличным от Windows, использовать те же платформы нового поколения, которые используют существующие решения SaaS.
+Один службы проверки подлинности удостоверений позволяет Unix, Linux и Mac OS X toouse hello доступ к сети, аутентификации и авторизации из существующей инфраструктуры Active Directory (AD). Службы проверки подлинности теперь поддерживает Azure доменных служб Active Directory Включение tooutilize hello одной платформе следующего поколения, уже существующие решения SaaS использовать ресурсы не под управлением Windows.
 
 [Службы аутентификации One Identity](https://www.quest.com/products/authentication-services/)
 
@@ -37,6 +37,6 @@ ms.lasthandoff: 07/11/2017
 
 ![RedHat](./media/compatible-software-icons/RedHat.png)
 
-Red Hat Enterprise Linux — лидирующая в мире корпоративная платформа Linux, ориентированная на потребности современных компаний. Для корпоративных рабочих нагрузок виртуальных машин Linux в Microsoft Azure Red Hat Enterprise Linux является предпочтительным вариантом. Red Hat Enterprise Linux выступает открытой, надежной и безопасной платформой, предназначенной для пользователей, нуждающихся в гибкости развертывания для критически важных для бизнеса рабочих нагрузок (как в центре обработки данных, так и в облаке Azure). Кроме того, она имеет тесно интегрированную поддержку корпоративного уровня от Red Hat и Microsoft.
+Red Hat Enterprise Linux является hello world ведущая платформа enterprise Linux построен toomeet hello потребностей современных современных предприятиях. Red Hat Enterprise Linux — Выбор hello предпочтительный для рабочих нагрузок виртуальной машины (VM) enterprise Linux в Microsoft Azure. Red Hat Enterprise Linux представляет собой открытый, надежной и безопасной платформы, предназначенный для тех, кто хотел гибкость развертывания их важных рабочих нагрузок - из toohello центр данных hello облако Azure - включаются в резервную тесно связанных корпоративного уровня поддерживает от Red Hat и корпорацией Майкрософт.
 
-[Присоединение виртуальной машины Red Hat Enterprise Linux 7.2 к управляемому домену](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+[Присоединение доменных служб tooAzure AD RedHat Enterprise Linux 7.2 ВМ](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

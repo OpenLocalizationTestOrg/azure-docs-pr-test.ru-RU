@@ -1,5 +1,5 @@
 ---
-title: "Как понять разницу между делегированными разрешениями и разрешениями приложения | Документы Майкрософт"
+title: "aaaHow toorecognize различия между разрешения делегирования и приложений | Документы Microsoft"
 description: "Статья содержит сведения о делегированных разрешениях и разрешениях приложений, а также о том, как они используются в клиентах и предоставляются в ресурсах для приложений, разрабатываемых с помощью Azure AD."
 services: active-directory
 documentationcenter: 
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 9faee35fea8fbbc79b4cbcf8af2b4b3e2b6aa946
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e7b12dbc122522f3672711835c9704ccbe3cdaf3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Как понять разницу между делегированными разрешениями и разрешениями приложения
+# <a name="how-toorecognize-differences-between-delegated-and-application-permissions"></a>Как toorecognize различия между разрешения делегирования и приложений
 
 ## <a name="recommended-documents"></a>Рекомендуемые документы
 
-- Дополнительные сведения о том, как клиентские приложения используют [запросы делегированных разрешений и разрешений приложений](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) для доступа к ресурсам.
-- Пошаговые инструкции по [настройке запросов разрешений для клиентского приложения](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#configuring-a-client-application-to-access-web-apis)
-- Вы можете ознакомиться с более подробными сведениями о том, как приложения-ресурсы предоставляют [области](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) и [роли приложения](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) клиентским приложениям, которые на портале Azure называются делегированными разрешениями и разрешениями приложения, соответственно. 
+- Дополнительные сведения о том, как клиентские приложения используют [запросов на разрешение делегирования и приложение](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) tooaccess ресурсов.
+- См. пошаговые инструкции о том, как слишком[настройки запросов разрешений в клиентском приложении](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#configuring-a-client-application-to-access-web-apis)
+- Более подробно узнать предоставления ресурсов приложениями [областей](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) и [ролей приложения](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) tooclient приложений, которые манифеста как полномочный и разрешения приложения соответственно, в hello Azure портал. 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [StackOverflow в AzureAD](http://stackoverflow.com/questions/tagged/azure-active-directory)

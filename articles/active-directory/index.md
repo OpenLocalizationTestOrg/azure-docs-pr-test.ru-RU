@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-description: "Узнайте, как синхронизировать локальные каталоги и включить единый вход. Документация, в которой показано, как интегрировать все доступные средства для управления удостоверениями."
-title: "Документация по Azure Active Directory. Руководства и справочник по API | Документация Майкрософт"
+description: "Узнайте, как toosynchronize каталогов и Включение единого входа. Документации показано, как toointegrate полный набор возможностей по управлению удостоверениями."
+title: "aaaAzure документации Active Directory - учебники, справочник по API | Документы Microsoft"
 services: active-directory
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 8933c77013d7b0d886d3e309dc0b1a72026eb677
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a99aa3cc979a518c5b53cb1540f037b6776fb157
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-documentation"></a>Документация Azure Active Directory
 
-Узнайте, как синхронизировать локальные каталоги и включить единый вход с использованием Azure Active Directory (Azure AD). Руководства, справочники по API и другая документация, в которой показано, как интегрировать средства для управления удостоверениями, включая многофакторную идентификацию, регистрацию устройств, управление доступом на основе ролей, а также мониторинг и оповещения системы безопасности.
+Узнайте, как каталоги toosynchronize и включить единый вход в Azure Active Directory (Azure AD). Учебники, ссылки на API и другую документацию показано, как управлять возможностями по управлению идентификаторами toointegrate, включая многофакторную проверку подлинности, регистрации устройств, доступ на основе ролей и мониторинг безопасности и предупреждения.
 
 <ul class="panelContent cardsFTitle">
     <li>

@@ -1,6 +1,6 @@
 ---
-title: "Azure AD B2C | Документация Майкрософт"
-description: "Как с помощью Azure Active Directory B2C создать веб-API .NET, защищенный маркерами доступа OAuth 2.0 для проверки подлинности."
+title: "aaaAzure AD B2C | Документы Microsoft"
+description: "Как toobuild веб-API .NET с помощью Azure Active Directory B2C безопасность с помощью маркера доступа OAuth 2.0 для проверки подлинности."
 services: active-directory-b2c
 documentationcenter: .net
 author: parakhj
@@ -14,68 +14,68 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.openlocfilehash: 48749bfa2ab54a0e766a4aad4f39073cc4e90818
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d45364216deda38ef44b60dd11e86d9a089ad509
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: создание веб-API .NET
 
-С помощью Azure Active Directory (Azure AD) B2C можно защитить веб-API с помощью маркера доступа OAuth 2.0. Эти маркеры позволяют клиентским приложениям проходить проверку подлинности для API. В этой статье показано, как создать интерфейс веб-API .NET "Список дел" с использованием модели Model-View-Controller (MVC), который позволяет пользователям клиентского приложения выполнять задачи CRUD. Этот веб-API защищен с помощью Azure AD B2C. Управлять списком дел могут только пользователи, прошедшие проверку подлинности.
+С помощью Azure Active Directory (Azure AD) B2C можно защитить веб-API с помощью маркера доступа OAuth 2.0. Эти маркеры позволяют ваш клиент toohello tooauthenticate приложения API. В этой статье показано, как toocreate API .NET MVC «список дел», которая позволяет пользователям клиента tooCRUD задач приложения. веб-API Hello защищается с помощью Azure AD B2C и позволяет toomanage прошедшим проверку пользователям только их список дел.
 
 ## <a name="create-an-azure-ad-b2c-directory"></a>Создание каталога Azure AD B2C
 
 Перед использованием Azure AD B2C необходимо создать каталог или клиент. Каталог — это контейнер для данных всех ваших пользователей, приложений, групп и т. д. Прежде чем продолжать работу с руководством, [создайте каталог B2C](active-directory-b2c-get-started.md), если вы его еще не создали.
 
 > [!NOTE]
-> Клиентское приложение и веб-API должны использовать один и тот же каталог Azure AD B2C.
+> клиентское приложение Hello и веб-API необходимо использовать каталог B2C hello же Azure AD.
 >
 
 ## <a name="create-a-web-api"></a>Создание веб-API
 
-Теперь необходимо создать приложение веб-API в каталоге B2C. Это дает Azure AD информацию, необходимую для безопасного взаимодействия с вашим приложением. Чтобы создать приложение, следуйте [этим инструкциям](active-directory-b2c-app-registration.md). Не забудьте сделать следующее.
+Далее необходимо toocreate API веб-приложения в каталоге B2C. Это дает сведения о Azure AD, что его нуждается toosecurely взаимодействовать с приложением. toocreate приложения, выполните [эти инструкции](active-directory-b2c-app-registration.md). Не забудьте сделать следующее.
 
-* Включите в приложение **веб-приложение** или **веб-API**.
-* Используйте **URI перенаправления** `https://localhost:44332/` для веб-приложения. Это стандартное расположение клиента веб-приложения для этого примера.
-* Скопируйте **идентификатор приложения** , назначенный приложению. Он понадобится вам позднее.
+* Включить **веб-приложения** или **веб-API** в приложение hello.
+* Используйте hello **URI перенаправления** `https://localhost:44332/` для веб-приложения hello. Это расположение по умолчанию hello hello веб-приложение клиента для этого примера кода.
+* Копировать hello **идентификатор приложения** , назначенный tooyour приложения. Он понадобится вам позднее.
 * Введите идентификатор приложения в поле **URI кода приложения**.
-* Добавьте разрешения с помощью меню **Published scopes** (Опубликованные области).
+* Добавить разрешения с помощью hello **публикации областей** меню.
 
   [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Создание политик
 
-В Azure AD B2C любое взаимодействие с пользователем определяется [политикой](active-directory-b2c-reference-policies.md). Вам понадобится создать политику для взаимодействия с Azure AD B2C. Мы советуем использовать объединенную политику регистрации и входа, как описано в статье [Azure Active Directory B2C: расширяемая инфраструктура политик](active-directory-b2c-reference-policies.md). При создании политики обязательно сделайте следующее:
+В Azure AD B2C любое взаимодействие с пользователем определяется [политикой](active-directory-b2c-reference-policies.md). Вам потребуется toocreate toocommunicate политики с Azure AD B2C. Рекомендуется с помощью hello политики регистрации-повышение или вход в сочетании, как описано в hello [статье политики](active-directory-b2c-reference-policies.md). При создании политики обязательно сделайте следующее:
 
 * В политике укажите **отображаемое имя** и другие атрибуты регистрации.
 * В каждой политике в качестве утверждения приложения выберите утверждения **Отображаемое имя** и **Идентификатор объекта**. Можно также выбрать другие утверждения.
-* Скопируйте **имя** каждой созданной политики. Эти имена политик понадобятся вам позже.
+* Копировать hello **имя** каждой политики, после его создания. Имя политики hello потребуется позднее.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Создав политику, можно приступать к созданию приложения.
+После успешного создания политики hello вы будете готовы toobuild приложения.
 
-## <a name="download-the-code"></a>Загрузка кода
+## <a name="download-hello-code"></a>Загрузка кода hello
 
-Код примеров для этого руководства размещен на портале [GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi). Вы можете клонировать пример, выполнив такую команду:
+Hello кода для этого учебника, сохраняется на [GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi). Образец hello можно клонировать, выполнив:
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Скачав пример кода, откройте SLN-файл Visual Studio, чтобы начать работу. Теперь решение содержит два проекта: `TaskWebApp` и `TaskService`. `TaskWebApp` — это веб-приложение MVC, с которым взаимодействует пользователь. `TaskService` — веб-API серверной части приложения, в котором хранится список дел для каждого пользователя. В этой статье рассматривается только приложение `TaskService`. Сведения о создании `TaskWebApp` с помощью Azure AD B2C см. в [этом руководстве по веб-приложениям .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md).
+После загрузки кода образца hello запущен tooget файл .sln Visual Studio откройте hello. Hello файл решения содержит два проекта: `TaskWebApp` и `TaskService`. `TaskWebApp`— веб-приложение MVC, hello пользователь взаимодействует с. `TaskService`— приложение hello фоновая веб-API, который хранит список дел каждого пользователя. В этой статье рассматривается hello `TaskService` приложения. toolearn как toobuild `TaskWebApp` с помощью Azure AD B2C, в разделе [наш учебник по .NET web app](active-directory-b2c-devquickstarts-web-dotnet-susi.md).
 
-### <a name="update-the-azure-ad-b2c-configuration"></a>Обновление конфигурации Azure AD B2C
+### <a name="update-hello-azure-ad-b2c-configuration"></a>Обновите конфигурацию hello Azure AD B2C
 
-В нашем примере настроено использование политик и идентификатора клиента демонстрационного клиента. Если вы хотите использовать собственный клиент, необходимо сделать следующее:
+Выборка — настроенное toouse hello политик и клиент идентификатор нашей демонстрационному клиенту. Если вы хотите toouse клиента, необходимо будет hello toodo следующие:
 
-1. Откройте `web.config` в проекте `TaskService` и замените следующие значения:
+1. Откройте `web.config` в hello `TaskService` проекта и замените значения hello
     * `ida:Tenant` именем своего клиента;
     * `ida:ClientId` идентификатором клиента для приложения веб-API;
-    * `ida:SignUpSignInPolicyId` именем политики регистрации и входа в систему.
+    * `ida:SignUpSignInPolicyId` именем политики регистрации и входа в систему;
 
-2. Откройте `web.config` в проекте `TaskWebApp` и замените следующие значения:
+2. Откройте `web.config` в hello `TaskWebApp` проекта и замените значения hello
     * `ida:Tenant` именем своего клиента;
     * `ida:ClientId` идентификатором клиента для веб-приложения;
     * `ida:ClientSecret` секретным ключом веб-приложения;
@@ -84,13 +84,13 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
     * `ida:ResetPasswordPolicyId` именем политики "Сброс профиля".
 
 
-## <a name="secure-the-api"></a>Защита API
+## <a name="secure-hello-api"></a>Защита hello API
 
-Теперь, когда у вас есть клиент, который вызывает API, можно защитить API (например, `TaskService`) с помощью токенов носителя OAuth 2.0. Это гарантирует, что каждый запрос к API будет действителен, только если содержит токен носителя. API может принимать и проверять токены носителя с помощью библиотеки OWIN от Майкрософт.
+Теперь, когда у вас есть клиент, который вызывает API, можно защитить API (например, `TaskService`) с помощью токенов носителя OAuth 2.0. Это гарантирует, что каждый запрос tooyour API будет действителен только если hello запрос содержит токен носителя. API может принимать и проверять токены носителя с помощью библиотеки OWIN от Майкрософт.
 
 ### <a name="install-owin"></a>Установка OWIN
 
-Начните с установки конвейера проверки подлинности OWIN OAuth с помощью консоли диспетчера пакетов Visual Studio.
+Перед началом установки hello конвейера проверки подлинности OWIN OAuth с помощью hello консоль диспетчера пакетов Visual Studio.
 
 ```Console
 PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TaskService
@@ -98,23 +98,23 @@ PM> Install-Package Microsoft.Owin.Security.Jwt -ProjectName TaskService
 PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TaskService
 ```
 
-Будет выполнена установка ПО промежуточного слоя OWIN, которое будет принимать и проверять токены носителя.
+Будет выполнена установка hello OWIN по промежуточного слоя, будут приниматься и проверяться токены носителя.
 
 ### <a name="add-an-owin-startup-class"></a>Добавление класса запуска OWIN
 
-Добавьте класс запуска OWIN в API с именем `Startup.cs`.  Щелкните проект правой кнопкой мыши и выберите **Добавить** и **Новый элемент**, после чего найдите OWIN. При запуске вашего приложения промежуточный слой OWIN вызовет метод `Configuration(…)` .
+Добавление toohello класс запуска OWIN API с именем `Startup.cs`.  Правой кнопкой мыши проект hello, выберите **добавить** и **новый элемент**и выполните поиск OWIN. по промежуточного слоя OWIN Hello будет вызывать hello `Configuration(…)` метод при запуске приложения.
 
-В нашем примере мы изменили объявление класса на `public partial class Startup` и реализовали другую часть класса в `App_Start\Startup.Auth.cs`. Внутри метода `Configuration` мы добавили вызов `ConfigureAuth`, определенный в `Startup.Auth.cs`. После внесения изменений `Startup.cs` выглядит следующим образом:
+В нашем примере мы изменили объявление класса hello слишком`public partial class Startup` и реализации hello hello класса в другой части `App_Start\Startup.Auth.cs`. Внутри hello `Configuration` метод, мы добавили вызов слишком`ConfigureAuth`, которая определена в `Startup.Auth.cs`. После изменения hello `Startup.cs` выглядит как hello следующее:
 
 ```CSharp
 // Startup.cs
 
 public partial class Startup
 {
-    // The OWIN middleware will invoke this method when the app starts
+    // hello OWIN middleware will invoke this method when hello app starts
     public void Configuration(IAppBuilder app)
     {
-        // ConfigureAuth defined in other part of the class
+        // ConfigureAuth defined in other part of hello class
         ConfigureAuth(app);
     }
 }
@@ -122,7 +122,7 @@ public partial class Startup
 
 ### <a name="configure-oauth-20-authentication"></a>Настройка проверки подлинности OAuth 2.0
 
-Откройте файл `App_Start\Startup.Auth.cs` и реализуйте метод `ConfigureAuth(...)`. Это может выглядеть следующим образом:
+Привет открыть файл `App_Start\Startup.Auth.cs`и реализовать hello `ConfigureAuth(...)` метод. Например он может выглядеть hello следующим образом:
 
 ```CSharp
 // App_Start\Startup.Auth.cs
@@ -137,29 +137,29 @@ public partial class Startup
         public static string DefaultPolicy = SignUpSignInPolicy;
 
         /*
-         * Configure the authorization OWIN middleware.
+         * Configure hello authorization OWIN middleware.
          */
         public void ConfigureAuth(IAppBuilder app)
         {
             TokenValidationParameters tvps = new TokenValidationParameters
             {
-                // Accept only those tokens where the audience of the token is equal to the client ID of this app
+                // Accept only those tokens where hello audience of hello token is equal toohello client ID of this app
                 ValidAudience = ClientId,
                 AuthenticationType = Startup.DefaultPolicy
             };
 
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
             {
-                // This SecurityTokenProvider fetches the Azure AD B2C metadata & signing keys from the OpenIDConnect metadata endpoint
+                // This SecurityTokenProvider fetches hello Azure AD B2C metadata & signing keys from hello OpenIDConnect metadata endpoint
                 AccessTokenFormat = new JwtFormat(tvps, new OpenIdConnectCachingSecurityTokenProvider(String.Format(AadInstance, Tenant, DefaultPolicy)))
             });
         }
     }
 ```
 
-### <a name="secure-the-task-controller"></a>Настройка защиты контроллера задач
+### <a name="secure-hello-task-controller"></a>Контроллер задач безопасного hello
 
-Теперь, когда приложение настроено для использования проверки подлинности OAuth 2.0, вы можете добавить тег `[Authorize]` к контроллеру задач для защиты веб-API. В этом контроллере выполняются все операции со списками дел, поэтому нужно защитить весь контроллер на уровне класса. Для более точного управления можно добавить тег `[Authorize]` к отдельным действиям.
+После проверки подлинности настроенных toouse OAuth 2.0, приложение hello можно защитить web API, добавив `[Authorize]` контроллер задач toohello тег. Это контроллер hello, где все операции списка задач выполняется, поэтому необходимо обеспечить безопасность всей контроллера hello на уровне класса hello. Можно также добавить hello `[Authorize]` тег действия tooindividual для более точное управление.
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -171,9 +171,9 @@ public class TasksController : ApiController
 }
 ```
 
-### <a name="get-user-information-from-the-token"></a>Получение сведений о пользователе из токена.
+### <a name="get-user-information-from-hello-token"></a>Получение сведений о пользователе из hello маркера
 
-`TasksController` сохраняет задачи в базе данных, где каждой задаче соответствует пользователь, являющийся ее владельцем. Владелец определяется **идентификатором объекта**пользователя. (Поэтому необходимо добавить идентификатор объекта в качестве утверждения приложения во все свои политики.)
+`TasksController`сохраняет задачи в базе данных, где каждый объект имеет связанный пользователь «владеет» задачу hello. Владелец Hello идентифицируется hello пользователя **идентификатор объекта**. (Вот почему требуется идентификатор tooadd hello объекта, как приложение утверждения во всех политик.)
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -186,9 +186,9 @@ public IEnumerable<Models.Task> Get()
 }
 ```
 
-### <a name="validate-the-permissions-in-the-token"></a>Проверка разрешений в токене
+### <a name="validate-hello-permissions-in-hello-token"></a>Проверки разрешений hello в маркере hello
 
-Общим требованием для веб-API является проверка областей (scope) в токене. Это гарантирует, что пользователь предоставил разрешения, необходимые для доступа к службе списка дел.
+Общим требованием для веб-API — hello toovalidate «областей» присутствует в маркере hello. Это гарантирует, что этой hello пользователь согласился службы списка дел hello необходимые tooaccess toohello разрешения.
 
 ```CSharp
 public IEnumerable<Models.Task> Get()
@@ -197,17 +197,17 @@ public IEnumerable<Models.Task> Get()
     {
         throw new HttpResponseException(new HttpResponseMessage {
             StatusCode = HttpStatusCode.Unauthorized,
-            ReasonPhrase = "The Scope claim does not contain 'read' or scope claim not found"
+            ReasonPhrase = "hello Scope claim does not contain 'read' or scope claim not found"
         });
     }
     ...
 }
 ```
 
-## <a name="run-the-sample-app"></a>Запуск примера приложения
+## <a name="run-hello-sample-app"></a>Запуск образца приложения hello
 
-Наконец, выполните сборку и запустите `TaskWebApp` и `TaskService`. Создайте несколько задач в списке дел. Обратите внимание, что они сохраняются в API даже после остановки и перезапуска клиента.
+Наконец, выполните сборку и запустите `TaskWebApp` и `TaskService`. Создавать некоторые задачи в список дел пользователя hello и обратите внимание на то, как они сохраняются в hello API даже после остановки и перезапуска hello клиента.
 
 ## <a name="edit-your-policies"></a>Изменение политик
 
-Теперь, когда у вас есть API, защищенный с помощью Azure AD B2C, можно поэкспериментировать с политиками регистрации и входа и понаблюдать, как это влияет (или не влияет) на API. Вы можете управлять утверждениями приложения в политиках и изменять сведения о пользователе, доступные в веб-API. Любые дополнительные утверждения, которые вы добавляете, будут доступны для веб-API .NET MVC в объекте `ClaimsPrincipal` , как описано ранее в этой статье.
+После защиты API с помощью Azure AD B2C можно поэкспериментировать с знак в-регистрации-повышение политики и представления эффекты hello (или его отсутствие) на hello API. Можно управлять утверждений приложения hello в политиках hello и изменение сведений о пользователе hello, доступные в hello веб-API. Все добавленные утверждения будут доступных tooyour .NET MVC веб-API в hello `ClaimsPrincipal` объекта, как описано ранее в этой статье.

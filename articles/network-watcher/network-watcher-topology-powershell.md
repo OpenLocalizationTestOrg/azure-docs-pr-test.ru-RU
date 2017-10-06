@@ -1,6 +1,6 @@
 ---
-title: "Просмотр топологии Наблюдателя за сетями (PowerShell) | Документация Майкрософт"
-description: "В этой статье вы узнаете, как создать запрос к топологии сети с помощью PowerShell."
+title: "Топология Наблюдатель сети Azure aaaView - PowerShell | Документы Microsoft"
+description: "В этой статье описывается как toouse PowerShell tooquery топологии сети."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 40e01a7a6a2ea6127ab725f04649cec47b9d9422
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2bc0ecf5baa81a68be53f55c74f362a7bc97116f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-network-watcher-topology-with-powershell"></a>Просмотр топологии Наблюдателя за сетями с помощью PowerShell
 
@@ -28,37 +28,37 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-topology-cli.md)
 > - [REST API](network-watcher-topology-rest.md)
 
-Возможность просмотра топологии Наблюдателя за сетями позволяет получить визуальное представление сетевых ресурсов в подписке. На портале эта визуализация отображается автоматически. Сведения в представлении топологии на портале можно получить с помощью PowerShell.
-Эта возможность обеспечивает адаптивность данных, так как в таком случае их можно использовать в других средствах для создания визуализации.
+компонент топологии Hello Наблюдатель сети предоставляет визуальное представление hello сетевым ресурсам в подписке. На портале hello этой визуализации представлены tooyou автоматически. Hello информации за представление топологии hello hello портала можно извлечь с помощью PowerShell.
+Эта возможность обеспечивает сведения о топологии hello более универсально, как hello данных могут использоваться другие средства toobuild out hello визуализации.
 
-Взаимодействие моделируется по двум связям.
+взаимодействие Hello моделируется в две связи.
 
 - **Вложение.** Например, виртуальная сеть содержит подсеть, которая, в свою очередь, содержит сетевую карту.
 - **Связь.** Например, сетевая карта связана с виртуальной машиной.
 
-В следующем списке представлены свойства, которые возвращаются при запросе REST API топологии.
+Hello ниже представлена свойства, которые возвращаются при запросе hello топологии REST API.
 
-* **name** — имя группы ресурсов.
-* **id** — универсальный код ресурса (URI) группы ресурсов.
-* **location** — расположение ресурса.
-* **associations** — список связей объекта, на который указывает ссылка.
-    * **name** — имя ресурса, на который указывает ссылка.
-    * **resourceId** — универсальный код ресурса (URI), на который ссылается связь.
-    * **associationType** — значение, которое ссылается на связь между дочерним и родительским объектом. Допустимые значения: **Contains** или **Associated**.
+* **имя** - hello имя ресурса hello
+* **Идентификатор** -hello uri ресурса hello.
+* **расположение** -hello расположение, где существует ресурс hello.
+* **ассоциации** -список сопоставлений toohello ссылка на объект.
+    * **имя** -hello объекта hello ссылка на имя ресурса.
+    * **resourceId** -hello resourceId является uri hello hello ресурса, на который ссылается связь hello.
+    * **Тип associationType** -это значение ссылается на связь hello hello объекта дочернего и родительского hello. Допустимые значения: **Contains** или **Associated**.
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В этом сценарии командлет `Get-AzureRmNetworkWatcherTopology` используется для получения сведений о топологии. Вы также можете просмотреть статью о том, как [получить сведения о топологии сети с помощью REST API](network-watcher-topology-rest.md).
+В этом сценарии используется hello `Get-AzureRmNetworkWatcherTopology` сведения о топологии hello tooretrieve командлета. Имеется также статью о том, как слишком[получить топология сети с помощью REST API](network-watcher-topology-rest.md).
 
-В этом сценарии предполагается, что вы создали Наблюдатель за сетями в соответствии с инструкциями в статье [Create an Azure Network Watcher instance](network-watcher-create.md) (Наблюдатель за сетями: создание экземпляра службы).
+Этот сценарий предполагает уже были выполнены шаги hello в [создать Наблюдатель сети](network-watcher-create.md) toocreate Наблюдатель сети.
 
 ## <a name="scenario"></a>Сценарий
 
-В сценарии, описанном в этой статье, вы получаете ответ топологии для указанной группы ресурсов.
+Hello сценарий, описанный в этой статье получает ответ hello топологии для данной группы ресурсов.
 
 ## <a name="retrieve-network-watcher"></a>Извлечение Наблюдателя за сетями
 
-Сначала необходимо получить экземпляр Наблюдателя за сетями. Переменная `$networkWatcher` передается в командлет `Get-AzureRmNetworkWatcherTopology`.
+Первым шагом Hello — экземпляр Наблюдатель сети tooretrieve hello. Hello `$networkWatcher` переменной передается toohello `Get-AzureRmNetworkWatcherTopology` командлета.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -67,7 +67,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ## <a name="retrieve-topology"></a>Получение топологии
 
-Командлет `Get-AzureRmNetworkWatcherTopology` получает сведения о топологии для указанной группы ресурсов.
+Hello `Get-AzureRmNetworkWatcherTopology` командлет извлекает hello топологии для данной группы ресурсов.
 
 ```powershell
 Get-AzureRmNetworkWatcherTopology -NetworkWatcher $networkWatcher -TargetResourceGroupName testrg
@@ -75,7 +75,7 @@ Get-AzureRmNetworkWatcherTopology -NetworkWatcher $networkWatcher -TargetResourc
 
 ## <a name="results"></a>Результаты
 
-В возвращенных результатах имеется имя свойства Resources, в котором содержится текст ответа JSON для командлета `Get-AzureRmNetworkWatcherTopology`.  Ответ содержит ресурсы в группе безопасности сети и их связи (то есть значения Contains, Associated).
+Hello возвращаемые результаты имеют свойство имени «ресурсы», содержащих hello текста ответа json для hello `Get-AzureRmNetworkWatcherTopology` командлета.  Hello ответ содержит ресурсы hello hello сетевой группы безопасности и их связи (то есть Contains, связано).
 
 ```json
 Id              : 00000000-0000-0000-0000-000000000000
@@ -135,6 +135,6 @@ Resources       : [
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения см. в статье [Визуализация журналов потоков для групп безопасности сети с помощью Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md).
+Узнайте, каким образом toovisualize вашего потока NSG ведет журнал с помощью Power BI, посетив [визуализировать NSG потоки журналов с помощью Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 

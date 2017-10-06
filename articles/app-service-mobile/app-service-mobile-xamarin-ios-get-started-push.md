@@ -1,6 +1,6 @@
 ---
-title: "Добавление push-уведомлений в приложение Xamarin.iOS с помощью службы приложений Azure"
-description: "Использование службы приложений Azure для отправки push-уведомлений в приложение Xamarin.iOS"
+title: "приложения Xamarin.iOS tooyour уведомлений push aaaAdd службе приложений Azure"
+description: "Узнайте, как toosend toouse службе приложений Azure push-уведомлений приложения Xamarin.iOS tooyour"
 services: app-service\mobile
 documentationcenter: xamarin
 author: ggailey777
@@ -14,38 +14,38 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: glenga
-ms.openlocfilehash: bf922e49c4c92d0065817a5dd6c7d10a04737304
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3e6439aee4f3fe0f60b9786d0bbfd74c4f5e52d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-push-notifications-to-your-xamarinios-app"></a>Добавление push-уведомлений в приложение Xamarin.iOS
+# <a name="add-push-notifications-tooyour-xamarinios-app"></a>Добавление push уведомления tooyour приложения Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Обзор
-В этом руководстве мы добавим push-уведомления в [проект быстрого запуска Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md), чтобы при каждом добавлении новой записи на устройство отправлялось push-уведомление.
+В этом учебнике добавить push уведомления toohello [Xamarin.iOS краткого](app-service-mobile-xamarin-ios-get-started.md) проекта, чтобы каждый раз при вставке записи push-уведомление отправляется toohello устройства.
 
-Если вы не используете скачанный проект сервера, вам потребуется добавить пакет расширений для push-уведомлений. Дополнительные сведения о пакетах расширений для сервера см. в статье [Работа с пакетом SDK для внутреннего сервера .NET для мобильных приложений Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Если вы не используете hello загружен проект быстрый запуск сервера, будет необходимо hello пакета расширения уведомлений push. В разделе [работать с сервера базы данных hello .NET SDK для мобильных приложений Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) для получения дополнительной информации.
 
 ## <a name="prerequisites"></a>Предварительные требования
-* Ознакомьтесь с [кратким руководством по Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md) .
-* Физическое устройство iOS. Push-уведомления не поддерживаются в симуляторе iOS.
+* Полный hello [Xamarin.iOS краткое руководство](app-service-mobile-xamarin-ios-get-started.md) учебника.
+* Физическое устройство iOS. Push-уведомления не поддерживаются симулятор iOS hello.
 
-## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Зарегистрируйте приложение для push-уведомлений на портале разработчика Apple.
+## <a name="register-hello-app-for-push-notifications-on-apples-developer-portal"></a>Регистрация приложения hello push-уведомления на портале для разработчиков Apple
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
-## <a name="configure-your-mobile-app-to-send-push-notifications"></a>Настройка мобильного приложения для отправки push-уведомлений
+## <a name="configure-your-mobile-app-toosend-push-notifications"></a>Настройка push-уведомлений toosend вашего мобильного приложения
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a name="update-the-server-project-to-send-push-notifications"></a>Обновление серверного проекта для отправки push-уведомлений
+## <a name="update-hello-server-project-toosend-push-notifications"></a>Обновить hello server проекта toosend push-уведомлений
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
 ## <a name="configure-your-xamarinios-project"></a>Настройка проекта Xamarin.iOS
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
-## <a name="add-push-notifications-to-your-app"></a>Добавление push-уведомлений в приложение
-1. В **QSTodoService** добавьте приведенное ниже свойство, чтобы **AppDelegate** мог получить мобильный клиент.
+## <a name="add-push-notifications-tooyour-app"></a>Добавить приложение tooyour уведомлений push
+1. В **QSTodoService**, добавьте следующие свойства hello, чтобы **AppDelegate** можно получить hello мобильного клиента:
    
             public MobileServiceClient GetClient {
             get
@@ -57,11 +57,11 @@ ms.lasthandoff: 08/03/2017
                 client = value;
             }
         }
-2. Добавьте следующий оператор `using` в верхнюю часть файла **AppDelegate.cs** .
+2. Добавьте следующее hello `using` инструкции toohello вверху hello **AppDelegate.cs** файла.
    
         using Microsoft.WindowsAzure.MobileServices;
         using Newtonsoft.Json.Linq;
-3. В **AppDelegate** переопределите событие **FinishedLaunching**.
+3. В **AppDelegate**, переопределите hello **FinishedLaunching** событий:
    
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
@@ -77,7 +77,7 @@ ms.lasthandoff: 08/03/2017
    
             return true;
         }
-4. В том же файле переопределите событие **RegisteredForRemoteNotifications** . В этом коде регистрируется простое шаблонное уведомление, которое будет рассылаться сервером по всем поддерживаемым платформам.
+4. В hello того же файла, переопределите hello **RegisteredForRemoteNotifications** событий. В этом коде вы регистрируете для простой шаблон уведомление, отправляемое на всех поддерживаемых платформах сервером hello.
    
     Дополнительные сведения о шаблонах центров уведомлений см. в статье [Шаблоны](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 08/03/2017
         }
 
 
-1. Затем переопределите событие **DidReceivedRemoteNotification** :
+1. Затем переопределите hello **DidReceivedRemoteNotification** событий:
    
         public override void DidReceiveRemoteNotification (UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
@@ -117,18 +117,18 @@ ms.lasthandoff: 08/03/2017
             }
         }
 
-Ваше приложение теперь обновлено для поддержки push-уведомлений.
+Приложение сейчас обновленные toosupport push-уведомлений.
 
 ## <a name="test"></a>Тестирование push-уведомлений в приложении
-1. Нажмите кнопку **Выполнить**, чтобы выполнить сборку проекта и запустить приложение на устройстве iOS, а затем нажмите кнопку **ОК**, чтобы разрешить прием push-уведомлений.
+1. Нажмите клавишу hello **запуска** toobuild hello проекта и запустите приложение hello в поддерживает устройства iOS, а затем нажмите кнопку **ОК** tooaccept push-уведомлений.
    
    > [!NOTE]
-   > Необходимо явно разрешить прием push-уведомлений от вашего приложения. Этот запрос отображается только при первом запуске приложения.
+   > Необходимо явно разрешить прием push-уведомлений от вашего приложения. Этот запрос возникает только hello при первом hello приложение выполняется.
    > 
    > 
-2. В приложении введите задачу, а затем щелкните значок плюса (**+**).
-3. Убедитесь, что уведомление получено, а затем нажмите кнопку **ОК** , чтобы закрыть его.
-4. Повторите шаг 2 и сразу закройте приложение, затем убедитесь, что уведомление отображается.
+2. В приложение hello введите задачу и нажмите кнопку hello плюс (**+**) значок.
+3. Убедитесь, что уведомление о получении, затем щелкните **ОК** toodismiss hello уведомления.
+4. Повторите шаг 2 и немедленно закрыть hello приложения, а затем убедитесь, что отображается уведомление.
 
 Вы успешно завершили ознакомление с данным учебником.
 

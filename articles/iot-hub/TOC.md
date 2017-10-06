@@ -28,14 +28,14 @@
 #### [Подключение Sparkfun ESP8266 Thing Dev к Центру Интернета вещей в облаке Azure](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [Adafruit Feather M0 с Arduino IDE](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
-#### Использование начального набора шлюза Интернета вещей
+#### Использовать hello IoT шлюза начального набора
 ##### [Настройка Intel NUC в качестве шлюза](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-##### [Подключение шлюза к Центру Интернета вещей](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-##### [Использование шлюза для преобразования данных](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+##### [Подключение шлюза hello tooIoT концентратора](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+##### [Использование шлюза hello для преобразования данных](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
 ## Расширенные сценарии IoT
 ### [Управление обменом сообщениями между устройством и облаком с помощью обозревателя Центра Интернета вещей](iot-hub-explorer-cloud-device-messaging.md)
-### [Сохранение сообщений Центра Интернета вещей в хранилище данных Azure](iot-hub-store-data-in-azure-table-storage.md)
+### [Сохранять сообщения центр IoT tooAzure хранилища данных](iot-hub-store-data-in-azure-table-storage.md)
 ### [Визуализация данных в Power BI](iot-hub-live-data-visualization-in-power-bi.md)
 ### [Визуализация данных в веб-приложениях](iot-hub-live-data-visualization-in-web-apps.md)
 ### [Создание прогноза погоды с помощью Машинного обучения Azure](iot-hub-weather-forecast-machine-learning.md)
@@ -44,7 +44,7 @@
 
 # Практическое руководство
 ## План
-### [Сравнение Центра Интернета вещей с концентраторами событий](iot-hub-compare-event-hubs.md)
+### [Сравнение центра IoT tooEvent концентраторы](iot-hub-compare-event-hubs.md)
 ### [Масштабирование своего решения](iot-hub-scaling.md)
 ### [Высокий уровень доступности и аварийное восстановление](iot-hub-ha-dr.md)
 ### [Поддержка дополнительных протоколов](iot-hub-protocol-gateway.md)
@@ -53,15 +53,15 @@
 #### [Руководство по функциям передачи из устройства в облако](iot-hub-devguide-d2c-guidance.md)
 #### [Руководство по функциям передачи из облака в устройство](iot-hub-devguide-c2d-guidance.md)
 #### [Отправка и получение сообщений](iot-hub-devguide-messaging.md)
-##### [Оправка сообщений, пересылаемых с устройства в облако, в Центр Интернета вещей](iot-hub-devguide-messages-d2c.md)
-##### [Чтение сообщений, пересылаемых с устройства в облако, из встроенной конечной точки](iot-hub-devguide-messages-read-builtin.md)
+##### [Отправлять сообщения из устройства в облако tooIoT концентратора](iot-hub-devguide-messages-d2c.md)
+##### [Чтение сообщения из устройства в облако из встроенных hello конечной точки](iot-hub-devguide-messages-read-builtin.md)
 ##### [Использование пользовательских конечных точек и правил маршрутизации для сообщений, отправляемых с устройства в облако](iot-hub-devguide-messages-read-custom.md)
 ##### [Отправка сообщений, пересылаемых из облака на устройство, из Центра Интернета вещей](iot-hub-devguide-messages-c2d.md)
 ##### [Создание и чтение сообщений Центра Интернета вещей](iot-hub-devguide-messages-construct.md)
 ##### [Выбор протокола связи](iot-hub-devguide-protocols.md)
 #### [Передача файлов с устройства](iot-hub-devguide-file-upload.md)
 #### [Управление удостоверениями устройств](iot-hub-devguide-identity-registry.md)
-#### [Управление доступом к Центру Интернета вещей](iot-hub-devguide-security.md)
+#### [Элемент управления доступом tooIoT концентратора](iot-hub-devguide-security.md)
 #### [Основные сведения о двойниках устройств](iot-hub-devguide-device-twins.md)
 #### [Вызов прямых методов на устройстве](iot-hub-devguide-direct-methods.md)
 #### [Планирование заданий на нескольких устройствах](iot-hub-devguide-jobs.md)
@@ -72,9 +72,9 @@
 #### [Пакеты SDK для устройств и служб](iot-hub-devguide-sdks.md)
 #### [Поддержка MQTT](iot-hub-mqtt-support.md)
 #### [Глоссарий](iot-hub-devguide-glossary.md)
-### [Использование пакета SDK для устройств Azure IoT для C](iot-hub-device-sdk-c-intro.md)
-#### [Использование IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
-#### [Использование сериализатора](iot-hub-device-sdk-c-serializer.md)
+### [Использование устройств IoT hello SDK для языка C](iot-hub-device-sdk-c-intro.md)
+#### [Использовать hello IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
+#### [Использование сериализатора hello](iot-hub-device-sdk-c-serializer.md)
 ### Обработка сообщений с устройства в облако
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
@@ -97,11 +97,11 @@
 #### [Серверная часть Node.js и устройство Node.js](iot-hub-node-node-device-management-get-started.md)
 #### [Серверная часть .NET и устройство Node.js](iot-hub-csharp-node-device-management-get-started.md)
 #### [Java: серверный компонент и устройство](iot-hub-java-java-device-management-getstarted.md)
-### Как использовать свойства двойников
+### Как toouse двойных свойства
 #### [Серверная часть Node.js и устройство Node.js](iot-hub-node-node-twin-how-to-configure.md)
 #### [Серверная часть .NET и устройство Node.js](iot-hub-csharp-node-twin-how-to-configure.md)
 #### [Серверная часть и устройство .NET](iot-hub-csharp-csharp-twin-how-to-configure.md)
-### Использование заданий устройства для обновления встроенного ПО устройства
+### Используйте микропрограммы устройства tooupdate задания устройства
 #### [Серверная часть Node.js и устройство Node.js](iot-hub-node-node-firmware-update.md)
 #### [Серверная часть .NET и устройство Node.js](iot-hub-csharp-node-firmware-update.md)
 ### Планирование и трансляция заданий
@@ -110,15 +110,15 @@
 #### [Java](iot-hub-java-java-schedule-jobs.md)
 ## Управление
 ### Создание центра IoT 
-#### [Использование портала](iot-hub-create-through-portal.md)
+#### [С помощью портала hello](iot-hub-create-through-portal.md)
 #### [Использование PowerShell](iot-hub-create-using-powershell.md)
 #### [Использование CLI 2.0](iot-hub-create-using-cli.md)
 #### [Использование CLI](iot-hub-create-using-cli-nodejs.md)
-#### [Использование REST API](iot-hub-rm-rest.md)
+#### [Используйте API-интерфейса REST hello](iot-hub-rm-rest.md)
 #### [Использование шаблона с помощью PowerShell](iot-hub-rm-template-powershell.md)
 #### [Использование шаблона из .NET](iot-hub-rm-template.md)
 ### Настройка передачи файлов
-#### [Использование портала](iot-hub-configure-file-upload.md)
+#### [С помощью портала hello](iot-hub-configure-file-upload.md)
 #### [Использование PowerShell](iot-hub-configure-file-upload-powershell.md)
 #### [Использование CLI 2.0](iot-hub-configure-file-upload-cli.md)
 ### [Массовое управление удостоверениями устройств Центра Интернета вещей](iot-hub-bulk-identity-mgmt.md)
@@ -126,7 +126,7 @@
 ### [Мониторинг операций](iot-hub-operations-monitoring.md)
 ### [Настройка фильтрации IP](iot-hub-ip-filtering.md)
 ## Безопасность
-### [Все аспекты безопасности](iot-hub-security-ground-up.md)
+### [Безопасности из hello основание,](iot-hub-security-ground-up.md)
 ### [Рекомендации по обеспечению безопасности](iot-hub-security-best-practices.md)
 ### [Архитектура безопасности](iot-hub-security-architecture.md)
 ### [Защита развернутой службы Интернета вещей](iot-hub-security-deployment.md)

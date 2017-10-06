@@ -1,6 +1,6 @@
 ---
-title: "Добавление узлов к автономному кластеру Service Fabric или удаление узлов из него | Документация Майкрософт"
-description: "Узнайте, как добавлять узлы в кластер Azure Service Fabric или удалять их из него на физическом или виртуальном компьютере под управлением Windows Server, расположенном в локальной системе или в любом облаке."
+title: "aaaAdd или удаление кластера Service Fabric узлы tooa автономный | Документы Microsoft"
+description: "Узнайте, как tooadd или удалите tooan узлы Azure Service Fabric кластера на физическом компьютере или виртуальной машине под управлением Windows Server, которая может быть локальной или в любом облаке."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 9c6035e97de38ff63ef074109afd9f3c7484f828
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1da908ad9840faa052e0b4021bc2d4ce732b02bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Добавление узлов в автономный кластер Service Fabric под управлением Windows Server или удаление узлов из него
-После [создания автономного кластера Service Fabric на компьютерах под управлением Windows Server](service-fabric-cluster-creation-for-windows-server.md) потребности компании могут измениться, и вам может понадобиться добавить или удалить несколько узлов в кластере. В данной статье содержатся детальные инструкции по выполнению этой задачи. Обратите внимание, что добавление и удаление узлов в кластерах локальной разработки не поддерживается.
+# <a name="add-or-remove-nodes-tooa-standalone-service-fabric-cluster-running-on-windows-server"></a>Добавление или удаление узлов tooa автономный Service Fabric кластера под управлением Windows Server
+После того как вы [кластер Service Fabric автономный создан на компьютерах Windows Server](service-fabric-cluster-creation-for-windows-server.md), могут изменяться вашим потребностям и может потребоваться tooadd или удаления узлов кластера tooyour. Эта статья содержит подробные инструкции tooachieve это. Обратите внимание, что добавление и удаление узлов в кластерах локальной разработки не поддерживается.
 
-## <a name="add-nodes-to-your-cluster"></a>Добавление узлов в кластер
-1. Подготовьте виртуальную машину или компьютер, который необходимо добавить в кластер, выполнив действия, описанные в статье [Создание изолированного кластера под управлением Windows Server](service-fabric-cluster-creation-for-windows-server.md).
-2. Определите, в какой домен сбоя и домен обновления нужно добавить эту виртуальную машину или компьютер.
-3. Подключитесь к виртуальной машине или компьютеру, который нужно добавить в кластер, с помощью удаленного рабочего стола.
-4. Скопируйте или [скачайте изолированный пакет для Service Fabric для Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) на виртуальную машину или компьютер и извлеките его содержимое.
-5. Запустите PowerShell с более высоким уровнем привилегий и перейдите к распакованному пакету.
-6. Запустите скрипт *AddNode.ps1*, указав параметры, описывающие новый узел, который будет добавлен. В этом примере добавляется новый узел с именем VM5, типом NodeType0, IP-адресом 182.17.34.52 и UD1 со значением fd:/dc1/r0. *ExistingClusterConnectionEndPoint* — это конечная точка подключения для узла в имеющемся кластере, который может содержать IP-адрес *любого* узла в этом кластере.
+## <a name="add-nodes-tooyour-cluster"></a>Добавление узлов кластера tooyour
+1. Hello подготовки виртуальной Машины или компьютер, tooadd tooyour кластера hello выполните действия, упомянутые в hello [hello Подготовка компьютеров для развертывания кластера компоненты hello toomeet](service-fabric-cluster-creation-for-windows-server.md) раздела
+2. Определите, какой домен сбоя и домен обновления являются постоянной tooadd этой виртуальной Машины и машины
+3. Удаленного рабочего стола (RDP) к hello виртуальной Машины или компьютер, что tooadd toohello кластера
+4. Копирование или [загрузить hello изолированный пакет для структуры службы Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) toohello ВМ/machine и распакуйте пакет hello
+5. Запустите Powershell с повышенными привилегиями и перейдите в расположение toohello hello распакованную пакета
+6. Запустите hello *AddNode.ps1* сценария с параметрами hello, описывающие новый узел tooadd hello. Приведенный ниже пример Hello добавляет новый узел с именем VM5, с типом NodeType0 и IP-адрес 182.17.34.52, UD1 и fd: / dc1/r0. Hello *ExistingClusterConnectionEndPoint* уже конечная точка подключения для узла в существующий кластер hello, которой может быть IP-адрес hello *любой* узла в кластере hello.
 
     ```
     .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
     ```
-    После выполнения скрипта можно проверить, добавлен ли новый узел, выполнив командлет [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps).
+    Когда сценарий hello завершает работу, можно проверить, добавлен ли hello новый узел, выполнив hello [Get ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) командлета.
 
-7. Чтобы обеспечить согласованность на различных узлах в кластере, нужно обновить конфигурацию. Выполните команду [Get- ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps), чтобы получить самый последний файл конфигурации, и добавьте вновь добавленный узел в раздел узлов. Кроме того, мы рекомендуем всегда иметь под рукой последнюю конфигурацию кластера, если вам понадобится развернуть кластер с той же конфигурацией.
+7. tooensure согласованности на разных узлах кластера hello, необходимо произвести обновление конфигурации. Запустите [Get ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) tooget hello последний файл конфигурации и добавить hello вновь добавленный узел слишком раздел «Узлы». Также рекомендуется tooalways есть hello последняя конфигурация кластера в случае hello необходимые tooredploy кластер с hello одной конфигурации.
 
     ```
         {
@@ -47,17 +47,17 @@ ms.lasthandoff: 08/29/2017
             "upgradeDomain": "UD1"
         }
     ```
-8. Выполните команду [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps), чтобы начать обновление.
+8. Запустите [ServiceFabricClusterConfigurationUpgrade начала](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) toobegin hello обновления.
 
     ```
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path tooConfiguration File>
 
     ```
-    Ход выполнения обновления можно отслеживать с помощью Service Fabric Explorer. Кроме того, с этой же целью можно выполнить команду [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps).
+    Можно отслеживать ход выполнения обновления hello на Service Fabric Explorer hello. Кроме того, с этой же целью можно выполнить команду [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps).
 
-### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Добавление узлов в кластеры, настроенные с помощью Windows Security, с использованием gMSA
+### <a name="add-nodes-tooclusters-configured-with-windows-security-using-gmsa"></a>Добавление tooclusters узлов, настроенного с использованием групповой управляемой учетной записи Windows
 Для кластеров, настроенных с помощью групповой управляемой учетной записи службы (https://technet.microsoft.com/library/hh831782.aspx), можно добавить новый узел, используя обновление конфигурации.
-1. Выполните команду [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) на любом из имеющихся узлов, чтобы получить самый последний файл конфигурации, и добавьте сведения о новом узле, который нужно добавить в раздел узлов. Убедитесь, что новый узел входит в ту же учетную запись, которой управляет группа. Этой учетной записи нужно назначить роль "Администратор" на всех компьютерах.
+1. Запустите [Get ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) на любом из существующих узлов hello tooget hello последний файл конфигурации и добавление сведений об о hello нового узла требуется tooadd раздела узлов «hello». Убедитесь, что новый узел hello входит в состав hello же группы управляемую учетную запись. Этой учетной записи нужно назначить роль "Администратор" на всех компьютерах.
 
     ```
         {
@@ -68,21 +68,21 @@ ms.lasthandoff: 08/29/2017
             "upgradeDomain": "UD1"
         }
     ```
-2. Выполните команду [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps), чтобы начать обновление.
+2. Запустите [ServiceFabricClusterConfigurationUpgrade начала](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) toobegin hello обновления.
 
     ```
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path tooConfiguration File>
     ```
-    Ход выполнения обновления можно отслеживать с помощью Service Fabric Explorer. Кроме того, с этой же целью можно выполнить команду [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps).
+    Можно отслеживать ход выполнения обновления hello на Service Fabric Explorer hello. Кроме того, с этой же целью можно выполнить команду [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps).
 
-### <a name="add-node-types-to-your-cluster"></a>Добавление типов узлов в кластер
-Чтобы добавить новый тип узла, измените конфигурацию, чтобы добавить новый тип узла в разделе NodeTypes в области Properties, и начните обновление конфигурации, используя [ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps). После завершения обновления в кластер можно добавить новые узлы этого типа.
+### <a name="add-node-types-tooyour-cluster"></a>Добавление узла типы tooyour кластера
+В заказ tooadd нового типа узлов, изменить вашей конфигурации tooinclude hello новый тип узла в разделе «NodeTypes» в разделе «Свойства» и начать настройку обновление с помощью [ServiceFabricClusterConfigurationUpgrade начала](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps). После завершения обновления hello, можно добавить новый кластер tooyour узлы с этим типом узла.
 
 ## <a name="remove-nodes-from-your-cluster"></a>Удаление узлов из кластера
-Вы можете удалить узел из кластера в ходе обновления конфигурации следующим образом:
+Можно удалить узел из кластера с помощью обновления конфигурации в следующих способом hello:
 
-1. Выполните команду [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps), чтобы получить последний файл конфигурации, и *удалите* узел из раздела узлов.
-Добавьте параметр NodesToBeRemoved в раздел Setup в разделе FabricSettings. В качестве значений следует использовать разделенный запятыми список узлов, которые необходимо удалить.
+1. Запустите [Get ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) tooget hello последний файл конфигурации и *удалить* hello узел из раздела «Узлов».
+Добавить hello «NodesToBeRemoved» параметр слишком «Setup» раздел в разделе «FabricSettings». Hello «value» должно быть разделенный запятыми список имен узлов, узлов, которые требуется удалить toobe.
 
     ```
          "fabricSettings": [
@@ -105,25 +105,25 @@ ms.lasthandoff: 08/29/2017
             }
         ]
     ```
-2. Выполните команду [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps), чтобы начать обновление.
+2. Запустите [ServiceFabricClusterConfigurationUpgrade начала](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) toobegin hello обновления.
 
     ```
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path tooConfiguration File>
 
     ```
-    Ход выполнения обновления можно отслеживать с помощью Service Fabric Explorer. Кроме того, с этой же целью можно выполнить команду [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps).
+    Можно отслеживать ход выполнения обновления hello на Service Fabric Explorer hello. Кроме того, с этой же целью можно выполнить команду [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps).
 
 > [!NOTE]
-> При удалении узлов может выполниться несколько обновлений. Некоторые узлы будут отмечены тегом `IsSeedNode=”true”`. Их можно определить, запросив манифест кластера с использованием `Get-ServiceFabricClusterManifest`. Удаление таких узлов может занимать больше времени, чем других, так как в таких сценариях начальные узлы придется перемещать. Кластер должен поддерживать как минимум 3 первичных узла.
+> При удалении узлов может выполниться несколько обновлений. Некоторые узлы будут отмечены `IsSeedNode=”true”` тега и могут быть идентифицированы с помощью запроса к кластеру hello манифеста с помощью `Get-ServiceFabricClusterManifest`. Удаление таких узлов может потребоваться дольше, чем другие, поскольку узлы hello начальное значение будет иметь toobe перемещаются в таких сценариях. Hello кластера должен поддерживать как минимум 3 узлы типа первичного узла.
 > 
 > 
 
 ### <a name="remove-node-types-from-your-cluster"></a>Удаление типов узлов из кластера
-Прежде чем удалить тип узла, перепроверьте, нет ли узлов, которые ссылаются на этот тип. Перед удалением соответствующего типа узла удалите эти узлы. После удаления всех соответствующих узлов NodeType можно удалить из конфигурации кластера и начать обновление конфигурации с помощью [ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps).
+Перед удалением типа узла, проверьте правильность, если все узлы, ссылающимся на тип узла hello. Удалите эти узлы перед удалением hello соответствующий тип узла. После удаления всех соответствующих узлов можно удалить hello NodeType из конфигурации кластера hello и начать настройку обновление с помощью [ServiceFabricClusterConfigurationUpgrade начала](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps).
 
 
 ### <a name="replace-primary-nodes-of-your-cluster"></a>Замена основных узлов кластера
-Замену основных узлов следует выполнять последовательно, вместо того чтобы удалять, а затем добавлять их массово.
+Hello замены основного узлов должно быть выполнено одного узла за другим, а не удалите и добавьте их в пакетах.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия

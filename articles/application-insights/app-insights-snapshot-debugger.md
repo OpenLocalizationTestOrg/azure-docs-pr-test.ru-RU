@@ -1,5 +1,5 @@
 ---
-title: "Отладчик моментальных снимков Azure Application Insights для приложений .NET | Документация Майкрософт"
+title: "aaaAzure отладчика моментального снимка аналитики приложений для приложений .NET | Документы Microsoft"
 description: "Отладочные моментальные снимки автоматически собираются при порождении исключений в рабочих приложениях .NET"
 services: application-insights
 documentationcenter: 
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: bwren
-ms.openlocfilehash: 56eba2ff7af228b3c44354ad43b384288b4e1972
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f0173a752b5795d934fbab1bd53eb077433edc90
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Отладочные моментальные снимки для исключений в приложениях .NET
 
-При возникновении исключения, можно автоматически собирать отладочный моментальный снимок из работающего веб-приложения. Моментальный снимок отображает состояние исходного кода и переменных в момент порождения этого исключения. Отладчик моментальных снимков (предварительная версия) в [Azure Application Insights](app-insights-overview.md) отслеживает телеметрию исключений, поступающую из веб-приложения. Он собирает моментальные снимки для наиболее частых исключений, чтобы предоставить вам необходимые сведения для диагностики проблем в рабочей среде. Добавьте [пакет NuGet сборщика моментальных снимков](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) в приложение и, при необходимости, настройте параметры сбора в файле [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Моментальные снимки для [исключений](app-insights-asp-net-exceptions.md) отображаются на портале Application Insights.
+При возникновении исключения, можно автоматически собирать отладочный моментальный снимок из работающего веб-приложения. снимок Hello отображает состояние hello исходного кода и переменные в hello момент hello исключение создано исключение. Hello отладчик моментальных снимков (Предварительная версия) в [Azure Application Insights](app-insights-overview.md) отслеживает телеметрии исключения из веб-приложения. Собирает моментальные снимки на свои исключения, создающие top, чтобы получить сведения hello необходимы toodiagnose проблем в рабочей среде. Включить hello [пакет NuGet сборщика данных моментального снимка](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) в приложении и при необходимости настроить параметры сбора в [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Снимки появятся на [исключения](app-insights-asp-net-exceptions.md) на портале Application Insights hello.
 
-Вы можете просмотреть отладочные моментальные снимки на портале, чтобы изучить стек вызовов и проверить значения переменных в каждом кадре стека вызовов. Чтобы воспользоваться более мощными средствами отладки исходного кода, откройте моментальные снимки в Visual Studio 2017 Enterprise, [скачав расширение отладчика моментальных снимков для Visual Studio](https://aka.ms/snapshotdebugger).
+Можно просмотреть моментальные снимки отладки в стеке вызовов hello портала toosee hello и просматривать переменные в каждом кадре стека вызовов. более широкие возможности отладки для работы с исходным кодом, откройте моментальные снимки с помощью Visual Studio Enterprise 2017 г., tooget [загрузка расширения отладчика моментального снимка hello для Visual Studio](https://aka.ms/snapshotdebugger).
 
 Коллекция моментальных снимков доступна для:
 * .NET Framework и приложений ASP.NET выполняющихся с помощью .NET Framework 4.5 или более поздней версии.
@@ -32,44 +32,44 @@ ms.lasthandoff: 08/18/2017
 
 1. [Включите Application Insights в веб-приложении](app-insights-asp-net.md), если вы еще не сделали это.
 
-2. Добавьте в приложение пакет NuGet [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector). 
+2. Включить hello [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) пакета NuGet в вашем приложении. 
 
-3. Просмотрите параметры по умолчанию, добавленные этим пакетом в файл [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
+3. Просмотрите параметры по умолчанию hello, hello пакет добавлен слишком[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
 
     ```xml
     <TelemetryProcessors>
         <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
-        <!-- The default is true, but you can disable Snapshot Debugging by setting it to false -->
+        <!-- hello default is true, but you can disable Snapshot Debugging by setting it toofalse -->
         <IsEnabled>true</IsEnabled>
-        <!-- Snapshot Debugging is usually disabled in developer mode, but you can enable it by setting this to true. -->
-        <!-- DeveloperMode is a property on the active TelemetryChannel. -->
+        <!-- Snapshot Debugging is usually disabled in developer mode, but you can enable it by setting this tootrue. -->
+        <!-- DeveloperMode is a property on hello active TelemetryChannel. -->
         <IsEnabledInDeveloperMode>false</IsEnabledInDeveloperMode>
-        <!-- How many times we need to see an exception before we ask for snapshots. -->
+        <!-- How many times we need toosee an exception before we ask for snapshots. -->
         <ThresholdForSnapshotting>5</ThresholdForSnapshotting>
-        <!-- The maximum number of examples we create for a single problem. -->
+        <!-- hello maximum number of examples we create for a single problem. -->
         <MaximumSnapshotsRequired>3</MaximumSnapshotsRequired>
-        <!-- The maximum number of problems that we can be tracking at any time. -->
+        <!-- hello maximum number of problems that we can be tracking at any time. -->
         <MaximumCollectionPlanSize>50</MaximumCollectionPlanSize>
-        <!-- How often to reset problem counters. -->
+        <!-- How often tooreset problem counters. -->
         <ProblemCounterResetInterval>06:00:00</ProblemCounterResetInterval>
-        <!-- The maximum number of snapshots allowed in one minute. -->
+        <!-- hello maximum number of snapshots allowed in one minute. -->
         <SnapshotsPerMinuteLimit>2</SnapshotsPerMinuteLimit>
-        <!-- The maximum number of snapshots allowed per day. -->
+        <!-- hello maximum number of snapshots allowed per day. -->
         <SnapshotsPerDayLimit>50</SnapshotsPerDayLimit>
         </Add>
     </TelemetryProcessors>
     ```
 
-4. Моментальные снимки собираются только для исключений, которые передаются в Application Insights. В некоторых случаях (например, в более старых версиях платформы .NET) может потребоваться [настроить сбор исключений](app-insights-asp-net-exceptions.md#exceptions), чтобы просматривать исключения с помощью моментальных снимков, которые отображаются на портале.
+4. Моментальные снимки собираются только на исключения, которые выводятся tooApplication аналитики. В некоторых случаях (например, предыдущие версии платформы .NET hello) может потребоваться слишком[настроить коллекцию исключений](app-insights-asp-net-exceptions.md#exceptions) toosee исключения с моментальными снимками в портале hello.
 
 
 ### <a name="configure-snapshot-collection-for-aspnet-core-20-applications"></a>Настройка сбора моментальных снимков для приложений ASP.NET Core 2.0
 
 1. [Включите Application Insights в веб-приложении ASP.NET Core](app-insights-asp-net-core.md), если вы еще не сделали это.
 
-2. Добавьте в приложение пакет NuGet [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector).
+2. Включить hello [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) пакета NuGet в вашем приложении.
 
-3. Измените метод `ConfigureServices` в классе `Startup` приложения, чтобы добавить обработчик телеметрии сборщика моментальных снимков. Код, который следует добавить, зависит от указанной версии пакета NuGet Microsoft.ApplicationInsights.ASPNETCore.
+3. Изменение hello `ConfigureServices` метод в вашем приложении `Startup` класса процессора телеметрии tooadd hello моментального снимка сборщика. Hello кода, который следует добавить зависит от указанной версии hello пакет Microsoft.ApplicationInsights.ASPNETCore NuGet hello.
 
    Для Microsoft.ApplicationInsights.AspNetCore 2.1.0 добавьте:
    ```C#
@@ -77,7 +77,7 @@ ms.lasthandoff: 08/18/2017
    ...
    class Startup
    {
-       // This method is called by the runtime. Use it to add services to the container.
+       // This method is called by hello runtime. Use it tooadd services toohello container.
        public void ConfigureServices(IServiceCollection services)
        {
            services.AddSingleton<Func<ITelemetryProcessor, ITelemetryProcessor>>(next => new SnapshotCollectorTelemetryProcessor(next));
@@ -98,7 +98,7 @@ ms.lasthandoff: 08/18/2017
                new SnapshotCollectorTelemetryProcessor(next);
        }
 
-       // This method is called by the runtime. Use it to add services to the container.
+       // This method is called by hello runtime. Use it tooadd services toohello container.
        public void ConfigureServices(IServiceCollection services)
        {
             services.AddSingleton<ITelemetryProcessorFactory>(new SnapshotCollectorTelemetryProcessorFactory());
@@ -109,11 +109,11 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="configure-snapshot-collection-for-other-net-applications"></a>Настройка сбора моментальных снимков для других приложений .NET
 
-1. Если приложение еще не инструментировано с помощью Application Insights, начните с [включения Application Insights и установки ключа инструментирования](app-insights-windows-desktop.md).
+1. Если приложение уже не инструментированы с помощью Application Insights, начните с [Включение Application Insights и ключ инструментирования hello параметр](app-insights-windows-desktop.md).
 
-2. Добавьте в приложение пакет NuGet [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector).
+2. Добавить hello [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) пакета NuGet в вашем приложении.
 
-3. Моментальные снимки собираются только для исключений, которые передаются в Application Insights. Для их передачи может потребоваться изменить код. Код обработки исключений зависит от структуры приложения. Пример приведен ниже:
+3. Моментальные снимки собираются только на исключения, которые выводятся tooApplication аналитики. Может потребоваться toomodify tooreport вашего кода их. код обработки исключений Hello зависит от структуры приложения hello, но пример приведен ниже:
     ```C#
    TelemetryClient _telemetryClient = new TelemetryClient();
 
@@ -121,96 +121,96 @@ ms.lasthandoff: 08/18/2017
    {
         try
         {
-            // TODO: Handle the request.
+            // TODO: Handle hello request.
         }
         catch (Exception ex)
         {
-            // Report the exception to Application Insights.
+            // Report hello exception tooApplication Insights.
             _telemetryClient.TrackException(ex);
 
-            // TODO: Rethrow the exception if desired.
+            // TODO: Rethrow hello exception if desired.
         }
    }
     ```
     
 ## <a name="grant-permissions"></a>Предоставление разрешений
 
-Владельцы подписок Azure могут проверять моментальные снимки. Другие пользователи должны иметь разрешение предоставленное владельцем.
+Владельцы hello подписки Azure можно проверить и моментальные снимки. Другие пользователи должны иметь разрешение предоставленное владельцем.
 
-Чтобы предоставить разрешение, назначьте роль `Application Insights Snapshot Debugger` пользователям, которые будут проверять моментальные снимки. Владельцы подписок могут назначить эту роль отдельным пользователям или группам для целевого ресурса Application Insights или его группы ресурсов или подписки.
+toogrant разрешений, назначьте hello `Application Insights Snapshot Debugger` toousers роли, который будет проверять моментальные снимки. Этой роли могут назначаться tooindividual пользователи или группы, ответственные за подписку для hello целевой ресурс Application Insights или его группы ресурсов или подписки.
 
-1. Откройте колонку "Управление доступом (IAM)".
-1. Нажмите кнопку "+ Добавить".
-1. В раскрывающемся списке "Роли" выберите "Отладчик моментальных снимков Application Insights".
-1. Выполните поиск и введите имя пользователя, который будет добавлен.
-1. Нажмите кнопку "Сохранить", чтобы добавить пользователя к роли.
+1. Откройте колонку hello управления доступа (IAM).
+1. Щелкните Здравствуйте, "+" Кнопка "Добавить".
+1. Выберите отладчик моментального снимка аналитики приложения из раскрывающегося списка ролей hello.
+1. Поиск и введите имя пользователя tooadd hello.
+1. Щелкните hello tooadd кнопки Save hello роли toohello пользователя.
 
 
 [!IMPORTANT]
     Моментальные снимки могут содержать личные и другие конфиденциальные данные в значениях переменных и параметров.
 
-## <a name="debug-snapshots-in-the-application-insights-portal"></a>Отладка моментальных снимков на портале Application Insights
+## <a name="debug-snapshots-in-hello-application-insights-portal"></a>Отладка моментальные снимки на портале Application Insights hello
 
-Если для заданного исключения или идентификатора проблемы доступен моментальный снимок, то для этого [исключения](app-insights-asp-net-exceptions.md) на портале Application Insights доступна кнопка **Open Debug Snapshot** (Открыть отладочный моментальный снимок).
+Если моментальный снимок доступен для данного исключения или проблемный идентификатор **открыть снимок отладки** кнопка на hello [исключение](app-insights-asp-net-exceptions.md) на портале Application Insights hello.
 
 ![Кнопка "Open Debug Snapshot" (Открыть отладочный моментальный снимок) для исключения](./media/app-insights-snapshot-debugger/snapshot-on-exception.png)
 
-В представлении "Debug Snapshot" (Отладочный моментальный снимок) можно увидеть стек вызовов и область переменных. При выборе кадров стека вызовов в области стека вызовов можно просматривать локальные переменные и параметры для этого вызова функции в области переменных.
+В hello снимок отладки отображается стек вызовов и панель «переменные». При выборе кадров вызова hello стека в панели стека вызова hello, можно просматривать локальные переменные и параметры для этой функции вызова в панель «переменные» hello.
 
-![Просмотр отладочного моментального снимка на портале](./media/app-insights-snapshot-debugger/open-snapshot-portal.png)
+![Представление отладки моментального снимка в портале hello](./media/app-insights-snapshot-debugger/open-snapshot-portal.png)
 
-Моментальные снимки могут содержать конфиденциальные сведения и по умолчанию не отображаются. Для просмотра моментальных снимков вам должна быть назначена роль `Application Insights Snapshot Debugger`.
+Моментальные снимки могут содержать конфиденциальные сведения и по умолчанию не отображаются. моментальные снимки tooview, необходимо иметь hello `Application Insights Snapshot Debugger` tooyou ролью.
 
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>Отладка моментальных снимков с помощью Visual Studio 2017 Enterprise
-1. Нажмите кнопку **Download Snapshot** (Скачать моментальный снимок), чтобы скачать файл с расширением `.diagsession`, который можно открыть в Visual Studio 2017 Enterprise. 
+1. Щелкните hello **загрузить моментальный снимок** toodownload кнопку `.diagsession` файл, который можно открыть в Visual Studio Enterprise 2017 г. 
 
-2. Чтобы открыть файл с расширением `.diagsession`, сначала нужно [скачать и установить расширение отладчика моментальных снимков для Visual Studio](https://aka.ms/snapshotdebugger).
+2. tooopen hello `.diagsession` файл, сначала необходимо выполнить [загрузить и установить расширения hello отладчика моментальных снимков для Visual Studio](https://aka.ms/snapshotdebugger).
 
-3. После открытия файла моментального снимка в Visual Studio появится страница мини-дампа отладки. Щелкните **Debug Managed Code** (Отладить управляемый код), чтобы начать отладку моментального снимка. Откроется строка кода, на которой было порождено исключение, и вы сможете выполнить отладку текущего состояния процесса.
+3. После открытия файла моментального снимка hello, откроется страница отладки минидампа hello в Visual Studio. Нажмите кнопку **отладки управляемого кода** toostart отладки hello моментального снимка. моментальный снимок Hello открывает toohello строку кода, где hello возникло исключение, чтобы выполнить отладку hello текущему состоянию процесса hello.
 
     ![Просмотр отладочного моментального снимка в Visual Studio](./media/app-insights-snapshot-debugger/open-snapshot-visualstudio.png)
 
-Скачанный моментальный снимок содержит все файлы символов, найденные на сервере веб-приложения. Эти файлы символов требуются для связывания данных моментального снимка с исходным кодом. Для приложений службы приложений не забудьте включить развертывание символов при публикации веб-приложения.
+загруженный моментальный снимок Hello содержит все файлы символов, которые найдены на сервер веб-приложения. Эти файлы символов, необходимых tooassociate данных моментального снимка с исходным кодом. Для приложений служб приложений легко и убедиться, что развертывание символ tooenable при публикации веб-приложения.
 
 ## <a name="how-snapshots-work"></a>Как работают моментальные снимки
 
-При запуске приложения создается отдельный процесс передачи моментальных снимков, отслеживающий запросы на создание моментальных снимков для вашего приложения. При запросе создания моментального снимка за 10–20 минут создается теневая копия выполняющегося процесса. Затем теневой процесс анализируется и создается моментальный снимок. При этом основной процесс продолжает работать и обслуживать трафик для пользователей. Моментальный снимок передается в Application Insights вместе с соответствующими PDB-файлами символов, необходимыми для просмотра моментального снимка.
+При запуске приложения создается отдельный процесс передачи моментальных снимков, отслеживающий запросы на создание моментальных снимков для вашего приложения. При запросе моментального снимка около 10 минут too20 теневая копия выполнения процесса hello производится. процесс теневого Hello затем анализируется и моментальный снимок создается прерывая toorun основной процесс hello и обслуживать toousers трафика. Hello моментального снимка является то отправленного tooApplication аналитики вместе с любой соответствующих символов (.pdb) файлы, необходимые tooview hello моментального снимка.
 
 ## <a name="current-limitations"></a>Текущие ограничения
 
 ### <a name="publish-symbols"></a>Публикация символов
-Отладчику моментальных снимков требуется наличие файлов символов на рабочем сервере для декодирования переменных и обеспечения возможности отладки в Visual Studio. Выпуск 15.2 приложения Visual Studio 2017 по умолчанию публикует символы для сборок выпуска при публикации в службе приложений. В предыдущих версиях в профиль публикации `.pubxml` необходимо добавить приведенную ниже строку, чтобы символы публиковались в режиме выпуска.
+Hello отладчик моментальных снимков требуются файлы символов на hello рабочей toodecode переменные сервера и tooprovide возможности отладки в Visual Studio. символы для сборки выпуска публикует Hello 15,2 выпуска Visual Studio 2017 г. по умолчанию при публикации tooApp службы. В предыдущих версиях требуются следующие hello tooadd профиль публикации tooyour строки `.pubxml` так, чтобы символы публикуются в режиме выпуска:
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>
 ```
 
-Для среды вычислений Azure и других типов сред убедитесь, что файлы символов находятся в той же папке, что и библиотеки DLL основного приложения (обычно это `wwwroot/bin`), или доступны по текущему пути.
+Для вычисления Azure и других типов, убедитесь, что файлы символов hello в hello папке .dll основного приложения hello (как правило, `wwwroot/bin`) и доступные в текущем пути hello.
 
 ### <a name="optimized-builds"></a>Оптимизированные сборки
-В некоторых случаях локальные переменные не могут отображаться в сборках выпуска из-за оптимизаций, примененных во время процесса сборки.
+В некоторых случаях нельзя просмотреть локальные переменные в сборках выпуска из-за оптимизации, которые применяются во время сборки hello.
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-Эти советы помогут при устранении проблем, связанных с отладчиком моментальных снимков.
+Эти советы помочь при устранении проблем с hello отладчик моментального снимка.
 
-### <a name="verify-the-instrumentation-key"></a>Проверка ключа инструментирования
+### <a name="verify-hello-instrumentation-key"></a>Проверьте ключ инструментирования hello
 
-Убедитесь, что в опубликованном приложении используется правильный ключ инструментирования. Как правило, Application Insights счтывает ключ инструментирования из файла ApplicationInsights.config. Убедитесь, что его значение такое же, что и у ключа инструментирования для ресурса Application Insights, который отображается на портале.
+Убедитесь, что вы используете ключ правильный инструментирования hello опубликованного приложения. Как правило Application Insights считывает hello ключ инструментирования из файла ApplicationInsights.config hello. Убедитесь, что значение hello hello таким же как ключ инструментирования hello для ресурса Application Insights hello, который представлен в портал hello.
 
-### <a name="check-the-uploader-logs"></a>Проверьте журналы отправителя
+### <a name="check-hello-uploader-logs"></a>Проверьте журналы средства отправки hello
 
-После создания моментального снимка на диске создается файл минидампа (.dmp). Этот файл минидампа и любые связанные PDB-файлы отправляются в отдельном процессе передачи в хранилище отладчика моментальных снимков Application Insights. После успешной передачи минидамп удаляется с диска. Файлы журнала для отправителя минидампа сохраняются на диске. В среде службы приложений эти журналы можно найти в `D:\Home\LogFiles\Uploader_*.log`. Используйте веб-сайт управления Kudu для службы приложений, чтобы найти эти файлы журнала.
+После создания моментального снимка на диске создается файл минидампа (.dmp). Процесс передачи отдельных принимает этот файл минидампа и передает его, а также любые связанные PDB-файлы tooApplication отладчик моментального снимка аналитики хранилища. После успешной загрузки минидампа hello удаляется с диска. файлы журнала Hello для передачи минидампа hello сохраняются на диске. В среде службы приложений эти журналы можно найти в `D:\Home\LogFiles\Uploader_*.log`. Kudu управления использовать hello сайт для служб приложений toofind файлов журналов.
 
-1. Откройте службу приложений на портале Azure.
+1. Откройте приложение службы приложений в hello портал Azure.
 
-2. Щелкните колонку **Дополнительные инструменты** или найдите **Kudu**.
+2. Выберите hello **дополнительные средства** колонке или выполните поиск **Kudu**.
 3. Щелкните **Переход**.
-4. В раскрывающемся списке **Debug console** (Консоль отладки) выберите **CMD** (Команда).
+4. В hello **консоли отладки** раскрывающегося списка и выберите **CMD**.
 5. Щелкните **LogFiles**.
 
-Вы увидите хотя бы один файл с именем, начинающимся с `Uploader_` и расширением `.log`. Щелкните соответствующую пиктограмму, чтобы скачать все файлы журналов, или открыть их в браузере.
-Имя файла содержит имя компьютера. Если экземпляр службы приложений размещен на нескольких компьютерах, для каждого компьютера существуют отдельные файлы журналов. Когда отправитель обнаруживает новый файл минидампа, он записывается в файл журнала. Ниже приведен пример успешной отправки:
+Вы увидите хотя бы один файл с именем, начинающимся с `Uploader_` и расширением `.log`. Щелкните соответствующий значок toodownload hello все файлы журналов, или открыть их в браузере.
+Имя файла Hello включает имя машины hello. Если экземпляр службы приложений размещен на нескольких компьютерах, для каждого компьютера существуют отдельные файлы журналов. Когда средства отправки hello обнаруживает новый файл минидампа, она заносится в файл журнала hello. Ниже приведен пример успешной отправки:
 
 ```
 MinidumpUploader.exe Information: 0 : Dump available 139e411a23934dc0b9ea08a626db16c5.dmp
@@ -229,10 +229,10 @@ MinidumpUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
     DateTime=2017-05-25T14:25:44.6095821Z
 ```
 
-В предыдущем примере, ключ инструментирования — это `c12a605e73c44346a984e00000000000`. Это значение должно соответствовать ключу инструментирования для вашего приложения.
-Минидамп связан с моментальным снимком с идентификатором `139e411a23934dc0b9ea08a626db16c5`. Позже этот идентификатор можно использовать для поиска связанной телеметрии исключений в аналитике Application Insights.
+В предыдущем примере hello является ключ инструментирования hello `c12a605e73c44346a984e00000000000`. Это значение должно соответствовать hello ключ инструментирования для вашего приложения.
+Hello минидампа связан с помощью моментального снимка с Идентификатором hello `139e411a23934dc0b9ea08a626db16c5`. Вы можете использовать этот идентификатор более поздней версии toolocate hello связанные данные телеметрии исключения из приложения аналитика Analytics.
 
-Отправитель проверяет наличие новых PDB-файлов примерно один раз каждые 15 минут. Ниже приведен пример:
+средства отправки Hello проверяет наличие новых PDB-файлы примерно один раз каждые 15 минут. Ниже приведен пример:
 
 ```
 MinidumpUploader.exe Information: 0 : PDB rescan requested.
@@ -247,30 +247,30 @@ MinidumpUploader.exe Information: 0 : Deleted PDB scan marker D:\local\Temp\Dump
     DateTime=2017-05-25T15:11:38.8316450Z
 ```
 
-Для приложений, которые _не_ размещаются в службе приложений, журналы отправителя находятся в той же папке минидампов: `%TEMP%\Dumps\<ikey>` (где `<ikey>` ваш ключ инструментирования).
+Для приложений, которые являются _не_ размещенных в службе приложений hello средства отправки записываются hello же папке, что мини-дампов hello: `%TEMP%\Dumps\<ikey>` (где `<ikey>` ваш ключ инструментирования).
 
-### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Поиск исключений с моментальными снимками с помощью поиска Application Insights
+### <a name="use-application-insights-search-toofind-exceptions-with-snapshots"></a>Используйте Application Insights поиска toofind исключения с помощью моментальных снимков
 
-При создании моментального снимка вызванное исключение обозначается идентификатором моментального снимка. При передаче телеметрии исключения в Application Insights этот идентификатор моментального снимка включается в качестве пользовательского свойства. В колонке поиска Application Insights можно найти все данные телеметрии с пользовательским свойством `ai.snapshot.id`.
+При создании моментального снимка hello исключения обозначен цифрой идентификатора моментального снимка. Когда телеметрии исключения hello обнаруженную tooApplication аналитики, этот идентификатор моментального снимка включается в качестве пользовательского свойства. С помощью поиска колонке hello в Application Insights, можно найти все данные телеметрии с hello `ai.snapshot.id` пользовательское свойство.
 
-1. Перейдите к ресурсу Application Insights на портале Azure.
+1. Обзор tooyour ресурс Application Insights в hello портал Azure.
 2. Щелкните **Search**(Поиск).
-3. В текстовом поле поиска введите `ai.snapshot.id` и нажмите клавишу ВВОД.
+3. Тип `ai.snapshot.id` в hello текстовое поле поиска и нажмите клавишу ВВОД.
 
-![Поиск телеметрии с помощью идентификатора моментального снимка на портале](./media/app-insights-snapshot-debugger/search-snapshot-portal.png)
+![Поиск телеметрии с идентификатор снимка в портале hello](./media/app-insights-snapshot-debugger/search-snapshot-portal.png)
 
-Если этот поиск не дал результатов, значит в Application Insights не передавались моментальные снимки для приложения в выбранный диапазон времени.
+Если этот поиск не дал результатов, без моментальных снимков были обнаруженную tooApplication аналитики для приложения hello выбранного диапазона времени.
 
-Чтобы найти определенный идентификатор снимка из журналов отправителя, введите этот идентификатор в поле поиска. Если не удается найти данные телеметрии для моментального снимка, который был отправлен, выполните следующие действия:
+toosearch для идентификатора конкретного моментального снимка из журналов средства отправки hello, введите этот идентификатор в поле поиска hello. Если не удается найти данные телеметрии для моментального снимка, который был отправлен, выполните следующие действия:
 
-1. Еще раз проверьте, что вы смотрите на правильный ресурс Application Insights при проверке ключа инструментирования.
+1. Проверьте, что вы рассматриваете возможность hello ресурса Application Insights, проверяя ключ инструментирования hello.
 
-2. С помощью метки времени из журнала отправителя, настройте фильтр диапазона времени поиска так, чтобы охватить этот диапазон времени.
+2. С помощью hello меткам hello средства отправки журнала, настройте этот диапазон фильтр поиска toocover hello hello диапазон времени.
 
-Если исключение с таким идентификатором моментальных снимков по-прежнему не отображается, значит телеметрия исключения не отправлялась в Application Insights. Это происходит в случае сбоя приложения после снятия снимка, но до того как оно передало телеметрию исключений. В этом случае проверьте журналы службы приложений в `Diagnose and solve problems`, чтобы проверить, были ли неожиданные перезагрузки или необработанные исключения.
+Если исключение с таким Идентификатором моментальных снимков по-прежнему отсутствует, телеметрии исключения hello не обнаруженную tooApplication аналитики. Это происходит в случае сбоя приложения после потребовалось hello моментального снимка, но прежде чем они отчет hello телеметрии исключений. В этом случае проверьте hello, приложение будет зарегистрировано в `Diagnose and solve problems` toosee, если возникли непредвиденные перезагрузки или необработанные исключения.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Установите в коде точки прикрепления](https://azure.microsoft.com/blog/snapshot-debugger-for-azure/), чтобы получать моментальные снимки не ожидая исключений.
-* В статье [Диагностика исключений в веб-приложениях с помощью Application Insights](app-insights-asp-net-exceptions.md) объясняется, как отобразить дополнительные исключения в Application Insights. 
+* [Установить в коде snappoints](https://azure.microsoft.com/blog/snapshot-debugger-for-azure/) tooget моментальные снимки, не дожидаясь исключение.
+* [Диагностика исключения в веб-приложения](app-insights-asp-net-exceptions.md) объясняет, как toomake дополнительные исключения видимым tooApplication аналитики. 
 * В статье [Интеллектуальное обнаружение в Application Insights](app-insights-proactive-diagnostics.md) описывается автоматическое обнаружение аномалий производительности.

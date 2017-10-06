@@ -1,6 +1,6 @@
 ---
-title: "Поиск неуправляемых облачных приложений с помощью Cloud App Discovery | Документация Майкрософт"
-description: "Содержит сведения о поиске приложений и управлении ими с помощью Cloud App Discovery, а также преимуществах и принципах работы Cloud App Discovery."
+title: "aaaFinding неуправляемого облачных приложений с Cloud App Discovery | Документы Microsoft"
+description: "Сведения о поиске и управление приложениями с помощью Cloud App Discovery, Каковы преимущества hello и как он работает."
 services: active-directory
 keywords: "cloud app discovery, управление приложениями"
 documentationcenter: 
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 6284ff5bac8edbc19561d0916adef153526dfbe3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 50c24af9bb400e4be11f4ad2d1de13d26f5467bd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="finding-unmanaged-cloud-applications-with-cloud-app-discovery"></a>Поиск неуправляемых облачных приложений с помощью Cloud App Discovery
 ## <a name="overview"></a>Обзор
-На современных предприятиях ИТ-специалисты часто не знают обо всех облачных приложениях, при помощи которых пользователи выполняют свои задачи. Легко понять, почему администраторов беспокоят несанкционированный доступ к корпоративным данным, возможная утечка данных и другие угрозы безопасности. Эта недостаточная осведомленность может сильно усложнить разработку плана по борьбе с этими угрозами безопасности.
+На современных предприятиях ИТ-отделы, часто не знают все hello облачных приложений, что члены организации используют toodo свою работу. Это легко toosee, почему Администраторы бы обеспокоены toocorporate несанкционированного доступа к данным, возможными утечками данных и других угроз безопасности. Эта недостаточная осведомленность может сильно усложнить разработку плана по борьбе с этими угрозами безопасности.
 
-Cloud App Discovery — это функция службы Azure Active Directory (AD) уровня Премиум, которая позволяет обнаруживать облачные приложения, используемые сотрудниками организации.
+Cloud App Discovery — это функция Azure Active Directory (AD) Premium, благодаря которой вы toodiscover облачных приложений, используемых hello сотрудниками вашей организации.
 
 **С помощью Cloud App Discovery вы сможете:**
 
-* Обнаруживать используемые облачные приложения и оценивать их использование по числу пользователей, объему трафика или числу веб-запросов к приложению.
-* Идентифицировать пользователей, использующих приложение.
+* Найдите hello облачные приложения используются и мера такого использования, по количеству пользователей, объему трафика или количество toohello запросов веб-приложения.
+* Определите hello пользователей, использующих приложения.
 * Экспортировать данные для автономного анализа.
 * Получить контроль над этими приложениями с помощью средств ИТ и включить доступ с единым входом для управления пользователями.
 
 ## <a name="how-it-works"></a>Принцип работы
 1. На компьютерах пользователей устанавливаются агенты использования приложения.
-2. Информация об использовании приложения, записанная агентами, отправляется по безопасному зашифрованному каналу в службу Cloud App Discovery.
-3. Служба Cloud App Discovery оценивает данные и создает отчеты.
+2. сведения об использовании приложения Hello, записанные агентами hello передаются через служба безопасный, зашифрованный канал toohello cloud app discovery.
+3. Hello службы Cloud App Discovery оценивает данные hello и создает отчеты.
 
 ![Схема Cloud App Discovery](./media/active-directory-cloudappdiscovery/cad01.png)
 
-Дополнительную информацию о работе Cloud App Discovery см. в статье [Getting Started With Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx) (Начало работы с Cloud App Discovery).
+tooget работы с Cloud App Discovery см [Приступая к работе с Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
 
 ## <a name="related-articles"></a>Связанные статьи
 * [Вопросы безопасности и конфиденциальности Cloud App Discovery](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)  

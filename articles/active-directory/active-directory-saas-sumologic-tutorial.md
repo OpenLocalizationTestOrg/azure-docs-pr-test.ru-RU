@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с SumoLogic | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в SumoLogic."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и SumoLogic."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,106 +13,106 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: e739106472ccf930b2942eb810dd844f2b1ade7c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2ef1bd329f5db8899f0b57744e4c0f6eed1c532f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Руководство. Интеграция Azure Active Directory с SumoLogic
 
-В этом руководстве описано, как интегрировать SumoLogic с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate SumoLogic с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением SumoLogic обеспечивает следующие преимущества.
+Интеграция SumoLogic с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к SumoLogic.
-- Вы можете включить автоматический вход пользователей в SumoLogic (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooSumoLogic
+- Можно включить на пользователей tooautomatically get вошедшего tooSumoLogic (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с приложением SumoLogic, вам потребуется:
+tooconfigure интеграция Azure AD с SumoLogic требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка с поддержкой единого входа SumoLogic.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление SumoLogic из коллекции
+1. Добавление SumoLogic из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-sumologic-from-the-gallery"></a>Добавление SumoLogic из коллекции
-Чтобы настроить интеграцию SumoLogic с Azure AD, необходимо добавить SumoLogic из коллекции в список управляемых приложений SaaS.
+## <a name="adding-sumologic-from-hello-gallery"></a>Добавление SumoLogic из галереи hello
+tooconfigure hello интеграции SumoLogic в Azure AD, вы должны tooadd SumoLogic из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить SumoLogic из коллекции, сделайте следующее:**
+**tooadd SumoLogic из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello ** [портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **SumoLogic**.
+4. Введите в поле поиска hello **SumoLogic**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_search.png)
 
-5. На панели результатов выберите **SumoLogic** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **SumoLogic**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в SumoLogic с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в SumoLogic соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в SumoLogic.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в SumoLogic является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в SumoLogic должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в SumoLogic.
+В SumoLogic, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в SumoLogic, выполните действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с SumoLogic, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя SumoLogic](#creating-a-sumologic-test-user)** требуется для того, чтобы в SumoLogic существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on) ** -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user) ** -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя SumoLogic](#creating-a-sumologic-test-user) ** -toohave аналог Саймон Britta в SumoLogic, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on) ** -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе мы включим на портале Azure единый вход Azure AD и настроим его в приложении SumoLogic.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в SumoLogic приложения.
 
-**Чтобы настроить единый вход Azure AD в SumoLogic, сделайте следующее:**
+**Azure AD tooconfigure единого входа с SumoLogic, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **SumoLogic** щелкните **Единый вход**.
+1. В hello в hello портала Azure **SumoLogic** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения SumoLogic** сделайте следующее:
+3. На hello **URL-адреса и домена SumoLogic** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_url.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<tenantname>.SumoLogic.com`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<tenantname>.SumoLogic.com`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате:
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:
     | |
     |--|
     | `https://<tenantname>.us2.sumologic.com` |
@@ -122,9 +122,9 @@ ms.lasthandoff: 08/03/2017
     | `https://<tenantname>.au.sumologic.com` |
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить эти значения, обратитесь в [службу поддержки клиентов SumoLogic](https://www.sumologic.com/contact-us/). 
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки клиент SumoLogic](https://www.sumologic.com/contact-us/) tooget эти значения. 
  
-4. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_certificate.png) 
 
@@ -132,13 +132,13 @@ ms.lasthandoff: 08/03/2017
 
     ![Настройка единого входа](./media/active-directory-saas-sumologic-tutorial/tutorial_general_400.png)
 
-6. В разделе **Конфигурация SumoLogic** щелкните **Настроить SumoLogic**, чтобы открыть окно **Настройка единого входа**. Скопируйте **идентификатор сущности SAML и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **конфигурации SumoLogic** щелкните **Настройка SumoLogic** tooopen **Настройка входа** окна. Копировать hello **идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_configure.png) 
 
-7. В другом окне веб-браузера войдите на корпоративный веб-сайт SumoLogic в качестве администратора.
+7. В другом окне браузера Войдите на сайте компании SumoLogic tooyour в качестве администратора.
 
-8. Выберите **Manage (Управление) \> Security (Безопасность)**.
+8. Go слишком**управление \> безопасности**.
    
     ![Управление](./media/active-directory-saas-sumologic-tutorial/ic778556.png "Управление")
 
@@ -146,76 +146,76 @@ ms.lasthandoff: 08/03/2017
    
     ![Глобальные параметры безопасности](./media/active-directory-saas-sumologic-tutorial/ic778557.png "Глобальные параметры безопасности")
 
-10. В списке **Select a configuration or create a new one** (Выберите настройку или создайте новую) выберите **Azure AD**, а затем щелкните **Configure** (Настройка).
+10. Из hello **выберите настройку или создайте новую** выберите **Azure AD**, а затем нажмите кнопку **Настройка**.
    
     ![Настройка SAML 2.0](./media/active-directory-saas-sumologic-tutorial/ic778558.png "Настройка SAML 2.0")
 
-11. В диалоговом окне **Настройка SAML 2.0** сделайте следующее:
+11. На hello **Настройка SAML 2.0** диалоговое окно, выполните следующие шаги hello:
    
     ![Настройка SAML 2.0](./media/active-directory-saas-sumologic-tutorial/ic778559.png "Настройка SAML 2.0")
    
-    а. В текстовом поле **Configuration Name** (Имя конфигурации) введите **Azure AD**. 
+    а. В hello **имя конфигурации** введите **Azure AD**. 
 
     b. Выберите **Режим отладки**.
 
-    c. В текстовое поле **Issuer** (Издатель) вставьте значение **идентификатора сущности SAML**, скопированное на портале Azure. 
+    c. В hello **издателя** текстовое значение hello вставить **SAML идентификатор сущности**, который вы скопировали из портала Azure. 
 
-    d. В текстовое поле **Authn Request URL** (URL-адрес запроса аутентификации) вставьте значение **URL-адрес службы единого входа SAML**, скопированное на портале Azure.
+    d. В hello **URL-адрес запроса Authn** текстовое значение hello вставить **SAML единого входа URL-адрес службы**, который вы скопировали из портала Azure.
 
-    д. Откройте сертификат в кодировке Base-64 в Блокноте, скопируйте его содержимое в буфер обмена и вставьте весь сертификат в текстовое поле **Сертификат X.509** .
+    д. Откройте сертификат в кодировке base-64 в блокноте, hello копирования содержимого его в буфер обмена, а затем вставьте весь сертификат в hello **сертификат X.509** текстового поля.
 
     f. В поле **Email Attribute** (Атрибут электронной почты) задайте значение **Use SAML subject** (Использовать субъект SAML).  
 
     g. Выберите пункт **Конфигурация входа, инициируемая поставщиком услуг**.
 
-    h. В текстовом поле **Login Path** (Путь входа) введите **Azure** и нажмите кнопку **Save** (Сохранить).
+    h. В hello **путь входа** введите **Azure** и нажмите кнопку **Сохранить**.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello ** Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-sumologic-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-sumologic-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-sumologic-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-sumologic-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-sumologic-test-user"></a>Создание тестового пользователя SumoLogic
 
-Чтобы пользователи Azure AD могли входить в SumoLogic, их необходимо подготовить для SumoLogic.  
+В порядке tooenable toolog пользователей Azure AD в tooSumoLogic они должны быть подготовленных tooSumoLogic.  
 
-* В случае SumoLogic подготовка пользователей осуществляется вручную.
+* В случае SumoLogic hello Подготовка выполняется вручную.
 
-**Чтобы подготовить учетную запись пользователя, сделайте следующее:**
+**tooprovision учетной записи пользователя, выполните следующие шаги hello.**
 
-1. Войдите в клиент **SumoLogic** .
+1. Войдите в tooyour **SumoLogic** клиента.
 
-2. Выберите **Manage \> Users** (Управление > Пользователи).
+2. Go слишком**управление \> пользователей**.
    
     ![Пользователи](./media/active-directory-saas-sumologic-tutorial/ic778561.png "Пользователи")
 
@@ -223,11 +223,11 @@ ms.lasthandoff: 08/03/2017
    
     ![Пользователи](./media/active-directory-saas-sumologic-tutorial/ic778562.png "Пользователи")
 
-4. В диалоговом окне **Новый пользователь** сделайте следующее:
+4. На hello **нового пользователя** диалоговое окно, выполните следующие шаги hello:
    
     ![Новый пользователь](./media/active-directory-saas-sumologic-tutorial/ic778563.png "Новый пользователь") 
  
-    а. Введите сведения об учетной записи Azure AD, которую необходимо подготовить, в текстовые поля **First Name** (Имя), **Last Name** (Фамилия) и **Email** (Адрес электронной почты).
+    а. Тип hello связанные данные для учетной записи hello Azure AD, которые должны tooprovision hello **имя**, **Фамилия**, и **электронной почты** текстовые поля.
   
     b. Выберите роль.
   
@@ -236,26 +236,26 @@ ms.lasthandoff: 08/03/2017
     d. Щелкните **Сохранить**.
 
 >[!NOTE]
->Вы можете использовать любые другие средства создания учетной записи пользователя SumoLogic или API-интерфейсы, предоставляемые SumoLogic для подготовки учетных записей пользователя AAD. 
+>Можно использовать любые другие SumoLogic пользователя средства создания учетных записей или API, предоставленные SumoLogic tooprovision учетных записей пользователей AAD. 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив доступ к SumoLogic.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooSumoLogic доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon приложению SumoLogic, сделайте следующее:**
+**tooassign tooSumoLogic Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **SumoLogic**.
+2. В списке приложений hello выберите **SumoLogic**.
 
     ![Настройка единого входа](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -263,7 +263,7 @@ ms.lasthandoff: 08/03/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -271,13 +271,13 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".
 
-Щелкнув плитку SumoLogic на панели доступа, вы автоматически войдете в приложение SumoLogic.
+При нажатии кнопки hello SumoLogic плитки в панели доступа hello, вы должны получить приложение автоматически вошедшего tooyour SumoLogic.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

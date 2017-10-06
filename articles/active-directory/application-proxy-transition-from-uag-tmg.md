@@ -1,5 +1,5 @@
 ---
-title: "Установка новой версии прокси приложения Azure AD | Документация Майкрософт"
+title: "aaaUpgrade tooAzure AD прокси приложения | Документы Microsoft"
 description: "Выберите, какой прокси-сервер лучше всего подходит для обновления Microsoft Forefront или Unified Access Gateway."
 services: active-directory
 documentationcenter: 
@@ -15,20 +15,20 @@ ms.date: 07/27/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 6c9f70493155de6989b26fd4e8bcf1dff01c835c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7dc2633140b384e25792470dadbb7f3fa7992a2b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="compare-remote-access-solutions"></a>Сравнение решений для удаленного доступа
 
-Одним из двух решений для удаленного доступа, которые предоставляет Майкрософт, является прокси-служба приложения Azure Active Directory. Другое решение — прокси-служба веб-приложения (локальная версия). Эти два решения заменяют более ранние продукты Майкрософт — Microsoft Forefront Threat Management Gateway (TMG) и Unified Access Gateway (UAG). В этой статье сравниваются упомянутые четыре решения. Тем, кто до сих пор пользуется устаревшими решениями TMG или UAG, статья поможет спланировать миграцию на один из вариантов прокси-службы приложений. 
+Одним из двух решений для удаленного доступа, которые предоставляет Майкрософт, является прокси-служба приложения Azure Active Directory. Hello других — прокси веб-приложения hello локальную версию. Эти два решения заменяют более ранние продукты Майкрософт — Microsoft Forefront Threat Management Gateway (TMG) и Unified Access Gateway (UAG). Использование этой статьи toounderstand сравнение tooeach других эти четыре решения. Вы по-прежнему используется hello рекомендуется использовать TMG или UAG решений, использовать этот план toohelp статье вашей tooone миграции из hello прокси приложения. 
 
 
 ## <a name="feature-comparison"></a>Сравнение возможностей
 
-В таблице ниже приведено сравнение продуктов Threat Management Gateway (TMG), Unified Access Gateway (UAG), прокси-службы веб-приложения (WAP) и прокси-службы Azure AD (AP).
+Используйте этот toounderstand таблицы сравнение Threat Management Gateway (TMG), Unified Access Gateway (UAG), прокси-сервера веб-приложения (WAP) и прокси-сервера приложения Azure AD (AP) tooeach других.
 
 | Функция | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
@@ -45,22 +45,22 @@ ms.lasthandoff: 08/03/2017
 | Аутентификация с помощью заголовков | - | Да | - | Да, с использованием PingAccess | 
 | Безопасность в масштабе облака | - | - | - | Да | 
 | Условный доступ | - | Да | - | Да |
-| Без компонентов в демилитаризованной зоне (DMZ) | - | - | - | Да |
+| Компоненты, не hello демилитаризованной зоны (DMZ) | - | - | - | Да |
 | Без входящих соединений | - | - | - | Да |
 
-В большинстве сценариев рекомендуется прокси-служба приложений Azure AD как наиболее современное решение. Прокси-служба веб-приложений предпочтительна только в ситуациях, когда требуется прокси-сервер для AD FS, а задействовать пользовательские домены в Azure Active Directory нет возможности. 
+В большинстве случаев рекомендуется приложения Azure AD в качестве hello современные решения. Прокси-служба веб-приложений предпочтительна только в ситуациях, когда требуется прокси-сервер для AD FS, а задействовать пользовательские домены в Azure Active Directory нет возможности. 
 
-Прокси-служба приложений Azure AD в сравнении с похожими продуктами предоставляет уникальные преимущества, в том числе:
+Прокси приложения Azure AD предлагает уникальные преимущества при сравнении toosimilar продуктов, включая:
 
-- Расширение Azure AD для использования с локальными ресурсами
+- Расширение tooon локальных ресурсов Azure AD
    - Безопасность и защита в масштабе облака
-   - Простое включение таких функций, как условный доступ и многофакторная идентификация
-- Отсутствие компонентов в демилитаризованной зоне
+   - Функции, например условного доступа и многофакторной проверки подлинности, легко tooenable
+- Не componenet в демилитаризованной зоне hello
 - Отсутствие необходимости во входящих соединениях
-- Единая панель доступа для пользователей всех приложений, включая O365, интегрированные с Azure AD приложения SaaS и веб-приложения локальной среды. 
+- Панель один доступа пользователи могут перейти toofor всех своих приложений, включая Office 365, Azure AD интегрированных приложений SaaS и в локальной веб-приложений. 
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- [Обеспечение безопасного удаленного доступа к локальным приложениям с помощью службы приложений Azure AD](active-directory-application-proxy-get-started.md)
-- [Переход с Forefront TMG и UAG на прокси-службу приложений](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/).
+- [Использовать приложения Azure AD tooprovide безопасного удаленного доступа tooon локальные приложения](active-directory-application-proxy-get-started.md)
+- [Переход из Forefront TMG и UAG tooApplication прокси-сервера](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/).

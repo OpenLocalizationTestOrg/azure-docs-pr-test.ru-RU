@@ -1,5 +1,5 @@
 ---
-title: "Пример скрипта Azure CLI. Мониторинг веб-приложения с помощью журналов веб-сервера | Документация Майкрософт"
+title: "Пример сценария CLI - aaaAzure наблюдения за веб-приложения в журналы веб-сервера | Документы Microsoft"
 description: "Пример скрипта Azure CLI. Мониторинг веб-приложения с помощью журналов веб-сервера"
 services: appservice
 documentationcenter: appservice
@@ -16,31 +16,31 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: df4ca5b1270ada849e231ad9608a5b1d2edda8be
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 012b800c03af77387bed3d098fae3c96d82aee29
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-a-web-app-with-web-server-logs"></a>Мониторинг веб-приложения с помощью журналов веб-сервера
 
-В этом сценарии вы создадите группу ресурсов, план службы приложений, веб-приложение, а также настроите веб-приложение для включения журналов веб-сервера. Затем вы скачаете файлы журналов для просмотра.
+В этом случае будет создавать группы ресурсов, план обслуживания приложений, веб-приложения и настройте журналы hello web app tooenable веб-сервера. Затем вы загружаете hello файлы журналов для просмотра.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/monitor-with-logs/monitor-with-logs.sh "Мониторинг журналов")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/monitor-with-logs/monitor-with-logs.sh "Monitor Logs")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Для создания группы ресурсов, веб-приложений и всех связанных с ними ресурсов этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует hello следующие команды toocreate группы ресурсов, веб-приложения и все связанные ресурсы. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
@@ -48,10 +48,10 @@ ms.lasthandoff: 07/11/2017
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | Создает план службы приложений. Это как ферма сервера для веб-приложения Azure. |
 | [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Создает веб-приложение Azure. |
 | [az webapp log config](https://docs.microsoft.com/cli/azure/webapp/log#config) | Настраивает журналы, в которых сохраниться веб-приложение Azure. |
-| [az webapp log download](https://docs.microsoft.com/cli/azure/webapp/log#download) | Скачивает журналы веб-приложения Azure на локальный компьютер. |
+| [az webapp log download](https://docs.microsoft.com/cli/azure/webapp/log#download) | Hello загружаемые файлы журналов из hello приложения Azure web tooyour локального компьютера. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры скриптов Azure CLI для службы приложений см. в [документации по службе приложений Azure](../app-service-cli-samples.md).
+Дополнительные образцы сценариев CLI приложения службы можно найти в hello [документации по службе приложений Azure](../app-service-cli-samples.md).

@@ -1,6 +1,6 @@
 ---
-title: "Как использовать табличное хранилище Azure с пакетом SDK для WebJob"
-description: "Информация об использовании табличного хранилища Azure с пакетом SDK для WebJob Создавайте таблицы, добавляйте в них сущности и считывайте существующие таблицы."
+title: "aaaHow toouse табличного хранилища Azure с hello SDK веб-заданий"
+description: "Узнайте, как toouse Azure таблицу хранилища с hello SDK веб-заданий. Создание таблицы, добавить tootables сущностей и считывания существующих таблиц."
 services: app-service\web, storage
 documentationcenter: .net
 author: ggailey777
@@ -14,24 +14,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: glenga
-ms.openlocfilehash: 13cfc788c14d714df7022ce003d34691cf73d121
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8e28c69df4a934646add9e50c6de28e76dca1636
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-azure-table-storage-with-the-webjobs-sdk"></a>Как использовать табличное хранилище Azure с пакетом SDK для WebJob
+# <a name="how-toouse-azure-table-storage-with-hello-webjobs-sdk"></a>Как toouse Azure таблицу хранилища с hello SDK веб-заданий
 ## <a name="overview"></a>Обзор
-Это руководство содержит примеры кода C#, в которых показано, как выполнять чтение и запись таблиц службы хранилища Azure с использованием [пакета SDK для веб-заданий](websites-dotnet-webjobs-sdk.md) версии 1 или более поздней версии.
+В этом руководстве содержатся примеры кода C#, где показано, как tooread и записи хранилища Azure таблицы с помощью [SDK веб-заданий](websites-dotnet-webjobs-sdk.md) версии 1.x.
 
-В этом руководстве предполагается, что вы уже знаете, [как создать проект веб-задания в Visual Studio со строками подключения, указывающими на вашу учетную запись хранения](websites-dotnet-webjobs-sdk-get-started.md) или [несколько учетных записей хранения](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs).
+Hello руководстве предполагается, вы знаете [как toocreate проект веб-задания в Visual Studio с подключением строки этой учетной записи хранения точки tooyour](websites-dotnet-webjobs-sdk-get-started.md) или слишком[нескольких учетных записей хранения](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs).
 
-В некоторых фрагментах кода демонстрируется использование атрибута `Table` в функциях, [вызванных вручную](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual), т. е. без использования атрибутов триггера. 
+Некоторые из фрагментов кода hello показывают hello `Table` атрибута, используемого в функции, которые [вручную вызвать](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual), то есть не с помощью одного из атрибутов hello триггера. 
 
-## <a id="ingress"></a> Как добавить сущность в таблицу
-Чтобы добавить сущности в таблицу, используйте атрибут `Table` с параметром `ICollector<T>` или `IAsyncCollector<T>`, где `T` указывает схему сущностей, которые нужно добавить. Конструктор атрибута принимает строковый параметр, который указывает имя таблицы. 
+## <a id="ingress"></a>Каким образом таблицы tooa tooadd сущностей
+сущности tooa tooadd таблицы, используйте hello `Table` атрибутом `ICollector<T>` или `IAsyncCollector<T>` параметр где `T` указывает схему hello сущностей hello требуется tooadd. Конструктор атрибута Hello принимает строковый параметр, задающий имя hello hello таблицы. 
 
-Следующий пример кода добавляет сущности `Person` в таблицу с именем *Ingress*.
+Hello следующий код добавляет `Person` таблицу tooa сущности с именем *входящих*.
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
@@ -48,7 +48,7 @@ ms.lasthandoff: 08/29/2017
             }
         }
 
-Как правило, тип, используемый с `ICollector`, является производным от `TableEntity` или реализует `ITableEntity`, но не во всех случаях. Один из следующих классов `Person` работает с кодом, показанным в предыдущем методе `Ingress`.
+Здравствуйте, обычно используется с типом `ICollector` является производным от `TableEntity` или реализует `ITableEntity`, но не обязательно. Одно из следующих hello `Person` классов с hello код, показанный в предыдущем hello `Ingress` метод.
 
         public class Person : TableEntity
         {
@@ -62,25 +62,25 @@ ms.lasthandoff: 08/29/2017
             public string Name { get; set; }
         }
 
-Если требуется работать непосредственно с API службы хранилища Azure, можно добавить параметр `CloudStorageAccount` в сигнатуру метода.
+Если требуется toowork непосредственно с hello хранилища Azure API, можно добавить `CloudStorageAccount` сигнатура метода toohello параметра.
 
 ## <a id="monitor"></a> Мониторинг в реальном времени
-Поскольку функции входящих данных часто обрабатывают тома данных большого размера, на панели мониторинга пакета SDK для заданий WebJob доступны данные мониторинга в реальном времени. В разделе **Журнал вызова** указывается, запущена ли еще функция.
+Так как функции входящих данных часто обработки больших объемов данных, hello SDK веб-заданий панели мониторинга предоставляет мониторинга данных в реальном времени. Hello **вызов журнала** разделе рассказывается, выполняющихся функции hello.
 
 ![Запуск функции входа](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressrunning.png)
 
-На странице **Подробности о вызове** отображаются данные о ходе выполнения функции (количество записанных сущностей) и предоставляется возможность ее прервать. 
+Hello **сведения о вызове** страница сообщает hello ход выполнения функции (количество сущностей, которые записаны) во время выполнения и дает возможность tooabort его. 
 
 ![Запуск функции входа](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressprogress.png)
 
-По завершении выполнения функции на странице **Подробности о вызове** отображается количество записанных строк.
+Когда функции hello завершения hello **сведения о вызове** страницы сообщает число строк, записанных в hello.
 
 ![Функция входа выполнена](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingresssuccess.png)
 
-## <a id="multiple"></a> Как выполнять чтение нескольких сущностей из таблицы
-Для чтения таблиц используйте атрибут `Table` с параметром `IQueryable<T>`, где тип `T` является производным от `TableEntity` или реализует `ITableEntity`.
+## <a id="multiple"></a>Как tooread несколько сущностей из таблицы
+tooread таблицы, используйте hello `Table` атрибутом `IQueryable<T>` параметр где введите `T` является производным от `TableEntity` или реализует `ITableEntity`.
 
-Следующий пример кода считывает и записывает все строки таблицы `Ingress`:
+Hello следующий код считывает и записывает все строки из hello `Ingress` таблицы:
 
         public static void ReadTable(
             [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -94,10 +94,10 @@ ms.lasthandoff: 08/29/2017
             }
         }
 
-### <a id="readone"></a> Как выполнять чтение одной сущности из таблицы
-Конструктор атрибута `Table` с двумя дополнительными параметрами позволяет указать ключ раздела и ключ строки, если необходимо выполнить привязку к одной сущности таблицы.
+### <a id="readone"></a>Как tooread одной сущности из таблицы
+Отсутствует `Table` конструктор атрибута две дополнительные параметры, позволяющие указать hello ключ раздела и ключом строки, при необходимости toobind tooa одной таблицы сущности.
 
-Следующий пример кода считывает строку таблицы для сущности `Person` на основе значений ключа раздела и ключа строки, полученных в сообщении очереди:  
+Hello следующий код считывает строку таблицы для `Person` сущности на основе секции ключ и строки значений ключа в очереди сообщений:  
 
         public static void ReadTableEntity(
             [QueueTrigger("inputqueue")] Person personInQueue,
@@ -117,12 +117,12 @@ ms.lasthandoff: 08/29/2017
         }
 
 
-В этом примере класс `Person` не должен реализовывать `ITableEntity`.
+Hello `Person` класса в этом примере нет tooimplement `ITableEntity`.
 
-## <a id="storageapi"></a> Как использовать API хранилища .NET непосредственно для работы с таблицей
-Чтобы сделать работу с таблицей более гибкой, можно также использовать атрибут `Table` для объекта `CloudTable`.
+## <a id="storageapi"></a>Как toouse hello API-Интерфейс хранилища .NET toowork непосредственно с таблицей
+Можно также использовать hello `Table` атрибутом `CloudTable` объекта обеспечивает большую гибкость при работе с таблицей.
 
-В следующем примере кода объект `CloudTable` используется для добавления одной сущности в таблицу *Ingress* . 
+Hello следующем образце кода используется `CloudTable` tooadd toohello одной сущности объекта *входящих* таблицы. 
 
         public static void UseStorageAPI(
             [Table("Ingress")] CloudTable tableBinding,
@@ -138,22 +138,22 @@ ms.lasthandoff: 08/29/2017
             tableBinding.Execute(insertOperation);
         }
 
-Дополнительную информацию об использовании объекта `CloudTable` см. в статье [Приступая к работе с хранилищем таблиц Azure с помощью .NET](../cosmos-db/table-storage-how-to-use-dotnet.md). 
+Дополнительные сведения о том, как toouse hello `CloudTable` см. в разделе [как toouse хранилище таблиц из .NET](../cosmos-db/table-storage-how-to-use-dotnet.md). 
 
-## <a id="queues"></a>Связанные разделы, которые описаны в практическом руководстве по работе с очередями
-Дополнительную информацию об обработке таблиц, которая инициируется сообщением очереди, а также несвязанные с обработкой таблиц сценарии для пакета SDK для веб-заданий см. в статье [Использование пакета SDK веб-заданий для работы с хранилищем очередей Azure](websites-dotnet-webjobs-sdk-storage-queues-how-to.md). 
+## <a id="queues"></a>Связанные разделы, охватываемых hello очереди как tooarticle
+Сведения о обработки таблицы toohandle запуска, очереди сообщений и для веб-задания сценариев SDK не обработки, содержатся определенного tootable [как хранилище с hello SDK веб-заданий очередей toouse Azure](websites-dotnet-webjobs-sdk-storage-queues-how-to.md). 
 
-В этой статье рассматриваются следующие вопросы:
+В этой статье рассматриваются следующие hello:
 
 * Асинхронные функции
 * Выполнение на нескольких экземплярах
 * Корректное завершение работы
-* Использование атрибутов пакета SDK для заданий WebJob очереди в теле функции
-* Установка строк подключения пакета SDK в коде.
+* Использование пакета SDK веб-задания атрибутов в теле функции hello
+* Набор строк подключения пакета SDK для hello в коде
 * Установка значений параметров конструктора пакета SDK для заданий WebJob в коде
 * Вызов функции вручную
 * Запись журналов
 
 ## <a id="nextsteps"></a> Дальнейшие действия
-В этом руководстве предоставлены примеры кода обработки обычных сценариев для работы с таблицами Azure. Дополнительную информацию об использовании веб-заданий Azure и пакета SDK для веб-заданий см. в [рекомендуемых ресурсах для веб-заданий Azure](http://go.microsoft.com/fwlink/?linkid=390226).
+В этом руководстве предоставила код образцы где показано, как toohandle распространенные сценарии для работы с таблицами в Azure. Дополнительные сведения о статье toouse веб-заданий Azure и hello SDK веб-заданий [рекомендуется заданиям Azure](http://go.microsoft.com/fwlink/?linkid=390226).
 

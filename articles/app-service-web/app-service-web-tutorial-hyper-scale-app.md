@@ -1,6 +1,6 @@
 ---
-title: "Создание гипермасштабируемого приложения в Azure | Документация Майкрософт"
-description: "Сведения об использовании различных служб Azure для максимального повышения производительности приложения ASP.NET в Azure."
+title: "aaaBuild крупномасштабных приложений в Azure | Документы Microsoft"
+description: "Узнайте, как toomaximize toouse различных служб Azure hello производительности приложения ASP.NET в Azure."
 services: app-service\web
 documentationcenter: dotnet
 author: cephalin
@@ -14,77 +14,77 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: cephalin
-ms.openlocfilehash: eac9c5b0d8d0f7802d88e6f4f27d9d23c406e025
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7952647b49a82c286c6a737eb41a7f23a13fd75e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-a-hyper-scale-web-app-in-azure"></a>Создание гипермасштабируемого веб-приложения в Azure
 
-Это руководство содержит сведения о масштабировании веб-приложения ASP.NET в Azure для увеличения количества запросов пользователей.
+Этот учебник показывает, как tooscale ожидания веб-приложение ASP.NET в Azure toomaximize пользователь запросов.
 
-Прежде чем начать работу с этим руководством, убедитесь, что на вашем компьютере [установлен Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli). Кроме того, вам потребуется запустить пример приложения на локальном компьютере с помощью [Visual Studio](https://www.visualstudio.com/vs/).
+Перед запуском этого учебника, убедитесь, что [hello Azure CLI устанавливается](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) на компьютере. Кроме того, [Visual Studio](https://www.visualstudio.com/vs/) в пример приложения hello toorun локального компьютера.
 
 ## <a name="step-1---get-sample-application"></a>Шаг 1. Получение примера приложения
-На этом шаге вы настроите локальный проект ASP.NET.
+На этом шаге настраивается hello локального проекта ASP.NET.
 
-### <a name="clone-the-application-repository"></a>Клонирование репозитория приложения
+### <a name="clone-hello-application-repository"></a>Репозиторий приложения hello клонирования
 
-Откройте терминал и `CD` в рабочий каталог. Затем клонируйте пример приложения, выполнив следующие команды: 
+Откройте hello командной строки терминалов по своему усмотрению и `CD` tooa рабочий каталог. Затем hello выполнения следующих команд tooclone hello образца приложения. 
 
 ```powershell
 git clone https://github.com/cephalin/HighScaleApp.git
 ```
 
-### <a name="run-the-sample-application-in-visual-studio"></a>Запуск примера приложения в Visual Studio
+### <a name="run-hello-sample-application-in-visual-studio"></a>Запустить образец приложения hello в Visual Studio
 
-Откройте решение в Visual Studio.
+Откройте решение hello в Visual Studio.
 
 ```powershell
 cd HighScaleApp
 .\HighScaleApp.sln
 ```
 
-Нажмите клавишу `F5`, чтобы запустить приложение.
+Тип `F5` toorun приложения hello.
 
-Этот пример веб-приложения ASP.NET создан на основе шаблона по умолчанию. Он сохраняет пользовательские сеансы и использует кэш вывода. Просмотрите `HighScaleApp\Controllers\HomeController.cs`. Метод `Index()` добавляет фрагмент данных в сеанс.
+Этот образец веб-приложения ASP.NET поступают из шаблона по умолчанию hello и сохраняет пользователя сеансов и использует hello кэша вывода. Просмотрите `HighScaleApp\Controllers\HomeController.cs`. Hello `Index()` метод добавляет часть данных toohello сеанса.
 
 ```csharp
 Session.Add("visited", "true"); 
 ```
 
-А методы `About()` и `Contact()` кэшируют свои выходные данные.
+И hello `About()` и `Contact()` методы кэшировать свои выходные данные.
 
 ```csharp
 [OutputCache(Duration = 60)]
 ```
 
-## <a name="step-2---deploy-to-azure"></a>Шаг 2. Развертывание в Azure
-На этом шаге вы создадите веб-приложение Azure и развернете в него пример приложения ASP.NET.
+## <a name="step-2---deploy-tooazure"></a>Шаг 2 - развертывание tooAzure
+На этом шаге создания веб-приложение Azure и развертывания вашего tooit приложения ASP.NET образца.
 
 ### <a name="create-a-resource-group"></a>Создание группы ресурсов   
-Чтобы создать [группу ресурсов](../azure-resource-manager/resource-group-overview.md) в регионе "Западная Европа", выполните команду [az group create](https://docs.microsoft.com/cli/azure/group#create). В группе ресурсов будут размещаться все ресурсы Azure, которыми вы хотите управлять совместно, например веб-приложение и любая серверная часть базы данных SQL.
+Используйте [Создание группы az](https://docs.microsoft.com/cli/azure/group#create) toocreate [группы ресурсов](../azure-resource-manager/resource-group-overview.md) в Западной Европе hello. Группа ресурсов представляет размещения всех hello вместе, требуется toomanage ресурсы Azure, такие как серверный веб-приложения hello и любой базы данных SQL.
 
 ```azurecli
 az group create --location "West Europe" --name myResourceGroup
 ```
 
-Чтобы увидеть доступные значения для `---location`, выполните команду [az appservice list-locations](https://docs.microsoft.com/en-us/cli/azure/appservice#list-locations).
+toosee какие возможные значения следует использовать для `---location`, использовать hello [список расположений az appservice](https://docs.microsoft.com/en-us/cli/azure/appservice#list-locations) команды.
 
 ### <a name="create-an-app-service-plan"></a>Создание плана службы приложений
-Чтобы создать [план службы приложений](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) B1, выполните команду [az appservice plan create](https://docs.microsoft.com/en-us/cli/azure/appservice/plan#create). 
+Используйте [создать план служб приложений az](https://docs.microsoft.com/en-us/cli/azure/appservice/plan#create) toocreate «B1» [план служб приложений](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
 ```azurecli
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku B1
 ```
 
-План службы приложений — это единица масштабирования, которая может включать любое количество приложений, масштаб которых необходимо увеличить или уменьшить в пределах одной инфраструктуры службы приложений. Каждый план также имеет свою [ценовую категорию](https://azure.microsoft.com/en-us/pricing/details/app-service/). На более высоких уровнях используется лучшее оборудование и доступны дополнительные функции (например, дополнительные экземпляры масштабирования).
+План службы приложений — это единица масштабирования, которая может включать любое количество приложений должны tooscale вверх или out вместе over hello же инфраструктуры службы приложений. Каждый план также имеет свою [ценовую категорию](https://azure.microsoft.com/en-us/pricing/details/app-service/). На более высоких уровнях используется лучшее оборудование и доступны дополнительные функции (например, дополнительные экземпляры масштабирования).
 
-В этом руководстве используется уровень B1. Это минимальный уровень, который позволяет масштабировать до трех экземпляров. Вы всегда сможете изменить ценовую категорию позже, выполнив команду [az appservice plan update](https://docs.microsoft.com/cli/azure/appservice/plan#update). 
+В этом учебнике B1 — hello минимального уровня, который позволяет масштабировать toothree экземпляров. Приложения всегда можно переместить вверх или вниз hello ценовой категории позже, запустив [обновление плана служб приложений az](https://docs.microsoft.com/cli/azure/appservice/plan#update). 
 
 ### <a name="create-a-web-app"></a>Создание веб-приложения
-Чтобы создать веб-приложение с уникальным именем в `$appName`, выполните команду [az appservice web create](https://docs.microsoft.com/en-us/cli/azure/appservice/web#create).
+Используйте [создать az appservice web](https://docs.microsoft.com/en-us/cli/azure/appservice/web#create) toocreate веб-приложения с уникальным именем в `$appName`.
 
 ```azurecli
 $appName = "<replace-with-a-unique-name>"
@@ -92,20 +92,20 @@ az appservice web create --name $appName --resource-group myResourceGroup --plan
 ```
 
 ### <a name="set-deployment-credentials"></a>Сброс учетных данных развертывания
-Чтобы настроить учетные данные развертывания на уровне учетной записи, выполните команду[az appservice web deployment user set](https://docs.microsoft.com/en-us/cli/azure/appservice/web/deployment/user#set).
+Используйте [web az appservice пользователь развертывание задан](https://docs.microsoft.com/en-us/cli/azure/appservice/web/deployment/user#set) tooset учетные данные развертывания уровня учетной записи для приложения службы.
 
 ```azurecli
 az appservice web deployment user set --user-name <letters-numbers> --password <mininum-8-char-captital-lowercase-letters-numbers>
 ```
 
 ### <a name="configure-git-deployment"></a>Настройка развертывания Git
-Чтобы настроить локальное развертывание Git, выполните команду [az appservice web source-control config-local-git](https://docs.microsoft.com/en-us/cli/azure/appservice/web/source-control#config-local-git).
+Используйте [web системы управления версиями az appservice config локальной git](https://docs.microsoft.com/en-us/cli/azure/appservice/web/source-control#config-local-git) tooconfigure локальное развертывание Git.
 
 ```azurecli
 az appservice web source-control config-local-git --name $appName --resource-group myResourceGroup
 ```
 
-В результате вы получите выходные данные, которые выглядят следующим образом:
+Эта команда предоставляет выход, который выглядит как следующий hello:
 
 ```json
 {
@@ -113,54 +113,54 @@ az appservice web source-control config-local-git --name $appName --resource-gro
 }
 ```
 
-Настройте удаленный репозиторий Git, используя возвращенный URL-адрес. Следующая команда использует пример предыдущих выходных данных:
+Используйте hello вернул tooconfigure URL-адрес вашего Git удаленной. Hello следующая команда использует hello предшествующий пример выходных данных.
 
 ```powershell
 git remote add azure https://user123@myuniqueappname.scm.azurewebsites.net/myuniqueappname.git
 ```
 
-### <a name="deploy-the-sample-application"></a>Развертывание примера приложения
-Теперь все готово для развертывания примера приложения. Запустите `git push`.
+### <a name="deploy-hello-sample-application"></a>Развертывание примера приложения hello
+Вы являются toodeploy теперь готовы к примеру приложения. Запустите `git push`.
 
 ```powershell
 git push azure master
 ```
 
-При появлении запроса на ввод пароля используйте пароль, указанный при выполнении `az appservice web deployment user set`.
+При запросе пароля следует использовать hello пароль, указанный вами при запуске `az appservice web deployment user set`.
 
-### <a name="browse-to-azure-web-app"></a>Переход к веб-приложению Azure
-Чтобы увидеть работу приложения в Azure в реальном времени, выполните команду [az appservice web browse](https://docs.microsoft.com/en-us/cli/azure/appservice/web#browse).
+### <a name="browse-tooazure-web-app"></a>Обзор tooAzure веб-приложения
+Используйте [обзора web appservice az](https://docs.microsoft.com/en-us/cli/azure/appservice/web#browse) toosee своего приложения, работающего в режиме реального времени в Azure, выполните следующую команду.
 
 ```azurecli
 az appservice web browse --name $appName --resource-group myResourceGroup
 ```
 
-## <a name="step-3---connect-to-redis"></a>Шаг 3. Подключение к Redis
-На этом шаге вы настроите кэш Redis для Azure в качестве внешнего кэша, совместно размещенного с веб-приложением Azure. Вы можете быстро использовать Redis, чтобы кэшировать выходные данные страницы. Кроме того, при дальнейшем масштабировании веб-приложения Redis поможет надежно сохранить пользовательские сеансы в нескольких экземплярах.
+## <a name="step-3---connect-tooredis"></a>Шаг 3 — подключить tooRedis
+На этом шаге настраивается кэша Redis для Azure как внешних, размещение кэша tooyour веб-приложение Azure. Быстро, можно воспользоваться Redis toocache выходные данные страницы. Кроме того, при дальнейшем масштабировании веб-приложения Redis поможет надежно сохранить пользовательские сеансы в нескольких экземплярах.
 
 ### <a name="create-an-azure-redis-cache"></a>Создание кэша Redis для Azure
-Чтобы создать кэш Redis для Azure и сохранить выходные данные JSON, выполните команду [az redis create](https://docs.microsoft.com/en-us/cli/azure/redis#create). Укажите уникальное имя в `$cacheName`.
+Используйте [az redis создать](https://docs.microsoft.com/en-us/cli/azure/redis#create) toocreate кэша Redis для Azure и сохраните hello выходных данных JSON. Укажите уникальное имя в `$cacheName`.
 
 ```powershell
 $cacheName = "<replace-with-a-unique-cache-name>"
 $redis = (az redis create --name $cacheName --resource-group myResourceGroup --location "West Europe" --sku-capacity 0 --sku-family C --sku-name Basic | ConvertFrom-Json)
 ```
 
-### <a name="configure-the-application-to-use-redis"></a>Настройка приложения для использования Redis
-Отформатируйте строку подключения для кэша.
+### <a name="configure-hello-application-toouse-redis"></a>Настройка приложения hello toouse Redis
+Формат hello строку подключения для вашего кэша.
 
 ```powershell
 $connstring = "$($redis.hostname):$($redis.sslPort),password=$($redis.accessKeys.primaryKey),ssl=True,abortConnect=False"
 $connstring 
 ```
 
-Во второй строке должны отобразиться выходные данные, аналогичные следующим:
+Вторая строка Hello следует предоставить выход, выглядит следующим образом:
 
 ```
 mycachename.redis.cache.windows.net:6380,password=/rQP/TLz1mrEPpmh9b/gnfns/t9vBRXqXn3i1RwBjGA=,ssl=True,abortConnect=False
 ```
 
-В Visual Studio создайте файл веб-конфигурации `redis.config` в корневом каталоге проекта и вставьте в него указанный ниже код. В `value` укажите строку подключения из выходных данных PowerShell.
+В Visual Studio, создайте файл веб-конфигурации в корневом каталоге проекта, который называется `redis.config` и hello вставить следующий код в него. В `value`, используйте строку подключения hello из hello выходные данные PowerShell.
 
 ```xml
 <appSettings>
@@ -168,30 +168,30 @@ mycachename.redis.cache.windows.net:6380,password=/rQP/TLz1mrEPpmh9b/gnfns/t9vBR
 </appSettings>
 ```
 
-Если взглянуть на файл `.gitignore` в репозитории Git, вы увидите, что этот файл исключен из системы управления версиями. Таким образом ваша конфиденциальная информация находится в безопасности. 
+Если взглянуть на hello `.gitignore` файла в репозиторий Git, вы увидите, что этот файл исключен из системы управления версиями. Таким образом ваша конфиденциальная информация находится в безопасности. 
 
-Откройте `Web.config`. Обратите внимание на элемент `<appSettings file="redis.config">`, который получает параметры, созданные в `redis.config`. 
+Откройте `Web.config`. Обратите внимание hello `<appSettings file="redis.config">` элемент, который получает приветствия, созданный в `redis.config`. 
 
-Найдите раздел с комментариями, содержащий сведения `<sessionState>` и `<caching>`. Раскомментируйте его.
+Найти комментарий hello раздел, содержащий `<sessionState>` и `<caching>`. Раскомментируйте его.
 
 ![](./media/app-service-web-tutorial-hyper-scale-app/redisproviders.png)
 
-Этот код ищет строку подключения Redis, определенную в `RedisConnection`. 
+Этот код осуществляет поиск строки подключения Redis hello вы определили в `RedisConnection`. 
 
-Теперь для управления сеансами и кэширования ваше приложение использует Redis. Нажмите клавишу `F5`, чтобы запустить приложение. При необходимости можно скачать клиент управления Redis, чтобы визуализировать данные, сохраненные в кэше.
+Теперь приложение использует сеансы toomanage Redis и кэширование. Тип `F5` toorun приложения hello. При желании вы можете загрузить Redis управления toovisualize hello данные клиента, сохраняется toohello кэша.
 
-### <a name="configure-the-connection-string-in-azure"></a>Настройка строки подключения в Azure
+### <a name="configure-hello-connection-string-in-azure"></a>Настройка строки подключения hello в Azure
 
-Для работы приложения в Azure необходимо настроить ту же строку подключения Redis в веб-приложении Azure. Так как файл `redis.config` не поддерживается в системе управления версиями, то при выполнении развертывания Git он не будет развертываться в Azure.
+Для toowork вашего приложения в Azure, необходимо tooconfigure hello же строка подключения Redis в Azure веб-приложения. Поскольку `redis.config` не сохраняется в системе управления версиями, не является развернутой tooAzure при выполнении развертывания Git.
 
-Выполните команду [az appservice web config appsettings update](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings#update), чтобы добавить строку подключения с таким же именем (`RedisConnection`).
+Используйте [обновление az appservice web конфигурации appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings#update) строка соединения hello tooadd с hello же имя (`RedisConnection`).
 
 az appservice web config appsettings update --settings "RedisConnection=$connstring" --name $appName --resource-group myResourceGroup
 
-Помните, что `$connstring` содержит форматированную строку подключения.
+Следует помнить, что `$connstring` содержит строку подключения в формате hello.
 
-### <a name="redeploy-the-application-to-azure"></a>Повторное развертывание приложения в Azure
-Чтобы отправить изменения в Azure, выполните следующие команды:
+### <a name="redeploy-hello-application-tooazure"></a>Повторное развертывание tooAzure приложения hello
+Использовать ваш tooAzure изменения toopush команды Git
 
 ```bash
 git add .
@@ -199,37 +199,37 @@ git commit -m "now use Redis providers"
 git push azure master
 ```
 
-При появлении запроса на ввод пароля используйте пароль, указанный при выполнении `az appservice web deployment user set`.
+При запросе пароля следует использовать hello пароль, указанный вами при запуске `az appservice web deployment user set`.
 
-### <a name="browse-to-the-azure-web-app"></a>Переход к веб-приложению Azure
-Чтобы просмотреть изменения в Azure, выполните команду [az appservice web browse](https://docs.microsoft.com/en-us/cli/azure/appservice/web#browse).
+### <a name="browse-toohello-azure-web-app"></a>Обзор toohello веб-приложение Azure
+Используйте [обзора web appservice az](https://docs.microsoft.com/en-us/cli/azure/appservice/web#browse) live toosee hello изменения в Azure.
 
 ```azurecli
 az appservice web browse --name $appName --resource-group myResourceGroup
 ```
 
-## <a name="step-4---scale-to-multiple-instances"></a>Шаг 4. Масштабирование до нескольких экземпляров
-План службы приложений — это единица масштабирования для веб-приложений Azure. Чтобы увеличить масштаб веб-приложения, необходимо добавить экземпляры в плане службы приложений.
+## <a name="step-4---scale-toomultiple-instances"></a>Шаг 4 экземпляров toomultiple шкалы.
+Hello план служб приложений является hello единица масштабирования для вашего веб-приложениях Azure. tooscale ожидания веб-приложения, масштабирование hello план служб приложений.
 
-Выполните команду [az appservice plan update](https://docs.microsoft.com/cli/azure/appservice/plan#update), чтобы масштабировать план службы приложений до трех экземпляров. Это максимальное количество, допустимое в ценовой категории B1. Помните, что B1 — это ценовая категория, выбранная во время создания плана службы приложений ранее. 
+Используйте [обновление плана служб приложений az](https://docs.microsoft.com/cli/azure/appservice/plan#update) tooscale экземпляров toothree план службы приложений hello, который является hello максимально допустимое hello B1 ценовой категории. Помните, что B1 hello ценовой категории, выбранные при создании hello ранее план служб приложений. 
 
 ```azurecli
 az appservice plan update --name myAppServicePlan --resource-group myResourceGroup --number-of-workers 3 
 ```
 
 ## <a name="step-5---scale-geographically"></a>Шаг 5. Развертывание приложения в нескольких регионах
-Вы можете развернуть ваше приложение в облаке Azure в нескольких регионах. Эта настройка балансирует нагрузку приложения в зависимости от географического расположения и снижает время ответа, размещая приложение рядом с клиентскими браузерами.
+При масштабировании географически, приложение работает в нескольких регионах hello облако Azure. Эта программа установки балансировку нагрузки приложения дальнейшей основанной на географических объектах и сокращает время отклика hello, поместив ближе браузера tooclient приложения.
 
-На этом этапе вы развернете веб-приложение ASP.NET во втором регионе с помощью [диспетчера трафика Azure](https://docs.microsoft.com/en-us/azure/traffic-manager/). По завершении этого этапа уже созданное веб-приложение будет запущено в Западной Европе, а приложение, которое мы создадим позже, — в Юго-Восточной Азии. Оба приложения будут обслуживаться с использованием одного URL-адреса диспетчера трафика.
+На этом шаге масштабировать ваш ASP.NET web app tooa второй области с [диспетчера трафика Azure](https://docs.microsoft.com/en-us/azure/traffic-manager/). В конце шага hello hello будет запущен в Западной Европе (уже создан) веб-приложения и веб-приложение работает в Юго-Восточная Азия (еще не создан). Оба приложения будут обслуживаться из hello же URL-адрес диспетчера трафика.
 
-### <a name="scale-up-the-europe-app-to-standard-tier"></a>Перенос приложения в Европе на уровень "Стандартный"
-Чтобы интегрировать диспетчер трафика Azure в службе приложений, требуется ценовая категория "Стандартный". Чтобы настроить для плана службы приложений уровень S1, выполните команду [az appservice plan update](https://docs.microsoft.com/cli/azure/appservice/plan#update). 
+### <a name="scale-up-hello-europe-app-toostandard-tier"></a>Вертикальное масштабирование hello Europe приложения tooStandard уровня
+В службе приложений интеграция с диспетчером трафика Azure требует hello ценовой категории Standard. Используйте [обновление плана служб приложений az](https://docs.microsoft.com/cli/azure/appservice/plan#update) tooscale копирование вашего tooS1 плана служб приложений. 
 
 ```azurecli
 az appservice plan update --name myAppServicePlan --resource-group myResourceGroup --sku S1
 ```
 ### <a name="create-a-traffic-manager-profile"></a>Создание профиля диспетчера трафика 
-Чтобы создать профиль диспетчера трафика и добавить его в группу ресурсов, выполните команду [az network traffic-manager profile create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#create). В параметре $dnsName укажите уникальное DNS-имя.
+Используйте [создать профиль диспетчера трафика сети az](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#create) toocreate диспетчера трафика профиль и добавить его tooyour группы ресурсов. В параметре $dnsName укажите уникальное DNS-имя.
 
 ```azurecli
 $dnsName = "<replace-with-unique-dns-name>"
@@ -237,69 +237,69 @@ az network traffic-manager profile create --name myTrafficManagerProfile --resou
 ```
 
 > [!NOTE]
-> `--routing-method Performance` указывает, что профиль [направляет пользовательский трафик в ближайшую конечную точку](../traffic-manager/traffic-manager-routing-methods.md).
+> `--routing-method Performance`Указывает, что этот профиль [направляет трафик пользователя toohello ближайшей конечной точкой](../traffic-manager/traffic-manager-routing-methods.md).
 
-### <a name="get-the-resource-id-of-the-europe-app"></a>Получение идентификатора ресурса приложения в Европе
-Чтобы получить идентификатор ресурса веб-приложения, выполните команду [az appservice web show](https://docs.microsoft.com/en-us/cli/azure/appservice/web#show).
+### <a name="get-hello-resource-id-of-hello-europe-app"></a>Получить идентификатор ресурса hello приложение hello Европа
+Используйте [Показать web appservice az](https://docs.microsoft.com/en-us/cli/azure/appservice/web#show) tooget hello идентификатор ресурса веб-приложения.
 
 ```azurecli
 $appId = az appservice web show --name $appName --resource-group myResourceGroup --query id --output tsv
 ```
 
-### <a name="add-a-traffic-manager-endpoint-for-the-europe-app"></a>Добавление конечной точки диспетчера трафика для приложения в Европе
-Чтобы добавить конечную точку в профиль диспетчера трафика и использовать в качестве целевого объекта идентификатор ресурса веб-приложения, выполните команду [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#create).
+### <a name="add-a-traffic-manager-endpoint-for-hello-europe-app"></a>Добавить конечную точку диспетчера трафика для Европы приложение hello
+Используйте [создать конечную точку диспетчера трафика сети az](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#create) tooadd tooyour конечной точки профиля диспетчера трафика и используйте идентификатор ресурса hello веб-приложения как hello целевой.
 
 ```azurecli
 az network traffic-manager endpoint create --name myWestEuropeEndpoint --profile-name myTrafficManagerProfile --resource-group myResourceGroup --type azureEndpoints --target-resource-id $appId
 ```
 
-### <a name="get-the-traffic-manager-endpoint-url"></a>Получение URL-адреса конечной точки диспетчера трафика
-Профиль диспетчера трафика теперь содержит конечную точку, указывающую на существующее веб-приложение. Чтобы получить URL-адрес, выполните команду [az network traffic-manager profile show](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#show). 
+### <a name="get-hello-traffic-manager-endpoint-url"></a>Получить URL-адрес конечной точки диспетчера трафика hello
+Профиль диспетчера трафика теперь есть конечная точка, точки tooyour существующего веб-приложения. Используйте [Показать профиль диспетчера трафика сети az](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#show) tooget его URL-адрес. 
 
 ```azurecli
 az network traffic-manager profile show --name myTrafficManagerProfile --resource-group myResourceGroup --query dnsConfig.fqdn --output tsv
 ```
 
-Скопируйте выходные данные в браузер. Вы должны снова увидеть свое веб-приложение.
+Копировать выходные данные hello в адресную строку браузера. Вы должны снова увидеть свое веб-приложение.
 
 ### <a name="create-an-azure-redis-cache-in-asia"></a>Создание кэша Redis для Azure в Азии
-Теперь необходимо реплицировать веб-приложение Azure в Юго-Восточную Азию. Для начала выполните команду [az redis create](https://docs.microsoft.com/en-us/cli/azure/redis#create), чтобы создать второй кэш Redis для Azure в Юго-Восточной Азии. Этот кэш должен быть совместно размещен с вашим приложением в Азии.
+Теперь можно реплицировать региона Azure web app toohello Юго-Восточная Азия. toostart, используйте [az redis создать](https://docs.microsoft.com/en-us/cli/azure/redis#create) toocreate второй кэш Azure Redis в Юго-Восточная Азия. Этот кэш должен toobe совместного размещения вместе с приложением в Азии.
 
 ```powershell
 $redis = (az redis create --name $cacheName-asia --resource-group myResourceGroup --location "Southeast Asia" --sku-capacity 0 --sku-family C --sku-name Basic | ConvertFrom-Json)
 ```
 
-`--name $cacheName-asia` присваивает имя кэша Западной Европы с добавлением суффикса `-asia`.
+`--name $cacheName-asia`Имя кэша hello hello кэша Западной Европе с hello hello дает `-asia` суффикс.
 
 ### <a name="create-an-app-service-plan-in-asia"></a>Создание плана службы приложений в Азии
-Выполните команду [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create), чтобы создать второй план службы приложений в Юго-Восточной Азии, используя тот же уровень S1, что и для плана Западной Европы.
+Используйте [создать план служб приложений az](https://docs.microsoft.com/cli/azure/appservice/plan#create) toocreate план вторую службу приложения hello юго-восток Азиатско-Тихоокеанский регион, с помощью hello S1 того же уровня как план Западной Европе hello.
 
 ```azurecli
 az appservice plan create --name myAppServicePlanAsia --resource-group myResourceGroup --location "Southeast Asia" --sku S1
 ```
 
 ### <a name="create-a-web-app-in-asia"></a>Создание веб-приложения в Азии
-Чтобы создать второе веб-приложение, выполните команду [az appservice web create](https://docs.microsoft.com/en-us/cli/azure/appservice/web#create).
+Используйте [создать az appservice web](https://docs.microsoft.com/en-us/cli/azure/appservice/web#create) toocreate второй веб-приложения.
 
 ```azurecli
 az appservice web create --name $appName-asia --resource-group myResourceGroup --plan myAppServicePlanAsia
 ```
 
-`--name $appName-asia` присваивает имя приложения Западной Европы с добавлением суффикса `-asia`.
+`--name $appName-asia`содержит имя приложения hello приложения hello Западной Европе, hello с hello `-asia` суффикс.
 
-### <a name="configure-the-connection-string-for-redis"></a>Настройка строки подключения для Redis
-Чтобы добавить в веб-приложение строку подключения для кэша Юго-Восточной Азии, выполните команду [az appservice web config appsettings update](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings#update).
+### <a name="configure-hello-connection-string-for-redis"></a>Настройка строки подключения hello для Redis
+Используйте [обновление az appservice web конфигурации appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings#update) tooadd toohello веб-приложение hello строки подключения для hello кэша Юго-Восточная Азия.
 
 az appservice web config appsettings update --settings "RedisConnection=$($redis.hostname):$($redis.sslPort),password=$($redis.accessKeys.primaryKey),ssl=True,abortConnect=False" --name $appName-asia --resource-group myResourceGroup
 
-### <a name="configure-git-deployment-for-the-asia-app"></a>Настройка развертывания Git для приложения в Азии
-Чтобы настроить локальное развертывание Git для второго веб-приложения, выполните команду [az appservice web source-control config-local-git](https://docs.microsoft.com/en-us/cli/azure/appservice/web/source-control#config-local-git).
+### <a name="configure-git-deployment-for-hello-asia-app"></a>Настройка Git развертывания для приложения hello Азии.
+Используйте [web системы управления версиями az appservice config локальной git](https://docs.microsoft.com/en-us/cli/azure/appservice/web/source-control#config-local-git) tooconfigure локальное развертывание Git для hello второй веб-приложения.
 
 ```azurecli
 az appservice web source-control config-local-git --name $appName-asia --resource-group myResourceGroup
 ```
 
-В результате вы получите выходные данные, которые выглядят следующим образом:
+Эта команда предоставляет выход, который выглядит как следующий hello:
 
 ```json
 {
@@ -307,44 +307,44 @@ az appservice web source-control config-local-git --name $appName-asia --resourc
 }
 ```
 
-Используйте возвращенный URL-адрес, чтобы настроить второй удаленный репозиторий Git для локального репозитория. Следующая команда использует пример предыдущих выходных данных:
+Используйте hello вернул tooconfigure URL-адрес второй Git, удаленный для локального хранилища. Hello следующая команда использует hello предшествующий пример выходных данных.
 
 ```bash
 git remote add azure-asia https://user123@myuniqueappname-asia.scm.azurewebsites.net/myuniqueappname.git
 ```
 
 ### <a name="deploy-your-sample-application"></a>Развертывание примера приложения
-Чтобы развернуть пример приложения во втором удаленном репозитории Git, выполните команду `git push`. 
+Запустите `git push` toodeploy второй дистанционного Git образец приложения toohello. 
 
 ```bash
 git push azure-asia master
 ```
 
-При появлении запроса на ввод пароля используйте пароль, указанный при выполнении `az appservice web deployment user set`.
+При запросе пароля следует использовать hello пароль, указанный вами при запуске `az appservice web deployment user set`.
 
-### <a name="browse-to-the-asia-app"></a>Переход в приложение в Азии
-Чтобы убедиться, что приложение запущено в Azure, выполните команду [az appservice web browse](https://docs.microsoft.com/en-us/cli/azure/appservice/web#browse).
+### <a name="browse-toohello-asia-app"></a>Обзор приложения toohello Азии
+Используйте [обзора web az appservice](https://docs.microsoft.com/en-us/cli/azure/appservice/web#browse) tooverify, динамическая работы вашего приложения в Azure.
 
 ```azurecli
 az appservice web browse --name $appName-asia --resource-group myResourceGroup
 ```
 
-### <a name="get-the-resource-id-of-the-asia-app"></a>Получение идентификатора ресурса приложения в Азии
-Чтобы получить идентификатор ресурса веб-приложения в Юго-Восточной Азии, выполните команду [az appservice web show](https://docs.microsoft.com/en-us/cli/azure/appservice/web#show).
+### <a name="get-hello-resource-id-of-hello-asia-app"></a>Получить идентификатор ресурса hello приложение hello Азии
+Используйте [Показать web appservice az](https://docs.microsoft.com/en-us/cli/azure/appservice/web#show) tooget hello идентификатор ресурса веб-приложения в Юго-Восточная Азия.
 
 ```azurecli
 $appIdAsia = az appservice web show --name $appName-asia --resource-group myResourceGroup --query id --output tsv
 ```
 
-### <a name="add-a-traffic-manager-endpoint-for-the-asia-app"></a>Добавление конечной точки диспетчера трафика для приложения в Азии
-Чтобы добавить вторую конечную точку в профиль диспетчера трафика, выполните команду [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#create).
+### <a name="add-a-traffic-manager-endpoint-for-hello-asia-app"></a>Добавить конечную точку диспетчера трафика для приложения hello Азии
+Используйте [создать конечную точку диспетчера трафика сети az](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#create) tooadd второй toohello конечной точки профиля диспетчера трафика.
 
 ```azurecli
 az network traffic-manager endpoint create --name myAsiaEndpoint --profile-name myTrafficManagerProfile --resource-group myResourceGroup --type azureEndpoints --target-resource-id $appIdAsia
 ```
 
-### <a name="add-region-identifier-to-web-apps"></a>Добавление идентификатора региона в веб-приложения
-Чтобы добавить переменные среды для конкретного региона, выполните команду [az appservice web config appsettings update](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings#update).
+### <a name="add-region-identifier-tooweb-apps"></a>Добавление приложений tooweb идентификатор региона
+Используйте [обновление az appservice web конфигурации appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings#update) tooadd переменной среды для конкретного региона.
 
 ```azurecli
 az appservice web config appsettings update --settings "Region=West Europe" --name $appName --resource-group myResourceGroup
@@ -355,6 +355,6 @@ az appservice web config appsettings update --settings "Region=Southeast Asia" -
 
 ### <a name="complete"></a>Готово!
 
-Теперь попробуйте перейти по URL-адресу профиля диспетчера трафика из браузеров в разных географических регионах. В клиентских браузерах в Европе должно отображаться ASP.NET West Europe (ASP.NET, Западная Европа), а в браузерах клиентов из Азии — ASP.NET Southeast Asia (ASP.NET, Юго-Восточная Азия).
+Попробуйте URL-адрес hello tooaccess вашего профиля диспетчера трафика с помощью браузеров в разных географических регионах. В клиентских браузерах в Европе должно отображаться ASP.NET West Europe (ASP.NET, Западная Европа), а в браузерах клиентов из Азии — ASP.NET Southeast Asia (ASP.NET, Юго-Восточная Азия).
 
 ## <a name="more-resources"></a>Дополнительные ресурсы

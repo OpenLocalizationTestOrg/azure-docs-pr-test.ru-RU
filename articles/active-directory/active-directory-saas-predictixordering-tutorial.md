@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Predictix Ordering | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в Predictix Ordering."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Predictix упорядочение."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,189 +14,189 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 8536a741f9b114ac6787c7aefb4c76ec6c4ed83e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0418ef24d7942b6b751c0b4d64e7bd1fba1d6a56
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Руководство. Интеграция Azure Active Directory с Predictix Ordering
 
-В этом руководстве описано, как интегрировать Predictix Ordering с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Predictix упорядочение с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением Predictix Ordering обеспечивает следующие преимущества.
+Интеграция с Azure AD упорядочение Predictix предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Predictix Ordering.
-- Вы можете включить автоматический вход пользователей в Predictix Ordering (единый вход) с использованием учетных записей Azure AD.
-- Вы можете управлять учетными записями централизованно — на портале Azure.
+- Можно управлять в Azure AD, имеющего доступ tooPredictix упорядочения элементов.
+- Можно включить на пользователей tooautomatically get вошедшего tooPredictix упорядочения элементов (Single Sign-On) с помощью своих учетных записей Azure AD.
+- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Predictix Ordering, вам потребуется:
+tooconfigure интеграция Azure AD с порядком Predictix требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Predictix Ordering с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление приложения Predictix Ordering из коллекции
+1. Добавление упорядочение Predictix из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-predictix-ordering-from-the-gallery"></a>Добавление приложения Predictix Ordering из коллекции
-Чтобы настроить интеграцию Predictix Ordering с Azure AD, необходимо добавить приложение Predictix Ordering из коллекции в список управляемых приложений SaaS.
+## <a name="adding-predictix-ordering-from-hello-gallery"></a>Добавление упорядочение Predictix из галереи hello
+tooconfigure hello интеграции упорядочение Predictix в Azure AD, вы должны tooadd Predictix упорядочение из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Predictix Ordering из коллекции, выполните указанные ниже действия.**
+**tooadd Predictix упорядочение из галереи hello выполните hello следующие шаги.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
-    ![Колонка "Корпоративные приложения"][2]
+    ![Hello корпоративных приложений колонку][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Кнопка нового приложения Hello][3]
 
-4. В поле поиска введите **Predictix Ordering**, выберите **Predictix Ordering** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+4. Введите в поле поиска hello **упорядочение Predictix**выберите **упорядочение Predictix** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
 
-    ![Predictix Ordering в списке результатов](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_addfromgallery.png)
+    ![Predictix порядок в списке результатов hello](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в Predictix Ordering с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Predictix Ordering соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Predictix Ordering.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello заказать Predictix является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello заказать Predictix должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Predictix Ordering.
+В Predictix упорядочение, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Predictix Ordering, выполните следующие стандартные действия.
+tooconfigure и тестирования Azure AD единого входа с порядком Predictix, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Predictix Ordering](#create-a-predictix-ordering-test-user)** требуется для создания в Predictix Ordering пользователя Britta Simon, связанного с соответствующим представлением в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя упорядочение Predictix](#create-a-predictix-ordering-test-user)**  -toohave аналог Саймон Britta Predictix заказать, представление связанных toohello Azure AD пользователя.
+4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Predictix Ordering.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Predictix упорядочение.
 
-**Чтобы настроить единый вход Azure AD в Predictix Ordering, выполните указанные ниже действия.**
+**tooconfigure Azure AD единого входа с порядком Predictix, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Predictix Ordering** щелкните **Единый вход**.
+1. В hello в hello портала Azure **порядок Predictix** странице интеграции приложения щелкните **единого входа**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Predictix Ordering** выполните следующие действия.
+3. На hello **URL-адреса и домена упорядочение Predictix** выполните следующие шаги hello:
 
     ![Сведения о домене и URL-адресах единого входа для приложения Predictix Ordering](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_url.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<companyname-pricing>.ordering.predictix.com/sso/request`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname-pricing>.ordering.predictix.com/sso/request`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: 
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello: 
     | |
     |--|
     | `https://<companyname-pricing>.dev.ordering.predictix.com` |
     | `https://<companyname-pricing>.ordering.predictix.com` |
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить эти значения, обратитесь в [службу поддержки клиентов Predictix Ordering](https://www.predix.io/support/). 
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки клиента упорядочение Predictix](https://www.predix.io/support/) tooget эти значения. 
  
-4. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
-    ![Ссылка для скачивания сертификата](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_certificate.png) 
+    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-predictixordering-tutorial/tutorial_general_400.png)
 
-6. В разделе **Конфигурация Predictix Ordering** щелкните **Настроить Predictix Ordering**, чтобы открыть окно **Настройка входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML**  из раздела **Краткий справочник**.
+6. На hello **конфигурации упорядочение Predictix** щелкните **настроить порядок Predictix** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка Predictix Ordering](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_configure.png) 
 
-7. Чтобы настроить единый вход на стороне **Predictix Ordering**, нужно передать скачанный **сертификат (Base64)**, **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML** в [службу поддержки Predictix Ordering](https://www.predix.io/support/). Специалисты службы поддержки настроят подключение единого входа SAML на обеих сторонах.
+7. tooconfigure единого входа на **порядок Predictix** стороны, необходимо загрузить hello toosend **сертификата (Base64)**, **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы**  слишком[Predictix упорядочение группа поддержки](https://www.predix.io/support/). Они устанавливаются hello toohave этот параметр задан правильно на обеих сторонах соединения единого входа SAML.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание тестового пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
 
-    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_01.png)
+    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_01.png)
 
-2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
 
-    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_02.png)
+    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_02.png)
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
 
-    ![Кнопка "Добавить"](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_03.png)
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
 
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_04.png)
+    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_04.png)
 
-   а. В поле **Имя** введите **BrittaSimon**.
+   а. В hello **имя** введите **BrittaSimon**.
 
-   b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+   b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
 
-   c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+   c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
 
-   г) Щелкните **Создать**.
+   d. Щелкните **Создать**.
  
 ### <a name="create-a-predictix-ordering-test-user"></a>Создание тестового пользователя в Predictix Ordering
 
-В этом разделе описано, как создать пользователя Britta Simon в приложении Predictix Ordering. Обратитесь в [службу поддержки Predictix Ordering](https://www.predix.io/support/), чтобы добавить пользователей на платформу Predictix Ordering.
+В этом разделе описано, как создать пользователя Britta Simon в приложении Predictix Ordering. Работать с [Predictix упорядочение группа поддержки](https://www.predix.io/support/) tooadd hello пользователей на платформе Predictix упорядочение hello.
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив доступ к Predictix Ordering.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooPredictix упорядочения элементов.
 
-![Назначение роли пользователя][200] 
+![Назначение пользователям ролей hello][200] 
 
-**Чтобы назначить пользователя Britta Simon приложению Predictix Ordering, выполните указанные ниже действия.**
+**tooassign tooPredictix Britta Simon упорядочение, выполните следующие шаги hello:**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Predictix Ordering**.
+2. В списке приложений hello выберите **Predictix упорядочение**.
 
-    ![Ссылка на Predictix Ordering в списке "Приложения"](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_app.png)  
+    ![Hello упорядочение Predictix ссылку в списке приложений hello](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_app.png)  
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202]
+    ![Hello ссылку «Пользователи и группы»][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Область "Добавление назначения"][203]
+    ![область назначения, добавьте Hello][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -204,14 +204,14 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".
 
-Щелкнув плитку Predictix Ordering на панели доступа, вы автоматически войдете в приложение Predictix Ordering.
+При нажатии кнопки hello упорядочение Predictix плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour приложения Predictix заказов.
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

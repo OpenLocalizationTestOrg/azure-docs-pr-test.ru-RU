@@ -1,6 +1,6 @@
 ---
-title: "Подключение Feather HUZZAH ESP8266 к Центру Интернета вещей Azure в облаке | Документация Майкрософт"
-description: "Узнайте, как настроить и подключить плату Adafruit Feather HUZZAH ESP8266 к Центру Интернета вещей Azure и передавать с нее данные в облако Azure."
+title: "toocloud aaaESP8266 - tooAzure подключения ESP8266 HUZZAH Растушевка центра IoT | Документы Microsoft"
+description: "Узнайте, как toosetup и подключения tooAzure ESP8266 HUZZAH Adafruit Растушевка центр IoT для него toosend данных toohello Azure облачной платформы в этом учебнике."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: xshi
-ms.openlocfilehash: 6a450579c848fe6030a328ddf410f139baae2324
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 44fd47232488948d21c7aa71bdd865397e41e63e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Подключение Adafruit Feather HUZZAH ESP8266 к Центру Интернета вещей Azure в облаке
+# <a name="connect-adafruit-feather-huzzah-esp8266-tooazure-iot-hub-in-hello-cloud"></a>Подключение tooAzure ESP8266 HUZZAH Adafruit Растушевка центр IoT в облаке hello
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
@@ -30,57 +30,57 @@ ms.lasthandoff: 08/03/2017
 ## <a name="what-you-do"></a>В рамках этого руководства мы:
 
 
-В рамках этого руководства мы подключим плату Adafruit Feather HUZZAH ESP8266 к созданному Центру Интернета вещей Azure. Затем мы запустим пример приложения на ESP8266, чтобы собрать данные о температуре и влажности, зафиксированные датчиком DHT22. После этого отправим данные с датчика в Центр Интернета вещей.
+Подключите центра IoT tooan ESP8266 HUZZAH Adafruit Растушевка созданного вами. Затем запустите пример приложения на ESP8266 toocollect hello температуры и влажности данных с использованием DHT22 датчиков. Отправьте центра IoT tooyour данных датчика hello.
 
 > [!NOTE]
-> При использовании других плат ESP8266 вы по-прежнему можете выполнить эти действия, чтобы подключиться к Центру Интернета вещей. В зависимости от используемой платы ESP8266 вам может потребоваться изменить параметр `LED_PIN`. Например, если вы используете ESP8266 от AI-Thinker, вы можете изменить его значение с `0` на `2`. Нет начального набора? Получите его на [веб-сайте Azure](http://azure.com/iotstarterkits).
+> При использовании других плат ESP8266 все равно можно выполнять эти действия tooconnect его tooyour центр IoT. В зависимости от hello ESP8266 Доска вы используете, может потребоваться tooreconfigure hello `LED_PIN`. Например, вы используете ESP8266 из Thinker аналитики Активов, может измениться из `0` слишком`2`. Нет начального набора? Получить его из hello [веб-сайте Azure](http://azure.com/iotstarterkits).
 
 
 
 
 ## <a name="what-you-learn"></a>Что вы узнаете
 
-* Как создать Центр Интернета вещей и зарегистрировать устройство для Feather HUZZAH ESP8266.
-* Как подключить Feather HUZZAH ESP8266 к датчику и компьютеру.
-* Как собирать данные датчиков, запустив пример приложения на Feather HUZZAH ESP8266.
-* Как отправить данные датчиков в Центр Интернета вещей.
+* Как toocreate центр IoT и регистрация устройства для ESP8266 HUZZAH Растушевка
+* Как tooconnect ESP8266 HUZZAH Растушевка с датчика hello и компьютера
+* Как toocollect датчиков, выполнив пример приложения на ESP8266 HUZZAH Растушевка
+* Как toosend hello центра IoT tooyour данных датчика
 
 ## <a name="what-you-need"></a>Необходимые элементы
 
-![Элементы, необходимые в рамках руководства:](media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
+![Детали, необходимые для работы с руководством hello](media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
 
-Чтобы выполнить эту операцию, вам понадобятся следующие элементы из начального набора Feather HUZZAH ESP8266:
+toocomplete этой операции требуется hello следующую частей из начального набора Растушевка HUZZAH ESP8266:
 
-* плата Feather HUZZAH ESP8266;
-* кабель micro-USB (тип A).
+* плата ESP8266 HUZZAH Растушевка Hello
+* Micro USB tooType USB-кабель
 
-Кроме того, вам понадобятся следующие элементы среды разработки:
+Также необходим hello следующие действия для среды разработки.
 
 * Активная подписка Azure. Если ее нет, можно создать [бесплатную пробную учетную запись Azure](https://azure.microsoft.com/free/) всего за несколько минут.
 * ПК или компьютер Mac под управлением Windows или Ubuntu;
-* беспроводная сеть, к которой подключается Feather HUZZAH ESP8266;
-* подключение к Интернету для скачивания средства настройки;
-* [Arduino IDE](https://www.arduino.cc/en/main/software) версии 1.6.8 или более новой. Более ранние версии несовместимы с библиотекой Центра Интернета вещей Azure.
+* Tooconnect ESP8266 HUZZAH Растушевка для беспроводных сетей.
+* Средство настройки hello toodownload подключения Интернета.
+* [Arduino IDE](https://www.arduino.cc/en/main/software) версии 1.6.8 или более новой. Более ранних версий не работают с библиотекой AzureIoT hello.
 
-Ниже приведены необязательные элементы, используемые в случае отсутствия датчика. Вы также можете использовать симулированные данные датчика.
+Hello следующие элементы являются необязательными случаю, когда не датчика. Также имеется возможность использовать имитацию датчиков hello.
 
 * Датчик температуры и влажности Adafruit DHT22.
 * Монтажная плата.
-* Многомодовый оптоволоконный кабель с разъемами на обоих концах.
+* Многомодовый оптоволоконный кабель с разъемами на обоих концах
 
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>Подключение Feather HUZZAH ESP8266 к датчику и компьютеру
-В этом разделе рассказывается о том, как подключить датчики к плате. Затем устройство нужно подключить к компьютеру для дальнейшего использования.
-### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-feather-huzzah-esp8266"></a>Подключение датчика температуры и влажности DHT22 к Feather HUZZAH ESP8266
+## <a name="connect-feather-huzzah-esp8266-with-hello-sensor-and-your-computer"></a>Связь ESP8266 HUZZAH Растушевка с датчика hello и компьютера
+В этом разделе подключиться hello датчики tooyour платы. Затем можно подключить компьютер tooyour устройство для использования в будущем.
+### <a name="connect-a-dht22-temperature-and-humidity-sensor-toofeather-huzzah-esp8266"></a>Подключение DHT22 температуры и влажности датчика tooFeather HUZZAH ESP8266
 
-Чтобы установить подключение, используйте монтажную плату и оптоволоконный кабель с разъемами на обоих концах, как показано ниже. Если у вас нет датчика, пропустите этот раздел, так как вместо него вы можете использовать симулированные данные.
+Используйте hello breadboard и перемычки проводов toomake hello соединения следующим образом. Если у вас нет датчика, пропустите этот раздел, так как вместо него вы можете использовать симулированные данные.
 
 ![Справочные материалы по подключению](media/iot-hub-arduino-huzzah-esp8266-get-started/15_connections_on_breadboard.png)
 
 
-Чтобы подключить выводы датчика, используйте следующие кабели:
+Для датчика ПИН-коды используйте hello после подключения:
 
 
 | Начало (датчик)           | Конец (плата)           | Цвет кабеля   |
@@ -97,86 +97,86 @@ ms.lasthandoff: 08/03/2017
 
 ![Подключение DHT22 к Feather Huzzah](media/iot-hub-arduino-huzzah-esp8266-get-started/8_connect-dht22-feather-huzzah.png)
 
-### <a name="connect-feather-huzzah-esp8266-to-your-computer"></a>Подключение Feather HUZZAH ESP8266 к компьютеру
+### <a name="connect-feather-huzzah-esp8266-tooyour-computer"></a>Подключите компьютер tooyour ESP8266 HUZZAH Растушевка
 
-Чтобы подключить Feather HUZZAH ESP8266 к своему компьютеру, используйте кабель micro-USB типа A, как показано ниже.
+Как показано далее, используйте hello Micro USB tooType USB кабель tooconnect ESP8266 HUZZAH Растушевка tooyour компьютера.
 
-![Подключение Feather Huzzah к компьютеру](media/iot-hub-arduino-huzzah-esp8266-get-started/9_connect-feather-huzzah-computer.png)
+![Подключите компьютер tooyour Huzzah Растушевка](media/iot-hub-arduino-huzzah-esp8266-get-started/9_connect-feather-huzzah-computer.png)
 
 ### <a name="add-serial-port-permissions-ubuntu-only"></a>Добавление разрешений для последовательного порта (только в Ubuntu)
 
 
-При использовании Ubuntu получите разрешения для работы с USB-портом платы Feather HUZZAH ESP8266. Чтобы добавить разрешения для работы с последовательным портом, сделайте следующее:
+Если вы используете Ubuntu, убедитесь, что имеется на hello USB порта из Растушевка HUZZAH ESP8266 toooperate разрешения hello. tooadd последовательный порт, выполните следующие действия:
 
 
-1. В окне терминала выполните следующие команды:
+1. Выполните следующие команды в терминал hello.
 
    ```bash
    ls -l /dev/ttyUSB*
    ls -l /dev/ttyACM*
    ```
 
-   Вы получите выходные данные одного из следующих типов:
+   При получении одного из hello следующие выходные данные:
 
    * crw-rw---- 1 root uucp xxxxxxxx
    * crw-rw---- 1 root dialout xxxxxxxx
 
-   В выходных данных обратите внимание на параметр `uucp` или `dialout`. Это имя владельца группы USB-порта.
+   Обратите внимание, что в выходных данных hello `uucp` или `dialout` — имя владельца группы hello hello USB-порту.
 
-1. Добавьте пользователя в группу, выполнив следующую команду:
+1. Добавление группы toohello hello пользователей, выполнив следующую команду hello:
 
    ```bash
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>` — это имя владельца группы, полученное на предыдущем этапе. `<username>` — это имя пользователя Ubuntu.
+   `<group-owner-name>`— Имя владельца группы hello, полученную на предыдущем шаге hello. `<username>` — это имя пользователя Ubuntu.
 
-1. Чтобы изменения стали видны, выйдите из Ubuntu и войдите снова.
+1. Выйдите из Ubuntu и войдите в нее снова для tooappear изменение hello.
 
-## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>Сбор данных датчиков и их отправка в Центр Интернета вещей
+## <a name="collect-sensor-data-and-send-it-tooyour-iot-hub"></a>Собирать данные датчиков и отправлять их tooyour центра IoT
 
-В этом разделе вы развернете и запустите пример приложения на плате Feather HUZZAH ESP8266. Пример приложения включает и отключает светодиодный индикатор на плате Feather HUZZAH ESP8266 и отправляет данные о температуре и влажности, собранные с датчика DHT22, в Центр Интернета вещей.
+В этом разделе вы развернете и запустите пример приложения на плате Feather HUZZAH ESP8266. Пример приложения Hello мигает hello Светодиод Растушевка HUZZAH ESP8266 и отправляет hello температуры и влажности собранные данные датчика tooyour hello DHT22 центр IoT.
 
-### <a name="get-the-sample-application-from-github"></a>Получение примера приложения из GitHub
+### <a name="get-hello-sample-application-from-github"></a>Получение образца приложения hello из GitHub
 
-Пример приложения находится на сайте GitHub. Клонируйте репозиторий, содержащий пример приложения с GitHub. Чтобы клонировать пример репозитория, сделайте следующее:
+Пример приложения Hello находится на GitHub. Клонирование репозитория образец hello, который содержит пример приложения hello из GitHub. репозиторий образец hello tooclone, выполните следующие действия:
 
 1. Откройте окно командной строки или терминала.
-1. Перейдите к папке, в которую необходимо сохранить пример приложения.
-1. Выполните следующую команду:
+1. Go tooa папку hello образец приложения toobe хранятся.
+1. Выполните следующую команду hello.
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-feather-huzzah-client-app.git
    ```
 
-Установите пакет для Feather HUZZAH ESP8266 в Arduino IDE:
+Установите пакет hello для ESP8266 HUZZAH Растушевка hello Arduino интегрированной среды разработки:
 
-1. Откройте папку, где хранится пример приложения.
-1. Откройте файл app.ino в папке приложения в Arduino IDE.
+1. Откройте папку hello, где хранится пример приложения hello.
+1. Откройте файл app.ino hello в папке приложения hello в hello Arduino интегрированной среды разработки.
 
-   ![Открытие примера приложения в Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/10_arduino-ide-open-sample-app.png)
+   ![Откройте пример приложения hello в интегрированной среде разработки Arduino](media/iot-hub-arduino-huzzah-esp8266-get-started/10_arduino-ide-open-sample-app.png)
 
-1. В Arduino IDE щелкните **Файл** > **Настройки**.
-1. В диалоговом окне **Настройки** щелкните значок рядом с текстовым полем **Additional Boards Manager URLs** (Дополнительные URL-адреса для менеджера плат).
-1. Во всплывающем окне введите приведенный ниже URL-адрес и нажмите кнопку **ОК**.
+1. В hello Arduino IDE, щелкните **файл** > **предпочтения**.
+1. В hello **предпочтения** диалоговое окно, нажмите кнопку Далее toohello hello значок **дополнительные URL-адреса диспетчера досок** поле.
+1. Во всплывающем окне приветствия, введите URL-адреса hello и нажмите кнопку **ОК**.
 
    `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
 
-   ![Указание URL-адреса пакета в Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/11_arduino-ide-package-url.png)
+   ![Tooa точки URL-адреса пакета в интегрированной среде разработки Arduino](media/iot-hub-arduino-huzzah-esp8266-get-started/11_arduino-ide-package-url.png)
 
-1. В диалоговом окне **Настройки** нажмите кнопку **ОК**.
+1. В hello **предпочтения** диалоговое окно, нажмите кнопку **ОК**.
 1. Щелкните **Инструменты** > **Платы** > **Менеджер плат**, а затем выполните поиск по esp8266.
 
    Диспетчер плат показывает, что установлена плата ESP8266 2.2.0 или более поздней версии.
 
-   ![Завершение установки пакета ESP8266](media/iot-hub-arduino-huzzah-esp8266-get-started/12_arduino-ide-esp8266-installed.png)
+   ![установлен пакет esp8266 Hello](media/iot-hub-arduino-huzzah-esp8266-get-started/12_arduino-ide-esp8266-installed.png)
 
 1. Щелкните **Инструменты** > **Платы** > **Adafruit HUZZAH ESP8266**.
 
 ### <a name="install-necessary-libraries"></a>Установка необходимых библиотек
 
-1. В Arduino IDE щелкните **Скетч** > **Подключить библиотеку** > **Управлять библиотеками**.
-1. Выполните поиск приведенных ниже имен библиотек по очереди. Для каждой найденной библиотеки щелкните **Установить**.
+1. В hello Arduino IDE, щелкните **схематической** > **включают библиотеки** > **Управление библиотеками**.
+1. Поиск hello следующие имена библиотек по одному. Для каждой найденной библиотеки щелкните **Установить**.
    * `AzureIoTHub`
    * `AzureIoTUtility`
    * `AzureIoTProtocol_MQTT`
@@ -186,47 +186,47 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="dont-have-a-real-dht22-sensor"></a>У вас нет датчика DHT22?
 
-Если у вас нет датчика DHT22, пример приложения может смоделировать данные о температуре и влажности. Чтобы настроить пример приложения для использования имитации данных, сделайте следующее:
+Пример приложения Hello можно смоделировать температуры и влажности данных на случай реальные датчика DHT22 не нужно. tooset hello образец приложения toouse моделирования данных, выполните следующие действия.
 
-1. Откройте файл `config.h` в папке `app`.
-1. Найдите приведенную ниже строку кода и измените значение `false` на `true`.
+1. Откройте hello `config.h` файла в hello `app` папки.
+1. Найдите следующие строки кода hello и измените значение hello из `false` слишком`true`:
    ```c
    define SIMULATED_DATA true
    ```
-   ![Настройка примера приложения для использования имитации данных](media/iot-hub-arduino-huzzah-esp8266-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
+   ![Настройка приложения toouse имитируемые hello примеров данных](media/iot-hub-arduino-huzzah-esp8266-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
 
-1. Сохраните файл с помощью клавиш `Control-s`.
+1. Сохраните файл hello с `Control-s`.
 
-### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>Развертывание примера приложения для Feather HUZZAH ESP8266
+### <a name="deploy-hello-sample-application-toofeather-huzzah-esp8266"></a>Развертывание hello образец приложения tooFeather HUZZAH ESP8266
 
-1. В Arduino IDE щелкните **Инструменты** > **Порт**, а затем выберите последовательный порт для Feather HUZZAH ESP8266.
-1. Чтобы создать и развернуть пример приложения для Feather HUZZAH ESP8266, щелкните **Скетч** > **Загрузка**.
+1. В hello Arduino IDE, щелкните **средство** > **порт**и выберите для ESP8266 HUZZAH Растушевка hello последовательного порта.
+1. Нажмите кнопку **схематической** > **отправить** toobuild и развертывание hello образец приложения tooFeather HUZZAH ESP8266.
 
 ### <a name="enter-your-credentials"></a>Ввод учетных данных
 
-После успешного завершения загрузки введите учетные данные следующим образом:
+После успешного завершения передачи hello, выполните эти шаги tooenter учетные данные.
 
-1. В Arduino IDE щелкните **Инструменты** > **Монитор последовательного порта**.
-1. В окне монитора последовательного порта обратите внимание на два раскрывающихся списка в нижнем правом углу.
-1. В раскрывающемся списке слева выберите **No line ending** (Ничего не добавлять к отправляемой строке).
-1. В раскрывающемся списке справа выберите **115200 baud** (115200 бод).
-1. При появлении запроса в поле ввода, расположенном в верхней части окна монитора последовательного порта, введете приведенные ниже сведения, а затем нажмите кнопку **Отправить**.
+1. В hello Arduino IDE, щелкните **средства** > **последовательного монитор**.
+1. В окне монитора последовательного hello Обратите внимание, hello два раскрывающихся списков в правом нижнем углу hello.
+1. Выберите **без завершения строк** для hello левом раскрывающемся списке.
+1. Выберите **115200 бод** для hello правого раскрывающегося списка.
+1. В hello входной расположенный вверху hello hello последовательного «монитор» введите следующую информацию в ответ на запрос tooprovide hello их, а затем нажмите кнопку **отправки**.
    * Идентификатор SSID для подключения Wi-Fi.
    * Пароль Wi-Fi.
    * Строка подключения к устройству.
 
 > [!Note]
-> Учетные данные хранятся в EEPROM платы Feather HUZZAH ESP8266. При нажатии кнопки сброса на плате Feather HUZZAH ESP8266 в примере приложения отобразится сообщение с запросом на удаление информации. Введите `Y` для удаления данных. Вам будет предложено предоставить их еще раз.
+> Hello учетные данные хранятся в hello EEPROM из Растушевка HUZZAH ESP8266. Если вы нажмете кнопку Сброс hello hello Растушевка HUZZAH ESP8266 платы, пример приложения hello запросом tooerase hello сведения. Введите `Y` toohave hello сведения удалены. Будет предложено сведения hello tooprovide еще раз.
 
-### <a name="verify-the-sample-application-is-running-successfully"></a>Проверка работоспособности примера приложения
+### <a name="verify-hello-sample-application-is-running-successfully"></a>Убедитесь, что успешно выполняется пример приложения hello
 
-Если в окне монитора последовательного порта отобразились приведенные ниже выходные данные и на плате Feather HUZZAH ESP8266 мигает светодиодный индикатор, значит пример приложения запущен успешно.
+Если вы видите hello следующие выходные данные из окна последовательной монитор hello и hello мигающий Индикатор на ESP8266 HUZZAH Растушевка, пример приложения hello выполняется успешно.
 
-![Конечные выходные данные в Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/14_arduino-ide-final-output.png)
+![Окончательные выходные данные в интегрированной среде разработки Arduino](media/iot-hub-arduino-huzzah-esp8266-get-started/14_arduino-ide-final-output.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Вы успешно подключили плату Feather HUZZAH ESP8266 к Центру Интернета вещей и отправили в него собранные данные датчика. 
+Успешно подключен концентратор IoT tooyour ESP8266 HUZZAH Растушевка и отправляются центра IoT tooyour данных датчика захвачен hello. 
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 

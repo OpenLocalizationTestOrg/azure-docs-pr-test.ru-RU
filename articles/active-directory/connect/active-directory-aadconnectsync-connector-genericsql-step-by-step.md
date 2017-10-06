@@ -1,6 +1,6 @@
 ---
-title: "Пошаговое руководство по использованию универсального соединителя SQL | Документация Майкрософт"
-description: "В этом документе содержится пошаговое руководство по работе с простой системой отдела кадров с использованием универсального соединителя SQL."
+title: "шаг aaaGeneric шаг по соединителя SQL | Документы Microsoft"
+description: "В этой статье пошагового прохода через простую систему HR пошаговые с помощью hello универсальный соединитель SQL."
 services: active-directory
 documentationcenter: 
 author: AndKjell
@@ -14,89 +14,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 3fdc1b405b95180d031aa4ad45b406f7fc149d8f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b1b5f89ab588de6f92f173a7bc00f97180067669
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="generic-sql-connector-step-by-step"></a>Универсальный соединитель SQL: пошаговое руководство
 Эта статья является пошаговым руководством. Она поможет вам создать простую базу данных для отдела кадров, которая предназначена для импорта некоторых пользователей и их членства в группе.
 
-## <a name="prepare-the-sample-database"></a>Подготовка образца базы данных
-На сервере под управлением SQL Server запустите сценарий SQL, который находится в [Приложении A](#appendix-a). Этот сценарий создает пример базы данных с именем GSQLDEMO. Объектная модель для созданной базы данных выглядит так:   
+## <a name="prepare-hello-sample-database"></a>Подготовка базы данных образец hello
+На сервер SQL Server, выполните сценарий SQL hello в [приложение A](#appendix-a). Этот скрипт создает образец базы данных с именем hello GSQLDEMO. Hello объектная модель для hello создания базы данных выглядит на этом рисунке:  
 ![Объектная модель](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/objectmodel.png)
 
-Также создайте пользователя, который будет использоваться для подключения к базе данных. В этом пошаговом руководстве пользователю присвоено имя FABRIKAM\SQLUser, и он находится в домене.
+Также можно создайте пользователя базы данных toohello tooconnect toouse. В этом пошаговом руководстве пользователя hello вызывается FABRIKAM\SQLUser и находиться в домене, hello.
 
-## <a name="create-the-odbc-connection-file"></a>Создание файла подключения ODBC
-Универсальный соединитель SQL использует ODBC для подключения к удаленному серверу. Сначала необходимо создать файл с данными подключения ODBC.
+## <a name="create-hello-odbc-connection-file"></a>Создание файла соединения ODBC hello
+Hello универсальный соединитель SQL использует ODBC tooconnect toohello удаленного сервера. Сначала нужно toocreate файл, содержащий сведения о соединении ODBC hello.
 
-1. Запустите программу управления ODBC на сервере:   
+1. Запуск программы управления hello ODBC на сервере:  
    ![ODBC](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc.png)
-2. Откройте вкладку **File DSN**(Файловый DSN). Щелкните **Add...**(Добавить).  
+2. Выберите hello вкладку **файловый DSN**. Щелкните **Add...**(Добавить).  
    ![ODBC 1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc1.png)
-3. Стандартный драйвер работает нормально, поэтому выберите его и нажмите кнопку **Next>** (Далее>).  
+3. Hello работает драйвер out-of-box прекрасная, поэтому выберите его и щелкните **Далее >**.  
    ![ODBC 2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc2.png)
-4. Укажите имя файла, например **GenericSQL**.  
+4. Имя файла hello, таких как **GenericSQL**.  
    ![ODBC 3](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc3.png)
 5. Нажмите кнопку **Finish**(Готово).  
    ![ODBC 4](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc4.png)
-6. Теперь нужно настроить подключение. Введите понятное описание источника данных и укажите имя сервера, на котором выполняется SQL Server.  
+6. Соединения hello tooconfigure времени. Укажите источник данных hello Хорошее описание и укажите имя hello hello сервера SQL Server.  
    ![ODBC 5](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc5.png)
-7. Выберите способ проверки подлинности с помощью SQL. В нашем примере используется проверка подлинности Windows.  
+7. Выбор метода tooauthenticate с SQL. В нашем примере используется проверка подлинности Windows.  
    ![ODBC 6](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc6.png)
-8. Укажите имя образца базы данных — **GSQLDEMO**.  
+8. Укажите имя hello hello образца базы данных, **GSQLDEMO**.  
    ![ODBC 7](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc7.png)
 9. На этом экране оставьте настройки по умолчанию. Нажмите кнопку **Finish**(Готово).  
    ![ODBC 8](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc8.png)
-10. Чтобы проверить, все ли работает правильно, нажмите кнопку **Test Data Source**(Проверить источник данных).  
+10. Щелкните tooverify все работает, как ожидалось, **тестового источника данных**.  
     ![ODBC 9](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc9.png)
-11. Убедитесь, что проверка прошла успешно.  
+11. Убедитесь, что hello проверка прошла успешно.  
     ![ODBC 10](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc10.png)
-12. Файл конфигурации ODBC должен появиться на вкладке "File DSN" (Файловый DSN).  
+12. файл конфигурации ODBC Hello, теперь должны быть видимыми в файловый DSN.  
     ![ODBC 11](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc11.png)
 
-Теперь у нас есть нужный файл, и можно приступить к созданию соединителя.
+Теперь у нас есть файл hello нам нужна и можно приступить к созданию hello соединителя.
 
-## <a name="create-the-generic-sql-connector"></a>Создание универсального соединителя SQL
-1. В пользовательском интерфейсе Synchronization Service Manager выберите **Connectors** (Соединители) и нажмите кнопку **Create** (Создать). Выберите **Generic SQL (Microsoft)** (Универсальный SQL (Майкрософт)) и присвойте описательное имя.  
+## <a name="create-hello-generic-sql-connector"></a>Создать hello универсальный соединитель SQL
+1. В hello пользовательского интерфейса диспетчера службы синхронизации, выберите **соединители** и **создать**. Выберите **Generic SQL (Microsoft)** (Универсальный SQL (Майкрософт)) и присвойте описательное имя.  
    ![Соединитель 1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector1.png)
-2. Найдите файл DSN, созданный в предыдущем разделе, и отправьте его на сервер. Укажите учетные данные для подключения к базе данных.  
+2. Найдите файл DSN hello, созданный в предыдущем разделе hello и выгрузить его toohello сервера. Укажите учетные данные tooconnect hello toohello-базы данных.  
    ![Соединитель 2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector2.png)
 3. В этом пошаговом руководстве мы упростим процесс и предположим, что существует два типа объектов: **User** и **Group**.
    ![Соединитель 3](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector3.png)
-4. При поиске атрибутов нам нужно, чтобы соединитель обнаружил их при просмотре таблицы. Так как объект **Users** является зарезервированным словом в SQL, его необходимо заключить в квадратные скобки [].  
+4. атрибуты toofind hello, мы хотим hello соединитель toodetect те атрибуты, посмотрев на саму таблицу hello. Поскольку **пользователей** является зарезервированным словом в SQL, нам нужно tooprovide его в квадратные скобки [].  
    ![Соединитель 4](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector4.png)
-5. Теперь нужно определить атрибут привязки и атрибут различаемого имени. Для **Users**мы используем сочетание двух атрибутов — username и EmployeeID. Для **Group**мы используем GroupName (не слишком реалистично для обычной жизни, но подойдет для этого руководства).
+5. Время toodefine hello привязки атрибута и атрибута DN hello. Для **пользователей**, мы используем hello сочетание имени пользователя hello двух атрибутов и EmployeeID. Для **Group**мы используем GroupName (не слишком реалистично для обычной жизни, но подойдет для этого руководства).
    ![Соединитель 5](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector5.png)
-6. В базе данных SQL могут быть обнаружены только некоторые типы атрибутов. В частности, нельзя обнаружить тип ссылочного атрибута. Для типа объекта Group необходимо изменить значения OwnerID и MemberID на ссылку.  
+6. В базе данных SQL могут быть обнаружены только некоторые типы атрибутов. в частности невозможно Hello ссылочного типа атрибута. Тип объекта группы hello нам нужна toochange hello OwnerID и MemberID tooreference.  
    ![Соединитель 6](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector6.png)
-7. Для атрибутов, выбранных как ссылочные атрибуты на предыдущем этапе, теперь требуется тип объекта, ссылкой на который они являются. В нашем случае это тип объекта User.  
+7. атрибуты Hello мы выбрали как атрибуты этих ссылок на предыдущем шаге hello требуются эти значения являются ссылку на объект типа hello. В нашем случае hello тип объекта пользователя.  
    ![Соединитель 7](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector7.png)
-8. На странице "Глобальные параметры" выберите **Watermark** (Водяной знак) в качестве стратегии изменений. В поле формата даты и времени введите **гггг-ММ-дд ЧЧ:мм:сс**.
+8. На странице приветствия глобальные параметры, выберите **водяной знак** в рамках стратегии дельта hello. Также вводить в формате даты и времени hello **гггг мм дд чч**.
    ![Соединитель 8](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector8.png)
-9. На странице **Configure Partitions and Hierarchies** (Настройка секций и иерархий) выберите оба типа объектов.
+9. На hello **Настройка разделов и иерархий** выберите оба типа объектов.
    ![Соединитель 9](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector9.png)
-10. На странице **Выбор типов объектов** и **Выбор атрибутов** выберите оба типа объектов и все атрибуты. На странице **Configure Anchors** (Настройка привязки) нажмите кнопку **Готово**.
+10. На hello **Выбор типов объектов** и **Выбор атрибутов**, выберите типы объектов и атрибуты. На hello **Настройка привязки** щелкните **Готово**.
 
 ## <a name="create-run-profiles"></a>Создание профилей выполнения
-1. В пользовательском интерфейсе Synchronization Service Manager выберите **Connectors** (Соединители) и щелкните **Configure Run Profiles** (Настроить профили выполнения). Щелкните **New Profile**(Новый профиль). Мы начнем с профиля **Full Import**(Полный импорт).  
+1. В hello пользовательского интерфейса диспетчера службы синхронизации, выберите **соединители**, и **Настройка профилей выполнения**. Щелкните **New Profile**(Новый профиль). Мы начнем с профиля **Full Import**(Полный импорт).  
    ![Профиль выполнения 1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile1.png)
-2. Выберите тип **Full Import (Stage Only)**(Полный импорт (только демонстрация)).  
+2. Выберите тип hello **полный импорт (только для этапа)**.  
    ![Профиль выполнения 2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile2.png)
-3. Выберите раздел **OBJECT=User**.  
+3. Выберите секцию hello **объект = пользователь**.  
    ![Профиль выполнения 3](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile3.png)
-4. Выберите **Table** и введите **[USERS]**. Прокрутите вниз до раздела многозначного типа объекта и введите данные, как показано ниже. Нажмите кнопку **Finish** (Готово), чтобы сохранить данные на этом этапе.  
+4. Выберите **Table** и введите **[USERS]**. Прокрутите вниз toohello разделе типа объекта с несколькими значениями и ввод данных hello как hello следующий рисунок. Выберите **Готово** toosave hello шаг.  
    ![Профиль выполнения 4а](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile4a.png)  
    ![Профиль выполнения 4б](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile4b.png)  
-5. Выберите **New Step**(Новый шаг). На этот раз выберите **OBJECT=Group**. На последней странице используйте конфигурацию, изображенную на рисунке ниже. Нажмите кнопку **Finish**(Готово).  
+5. Выберите **New Step**(Новый шаг). На этот раз выберите **OBJECT=Group**. На последней странице hello используйте конфигурации hello как hello следующий рисунок. Нажмите кнопку **Готово**  
    ![Профиль выполнения 5а](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile5a.png)  
    ![Профиль выполнения 5б](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile5b.png)  
-6. Можно настроить дополнительные профили выполнения, но это необязательно. В этом пошаговом руководстве используется только профиль "Full Import" (Полный импорт).
-7. Нажмите кнопку **ОК** , чтобы завершить изменение профилей выполнения.
+6. Можно настроить дополнительные профили выполнения, но это необязательно. В этом пошаговом руководстве используется только hello полный импорт.
+7. Нажмите кнопку **ОК** toofinish изменение профилей выполнения.
 
-## <a name="add-some-test-data-and-test-the-import"></a>Добавление некоторых тестовых данных и тестирование импорта
+## <a name="add-some-test-data-and-test-hello-import"></a>Добавить некоторые Импорт теста данные и тестирования hello
 Введите тестовые данные в образец базы данных. Когда будете готовы, щелкните **Run** (Выполнить) и **Full import** (Полный импорт).
 
 Здесь мы видим пользователя с двумя телефонными номерами и группу с несколькими участниками.  
@@ -104,13 +104,13 @@ ms.lasthandoff: 08/03/2017
 ![Пространство соединителя 2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/cs2.png)  
 
 ## <a name="appendix-a"></a>Приложении A
-**Сценарий SQL для создания образца базы данных**
+**Сценарий toocreate hello образцы базы данных SQL**
 
 ```SQL
----Creating the Database---------
+---Creating hello Database---------
 Create Database GSQLDEMO
 Go
--------Using the Database-----------
+-------Using hello Database-----------
 Use [GSQLDEMO]
 Go
 -------------------------------------

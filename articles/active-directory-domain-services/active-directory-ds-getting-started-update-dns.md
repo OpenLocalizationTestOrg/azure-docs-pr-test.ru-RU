@@ -1,5 +1,5 @@
 ---
-title: "Доменные службы Azure Active Directory: обновление настроек DNS для виртуальной сети Azure | Документация Майкрософт"
+title: "Azure доменных служб Active Directory: Обновить параметры DNS для hello виртуальной сети Azure | Документы Microsoft"
 description: "Приступая к работе с доменными службами Azure Active Directory"
 services: active-directory-ds
 documentationcenter: 
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/27/2017
 ms.author: maheshu
-ms.openlocfilehash: 8bee2a25f196d645b27f30f21305b1550e44e07a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 484ff1a197a651bccb2b416448056acf69b0d8c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="update-dns-settings-for-the-azure-virtual-network"></a>Обновление настроек DNS для виртуальной сети Azure
-## <a name="task-4-update-dns-settings-for-the-azure-virtual-network"></a>Задача 4. Обновление настроек DNS для виртуальной сети Azure
-В предыдущих задачах по настройке вы успешно включили доменные службы Azure Active Directory для своего каталога. Следующая задача — сделать так, чтобы компьютеры в виртуальной сети могли подключаться к этим службам и использовать их. В этой статье мы обновим параметры DNS-сервера для виртуальной сети, указав два IP-адреса, по которым доменные службы Azure Active Directory доступны в виртуальной сети.
+# <a name="update-dns-settings-for-hello-azure-virtual-network"></a>Обновите параметры DNS для hello виртуальной сети Azure
+## <a name="task-4-update-dns-settings-for-hello-azure-virtual-network"></a>Задача 4: Обновите параметры DNS для hello виртуальной сети Azure
+Hello предшествующей задачи настройки вы включили успешно Azure доменных служб Active Directory для вашего каталога. Следующая задача Hello-tooensure, что компьютеры в hello виртуальной сети могут подключаться и этих служб. В этой статье обновление hello параметры DNS-сервера для вашей виртуальной сети toopoint toohello два IP-адреса доменных служб Active Directory Azure доступно hello виртуальной сети.
 
 > [!NOTE]
-> После включения доменных служб Azure Active Directory для каталога запишите IP-адреса доменных служб Azure Active Directory, которые отображаются на вкладке **Настройка** вашего каталога.
+> После включения Azure доменных служб Active Directory для каталога hello, обратите внимание, hello IP-адресов для Azure доменных служб Active Directory, которые отображаются на hello **Настройка** вашего каталога.
 >
 >
 
-Чтобы обновить параметр DNS-сервера для виртуальной сети, в которой включены доменные службы Azure Active Directory, сделайте следующее.
+tooupdate hello параметров сервера DNS для hello виртуальной сети, в котором требуется включить Azure доменных служб Active Directory, полный hello, следующие шаги:
 
-1. Войдите на [классический портал Azure](https://manage.windowsazure.com).
-2. В левой области щелкните **Сети**.  
-    Откроется окно **Сети**.
+1. Go toohello [классический портал Azure](https://manage.windowsazure.com).
+2. Выберите в левой области hello **сетей**.  
+    Hello **сетей** открывается окно.
 
     ![Окно виртуальных сетей](./media/active-directory-domain-services-getting-started/virtual-network-select.png)
-3. На вкладке **Виртуальные сети** выберите виртуальную сеть, в которой были включены доменные службы Azure Active Directory, чтобы просмотреть ее свойства.
-4. Выберите вкладку **Настройка** .
+3. На hello **виртуальных сетей** вкладке, выберите hello виртуальной сети, в котором требуется включить tooview доменных служб Active Directory Azure его свойства.
+4. Нажмите кнопку hello **Настройка** вкладки.
 
     ![Окно виртуальных сетей](./media/active-directory-domain-services-getting-started/virtual-network-configure-tab.png)
-5. В разделе **DNS-серверы** введите оба IP-адреса, которые отображались в разделе **Доменные службы** на вкладке **Настройка** вашего каталога.
-6. Чтобы сохранить параметры DNS-сервера для этой виртуальной сети, на панели задач в нижней части страницы щелкните **Сохранить**.
+5. В hello **DNS-серверы** введите оба hello IP-адресов, которые отображались в hello **доменных служб** раздела, посвященного hello **Настройка** вашего каталога.
+6. Нажмите кнопку Параметры toosave hello DNS-сервера для этой виртуальной сети, в области задач hello hello нижней части окна hello **Сохранить**.
 
-   ![Обновление параметров DNS-сервера для виртуальной сети.](./media/active-directory-domain-services-getting-started/update-dns.png)
+   ![Обновите параметры DNS-сервера hello для hello виртуальной сети](./media/active-directory-domain-services-getting-started/update-dns.png)
 
 > [!NOTE]
->  Виртуальные машины в сети получат новые параметры DNS только после перезапуска. Чтобы получить обновленные параметры DNS сразу, активируйте перезапуск с помощью портала, PowerShell или CLI.
+>  Виртуальные машины в сети hello hello новых параметров DNS получить только после перезагрузки. Если они вам требуются параметры DNS tooget hello обновить прямо сейчас, включать перезапуск портала hello, PowerShell или hello CLI.
 >
 >
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Задача 5. [Включение синхронизации паролей с доменными службами Azure AD](active-directory-ds-getting-started-password-sync.md)
+Задача 5. [включить синхронизацию паролей tooAzure доменных служб Active Directory](active-directory-ds-getting-started-password-sync.md)

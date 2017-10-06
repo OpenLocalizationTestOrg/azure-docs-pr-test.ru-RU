@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с BenSelect | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и BenSelect."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и BenSelect."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,190 +13,190 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: f8caa023da05863372b7ef92b47a92168445d741
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3705da337bf8f6e76de58cd21c5b047c8f5e12c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benselect"></a>Руководство. Интеграция Azure Active Directory с BenSelect
 
-В этом руководстве описано, как интегрировать BenSelect с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate BenSelect с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением BenSelect дает следующие преимущества.
+Интеграция с Azure AD BenSelect предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к BenSelect.
-- Вы можете включить автоматический вход пользователей в BenSelect (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooBenSelect
+- Можно включить на пользователей tooautomatically get вошедшего tooBenSelect (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с BenSelect, вам потребуется:
+tooconfigure интеграция Azure AD с BenSelect требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка BenSelect с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление BenSelect из коллекции.
+1. Добавление BenSelect из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-benselect-from-the-gallery"></a>Добавление BenSelect из коллекции.
-Чтобы настроить интеграцию BenSelect с Azure AD, необходимо добавить BenSelect из коллекции в список управляемых приложений SaaS.
+## <a name="adding-benselect-from-hello-gallery"></a>Добавление BenSelect из галереи hello
+tooconfigure hello интеграции BenSelect в Azure AD, вы должны tooadd BenSelect из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить BenSelect из коллекции, сделайте следующее:**
+**tooadd BenSelect из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **BenSelect**.
+4. Введите в поле поиска hello **BenSelect**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_search.png)
 
-5. На панели результатов выберите **BenSelect** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello выберите **BenSelect**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в BenSelect с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в BenSelect соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в BenSelect.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в BenSelect является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в BenSelect должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в BenSelect.
+В BenSelect, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в BenSelect, вам потребуется выполнить действия в следующих стандартных блоках.
+tooconfigure и теста Azure AD единого входа с BenSelect, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя BenSelect](#creating-a-benselect-test-user)** нужно для того, чтобы в BenSelect также существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя BenSelect](#creating-a-benselect-test-user)**  -toohave аналог Саймон Britta в BenSelect, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении BenSelect.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении BenSelect.
 
-**Чтобы настроить единый вход Azure AD в BenSelect, сделайте следующее:**
+**tooconfigure Azure AD единого входа с BenSelect, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **BenSelect** щелкните **Единый вход**.
+1. В hello в hello портала Azure **BenSelect** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения BenSelect** сделайте следующее.
+3. На hello **URL-адреса и домена BenSelect** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_url.png)
 
-    В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://www.benselect.com/enroll/login.aspx?Path=<tenant name>`.
+    В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://www.benselect.com/enroll/login.aspx?Path=<tenant name>`
 
     > [!NOTE] 
-    > Это значение приведено для справки. Вместо него нужно указать фактический URL-адрес ответа. Чтобы получить это значение, обратитесь к [группе поддержки BenSelect](mailto:support@selerix.com).
+    > Это значение приведено для справки. Измените значение этого параметра hello фактический URL-адрес ответа. Обратитесь к [BenSelect поддержки](mailto:support@selerix.com) tooget это значение.
  
-4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (необработанный)**, а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **Certificate(Raw)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_certificate.png) 
 
-5. Приложение BenSelect ожидает утверждения SAML в определенном формате. Настройте следующие утверждения для этого приложения. Управлять значениями этих атрибутов можно в разделе **Атрибуты пользователя** на странице интеграции приложения. На следующем снимке экрана приведен пример.
+5. BenSelect приложение ожидает утверждения SAML hello в определенном формате. Настройка следующих утверждений для этого приложения hello. Вы можете управлять hello значения этих атрибутов из hello **атрибуты пользователя** раздел на странице интеграции приложений. пример Hello следующий снимок экрана для этого.
 
     ![Настройка единого входа](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_06.png)
 
-6. В разделе **Атрибуты пользователя** диалогового окна **Единый вход** выполните следующие действия.
+6. В hello **атрибуты пользователя** раздела, посвященного hello **единого входа** диалогового окна:
 
-    а. Из раскрывающегося списка **Идентификатор пользователя** выберите **ExtractMailPrefix**.
+    а. В hello **идентификатор пользователя** раскрывающегося списка выберите **ExtractMailPrefix**.
 
-    b. Из раскрывающегося списка **Электронная почта** выберите **user.userprincipalname**.
+    b. В hello **Mail** раскрывающегося списка выберите **user.userprincipalname**.
 
 7. Нажмите кнопку **Сохранить** .
 
     ![Настройка единого входа](./media/active-directory-saas-benselect-tutorial/tutorial_general_400.png)
 
-8. В разделе **Конфигурация BenSelect** щелкните **Настроить BenSelect**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML**  из раздела **Краткий справочник**.
+8. На hello **конфигурации BenSelect** щелкните **Настройка BenSelect** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_configure.png) 
 
-9. Чтобы настроить единый вход на стороне **BenSelect**, нужно отправить скачанный **сертификат (необработанный)**, **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML** [группе поддержки BenSelect](mailto:support@selerix.com).
+9. tooconfigure единого входа на **BenSelect** стороны, необходимо загрузить hello toosend **Certificate(Raw)** и **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы**слишком[BenSelect поддержки](mailto:support@selerix.com).
 
    >[!NOTE]
-   >Необходимо отметить, что для этой интеграции требуется алгоритм SHA256 (SHA1 не поддерживается), чтобы настроить единый вход на соответствующем сервере, например app2101 и т. п. 
+   >Требуется toomention, данная интеграция потребует алгоритм hello SHA256 (не поддерживается SHA1) tooset hello единого входа на соответствующий сервер hello как app2101 и т. д. 
    
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benselect-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benselect-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benselect-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benselect-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-benselect-test-user"></a>Создание тестового пользователя BenSelect
 
-Цель этого раздела — создать пользователя с именем Britta Simon в BenSelect. Обратитесь к [группе поддержки BenSelect](mailto:support@selerix.com), чтобы добавить пользователей в учетную запись BenSelect.
+Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в BenSelect. Работать с [BenSelect поддержки](mailto:support@selerix.com) tooadd пользователей hello в hello BenSelect учетной записи.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к BenSelect.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooBenSelect доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в BenSelect, сделайте следующее:**
+**tooassign tooBenSelect Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **BenSelect**.
+2. В списке приложений hello выберите **BenSelect**.
 
     ![Настройка единого входа](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -204,7 +204,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -212,13 +212,13 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе Проверьте конфигурацию единого входа Azure AD с помощью панели доступа hello.
 
-Щелкнув элемент BenSelect на панели доступа, вы автоматически войдете в приложение BenSelect.
+При нажатии кнопки hello BenSelect плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour BenSelect приложения.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

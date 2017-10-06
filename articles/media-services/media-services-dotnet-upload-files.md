@@ -1,6 +1,6 @@
 ---
-title: "Передача файлов в учетную запись служб мультимедиа с помощью .NET | Документация Майкрософт"
-description: "Узнайте, как включить мультимедийное содержимое в службы мультимедиа, создав и отправив ресурс."
+title: "aaaUpload файлы в учетную запись служб мультимедиа с помощью .NET | Документы Microsoft"
+description: "Узнайте, как носитель tooget содержимого в службы мультимедиа, создав и загрузив активы."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2017
 ms.author: juliako
-ms.openlocfilehash: ec8c1da633374ba684f6a0a895c542ee76ef73b8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 11c8a359b09efe04b54490fd48ac0cd7c366f8b3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Передача файлов в учетную запись служб мультимедиа с помощью .NET
 > [!div class="op_single_selector"]
@@ -28,39 +28,39 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-В службах мультимедиа цифровые файлы отправляются (или принимаются) в актив. Сущность **Asset** может содержать видео, аудио, изображения, коллекции эскизов, текстовые дорожки и файлы скрытых субтитров (а также метаданные этих файлов).  После отправки этих файлов содержимое сохраняется в безопасном расположении в облаке для дальнейшей обработки и потоковой передачи.
+В службах мультимедиа цифровые файлы отправляются (или принимаются) в актив. Hello **активов** может содержать сущности, видео, аудио, изображения, коллекции эскизов, текст отслеживает и титров файлов (и hello метаданные об этих файлах.)  После загрузки файлов hello контент безопасно хранится в облаке hello для дальнейшей обработки и потоковой передачи.
 
-Файлы в ресурсе называются **файлами ресурса**. Экземпляр **AssetFile** и фактический файл мультимедиа — это два разных объекта. Экземпляр AssetFile содержит метаданные о файле мультимедиа, а сам файл мультимедиа — фактическое мультимедийное содержимое.
+Hello в ресурсе hello, называются **файлов активов**. Hello **AssetFile** экземпляра и hello фактический файл мультимедиа являются двумя отдельными объектами. экземпляр AssetFile Hello содержит метаданные о файле мультимедиа hello, а файл мультимедиа hello hello фактический контент мультимедиа.
 
 > [!NOTE]
-> Действительны следующие условия.
+> применить Hello следующие вопросы:
 > 
-> * Службы мультимедиа используют значение свойства IAssetFile.Name при создании URL-адресов для потоковой передачи содержимого (например, http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) По этой причине кодирование с помощью знака процента не допускается. Значение свойства **Name** не может содержать такие [зарезервированные знаки, используемые для кодировки URL-адресов](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$,/?%#[]". Кроме того, может использоваться только один знак "." для расширения имени файла.
-> * Длина имени не должна превышать 260 знаков.
-> * Существует ограничение на максимальный размер файла, который могут обработать службы мультимедиа. Подробные сведения об этом см. [здесь](media-services-quotas-and-limitations.md).
-> * Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy). Следует указывать один и тот же идентификатор политики, если вы используете те же дни, разрешения доступа и т. д. Например, политики для указателей, которые должны оставаться на месте в течение длительного времени (не политики передачи). Чтобы узнать больше, ознакомьтесь с [этим](media-services-dotnet-manage-entities.md#limit-access-policies) разделом.
+> * Службы мультимедиа используют значение hello hello свойство IAssetFile.Name при построении URL-адреса для hello, потоковая передача содержимого (например, http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) По этой причине кодирование с помощью знака процента не допускается. Здравствуйте, значение hello **имя** свойство не может иметь любой из следующих hello [процентов зарезервированные символы](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * "();: @& = + $, /? % # []». Кроме того, может существовать только один "." для расширения имени файла hello.
+> * Длина Hello hello имени не должна быть более 260 знаков.
+> * Имеется ограничение toohello максимальный размер файла поддерживается для обработки в службах мультимедиа. См. в разделе [это](media-services-quotas-and-limitations.md) сведения о hello ограничения размера файла.
+> * Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy). Следует использовать hello же идентификатор политики, если вы используете всегда hello же дни / доступа разрешения, например, политики для указатели, которые являются предполагаемого tooremain на месте в течение длительного времени (без передачи политики). Чтобы узнать больше, ознакомьтесь с [этим](media-services-dotnet-manage-entities.md#limit-access-policies) разделом.
 > 
 
-При создании ресурсов можно указать следующие параметры шифрования. 
+При создании активов можно указать следующие параметры шифрования hello. 
 
-* **None** — шифрование не используется. Это значение по умолчанию. Обратите внимание, что при использовании этого параметра содержимое не защищено при передаче или в хранилище.
-  Используйте этот параметр, если MP4-файл планируется доставить с помощью поэтапного скачивания. 
+* **None** — шифрование не используется. Это значение по умолчанию hello. Обратите внимание, что при использовании этого параметра содержимое не защищено при передаче или в хранилище.
+  Если планируется toodeliver MP4-файл с помощью прогрессивной загрузки, используйте этот параметр. 
 * **CommonEncryption** — используйте этот параметр при отправке содержимого, которое уже зашифровано и защищено с помощью стандартного шифрования или PlayReady DRM (например, Smooth Streaming с защитой PlayReady DRM).
-* **EnvelopeEncrypted** — используйте этот параметр при отправке HLS с шифрованием AES. Обратите внимание, что файлы должны быть закодированы и зашифрованы с помощью Transform Manager.
-* **StorageEncrypted** — шифрует незашифрованное содержимое локально с помощью 256-разрядного алгоритма шифрования AES-256, а затем отправляет его в службу хранилища Azure, где оно хранится в зашифрованном виде. Активы, защищенные с помощью шифрования хранилища, автоматически расшифровываются и помещаются в систему зашифрованных файлов до кодирования и при необходимости повторно кодируются до отправки в виде нового выходного актива. Основная причина использования шифрования хранилища — если нужно защитить входные файлы мультимедиа высокого качества с помощью стойкого шифрования при хранении на диске.
+* **EnvelopeEncrypted** — используйте этот параметр при отправке HLS с шифрованием AES. Обратите внимание, что hello файлы необходимо были закодированы и зашифрованы диспетчером преобразования.
+* **StorageEncrypted** — шифрование незащищенного содержимого локально с помощью AES-256-разрядного шифрования, а затем передает его tooAzure хранилища, где она хранится в зашифрованном виде. Активы, защищенные с помощью шифрования хранилища, автоматически дешифруются и помещаются в предыдущих tooencoding зашифрованный файл системы и при необходимости повторно зашифрован предыдущих toouploading возвращены в виде нового выходного актива. Hello основным случаем использования шифрования хранилища удобно, если нужно toosecure rest вашей высококачественных входных файлов мультимедиа с помощью строгого шифрования на диске.
   
     Службы мультимедиа обеспечивают шифрование ресурсов на диске в хранилище, а не по сети, как технология управления цифровыми правами (DRM).
   
     Если ресурс зашифрован в хранилище, необходимо настроить политику доставки ресурсов. Дополнительные сведения см. в статье [Настройка политик доставки ресурсов-контейнеров](media-services-dotnet-configure-asset-delivery-policy.md).
 
-Если для ресурса задано шифрование с использованием параметра **CommonEncrypted** или **EnvelopeEncypted**, этот ресурс необходимо связать с ключом содержимого **ContentKey**. Дополнительные сведения см. в статье [Создание ContentKey с использованием .NET](media-services-dotnet-create-contentkey.md). 
+При указании для вашего toobe активов зашифрованы с **CommonEncrypted** параметр, или **EnvelopeEncypted** параметр, необходимо будет tooassociate актива с **ContentKey**. Дополнительные сведения см. в разделе [как toocreate ContentKey](media-services-dotnet-create-contentkey.md). 
 
-Если для ресурса задано шифрование с использованием параметра **StorageEncrypted**, пакет SDK служб мультимедиа для .NET создаст для ресурса зашифрованный в хранилище ключ содержимого (**StorateEncrypted** **ContentKey**).
+При указании для вашего toobe активов зашифрованы с **StorageEncrypted** , то hello пакета SDK служб мультимедиа для .NET создаст **StorateEncrypted** **ContentKey** для вашей активов.
 
-В этом разделе показано, как использовать пакет SDK служб мультимедиа для .NET, а также расширения пакета SDK служб мультимедиа для .NET для передачи файлов в ресурс-контейнер служб мультимедиа.
+В этом разделе показано, как toouse Media Services .NET SDK, а также файлы tooupload Media Services .NET SDK расширения в актив служб мультимедиа.
 
 ## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Передача одного файла с помощью пакета SDK служб мультимедиа для .NET
-Следующий пример кода использует пакет SDK для .NET для отправки одного файла. Свойства AccessPolicy и Locator создаются и удаляются с помощью функции Upload. 
+Hello в образце кода ниже использует .NET SDK tooupload один файл. создании и удалении функцией передачи hello Hello AccessPolicy и указателя. 
 
 
         static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
@@ -86,19 +86,19 @@ ms.lasthandoff: 08/29/2017
 
 
 ## <a name="upload-multiple-files-with-media-services-net-sdk"></a>Передача нескольких файлов с помощью пакета SDK служб мультимедиа для .NET
-В следующем примере кода показано, как создать актив и отправить несколько файлов.
+Здравствуйте, как следующий код показывает toocreate актива и отправка нескольких файлов.
 
-Код делает следующее:
+Hello кода hello следующие:
 
-* Создает пустой ресурс, используя метод CreateEmptyAsset, определенный на предыдущем шаге.
-* Создает экземпляр **AccessPolicy** , определяющий разрешения и длительность доступа к ресурсу.
-* Создает экземпляр **Locator** , который предоставляет доступ к ресурсу.
-* Создает экземпляр **BlobTransferClient** . Этот тип представляет клиент, работающий с большим двоичным объектом Azure. В этом примере используется клиент для отслеживания хода выполнения передачи. 
-* Перечисляет файлы в указанном каталоге и создает экземпляр **AssetFile** для каждого файла.
-* Передает файлы в службы мультимедиа с помощью метода **UploadAsync** . 
+* Создает пустой актив с помощью метода CreateEmptyAsset hello, определенный в предыдущем шаге hello.
+* Создает **AccessPolicy** экземпляр, который определяет hello разрешения и длительность доступа toohello активов.
+* Создает **локатора** экземпляр, который предоставляет доступ toohello активов.
+* Создает экземпляр **BlobTransferClient** . Этот тип представляет клиент, работающий на приветствия больших двоичных объектов Azure. В этом примере мы используем прогресса отправки hello toomonitor клиента hello. 
+* Перечисляет файлы в указанном каталоге hello и создает **AssetFile** экземпляра для каждого файла.
+* Передачи файлов hello в службы мультимедиа с помощью hello **UploadAsync** метод. 
 
 > [!NOTE]
-> Используйте метод UploadAsync, гарантирующий, что вызовы не будут блокироваться, а файлы будут загружаться в параллельном режиме.
+> Используйте tooensure метод UploadAsync hello, hello вызовы не блокируются и hello файлы отправляются параллельно.
 > 
 > 
 
@@ -134,13 +134,13 @@ ms.lasthandoff: 08/29/2017
                 var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
                 Console.WriteLine("Created assetFile {0}", assetFile.Name);
 
-                // It is recommended to validate AccestFiles before upload. 
+                // It is recommended toovalidate AccestFiles before upload. 
                 Console.WriteLine("Start uploading of {0}", assetFile.Name);
                 uploadTasks.Add(assetFile.UploadAsync(filePath, blobTransferClient, locator, CancellationToken.None));
             }
 
             Task.WaitAll(uploadTasks.ToArray());
-            Console.WriteLine("Done uploading the files");
+            Console.WriteLine("Done uploading hello files");
 
             blobTransferClient.TransferProgressChanged -= blobTransferClient_TransferProgressChanged;
 
@@ -152,7 +152,7 @@ ms.lasthandoff: 08/29/2017
 
     static void  blobTransferClient_TransferProgressChanged(object sender, BlobTransferProgressChangedEventArgs e)
     {
-        if (e.ProgressPercentage > 4) // Avoid startup jitter, as the upload tasks are added.
+        if (e.ProgressPercentage > 4) // Avoid startup jitter, as hello upload tasks are added.
         {
             Console.WriteLine("{0}% upload competed for {1}.", e.ProgressPercentage, e.LocalFile);
         }
@@ -160,28 +160,28 @@ ms.lasthandoff: 08/29/2017
 
 
 
-При передаче большого количества ресурсов необходимо учитывать следующее.
+При передаче большего количества активов, рассмотрим следующие hello.
 
-* Создайте новый объект **CloudMediaContext** в каждом потоке. Класс **CloudMediaContext** не является потокобезопасным.
-* Замените для NumberOfConcurrentTransfers значение по умолчанию (2) более высоким значением, например 5. Задание этого свойства влияет на все экземпляры **CloudMediaContext**. 
-* Оставьте для ParallelTransferThreadCount значение по умолчанию (10).
+* Создайте новый объект **CloudMediaContext** в каждом потоке. Hello **CloudMediaContext** класс не является потокобезопасным.
+* Увеличьте NumberOfConcurrentTransfers со значения по умолчанию hello 2 tooa высокого значения, например 5. Задание этого свойства влияет на все экземпляры **CloudMediaContext**. 
+* Сохраните ParallelTransferThreadCount на значение по умолчанию hello 10.
 
 ## <a id="ingest_in_bulk"></a>Массовый прием ресурсов с помощью пакета SDK служб мультимедиа для .NET
-Передача больших файлов ресурсов может оказаться узким местом при создании ресурса. Массовый прием ресурсов предполагает отделение создания ресурса от процесса передачи. Чтобы использовать массовый прием ресурсов, создайте манифест (IngestManifest), описывающий ресурс и связанные с ним файлы. Затем воспользуйтесь методом передачи по своему усмотрению, чтобы передать связанные файлы в контейнер больших двоичных объектов манифеста. Службы мультимедиа Microsoft Azure отслеживают контейнер больших двоичных объектов, связанный с манифестом. После загрузки файла в контейнер больших двоичных объектов службы мультимедиа Microsoft Azure завершает создание ресурса на основе конфигурации ресурса в манифесте (IngestManifestAsset).
+Передача больших файлов ресурсов может оказаться узким местом при создании ресурса. Массовое получение активов массового или «Массовой передаче», связана с разделением создания ресурсов от процесса отправки hello. toouse массовое получение подход более bulk, создайте манифест (IngestManifest), описывающий активов hello и связанные с ней файлы. Затем используйте метод отправки hello ваш выбор tooupload hello связанные файлы toohello манифеста контейнера BLOB-объектов. Службы мультимедиа Microsoft Azure отслеживает hello контейнер больших двоичных объектов, связанных с манифестом hello. Как только файл отправленного toohello контейнер больших двоичных объектов, службы мультимедиа Microsoft Azure завершает hello создания ресурса, на основе конфигурации hello средства hello в манифесте hello (IngestManifestAsset).
 
-Для создания новой сущности IngestManifest вызовите метод Create, предоставляемый коллекцией IngestManifests в классе CloudMediaContext. Этот метод создаст новую сущность IngestManifest с указанным именем манифеста.
+toocreate нового объекта IngestManifest вызвать метод Create hello, предоставляемые hello коллекции hello CloudMediaContext объекты Ingestmanifest. Этот метод создаст новый IngestManifest с именем манифеста hello вами.
 
     IIngestManifest manifest = context.IngestManifests.Create(name);
 
-Создайте ресурсы, которые будут связаны с массовой сущностью IngestManifest. Настройте необходимые параметры шифрования ресурса для массового приема.
+Создайте hello активы, которые будут связаны с неполным hello IngestManifest. Настройте параметры шифрования hello требуемого hello активе для массового получения.
 
-    // Create the assets that will be associated with this bulk ingest manifest
+    // Create hello assets that will be associated with this bulk ingest manifest
     IAsset destAsset1 = _context.Assets.Create(name + "_asset_1", AssetCreationOptions.None);
     IAsset destAsset2 = _context.Assets.Create(name + "_asset_2", AssetCreationOptions.None);
 
-Сущность IngestManifestAsset связывает ресурс с массовой сущностью IngestManifest для массового приема. Она также связывает сущности AssetFile, из которых состоит каждый ресурс. Чтобы создать IngestManifestAsset, используйте метод Create в контексте сервера.
+Сущность IngestManifestAsset связывает ресурс с массовой сущностью IngestManifest для массового приема. Он также связывает hello AssetFiles, составляющих каждого средства. toocreate IngestManifestAsset, используйте метод Create hello на контекст сервера hello.
 
-В следующем примере показано добавление двух новых сущностей IngestManifestAsset, связывающих два созданных ранее ресурса с манифестом массового приема. Каждая сущность IngestManifestAsset связывает также набор файлов, которые передаются для каждого ресурса во время массового приема.  
+Hello следующий пример демонстрирует добавление двух новых IngestManifestAssets, которые связывают два актива hello ранее созданные toohello массового манифеста получения. Каждая сущность IngestManifestAsset связывает также набор файлов, которые передаются для каждого ресурса во время массового приема.  
 
     string filename1 = _singleInputMp4Path;
     string filename2 = _primaryFilePath;
@@ -190,7 +190,7 @@ ms.lasthandoff: 08/29/2017
     IIngestManifestAsset bulkAsset1 =  manifest.IngestManifestAssets.Create(destAsset1, new[] { filename1 });
     IIngestManifestAsset bulkAsset2 =  manifest.IngestManifestAssets.Create(destAsset2, new[] { filename2, filename3 });
 
-При этом можно использовать любое высокоскоростное клиентское приложение, которое может передавать файлы ресурсов по универсальному коду ресурса (URI) контейнера хранилища больших двоичных объектов, предоставляемому свойством **IIngestManifest.BlobStorageUriForUpload** сущности IngestManifest. [Приложение Aspera On Demand for Azure](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6)— одна из наиболее примечательных служб высокоскоростной передачи. Кроме того, можно написать код для передачи файлов ресурсов, как показано в следующем примере кода.
+Можно использовать любое высокоскоростное клиентское приложение может загрузить контейнер больших двоичных объектов хранилища для активов файлы hello toohello URI, предоставляемые hello **IIngestManifest.BlobStorageUriForUpload** свойство hello IngestManifest. [Приложение Aspera On Demand for Azure](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6)— одна из наиболее примечательных служб высокоскоростной передачи. Можно также написать код tooupload hello ресурсных файлов как показано в следующем примере кода hello.
 
     static void UploadBlobFile(string destBlobURI, string filename)
     {
@@ -215,16 +215,16 @@ ms.lasthandoff: 08/29/2017
         copytask.Start();
     }
 
-В следующем примере показан код для передачи файлов ресурса-контейнера для примера, используемого в этом разделе.
+Hello код для отправки файлов активов hello для образца hello, используемый в этом разделе показан в следующем примере кода hello.
 
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename1);
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename2);
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename3);
 
 
-Ход выполнения массового приема для всех ресурсов, связанных с **IngestManifest**, можно определить с помощью опроса по свойству Statistics сущности **IngestManifest**. Чтобы получать обновленную информацию о ходе выполнения, необходимо использовать новый класс **CloudMediaContext** при каждом опросе по свойству Statistics.
+Можно определить ход выполнения hello hello массового добавления для всех ресурсов, связанных с **IngestManifest** путем опроса свойства статистики hello hello **IngestManifest**. В сведения о заказе tooupdate хода выполнения, необходимо использовать новый **CloudMediaContext** каждый раз опроса свойства Statistics hello.
 
-В следующем примере демонстрируется опрос сущности IngestManifest по ее идентификатору **Id**.
+Hello следующий пример демонстрирует опрос в IngestManifest, его **идентификатор**.
 
     static void MonitorBulkManifest(string manifestID)
     {
@@ -261,7 +261,7 @@ ms.lasthandoff: 08/29/2017
 
 
 ## <a name="upload-files-using-net-sdk-extensions"></a>Передача файлов с помощью расширений пакета SDK для .NET
-В приведенном ниже примере показано, как передать один файл с помощью расширений пакета SDK для .NET. В этом случае используется метод **CreateFromFile**, но доступна также и асинхронная версия (**CreateFromFileAsync**). Метод **CreateFromFile** позволяет указать имя файла, параметр шифрования и обратный вызов, чтобы сообщать о ходе передачи файла.
+Hello приведенном ниже примере показано, как tooupload один файл с помощью расширений SDK .NET. В этом случае hello **CreateFromFile** метод используется, но также доступна асинхронная версия hello (**CreateFromFileAsync**). Hello **CreateFromFile** метод позволяет указать имя файла hello, шифрование и обратный вызов в порядке tooreport hello ход hello файла отправки.
 
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)
     {
@@ -278,7 +278,7 @@ ms.lasthandoff: 08/29/2017
         return inputAsset;
     }
 
-В следующем примере вызывается функция UploadFile, а в качестве параметра создания ресурса указывается шифрование хранилища.  
+Hello следующий пример вызывает функцию UploadFile и задает в качестве параметра создания активов hello шифрование хранилища.  
 
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 
@@ -286,7 +286,7 @@ ms.lasthandoff: 08/29/2017
 
 Теперь можно закодировать отправленные ресурсы. Дополнительную информацию см. в статье, посвященной [кодированию ресурсов](media-services-portal-encode.md).
 
-Можно также использовать функции Azure для запуска задания кодирования на основе файла, поступающего в настроенный контейнер. Дополнительные сведения см. в [этом примере](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
+Также можно использовать функции Azure tootrigger задание кодирования на основе файла, поступающих в контейнере hello настроен. Дополнительные сведения см. в [этом примере](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -295,7 +295,7 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Дальнейшие действия
-Передав ресурс в службы мультимедиа, перейдите к статье [Получение экземпляра процессора мультимедиа][How to Get a Media Processor].
+Теперь, когда вы отправили актива служб tooMedia go toohello [как обработчик мультимедиа tooGet] [ How tooGet a Media Processor] раздела.
 
-[How to Get a Media Processor]: media-services-get-media-processor.md
+[How tooGet a Media Processor]: media-services-get-media-processor.md
 

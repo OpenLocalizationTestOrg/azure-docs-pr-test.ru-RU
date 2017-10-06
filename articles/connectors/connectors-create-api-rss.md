@@ -1,6 +1,6 @@
 ---
-title: "Соединитель RSS в Azure Logic Apps | Документация Майкрософт"
-description: "Создание приложений логики с помощью службы приложений Azure. Соединитель RSS позволяет пользователям публиковать и извлекать элементы веб-канала. Он также позволяет пользователям активировать операции при публикации нового элемента в веб-канале."
+title: "Соединитель aaaRSS в приложения логики Azure | Документы Microsoft"
+description: "Создание приложений логики с помощью службы приложений Azure. Соединитель RSS позволяет пользователям toopublish hello и извлекать элементы потока данных. Она также позволяет пользователям hello tootrigger операций при элемент опубликованного toohello веб-канала."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 308d78550e9e60303b70d591eb4e6bfff3e49ce7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 973ce930f5fa7226a918feebe0f9addef14f34e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-rss-connector"></a>Начало работы с соединителем RSS
-RSS — это популярный формат веб-синдикации, используемый для публикации часто обновляемого содержимого (записей блогов и заголовков новостей).  Многие издатели содержимого предоставляют RSS-канал, чтобы пользователи могли на него подписаться.  Соединитель RSS можно использовать для извлечения сведений о канале и активации потоков при публикации новых элементов в RSS-канале.
+# <a name="get-started-with-hello-rss-connector"></a>Начало работы с соединителем RSS hello
+RSS — toopublish формат, используемый в Интернете популярный синдикации часто получает обновления содержимого, такие как записи в блогах и заголовков новостей.  Многие содержимого издатели предоставляют RSS-канал tooit toosubscribe tooallow пользователей.  Используйте соединитель tooretrieve hello RSS, веб-канала потоки сведения и триггер, когда новые элементы, опубликованные в RSS-канал.
 
 Для начала можно создать приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-rss"></a>Создание подключения к RSS
-> [!INCLUDE [Steps to create a connection to an RSS feed](../../includes/connectors-create-api-rss.md)]
+## <a name="create-a-connection-toorss"></a>Создание tooRSS подключения
+> [!INCLUDE [Steps toocreate a connection tooan RSS feed](../../includes/connectors-create-api-rss.md)]
 > 
 
 ## <a name="connector-specific-details"></a>Сведения о соединителях
 
-Информацию о существующих ограничениях, а также о триггерах и действиях, определенных в Swagger, см. в статье со [сведениями о соединителях](/connectors/rss/).
+Просмотреть все триггеры и действия, определенные в hello swagger и любые пределы в hello см. также [сведений о соединителе](/connectors/rss/).
 
 ## <a name="more-connectors"></a>Дополнительные сведения о соединителях
-Вы можете вернуться к [списку интерфейсов API](apis-list.md).
+Вернитесь к предыдущему окну toohello [API-интерфейсы списка](apis-list.md).

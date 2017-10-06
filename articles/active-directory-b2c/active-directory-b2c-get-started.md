@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: создание клиента Azure Active Directory B2C | Документация Майкрософт"
-description: "Инструкции по созданию клиента Azure Active Directory B2C"
+description: "Как для клиента Azure Active Directory B2C toocreate на раздел"
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
@@ -14,48 +14,50 @@ ms.topic: article
 ms.devlang: na
 ms.date: 06/07/2017
 ms.author: swkrish
-ms.openlocfilehash: 8a1d4935397f59e5813afc6f04559e471187a779
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e8b257d66c1f66ffb84f5d3d21b30b42eddcbac9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>Создание клиента Azure Active Directory B2C на портале Azure
+# <a name="create-an-azure-active-directory-b2c-tenant-in-hello-azure-portal"></a>Создание клиента Azure Active Directory B2C в hello портал Azure
 
-Из этого краткого руководства вы узнаете, как создать клиент Microsoft Azure Active Directory (Azure AD) B2C за несколько минут. По завершении у вас будет клиент B2C для регистрации приложений B2C.
+Редактировать Sipi.
+
+Из этого краткого руководства вы узнаете, как создать клиент Microsoft Azure Active Directory (Azure AD) B2C за несколько минут. Когда закончите, у вас toouse клиента B2C для регистрации приложений B2C.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-##  <a name="log-in-to-azure"></a>Вход в Azure
+##  <a name="log-in-tooazure"></a>Войдите в tooAzure
 
-Войдите на [портал Azure](https://portal.azure.com/).
+Войдите в toohello [портал Azure](https://portal.azure.com/).
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Создание клиента Azure AD B2C
 
-Возможности B2C невозможно включить в имеющихся клиентах. Нужно создать клиент Azure AD B2C.
+Возможности B2C невозможно включить в имеющихся клиентах. Необходимо toocreate клиент Azure AD B2C.
 
 [!INCLUDE [active-directory-b2c-create-tenant](../../includes/active-directory-b2c-create-tenant.md)]
 
-Поздравляем! Вы создали клиент Azure Active Directory B2C. Теперь вы — глобальный администратор клиента. При необходимости можно добавить других глобальных администраторов. Чтобы переключиться к новому клиенту, щелкните *ссылку для управления новым клиентом*.
+Поздравляем! Вы создали клиент Azure Active Directory B2C. Вы являетесь глобальным администратором клиента hello. При необходимости можно добавить других глобальных администраторов. tooswitch tooyour нового клиента, щелкните hello *управлять вашей новой связи клиента*.
 
 ![Ссылка для управления новым клиентом](./media/active-directory-b2c-get-started/manage-new-b2c-tenant-link.png)
 
 > [!IMPORTANT]
-> Если вы планируете использовать B2C клиент для рабочего приложения, см. статью, в которой [сравниваются рабочая версия и предварительная версия клиента B2C](active-directory-b2c-reference-tenant-type.md). При удалении существующего клиента B2C и его повторном создании с тем же доменным именем могут возникнуть известные проблемы. Создавайте клиент B2C с другим доменным именем.
+> Если вы планируете toouse клиента B2C для рабочего приложения, прочтите статью hello на [Масштабирование рабочей и предварительной версии B2C клиентов](active-directory-b2c-reference-tenant-type.md). Существуют известные проблемы при удалении существующей B2C клиента и создать его повторно с hello таким же именем домена. Необходимо toocreate клиента B2C с именем другого домена.
 >
 >
 
-## <a name="link-your-tenant-to-your-subscription"></a>Привязка клиента к подписке
+## <a name="link-your-tenant-tooyour-subscription"></a>Связи подписки tooyour клиента
 
-Клиент Azure AD B2C нужно связать с подпиской Azure, чтобы включить все возможности B2C и вносить плату за использование. Дополнительные сведения см. в [этой статье](active-directory-b2c-how-to-enable-billing.md). Если не связать клиент Azure AD B2C с подпиской Azure, некоторые возможности будут заблокированы, а в колонке параметров B2C отобразится предупреждение No Subscription linked to this B2C tenant or the Subscription needs your attention (С этим клиентом B2C не связана ни одна подписка, или подписка требует вашего внимания). Важно выполнить этот шаг, прежде чем переводить приложения в рабочую среду.
+Требуется toolink к Azure AD B2C клиента все функциональные возможности B2C tooenable tooyour подписки Azure и платить за сборам за использование. лучше, ознакомьтесь с toolearn [в этой статье](active-directory-b2c-how-to-enable-billing.md). Если не связать ваш tooyour клиента Azure AD B2C подписки Azure, заблокированы некоторые функциональные возможности, и вы увидите предупреждение («подписка, не связанный toothis B2C клиента или hello подписки должен внимания.») в параметрах hello B2C. Важно выполнить этот шаг, прежде чем переводить приложения в рабочую среду.
 
-## <a name="easy-access-to-settings"></a>Простой доступ к параметрам
+## <a name="easy-access-toosettings"></a>Простой доступ toosettings
 
 [!INCLUDE [active-directory-b2c-find-service-settings](../../includes/active-directory-b2c-find-service-settings.md)]
 
-Чтобы получить доступ к колонке, можно также ввести `Azure AD B2C` в поле **Поиск ресурсов** в верхней части портала. В списке результатов выберите **Azure AD B2C** для доступа к колонке параметров B2C.
+Можно также доступ к колонке hello, введя `Azure AD B2C` в **Найдите ресурсы** hello верхней части портала hello. В списке результатов hello выберите **Azure AD B2C** tooaccess hello колонку параметров B2C.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

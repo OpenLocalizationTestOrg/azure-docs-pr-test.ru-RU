@@ -1,6 +1,6 @@
 ---
-title: "Лимиты и ограничения службы Azure Active Directory"
-description: "Ограничения на использование и другие ограничения для службы Azure Active Directory"
+title: "ограничения и ограничения служб Active Directory aaaAzure"
+description: "Ограничения использования и другие ограничения службы hello службы Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 05/08/2017
 ms.author: curtand
 ms.custom: aaddev
-ms.openlocfilehash: 100cfb213917854b0bfbaccdd46ea625d721c59c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3971cb40ed53d6e0c11f124f334d1dc6a2cdf769
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Ограничения службы Azure AD
-В этой статье перечислены ограничения на использование и другие ограничения для службы Azure Active Directory (Azure AD). Если вам нужен полный список ограничений для службы Microsoft Azure, ознакомьтесь со статьей [Подписка Azure, границы, квоты и ограничения службы](../azure-subscription-service-limits.md).
+Эта статья содержит ограничения использования hello и другие ограничения службы hello службы Azure Active Directory (Azure AD). Если вы ищете hello полный набор ограничений службы Microsoft Azure, см. раздел [подписки Azure и ограничения служб, квоты и ограничения](../azure-subscription-service-limits.md).
 
 [!INCLUDE [AAD-service-limits](../../includes/active-directory-service-limits-include.md)]
 
