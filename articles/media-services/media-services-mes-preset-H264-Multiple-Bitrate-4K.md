@@ -1,6 +1,6 @@
 ---
-title: "Предустановка Media Encoder Standard в Azure: H264 Multiple Bitrate 4K | Документация Майкрософт"
-description: "Этот раздел содержит общие сведения о предустановке задачи **H264 Multiple Bitrate 4K**."
+title: "Multiple Bitrate 4K Media Encoder Стандартная предустановленная aaaH264 - Azure | Документы Microsoft"
+description: "Hello разделе приводится обзор hello ** H264 Multiple Bitrate 4 K ** задач предустановки."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 4f0863f3db1bfc814971fca740e460012b1aca60
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e22e0bd3bb110f54f7d624e099b5e34e8d4820a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="h264-multiple-bitrate-4k"></a><span data-ttu-id="498b2-103">H264 Multiple Bitrate 4K</span><span class="sxs-lookup"><span data-stu-id="498b2-103">H264 Multiple Bitrate 4K</span></span>
-<span data-ttu-id="498b2-104">`Media Encoder Standard` определяет набор предустановок кодирования, которые можно использовать при создании заданий кодирования.</span><span class="sxs-lookup"><span data-stu-id="498b2-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="498b2-105">Можно также использовать `preset name`, чтобы указать, в какой формат нужно закодировать файл мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="498b2-105">You can either use a `preset name` to specify into which format you would like to encode your media file.</span></span> <span data-ttu-id="498b2-106">Или можно создать собственные предустановки в формате JSON или XML (с использованием кодировки UTF-8 или UTF-16).</span><span class="sxs-lookup"><span data-stu-id="498b2-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="498b2-107">Затем следует передавать пользовательскую предустановку в кодировщик.</span><span class="sxs-lookup"><span data-stu-id="498b2-107">You would then pass the custom preset to the encoder.</span></span> <span data-ttu-id="498b2-108">Список предустановок, поддерживаемых данным кодировщиком `Media Encoder Standard`, приведен в разделе [Предустановки задач для Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="498b2-108">For the list of all the preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
+# <a name="h264-multiple-bitrate-4k"></a><span data-ttu-id="5ffbc-103">H264 Multiple Bitrate 4K</span><span class="sxs-lookup"><span data-stu-id="5ffbc-103">H264 Multiple Bitrate 4K</span></span>
+<span data-ttu-id="5ffbc-104">`Media Encoder Standard` определяет набор предустановок кодирования, которые можно использовать при создании заданий кодирования.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="5ffbc-105">Можно использовать либо `preset name` toospecify в формат, который вы хотите tooencode файла мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-105">You can either use a `preset name` toospecify into which format you would like tooencode your media file.</span></span> <span data-ttu-id="5ffbc-106">Или можно создать собственные предустановки в формате JSON или XML (с использованием кодировки UTF-8 или UTF-16).</span><span class="sxs-lookup"><span data-stu-id="5ffbc-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="5ffbc-107">Затем следует передавать hello toohello пользовательской предустановки кодировщика.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-107">You would then pass hello custom preset toohello encoder.</span></span> <span data-ttu-id="5ffbc-108">Список всех hello hello предустановленный набор имен, поддерживаемых этим `Media Encoder Standard` кодировщик, см. [предустановки задачи для Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="5ffbc-108">For hello list of all hello preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
   
- <span data-ttu-id="498b2-109">В этом разделе показана предустановка `H264 Multiple Bitrate 4K` в форматах XML и JSON.</span><span class="sxs-lookup"><span data-stu-id="498b2-109">This topic shows the `H264 Multiple Bitrate 4K` preset in XML and JSON format.</span></span>  
+ <span data-ttu-id="5ffbc-109">В этом разделе показано hello `H264 Multiple Bitrate 4K` конфигурации в формате XML и JSON.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-109">This topic shows hello `H264 Multiple Bitrate 4K` preset in XML and JSON format.</span></span>  
   
- <span data-ttu-id="498b2-110">Данная предустановка создает набор из 12 MP4-файлов с одинаковыми группами GOP, скоростями 1000–20 000 Кбит/с и стереофоническим звуком в формате AAC.</span><span class="sxs-lookup"><span data-stu-id="498b2-110">This preset produces a set of 12 GOP-aligned MP4 files, ranging from 20000 kbps to 1000 kbps, and stereo AAC audio.</span></span> <span data-ttu-id="498b2-111">Чтобы получить дополнительные сведения о профиле, скорости, частоте выборки и т. п. данной предустановки, ознакомьтесь с кодом XML или JSON ниже.</span><span class="sxs-lookup"><span data-stu-id="498b2-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine the XML or JSON defined below.</span></span> <span data-ttu-id="498b2-112">Описание каждого элемента в этих предустановках и его допустимых значений см. в разделе [Схема Media Encoder Standard](media-services-mes-schema.md).</span><span class="sxs-lookup"><span data-stu-id="498b2-112">For explanations of what each element in these presets means, and the valid values for each element, see the [Media Encoder Standard schema](media-services-mes-schema.md) topic.</span></span>  
-  
-> [!NOTE]
->  <span data-ttu-id="498b2-113">Для кодирования в формат 4K необходимы зарезервированные единицы типа "Премиум".</span><span class="sxs-lookup"><span data-stu-id="498b2-113">You should get the Premium reserved unit type with 4K encodes.</span></span> <span data-ttu-id="498b2-114">Дополнительные сведения см. в статье [Масштабирование кодирования](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span><span class="sxs-lookup"><span data-stu-id="498b2-114">For more information, see [How to Scale Encoding](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span></span>  
+ <span data-ttu-id="5ffbc-110">Данная конфигурация создается набор 12 GOP-файлами формата MP4, начиная от 20000 Кбит/с too1000 Кбит/с и стереозвук AAC.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-110">This preset produces a set of 12 GOP-aligned MP4 files, ranging from 20000 kbps too1000 kbps, and stereo AAC audio.</span></span> <span data-ttu-id="5ffbc-111">Подробные сведения о профиле скоростью, выборки скорость, т. д. это стиль, проверьте hello XML или JSON, описанные ниже.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine hello XML or JSON defined below.</span></span> <span data-ttu-id="5ffbc-112">Объяснение какие каждого элемента в этих стилей означает и hello допустимые значения для каждого элемента в разделе hello [Media Encoder стандартной схеме](media-services-mes-schema.md) раздела.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-112">For explanations of what each element in these presets means, and hello valid values for each element, see hello [Media Encoder Standard schema](media-services-mes-schema.md) topic.</span></span>  
   
 > [!NOTE]
->  <span data-ttu-id="498b2-115">При изменении значений `Width` и `Height` слоев убедитесь в сохранении пропорций.</span><span class="sxs-lookup"><span data-stu-id="498b2-115">When modifying the `Width` and `Height` values across layers, make sure that the aspect ratio remains consistent.</span></span> <span data-ttu-id="498b2-116">Например: 1920x1080, 1280x720, 1080x576, 640x360.</span><span class="sxs-lookup"><span data-stu-id="498b2-116">For example: 1920x1080, 1280x720, 1080x576, 640x360.</span></span> <span data-ttu-id="498b2-117">Не следует использовать смешанные сочетания пропорций, например: 1280x720, 720x480, 640x360.</span><span class="sxs-lookup"><span data-stu-id="498b2-117">You should not use a mixture of aspect ratios, such as: 1280x720, 720x480, 640x360.</span></span>  
+>  <span data-ttu-id="5ffbc-113">Вы должны получить hello Premium защищены кодирует тип единицы измерения с 4 КБ.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-113">You should get hello Premium reserved unit type with 4K encodes.</span></span> <span data-ttu-id="5ffbc-114">Дополнительные сведения см. в разделе [как tooScale кодировка](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span><span class="sxs-lookup"><span data-stu-id="5ffbc-114">For more information, see [How tooScale Encoding](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span></span>  
   
- <span data-ttu-id="498b2-118">XML</span><span class="sxs-lookup"><span data-stu-id="498b2-118">XML</span></span>  
+> [!NOTE]
+>  <span data-ttu-id="5ffbc-115">При изменении hello `Width` и `Height` значений между слоями, убедитесь в том, пропорции, hello остаются неизменными.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-115">When modifying hello `Width` and `Height` values across layers, make sure that hello aspect ratio remains consistent.</span></span> <span data-ttu-id="5ffbc-116">Например: 1920x1080, 1280x720, 1080x576, 640x360.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-116">For example: 1920x1080, 1280x720, 1080x576, 640x360.</span></span> <span data-ttu-id="5ffbc-117">Не следует использовать смешанные сочетания пропорций, например: 1280x720, 720x480, 640x360.</span><span class="sxs-lookup"><span data-stu-id="5ffbc-117">You should not use a mixture of aspect ratios, such as: 1280x720, 720x480, 640x360.</span></span>  
+  
+ <span data-ttu-id="5ffbc-118">XML</span><span class="sxs-lookup"><span data-stu-id="5ffbc-118">XML</span></span>  
   
 ```  
 <?xml version="1.0" encoding="utf-16"?>  
@@ -240,7 +240,7 @@ ms.lasthandoff: 08/29/2017
 </Preset>  
 ```  
   
- <span data-ttu-id="498b2-119">JSON</span><span class="sxs-lookup"><span data-stu-id="498b2-119">JSON</span></span>  
+ <span data-ttu-id="5ffbc-119">JSON</span><span class="sxs-lookup"><span data-stu-id="5ffbc-119">JSON</span></span>  
   
 ```  
 {  

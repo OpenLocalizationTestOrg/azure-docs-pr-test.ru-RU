@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Cerner Central | Документы Майкрософт"
-description: "Сведения о настройке единого входа между Azure Active Directory и Cerner Central."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и центр Cerner."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,102 +13,102 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 77b5fb94cdfa5722081198aabc59fbf86229c2b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3493d180e8f229b7cd228769f780f10208114889
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a><span data-ttu-id="a5ef8-103">Руководство. Интеграция Azure Active Directory с Cerner Central</span><span class="sxs-lookup"><span data-stu-id="a5ef8-103">Tutorial: Azure Active Directory integration with Cerner Central</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a><span data-ttu-id="ff256-103">Руководство. Интеграция Azure Active Directory с Cerner Central</span><span class="sxs-lookup"><span data-stu-id="ff256-103">Tutorial: Azure Active Directory integration with Cerner Central</span></span>
 
-<span data-ttu-id="a5ef8-104">В этом руководстве описано, как интегрировать Cerner Central с Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="a5ef8-104">In this tutorial, you learn how to integrate Cerner Central with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="ff256-104">В этом учебнике вы узнаете, как toointegrate центральный Cerner с Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="ff256-104">In this tutorial, you learn how toointegrate Cerner Central with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="a5ef8-105">Интеграция Azure AD с приложением Cerner Central обеспечивает следующие преимущества:</span><span class="sxs-lookup"><span data-stu-id="a5ef8-105">Integrating Cerner Central with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="ff256-105">Интеграция с Azure AD центральный Cerner предоставляет hello следующие преимущества:</span><span class="sxs-lookup"><span data-stu-id="ff256-105">Integrating Cerner Central with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="a5ef8-106">С помощью Azure AD вы можете контролировать доступ к Cerner Central.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-106">You can control in Azure AD who has access to Cerner Central</span></span>
-- <span data-ttu-id="a5ef8-107">Вы можете включить автоматический вход пользователей в Cerner Central (единый вход) с учетной записью Azure AD.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-107">You can enable your users to automatically get signed-on to Cerner Central (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="a5ef8-108">Вы можете управлять учетными записями централизованно — через портал Azure.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="ff256-106">Можно управлять в Azure AD, имеющего доступ tooCerner центральный</span><span class="sxs-lookup"><span data-stu-id="ff256-106">You can control in Azure AD who has access tooCerner Central</span></span>
+- <span data-ttu-id="ff256-107">Можно включить на пользователей tooautomatically get вошедшего tooCerner центральный (Single Sign-On) с помощью своих учетных записей Azure AD</span><span class="sxs-lookup"><span data-stu-id="ff256-107">You can enable your users tooautomatically get signed-on tooCerner Central (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="ff256-108">Можно управлять учетными записями в одном централизованном месте - hello портал Azure</span><span class="sxs-lookup"><span data-stu-id="ff256-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="a5ef8-109">Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="a5ef8-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="ff256-109">Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="ff256-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="a5ef8-110">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="a5ef8-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="ff256-110">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="ff256-110">Prerequisites</span></span>
 
-<span data-ttu-id="a5ef8-111">Чтобы настроить интеграцию Azure AD с Cerner Central, вам потребуется:</span><span class="sxs-lookup"><span data-stu-id="a5ef8-111">To configure Azure AD integration with Cerner Central, you need the following items:</span></span>
+<span data-ttu-id="ff256-111">tooconfigure интеграция Azure AD с центрального Cerner требуется hello следующих элементов:</span><span class="sxs-lookup"><span data-stu-id="ff256-111">tooconfigure Azure AD integration with Cerner Central, you need hello following items:</span></span>
 
-- <span data-ttu-id="a5ef8-112">подписка Azure AD;</span><span class="sxs-lookup"><span data-stu-id="a5ef8-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="a5ef8-113">утвержденная системная учетная запись Cerner Central.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-113">An approved Cerner Central System Account</span></span>
+- <span data-ttu-id="ff256-112">подписка Azure AD;</span><span class="sxs-lookup"><span data-stu-id="ff256-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="ff256-113">утвержденная системная учетная запись Cerner Central.</span><span class="sxs-lookup"><span data-stu-id="ff256-113">An approved Cerner Central System Account</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a5ef8-114">Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="ff256-114">в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.</span><span class="sxs-lookup"><span data-stu-id="ff256-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="a5ef8-115">При проверке действий в этом учебнике соблюдайте следующие рекомендации:</span><span class="sxs-lookup"><span data-stu-id="a5ef8-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="ff256-115">tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:</span><span class="sxs-lookup"><span data-stu-id="ff256-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="a5ef8-116">Не используйте рабочую среду без необходимости.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="a5ef8-117">Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="a5ef8-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="ff256-116">Не используйте рабочую среду без необходимости.</span><span class="sxs-lookup"><span data-stu-id="ff256-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="ff256-117">Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="ff256-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="a5ef8-118">Описание сценария</span><span class="sxs-lookup"><span data-stu-id="a5ef8-118">Scenario description</span></span>
-<span data-ttu-id="a5ef8-119">В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="a5ef8-120">Сценарий, описанный в этом руководстве, состоит из двух стандартных блоков.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="ff256-118">Описание сценария</span><span class="sxs-lookup"><span data-stu-id="ff256-118">Scenario description</span></span>
+<span data-ttu-id="ff256-119">В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде.</span><span class="sxs-lookup"><span data-stu-id="ff256-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="ff256-120">Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:</span><span class="sxs-lookup"><span data-stu-id="ff256-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="a5ef8-121">Добавление Cerner Central из коллекции</span><span class="sxs-lookup"><span data-stu-id="a5ef8-121">Adding Cerner Central from the gallery</span></span>
-2. <span data-ttu-id="a5ef8-122">Настройка и проверка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="a5ef8-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="ff256-121">Добавление центральный Cerner из галереи hello</span><span class="sxs-lookup"><span data-stu-id="ff256-121">Adding Cerner Central from hello gallery</span></span>
+2. <span data-ttu-id="ff256-122">Настройка и проверка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="ff256-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-cerner-central-from-the-gallery"></a><span data-ttu-id="a5ef8-123">Добавление Cerner Central из коллекции</span><span class="sxs-lookup"><span data-stu-id="a5ef8-123">Adding Cerner Central from the gallery</span></span>
-<span data-ttu-id="a5ef8-124">Чтобы настроить интеграцию Cerner Central с Azure AD, необходимо добавить Cerner Central из коллекции в список управляемых приложений SaaS.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-124">To configure the integration of Cerner Central into Azure AD, you need to add Cerner Central from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-cerner-central-from-hello-gallery"></a><span data-ttu-id="ff256-123">Добавление центральный Cerner из галереи hello</span><span class="sxs-lookup"><span data-stu-id="ff256-123">Adding Cerner Central from hello gallery</span></span>
+<span data-ttu-id="ff256-124">tooconfigure hello интеграции центральный Cerner в Azure AD, вы должны tooadd центральный Cerner из списка tooyour коллекции hello управляемых приложений SaaS.</span><span class="sxs-lookup"><span data-stu-id="ff256-124">tooconfigure hello integration of Cerner Central into Azure AD, you need tooadd Cerner Central from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="a5ef8-125">**Чтобы добавить Cerner Central из коллекции, сделайте следующее.**</span><span class="sxs-lookup"><span data-stu-id="a5ef8-125">**To add Cerner Central from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="ff256-125">**tooadd центральный Cerner из галереи hello выполните hello следующие шаги.**</span><span class="sxs-lookup"><span data-stu-id="ff256-125">**tooadd Cerner Central from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="a5ef8-126">На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="ff256-126">В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок.</span><span class="sxs-lookup"><span data-stu-id="ff256-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="a5ef8-128">Перейдите к разделу **Корпоративные приложения**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="a5ef8-129">Затем выберите **Все приложения**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="ff256-128">Перейдите в слишком**корпоративных приложений**.</span><span class="sxs-lookup"><span data-stu-id="ff256-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="ff256-129">Затем перейдите слишком**все приложения**.</span><span class="sxs-lookup"><span data-stu-id="ff256-129">Then go too**All applications**.</span></span>
 
     ![Приложения][2]
     
-3. <span data-ttu-id="a5ef8-131">Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Новое приложение**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-131">To add new application, click **New application** button on top of the dialog.</span></span>
+3. <span data-ttu-id="ff256-131">tooadd новое приложение, нажмите кнопку **новое приложение** кнопки на диалоговое окно приветствия.</span><span class="sxs-lookup"><span data-stu-id="ff256-131">tooadd new application, click **New application** button on top of hello dialog.</span></span>
 
     ![Приложения][3]
 
-4. <span data-ttu-id="a5ef8-133">В поле поиска введите **Cerner Central**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-133">In the search box, type **Cerner Central**.</span></span>
+4. <span data-ttu-id="ff256-133">Введите в поле поиска hello **Cerner центральный**.</span><span class="sxs-lookup"><span data-stu-id="ff256-133">In hello search box, type **Cerner Central**.</span></span>
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_search.png)
 
-5. <span data-ttu-id="a5ef8-135">На панели результатов выберите **Cerner Central** и нажмите кнопку **Добавить**, чтобы добавить приложение.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-135">In the results panel, select **Cerner Central**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="ff256-135">В панели результатов hello выберите **центральный Cerner**и нажмите кнопку **добавить** кнопку tooadd приложения hello.</span><span class="sxs-lookup"><span data-stu-id="ff256-135">In hello results panel, select **Cerner Central**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="a5ef8-137">Настройка и проверка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="a5ef8-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="a5ef8-138">В этом разделе описаны настройка и проверка единого входа Azure AD в Cerner Central с использованием тестового пользователя Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-138">In this section, you configure and test Azure AD single sign-on with Cerner Central based on a test user called "Britta Simon."</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="ff256-137">Настройка и проверка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="ff256-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="ff256-138">В этом разделе описаны настройка и проверка единого входа Azure AD в Cerner Central с использованием тестового пользователя Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="ff256-138">In this section, you configure and test Azure AD single sign-on with Cerner Central based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="a5ef8-139">Для работы единого входа Azure AD необходимо знать, какой пользователь в Cerner Central соответствует пользователю в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Cerner Central is to a user in Azure AD.</span></span> <span data-ttu-id="a5ef8-140">Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Cerner Central.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-140">In other words, a link relationship between an Azure AD user and the related user in Cerner Central needs to be established.</span></span>
+<span data-ttu-id="ff256-139">Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в центральный Cerner является tooa в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="ff256-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Cerner Central is tooa user in Azure AD.</span></span> <span data-ttu-id="ff256-140">Другими словами связи между пользователя Azure AD и связанных пользователей hello в центральный Cerner должен установить toobe.</span><span class="sxs-lookup"><span data-stu-id="ff256-140">In other words, a link relationship between an Azure AD user and hello related user in Cerner Central needs toobe established.</span></span>
 
-<span data-ttu-id="a5ef8-141">Чтобы настроить и проверить единый вход Azure AD в Cerner Central, вам потребуется выполнить действия в следующих стандартных блоках.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-141">To configure and test Azure AD single sign-on with Cerner Central, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="ff256-141">tooconfigure и теста Azure AD единого входа с центрального Cerner, требуются следующие стандартные блоки hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="ff256-141">tooconfigure and test Azure AD single sign-on with Cerner Central, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="a5ef8-142">**[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-142">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="a5ef8-143">**[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-143">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="a5ef8-144">**[Создание тестового пользователя Cerner Central](#creating-a-cerner-central-test-user)** требуется для создания пользователя Britta Simon в Cerner Central, связанного с соответствующим представлением в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-144">**[Creating a Cerner Central test user](#creating-a-cerner-central-test-user)** - to have a counterpart of Britta Simon in Cerner Central that is linked to the Azure AD representation of the user.</span></span>
-4. <span data-ttu-id="a5ef8-145">**[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-145">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="a5ef8-146">**[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-146">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="ff256-142">**[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.</span><span class="sxs-lookup"><span data-stu-id="ff256-142">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="ff256-143">**[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.</span><span class="sxs-lookup"><span data-stu-id="ff256-143">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="ff256-144">**[Создание тестового пользователя центральный Cerner](#creating-a-cerner-central-test-user)**  -toohave аналог Саймон Britta в центральный Cerner, являющийся представлением пользовательского hello связанного toohello Azure AD.</span><span class="sxs-lookup"><span data-stu-id="ff256-144">**[Creating a Cerner Central test user](#creating-a-cerner-central-test-user)** - toohave a counterpart of Britta Simon in Cerner Central that is linked toohello Azure AD representation of hello user.</span></span>
+4. <span data-ttu-id="ff256-145">**[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.</span><span class="sxs-lookup"><span data-stu-id="ff256-145">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="ff256-146">**[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.</span><span class="sxs-lookup"><span data-stu-id="ff256-146">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="a5ef8-147">Настройка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="a5ef8-147">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="ff256-147">Настройка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="ff256-147">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="a5ef8-148">В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Cerner Central.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-148">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Cerner Central application.</span></span>
+<span data-ttu-id="ff256-148">В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении центральный Cerner.</span><span class="sxs-lookup"><span data-stu-id="ff256-148">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Cerner Central application.</span></span>
 
-<span data-ttu-id="a5ef8-149">**Чтобы настроить единый вход Azure AD в Cerner Central, сделайте следующее.**</span><span class="sxs-lookup"><span data-stu-id="a5ef8-149">**To configure Azure AD single sign-on with Cerner Central, perform the following steps:**</span></span>
+<span data-ttu-id="ff256-149">**tooconfigure Azure AD единого входа с центрального Cerner выполните следующие шаги hello.**</span><span class="sxs-lookup"><span data-stu-id="ff256-149">**tooconfigure Azure AD single sign-on with Cerner Central, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="a5ef8-150">На портале Azure на странице интеграции с приложением **Cerner Central** щелкните **Единый вход**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-150">In the Azure portal, on the **Cerner Central** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="ff256-150">В hello в hello портала Azure **центральный Cerner** странице интеграции приложения щелкните **единого входа**.</span><span class="sxs-lookup"><span data-stu-id="ff256-150">In hello Azure portal, on hello **Cerner Central** application integration page, click **Single sign-on**.</span></span>
 
     ![Настройка единого входа][4]
 
-2. <span data-ttu-id="a5ef8-152">В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-152">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="ff256-152">На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.</span><span class="sxs-lookup"><span data-stu-id="ff256-152">On hello **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Настройка единого входа](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
 
-3. <span data-ttu-id="a5ef8-154">В разделе **Домены и URL-адреса приложения Cerner Central** сделайте следующее.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-154">On the **Cerner Central Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="ff256-154">На hello **URL-адреса и домена центра Cerner** выполните следующие шаги hello:</span><span class="sxs-lookup"><span data-stu-id="ff256-154">On hello **Cerner Central Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Настройка единого входа](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_url.png)
 
-    <span data-ttu-id="a5ef8-156">а.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-156">a.</span></span> <span data-ttu-id="a5ef8-157">В текстовое поле **Идентификатор** введите значение в приведенном ниже формате.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-157">In the **Identifier** textbox, type the value using the following patterns:</span></span>
+    <span data-ttu-id="ff256-156">а.</span><span class="sxs-lookup"><span data-stu-id="ff256-156">a.</span></span> <span data-ttu-id="ff256-157">В hello **идентификатор** текстовое значение hello типа с помощью hello следующие шаблоны:</span><span class="sxs-lookup"><span data-stu-id="ff256-157">In hello **Identifier** textbox, type hello value using hello following patterns:</span></span>
     
     | |
     |--|
@@ -118,7 +118,7 @@ ms.lasthandoff: 07/11/2017
     | `https://sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
 
-    <span data-ttu-id="a5ef8-158">b.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-158">b.</span></span> <span data-ttu-id="a5ef8-159">В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате:</span><span class="sxs-lookup"><span data-stu-id="a5ef8-159">In the **Reply URL** textbox, type a URL using the following patterns:</span></span> 
+    <span data-ttu-id="ff256-158">b.</span><span class="sxs-lookup"><span data-stu-id="ff256-158">b.</span></span> <span data-ttu-id="ff256-159">В hello **URL-адрес ответа** текстовое поле, введите URL-адрес, используя hello следующие шаблоны:</span><span class="sxs-lookup"><span data-stu-id="ff256-159">In hello **Reply URL** textbox, type a URL using hello following patterns:</span></span> 
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
@@ -128,113 +128,113 @@ ms.lasthandoff: 07/11/2017
     | `https://<subdomain>.sandboxcernercentral.com/<instancename>` |
 
     > [!NOTE] 
-    > <span data-ttu-id="a5ef8-160">Эти значения приведены в качестве примера.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-160">These values are not the real.</span></span> <span data-ttu-id="a5ef8-161">Измените их на фактические значения идентификатора и URL-адреса ответа.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-161">Update these values with the actual Identifier and Reply URL.</span></span> <span data-ttu-id="a5ef8-162">Чтобы получить эти значения, обратитесь в [службу поддержки Cerner Central](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations).</span><span class="sxs-lookup"><span data-stu-id="a5ef8-162">Contact [Cerner Central support team](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) to get these values.</span></span>
+    > <span data-ttu-id="ff256-160">Эти значения не являются реальными hello.</span><span class="sxs-lookup"><span data-stu-id="ff256-160">These values are not hello real.</span></span> <span data-ttu-id="ff256-161">Обновите эти значения с hello фактический идентификатор и ответ URL-адрес.</span><span class="sxs-lookup"><span data-stu-id="ff256-161">Update these values with hello actual Identifier and Reply URL.</span></span> <span data-ttu-id="ff256-162">Обратитесь к [Cerner центральная группа поддержки](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) tooget эти значения.</span><span class="sxs-lookup"><span data-stu-id="ff256-162">Contact [Cerner Central support team](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) tooget these values.</span></span>
  
-4. <span data-ttu-id="a5ef8-163">Нажмите кнопку **Сохранить** .</span><span class="sxs-lookup"><span data-stu-id="a5ef8-163">Click **Save** button.</span></span>
+4. <span data-ttu-id="ff256-163">Нажмите кнопку **Сохранить** .</span><span class="sxs-lookup"><span data-stu-id="ff256-163">Click **Save** button.</span></span>
 
     ![Настройка единого входа](./media/active-directory-saas-cernercentral-tutorial/tutorial_general_400.png)
 
-5. <span data-ttu-id="a5ef8-165">Для создания URL-адреса **метаданных** выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-165">To generate the **Metadata** url, perform the following steps:</span></span>
+5. <span data-ttu-id="ff256-165">toogenerate hello **метаданные** URL-адрес, выполните следующие шаги hello:</span><span class="sxs-lookup"><span data-stu-id="ff256-165">toogenerate hello **Metadata** url, perform hello following steps:</span></span>
 
-    <span data-ttu-id="a5ef8-166">а.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-166">a.</span></span> <span data-ttu-id="a5ef8-167">Щелкните **Регистрация приложений**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-167">Click **App registrations**.</span></span>
+    <span data-ttu-id="ff256-166">а.</span><span class="sxs-lookup"><span data-stu-id="ff256-166">a.</span></span> <span data-ttu-id="ff256-167">Щелкните **Регистрация приложений**.</span><span class="sxs-lookup"><span data-stu-id="ff256-167">Click **App registrations**.</span></span>
     
     ![Настройка единого входа](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_appregistrations.png)
    
-    <span data-ttu-id="a5ef8-169">b.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-169">b.</span></span> <span data-ttu-id="a5ef8-170">Щелкните **Конечные точки**, чтобы открыть диалоговое окно **Конечные точки**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-170">Click **Endpoints** to open **Endpoints** dialog box.</span></span>  
+    <span data-ttu-id="ff256-169">b.</span><span class="sxs-lookup"><span data-stu-id="ff256-169">b.</span></span> <span data-ttu-id="ff256-170">Нажмите кнопку **конечные точки** tooopen **конечные точки** диалоговое окно.</span><span class="sxs-lookup"><span data-stu-id="ff256-170">Click **Endpoints** tooopen **Endpoints** dialog box.</span></span>  
     
     ![Настройка единого входа](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_endpointicon.png)
 
-    <span data-ttu-id="a5ef8-172">c.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-172">c.</span></span> <span data-ttu-id="a5ef8-173">Нажмите кнопку "Копировать", чтобы скопировать URL-адрес **документа метаданных федерации**, а затем вставьте его в блокнот.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-173">Click the copy button to copy **FEDERATION METADATA DOCUMENT** url and paste it into notepad.</span></span>
+    <span data-ttu-id="ff256-172">c.</span><span class="sxs-lookup"><span data-stu-id="ff256-172">c.</span></span> <span data-ttu-id="ff256-173">Нажмите кнопку toocopy hello копирования **документа МЕТАДАННЫХ ФЕДЕРАЦИИ** URL-адрес и вставьте его в Блокнот.</span><span class="sxs-lookup"><span data-stu-id="ff256-173">Click hello copy button toocopy **FEDERATION METADATA DOCUMENT** url and paste it into notepad.</span></span>
     
     ![Настройка единого входа](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_endpoint.png)
      
-    <span data-ttu-id="a5ef8-175">г)</span><span class="sxs-lookup"><span data-stu-id="a5ef8-175">d.</span></span> <span data-ttu-id="a5ef8-176">Теперь перейдите к странице свойств **Cerner Central** и скопируйте **идентификатор приложения** с помощью кнопки **Копировать**, а затем вставьте его в блокнот.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-176">Now go to the property page of **Cerner Central** and copy the **Application Id** using **Copy** button and paste it into notepad.</span></span>
+    <span data-ttu-id="ff256-175">d.</span><span class="sxs-lookup"><span data-stu-id="ff256-175">d.</span></span> <span data-ttu-id="ff256-176">Теперь перейдите на странице свойств toohello **центральный Cerner** и копирования hello **идентификатор приложения** с помощью **копирования** кнопку и вставьте его в Блокнот.</span><span class="sxs-lookup"><span data-stu-id="ff256-176">Now go toohello property page of **Cerner Central** and copy hello **Application Id** using **Copy** button and paste it into notepad.</span></span>
  
     ![Настройка единого входа](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_appid.png)
 
-    <span data-ttu-id="a5ef8-178">д.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-178">e.</span></span> <span data-ttu-id="a5ef8-179">Создайте **URL-адрес метаданных** по следующему шаблону: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-179">Generate the **Metadata URL** using the following pattern: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`</span></span>
+    <span data-ttu-id="ff256-178">д.</span><span class="sxs-lookup"><span data-stu-id="ff256-178">e.</span></span> <span data-ttu-id="ff256-179">Создать hello **URL-адрес метаданных** с помощью hello следующий шаблон:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`</span><span class="sxs-lookup"><span data-stu-id="ff256-179">Generate hello **Metadata URL** using hello following pattern: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`</span></span>
 
-6. <span data-ttu-id="a5ef8-180">Для настройки единого входа на стороне **Cerner Central** необходимо отправить **URL-адрес метаданных** в [службу поддержки Cerner Central](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations).</span><span class="sxs-lookup"><span data-stu-id="a5ef8-180">To configure single sign-on on **Cerner Central** side, you need to send the **Metadata URL** to [Cerner Central support](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations).</span></span> <span data-ttu-id="a5ef8-181">Специалисты службы поддержки настроят единый вход на стороне приложения для завершения интеграции.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-181">They configure the SSO on application side to complete the integration.</span></span>
+6. <span data-ttu-id="ff256-180">tooconfigure единого входа на **центральный Cerner** параллельно, необходимо toosend hello **URL-адрес метаданных** слишком[Cerner центр поддержки](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations).</span><span class="sxs-lookup"><span data-stu-id="ff256-180">tooconfigure single sign-on on **Cerner Central** side, you need toosend hello **Metadata URL** too[Cerner Central support](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations).</span></span> <span data-ttu-id="ff256-181">Они настроить hello единого входа для интеграции hello toocomplete стороне приложений.</span><span class="sxs-lookup"><span data-stu-id="ff256-181">They configure hello SSO on application side toocomplete hello integration.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="a5ef8-182">Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-182">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="a5ef8-183">После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-183">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="a5ef8-184">Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).</span><span class="sxs-lookup"><span data-stu-id="a5ef8-184">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="ff256-182">Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!</span><span class="sxs-lookup"><span data-stu-id="ff256-182">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="ff256-183">После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello.</span><span class="sxs-lookup"><span data-stu-id="ff256-183">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="ff256-184">Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="ff256-184">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="a5ef8-185">Создание тестового пользователя Azure AD</span><span class="sxs-lookup"><span data-stu-id="a5ef8-185">Creating an Azure AD test user</span></span>
-<span data-ttu-id="a5ef8-186">Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-186">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span> 
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="ff256-185">Создание тестового пользователя Azure AD</span><span class="sxs-lookup"><span data-stu-id="ff256-185">Creating an Azure AD test user</span></span>
+<span data-ttu-id="ff256-186">Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.</span><span class="sxs-lookup"><span data-stu-id="ff256-186">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span> 
 
 ![Создание пользователя Azure AD][100]
 
-<span data-ttu-id="a5ef8-188">**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**</span><span class="sxs-lookup"><span data-stu-id="a5ef8-188">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="ff256-188">**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**</span><span class="sxs-lookup"><span data-stu-id="ff256-188">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="a5ef8-189">На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-189">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="ff256-189">В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.</span><span class="sxs-lookup"><span data-stu-id="ff256-189">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="a5ef8-191">Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-191">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="ff256-191">hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.</span><span class="sxs-lookup"><span data-stu-id="ff256-191">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="a5ef8-193">Щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-193">To open the **User** dialog, click **Add**.</span></span>
+3. <span data-ttu-id="ff256-193">tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить**.</span><span class="sxs-lookup"><span data-stu-id="ff256-193">tooopen hello **User** dialog, click **Add**.</span></span>
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="a5ef8-195">На странице диалогового окна **Пользователь** выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-195">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="ff256-195">На hello **пользователя** диалогового окна выполните следующие шаги hello:</span><span class="sxs-lookup"><span data-stu-id="ff256-195">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="a5ef8-197">а.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-197">a.</span></span> <span data-ttu-id="a5ef8-198">В текстовом поле **Имя** введите **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-198">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="ff256-197">а.</span><span class="sxs-lookup"><span data-stu-id="ff256-197">a.</span></span> <span data-ttu-id="ff256-198">В hello **имя** введите **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="ff256-198">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="a5ef8-199">b.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-199">b.</span></span> <span data-ttu-id="a5ef8-200">В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-200">In the **User name** textbox, type the **email address** of Britta Simon.</span></span>
+    <span data-ttu-id="ff256-199">b.</span><span class="sxs-lookup"><span data-stu-id="ff256-199">b.</span></span> <span data-ttu-id="ff256-200">В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из Саймон Britta.</span><span class="sxs-lookup"><span data-stu-id="ff256-200">In hello **User name** textbox, type hello **email address** of Britta Simon.</span></span>
 
-    <span data-ttu-id="a5ef8-201">c.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-201">c.</span></span> <span data-ttu-id="a5ef8-202">Выберите **Показать пароль** и запишите значение поля **Пароль**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-202">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="ff256-201">c.</span><span class="sxs-lookup"><span data-stu-id="ff256-201">c.</span></span> <span data-ttu-id="ff256-202">Выберите **Показать пароль** и запишите значение hello hello **пароль**.</span><span class="sxs-lookup"><span data-stu-id="ff256-202">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="a5ef8-203">d.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-203">d.</span></span> <span data-ttu-id="a5ef8-204">Щелкните **Создать**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-204">Click **Create**.</span></span>
+    <span data-ttu-id="ff256-203">d.</span><span class="sxs-lookup"><span data-stu-id="ff256-203">d.</span></span> <span data-ttu-id="ff256-204">Щелкните **Создать**.</span><span class="sxs-lookup"><span data-stu-id="ff256-204">Click **Create**.</span></span>
  
-### <a name="creating-a-cerner-central-test-user"></a><span data-ttu-id="a5ef8-205">Создание тестового пользователя Cerner Central</span><span class="sxs-lookup"><span data-stu-id="a5ef8-205">Creating a Cerner Central test user</span></span>
+### <a name="creating-a-cerner-central-test-user"></a><span data-ttu-id="ff256-205">Создание тестового пользователя Cerner Central</span><span class="sxs-lookup"><span data-stu-id="ff256-205">Creating a Cerner Central test user</span></span>
 
-<span data-ttu-id="a5ef8-206">Приложение **Cerner Central** разрешает аутентификацию посредством любого поставщика федеративных удостоверений.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-206">**Cerner Central** application allows authentication from any federated identity provider.</span></span> <span data-ttu-id="a5ef8-207">Если пользователь может войти на домашнюю страницу приложения, то он является федеративным и не требует подготовки вручную.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-207">If a user is able to log in to the application home page, they are federated and have no need for any manual provisioning.</span></span>
+<span data-ttu-id="ff256-206">Приложение **Cerner Central** разрешает аутентификацию посредством любого поставщика федеративных удостоверений.</span><span class="sxs-lookup"><span data-stu-id="ff256-206">**Cerner Central** application allows authentication from any federated identity provider.</span></span> <span data-ttu-id="ff256-207">Если пользователь может toolog в домашней страницы приложения toohello, они включаются в федерацию и не требуется вручную подготовки.</span><span class="sxs-lookup"><span data-stu-id="ff256-207">If a user is able toolog in toohello application home page, they are federated and have no need for any manual provisioning.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="a5ef8-208">Назначение тестового пользователя Azure AD</span><span class="sxs-lookup"><span data-stu-id="a5ef8-208">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="ff256-208">Назначение hello Azure AD тестового пользователя</span><span class="sxs-lookup"><span data-stu-id="ff256-208">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="a5ef8-209">В этом разделе описано, как позволить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к Cerner Central.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-209">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Cerner Central.</span></span>
+<span data-ttu-id="ff256-209">В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooCerner центральный.</span><span class="sxs-lookup"><span data-stu-id="ff256-209">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooCerner Central.</span></span>
 
 ![Назначение пользователя][200] 
 
-<span data-ttu-id="a5ef8-211">**Чтобы назначить пользователя Britta Simon в Cerner Central, сделайте следующее.**</span><span class="sxs-lookup"><span data-stu-id="a5ef8-211">**To assign Britta Simon to Cerner Central, perform the following steps:**</span></span>
+<span data-ttu-id="ff256-211">**tooassign tooCerner Britta Simon центральный, выполните hello следующие шаги.**</span><span class="sxs-lookup"><span data-stu-id="ff256-211">**tooassign Britta Simon tooCerner Central, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="a5ef8-212">На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-212">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="ff256-212">В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.</span><span class="sxs-lookup"><span data-stu-id="ff256-212">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Назначение пользователя][201] 
 
-2. <span data-ttu-id="a5ef8-214">В списке приложений выберите **Cerner Central**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-214">In the applications list, select **Cerner Central**.</span></span>
+2. <span data-ttu-id="ff256-214">В списке приложений hello выберите **Cerner центральный**.</span><span class="sxs-lookup"><span data-stu-id="ff256-214">In hello applications list, select **Cerner Central**.</span></span>
 
     ![Настройка единого входа](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_app.png) 
 
-3. <span data-ttu-id="a5ef8-216">В меню слева выберите **Пользователи и группы**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-216">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="ff256-216">В меню слева hello hello выберите **пользователей и групп**.</span><span class="sxs-lookup"><span data-stu-id="ff256-216">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Назначение пользователя][202] 
 
-4. <span data-ttu-id="a5ef8-218">Нажмите кнопку **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-218">Click **Add** button.</span></span> <span data-ttu-id="a5ef8-219">Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-219">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="ff256-218">Нажмите кнопку **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="ff256-218">Click **Add** button.</span></span> <span data-ttu-id="ff256-219">Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.</span><span class="sxs-lookup"><span data-stu-id="ff256-219">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Назначение пользователя][203]
 
-5. <span data-ttu-id="a5ef8-221">В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-221">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="ff256-221">На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.</span><span class="sxs-lookup"><span data-stu-id="ff256-221">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="a5ef8-222">В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-222">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="ff256-222">В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.</span><span class="sxs-lookup"><span data-stu-id="ff256-222">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="a5ef8-223">В диалоговом окне **Добавление назначения** нажмите кнопку **Назначить**.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-223">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="ff256-223">В диалоговом окне **Добавление назначения** нажмите кнопку **Назначить**.</span><span class="sxs-lookup"><span data-stu-id="ff256-223">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="a5ef8-224">Проверка единого входа</span><span class="sxs-lookup"><span data-stu-id="a5ef8-224">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="ff256-224">Проверка единого входа</span><span class="sxs-lookup"><span data-stu-id="ff256-224">Testing single sign-on</span></span>
 
-<span data-ttu-id="a5ef8-225">В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-225">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="ff256-225">В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.</span><span class="sxs-lookup"><span data-stu-id="ff256-225">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="a5ef8-226">Щелкнув элемент Cerner Central на панели доступа, вы автоматически войдете в приложение Cerner Central.</span><span class="sxs-lookup"><span data-stu-id="a5ef8-226">When you click the Cerner Central tile in the Access Panel, you should get automatically signed-on to your Cerner Central application.</span></span> <span data-ttu-id="a5ef8-227">Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="a5ef8-227">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
+<span data-ttu-id="ff256-226">При нажатии кнопки hello центральный Cerner плитки в панели доступа hello, вы должны получить tooyour автоматически подписан на центральный Cerner приложения.</span><span class="sxs-lookup"><span data-stu-id="ff256-226">When you click hello Cerner Central tile in hello Access Panel, you should get automatically signed-on tooyour Cerner Central application.</span></span> <span data-ttu-id="ff256-227">Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="ff256-227">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="a5ef8-228">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="a5ef8-228">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="ff256-228">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="ff256-228">Additional resources</span></span>
 
-* [<span data-ttu-id="a5ef8-229">Список учебников по интеграции приложений SaaS с Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="a5ef8-229">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="a5ef8-230">Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="a5ef8-230">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="ff256-229">Список учебников по tooIntegrate приложений SaaS в Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="ff256-229">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="ff256-230">Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="ff256-230">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

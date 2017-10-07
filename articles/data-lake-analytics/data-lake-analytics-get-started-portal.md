@@ -1,6 +1,6 @@
 ---
-title: "Начало работы с Azure Data Lake Analytics с помощью портала Azure | Документация Майкрософт"
-description: "Узнайте, как использовать портал Azure для создания учетной записи Data Lake Analytics, создания задания Data Lake Analytics с помощью U-SQL и его отправки. "
+title: "aaaGet работает с аналитики Озера данных Azure, с помощью портала Azure | Документы Microsoft"
+description: "Узнайте, как создать задание аналитики Озера данных с помощью U-SQL toouse hello Azure портала toocreate учетную запись аналитики Озера данных и отправить задание hello. "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-ms.openlocfilehash: 2722a2d72ed90ea0005362563ecaee30750c040a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 6bb54404fa42cfed25b18bc2bfb7c72e6c361149
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a><span data-ttu-id="2da30-103">Начало работы с Azure Data Lake Analytics с помощью портала Azure</span><span class="sxs-lookup"><span data-stu-id="2da30-103">Get started with Azure Data Lake Analytics using Azure portal</span></span>
+# <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a><span data-ttu-id="2f89b-103">Начало работы с Azure Data Lake Analytics с помощью портала Azure</span><span class="sxs-lookup"><span data-stu-id="2f89b-103">Get started with Azure Data Lake Analytics using Azure portal</span></span>
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-<span data-ttu-id="2da30-104">Узнайте, как с помощью портала Azure создавать учетные записи Azure Data Lake Analytics, определять задания в [U-SQL](data-lake-analytics-u-sql-get-started.md) и отправлять их в службу Data Lake Analytics.</span><span class="sxs-lookup"><span data-stu-id="2da30-104">Learn how to use the Azure portal to create Azure Data Lake Analytics accounts, define jobs in [U-SQL](data-lake-analytics-u-sql-get-started.md), and submit jobs to the Data Lake Analytics service.</span></span> <span data-ttu-id="2da30-105">Дополнительные сведения о Data Lake Analytics см. в [обзоре Azure Data Lake Analytics](data-lake-analytics-overview.md).</span><span class="sxs-lookup"><span data-stu-id="2da30-105">For more information about Data Lake Analytics, see [Azure Data Lake Analytics overview](data-lake-analytics-overview.md).</span></span>
+<span data-ttu-id="2f89b-104">Узнайте, как toouse hello учетных записей Azure портала toocreate аналитики Озера данных Azure, определить задания в [U-SQL](data-lake-analytics-u-sql-get-started.md)и служба аналитики Озера данных toohello задания отправки.</span><span class="sxs-lookup"><span data-stu-id="2f89b-104">Learn how toouse hello Azure portal toocreate Azure Data Lake Analytics accounts, define jobs in [U-SQL](data-lake-analytics-u-sql-get-started.md), and submit jobs toohello Data Lake Analytics service.</span></span> <span data-ttu-id="2f89b-105">Дополнительные сведения о Data Lake Analytics см. в [обзоре Azure Data Lake Analytics](data-lake-analytics-overview.md).</span><span class="sxs-lookup"><span data-stu-id="2f89b-105">For more information about Data Lake Analytics, see [Azure Data Lake Analytics overview](data-lake-analytics-overview.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="2da30-106">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="2da30-106">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="2f89b-106">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="2f89b-106">Prerequisites</span></span>
 
-<span data-ttu-id="2da30-107">Прежде чем приступать к изучению этого руководства, необходимо оформить **подписку Azure**.</span><span class="sxs-lookup"><span data-stu-id="2da30-107">Before you begin this tutorial, you must have an **Azure subscription**.</span></span> <span data-ttu-id="2da30-108">Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="2da30-108">See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+<span data-ttu-id="2f89b-107">Прежде чем приступать к изучению этого руководства, необходимо оформить **подписку Azure**.</span><span class="sxs-lookup"><span data-stu-id="2f89b-107">Before you begin this tutorial, you must have an **Azure subscription**.</span></span> <span data-ttu-id="2f89b-108">Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="2f89b-108">See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="create-a-data-lake-analytics-account"></a><span data-ttu-id="2da30-109">Создание учетной записи аналитики озера данных</span><span class="sxs-lookup"><span data-stu-id="2da30-109">Create a Data Lake Analytics account</span></span>
+## <a name="create-a-data-lake-analytics-account"></a><span data-ttu-id="2f89b-109">Создание учетной записи аналитики озера данных</span><span class="sxs-lookup"><span data-stu-id="2f89b-109">Create a Data Lake Analytics account</span></span>
 
-<span data-ttu-id="2da30-110">Теперь мы одновременно создадим учетные записи Data Lake Analytics и Data Lake Store.</span><span class="sxs-lookup"><span data-stu-id="2da30-110">Now, you will create a Data Lake Analytics and a Data Lake Store account at the same time.</span></span>  <span data-ttu-id="2da30-111">Этот простой шаг занимает около минуты.</span><span class="sxs-lookup"><span data-stu-id="2da30-111">This step is simple and only takes about 60 seconds to finish.</span></span>
+<span data-ttu-id="2f89b-110">Теперь вы создадите аналитики Озера данных и хранилище Озера данных учетной записи в hello же время.</span><span class="sxs-lookup"><span data-stu-id="2f89b-110">Now, you will create a Data Lake Analytics and a Data Lake Store account at hello same time.</span></span>  <span data-ttu-id="2f89b-111">Этот шаг является простым и только занимает около toofinish 60 секунд.</span><span class="sxs-lookup"><span data-stu-id="2f89b-111">This step is simple and only takes about 60 seconds toofinish.</span></span>
 
-1. <span data-ttu-id="2da30-112">Выполните вход на [портал Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="2da30-112">Sign on to the [Azure portal](https://portal.azure.com).</span></span>
-2. <span data-ttu-id="2da30-113">Щелкните **Создать** >  **Данные+аналитика** > **Data Lake Analytics**.</span><span class="sxs-lookup"><span data-stu-id="2da30-113">Click **New** >  **Data + Analytics** > **Data Lake Analytics**.</span></span>
-3. <span data-ttu-id="2da30-114">Выберите значения для следующих параметров:</span><span class="sxs-lookup"><span data-stu-id="2da30-114">Select values for the following items:</span></span>
-   * <span data-ttu-id="2da30-115">**Имя**: имя учетной записи Data Lake Analytics (разрешены только строчные буквы и цифры).</span><span class="sxs-lookup"><span data-stu-id="2da30-115">**Name**: Name your Data Lake Analytics account (Only lower case letters and numbers allowed).</span></span>
-   * <span data-ttu-id="2da30-116">**Подписка**: выберите подписку Azure, которая используется для учетной записи аналитики.</span><span class="sxs-lookup"><span data-stu-id="2da30-116">**Subscription**: Choose the Azure subscription used for the Analytics account.</span></span>
-   * <span data-ttu-id="2da30-117">**Группа ресурсов**: выберите существующую группу ресурсов Azure или создайте новую группу.</span><span class="sxs-lookup"><span data-stu-id="2da30-117">**Resource Group**.</span></span> <span data-ttu-id="2da30-118">Обычно приложения состоят из множества компонентов, например веб-приложения, базы данных, сервера базы данных, хранилища и служб сторонних поставщиков.</span><span class="sxs-lookup"><span data-stu-id="2da30-118">Select an existing Azure Resource Group or create a new one.</span></span>
-   * <span data-ttu-id="2da30-119">**Расположение.**</span><span class="sxs-lookup"><span data-stu-id="2da30-119">**Location**.</span></span> <span data-ttu-id="2da30-120">выберите центр обработки данных Azure для учетной записи аналитики озера данных.</span><span class="sxs-lookup"><span data-stu-id="2da30-120">Select an Azure data center for the Data Lake Analytics account.</span></span>
-   * <span data-ttu-id="2da30-121">**Data Lake Store.** Следуйте инструкциям для создания учетной записи Data Lake Store или выберите имеющуюся.</span><span class="sxs-lookup"><span data-stu-id="2da30-121">**Data Lake Store**: Follow the instruction to create a new Data Lake Store account, or select an existing one.</span></span> 
-4. <span data-ttu-id="2da30-122">При необходимости выберите ценовую категорию для учетной записи Data Lake Analytics.</span><span class="sxs-lookup"><span data-stu-id="2da30-122">Optionally, select a pricing tier for your Data Lake Analytics account.</span></span>
-5. <span data-ttu-id="2da30-123">Щелкните **Создать**.</span><span class="sxs-lookup"><span data-stu-id="2da30-123">Click **Create**.</span></span> 
+1. <span data-ttu-id="2f89b-112">Войдите на toohello [портал Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="2f89b-112">Sign on toohello [Azure portal](https://portal.azure.com).</span></span>
+2. <span data-ttu-id="2f89b-113">Щелкните **Создать** >  **Данные+аналитика** > **Data Lake Analytics**.</span><span class="sxs-lookup"><span data-stu-id="2f89b-113">Click **New** >  **Data + Analytics** > **Data Lake Analytics**.</span></span>
+3. <span data-ttu-id="2f89b-114">Выберите значения для hello следующих элементов:</span><span class="sxs-lookup"><span data-stu-id="2f89b-114">Select values for hello following items:</span></span>
+   * <span data-ttu-id="2f89b-115">**Имя**: имя учетной записи Data Lake Analytics (разрешены только строчные буквы и цифры).</span><span class="sxs-lookup"><span data-stu-id="2f89b-115">**Name**: Name your Data Lake Analytics account (Only lower case letters and numbers allowed).</span></span>
+   * <span data-ttu-id="2f89b-116">**Подписки**: выберите hello подписку Azure, используемую для hello Analytics учетной записи.</span><span class="sxs-lookup"><span data-stu-id="2f89b-116">**Subscription**: Choose hello Azure subscription used for hello Analytics account.</span></span>
+   * <span data-ttu-id="2f89b-117">**Группа ресурсов**: выберите существующую группу ресурсов Azure или создайте новую группу.</span><span class="sxs-lookup"><span data-stu-id="2f89b-117">**Resource Group**.</span></span> <span data-ttu-id="2f89b-118">Обычно приложения состоят из множества компонентов, например веб-приложения, базы данных, сервера базы данных, хранилища и служб сторонних поставщиков.</span><span class="sxs-lookup"><span data-stu-id="2f89b-118">Select an existing Azure Resource Group or create a new one.</span></span>
+   * <span data-ttu-id="2f89b-119">**Расположение.**</span><span class="sxs-lookup"><span data-stu-id="2f89b-119">**Location**.</span></span> <span data-ttu-id="2f89b-120">Выберите центр данных Azure для учетной записи аналитики Озера данных hello.</span><span class="sxs-lookup"><span data-stu-id="2f89b-120">Select an Azure data center for hello Data Lake Analytics account.</span></span>
+   * <span data-ttu-id="2f89b-121">**Хранилище Озера данных**: следуйте toocreate hello инструкция новую учетную запись хранилища Озера данных, или выберите существующий.</span><span class="sxs-lookup"><span data-stu-id="2f89b-121">**Data Lake Store**: Follow hello instruction toocreate a new Data Lake Store account, or select an existing one.</span></span> 
+4. <span data-ttu-id="2f89b-122">При необходимости выберите ценовую категорию для учетной записи Data Lake Analytics.</span><span class="sxs-lookup"><span data-stu-id="2f89b-122">Optionally, select a pricing tier for your Data Lake Analytics account.</span></span>
+5. <span data-ttu-id="2f89b-123">Щелкните **Создать**.</span><span class="sxs-lookup"><span data-stu-id="2f89b-123">Click **Create**.</span></span> 
 
 
-## <a name="your-first-u-sql-script"></a><span data-ttu-id="2da30-124">Первый скрипт U-SQL</span><span class="sxs-lookup"><span data-stu-id="2da30-124">Your first U-SQL script</span></span>
+## <a name="your-first-u-sql-script"></a><span data-ttu-id="2f89b-124">Первый скрипт U-SQL</span><span class="sxs-lookup"><span data-stu-id="2f89b-124">Your first U-SQL script</span></span>
 
-<span data-ttu-id="2da30-125">Ниже приводится очень простой скрипт U-SQL.</span><span class="sxs-lookup"><span data-stu-id="2da30-125">The following text is a very simple U-SQL script.</span></span> <span data-ttu-id="2da30-126">Он определяет небольшой набор данных (в рамках скрипта) и записывает его в Azure Data Lake Store по умолчанию как файл с именем `/data.csv`.</span><span class="sxs-lookup"><span data-stu-id="2da30-126">All it does is define a small dataset within the script and then write that dataset out to the default Data Lake Store as a file called `/data.csv`.</span></span>
+<span data-ttu-id="2f89b-125">После текста Hello является очень простой скрипт U-SQL.</span><span class="sxs-lookup"><span data-stu-id="2f89b-125">hello following text is a very simple U-SQL script.</span></span> <span data-ttu-id="2f89b-126">Он осуществляет — определить небольшой набор данных в рамках скрипта hello, а затем написать этот набор данных в хранилище Озера данных по умолчанию toohello как файл с именем `/data.csv`.</span><span class="sxs-lookup"><span data-stu-id="2f89b-126">All it does is define a small dataset within hello script and then write that dataset out toohello default Data Lake Store as a file called `/data.csv`.</span></span>
 
 ```
 @a  = 
@@ -58,21 +58,21 @@ ms.lasthandoff: 08/18/2017
         ) AS 
               D( customer, amount );
 OUTPUT @a
-    TO "/data.csv"
+    too"/data.csv"
     USING Outputters.Csv();
 ```
 
-## <a name="submit-a-u-sql-job"></a><span data-ttu-id="2da30-127">Отправка задания U-SQL</span><span class="sxs-lookup"><span data-stu-id="2da30-127">Submit a U-SQL job</span></span>
+## <a name="submit-a-u-sql-job"></a><span data-ttu-id="2f89b-127">Отправка задания U-SQL</span><span class="sxs-lookup"><span data-stu-id="2f89b-127">Submit a U-SQL job</span></span>
 
-1. <span data-ttu-id="2da30-128">В учетной записи Data Lake Analytics щелкните **Новое задание**.</span><span class="sxs-lookup"><span data-stu-id="2da30-128">From the Data Lake Analytics account, click **New Job**.</span></span>
-2. <span data-ttu-id="2da30-129">Вставьте в текст скрипт U-SQL, представленный выше.</span><span class="sxs-lookup"><span data-stu-id="2da30-129">Paste in the text of the U-SQL script shown above.</span></span> 
-3. <span data-ttu-id="2da30-130">Щелкните **Отправить задание**.</span><span class="sxs-lookup"><span data-stu-id="2da30-130">Click **Submit Job**.</span></span>   
-4. <span data-ttu-id="2da30-131">Подождите, пока состояние задания не изменится на **Успешно**.</span><span class="sxs-lookup"><span data-stu-id="2da30-131">Wait until the job status changes to **Succeeded**.</span></span>
-5. <span data-ttu-id="2da30-132">Если задание завершилось сбоем, см. сведения о [мониторинге и устранении неполадок с заданиями Azure Data Lake Analytics](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).</span><span class="sxs-lookup"><span data-stu-id="2da30-132">If the job failed, see [Monitor and troubleshoot Data Lake Analytics jobs](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).</span></span>
-6. <span data-ttu-id="2da30-133">Перейдите на вкладку **Выходные данные** и щелкните `data.csv`.</span><span class="sxs-lookup"><span data-stu-id="2da30-133">Click the **Output** tab, and then click `data.csv`.</span></span> 
+1. <span data-ttu-id="2f89b-128">Hello учетной записи аналитики Озера данных, щелкните **новое задание**.</span><span class="sxs-lookup"><span data-stu-id="2f89b-128">From hello Data Lake Analytics account, click **New Job**.</span></span>
+2. <span data-ttu-id="2f89b-129">Вставьте текст hello hello скрипт U-SQL, показанном выше.</span><span class="sxs-lookup"><span data-stu-id="2f89b-129">Paste in hello text of hello U-SQL script shown above.</span></span> 
+3. <span data-ttu-id="2f89b-130">Щелкните **Отправить задание**.</span><span class="sxs-lookup"><span data-stu-id="2f89b-130">Click **Submit Job**.</span></span>   
+4. <span data-ttu-id="2f89b-131">Подождите, пока изменения состояния задания hello слишком**успешно**.</span><span class="sxs-lookup"><span data-stu-id="2f89b-131">Wait until hello job status changes too**Succeeded**.</span></span>
+5. <span data-ttu-id="2f89b-132">Если не удалось выполнить задание hello, см. раздел [монитора и диагностика заданий аналитики Озера данных](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).</span><span class="sxs-lookup"><span data-stu-id="2f89b-132">If hello job failed, see [Monitor and troubleshoot Data Lake Analytics jobs](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).</span></span>
+6. <span data-ttu-id="2f89b-133">Нажмите кнопку hello **вывода** , а затем щелкните `data.csv`.</span><span class="sxs-lookup"><span data-stu-id="2f89b-133">Click hello **Output** tab, and then click `data.csv`.</span></span> 
 
-## <a name="see-also"></a><span data-ttu-id="2da30-134">См. также</span><span class="sxs-lookup"><span data-stu-id="2da30-134">See also</span></span>
+## <a name="see-also"></a><span data-ttu-id="2f89b-134">См. также</span><span class="sxs-lookup"><span data-stu-id="2f89b-134">See also</span></span>
 
-* <span data-ttu-id="2da30-135">Чтобы приступить к разработке приложений U-SQL, ознакомьтесь со статьей [Разработка скриптов U-SQL с помощью средств озера данных для Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="2da30-135">To get started developing U-SQL applications, see [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).</span></span>
-* <span data-ttu-id="2da30-136">Для знакомства с U-SQL см. статью о [начале работы с языком U-SQL для Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="2da30-136">To learn U-SQL, see [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md).</span></span>
-* <span data-ttu-id="2da30-137">Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).</span><span class="sxs-lookup"><span data-stu-id="2da30-137">For management tasks, see [Manage Azure Data Lake Analytics using Azure portal](data-lake-analytics-manage-use-portal.md).</span></span>
+* <span data-ttu-id="2f89b-135">tooget к разработке приложений U-SQL, в разделе [сценариев разработки U-SQL, с помощью средства Озера данных для Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="2f89b-135">tooget started developing U-SQL applications, see [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).</span></span>
+* <span data-ttu-id="2f89b-136">в разделе toolearn U-SQL [Приступая к работе с Azure аналитика Озера данных U-SQL языка](data-lake-analytics-u-sql-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="2f89b-136">toolearn U-SQL, see [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md).</span></span>
+* <span data-ttu-id="2f89b-137">Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).</span><span class="sxs-lookup"><span data-stu-id="2f89b-137">For management tasks, see [Manage Azure Data Lake Analytics using Azure portal](data-lake-analytics-manage-use-portal.md).</span></span>

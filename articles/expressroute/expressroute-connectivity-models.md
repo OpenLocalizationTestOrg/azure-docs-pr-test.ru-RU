@@ -1,0 +1,47 @@
+---
+title: "Модели подключения к ExpressRoute: подключение через поставщиков сетевых услуг, обмен и поставщики Ethernet tooMicrosoft Azure | Документы Microsoft"
+description: "Данная статья содержит различные режимы hello связи между сетью и службами Microsoft Azure, Office 365 и Dynamics 365 hello клиента. Клиенты могут использовать поставщиков MPLS, поставщиков облачных служб Exchange и поставщиков Ethernet."
+documentationcenter: na
+services: expressroute
+author: cherylmc
+manager: timlt
+editor: 
+ms.assetid: 
+ms.service: expressroute
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 02/09/2017
+ms.author: cherylmc
+ms.openlocfilehash: 2682e6e45b2892869068f132bedb4bb08e3f89a9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 10/06/2017
+---
+# <a name="expressroute-connectivity-models"></a><span data-ttu-id="0331f-104">Модели подключения ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="0331f-104">ExpressRoute connectivity models</span></span>
+<span data-ttu-id="0331f-105">Можно создать соединение между локальной сетью и hello Microsoft cloud тремя разными способами [совместного размещения CloudExchange](#CloudExchange), [Ethernet-подключение точка-точка](#Ethernet)и [Подключения any к any (IPVPN)](#IPVPN).</span><span class="sxs-lookup"><span data-stu-id="0331f-105">You can create a connection between your on-premises network and hello Microsoft cloud in three different ways, [CloudExchange Co-location](#CloudExchange), [Point-to-point Ethernet Connection](#Ethernet), and [Any-to-any (IPVPN) Connection](#IPVPN).</span></span> <span data-ttu-id="0331f-106">Поставщики услуг подключения могут предлагать одну или несколько моделей подключения.</span><span class="sxs-lookup"><span data-stu-id="0331f-106">Connectivity providers can offer one or more connectivity models.</span></span> <span data-ttu-id="0331f-107">Можно работать с моделью hello toopick подключения поставщика, лучше всего подходит для вас.</span><span class="sxs-lookup"><span data-stu-id="0331f-107">You can work with your connectivity provider toopick hello model that works best for you.</span></span>
+<br><br>
+
+![Схема моделей подключения ExpressRoute](./media/expressroute-connectivity-models/expressroute-connectivity-models-diagram.png)
+
+## <span data-ttu-id="0331f-109"><a name="CloudExchange"></a>Совместное размещение в Cloud Exchange</span><span class="sxs-lookup"><span data-stu-id="0331f-109"><a name="CloudExchange"></a>Co-located at a cloud exchange</span></span>
+<span data-ttu-id="0331f-110">Если настроить совместное размещение на территории с exchange облака, вы можете упорядочить toohello виртуального кросс подключений Microsoft cloud через Ethernet exchange hello совместного размещения поставщика.</span><span class="sxs-lookup"><span data-stu-id="0331f-110">If you are co-located in a facility with a cloud exchange, you can order virtual cross-connections toohello Microsoft cloud through hello co-location provider’s Ethernet exchange.</span></span> <span data-ttu-id="0331f-111">Совместное размещение поставщики обеспечивают уровня 2 кросс подключений или управляемый сервер уровня 3 кросс подключений между инфраструктуры на территории совместного размещения hello и облако Microsoft hello.</span><span class="sxs-lookup"><span data-stu-id="0331f-111">Co-location providers can offer either Layer 2 cross-connections, or managed Layer 3 cross-connections between your infrastructure in hello co-location facility and hello Microsoft cloud.</span></span>
+
+## <span data-ttu-id="0331f-112"><a name="Ethernet"></a>Подключения Ethernet типа "точка — точка"</span><span class="sxs-lookup"><span data-stu-id="0331f-112"><a name="Ethernet"></a>Point-to-point Ethernet connections</span></span>
+<span data-ttu-id="0331f-113">Можно подключить вашей локальной центрах обработки данных и офисов toohello Microsoft cloud через Ethernet ссылки между узлами.</span><span class="sxs-lookup"><span data-stu-id="0331f-113">You can connect your on-premises datacenters/offices toohello Microsoft cloud through point-to-point Ethernet links.</span></span> <span data-ttu-id="0331f-114">Точка-точка Ethernet поставщики могут предложить подключений уровня 2 или управляемого подключения уровня 3 между сайтом и hello Microsoft cloud.</span><span class="sxs-lookup"><span data-stu-id="0331f-114">Point-to-point Ethernet providers can offer Layer 2 connections, or managed Layer 3 connections between your site and hello Microsoft cloud.</span></span>
+
+## <span data-ttu-id="0331f-115"><a name="IPVPN"></a>Сети типа "любой к любому" (IPVPN)</span><span class="sxs-lookup"><span data-stu-id="0331f-115"><a name="IPVPN"></a>Any-to-any (IPVPN) networks</span></span>
+<span data-ttu-id="0331f-116">Можно интегрировать hello Microsoft cloud глобальной сети.</span><span class="sxs-lookup"><span data-stu-id="0331f-116">You can integrate your WAN with hello Microsoft cloud.</span></span> <span data-ttu-id="0331f-117">Поставщики IP VPN (обычно это MPLS VPN) предлагают подключение между филиалами и центрами обработки данных типа "любой к любому".</span><span class="sxs-lookup"><span data-stu-id="0331f-117">IPVPN providers (typically MPLS VPN) offer any-to-any connectivity between your branch offices and datacenters.</span></span> <span data-ttu-id="0331f-118">облако может быть глобальной сети toomake взаимосвязанных tooyour она выглядеть просто Microsoft Hello, например филиала компании.</span><span class="sxs-lookup"><span data-stu-id="0331f-118">hello Microsoft cloud can be interconnected tooyour WAN toomake it look just like any other branch office.</span></span> <span data-ttu-id="0331f-119">Обычно поставщики глобальных вычислительных сетей предлагают управляемые подключения третьего уровня.</span><span class="sxs-lookup"><span data-stu-id="0331f-119">WAN providers typically offer managed Layer 3 connectivity.</span></span> <span data-ttu-id="0331f-120">ExpressRoute и функции по всем hello выше модели подключения к идентичны.</span><span class="sxs-lookup"><span data-stu-id="0331f-120">ExpressRoute capabilities and features are all identical across all of hello above connectivity models.</span></span> 
+
+## <a name="next-steps"></a><span data-ttu-id="0331f-121">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="0331f-121">Next steps</span></span>
+* <span data-ttu-id="0331f-122">Узнайте больше о подключениях ExpressRoute и доменах маршрутизации.</span><span class="sxs-lookup"><span data-stu-id="0331f-122">Learn about ExpressRoute connections and routing domains.</span></span> <span data-ttu-id="0331f-123">См. статью [Каналы ExpressRoute и домены маршрутизации](expressroute-circuit-peerings.md).</span><span class="sxs-lookup"><span data-stu-id="0331f-123">See [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md).</span></span>
+* <span data-ttu-id="0331f-124">Узнайте о функциях ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="0331f-124">Learn about ExpressRoute features.</span></span> <span data-ttu-id="0331f-125">В разделе hello [Технический обзор ExpressRoute](expressroute-introduction.md)</span><span class="sxs-lookup"><span data-stu-id="0331f-125">See hello [ExpressRoute Technical Overview](expressroute-introduction.md)</span></span>
+* <span data-ttu-id="0331f-126">Найти поставщика услуг.</span><span class="sxs-lookup"><span data-stu-id="0331f-126">Find a service provider.</span></span> <span data-ttu-id="0331f-127">См. статью [Партнеры и одноранговые расположения ExpressRoute](expressroute-locations.md).</span><span class="sxs-lookup"><span data-stu-id="0331f-127">See [ExpressRoute partners and peering locations](expressroute-locations.md).</span></span>
+* <span data-ttu-id="0331f-128">Убедитесь, что выполнены все необходимые условия.</span><span class="sxs-lookup"><span data-stu-id="0331f-128">Ensure that all prerequisites are met.</span></span> <span data-ttu-id="0331f-129">См. статью [Предварительные требования и контрольный список для ExpressRoute](expressroute-prerequisites.md).</span><span class="sxs-lookup"><span data-stu-id="0331f-129">See [ExpressRoute prerequisites](expressroute-prerequisites.md).</span></span>
+* <span data-ttu-id="0331f-130">См. требования к toohello для [маршрутизации](expressroute-routing.md), [NAT](expressroute-nat.md), и [QoS](expressroute-qos.md).</span><span class="sxs-lookup"><span data-stu-id="0331f-130">Refer toohello requirements for [Routing](expressroute-routing.md), [NAT](expressroute-nat.md), and [QoS](expressroute-qos.md).</span></span>
+* <span data-ttu-id="0331f-131">Настройте подключение ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="0331f-131">Configure your ExpressRoute connection.</span></span>
+  * [<span data-ttu-id="0331f-132">Создайте канал ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="0331f-132">Create an ExpressRoute circuit</span></span>](expressroute-howto-circuit-portal-resource-manager.md)
+  * [<span data-ttu-id="0331f-133">Настройка маршрутизации</span><span class="sxs-lookup"><span data-stu-id="0331f-133">Configure routing</span></span>](expressroute-howto-routing-portal-resource-manager.md)
+  * [<span data-ttu-id="0331f-134">Связывание виртуальной сети tooan канал ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="0331f-134">Link a VNet tooan ExpressRoute circuit</span></span>](expressroute-howto-linkvnet-portal-resource-manager.md)

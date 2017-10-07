@@ -1,6 +1,6 @@
 ---
-title: "Расширение возможностей скриптов U-SQL c R в Azure Data Lake Analytics | Документация Майкрософт"
-description: "Узнайте о том, как выполнять код R в скриптах U-SQL"
+title: "aaaExtend U-SQL скрипты с языком R в аналитике Озера данных Azure | Документы Microsoft"
+description: "Узнайте о том, как код toorun R в скриптах U-SQL"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
-ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 24affd4963a08d30a7111b49af388e9c1268430e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-get-started-with-extending-u-sql-with-r"></a><span data-ttu-id="918ff-103">Руководство. Начало работы с расширением возможностей U-SQL c R</span><span class="sxs-lookup"><span data-stu-id="918ff-103">Tutorial: Get started with extending U-SQL with R</span></span>
+# <a name="tutorial-get-started-with-extending-u-sql-with-r"></a><span data-ttu-id="5c612-103">Руководство. Начало работы с расширением возможностей U-SQL c R</span><span class="sxs-lookup"><span data-stu-id="5c612-103">Tutorial: Get started with extending U-SQL with R</span></span>
 
-<span data-ttu-id="918ff-104">В следующих примерах представлены основные шаги по развертыванию кода R:</span><span class="sxs-lookup"><span data-stu-id="918ff-104">The following example illustrates the basic steps for deploying R code:</span></span>
-* <span data-ttu-id="918ff-105">Используйте инструкцию `REFERENCE ASSEMBLY`, чтобы включить расширения R для скрипта U-SQL.</span><span class="sxs-lookup"><span data-stu-id="918ff-105">Use the `REFERENCE ASSEMBLY` statement to enable R extensions for the U-SQL Script.</span></span>
-* <span data-ttu-id="918ff-106">Используйте операцию ` REDUCE` для разделения входных данных в ключе.</span><span class="sxs-lookup"><span data-stu-id="918ff-106">Use the` REDUCE` operation to partition the input data on a key.</span></span>
-* <span data-ttu-id="918ff-107">Расширения R для U-SQL включают встроенное средство редукции (`Extension.R.Reducer`), которое выполняет код R в каждой назначенной ему вершине.</span><span class="sxs-lookup"><span data-stu-id="918ff-107">The R extensions for U-SQL include a built-in reducer (`Extension.R.Reducer`) that runs R code on each vertex assigned to the reducer.</span></span> 
-* <span data-ttu-id="918ff-108">Передача данных между U-SQL и R с использованием выделенных именованных таблиц данных `inputFromUSQL` и `outputToUSQL ` соответственно. Имена идентификаторов входной и выходной таблицы данных исправлены (то есть пользователи не могут изменить эти предопределенные имена идентификаторов входной и выходной таблицы данных).</span><span class="sxs-lookup"><span data-stu-id="918ff-108">Usage of dedicated named data frames called `inputFromUSQL` and `outputToUSQL `respectively to pass data between U-SQL and R. Input and output DataFrame identifier names are fixed (that is, users cannot change these predefined names of input and output DataFrame identifiers).</span></span>
+<span data-ttu-id="5c612-104">Следующий пример Hello рассмотрены основные шаги развертывания кода R hello:</span><span class="sxs-lookup"><span data-stu-id="5c612-104">hello following example illustrates hello basic steps for deploying R code:</span></span>
+* <span data-ttu-id="5c612-105">Используйте hello `REFERENCE ASSEMBLY` расширения tooenable R инструкции для hello скрипт U-SQL.</span><span class="sxs-lookup"><span data-stu-id="5c612-105">Use hello `REFERENCE ASSEMBLY` statement tooenable R extensions for hello U-SQL Script.</span></span>
+* <span data-ttu-id="5c612-106">Используйте` REDUCE` операции toopartition hello входные данные по ключу.</span><span class="sxs-lookup"><span data-stu-id="5c612-106">Use the` REDUCE` operation toopartition hello input data on a key.</span></span>
+* <span data-ttu-id="5c612-107">расширения Hello R для U-SQL включают в себя встроенные редуктора (`Extension.R.Reducer`), которое будет выполняться код R на каждой вершины назначенный toohello редуктора.</span><span class="sxs-lookup"><span data-stu-id="5c612-107">hello R extensions for U-SQL include a built-in reducer (`Extension.R.Reducer`) that runs R code on each vertex assigned toohello reducer.</span></span> 
+* <span data-ttu-id="5c612-108">Использование выделенного с именем кадров данных называется `inputFromUSQL` и `outputToUSQL `соответственно toopass данных между U-SQL и R. ввода и вывода исправленные имена идентификаторов кадр данных (то есть, пользователи не могут изменить эти стандартные имена входных данных и вывода кадр данных идентификаторы).</span><span class="sxs-lookup"><span data-stu-id="5c612-108">Usage of dedicated named data frames called `inputFromUSQL` and `outputToUSQL `respectively toopass data between U-SQL and R. Input and output DataFrame identifier names are fixed (that is, users cannot change these predefined names of input and output DataFrame identifiers).</span></span>
 
-## <a name="embedding-r-code-in-the-u-sql-script"></a><span data-ttu-id="918ff-109">Внедрение кода R в скрипт U-SQL</span><span class="sxs-lookup"><span data-stu-id="918ff-109">Embedding R code in the U-SQL script</span></span>
+## <a name="embedding-r-code-in-hello-u-sql-script"></a><span data-ttu-id="5c612-109">Внедрение кода R в hello скрипт U-SQL</span><span class="sxs-lookup"><span data-stu-id="5c612-109">Embedding R code in hello U-SQL script</span></span>
 
-<span data-ttu-id="918ff-110">Код R можно встроить в скрипт U-SQL с помощью параметра команды средства `Extension.R.Reducer`.</span><span class="sxs-lookup"><span data-stu-id="918ff-110">You can inline the R code your U-SQL script by using the command parameter of the `Extension.R.Reducer`.</span></span> <span data-ttu-id="918ff-111">Например, можно объявить скрипт R как строковую переменную и передать его в качестве параметра в Reducer.</span><span class="sxs-lookup"><span data-stu-id="918ff-111">For example, you can declare the R script as a string variable and pass it as a parameter to the Reducer.</span></span>
+<span data-ttu-id="5c612-110">Вы можете hello R во встроенном коде на ваш скрипт U-SQL с помощью параметра команды hello hello `Extension.R.Reducer`.</span><span class="sxs-lookup"><span data-stu-id="5c612-110">You can inline hello R code your U-SQL script by using hello command parameter of hello `Extension.R.Reducer`.</span></span> <span data-ttu-id="5c612-111">Например можно объявить hello сценария R в переменной строки и передайте его в качестве параметра toohello редуктора.</span><span class="sxs-lookup"><span data-stu-id="5c612-111">For example, you can declare hello R script as a string variable and pass it as a parameter toohello Reducer.</span></span>
 
 
     REFERENCE ASSEMBLY [ExtR];
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
     DECLARE @myRScript = @"
     inputFromUSQL$Species = as.factor(inputFromUSQL$Species)
     lm.fit=lm(unclass(Species)~.-Par, data=inputFromUSQL)
-    #do not return readonly columns and make sure that the column names are the same in usql and r scripts,
+    #do not return readonly columns and make sure that hello column names are hello same in usql and r scripts,
     outputToUSQL=data.frame(summary(lm.fit)$coefficients)
     colnames(outputToUSQL) <- c(""Estimate"", ""StdError"", ""tValue"", ""Pr"")
     outputToUSQL
@@ -46,16 +46,16 @@ ms.lasthandoff: 07/11/2017
     
     @RScriptOutput = REDUCE … USING new Extension.R.Reducer(command:@myRScript, rReturnType:"dataframe");
 
-## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a><span data-ttu-id="918ff-112">Сохраните код R в отдельном файле и ссылайтесь на него в скрипте U-SQL</span><span class="sxs-lookup"><span data-stu-id="918ff-112">Keep the R code in a separate file and reference it  the U-SQL script</span></span>
+## <a name="keep-hello-r-code-in-a-separate-file-and-reference-it--hello-u-sql-script"></a><span data-ttu-id="5c612-112">Сохранить в отдельном файле кода hello R и ссылок на него скрипт hello U-SQL</span><span class="sxs-lookup"><span data-stu-id="5c612-112">Keep hello R code in a separate file and reference it  hello U-SQL script</span></span>
 
-<span data-ttu-id="918ff-113">В следующем примере демонстрируется более сложное использование.</span><span class="sxs-lookup"><span data-stu-id="918ff-113">The following example illustrates a more complex usage.</span></span> <span data-ttu-id="918ff-114">В этом случае код R развертывается как RESOURCE, который является скриптом U-SQL.</span><span class="sxs-lookup"><span data-stu-id="918ff-114">In this case, the R code is deployed as a RESOURCE that is the U-SQL script.</span></span>
+<span data-ttu-id="5c612-113">Следующий пример Hello рассмотрены более сложные использования.</span><span class="sxs-lookup"><span data-stu-id="5c612-113">hello following example illustrates a more complex usage.</span></span> <span data-ttu-id="5c612-114">В этом случае код hello R развертывается как РЕСУРС, который является hello скрипт U-SQL.</span><span class="sxs-lookup"><span data-stu-id="5c612-114">In this case, hello R code is deployed as a RESOURCE that is hello U-SQL script.</span></span>
 
-<span data-ttu-id="918ff-115">Сохраните этот код R как отдельный файл.</span><span class="sxs-lookup"><span data-stu-id="918ff-115">Save this R code as a separate file.</span></span>
+<span data-ttu-id="5c612-115">Сохраните этот код R как отдельный файл.</span><span class="sxs-lookup"><span data-stu-id="5c612-115">Save this R code as a separate file.</span></span>
 
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence")) 
 
-<span data-ttu-id="918ff-116">Используйте скрипт U-SQL для развертывания этого скрипта R с оператором DEPLOY RESOURCE.</span><span class="sxs-lookup"><span data-stu-id="918ff-116">Use a U-SQL script to deploy that R script with the DEPLOY RESOURCE statement.</span></span>
+<span data-ttu-id="5c612-116">Используйте этот скрипт R toodeploy скрипт U-SQL с hello инструкции РАЗВЕРТЫВАНИЯ РЕСУРСОВ.</span><span class="sxs-lookup"><span data-stu-id="5c612-116">Use a U-SQL script toodeploy that R script with hello DEPLOY RESOURCE statement.</span></span>
 
     REFERENCE ASSEMBLY [ExtR];
 
@@ -90,30 +90,30 @@ ms.lasthandoff: 07/11/2017
         PRODUCE Par, fit double, lwr double, upr double
         READONLY Par
         USING new Extension.R.Reducer(scriptFile:"RinUSQL_PredictUsingLinearModelasDF.R", rReturnType:"dataframe", stringsAsFactors:false);
-        OUTPUT @RScriptOutput TO @OutputFilePredictions USING Outputters.Tsv();
+        OUTPUT @RScriptOutput too@OutputFilePredictions USING Outputters.Tsv();
 
-## <a name="how-r-integrates-with-u-sql"></a><span data-ttu-id="918ff-117">Интеграция R c U-SQL</span><span class="sxs-lookup"><span data-stu-id="918ff-117">How R Integrates with U-SQL</span></span>
+## <a name="how-r-integrates-with-u-sql"></a><span data-ttu-id="5c612-117">Интеграция R c U-SQL</span><span class="sxs-lookup"><span data-stu-id="5c612-117">How R Integrates with U-SQL</span></span>
 
-### <a name="datatypes"></a><span data-ttu-id="918ff-118">Типы данных</span><span class="sxs-lookup"><span data-stu-id="918ff-118">Datatypes</span></span>
-* <span data-ttu-id="918ff-119">Строковые и числовые столбцы из U-SQL преобразуются без изменений между таблицей данных на R и U-SQL [поддерживаемые типы: `double`, `string`, `bool`, `integer`, `byte`].</span><span class="sxs-lookup"><span data-stu-id="918ff-119">String and numeric columns from U-SQL are converted as-is between R DataFrame and U-SQL [supported types: `double`, `string`, `bool`, `integer`, `byte`].</span></span>
-* <span data-ttu-id="918ff-120">Тип данных `Factor` не поддерживается в U-SQL.</span><span class="sxs-lookup"><span data-stu-id="918ff-120">The `Factor` datatype is not supported in U-SQL.</span></span>
-* <span data-ttu-id="918ff-121">Тип `byte[]` должен быть сериализован как строка `string` в кодировке Base64.</span><span class="sxs-lookup"><span data-stu-id="918ff-121">`byte[]` must be serialized as a base64-encoded `string`.</span></span>
-* <span data-ttu-id="918ff-122">После создания в U-SQL входной таблицы данных R или установки для параметра средства редукции `stringsAsFactors: true` значения true строки U-SQL можно преобразовать в коэффициенты кода R.</span><span class="sxs-lookup"><span data-stu-id="918ff-122">U-SQL strings can be converted to factors in R code, once U-SQL create R input dataframe or by setting the reducer parameter `stringsAsFactors: true`.</span></span>
+### <a name="datatypes"></a><span data-ttu-id="5c612-118">Типы данных</span><span class="sxs-lookup"><span data-stu-id="5c612-118">Datatypes</span></span>
+* <span data-ttu-id="5c612-119">Строковые и числовые столбцы из U-SQL преобразуются без изменений между таблицей данных на R и U-SQL [поддерживаемые типы: `double`, `string`, `bool`, `integer`, `byte`].</span><span class="sxs-lookup"><span data-stu-id="5c612-119">String and numeric columns from U-SQL are converted as-is between R DataFrame and U-SQL [supported types: `double`, `string`, `bool`, `integer`, `byte`].</span></span>
+* <span data-ttu-id="5c612-120">Hello `Factor` тип данных не поддерживается в U-SQL.</span><span class="sxs-lookup"><span data-stu-id="5c612-120">hello `Factor` datatype is not supported in U-SQL.</span></span>
+* <span data-ttu-id="5c612-121">Тип `byte[]` должен быть сериализован как строка `string` в кодировке Base64.</span><span class="sxs-lookup"><span data-stu-id="5c612-121">`byte[]` must be serialized as a base64-encoded `string`.</span></span>
+* <span data-ttu-id="5c612-122">Строки U-SQL могут быть toofactors, преобразованное в коде R, один раз U-SQL создать входной кадр данных R или параметром задание hello редуктора `stringsAsFactors: true`.</span><span class="sxs-lookup"><span data-stu-id="5c612-122">U-SQL strings can be converted toofactors in R code, once U-SQL create R input dataframe or by setting hello reducer parameter `stringsAsFactors: true`.</span></span>
 
-### <a name="schemas"></a><span data-ttu-id="918ff-123">Схемы</span><span class="sxs-lookup"><span data-stu-id="918ff-123">Schemas</span></span>
-* <span data-ttu-id="918ff-124">Наборы данных U-SQL не могут содержать повторяемые имена столбцов.</span><span class="sxs-lookup"><span data-stu-id="918ff-124">U-SQL datasets cannot have duplicate column names.</span></span>
-* <span data-ttu-id="918ff-125">Имена столбцов в наборах данных U-SQL должны быть строками.</span><span class="sxs-lookup"><span data-stu-id="918ff-125">U-SQL datasets column names must be strings.</span></span>
-* <span data-ttu-id="918ff-126">Имена столбцов в скриптах U-SQL и R должны совпадать.</span><span class="sxs-lookup"><span data-stu-id="918ff-126">Column names must be the same in U-SQL and R scripts.</span></span>
-* <span data-ttu-id="918ff-127">Столбцы с доступом только для чтения не могут быть частью выходной таблицы данных,</span><span class="sxs-lookup"><span data-stu-id="918ff-127">Readonly column cannot be part of the output dataframe.</span></span> <span data-ttu-id="918ff-128">так как они автоматически вставляются обратно в таблицу U-SQL (если она является частью выходной схемы определяемых пользователем объектов).</span><span class="sxs-lookup"><span data-stu-id="918ff-128">Because readonly columns are automatically injected back in the U-SQL table if it is a part of output schema of UDO.</span></span>
+### <a name="schemas"></a><span data-ttu-id="5c612-123">Схемы</span><span class="sxs-lookup"><span data-stu-id="5c612-123">Schemas</span></span>
+* <span data-ttu-id="5c612-124">Наборы данных U-SQL не могут содержать повторяемые имена столбцов.</span><span class="sxs-lookup"><span data-stu-id="5c612-124">U-SQL datasets cannot have duplicate column names.</span></span>
+* <span data-ttu-id="5c612-125">Имена столбцов в наборах данных U-SQL должны быть строками.</span><span class="sxs-lookup"><span data-stu-id="5c612-125">U-SQL datasets column names must be strings.</span></span>
+* <span data-ttu-id="5c612-126">Имена столбцов должны hello же U-SQL и R-сценариев.</span><span class="sxs-lookup"><span data-stu-id="5c612-126">Column names must be hello same in U-SQL and R scripts.</span></span>
+* <span data-ttu-id="5c612-127">Только для чтения столбец не может быть частью блока hello выходных данных.</span><span class="sxs-lookup"><span data-stu-id="5c612-127">Readonly column cannot be part of hello output dataframe.</span></span> <span data-ttu-id="5c612-128">Так как столбцы только для чтения автоматически добавляются обратно в таблице hello U-SQL, если он является частью схемы вывода данных из определяемого пользователем ОПЕРАТОРА.</span><span class="sxs-lookup"><span data-stu-id="5c612-128">Because readonly columns are automatically injected back in hello U-SQL table if it is a part of output schema of UDO.</span></span>
 
-### <a name="functional-limitations"></a><span data-ttu-id="918ff-129">Ограничения функциональных возможностей</span><span class="sxs-lookup"><span data-stu-id="918ff-129">Functional limitations</span></span>
-* <span data-ttu-id="918ff-130">Ядро R нельзя создать дважды в одном процессе.</span><span class="sxs-lookup"><span data-stu-id="918ff-130">The R Engine can't be instantiated twice in the same process.</span></span> 
-* <span data-ttu-id="918ff-131">В настоящее время U-SQL не поддерживает определяемые пользователем операторы Combiner для прогнозирования с помощью секционированных моделей, созданных с использованием определяемых пользователем операторов Reducer.</span><span class="sxs-lookup"><span data-stu-id="918ff-131">Currently, U-SQL does not support Combiner UDOs for prediction using partitioned models generated using Reducer UDOs.</span></span> <span data-ttu-id="918ff-132">Пользователи могут объявить секционированные модели как ресурс и использовать их в своих скриптах R (см. пример кода `ExtR_PredictUsingLMRawStringReducer.usql`)</span><span class="sxs-lookup"><span data-stu-id="918ff-132">Users can declare the partitioned models as resource and use them in their R Script (see sample code `ExtR_PredictUsingLMRawStringReducer.usql`)</span></span>
+### <a name="functional-limitations"></a><span data-ttu-id="5c612-129">Ограничения функциональных возможностей</span><span class="sxs-lookup"><span data-stu-id="5c612-129">Functional limitations</span></span>
+* <span data-ttu-id="5c612-130">Hello модуль R не может быть создан в два раза hello одного процесса.</span><span class="sxs-lookup"><span data-stu-id="5c612-130">hello R Engine can't be instantiated twice in hello same process.</span></span> 
+* <span data-ttu-id="5c612-131">В настоящее время U-SQL не поддерживает определяемые пользователем операторы Combiner для прогнозирования с помощью секционированных моделей, созданных с использованием определяемых пользователем операторов Reducer.</span><span class="sxs-lookup"><span data-stu-id="5c612-131">Currently, U-SQL does not support Combiner UDOs for prediction using partitioned models generated using Reducer UDOs.</span></span> <span data-ttu-id="5c612-132">Пользователи могут объявить hello секционированы моделей в качестве ресурса и использовать их в R-сценария (см. пример кода `ExtR_PredictUsingLMRawStringReducer.usql`)</span><span class="sxs-lookup"><span data-stu-id="5c612-132">Users can declare hello partitioned models as resource and use them in their R Script (see sample code `ExtR_PredictUsingLMRawStringReducer.usql`)</span></span>
 
-### <a name="r-versions"></a><span data-ttu-id="918ff-133">Версии R</span><span class="sxs-lookup"><span data-stu-id="918ff-133">R Versions</span></span>
-<span data-ttu-id="918ff-134">Поддерживается только R 3.2.2.</span><span class="sxs-lookup"><span data-stu-id="918ff-134">Only R 3.2.2 is supported.</span></span>
+### <a name="r-versions"></a><span data-ttu-id="5c612-133">Версии R</span><span class="sxs-lookup"><span data-stu-id="5c612-133">R Versions</span></span>
+<span data-ttu-id="5c612-134">Поддерживается только R 3.2.2.</span><span class="sxs-lookup"><span data-stu-id="5c612-134">Only R 3.2.2 is supported.</span></span>
 
-### <a name="standard-r-modules"></a><span data-ttu-id="918ff-135">Стандартные модули R</span><span class="sxs-lookup"><span data-stu-id="918ff-135">Standard R modules</span></span>
+### <a name="standard-r-modules"></a><span data-ttu-id="5c612-135">Стандартные модули R</span><span class="sxs-lookup"><span data-stu-id="5c612-135">Standard R modules</span></span>
 
     base
     boot
@@ -163,15 +163,15 @@ ms.lasthandoff: 07/11/2017
     utils
     XML
 
-### <a name="input-and-output-size-limitations"></a><span data-ttu-id="918ff-136">Ограничения размера входных и выходных данных</span><span class="sxs-lookup"><span data-stu-id="918ff-136">Input and Output size limitations</span></span>
-<span data-ttu-id="918ff-137">Каждой вершине назначен ограниченный объем памяти.</span><span class="sxs-lookup"><span data-stu-id="918ff-137">Every vertex has a limited amount of memory assigned to it.</span></span> <span data-ttu-id="918ff-138">Так как входящие и исходящие кадры данных должны существовать в памяти кода R, общий размер входных и выходных данных должен находиться в пределах 500 ГБ.</span><span class="sxs-lookup"><span data-stu-id="918ff-138">Because the input and output DataFrames must exist in memory in the R code, the total size for the input and output cannot exceed 500 MB.</span></span>
+### <a name="input-and-output-size-limitations"></a><span data-ttu-id="5c612-136">Ограничения размера входных и выходных данных</span><span class="sxs-lookup"><span data-stu-id="5c612-136">Input and Output size limitations</span></span>
+<span data-ttu-id="5c612-137">Каждая вершина имеет ограниченный объем памяти, назначенный tooit.</span><span class="sxs-lookup"><span data-stu-id="5c612-137">Every vertex has a limited amount of memory assigned tooit.</span></span> <span data-ttu-id="5c612-138">Поскольку hello блоки входных и выходных данных должна существовать в памяти в коде hello R, hello общий размер для hello ввода и вывода не может превышать 500 МБ.</span><span class="sxs-lookup"><span data-stu-id="5c612-138">Because hello input and output DataFrames must exist in memory in hello R code, hello total size for hello input and output cannot exceed 500 MB.</span></span>
 
-### <a name="sample-code"></a><span data-ttu-id="918ff-139">Пример кода</span><span class="sxs-lookup"><span data-stu-id="918ff-139">Sample Code</span></span>
-<span data-ttu-id="918ff-140">Дополнительные примеры кода доступны в вашей учетной записи Data Lake Store после установки расширений расширенной аналитики U-SQL.</span><span class="sxs-lookup"><span data-stu-id="918ff-140">More sample code is available in your Data Lake Store account after you install the U-SQL Advanced Analytics extensions.</span></span> <span data-ttu-id="918ff-141">Путь к другим примерам кода: `<your_account_address>/usqlext/samples/R`.</span><span class="sxs-lookup"><span data-stu-id="918ff-141">The path for more sample code is: `<your_account_address>/usqlext/samples/R`.</span></span> 
+### <a name="sample-code"></a><span data-ttu-id="5c612-139">Пример кода</span><span class="sxs-lookup"><span data-stu-id="5c612-139">Sample Code</span></span>
+<span data-ttu-id="5c612-140">Несколько примеров кода доступен в вашей учетной записи хранилища Озера данных после установки расширения U-SQL Advanced Analytics hello.</span><span class="sxs-lookup"><span data-stu-id="5c612-140">More sample code is available in your Data Lake Store account after you install hello U-SQL Advanced Analytics extensions.</span></span> <span data-ttu-id="5c612-141">несколько примеров кода Hello путь —: `<your_account_address>/usqlext/samples/R`.</span><span class="sxs-lookup"><span data-stu-id="5c612-141">hello path for more sample code is: `<your_account_address>/usqlext/samples/R`.</span></span> 
 
-## <a name="deploying-custom-r-modules-with-u-sql"></a><span data-ttu-id="918ff-142">Развертывание настраиваемых модулей R с помощью U-SQL</span><span class="sxs-lookup"><span data-stu-id="918ff-142">Deploying Custom R modules with U-SQL</span></span>
+## <a name="deploying-custom-r-modules-with-u-sql"></a><span data-ttu-id="5c612-142">Развертывание настраиваемых модулей R с помощью U-SQL</span><span class="sxs-lookup"><span data-stu-id="5c612-142">Deploying Custom R modules with U-SQL</span></span>
 
-<span data-ttu-id="918ff-143">Сначала создайте настраиваемый модуль R, заархивируйте его в ZIP-файл, а затем отправьте этот ZIP-файл с настраиваемым модулем в хранилище ADL.</span><span class="sxs-lookup"><span data-stu-id="918ff-143">First, create an R custom module and zip it and then upload the zipped R custom module file to your ADL store.</span></span> <span data-ttu-id="918ff-144">В этом примере файл magittr_1.5.zip будет отправлен в корень учетной записи ADLS по умолчанию для используемой учетной записи ADLA.</span><span class="sxs-lookup"><span data-stu-id="918ff-144">In the example, we will upload magittr_1.5.zip to the root of the default ADLS account for the ADLA account we are using.</span></span> <span data-ttu-id="918ff-145">После отправки модуля в хранилище ADL объявите его с помощью DEPLOY RESOURCE, чтобы сделать этот модуль доступным в скрипте U-SQL, затем вызовите метод `install.packages`, чтобы установить его.</span><span class="sxs-lookup"><span data-stu-id="918ff-145">Once you upload the module to ADL store, declare it as use DEPLOY RESOURCE to make it available in your U-SQL script and call `install.packages` to install it.</span></span>
+<span data-ttu-id="5c612-143">Во-первых создайте настраиваемый модуль R и почтовый индекс, он, а затем отправьте ZIP-хранилище ADL tooyour файла настраиваемого модуля R hello.</span><span class="sxs-lookup"><span data-stu-id="5c612-143">First, create an R custom module and zip it and then upload hello zipped R custom module file tooyour ADL store.</span></span> <span data-ttu-id="5c612-144">В примере hello будет передать корень toohello magittr_1.5.zip hello ADLS учетная запись по умолчанию hello ADLA учетную запись, которую мы используем.</span><span class="sxs-lookup"><span data-stu-id="5c612-144">In hello example, we will upload magittr_1.5.zip toohello root of hello default ADLS account for hello ADLA account we are using.</span></span> <span data-ttu-id="5c612-145">После загрузки хранилища tooADL модуль hello объявить его как использование РЕСУРСОВ РАЗВЕРТЫВАНИЯ toomake его доступным в скрипт U-SQL и вызовите `install.packages` tooinstall его.</span><span class="sxs-lookup"><span data-stu-id="5c612-145">Once you upload hello module tooADL store, declare it as use DEPLOY RESOURCE toomake it available in your U-SQL script and call `install.packages` tooinstall it.</span></span>
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
@@ -179,13 +179,13 @@ ms.lasthandoff: 07/11/2017
     DECLARE @IrisData string =  @"/usqlext/samples/R/iris.csv";
     DECLARE @OutputFileModelSummary string = @"/R/Output/CustomePackages.txt";
 
-    // R script to run
+    // R script toorun
     DECLARE @myRScript = @"
-    # install the magrittr package,
+    # install hello magrittr package,
     install.packages('magrittr_1.5.zip', repos = NULL),
-    # load the magrittr package,
+    # load hello magrittr package,
     require(magrittr),
-    # demonstrate use of the magrittr package,
+    # demonstrate use of hello magrittr package,
     2 %>% sqrt
     ";
 
@@ -208,9 +208,9 @@ ms.lasthandoff: 07/11/2017
     READONLY Par
     USING new Extension.R.Reducer(command:@myRScript, rReturnType:"charactermatrix");
 
-    OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
+    OUTPUT @RScriptOutput too@OutputFileModelSummary USING Outputters.Tsv();
 
-## <a name="next-steps"></a><span data-ttu-id="918ff-146">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="918ff-146">Next Steps</span></span>
-* [<span data-ttu-id="918ff-147">Обзор аналитики озера данных Microsoft Azure</span><span class="sxs-lookup"><span data-stu-id="918ff-147">Overview of Microsoft Azure Data Lake Analytics</span></span>](data-lake-analytics-overview.md)
-* [<span data-ttu-id="918ff-148">Разработка скриптов U-SQL с помощью средств озера данных для Visual Studio</span><span class="sxs-lookup"><span data-stu-id="918ff-148">Develop U-SQL scripts using Data Lake Tools for Visual Studio</span></span>](data-lake-analytics-data-lake-tools-get-started.md)
-* [<span data-ttu-id="918ff-149">Использование оконных функций U-SQL для заданий в службе аналитики озера данных Azure</span><span class="sxs-lookup"><span data-stu-id="918ff-149">Using U-SQL window functions for Azure Data Lake Analytics jobs</span></span>](data-lake-analytics-use-window-functions.md)
+## <a name="next-steps"></a><span data-ttu-id="5c612-146">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="5c612-146">Next Steps</span></span>
+* [<span data-ttu-id="5c612-147">Обзор аналитики озера данных Microsoft Azure</span><span class="sxs-lookup"><span data-stu-id="5c612-147">Overview of Microsoft Azure Data Lake Analytics</span></span>](data-lake-analytics-overview.md)
+* [<span data-ttu-id="5c612-148">Разработка скриптов U-SQL с помощью средств озера данных для Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5c612-148">Develop U-SQL scripts using Data Lake Tools for Visual Studio</span></span>](data-lake-analytics-data-lake-tools-get-started.md)
+* [<span data-ttu-id="5c612-149">Использование оконных функций U-SQL для заданий в службе аналитики озера данных Azure</span><span class="sxs-lookup"><span data-stu-id="5c612-149">Using U-SQL window functions for Azure Data Lake Analytics jobs</span></span>](data-lake-analytics-use-window-functions.md)
