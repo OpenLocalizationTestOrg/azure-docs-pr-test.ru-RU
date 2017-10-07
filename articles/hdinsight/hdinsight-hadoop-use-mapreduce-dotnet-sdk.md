@@ -1,6 +1,6 @@
 ---
-title: "Отправка заданий MapReduce с использованием пакета SDK HDInsight для .NET — Azure | Документы Майкрософт"
-description: "Узнайте, как отправлять задания MapReduce в Azure HDInsight Hadoop с использованием пакета SDK для HDInsight .NET."
+title: "HDInsight .NET SDK - Azure с помощью задания MapReduce aaaSubmit | Документы Microsoft"
+description: "Узнайте, как toosubmit MapReduce заданий tooAzure HDInsight Hadoop с помощью HDInsight .NET SDK."
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -16,38 +16,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jgao
-ms.openlocfilehash: 015435270c31bafea0ebf5303b459338755c1410
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d00e31400b8fa47982c31d00bfdcdb304bcb0b59
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Выполнение заданий MapReduce с использованием пакета SDK для HDInsight .NET
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Узнайте, как отправлять задания MapReduce с использованием пакета SDK для HDInsight .NET. В кластерах HDInsight предусмотрен JAR-файл с несколькими примерами MapReduce. Этот JAR-файл — */example/jars/hadoop-mapreduce-examples.jar*.  Один из примеров — *wordcount* (подсчет слов). Вы разрабатываете консольное приложение на C# для отправки задания по подсчету слов.  Задание считывает файл */example/data/gutenberg/davinci.txt* и сохраняет результат в */example/data/davinciwordcount*.  Чтобы снова запустить приложение, необходимо очистить папку выходных данных.
+Узнайте, как toosubmit MapReduce заданий с помощью HDInsight .NET SDK. В кластерах HDInsight предусмотрен JAR-файл с несколькими примерами MapReduce. Hello jar-файл является */example/jars/hadoop-mapreduce-examples.jar*.  Одним из примеров hello является *wordcount*. Разработка C# консольного приложения toosubmit wordcount задания.  Задание Hello считывает hello */example/data/gutenberg/davinci.txt* файл и выводит hello результатов слишком*/example/data/davinciwordcount*.  Если требуется, чтобы приложение hello toorerun, необходимо очистить hello выходную папку.
 
 > [!NOTE]
-> Действия, описанные в этой статье, необходимо выполнять из клиента Windows. Чтобы получить сведения об использовании клиента Linux, OS X или Unix для работы с Hive, воспользуйтесь выбором вкладок в верхней части статьи.
+> в этой статье инструкциям Hello должна быть выполнена из клиента Windows. Сведения об использовании Linux, OS X или toowork клиента Unix с Hive с помощью селектора вкладку hello, отображается в верхней части hello hello статьи.
 > 
 > 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Перед началом работы с этой статьей необходимо иметь следующее:
+Прежде чем приступать к этой статье, необходимо иметь hello следующих элементов:
 
 * **Кластер Hadoop в HDInsight**. См. статью [Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux](./hdinsight-hadoop-linux-tutorial-get-started.md).
 * **Visual Studio 2013, Visual Studio 2015, Visual Studio 2017**.
 
 ## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>Отправка заданий MapReduce с использованием пакета SDK для HDInsight .NET
-Пакет SDK для HDInsight .NET содержит клиентские библиотеки .NET, которые упрощают работу с кластерами HDInsight из .NET. 
+Hello HDInsight .NET SDK предоставляет клиентские библиотеки .NET, что делает его проще toowork с кластерами HDInsight из .NET. 
 
-**Отправка заданий**
+**tooSubmit заданий**
 
 1. Создайте в Visual Studio консольное приложение C#.
-2. Введите следующую команду в окне консоли диспетчера пакетов NuGet:
+2. В hello консоль диспетчера пакетов Nuget выполните следующую команду hello.
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
-3. Используйте следующий код:
+3. Используйте hello, следующий код:
    
         using System.Collections.Generic;
         using System.IO;
@@ -79,14 +79,14 @@ ms.lasthandoff: 08/18/2017
    
                 static void Main(string[] args)
                 {
-                    System.Console.WriteLine("The application is running ...");
+                    System.Console.WriteLine("hello application is running ...");
    
                     var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = existingClusterUsername, Password = existingClusterPassword };
                     _hdiJobManagementClient = new HDInsightJobManagementClient(existingClusterUri, clusterCredentials);
    
                     SubmitMRJob();
    
-                    System.Console.WriteLine("Press ENTER to continue ...");
+                    System.Console.WriteLine("Press ENTER toocontinue ...");
                     System.Console.ReadLine();
                 }
    
@@ -101,13 +101,13 @@ ms.lasthandoff: 08/18/2017
                         Arguments = args
                     };
    
-                    System.Console.WriteLine("Submitting the MR job to the cluster...");
+                    System.Console.WriteLine("Submitting hello MR job toohello cluster...");
                     var jobResponse = _hdiJobManagementClient.JobManagement.SubmitMapReduceJob(paras);
                     var jobId = jobResponse.JobSubmissionJsonResponse.Id;
                     System.Console.WriteLine("Response status code is " + jobResponse.StatusCode);
                     System.Console.WriteLine("JobId is " + jobId);
    
-                    System.Console.WriteLine("Waiting for the job completion ...");
+                    System.Console.WriteLine("Waiting for hello job completion ...");
    
                     // Wait for job completion
                     var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
@@ -124,15 +124,15 @@ ms.lasthandoff: 08/18/2017
         
                     if (jobDetail.ExitValue == 0)
                     {
-                        // Create the storage account object
+                        // Create hello storage account object
                         CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + 
                             defaultStorageAccountName + 
                             ";AccountKey=" + defaultStorageAccountKey);
         
-                        // Create the blob client.
+                        // Create hello blob client.
                         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
         
-                        // Retrieve reference to a previously created container.
+                        // Retrieve reference tooa previously created container.
                         CloudBlobContainer container = blobClient.GetContainerReference(defaultStorageContainerName);
         
                         CloudBlockBlob blockBlob = container.GetBlockBlobReference(outputFolder.Substring(1) + "/part-r-00000");
@@ -163,18 +163,18 @@ ms.lasthandoff: 08/18/2017
                 }
             }
         }
-4. Нажмите клавишу **F5** для запуска приложения.
+4. Нажмите клавишу **F5** toorun приложения hello.
 
-Чтобы снова запустить задание, необходимо изменить имя выходной папки задания. В нашем примере это /example/data/davinciwordcount.
+Задание hello toorun еще раз, необходимо изменить hello выходной папки имя задания, в образце hello, это «/ пример, данных или davinciwordcount».
 
-По завершении задания приложение печатает содержимое выходного файла part-r-00000.
+По завершении заданий hello приложение hello выводит содержимое hello hello выходного файла «часть r-00000».
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этой статье вы ознакомились с несколькими способами создания кластера HDInsight. Для получения дополнительных сведений ознакомьтесь со следующими статьями:
+В этой статье было изучено несколько способов toocreate кластера HDInsight. toolearn более, см. следующие статьи hello.
 
 * Сведения об отправке задания Hive см. в инструкциях по [выполнению запросов Hive с помощью пакета SDK для HDInsight .NET](hdinsight-hadoop-use-hive-dotnet-sdk.md).
 * Сведения о создании кластеров HDInsight см. в статье [Создание кластеров Hadoop под управлением Linux в HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 * Сведения об управлении кластерами в HDInsight см. в статье [Управление кластерами Hadoop в HDInsight с помощью портала Azure](hdinsight-administer-use-portal-linux.md).
-* Подробные сведения о пакете SDK для HDInsight .NET см. в [соответствующей справке](https://msdn.microsoft.com/library/mt271028.aspx).
-* Сведения о неинтерактивной проверке подлинности в Azure см. в статье [Создание приложений .NET HDInsight с неинтерактивной проверкой подлинности](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
+* Обучение hello HDInsight .NET SDK, в разделе [HDInsight .NET SDK ссылка](https://msdn.microsoft.com/library/mt271028.aspx).
+* Для неинтерактивной tooAzure проверки подлинности см. в разделе [создавать неинтерактивной проверки подлинности приложений .NET HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
 

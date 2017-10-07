@@ -1,6 +1,6 @@
 ---
-title: "Создание признаков для данных хранилища BLOB-объектов Azure с помощью Panda | Документация Майкрософт"
-description: "Описание создания характеристик для данных, которые хранятся в контейнере больших двоичных объектов Azure, с помощью пакета Python Pandas."
+title: "функции aaaCreate для Azure BLOB-объектов хранилища данных, с помощью Panda | Документы Microsoft"
+description: "Как toocreate функции для данных, хранящихся в контейнере BLOB-объектов Azure с пакетом Panda Python hello."
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: 2ef2acfea2372ac7fd52d099a2b4203ee2242d81
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8594046c5d76a36ad87fc77e407752489d30afcc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Создание характеристик для данных хранилища больших двоичных объектов Azure с помощью Panda
-В этом документе демонстрируется создание характеристик для данных, которые хранятся в контейнере больших двоичных объектов Azure, с помощью пакета Python [Pandas](http://pandas.pydata.org/) . После описания загрузки данных в кадр данных Panda в нем показано создание категориальных характеристик с использованием сценариев Pyrhon со значениями индикатора и характеристиками группирования.
+В этом документе показано, как toocreate функции для данных, хранящихся в контейнере BLOB-объектов Azure, с помощью hello [Pandas](http://pandas.pydata.org/) пакета Python. После структуризации как tooload hello в кадр данных Panda, он отображается как toogenerate категориальных признаков с помощью сценариев Python значения индикатора и группирование компонентов.
 
 [!INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
 
-Это **меню** содержит ссылки на статьи, описывающие создание характеристик для данных в различных средах. Эта задача является одним из этапов [процесса обработки и анализа данных группы (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Это **меню** связывает tootopics, описано, как toocreate функции для данных в различных средах. Эта задача является этапом hello [процесса обработки и анализа данных Team (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="prerequisites"></a>Предварительные требования
-В этой статье предполагается, что вы уже создали учетную запись хранилища BLOB-объектов Azure и сохранили в ней свои данные. Инструкции по настройке учетной записи в Azure см. в разделе [Создание учетной записи хранения](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+В этой статье предполагается, что вы уже создали учетную запись хранилища BLOB-объектов Azure и сохранили в ней свои данные. Получить инструкции tooset учетную запись [создать учетную запись хранилища Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account)
 
-## <a name="load-the-data-into-a-pandas-data-frame"></a>Загрузка данных во фрейм данных Pandas
-Для просмотра набора данных и управления им набор необходимо скачать из источника больших двоичных объектов в локальный файл, который в последствии можно загрузить во фрейм данных Pandas. Ниже приведен порядок выполнения данной процедуры.
+## <a name="load-hello-data-into-a-pandas-data-frame"></a>Загрузка данных hello Pandas кадра данных.
+В порядке toodo просматривать и управлять набора данных, его необходимо загрузить из hello BLOB-объект источника tooa локального файла, которое можно загрузить в кадре данных Pandas. Ниже приведены hello toofollow действия для выполнения данной процедуры.
 
-1. Скачайте данные из большого двоичного объекта Azure с помощью службы BLOB-объектов. Для этого воспользуйтесь приведенным ниже примером кода Python. Замените переменные этого кода своими значениями.
+1. Скачать hello данные из Azure BLOB-объекта с hello, следующий пример кода Python, с помощью службы BLOB-объектов. Замените переменную hello в коде hello ниже особые значения:
    
         from azure.storage.blob import BlobService
         import tables
@@ -49,57 +49,57 @@ ms.lasthandoff: 08/29/2017
         blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
-        print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Прочитайте данные, которые содержит скачанный файл, в блоке данных Pandas.
+        print(("It takes %s seconds toodownload "+blobname) % (t2 - t1))
+2. Чтение данных hello в Pandas-кадр данных из hello загрузили файл.
    
-        #LOCALFILE is the file path
+        #LOCALFILE is hello file path
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-Теперь вы готовы просматривать эти данные и создавать функции на основе этого набора данных.
+Теперь вы готовы tooexplore hello данные и создавать признаки на этот набор данных.
 
 ## <a name="blob-featuregen"></a>Создание функций
-В двух следующих разделах показано, как создать категориальные характеристики со значениями индикатора и характеристики группирования с помощью сценариев Python.
+Hello следующих двух разделах показано, как toogenerate категориальных признаков с значения индикатора и сегментирования функции с помощью сценариев Python.
 
 ### <a name="blob-countfeature"></a>Создание функций на основе значений индикатора
 Вот как можно создавать категориальные функции:
 
-1. Проверьте распределение категориального столбца.
+1. Проверьте распределение hello hello категориальных столбцов:
    
         dataframe_blobdata['<categorical_column>'].value_counts()
-2. Создайте значения индикатора для каждого значения столбца.
+2. Создание значения индикатора для каждого значения в столбце hello
    
-        #generate the indicator column
+        #generate hello indicator column
         dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
-3. Объедините столбец индикатора с исходным блоком данных.
+3. Присоединение hello столбец индикатора с hello исходного кадра данных.
    
-            #Join the dummy variables back to the original data frame
+            #Join hello dummy variables back toohello original data frame
             dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
-4. Удалите исходную переменную.
+4. Удалите саму переменную исходного hello:
    
-        #Remove the original column rate_code in df1_with_dummy
+        #Remove hello original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
 ### <a name="blob-binningfeature"></a>Создание характеристик путем группирования данных
 Вот как можно создавать функции группирования:
 
-1. Добавьте последовательность столбцов, чтобы создать числовой столбец.
+1. Добавить последовательность столбцов toobin числового столбца
    
         bins = [0, 1, 2, 4, 10, 40]
         dataframe_blobdata_bin_id = pd.cut(dataframe_blobdata['<numeric_column>'], bins)
-2. Преобразуйте группирование в последовательность логических переменных.
+2. Преобразовать последовательность сегментирования tooa логические переменные
    
         dataframe_blobdata_bin_bool = pd.get_dummies(dataframe_blobdata_bin_id, prefix='<numeric_column>')
-3. Наконец, объедините фиктивные переменные с исходным блоком данных.
+3. Наконец соединения hello фиктивный переменные обратно toohello исходного кадра данных.
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)
 
-## <a name="sql-featuregen"></a>Запись данных обратно в большой двоичный объект Azure и их использование в Студии машинного обучения Azure
-После просмотра данных и создания необходимых вам признаков вы можете отправить данные (в выборке или в признаке) в большой двоичный объект Azure и использовать их в Студии машинного обучения Azure. Вы можете это сделать описанным ниже способом. Обратите внимание на то, что дополнительные характеристики можно создавать и в Студии машинного обучения Microsoft Azure.
+## <a name="sql-featuregen"></a>Записи данных обратно tooAzure больших двоичных объектов и использование в машинном обучении Azure
+После изучена hello данных и создать необходимые функции hello, можно передать данные hello (выборки или признак) tooan Azure BLOB-объектов и использовать его в машинном обучении Azure с помощью hello следующие шаги: Обратите внимание, что дополнительные компоненты могут создаваться в hello Студия машинного обучения также.
 
-1. Запишите блок данных в локальный файл.
+1. Запись файла toolocal кадра данных hello
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Отправьте данные в большой двоичный объект Azure так, как указано ниже.
+2. Отправьте BLOB-объектов tooAzure hello данных следующим образом:
    
         from azure.storage.blob import BlobService
         import tables
@@ -120,7 +120,7 @@ ms.lasthandoff: 08/29/2017
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Теперь данные можно считывать из большого двоичного объекта с помощью модуля [Импорт данных](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) машинного обучения Azure (см. рисунок ниже).
+3. Теперь hello данные могут считываться из hello BLOB-объекта с помощью hello машинного обучения Azure [импорта данных](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) модуля, как показано на экране приветствия ниже:
 
 ![большой двоичный объект считывателя](./media/machine-learning-data-science-process-data-blob/reader_blob.png)
 

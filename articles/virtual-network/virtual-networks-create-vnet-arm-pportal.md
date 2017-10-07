@@ -1,6 +1,6 @@
 ---
-title: "Создание виртуальной сети Azure с несколькими подсетями | Документация Майкрософт"
-description: "Узнайте, как создать виртуальную сеть с несколькими подсетями в Azure."
+title: "Виртуальная сеть Azure с несколькими подсетями aaaCreate | Документы Microsoft"
+description: "Узнайте, как toocreate виртуальной сети с несколькими подсетями в Azure."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -16,25 +16,25 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: a31f0524a6fa1de45498f340a27b863a3c627e04
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0f56fa6ac24537d33b8e217f5b03f387826ab487
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets"></a>Создание виртуальной сети с несколькими подсетями
 
-В рамках этого руководства вы узнаете, как создать базовую виртуальную сеть Azure с отдельными общедоступной и частной подсетями. В подсетях можно создавать различные ресурсы Azure, например виртуальные машины, среды службы приложений Azure, масштабируемые наборы виртуальных машин, Azure HDInsight и облачные службы. Ресурсы в виртуальной сети могут взаимодействовать друг с другом и с ресурсами в других сетях, подключенных к виртуальной сети.
+В этом учебнике показано, как toocreate основные виртуальной сети Azure с разделения открытых и закрытых подсетей. В подсетях можно создавать различные ресурсы Azure, например виртуальные машины, среды службы приложений Azure, масштабируемые наборы виртуальных машин, Azure HDInsight и облачные службы. Ресурсы в виртуальные сети могут взаимодействовать друг с другом и с ресурсами в других сетях подключенных tooa виртуальной сети.
 
-В следующих разделах приведены шаги по созданию виртуальной сети с помощью [портала Azure](#portal), интерфейса командной строки Azure ([Azure CLI](#azure-cli)), [Azure PowerShell](#powershell) и [шаблона Azure Resource Manager](#resource-manager-template). Результат использования любого из этих инструментов для создания виртуальной сети одинаков. Щелкните нужную ссылку, чтобы перейти в соответствующий раздел этого руководства. Дополнительные сведения обо всех параметрах виртуальной сети и подсети см. в [этой](virtual-network-manage-network.md) и [этой](virtual-network-manage-subnet.md) статье.
+Hello следующие разделы содержат действия, которые можно предпринять toocreate виртуальной сети с помощью hello [портал Azure](#portal), hello Azure интерфейс командной строки ([Azure CLI](#azure-cli)), [Azure PowerShell ](#powershell)и [шаблона Azure Resource Manager](#resource-manager-template). результат Hello — hello же, независимо от того, какие средства используется виртуальная сеть toocreate hello. Щелкните ссылку средство toogo toothat раздел учебника hello. Дополнительные сведения обо всех параметрах виртуальной сети и подсети см. в [этой](virtual-network-manage-network.md) и [этой](virtual-network-manage-subnet.md) статье.
 
-Эта статья содержит инструкции по созданию виртуальной сети с использованием модели развертывания с помощью Resource Manager. Мы рекомендуем использовать эту модель при создании виртуальных сетей. Если требуется создать классическую виртуальную сеть, см. [эту статью](create-virtual-network-classic.md). Если вы не знакомы с моделями развертывания Azure, см. статью [Развертывание с помощью Azure Resource Manager и классическое развертывание: сведения о моделях развертывания и состоянии ресурсов](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Эта статья содержит действия toocreate виртуальной сети с помощью модели развертывания диспетчера ресурсов hello, которая используется модель развертывания hello, рекомендуется использовать при создании новых виртуальных сетей. При необходимости toocreate виртуальной сети (классические). в разделе [Создание виртуальной сети (классические)](create-virtual-network-classic.md). Если вы не знакомы с моделями развертывания Azure, см. статью [Развертывание с помощью Azure Resource Manager и классическое развертывание: сведения о моделях развертывания и состоянии ресурсов](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="portal"></a>Портал Azure
 
-1. С помощью браузера войдите на [портал Azure](https://portal.azure.com). Войдите с использованием [учетной записи Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Если у вас нет учетной записи Azure, вы можете зарегистрироваться и получить [бесплатную пробную версию](https://azure.microsoft.com/offers/ms-azr-0044p).
-2. На портале щелкните **+ Создать** > **Сети** > **Виртуальная сеть**.
-3. В колонке **Создать виртуальную сеть** введите приведенные ниже значения, а затем щелкните **Создать**:
+1. В веб-браузере перейдите toohello [портал Azure](https://portal.azure.com). Войдите с использованием [учетной записи Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Если у вас нет учетной записи Azure, вы можете зарегистрироваться и получить [бесплатную пробную версию](https://azure.microsoft.com/offers/ms-azr-0044p).
+2. На портале hello щелкните **+ создать** > **сети** > **виртуальная сеть**.
+3. На hello **Создание виртуальной сети** колонки, введите следующие значения hello и нажмите кнопку **создать**:
 
     |Настройка|Значение|
     |---|---|
@@ -45,21 +45,21 @@ ms.lasthandoff: 08/03/2017
     |Группа ресурсов|Оставьте выбранным пункт **Создать**, а затем введите **MyResourceGroup**.|
     |Подписка и расположение|Выберите подписку и расположение.
 
-    Если вы еще не работали с Azure, ознакомьтесь со сведениями о [группах ресурсов](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [подписках](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) и [расположениях](https://azure.microsoft.com/regions) (которые также называются *регионами*).
-4. На портале при создании виртуальной сети можно создать только одну подсеть. В рамках этого руководства вы узнаете, как создать вторую подсеть после создания виртуальной сети. Позже вы можете создать ресурсы, доступные из Интернета, в **общедоступной** подсети. Ресурсы, которые недоступны из Интернета, можно создать в **частной** подсети. Чтобы создать вторую подсеть, введите **myVnet** в поле **Поиск ресурсов** в верхней части страницы. В результатах поиска щелкните **myVnet**. Если в подписке есть несколько виртуальных сетей с одним именем, проверьте группы ресурсов, которые отображаются для каждой из них. Удостоверьтесь, что вы выбрали результат поиска **myVnet**, содержащий группу ресурсов **myResourceGroup**.
-5. В колонке **myVnet** в разделе **Параметры** щелкните **Подсети**.
-6. В колонке **myVnet — подсети** щелкните **+Subnet** (+Подсеть).
-7. В колонке **Добавление подсети** для **имени** введите **Частное**. Для **Диапазон адресов** введите **10.0.1.0/24**.  Нажмите кнопку **ОК**.
-8. Просмотрите подсети в колонке **myVnet — подсети**. Вы увидите созданную **общедоступную** и **частную** подсети.
-9. **Необязательно.** Чтобы удалить ресурсы, созданные в рамках этого руководства, выполните инструкции, описанные в разделе по [удалению ресурсов](#delete-portal).
+    Если вы новый tooAzure, Дополнительные сведения о [групп ресурсов](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [подписки](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription), и [расположения](https://azure.microsoft.com/regions) (также называется tooas *областей*).
+4. На портале hello при создании виртуальной сети можно создать только одну подсеть. В этом учебнике создается второй подсети после создания виртуальной сети hello. Позже может создать ресурсы, доступном через Интернет в hello **открытый** подсети. Можно также создать ресурсы, которые недоступны из hello Интернета в hello **закрытый** подсети. toocreate hello вторую подсеть, в hello **Найдите ресурсы** поле вверху hello страницы приветствия, введите **myVnet**. В результатах поиска hello, нажмите кнопку **myVnet**. При наличии нескольких виртуальных сетей с Здравствуйте таким же именем в подписке, проверьте hello групп ресурсов, которые отображаются в каждой виртуальной сети. Нажимайте hello **myVnet** поиска результат, который содержит группу ресурсов hello **myResourceGroup**.
+5. На hello **myVnet** колонки в разделе **параметры**, нажмите кнопку **подсети**.
+6. На hello **myVnet - подсети** колонка, щелкните **+ подсети**.
+7. На hello **добавить подсеть** колонке для **имя**, введите **частного**. Для **Диапазон адресов** введите **10.0.1.0/24**.  Нажмите кнопку **ОК**.
+8. На hello **myVnet - подсети** колонки, просмотрите hello подсетей. Вы увидите hello **открытый** и **закрытый** подсети, которые были созданы.
+9. **Необязательно:** ресурсов hello toodelete, созданных в этом учебнике, hello завершения шагов в [удаление ресурсов](#delete-portal) в этой статье.
 
 ## <a name="azure-cli"></a>Инфраструктура CLI Azure
 
-Команды Azure CLI одинаковы для ОС Windows, Linux или macOS. Тем не менее существуют различия в сценариях между оболочками операционных систем. Сценарий ниже выполняется в оболочке Bash. 
+Azure CLI команды представляют собой hello одинакового ли выполнение команды hello из Windows, Linux или macOS. Тем не менее существуют различия в сценариях между оболочками операционных систем. в оболочке Bash выполняет скрипт Hello в hello следующие шаги. 
 
-1. [Установите и настройте Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Убедитесь, что у вас установлена самая последняя версия Azure CLI. Для получения справки по командам интерфейса командной строки введите `az <command> --help`. Вы можете не устанавливать интерфейс командной строки и его зависимости, а воспользоваться Azure Cloud Shell. Azure Cloud Shell — это бесплатная оболочка Bash, которую можно запускать непосредственно на портале Azure. Cloud Shell включает предварительно установленный и настроенный интерфейс Azure CLI для использования с вашей учетной записью. Чтобы использовать Cloud Shell, нажмите кнопку Cloud Shell (**>_**) в верхней части [портала](https://portal.azure.com) или просто нажмите кнопку *Попробуйте!* в последующих шагах. 
-2. При локальном выполнении интерфейса командной строки войдите в Azure с помощью команды `az login`. При использовании Cloud Shell вход выполняется автоматически.
-3. Просмотрите следующий сценарий и комментарии к нему. В браузере скопируйте сценарий и вставьте его в окно сеанса интерфейса командной строки:
+1. [Установка и настройка hello Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Убедитесь, что имеется hello самую последнюю версию hello Azure CLI установлен. Введите tooget справочные сведения о командах CLI, `az <command> --help`. Вместо установки hello CLI и его необходимых компонентов можно использовать hello оболочки облако Azure. Hello оболочки облако Azure — это бесплатные Bash, который выполняется непосредственно в hello портал Azure. Hello оболочки облако имеет hello Azure CLI предварительно установить и настроить toouse с вашей учетной записью. hello toouse оболочки облака щелкните hello оболочки облака (**> _**) кнопку вверху hello hello [портала](https://portal.azure.com) или просто щелкнуть hello *опробовать* кнопку в hello, описанных ниже. 
+2. Локальное выполнение hello CLI, зарегистрируйтесь в системе tooAzure с hello `az login` команды. При использовании hello оболочки в облаке, вы выполнили вход.
+3. Просмотрите hello следующий сценарий и его комментариями. В браузере скопировать hello скрипт и вставьте его в сеанс CLI:
 
     ```azurecli-interactive
     #!/bin/bash
@@ -75,7 +75,7 @@ ms.lasthandoff: 08/03/2017
       --resource-group myResourceGroup \
       --subnet-name Public
     
-    # Create an additional subnet named Private in the virtual network.
+    # Create an additional subnet named Private in hello virtual network.
     az network vnet subnet create \
       --name Private \
       --address-prefix 10.0.1.0/24 \
@@ -83,20 +83,20 @@ ms.lasthandoff: 08/03/2017
       --resource-group myResourceGroup
     ```
     
-4. По завершении сценария просмотрите подсети для виртуальной сети. Скопируйте следующую команду и вставьте ее в окно сеанса интерфейса командной строки:
+4. После завершения скрипта hello работает, просмотрите hello подсетей для виртуальной сети hello. Скопируйте следующую команду hello и вставьте его в сеанс CLI:
 
     ```azurecli
     az network vnet subnet list --resource-group myResourceGroup --vnet-name myVnet --output table
     ```
 
-5. **Необязательно**. Чтобы удалить ресурсы, созданные в этом руководстве, выполните инструкции, описанные в разделе [Удаление ресурсов](#delete-cli) этой статьи.
+5. **Необязательный**: ресурсов hello toodelete, созданных в этом учебнике, hello завершения шагов в [удаление ресурсов](#delete-cli) в этой статье.
 
 ## <a name="powershell"></a>PowerShell
 
-1. Установите последнюю версию модуля [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) PowerShell. Если вы еще не работали с Azure PowerShell, ознакомьтесь со статьей [Overview of Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json) (Общие сведения об Azure PowerShell).
-2. В сеансе PowerShell войдите в Azure с использованием [учетной записи Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) с помощью команды `login-azurermaccount`.
+1. Установите последнюю версию hello hello PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) модуля. Если у вас отсутствует новый tooAzure PowerShell, [Обзор Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. В сеансе PowerShell войдите в tooAzure с вашей [учетная запись Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) с помощью hello `login-azurermaccount` команды.
 
-3. Просмотрите следующий сценарий и комментарии к нему. В браузере скопируйте сценарий и вставьте его в окно сеанса PowerShell:
+3. Просмотрите hello следующий сценарий и его комментариями. В браузере скопируйте скрипт hello и вставьте его в сеансе PowerShell:
 
     ```powershell
     # Create a resource group.
@@ -104,7 +104,7 @@ ms.lasthandoff: 08/03/2017
       -Name myResourceGroup `
       -Location eastus
     
-    # Create the public and private subnets.
+    # Create hello public and private subnets.
     $Subnet1 = New-AzureRmVirtualNetworkSubnetConfig `
       -Name Public `
       -AddressPrefix 10.0.0.0/24
@@ -121,26 +121,26 @@ ms.lasthandoff: 08/03/2017
       -Subnet $Subnet1,$Subnet2
     ```
 
-4. Чтобы просмотреть подсети для виртуальной сети, скопируйте следующую команду, а затем вставьте ее в окно сеанса PowerShell:
+4. tooreview hello подсетей для виртуальной сети hello, скопируйте hello следующую команду и вставьте его в сеансе PowerShell:
 
     ```powershell
     $Vnet.subnets | Format-Table Name, AddressPrefix
     ```
 
-5. **Необязательно**. Чтобы удалить ресурсы, созданные в этом руководстве, выполните инструкции, описанные в разделе [Удаление ресурсов](#delete-powershell) этой статьи.
+5. **Необязательный**: ресурсов hello toodelete, созданных в этом учебнике, hello завершения шагов в [удаление ресурсов](#delete-powershell) в этой статье.
 
 ## <a name="resource-manager-template"></a>Шаблон Resource Manager
 
-Вы можете развернуть виртуальную сеть с помощью шаблона Azure Resource Manager. Дополнительные сведения о шаблонах см. в разделе [Развертывание шаблона](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#template-deployment). Чтобы получить доступ к шаблону и просмотреть его параметры, ознакомьтесь с шаблоном [создания виртуальной сети с двумя подсетями](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/). Шаблон можно развернуть с помощью [портала](#template-portal), [Azure CLI](#template-cli) или [PowerShell](#template-powershell).
+Вы можете развернуть виртуальную сеть с помощью шаблона Azure Resource Manager. toolearn Дополнительные сведения о шаблонах, в разделе [диспетчера ресурсов](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#template-deployment). шаблон tooaccess hello и toolearn о его параметрах см. раздел hello [создайте виртуальную сеть с двумя подсетями](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/) шаблона. Шаблон hello можно развернуть с помощью hello [портала](#template-portal), [Azure CLI](#template-cli), или [PowerShell](#template-powershell).
 
-**Необязательно.** Чтобы удалить ресурсы, созданные в рамках этого руководства, выполните инструкции, описанные в разделе по [удалению ресурсов](#delete).
+**Необязательно:** ресурсов hello toodelete, созданных в этом учебнике, hello завершения шагов в любой подразделов [удаление ресурсов](#delete) в этой статье.
 
 ### <a name="template-portal"></a>Портал Azure
 
-1. В браузере откройте [страницу шаблона](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets).
-2. Нажмите кнопку **Deploy to Azure** (Развернуть в Azure). Если вы еще не вошли в Azure, сделайте это на появившемся экране входа портала Azure.
-3. Войдите на портал с помощью [учетной записи Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Если у вас нет учетной записи Azure, вы можете зарегистрироваться и получить [бесплатную пробную версию](https://azure.microsoft.com/offers/ms-azr-0044p).
-4. Введите следующие значения параметров.
+1. Откройте в браузере, hello [страницы шаблона](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets).
+2. Нажмите кнопку hello **развертывание tooAzure** кнопки. Если вы еще не вошли в tooAzure, войдите в систему на появившемся экране входа Azure портала hello.
+3. Войдите в портал toohello с использованием вашей [учетная запись Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Если у вас нет учетной записи Azure, вы можете зарегистрироваться и получить [бесплатную пробную версию](https://azure.microsoft.com/offers/ms-azr-0044p).
+4. Введите следующие значения для параметров hello hello:
 
     |Параметр|Значение|
     |---|---|
@@ -154,62 +154,62 @@ ms.lasthandoff: 08/03/2017
     |Subnet2Prefix|10.0.1.0/24|
     |Subnet2Name|Private|
 
-5. Примите указанные условия, а затем щелкните **Приобрести**, чтобы развернуть виртуальную сеть.
+5. Принимаю условия toohello и нажмите кнопку **покупки** toodeploy hello виртуальной сети.
 
 ### <a name="template-cli"></a>Интерфейс командной строки Azure
 
-1. [Установите и настройте Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Убедитесь, что у вас установлена самая последняя версия Azure CLI. Для получения справки по командам интерфейса командной строки введите `az <command> --help`. Вы можете не устанавливать интерфейс командной строки и его зависимости, а воспользоваться Azure Cloud Shell. Azure Cloud Shell — это бесплатная оболочка Bash, которую можно запускать непосредственно на портале Azure. Cloud Shell включает предварительно установленный и настроенный интерфейс Azure CLI для использования с вашей учетной записью. Чтобы использовать Cloud Shell, нажмите кнопку Cloud Shell, **>_**, в верхней части [портала](https://portal.azure.com) или просто нажмите кнопку **Попробуйте!** в последующих шагах. 
-2. При локальном выполнении интерфейса командной строки войдите в Azure с помощью команды `az login`. При использовании Cloud Shell вход выполняется автоматически.
-3. Чтобы создать группу ресурсов для виртуальной сети, скопируйте следующую команду и вставьте ее в окно сеанса интерфейса командной строки:
+1. [Установка и настройка hello Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Убедитесь, что имеется hello самую последнюю версию hello Azure CLI установлен. Введите tooget справочные сведения о командах CLI, `az <command> --help`. Вместо установки hello CLI и его необходимых компонентов можно использовать hello оболочки облако Azure. Hello оболочки облако Azure — это бесплатные Bash, который выполняется непосредственно в hello портал Azure. Hello оболочки облако имеет hello Azure CLI предварительно установить и настроить toouse с вашей учетной записью. hello toouse оболочки облака щелкните hello оболочки облака **> _** кнопку вверху hello hello [портала](https://portal.azure.com), или просто щелкнуть hello **опробовать** кнопку в hello, описанных ниже. 
+2. Локальное выполнение hello CLI, зарегистрируйтесь в системе tooAzure с hello `az login` команды. При использовании hello оболочки в облаке, вы выполнили вход.
+3. toocreate группу ресурсов для виртуальной сети hello копирования hello следующую команду и вставьте его в ваш сеанс CLI:
 
     ```azurecli-interactive
     az group create --name myResourceGroup --location eastus
     ```
     
-4. Вы можете развернуть шаблон с помощью одного из следующих вариантов параметров:
-    - **Значений параметров по умолчанию.** Введите следующую команду:
+4. Шаблон hello можно развернуть с помощью одного из hello следующие варианты параметров:
+    - **Значений параметров по умолчанию.** Введите следующую команду hello:
     
         ```azurecli-interactive
         az group deployment create --resource-group myResourceGroup --name VnetTutorial --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json`
         ```
-    - **Настраиваемых значений параметров.** Загрузите и измените шаблон перед его развертыванием. Кроме того, можно развернуть шаблон с помощью параметров командной строки или отдельного файла параметров. Чтобы скачать файлы шаблона и параметров, нажмите кнопку **Browse on GitHub** (Найти на GitHub) на странице шаблона [Create a Virtual Network with two Subnets](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/) (Создание виртуальной сети с двумя подсетями). На сайте GitHub щелкните файл **azuredeploy.parameters.json** или **azuredeploy.json**. А затем нажмите кнопку **Необработанный**, чтобы отобразить файл. Скопируйте содержимое файла в браузере. Сохраните содержимое в файл на компьютере. Вы можете изменить значения параметров в шаблоне или развернуть шаблон с помощью отдельного файла параметров.  
+    - **Настраиваемых значений параметров.** Загрузка и изменение шаблона hello перед развертыванием hello шаблона. Также можно развернуть шаблон hello с помощью параметров командной строки hello, или развернуть шаблон hello с файлом отдельные параметры. файлы шаблона и параметров hello toodownload, щелкните hello **просмотр на GitHub** кнопку на hello [создайте виртуальную сеть с двумя подсетями](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/) страницы шаблона. В GitHub щелкните hello **azuredeploy.parameters.json** или **azuredeploy.json** файла. Нажмите кнопку hello **Raw** файл hello toodisplay кнопки. В браузере скопируйте содержимое файла hello hello. Сохраните файл tooa hello содержимое на компьютере. Можно изменить значения параметров hello в шаблоне hello или развернуть шаблон hello с файлом отдельные параметры.  
 
-    Чтобы узнать больше о развертывании шаблонов с помощью этих методов, введите `az group deployment create --help`.
+    Дополнительные сведения о toolearn как тип toodeploy шаблоны с помощью этих методов `az group deployment create --help`.
 
 ### <a name="template-powershell"></a>PowerShell
 
-1. Установите последнюю версию модуля [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) PowerShell. Если вы еще не работали с Azure PowerShell, ознакомьтесь со статьей [Overview of Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json) (Общие сведения об Azure PowerShell).
-2. В окне сеанса PowerShell введите `login-azurermaccount`, чтобы выполнить вход с помощью [учетной записи Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account).
-3. Чтобы создать группу ресурсов для виртуальной сети, введите следующую команду:
+1. Установите последнюю версию hello hello PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) модуля. Если у вас отсутствует новый tooAzure PowerShell, [Обзор Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. В сеансе PowerShell toosign с вашей [учетная запись Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account), введите `login-azurermaccount`.
+3. toocreate группу ресурсов для виртуальной сети hello, введите следующую команду hello:
 
     ```powershell
     New-AzureRmResourceGroup -Name myResourceGroup -Location eastus
     ```
     
-4. Вы можете развернуть шаблон с помощью одного из следующих вариантов параметров:
-    - **Значений параметров по умолчанию.** Введите следующую команду:
+4. Шаблон hello можно развернуть с помощью одного из hello следующие варианты параметров:
+    - **Значений параметров по умолчанию.** Введите следующую команду hello:
     
         ```powershell
         New-AzureRmResourceGroupDeployment -Name VnetTutorial -ResourceGroupName myResourceGroup -TemplateUri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json
         ```
         
-    - **Настраиваемых значений параметров.** Загрузите и измените шаблон перед его развертыванием. Кроме того, можно развернуть шаблон с помощью параметров командной строки или отдельного файла параметров. Чтобы скачать файлы шаблона и параметров, нажмите кнопку **Browse on GitHub** (Найти на GitHub) на странице шаблона [Create a Virtual Network with two Subnets](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/) (Создание виртуальной сети с двумя подсетями). На сайте GitHub щелкните файл **azuredeploy.parameters.json** или **azuredeploy.json**. А затем нажмите кнопку **Необработанный**, чтобы отобразить файл. Скопируйте содержимое файла в браузере. Сохраните содержимое в файл на компьютере. Вы можете изменить значения параметров в шаблоне или развернуть шаблон с помощью отдельного файла параметров.  
+    - **Настраиваемых значений параметров.** Загрузка и изменение шаблона hello перед ее развертыванием. Также можно развернуть шаблон hello с помощью параметров командной строки hello, или развернуть шаблон hello с файлом отдельные параметры. файлы шаблона и параметров hello toodownload, щелкните hello **просмотр на GitHub** кнопку на hello [создайте виртуальную сеть с двумя подсетями](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/) страницы шаблона. В GitHub щелкните hello **azuredeploy.parameters.json** или **azuredeploy.json** файла. Нажмите кнопку hello **Raw** файл hello toodisplay кнопки. В браузере скопируйте содержимое файла hello hello. Сохраните файл tooa hello содержимое на компьютере. Можно изменить значения параметров hello в шаблоне hello или развернуть шаблон hello с файлом отдельные параметры.  
 
-    Чтобы узнать больше о развертывании шаблонов с помощью этих методов, введите `Get-Help New-AzureRmResourceGroupDeployment`. 
+    Дополнительные сведения о toolearn как тип toodeploy шаблоны с помощью этих методов `Get-Help New-AzureRmResourceGroupDeployment`. 
 
 ## <a name="delete"></a>Удаление ресурсов
 
-По завершении работы с этим руководством может потребоваться удалить созданные ресурсы, чтобы за их использование не взималась плата: При удалении группы ресурсов будут также удалены все ресурсы, содержащиеся в ней.
+После завершения этого учебника, чтобы не будет взиматься плата за использование может потребоваться toodelete hello ресурсы, которые были созданы. При удалении группы ресурсов также удаляются все ресурсы, которые находятся в группе ресурсов hello.
 
 ### <a name="delete-portal"></a>Портал Azure
 
-1. В поле поиска на портале введите **myResourceGroup**. В результатах поиска щелкните **myResourceGroup**.
-2. В колонке **myResourceGroup** щелкните значок **Удалить**.
-3. Чтобы подтвердить удаление, введите **myResourceGroup** в поле **Введите имя группы ресурсов**, а затем щелкните **Удалить**.
+1. Введите в поле поиска портала hello, **myResourceGroup**. В результатах поиска hello, нажмите кнопку **myResourceGroup**.
+2. На hello **myResourceGroup** колонка, щелкните hello **удалить** значок.
+3. Удаление hello tooconfirm, в hello **ТИПА hello имя группы РЕСУРСОВ** введите **myResourceGroup**и нажмите кнопку **удалить**.
 
 ### <a name="delete-cli"></a>Интерфейс командной строки Azure
 
-В окне сеанса интерфейса командной строки введите следующую команду:
+В сеансе CLI введите hello следующую команду:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -217,7 +217,7 @@ az group delete --name myResourceGroup --yes
 
 ### <a name="delete-powershell"></a>PowerShell
 
-В окне сеанса PowerShell введите следующую команду:
+В сеансе PowerShell введите следующую команду hello:
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -225,8 +225,8 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- Дополнительные сведения о всех параметрах виртуальной сети и подсети см. в статьях [Создание, изменение или удаление виртуальных сетей](virtual-network-manage-network.md#view-vnet) и [Создание, изменение и удаление подсети в виртуальной сети](virtual-network-manage-subnet.md#create-subnet). Доступны различные варианты использования виртуальных сетей и подсетей в рабочей среде для соответствия различным требованиям.
-- Вы можете фильтровать входящий и исходящий трафик подсети, создавая и применяя к ней [группы безопасности сети](virtual-networks-nsg.md).
-- Создайте виртуальную машину [с Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) или [с Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), а затем подключите ее к имеющейся виртуальной сети.
-- Чтобы подключить две виртуальные сети в одном расположении Azure, создайте [пиринг виртуальных сетей](virtual-network-peering-overview.md) между ними.
-- Чтобы подключить виртуальную сеть к локальной сети, используйте [VPN-шлюз](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) или канал [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- toolearn о все параметры виртуальной сети и подсети, в разделе [управлять виртуальными сетями](virtual-network-manage-network.md#view-vnet) и [управление подсети виртуальной сети](virtual-network-manage-subnet.md#create-subnet). Имеются различные варианты использования виртуальных сетей и подсетей в рабочей среде toomeet различные требования к среде.
+- toofilter входящего и исходящего трафика подсети, создание и применение [сетевых групп безопасности](virtual-networks-nsg.md) toosubnets.
+- Создание [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) или [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) виртуальной машины и подключите его tooan существующей виртуальной сети.
+- tooconnect двух виртуальных сетей в hello же расположению Azure, создание [виртуальную сеть пиринга](virtual-network-peering-overview.md) между виртуальными сетями hello.
+- Подключения hello виртуальной сети tooan в локальной сети с помощью [VPN-шлюз](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) или [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) канала.

@@ -1,6 +1,6 @@
 ---
 title: "Набор средств Azure для IntelliJ. Создание приложений Spark для кластера HDInsight | Документация Майкрософт"
-description: "Сведения о разработке приложений Spark на языке Scala и их отправке в кластер HDInsight Spark с помощью набора средств Azure для IntelliJ."
+description: "Использовать hello Azure Toolkit для IntelliJ toodevelop Spark приложений, написанных в Scala и их отправки tooan кластера HDInsight Spark."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,113 +16,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: nitinme
-ms.openlocfilehash: 19cb8f436fa4d86f323013a5d4b3b50bf6c80a1a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 22cce014bb848a54e198e77a50bf13448012310e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Создание приложений Spark для кластера HDInsight с помощью набора средств Azure для IntelliJ
+# <a name="use-azure-toolkit-for-intellij-toocreate-spark-applications-for-an-hdinsight-cluster"></a>Используйте набор средств Azure для приложений Spark toocreate IntelliJ для кластера HDInsight
 
-Подключаемый модуль из набора средств Azure для IntelliJ позволяет разрабатывать приложения Spark на языке Scala и отправлять их в кластер HDInsight Spark непосредственно из интегрированной среды разработки IntelliJ (IDE). С помощью подключаемого модуля можно выполнять следующие действия:
+Использовать hello набора средств Azure для приложений Spark toodevelop подключаемый модуль IntelliJ, написанных на Scala, а затем отправьте их tooan кластера HDInsight Spark непосредственно из hello IntelliJ интегрированной среды разработки (IDE). Можно использовать hello подключаемого модуля, несколькими способами:
 
 * разрабатывать и отправлять приложения Scala Spark в кластер HDInsight Spark;
 * получать доступ к ресурсам кластера Azure HDInsight Spark;
 * разрабатывать и запускать приложения Scala Spark в локальной среде.
 
-Чтобы создать проект, просмотрите видео о [создании приложений Spark с помощью набора средств Azure для IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ).
+toocreate проекта, представление hello [создания приложений Spark с помощью средств Azure для IntelliJ hello](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ) видео.
 
 > [!IMPORTANT]
-> Вы можете использовать этот подключаемый модуль, чтобы создавать и отправлять приложения только в кластер HDInsight Spark на Linux.
+> Можно использовать этот подключаемый модуль toocreate и отправьте свои приложения только для кластера HDInsight Spark для Linux.
 > 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 - Кластер Apache Spark в HDInsight на платформе Linux. Инструкции см. в статье [Начало работы. Создание кластера Apache Spark в HDInsight на платформе Linux и выполнение интерактивных запросов с помощью SQL Spark](hdinsight-apache-spark-jupyter-spark-sql.md).
-- Комплект разработчика Oracle Java. Его можно установить с [веб-сайта Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-- IntelliJ IDEA. В этой статье используется версия 2017.1. Его можно установить с [веб-сайта JetBrains](https://www.jetbrains.com/idea/download/).
+- Комплект разработчика Oracle Java. Его можно установить из hello [веб-сайте Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+- IntelliJ IDEA. В этой статье используется версия 2017.1. Его можно установить из hello [JetBrains веб-сайт](https://www.jetbrains.com/idea/download/).
 
 ## <a name="install-azure-toolkit-for-intellij"></a>Установка набора средств Azure для IntelliJ
 Инструкции по установке см. в статье [Установка набора средств Azure для IntelliJ](../azure-toolkit-for-intellij-installation.md).
 
-## <a name="sign-in-to-your-azure-subscription"></a>Войдите в свою подписку Azure.
+## <a name="sign-in-tooyour-azure-subscription"></a>Войдите в tooyour подписки Azure
 
-1. Запустите IntelliJ IDE и откройте Azure Explorer. В меню **View** (Вид) выберите **Tool Windows** (Окна инструментов) и выберите **Azure Explorer**.
+1. Запустите hello IntelliJ интегрированной среды разработки и откройте обозреватель Azure. На hello **представление** выберите пункт **окна инструментов**, а затем выберите **обозреватель Azure**.
        
-   ![Ссылка на Azure Explorer](./media/hdinsight-apache-spark-intellij-tool-plugin/show-azure-explorer.png)
+   ![ссылку Azure обозреватель Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/show-azure-explorer.png)
 
-2. Щелкните правой кнопкой мыши узел **Azure**, а затем выберите **Sign In** (Войти).
+2. Щелкните правой кнопкой мыши hello **Azure** узел, а затем выберите **входа**.
 
-3. В диалоговом окне **Azure Sign In** (Вход в Azure) нажмите кнопку **Sign in** (Войти), а затем введите свои учетные данные Azure.
+3. В hello **входа в Azure** установите флажок **входа**, а затем введите учетные данные Azure.
 
-    ![Диалоговое окно входа в Azure](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-2.png)
+    ![Hello Azure входа в диалоговое окно](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-2.png)
 
-4. После входа в диалоговом окне **Select Subscriptions** (Выбор подписок) будут перечислены все подписки Azure, связанные с указанными учетными данными. Нажмите кнопку **Select** (Выбрать).
+4. После подписи hello **подписки выберите** диалоговом появляется список всех hello подписок Azure, которые связаны с hello учетные данные. Выберите hello **выберите** кнопки.
 
-    ![Диалоговое окно выбора подписок](./media/hdinsight-apache-spark-intellij-tool-plugin/Select-Subscriptions.png)
+    ![диалоговое окно Выбор подписки Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/Select-Subscriptions.png)
 
-5. На вкладке **Azure Explorer** разверните **HDInsight**, чтобы просмотреть кластеры HDInsight Spark в своей подписке.
+5. На hello **обозреватель Azure** , раскройте **HDInsight** hello tooview кластеры HDInsight Spark, которые в вашей подписке.
    
     ![Кластеры HDInsight Spark в Azure Explorer](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-3.png)
 
-6. Далее можно развернуть узел имени кластера, чтобы увидеть ресурсы (например, учетные записи хранения), связанные с ним.
+6. tooview hello ресурсов (например, учетные записи хранения), связанных с кластером hello, можно далее развернуть узел имя кластера.
    
     ![Развернутый узел имени кластера](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Запуск приложения Spark Scala в кластере HDInsight Spark
 
-1. Запустите IntelliJ IDEA и создайте проект. В диалоговом окне **Новый проект** сделайте следующее: 
+1. Запустите IntelliJ IDEA и создайте проект. В hello **новый проект** диалогового окна поле, hello следующие: 
 
    а. Выберите **HDInsight** > **Spark on HDInsight (Scala)** (Spark в HDInsight (Scala)).
 
-   b. В списке **средств сборки** выберите один из следующих вариантов:
+   b. В hello **инструмент сборки** выберите либо hello следующие, tooyour потребность в соответствии с:
 
       * **Maven.** Для поддержки мастера создания проекта Scala.
-      * **SBT.** Для управления зависимостями и создания проекта Scala.
+      * **SBT**, для управления зависимостями hello и построения для проекта Scala hello
 
-    ![Диалоговое окно нового проекта](./media/hdinsight-apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
+    ![диалоговое окно нового проекта Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
 2. Щелкните **Далее**.
 
-3. Мастер создания проектов Scala автоматически определяет, установлен ли подключаемый модуль Scala. Щелкните **Установить**.
+3. Мастер создания проектов Scala Hello автоматически обнаруживает после установки hello Scala подключаемого модуля. Щелкните **Установить**.
 
    ![Проверка подключаемого модуля Scala](./media/hdinsight-apache-spark-intellij-tool-plugin/Scala-Plugin-check-Reminder.PNG) 
 
-4. Чтобы скачать подключаемый модуль Scala, нажмите кнопку **ОК**. Следуйте инструкциям, чтобы перезапустить IntelliJ. 
+4. hello toodownload Scala подключаемый модуль, выберите **ОК**. Следуйте инструкциям hello toorestart IntelliJ. 
 
-   ![Диалоговое окно установки подключаемого модуля Scala](./media/hdinsight-apache-spark-intellij-tool-plugin/Choose-Scala-Plugin.PNG)
+   ![диалоговое окно приветствия подключаемого модуля Scala установки](./media/hdinsight-apache-spark-intellij-tool-plugin/Choose-Scala-Plugin.PNG)
 
-5. В окне **нового проекта** сделайте следующее:  
+5. В hello **новый проект** окне hello следующие:  
 
-    ![Выбор пакета SDK для Spark](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-new-project.png)
+    ![При выборе hello Spark SDK](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-new-project.png)
 
    а. Введите имя и расположение проекта.
 
-   b. В раскрывающемся списке для параметра **Project SDK** (Пакет SDK проекта) выберите **Java 1.8** для кластера Spark 2.x или **Java 1.7** для кластера Spark 1.x.
+   b. В hello **проекта SDK** раскрывающемся списке выберите **Java 1.8** для кластера 2.x Spark hello, или выберите **Java 1.7** для hello Spark 1.x кластера.
 
-   c. В раскрывающемся списке для параметра **Spark version** (Версия Spark) мастер создания проекта Scala интегрирует правильную версию пакета SDK для Spark и пакета SDK для Scala. Если версия кластера Spark ниже 2.0, выберите **Spark 1.x**. В противном случае выберите **Spark 2.x**. В этом примере используется **Spark 2.0.2 (Scala 2.11.8)**.
+   c. В hello **версии Spark** раскрывающегося списка, мастер создания проекта Scala интегрируется hello правильной версии пакета SDK Spark и Scala SDK. Если версия кластера Spark hello является более ранней, чем 2.0, выберите **усилить 1.x**. В противном случае выберите **Spark 2.x**. В этом примере используется **Spark 2.0.2 (Scala 2.11.8)**.
 
 6. Выберите **Готово**.
 
-7. Проект Spark автоматически создаст артефакт. Чтобы просмотреть артефакт, сделайте следующее:
+7. Hello Spark проекта автоматически создается артефакта. артефакт tooview hello, hello следующие:
 
-   а. В меню **File** (Файл) выберите **Project Structure** (Структура проекта).
+   а. На hello **файл** последовательно выберите пункты **структура проекта**.
 
-   b. В диалоговом окне **Project Structure** (Структура проекта) щелкните **артефакты**, чтобы просмотреть созданный по умолчанию артефакт. Вы также можете создать собственный артефакт, щелкнув значок "плюс" (**+**).
+   b. В hello **структура проекта** выберите **артефакты** tooview hello по умолчанию артефакт, который будет создан. Можно также создать свои собственные артефакта, выбрав hello "плюс" (**+**).
 
-      ![Сведения об артефакте в диалоговом окне](./media/hdinsight-apache-spark-intellij-tool-plugin/default-artifact.png)
+      ![Сведения о артефакта в диалоговое окно «hello»](./media/hdinsight-apache-spark-intellij-tool-plugin/default-artifact.png)
       
-8. Добавьте исходный код приложения, сделав следующее:
+8. Добавьте исходный код приложения, выполнив hello ниже:
 
-   а. В обозревателе проектов щелкните правой кнопкой мыши **src**, наведите указатель мыши на пункт **New** (Создать) и выберите **Scala Class** (Класс Scala).
+   а. Щелкните правой кнопкой мыши в обозревателе проектов **src**, слишком точки**New**и выберите **Scala класса**.
       
       ![Команды для создания класса Scala в обозревателе проектов](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-scala-code.png)
 
-   b. В диалоговом окне **Create New Scala Class** (Создание класса Scala) введите имя, в поле **Kind** (Вид) выберите **Object** (Объект) и нажмите кнопку **ОК**.
+   b. В hello **создать новый класс Scala** диалогового окна поле, укажите имя, выберите **объекта** в hello **вид** поле, а затем выберите **ОК**.
       
       ![Диалоговое окно создания класса Scala](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-scala-code-object.png)
 
-   c. Вставьте в файл **MyClusterApp.scala** следующий код. Этот код считывает данные из файла HVAC.csv (доступного для всех кластеров HDInsight Spark), извлекает строки, содержащие только одну цифру в седьмом столбце CSV-файла, и записывает результат в **/HVACOut** в используемом по умолчанию контейнере хранилища для кластера.
+   c. В hello **MyClusterApp.scala** файла, вставьте следующий код hello. Hello кода hello данные считываются из HVAC.csv (доступно на всех кластерах HDInsight Spark), извлекает hello строки, которые имеют только одну цифру в столбце седьмой hello в hello CSV-файл и записывает выходные данные hello слишком**/HVACOut** в группе по умолчанию hello Контейнер хранилища для кластера hello.
 
         import org.apache.spark.SparkConf
         import org.apache.spark.SparkContext
@@ -134,7 +134,7 @@ ms.lasthandoff: 08/29/2017
     
             val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
     
-            //find the rows that have only one digit in the seventh column in the CSV file
+            //find hello rows that have only one digit in hello seventh column in hello CSV file
             val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
     
             rdd1.saveAsTextFile("wasb:///HVACOut")
@@ -142,139 +142,139 @@ ms.lasthandoff: 08/29/2017
     
         }
 
-9. Запустите приложение в кластере HDInsight Spark следующим образом:
+9. Запустите приложение hello в кластере HDInsight Spark, выполнив hello ниже:
 
-   а. В обозревателе проектов щелкните имя проекта правой кнопкой мыши и выберите **Submit Spark Application to HDInsight** (Отправить приложение Spark в HDInsight).
+   а. В обозревателе решений, щелкните правой кнопкой мыши имя проекта hello и выберите **tooHDInsight отправить приложение Spark**.
       
-      ![Команда Submit Spark Application to HDInsight (Отправить приложение Spark в HDInsight)](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
+      ![Команда tooHDInsight отправить Spark приложения Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
-   b. Вам будет предложено ввести учетные данные подписки Azure. В диалоговом окне **Spark Submission** (Отправка в Spark) введите следующие значения и нажмите кнопку **Submit** (Отправить).
+   b. Вы являются tooenter запрашиваемые учетные данные подписки Azure. В hello **отправки Spark** диалоговое окно, укажите следующие значения hello, а затем выберите **отправить**.
       
-      * В поле **Spark clusters (Linux only)**(Кластеры Spark (только для Linux)) выберите кластер HDInsight Spark, в котором вы хотите запустить приложение.
+      * Для **усилить кластеров (Linux)**, выберите hello кластера HDInsight Spark, на котором будет toorun приложения.
 
-      * Выберите артефакт из проекта IntelliJ или с жесткого диска.
+      * Выберите артефакт проекта IntelliJ hello, или выберите его из hello жесткого диска.
 
-      * В текстовом поле **Main class name** (Имя основного класса) щелкните многоточие (**...**), выберите основной класс в исходном коде приложения и нажмите кнопку **ОК**.
+      * В hello **имя класса Main** поле hello выберите кнопку с многоточием (**...** ), выберите основной класс hello в исходном коде приложения, а затем выберите **ОК**.
 
-        ![Диалоговое окно выбора основного класса](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
+        ![диалоговое окно Выбор класса Main Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
 
-      * Так как для кода приложения в этом примере не требуются аргументы командной строки, справочные JAR или файлы, остальные текстовые поля можно не заполнять. После ввода необходимой информации диалоговое окно должно выглядеть как на следующем изображении.
+      * Так как в данном примере кода приложение hello не требуются аргументы командной строки или ссылаться на JAR-файлов или файлы, можно оставить hello оставшихся пустые поля. После ввода всех сведений hello, диалоговое окно «hello» должен быть похож hello после изображения.
         
-        ![Диалоговое окно Spark Submission (Отправка в Spark)](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
+        ![диалоговое окно отправки Spark Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
 
-   c. На вкладке **Spark Submission** (Отправка в Spark) в нижней части окна начнет отображаться ход выполнения. Приложение также можно остановить, выбрав красную кнопку в окне **Spark Submission** (Отправка в Spark).
+   c. Hello **отправки Spark** вкладку hello нижней части окна hello следует начинать отображение хода выполнения hello. Также можно остановить приложение hello, выбрав кнопку hello красным в hello **отправки Spark** окна.
       
-      ![Окно Spark Submission (Отправка в Spark)](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
+      ![окна отправки Spark Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
       
-      В разделе "Доступ к кластерам HDInsight Spark и управление ими с помощью набора средств Azure для IntelliJ" ниже в этой статье показано, как получить доступ к выходным данным задачи.
+      toolearn tooaccess hello выходные данные задания, разделе hello «доступ и управление кластерами HDInsight Spark с помощью набора средств Azure для IntelliJ» далее в этой статье.
 
 ## <a name="run-or-debug-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Запуск или отладка приложения Spark Scala в кластере HDInsight Spark
-Мы также рекомендуем еще один способ отправки приложения Spark в кластер. Он заключается в задании параметров **конфигураций запуска и отладки** в интегрированной среде разработки. Дополнительные сведения см. в статье [Удаленная отладка приложений Spark в кластере HDInsight с помощью набора средств Azure для IntelliJ через SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
+Также рекомендуется еще один способ отправки кластера toohello приложения hello Spark. Это можно сделать, задав параметры hello в hello **выполнения и отладки конфигураций** интегрированной среды разработки. Дополнительные сведения см. в статье [Удаленная отладка приложений Spark в кластере HDInsight с помощью набора средств Azure для IntelliJ через SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>Доступ к кластерам HDInsight Spark и управление ими с помощью набора средств Azure для IntelliJ
 При помощи набора средств Azure для IntelliJ можно выполнять разные операции.
 
-### <a name="access-the-job-view"></a>Доступ к представлению задания
-1. В Azure Explorer разверните **HDInsight**, а затем выберите имя кластера Spark, после чего щелкните **Задания**.  
+### <a name="access-hello-job-view"></a>Режим доступа к задания hello
+1. В обозревателе Azure разверните **HDInsight**, разверните имя кластера Spark hello и выберите **задания**.  
 
     ![Узел представления задания](./media/hdinsight-apache-spark-intellij-tool-plugin/job-view-node.png)
 
-2. В области справа на вкладке **Spark Job View** (Просмотр заданий Spark) отображаются все приложения, запускаемые в кластере. Выберите имя приложения, дополнительные сведения о котором вы хотите просмотреть.
+2. В правой области hello hello **представлении задания Spark** вкладка отображает все приложения hello, выполняющихся на кластере hello. Выберите имя hello приложения hello, для которого требуется toosee Дополнительные сведения см.
 
     ![Сведения о приложении](./media/hdinsight-apache-spark-intellij-tool-plugin/view-job-logs.png)
 
-3. Чтобы отобразить базовые сведения о выполняющемся задании, наведите указатель мыши на граф задания. Чтобы просмотреть этапы графа и сведения, создаваемые каждым заданием, выберите узел на графе задания.
+3. toodisplay основные сведения, наведите на него схемы hello заданий. этапы graph tooview hello и информацию, которая создает каждого задания, выберите узел на диаграмме задания hello.
 
     ![Сведения об этапе задания](./media/hdinsight-apache-spark-intellij-tool-plugin/Job-graph-stage-info.png)
 
-4. Выберите вкладку **Журнал**, чтобы просмотреть часто используемые журналы, включая *Driver Stderr*, *Driver Stdout* и *Directory Info*.
+4. tooview часто используемые журналы, такие как *Stderr драйвер*, *Stdout драйвер*, и *сведений о каталоге*выберите hello **журнала** вкладки.
 
     ![Подробные сведения журнала](./media/hdinsight-apache-spark-intellij-tool-plugin/Job-log-info.png)
 
-5. Вы также можете просмотреть пользовательский интерфейс журнала Spark и пользовательский интерфейс YARN (на уровне приложения), щелкнув ссылку в верхней части окна.
+5. Можно также просмотреть hello Spark журнала пользовательского интерфейса и hello YARN пользовательского интерфейса (на уровне приложения hello), выбрав ссылку hello верхней части окна hello.
 
-### <a name="access-the-spark-history-server"></a>Доступ к серверу журнала Spark
+### <a name="access-hello-spark-history-server"></a>Доступ к серверу журнал Spark hello
 1. В Azure Explorer разверните **HDInsight**, щелкните имя кластера Spark правой кнопкой мыши и выберите **Open Spark History UI** (Открыть пользовательский интерфейс журнала Spark). 
 
-2. При появлении запроса введите учетные данные администратора для кластера, указанные при настройке кластера.
+2. Когда появится запрос, введите учетные данные администратора кластера hello, которых указан при настройке кластера hello.
 
-3. На панели мониторинга сервера журнала Spark вы сможете найти приложение, выполнение которого только что было завершено, по его имени. В приведенном выше коде имя приложения было указано с помощью `val conf = new SparkConf().setAppName("MyClusterApp")`. Следовательно, приложение Spark называется **MyClusterApp**.
+3. На сервере мониторинга hello Spark журнала можно использовать для только что завершили выполнение приложения hello toolook имя приложения hello. В hello предшествующий код, можно задать имя приложения hello с помощью `val conf = new SparkConf().setAppName("MyClusterApp")`. Следовательно, приложение Spark называется **MyClusterApp**.
 
-### <a name="start-the-ambari-portal"></a>Запуск портала Ambari
+### <a name="start-hello-ambari-portal"></a>Запустите портал Ambari hello
 1. В Azure Explorer разверните **HDInsight**, щелкните имя кластера Spark правой кнопкой мыши и выберите **Open Cluster Management Portal (Ambari)** (Открыть портал управления кластерами (Ambari)). 
 
-2. При появлении запроса введите учетные данные администратора для кластера. Вы указали эти учетные данные во время установки кластера.
+2. Когда появится запрос, введите учетные данные администратора hello hello кластера. Эти учетные данные указанным пользователем во время процесса установки кластера hello.
 
 ### <a name="manage-azure-subscriptions"></a>Управление подписками Azure
-По умолчанию набор средств Azure для IntelliJ содержит список кластеров Spark из всех ваших подписок Azure. При необходимости можно указать подписки, к которым необходимо получить доступ. 
+По умолчанию набор средств Azure для IntelliJ приведены кластеры Spark hello из всех подписок Azure. При необходимости можно указать hello подписок, которые должны tooaccess. 
 
-1. В Azure Explorer щелкните правой кнопкой мыши корневой узел **Azure**, а затем выберите **Управление подписками**. 
+1. В обозревателе Azure, щелкните правой кнопкой мыши hello **Azure** корневой узел, а затем выберите **управление подписками**. 
 
-2. В диалоговом окне снимите флажки напротив подписок, доступ к которым вам не требуется, и выберите **Закрыть**. Если вы хотите выйти из своей подписки Azure, выберите **Выйти**.
+2. В диалоговом окне приветствия снимите подписок hello флажки Далее toohello, вы не хотите tooaccess, а затем выберите **закрыть**. Можно также выбрать **выйти** Если вам нужны toosign подписки Azure.
 
 ## <a name="run-a-spark-scala-application-locally"></a>Запуск приложения Spark Scala на локальном компьютере
-Набор средств Azure для IntelliJ позволяет запускать приложения Spark Scala локально на рабочей станции. Как правило, такие приложения не требуют доступа к кластерным ресурсам, таким как контейнер хранилища, и могут запускаться и тестироваться локально.
+Можно использовать набор средств Azure для приложений Spark Scala toorun IntelliJ локально на рабочей станции. Hello приложений обычно не требуется доступ к toocluster ресурсы, такие как контейнеры хранилища, и можно выполнить и проверить их локально.
 
 ### <a name="prerequisite"></a>Предварительные требования
-При запуске локального приложения Spark Scala на компьютере с Windows может возникнуть исключение, описанное в статье о [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356). Это исключение возникает, так как в Windows отсутствует файл WinUtils.exe. 
+Во время выполнения локального Spark Scala приложения hello на компьютере Windows может появиться исключение, как описано в статье [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356). Hello исключение возникает из-за отсутствия WinUtils.exe в Windows. 
 
-Чтобы устранить эту ошибку, [скачайте этот исполняемый файл](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe), например в папку **C:\WinUtils\bin**. После этого добавьте переменную среды **HADOOP_HOME** и присвойте ей значение **C\WinUtils**.
+tooresolve эту ошибку, [загрузить исполняемый hello](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) tooa расположением, например **C:\WinUtils\bin**. Добавьте переменную среды hello **HADOOP_HOME**и задайте значение hello hello переменной слишком**C\WinUtils**.
 
 ### <a name="run-a-local-spark-scala-application"></a>Запуск локального приложения Spark Scala
 1. Запустите IntelliJ IDEA и создайте проект. 
 
-2. В диалоговом окне **Новый проект** сделайте следующее:
+2. В hello **новый проект** диалогового окна поле, hello следующие:
    
     а. Выберите **HDInsight** > **Spark on HDInsight Local Run Sample (Scala)** (Пример локального запуска Spark в HDInsight (Scala)).
 
-    b. В списке **средств сборки** выберите один из следующих вариантов:
+    b. В hello **инструмент сборки** выберите либо hello следующие, tooyour потребность в соответствии с:
 
       * **Maven.** Для поддержки мастера создания проекта Scala.
-      * **SBT.** Для управления зависимостями и создания проекта Scala.
+      * **SBT**, для управления зависимостями hello и построения для проекта Scala hello
 
-    ![Диалоговое окно нового проекта](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run.png)
+    ![диалоговое окно нового проекта Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run.png)
 
 3. Щелкните **Далее**.
  
-4. В следующем окне сделайте следующее:
+4. В следующем окне приветствия hello следующие:
    
     а. Введите имя и расположение проекта.
 
-    b. В раскрывающемся списке **пакета SDK проекта** выберите версию Jav выше 1.7.
+    b. В hello **проекта SDK** раскрывающегося списка выберите версию Java, которая является более поздней, чем версия 1.7.
 
-    c. В раскрывающемся списке **версии Spark**  выберите версию Scala, которую необходимо использовать, например Scala 2.11.x для Spark 2.0 или Scala 2.10.x для Spark 1.6.
+    c. В hello **версии Spark** раскрывающегося списка, выберите hello версию Scala нужных toouse: Scala 2.11.x Spark 2.0 или Scala 2.10.x для Spark 1.6.
 
-    ![Диалоговое окно нового проекта](./media/hdinsight-apache-spark-intellij-tool-plugin/Create-local-project.PNG)
+    ![диалоговое окно нового проекта Hello](./media/hdinsight-apache-spark-intellij-tool-plugin/Create-local-project.PNG)
 
 5. Выберите **Готово**.
 
-6. Шаблон добавляет пример кода (**LogQuery**) в папку **src**, который можно запустить локально на компьютере.
+6. пример кода добавляет шаблон Hello (**LogQuery**) в группе hello **src** папку, можно запустить локально на компьютере.
    
     ![Расположение LogQuery](./media/hdinsight-apache-spark-intellij-tool-plugin/local-app.png)
 
-7. Щелкните правой кнопкой мыши приложение **LogQuery** и выберите **Run LogQuery** (Запустить LogQuery). В нижней части вкладки **запуска** появятся выходные данные, как показано ниже.
+7. Щелкните правой кнопкой мыши hello **LogQuery** приложение, а затем выберите **выполнения «LogQuery»**. На hello **запуска** вкладку внизу hello вывод hello следующим образом:
    
    ![Результат локального запуска приложения Spark](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run-result.png)
 
-## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Преобразование имеющихся приложений IntelliJ IDEA для использования набора средств Azure для IntelliJ
-Имеющиеся приложения Spark Scala, созданные в IntelliJ IDEA, можно преобразовать и сделать совместимыми с набором средств Azure для IntelliJ. Затем вы сможете использовать подключаемый модуль для отправки приложений в кластер HDInsight Spark.
+## <a name="convert-existing-intellij-idea-applications-toouse-azure-toolkit-for-intellij"></a>Преобразование существующего toouse приложений IntelliJ ИДЕЯ набора средств Azure для IntelliJ
+Можно преобразовать существующие Spark Scala приложения hello, созданных в toobe IntelliJ ИДЕЯ совместимые с Azure Toolkit для IntelliJ. Затем можно использовать hello подключаемый модуль toosubmit hello приложений tooan кластера HDInsight Spark.
 
-1. Для имеющегося приложения Spark Scala, созданного с помощью IntelliJ IDEA, откройте соответствующий IML-файл.
+1. Для существующих приложений Spark Scala, была создана с помощью IntelliJ ИДЕЯ откройте файл связанного .iml hello.
 
-2. На корневом уровне вы увидите элемент **module** следующего вида:
+2. Hello корневой уровень является **модуль** элемент hello следующим образом:
    
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
 
-   Измените элемент, добавив `UniqueKey="HDInsightTool"` , чтобы элемент **module** выглядел следующим образом.
+   Изменить элемент tooadd hello `UniqueKey="HDInsightTool"` таким образом, hello **модуль** элемент выглядит hello следующее:
    
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
 
-3. Сохраните изменения. Ваше приложение станет совместимым с набором средств Azure для IntelliJ. Это можно проверить, щелкнув имя проекта в обозревателе проектов правой кнопкой мыши. Во всплывающем меню должен появиться пункт **Submit Spark Application to HDInsight** (Отправить приложение Spark в HDInsight).
+3. Сохраните изменения hello. Ваше приложение станет совместимым с набором средств Azure для IntelliJ. Можно проверить его, щелкнув правой кнопкой мыши имя проекта hello в обозревателе проектов. во всплывающем меню Hello теперь имеет параметр hello **tooHDInsight отправить приложение Spark**.
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
 ### <a name="error-in-local-run-please-use-a-larger-heap-size"></a>Ошибка *Please use a larger heap size* (Используйте больший размер кучи) в локальной среде
-В Spark 1.6 при использовании 32-разрядного пакета SDK для Java в локальной среде выполнения могут возникать следующие ошибки:
+Если вы используете 32-разрядных Java SDK во время локального запуска в Spark 1.6, может возникнуть hello следующие ошибки:
 
     Exception in thread "main" java.lang.IllegalArgumentException: System memory 259522560 must be at least 4.718592E8. Please use a larger heap size.
         at org.apache.spark.memory.UnifiedMemoryManager$.getMaxMemory(UnifiedMemoryManager.scala:193)
@@ -291,18 +291,18 @@ ms.lasthandoff: 08/29/2017
         at java.lang.reflect.Method.invoke(Method.java:606)
         at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)
 
-Это связано с тем, что размер кучи недостаточно велик для запуска Spark. Для Spark требуется не меньше 471 МБ. (Дополнительные сведения см. в статье о [SPARK-12081](https://issues.apache.org/jira/browse/SPARK-12081).) Простое решение – это использовать 64-разрядный пакет SDK для Java. Кроме того, можно изменить параметры виртуальной машины Java в IntelliJ, добавив следующие параметры:
+Эти ошибки возникают потому, что размер кучи hello недостаточно велик для Spark toorun. Для Spark требуется не меньше 471 МБ. (Дополнительные сведения см. в статье о [SPARK-12081](https://issues.apache.org/jira/browse/SPARK-12081).) Простое решение – toouse 64-разрядных Java SDK. Можно также изменить параметры виртуальной машины Java hello в IntelliJ путем добавления hello следующие параметры:
 
     -Xms128m -Xmx512m -XX:MaxPermSize=300m -ea
 
-![Добавление параметров в поле VM options (Параметры виртуальной машины) в IntelliJ](./media/hdinsight-apache-spark-intellij-tool-plugin/change-heap-size.png)
+![Добавление параметров toohello поле «Параметры виртуальной Машины» в IntelliJ](./media/hdinsight-apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>Часто задаваемые вопросы
-Чтобы отправить приложение в Azure Data Lake Store, выберите **интерактивный** режим во время входа в Azure. Если выбрать **автоматический** режим, может произойти ошибка.
+Выберите toosubmit хранилище Озера данных приложения tooAzure **Interactive** режим во время процесса hello Azure вход. Если выбрать **автоматический** режим, может произойти ошибка.
 
 ![Интерактивный вход](./media/hdinsight-apache-spark-intellij-tool-plugin/interative-signin.png)
 
-Теперь мы устранили ее. Можно выбрать кластер Azure Data Lake для отправки приложения с помощью любого метода входа.
+Теперь мы устранили ее. Вы можете toosubmit кластера Озера данных Azure приложения с помощью метода входа.
 
 ## <a name="feedback-and-known-issues"></a>Отзывы и известные проблемы
 Сейчас просмотр выходных данных Spark напрямую не поддерживается.
@@ -314,13 +314,13 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="demo"></a>Демонстрация
 * Создание проекта Scala (видео): [создание приложений Scala Spark](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Удаленная отладка (видео): [удаленная отладка приложений Spark в кластере HDInsight с помощью набора средств Azure для IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Удаленной отладки (видео): [используйте набор средств Azure для приложений Spark toodebug IntelliJ удаленно на кластер HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Сценарии
 * [Использование средств визуализации данных с помощью Apache Spark BI в Azure HDInsight](hdinsight-apache-spark-use-bi-tools.md)
-* [Создание приложений машинного обучения Apache Spark в Azure HDInsight](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Использование Spark с машинным обучением. Использование Spark в HDInsight для прогнозирования результатов контроля качества пищевых продуктов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [Потоковая передача Apache Spark. Обработка данных из концентраторов событий Azure с помощью кластера Spark в HDInsight](hdinsight-apache-spark-eventhub-streaming.md)
+* [Spark с машинного обучения: используйте Spark в HDInsight tooanalyze построение с использованием данных Кондиционирования температуры](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [Spark с машинного обучения: используйте Spark в HDInsight toopredict food проверки результатов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark потоковой передачи: Используйте Spark в HDInsight toobuild в режиме реального времени потоковую передачу приложений](hdinsight-apache-spark-eventhub-streaming.md)
 * [Анализ журнала веб-сайта с использованием Spark в HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Создание и запуск приложений
@@ -328,16 +328,16 @@ ms.lasthandoff: 08/29/2017
 * [Удаленный запуск заданий с помощью Livy в кластере Spark](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Средства и расширения
-* [Удаленная отладка приложений Spark через VPN с помощью набора средств Azure для IntelliJ](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Удаленная отладка приложений Spark через SSH с помощью набора средств Azure для IntelliJ](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Используйте набор средств Azure для приложений Spark toodebug IntelliJ удаленно через виртуальную частную сеть](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Используйте набор средств Azure для приложений Spark toodebug IntelliJ удаленно через SSH](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [Использование инструментов HDInsight для IntelliJ с песочницей Hortonworks](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Использование средств HDInsight в наборе средств Azure для Eclipse для создания приложений Spark](hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Используйте средства HDInsight в набор средств Azure для Eclipse toocreate Spark приложений](hdinsight-apache-spark-eclipse-tool-plugin.md)
 * [Использование записных книжек Zeppelin с кластером Spark в HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Ядра, доступные для записной книжки Jupyter в кластере Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Использование внешних пакетов с записными книжками Jupyter](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Установка записной книжки Jupyter на компьютере и ее подключение к кластеру Apache Spark в Azure HDInsight (предварительная версия)](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Установка Jupyter на вашем компьютере и подключение tooan кластера HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="managing-resources"></a>Управление ресурсами
-* [Управление ресурсами кластера Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+* [Управление ресурсами кластера hello Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Отслеживание и отладка заданий в кластере Apache Spark в HDInsight на платформе Linux](hdinsight-apache-spark-job-debugging.md)
 

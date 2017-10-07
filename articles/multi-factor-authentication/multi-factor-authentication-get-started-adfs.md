@@ -1,6 +1,6 @@
 ---
-title: "Azure MFA: двухфакторная проверка подлинности и AD FS | Документация Майкрософт"
-description: "Эта страница содержит сведения о службе Azure Multi-Factor Authentication, описывающие начало работы с Azure MFA и AD FS."
+title: "aaaTwo шаг проверки и AD FS - многофакторной проверки Подлинности Azure | Документы Microsoft"
+description: "Это страница hello Azure многофакторной проверки подлинности, описывающий, как tooget работу с Azure MFA и AD FS."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/23/2017
 ms.author: kgremban
-ms.openlocfilehash: 28aede545c738137ff04257214e4a3f42792d85c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7c1c925039d3cb753ba60e286168e5869faeae4d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Приступая к работе со службой Azure Multi-Factor Authentication и службами федерации Active Directory
 <center>![Облако](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
@@ -28,22 +28,22 @@ ms.lasthandoff: 07/11/2017
 * Защита облачных ресурсов с помощью службы Azure Multi-Factor Authentication и служб федерации Active Directory
 * Защита облачных и локальных ресурсов с помощью сервера Azure Multi-Factor Authentication
 
-В следующей таблице перечислены возможности проверки для защиты ресурсов с помощью Многофакторной идентификации Azure и служб федерации Active Directory.
+Привет, в следующей таблице приведена сводка hello проверки взаимодействия между защищаемых ресурсов с помощью многофакторной проверки подлинности Azure и AD FS
 
 | Проверка для браузерных приложений | Проверка для небраузерных приложений |
 |:--- |:--- |:--- |
-| Защита ресурсов Azure AD с помощью Azure Multi-Factor Authentication |<li>Первый этап проверки выполняется локально с помощью служб федерации Active Directory.</li> <li>Второй этап выполняется с использованием телефона для облачной проверки подлинности.</li> |
-| Защита ресурсов Azure AD с помощью служб федерации Active Directory |<li>Первый этап проверки выполняется локально с помощью служб федерации Active Directory.</li><li>Второй этап выполняется локально путем обработки утверждения.</li> |
+| Защита ресурсов Azure AD с помощью Azure Multi-Factor Authentication |<li>Первый шаг проверки Hello выполняется локально с помощью AD FS.</li> <li>второй шаг Hello — по телефону, выполняются с помощью проверки подлинности в облаке.</li> |
+| Защита ресурсов Azure AD с помощью служб федерации Active Directory |<li>Первый шаг проверки Hello выполняется локально с помощью AD FS.</li><li>второй шаг Hello — выполняется локально путем выполнения утверждения hello.</li> |
 
 Разъяснения касательно паролей приложений для федеративных пользователей.
 
 * Пароли приложений проверяются с использованием облачной проверки подлинности и, следовательно, обходят федерацию. Федерация активно используется только при настройке пароля приложения.
 * Параметры контроля доступа локальных клиентов не учитываются при использовании паролей приложений.
 * У вас нет возможности вести журнал локальной проверки подлинности для паролей приложений.
-* Отключение или удаление учетной записи может занять до 3 часов с учетом синхронизации каталогов, которая задерживает процесс отключения или удаления паролей приложений в облачном удостоверении.
+* Отключение или удаление учетной записи может занять toothree часов для синхронизации каталогов, задержкой отключения/удаления пароли приложений в удостоверении облака hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о настройке службы или сервера Многофакторной идентификации Azure с помощью служб федерации Active Directory см. в таких статьях:
+Сведения о настройке многофакторной проверки подлинности Azure или hello сервера Azure Multi-factor Authentication с AD FS см. следующие статьи hello:
 
 * [Защита облачных ресурсов с помощью службы Azure Multi-Factor Authentication и служб AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
 * [Защита облачных и локальных ресурсов с помощью сервера Azure Multi-Factor Authentication и сервера Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)

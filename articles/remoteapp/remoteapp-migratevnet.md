@@ -1,6 +1,6 @@
 ---
-title: "Переход с платформы RemoteApp VNET на платформу Azure VNET | Документация Майкрософт"
-description: "Сведения о переходе с платформы RemoteApp VNET на платформу Azure VNET"
+title: "toomigrate aaaHow из виртуальной сети RemoteApp tooan виртуальной сети Azure | Документы Microsoft"
+description: "Узнайте, как toomigrate из виртуальной сети RemoteApp tooan виртуальной сети Azure"
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,40 +13,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 10b5f4844a38fe97852dee8634e8cf54f1a23a1e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c0f8617556c6f1e33eca8322febf67ff33937ecd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-migrate-a-hybrid-collection-from-a-remoteapp-vnet-to-an-azure-vnet"></a>Перенос гибридной коллекции с платформы RemoteApp VNET в среду Azure VNET
+# <a name="how-toomigrate-a-hybrid-collection-from-a-remoteapp-vnet-tooan-azure-vnet"></a>Как toomigrate гибридной коллекции из виртуальной сети RemoteApp tooan виртуальной сети Azure
 > [!IMPORTANT]
-> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Дополнительные сведения см. в [объявлении](https://go.microsoft.com/fwlink/?linkid=821148).
+> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Чтение hello [объявления](https://go.microsoft.com/fwlink/?linkid=821148) подробные сведения.
 > 
 > 
 
-Отличная новость! Теперь вы можете развертывать гибридные коллекции RemoteApp непосредственно в существующих виртуальных сетях Azure (VNET-сетях) вместо создания специальных VNET-сетей для службы RemoteApp. Благодаря этому вам становятся доступны новейшие функции и преимущества VNET (такие как ExpressRoute), а также возможность предоставить своим гибридным коллекциям непосредственный сетевой доступ к другим службам и виртуальным машинам Azure, развернутым для этой VNET-сети.  (Это повышает эффективность и производительность, а также упрощает настройку в сравнении с конфигурациями VNET/VNET.)
+Отличная новость! Мы включили коллекции RemoteApp гибридного toodeploy непосредственно в вашей существующей Azure виртуальных сетей (Vnet) вместо создания виртуальных сетей RemoteApp определенного. Это позволяет воспользоваться преимуществами hello новейших функций виртуальной сети (например, ExpressRoute) и предоставьте вашей гибридной коллекции прямого сетевого доступа tooother служб Azure и развернуть виртуальные машины toothat виртуальной сети.  (Это повышает эффективность и производительность, а также упрощает настройку в сравнении с конфигурациями VNET/VNET.)
 
-Предположим, у вас уже есть гибридная коллекция RemoteApp под названием *OriginalCollection* с VNET-сетью RemoteApp, которая называется *RemoteAppVNET*. Рассмотрим действия, которые необходимо выполнить для ее переноса в новую VNET-сеть Azure под названием *AzureVNET*.
+Предположим, у вас уже есть гибридная коллекция RemoteApp под названием *OriginalCollection* с VNET-сетью RemoteApp, которая называется *RemoteAppVNET*. Ниже приведены шаги toomigrate hello его новой виртуальной сети Azure вызывается tooa *AzureVNET*.
 
-1. На вкладке **Сети** [портала управления](http://manage.windowsazure.com/) создайте VNET-сеть под названием *AzureVNET* с тем же расположением, конфигурацией DNS и адресным пространством (как минимум для одной из подсетей *AzureVNET*), что и у виртуальной сети *RemoteAppVNET*.
-2. Настройте сеть *AzureVNET* таким образом, чтобы в ней размещалось развертывание Active Directory, в которое входит домен *OriginalCollection*, или между ними был организован сетевой доступ.
-3. На вкладке **RemoteApps** создайте новую коллекцию RemoteApp под названием *NewCollection*. (Используйте вариант **Создать с помощью VNet**, а не **Быстрое создание**.)
-4. Разверните коллекцию *NewCollection* в подсети виртуальной сети *AzureVNET*.
-5. Задайте для *NewCollection* те же параметры образа и присоединения к домену, что и для коллекции *OriginalCollection*.
+1. На hello **сетей** на вкладке hello [портала управления](http://manage.windowsazure.com/), создание виртуальной сети называется *AzureVNET*, с использованием hello местоположения, конфигурацию DNS и адресного пространства (хотя бы для одного из hello *AzureVNET* подсетей) как вы использовали для *RemoteAppVNET*.
+2. Настройка *AzureVNET* tooeither размещения или развертывания Active Directory toohello подключения к сети, *OriginalCollection* присоединен к домену.
+3. На hello **удаленными приложениями** создайте новую коллекцию RemoteApp с названием *новую коллекцию*. (Используйте hello **Создание виртуальной сети** вариант не **быстрое создание**.)
+4. Настройка *NewCollection* toobe развернут в подсети tooa *AzureVNET*.
+5. Настройка *NewCollection* toouse hello того же образа и сведений о присоединении домена, как вы использовали для *OriginalCollection*.
 6. Через несколько часов коллекция *NewCollection* появится в списке коллекции в активном состоянии.
 
-Теперь, если вам НЕ НУЖНО переносить данные пользователей из исходной коллекции в новую, выполните указанные ниже действия.
+Теперь если не требуется toomigrate сведений о пользователе из hello исходной коллекции toohello новой коллекции, выполните указанные ниже действия далее:
 
 1. Удалите исходную коллекцию *OriginalCollection*.
 2. Удалите виртуальную сеть *RemoteAppVNET*.
 
 Готово!
 
-Если вам все же НУЖНО перенести данные пользователей из исходной коллекции в новую, выполните указанные ниже действия.
+Кроме того Если требуется toomigrate сведений о пользователе из hello исходной коллекции toohello новой коллекции, выполните указанные ниже действия далее:
 
-1. Отправьте на адрес [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20user%20information%20migration) электронное сообщение с идентификатором подписки Azure, именами исходной и новой коллекций и просьбой перенести данные пользователей.
-2. В течение двух рабочих дней специалисты RemoteApp перенесут список доступа пользователей, а также все их документы и параметры из исходной коллекции в новую.
+1. Отправить сообщение электронной почты слишком[ remoteappforum@microsoft.com ](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20user%20information%20migration) своим Идентификатором подписки Azure hello имя исходной коллекции, а имя новой коллекции hello и попросите его toomigrate свои учетные данные.
+2. В течение 2 рабочих дней команды RemoteApp hello будет перемещать hello список доступа пользователей и все документы пользователя и параметров пользователя из hello исходной коллекции toohello новой коллекции.
 3. Удалите исходную коллекцию *OriginalCollection*.
 4. Удалите виртуальную сеть *RemoteAppVNET*.
 

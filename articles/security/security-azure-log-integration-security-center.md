@@ -1,6 +1,6 @@
 ---
-title: "Объединение службы интеграции журналов Azure с центром безопасности | Документация Майкрософт"
-description: "Узнайте, как объединить оповещения центра безопасности Azure со службой интеграции журналов."
+title: "aaaAzure журнала интеграция с центром обеспечения безопасности | Документы Microsoft"
+description: "Узнайте, как tooget безопасности Azure center оповещения, работа с интеграцией журнала"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,44 +15,44 @@ ums.workload: na
 ms.date: 03/22/2017
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 294a795746420233e961e67cceec4b0538e49ff6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bcc208d071ec03738215f2aee3b71c7b10927904
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-get-your-security-center-alerts-in-azure-log-integration"></a>Как добавить оповещения центра безопасности Azure в службу интеграции журналов Azure
-В этой статье описывается, как сделать так, чтобы служба интеграции журналов Azure могла получать данные оповещений безопасности, создаваемых центром безопасности Azure. Необходимо успешно выполнить инструкции, описанные в [руководстве по началу работы](security-azure-log-integration-get-started.md), прежде чем приступить к действиям в этой статье.
+# <a name="how-tooget-your-security-center-alerts-in-azure-log-integration"></a>Как tooget ваш центр безопасности оповещения в Azure log интеграции
+Эта статья содержит hello действия требуется tooenable hello службы интеграции Azure журнала toopull предупреждение безопасности информации, создаваемой центра безопасности Azure. Необходимо успешно выполнить шаги hello hello [начать](security-azure-log-integration-get-started.md) статьи, прежде чем выполнять действия hello в этой статье.
 
 ## <a name="detailed-steps"></a>Подробные инструкции
-Ниже описывается, как создать необходимый субъект-службу Azure Active Directory и назначить ему разрешения на чтение для подписки.
-1. Откройте окно командной строки и перейдите в каталог **:\Program Files\Microsoft Azure Log Integration**.
-2. Выполните команду ``azlog createazureid``.
+Hello следующее создаст hello необходимые субъекта-службы Azure Active Directory и назначьте hello участника службы подписки toohello разрешения на чтение:
+1. Откройте командную строку hello и перехода слишком**c:\Program Files\Microsoft Azure журнала интеграции**
+2. Выполните команду hello``azlog createazureid``
 
-    Эта команда запрашивает имя для входа Azure. Затем она создает [субъект-службу Azure Active Directory](../active-directory/develop/active-directory-application-objects.md) в клиентах Azure AD, содержащих подписки Azure, для которых вошедший пользователь является администратором, соадминистратором или владельцем. Команда завершится ошибкой, если пользователь является только гостем в клиенте Azure AD. Аутентификация в Azure осуществляется через Azure Active Directory (AD). Создание субъекта-службы для службы интеграции Azlog приводит к созданию удостоверения Azure AD, которому будет предоставлен доступ на чтение из подписок Azure.
+    Эта команда запрашивает имя для входа Azure. Затем создается команда Hello [субъекта-службы Azure Active Directory](../active-directory/develop/active-directory-application-objects.md) в hello клиенты Azure AD, содержащие hello подписок Azure, в какие hello, пользователь является администратором, администратором или владельцем. Команда Hello завершится ошибкой, если пользователь hello равно только существование пользователя Guest в hello клиента Azure AD. Проверка подлинности tooAzure выполняется через Azure Active Directory (AD). При создании субъекта-службы для интеграции Azlog создается hello удостоверений Azure AD, предоставляемую tooread доступ из подписки Azure.
 
-2. Затем следует выполнить команду, которая предоставляет субъекту-службе, созданному на шаге 2, доступ для чтения к подписке. Если не указать SubscriptionID, то эта команда попытается назначить субъекту-службе роль "Читатель" для всех подписок, к которым у вас есть какой-либо доступ. </br></br>
+2. Теперь вы выполните команду, которая назначает доступ для чтения на hello участника-службы подписки toohello созданный на шаге 2. Если не указать идентификатор подписки, команда hello попытается tooassign hello службы чтения основной роли tooall подписки toowhich имеют доступ. </br></br>
 ``azlog authorize <SubscriptionID>`` </br> Например: </br>
 ``azlog authorize 0ee55555-0bc4-4a32-a4e8-c29980000000``
 
     >[!NOTE]
-    Если выполнить команду authorize сразу же после команды createazureid, то могут появиться предупреждения. После создания учетная запись Azure AD становится доступной для использования с некоторой задержкой. Чтобы избежать таких предупреждений, следует подождать около 60 секунд после выполнения команды createazureid и лишь затем выполнять команду authorize.
+    Может появиться предупреждения при запуске hello авторизовать команда сразу же после команды createazureid hello. Возникает некоторая задержка между при создании учетной записи hello Azure AD и когда hello учетной записи доступна для использования. Если Подождите около 60 секунд после выполнения команды toorun hello createazureid hello авторизовать команды, то вы не увидите эти предупреждения.
 
-4. Проверьте следующие папки, в которых должны находиться JSON-файлы журнала аудита:
+4. Проверьте, что существуют следующие tooconfirm папки, файлы JSON журнала аудита hello hello:
  * **c:\Users\azlog\AzureResourceManagerJson;**
  * **c:\Users\azlog\AzureResourceManagerJsonLD.** </br></br>
-5. Проверьте следующие папки, в которых должны находиться оповещения центра безопасности:</br></br>
+5. Проверьте следующие папки tooconfirm, оповещения центра обеспечения безопасности существуют в их hello.</br></br>
  * **c:\Users\azlog\AzureSecurityCenterJson**
  * **c:\Users\azlog\AzureSecurityCenterJsonLD.** </br></br>
 
-В случае проблем при установке и настройке создайте [запрос в службу поддержки](/azure-supportability/how-to-create-azure-support-request.md), указав **Интеграция журнала** в качестве службы, для которой запрашивается поддержка.
+Если возникли проблемы во время установки hello и конфигурации, откройте [запрос на получение поддержки](/azure-supportability/how-to-create-azure-support-request.md)выберите **интеграции журнала** как служба hello, для которого запрашивается поддержка.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Чтобы узнать больше об интеграции журналов Azure, ознакомьтесь со следующими документами:
+toolearn Дополнительные сведения о журнале интеграции Azure, см. следующие документы hello.
 
 * [Служба интеграции журналов Microsoft Azure для журналов Azure](https://www.microsoft.com/download/details.aspx?id=53324) — посетите Центр загрузки, чтобы получить дополнительные сведения, изучить требования к системе и получить инструкции по установке службы интеграции журналов Azure.
-* [Introduction to Microsoft Azure log integration (Preview)](security-azure-log-integration-overview.md) (Введение в службу интеграции журналов Azure (предварительная версия)) — в этом документе рассказывается о службе интеграции журналов Azure, ее основных возможностях и принципах работы.
-* [Azure Log Integration SIEM configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Настройка SIEM для службы интеграции журналов Azure) — в этой записи блога показано, как настроить службу интеграции журналов Azure для работы с такими решениями партнеров, как Splunk, HP ArcSight и IBM QRadar.
+* [Введение tooAzure журнала интеграции](security-azure-log-integration-overview.md) — в этом документе представлены интеграцию tooAzure журнала, его основные возможности и как он работает.
+* [Действия по настройке партнера](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) — в этой записи блога показано, как tooconfigure Azure журнала toowork интеграция с решениями партнеров Splunk и разработанное HP, IBM QRadar.
 * [Azure log integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) (Служба интеграции журналов Azure: часто задаваемые вопросы) — эта статья содержит ответы на часто задаваемые вопросы об интеграции журналов Azure.
-* [Интеграция оповещений центра обеспечения безопасности с помощью интеграции журналов Azure (предварительная версия)](../security-center/security-center-integrating-alerts-with-log-integration.md) — в этом документе показано, как синхронизировать оповещения центра безопасности, а также события безопасности виртуальных машин, собранные системой диагностики Azure и в журналах аудита Azure, с решением Log Analytics или SIEM.
-* [New features for Azure diagnostics and Azure Audit logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Новые возможности системы диагностики Azure и журналов аудита Azure) — в этой записи блога рассказывается о журналах аудита Azure и других функциях, которые помогут глубже понять, как работают ваши ресурсы Azure.
+* [Интеграция центра обеспечения безопасности интеграции журнала предупреждений с помощью Azure](../security-center/security-center-integrating-alerts-with-log-integration.md) — в этом документе показано, как оповещения центра обеспечения безопасности toosync, вместе с событиями безопасности виртуальной машины, собранные диагностики Azure и журналы аудита Azure, с помощью аналитики журналов или Решения SIEM.
+* [Новые возможности диагностики Azure и журналы аудита Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) — в этой записи блога вводит tooAzure журналы аудита и другие средства, помогающие анализировать hello операций с ресурсами Azure.

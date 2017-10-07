@@ -1,6 +1,6 @@
 ---
-title: "Просмотр данных в виртуальной машине SQL Server на платформе Azure | Документация Майкрософт"
-description: "Описание того, как просматривать данные, хранящиеся в виртуальной машине SQL Server на платформе Azure."
+title: "aaaExplore данных в SQL Server виртуальной машины в Azure | Документы Microsoft"
+description: "Как tooexplore данные, хранящиеся в виртуальной Машине SQL Server в Azure."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: a2be21ef15b9209db1e97150e0297558fa69a7be
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fcc449fc0d0e49be9b673cfb2de347cf44804017
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Просмотр данных в виртуальной машине SQL Server на платформе Azure
-В этом документе описано, как просматривать данные, хранящиеся в виртуальной машине SQL Server на платформе Azure. Это можно сделать путем структурирования данных с помощью SQL или с использованием языка программирования, например Python.
+В этом документе рассматриваются как tooexplore данные, хранящиеся в виртуальной Машине SQL Server в Azure. Это можно сделать путем структурирования данных с помощью SQL или с использованием языка программирования, например Python.
 
-Следующее **меню** содержит ссылки на статьи, описывающие использование средств для просмотра данных из различных сред хранения. Эта задача является одним из этапов процесса аналитики Кортаны (CAP).
+следующие Hello **меню** связывает tootopics, описывающих, как toouse средств tooexplore данные из различных средах хранилища. Эта задача является этапом hello процесса Cortana аналитика (CAP).
 
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
 > [!NOTE]
-> В образцах инструкций SQL, содержащихся в данном документе, предполагается, что данные находятся на сервере SQL Server. Если это не так, обратитесь к карте обработки облачных данных, чтобы узнать, как переместить данные в SQL Server.
+> Hello пример инструкции SQL в этом документе предполагается, что данные находятся в SQL Server. В противном случае обратитесь toohello облачных данных обработки и анализа процесса карты toolearn как toomove вашей tooSQL данные сервера.
 > 
 > 
 
 ## <a name="sql-dataexploration"></a>Просмотр данных SQL с помощью сценариев SQL
-Вот несколько примеров сценариев SQL, которые можно использовать для изучения хранилищ данных в SQL Server.
+Вот несколько примеры сценариев SQL, которые можно использовать tooexplore хранилищ данных в SQL Server.
 
-1. Получение количества наблюдений за день
+1. Получение числа hello наблюдения за день
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. Получение уровней в столбце категорий
+2. Получить уровней hello в категориальный столбец
    
     `select  distinct <column_name> from <databasename>`
-3. Получение числа уровней в сочетании двух столбцов категорий 
+3. Получить hello количество уровней в сочетании с двумя категориальные столбцы 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. Получение распределения для числовых столбцов 
+4. Получить hello распространения для числовых столбцов.
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 > [!NOTE]
-> Для практического примера можно использовать [набор данных о такси Нью-Йорка](http://www.andresmh.com/nyctaxitrips/) и статью IPNB под названием [Структурирование данных Нью-Йорка с помощью IPython Notebook и SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb), содержащую полное пошаговое руководство.
+> Практический пример, можно использовать hello [dataset такси NYC](http://www.andresmh.com/nyctaxitrips/) и toohello IPNB под названием [wrangling NYC данных с помощью ноутбук IPython и SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) руководство с начала до конца.
 > 
 > 
 
 ## <a name="python"></a>Просмотр данных SQL с помощью Python
-Использование языка Python для просмотра данных и создания характеристик, когда данные находятся в SQL Server, подобно обработке данных в большом двоичном объекте Azure с использованием Python, как описано в статье [Обработка больших двоичных данных Azure с применением методов расширенного анализа](machine-learning-data-science-process-data-blob.md). Данные необходимо загрузить из базы данных в кадр данных Pandas для последующей обработки. В этом разделе задокументирован процесс подключения к базе данных и загрузки данных в кадр данных.
+С помощью Python tooexplore данных и создавать функции при hello данные хранятся в SQL Server схожие данные tooprocessing в BLOB-объектов Azure с помощью Python, как описано в документе [данные больших двоичных объектов Azure процесс в среде обработки и анализа данных](machine-learning-data-science-process-data-blob.md). Hello данных должен toobe загружаются из базы данных hello в pandas кадр данных и затем может быть дальнейшую обработку. Мы документа hello процесс соединения toohello базы данных и загрузку данных hello в hello кадр данных в этом разделе.
 
-Для подключения к базе данных SQL Server из языка Python с использованием pyodbc можно применить следующий формат строки подключения (замените servername, dbname, username и password соответствующими значениями имени сервера, имени БД, имени пользователя и пароля):
+Hello следующий формат строки соединения может быть база данных SQL Server используется tooconnect tooa из Python, с помощью pyodbc (заменить имя сервера, dbname, имя пользователя и пароль особые значения):
 
-    #Set up the SQL Azure connection
+    #Set up hello SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Библиотека Pandas](http://pandas.pydata.org/) в языке Python предлагает большой выбор структур данных и средств анализа данных для манипуляций со значениями с помощью языке Python. Следующий код считывает результаты, возвращенные из базы данных SQL Server, в кадр данных Pandas:
+Hello [Pandas библиотеки](http://pandas.pydata.org/) в Python предоставляет широкий набор средств анализа данных и структур данных для работы с данными для программирования Python. Hello следующий код считывает hello результаты, возвращенные из базы данных SQL Server, в кадр данных Pandas:
 
-    # Query database and load the returned results in pandas data frame
+    # Query database and load hello returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-Теперь можно работать с кадром данных Pandas, как описано в статье [Обработка больших двоичных данных Azure с применением методов расширенного анализа](machine-learning-data-science-process-data-blob.md).
+Теперь можно работать с hello Pandas кадр данных, как описано в разделе hello [данные больших двоичных объектов Azure процесс в среде обработки и анализа данных](machine-learning-data-science-process-data-blob.md).
 
 ## <a name="cortana-analytics-process-in-action-example"></a>Практический пример применения процесса аналитики Кортаны
-Полноценный пошаговый пример применения процесса Cortana Analytics с использованием общедоступного набора данных см. в статье [Процесс обработки и анализа данных группы на практике: использование SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
+Пошаговое руководство с начала до конца пример hello Cortana Analytics процесс, используя открытый набор данных, в разделе [hello командного процесса обработки и анализа данных в действие: с помощью SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
 

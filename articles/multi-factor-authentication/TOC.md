@@ -1,11 +1,11 @@
 # Обзор
 ## [Что такое Многофакторная идентификация Azure?](multi-factor-authentication.md)
 ## [Принцип работы](multi-factor-authentication-how-it-works.md)
-## [Как получить Azure MFA](multi-factor-authentication-versions-plans.md)
+## [Как tooget многофакторной проверки Подлинности Azure](multi-factor-authentication-versions-plans.md)
 
 # Начало работы
-## [Выбор расположения для развертывания](multi-factor-authentication-get-started.md)
-## [Многофакторная идентификация (MFA) в облаке](multi-factor-authentication-get-started-cloud.md)
+## [Выберите, где toodeploy](multi-factor-authentication-get-started.md)
+## [Многофакторной проверки Подлинности в облаке hello](multi-factor-authentication-get-started-cloud.md)
 ## [Локальная Многофакторная идентификация (MFA)](multi-factor-authentication-get-started-server.md)
 ## [Многофакторная идентификация (MFA) для пользователей Office 365](https://support.office.com/article/Plan-for-multi-factor-authentication-for-Office-365-Deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba)
 ## [Рекомендации по обеспечению безопасности](multi-factor-authentication-security-best-practices.md)
@@ -18,7 +18,7 @@
 #### [Расширенная конфигурация для расширения NPS](nps-extension-advanced-configuration.md)
 ### [Создание поставщика аутентификации](multi-factor-authentication-get-started-auth-provider.md)
 ### Развертывание MFA в локальной среде
-#### [Установка пользовательского портала](multi-factor-authentication-get-started-portal.md)
+#### [Установка пользовательского портала hello](multi-factor-authentication-get-started-portal.md)
 #### [Расширенные конфигурации VPN](multi-factor-authentication-advanced-vpn-configurations.md)
 #### [Веб-служба мобильного приложения](multi-factor-authentication-get-started-server-webservice.md)
 #### [Настройка высокого уровня доступности](mfa-server-high-availability.md)

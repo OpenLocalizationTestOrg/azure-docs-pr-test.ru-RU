@@ -1,12 +1,12 @@
 ---
 title: "Приступая к работе с имитацией устройства и шлюзом Azure IoT. Урок 3. Запуск примера приложения | Документация Майкрософт"
-description: "Запуск примера приложения для имитации устройства для отправки данных в Центр Интернета вещей"
+description: "Запустить имитированное устройство образец приложения toosend температуры данных tooyour центра IoT"
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "отправка данных в облако"
+keywords: "toocloud данных"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: 5d051d99-9749-4150-b3c8-573b0bda9c52
@@ -17,26 +17,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 7df2d730c38a9f715e0fd57b4d436724a5727760
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bc2c97919e95e4e3977a8b6ac75162bf2b5017be
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-and-run-a-simulated-device-sample-app"></a>Настройка и запуск примера приложения для имитации устройства
 
 ## <a name="what-you-will-do"></a>Выполняемая задача
 
-- Клонируйте репозиторий.
-- Чтобы получить сведения о Центре Интернета вещей и логическом устройстве примера приложения для имитации устройства, используйте Azure CLI. Затем настройте и запустите пример приложения для имитации устройства.
+- Репозиторий образец hello клона.
+- Используйте hello Azure CLI tooget центр IoT и сведения о логических устройств для устройств, имитация образца приложения. Настроить и запустить пример приложения hello имитируемые устройства.
 
-Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-gateway-kit-c-sim-troubleshooting.md).
+Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Новые знания
 
 В этой статье вы узнаете следующее:
 
-- Как настроить и запустить пример приложения для имитации устройства.
+- Как tooconfigure и выполнения hello имитировать образец приложения для устройства.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 
@@ -44,21 +44,21 @@ ms.lasthandoff: 07/11/2017
 
 - [Создание Центра Интернета вещей и регистрация устройства](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
 
-## <a name="clone-the-sample-repository-to-the-host-computer"></a>Клонирование примера репозитория на главном компьютере
+## <a name="clone-hello-sample-repository-toohello-host-computer"></a>Клон образец hello репозитория toohello главного компьютера
 
-Чтобы клонировать пример репозитория на главном компьютере, сделайте следующее:
+репозиторий образец hello tooclone, выполните следующие действия на главном компьютере hello:
 
 1. Откройте командную строку в Windows или окно терминала в МacOS или Ubuntu.
-2. Выполните следующие команды:
+2. Выполните следующие команды hello.
 
    ```bash
    git clone https://github.com/Azure-samples/iot-hub-c-intel-nuc-gateway-getting-started
    cd iot-hub-c-intel-nuc-gateway-getting-started
    ```
 
-## <a name="configure-the-simulated-device-and-your-nuc"></a>Настройка имитации устройства и NUC
+## <a name="configure-hello-simulated-device-and-your-nuc"></a>Настройка устройств, имитация hello и вашей NUC
 
-1. Откройте файл конфигурации `config.json` в Visual Studio Code, выполнив следующую команду.
+1. Привет открыть файл конфигурации `config.json` в коде Visual Studio, выполнив следующую команду hello:
 
    ```bash
    code config.json
@@ -68,7 +68,7 @@ ms.lasthandoff: 07/11/2017
 
    ![конфигурация, нет устройства TI SensorTag](media/iot-hub-gateway-kit-lessons/lesson3/config_no_sensortag.png)
 
-3. Запустите файл конфигурации, выполнив приведенную ниже команду.
+3. Инициализируйте hello файл конфигурации, выполнив следующие команды hello:
 
    ```bash
    cd Lesson3
@@ -76,7 +76,7 @@ ms.lasthandoff: 07/11/2017
    gulp init
    ```
 
-4. Откройте файл `config-gateway.json` в Visual Studio Code, выполнив следующую команду:
+4. Откройте `config-gateway.json` в коде Visual Studio, выполнив следующую команду hello:
 
    ```bash
    # For Windows command prompt
@@ -85,24 +85,24 @@ ms.lasthandoff: 07/11/2017
    code ~/.iot-hub-getting-started/config-gateway.json
    ```
 
-5. Найдите следующую строку кода и замените `[device hostname or IP address]` IP-адресом или именем Intel NUC.
+5. Найдите следующие строки кода hello и замените `[device hostname or IP address]` с IP-адрес или имя hello Intel NUC.
    ![снимок экрана настройки шлюза](media/iot-hub-gateway-kit-lessons/lesson3/config_gateway.png)
 
-## <a name="get-the-connection-string-of-your-iot-hub-logical-device"></a>Получение строки подключения логического устройства Центра Интернета вещей
+## <a name="get-hello-connection-string-of-your-iot-hub-logical-device"></a>Получить строку подключения hello логического устройства концентратора IoT
 
-Чтобы получить строку подключения Центра Интернета вещей Azure для логического устройства, выполните следующую команду на главном компьютере:
+hello tooget строка подключения концентратора Azure IoT логического устройства, запустите следующую команду на главном компьютере hello hello:
 
 ```bash
 az iot device show-connection-string --hub-name {IoT hub name} --device-id mydevice --resource-group iot-gateway
 ```
 
-`{IoT hub name}` — это имя использованного Центра Интернета вещей. Используйте iot-gateway в качестве значения `{resource group name}`, а mydevice в качестве значения `{device id}`, если в уроке 2 значение не изменялось.
+`{IoT hub name}`— Имя концентратора IoT hello, который использовался. Iot шлюз можно использовать в качестве значения hello `{resource group name}` и использовать в качестве значения hello mydevice `{device id}` Если вы не изменили значение hello в занятии 2.
 
-## <a name="configure-the-simulated-device-cloud-upload-sample-application"></a>Настройка примера приложения отправки в облако для имитации устройства
+## <a name="configure-hello-simulated-device-cloud-upload-sample-application"></a>Настройка hello имитируемые устройства облака передачи образца приложения
 
-Чтобы настроить и запустить пример приложения отправки в облако для имитации устройства, сделайте следующее на главном компьютере:
+tooconfigure и выполнения hello имитируемые устройства облако загрузить пример приложения, выполните следующие действия на главном компьютере hello:
 
-1. Откройте файл `config-sensortag.json` в Visual Studio Code, выполнив следующую команду:
+1. Откройте `config-sensortag.json` в коде Visual Studio, выполнив следующую команду hello:
 
    ```bash
    # For Windows command prompt
@@ -113,29 +113,29 @@ az iot device show-connection-string --hub-name {IoT hub name} --device-id mydev
 
    ![снимок экрана настройки SensorTag](media/iot-hub-gateway-kit-lessons/lesson3/config_simulated_device.png)
 
-2. Выполните следующие замены в коде:
-   - Замените `[IoT hub name]` именем Центра Интернета вещей.
-   - Замените `[IoT device connection string]` строкой подключения логического устройства Центра Интернета вещей.
+2. Внесите hello после замены в коде hello.
+   - Замените `[IoT hub name]` с именем концентратора IoT hello.
+   - Замените `[IoT device connection string]` со строкой hello подключения логического устройства концентратора IoT.
 
-3. Запустите приложение.
+3. Запустите приложение hello.
 
-   Разверните и запустите приложение, выполнив следующую команду.
+   Развертывание и запуск приложения hello, выполнив следующую команду hello:
 
    ```bash
    gulp run
    ```
 
-## <a name="verify-the-sample-application-works"></a>Проверка работы примера приложения
+## <a name="verify-hello-sample-application-works"></a>Проверка работы приложения образца hello
 
-Должны отобразиться подобные выходные данные:
+Теперь вы увидите выходные данные hello следующим образом:
 
 ![выходные данные примера приложения для имитации устройства](media/iot-hub-gateway-kit-lessons/lesson3/gulp_run_simudev.png)
 
-Приложение отправляет данные о температуре в Центр Интернета вещей в течение 40 секунд.
+приложение Hello отправляет температуры данных tooyour IoT hub, который длится 40 секунд.
 
 ## <a name="summary"></a>Сводка
 
-Вы успешно настроили и запустили пример приложения отправки в облако для имитации устройства, которое отправляет данные в Центр Интернета вещей с помощью имитации устройства.
+Успешной настройки и выполнения hello имитируемые устройства облака загрузки примера приложения, которое отправляет центр IoT tooyour данных с устройств, имитация.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Чтение сообщений из Центра Интернета вещей](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)

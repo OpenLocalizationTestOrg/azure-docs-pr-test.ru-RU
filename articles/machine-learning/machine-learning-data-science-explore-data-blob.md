@@ -1,6 +1,6 @@
 ---
-title: "Просмотр данных в хранилище BLOB-объектов Azure с помощью Pandas | Документация Майкрософт"
-description: "Описание просмотра данных, которые хранятся в контейнере больших двоичных объектов Azure, с помощью Pandas."
+title: "aaaExplore данные в Azure хранилище больших двоичных объектов с Pandas | Документы Microsoft"
+description: "Как tooexplore данных, хранящихся в Azure BLOB-объектов с помощью Pandas контейнера."
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: e1b33b17270122a38228484a56c8324c5b4505a0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 28f3c0aebf2300006066c4b19dcb1f0a76a1deb2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Просмотр данных в хранилище больших двоичных объектов Azure с помощью Pandas
-В этом документе описывается просмотр данных, которые хранятся в контейнере больших двоичных объектов Azure, с помощью пакета Python [Pandas](http://pandas.pydata.org/) .
+В этом документе рассматриваются как tooexplore данных, хранящихся в Azure BLOB-объектов контейнера с помощью [Pandas](http://pandas.pydata.org/) пакета Python.
 
-Следующее **меню** содержит ссылки на статьи, описывающие использование средств для просмотра данных из различных сред хранения. Эта задача является одним из этапов [процесса обработки и анализа данных]().
+следующие Hello **меню** связывает tootopics, описывающих, как toouse средств tooexplore данные из различных средах хранилища. Эта задача является этапом hello [процесса обработки и анализа данных]().
 
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
@@ -31,12 +31,12 @@ ms.lasthandoff: 08/29/2017
 В этой статье предполагается, что вы:
 
 * Создали учетную запись хранения Azure. Инструкции см. в разделе [Создание учетной записи хранения](../storage/common/storage-create-storage-account.md#create-a-storage-account).
-* Сохранили данные в учетной записи хранилища больших двоичных объектов Azure. Инструкции можно найти в статье [Перемещение данных в службу хранилища Azure и обратно](../storage/common/storage-moving-data.md)
+* Сохранили данные в учетной записи хранилища больших двоичных объектов Azure. При необходимости инструкции в разделе [tooand перемещение данных из хранилища Azure](../storage/common/storage-moving-data.md)
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>Загрузка данных в кадр данных Pandas
-Для просмотра набора данных и управления им набор необходимо сначала скачать из источника больших двоичных объектов в локальный файл, который в последствии можно загрузить в кадр данных Pandas. Ниже приведен порядок выполнения данной процедуры.
+## <a name="load-hello-data-into-a-pandas-dataframe"></a>Загрузка данных hello в кадр данных под Pandas
+tooexplore и управлять набора данных, его необходимо сначала загрузить из hello BLOB-объект источника tooa локального файла, который можно загрузить в кадр данных под Pandas. Ниже приведены hello toofollow действия для выполнения данной процедуры.
 
-1. Скачайте данные из большого двоичного объекта Azure с помощью службы BLOB-объектов. Для этого воспользуйтесь приведенным ниже примером кода Python. Замените переменные в этом коде своими значениями. 
+1. Скачать hello данные из Azure BLOB-объекта с hello следующий образец кода Python, с помощью службы BLOB-объектов. Замените переменной hello в hello после кода особые значения: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -52,52 +52,52 @@ ms.lasthandoff: 08/29/2017
         blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
-        print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Прочитайте данные, которые содержит скачанный файл, в блоке данных Pandas.
+        print(("It takes %s seconds toodownload "+blobname) % (t2 - t1))
+2. Чтение данных hello в Pandas-кадр данных из hello загрузили файл.
    
-        #LOCALFILE is the file path    
+        #LOCALFILE is hello file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-Теперь вы готовы просматривать эти данные и создавать функции на основе этого набора данных.
+Теперь вы готовы tooexplore hello данные и создавать признаки на этот набор данных.
 
 ## <a name="blob-dataexploration"></a>Примеры просмотра данных с помощью Pandas
-Вот несколько примеров того, как можно просматривать данные с помощью Pandas:
+Ниже приведены некоторые примеры способов tooexplore данных с помощью Pandas.
 
-1. Проверьте **количество строк и столбцов** 
+1. Проверять hello **номеров строк и столбцов** 
    
-        print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-2. **Проверьте** первые или последние несколько **строк** в следующем наборе данных:
+        print 'hello size of hello data is: %d rows and  %d columns' % dataframe_blobdata.shape
+2. **Проверить** hello первой или последней несколько **строки** в hello после набора данных:
    
         dataframe_blobdata.head(10)
    
         dataframe_blobdata.tail(10)
-3. Проверьте **тип данных** , импортированный в каждый столбец, с помощью приведенного ниже примера кода.
+3. Проверьте hello **тип данных** каждый столбец был импортирован с помощью hello следующий образец кода
    
         for col in dataframe_blobdata.columns:
             print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-4. Проверьте **основную статистику** , относящуюся к столбцам набора данных, так, как показано ниже.
+4. Проверьте hello **основные stats** для столбцов hello в hello набора данных следующим образом
    
         dataframe_blobdata.describe()
-5. Проверьте количество записей в каждом столбце так, как показано ниже.
+5. Рассмотрим hello число записей для каждого значения в столбце
    
         dataframe_blobdata['<column_name>'].value_counts()
-6. **Проверьте соотношение числа отсутствующих значений** к фактическому количеству записей в каждом столбце. Воспользуйтесь приведенным ниже примером кода.
+6. **Число отсутствующих значений** и hello фактическое число записей в каждом столбце, используя следующий пример кода hello
    
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
-7. Если в том или ином столбце данных **отсутствуют значения** , вы можете заменить их так, как показано ниже.
+7. Если у вас есть **недостающие значения** для определенного столбца данных hello, можно удалить их следующим образом:
    
      dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape
    
-   Другой способ заменить отсутствующие значения — воспользоваться функцией режима.
+   Другой способ tooreplace отсутствующих значений является режим функции hello.
    
-     dataframe_blobdata_mode = dataframe_blobdata.fillna({'<имя_столбца>':dataframe_blobdata['<имя_столбца>'].mode()[0]})        
-8. Создайте **гистограмму** , используя переменное количество ячеек, чтобы построить распределение переменной.    
+     dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
+8. Создание **гистограммы** построения с помощью переменное число ячеек tooplot hello распространения переменной    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
         np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-9. Проверьте **корреляции** между переменными, используя диаграмму рассеяния или встроенную функцию корреляции.
+9. Посмотрите на **корреляции** между переменными с помощью scatterplot или hello корреляции встроенные функции
    
         #relationship between column_a and column_b using scatter plot
         plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])

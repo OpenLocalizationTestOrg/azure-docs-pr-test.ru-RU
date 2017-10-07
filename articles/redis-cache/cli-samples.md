@@ -1,5 +1,5 @@
 ---
-title: "Примеры кэша Redis для Azure CLI | Документы Майкрософт"
+title: "Примеры кэша CLI Redis aaaAzure | Документы Microsoft"
 description: "Примеры Azure CLI для кэша Redis для Azure."
 services: redis-cache
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: sdanie
-ms.openlocfilehash: a3debf3380b57faa5b7b30f612698fe6de5b7067
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2eb6f7267951faca599a43ff29b46beb05fea6d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cli-samples-for-azure-redis-cache"></a>Примеры Azure CLI для кэша Redis для Azure
 
-В следующей таблице содержатся ссылки на скрипты Bash, созданные с помощью Azure CLI.
+Hello следующей таблице представлены ссылки toobash сценариев, созданных с использованием hello Azure CLI.
 
 | | |
 |---|---|
@@ -30,9 +30,9 @@ ms.lasthandoff: 07/11/2017
 | [Создание кэша](./scripts/create-cache.md) | Создает группу ресурсов и базовый уровень кэша Redis для Azure. |
 | [Создание кэша уровня "Премиум" с кластеризацией](./scripts/create-premium-cache-cluster.md) | Создает группу ресурсов и кэш уровня "Премиум" с включенной кластеризацией.|
 | [Получение сведений о кэше](./scripts/show-cache.md) | Возвращает сведения об экземпляре кэша Redis для Azure, включая состояние подготовки. |
-| [Получение имени узла, портов и ключей](./scripts/cache-keys-ports.md) | Возвращает имя узла, порты и ключи для экземпляра кэша Redis для Azure. |
+| [Получение имени узла hello, порты и ключей](./scripts/cache-keys-ports.md) | Возвращает имя узла hello, порты и ключи для экземпляра кэша Redis для Azure. |
 |**Веб-приложение и кэш**||
-| [Подключение веб-приложения к кэшу Redis](./../app-service-web/scripts/app-service-cli-app-service-redis.md) | Создает веб-приложение Azure и кэш Redis, а затем добавляет сведения о подключении кэша Redis в параметры приложения. |
+| [Подключение веб-приложения tooa redis кэша](./../app-service-web/scripts/app-service-cli-app-service-redis.md) | Создает веб-приложение Azure и кэш redis, а затем добавляет hello redis подключения сведения toohello параметры приложения. |
 |**Удаление кэша**||
 | [Удаление кэша](./scripts/delete-cache.md) | Удаляет экземпляр кэша Redis для Azure.  |
 | | |

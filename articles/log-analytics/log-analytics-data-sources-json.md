@@ -1,6 +1,6 @@
 ---
-title: "Сбор пользовательских данных JSON в OMS Log Analytics | Документы Майкрософт"
-description: "С помощью агента OMS для Linux можно собрать данные из пользовательских источников данных JSON в Log Analytics.  В качестве такого пользовательского источника данных может использоваться простой сценарий, возвращающий результат в формате JSON, например curl, или один из более чем 300 подключаемых модулей FluentD. В этой статье описано, как настроить такой сбор данных."
+title: "aaaCollecting пользовательских данных JSON в аналитику журнала OMS | Документы Microsoft"
+description: "Пользовательские источники данных JSON можно собирать в службе анализа журналов с помощью hello агента OMS для Linux.  В качестве такого пользовательского источника данных может использоваться простой сценарий, возвращающий результат в формате JSON, например curl, или один из более чем 300 подключаемых модулей FluentD. В этой статье описывается hello конфигурация, необходимая для этой коллекции данных."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 800ee1269556e7c2d56fbbf2b497c10509b5c78c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 97d401408a8c206d4a9ef2ec9b13ba1ca6b5e92b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Сбор данных из пользовательских источников данных JSON с помощью агента OMS для Linux в Log Analytics
-С помощью агента OMS для Linux можно собрать данные из пользовательских источников данных JSON в Log Analytics.  В качестве такого пользовательского источника данных может использоваться простой сценарий, возвращающий результат в формате JSON, например [curl](https://curl.haxx.se/), или один из более чем [300 подключаемых модулей FluentD](http://www.fluentd.org/plugins/all). В этой статье описано, как настроить такой сбор данных.
+# <a name="collecting-custom-json-data-sources-with-hello-oms-agent-for-linux-in-log-analytics"></a>Сбор пользовательских источников данных JSON с hello агента OMS для Linux в службе анализа журналов
+Пользовательские источники данных JSON можно собирать в службе анализа журналов с помощью hello агента OMS для Linux.  В качестве такого пользовательского источника данных может использоваться простой сценарий, возвращающий результат в формате JSON, например [curl](https://curl.haxx.se/), или один из более чем [300 подключаемых модулей FluentD](http://www.fluentd.org/plugins/all). В этой статье описывается hello конфигурация, необходимая для этой коллекции данных.
 
 > [!NOTE]
 > Для работы с пользовательскими источниками данных требуется агент OMS для Linux версии 1.1.0-217 или более поздней версии
@@ -30,9 +30,9 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="configure-input-plugin"></a>Настройка входного подключаемого модуля
 
-Для сбора данных JSON в Log Analytics добавьте `oms.api.` в начало тега FluentD во входном подключаемом модуле.
+добавить toocollect данных JSON в службы анализа журналов, `oms.api.` начало toohello тега FluentD возможности ввода подключаемого модуля.
 
-Например, ниже приведен отдельный файл конфигурации `exec-json.conf` в `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  В нем используется подключаемый модуль FluentD `exec` для запуска команды curl каждые 30 секунд.  Выходные данные этой команды собираются с помощью выходного подключаемого модуля JSON.
+Например, ниже приведен отдельный файл конфигурации `exec-json.conf` в `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  В этом случае используется подключаемый модуль FluentD hello `exec` toorun команду curl каждые 30 секунд.  Подключаемый модуль выходных данных JSON hello собираются Hello выходные данные этой команды.
 
 ```
 <source>
@@ -56,12 +56,12 @@ ms.lasthandoff: 07/11/2017
   retry_wait 30s
 </match>
 ```
-Для файла конфигурации, добавленного в разделе `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`, необходимо изменить владельца, выполнив следующую команду.
+добавлено в файл конфигурации Hello `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` потребуется toohave сменить его владельца с hello следующую команду.
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
 ### <a name="configure-output-plugin"></a>Настройка выходного подключаемого модуля 
-Добавьте следующую конфигурацию выходного подключаемого модуля в раздел `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` основной конфигурации или в отдельный файл конфигурации в каталоге `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.
+Добавьте следующие выходные данные подключаемого модуля конфигурации toohello основной конфигурации в hello `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` или как отдельный файл конфигурации будет помещен в`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```
 <match oms.api.**>
@@ -79,18 +79,18 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ### <a name="restart-oms-agent-for-linux"></a>Перезапустите агент OMS для Linux
-Перезапустите службу агента OMS для Linux, выполнив следующую команду.
+Перезапустите hello агента OMS для Linux службы с hello следующую команду.
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Выходные данные
-Данные, собираемые в Log Analytics, будут иметь тип записи `<FLUENTD_TAG>_CL`.
+Hello данные будут собраны в ходе анализа журналов с типом записи `<FLUENTD_TAG>_CL`.
 
-Например, пользовательский тег `tag oms.api.tomcat` в Log Analytics будет иметь тип записи `tomcat_CL`.  Для получения всех записей этого типа выполните поиск по журналам следующим образом.
+Например, hello настраиваемый тег `tag oms.api.tomcat` в службе анализа журналов с типом записи `tomcat_CL`.  Можно извлечь все записи этого типа с hello после поиска журналов.
 
     Type=tomcat_CL
 
-Поддерживаются вложенные источники данных JSON, но они индексируются не на основе родительского поля. Например, в результате выполнения поискового запроса `tag_s : "[{ "a":"1", "b":"2" }]` в Log Analytics будут возвращены следующие данные JSON.
+Поддерживаются вложенные источники данных JSON, но они индексируются не на основе родительского поля. Например, следующие данные JSON hello возвращается из поиска аналитики журналов как `tag_s : "[{ "a":"1", "b":"2" }]`.
 
 ```
 {
@@ -103,5 +103,5 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Узнайте больше об [операциях поиска по журналу](log-analytics-log-searches.md) , которые можно применять для анализа данных, собираемых из источников данных и решений. 
+* Дополнительные сведения о [входа выполняет](log-analytics-log-searches.md) tooanalyze hello данные, собранные из источников данных и решений. 
  

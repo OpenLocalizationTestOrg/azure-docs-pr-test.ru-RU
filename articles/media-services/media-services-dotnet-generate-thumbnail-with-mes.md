@@ -1,6 +1,6 @@
 ---
-title: "Создание эскизов с помощью Media Encoder Standard c использованием .NET"
-description: "В данной статье рассказывается, как использовать .NET для кодирования ресурсов и одновременно с этим создавать эскизы с помощью Media Encoder Standard."
+title: "эскизы toogenerate aaaHow с помощью Media Encoder стандартный в .NET Framework"
+description: "В этом разделе показано, как tooencode .NET toouse актива и создания эскизов на hello одновременно с помощью стандартных кодировщика мультимедиа."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: juliako
-ms.openlocfilehash: 89d15cbdf71a140e78f34e07ff208776b7d4cab3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 23d3e4d9bf64a688d45499c045f19d2792167990
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Создание эскизов с помощью Media Encoder Standard c использованием .NET
+# <a name="how-toogenerate-thumbnails-using-media-encoder-standard-with-net"></a>Как toogenerate эскизы с помощью Media Encoder стандартный в .NET Framework
 
-Media Encoder Standard можно использовать для создания одного или нескольких эскизов из входящего видео в форматах файлов изображений [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) или [BMP](https://en.wikipedia.org/wiki/BMP_file_format). Вы можете отправлять задачи, которые создают только изображения, или объединить создание эскизов с кодированием. В этой статье представлены несколько примеров предустановок эскизов XML и JSON для таких сценариев. В конце этого раздела приведен [пример кода](#code_sample), показывающий, как с помощью пакета SDK для .NET для служб мультимедиа выполнить задачу кодирования.
+Стандартный кодировщик мультимедиа toogenerate можно использовать один или несколько эскизов из введенных видео в [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), или [BMP](https://en.wikipedia.org/wiki/BMP_file_format) форматам файлов. Вы можете отправлять задачи, которые создают только изображения, или объединить создание эскизов с кодированием. В этой статье представлены несколько примеров предустановок эскизов XML и JSON для таких сценариев. В конце раздела hello hello — [пример кода](#code_sample) , показано, как tooaccomplish Media Services .NET SDK hello toouse hello задачу кодирования.
 
-Дополнительные сведения об элементах, используемых в примерах предустановок см. в статье [Схема Media Encoder Standard](media-services-mes-schema.md).
+Дополнительные сведения о hello элементы, используемые в образце предустановок Изучите [Media Encoder стандартной схеме](media-services-mes-schema.md).
 
-Обязательно изучите раздел [Рекомендации](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) .
+Убедитесь, что hello tooreview [вопросы](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) раздела.
 
 ## <a name="example--single-png-file"></a>Пример. Один файл PNG
 
-Следующую предустановку JSON и XML можно использовать для создания одного выходного файла PNG на основе первых секунд входного видео, где кодировщик предпринимает все усилия, чтобы найти интересный кадр. Обратите внимание, что для размера выходных изображений выбрано значение 100 %, то есть они будут совпадать с размером входного видео. При этом параметр "Format" в разделе "Outputs" должен соответствовать использованию "PngLayers" в разделе "Codecs". 
+Hello следующий JSON и XML-Предустановка может быть используется tooproduce один выходной PNG файл из hello несколько секунд, входное видео hello, где кодировщика hello предпринимает все усилия на поиск кадр с «Город». Обратите внимание, что размеры изображения: hello выходные данные были установлены too100%, это означает, что эти данные будут совпадать hello размеры hello входное видео. Обратите внимание, как параметр «Формат» hello в окне «Выходные данные» требуется использование hello toomatch «PngLayers» в разделе «Кодеки» hello. 
 
 ### <a name="json-preset"></a>Предустановка JSON
 
@@ -82,7 +82,7 @@ Media Encoder Standard можно использовать для создани
 
 ## <a name="example--a-series-of-jpeg-images"></a>Пример. Несколько изображений JPEG
 
-Следующую предустановку JSON и XML можно использовать для создания 10 изображений на метках времени 5 %, 15 %, ..., 95 % входной временной шкалы, где размер изображения установлен как одна четвертая от размера входного видео.
+Здравствуйте следующий JSON и XML-Предустановка может быть используется tooproduce набор 10 изображений на отметки времени 5% 15%,..., 95% hello входной временной шкалы, где hello составляет указанного toobe один квартал, hello ввода видео.
 
 ### <a name="json-preset"></a>Предустановка JSON
 
@@ -138,7 +138,7 @@ Media Encoder Standard можно использовать для создани
 
 ## <a name="example--one-image-at-a-specific-timestamp"></a>Пример. Одно изображение на определенной метке времени
 
-Следующую предустановку JSON и XML можно использовать для создания одного изображения JPEG на 30-секундной отметке времени входного видео. Данная предустановка ожидает, что входное видео будет длиться более 30 секунд (иначе задание завершится ошибкой).
+Привет, следующая Предустановка JSON и XML может быть используется tooproduce одного изображения JPEG в hello 30-секундная отметка hello входного видео. Данная конфигурация ожидает ввода toobe hello более 30 секунд в поле длительности (else hello задание будет завершаться с ошибкой).
 
 ### <a name="json-preset"></a>Предустановка JSON
 
@@ -194,21 +194,21 @@ Media Encoder Standard можно использовать для создани
 
 ## <a id="code_sample"></a> Пример. Кодирование видео и создание эскиза
 
-В следующем примере кода пакет SDK служб мультимедиа используется для выполнения следующих задач.
+Следующий пример кода Hello использует hello tooperform Media Services .NET SDK следующие задачи:
 
 * Создание задания кодирования.
-* Получение ссылки на стандартный кодировщик мультимедиа.
-* Загрузка предопределенного кода [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) или [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json), содержащего предопределенную кодировку, а также сведения, необходимые для создания эскизов. Вы можете сохранить этот [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml)- или [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)-код в файл и использовать указанный ниже код для загрузки файла.
+* Получите кодировщик Media Encoder Стандартная toohello ссылки.
+* Предустановка hello нагрузки [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) или [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) , содержащие hello кодирования предустановку также сведения, необходимые toogenerate эскизы. Можно сохранить это [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) или [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) в файл и используйте hello, следующие файл hello tooload кода.
   
-        // Load the XML (or JSON) from the local file.
+        // Load hello XML (or JSON) from hello local file.
         string configuration = File.ReadAllText(fileName);  
-* Добавление одной задачи кодирования в задание. 
-* Указание входного ресурса-контейнера для кодирования.
-* Создание выходного ресурса-контейнера, который будет содержать закодированный ресурс-контейнер.
-* Добавление обработчика событий для проверки хода выполнения задания.
-* Отправка задания.
+* Добавьте одно задание toohello задач кодирования. 
+* Укажите входной hello toobe активов кодировке.
+* Создание выходного актива, который будет содержать активов hello в кодировке.
+* Добавьте событие обработчика toocheck hello ход выполнения задания.
+* Отправка задания hello.
 
-Дополнительные сведения о настройке среды разработки см. в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md).
+В разделе hello [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md) разделе инструкции о том, как tooset настроить среду разработки.
 
         using System;
         using System.Configuration;
@@ -221,7 +221,7 @@ Media Encoder Standard можно использовать для создани
         {
         class Program
         {
-            // Read values from the App.config file.
+            // Read values from hello App.config file.
             private static readonly string _AADTenantDomain =
             ConfigurationManager.AppSettings["AADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
@@ -245,7 +245,7 @@ Media Encoder Standard можно использовать для создани
             // Get an uploaded asset.
             var asset = _context.Assets.FirstOrDefault();
 
-            // Encode and generate the thumbnails.
+            // Encode and generate hello thumbnails.
             EncodeToAdaptiveBitrateMP4Set(asset);
 
             Console.ReadLine();
@@ -255,11 +255,11 @@ Media Encoder Standard можно использовать для создани
             {
             // Declare a new job.
             IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-            // Get a media processor reference, and pass to it the name of the 
-            // processor to use for the specific task.
+            // Get a media processor reference, and pass tooit hello name of hello 
+            // processor toouse for hello specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-            // Load the XML (or JSON) from the local file.
+            // Load hello XML (or JSON) from hello local file.
             string configuration = File.ReadAllText("ThumbnailPreset_JSON.json");
 
             // Create a task
@@ -268,11 +268,11 @@ Media Encoder Standard можно использовать для создани
                 configuration,
                 TaskOptions.None);
 
-            // Specify the input asset to be encoded.
+            // Specify hello input asset toobe encoded.
             task.InputAssets.Add(asset);
-            // Add an output asset to contain the results of the job. 
+            // Add an output asset toocontain hello results of hello job. 
             // This output is specified as AssetCreationOptions.None, which 
-            // means the output asset is not encrypted. 
+            // means hello output asset is not encrypted. 
             task.OutputAssets.AddNew("Output asset",
                 AssetCreationOptions.None);
 
@@ -443,24 +443,24 @@ Media Encoder Standard можно использовать для создани
     </Preset>
 
 ## <a name="considerations"></a>Рекомендации
-Действительны следующие условия.
+применить Hello следующие вопросы:
 
-* Использование явных меток времени для элементов Start, Step или Range предполагает, что входные данные составляют не менее одной минуты.
+* Использование Hello явные отметки времени для начала/шаг или Range предполагается, что этот источник входных hello — менее 1 минуты long.
 * Элементы Jpg, Png и BmpImage обладают атрибутами Start, Step и Range, которые можно интерпретировать следующим образом.
   
   * Номер кадра, если эти атрибуты выражены неотрицательными целыми числами, например, "Start": "120",
-  * Отношение к длительности источника, если атрибуты выражены как %-суффикс, например, "Start": "15%", ИЛИ
+  * Если выразить в виде добавляется суффикс %, например относительный toosource длительность. "Start": "15%", ИЛИ
   * Отметка времени, если атрибуты имеют формат ЧЧ:ММ:СС... Например, "Start" : "00:01:00"
     
     При желании условные обозначения можно комбинировать.
     
-    Кроме того, атрибут Start поддерживает также специальный макрос {Best}, который пытается определить первый "интересный" кадр содержимого NOTE: (если атрибут Start имеет значение {Best}, атрибуты Step и Range игнорируются)
+    Кроме того, также поддерживает запуск специального макроса: {наилучшим образом}, который осуществляет toodetermine hello первый «Город» кадр hello содержимого Примечание: (шаг и диапазон игнорируются при начале задано слишком {наиболее})
   * По умолчанию Start:{Best}
-* Для атрибута Image должен быть указан формат выходных данных: Jpg/Png/BmpFormat. MES, если он присутствует, соответствует JpgVideo для JpgFormat и т. д. OutputFormat представляет новый макрос, связанный с кодеком изображений: {Index}, который необходимо указывать для форматов вывода изображений (один и только один раз).
+* Формат вывода должно явно предоставляться для каждого формата изображения toobe: Jpg, Png или BmpFormat. При наличии MES будет соответствовать JpgVideo tooJpgFormat и т. д. Выходнойформат появился новый указанного макроса кодек изображений: {индекс}, требующие toobe присутствует (один раз и только один раз) для форматов вывода изображения.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Вы можете проверить [ход выполнения задания](media-services-check-job-progress.md), пока задание кодировки находится в ожидании.
+Вы можете проверить hello [задание выполняется](media-services-check-job-progress.md) при hello отложенные задания кодирования.
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

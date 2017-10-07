@@ -1,6 +1,6 @@
 ---
-title: "Преобразование хранилища управляемых дисков Azure с уровня \"Стандартный\" до уровня \"Премиум\" и наоборот | Документация Майкрософт"
-description: "Преобразование хранилища управляемых дисков Azure с уровня \"Стандартный\" до уровня \"Премиум\" и наоборот с помощью Azure PowerShell."
+title: "aaaConvert Azure управлять дисками из стандартных toopremium и наоборот | Документы Microsoft"
+description: "Как tooconvert Azure Управление дисками из стандартных toopremium и наоборот, с помощью Azure PowerShell."
 services: virtual-machines-windows
 documentationcenter: 
 author: ramankum
@@ -15,55 +15,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
-ms.openlocfilehash: 9e5c73ceb0ff7d9c18c9cf7128b69e40b9796874
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 11f35cde216e91c0599d3619682686e8eb162fad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Преобразование хранилища управляемых дисков Azure с уровня "Стандартный" до уровня "Премиум" и наоборот
+# <a name="convert-azure-managed-disks-storage-from-standard-toopremium-and-vice-versa"></a>Преобразовать Azure управлять дисками из стандартных toopremium и наоборот
 
-Для компонента "Управляемые диски" доступны два варианта хранилища: уровень [Премиум](../../storage/storage-premium-storage.md) (на базе SSD) и уровень [Стандартный](../../storage/storage-standard-storage.md) (на базе жестких дисков). Это позволяет с легкостью переключаться между двумя вариантами использования при минимальном времени простоя в зависимости от потребностей производительности. Эта возможность недоступна для неуправляемых дисков. Но вы можете [преобразовать диски в управляемые](convert-unmanaged-to-managed-disks.md), чтобы с легкостью переключаться между двумя вариантами использования.
+Для компонента "Управляемые диски" доступны два варианта хранилища: уровень [Премиум](../../storage/storage-premium-storage.md) (на базе SSD) и уровень [Стандартный](../../storage/storage-standard-storage.md) (на базе жестких дисков). Она позволяет tooeasily переключение между hello двух параметров с минимальным временем простоя, зависимости от потребностей производительности. Эта возможность недоступна для неуправляемых дисков. Но вы можете легко [преобразования дисков toomanaged](convert-unmanaged-to-managed-disks.md) tooeasily переключение между hello двух параметров.
 
-В этой статье рассматривается преобразование хранилища управляемых дисков с уровня "Стандартный" до уровня "Премиум" и наоборот с помощью Azure PowerShell. Если вам необходимо установить или обновить Azure PowerShell, ознакомьтесь со статьей [об установке и настройке Azure PowerShell](/powershell/azure/install-azurerm-ps.md).
+В этой статье показано, как управление tooconvert диски из стандартных toopremium и обратно с помощью Azure PowerShell. Если необходима tooinstall или обновить ее, см. раздел [Установка и настройка Azure PowerShell](/powershell/azure/install-azurerm-ps.md).
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-* Процесс преобразования требует перезагрузки виртуальной машины, поэтому запланируйте перенос хранилища дисков на предварительно установленный период обслуживания. 
-* При использовании неуправляемых дисков сначала [преобразуйте их в управляемые диски](convert-unmanaged-to-managed-disks.md), чтобы воспользоваться приведенными в этой статье сведениями о переключении между двумя вариантами хранения. 
+* требуется для преобразования Hello hello виртуальной Машины, таким образом график миграции hello дисков хранилища во время периода обслуживания существующих. 
+* При использовании неуправляемого диски сначала [преобразования дисков toomanaged](convert-unmanaged-to-managed-disks.md) toouse tooswitch этой статье между hello двух вариантов хранения. 
 
 
-## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>Преобразование всех управляемых дисков на виртуальной машине с уровня "Стандартный" до уровня "Премиум" и наоборот
+## <a name="convert-all-hello-managed-disks-of-a-vm-from-standard-toopremium-and-vice-versa"></a>Преобразовать все hello управляемых дисков виртуальной машины из стандартных toopremium и наоборот
 
-В следующем примере показано, как переключить все диски на виртуальной машине с хранилища уровня "Стандартный" на хранилище уровня "Премиум". Чтобы использовать управляемые диски уровня "Премиум", необходимо использовать [размер виртуальной машины](sizes.md), поддерживающий хранилище уровня "Премиум". В этом примере также выполняется переключение на размер, поддерживающий хранилище уровня "Премиум".
+В следующем примере hello, показано, как tooswitch все hello дисков виртуальной машины из стандартных toopremium хранилища. toouse premium управляемых дисков, необходимо использовать ВМ [размер виртуальной Машины](sizes.md) с поддержкой хранилище premium. В этом примере также переключает tooa размер, который поддерживает хранилище premium.
 
 ```powershell
-# Name of the resource group that contains the VM
+# Name of hello resource group that contains hello VM
 $rgName = 'yourResourceGroup'
 
-# Name of the your virtual machine
+# Name of hello your virtual machine
 $vmName = 'yourVM'
 
 # Choose between StandardLRS and PremiumLRS based on your scenario
 $storageType = 'PremiumLRS'
 
 # Premium capable size
-# Required only if converting storage from standard to premium
+# Required only if converting storage from standard toopremium
 $size = 'Standard_DS2_v2'
 $vm = Get-AzureRmVM -Name $vmName -resourceGroupName $rgName
 
-# Stop and deallocate the VM before changing the size
+# Stop and deallocate hello VM before changing hello size
 Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
 
-# Change the VM size to a size that supports premium storage
-# Skip this step if converting storage from premium to standard
+# Change hello VM size tooa size that supports premium storage
+# Skip this step if converting storage from premium toostandard
 $vm.HardwareProfile.VmSize = $size
 Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
-# Get all disks in the resource group of the VM
+# Get all disks in hello resource group of hello VM
 $vmDisks = Get-AzureRmDisk -ResourceGroupName $rgName 
 
-# For disks that belong to the selected VM, convert to premium storage
+# For disks that belong toohello selected VM, convert toopremium storage
 foreach ($disk in $vmDisks)
 {
     if ($disk.OwnerId -eq $vm.Id)
@@ -76,14 +76,14 @@ foreach ($disk in $vmDisks)
 
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
-## <a name="convert-a-managed-disk-from-standard-to-premium-and-vice-versa"></a>Преобразование управляемого диска с уровня "Стандартный" до уровня "Премиум" и наоборот
+## <a name="convert-a-managed-disk-from-standard-toopremium-and-vice-versa"></a>Преобразовать управляемого диска из стандартных toopremium и наоборот
 
-Для среды разработки и тестирования может потребоваться сочетание дисков уровней "Стандартный" и "Премиум", чтобы сократить затраты. Для этого переведите на уровень "Премиум" только диски, для которых требуется более высокая производительность. В следующем примере показано, как переключить диск на виртуальной машине с хранилища уровня "Стандартный" на хранилище уровня "Премиум" и наоборот. Чтобы использовать управляемые диски уровня "Премиум", необходимо использовать [размер виртуальной машины](sizes.md), поддерживающий хранилище уровня "Премиум". В этом примере также выполняется переключение на размер, поддерживающий хранилище уровня "Премиум".
+Для рабочей нагрузки для разработки и тестирования вы можете toohave сочетание tooreduce диски standard и premium затрат. Его можно выполнить после обновления хранилища toopremium только диски hello, требующих более высокую производительность. В следующем примере hello, показано, как tooswitch одного диска виртуальной машины из стандартных toopremium хранилища и наоборот. toouse premium управляемых дисков, необходимо использовать ВМ [размер виртуальной Машины](sizes.md) с поддержкой хранилище premium. В этом примере также переключает tooa размер, который поддерживает хранилище premium.
 
 ```powershell
 
 $diskName = 'yourDiskName'
-# resource group that contains the managed disk
+# resource group that contains hello managed disk
 $rgName = 'yourResourceGroupName'
 # Choose between StandardLRS and PremiumLRS based on your scenario
 $storageType = 'PremiumLRS'
@@ -92,19 +92,19 @@ $size = 'Standard_DS2_v2'
 
 $disk = Get-AzureRmDisk -DiskName $diskName -ResourceGroupName $rgName
 
-# Get the ARM resource to get name and resource group of the VM
+# Get hello ARM resource tooget name and resource group of hello VM
 $vmResource = Get-AzureRmResource -ResourceId $disk.OwnerId
 $vm = Get-AzureRmVM $vmResource.ResourceGroupName -Name $vmResource.ResourceName 
 
-# Stop and deallocate the VM before changing the storage type
+# Stop and deallocate hello VM before changing hello storage type
 Stop-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name -Force
 
-# Change the VM size to a size that supports premium storage
-# Skip this step if converting storage from premium to standard
+# Change hello VM size tooa size that supports premium storage
+# Skip this step if converting storage from premium toostandard
 $vm.HardwareProfile.VmSize = $size
 Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
-# Update the storage type
+# Update hello storage type
 $diskUpdateConfig = New-AzureRmDiskUpdateConfig –AccountType $storageType
 Update-AzureRmDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
 -DiskName $disk.Name

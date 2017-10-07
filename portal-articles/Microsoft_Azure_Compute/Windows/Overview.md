@@ -1,5 +1,5 @@
 ---
-title: "Общие сведения о Windows виртуальных машин | Документы Microsoft"
+title: "Общие сведения о виртуальных машинах aaaWindows | Документы Microsoft"
 description: "Справку для Обзор Windows виртуальной машины на портале Azure"
 services: virtual-machines-windows
 author: sewatson
@@ -8,19 +8,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 03b204d9970a3831543a03dfa08e2a4d8b274034
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1992c0715d39669565cf1754975d2d82b19d3b22
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-virtual-machines-documentation"></a>Документация по виртуальным машинам Windows
 
-Виртуальные машины Windows Azure предоставляют по запросу безопасную высокомасштабируемую виртуализированную инфраструктуру с использованием Windows Server. Узнайте, как создавать, настраивать, масштабировать виртуальные машины Windows и управлять ими, используя наши шаблоны быстрого запуска, примеры и руководства.
+Виртуальные машины Windows Azure предоставляют по запросу безопасную высокомасштабируемую виртуализированную инфраструктуру с использованием Windows Server. Узнайте, как toocreate, настройки, управления и масштабирования виртуальных машин Windows с нашей краткие руководства, учебники и образцы.
 
 ## <a name="5-minute-quickstarts"></a>5-минутные руководства по началу работы
 
-Сведения о развертывании веб сервера IIS на виртуальной машине под управлением Windows Server 2016:
+Узнайте, как toodeploy веб сервера IIS виртуальной машине под управлением Windows Server 2016:
 
 - [Портал Azure](/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="step-by-step-tutorials"></a>Пошаговые руководства
 
-Дополнительные сведения о развертывать, управлять и отслеживать виртуальные машины Windows в Azure.
+Узнайте, как toodeploy, управление и мониторинг виртуальных машин Windows в Azure.
 
 - [Manage Windows virtual machines with Azure PowerShell](/azure/virtual-machines/windows/tutorial-manage-vm) (Управление виртуальными машинами Windows с помощью Azure PowerShell)
 - [Manage Azure disks with the Azure CLI](/azure/virtual-machines/windows/tutorial-manage-data-disk) (Управление дисками Azure с помощью Azure CLI)
@@ -51,12 +51,12 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="samples"></a>Примеры
 
-Развертывание первого приложения в Azure.
+Развертывание вашего первого приложения tooAzure.
 
 - [Интерфейс командной строки Azure](/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="more"></a>Подробнее
 
-- [Обратитесь к документации для получения дополнительных сведений](/azure/virtual-machines/windows/index)
+- [Обратитесь к документации toolearn Дополнительные](/azure/virtual-machines/windows/index)
 - [Дополнительные сведения о всех служб Azure](https://aka.ms/j3wr7y)

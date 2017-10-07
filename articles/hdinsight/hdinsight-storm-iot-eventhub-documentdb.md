@@ -1,6 +1,6 @@
 ---
-title: "Обработка данных с датчиков автомобилей с использованием Apache Storm в HDInsight | Документация Майкрософт"
-description: "Узнайте, как обрабатывать данные с датчиков автомобилей из концентраторов событий с использованием средств Apache Storm в HDInsight. Добавление модели данных из Azure Cosmos DB и сохранение выходных данных в хранилище."
+title: "aaaProcess vehicle датчиков с Apache Storm на HDInsight | Документы Microsoft"
+description: "Узнайте, как tooprocess vehicle датчиков из концентраторов событий с помощью Apache Storm на HDInsight. Добавление модели данных из базы данных Azure Cosmos и хранения toostorage выходных данных."
 services: hdinsight,documentdb,notification-hubs
 documentationcenter: 
 author: Blackmist
@@ -15,49 +15,49 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
-ms.openlocfilehash: 8e8ebc724e1c70e8fcd56312adef5da2342373ea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f7b1dbb9072e095ea32160bb731bedd071288af
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="process-vehicle-sensor-data-from-azure-event-hubs-using-apache-storm-on-hdinsight"></a>Обработка данных с датчиков автомобилей из концентраторов событий Azure с использованием средств Apache Storm в HDInsight.
 
-Узнайте, как обрабатывать данные с датчиков автомобилей из концентраторов событий Azure с использованием средств Apache Storm в HDInsight. В этом примере производится считывание данных с датчиков из концентраторов событий Azure, которые дополняются сведениями из Azure Cosmos DB. Данные хранятся в службе хранилища Azure с использованием файловой системы Hadoop (HDFS).
+Узнайте, как tooprocess vehicle датчиков из концентраторов событий Azure с помощью Apache Storm на HDInsight. Этот пример считывает данные датчика из концентраторов событий Azure, обогащает hello данных с помощью ссылки на данные, хранящиеся в базе данных Azure Cosmos. Hello данные хранятся в хранилище Azure с помощью hello системы файла Hadoop (HDFS).
 
-![HDInsight и схема архитектуры Интернета вещей (IoT)](./media/hdinsight-storm-iot-eventhub-documentdb/iot.png)
+![HDInsight и hello схема архитектуры Интернета вещей (IoT)](./media/hdinsight-storm-iot-eventhub-documentdb/iot.png)
 
 ## <a name="overview"></a>Обзор
 
-Датчики на автомобилях помогают прогнозировать возникновение неполадок оборудования на основе тенденций в массивах статистических данных, а также совершенствовать последующие версии датчиков, руководствуясь результатами анализа закономерностей в их использовании. Необходима возможность быстро и эффективно загружать данные со всех автомобилей в систему Hadoop до начала их обработки средствами MapReduce. Кроме того, целесообразно реализовать анализ путей критических отказов (температуры в двигателе, неполадок тормозной системы и т. д.) в режиме реального времени.
+Добавление датчиков toovehicles позволяет toopredict неполадок оборудования, на основе исторических данных тенденций. Она также позволяет усовершенствования toomake toofuture версии на основе анализа шаблонов использования. Должен быть доступ tooquickly и эффективно hello данных из всех автомобилей Чтобы загрузить в Hadoop может произойти обработка MapReduce. Кроме того вы можете toodo анализа для путей критический сбой (температуры ядра, brakes, т. д.) в режиме реального времени.
 
-Концентраторы событий Azure позволяют справляться с большими объемами данных, поступающих с датчиков. С помощью средств Apache Storm можно реализовать загрузку и обработку данных перед их сохранением в HDFS.
+Концентраторы событий Azure построен toohandle hello значительный объем данных, созданные датчиков. Apache Storm можно использовать tooload и hello обработки данных перед их передачей в HDFS.
 
 ## <a name="solution"></a>Решение
 
-Данные телеметрии, связанные с температурой двигателя и окружающей среды, и также со скоростью автомобиля, фиксируются датчиками и отправляются в концентраторы событий вместе с идентификационным номером автомобиля (VIN-кодом) и меткой времени. Топология Storm, работающая на платформе Apache Storm в кластере HDInsight, считывает эту информацию оттуда, обрабатывает ее и сохраняет в системе HDFS.
+Данные телеметрии, связанные с температурой двигателя и окружающей среды, и также со скоростью автомобиля, фиксируются датчиками Данных затем отправляется концентраторов tooEvent вместе с номер идентификации hello car транспортного средства (VIN) и отметкой времени. Оттуда Storm топология, работающая на Apache Storm в кластере HDInsight считывает данные hello, обрабатывает его и сохраняет его в HDFS.
 
-Во время обработки VIN-код используется для извлечения сведений о модели автомобиля из базы Cosmos DB. Они добавляются в поток данных перед его сохранением.
+Во время обработки hello VIN является используется tooretrieve сведения о модели из базы данных Cosmos. Эти данные добавляется в поток данных toohello перед сохранением.
 
-В топологии Storm используются перечисленные ниже компоненты.
+Hello компоненты, используемые в hello Storm топологии являются:
 
 * **EventHubSpout** : считывает данные из концентраторов событий Azure.
-* **TypeConversionBolt** преобразует строку JSON, полученную из концентраторов событий, в кортеж, содержащий следующие данные датчиков:
+* **TypeConversionBolt** -преобразует hello строки JSON из концентраторов событий в кортеж, содержащий следующие данные датчика hello:
     * engineTemperature
     * температура окружающей среды;
     * Speed
     * VIN
     * Timestamp
-* **DataReferencBolt** ищет сведения о модели автомобиля в Cosmos DB на основе VIN-кода.
-* **WasbStoreBolt** : сохраняет данные в HDFS (хранилище Azure).
+* **DataReferencBolt** -ищет hello vehicle модели из Cosmos базу данных, используя hello VIN
+* **WasbStoreBolt** -магазины hello tooHDFS данных (хранилище Azure)
 
-Ниже представлена схема этого решения.
+Следующие изображения Hello является схема этого решения:
 
 ![топология Storm](./media/hdinsight-storm-iot-eventhub-documentdb/iottopology.png)
 
 ## <a name="implementation"></a>Реализация
 
-Полное автоматизированное решение на базе этого сценария доступно в репозитории [HDInsight-Storm-Examples](https://github.com/hdinsight/hdinsight-storm-examples) на сайте GitHub. Чтобы воспользоваться этим примером, следуйте инструкциям в файле [IoTExample README.MD](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md).
+Завершенный автоматизированным решением, для этого сценария доступна как часть hello [HDInsight-Storm-примеры](https://github.com/hdinsight/hdinsight-storm-examples) репозитория в GitHub. toouse в этом примере, повторите шаги hello в hello [IoTExample файл README. MD](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

@@ -1,5 +1,5 @@
 ---
-title: "Пример скрипта Azure CLI. Создание виртуальной машины Windows Server 2016 с помощью балансировщика сетевой нагрузки | Документация Майкрософт"
+title: "Пример сценария CLI - aaaAzure создания виртуальной Машины Windows Server 2016 с балансировкой сетевой Нагрузки | Документы Microsoft"
 description: "Пример скрипта Azure CLI. Создание виртуальной машины Windows Server 2016 с помощью балансировщика сетевой нагрузки"
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: 916204d2b94868057b824feee7b7d032c66382f3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aaaac0c2cc32ce0cac21417926399d848bd6fa09
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Балансировка нагрузки для трафика между высокодоступными виртуальными машинами
 
-Этот пример скрипта позволяет создать все необходимые компоненты для запуска нескольких виртуальных машин Ubuntu, настроенных в высокодоступной конфигурации с балансировкой нагрузки. После выполнения этого сценария будут созданы три виртуальные машины, которые будут добавлены в группу доступности Azure. Доступ к ним можно будет получить через Azure Load Balancer.
+В этом примере сценария создается все необходимое toorun несколько Ubuntu виртуальных машин, настроенных в высокой доступности и загрузить сбалансированной конфигурации. После выполнения скрипта hello, будет иметь три виртуальные машины присоединены к домену tooan группе доступности Azure и доступный с помощью подсистемы балансировки нагрузки Azure.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -31,11 +31,11 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-windows-vm-nlb.sh "Быстрое создание виртуальной машины")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-windows-vm-nlb.sh "Quick Create VM")]
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполните следующую команду, чтобы удалить группу ресурсов, виртуальную машину и все связанные с ней ресурсы.
+Выполните следующие команды tooremove hello группы ресурсов, виртуальная машина и все связанные ресурсы hello.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -43,7 +43,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Для создания группы ресурсов, виртуальной машины, группы доступности, балансировщика нагрузки и всех связанных ресурсов этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует hello следующие команды toocreate группы ресурсов, виртуальная машина, группа доступности, балансировки нагрузки и все связанные ресурсы. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
@@ -51,18 +51,18 @@ az group delete --name myResourceGroup --yes
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) | Создает виртуальную сеть и подсеть Azure. |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) | Создает общедоступный IP-адрес со статическим IP-адресом и связанным DNS-именем. |
 | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#create) | Создает балансировщик сетевой нагрузки Azure. |
-| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | Создает пробу балансировщика сетевой нагрузки. Она используется для отслеживания каждой виртуальной машины в наборе балансировщика сетевой нагрузки. Если любая виртуальная машина становится недоступной, к ней не направляется трафик. |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Создает правило балансировщика сетевой нагрузки. В этом примере создается правило для порта 80. Так как трафик HTTP поступает в балансировщик сетевой нагрузки, он перенаправляется на порт 80 одной из виртуальных машин в наборе балансировщика сетевой нагрузки. |
-| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) | Создает правило преобразования сетевых адресов (NAT) балансировщика сетевой нагрузки.  Правила NAT сопоставляют порт балансировщика сетевой нагрузки с портом виртуальной машины. В этом примере создается правило NAT для SSH-трафика на каждой виртуальной машине в наборе балансировщика сетевой нагрузки.  |
-| [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) | Создает группу безопасности сети (NSG), которая выполняет роль периметра безопасности между Интернетом и виртуальной машиной. |
-| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) | Создает правило NSG, разрешающее входящий трафик. В этом примере открывается порт 22 для трафика SSH. |
-| [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) | Создает виртуальную сетевую карту и подключает ее к виртуальной сети, подсети и группе безопасности сети. |
-| [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Создает группу доступности. Группы доступности обеспечивают непрерывную работу приложения, распределяя виртуальные машины по физическим ресурсам. Таким образом, в случае сбоя он не затронет весь набор ресурсов. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Создает виртуальную машину и подключает ее к сетевой карте, виртуальной сети, подсети и группе безопасности сети. Эта команда также указывает образ виртуальной машины, который будет использоваться, и учетные данные администратора.  |
+| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | Создает пробу балансировщика сетевой нагрузки. Проверка балансировкой сетевой Нагрузки является используется toomonitor каждой виртуальной Машины в наборе балансировки сетевой Нагрузки hello. Если все виртуальные Машины, становится недоступной, трафик не перенаправленное toohello виртуальной Машины. |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Создает правило балансировщика сетевой нагрузки. В этом примере создается правило для порта 80. HTTP-трафик поступает на hello балансировки сетевой Нагрузки, это перенаправленное tooport 80 один из виртуальных машин hello в наборе балансировки сетевой Нагрузки hello. |
+| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) | Создает правило преобразования сетевых адресов (NAT) балансировщика сетевой нагрузки.  Правила преобразования сетевых адресов сопоставление порта hello порт tooa балансировки сетевой Нагрузки на виртуальной Машине. В этом образце правило NAT создается для SSH tooeach трафик виртуальной Машины в наборе балансировки сетевой Нагрузки hello.  |
+| [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) | Создание группы безопасности сети (NSG), который является границей безопасности между виртуальными машинами hello Интернет» и «hello. |
+| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) | Создает правило NSG tooallow входящий трафик. В этом примере открывается порт 22 для трафика SSH. |
+| [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) | Создает виртуальный сетевой адаптер и присоединяет его toohello виртуальной сети, подсети и NSG. |
+| [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Создает группу доступности. Наборы доступности обеспечения бесперебойной работы приложения, распределяя hello виртуальных машин между физическими ресурсами, таким образом, что в случае сбоя всего набора hello не влияют. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Создает виртуальную машину hello и подключает его toohello сетевой карты, виртуальной сети, подсети и NSG. Эта команда также указывает hello toobe образа на виртуальной машине используется и учетные данные администратора.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | Удаляет группу ресурсов со всеми вложенными ресурсами. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры скриптов интерфейса командной строки для виртуальных машин см. в [документации по виртуальным машинам Azure под управлением Windows](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Примеры сценариев CLI дополнительную виртуальную машину можно найти в hello [документации виртуальной Машины Windows Azure](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

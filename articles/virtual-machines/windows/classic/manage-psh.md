@@ -1,6 +1,6 @@
 ---
-title: "Управление виртуальными машинами с помощью Azure PowerShell | Документация Майкрософт"
-description: "Узнайте о командах, которые можно использовать для автоматизации задач управления виртуальными машинами."
+title: "aaaManage виртуальные машины с помощью Azure PowerShell | Документы Microsoft"
+description: "Дополнительные команды, которые можно использовать задачи tooautomate в управлении виртуальными машинами."
 services: virtual-machines-windows
 documentationcenter: windows
 author: singhkays
@@ -15,44 +15,44 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
-ms.openlocfilehash: fd2df7e1029ced11974d0b832258bed2cf3bbb27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e4ca6f098519243a321eac98b6692790fe18c22c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>Управление виртуальными машинами с помощью Azure PowerShell
 > [!IMPORTANT] 
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов. Общие команды PowerShell, использующиеся с моделью Resource Manager, см. [здесь](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов. Стандартные команды PowerShell с помощью модели hello диспетчера ресурсов, в разделе [здесь](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Многие повседневные задачи управления виртуальными машинами можно автоматизировать с помощью командлетов Azure PowerShell. В этой статье приводятся примеры команд для простых задач, а также ссылки на статьи о командах для более сложных задач.
+С помощью командлетов Azure PowerShell можно автоматизировать многие задачи, выполните каждый день toomanage виртуальных машин. В этой статье приводятся примеры команд для более простые задачи и tooarticles ссылок, отображение hello команд для более сложных задач.
 
 > [!NOTE]
-> Если вы еще не установили и не настроили Azure PowerShell, соответствующие указания см. в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview).
+> Если вы еще не установлен и настроен Azure PowerShell, но инструкции можно получить в статье hello [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
 > 
 > 
 
-## <a name="how-to-use-the-example-commands"></a>Как использовать примеры команд
-Вам понадобится заменить определенный текст в командах в соответствии с вашей средой. Знаки < и > обозначают текст, который необходимо заменить. При замене текста удалите символы, но оставьте на месте кавычки.
+## <a name="how-toouse-hello-example-commands"></a>Как toouse hello примеры команд
+Вам потребуется tooreplace некоторые из текста hello в hello команды с текстом, который подходит для вашей среды. Hello < и > символы указывают текст, необходимо tooreplace. При замене текста hello, удалите символы hello, но hello кавычки следует оставить на месте.
 
 ## <a name="get-a-vm"></a>Получение виртуальной машины
-Вы будете выполнять эту основную задачу очень часто. Используйте ее, чтобы получить информацию о виртуальной машине, выполнить задачи в виртуальной машине или получить выходные данные, которые необходимо сохранить в переменной.
+Вы будете выполнять эту основную задачу очень часто. Использовать tooget сведения о виртуальной Машине, выполнять задачи на виртуальной Машине или получить toostore выходные данные в переменной.
 
-Чтобы получить информацию о виртуальной машине, выполните эту команду и замените все, что заключено в кавычки, в том числе знаки < и >.
+tooget сведения о hello виртуальной Машины, выполните следующую команду, заменив все, что заключено в кавычки hello, включая hello < и > символов:
 
      Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-Чтобы сохранить выходные данные в переменной $vm, выполните:
+выходные данные в переменной $vm hello toostore выполните:
 
     $vm = Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-## <a name="log-on-to-a-windows-based-vm"></a>Вход в виртуальную машину под управлением Windows
+## <a name="log-on-tooa-windows-based-vm"></a>Войдите на tooa виртуальной Машины на основе Windows
 Выполните следующие команды:
 
 > [!NOTE]
-> Имя виртуальной машины и облачной службы можно получить из вывода команды **Get-AzureVM** .
+> Hello виртуальной машины и имя облачной службы можно получить из отображения hello hello **Get-AzureVM** команды.
 > 
-> $svcName = "<cloud service name>" $vmName = "<virtual machine name>" $localPath = "<расположение диска и файла для хранения скачанного RDP-файла, например c:\temp >" $localFile = $localPath + "\" + $vmname + ".rdp" Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch
+> $svcName = "<cloud service name>» $vmName ="<virtual machine name>» $localPath = «< диск и папку расположения toostore hello загрузить RDP-файл, пример: c:\temp >» $localFile = $localPath + "\" + $vmname + «.rdp» Get-AzureRemoteDesktopFile - ServiceName $svcName-имя $vmName - LocalPath $localFile-запуск
 > 
 > 
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 07/11/2017
     Stop-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 > [!IMPORTANT]
-> Используйте этот параметр, чтобы сохранить виртуальный IP-адрес (VIP) облачной службы, если эта виртуальная машина является последней в этой службе. <br><br> При использовании параметра StayProvisioned вам по-прежнему будут выставлять счета за использование виртуальной машины.
+> Использовать этот параметр tookeep hello, виртуальный IP-адрес (VIP) hello облачных служб в случае hello последняя виртуальная машина в указанной облачной службе. <br><br> При использовании параметра StayProvisioned hello, вам будет выставляться за hello виртуальной Машины.
 > 
 > 
 
@@ -72,19 +72,19 @@ ms.lasthandoff: 07/11/2017
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 ## <a name="attach-a-data-disk"></a>Присоединение диска данных
-Для этой задачи требуется несколько шагов. Сначала используйте командлет ****Add-AzureDataDisk**** , чтобы добавить диск в объект $vm. Затем используйте командлет **Update-AzureVM** , чтобы обновить конфигурацию виртуальной машины.
+Для этой задачи требуется несколько шагов. Во-первых, используйте hello *** Add-AzureDataDisk *** командлет tooadd hello toohello $vm объект диска. Затем можно с помощью **Update-AzureVM** командлет tooupdate hello конфигурацию hello виртуальной Машины.
 
-Вам необходимо решить, какой диск подключать — новый диск или диск с данными. При подключении нового диска команда создает и присоединяет VHD-файл.
+Кроме того, потребуется toodecide tooattach новый диск или один, содержит ли данные. Для нового диска hello команда создает hello VHD-файл и присоединяет его.
 
-Чтобы подключить новый диск, выполните следующую команду:
+tooattach новый диск, выполните следующую команду:
 
     Add-AzureDataDisk -CreateNew -DiskSizeInGB 128 -DiskLabel "<main>" -LUN <0> -VM $vm | Update-AzureVM
 
-Чтобы подключить существующий диск, выполните следующую команду:
+tooattach существующий диск данных, выполните следующую команду:
 
     Add-AzureDataDisk -Import -DiskName "<MyExistingDisk>" -LUN <0> | Update-AzureVM
 
-Чтобы подключить диски данных из существующего VHD-файла в хранилище больших двоичных объектов, выполните следующую команду:
+tooattach диски с данными из существующего файла VHD в хранилище больших двоичных объектов, выполните следующую команду:
 
     Add-AzureDataDisk -ImportFrom -MediaLocation `
               "<https://mystorage.blob.core.windows.net/mycontainer/MyExistingDisk.vhd>" `
@@ -92,7 +92,7 @@ ms.lasthandoff: 07/11/2017
               Update-AzureVM
 
 ## <a name="create-a-windows-based-vm"></a>Создание виртуальной машины под управлением Windows
-Чтобы создать виртуальную машину под управлением Windows в Azure, используйте указания в статье [Использование Azure PowerShell для создания и предварительной настройки виртуальных машин под управлением Windows](create-powershell.md). В этом разделе последовательно описано создание набора команд Azure PowerShell, создающего виртуальную машину под управлением Windows, для которой можно предварительно настроить:
+новый на основе Windows виртуальной машины в Azure, используйте инструкции hello в toocreate [toocreate использовать Azure PowerShell и предварительной настройки виртуальных машин на основе Windows](create-powershell.md). Этот раздел действия можно выполнить с помощью Azure PowerShell, набор команд, создание hello создает к виртуальной Машине под управлением Windows, могут быть предварительно настроены:
 
 * членство в домене Active Directory;
 * дополнительные диски;

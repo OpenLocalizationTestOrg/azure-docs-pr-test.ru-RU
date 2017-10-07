@@ -1,5 +1,5 @@
 ---
-title: "Отладка запросов Azure Stream Analytics с помощью SELECT INTO | Документация Майкрософт"
+title: "aaaDebug Azure Stream Analytics запросы с помощью инструкции SELECT INTO | Документы Microsoft"
 description: "Создайте демонстрационные данные во время запроса с помощью инструкции SELECT INTO в Stream Analytics"
 keywords: 
 services: stream-analytics
@@ -15,37 +15,37 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeffstok
-ms.openlocfilehash: b05222c6d6f4fc2c5b847dd75ff7e29352cd538c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 27e41af1a6ea06b4509d07a3a67087490d0ec1fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="debug-queries-by-using-select-into-statements"></a>Отладка запросов с помощью инструкции SELECT INTO
 
-При обработке данных в режиме реального времени важно знать, как выглядят данные во время запроса. Так как входные данные или шаги задания Azure Stream Analytics можно считать несколько раз, вы можете написать дополнительные инструкции SELECT INTO. Таким образом вы получаете промежуточные данные в хранилище, на основе которых можно проверить правильность данных, так же, как и с помощью *переменных просмотра* при отладке программы.
+В режиме реального времени обработки данных определить, какие данные hello похоже, в середине hello hello запроса могут оказаться полезными. Так как входные данные или шаги задания Azure Stream Analytics можно считать несколько раз, вы можете написать дополнительные инструкции SELECT INTO. Это генерирует промежуточные данные в хранилище и позволяет проверить правильность hello hello данных, так же как и *наблюдать за переменными* сделать при отладке программы.
 
-## <a name="use-select-into-to-check-the-data-stream"></a>Проверка потока данных с помощью SELECT INTO
+## <a name="use-select-into-toocheck-hello-data-stream"></a>Использование SELECT INTO toocheck hello потока данных
 
-В следующем примере запроса в задании Azure Stream Analytics содержится один поток входных данных, два ссылочных набора входных данных и выходные данные для Хранилища таблиц Azure. Запрос объединяет данные из концентратора событий и два ссылочных больших двоичных объекта, чтобы получить сведения об имени и категории:
+Hello следующий запрос в задание Azure Stream Analytics имеет один поток ввода, двух входов справочные данные и вывода tooAzure хранилище таблиц. запрос Hello объединяет данные из концентратора событий hello и ссылки на две большие двоичные объекты tooget hello имя и сведения о категории:
 
 ![Пример запроса SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-Обратите внимание, что задание выполняется, но события не создаются в выходных данных. На плитке **Мониторинг**, показанной здесь, можно увидеть, что данные выводятся, но невозможно определить, на каком шаге операции **JOIN** были удалены все события.
+Обратите внимание, что hello задание выполняется, но события не создаются в выходных данных hello. На hello **мониторинг** плитки, показано ниже, вы увидите, что зарегистрировавшем hello ввода данных, но вы не знаете, какой шаг hello **JOIN** вызвало все hello toobe события удалены.
 
-![Плитка "Мониторинг"](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![Мониторинг плитки приветствия](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
-В этом случае можно добавить несколько дополнительных инструкций SELECT INTO для регистрации промежуточных результатов операции JOIN и данных, считываемых из входных данных.
+В этом случае можно добавить несколько дополнительных инструкций SELECT INTO слишком «вход» hello промежуточные результаты СОЕДИНЕНИЯ и hello данные, считанные из входных данных hello.
 
 В этом примере мы добавили два новых временных набора выходных данных. Они могут представлять собой любой приемник. Ниже в качестве примера используется служба хранилища Azure:
 
 ![Добавление дополнительных инструкций SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
-Затем можно переписать запрос следующим образом:
+Затем можно переписать запрос hello следующим образом:
 
 ![Перезаписанный запрос SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
-Теперь снова запустите задание, которое должно выполняться в течение нескольких минут. Затем запросите temp1 и temp2 с помощью Visual Studio Cloud Explorer для создания следующих таблиц:
+Теперь снова запустите задание hello и дать ему возможность работать в течение нескольких минут. Затем запрос temp1 и temp2 с Visual Studio Cloud Explorer tooproduce hello следующие таблицы:
 
 **Таблица temp1**
 ![Таблица temp1 инструкции SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
@@ -53,21 +53,21 @@ ms.lasthandoff: 08/29/2017
 **Таблица temp2**
 ![Таблица temp2 инструкции SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
-Как вы видите, обе таблицы содержат данные, а столбец имени в temp2 заполнен правильно. Тем не менее, так как данные еще не выведены, произошла какая-то проблема:
+Как видите, temp1 и temp2 содержат данные и имя столбца hello в temp2 заполняются правильно. Тем не менее, так как данные еще не выведены, произошла какая-то проблема:
 
 ![Таблица output1 инструкции SELECT INTO без данных](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
-Выполнив выборку данных, можно почти определенно сказать, что проблема связана со второй операцией JOIN. Вы можете скачать ссылочные данные из большого двоичного объекта и убедиться в этом:
+С помощью выборки данных hello, вам может быть почти наверняка, hello проблема связана с hello второй СОЕДИНЕНИЯ. Можно загрузить hello ссылочных данных из большого двоичного объекта hello и обратите внимание:
 
 ![Справочная таблица SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
-Как видно, формат GUID в этих справочных данных отличается от формата столбца в таблице temp2. Именно поэтому данные не поступили в output1, как положено.
+Как видите, формат hello hello GUID в этом ссылочных данных отличается от hello формат hello [из] столбца в temp2. Вот почему hello данные не поступают в output1 должным образом.
 
-Вы можете исправить формат данных, передать их в ссылочный большой двоичный объект и повторить попытку:
+Можно устранить hello формат данных, передать его tooreference больших двоичных объектов и повторите попытку:
 
 ![Временная таблица SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
-На этот раз выходные данные форматируются и заполняются требуемым образом.
+На этот раз данные hello в выходных данных hello форматируются и заполнены должным образом.
 
 ![Итоговая таблица SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Введение в Azure Stream Analytics](stream-analytics-introduction.md)
+* [Введение tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Приступая к работе с Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Масштабирование заданий в службе Azure Stream Analytics](stream-analytics-scale-jobs.md)
 * [Справочник по языку запросов Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)

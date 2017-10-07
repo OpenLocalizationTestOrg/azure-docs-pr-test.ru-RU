@@ -1,5 +1,5 @@
 ---
-title: "Руководство по службе \"Экземпляры контейнеров Azure\". Развертывание приложения | Документация Майкрософт"
+title: "Учебник экземпляры контейнером aaaAzure - развертывание приложения | Документы Microsoft"
 description: "Руководство по службе \"Экземпляры контейнеров Azure\". Развертывание приложения"
 services: container-instances
 documentationcenter: 
@@ -17,24 +17,24 @@ ms.workload: na
 ms.date: 08/04/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 54151a5c1850ab7120fe666a46dc5dc99c0f5157
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b9fb098d9491e1073f0be4b14a0b9b1a18f16095
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-container-to-azure-container-instances"></a>Развертывание контейнера в службе "Экземпляры контейнеров Azure"
+# <a name="deploy-a-container-tooazure-container-instances"></a>Разверните контейнер tooAzure экземпляры контейнером
 
-Эта последняя часть руководства, состоящего из трех частей. В предыдущих частях мы [создали образ контейнера](container-instances-tutorial-prepare-app.md), который затем [передали в реестр контейнеров Azure](container-instances-tutorial-prepare-acr.md). Эта часть завершает руководство. Мы развернем контейнер в службе "Экземпляры контейнеров Azure". В частности, рассматриваются такие шаги:
+Это hello последнего учебника трех частей. В предыдущих разделах [был создан образ контейнера](container-instances-tutorial-prepare-app.md) и [помещается tooan реестра контейнера Azure](container-instances-tutorial-prepare-acr.md). В этом разделе завершает учебник hello, развернув контейнер hello tooAzure экземпляры контейнером. В частности, рассматриваются такие шаги:
 
 > [!div class="checklist"]
 > * Определение группы контейнеров с использованием шаблона Azure Resource Manager
-> * Развертывание группы контейнеров с помощью Azure CLI
+> * Развертывание группы hello контейнера, с помощью hello Azure CLI
 > * Просмотр журналов контейнера
 
-## <a name="deploy-the-container-using-the-azure-cli"></a>Развертывание контейнера с помощью Azure CLI
+## <a name="deploy-hello-container-using-hello-azure-cli"></a>Развертывание с помощью Azure CLI hello контейнера hello
 
-Azure CLI позволяет одной командой развернуть контейнер в службе "Экземпляры контейнеров Azure". Так как образ контейнера размещается в частном реестре контейнеров Azure, необходимо включить учетные данные, необходимые для доступа к нему. При необходимости их можно запросить, как показано ниже.
+Hello Azure CLI обеспечивает развертывание контейнера tooAzure экземпляры контейнером с помощью одной команды. Поскольку образ контейнера hello размещается в hello частного реестра контейнера Azure, следует включить tooaccess необходимые учетные данные hello его. При необходимости их можно запросить, как показано ниже.
 
 Сервер входа в реестр контейнеров (укажите используемое имя реестра):
 
@@ -48,23 +48,23 @@ az acr show --name <acrName> --query loginServer
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-Чтобы развернуть образ контейнера из реестра контейнеров с запросом ресурсов (одно ядро ЦП и 1 ГБ памяти), выполните следующую команду:
+toodeploy образ контейнера из реестра hello контейнера с ресурсом запрос 1 ядра Процессора и 1 ГБ памяти, запустите следующую команду hello:
 
 ```azurecli-interactive
 az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public -g myResourceGroup
 ```
 
-В течение нескольких секунд вы получите исходный ответ Azure Resource Manager. Чтобы просмотреть состояние развертывания, используйте следующую команду:
+В течение нескольких секунд вы получите исходный ответ Azure Resource Manager. состояние hello tooview hello развертывания, используйте:
 
 ```azurecli-interactive
 az container show --name aci-tutorial-app --resource-group myResourceGroup --query state
 ```
 
-Мы можем и дальше выполнять эту команду, пока состояние не изменится с *Ожидание* на *Выполняется*. Затем можно продолжить.
+Мы можем продолжать выполнение этой команды, пока не изменится состояние hello из *ожидающие* слишком*под управлением*. Затем можно продолжить.
 
-## <a name="view-the-application-and-container-logs"></a>Просмотр приложения и журналов контейнера
+## <a name="view-hello-application-and-container-logs"></a>Просмотр журналов приложений и контейнер hello
 
-После успешного развертывания откройте в браузере IP-адрес, показанный в выходных данных следующей команды:
+После успешного развертывания hello, откройте браузер toohello IP-адреса в выходные данные hello hello следующую команду:
 
 ```bash
 az container show --name aci-tutorial-app --resource-group myResourceGroup --query ipAddress.ip
@@ -74,9 +74,9 @@ az container show --name aci-tutorial-app --resource-group myResourceGroup --que
 "13.88.176.27"
 ```
 
-![Приложение Hello World в браузере][aci-app-browser]
+![Приложение Hello world в браузере hello][aci-app-browser]
 
-Также можно просмотреть выходные данные журнала контейнера:
+Можно также просмотреть выходные данные журнала hello hello контейнера:
 
 ```azurecli-interactive
 az container logs --name aci-tutorial-app -g myResourceGroup
@@ -92,12 +92,12 @@ listening on port 80
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом руководстве мы завершили процесс развертывания контейнеров в службе "Экземпляры контейнеров Azure". Были выполнены следующие действия:
+В этом учебнике вы выполнили hello процесс развертывания вашего контейнеры tooAzure экземпляры контейнером. Привет, следующие шаги были выполнены:
 
 > [!div class="checklist"]
-> * Развертывание контейнера из реестра контейнеров Azure с помощью Azure CLI
-> * Просмотр приложения в браузере
-> * Просмотр журналов контейнера
+> * Развертывание hello контейнера с помощью реестра контейнера Azure hello hello Azure CLI
+> * Приложение hello для просмотра в браузере hello
+> * Просмотр журналов контейнера hello
 
 <!-- LINKS -->
 [prepare-app]: ./container-instances-tutorial-prepare-app.md

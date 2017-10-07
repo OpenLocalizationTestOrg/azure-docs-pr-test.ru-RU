@@ -1,6 +1,6 @@
 ---
-title: "Исследование и моделирование данных с помощью Spark | Документация Майкрософт"
-description: "В этой статье показаны возможности исследования и моделирования данных с помощью набора средств Spark MLlib в Azure."
+title: "aaaData исследования и моделирования с Spark | Документы Microsoft"
+description: "Демонстрирует hello возможности набора средств hello Spark MLlib на Azure моделирования и просмотра данных."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 711407f7dd9e6d442e3f04a23962487f4808e8e2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cf5cee4575053f5954b08ca659dfc39c53798371
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Исследование и моделирование данных с помощью Spark
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-В этом пошаговом руководстве рассматривается исследование и моделирование данных с применением двоичной классификации и регрессии на примере набора данных о поездках в такси по Нью-Йорку и тарифах за 2013 г. с помощью HDInsight Spark.  Здесь также подробно описаны этапы [анализа и обработки данных](http://aka.ms/datascienceprocess) с использованием кластера HDInsight Spark по обработке данных и больших двоичных объектов Azure для хранения данных и моделей. В ходе этой процедуры данные из большого двоичного объекта службы хранилища Azure сначала исследуются и визуализируются, а затем подготавливаются для создания прогнозных моделей. Эти модели создаются с помощью набора средств Spark MLlib для выполнения задач двоичной классификации и регрессии.
+В этом пошаговом руководстве использует просмотр данных toodo HDInsight Spark и двоичной классификации и регрессии задачи моделирования образца hello NYC такси маршрута и успешного 2013 набора данных.  Он поможет выполнить шаги hello hello [процесса обработки и анализа данных](http://aka.ms/datascienceprocess), узел узел, с помощью HDInsight Spark кластера для обработки и модели данных и hello hello toostore больших двоичных объектов Azure. Hello процесс более подробно рассматривается и визуализация данных из большого двоичного объекта хранилища Azure и затем выполняется подготовка данных toobuild hello прогнозных моделей. Эти модели, с помощью hello Spark MLlib toolkit toodo двоичной классификации и регрессии моделирования задачи построения.
 
-* Задача **двоичной классификации** : спрогнозировать, будут ли выплачены чаевые за поездку. 
-* Задача **регрессии** : спрогнозировать сумму чаевых в зависимости от других признаков. 
+* Hello **двоичной классификации** задача — toopredict ли совет оплачивается поездки hello. 
+* Hello **регрессии** задача представляет сумму hello toopredict hello подсказки на основе других функций подсказки. 
 
-Мы использовали такие модели, как логистическая и линейная регрессия, случайные леса и градиентный бустинг деревьев.
+модели Hello, мы используем включают логистической и линейной регрессии, случайные леса и градиента повышенных деревьев:
 
-* [Линейная регрессия с применением SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) — модель линейной регрессии, в которой используется метод стохастического градиента для оптимизации и масштабирование признаков для прогнозирования суммы чаевых. 
-* [Логистическая регрессия с применением алгоритма LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) (или логит-регрессия) — регрессионная модель, которая используется для классификации данных, если зависимая переменная является категориальной. Алгоритм LBFGS — это широко используемый в машинном обучении квазиньютоновский алгоритм оптимизации, который представляет собой модифицированный метод Бройдена — Флетчера — Гольдфарба — Шанно (BFGS) с ограниченным использованием компьютерной памяти.
-* [Случайные леса](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) — это совокупности деревьев принятия решений.  Такие совокупности минимизируют необходимость в переобучении. Случайные леса используются для регрессии и классификации, могут обрабатывать категориальные функции и могут быть расширены до многоклассовой настройки классификации. С их помощью можно определять нелинейные зависимости и взаимодействия признаков. Этот метод не требует масштабирования признаков. Случайные леса — одна из самых эффективных моделей машинного обучения для задач классификации и регрессии.
-* [Деревья с градиентным бустингом](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) — это совокупности деревьев принятия решений. Этот метод предусматривает итеративное обучение деревьев принятия решений, что позволяет свести потери к минимуму. Он применяется для задач классификации и регрессии. С его помощью можно обрабатывать категориальные признаки, а также определять нелинейные зависимости и взаимодействия признаков. Этот метод не требует масштабирования признаков. Кроме того, его можно использовать для создания модели мультиклассовой классификации.
+* [Линейная регрессия с SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) модель линейной регрессии, которая использует метод вероятностный градиентный спуск (SGD) и для оптимизации и возможность масштабирования toopredict hello совет суммы оплаты. 
+* [Логистическая Регрессия с LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) и регрессии «logit» представляет собой модель регрессии, который может использоваться при классификации данных категориальные toodo hello зависимой переменной. LBFGS-это алгоритм оптимизации реализация ньютон, соответствующий алгоритм Бройдена-Флетчера-Гольдфарба-Шанно (BFGS) hello ограниченный объем памяти компьютера с помощью и широко используемый в машинном обучении.
+* [Случайные леса](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) — это совокупности деревьев принятия решений.  Они объединяют многих решений деревьев tooreduce hello риск переобучения. Случайные леса, используются для классификации и регрессии и может обрабатывать категориальных признаков и могут быть расширены параметр toohello мультиклассовой классификации. Они не требуется возможность масштабирования и являются может toocapture нелинейности и возможность взаимодействия. Случайные леса принадлежат hello наиболее успешных моделей машинного обучения для классификации и регрессии.
+* [Деревья с градиентным бустингом](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) — это совокупности деревьев принятия решений. Решение GBTs обучение итеративного дерева toominimize функции потерь. GBTs используются для классификации и регрессии и может обрабатывать категориальных признаков не требуется возможность масштабирования и являются может toocapture нелинейности и возможностей взаимодействия. Кроме того, его можно использовать для создания модели мультиклассовой классификации.
 
-Здесь также содержатся примеры кода, демонстрирующие процесс обучения, анализа и сохранения модели каждого типа. Чтобы создать код решения и составить соответствующие графики, использовался язык Python.   
+Hello моделирования действия также содержат код, показывающий, как tootrain, оценки и сохранение каждого типа модели. Python был используется toocode hello решения и tooshow hello соответствующие графики.   
 
 > [!NOTE]
-> Несмотря на то что набор средств Spark MLlib предназначен для работы с большими наборами данных, для удобства мы будем использовать относительно небольшую выборку (приблизительно 30 МБ, 170 тыс. строк, примерно 0,1 % исходного набора данных о поездках в такси по Нью-Йорку). Описанные в этой статье задачи можно эффективно выполнить (примерно за 10 минут) в кластере HDInsight с 2 рабочими узлами. Тот же код (с незначительными изменениями) можно использовать для обработки больших наборов данных. Необходимо лишь внести соответствующие изменения для кэширования данных в памяти или изменения размера кластера.
+> Хотя набор средств Spark MLlib hello спроектированный toowork с большими наборами данных, сравнительно небольшую выборку (с помощью 170 тысяч строк, 0,1% hello исходный набор данных NYC ~ 30 МБ) используется здесь для удобства. Упражнение Hello в данном разделе выполняется эффективно (в течение 10 минут) в кластере HDInsight с 2 рабочих узлов. Hello одинаковый код, с небольшими изменениями может быть используется tooprocess более крупных-наборов данных, с соответствующими изменениями для кэширования данных в памяти и изменение размера кластера hello.
 > 
 > 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Для работы с этим пошаговым руководством требуется учетная запись Azure и кластер Spark 1.6 или Spark 2.0 HDInsight. См. статью [Общие сведения об обработке и анализе данных с помощью платформы Spark в Azure HDInsight](machine-learning-data-science-spark-overview.md) для получения инструкций по выполнению этих требований. В этой статье также содержится описание используемых здесь данных о поездках в такси по Нью-Йорку за 2013 г., и инструкции по выполнению кода из записной книжки Jupyter в кластере Spark. 
+Вам потребуется учетная запись Azure и Spark 1.6 (или Spark 2.0) кластер HDInsight toocomplete в данном пошаговом руководстве. В разделе hello [Обзор для обработки и анализа данных с помощью Spark на Azure HDInsight](machine-learning-data-science-spark-overview.md) инструкции о том, как toosatisfy эти требования. Этот раздел также содержит описание hello такси 2013 NYC данные, используемые здесь и инструкции о том, как код tooexecute из записной книжке Jupyter на кластере Spark hello. 
 
 ## <a name="spark-clusters-and-notebooks"></a>Кластеры и записные книжки Spark
-Действия по настройке и код, указанные в этом пошаговом руководстве, применимы к использованию для HDInsight Spark 1.6. Но записные книжки Jupyter можно использовать для кластеров HDInsight Spark 1.6 и Spark 2.0. Описание записных книжек и ссылки на них вы можете найти в файле [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) для репозитория GitHub с записными книжками. Более того, код здесь и в связанных записных книжках является универсальным и должен работать в любом кластере Spark. Действия по настройке кластера и управлению им могут немного отличаться от приведенных здесь, если вы не используете HDInsight Spark. Для удобства мы приводим ссылки на записные книжки Jupyter для Spark 1.6 (выполняемые в ядре PySpark на сервере записной книжки Jupyter) и Spark 2.0 (выполняемые в ядре PySpark3 на сервере записной книжки Jupyter).
+Действия по настройке и код, указанные в этом пошаговом руководстве, применимы к использованию для HDInsight Spark 1.6. Но записные книжки Jupyter можно использовать для кластеров HDInsight Spark 1.6 и Spark 2.0. Описание toothem hello записных книжек и ссылки, представлено в hello [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) для репозитория GitHub hello, содержащий их. Кроме того код hello здесь и в записных книжках hello связаны является универсальным и должен работать на любой кластер Spark. Если вы не используете HDInsight Spark, настройку и управление ими действия hello кластера может быть немного отличается от показанной здесь. Для удобства ниже приведены hello ссылки записные книжки Jupyter toohello для 1.6 Spark (выполняются в ядро pySpark hello hello server книжке Jupyter toobe) и 2.0 Spark (toobe запуска ядра pySpark3 hello объекта hello книжке Jupyter сервера).
 
 ### <a name="spark-16-notebooks"></a>Записные книжки для Spark 1.6
 
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb). Содержит сведения о том, как выполнять просмотр данных, моделирование и оценку с использованием нескольких различных алгоритмов.
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): содержит сведения о том, как просмотр данных tooperform, моделирование и оценка с несколько разных алгоритмов.
 
 ### <a name="spark-20-notebooks"></a>Записные книжки для Spark 2.0
-Задачи регрессии и классификации, реализованные с помощью кластера Spark 2.0, находятся в отдельных записных книжках и используют другой набор данных:
+Hello регрессии и классификации задачи, которые реализуются с помощью кластера Spark 2.0 находятся в отдельном записных книжек и записной книжки hello классификации используются различные наборы данных.
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Содержит сведения о том, как выполнять просмотр данных, моделирование и оценку в кластерах Spark 2.0 на примере набора данных о расстояниях и ценах на такси в Нью-Йорке, описанного [здесь](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Эту записную книжку можно использовать в качестве отправной точки для быстрого изучения кода, предоставленного для Spark 2.0. В следующей записной книжке списка приведен более детальный анализ данных о поездках в такси по Нью-Йорку (см. примечания после списка сравнения этих записных книжек). 
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb). Демонстрирует, как можно выполнять структурирование данных (Spark SQL и операции с кадрами данных), просмотр данных, моделирование и оценку на примере набора данных о расстояниях и ценах на такси в Нью-Йорке, который описан [здесь](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb). Демонстрирует, как можно выполнять структурирование данных (Spark SQL и операции с кадрами данных), просмотр данных, моделирование и оценку на примере известного набора данных о расписании вылетов авиакомпании за 2011 и 2012 гг. До моделирования мы дополнили набор данных об авиарейсах набором данных о погоде в аэропортах (скорость ветра, температура, высота над уровнем моря и т. д.), чтобы включить в модель эту информацию о погоде.
+- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): этот файл содержит сведения о как tooperform Просмотр данных, моделирования и оценки в Spark 2.0 кластеры, использующие hello trip такси NYC и набор данных тариф авиакомпании, описано [здесь](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Записной книжки может быть хорошей отправной точкой для быстрого исследования кода hello, предоставленные для Spark 2.0. Для подробных записной книжки анализирует hello такси NYC данных, см. Далее записной книжки hello в этом списке. См. примечания hello ниже, сравнивающие эти портативные компьютеры. 
+- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): этот файл показывает, как tooperform данные wrangling (Spark SQL и кадр данных операции), просмотр, моделирование и оценка с помощью hello trip такси NYC и тариф авиакомпании набор данных описывается [ Здесь](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): этот файл показывает, как tooperform данные wrangling (Spark SQL и кадр данных операции), просмотр, моделирование и оценка с помощью hello хорошо известных авиакомпании на время отправления набор данных на основе 2011 г. и 2012. Мы интегрировать dataset авиакомпании hello hello аэропорта погоды данных (например, windspeed, температуры, высота над уровнем моря т. д.) предыдущих toomodeling, эти функции погоды могут быть включены в модель hello.
 
 <!-- -->
 
 > [!NOTE]
-> В записные книжки для Spark 2.0 был добавлен набор данных об авиарейсах, который лучше иллюстрирует использование алгоритмов классификации. Следующие ссылки помогут получить информацию о наборах данных о расписании вылетов авиакомпании и о погоде.
+> набор данных авиакомпании Hello был добавлен toohello Spark 2.0 записных книжек toobetter иллюстрируют использование hello алгоритмы классификации. См. следующие ссылки на сведения о набора данных на время отправления авиакомпании и набора данных погоды hello.
 
 >- Данные о расписании вылетов авиакомпании: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 07/11/2017
 <!-- -->
 
 > [!NOTE]
-Выполнение записных книжек Spark 2.0 с наборами данных о поездках в такси по Нью-Йорку и задержке рейсов может занять примерно 10 минут или больше (в зависимости от размера кластера HDI). В первой записной книжке из приведенного выше списка показаны многие аспекты исследования и визуализации данных, а также обучения модели машинного обучения. За счет уменьшения набора данных о поездках в такси по Нью-Йорку, в котором данные о поездках и тарифах на них объединены в один файл [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb), выполнение и завершение этой записной книжки занимает значительно меньше времени (2–3 минуты), и поэтому ее хорошо использовать в качестве отправной точки для быстрого изучения кода, предоставленного для Spark 2.0. 
+записных книжек Spark 2.0 Hello на такси NYC hello и наборы авиакомпании рейса задержка данных может занять 10 минут или более toorun (в зависимости от размера hello кластер HDI). Hello первой записной книжки в hello над списком показаны различные аспекты hello исследования данных, визуализации и машинного Обучения моделей обучения в записной книжке, занимает меньше времени toorun уменьшается NYC набора данных, в которой hello такси и тариф авиакомпании файлы были предварительно присоединены к домену: [ Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) записной книжки принимает более короткое время toofinish (2-3 минуты) и может быть это хорошая отправная точка для быстро анализ кода hello у нас есть обеспечивает Spark 2.0. 
 
 <!-- -->
 
@@ -84,30 +84,30 @@ ms.lasthandoff: 07/11/2017
 <!-- -->
 
 > [!NOTE]
-Описания, приведенные ниже, относятся к Spark 1.6. Для Spark 2.0 используйте записные книжки, описанные выше. 
+Hello ниже описаны связанные toousing Spark 1.6. Для версий Spark 2.0 используйте записных книжек hello описаны и ссылки выше. 
 
 <!-- -->
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Настройка места хранения, библиотек и предустановленного контекста Spark
-Spark может считывать данные и записывать их в хранилище BLOB-объектов Azure (также известное как WASB). Таким образом, данные из хранилища можно обрабатывать с помощью Spark и сохранять полученные данные в этом же хранилище.
+## <a name="setup-storage-locations-libraries-and-hello-preset-spark-context"></a>Программа установки: hello, библиотеки и расположения хранилища конфигурации Spark контекста
+Spark — может tooAzure tooread и записи хранилища больших двоичных объектов (также известный как WASB). Поэтому любые существующие данные, хранящиеся в ней могут быть обработаны с помощью Spark и hello результаты хранимых в WASB.
 
-Чтобы сохранить модели или файлы в хранилище BLOB-объектов, необходимо указать путь соответствующим образом. Контейнер по умолчанию, присоединенный к кластеру Spark, можно указать с помощью пути, который начинается с "wasb:///". Другие расположения начинаются с wasb://.
+toosave модели или файлов в WASB, hello путь должен toobe указано правильно. Hello кластера Spark toohello присоединенного контейнера по умолчанию можно обращаться, используя путь, начиная с: «wasb: / / /». Другие расположения начинаются с wasb://.
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Настройка путей каталога к месту хранения в хранилище BLOB-объектов
-В следующем примере кода указывается расположение данных, которые необходимо считать, и путь для каталога хранилища модели, где сохраняются выходные данные модели:
+Hello следующий код задает hello место чтения toobe данных hello и hello hello модели хранения каталога toowhich hello модели выходных данных будет сохранен:
 
-    # SET PATHS TO FILE LOCATIONS: DATA AND MODEL STORAGE
+    # SET PATHS tooFILE LOCATIONS: DATA AND MODEL STORAGE
 
     # LOCATION OF TRAINING DATA
     taxi_train_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windows.net/Data/NYCTaxi/JoinedTaxiTripFare.Point1Pct.Train.tsv";
 
-    # SET THE MODEL STORAGE DIRECTORY PATH 
-    # NOTE THAT THE FINAL BACKSLASH IN THE PATH IS NEEDED.
+    # SET hello MODEL STORAGE DIRECTORY PATH 
+    # NOTE THAT hello FINAL BACKSLASH IN hello PATH IS NEEDED.
     modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/" 
 
 
 ### <a name="import-libraries"></a>Импорт библиотек
-Для установки также требуется импорт необходимых библиотек. Чтобы импортировать библиотеки и настроить контекст Spark, используйте следующий код:
+Для установки также требуется импорт необходимых библиотек. Задать контекст spark и импортируйте необходимые библиотеки с hello, следующий код:
 
     # IMPORT LIBRARIES
     import pyspark
@@ -126,28 +126,28 @@ Spark может считывать данные и записывать их в
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>Предустановленный контекст Spark и волшебные команды PySpark
-Ядра PySpark, входящие в состав записных книжек Jupyter, имеют предустановленный контекст. Поэтому перед началом работы с разрабатываемым приложением вам не нужно явно задавать контексты Spark или Hive. Эти контексты доступны вам по умолчанию, а именно:
+Hello PySpark ядер, предоставляемых с записные книжки Jupyter имеют предустановленных контекста. Поэтому необязательно tooset hello Spark или куст контекстов явно перед началом работы с приложением hello, которое вы разрабатываете. Эти контексты доступны вам по умолчанию, а именно:
 
 * sc для Spark; 
 * sqlContext для Hive.
 
-Ядро PySpark предоставляет несколько "волшебных команд". Это специальные команды, которые можно вызывать с %%. В этих примерах кода используются две подобные команды.
+Hello ядра PySpark предоставляет некоторые предопределенные «magics», которые являются специальные команды, которые можно вызвать с %%. В этих примерах кода используются две подобные команды.
 
-* **%%local** Указывает, что код в последующих строках будет выполнен локально. В качестве кода должен быть указан корректный код Python.
-* **%%sql -o <variable name>** Выполняет запрос Hive к sqlContext. Если передан параметр -o, результат запроса сохраняется в контексте %%local Python в формате Pandas DataFrame.
+* **%% локального** указывает, что код hello в последующих строках toobe выполняются локально. В качестве кода должен быть указан корректный код Python.
+* **%% sql -o <variable name>**  выполняет запрос Hive в отношении hello sqlContext. Если передается параметр -o hello, hello результат запроса hello сохраняется в hello %% локального контекста Python как Pandas кадр данных.
 
-Дополнительные сведения о ядрах для записных книжек Jupyter и предустановленных "волшебных командах", которые они предоставляют, см. в статье [Ядра, доступные для использования записными книжками Jupyter с кластерами Apache Spark в HDInsight на платформе Linux](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
+Для Дополнительные сведения о ядра hello записные книжки Jupyter и предопределенные hello «magics», они предоставляют, в разделе [кластеры ядер, доступных для записные книжки Jupyter с HDInsight Spark Linux в HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="data-ingestion-from-public-blob"></a>Прием данных из открытого большого двоичного объекта
-Чтобы начать анализ и обработку необходимых данных, требуется переместить их из источников, в которых они находятся, в среду исследования и моделирования данных. В нашем пошаговом руководстве это среда Spark. Этот раздел содержит код, с помощью которого можно выполнить следующие задачи:
+Первым шагом процесса обработки и анализа данных hello Hello является tooingest hello данных toobe анализируются из источников где — находится в среде моделирования и просмотра данных. Среда Hello — Spark в этом пошаговом руководстве. Этот раздел содержит toocomplete кода hello последовательности задач:
 
-* прием выборки данных, которые нужно моделировать;
-* считывание входного набора данных (TSV-файл);
-* форматирование и очистка данных;
+* hello данные примера toobe моделируется приема
+* чтение во входном наборе данных hello (хранятся в формате .tsv)
+* Очистить hello данные и формат
 * создание и кэширование объектов (устойчивых распределенных наборов данных или фреймов данных) в памяти;
 * регистрация данных в качестве временной таблицы в контексте SQL.
 
-Ниже приведен код для приема данных.
+Ниже приведен код hello для приема данных.
 
     # INGEST DATA
 
@@ -157,7 +157,7 @@ Spark может считывать данные и записывать их в
     # IMPORT FILE FROM PUBLIC BLOB
     taxi_train_file = sc.textFile(taxi_train_file_loc)
 
-    # GET SCHEMA OF THE FILE FROM HEADER
+    # GET SCHEMA OF hello FILE FROM HEADER
     schema_string = taxi_train_file.first()
     fields = [StructField(field_name, StringType(), True) for field_name in schema_string.split('\t')]
     fields[7].dataType = IntegerType() #Pickup hour
@@ -202,54 +202,54 @@ Spark может считывать данные и записывать их в
     # REGISTER DATA-FRAME AS A TEMP-TABLE IN SQL-CONTEXT
     taxi_df_train_cleaned.registerTempTable("taxi_train")
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds";
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 51,72 с.
+Время, затраченное tooexecute над ячейкой: 51.72 секунд
 
 ## <a name="data-exploration--visualization"></a>Исследование и визуализация данных
-После помещения данных в Spark необходимо исследовать и визуализировать их, чтобы получить более глубокое представление. В этом разделе мы исследуем данные о поездках в такси с помощью SQL-запросов и составим графики целевых переменных и потенциальных признаков для визуального контроля. В частности, мы составим график частоты поездок в такси, частоты оставления чаевых и зависимости суммы чаевых от тарифа и типа платежа.
+Hello данных была помещена в Spark, hello следующим шагом в процессе обработки и анализа данных hello после toogain глубокого понимания hello данных через Просмотр и визуализация. В этом разделе рассматриваются hello такси данные с помощью SQL-запросов построения hello целевой переменных и потенциальных возможностей для визуальной проверки. В частности мы построения hello частоту пассажира счетчиков в такси приема-передачи, частота hello совет сумм и как изменять советы по типам и сумма платежа.
 
-### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Построение гистограммы количества пассажиров в выборке данных о поездках на такси
-Этот код и последующие фрагменты используют волшебную команду SQL для запроса примера и локальную волшебную команду для графического представления данных.
+### <a name="plot-a-histogram-of-passenger-count-frequencies-in-hello-sample-of-taxi-trips"></a>Построить гистограмму для частоты счетчика пассажира в образце hello такси приема-передачи данных
+Этот код и последующие фрагменты использовать образец hello magic tooquery SQL и данных локального magic tooplot hello.
 
-* **SQL magic (`%%sql`)** Ядро HDInsight PySpark позволяет легко выполнять встроенные запросы HiveQL к sqlContext. Аргумент (-o VARIABLE_NAME) сохраняет выходные данные запроса SQL в формате Pandas DataFrame на сервере Jupyter. Это означает, что они доступны в локальном режиме.
-* Магическая команда **`%%local`** используется для локального выполнения кода на сервере Jupyter, который представляет собой головной узел кластера HDInsight. Как правило, магическая команда `%%local` используется в комбинации с командой `%%sql` с параметром -o. Параметр -o сохраняет выходные данные запроса SQL локально, после чего волшебная команда %%local активирует следующий набор фрагментов кода, который выполняется локально с выходными данными запросов SQL, сохраненными на локальном компьютере.
+* **Магическое SQL (`%%sql`)** hello ядра HDInsight PySpark поддерживает встроенные легко HiveQL запросы к hello sqlContext. Hello (-o имя_переменной) аргумент hello выходных данных запроса SQL hello сохраняется как Pandas кадр данных на сервере Jupyter hello. Это означает, что он доступен в локальном режиме hello.
+* Hello  **`%%local` магическое** — использовать код toorun локально на сервере Jupyter hello, где hello головному узлу кластера HDInsight hello. Как правило, используется `%%local` magic вместе с hello `%%sql` magic с параметром -o. параметр -o Hello сохранится hello выходных данных запроса SQL hello локально и затем %% локального magic приведет к запуску hello следующего набора toorun фрагмент кода локально к выходным данным hello hello запросов SQL, в которой сохраняется локально
 
-После выполнения кода выходные данные визуализируются автоматически.
+выходные данные Hello автоматически визуализируются после выполнения кода hello.
 
-Этот запрос извлекает поездки по количеству пассажиров. 
+Этот запрос извлекает hello приема-передачи данных по количеству пассажира. 
 
     # PLOT FREQUENCY OF PASSENGER COUNTS IN TAXI TRIPS
 
-    # HIVEQL QUERY AGAINST THE sqlContext
+    # HIVEQL QUERY AGAINST hello sqlContext
     %%sql -q -o sqlResults
     SELECT passenger_count, COUNT(*) as trip_counts 
     FROM taxi_train 
     WHERE passenger_count > 0 and passenger_count < 7 
     GROUP BY passenger_count 
 
-Этот код создает локальный фрейм данных из выходных данных запроса и формирует графическое представление данных. Магическая команда `%%local` создает локальный кадр данных `sqlResults`, который можно использовать для формирования графического представления данных с помощью matplotlib. 
+Этот код создает локальный кадров данных из результатов запроса hello и представлены данные hello. Hello `%%local` magic создает локальный-кадра данных, `sqlResults`, который может использоваться для отображения на диаграмме с помощью matplotlib. 
 
 > [!NOTE]
-> В этом пошаговом руководстве волшебная команда PySpark используется несколько раз. Если объем данных большой, сделайте выборку, чтобы создать фрейм данных, который можно разместить в локальной памяти.
+> В этом пошаговом руководстве волшебная команда PySpark используется несколько раз. При больших размерах hello объем данных следует образец toocreate кадра данных, помещающихся в локальной памяти.
 > 
 > 
 
     #CREATE LOCAL DATA-FRAME AND USE FOR MATPLOTLIB PLOTTING
 
-    # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
+    # RUN hello CODE LOCALLY ON hello JUPYTER SERVER
     %%local
 
-    # USE THE JUPYTER AUTO-PLOTTING FEATURE TO CREATE INTERACTIVE FIGURES. 
-    # CLICK ON THE TYPE OF PLOT TO BE GENERATED (E.G. LINE, AREA, BAR ETC.)
+    # USE hello JUPYTER AUTO-PLOTTING FEATURE tooCREATE INTERACTIVE FIGURES. 
+    # CLICK ON hello TYPE OF PLOT tooBE GENERATED (E.G. LINE, AREA, BAR ETC.)
     sqlResults
 
-Код для получения графического представления поездок по числу пассажиров
+Вот hello кода tooplot hello приема-передачи с пассажира счетчиков
 
     # PLOT PASSENGER NUMBER VS. TRIP COUNTS
     %%local
@@ -268,14 +268,14 @@ Spark может считывать данные и записывать их в
 
 ![Частота поездок в зависимости от количества пассажиров](./media/machine-learning-data-science-spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
-С помощью кнопок в меню **Тип** в записной книжке можно выбрать один из нескольких типов визуализации (таблица либо круговая, линейная, комбинированная или столбчатая диаграмма). Здесь показано представление столбчатой диаграммы.
+Можно выбирать различные виды визуализаций (таблицы, круговая, строки, области или панели) с помощью hello **тип** кнопок меню в записной книжке hello. Здесь показана панель построения Hello.
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Построение гистограммы суммы чаевых и ее зависимости от количества пассажиров и тарифа.
-Используйте SQL-запрос для выборки данных.
+Используйте toosample данных запроса SQL.
 
     #PLOT HISTOGRAM OF TIP AMOUNTS AND VARIATION BY PASSENGER COUNT AND PAYMENT TYPE
 
-    # HIVEQL QUERY AGAINST THE sqlContext
+    # HIVEQL QUERY AGAINST hello sqlContext
     %%sql -q -o sqlResults
     SELECT fare_amount, passenger_count, tip_amount, tipped 
     FROM taxi_train 
@@ -288,9 +288,9 @@ Spark может считывать данные и записывать их в
     AND tip_amount < 25
 
 
-В этой ячейке кода используется SQL-запрос для формирования трех видов графического представления данных.
+Эта ячейка код использует данные о hello hello SQL запроса toocreate три графики.
 
-    # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
+    # RUN hello CODE LOCALLY ON hello JUPYTER SERVER
     %%local
 
     # HISTOGRAM OF TIP AMOUNTS AND PASSENGER COUNT
@@ -327,17 +327,17 @@ Spark может считывать данные и записывать их в
 ![Сумма чаевых в зависимости от тарифа](./media/machine-learning-data-science-spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
 ## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>Проектирование признаков, преобразование и подготовка данных к моделированию
-В этом разделе приведен пример кода для выполнения процедур по подготовке данных, которые будут использоваться в моделях машинного обучения. Здесь также показано, как выполнять следующие задачи:
+В этом разделе описывается и предоставляет кода hello для процедур, используемых tooprepare данных для использования в модели машинного Обучения. Здесь показано, как hello toodo следующие задачи:
 
-* создание нового признака путем группирования часов в периоды трафика;
+* Создание нового признака путем группирования часов в периоды трафика
 * индексация и кодирование категориальных признаков;
-* создание объектов с помеченной вершиной в качестве ввода для функций машинного обучения;
-* создание случайной вложенной выборки данных и ее разделение на наборы для обучения и тестирования;
+* Создание объектов с помеченной вершиной в качестве ввода для функций машинного обучения
+* Создание вложенных случайной выборки данных hello и разбейте его на обучающий и проверочный наборы
 * масштабирование признаков;
 * кэширование объектов в памяти.
 
-### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>создание нового признака путем группирования часов в периоды трафика;
-В следующем коде показано, как создать признак путем группирования часов в периоды трафика, а затем кэшировать итоговый фрейм данных в памяти. Если устойчивые распределенные наборы данных и фреймы данных используются постоянно, на их кэширование необходимо меньше времени. В этом пошаговом руководстве процесс кэширования имеющихся данных выполняется в несколько этапов. 
+### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Создание нового признака путем группирования часов в периоды трафика
+Этот код показывает, как toocreate новая функция путем сегментирования часов в момент трафик контейнеров, а затем как toocache hello результирующий кадр данных в памяти. Где устойчивым распределенных наборы данных (RDDs) и кадров данных используются многократно, кэширование приводит tooimproved времени выполнения. Соответственно, мы RDDs и кэш кадров данных на несколько этапов в пошаговом руководстве hello. 
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     sqlStatement = """
@@ -353,8 +353,8 @@ Spark может считывать данные и записывать их в
     taxi_df_train_with_newFeatures = sqlContext.sql(sqlStatement)
 
     # CACHE DATA-FRAME IN MEMORY & MATERIALIZE DF IN MEMORY
-    # THE .COUNT() GOES THROUGH THE ENTIRE DATA-FRAME,
-    # MATERIALIZES IT IN MEMORY, AND GIVES THE COUNT OF ROWS.
+    # hello .COUNT() GOES THROUGH hello ENTIRE DATA-FRAME,
+    # MATERIALIZES IT IN MEMORY, AND GIVES hello COUNT OF ROWS.
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
@@ -363,12 +363,12 @@ Spark может считывать данные и записывать их в
 126 050.
 
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Индексация и кодирование категориальных признаков в качестве ввода для функций моделирования
-В этом разделе показано, как индексировать и кодировать категориальные признаки в качестве ввода для функций моделирования. Перед использованием в функциях моделирования и прогнозирования MLlib категориальные входные данные сначала необходимо проиндексировать или закодировать. В зависимости от модели этот процесс происходит по-разному.  
+В этом разделе показано, как tooindex или кодирования категориальных признаков для входных данных в моделирования функции hello. Здравствуйте моделирования и предполагаете, что функции MLlib требуют возможности с помощью toobe категориальных данных входного индексированных или кодировке предыдущих toouse. В зависимости от модели hello необходима tooindex или кодировать их по-разному:  
 
-* Для **моделирования на основе дерева** необходимо, чтобы категории были закодированы как числовые значения (например, признак с тремя категориями можно закодировать с помощью чисел 0, 1, 2). Для этого можно использовать функцию [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) в MLlib. С помощью этой функции столбец меток строкового типа кодируется как столбец с индексами меток, которые упорядочены по частоте меток. Несмотря на то, что для данных задаются числовые индексы для ввода и дальнейшей обработки, в алгоритмах на основе дерева можно указать, что данные следует рассматривать как категории. 
-* Для **моделей логистической и линейной регрессии** требуется прямое кодирование, при котором, например, признак с тремя категориями можно разделить на три столбца признаков, в каждом из которых в зависимости от категории наблюдения содержатся значения 0 или 1. Для этого можно использовать функцию [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) в MLlib. Этот кодировщик сопоставляет столбец с индексами меток со столбцом двоичных векторов как минимум с одним отдельным значением. Благодаря этой кодировке алгоритмы, для которых необходимы признаки с числовыми значениями (например, логистическая регрессия), можно применять к категориальным признакам.
+* **На основе дерева моделирования** требует toobe категорий, кодируются как числовые значения (например, компонент с три категории могут быть кодированы 0, 1, 2). Для этого можно использовать функцию [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) в MLlib. Эта функция кодирует строковый столбец метки столбца tooa метки индексов, упорядоченных по частот метки. Несмотря на то, что индексации с числовыми значениями для ввода и обработки данных, на основе дерева алгоритмы hello может быть указанного tootreat их соответствующим образом как категории. 
+* **Модели логистической и линейной регрессии** требуют горячей один кодировки, where, например, компонент с трем категориям можно развернуть в трех столбцов компонентов, с каждой содержащее 0 или 1 в зависимости от категории hello наблюдения. Предоставляет MLlib [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) функции toodo горячей один кодировки. Этот кодировщик сопоставляет столбец метки столбца tooa индексы двоичных векторов, с максимум один значение single. Эта кодировка позволяет алгоритмы, которые ожидают числовой табличное значение функции, такие как логистической регрессии применяется toobe toocategorical функции.
 
-Ниже приведен пример кода, с помощью которого можно проиндексировать и закодировать категориальные признаки.
+Ниже приведен код tooindex hello и кодирования категориальных признаков:
 
     # INDEX AND ENCODE CATEGORICAL FEATURES
 
@@ -380,7 +380,7 @@ Spark может считывать данные и записывать их в
 
     # INDEX AND ENCODE VENDOR_ID
     stringIndexer = StringIndexer(inputCol="vendor_id", outputCol="vendorIndex")
-    model = stringIndexer.fit(taxi_df_train_with_newFeatures) # Input data-frame is the cleaned one from above
+    model = stringIndexer.fit(taxi_df_train_with_newFeatures) # Input data-frame is hello cleaned one from above
     indexed = model.transform(taxi_df_train_with_newFeatures)
     encoder = OneHotEncoder(dropLast=False, inputCol="vendorIndex", outputCol="vendorVec")
     encoded1 = encoder.transform(indexed)
@@ -409,18 +409,18 @@ Spark может считывать данные и записывать их в
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 1,28 с.
+Время, затраченное tooexecute над ячейкой: 1,28 секунд
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Создание объектов с помеченной вершиной в качестве ввода для функций машинного обучения
-В этом разделе содержится код, с помощью которого можно индексировать категориальные текстовые данные в тип данных с помеченной вершиной, а затем закодировать их. После этого данные можно использовать для обучения и проверки модели логистической регрессии MLlib и других моделей классификации. Объекты с помеченной вершиной отформатированы в устойчивые распределенные наборы данных, которые можно использовать в качестве входных для большинства алгоритмов машинного обучения в MLlib. Объект [с помеченной вершиной](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) — это разреженный или плотный локальный вектор, связанный с меткой или ответом.  
+Этот раздел содержит код, который показывает, как тип данных категориальные текст tooindex как с меткой точки данных и зашифровать их, чтобы его можно было использовать tootrain и тестирования MLlib логистической регрессии и других моделей классификации. Объекты с помеченной вершиной отформатированы в устойчивые распределенные наборы данных, которые можно использовать в качестве входных для большинства алгоритмов машинного обучения в MLlib. Объект [с помеченной вершиной](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) — это разреженный или плотный локальный вектор, связанный с меткой или ответом.  
 
-В этом разделе содержится код, с помощью которого можно индексировать категориальные текстовые данные в тип данных [с помеченной вершиной](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point), а затем закодировать их. После этого данные можно использовать для обучения и проверки модели логистической регрессии MLlib и других моделей классификации. Объекты с помеченной вершиной — это устойчивые распределенные наборы данных, состоящие из метки (переменной ответа или целевой переменной) и вектора признаков. Данные в таком формате используются в качестве входных для алгоритмов машинного обучения в MLlib.
+Этот раздел содержит код, который показывает, как tooindex категориальные текстовых данных как [с меткой точки](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) тип данных, а затем включите ее, чтобы его можно было использовать tootrain и тестирования MLlib логистической регрессии и других моделей классификации. Объекты с помеченной вершиной — это устойчивые распределенные наборы данных, состоящие из метки (переменной ответа или целевой переменной) и вектора признаков. Данные в таком формате используются в качестве входных для алгоритмов машинного обучения в MLlib.
 
-Ниже приведен пример кода, с помощью которого можно проиндексировать и закодировать текстовые характеристики бинарной классификации.
+Ниже приведен код tooindex hello и кодирования текста функции для двоичной классификации.
 
     # FUNCTIONS FOR BINARY CLASSIFICATION
 
@@ -446,7 +446,7 @@ Spark может считывать данные и записывать их в
         return  labPt
 
 
-Ниже приведен пример кода, с помощью которого можно проиндексировать и закодировать категориальные текстовые характеристики для анализа линейной регрессии.
+Ниже приведен код hello tooencode и индекс категориальные текстовых признаков для анализа линейной регрессии.
 
     # FUNCTIONS FOR REGRESSION WITH TIP AMOUNT AS TARGET VARIABLE
 
@@ -469,8 +469,8 @@ Spark может считывать данные и записывать их в
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Создание случайной вложенной выборки данных и ее разделение на наборы для обучения и тестирования
-С помощью кода в этом разделе создается случайная выборка данных (25 % всех данных). Несмотря на то, что из-за небольшого размера используемого набора данных, этот шаг выполнять необязательно, мы все равно покажем, как создавать выборку. Это поможет вам в случае возникновения проблем. Если выборки большие, этот процесс может значительно сэкономить время обучения моделей. Затем мы разобьем выборку данных на наборы для обучения (75 %) и тестирования (25 %), которые будут использоваться для двоичной классификации и регрессии.
+### <a name="create-a-random-sub-sampling-of-hello-data-and-split-it-into-training-and-testing-sets"></a>Создание вложенных случайной выборки данных hello и разбейте его на обучающий и проверочный наборы
+Этот код создает случайной выборки данных hello (здесь используется 25%). Несмотря на то, что он не является обязательным для этого примера из-за размера toohello hello набора данных, мы демонстрируют, как можно произвести выборку здесь, вы знаете, как toouse его собственные проблемы, если это требуется. Если выборки большие, этот процесс может значительно сэкономить время обучения моделей. Далее мы разбить образец hello в рамках обучения (здесь 75%) и тестирования toouse часть (25% здесь) в классификации и регрессии моделирования.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -504,21 +504,21 @@ Spark может считывать данные и записывать их в
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 0,24 с.
+Время, затраченное tooexecute над ячейкой: 0.24 секунд
 
 ### <a name="feature-scaling"></a>масштабирование признаков;
-Масштабирование признаков (или нормализация данных) гарантирует, что для признаков с широко распределенными значениями не задано высокое значение веса в целевой функции. В коде для масштабирования признаков используется функция [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler), которая позволяет масштабировать признаки в зависимости от изменений единицы. MLlib предоставляет функцию StandardScaler для выполнения линейной регрессии с применением метода стохастического градиента. Этот алгоритм широко используется для обучения других моделей машинного обучения (например, регуляризованной регрессии или метода опорных векторов).
+Масштабирование функции, также известные как нормализация данных гарантирует, что функции широко распределенные значениями не учитывая чрезмерного весить в целевой функции hello. Hello код для функции масштабирования использует hello [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) tooscale hello функции toounit дисперсию. MLlib предоставляет функцию StandardScaler для выполнения линейной регрессии с применением метода стохастического градиента. Этот алгоритм широко используется для обучения других моделей машинного обучения (например, регуляризованной регрессии или метода опорных векторов).
 
 > [!NOTE]
-> Алгоритм LinearRegressionWithSGD чувствителен к масштабированию признаков.
+> Обнаружено алгоритм toobe hello LinearRegressionWithSGD конфиденциальных toofeature масштабирования.
 > 
 > 
 
-Ниже приведен код для масштабирования переменных, пригодный для использования с регуляризованным линейным алгоритмом с применением стохастического градиента.
+Вот переменных tooscale hello кода для использования с регуляризацией hello линейный SGD алгоритм.
 
     # FEATURE SCALING
 
@@ -547,14 +547,14 @@ Spark может считывать данные и записывать их в
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 13,17 с.
+Время, затраченное tooexecute над ячейкой: 13.17 секунд
 
 ### <a name="cache-objects-in-memory"></a>кэширование объектов в памяти.
-Время на обучение и тестирование алгоритмов машинного обучения можно сократить, кэшировав объекты входного фрейма данных, которые использовались в качестве масштабируемых признаков, а также признаков для классификации и регрессии.
+Hello время, необходимое для обучения и проверки алгоритмов машинного Обучения может быть уменьшена путем кэширования объекты кадра hello входные данные, используемые для классификации, регрессию, и возможности масштабирования.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -578,14 +578,14 @@ Spark может считывать данные и записывать их в
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:** 
 
-Время на выполнение кода выше: 0,15 с.
+Время, затраченное tooexecute над ячейкой: 0,15 секунд
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Прогнозирование вероятности выплаты чаевых за поездку с помощью моделей бинарной классификации
-В этом разделе показано, как с помощью трех моделей для выполнения задач двоичной классификации спрогнозировать, будут ли оставлены чаевые за поездку в такси. Мы используем следующие модели:
+В этом разделе показано, как использование трех моделей для задача двоичной классификации hello прогнозирования, независимо от того, имеется ли для обработки такси оплачивается совет. Hello модели представлены являются:
 
 * регуляризованная логистическая регрессия; 
 * модель случайного леса;
@@ -598,9 +598,9 @@ Spark может считывать данные и записывать их в
 3. **Сохранение модели** в большом двоичном объекте для последующего использования.
 
 ### <a name="classification-using-logistic-regression"></a>Классификация с применением логистической регрессии
-Приведенный в этом разделе код предназначен для обучения, анализа и сохранения модели логистической регрессии с применением [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , с помощью которой можно спрогнозировать, будут ли выплачены чаевые за поездку в такси по Нью-Йорку, на основе набора данных и тарифов.
+Hello кода в этом разделе показано, как tootrain, оценки и сохранить модель логистической регрессии с [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , прогнозирует ли совет получает оплату за маршрут в наборе данных маршрута и тариф авиакомпании такси hello NYC.
 
-**Обучение модели логистической регрессии с использованием перекрестной проверки и перебора параметров**
+**Обучение модели логистической регрессии hello, используя CV и hyperparameter свертки**
 
     # LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
 
@@ -621,16 +621,16 @@ Spark может считывать данные и записывать их в
                                                    regParam=0.01, regType='l2', intercept=True, corrections=10, 
                                                    tolerance=0.0001, validateData=True, numClasses=2)
 
-    # PRINT COEFFICIENTS AND INTERCEPT OF THE MODEL
-    # NOTE: There are 20 coefficient terms for the 10 features, 
-    #       and the different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
+    # PRINT COEFFICIENTS AND INTERCEPT OF hello MODEL
+    # NOTE: There are 20 coefficient terms for hello 10 features, 
+    #       and hello different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
     print("Coefficients: " + str(logitModel.weights))
     print("Intercept: " + str(logitModel.intercept))
 
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 
 **ВЫХОДНЫЕ ДАННЫЕ:** 
@@ -639,9 +639,9 @@ Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.481245780
 
 Intercept: -0.0111216486893
 
-Время на выполнение кода выше: 14,43 с.
+Время, затраченное tooexecute над ячейкой: 14.43 секунд
 
-**Оценка модели бинарной классификации со стандартными метриками**
+**Оценка модели двоичной классификации hello со стандартными показателями**
 
     #EVALUATE LOGISTIC REGRESSION MODEL WITH LBFGS
 
@@ -685,7 +685,7 @@ Intercept: -0.0111216486893
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds";
 
 **ВЫХОДНЫЕ ДАННЫЕ:** 
 
@@ -701,22 +701,22 @@ Recall = 0.984304060189
 
 F1 Score = 0.984304060189
 
-Время на выполнение кода выше: 57,61 с.
+Время, затраченное tooexecute над ячейкой: 57.61 секунд
 
-**Графическое представление кривой ROC.**
+**Отобразите hello ROC кривой.**
 
-*predictionAndLabelsDF* регистрируется как таблица (*tmp_results*) в предыдущей ячейке. *tmp_results* может использоваться для выполнения запросов и вывода результатов во фрейм данных sqlResults для построения диаграммы. Ниже приведен код:
+Hello *predictionAndLabelsDF* регистрируется как таблица, *tmp_results*, в предыдущую ячейку hello. *tmp_results* можно использовать toodo запросов и выводить результаты в hello sqlResults-кадра данных для отображения на диаграмме. Ниже приведен код hello.
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
 
-Ниже приведен код для создания прогнозов и отображения кривой ROC.
+Вот прогнозов toomake кода hello и построения hello ROC кривой.
 
     # MAKE PREDICTIONS AND PLOT ROC-CURVE
 
-    # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
+    # RUN hello CODE LOCALLY ON hello JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
     %matplotlib inline
     from sklearn.metrics import roc_curve,auc
@@ -745,7 +745,7 @@ F1 Score = 0.984304060189
 ![Logistic regression ROC curve.png](./media/machine-learning-data-science-spark-data-exploration-modeling/logistic-regression-roc-curve.png)
 
 ### <a name="random-forest-classification"></a>Классификация случайного леса
-Приведенный в этом разделе код предназначен для обучения, анализа и сохранения модели случайного леса, с помощью которой на основе набора данных о поездках и тарифах по Нью-Йорку можно спрогнозировать, оставит ли пассажир чаевые за поездку в такси.
+Hello кода в этом разделе показано, как tootrain, оценки и сохранить модель случайного леса, которая прогнозирует, оплачивается ли подсказка для обработки в hello NYC такси маршрута и тариф авиакомпании набора данных.
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING RANDOM FOREST
 
@@ -766,7 +766,7 @@ F1 Score = 0.984304060189
                                            categoricalFeaturesInfo=categoricalFeaturesInfo,
                                            numTrees=25, featureSubsetStrategy="auto",
                                            impurity='gini', maxDepth=5, maxBins=32)
-    ## UN-COMMENT IF YOU WANT TO PRINT TREES
+    ## UN-COMMENT IF YOU WANT tooPRINT TREES
     #print('Learned classification forest model:')
     #print(rfModel.toDebugString())
 
@@ -788,16 +788,16 @@ F1 Score = 0.984304060189
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
 Area under ROC = 0.985297691373
 
-Время на выполнение кода выше: 31,09 с.
+Время, затраченное tooexecute над ячейкой: 31.09 секунд
 
 ### <a name="gradient-boosting-trees-classification"></a>Классификация с применением модели градиентного бустинга деревьев
-Приведенный в этом разделе код предназначен для обучения, анализа и сохранения модели градиентного бустинга деревьев, с помощью которой можно спрогнозировать, будут ли выплачены чаевые за поездку в такси по Нью-Йорку, на основе набора данных и тарифов.
+Hello кода в этом разделе описывается, как tootrain, оценки и сохранить градиента подъема дерева модели, которая прогнозирует, оплачивается ли подсказка для обработки в hello NYC такси маршрута и тариф авиакомпании набора данных.
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING GRADIENT BOOSTING TREES
 
@@ -811,7 +811,7 @@ Area under ROC = 0.985297691373
     categoricalFeaturesInfo={0:2, 1:2, 2:6, 3:4}
 
     gbtModel = GradientBoostedTrees.trainClassifier(indexedTRAINbinary, categoricalFeaturesInfo=categoricalFeaturesInfo, numIterations=5)
-    ## UNCOMMENT IF YOU WANT TO PRINT TREE DETAILS
+    ## UNCOMMENT IF YOU WANT tooPRINT TREE DETAILS
     #print('Learned classification GBT model:')
     #print(bgtModel.toDebugString())
 
@@ -833,33 +833,33 @@ Area under ROC = 0.985297691373
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
 Area under ROC = 0.985297691373
 
-Время на выполнение кода выше: 19,76 с.
+Время, затраченное tooexecute над ячейкой: 19.76 секунд
 
 ## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>Прогнозирование суммы чаевых за поездку в такси с помощью моделей регрессии
-В этом разделе показано, как с помощью трех моделей регрессии спрогнозировать сумму чаевых в зависимости от других признаков. Мы используем следующие модели:
+В этом разделе показано, как использование трех моделей для hello регрессии задача прогнозирования hello Сумма оплаты trip такси, на основе других функций совет подсказки hello. Hello модели представлены являются:
 
 * регуляризованная линейная регрессия;
 * случайный лес;
 * градиентный бустинг деревьев.
 
-Эти модели описаны в начале статьи. Процесс создания модели состоит из следующих этапов: 
+Эти модели был описан в введение hello. Процесс создания модели состоит из следующих этапов: 
 
 1. **Обучение модели** с использованием данных с одним набором параметров.
 2. **Оценка модели** на основе набора тестовых данных с метриками.
 3. **Сохранение модели** в большом двоичном объекте для последующего использования.
 
 ### <a name="linear-regression-with-sgd"></a>Линейная регрессия с применением SGD
-С помощью кода, приведенного в этом разделе, на основе масштабируемых признаков можно обучить модель линейной регрессии, в которой для оптимизации используется метод стохастического градиента, а также оценить, проанализировать и сохранить ее в хранилище BLOB-объектов Azure.
+Hello кода в этом разделе показано, как toouse масштабировать tootrain функции линейной регрессии, который использует вероятностный градиентный спуск (SGD) для оптимизации, и как tooscore, оценки и сохранить модель hello в хранилище больших двоичных объектов Azure (WASB).
 
 > [!TIP]
-> На практике в моделях LinearRegressionWithSGD часто возникают проблемы с конвергенцией. Чтобы получить допустимую модель, необходимо осторожно изменить или оптимизировать параметры. Проблему конвергенции можно решить, выполнив масштабирование переменных. 
+> Наш опыт показывает могут возникать проблемы с последующим согласованием hello LinearRegressionWithSGD моделей и параметры должны toobe изменен или оптимизированное тщательно для получения модели. Проблему конвергенции можно решить, выполнив масштабирование переменных. 
 > 
 > 
 
@@ -873,12 +873,12 @@ Area under ROC = 0.985297691373
     from pyspark.mllib.evaluation import RegressionMetrics
     from scipy import stats
 
-    # USE SCALED FEATURES TO TRAIN MODEL
+    # USE SCALED FEATURES tooTRAIN MODEL
     linearModel = LinearRegressionWithSGD.train(oneHotTRAINregScaled, iterations=100, step = 0.1, regType='l2', regParam=0.1, intercept = True)
 
-    # PRINT COEFFICIENTS AND INTERCEPT OF THE MODEL
-    # NOTE: There are 20 coefficient terms for the 10 features, 
-    #       and the different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
+    # PRINT COEFFICIENTS AND INTERCEPT OF hello MODEL
+    # NOTE: There are 20 coefficient terms for hello 10 features, 
+    #       and hello different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
     print("Coefficients: " + str(linearModel.weights))
     print("Intercept: " + str(linearModel.intercept))
 
@@ -890,7 +890,7 @@ Area under ROC = 0.985297691373
     print("RMSE = %s" % testMetrics.rootMeanSquaredError)
     print("R-sqr = %s" % testMetrics.r2)
 
-    # SAVE MODEL WITH DATE-STAMP IN THE DEFAULT BLOB FOR THE CLUSTER
+    # SAVE MODEL WITH DATE-STAMP IN hello DEFAULT BLOB FOR hello CLUSTER
     datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
     linearregressionfilename = "LinearRegressionWithSGD_" + datestamp;
     dirfilename = modelDir + linearregressionfilename;
@@ -900,7 +900,7 @@ Area under ROC = 0.985297691373
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
@@ -912,10 +912,10 @@ RMSE = 1.24190115863
 
 R-sqr = 0.608017146081
 
-Время на выполнение кода выше: 58,42 с.
+Время, затраченное tooexecute над ячейкой: 58,42 секунд
 
 ### <a name="random-forest-regression"></a>Регрессия с использованием модели случайного леса
-Приведенный в этом разделе код предназначен для обучения, анализа и сохранения регрессии случайного леса, с помощью которой можно спрогнозировать суму чаевых за поездку в такси по Нью-Йорку.
+Hello кода в этом разделе показано, как tootrain, оценки и сохранить регрессии случайного леса, которая прогнозирует сумма подсказки для hello NYC такси обработки данных.
 
     #PREDICT TIP AMOUNTS USING RANDOM FOREST
 
@@ -933,7 +933,7 @@ R-sqr = 0.608017146081
     rfModel = RandomForest.trainRegressor(indexedTRAINreg, categoricalFeaturesInfo=categoricalFeaturesInfo,
                                         numTrees=25, featureSubsetStrategy="auto",
                                         impurity='variance', maxDepth=10, maxBins=32)
-    ## UN-COMMENT IF YOU WANT TO PRING TREES
+    ## UN-COMMENT IF YOU WANT tooPRING TREES
     #print('Learned classification forest model:')
     #print(rfModel.toDebugString())
 
@@ -956,7 +956,7 @@ R-sqr = 0.608017146081
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
@@ -964,12 +964,12 @@ RMSE = 0.891209218139
 
 R-sqr = 0.759661334921
 
-Время на выполнение кода выше: 49,21 с.
+Время, затраченное tooexecute над ячейкой: 49.21 секунд
 
 ### <a name="gradient-boosting-trees-regression"></a>Регрессия с применением градиентного бустинга деревьев
-Приведенный в этом разделе код предназначен для обучения, анализа и сохранения модели градиентного бустинга деревьев, с помощью которой можно спрогнозировать суму чаевых за поездку в такси по Нью-Йорку.
+Hello кода в этом разделе описывается, как tootrain, оценки и сохранить градиента повышения деревьев модель, прогнозирующая объем подсказки для hello NYC такси обработки данных.
 
-** Обучать и оценивать **
+**Обучение и анализ**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1000,14 +1000,14 @@ R-sqr = 0.759661334921
     dirfilename = modelDir + btregressionfilename;
     gbtModel.save(sc, dirfilename)
 
-    # CONVER RESULTS TO DF AND REGISER TEMP TABLE
+    # CONVER RESULTS tooDF AND REGISER TEMP TABLE
     test_predictions = sqlContext.createDataFrame(predictionAndLabels)
     test_predictions.registerTempTable("tmp_results");
 
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
@@ -1015,11 +1015,11 @@ RMSE = 0.908473148639
 
 R-sqr = 0.753835096681
 
-Время на выполнение кода выше: 34,52 с.
+Время, затраченное tooexecute над ячейкой: 34.52 секунд
 
 **Графическое представления**
 
-*tmp_results* регистрируется как таблица Hive в предыдущей ячейке. Результаты из таблицы передаются во фрейм данных *sqlResults* для формирования графического представления. Ниже приведен код:
+*tmp_results* регистрируется как таблицу Hive в предыдущую ячейку hello. Результаты из таблицы hello выводятся в hello *sqlResults* кадра данных для отображения на диаграмме. Ниже приведен код hello
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1027,9 +1027,9 @@ R-sqr = 0.753835096681
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
-Ниже приведен код для формирования графического представления данных с использованием сервера Jupyter.
+Вот hello tooplot кода hello данных с помощью сервера Jupyter hello.
 
-    # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
+    # RUN hello CODE LOCALLY ON hello JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
     %matplotlib inline
     import numpy as np
@@ -1050,7 +1050,7 @@ R-sqr = 0.753835096681
 ![Actual-vs-predicted-tip-amounts](./media/machine-learning-data-science-spark-data-exploration-modeling/actual-vs-predicted-tips.png)
 
 ## <a name="clean-up-objects-from-memory"></a>Очистка объектов из памяти
-Удалите объекты, кэшированные в памяти, с помощью метода `unpersist()` .
+Используйте `unpersist()` toodelete объектов в кэше в памяти.
 
     # REMOVE ORIGINAL DFs
     taxi_df_train_cleaned.unpersist()
@@ -1073,8 +1073,8 @@ R-sqr = 0.753835096681
     oneHotTESTregScaled.unpersist()
 
 
-## <a name="record-storage-locations-of-the-models-for-consumption-and-scoring"></a>Запись места хранения моделей для дальнейшего использования и оценки
-Чтобы использовать и оценивать независимые наборы данных, описанные в разделе [Оценка моделей машинного обучения, созданных с помощью Spark](machine-learning-data-science-spark-model-consumption.md), необходимо скопировать и вставить в записную книжку Jupyter Consumption имена файлов с сохраненными моделями, созданными с помощью инструкций из этой статьи. Ниже приведен код для вывода путей к необходимым файлам моделей.
+## <a name="record-storage-locations-of-hello-models-for-consumption-and-scoring"></a>Запись места хранения для потребления и оценки моделей hello
+tooconsume и оценка набор независимых описано в hello [оценка и оценить построение Spark машинного обучения моделей](machine-learning-data-science-spark-model-consumption.md) разделе требуются toocopy и вставки этих файлов имена содержащего hello сохранения моделей, созданных здесь в hello Потребление книжке Jupyter. Вот tooprint кода hello hello пути toomodel файлы, необходимые существует.
 
     # MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1100,9 +1100,9 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
 ## <a name="whats-next"></a>Что дальше?
-После создания моделей регрессии и классификации с помощью Spark MlLib необходимо ознакомиться с процессом оценки и анализа этих моделей. С помощью записной книжки по расширенному исследованию и моделированию данных можно более подробно ознакомиться с тем, как использовать перекрестную проверку, очистку гиперпараметров и оценку модели. 
+Теперь после создания модели регрессии и классификации с hello Spark MlLib, готовы toolearn, как tooscore и оценивать эти модели. Расширенный просмотр данных и моделирования записной книжки Погружение глубже в том числе перекрестной проверки, hyper параметр приветствия широкими и модели оценки. 
 
-**Использование модели**. Дополнительные сведения об оценке и анализе моделей классификации и регрессии, созданных в этой статье см. в статье [Оценка моделей машинного обучения, созданных с помощью Spark](machine-learning-data-science-spark-model-consumption.md).
+**Модели потребления:** toolearn как tooscore и оценить hello классификационных и регрессионных моделей, созданных в этом разделе см. в разделе [оценка и оценки моделей построен Spark машинного обучения](machine-learning-data-science-spark-model-consumption.md).
 
 **Перекрестная проверка и перебор гиперпараметров**. Сведения об обучении моделей с помощью перекрестной проверки и перебора гиперпараметров см. в статье [Расширенное исследование и моделирование данных с помощью Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md).
 

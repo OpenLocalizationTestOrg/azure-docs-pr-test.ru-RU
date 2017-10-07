@@ -1,6 +1,6 @@
 ---
-title: "Отладка и анализ служб Hadoop с помощью дампов кучи в Azure | Документы Майкрософт"
-description: "Автоматически собирайте дампы кучи для служб Hadoop и размещайте их в учетной записи хранения BLOB-объектов Azure для отладки и анализа."
+title: "aaaDebug и анализировать службам Hadoop с дампы кучи - Azure | Документы Microsoft"
+description: "Автоматически собирать дампы кучи для службы Hadoop и поместить внутрь hello учетной записи хранилища больших двоичных объектов Azure для отладки и анализа."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,25 +16,25 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6d1d4d47d279eb7a1f0bf1f587445683f0ace7a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 70fbc2d6d97d35b0d7b1d9149673b02ae1878eb7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-hadoop-services"></a>Сбор дампов кучи в хранилище больших двоичных объектов для отладки и анализа служб Hadoop
+# <a name="collect-heap-dumps-in-blob-storage-toodebug-and-analyze-hadoop-services"></a>Собирать дампы кучи в toodebug хранилища больших двоичных объектов и анализировать службам Hadoop
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Дампы кучи содержат снимок памяти приложения, включая значения переменных на момент создания дампа. Поэтому они полезны для диагностики проблем, возникающих во время выполнения. Сборка дампов кучи для служб Hadoop может выполняться автоматически, после чего они помещаются в учетную запись хранилища больших двоичных объектов Azure в раздел HDInsightHeapDumps/.
+Файлы дампа кучи содержат снимок памяти приложения hello, включая hello значения переменных во время создания дампа hello hello. Поэтому они полезны для диагностики проблем, возникающих во время выполнения. Автоматически собираются для служб Hadoop и помещен внутрь hello учетной записи хранилища больших двоичных объектов Azure пользователя в группе HDInsightHeapDumps дампы кучи или.
 
-Сбор дампов кучи для различных служб нужно включать на отдельных кластерах. По умолчанию эта функция отключена. Размер дампов кучи может быть большим, поэтому мы советуем следить за учетной записью хранилища больших двоичных объектов после включения сбора.
+Коллекция Hello дампов кучи для различных служб необходимо включить для служб на отдельных кластерах. по умолчанию Hello эта возможность отключена toobe для кластера. Эти файлы дампа кучи могут быть большими, поэтому его учетной записи хранилища больших двоичных объектов hello рекомендуется toomonitor они являются был сохранен после включения коллекции hello.
 
 > [!IMPORTANT]
-> Linux — единственная операционная система, используемая для работы с HDInsight 3.4 или более поздней версии. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement). Сведения в этой статье применимы только к HDInsight, работающей под управлением Windows. Сведения о HDInsight под управлением Linux см. в статье [Включение дампов кучи для служб Hadoop в HDInsight, работающей под управлением Linux (предварительная версия)](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
+> Linux — hello только операционную систему, используемую в HDInsight версии 3.4 или более поздней. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement). Hello сведения в этой статье применяется только на основе tooWindows HDInsight. Сведения о HDInsight под управлением Linux см. в статье [Включение дампов кучи для служб Hadoop в HDInsight, работающей под управлением Linux (предварительная версия)](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
 
 
 ## <a name="eligible-services-for-heap-dumps"></a>Службы с возможностью включения дампов кучи
-Вы можете включить дампы кучи для следующих служб:
+Можно включить дампы кучи для hello следующие службы:
 
 * **Hcatalog** — tempelton;
 * **Hive** — hiveserver2, metastore, derbyserver;
@@ -43,15 +43,15 @@ ms.lasthandoff: 07/11/2017
 * **HDFS** — datanode, secondarynamenode, namenode.
 
 ## <a name="configuration-elements-that-enable-heap-dumps"></a>Элементы конфигурации, активирующие дампы кучи
-Чтобы включить дампы кучи для службы, необходимо задать необходимые элементы конфигурации в разделе для этой службы, обозначенном аргументом **service_name**.
+tooturn о дампах кучи для службы необходимы tooset hello соответствующей конфигурации элементы в разделе "hello" для этой службы, которая задана в **service_name**.
 
     "javaargs.<service_name>.XX:+HeapDumpOnOutOfMemoryError" = "-XX:+HeapDumpOnOutOfMemoryError",
     "javaargs.<service_name>.XX:HeapDumpPath" = "-XX:HeapDumpPath=c:\Dumps\<service_name>_%date:~4,2%%date:~7,2%%date:~10,2%%time:~0,2%%time:~3,2%%time:~6,2%.hprof"
 
-Значением **service_name** может быть любая из следующих служб: tempelton, hiveserver2, metastore, derbyserver, jobhistoryserver, resourcemanager, nodemanager, timelineserver, datanode, secondarynamenode или namenode.
+Здравствуйте, значение **service_name** может быть любой из перечисленных ниже служб hello: tempelton hiveserver2, метахранилище, derbyserver, jobhistoryserver, диспетчер ресурсов, nodemanager, timelineserver, datanode secondarynamenode, или namenode.
 
 ## <a name="enable-using-azure-powershell"></a>Включить при помощи Azure PowerShell
-Например, чтобы включить дампы кучи с помощью Azure PowerShell для jobhistoryserver, можно использовать следующий скрипт:
+Например при tooturn о дампах кучи с помощью Azure PowerShell для jobhistoryserver можно использовать следующий скрипт hello:
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/11/2017
     $MapRedConfigValues.Configuration = @{ "javaargs.jobhistoryserver.XX:+HeapDumpOnOutOfMemoryError"="-XX:+HeapDumpOnOutOfMemoryError" ; "javaargs.jobhistoryserver.XX:HeapDumpPath" = "-XX:HeapDumpPath=c:\\Dumps\\jobhistoryserver_%date:~4,2%_%date:~7,2%_%date:~10,2%_%time:~0,2%_%time:~3,2%_%time:~6,2%.hprof" }
 
 ## <a name="enable-using-net-sdk"></a>Включить при помощи пакета SDK для .NET
-Например, чтобы включить дампы кучи с помощью пакета SDK .NET для Azure HDInsight для jobhistoryserver, можно использовать следующий код:
+Например tooturn о дампах кучи с помощью hello Azure HDInsight .NET SDK для jobhistoryserver используется hello, следующий код:
 
     clusterInfo.MapReduceConfiguration.ConfigurationCollection.Add(new KeyValuePair<string, string>("javaargs.jobhistoryserver.XX:+HeapDumpOnOutOfMemoryError", "-XX:+HeapDumpOnOutOfMemoryError"));
 

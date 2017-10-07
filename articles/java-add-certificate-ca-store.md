@@ -1,6 +1,6 @@
 ---
-title: "Добавление сертификата в хранилище центра сертификации Java | Документация Майкрософт"
-description: "Узнайте, как добавить сертификат центра сертификации (ЦС) в хранилище сертификатов (cacerts) центра сертификации Java для службы Twilio или Azure Service Bus."
+title: "хранилище сертификатов ЦС Java toohello aaaAdd | Документы Microsoft"
+description: "Узнайте, как tooadd сертификат центра сертификации (ЦС) сертификат toohello Java сертификат ЦС (cacerts) хранения для Twilio службы или шины обслуживания Azure."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,45 +14,45 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 4f3ec837588c6e959e82108ca25ab4289e40d3f5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 030e43129580023942dee662e72d2f443167f308
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="adding-a-certificate-to-the-java-ca-certificates-store"></a>Добавление сертификата в хранилище сертификатов ЦС Java
-Ниже показано, как добавить сертификат центра сертификации (ЦС) в хранилище сертификатов (cacerts) центра сертификации Java. Приведен пример использования сертификата ЦС, требуемого службой Twilio. Ниже в этой статье описана установка сертификата ЦС для шины обслуживания Azure. 
+# <a name="adding-a-certificate-toohello-java-ca-certificates-store"></a>Добавление сертификата toohello хранилище сертификатов ЦС Java
+Здравствуй, следующие шаги показывают, как tooadd сертификат центра сертификации (ЦС) сертификат toohello Java сертификат ЦС (cacerts) хранения. пример Hello используется для сертификата ЦС hello требуется hello Twilio службы. Далее в разделе hello описываются как hello tooinstall ЦС сертификат для hello Azure Service Bus. 
 
-Чтобы добавить сертификат ЦС перед сжатием JDK и добавлением его в папку **approot** проекта Azure, можно использовать keytool или выполнить задачу запуска Azure, которая использует keytool для добавления сертификата. В этом примере предполагается, что сертификат ЦС будет добавлен перед сжатием JDK. Также в примере будет использоваться конкретный сертификат ЦС, но действия, необходимые для получения различных сертификатов центра сертификации и их импорта в хранилище cacerts, будут такими же.
+JDK и добавив его tooyour проекта Azure можно использовать toozipping предыдущего сертификата ЦС hello tooadd keytool **approot** папки, или может запустить задачу Azure при запуске, которая использует keytool tooadd hello сертификат. В этом примере предполагается, что вы добавите предыдущих toohello каталога сертификат ЦС JDK ZIP-архиве. Кроме того конкретного сертификата ЦС будет использоваться в примере hello, но hello действия получения другой сертификат ЦС и импортировав их в hello cacerts хранилища будет выглядеть.
 
-## <a name="to-add-a-certificate-to-the-cacerts-store"></a>Добавление сертификата в хранилище cacerts
-1. В командной строке для папки JDK **jdk\jre\lib\security** выполните следующий код, чтобы узнать, какие сертификаты установлены:
+## <a name="tooadd-a-certificate-toohello-cacerts-store"></a>сохранить сертификат toohello cacerts tooadd
+1. В командной строке, имеет значение tooyour JDK **jdk\jre\lib\security** запуска hello toosee, какие сертификаты установлены следующие папки:
    
     `keytool -list -keystore cacerts`
    
-    Вам будет предложено ввести пароль хранилища. Пароль по умолчанию — **changeit**. (Сведения о том, как изменить пароль, см. в документации по keytool на странице <http://docs.oracle.com/javase/7/docs/technotes/tools/windows/keytool.html>.) В этом примере предполагается, что сертификат с MD5 устройства отпечатков пальцев 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 отсутствует в списке и вы хотите его импортировать (этот конкретный сертификат необходим для службы API Twilio).
-2. Получение сертификата из списка сертификатов, перечисленных в [корневых сертификатах GeoTrust](http://www.geotrust.com/resources/root-certificates/). Щелкните правой кнопкой мыши ссылку сертификата с серийным номером 35:DE:F4:CF и сохраните его в папке **jdk\jre\lib\security**. Для целей этого примера он сохранен в файле с именем **Equifax\_Secure\_Certificate\_Authority.cer**.
-3. Импортируйте сертификат с помощью следующей команды:
+    Вам будет выведен для hello хранить пароль. пароль по умолчанию Hello — **changeit**. (Если требуется пароль toochange hello, см. в документации по keytool hello в <http://docs.oracle.com/javase/7/docs/technotes/tools/windows/keytool.html>.) В этом примере предполагается hello сертификата с MD5 отпечатков пальцев 67:CB:9 D: C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 отсутствует в списке, и что требуется tooimport ИТ (это определенный сертификат требуется hello Twilio API-службы).
+2. Получить сертификат hello hello список сертификатов, перечисленных в [GeoTrust корневые сертификаты](http://www.geotrust.com/resources/root-certificates/). Щелкните правой кнопкой мыши ссылку hello для hello сертификат с серийным номером 35:DE:F4:CF и сохраните его toohello **jdk\jre\lib\security** папки. Для этого примера, он был сохранен файл tooa с именем **Equifax\_Secure\_сертификат\_Authority.cer**.
+3. Импортируйте сертификат hello через hello следующую команду:
    
     `keytool -keystore cacerts -importcert -alias equifaxsecureca -file Equifax_Secure_Certificate_Authority.cer`
    
-    Если выводится приглашение подтвердить доверие этому сертификату, если сертификат имеет отпечаток пальцев MD5 67:CB:9 D: C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4, введите **y**.
-4. Выполните следующую команду, чтобы убедиться, что сертификат СЦ был успешно импортирован:
+    При появлении запроса о tootrust этот сертификат hello сертификат имеет Отпечаток MD5 67:CB:9 D: C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 ответ, введя **y**.
+4. Выполнения hello, следующая команда tooensure hello ЦС сертификата успешно импортировано:
    
     `keytool -list -keystore cacerts`
-5. Сожмите JDK и добавьте его в папку **approot** проекта Azure.
+5. ZIP-архив hello JDK и добавить его tooyour проекта Azure в **approot** папки.
 
 Дополнительные сведения о keytool см. по адресу <http://docs.oracle.com/javase/7/docs/technotes/tools/windows/keytool.html>.
 
 ## <a name="azure-root-certificates"></a>Корневые сертификаты Azure
-Приложения, использующие службы Azure (например, Azure Service Bus), должны доверять сертификату Baltimore CyberTrust Root. (С 15 апреля 2013 года Azure начала миграцию с глобальной основы GTE CyberTrust в Baltimore CyberTrust Root. Такая миграция продолжается несколько месяцев.)
+Приложения, использующие службы Azure (например, Azure Service Bus) требуется сертификат Baltimore CyberTrust Root tootrust hello. (Начиная 15 апреля 2013 г., Azure начала миграции с hello глобальной основы CyberTrust GTE toohello Baltimore CyberTrust Root. Эта миграция заняла toocomplete несколько месяцев).
 
-Сертификат Baltimore может быть установлен в вашем хранилище cacerts, поэтому не забудьте выполнить команду **keytool -list** , чтобы проверить, существует ли он уже.
+Hello Baltimore сертификатов могут быть уже установлены в хранилище cacerts, поэтому необходимо учитывать toorun hello **keytool-список** команды первого toosee, если он уже существует.
 
-Если требуется добавить Baltimore CyberTrust Root, он имеет серийный номер 02:00:00:b9 и отпечаток пальца SHA1 d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74. Его можно скачать по адресу <https://cacert.omniroot.com/bc2025.crt>, сохранить в локальном файле с расширением **CER**, а затем импортировать с помощью **keytool**, как показано выше.
+Если вам требуется tooadd hello Baltimore CyberTrust Root, она имеет 02:00:00:b9 серийный номер и c d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2 отпечаток SHA1: 78:db:28:52:ca:e4:74. Ее можно загрузить из <https://cacert.omniroot.com/bc2025.crt>, сохраняемый tooa локальный файл с расширением **CER-файл**, а затем импортировать с помощью **keytool** как показано выше.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения об используемых в Azure корневых сертификатах см. в записи блога [Azure Root Certificate Migration](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx) (Перенос корневых сертификатов Azure).
+Дополнительные сведения о hello корневые сертификаты, используемые в Azure см. в разделе [Azure корневой сертификат миграции](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx).
 
 Дополнительные сведения о Java см. в разделе [Azure for Java developers](/java/azure) (Azure для разработчиков Java).
 

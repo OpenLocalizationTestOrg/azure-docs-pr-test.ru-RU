@@ -1,5 +1,5 @@
 ---
-title: "Запуск заданий потоковой передачи в Stream Analytics | Документация Майкрософт"
+title: "toostart aaaHow потоковых заданий в Stream Analytics | Документы Microsoft"
 description: "Выполнение задания потоковой передачи в Azure Stream Analytics | сегмент схемы обучения."
 keywords: "задания потоковой передачи"
 documentationcenter: 
@@ -15,30 +15,30 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.openlocfilehash: 9a3ff37a893b0f29a2ac2eda6cd50687ee779ead
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 67aa14860c38cbd0535d0ec4f23729445d0185c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-run-a-streaming-job-in-azure-stream-analytics"></a>Выполнение задания потоковой передачи в Azure Stream Analytics
-После указания входных данных, запроса и выходных данных вы можете запустить задание Stream Analytics.
+# <a name="how-toorun-a-streaming-job-in-azure-stream-analytics"></a>Способ задания toorun потоковой передачи в Azure Stream Analytics
+При задании входных данных, запроса и вывод всех были указаны, можно ли запустить задание Stream Analytics hello.
 
-Для запуска задания:
+toostart задания:
 
-1. На панели мониторинга заданий классического портала Azure нажмите кнопку **Запустить** в нижней части страницы.
+1. На портале Azure Classic hello с панели мониторинга задания hello, щелкните **запустить** hello нижней части страницы приветствия.
    
    ![Кнопка запуска задания](./media/stream-analytics-run-a-job/1-stream-analytics-run-a-job.png)  
    
-   На портале Azure нажмите кнопку **Запустить** в верхней части страницы вашего задания.
+   В hello портал Azure, щелкните **запустить** вверху hello страница «задания».
    
    ![Кнопка запуска задания на портале Azure](./media/stream-analytics-run-a-job/4-stream-analytics-run-a-job.png)  
-2. Укажите значение параметра **Начало передачи выходных данных** , чтобы определить время, когда задание начнет выдавать выходные данные. Для заданий, которые не были запущены ранее, значение по умолчанию — **Время начала задания**, то есть задание начнет обработку данных немедленно. Вы также можете указать **Настраиваемое** время в прошлом (для использования данных за прошедший период) или в будущем (для задержки обработки до будущего времени). В случаях, когда задание было запущено и остановлено ранее, становится доступен параметр **Время последней остановки** , который позволяет возобновить задание с момента последнего вывода и избежать потери данных.  
+2. Укажите **запуск вывода** toodetermine значение, если это задание начнет создавать выходные данные. Hello по умолчанию для заданий, которые ранее не были запущены — **время запуска задания**, означающее задание hello немедленно начать обработку данных. Можно также указать **настраиваемый** время в hello прошлом (для использования исторических данных) или будущих hello (toodelay обработку до время в будущем). Для случаев, когда задание был ранее запуска и остановки hello параметр **время последней остановки** доступна в порядке tooresume hello в задании hello время последнего вывода и избежать потери данных.  
    
    ![Время запуска задания потоковой передачи](./media/stream-analytics-run-a-job/2-stream-analytics-run-a-job.png)  
    
    ![Время запуска задания потоковой передачи на портале Azure](./media/stream-analytics-run-a-job/5-stream-analytics-run-a-job.png)  
-3. Подтвердите выбор. Состояние задания изменится на *Запуск*, а после запуска задания — на *Выполняется*. Ход выполнения операции **Запуск** можно отслеживать в **центре уведомлений**:
+3. Подтвердите выбор. состояние задания Hello изменится слишком*запуск* и скоро будут перемещены слишком*под управлением* после запуска задания hello. Можно отслеживать ход выполнения hello hello **запустить** операции в hello **концентратора уведомлений**:
    
    ![ход выполнения задания потоковой передачи](./media/stream-analytics-run-a-job/3-stream-analytics-run-a-job.png)  
    
@@ -48,7 +48,7 @@ ms.lasthandoff: 08/29/2017
 Дополнительную помощь и поддержку вы можете получить на нашем [форуме Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Введение в Azure Stream Analytics](stream-analytics-introduction.md)
+* [Введение tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Приступая к работе с Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Масштабирование заданий в службе Azure Stream Analytics](stream-analytics-scale-jobs.md)
 * [Справочник по языку запросов Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)

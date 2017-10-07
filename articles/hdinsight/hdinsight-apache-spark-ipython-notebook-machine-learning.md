@@ -1,6 +1,6 @@
 ---
-title: "Создание приложений машинного обучения Apache Spark в Azure HDInsight | Документация Майкрософт"
-description: "Пошаговые инструкции по созданию приложения машинного обучения Apache Spark в кластерах HDInsight Spark с помощью записной книжки Jupyter"
+title: "aaaBuild Apache Spark машинного самообучения, приложений на Azure HDInsight | Документы Microsoft"
+description: "Пошаговые инструкции по как toobuild Apache Spark машинного самообучения, приложения на HDInsight Spark кластеры, использующие книжке Jupyter"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,41 +16,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: nitinme
-ms.openlocfilehash: 158ade4612104020e0231794e7123ea5cad6c459
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 332bd89876f7ebf178f7573d6018d064edfe9a8f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>Создание приложений машинного обучения Apache Spark в Azure HDInsight
 
-Узнайте о том, как создать приложение машинного обучения Apache Spark с помощью кластера Spark в HDInsight. В этой статье показано, как использовать записную книжку Jupyter с кластером для создания и тестирования приложения. Приложение использует данные из примера файла HVAC.csv, который по умолчанию доступен на всех кластерах.
+Узнайте, как toobuild приложения Apache Spark машины обучения с помощью Spark кластера на HDInsight. В этой статье описывается, как toouse hello книжке Jupyter, доступные с toobuild кластера hello и проверки приложения. Hello приложение использует данные HVAC.csv образец hello, которая доступна во всех кластерах по умолчанию.
 
 **Предварительные требования:**
 
-Необходимо следующее:
+Необходимо иметь следующие hello.
 
 * Кластер Apache Spark в HDInsight. Инструкции см. в статье [Начало работы. Создание кластера Apache Spark в HDInsight на платформе Linux и выполнение интерактивных запросов с помощью SQL Spark](hdinsight-apache-spark-jupyter-spark-sql.md). 
 
-## <a name="data"></a>Общие сведения о наборе данных
-Прежде чем приступать к созданию приложения, рассмотрим структуру данных, для которых создается приложение, и тип анализа, который мы будем использовать в отношении данных. 
+## <a name="data"></a>Понимать hello набора данных
+Прежде чем начать создание приложения hello, сообщите нам понять структуру hello hello данных, для которого строится приложение hello и hello тип анализа, который мы выполним hello данных. 
 
-В этой статье мы используем пример файла данных **HVAC.csv** , доступный в учетной записи хранения Azure, которую вы связали с кластером HDInsight. В этой учетной записи хранения файл находится в папке **\HdiSamples\HdiSamples\SensorSampleData\hvac**. Скачайте и откройте CSV-файл, чтобы получить моментальный снимок данных.  
+В этой статье мы используем образец hello **HVAC.csv** файла данных, доступные в учетной записи хранилища Azure, связанных с кластером HDInsight hello hello. В учетной записи хранилища hello, находится в файле hello **\HdiSamples\HdiSamples\SensorSampleData\hvac**. Загрузите и откройте tooget файл CSV hello hello данные моментального снимка.  
 
 ![Моментальный снимок данных, используемых для примера машинного обучения Spark](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Моментальный снимок данных, используемых для примера машинного обучения Spark")
 
-Это данные о целевой температуре и фактической температуре здания, в котором установлена система кондиционирования воздуха. Предположим, что в столбце **System** указан идентификатор системы, а в столбце **SystemAge** — срок эксплуатации системы кондиционирования в годах.
+Hello данных показаны температуры целевой hello и hello фактическое температуры здания, имеющий Кондиционирования систем. Предположим, что hello **системы** столбец представляет системный идентификатор hello и hello **SystemAge** столбец представляет hello число лет, система Кондиционирования hello находилось в месте на построение hello.
 
-Эти сведения используются для прогнозирования того, будет ли температура здания выше или ниже относительно целевой температуры на основе идентификатора системы и ее возраста.
+Мы используем этот toopredict данных здания будут ли еще важнее или colder основываться на целевой температура hello, заданного системой идентификатор и возраст системы.
 
 ## <a name="app"></a>Создание приложения машинного обучения Spark с помощью Spark MLlib
-В этом приложении мы используем конвейер машинного обучения Spark для выполнения классификации документов. В конвейере мы разбиваем документ на слова, преобразуем слова в вектор числовой функции и, наконец, создаем модель прогнозирования с помощью характеристического вектора и меток. Выполните следующие действия, чтобы создать приложение.
+В этом приложении мы используем tooperform конвейера Spark ML классификация документов. Конвейера hello мы разбивается на слова hello документа, преобразовать в числовой компонент вектор слова hello и наконец создать модель прогнозирования hello векторов признаков и меток. Выполните следующие шаги toocreate hello приложения hello.
 
-1. На начальной панели [портала Azure](https://portal.azure.com/)щелкните элемент кластера Spark (если он закреплен на начальной панели). Кроме того, вы можете перейти к кластеру, последовательно щелкнув **Просмотреть все** > **Кластеры HDInsight**.   
-2. В колонке кластера Spark щелкните **Панель мониторинга кластера**, а затем выберите **Записная книжка Jupyter**. При появлении запроса введите учетные данные администратора для кластера.
+1. Из hello [портала Azure](https://portal.azure.com/), hello начальной панели, щелкните плитку hello свой кластер Spark (Если вы закрепили toohello начальной панели). Вы также можете переходить tooyour кластера в списке **просмотреть все** > **кластеров HDInsight**.   
+2. Из колонки кластера Spark hello, нажмите кнопку **мониторинга кластера**, а затем нажмите кнопку **книжке Jupyter**. При появлении запроса введите учетные данные администратора hello hello кластера.
    
    > [!NOTE]
-   > Также можно открыть Jupyter Notebook для своего кластера, открыв следующий URL-адрес в браузере. Замените **CLUSTERNAME** именем кластера:
+   > Также может достигать hello книжке Jupyter для кластера, открыв hello следующий URL-адрес в браузере. Замените **CLUSTERNAME** с hello имя кластера:
    > 
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    > 
@@ -58,10 +58,10 @@ ms.lasthandoff: 08/29/2017
 3. Создайте новую записную книжку. Щелкните **Создать**, а затем выберите **PySpark**.
    
     ![Создание записной книжки Jupyter для примера машинного обучения Spark](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-create-notebook.png "Создание записной книжки Jupyter для примера машинного обучения Spark")
-4. Будет создана и открыта записная книжка с именем Untitled.pynb. Щелкните имя записной книжки в верхней части страницы сверху и введите понятное имя.
+4. Создается и открывается с именем hello Untitled.pynb новый блокнот. Щелкните имя записной книжки hello вверху hello и введите понятное имя.
    
     ![Указание имени записной книжки для примера машинного обучения Spark](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-notebook-name.png "Указание имени записной книжки для примера машинного обучения Spark")
-5. Так как записная книжка была создана с помощью ядра PySpark, задавать контексты явно необязательно. Контексты Spark и Hive будут созданы автоматически при выполнении первой ячейки кода. Можно начать с импорта различных типов, необходимых для этого сценария. Вставьте следующий фрагмент кода в пустую ячейку и нажмите клавиши **SHIFT + ВВОД**. 
+5. Поскольку вы создали записной книжке с использованием ядра PySpark hello, вы не обязательно toocreate контекстов явным образом. контексты Spark и Hive Hello автоматически создается автоматически при выполнении первой ячейке кода hello. Можно запустить, импортировав hello типы, необходимые для этого сценария. Вставьте следующий фрагмент кода в пустой ячейке hello и нажмите клавишу **SHIFT + ВВОД**. 
    
         from pyspark.ml import Pipeline
         from pyspark.ml.classification import LogisticRegression
@@ -75,13 +75,13 @@ ms.lasthandoff: 08/29/2017
         from pyspark.mllib.classification import LogisticRegressionWithSGD
         from pyspark.mllib.regression import LabeledPoint
         from numpy import array
-6. Теперь необходимо загрузить данные (hvac.csv), проанализировать их и использовать эти данные для обучения модели. Для этого необходимо определить функцию, которая проверяет, превышает ли значение фактической температуры здания значение целевой температуры. Если фактическая температура больше, то здание горячее (значение **1.0**). Если фактическая температура меньше, то здание холодное (значение **0.0**). 
+6. Теперь необходимо загрузить данные hello (hvac.csv), проанализировать его и использовать его tootrain hello модели. Для этого определите функцию, которая проверяет, больше ли фактическое температуры hello построения hello температуры целевой hello. Если больше фактического температуры hello, построение hello активна, обозначаемому значением hello по **1.0**. Если меньше фактического температуры hello, построение hello холода, обозначаемому значением hello по **0,0**. 
    
-    Вставьте следующий фрагмент кода в пустую ячейку и нажмите клавиши **SHIFT + ВВОД**.
+    Вставить hello, следующий фрагмент кода в пустую ячейку и нажать клавишу **SHIFT + ВВОД**.
 
-        # List the structure of data for better understanding. Because the data will be
-        # loaded as an array, this structure makes it easy to understand what each element
-        # in the array corresponds to
+        # List hello structure of data for better understanding. Because hello data will be
+        # loaded as an array, this structure makes it easy toounderstand what each element
+        # in hello array corresponds to
 
         # 0 Date
         # 1 Time
@@ -93,7 +93,7 @@ ms.lasthandoff: 08/29/2017
 
         LabeledDocument = Row("BuildingID", "SystemInfo", "label")
 
-        # Define a function that parses the raw CSV file and returns an object of type LabeledDocument
+        # Define a function that parses hello raw CSV file and returns an object of type LabeledDocument
 
         def parseDocument(line):
             values = [str(x) for x in line.split(',')]
@@ -106,29 +106,29 @@ ms.lasthandoff: 08/29/2017
 
             return LabeledDocument((values[6]), textValue, hot)
 
-        # Load the raw HVAC.csv file, parse it using the function
+        # Load hello raw HVAC.csv file, parse it using hello function
         data = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
         documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
         training = documents.toDF()
 
 
-1. Настройте конвейер машинного обучения Spark, который состоит из трех частей: логического анализатора, hashingTF и lr. Дополнительные сведения о возможностях конвейера и о том, как он работает, см. в статье <a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Конвейер машинного обучения Spark</a>.
+1. Настройка конвейера hello Spark машинного обучения, который состоит из трех этапов: разметчика, hashingTF и lr. Дополнительные сведения о возможностях конвейера и о том, как он работает, см. в статье <a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Конвейер машинного обучения Spark</a>.
    
-    Вставьте следующий фрагмент кода в пустую ячейку и нажмите клавиши **SHIFT + ВВОД**.
+    Вставить hello, следующий фрагмент кода в пустую ячейку и нажать клавишу **SHIFT + ВВОД**.
    
         tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
         hashingTF = HashingTF(inputCol=tokenizer.getOutputCol(), outputCol="features")
         lr = LogisticRegression(maxIter=10, regParam=0.01)
         pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
-2. Впишите конвейер в документ для обучения. Вставьте следующий фрагмент кода в пустую ячейку и нажмите клавиши **SHIFT + ВВОД**.
+2. Документ обучения toohello соответствия hello конвейера. Вставить hello, следующий фрагмент кода в пустую ячейку и нажать клавишу **SHIFT + ВВОД**.
    
         model = pipeline.fit(training)
-3. Проверьте, чтобы в документе для обучения имелась контрольная точка хода выполнения для приложения. Вставьте следующий фрагмент кода в пустую ячейку и нажмите клавиши **SHIFT + ВВОД**.
+3. Проверьте hello обучения документа toocheckpoint хода выполнения с помощью приложения hello. Вставить hello, следующий фрагмент кода в пустую ячейку и нажать клавишу **SHIFT + ВВОД**.
    
         training.show()
    
-    Результат должен быть аналогичен приведенному ниже:
+    В конечном итоге будут следующие аналогичные toohello hello выходные данные:
    
         +----------+----------+-----+
         |BuildingID|SystemInfo|label|
@@ -155,15 +155,15 @@ ms.lasthandoff: 08/29/2017
         |         7|      17 5|  0.0|
         +----------+----------+-----+
 
-    Вернитесь и проверьте выходные данные со сведениями в необработанном CSV-файле. Например, в первой строке CSV-файла содержатся следующие данные:
+    Вернуться назад и проверить результаты hello hello необработанные CSV-файла. Например hello первая строка hello CSV-файл содержит эти данные:
 
     ![Моментальный снимок выходных данных для примера машинного обучения Spark](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Моментальный снимок выходных данных для примера машинного обучения Spark")
 
-    Обратите внимание на то, насколько фактическая температура меньше целевой, что свидетельствует о том, что здание холодное. В выходных данных обучения видно, что значение в первой строке столбца **label** составляет **0,0**. Это означает, что в здании не тепло.
+    Обратите внимание, как фактический температуры hello, меньше, чем предлагает построение hello температуры целевой hello холодного. Таким образом в выходных данных обучения hello hello значение **метка** в hello — первая строка **0,0**, это означает, что построение hello не активна.
 
-1. Подготовьте набор данных, в отношении которого необходимо выполнить обученную модель. Для этого мы передадим идентификатор системы и ее возраст (значения в столбце **SystemInfo** в выходных данных обучения). После этого модель предскажет, станет ли в здании с этими идентификатором системы и возрастом теплее (значение 1,0) или холоднее (значение 0,0).
+1. Подготовьте набор данных toorun hello обученной модели по. toodo таким образом, мы бы передать на системный идентификатор и возраст резервной системы (обозначается как **SystemInfo** в выходных данных обучения hello), и предсказать hello модели, будет ли hello построение с возрастом идентификатор и системы, система может быть еще важнее (обозначается 1.0) или охлаждающего ( обозначается 0,0).
    
-   Вставьте следующий фрагмент кода в пустую ячейку и нажмите клавиши **SHIFT + ВВОД**.
+   Вставить hello, следующий фрагмент кода в пустую ячейку и нажать клавишу **SHIFT + ВВОД**.
    
        # SystemInfo here is a combination of system ID followed by system age
        Document = Row("id", "SystemInfo")
@@ -174,14 +174,14 @@ ms.lasthandoff: 08/29/2017
                      (5L, "17 10"),
                      (6L, "7 22")]) \
            .map(lambda x: Document(*x)).toDF() 
-2. Наконец, создайте прогнозы на основе тестовых данных. Вставьте следующий фрагмент кода в пустую ячейку и нажмите клавиши **SHIFT + ВВОД**.
+2. Наконец выполнение прогнозов по hello тестовых данных. Вставить hello, следующий фрагмент кода в пустую ячейку и нажать клавишу **SHIFT + ВВОД**.
    
         # Make predictions on test documents and print columns of interest
         prediction = model.transform(test)
         selected = prediction.select("SystemInfo", "prediction", "probability")
         for row in selected.collect():
             print row
-3. Должен отобразиться результат, аналогичный приведенному ниже:
+3. Вы должны увидеть следующие выходные данные как toohello.
    
        Row(SystemInfo=u'20 25', prediction=1.0, probability=DenseVector([0.4999, 0.5001]))
        Row(SystemInfo=u'4 15', prediction=0.0, probability=DenseVector([0.5016, 0.4984]))
@@ -190,18 +190,18 @@ ms.lasthandoff: 08/29/2017
        Row(SystemInfo=u'17 10', prediction=1.0, probability=DenseVector([0.4925, 0.5075]))
        Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
    
-   В первой строке прогноза видно, что при использовании системы кондиционирования с идентификатором 20 и возрастом 25 лет здание будет горячим (**прогноз = 1.0**). Первое значение параметра DenseVector (0,49999) соответствует прогнозу 0,0, а второе значение (0,5001) — прогнозу 1,0. В выходных данных видно, что, даже если второе значение лишь незначительно выше, модель показывает **прогноз = 1.0**.
-4. Завершив работу с приложением, следует закрыть записную книжку, чтобы освободить ресурсы. Для этого в записной книжке в меню **Файл** выберите пункт **Close and Halt** (Закрыть и остановить). Это завершит работу записной книжки и закроет ее.
+   Из первой строки hello в прогнозе hello, можно увидеть, что для системы Отопления с Идентификатором 20 и системы возраст 25 лет hello построение будет горячей (**прогноза = 1,0**). Первое значение Hello DenseVector (0.49999) соответствует toohello прогноза 0,0 а hello второе значение (0.5001) toohello прогноза 1.0. В выходных данных hello, несмотря на то, что второе значение hello только выше, hello модель показывает **прогноза = 1,0**.
+4. После завершения работы приложения hello, необходимо hello toorelease ресурсы для завершения работы hello ноутбуков. toodo так, hello **файл** меню на ноутбуке hello щелкните **закрыть и остановить**. В этом будет завершена и закрыть hello ноутбука.
 
 ## <a name="anaconda"></a>Использование библиотеки scikit-learn Anaconda для машинного обучения Spark
-Кластеры Apache Spark в HDInsight включают библиотеки Anaconda. Они также включают библиотеку **scikit-learn** для машинного обучения. Кроме того, библиотека включает различные наборы данных, которые можно использовать для создания примеров приложений прямо в записной книжке Jupyter. Примеры использования библиотеки scikit-learn см. на странице: [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
+Кластеры Apache Spark в HDInsight включают библиотеки Anaconda. Это также касается hello **scikit-узнать** библиотеки для машинного обучения. Библиотека Hello также содержит различные наборы данных, которые можно использовать образцы приложений toobuild непосредственно из записной книжке Jupyter. Для примеров с помощью hello scikit-библиотека Дополнительные сведения см. в разделе [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
 
 ## <a name="seealso"></a>Дополнительные материалы
 * [Обзор: Apache Spark в Azure HDInsight](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Сценарии
 * [Использование Spark со средствами бизнес-аналитики. Выполнение интерактивного анализа данных с использованием Spark в HDInsight с помощью средств бизнес-аналитики](hdinsight-apache-spark-use-bi-tools.md)
-* [Использование Spark с машинным обучением. Использование Spark в HDInsight для прогнозирования результатов контроля качества пищевых продуктов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark с машинного обучения: используйте Spark в HDInsight toopredict food проверки результатов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Потоковая передача Spark. Использование Spark в HDInsight для сборки приложений потоковой передачи данных в режиме реального времени](hdinsight-apache-spark-eventhub-streaming.md)
 * [Анализ журнала веб-сайта с использованием Spark в HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
@@ -210,15 +210,15 @@ ms.lasthandoff: 08/29/2017
 * [Удаленный запуск заданий с помощью Livy в кластере Spark](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Средства и расширения
-* [Использование подключаемого модуля средств HDInsight для IntelliJ IDEA для создания и отправки приложений Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [Удаленная отладка приложений Spark в кластере HDInsight Spark Linux с помощью подключаемого модуля средств HDInsight для IntelliJ IDEA](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Использование подключаемого модуля средства HDInsight для toocreate ИДЕЯ IntelliJ и отправка Spark Scala основных приложений](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Удаленно использовать подключаемый модуль средства HDInsight для приложений Spark toodebug ИДЕЯ IntelliJ](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Использование записных книжек Zeppelin с кластером Spark в HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Ядра, доступные для записной книжки Jupyter в кластере Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Использование внешних пакетов с записными книжками Jupyter](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Установка записной книжки Jupyter на компьютере и ее подключение к кластеру Apache Spark в Azure HDInsight (предварительная версия)](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Установка Jupyter на вашем компьютере и подключение tooan кластера HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Управление ресурсами
-* [Управление ресурсами кластера Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+* [Управление ресурсами кластера hello Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Отслеживание и отладка заданий в кластере Apache Spark в HDInsight на платформе Linux](hdinsight-apache-spark-job-debugging.md)
 
 [hdinsight-versions]: hdinsight-component-versioning.md

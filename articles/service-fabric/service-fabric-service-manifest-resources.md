@@ -1,6 +1,6 @@
 ---
-title: "Настройка конечных точек службы Service Fabric | Документация Майкрософт"
-description: "В этой статье поясняется, как описать ресурсы конечной точки в манифесте служб, включая настройку конечных точек HTTPS."
+title: "конечные точки службы Service Fabric aaaSpecifying | Документы Microsoft"
+description: "Как манифеста toodescribe ресурсы конечной точки в службе, включая то, как tooset настройке конечных точек HTTPS"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: subramar
-ms.openlocfilehash: 08141edfbc8be9bf7bf303419e1e482d5f884860
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a4ebee353ce5cf86583673674246094f03f368be
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Указание ресурсов в манифесте службы
 ## <a name="overview"></a>Обзор
-Манифест служб позволяет объявлять и изменять ресурсы, используемые в службе, не меняя скомпилированный код. Azure Service Fabric поддерживает настройку ресурсов конечных точек для службы. Доступ к ресурсам, указанным в манифесте служб, можно контролировать в манифесте приложения с помощью элемента SecurityGroup. Объявление ресурсов позволяет изменять их при развертывании, т. е. службе не нужно внедрять новый механизм настройки. Определение схемы для файла ServiceManifest.xml устанавливается с пакетом SDK и средствами для Service Fabric в расположении *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
+манифест службы Hello позволяет ресурсы, используемые с toobe службы hello объявлен или изменен без изменения кода hello компиляции. Azure Service Fabric поддерживает конфигурацию ресурсов конечной точки для службы hello. Hello доступа toohello ресурсы, которые указаны в манифесте hello службы можно управлять через hello SecurityGroup в манифесте приложения hello. объявления Hello ресурсов позволяет toobe эти ресурсы, изменен во время развертывания, это означает, что служба hello не требует toointroduce новый механизм настройки. Hello определение схемы для hello файле ServiceManifest.xml устанавливается вместе с hello Service Fabric SDK и средств слишком*C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 
 ## <a name="endpoints"></a>Endpoints
-Если ресурс конечной точки определен в манифесте службы, Service Fabric назначает порты из диапазона зарезервированных портов приложений, если порт не указан явным образом. Например, рассмотрим конечную точку *ServiceEndpoint1* , которая указана во фрагменте кода манифеста, приведенном после абзаца. Кроме того, службы также могут запрашивать наличие в ресурсе конкретного порта. Репликам службы, которые выполняются на различных узлах кластера, можно назначить разные номера портов, а реплики службы, выполняющиеся на одном и том же узле, будут совместно используют один порт. Реплики службы при необходимости могут использовать эти порты для репликации и прослушивания клиентских запросов.
+Когда ресурс конечной точки задается в манифест службы hello, Service Fabric назначает порты из диапазона портов приложения hello защищены, если порт не указан явно. Например, рассмотрим hello конечной точки *ServiceEndpoint1* указан в фрагменте hello манифеста, указываемая после абзаца. Кроме того, службы также могут запрашивать наличие в ресурсе конкретного порта. Реплики службы, которые выполняются на узлах кластера на другой можно назначить разные номера портов, пока реплики службы, запущенной hello тот же порт hello папки узла. Hello реплик службы можно использовать эти порты при необходимости для репликации и прослушивает клиентские запросы.
 
 ```xml
 <Resources>
@@ -37,10 +37,10 @@ ms.lasthandoff: 08/29/2017
 </Resources>
 ```
 
-Дополнительные сведения о создании ссылок на конечные точки из файла параметров пакета конфигурации (settings.xml) см. в статье [Настройка надежных служб с отслеживанием состояния](service-fabric-reliable-services-configuration.md).
+См. слишком[Настройка надежных служб с отслеживанием состояния](service-fabric-reliable-services-configuration.md) tooread Дополнительные сведения о ссылке на конечные точки из файла параметров конфигурации пакета hello (settings.xml).
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Пример. Указание конечной точки HTTP для службы
-Следующий манифест служб в элементе &lt;Resources&gt; определяет один ресурс конечной точки TCP и два ресурса конечной точки HTTP.
+Hello ниже манифест службы определяет один ресурс конечной точки TCP и два ресурса конечной точки HTTP в hello &lt;ресурсов&gt; элемента.
 
 Service Fabric автоматически создает список управления доступом (ACL) для конечных точек HTTP.
 
@@ -52,8 +52,8 @@ Service Fabric автоматически создает список управ
                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
-    <!-- This is the name of your ServiceType.
-         This name must match the string used in the RegisterServiceType call in Program.cs. -->
+    <!-- This is hello name of your ServiceType.
+         This name must match hello string used in hello RegisterServiceType call in Program.cs. -->
     <StatefulServiceType ServiceTypeName="Stateful1Type" HasPersistedState="true" />
   </ServiceTypes>
 
@@ -66,22 +66,22 @@ Service Fabric автоматически создает список управ
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
+  <!-- Config package is hello contents of hello Config directoy under PackageRoot that contains an
        independently updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
   <Resources>
     <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port number on which to
+      <!-- This endpoint is used by hello communication listener tooobtain hello port number on which to
            listen. Note that if your service is partitioned, this port is shared with
            replicas of different partitions that are placed in your code. -->
       <Endpoint Name="ServiceEndpoint1" Protocol="http"/>
       <Endpoint Name="ServiceEndpoint2" Protocol="http" Port="80"/>
       <Endpoint Name="ServiceEndpoint3" Protocol="https"/>
 
-      <!-- This endpoint is used by the replicator for replicating the state of your service.
-           This endpoint is configured through the ReplicatorSettings config section in the Settings.xml
-           file under the ConfigPackage. -->
+      <!-- This endpoint is used by hello replicator for replicating hello state of your service.
+           This endpoint is configured through hello ReplicatorSettings config section in hello Settings.xml
+           file under hello ConfigPackage. -->
       <Endpoint Name="ReplicatorEndpoint" />
     </Endpoints>
   </Resources>
@@ -89,14 +89,14 @@ Service Fabric автоматически создает список управ
 ```
 
 ## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Пример. Указание конечной точки HTTPS для службы
-Протокол HTTPS обеспечивает аутентификацию сервера, а также используется для шифрования данных, передаваемых между клиентом сервером. Чтобы включить протокол HTTPS в службе Service Fabric, укажите его в разделе *Ресурсы > Конечные точки > Конечная точка* манифеста служб, как показано выше для конечной точки *ServiceEndpoint3*.
+Hello протокол HTTPS обеспечивает проверку подлинности сервера, а также используется для шифрования передаваемых данных клиент сервер. tooenable HTTPS в службе Service Fabric, необходимо указать протокол hello в hello *ресурсы "->" конечные точки -> конечная точка* раздел манифеста службы hello, как показано выше, для конечной точки hello *ServiceEndpoint3* .
 
 > [!NOTE]
 > Протокол службы невозможно изменить при обновлении приложения. Если изменить его во время обновления, то это будет считаться критическим изменением.
 > 
 > 
 
-Ниже приведен пример ApplicationManifest, который необходимо задать для HTTPS. Требуется предоставить отпечаток для сертификата. EndpointRef является ссылкой на EndpointResource в ServiceManifest, для которого задается протокол HTTPS. Можно добавить несколько элементов Endpointcertificate.  
+Ниже приведен пример ApplicationManifest необходимость tooset для HTTPS. необходимо указать Hello отпечаток сертификата. Hello EndpointRef является tooEndpointResource ссылку в ServiceManifest, для которых задан протокол HTTPS hello. Можно добавить несколько элементов Endpointcertificate.  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -110,8 +110,8 @@ Service Fabric автоматически создает список управ
     <Parameter Name="Stateful1_PartitionCount" DefaultValue="1" />
     <Parameter Name="Stateful1_TargetReplicaSetSize" DefaultValue="3" />
   </Parameters>
-  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
-       should match the Name and Version attributes of the ServiceManifest element defined in the
+  <!-- Import hello ServiceManifest from hello ServicePackage. hello ServiceManifestName and ServiceManifestVersion
+       should match hello Name and Version attributes of hello ServiceManifest element defined in the
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Stateful1Pkg" ServiceManifestVersion="1.0.0" />
@@ -121,11 +121,11 @@ Service Fabric автоматически создает список управ
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
-    <!-- The section below creates instances of service types when an instance of this
+    <!-- hello section below creates instances of service types when an instance of this
          application type is created. You can also create one or more instances of service type by using the
          Service Fabric PowerShell module.
 
-         The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
+         hello attribute ServiceTypeName below must match hello name defined in hello imported ServiceManifest.xml file. -->
     <Service Name="Stateful1">
       <StatefulService ServiceTypeName="Stateful1Type" TargetReplicaSetSize="[Stateful1_TargetReplicaSetSize]" MinReplicaSetSize="[Stateful1_ ]">
         <UniformInt64Partition PartitionCount="[Stateful1_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
@@ -140,11 +140,11 @@ Service Fabric автоматически создает список управ
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>Переопределение конечных точек в файле ServiceManifest.xml
 
-В ApplicationManifest добавьте раздел ResourceOverrides, который будет находиться на одном уровне с разделом ConfigOverrides. В этом разделе можно задать параметры переопределения для раздела конечных точек в разделе ресурсов, указанном в манифесте служб.
+В hello ApplicationManifest добавьте ResourceOverrides раздела, в котором будет раздел tooConfigOverrides того же уровня. В этом разделе можно указать hello переопределения для раздела hello конечные точки в раздел ресурсов hello, указанного в манифесте службы hello.
 
-Чтобы переопределить EndPoint в ServiceManifest, используя ApplicationParameters, измените ApplicationManifest следующим образом:
+В порядке toooverride конечной точки в ServiceManifest ApplicationParameters изменений с помощью hello ApplicationManifest следующим образом:
 
-Добавьте новый подраздел ResourceOverrides в раздел ServiceManifestImport.
+В разделе ServiceManifestImport hello добавьте новый раздел «ResourceOverrides»
 
 ```xml
 <ServiceManifestImport>
@@ -162,7 +162,7 @@ Service Fabric автоматически создает список управ
   </ServiceManifestImport>
 ```
 
-В раздел Parameters добавьте следующее:
+В окне приветствия добавления параметров ниже:
 
 ```xml
   <Parameters>
@@ -174,17 +174,17 @@ Service Fabric автоматически создает список управ
   </Parameters>
 ```
 
-Теперь при развертывании приложения вы можете передать эти значения в качестве объекта ApplicationParameters, как показано ниже.
+При развертывании приложения hello теперь можно передать в эти значения как ApplicationParameters например:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Примечание. Если для ApplicationParameters значения не заданы, мы возвращаемся к значению по умолчанию, предоставленному в ServiceManifest для соответствующей конечной точки.
+Примечание: Если значения hello предоставляют для hello ApplicationParameters пуст вернемся toohello по умолчанию значение, указанное в hello ServiceManifest для соответствующего EndPointName hello.
 
 Например:
 
-Допустим, в ServiceManifest заданы следующие значения:
+Если в hello указанной ServiceManifest
 
 ```xml
   <Resources>
@@ -194,6 +194,6 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
   </Resources>
 ```
 
-Если в ApplicationParameters параметры Port1 и Protocol1 имеют значение или же оно не задано, порт по-прежнему определяет платформа Service Fabric, а в качестве протокола используется TCP.
+Здравствуйте порта 1 и Protocol1 значения параметров приложения имеет значение null или пустым. порт Hello по-прежнему определяется по ServiceFabric. И hello протокола tcp.
 
-Предположим, что вы задали неверное значение. Например, для порта задано строковое значение Foo вместо целого числа.  При выполнении команды New-ServiceFabricApplication произойдет ошибка: The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int' (Недопустимый параметр переопределения ServiceEndpoint1 атрибута Port1 в разделе ResourceOverrides. Указано значение Foo, а требуется целое число).
+Предположим, что вы задали неверное значение. Например, для порта задано строковое значение Foo вместо целого числа.  Новый ServiceFabricApplication команда завершится с ошибкой: недопустимый параметр переопределения hello с атрибутом «ServiceEndpoint1» имя порта «1» в разделе «ResourceOverrides». Указанное значение Hello «Foo» и требуется «int».

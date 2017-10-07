@@ -1,6 +1,6 @@
 ---
-title: " Отправка файлов в учетную запись служб мультимедиа с помощью портала Azure | Документация Майкрософт"
-description: "В этом руководстве описаны этапы отправки файлов в учетную запись служб мультимедиа Azure с помощью портала Azure."
+title: "AAA» передавать файлы в учетную запись служб мультимедиа с помощью hello портал Azure | Документы Microsoft»"
+description: "Этот учебник поможет вам выполнить hello этапы загрузки файлов в учетную запись служб мультимедиа с помощью портала Azure hello"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 3a1dd7470f940da839687478b636464d930d8ab7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4ce1e133c72854532735ba7c72a43c92a75bc240
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-files-into-a-media-services-account-using-the-azure-portal"></a>Отправка файлов в учетную запись служб мультимедиа с помощью портала Azure
+# <a name="upload-files-into-a-media-services-account-using-hello-azure-portal"></a>Отправка файлов в учетную запись служб мультимедиа с помощью портала Azure hello
 > [!div class="op_single_selector"]
 > * [Портал](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
 > 
 > [!NOTE]
-> Для работы с этим учебником требуется учетная запись Azure. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/). 
+> toocomplete этого учебника необходима учетная запись Azure. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 
 
-В службах мультимедиа цифровые файлы отправляются в актив. Ресурс может содержать видео, аудио, изображения, коллекции эскизов, текстовые каналы и файлы скрытых субтитров (и метаданные этих файлов). После отправки этих файлов содержимое сохраняется в безопасном расположении в облаке для дальнейшей обработки и потоковой передачи.
+В службах мультимедиа цифровые файлы отправляются в актив. Hello актива может содержать видео, аудио, изображения, коллекции эскизов, текст отслеживает и титров файлов (и hello метаданные об этих файлах.) После загрузки файлов hello контент безопасно хранится в облаке hello для дальнейшей обработки и потоковой передачи.
 
 
 ## <a name="upload-files"></a>Отправка файлов
 
 >[!NOTE]
->Существует ограничение на максимальный размер файла, который могут обработать службы мультимедиа. Подробные сведения об этом см. [здесь](media-services-quotas-and-limitations.md).
+>Имеется ограничение toohello максимальный размер файла поддерживается для обработки в службах мультимедиа. См. в разделе [это](media-services-quotas-and-limitations.md) сведения о hello ограничения размера файла.
 >
 
-1. Создание учетной записи служб мультимедиа Azure с помощью [портале Azure](https://portal.azure.com/).
-2. В колонке **Параметры** выберите **Ресурсы**.
+1. В hello [портал Azure](https://portal.azure.com/), выберите учетную запись служб мультимедиа Azure.
+2. На hello **параметры** колонка, щелкните **активы**.
    
     ![Отправка файлов](./media/media-services-portal-vod-get-started/media-services-upload.png)
-3. Нажмите кнопку **Отправить** .
+3. Нажмите кнопку hello **отправить** кнопки.
    
-    Появится окно **загрузки видеоресурса** .
+    Hello **отправить видео активов** появится окно.
    
    > [!NOTE]
    > Размер файлов неограничен.
    > 
    > 
-4. Найдите нужное видео на компьютере, выберите его и нажмите кнопку "ОК".  
+4. Обзор toohello требуемого видео на компьютере, выберите его и нажмите ОК.  
    
-    Начнется передача. За ходом загрузки можно наблюдать под именем файла.  
+    начнется загрузка Hello и следить за ходом hello в файле с именем hello можно.  
 
-По завершении загрузки в окне **Ресурсы** появится новый ресурс. 
+После завершения отправки hello, вы увидите новый актив hello, перечисленные в hello **активы** окна. 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Теперь можно закодировать отправленные ресурсы. Дополнительную информацию см. в статье, посвященной [кодированию ресурсов](media-services-portal-encode.md).
 
-Можно также использовать функции Azure для запуска задания кодирования на основе файла, поступающего в настроенный контейнер. Дополнительные сведения см. в [этом примере](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
+Также можно использовать функции Azure tootrigger задание кодирования на основе файла, поступающих в контейнере hello настроен. Дополнительные сведения см. в [этом примере](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: "Настройка частных IP-адресов для виртуальных машин (Azure CLI 2.0) | Документация Майкрософт"
-description: "Узнайте, как настроить частные IP-адреса для виртуальных машин с помощью интерфейса командной строки Azure (CLI) версии 2.0."
+title: "aaaConfigure частных IP-адресов для виртуальных машин - CLI Azure 2.0 | Документы Microsoft"
+description: "Узнайте, как tooconfigure частных IP-адресов для виртуальных машин с помощью hello Azure командной строки (CLI) 2.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,45 +16,45 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 071156367c1f819a00d31f1d0335e301391fda81
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0e278e6ac63c0cda061cf70ab0edfaff5491c03b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli-20"></a>Настройка частных IP-адресов для виртуальной машины с помощью Azure CLI 2.0
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-hello-azure-cli-20"></a>Настройка частного IP-адреса для виртуальной машины с помощью Azure CLI 2.0 hello
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
 
-## <a name="cli-versions-to-complete-the-task"></a>Версии интерфейса командной строки для выполнения задачи 
+## <a name="cli-versions-toocomplete-hello-task"></a>Задача hello toocomplete версии CLI 
 
-Вы можете выполнить задачу, используя одну из следующих версий интерфейса командной строки. 
+Можно выполнить с помощью одного из следующих версий CLI hello задачу hello. 
 
-- [Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) — интерфейс командной строки для классической модели развертывания и модели развертывания Resource Manager. 
-- [Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) — это интерфейс командной строки нового поколения для модели развертывания Resource Manager (описывается в этой статье).
+- [Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) — нашей CLI для hello классический и ресурсов развертывания модели управления 
+- [Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) -нашей нового поколения CLI для модели развертывания управления hello ресурсов (в этой статье)
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-В этой статье описывается модель развертывания с использованием менеджера ресурсов. Кроме того, вы можете [управлять статическим частным IP-адресом в классической модели развертывания](virtual-networks-static-private-ip-classic-cli.md).
+В этой статье рассматриваются hello модели развертывания диспетчера ресурсов. Вы также можете [управление статический частный IP-адрес в hello классической модели развертывания](virtual-networks-static-private-ip-classic-cli.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> Для выполнения приведенных ниже примеров команд Azure CLI 2.0 требуется созданная простая среда. Чтобы выполнять команды в соответствии с указаниями, представленными в этом документе, сначала постройте тестовую среду, как описано в статье [Создание виртуальной сети](virtual-networks-create-vnet-arm-cli.md).
+> приведенную ниже команду CLI Azure 2.0 Образец Hello ожидать простой среде уже создан. Если требуется toorun hello команд, отображаемых в этом документе, вначале построить hello тестовой среды, описанные в [создании виртуальной сети](virtual-networks-create-vnet-arm-cli.md).
 
 ## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Указание статического частного IP-адреса при создании виртуальной машины
 
-Чтобы создать виртуальную машину с именем *DNS01* в подсети *FrontEnd* виртуальной сети *TestVNet* со статическим частным IP-адресом *192.168.1.101*, выполните следующие действия.
+toocreate Виртуальную машину с именем *DNS01* в hello *переднего плана* подсети виртуальной сети с именем *TestVNet* с статических частного IP-адреса *192.168.1.101*, выполните следующие действия hello.
 
-1. Установите и настройте последнюю версию [Azure CLI 2.0](/cli/azure/install-az-cli2) (если вы еще этого не сделали), а затем войдите с использованием учетной записи Azure, выполнив команду [az login](/cli/azure/#login). 
+1. Если еще не еще, установить и настроить hello последней [Azure CLI 2.0](/cli/azure/install-az-cli2) и войти в систему с учетной записью Azure tooan [входа az](/cli/azure/#login). 
 
-2. Создайте общедоступный IP-адрес для виртуальной машины с помощью команды [az network public-ip create](/cli/azure/network/public-ip#create). В списке, который откроется после выполнения команды, будут указаны используемые параметры.
+2. Создать общедоступный IP-адрес для hello виртуальной Машины с hello [создать az сетевого public-IP-адреса](/cli/azure/network/public-ip#create) команды. Список Hello отображаться после вывода hello объясняется hello параметров, используемых.
 
     > [!NOTE]
-    > Возможно, вам понадобится использовать разные значения для аргументов на этих и последующих шагах в зависимости от среды.
+    > Возможно или toouse различные значения для аргументов, в этом и последующих шагов в зависимости от среды.
    
     ```azurecli
     az network public-ip create \
@@ -78,11 +78,11 @@ ms.lasthandoff: 07/11/2017
     }
     ```
 
-   * `--resource-group` — имя группы ресурсов, в которой будет создан общедоступный IP-адрес.
-   * `--name` —имя общедоступного IP-адреса.
-   * `--location` — регион Azure, в котором будет создан общедоступный IP-адрес.
+   * `--resource-group`: Имя группы ресурсов hello в какие toocreate hello общедоступный IP-адрес.
+   * `--name`: Имя hello общедоступный IP-адрес.
+   * `--location`: Azure область какие toocreate hello общедоступный IP-адрес.
 
-3. Выполните команду [az network nic create](/cli/azure/network/nic#create), чтобы создать сетевую карту со статическим частным IP-адресом. В списке, который откроется после выполнения команды, будут указаны используемые параметры. 
+3. Запустите hello [сетевого адаптера сети az создать](/cli/azure/network/nic#create) команда toocreate сетевой Адаптер с статический частных IP-адрес. Список Hello отображаться после вывода hello объясняется hello параметров, используемых. 
    
     ```azurecli
     az network nic create \
@@ -130,11 +130,11 @@ ms.lasthandoff: 07/11/2017
     
     Параметры
 
-    * `--private-ip-address`: статический частный IP-адрес для сетевой карты.
-    * `--vnet-name`: имя виртуальной сети для создания сетевой карты.
-    * `--subnet`: имя подсети для создания сетевой карты.
+    * `--private-ip-address`: Статический частный IP-адрес для hello сетевого адаптера.
+    * `--vnet-name`: Имя hello виртуальной сети, в которой toocreate hello сетевого адаптера.
+    * `--subnet`: Имя hello подсети, в которой toocreate hello сетевого адаптера.
 
-4. Выполните команду [azure vm create](/cli/azure/vm/nic#create) , чтобы создать виртуальную машину с использованием общедоступного IP-адреса и сетевой карты, созданных ранее. В списке, который откроется после выполнения команды, будут указаны используемые параметры.
+4. Запустите hello [создания виртуальной машины azure](/cli/azure/vm/nic#create) команда toocreate hello созданную виртуальную Машину с помощью hello общедоступного IP-адреса и сетевого Адаптера. Список Hello отображаться после вывода hello объясняется hello параметров, используемых.
    
     ```azurecli
     az vm create \
@@ -162,14 +162,14 @@ ms.lasthandoff: 07/11/2017
     }
     ```
    
-   Параметры, отличные от базовых параметров [az vm create](/cli/azure/vm#create).
+   Параметры, кроме hello basic [создания виртуальной машины az](/cli/azure/vm#create) параметров.
 
-   * `--nics` — имя сетевой карты, к которой подключена виртуальная машина.
+   * `--nics`: Имя hello toowhich hello сетевого Адаптера виртуальной Машины она будет присоединена.
    
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Получение сведений о статическом частном IP-адресе виртуальной машины
 
-Чтобы просмотреть сведения о созданном статическом частном IP-адресе, выполните следующую команду Azure CLI. Обратите внимание на значения *метода выделения частных IP-адресов* и *частного IP-адреса*:
+tooview hello статический частный IP-адрес, созданный, запустите следующую команду Azure CLI hello и просмотрите значения hello *метод alloc частный IP-адрес* и *частный IP-адрес*:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -181,7 +181,7 @@ az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
 "192.168.1.101"
 ```
 
-Чтобы отобразить определенные сведения об IP-адресе сетевой карты для этой виртуальной машины, отправьте запрос к сетевой карте:
+toodisplay специально hello IP подробности hello сетевой Адаптер для этой виртуальной Машины, запрос hello сетевого Адаптера:
 
 ```azurecli
 az network nic show \
@@ -191,7 +191,7 @@ az network nic show \
 rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 ```
 
-Результат будет выглядеть следующим образом.
+выходные данные Hello выглядят примерно так:
 
 ```json
 {
@@ -206,11 +206,11 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 Статический частный IP-адрес нельзя удалить из сетевой карты с использованием Azure CLI для развертываний Resource Manager. Необходимо следующее:
 - Создайте сетевую карту, использующую динамический IP-адрес.
-- Настройте созданную сетевую карту на виртуальной машине. 
+- Задать hello сетевого Адаптера виртуальной Машины hello hello вновь созданные сетевого адаптера. 
 
-Чтобы изменить сетевую карту для виртуальной машины, которая использовалась в приведенных выше командах, сделайте следующее.
+hello toochange сетевого Адаптера для hello виртуальной Машины, используемой в командах hello выше, выполните шаги hello.
 
-1. Выполните команду **azure network nic create**, чтобы создать сетевую карту с новым IP-адресом путем выделения динамических IP-адресов. Обратите внимание, что так как IP-адрес не указан, используется **динамический** способ выделения.
+1. Запустите hello **сетевого адаптера сети azure создать** команды toocreate новый сетевой Адаптер, с помощью динамического выделения IP-адресов с помощью нового IP-адреса. Обратите внимание, что поскольку IP-адрес не указан, способ распределения hello **динамическое**.
 
     ```azurecli
     az network nic create     \
@@ -255,7 +255,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
     }
     ```
 
-2. Выполните команду **azure vm set** , чтобы изменить сетевую карту, используемую виртуальной машиной.
+2. Запустите hello **набор виртуальных машин azure** команда toochange hello сетевой Адаптер, используемый hello виртуальной Машины.
    
     ```azurecli
     azure vm set -g TestRG -n DNS01 -N TestNIC2
@@ -274,10 +274,10 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
     ```
 
     > [!NOTE]
-    > Если размер виртуальной машины позволяет подключить несколько сетевых карт, выполните команду **azure network nic delete**, чтобы удалить старую сетевую карту.
+    > Если hello виртуальной Машины достаточно большой toohave более одного сетевого Адаптера, запустите hello **удалить сетевого адаптера сети azure** команды toodelete, старый hello сетевого адаптера.
    
 ## <a name="next-steps"></a>Дальнейшие действия
 * Ознакомьтесь с информацией о [зарезервированных общедоступных IP-адресах](virtual-networks-reserved-public-ip.md) .
 * Узнайте об [общедоступных IP-адресах уровня экземпляра (ILPIP)](virtual-networks-instance-level-public-ip.md) .
-* Ознакомьтесь с информацией о [REST API зарезервированных IP-адресов](https://msdn.microsoft.com/library/azure/dn722420.aspx).
+* Обратитесь к hello [зарезервированные интерфейсы REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 

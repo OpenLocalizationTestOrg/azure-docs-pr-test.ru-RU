@@ -1,6 +1,6 @@
 ---
-title: "Назначение лицензий для Azure MFA | Документация Майкрософт"
-description: "Из этой статьи вы узнаете, как назначать лицензии для службы Microsoft Azure Multi-Factor Authentication."
+title: "icenses aaaAssign многофакторной проверки подлинности Azure | Документы Microsoft"
+description: "Узнайте, как пользователь tooassign лицензии для многофакторной проверки подлинности Microsoft Azure."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -16,26 +16,26 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ROBOTS: NOINDEX
-ms.openlocfilehash: 45522bf526c4aeab1d6ccc8891a55a0436ff9320
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ca324eb4d6622fdad8bd3d74b7e1595919e36535
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assigning-an-azure-mfa-azure-ad-premium-or-enterprise-mobility-license-to-users"></a>Назначение пользователям лицензии Azure MFA, Azure AD Premium или Enterprise Mobility
-Если вы приобрели лицензии Azure MFA, Azure AD Premium или Enterprise Mobility Suite, поставщик Multi-Factor Authentication создавать не нужно. Назначив эти лицензии пользователям, можно включить MFA.
+# <a name="assigning-an-azure-mfa-azure-ad-premium-or-enterprise-mobility-license-toousers"></a>Назначение лицензий Azure MFA, Azure AD Premium или Enterprise Mobility toousers
+Если вы приобрели Azure MFA, Azure AD Premium или Enterprise Mobility Suite лицензии, не обязательно toocreate поставщик многофакторной проверки подлинности. После назначения лицензии hello tooyour пользователей, можно начать их включением многофакторной проверки подлинности.
 
-## <a name="to-assign-a-license"></a>Назначение лицензии
-1. Войдите на [классический портал Azure](https://manage.windowsazure.com) с учетной записью администратора.
-2. Выберите **Active Directory**слева.
-3. На странице "Active Directory" дважды щелкните каталог с пользователями для активации.
-4. В верхней части страницы каталога выберите **Лицензии**.
+## <a name="tooassign-a-license"></a>tooassign лицензию
+1. Войдите в toohello [классический портал Azure](https://manage.windowsazure.com) с правами администратора.
+2. В левой части экрана приветствия выберите **Active Directory**.
+3. На странице приветствия Active Directory дважды щелкните каталог hello hello пользователей нужно tooenable.
+4. В начале hello hello каталог страницы, выберите **лицензий**.
    ![Назначение лицензий](./media/multi-factor-authentication-get-started-assign-licenses/assign1.png)
-5. На странице "Лицензии" выберите **Многофакторная идентификация Azure**, **Active Directory Premium** или **Enterprise Mobility Suite**.  Если у вас только одна лицензия, она будет выбрана автоматически.
-6. В нижней части страницы щелкните **Назначить**.
+5. На странице приветствия лицензий, выберите **многофакторной проверки подлинности Azure**, **Active Directory Premium**, или **Enterprise Mobility Suite**.  Если у вас только одна лицензия, она будет выбрана автоматически.
+6. Внизу hello страницы приветствия щелкните **назначить**.
    ![Назначение лицензий](./media/multi-factor-authentication-get-started-assign-licenses/assign3.png)
-7. В открывшемся окне щелкните рядом с пользователями или группами, которым требуется назначить лицензии.  Должна появиться зеленая галочка.
-8. Щелкните значок с галочкой, чтобы сохранить изменения.
+7. В поле hello, появится нажмите кнопку Далее toohello пользователей или групп tooassign лицензии на.  Должна появиться зеленая галочка.
+8. Нажмите кнопку hello флажок значок toosave hello изменения.
    ![Назначение лицензий](./media/multi-factor-authentication-get-started-assign-licenses/assign4.png)
 9. Появится сообщение о том, сколько лицензий назначено и сколько не удалось назначить.  Нажмите кнопку **ОК**.
    ![Назначение лицензий](./media/multi-factor-authentication-get-started-assign-licenses/assign5.png)

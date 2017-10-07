@@ -1,6 +1,6 @@
 ---
-title: "Создание кластеров Hadoop с помощью шаблонов Azure HDInsight | Документация Майкрософт"
-description: "Узнайте о создании кластеров для HDInsight с помощью шаблонов Resource Manager."
+title: "кластеры aaaCreate Hadoop с помощью шаблонов - Azure HDInsight | Документы Microsoft"
+description: "Узнайте, как toocreate кластеры для HDInsight с помощью шаблонов диспетчера ресурсов"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,65 +16,64 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: jgao
-ms.openlocfilehash: b2cdc954530daea2a641599c946ce3787149e762
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 92a6c1d888e401a11537dba34f188245ac17f448
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Создание кластеров Hadoop в HDInsight с помощью шаблонов Resource Manager
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-В этой статье вы изучите несколько способов создания кластеров Azure HDInsight с помощью шаблонов Azure Resource Manager. Узнайте подробнее [о развертывании приложения с помощью шаблона диспетчера ресурсов Azure](../azure-resource-manager/resource-group-template-deploy.md). Сведения о других инструментах и функциях создания кластеров можно получить, воспользовавшись селектором вкладок в верхней части этой страницы или ознакомившись с разделом [Способы создания кластера](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
+В этой статье вы узнаете несколько способов кластеры toocreate Azure HDInsight с помощью шаблонов диспетчера ресурсов Azure. Узнайте подробнее [о развертывании приложения с помощью шаблона диспетчера ресурсов Azure](../azure-resource-manager/resource-group-template-deploy.md). toolearn о другие инструменты для создания кластера и функциях, щелкните селектор вкладку hello на hello верхней части этой страницы или см. в разделе [кластера методы создания](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
 
 ## <a name="prerequisites"></a>Предварительные требования
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Для выполнения инструкций этой статье понадобится следующее:
+инструкции toofollow hello в этой статье, необходимо иметь:
 
-* <seg>
-  [Подписка Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</seg>
+* [Подписка Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Azure PowerShell и (или) Azure CLI.
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ### <a name="resource-manager-templates"></a>Шаблоны диспетчера ресурсов
-Шаблон Resource Manager упрощает создание для приложения приведенных ниже компонентов с помощью отдельной скоординированной операции:
-* кластеры HDInsight и зависимые ресурсы (например, учетная запись хранения по умолчанию);
-* другие ресурсы (например, база данных SQL Azure для использования Apache Sqoop).
+Следующие приложения в одной операцией скоординированного hello легко toocreate становится шаблона диспетчера ресурсов:
+* Кластеры HDInsight и их зависимых ресурсов (например, учетной записи хранения по умолчанию hello)
+* Другие ресурсы (например, база данных SQL Azure toouse Apache Sqoop)
 
-В шаблоне определяются ресурсы, необходимые для приложения. Можно также указать параметры развертывания в качестве входных значений для различных сред. Шаблон состоит из кода JSON и выражений, на основе которых можно создавать значения для развертывания.
+В шаблоне hello определить hello ресурсы, необходимые для приложения hello. Можно также указать значения tooinput параметров развертывания для разных сред. шаблон Hello состоит из выражения, использование значения tooconstruct развертывания и JSON.
 
-Примеры шаблонов HDInsight можно найти в [коллекции шаблонов быстрого запуска Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight). Используйте кроссплатформенный редактор [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) с [расширением Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) или текстовый редактор, чтобы сохранить шаблон в файл на своей рабочей станции. Далее вы узнаете, как вызвать шаблон разными способами.
+Примеры шаблонов HDInsight можно найти в [коллекции шаблонов быстрого запуска Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight). Использовать кросс платформенных [кода Visual Studio](https://code.visualstudio.com/#alt-downloads) с hello [расширения диспетчера ресурсов](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) или текстовый редактор toosave hello шаблон в файл на рабочей станции. Вы узнаете, как toocall hello шаблона с использованием различных методов.
 
-Дополнительные сведения о шаблонах Resource Manager см. в перечисленных ниже статьях.
+Дополнительные сведения о шаблонах диспетчера ресурсов см. следующие статьи hello.
 
 * [Шаблоны диспетчера ресурсов Azure](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure CLI](../azure-resource-manager/resource-group-template-deploy.md)
 
 ## <a name="generate-templates"></a>Создание шаблонов
 
-С помощью портала Azure можно настроить все параметры кластера и сохранить шаблон перед его развертыванием. Затем можно будет многократно использовать этот шаблон.
+С помощью hello портал Azure, можно настроить все свойства hello кластера и затем сохраните шаблон hello перед его развертыванием. Затем можно повторно использовать шаблон hello.
 
-**Создание шаблона с помощью портала Azure**
+**toogenerate шаблона с использованием hello портал Azure**
 
-1. Войдите на [портал Azure](https://portal.azure.com).
-2. Щелкните **Создать** в меню слева, выберите **Аналитика** и щелкните **HDInsight**.
-3. Следуя инструкциям, укажите свойства. Можно использовать параметр **Быстрое создание** или **Настраиваемый**.
-4. На вкладке **Сводка** щелкните **Скачать шаблон и параметры**.
+1. Войдите в toohello [портал Azure](https://portal.azure.com).
+2. Нажмите кнопку **New** hello слева в меню **аналитики + аналитика**, а затем нажмите кнопку **HDInsight**.
+3. Соблюдают hello инструкции tooenter. Можно использовать либо hello **быстрое создание** или hello **настраиваемый** параметр.
+4. На hello **Сводка** щелкните **загрузки шаблона и параметров**:
 
     ![Скачивание шаблона Resource Manager для создания кластера HDInsight Hadoop](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-download.png)
 
-    Будут отображены файл шаблона, файл параметров и примеры кода для развертывания шаблона.
+    Появится список hello файл шаблона, файл параметров и кода выборок toodeploy hello шаблона:
 
     ![Параметры скачивания шаблона Resource Manager для создания кластера HDInsight Hadoop](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-download-options.png)
 
-    Отсюда шаблон можно скачать, сохранить его в библиотеке шаблонов или развернуть.
+    Здесь можно загрузить шаблон hello, сохраните его tooyour библиотеки шаблонов или развертывания шаблона hello.
 
-    Чтобы использовать шаблон из библиотеки, щелкните **Больше служб** в меню слева, а затем щелкните **Шаблоны** (в категории **Другое**).
+    tooaccess шаблон в библиотеке, нажмите кнопку **дополнительные службы** hello левом меню, и нажмите кнопку **шаблоны** (в разделе hello **других** категории).
 
     > [!Note]
-    > Файл шаблона и файл параметров должны использоваться вместе. В противном случае можно получить непредвиденные результаты. Например, значением свойства **clusterKind** по умолчанию всегда будет **hadoop**, несмотря на то, что вы указали перед скачиванием файла шаблона.
+    > файл шаблона и параметров Hello должны использоваться совместно. В противном случае можно получить непредвиденные результаты. Здравствуйте, например, по умолчанию **clusterKind** всегда является значение свойства **hadoop**, несмотря на то, что вы укажите до загрузки шаблона hello.
 
 
 
@@ -82,9 +81,9 @@ ms.lasthandoff: 08/03/2017
 
 В этой процедуре создается кластер Hadoop в HDInsight.
 
-1. Сохраните JSON-файл из [приложения](#appx-a-arm-template) на своей рабочей станции. В сценарии PowerShell имя файла — `C:\HDITutorials-ARM\hdinsight-arm-template.json`.
-2. При необходимости настройте параметры и переменные.
-3. Запустите шаблон с помощью следующего сценария PowerShell.
+1. Сохраните файл JSON hello в hello [приложение](#appx-a-arm-template) tooyour рабочей станции. В hello сценарий PowerShell, имя файла hello — `C:\HDITutorials-ARM\hdinsight-arm-template.json`.
+2. При необходимости создать hello параметров и переменных.
+3. Выполните hello шаблона с помощью hello следующий сценарий PowerShell:
 
         ####################################
         # Set these variables
@@ -111,10 +110,10 @@ ms.lasthandoff: 08/03/2017
         #endregion
 
         ####################################
-        # Connect to Azure
+        # Connect tooAzure
         ####################################
-        #region - Connect to Azure subscription
-        Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+        #region - Connect tooAzure subscription
+        Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
         try{Get-AzureRmContext}
         catch{Login-AzureRmAccount}
         #endregion
@@ -122,7 +121,7 @@ ms.lasthandoff: 08/03/2017
         # Create a resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $Location
 
-        # Create cluster and the dependent storage account
+        # Create cluster and hello dependent storage account
         $parameters = @{clusterName="$hdinsightClusterName"}
 
         New-AzureRmResourceGroupDeployment `
@@ -134,53 +133,53 @@ ms.lasthandoff: 08/03/2017
         # List cluster
         Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName
 
-    Сценарий PowerShell настраивает только имя кластера. Имя учетной записи хранения жестко запрограммировано в шаблоне. Вам будет предложено ввести пароль пользователя кластера. Имя пользователя по умолчанию — **admin**. Вам также будет предложено ввести пароль пользователя SSH. Имя пользователя SSH по умолчанию — **sshuser**.  
+    Сценарий PowerShell Hello настраивает только имени кластера hello. Имя учетной записи хранения Hello жестко закодирована в шаблоне hello. Все запрашиваемые tooenter hello кластера пользователя пароль. (имя пользователя по умолчанию hello **администратора**.) Вы также являются пароль пользователя SSH запрашиваемые tooenter hello. (имя пользователя SSH по умолчанию hello **sshuser**.)  
 
 Дополнительные сведения см. в статье [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template).
 
 ## <a name="deploy-with-cli"></a>Развертывание с помощью интерфейса командной строки
-В следующем примере используется интерфейс командной строки Azure (CLI). Он создает кластер и его учетную запись хранения и контейнер, вызывая шаблон Resource Manager.
+Следующий образец Hello использует Azure командной строки (CLI). Он создает кластер и его учетную запись хранения и контейнер, вызывая шаблон Resource Manager.
 
     azure login
     azure config mode arm
     azure group create -n hdi1229rg -l "East US"
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "C:\HDITutorials-ARM\hdinsight-arm-template.json"
 
-Вам будет предложено ввести следующие значения.
-* Имя кластера.
-* Пароль пользователя кластера. Имя пользователя по умолчанию — **admin**.
-* Пароль пользователя SSH. Имя пользователя SSH по умолчанию — **sshuser**.
+Запрос tooenter будут:
+* Имя кластера Hello.
+* пароль пользователя кластера Hello. (имя пользователя по умолчанию hello **администратора**.)
+* пароль пользователя для SSH Hello. (имя пользователя SSH по умолчанию hello **sshuser**.)
 
-В следующем коде содержатся встроенные параметры.
+После кода Hello предоставляет встроенные параметры:
 
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "c:\Tutorials\HDInsightARM\create-linux-based-hadoop-cluster-in-hdinsight.json" --parameters '{\"clusterName\":{\"value\":\"hdi1229\"},\"clusterLoginPassword\":{\"value\":\"Pass@word1\"},\"sshPassword\":{\"value\":\"Pass@word1\"}}'
 
-## <a name="deploy-with-the-rest-api"></a>Развертывание с помощью REST API
-См. статью [Развертывание ресурсов с использованием шаблонов и REST API Resource Manager](../azure-resource-manager/resource-group-template-deploy-rest.md).
+## <a name="deploy-with-hello-rest-api"></a>Развертывание с помощью API-интерфейса REST hello
+В разделе [развертывание с помощью API-интерфейса REST hello](../azure-resource-manager/resource-group-template-deploy-rest.md).
 
 ## <a name="deploy-with-visual-studio"></a>Развертывание с помощью Visual Studio
- С помощью Visual Studio можно создать проект группы ресурсов и развернуть его в Azure, используя пользовательский интерфейс. Выберите тип ресурсов, добавляемых в проект. Эти ресурсы автоматически добавляются в шаблон Resource Manager. Проект также предоставляет сценарий PowerShell для развертывания шаблона.
+ Использовать Visual Studio toocreate проекта группы ресурсов и разверните его tooAzure через пользовательский интерфейс hello. Выберите тип hello tooinclude ресурсы в своем проекте. Эти ресурсы будут автоматически добавлены toohello шаблона диспетчера ресурсов. проект Hello также предоставляет шаблон hello toodeploy скрипта PowerShell.
 
-Обзорные сведения об использовании групп ресурсов в Visual Studio см. в статье [Создание и развертывание групп ресурсов Azure с помощью Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Введение toousing Visual Studio с группами ресурсов. в разделе [Создание и развертывание группы ресурсов Azure с помощью Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ## <a name="troubleshoot"></a>Устранение неполадок
 
 Если при создании кластеров HDInsight возникли проблемы, см. раздел [Создание кластеров](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этой статье вы ознакомились с несколькими способами создания кластера HDInsight. Для получения дополнительных сведений ознакомьтесь со следующими статьями:
+В этой статье было изучено несколько способов toocreate кластера HDInsight. toolearn более, см. следующие статьи hello.
 
-* Пример развертывания ресурсов с помощью клиентской библиотеки .NET см. в статье [Развертывание виртуальной машины Azure с помощью C# и шаблона Resource Manager](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Пример развертывания ресурсов через клиентскую библиотеку .NET hello. в разделе [развертывания ресурсов с помощью библиотеки .NET и шаблона](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Подробный пример развертывания приложения см. в статье [Предсказуемые подготовка и развертывание микрослужб в Azure](../app-service-web/app-service-deploy-complex-application-predictably.md).
-* Инструкции по развертыванию своего решения в различных средах см. в статье [Среды разработки и тестирования в Microsoft Azure](../solution-dev-test-environments.md).
-* Дополнительную информацию о разделах в шаблоне Azure Resource Manager см. в статье [Создание шаблонов диспетчера ресурсов Azure](../azure-resource-manager/resource-group-authoring-templates.md).
-* Список функций, которые можно использовать в шаблоне Azure Resource Manager, см. в статье [Функции шаблонов диспетчера ресурсов Azure](../azure-resource-manager/resource-group-template-functions.md).
+* Руководство по развертыванию решения toodifferent сред в разделе [сред разработки и тестирования в Microsoft Azure](../solution-dev-test-environments.md).
+* toolearn о разделах hello hello шаблона диспетчера ресурсов Azure, в разделе [разработки шаблонов](../azure-resource-manager/resource-group-authoring-templates.md).
+* Список функций hello в шаблоне диспетчера ресурсов Azure можно использовать, см. [функции шаблона](../azure-resource-manager/resource-group-template-functions.md).
 
-## <a name="appendix-resource-manager-template-to-create-a-hadoop-cluster"></a>Приложение. Использование шаблона Resource Manager для создания кластера Hadoop
-Следующий шаблон Azure Resource Manager создает кластер Hadoop под управлением Linux с зависимой учетной записью хранения Azure.
+## <a name="appendix-resource-manager-template-toocreate-a-hadoop-cluster"></a>Приложение: Диспетчер ресурсов шаблона toocreate кластера Hadoop
+Hello следующий шаблон диспетчера ресурсов Azure создает кластер Hadoop под управлением Linux с учетной записью hello зависимых хранилища Azure.
 
 > [!NOTE]
-> В этом примере содержатся сведения о конфигурации для хранилищ метаданных Hive и Oozie. Удалите раздел или настройте его перед использованием шаблона.
+> В этом примере содержатся сведения о конфигурации для хранилищ метаданных Hive и Oozie. Удалить раздел hello или настраивать раздел hello перед использованием hello шаблона.
 >
 >
 
@@ -191,33 +190,33 @@ ms.lasthandoff: 08/03/2017
         "clusterName": {
         "type": "string",
         "metadata": {
-            "description": "The name of the HDInsight cluster to create."
+            "description": "hello name of hello HDInsight cluster toocreate."
         }
         },
         "clusterLoginUserName": {
         "type": "string",
         "defaultValue": "admin",
         "metadata": {
-            "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+            "description": "These credentials can be used toosubmit jobs toohello cluster and toolog into cluster dashboards."
         }
         },
         "clusterLoginPassword": {
         "type": "securestring",
         "metadata": {
-            "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+            "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
         }
         },
         "sshUserName": {
         "type": "string",
         "defaultValue": "sshuser",
         "metadata": {
-            "description": "These credentials can be used to remotely access the cluster."
+            "description": "These credentials can be used tooremotely access hello cluster."
         }
         },
         "sshPassword": {
         "type": "securestring",
         "metadata": {
-            "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+            "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
         }
         },
         "location": {
@@ -239,7 +238,7 @@ ms.lasthandoff: 08/03/2017
             "Australia Southeast"
         ],
         "metadata": {
-            "description": "The location where all azure resources will be deployed."
+            "description": "hello location where all azure resources will be deployed."
         }
         },
         "clusterType": {
@@ -252,14 +251,14 @@ ms.lasthandoff: 08/03/2017
             "spark"
         ],
         "metadata": {
-            "description": "The type of the HDInsight cluster to create."
+            "description": "hello type of hello HDInsight cluster toocreate."
         }
         },
         "clusterWorkerNodeCount": {
         "type": "int",
         "defaultValue": 2,
         "metadata": {
-            "description": "The number of nodes in the HDInsight cluster."
+            "description": "hello number of nodes in hello HDInsight cluster."
         }
         }
     },
@@ -383,11 +382,11 @@ ms.lasthandoff: 08/03/2017
     }
     }
 
-## <a name="appendix-resource-manager-template-to-create-a-spark-cluster"></a>Приложение. Использование шаблона Resource Manager для создания кластера Spark
+## <a name="appendix-resource-manager-template-toocreate-a-spark-cluster"></a>Приложение: Диспетчер ресурсов шаблона toocreate кластера Spark
 
-В этом разделе содержатся сведения Resource Manager для создания кластера HDInsight Spark. Этот шаблон содержит настройки для `spark-defaults` и `spark-thrift-sparkconf` (для кластеров Spark 1.6), а также для `spark2-defaults` и `spark2-thrift-sparkconf` (для кластеров Spark 2). Кроме того, HDInsight вычисляет и задает конфигурации, такие как `spark.executor.instances`, `spark.executor.memory` и `spark.executor.cores`, на основе размера кластера. 
+Этот раздел содержит шаблона диспетчера ресурсов, которые можно использовать toocreate кластер HDInsight Spark. Этот шаблон содержит настройки для `spark-defaults` и `spark-thrift-sparkconf` (для кластеров Spark 1.6), а также для `spark2-defaults` и `spark2-thrift-sparkconf` (для кластеров Spark 2). В дополнение к этому toothis, HDInsight вычисляет и задает конфигурации, такие как `spark.executor.instances`, `spark.executor.memory`, и `spark.executor.cores` на основе размера кластера hello. 
 
-Если задать любой из параметров этого раздела как часть самого шаблона, HDInsight не будет рассчитывать и задавать другие параметры того же раздела. Например, параметр `spark.executor.instances` относится к конфигурации `spark-defaults`. Если задать другой параметр (например, `spark.yarn.exector.memoryOverhead`) в конфигурации `spark-defaults`, HDInsight также не будет рассчитывать и задавать параметр `spark.executor.instances`.
+При выборе любой из параметров в разделе как часть самого шаблона hello HDInsight не вычисления и задать другие параметры hello hello один раздел. Например, параметр `spark.executor.instances` в hello `spark-defaults` конфигурации. Если в качестве параметра другой (например, `spark.yarn.exector.memoryOverhead`) в hello `spark-defaults` конфигурации, HDInsight не вычисления и установите hello `spark.executor.instances` также.
 
     {
     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
@@ -396,27 +395,27 @@ ms.lasthandoff: 08/03/2017
         "clusterName": {
             "type": "string",
             "metadata": {
-                "description": "The name of the HDInsight cluster to create."
+                "description": "hello name of hello HDInsight cluster toocreate."
             }
         },
         "clusterLoginUserName": {
             "type": "string",
             "defaultValue": "admin",
             "metadata": {
-                "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+                "description": "These credentials can be used toosubmit jobs toohello cluster and toolog into cluster dashboards."
             }
         },
         "clusterLoginPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
             }
         },
         "location": {
             "type": "string",
             "defaultValue": "southcentralus",
             "metadata": {
-                "description": "The location where all azure resources will be deployed."
+                "description": "hello location where all azure resources will be deployed."
             }
         },
         "clusterVersion": {
@@ -430,27 +429,27 @@ ms.lasthandoff: 08/03/2017
             "type": "int",
             "defaultValue": 4,
             "metadata": {
-                "description": "The number of nodes in the HDInsight cluster."
+                "description": "hello number of nodes in hello HDInsight cluster."
             }
         },
         "clusterKind": {
             "type": "string",
             "defaultValue": "SPARK",
             "metadata": {
-                "description": "The type of the HDInsight cluster to create."
+                "description": "hello type of hello HDInsight cluster toocreate."
             }
         },
         "sshUserName": {
             "type": "string",
             "defaultValue": "sshuser",
             "metadata": {
-                "description": "These credentials can be used to remotely access the cluster."
+                "description": "These credentials can be used tooremotely access hello cluster."
             }
         },
         "sshPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
             }
         }
     },

@@ -1,6 +1,6 @@
 ---
-title: "Средство Docker Compose для Azure Service Fabric (предварительная версия) | Документация Майкрософт"
-description: "Платформа Azure Service Fabric принимает формат Docker Compose для упрощения управления существующими контейнерами с помощью Service Fabric. Сейчас эта возможность доступна в предварительной версии."
+title: "aaaAzure службы структуры Docker составления Preview | Документы Microsoft"
+description: "Azure Service Fabric принимает Docker Compose toomake формат его проще контейнеры exsiting tooorchestrate, с помощью Service Fabric. Сейчас эта возможность доступна в предварительной версии."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: b12ef95add6347621f7d4865fac46568f91a1e12
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 824044fd698f0ed94c4212722bc82187905315dc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="specifying-volume-plugins-and-logging-drivers-for-your-container"></a>Указание подключаемых модулей томов и драйверов ведения журналов для контейнера
 
-Service Fabric поддерживает указание [подключаемых модулей томов Docker](https://docs.docker.com/engine/extend/plugins_volume/) и [драйверов ведения журналов Docker](https://docs.docker.com/engine/admin/logging/overview/) для службы контейнеров. Подключаемые модули указываются в манифесте приложения, как показано в следующем примере:
+Service Fabric поддерживает указание [подключаемых модулей томов Docker](https://docs.docker.com/engine/extend/plugins_volume/) и [драйверов ведения журналов Docker](https://docs.docker.com/engine/admin/logging/overview/) для службы контейнеров. Hello подключаемые модули указаны в манифесте приложения hello, как показано в следующих манифест hello:
 
 
 ```xml
@@ -56,9 +56,9 @@ Service Fabric поддерживает указание [подключаемы
 </ApplicationManifest>
 ```
 
-В приведенном выше примере тег `Source` для `Volume` указывает на исходную папку. Исходной папкой может быть папка в виртуальной машине, в которой размещаются контейнеры, или постоянное удаленное хранилище. Тег `Destination` — это расположение, с которым сопоставляется `Source` в работающем контейнере. 
+В предыдущих пример hello, hello `Source` тег для hello `Volume` ссылается toohello исходной папки. Исходная папка Hello может быть папка в hello виртуальной Машины, на котором размещена hello контейнеров или постоянного удаленного хранилища. Hello `Destination` тег является расположение hello, hello `Source` hello сопоставленных toowithin выполняется контейнера. 
 
-При указании подключаемого модуля тома Service Fabric автоматически создает том, используя заданные параметры. Тег `Source` — это имя тома, а тег `Driver` указывает подключаемый модуль драйвера тома. Параметры можно указать с помощью тега `DriverOption`, как показано в следующем фрагменте:
+При указании тома подключаемого модуля, Service Fabric автоматически создает hello тома, с помощью параметров hello. Hello `Source` тег является именем hello тома hello и hello `Driver` тег указывает подключаемый модуль драйвера тома hello. Параметры можно задать с помощью hello `DriverOption` тег, как показано в hello, следующий фрагмент кода:
 
 ```xml
 <Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azurefile" IsReadOnly="true">
@@ -66,9 +66,9 @@ Service Fabric поддерживает указание [подключаемы
 </Volume>
 ```
 
-Если задан драйвер ведения журналов Docker, необходимо развернуть агенты (или контейнеры) для обработки журналов в кластере.  Тег `DriverOption` также может использоваться для указания параметров драйвера ведения журналов.
+Если драйвер Docker журнала указан, это необходимые toodeploy журналы hello toohandle агентов (или контейнеры) в кластере hello.  Hello `DriverOption` тега может быть параметры драйвера журнала используется toospecify также.
 
-Сведения о развертывании контейнеров в кластере Service Fabric см. в следующих статьях:
+См. следующие кластера Service Fabric tooa контейнеры toodeploy статьи toohello:
 
 
 [Развертывание контейнера в Service Fabric](service-fabric-deploy-container.md)

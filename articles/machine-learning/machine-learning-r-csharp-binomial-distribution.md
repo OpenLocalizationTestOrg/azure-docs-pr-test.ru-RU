@@ -1,6 +1,6 @@
 ---
-title: "Набор биномиального распределения Azure (устаревшая версия) | Документация Майкрософт"
-description: "Сведения о наборе биномиального распределения (устаревшая версия)."
+title: "AAA(deprecated) набор биномиальное распределение - Azure | Документы Microsoft"
+description: "Набор биномиального распределения (устаревшая версия)"
 services: machine-learning
 documentationcenter: 
 author: ireiter
@@ -16,67 +16,67 @@ ms.date: 01/06/2017
 ms.author: ireiter
 ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-redirect_document_id: TRUE
-ms.openlocfilehash: 6f0a6d06e7401c8360a92a707a0552f41ff3657c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 6f94436cd19abeb518d179f340c8d4f43fcf4520
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deprecated-binomial-distribution-suite"></a>Набор биномиального распределения (устаревшая версия)
 
 > [!NOTE]
-> Работа Microsoft DataMarket прекращается, и этот API больше не поддерживается. 
+> Hello Microsoft DataMarket прекращено, и этот API устарел. 
 > 
-> Много полезных примеров экспериментов и API можно найти в [коллекции Cortana Intelligence](http://gallery.cortanaintelligence.com). Дополнительные сведения о коллекции см. в статье [Поиск ресурсов в коллекции Cortana Intelligence и обмен ими](machine-learning-gallery-how-to-use-contribute-publish.md).
+> Можно найти множество полезный пример экспериментов и API-интерфейсы в hello [коллекции аналитики Cortana](http://gallery.cortanaintelligence.com). Дополнительные сведения о коллекции hello. в разделе [общего ресурса и поиска ресурсов в коллекции Cortana аналитики hello](machine-learning-gallery-how-to-use-contribute-publish.md).
 
-Набор веб-служб биномиального распределения состоит из трех веб-служб ([Биномиальный генератор](https://datamarket.azure.com/dataset/aml_labs/bdg5), [Калькулятор вероятностей](https://datamarket.azure.com/dataset/aml_labs/bdp4), [Калькулятор квантилей](https://datamarket.azure.com/dataset/aml_labs/bdq5)), предназначенных для создания биномиальных распределений и работы с ними. С их помощью можно создать биномиальное распределение любой длины, рассчитать квантили для любой заданной вероятности, а также вероятность — для заданного квантиля. Каждая служба выдает собственный набор выходных данных (см. описание ниже). В основе набора веб-служб биномиального распределения лежит использование функций qbinom, rbinom и pbinom, которые входят в пакет статистических функций языка R. 
+Hello Suite биномиальное распределение — это набор образец веб-службы ([биномиальное генератор](https://datamarket.azure.com/dataset/aml_labs/bdg5), [калькулятора вероятности](https://datamarket.azure.com/dataset/aml_labs/bdp4), [Квантиля калькулятора](https://datamarket.azure.com/dataset/aml_labs/bdq5)), помогающие при формировании и Работа с биномиального распределения. Hello служб разрешить создание последовательности биномиальное распределение любой длины, вычисление квантилей из заданного из заданного квантиля вероятности и расчета вероятности. Каждой из служб hello выдает различные выходы, на основе выбранных hello службы (см. описание ниже). Hello биномиальное распределение набор основан на qbinom функции hello R, rbinom и pbinom, включенных в пакет stats R hello. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-> С этими веб-службами пользователи могут работать непосредственно из магазина, через мобильное приложение, веб-сайт или даже локальный компьютер. Веб-служба также служит примером того, как машинное обучение Azure можно использовать для создания веб-служб на основе кода R. Чтобы создать эксперимент с использованием кода R и опубликовать его как веб-службу, достаточно написать несколько строк кода R и нажать несколько кнопок в студии машинного обучения Azure. Авторы таких служб могут размещать их в магазине Azure Marketplace и предлагать пользователям и устройствам со всего мира, не тратя время и усилия на создание соответствующей инфраструктуры.
+> Эти веб-службы может использоваться пользователей — потенциально непосредственно на рынке hello, через мобильные приложения на веб-сайте или на локальном компьютере, например. Но hello hello веб-службы служит также tooserve в качестве примера как машинного обучения Azure можно использовать toocreate веб-служб на основе кода R. Чтобы создать эксперимент с использованием кода R и опубликовать его как веб-службу, достаточно написать несколько строк кода R и нажать несколько кнопок в студии машинного обучения Azure. Hello веб-службы может быть затем опубликованных toohello Azure Marketplace и используемые пользователями и устройствами через hello world — не настраивать инфраструктуру автором hello hello веб-службы не требуется.
 > 
 > 
 
 ## <a name="consumption-of-web-service"></a>Использование веб-службы
-В состав набора веб-служб биномиального распределения входят перечисленные ниже 3 службы.
+Hello биномиальное распределение Suite включает следующие 3 службы hello.
 
 ### <a name="binomial-distribution-quantile-calculator"></a>Калькулятор квантилей биномиального распределения
-Эта служба принимает четыре аргумента нормального распределения и рассчитывает соответствующий квантиль.
-Входные аргументы:
+Эта служба принимает аргументы 4 нормального распределения и вычисляет квантиля связанные hello.
+Hello входными аргументами являются:
 
 * p — единое обобщенное значение вероятности для набора испытаний.  
-* size — количество испытаний
-* prob — вероятность успешного испытания.
-* Side — L для нижней или U для верхней части распределения. 
+* размер - hello число испытаний.
+* то функция вероятность - hello вероятность успеха в пробной версии.
+* Сторона - L для hello нижней стороны hello распределения, U для hello верхней части hello распространения. 
 
-На выходе служба выдает рассчитанный квантиль, связанный с заданной вероятностью.
+Hello hello службы является квантиля hello вычисления, связанный с заданным вероятность hello.
 
 ### <a name="binomial-distribution-probability-calculator"></a>Калькулятор вероятности биномиального распределения
-Эта служба принимает четыре аргумента биномиального распределения и рассчитывает соответствующую вероятность.
-Входные аргументы:
+Эта служба принимает 4 аргументы биномиальное распределение и вычисляет вероятность связанные hello.
+Hello входными аргументами являются:
 
 * q — один квантиль события с биномиальным распределением. 
-* size — количество испытаний
-* prob — вероятность успешного испытания.
-* side — L для нижней или U для верхней части распределения либо E (одно значение количества успешных испытаний).
+* размер - hello число испытаний.
+* то функция вероятность - hello вероятность успеха в пробной версии.
+* сторона - L для нижней стороны распространения hello, U для hello верхней части распространения hello или E, равно tooa один количество успешных hello.
 
-На выходе служба выдает рассчитанную вероятность, связанную с заданным квантилем.
+выходные данные Hello hello службы — hello вычисляется вероятность, связанную с заданным квантиля hello.
 
 ### <a name="binomial-distribution-generator"></a>Генератор биномиального распределения
-Эта служба принимает три аргумента биномиального распределения и создает случайную последовательность биномиально распределенных чисел. Ниже описаны аргументы, передаваемые этой службе в запросе.
+Эта служба принимает три аргумента биномиального распределения и создает случайную последовательность биномиально распределенных чисел. Hello следующие аргументы должны предоставляться tooit внутри hello запроса:
 
 * n — количество наблюдений. 
 * size — количество испытаний.
 * prob — вероятность успеха.
 
-На выходе служба выдает последовательность чисел длины n с биномиальным распределением на основе аргументов size и prob.
+выходные данные Hello hello службы — это последовательность n длины с биномиального распределения, в зависимости от размера и то функция вероятность аргументов hello.
 
-> Эта служба, размещенная в Azure Marketplace, является службой на основе OData. Вызвать ее можно методами POST и GET. 
+> Эта служба, размещенного на hello Azure Marketplace, — это служба OData; Это может быть вызвана через методы POST или GET. 
 > 
 > 
 
-Автоматизировать использование этой службы можно несколькими способами (примеры приложений: [Генератор](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionGenerator.aspx), [Калькулятор вероятности](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionProbabilityCalculator.aspx), [Калькулятор квантилей](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionQuantileCalculator)). 
+Существует несколько способов использования службы hello в автоматическом режиме (пример приложения — здесь: [генератор](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionGenerator.aspx), [калькулятора вероятности](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionProbabilityCalculator.aspx), [Квантиля калькулятора](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionQuantileCalculator)). 
 
 ### <a name="starting-c-code-for-web-service-consumption"></a>Начало кода C# для использования веб-службы:
 ### <a name="binomial-distribution-quantile-calculator"></a>Калькулятор квантилей биномиального распределения
@@ -174,7 +174,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="creation-of-web-service"></a>Создание веб-службы
-> Эта веб-служба была создана с помощью системы машинного обучения Azure. Чтобы получить бесплатную пробную версию и вводные видеоматериалы по созданию экспериментов и [публикации веб-служб](machine-learning-publish-a-machine-learning-web-service.md), посетите веб-страницу [azure.com/ml](http://azure.com/ml). Ниже приведен снимок экрана эксперимента, в результате которого была создана веб-служба, и пример кода для каждого модуля в эксперименте.
+> Эта веб-служба была создана с помощью системы машинного обучения Azure. Чтобы получить бесплатную пробную версию и вводные видеоматериалы по созданию экспериментов и [публикации веб-служб](machine-learning-publish-a-machine-learning-web-service.md), посетите веб-страницу [azure.com/ml](http://azure.com/ml). Ниже приведен снимок экрана приветствия эксперимента, созданные для каждого из модулей hello в эксперименте hello hello веб-службы и пример кода.
 > 
 > 
 
@@ -184,7 +184,7 @@ ms.lasthandoff: 07/11/2017
 #### <a name="module-1"></a>Модуль 1:
     #data schema with example data (replaced with data from web service)
     data.set=data.frame(p=0.1,size=10,prob=.5,side='L');
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
 #### <a name="module-2"></a>Модуль 2:
     dataset1 <- maml.mapInputPort(1) # class: data.frame
     param = dataset1
@@ -220,7 +220,7 @@ ms.lasthandoff: 07/11/2017
 
     output = as.data.frame(quantile)
 
-    # Select data.frame to be sent to the output Dataset port
+    # Select data.frame toobe sent toohello output Dataset port
     maml.mapOutputPort("output");
 
 
@@ -230,7 +230,7 @@ ms.lasthandoff: 07/11/2017
 #### <a name="module-1"></a>Модуль 1:
     #data schema with example data (replaced with data from web service)
     data.set=data.frame(q=5,size=10,prob=.5,side='L');
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
 
 
 #### <a name="module-2"></a>Модуль 2:
@@ -256,7 +256,7 @@ ms.lasthandoff: 07/11/2017
 
     output = as.data.frame(prob)
 
-    # Select data.frame to be sent to the output Dataset port
+    # Select data.frame toobe sent toohello output Dataset port
     maml.mapOutputPort("output");
 
 ### <a name="binomial-distribution-generator"></a>Генератор биномиального распределения
@@ -265,7 +265,7 @@ ms.lasthandoff: 07/11/2017
 #### <a name="module-1"></a>Модуль 1:
     #data schema with example data (replaced with data from web service)
     data.set=data.frame(n=50,size=10,p=.5);
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
 
 #### <a name="module-2"></a>Модуль 2:
     dataset1 <- maml.mapInputPort(1) # class: data.frame
@@ -274,14 +274,14 @@ ms.lasthandoff: 07/11/2017
 
     output = as.data.frame(t(dist))
 
-    # Select data.frame to be sent to the output Dataset port
+    # Select data.frame toobe sent toohello output Dataset port
     maml.mapOutputPort("output");
 
 ## <a name="limitations"></a>Ограничения
-Это очень простой пример, выполняющий операции с биномиальными распределениями. Как видно из приведенного выше образца кода, в нем практически не отслеживаются ошибки.
+Это очень простой примеры вокруг hello биномиальное распределение. Как видно в приведенном выше примере кода hello, реализуется немного перехват ошибок.
 
 ## <a name="faq"></a>Часто задаваемые вопросы
-Ознакомиться с часто задаваемыми вопросами по использованию веб-службы и публикации в Azure Marketplace можно [здесь](machine-learning-marketplace-faq.md).
+Часто задаваемые вопросы о потреблении hello веб-службы или публикации toohello Azure Marketplace в разделе [здесь](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_1.png
 

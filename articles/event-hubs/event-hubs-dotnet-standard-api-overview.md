@@ -1,5 +1,5 @@
 ---
-title: "Обзор интерфейсов API концентраторов событий Azure для платформы .NET Standard | Документация Майкрософт"
+title: "aaaOverview из hello стандартных API концентраторов событий .NET Azure | Документы Microsoft"
 description: "Обзор API для платформы .NET Standard"
 services: event-hubs
 documentationcenter: na
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: eea682c40cd415b383a8b2f0004a5f3648e2f01f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c97acecb35b69039e06ded7203c75fca41ce98f2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Обзор API концентраторов событий для платформы .NET Standard
-В этой статье перечислены некоторые ключевые клиентские API концентраторов событий для .NET Standard. В настоящее время существует две клиентские библиотеки .NET Standard:
+В этой статье приведена сводка hello ключа интерфейсов API .NET концентраторов событий Standard клиента. В настоящее время существует две клиентские библиотеки .NET Standard:
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
   *  Эта библиотека содержит все основные операции среды выполнения.
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
-  * Эта библиотека расширяет функциональные возможности, позволяя отслеживать обработанные события. Это самый простой способ чтения из концентратора событий.
+  * Эта библиотека добавляет дополнительные функциональные возможности, позволяет для отслеживания обработанные события, которое tooread простым способом hello из концентратора событий.
 
 ## <a name="event-hubs-client"></a>Клиент концентраторов событий
-[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) является основным объектом, который используется для отправки событий, создания приемников и получения данных среды выполнения. Этот клиент связан с определенным концентратором событий и создает подключение к конечной точке концентраторов событий.
+[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) hello основного объекта, используйте события toosend создана получатели и tooget информации во время выполнения. Этот клиент — центр связанного tooa определенного события и создает новую конечную точку подключения toohello концентраторов событий.
 
 ### <a name="create-an-event-hubs-client"></a>Создание клиента концентратора событий
-Объект [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) создается из строки подключения. В следующем примере показан самый простой способ создания клиента:
+Объект [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) создается из строки подключения. Следующий пример hello показано Hello простейший способ tooinstantiate нового клиента:
 
 ```csharp
 var eventHubClient = EventHubClient.CreateFromConnectionString("{Event Hubs connection string}");
 ```
 
-Чтобы изменить строку подключения программными средствами, можно использовать класс [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) и передать строку подключения в качестве параметра в [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_).
+tooprogrammatically изменить строку соединения hello, вы можете использовать hello [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) класса и передать в качестве параметра строки подключения hello слишком[EventHubClient.CreateFromConnectionString ](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_).
 
 ```csharp
 var connectionStringBuilder = new EventHubsConnectionStringBuilder("{Event Hubs connection string}")
@@ -49,7 +49,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 ```
 
 ### <a name="send-events"></a>Отправка событий
-Для отправки событий в концентратор событий используйте класс [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata). Текст должен быть массивом `byte` или сегментом массива `byte`.
+события toosend tooan концентратора событий, используйте hello [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) класса. текст Hello должен быть `byte` массива, или `byte` фрагмента массива.
 
 ```csharp
 // Create a new EventData object by encoding a string as a byte array
@@ -61,32 +61,32 @@ await eventHubClient.SendAsync(data);
 ```
 
 ### <a name="receive-events"></a>Получение событий
-Для получения событий из концентраторов событий рекомендуется использовать узел [Event Processor Host](#event-processor-host-apis), который предоставляет возможность автоматически отслеживать смещение и сведения о секциях. Однако, существуют определенные ситуации, в которых для получения событий может потребоваться гибкость основной библиотеки концентраторов событий.
+Hello рекомендуется способом tooreceive события из концентраторов событий использует hello [узел обработчика событий](#event-processor-host-apis), который предоставляет функциональные возможности tooautomatically отслеживать смещение и сведения о секции. Однако существуют ситуаций, в которых может потребоваться гибкость hello toouse hello основные концентраторов событий библиотеки tooreceive события.
 
 #### <a name="create-a-receiver"></a>Создание приемника
-Приемники связаны с определенными секциями, поэтому для получения всех событий в концентраторе событий необходимо создать несколько экземпляров. Как правило, рекомендуется получать сведения о секциях программными средствами, не задавая идентификаторы секций жестко в коде. Для этого можно использовать метод [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync).
+Приемники — это связанные toospecific секций, так чтобы tooreceive все события в концентратор событий, вы должны будете toocreate несколько экземпляров. Вообще говоря это хороший способ сведения о разделах tooget hello программным путем, вместо жестко запрограммированного идентификаторы секций hello. Порядок toodo так, можете воспользоваться hello [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) метод.
 
 ```csharp
-// Create a list to keep track of the receivers
+// Create a list tookeep track of hello receivers
 var receivers = new List<PartitionReceiver>();
-// Use the eventHubClient created above to get the runtime information
+// Use hello eventHubClient created above tooget hello runtime information
 var runTimeInformation = await eventHubClient.GetRuntimeInformationAsync();
-// Loop over the resulting partition ids
+// Loop over hello resulting partition ids
 foreach (var partitionId in runTimeInformation.PartitionIds)
 {
-    // Create the receiver
+    // Create hello receiver
     var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGroupName, partitionId, PartitionReceiver.EndOfStream);
-    // Add the receiver to the list
+    // Add hello receiver toohello list
     receivers.Add(receiver);
 }
 ```
 
-Так как события никогда не удаляются из концентратора событий (только истекает их срок действия), правильно укажите отправную точку. В следующем примере показаны возможные комбинации.
+Поскольку события никогда не удаляются из концентратора событий (и только срок действия), необходимо toospecify hello правильную отправной точки. Hello пример возможных сочетаний.
 
 ```csharp
-// partitionId is assumed to come from GetRuntimeInformationAsync()
+// partitionId is assumed toocome from GetRuntimeInformationAsync()
 
-// Using the constant PartitionReceiver.EndOfStream only receives all messages from this point forward.
+// Using hello constant PartitionReceiver.EndOfStream only receives all messages from this point forward.
 var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGroupName, partitionId, PartitionReceiver.EndOfStream);
 
 // All messages available
@@ -98,17 +98,17 @@ var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGr
 
 #### <a name="consume-an-event"></a>Использование события
 ```csharp
-// Receive a maximum of 100 messages in this call to ReceiveAsync
+// Receive a maximum of 100 messages in this call tooReceiveAsync
 var ehEvents = await receiver.ReceiveAsync(100);
 // ReceiveAsync can return null if there are no messages
 if (ehEvents != null)
 {
-    // Since ReceiveAsync can return more than a single event you will need a loop to process
+    // Since ReceiveAsync can return more than a single event you will need a loop tooprocess
     foreach (var ehEvent in ehEvents)
     {
-        // Decode the byte array segment
+        // Decode hello byte array segment
         var message = UnicodeEncoding.UTF8.GetString(ehEvent.Body.Array);
-        // Load the custom property that we set in the send example
+        // Load hello custom property that we set in hello send example
         var customType = ehEvent.Properties["Type"];
         // Implement processing logic here
     }
@@ -116,10 +116,10 @@ if (ehEvents != null)
 ```
 
 ## <a name="event-processor-host-apis"></a>Интерфейсы API узла обработчика событий
-Эти API обеспечивают отказоустойчивость рабочих процессов, которые могут стать недоступными, и распределяют секции между всеми имеющимися исполнителями.
+Эти API обеспечивают отказоустойчивость tooworker процессов, которые могут стать недоступными, распространив секций среди всех имеющихся работников.
 
 ```csharp
-// Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
+// Checkpointing is done within hello SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
 
 // Read these connection strings from a secure location
 var ehConnectionString = "{Event Hubs connection string}";
@@ -137,11 +137,11 @@ var eventProcessorHost = new EventProcessorHost(
 // Start/register an EventProcessorHost
 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
-// Disposes of the Event Processor Host
+// Disposes of hello Event Processor Host
 await eventProcessorHost.UnregisterEventProcessorAsync();
 ```
 
-Ниже приведен пример реализации интерфейса [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor).
+Hello ниже приведен пример реализации hello [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor).
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -178,12 +178,12 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о сценариях концентраторов событий см. в разделах, ссылки на которые указаны ниже.
+toolearn Дополнительные сведения о сценариях концентраторов событий в следующих статьях:
 
 * [Что такое концентраторы событий Azure?](event-hubs-what-is-event-hubs.md)
 * [Общие сведения об API концентраторов событий](event-hubs-api-overview.md)
 
-Ссылки на API-интерфейсы .NET:
+Здесь приведены ссылки .NET API Hello.
 
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)

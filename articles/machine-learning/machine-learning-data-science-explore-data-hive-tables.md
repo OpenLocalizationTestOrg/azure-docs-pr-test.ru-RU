@@ -1,5 +1,5 @@
 ---
-title: "Просмотр данных в таблицах Hive с помощью запросов Hive | Документация Майкрософт"
+title: "aaaExplore данные в таблицах Hive с запросов Hive | Документы Microsoft"
 description: "Просмотр данных в таблицах Hive с помощью запросов Hive."
 services: machine-learning
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: 67a33a9abc3d3dcdd2fc7205e11feff97e3582a3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2ede3d41682aa08ced19284f7a83ec95e0c2a93a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Просмотр данных в таблицах Hive с помощью запросов Hive
-В этом документе представлено несколько примеров сценариев Hive, которые используются для анализа данных в таблицах Hive в кластере HDInsight Hadoop.
+Этот документ содержит примеры сценариев Hive, используемые tooexplore данные в таблицах Hive в кластере HDInsight Hadoop.
 
-Следующее **меню** содержит ссылки на статьи, описывающие использование средств для просмотра данных из различных сред хранения.
+следующие Hello **меню** связывает tootopics, описывающих, как toouse средств tooexplore данные из различных средах хранилища.
 
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
@@ -31,18 +31,18 @@ ms.lasthandoff: 08/29/2017
 В этой статье предполагается, что вы:
 
 * Создали учетную запись хранения Azure. Инструкции см. в разделе [Создание учетной записи хранения](../storage/common/storage-create-storage-account.md#create-a-storage-account).
-* Подготовили настраиваемый кластер Hadoop с помощью службы HDInsight. Инструкции см. в статье [Настройка кластеров Azure HDInsight Hadoop для процесса обработки и анализа данных группы](machine-learning-data-science-customize-hadoop-cluster.md).
-* Отправили данные в таблицы Hive, которые находятся в кластерах Azure HDInsight Hadoop. Если данные не загружены, необходимо предварительно загрузить их в таблицы Hive, воспользовавшись инструкциями из статьи [Создание и загрузка данных в таблицы Hive из хранилища больших двоичных объектов Azure](machine-learning-data-science-move-hive-tables.md) .
-* Включили удаленный доступ к кластеру. Инструкции можно найти в разделе [Доступ к головному узлу в кластере Hadoop](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
-* Инструкции по отправке запросов Hive см. в разделе [Отправка запросов Hive](machine-learning-data-science-move-hive-tables.md#submit).
+* Подготовить настроенные кластеру с hello службы HDInsight. Инструкции см. в статье [Настройка кластеров Azure HDInsight Hadoop для процесса обработки и анализа данных группы](machine-learning-data-science-customize-hadoop-cluster.md).
+* Hello данные были отправленного tooHive таблиц в Azure HDInsight Hadoop кластеров. Если она не установлена, следуйте инструкциям hello [Создание и загрузка таблиц данных tooHive](machine-learning-data-science-move-hive-tables.md) tooHive tooupload данных сначала таблиц.
+* Включить toohello кластера удаленного доступа. При необходимости инструкции в разделе [доступа hello головного узла кластера Hadoop](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
+* При необходимости инструкции toosubmit запросов Hive, в разделе [как tooSubmit запросов Hive](machine-learning-data-science-move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Пример сценариев запроса Hive для просмотра данных
-1. Узнайте количество наблюдений на раздел `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Узнайте количество наблюдений в день `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
-3. Получение уровней в столбце категорий   
+1. Получение числа hello наблюдения на секцию`SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Получение числа hello наблюдения за день`SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+3. Получить уровней hello в категориальный столбец  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Узнайте число уровней в сочетании двух столбцов категорий `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
-5. Получение распределения для числовых столбцов   
+4. Получить hello количество уровней в сочетании с двумя категориальные столбцы`SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+5. Получить hello распространения для числовых столбцов.  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. Извлечение записей из двух объединенных таблиц
    
@@ -72,5 +72,5 @@ ms.lasthandoff: 08/29/2017
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Дополнительные сценарии запросов для сценариев данных о поездках такси
-Кроме того, в [репозитории GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) приведены примеры запросов, которые используются для сценариев наподобие [Данные о поездках в такси по Нью-Йорку](http://chriswhong.com/open-data/foil_nyc_taxi/). Для этих запросов уже задана схема данных, и они готовы к отправке и запуску.
+Примеры запросов, которые являются определенной[NYC такси обработки данных](http://chriswhong.com/open-data/foil_nyc_taxi/) сценарии также приведены в [репозитории GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Эти запросы уже есть указана схема данных и будут готовы toobe отправлен toorun.
 

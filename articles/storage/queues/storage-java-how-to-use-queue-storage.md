@@ -1,6 +1,6 @@
 ---
-title: "Как использовать хранилище очередей из Java | Документация Майкрософт"
-description: "Вы узнаете, как использовать службы очередей Azure для создания и удаления очередей, вставки, получения и удаления сообщений. Примеры кода написаны на Java."
+title: "aaaHow toouse хранилища очередей из Java | Документы Microsoft"
+description: "Узнайте, как toocreate службы очередей Azure hello toouse и очереди delete и insert, получение и удаление сообщений. Примеры кода написаны на Java."
 services: storage
 documentationcenter: java
 author: robinsh
@@ -14,21 +14,21 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-ms.openlocfilehash: a56b345c5efb4ce9c8ee2da91b798d09d44e42be
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 297f89c9d21a38d2b4a5f4346f66f59f9d487010
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-queue-storage-from-java"></a>Использование хранилища очередей из Java
+# <a name="how-toouse-queue-storage-from-java"></a>Как toouse хранилища очередей из Java
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="overview"></a>Обзор
-В этом руководстве показано, как реализовать типичные сценарии с использованием службы хранения очередей Azure. Примеры написаны на Java и используют [пакет SDK службы хранилища Azure для Java][Azure Storage SDK for Java]. Здесь описаны такие сценарии, как **вставка**, **просмотр**, **получение** и **удаление** сообщений очереди, а также **создание** и **удаление** очередей. Дополнительные сведения об очередях см. в разделе [Дальнейшие действия](#Next-Steps).
+В этом руководстве будет показано, как с помощью распространенных сценариев tooperform hello службы хранилища очередей Azure. Hello примеры написаны на Java и использовать hello [пакет SDK хранилища Azure для Java][Azure Storage SDK for Java]. Hello сценарии включают **Вставка**, **Просмотр**, **начало**, и **удаление** очередь сообщений, а также  **Создание** и **удаление** очереди. Дополнительные сведения об очередях см. в разделе hello [дальнейшие действия](#Next-Steps) раздела.
 
-Примечание. Пакет SDK доступен для разработчиков, которые используют хранилище Azure на устройствах под управлением Android. Дополнительные сведения см. в разделе [Microsoft Azure Storage SDK for Android][Azure Storage SDK for Android] (Пакет SDK хранилища Azure для Android).
+Примечание. Пакет SDK доступен для разработчиков, которые используют хранилище Azure на устройствах под управлением Android. Дополнительные сведения см. в разделе hello [пакет SDK хранилища Azure для Android][Azure Storage SDK for Android].
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -37,29 +37,29 @@ ms.lasthandoff: 08/29/2017
 ## <a name="create-a-java-application"></a>Создание приложения Java
 В этом руководстве будут использоваться компоненты хранилища, которые могут быть вызваны локально в приложении Java или в коде, работающем в веб-роли или рабочей роли в Azure.
 
-Для этого необходимо установить пакет SDK для Java (JDK) и создать учетную запись хранения Azure в подписке Azure. После того, как это будет сделано, необходимо убедиться, что ваша система разработки отвечает минимальным требованиям и зависимостям, указанным в репозитории [пакета SDK службы хранилища Azure для Java][Azure Storage SDK for Java] на сайте GitHub. Если ваша система отвечает указанным требованиям можно приступить к выполнению инструкций по загрузке библиотек хранилища Azure для Java из репозитория и их установке на своей системе. После завершение этих задач вы сможете приступить к созданию приложения Java с использованием примеров из данной статьи.
+toodo таким образом, вам потребуется tooinstall hello Java Development Kit (JDK) и создать учетную запись хранилища Azure в подписке Azure. Как только вы делали, вам потребуется tooverify, разработки система удовлетворяет минимальным требованиям hello и зависимости, которые указаны в hello [пакет SDK хранилища Azure для Java] [ Azure Storage SDK for Java] репозитория в GitHub. Если компьютер соответствует этим требованиям, можно выполнить hello инструкции по загрузке и установке hello библиотеки хранилища Azure для Java в вашей системе из этого репозитория. После завершения этих задач можно будет toocreate приложения Java, использующего hello примеры в этой статье.
 
-## <a name="configure-your-application-to-access-queue-storage"></a>Настройка приложения для доступа к хранилищу очередей
-Если нужно использовать API-интерфейсы Azure для доступа к очередям, добавьте следующие инструкции импорта в верхнюю часть файла Java:
+## <a name="configure-your-application-tooaccess-queue-storage"></a>Настройка хранилища очереди tooaccess приложения
+Добавьте следующие начало toohello инструкции импорта файла Java hello, место очереди tooaccess API-интерфейсов хранилища Azure toouse hello:
 
 ```java
-// Include the following imports to use queue APIs.
+// Include hello following imports toouse queue APIs.
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.queue.*;
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Настройка строки подключения к службе хранилища Azure
-Клиент хранилища Azure использует строку подключения с целью хранения конечных точек и учетных данных для доступа к службам управления данными. При работе в клиентском приложении необходимо указать для хранилища строку подключения в следующем формате, используя имя своей учетной записи хранения и первичный ключ доступа для учетной записи хранения, указанные на [портале Azure](https://portal.azure.com) значениями *AccountName* и *AccountKey*. В этом примере показано, как объявить статическое поле для размещения строки подключения:
+Клиент хранилища Azure использует хранилища конечные точки toostore соединения строки и учетные данные для доступа к службам данных управления. При работе в клиентском приложении, необходимо указать строку соединения хранения hello в hello следующая формата, используя hello имя учетной записи и hello первичный ключ доступа для учетной записи хранения hello, перечисленные в hello [портала Azure](https://portal.azure.com)для hello *AccountName* и *AccountKey* значения. В этом примере показано, как объявить строки подключения hello toohold статического поля:
 
 ```java
-// Define the connection-string with your values.
+// Define hello connection-string with your values.
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
     "AccountKey=your_storage_account_key";
 ```
 
-Если приложение выполняется в роли на платформе Microsoft Azure, эта строка может храниться в файле конфигурации службы *ServiceConfiguration.cscfg*, для доступа к которой можно использовать вызов метода **RoleEnvironment.getConfigurationSettings** . Ниже приведен пример получения строки подключения из элемента **Setting** с именем *StorageConnectionString* в файле конфигурации службы:
+Эта строка в приложения, запущенного в рамках роли в Microsoft Azure, могут храниться в файле конфигурации службы hello, *ServiceConfiguration.cscfg*и можно осуществить с помощью toohello вызова  **RoleEnvironment.getConfigurationSettings** метод. Ниже приведен пример получения строки подключения hello из **параметр** элемента с именем *StorageConnectionString* в файле конфигурации службы hello:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -67,12 +67,12 @@ String storageConnectionString =
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 ```
 
-В приведенных ниже примерах предполагается, что вы использовали одно из этих двух определений для получения строки подключения к хранилищу.
+Hello следующие образцы предполагается, что используется один из этих двух методов tooget hello строки подключения к хранилищу.
 
 ## <a name="how-to-create-a-queue"></a>Практическое руководство. Создание очереди
-Объект **CloudQueueClient** позволяет ссылаться на объекты очередей. Следующий код создает объект **CloudQueueClient**. (Примечание. Есть и другие способы создания объектов **CloudStorageAccount**. Дополнительные сведения см. в разделе **CloudStorageAccount** в [справочнике по пакету SDK для клиента службы хранилища Azure].)
+Объект **CloudQueueClient** позволяет ссылаться на объекты очередей. Hello следующий код создает **CloudQueueClient** объекта. (Примечание: существуют дополнительные способы toocreate **CloudStorageAccount** объектов; Дополнительные сведения см. в разделе **CloudStorageAccount** в hello [Azure SDK Справочник по клиентской хранилища].)
 
-С помощью объекта **CloudqueueClient** получите ссылку на очередь, которую необходимо использовать. Очередь можно создать, если она не существует.
+Используйте hello **CloudQueueClient** tooget требуется toouse очереди toohello ссылку объекта. Можно создать очередь hello, если он не существует.
 
 ```java
 try
@@ -81,24 +81,24 @@ try
     CloudStorageAccount storageAccount =
        CloudStorageAccount.parse(storageConnectionString);
 
-   // Create the queue client.
+   // Create hello queue client.
    CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-   // Retrieve a reference to a queue.
+   // Retrieve a reference tooa queue.
    CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-   // Create the queue if it doesn't already exist.
+   // Create hello queue if it doesn't already exist.
    queue.createIfNotExists();
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-add-a-message-to-a-queue"></a>Практическое руководство. Добавление сообщения в очередь
-Чтобы вставить сообщение в существующую очередь, сначала создайте объект **CloudQueueMessage**. Затем вызовите метод **AddMessage**. Для создания объекта **CloudQueueMessage** можно использовать строку (в формате UTF-8) или массив байтов. Ниже приведен код, который создает очередь (если она не существует) и вставляет сообщение "Привет, мир":
+## <a name="how-to-add-a-message-tooa-queue"></a>Как: Добавление tooa очереди сообщений
+tooinsert сообщения в существующую очередь, сначала создайте **CloudQueueMessage**. Затем вызовите hello **addMessage** метод. Для создания объекта **CloudQueueMessage** можно использовать строку (в формате UTF-8) или массив байтов. Ниже приведен код (если он не существует), который создает очередь и вставок приветственное сообщение «Hello, World».
 
 ```java
 try
@@ -107,28 +107,28 @@ try
     CloudStorageAccount storageAccount =
        CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the queue client.
+    // Create hello queue client.
     CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // Retrieve a reference tooa queue.
     CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    // Create the queue if it doesn't already exist.
+    // Create hello queue if it doesn't already exist.
     queue.createIfNotExists();
 
-    // Create a message and add it to the queue.
+    // Create a message and add it toohello queue.
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     queue.addMessage(message);
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Практическое руководство. Просмотр следующего сообщения
-Вы можете просмотреть сообщение в начале очереди, не удаляя его из очереди, вызвав метод **peekMessage**.
+## <a name="how-to-peek-at-hello-next-message"></a>Как: Просмотр следующего сообщения hello
+Можно считывать сообщения hello в hello передней части очереди, не удаляя его из очереди hello путем вызова **peekMessage**.
 
 ```java
 try
@@ -137,16 +137,16 @@ try
     CloudStorageAccount storageAccount =
        CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the queue client.
+    // Create hello queue client.
     CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // Retrieve a reference tooa queue.
     CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    // Peek at the next message.
+    // Peek at hello next message.
     CloudQueueMessage peekedMessage = queue.peekMessage();
 
-    // Output the message value.
+    // Output hello message value.
     if (peekedMessage != null)
     {
       System.out.println(peekedMessage.getMessageContentAsString());
@@ -154,15 +154,15 @@ try
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Практическое руководство. Изменение содержимого сообщения в очереди
-Вы можете изменить содержимое сообщения непосредственно в очереди. Если сообщение представляет собой рабочую задачу, можно использовать эту функцию для обновления состояния рабочей задачи. Следующий код добавляет новое содержимое в очередь сообщений и продлевает время ожидания видимости еще на 60 секунд. Это сохраняет состояние работы, связанной с данным сообщением, и позволяет клиенту продолжить работу с сообщением на протяжении еще одной минуты. Этот метод можно использовать для отслеживания многошаговых рабочих процессов по сообщениям в очереди без необходимости начинать с самого начала в случае сбоя шага обработки в связи с ошибкой аппаратного или программного обеспечения. Обычно также сохраняется счетчик повторов. Если количество повторов сообщения превысит *n* раз, его нужно удалить. Это обеспечивает защиту от сообщений, которые инициируют ошибку приложения при каждой попытке обработки.
+## <a name="how-to-change-hello-contents-of-a-queued-message"></a>Способ: измените содержимое hello сообщение из очереди
+Вы можете изменить содержимое сообщений на месте в очереди hello hello. Если сообщение hello представляет рабочей задачи, можно использовать этот компонент tooupdate hello состояние задачи рабочего hello. После кода Hello обновляется приветственное сообщение очереди новое содержимое и наборы hello tooextend время ожидания видимости другой 60 секунд. Сохраняет состояние работ, сопряженные с приветственное сообщение hello и предоставляет другой минуты toocontinue работа на приветственное сообщение клиента hello. Можно использовать этот рабочих процессов способ tootrack многоэтапной для очереди сообщений без необходимости toostart через от начала hello при неудачном завершении шага обработки из-за toohardware или ошибок программного обеспечения. Как правило, будет хранить значение числа повторов, и если hello сообщение повторяется более  *n*  раз, следует удалить его. Это обеспечивает защиту от сообщений, которые инициируют ошибку приложения при каждой попытке обработки.
 
-Приведенный ниже пример кода выполняет поиск в очереди сообщения, находит первое сообщение, которое содержит "Привет, мир", затем изменяет контент сообщения и выполняет выход.
+следующие Hello кода выполняет образец hello очереди сообщений, находит первое сообщение hello, которое совпадает с «Hello, World» hello содержимое, а затем изменяет содержимое сообщения hello и завершает работу.
 
 ```java
 try
@@ -171,28 +171,28 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the queue client.
+    // Create hello queue client.
     CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // Retrieve a reference tooa queue.
     CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    // The maximum number of messages that can be retrieved is 32.
+    // hello maximum number of messages that can be retrieved is 32.
     final int MAX_NUMBER_OF_MESSAGES_TO_PEEK = 32;
 
-    // Loop through the messages in the queue.
+    // Loop through hello messages in hello queue.
     for (CloudQueueMessage message : queue.retrieveMessages(MAX_NUMBER_OF_MESSAGES_TO_PEEK,1,null,null))
     {
         // Check for a specific string.
         if (message.getMessageContentAsString().equals("Hello, World"))
         {
-            // Modify the content of the first matching message.
+            // Modify hello content of hello first matching message.
             message.setMessageContent("Updated contents.");
-            // Set it to be visible in 30 seconds.
+            // Set it toobe visible in 30 seconds.
             EnumSet<MessageUpdateFields> updateFields =
                 EnumSet.of(MessageUpdateFields.CONTENT,
                 MessageUpdateFields.VISIBILITY);
-            // Update the message.
+            // Update hello message.
             queue.updateMessage(message, 30, updateFields, null, null);
             break;
         }
@@ -200,12 +200,12 @@ try
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-В отличие от этого, следующий пример кода просто обновляет первое видимое сообщение в очереди.
+Кроме того hello следующий код обновляет только hello первой видимой сообщение hello очереди.
 
 ```java
 try
@@ -214,36 +214,36 @@ try
     CloudStorageAccount storageAccount =
        CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the queue client.
+    // Create hello queue client.
     CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // Retrieve a reference tooa queue.
     CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    // Retrieve the first visible message in the queue.
+    // Retrieve hello first visible message in hello queue.
     CloudQueueMessage message = queue.retrieveMessage();
 
     if (message != null)
     {
-        // Modify the message content.
+        // Modify hello message content.
         message.setMessageContent("Updated contents.");
-        // Set it to be visible in 60 seconds.
+        // Set it toobe visible in 60 seconds.
         EnumSet<MessageUpdateFields> updateFields =
             EnumSet.of(MessageUpdateFields.CONTENT,
             MessageUpdateFields.VISIBILITY);
-        // Update the message.
+        // Update hello message.
         queue.updateMessage(message, 60, updateFields, null, null);
     }
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Практическое руководство. Получение длины очереди
-Вы можете узнать приблизительное количество сообщений в очереди. Метод **downloadAttributes** запрашивает у службы очередей несколько текущих значений, включая количество сообщений в очереди. Счетчик указывает число лишь приблизительно, так как сообщения могут добавляться или удаляться после ответа службы очередей на ваш запрос. Метод **getApproximateMessageCount** возвращает последнее значение, полученное при вызове **downloadAttributes** без обращения к службе очередей.
+## <a name="how-to-get-hello-queue-length"></a>Как: hello длина очереди получения
+Можно получить оценку hello количество сообщений в очереди. Hello **downloadAttributes** метод запрашивает у службы очередей hello несколько текущих значений, включая количество сообщений в очереди. число Hello приблизительное только в том случае, поскольку сообщения можно добавить или удалить после запроса tooyour отвечает hello службы очередей. Hello **getApproximateMessageCount** метод возвращает последнее значение hello получить вызовом hello слишком**downloadAttributes**, без вызова службы очередей hello.
 
 ```java
 try
@@ -252,30 +252,30 @@ try
     CloudStorageAccount storageAccount =
        CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the queue client.
+    // Create hello queue client.
     CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // Retrieve a reference tooa queue.
     CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-   // Download the approximate message count from the server.
+   // Download hello approximate message count from hello server.
     queue.downloadAttributes();
 
-    // Retrieve the newly cached approximate message count.
+    // Retrieve hello newly cached approximate message count.
     long cachedMessageCount = queue.getApproximateMessageCount();
 
-    // Display the queue length.
+    // Display hello queue length.
     System.out.println(String.format("Queue length: %d", cachedMessageCount));
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Практическое руководство. Удаление следующего сообщения из очереди
-Код удаляет сообщение из очереди в два этапа. При вызове метода **retrieveMessage**вы получаете следующее сообщение в очереди. Сообщение, возвращаемое методом **retrieveMessage** , становится невидимым для другого кода, считывающего сообщения из этой очереди. По умолчанию это сообщение остается невидимым в течение 30 секунд. Чтобы завершить удаление сообщения из очереди, необходимо также вызвать метод **deleteMessage**. Этот двухэтапный процесс удаления сообщения позволяет удостовериться, что если коду не удастся обработать сообщение из-за сбоя оборудования или программного обеспечения, другой экземпляр кода сможет получить то же сообщение и повторить попытку. Код вызывает метод **deleteMessage** сразу после обработки сообщения.
+## <a name="how-to-dequeue-hello-next-message"></a>Как: Dequeue следующее сообщение hello
+Код удаляет сообщение из очереди в два этапа. При вызове **retrieveMessage**, вы получаете следующее сообщение hello в очереди. Сообщение, возвращенное из **retrieveMessage** становится невидимой tooany другой код, чтение сообщений из этой очереди. По умолчанию это сообщение остается невидимым в течение 30 секунд. toofinish удаление приветственное сообщение из очереди hello, необходимо также вызвать **deleteMessage**. Это двухэтапный процесс удаления сообщения подтверждает, если tooprocess получит сообщение toohardware или ошибок программного обеспечения, другой экземпляр кода из-за сбоя программы hello одного сообщения и повторите попытку. Вызовы кода **deleteMessage** сразу после обработки сообщения hello.
 
 ```java
 try
@@ -284,32 +284,32 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the queue client.
+    // Create hello queue client.
     CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // Retrieve a reference tooa queue.
     CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    // Retrieve the first visible message in the queue.
+    // Retrieve hello first visible message in hello queue.
     CloudQueueMessage retrievedMessage = queue.retrieveMessage();
 
     if (retrievedMessage != null)
     {
-        // Process the message in less than 30 seconds, and then delete the message.
+        // Process hello message in less than 30 seconds, and then delete hello message.
         queue.deleteMessage(retrievedMessage);
     }
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="additional-options-for-dequeuing-messages"></a>Дополнительные варианты удаления сообщений из очереди
-Способ извлечения сообщения из очереди можно настроить двумя способами. Во-первых, можно получить пакет сообщений (до 32 сообщений). Во-вторых, можно задать более длительное или короткое время ожидания видимости, чтобы предоставить коду больше или меньше времени на полную обработку каждого сообщения.
+Способ извлечения сообщения из очереди можно настроить двумя способами. Во-первых можно получить пакет сообщений (вверх too32). Во-вторых можно задать более длинный или короткий невидимости тайм-аута, позволяя вашему коду больше или меньше toofully времени обработки каждого сообщения.
 
-В следующем примере кода метод **retrieveMessages** используется для получения 20 сообщений в одном вызове. Затем он обрабатывает каждое сообщение с помощью цикла **for** . Пример также задает время ожидания невидимости в размере пяти минут (300 секунд) для каждого сообщения. Обратите внимание, что пятиминутный период начинается для всех сообщений одновременно, поэтому по прошествии 5 минут с момента вызова **retreiveMessages**все сообщения, которые не были удалены, снова становятся видимыми.
+Hello следующий пример кода использует hello **retrieveMessages** метод tooget 20 сообщений в одном вызове. Затем он обрабатывает каждое сообщение с помощью цикла **for** . Он также устанавливает время ожидания toofive невидимости hello минут (300 секунд) для каждого сообщения. Обратите внимание, что hello пяти минут запускается для всех сообщений в hello же времени, поэтому при пяти минут с момента вызова hello слишком**retrieveMessages**, все сообщения, которые не были удалены становятся видимыми.
 
 ```java
 try
@@ -318,13 +318,13 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the queue client.
+    // Create hello queue client.
     CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // Retrieve a reference tooa queue.
     CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    // Retrieve 20 messages from the queue with a visibility timeout of 300 seconds.
+    // Retrieve 20 messages from hello queue with a visibility timeout of 300 seconds.
     for (CloudQueueMessage message : queue.retrieveMessages(20, 300, null, null)) {
         // Do processing for all messages in less than 5 minutes,
         // deleting each message after processing.
@@ -333,13 +333,13 @@ try
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-list-the-queues"></a>Как перечислять очереди
-Чтобы получить список текущей очереди, вызовите метод **CloudQueueClient.listQueues()**, который возвращает коллекцию объектов **CloudQueue**.
+## <a name="how-to-list-hello-queues"></a>Как: перечисление очередей hello
+список текущей очереди hello, вызов hello tooobtain **CloudQueueClient.listQueues()** метод, который будет возвращать коллекцию **CloudQueue** объектов.
 
 ```java
 try
@@ -348,11 +348,11 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the queue client.
+    // Create hello queue client.
     CloudQueueClient queueClient =
         storageAccount.createCloudQueueClient();
 
-    // Loop through the collection of queues.
+    // Loop through hello collection of queues.
     for (CloudQueue queue : queueClient.listQueues())
     {
         // Output each queue name.
@@ -361,13 +361,13 @@ try
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Практическое руководство. Удаление очереди
-Для удаления очереди и всех сообщений в ней вызовите метод **deleteIfExists** в объекте **CloudQueue**.
+toodelete все сообщения hello и очереди содержащиеся в нем, вызов hello **deleteIfExists** метод hello **CloudQueue** объекта.
 
 ```java
 try
@@ -376,33 +376,33 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the queue client.
+    // Create hello queue client.
     CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // Retrieve a reference tooa queue.
     CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    // Delete the queue if it exists.
+    // Delete hello queue if it exists.
     queue.deleteIfExists();
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Вы изучили основные сведения о хранилище очередей. Дополнительные сведения о более сложных задачах по использованию хранилища можно найти по следующим ссылкам.
+Теперь, когда вы узнали основы hello хранилища очередей, выполните эти ссылки toolearn о более сложных задач хранилища.
 
 * [Пакет SDK службы хранилища Azure для Java][Azure Storage SDK for Java]
-* [справочнике по пакету SDK для клиента службы хранилища Azure][справочнике по пакету SDK для клиента службы хранилища Azure]
+* [Azure SDK Справочник по клиентской хранилища][Azure SDK Справочник по клиентской хранилища]
 * [REST API служб хранилища Azure][Azure Storage Services REST API]
 * [Блог рабочей группы службы хранилища Azure][Azure Storage Team Blog]
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[справочнике по пакету SDK для клиента службы хранилища Azure]: http://dl.windowsazure.com/storage/javadoc/
+[Azure SDK Справочник по клиентской хранилища]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage Services REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/

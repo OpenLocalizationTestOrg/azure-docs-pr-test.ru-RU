@@ -1,6 +1,6 @@
 ---
-title: "Управление записью пакетов с помощью Наблюдателя за сетями Azure (Azure CLI 1.0) | Документация Майкрософт"
-description: "В этой статье объясняется, как с помощью Azure CLI 1.0 управлять функцией записи пакетов в Наблюдателе за сетями."
+title: "снимки aaaManage пакетов с Наблюдатель сети Azure — Azure CLI 1.0 | Документы Microsoft"
+description: "На этой странице объясняется, как toomanage hello функция записи пакетов с помощью Azure CLI 1.0 Наблюдатель сети"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 91588910334859c1ea77186674d5bfb31b311b36
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c4b710a8d82ccaaf65876a8c2ef845aa97b5f831
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli-10"></a>Управление записью пакетов с помощью Наблюдателя за сетями Azure в Azure CLI 1.0
 
@@ -29,11 +29,11 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
-Возможность записи пакетов Наблюдателя за сетями позволяет создавать сеансы записи для отслеживания входящего и исходящего трафика виртуальной машины. Для сеанса записи предоставляются фильтры, которые позволяют убедиться, что записывается только требуемый трафик. Записи пакетов помогают выявить аномалии в работе сети по факту или заранее. Они также помогают выполнять сбор сетевой статистики, получать сведения о сетевых вторжениях, выполнять отладку передачи данных между клиентом и сервером и многое другое. Так как запись пакетов активируется удаленно, ее не нужно запускать вручную. К тому же она сразу выполняется на требуемой виртуальной машине, что также позволяет сэкономить ценное время.
+Захват пакетов Наблюдатель сети позволяет tooand toocreate отслеживания сеансов tootrack трафик от виртуальной машины. Можно записать только трафик hello нужные фильтры предоставляются для tooensure сеанс отслеживания hello. Захват пакетов помогает аномалий toodiagnose сети как реактивный, так и заранее. Другим пользователям включать сбор статистики сети, получение сведений о сети вторжений, toodebug клиент сервер, связи и многое другое. Из-за захват пакетов может tooremotely триггера, эта возможность облегчает нагрузку hello выполнения захват пакетов на нужный машины hello, чтобы экономить время и вручную.
 
 В этой статье используется кроссплатформенной Azure CLI 1.0, доступный для Windows, Mac и Linux.
 
-В этой статье вы ознакомитесь с разными задачами управления, доступными в настоящее время для записи пакетов.
+В этой статье описывается hello задачи управления, которые в настоящее время доступны для получения пакетов.
 
 - [**Запуск записи пакета**](#start-a-packet-capture)
 - [**Прекращение записи пакета**](#stop-a-packet-capture)
@@ -42,19 +42,19 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В данной статье предполагается, что у вас есть следующие ресурсы:
+В этой статье предполагается, что hello следующие ресурсы:
 
-- экземпляр Наблюдателя за сетями в регионе, в котором нужно создать запись пакетов;
-- виртуальная машина с включенным расширением для записи пакетов.
+- Экземпляр Наблюдатель сети в регионе hello нужно toocreate захват пакетов
+- Виртуальная машина с пакет приветствия записать расширение включено.
 
 > [!IMPORTANT]
-> Для записи пакетов требуется, чтобы на виртуальной машине был запущен агент. Агент устанавливается в качестве расширения. Инструкции по расширениям виртуальных машин см. в статье [Обзор расширений и компонентов виртуальной машины под управлением Windows](../virtual-machines/windows/extensions-features.md).
+> Захват пакетов требуется toobe агент, работающий на виртуальной машине hello. Hello агент установлен в качестве расширения. Инструкции по расширениям виртуальных машин см. в статье [Обзор расширений и компонентов виртуальной машины под управлением Windows](../virtual-machines/windows/extensions-features.md).
 
 ## <a name="install-vm-extension"></a>Установка расширения виртуальной машины
 
 ### <a name="step-1"></a>Шаг 1
 
-Выполните командлет `azure vm extension set`, чтобы установить агент записи пакетов на гостевой виртуальной машине.
+Запустите hello `azure vm extension set` агент командлет tooinstall hello пакет отслеживания на hello гостевой виртуальной машине.
 
 Для виртуальных машин Windows:
 
@@ -70,17 +70,17 @@ azure vm extension set -g resourceGroupName -m virtualMachineName -p Microsoft.A
 
 ### <a name="step-2"></a>Шаг 2
 
-Чтобы убедиться, что агент установлен, выполните командлет `vm extension get` и передайте ему имя группы ресурсов и виртуальной машины. Проверьте итоговый список, чтобы убедиться, что агент установлен.
+tooensure, hello агент установлен, запустите hello `vm extension get` командлета и передать его в группу ресурсов hello и имя виртуальной машины. Убедитесь, что установлен hello полученный список tooensure hello агент.
 
 ```azurecli
 azure vm extension get -g resourceGroupName -m virtualMachineName
 ```
 
-Ниже приведен пример ответа после выполнения операции `azure vm extension get`.
+Следующий образец Hello приведен пример ответа hello, запуск`azure vm extension get`
 
 ```
 info:    Executing command vm extension get
-+ Looking up the VM "virtualMachineName"
++ Looking up hello VM "virtualMachineName"
 data:    Publisher                       Name                        Version  State
 data:    ------------------------------  -----------------------     -------  ---------
 data:    Microsoft.Azure.NetworkWatcher  NetworkWatcherAgentWindows  1.4      Succeeded
@@ -89,11 +89,11 @@ info:    vm extension get command OK
 
 ## <a name="start-a-packet-capture"></a>Запуск записи пакета
 
-После выполнения предыдущих шагов на виртуальной машине будет установлен агент записи пакетов.
+После hello предыдущего выполнения действий, hello пакет отслеживания агент устанавливается на виртуальной машине hello.
 
 ### <a name="step-1"></a>Шаг 1
 
-Далее необходимо извлечь экземпляр Наблюдателя за сетями. Эта переменная передается в командлет `network watcher show` на шаге 4.
+Hello следующим шагом является экземпляр Наблюдатель сети tooretrieve hello. Эта переменная передается toohello `network watcher show` командлет на шаге 4.
 
 ```azurecli
 azure network watcher show -g resourceGroup -n networkWatcherName
@@ -101,7 +101,7 @@ azure network watcher show -g resourceGroup -n networkWatcherName
 
 ### <a name="step-2"></a>Шаг 2
 
-Получите учетную запись хранения. Она используется для хранения файла записи пакетов.
+Получите учетную запись хранения. Эта учетная запись хранения — файл записи пакетов используется toostore hello.
 
 ```azurecli
 azure storage account list
@@ -109,13 +109,13 @@ azure storage account list
 
 ### <a name="step-3"></a>Шаг 3.
 
-С помощью фильтров можно ограничить данные, которые сохраняются при записи пакетов. В следующем примере настраивается запись пакетов с несколькими фильтрами.  Первые три фильтра собирают исходящий TCP-трафик только с локального IP-адреса 10.0.0.3 на порты назначения 20, 80 и 443.  Последний фильтр собирает только трафик, передаваемый по протоколу UDP.
+Фильтры можно использовать toolimit hello данные, которые хранятся с захватом пакетов hello. Hello следующий пример устанавливает захват пакетов с несколькими фильтрами.  Hello первые три фильтры собирать исходящего трафика TCP только с локального IP-адреса 10.0.0.3 toodestination порты 20, 80 и 443.  последний фильтр Hello собирает только трафик UDP.
 
 ```azurecli
 azure network watcher packet-capture create -g resourceGroupName -w networkWatcherName -n packetCaptureName -t targetResourceId -o storageAccountResourceId -f "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-Для записи пакетов можно определить несколько фильтров. Если используется сложная структура фильтров, во избежание синтаксических ошибок лучше применять фильтры в виде JSON-файлов. Например, используйте флаг -r (вместо -f) и передайте расположение JSON-файла, содержащего следующие фильтры:
+Для записи пакетов можно определить несколько фильтров. При использовании структуры сложный фильтр, лучше toouse фильтров является json файл tooavoid синтаксических ошибок. Используйте флаг hello, например, «-r» (вместо «-f») и передать hello расположение файла json, содержащего hello следующие фильтры:
 
 ```json
 [
@@ -144,13 +144,13 @@ azure network watcher packet-capture create -g resourceGroupName -w networkWatch
 ```
 
 
-Ниже приведен пример ожидаемого результата выполнения командлета `network watcher packet-capture create`.
+Hello следующий пример является hello ожидалось результатов выполнения hello `network watcher packet-capture create` командлета.
 
 ```
 data:    Name                            : packetCaptureName
 data:    Etag                            : W/"d59bb2d2-dc95-43da-b740-e0ef8fcacecb"
 data:    Target                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/testVM
-data:    Bytes To Capture Per Packet     : 0
+data:    Bytes tooCapture Per Packet     : 0
 data:    Total Bytes Per Session         : 1073741824
 data:    Time Limit In Seconds           : 18000
 data:    Storage Location:
@@ -163,19 +163,19 @@ info:    network watcher packet-capture create command OK
 
 ## <a name="get-a-packet-capture"></a>Получение записи пакета
 
-При выполнении командлета `network watcher packet-capture show` вы получаете сведения о состоянии выполняющейся или завершенной записи пакетов.
+Под управлением hello `network watcher packet-capture show` , получает hello состояние выполняющегося или завершенного отслеживания пакетов.
 
 ```azurecli
 azure network watcher packet-capture show -g resourceGroupName -w networkWatcherName -n packetCaptureName
 ```
 
-Ниже представлен пример выходных данных командлета `network watcher packet-capture show`, полученных после завершения записи пакетов. В качестве значения параметра PacketCaptureStatus указано Stopped, а для параметра StopReason задано значение TimeExceeded. По этому значению можно понять, что запись пакетов выполнена успешно за требуемое время.
+Hello ниже приведен вывод hello hello `network watcher packet-capture show` командлета. Hello следующий пример — после завершения записи hello. Hello значение PacketCaptureStatus остановлена с StopReason TimeExceeded. Это значение показывает, что захват пакетов hello прошла успешно и время его запуска.
 
 ```
 data:    Name                            : packetCaptureName
 data:    Etag                            : W/"d59bb2d2-dc95-43da-b740-e0ef8fcacecb"
 data:    Target                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/testVM
-data:    Bytes To Capture Per Packet     : 0
+data:    Bytes tooCapture Per Packet     : 0
 data:    Total Bytes Per Session         : 1073741824
 data:    Time Limit In Seconds           : 18000
 data:    Storage Location:
@@ -188,14 +188,14 @@ info:    network watcher packet-capture show command OK
 
 ## <a name="stop-a-packet-capture"></a>Прекращение записи пакета
 
-Если выполнить командлет `network watcher packet-capture stop` во время сеанса записи пакета, он будет остановлен.
+Запустив hello `network watcher packet-capture stop` командлета, если записи сеанса выполняется она остановлена.
 
 ```azurecli
 azure network watcher packet-capture stop -g resourceGroupName -w networkWatcherName -n packetCaptureName
 ```
 
 > [!NOTE]
-> При выполнении во время текущего сеанса записи или в имеющемся остановленном сеансе командлет не возвратит ответ.
+> Hello командлет не возвращает ответа при выполнялись в момент записи сеанса или существующего сеанса, который уже был остановлен.
 
 ## <a name="delete-a-packet-capture"></a>Удаление записи пакета
 
@@ -204,13 +204,13 @@ azure network watcher packet-capture delete -g resourceGroupName -w networkWatch
 ```
 
 > [!NOTE]
-> При удалении записи пакета файл в учетной записи хранения не удаляется.
+> Удаление захват пакетов не приводит к удалению файла hello в учетной записи хранения hello.
 
 ## <a name="download-a-packet-capture"></a>Скачивание записи пакета
 
-После завершения сеанса записи пакета файл записи можно передать в хранилище BLOB-объектов или в локальный файл на виртуальной машине. Место хранения записи пакетов определяется при создании сеанса. Удобное средство для доступа к этим файлам записи, сохраненным в учетной записи хранения — обозреватель службы хранилища Microsoft Azure, который можно скачать по адресу http://storageexplorer.com/.
+После завершения сеанса записи пакета файл записи hello может быть загруженного tooblob хранилища или tooa локальный файл на hello виртуальной Машины. место хранения Hello hello захват пакетов определяется при создании сеанса hello. Tooaccess удобное средство их записывать файлы, сохраненные tooa учетную запись хранения является обозреватель хранилищ Microsoft Azure, которую можно загрузить здесь: http://storageexplorer.com/
 
-При указании учетной записи хранения файлы записи пакетов сохраняются в ней по следующему адресу:
+При указании учетной записи хранилища пакетов отслеживания файлы сохраняются tooa учетной записи хранилища в hello следующие расположения:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
@@ -218,7 +218,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об автоматизации записи пакетов с помощью оповещений на виртуальной машине см. в статье, посвященной [созданию записи пакетов, активируемой с использованием оповещений](network-watcher-alert-triggered-packet-capture.md).
+Узнайте, как снимки tooautomate пакетов с оповещениями виртуальной машины, просмотрев [создать получения оповещений триггеру пакетов](network-watcher-alert-triggered-packet-capture.md)
 
 Сведения о состоянии (разрешен или запрещен) входящего и исходящего трафика виртуальной машины см. в статье, посвященной [проверке потока IP-адресов](network-watcher-check-ip-flow-verify-portal.md).
 

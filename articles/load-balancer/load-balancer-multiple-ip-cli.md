@@ -1,6 +1,6 @@
 ---
-title: "Балансировка нагрузки в конфигурациях с несколькими IP-адресами с помощью интерфейса командной строки Azure | Документация Майкрософт"
-description: "Узнайте, как назначить виртуальной машине несколько IP-адресов с использованием интерфейса командной строки Azure."
+title: "aaaLoad балансировки на несколько IP-конфигурации с помощью Azure CLI | Документы Microsoft"
+description: "Узнайте, как tooassign несколько IP-адресов tooa виртуальной машины с помощью Azure CLI | Диспетчер ресурсов."
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: annahar
-ms.openlocfilehash: bd15713752ea01ad403d8e3dcfed0c9a7adcc7fa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: df81e1b8193f274bad435d6b506c7be824117416
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-balancing-on-multiple-ip-configurations"></a>Балансировка нагрузки в конфигурациях с несколькими IP-адресами
 
@@ -28,22 +28,22 @@ ms.lasthandoff: 08/03/2017
 > * [ИНТЕРФЕЙС КОМАНДНОЙ СТРОКИ](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
-В этой статье описывается, как использовать Azure Load Balancer в конфигурации, когда каждому дополнительному сетевому интерфейсу (сетевой карты) назначено несколько IP-адресов. В этом сценарии у нас есть две виртуальные машины под управлением Windows, оснащенные основной и дополнительной сетевыми картами. У каждой из дополнительных сетевых карт есть по две IP-конфигурации. На каждой виртуальной машине размещены веб-сайты contoso.com и fabrikam.com. Каждый веб-сайт привязан к одной из IP-конфигураций дополнительной сетевой карты. Мы используем Azure Load Balancer, чтобы предоставить два интерфейсных IP-адреса, по одному для каждого веб-сайта. Это позволит направлять трафик в соответствующую IP-конфигурацию для веб-сайта. В данном сценарии используется одинаковый номер порта для обоих внешних интерфейсов, как и для обоих IP-адресов внутренних пулов.
+В этой статье описывается, как toouse подсистемы балансировки нагрузки Azure с несколькими IP-адресов для дополнительного сетевого интерфейса (NIC). В этом сценарии у нас есть две виртуальные машины под управлением Windows, оснащенные основной и дополнительной сетевыми картами. Каждый дополнительный hello сетевые адаптеры имеют два IP-конфигурации. На каждой виртуальной машине размещены веб-сайты contoso.com и fabrikam.com. Каждый веб-сайт имеет связанный tooone hello IP-конфигурации сетевого адаптера hello получателей. Мы используем подсистемы балансировки нагрузки Azure tooexpose два интерфейсных IP-адреса, один для каждого веб-сайта, toodistribute трафик toohello соответствующие IP-конфигурацию для веб-сайта hello. Этот сценарий использует hello одинаковый номер порта на серверах переднего плана, как, так и обоих внутренний пул IP-адресов.
 
 ![Схема балансировки нагрузки для сценария](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Инструкции по балансировке нагрузки в конфигурациях с несколькими IP-адресами
+## <a name="steps-tooload-balance-on-multiple-ip-configurations"></a>Баланс tooload действия на нескольких IP-конфигурации
 
-Выполните следующие действия, чтобы реализовать сценарий, описанный в этой статье.
+Выполните действия hello ниже tooachieve hello сценарий, описанный в этой статье.
 
-1. [Установите и настройте интерфейс командной строки Azure](../cli-install-nodejs.md), следуя инструкциям в соответствующей статье, а затем войдите в свою учетную запись Azure.
+1. [Установка и настройка hello Azure CLI](../cli-install-nodejs.md) hello Azure CLI, выполнив указанные ниже действия hello в связанной статье hello и войдите в учетную запись Azure.
 2. [Создайте группу ресурсов](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) *contosofabrikam*, как описано выше.
 
     ```azurecli
     azure group create contosofabrikam westcentralus
     ```
 
-3. [Создайте группу доступности](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) для двух виртуальных машин. В рамках данного сценария воспользуйтесь следующей командой.
+3. [Создать группу доступности](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) toofor hello две виртуальные машины. В этом случае используйте hello следующую команду:
 
     ```azurecli
     azure availset create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
@@ -57,13 +57,13 @@ ms.lasthandoff: 08/03/2017
     azure network vnet subnet create --resource-group contosofabrikam --vnet-name myVnet --name mySubnet --address-prefix 10.0.0.0/24
     ```
 
-5. [Создайте подсистему балансировки нагрузки](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) *mylb*.
+5. [Создание балансировки нагрузки hello](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) вызывается *mylb*:
 
     ```azurecli
     azure network lb create --resource-group contosofabrikam --location westcentralus --name mylb
     ```
 
-6. Создайте два динамических общедоступных IP-адреса для интерфейсных IP-конфигураций подсистемы балансировки нагрузки.
+6. Создайте два динамических общедоступных IP-адресов для IP-конфигурации переднего плана hello балансировки нагрузки:
 
     ```azurecli
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp1 --domain-name-label contoso --allocation-method Dynamic
@@ -71,7 +71,7 @@ ms.lasthandoff: 08/03/2017
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp2 --domain-name-label fabrikam --allocation-method Dynamic
     ```
 
-7. Создайте две интерфейсные IP-конфигурации, *contosofe* и *fabrikamfe*.
+7. Создание IP-конфигурации переднего плана hello двух *contosofe* и *fabrikamfe* соответственно:
 
     ```azurecli
     azure network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp1 --name contosofe
@@ -90,7 +90,7 @@ ms.lasthandoff: 08/03/2017
     azure network lb rule create --resource-group contosofabrikam --lb-name mylb --name HTTPf --protocol tcp --probe-name http --frontend-port 5000 --backend-port 5000 --frontend-ip-name fabrkamfe --backend-address-pool-name fabrikampool
     ```
 
-9. Выполните приведенную ниже команду и проверьте выходные данные, чтобы убедиться, что [подсистема балансировки нагрузки](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) создана правильно.
+9. Выполнения hello следующую ниже команду и проверьте выходные данные hello слишком[проверьте балансировки нагрузки](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) создана правильно:
 
     ```azurecli
     azure network lb show --resource-group contosofabrikam --name mylb
@@ -104,7 +104,7 @@ ms.lasthandoff: 08/03/2017
     azure storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. [Создайте сетевой интерфейс](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) для VM1 и добавьте вторую IP-конфигурацию — *VM1-ipconfig2*. Затем [создайте виртуальную машину](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms), как показано ниже.
+11. [Создать hello сетевых интерфейсов](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) для VM1 и добавьте второй IP-конфигурация *VM1 ipconfig2*, и [создать hello ВМ](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms) как показано ниже:
 
     ```azurecli
     azure network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1
@@ -124,8 +124,8 @@ ms.lasthandoff: 08/03/2017
     azure vm create --resource-group contosofabrikam --name VM2 --location westcentralus --os-type linux --nic-names VM2Nic1,VM2Nic2 --vnet-name VNet1 --vnet-subnet-name Subnet1 --availset-name myAvailabilitySet --vm-size Standard_DS3_v2 --storage-account-name mystorageaccount2 --image-urn canonical:UbuntuServer:16.04.0-LTS:latest --admin-username <your username>  --admin-password <your password>
     ```
 
-13. Наконец, необходимо настроить записи ресурсов DNS, чтобы они указывали на соответствующие интерфейсные IP-адреса подсистемы балансировки нагрузки. Домены можно разместить в Azure DNS. Дополнительные сведения об использовании Azure DNS с подсистемой балансировки нагрузки см. в разделе [Использование Azure DNS с другими службами Azure](../dns/dns-for-azure-services.md).
+13. Наконец необходимо настроить DNS ресурса записи toopoint toohello соответствующих интерфейсный IP-адрес hello подсистемы балансировки нагрузки. Домены можно разместить в Azure DNS. Дополнительные сведения об использовании Azure DNS с подсистемой балансировки нагрузки см. в разделе [Использование Azure DNS с другими службами Azure](../dns/dns-for-azure-services.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-- Узнайте больше о том, как объединять службы балансировки нагрузки, в статье [Использование служб балансировки нагрузки в Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Узнайте, как в Azure можно использовать журналы разных типов для управления подсистемой балансировки нагрузки и устранения неполадок в ее работе, ознакомившись со статьей [Служба анализа журналов для балансировщика нагрузки Azure](../load-balancer/load-balancer-monitor-log.md).
+- Дополнительные сведения о как Балансировка нагрузки toocombine службами в Azure в [с помощью службы балансировки нагрузки в Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
+- Узнайте, как использовать различные типы журналов в Azure toomanage и устранение неполадок подсистемы балансировки нагрузки в [аналитика журналов для балансировки нагрузки Azure](../load-balancer/load-balancer-monitor-log.md).

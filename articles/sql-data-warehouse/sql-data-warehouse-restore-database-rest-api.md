@@ -1,5 +1,5 @@
 ---
-title: "Восстановление хранилища данных SQL Azure (REST API) | Документация Майкрософт"
+title: "Хранилище данных SQL Azure (REST API) aaaRestore | Документы Microsoft"
 description: "Задачи REST API для восстановления хранилища данных SQL."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-ms.openlocfilehash: 8656607611e7518e42b51b91774f55abec15c228
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cf6678d71aafff71b1ea715f447e41e25f20d1b5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="restore-an-azure-sql-data-warehouse-rest-api"></a>Восстановление хранилища данных SQL Azure (REST API)
 > [!div class="op_single_selector"]
@@ -30,38 +30,38 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Из этой статьи вы узнаете, как восстановить хранилище данных SQL Azure с помощью REST API.
+В этой статье вы узнаете, как хранилище данных SQL Azure с помощью toorestore hello REST API.
 
 ## <a name="before-you-begin"></a>Перед началом работы
-**Проверьте ресурсы DTU.** Каждое хранилище данных SQL размещается на сервере SQL Server (например, myserver.database.windows.net), которому выделена квота DTU по умолчанию.  Перед восстановлением хранилища данных SQL убедитесь, что у сервера SQL Server осталась достаточная квота DTU для восстанавливаемой базы данных. Чтобы узнать, как вычислить необходимое количество DTU или запросить дополнительные единицы DTU, ознакомьтесь с разделом [Создание запроса в службу поддержки][Request a DTU quota change].
+**Проверьте ресурсы DTU.** Каждое хранилище данных SQL размещается на сервере SQL Server (например, myserver.database.windows.net), которому выделена квота DTU по умолчанию.  Перед началом восстановления хранилища данных SQL, убедитесь, что hello, SQL server имеет достаточно оставшиеся квоту DTU для hello восстанавливаемой базы данных. toolearn как необходимые toocalculate DTU или toorequest дополнительные DTU см [запроса на изменение квоты DTU][Request a DTU quota change].
 
 ## <a name="restore-an-active-or-paused-database"></a>Восстановление активной или приостановленной базы данных
-Процедура восстановления базы данных
+toorestore базы данных:
 
-1. Получите список точек восстановления базы данных с помощью операции Get Database Restore Points.
-2. Начните восстановление с помощью операции [Create Database Restore Request][Create database restore request].
-3. Отследите состояние восстановления с помощью операции [Database Operation Status][Database operation status].
+1. Получите список hello точки восстановления базы данных с помощью операции Get точки восстановления базы данных hello.
+2. Перед началом восстановления с помощью hello [Создание запроса на восстановление базы данных] [ Create database restore request] операции.
+3. Отслеживать состояние hello восстановления с помощью hello [состояние операции базы данных] [ Database operation status] операции.
 
 > [!NOTE]
-> Чтобы настроить базу данных после восстановления, см. раздел [Настройка базы данных после восстановления][Configure your database after recovery].
+> После завершения восстановления hello восстановленной базы данных можно настроить, выполнив [настроить базу данных после восстановления][Configure your database after recovery].
 > 
 > 
 
 ## <a name="restore-a-deleted-database"></a>Восстановление удаленной базы данных.
-Восстановление удаленной базы данных.
+toorestore удаленной базы данных:
 
-1. Создайте список всех удаленных баз данных, доступных для восстановления, с помощью операции [List Restorable Dropped Databases][List restorable dropped databases].
-2. Получите подробные сведения об удаленной базе данных, которую необходимо восстановить, с помощью операции [Get Restorable Dropped Database][Get restorable dropped database].
-3. Начните восстановление с помощью операции [Create Database Restore Request][Create database restore request].
-4. Отследите состояние восстановления с помощью операции [Database Operation Status][Database operation status].
+1. Список всех доступных для восстановления удаленных баз данных с помощью hello [удаленные базы данных, могут быть восстановлены список] [ List restorable dropped databases] операции.
+2. Получить сведения о hello hello удалить базы данных, которая toorestore с помощью hello [базы данных удалены Get, которые могут быть восстановлены] [ Get restorable dropped database] операции.
+3. Перед началом восстановления с помощью hello [Создание запроса на восстановление базы данных] [ Create database restore request] операции.
+4. Отслеживать состояние hello восстановления с помощью hello [состояние операции базы данных] [ Database operation status] операции.
 
 > [!NOTE]
-> Чтобы настроить базу данных после восстановления, см. раздел [Настройка базы данных после восстановления][Configure your database after recovery].
+> см. базы данных после завершения восстановления hello tooconfigure [настроить базу данных после восстановления][Configure your database after recovery].
 > 
 > 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о функциях, обеспечивающих непрерывность бизнес-процессов в выпусках Базы данных SQL Azure, см. в статье [Обзор обеспечения непрерывности бизнес-процессов с помощью базы данных SQL Azure][Azure SQL Database business continuity overview].
+toolearn о функциях обеспечения непрерывности бизнеса hello выпусков базы данных SQL Azure, прочитайте hello [непрерывности бизнес-базы данных SQL Azure обзора][Azure SQL Database business continuity overview].
 
 <!--Image references-->
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 07/11/2017
 [Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
 [Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
 [Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[How tooinstall and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Overview]: ./sql-data-warehouse-restore-database-overview.md
 [Portal]: ./sql-data-warehouse-restore-database-portal.md
 [PowerShell]: ./sql-data-warehouse-restore-database-powershell.md

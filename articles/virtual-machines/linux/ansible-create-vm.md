@@ -1,6 +1,6 @@
 ---
-title: "Использование Ansible для создания базовой виртуальной машины Linux в Azure | Документы Майкрософт"
-description: "Узнайте, как использовать Ansible для создания базовой виртуальной машины Linux в Azure и управления ею."
+title: "toocreate Ansible aaaUse основные виртуальной Машины Linux в Azure | Документы Microsoft"
+description: "Узнайте, как toouse Ansible toocreate и управления ими основные виртуальной машины Linux в Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2017
 ms.author: iainfou
-ms.openlocfilehash: 526f3522334450564500c4ba0e401a683cae55f6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ffe278b3f846924ff9c4d026120565146f951152
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Создание базовой виртуальной машины в Azure с помощью Ansible
-Ansible позволяет автоматизировать развертывание и настройку ресурсов в среде. Ansible можно использовать для управления виртуальными машинами в Azure так же, как любым другим ресурсом. В этой статье показано, как создать базовую виртуальную машину с помощью Ansible. Вы также можете узнать, как [создать готовую среду виртуальных машин с помощью Ansible](ansible-create-complete-vm.md).
+Ansible позволяет tooautomate hello развертывание и настройку ресурсов в вашей среде. Можно использовать виртуальные машины (VM) Ansible toomanage в Azure, hello таким же, как и любой другой ресурс. В этой статье показано, как toocreate основные виртуальной Машины с Ansible. Также вы можете узнать, каким образом слишком[создать полную среду виртуальной Машины с Ansible](ansible-create-complete-vm.md).
 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Для управления ресурсами Azure с помощью Ansible необходимо следующее:
+toomanage Azure ресурсы с Ansible необходимо hello следующие:
 
-- Ansible и модули SDK Python для Azure, установленные в системе узла.
+- Ansible и hello в системе узла установлены модули Azure Python SDK.
     - Ansible можно установить в [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73) и [SLES 12.2 SP2](ansible-install-configure.md#sles-122-sp2).
-- Учетные данные Azure, настроенные для использования в Ansible.
+- Учетные данные Azure и toouse Ansible настроить их.
     - [Создание учетных данных Azure и настройка Ansible](ansible-install-configure.md#create-azure-credentials)
-- Azure CLI версии 2.0.4 или более поздней. Чтобы узнать версию, выполните команду `az --version`. 
-    - Если вам необходимо выполнить обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). Вы также можете использовать [Cloud Shell](/azure/cloud-shell/quickstart) из своего браузера.
+- Azure CLI версии 2.0.4 или более поздней. Запустите `az --version` версии toofind hello. 
+    - Получить tooupgrade [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). Вы также можете использовать [Cloud Shell](/azure/cloud-shell/quickstart) из своего браузера.
 
 
 ## <a name="create-supporting-azure-resources"></a>Создание вспомогательных ресурсов Azure
-В этом примере мы создадим модуль runbook, который развертывает виртуальную машину в существующей инфраструктуре. Сначала создайте группу ресурсов с помощью команды [az group create](/cli/azure/vm#create). В следующем примере создается группа ресурсов с именем *myResourceGroup* в расположении *eastus*.
+В этом примере мы создадим модуль runbook, который развертывает виртуальную машину в существующей инфраструктуре. Сначала создайте группу ресурсов с помощью команды [az group create](/cli/azure/vm#create). Hello следующий пример создает группу ресурсов с именем *myResourceGroup* в hello *eastus* расположение:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Создайте виртуальную сеть для виртуальной машины с помощью команды [az network vnet create](/cli/azure/network/vnet#create). В следующем примере создаются виртуальная сеть *myVnet* и подсеть *mySubnet*.
+Создайте виртуальную сеть для виртуальной машины с помощью команды [az network vnet create](/cli/azure/network/vnet#create). Hello следующий пример создает виртуальную сеть с именем *myVnet* и подсеть с именем *mySubnet*:
 
 ```azurecli
 az network vnet create \
@@ -56,7 +56,7 @@ az network vnet create \
 
 
 ## <a name="create-and-run-ansible-playbook"></a>Создание и запуск скрипта playbook Ansible
-Создайте скрипт playbook Ansible с именем **azure_create_vm.yml** и вставьте приведенное ниже содержимое. В этом примере создается одна виртуальная машина и настраиваются учетные данные SSH. Введите собственные данные открытого ключа в паре *key_data* следующим образом:
+Создание репертуара Ansible с именем **azure_create_vm.yml** и hello вставить содержимое. В этом примере создается одна виртуальная машина и настраиваются учетные данные SSH. Введите свои собственные данные открытого ключа в hello *key_data* пары следующим образом:
 
 ```yaml
 - name: Create Azure VM
@@ -80,13 +80,13 @@ az network vnet create \
         version: latest
 ```
 
-Чтобы создать виртуальную машину с помощью Ansible, запустите скрипт playbook следующим образом:
+hello toocreate виртуальную Машину с Ansible, запустите репертуара hello следующим образом:
 
 ```bash
 ansible-playbook azure_create_vm.yml
 ```
 
-Ниже приведен пример выходных данных, в котором показано, что виртуальная машина успешно создана:
+Hello выходные данные выглядят аналогично toohello следующий пример, показывающий hello успешность создания виртуальной Машины:
 
 ```bash
 PLAY [Create Azure VM] ****************************************************
@@ -103,4 +103,4 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом примере создается виртуальная машина в существующей группе ресурсов с уже развернутой виртуальной сетью. Более подробный пример использования Ansible для создания вспомогательных ресурсов, таких как виртуальная сеть и правила группы безопасности сети, см. в статье [Создание готовой среды виртуальных машин с помощью Ansible](ansible-create-complete-vm.md).
+В этом примере создается виртуальная машина в существующей группе ресурсов с уже развернутой виртуальной сетью. Более подробный пример о том, как toouse Ansible toocreate вспомогательные ресурсы о виртуальной сети и правила группы безопасности сети, в разделе [создать полную среду виртуальной Машины с Ansible](ansible-create-complete-vm.md).

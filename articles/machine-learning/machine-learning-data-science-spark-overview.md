@@ -1,6 +1,6 @@
 ---
-title: "Общие сведения об обработке и анализе данных с помощью платформы Spark в Azure HDInsight | Документация Майкрософт"
-description: "Набор средств Spark MLlib предоставляет широкие возможности моделирования машинного обучения в распределенной среде HDInsight."
+title: "aaaOverview процесса обработки и анализа данных с помощью Spark на Azure HDInsight | Документы Microsoft"
+description: "набор средств Spark MLlib Hello переводит существенное машинного обучения моделирования возможности распределенного toohello HDInsight среды."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 379b32f4e533f48f1593a97e73737a0c5bfb9135
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 515705684a46917c2741bf063d439b1cda016abb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Общие сведения об обработке и анализе данных с помощью платформы Spark в Azure HDInsight
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-В этой группе статей рассказывается, как использовать HDInsight Spark для выполнения общих задач обработки и анализа данных, таких как прием данных, проектирование функций, моделирование и оценка моделей. В качестве данных используется пример с числом поездок и тарифами нью-йоркского такси за 2013 год. В моделях используются логистическая и линейная регрессия, случайные леса и градиентный бустинг деревьев. Кроме того, в этих статьях рассказывается, как хранить эти модели в хранилище BLOB-объектов Azure (WASB), а также оценивать и анализировать прогнозируемую производительность. В более расширенных разделах рассматриваются способы обучения моделей с помощью перекрестной проверки и перебора гиперпараметров. В этой обзорной статье также упоминаются разделы, посвященные настройке кластера Spark, который вам потребуется для выполнения действий, описанных в предоставленных руководствах. 
+Этот набор разделов показано, как задачи toouse HDInsight Spark toocomplete общие обработки и анализа данных, такие как приема данных, конструируются, моделирования и вычисления моделей. Hello данные, используемые приводится образец hello 2013 NYC такси маршрута и тариф авиакомпании набора данных. Hello моделей, построенных включают логистической и линейной регрессии, случайные леса и градиента повышенных деревьев. Hello также показано, как toostore эти модели в Azure BLOB-объектов хранилища (WASB) и как tooscore и оценить их прогнозирования производительности. В более расширенных разделах рассматриваются способы обучения моделей с помощью перекрестной проверки и перебора гиперпараметров. В этом обзорном разделе также ссылается hello разделы, описывающие, каким образом tooset копирование hello кластера Spark, необходимые шаги hello toocomplete hello пошаговых руководств, приведенных. 
 
 ## <a name="spark-and-mllib"></a>Spark и MLlib
-[Spark](http://spark.apache.org/) — это платформа параллельной обработки с открытым исходным кодом, которая поддерживает обработку в памяти, повышая производительность приложений для анализа больших данных. Подсистема обработки Spark призвана ускорить разработку, повысить удобство использования и реализовать сложную аналитику. Возможности распределенного вычисления в памяти Spark отлично подходят для итеративных алгоритмов, используемых в машинном обучении и графовых вычислениях. [MLlib](http://spark.apache.org/mllib/) — это масштабируемая библиотека машинного обучения Spark, которая предоставляет возможности алгоритмического моделирования для этой распределенной среды. 
+[Spark](http://spark.apache.org/) платформу параллельной обработки с открытым исходным кодом, поддерживающий в памяти обрабатывает tooboost hello производительность приложений для анализа больших данных. Подсистема обработки Spark Hello, созданную для скорости, простоте использования и сложные analytics. Возможности распределенных вычислений в памяти Spark лучше всего подходит для hello итеративный алгоритмы, используемые в вычислениях машины обучения и диаграммы. [MLlib](http://spark.apache.org/mllib/) Spark в масштабируемой машины обучения библиотека, которая переводит hello алгоритмической моделирования возможности toothis распределенной среде. 
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
-[HDInsight Spark](../hdinsight/hdinsight-apache-spark-overview.md) представляет собой версию платформы Spark с открытым исходным кодом, размещенную в Azure. Она также поддерживает **записные книжки Jupyter PySpark** в кластере Spark, которые могут выполнять интерактивные запросы Spark SQL для преобразования, фильтрации и визуализации данных, хранящихся в больших двоичных объектах Azure (WASB). PySpark — это API Python для Spark. Здесь фрагменты кода, которые предоставляют решения и формируют соответствующие графики с целью визуализации данных, выполняются в записных книжках Jupyter, установленных в кластерах Spark. Этапы моделирования, описанные в этих разделах, содержат код, который демонстрирует способ обучения, анализа, сохранения и использования каждого типа модели. 
+[HDInsight Spark](../hdinsight/hdinsight-apache-spark-overview.md) hello Azure размещается предложения из Spark с открытым исходным кодом. Она также включает поддержку **записные книжки Jupyter PySpark** на кластере Spark hello, можно запустить Spark SQL интерактивной обработки запросов для преобразования, фильтрации и наглядное представление данных, хранящихся в больших двоичных объектов Azure (WASB). PySpark — hello API Python для Spark. фрагменты кода Hello, которые обеспечивают hello и Показать hello соответствующие графики toovisualize hello данные здесь выполняются в записные книжки Jupyter установлен в кластерах Spark hello. шаги моделирования Hello в этих разделах содержат код, который показывает, как tootrain, вычисления, сохранения и использования каждого типа модели. 
 
 ## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>Настройка кластеров Spark и записных книжек Jupyter
-Действия по настройке и код, указанные в этом пошаговом руководстве, применимы к использованию для HDInsight Spark 1.6. Но записные книжки Jupyter можно использовать для кластеров HDInsight Spark 1.6 и Spark 2.0. Описание записных книжек и ссылки на них вы можете найти в файле [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) для репозитория GitHub с записными книжками. Более того, код здесь и в связанных записных книжках является универсальным и должен работать в любом кластере Spark. Действия по настройке кластера и управлению им могут немного отличаться от приведенных здесь, если вы не используете HDInsight Spark. Для удобства мы приводим ссылки на записные книжки Jupyter для Spark 1.6 (выполняемые в ядре PySpark на сервере записной книжки Jupyter) и Spark 2.0 (выполняемые в ядре PySpark3 на сервере записной книжки Jupyter).
+Действия по настройке и код, указанные в этом пошаговом руководстве, применимы к использованию для HDInsight Spark 1.6. Но записные книжки Jupyter можно использовать для кластеров HDInsight Spark 1.6 и Spark 2.0. Описание toothem hello записных книжек и ссылки, представлено в hello [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) для репозитория GitHub hello, содержащий их. Кроме того код hello здесь и в записных книжках hello связаны является универсальным и должен работать на любой кластер Spark. Если вы не используете HDInsight Spark, настройку и управление ими действия hello кластера может быть немного отличается от показанной здесь. Для удобства ниже приведены hello ссылки записные книжки Jupyter toohello для 1.6 Spark (выполняются в ядро pySpark hello hello server книжке Jupyter toobe) и 2.0 Spark (toobe запуска ядра pySpark3 hello объекта hello книжке Jupyter сервера).
 
 ### <a name="spark-16-notebooks"></a>Записные книжки для Spark 1.6
-Эти записные книжки должны выполняться в ядре PySpark на сервере записной книжки Jupyter:
+Эти портативные компьютеры являются toobe запуска ядра pySpark hello из блокнота jupyter.
 
-- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb). Содержит сведения о том, как выполнять просмотр данных, моделирование и оценку с использованием нескольких различных алгоритмов.
+- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): содержит сведения о том, как просмотр данных tooperform, моделирование и оценка с несколько разных алгоритмов.
 - [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Содержит разделы в записной книжке №1 и варианты моделей с использованием настройки гиперпараметров и перекрестной проверки.
-- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb). Показывает, как применять сохраненную модель в кластерах HDInsight с помощью Python.
+- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): показано, как toooperationalize сохраненную модель с помощью Python в HDInsight кластеров.
 
 ### <a name="spark-20-notebooks"></a>Записные книжки для Spark 2.0
-Эти записные книжки должны выполняться в ядре PySpark3 на сервере записной книжки Jupyter:
+Эти портативные компьютеры являются toobe запуска ядра pySpark3 hello из блокнота jupyter.
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Содержит сведения о том, как выполнять просмотр данных, моделирование и оценку в кластерах Spark 2.0 на примере набора данных о расстояниях и ценах на такси в Нью-Йорке, описанного [здесь](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Эту записную книжку можно использовать в качестве отправной точки для быстрого изучения кода, предоставленного для Spark 2.0. В следующей записной книжке списка приведен более детальный анализ данных о поездках в такси по Нью-Йорку (см. примечания после списка сравнения этих записных книжек). 
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb). Демонстрирует, как можно выполнять структурирование данных (Spark SQL и операции с кадрами данных), просмотр данных, моделирование и оценку на примере набора данных о расстояниях и ценах на такси в Нью-Йорке, который описан [здесь](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb). Демонстрирует, как можно выполнять структурирование данных (Spark SQL и операции с кадрами данных), просмотр данных, моделирование и оценку на примере известного набора данных о расписании вылетов авиакомпании за 2011 и 2012 гг. До моделирования мы дополнили набор данных об авиарейсах набором данных о погоде в аэропортах (скорость ветра, температура, высота над уровнем моря и т. д.), чтобы включить в модель эту информацию о погоде.
+- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): этот файл содержит сведения о как tooperform Просмотр данных, моделирования и оценки в Spark 2.0 кластеры, использующие hello trip такси NYC и набор данных тариф авиакомпании, описано [здесь](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Записной книжки может быть хорошей отправной точкой для быстрого исследования кода hello, предоставленные для Spark 2.0. Для подробных записной книжки анализирует hello такси NYC данных, см. Далее записной книжки hello в этом списке. См. примечания hello ниже, сравнивающие эти портативные компьютеры. 
+- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): этот файл показывает, как tooperform данные wrangling (Spark SQL и кадр данных операции), просмотр, моделирование и оценка с помощью hello trip такси NYC и тариф авиакомпании набор данных описывается [ Здесь](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): этот файл показывает, как tooperform данные wrangling (Spark SQL и кадр данных операции), просмотр, моделирование и оценка с помощью hello хорошо известных авиакомпании на время отправления набор данных на основе 2011 г. и 2012. Мы интегрировать dataset авиакомпании hello hello аэропорта погоды данных (например, windspeed, температуры, высота над уровнем моря т. д.) предыдущих toomodeling, эти функции погоды могут быть включены в модель hello.
 
 <!-- -->
 
 > [!NOTE]
-> В записные книжки для Spark 2.0 был добавлен набор данных об авиарейсах, который лучше иллюстрирует использование алгоритмов классификации. Следующие ссылки помогут получить информацию о наборах данных о расписании вылетов авиакомпании и о погоде.
+> набор данных авиакомпании Hello был добавлен toohello Spark 2.0 записных книжек toobetter иллюстрируют использование hello алгоритмы классификации. См. следующие ссылки на сведения о набора данных на время отправления авиакомпании и набора данных погоды hello.
 
 >- Данные о расписании вылетов авиакомпании: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
 
@@ -64,25 +64,25 @@ ms.lasthandoff: 07/11/2017
 <!-- -->
 
 > [!NOTE]
-Выполнение записных книжек Spark 2.0 с наборами данных о поездках в такси по Нью-Йорку и задержке рейсов может занять примерно 10 минут или больше (в зависимости от размера кластера HDI). В первой записной книжке из приведенного выше списка показаны многие аспекты исследования и визуализации данных, а также обучения модели машинного обучения. За счет уменьшения набора данных о поездках в такси по Нью-Йорку, в котором данные о поездках и тарифах на них объединены в один файл [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb), выполнение и завершение этой записной книжки занимает значительно меньше времени (2–3 минуты), и поэтому ее хорошо использовать в качестве отправной точки для быстрого изучения кода, предоставленного для Spark 2.0. 
+записных книжек Spark 2.0 Hello на такси NYC hello и наборы авиакомпании рейса задержка данных может занять 10 минут или более toorun (в зависимости от размера hello кластер HDI). Hello первой записной книжки в hello над списком показаны различные аспекты hello исследования данных, визуализации и машинного Обучения моделей обучения в записной книжке, занимает меньше времени toorun уменьшается NYC набора данных, в которой hello такси и тариф авиакомпании файлы были предварительно присоединены к домену: [ Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) записной книжки принимает более короткое время toofinish (2-3 минуты) и может быть это хорошая отправная точка для быстро анализ кода hello у нас есть обеспечивает Spark 2.0. 
 
 <!-- -->
 
-Руководство по применению модели Spark 2.0 и использованию моделей для оценки вы найдете в [этом документе для Spark 1.6](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb), который содержит пример с описанием выполняемых шагов. Чтобы использовать этот пример в Spark 2.0, замените файл кода Python [этим файлом](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).
+Рекомендации по ввода в эксплуатацию hello Spark 2.0 модели и модели потребления для оценки разделе hello [документа Spark 1.6 на потребление](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) пример структурирование hello шаги. toouse это 2.0 Spark, замените файл кода hello Python с [этот файл](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).
 
 ### <a name="prerequisites"></a>Предварительные требования
-Описанные ниже процедуры относятся к Spark 1.6. Для Spark 2.0 используйте записные книжки, описанные ранее. 
+Hello следующих процедур, связанных tooSpark 1.6. Для версии Spark 2.0 hello записных книжек hello используйте описанные и связанных toopreviously. 
 
 1. У вас должна быть подписка Azure. Если у вас ее нет, см. статью [о получении бесплатной пробной версии Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-2. Для выполнения инструкций этого руководства требуется кластер Spark 1.6. Создайте его, выполнив инструкции в статье [Начало работы: создание кластера Apache Spark в Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Тип и версию кластера можно указать с помощью меню **Выбор типа кластера** . 
+2. необходимо toocomplete кластера Spark 1.6 в данном пошаговом руководстве. hello следуйте инструкциям в разделе toocreate, [приступить к работе: создание Apache Spark на Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). тип кластера Hello и версии указан из hello **Выбор типа кластера** меню. 
 
 ![Настройка кластера](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
 
 <!-- -->
 
 > [!NOTE]
-> О том, как использовать Scala вместо Python для выполнения задач по полной обработке и анализу данных, вы узнаете из статьи [Обработка и анализ данных с использованием Scala и Spark в Azure](machine-learning-data-science-process-scala-walkthrough.md).
+> Раздел, показывающий выполнение задач по toouse toocomplete Scala, а не Python для процесса обработки и анализа данных с начала до конца, в разделе hello [обработки и анализа данных с помощью Scala с Spark на Azure](machine-learning-data-science-process-scala-walkthrough.md).
 > 
 > 
 
@@ -92,10 +92,10 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-## <a name="the-nyc-2013-taxi-data"></a>Данные о такси в Нью-Йорке, 2013 г.
-Сведения о поездках на такси в Нью-Йорке заключены в сжатые файлы данных с разделителями-запятыми (CSV) объемом около 20 ГБ (примерно 48 ГБ без сжатия), которые содержат данные о 173 миллионах поездок и о стоимости каждой из них. Каждая запись о поездке содержит время и место посадки и высадки, анонимизированный номер лицензии водителя и номер медальона (уникальный идентификатор такси). Данные включают в себя все поездки за 2013 год и предоставляются в виде следующих двух наборов данных за каждый месяц:
+## <a name="hello-nyc-2013-taxi-data"></a>Hello такси 2013 NYC данных
+Hello Trip такси NYC данных составляет около 20 ГБ файлы сжатых значений с разделителями запятыми (CSV) (~ 48 ГБ несжатого), включающего в себя более миллиона 173 отдельных приема-передачи и hello цен платная для каждого маршрута. Каждой записи маршрута включены отгрузки hello и истощение и времени, анонимные hack (драйвер) номер соглашения и номер medallion (уникальный идентификатор элемента такси). данные Hello охватывает все приема-передачи в 2013 году, hello и предоставляется в следующих двух наборов данных для каждого месяца hello:
 
-1. В CSV-файлах "trip_data" содержатся сведения о поездках, например количество пассажиров, места посадки и высадки, продолжительность и дальность поездки. Вот несколько примеров записей:
+1. Hello «trip_data» CSV-файлы содержат обработки таких сведений, как количество пассажиров, взять и указывает dropoff, быть длительность и длина пути. Вот несколько примеров записей:
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -103,7 +103,7 @@ ms.lasthandoff: 07/11/2017
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-2. В CSV-файлах trip_fare содержатся сведения о плате за каждую поездку, например тип оплаты, стоимость поездки, добавочная стоимость и налоги, чаевые и специальные тарифы, а также общая сумма оплаты. Вот несколько примеров записей:
+2. CSV-файлы «trip_fare» Hello содержат подробные сведения о тариф авиакомпании hello платная для каждого маршрута, например тип платежа, сумма тариф авиакомпании, излишнюю нагрузку налоги, советы и тарифы и hello общей оплаты. Вот несколько примеров записей:
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -112,7 +112,7 @@ ms.lasthandoff: 07/11/2017
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Мы взяли 0,1 % этой информации и объединили CSV-файлы trip\_data и trip\_fare в единый набор данных, который в этом руководстве будем использовать в качестве входного набора данных. Уникальный ключ для объединения trip\_data и trip\_fare состоит из полей medallion, hack\_licence и pickup\_datetime. Каждая запись набора данных содержит следующие атрибуты, представляющие поездку на такси в Нью-Йорке:
+Образец 0,1% эти файлы и присоединены к домену hello trip перешли\_данных и обработки\_успешного CVS файлы в toouse один набор данных как hello входного набора данных в этом пошаговом руководстве. Hello trip уникальных ключей toojoin\_данных и обработки\_тариф авиакомпании состоит из полей hello: medallion hack\_лицензии и раскладки\_даты и времени. Каждая запись hello набор данных содержит следующие атрибуты, представляющий маршрут такси NYC hello:
 
 | Поле | Краткое описание |
 | --- | --- |
@@ -124,7 +124,7 @@ ms.lasthandoff: 07/11/2017
 | pickup_datetime |Дата и время посадки пассажира |
 | dropoff_datetime |Дата и время высадки пассажира |
 | pickup_hour |Час посадки пассажира |
-| pickup_week |Номер недели посадки пассажира |
+| pickup_week |Взять неделя года hello |
 | weekday |День недели (диапазон 1–7) |
 | passenger_count |Количество пассажиров во время поездки на такси |
 | trip_time_in_secs |Длительность поездки в секундах |
@@ -144,46 +144,46 @@ ms.lasthandoff: 07/11/2017
 | tipped |Чаевые (0 — нет, 1 — да) |
 | tip_class |Класс чаевых (0: 0 долларов, 1: 0–5 долларов, 2: 6–10 долларов, 3: 11–20 долларов, 4: >20 долларов) |
 
-## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Выполнение кода из записной книжки Jupyter в кластере Spark
-Записную книжку Jupyter можно запустить с портала Azure. Найдите кластер Spark на панели мониторинга и щелкните его, чтобы войти на страницу управления кластером. Последовательно выберите **Панели мониторинга кластера** -> **Записная книжка Jupyter**, чтобы открыть записную книжку, связанную с кластером Spark.
+## <a name="execute-code-from-a-jupyter-notebook-on-hello-spark-cluster"></a>Выполнять код из записной книжке Jupyter на кластере Spark hello
+Вы можете запустить hello книжке Jupyter из hello портал Azure. Найдите свой кластер Spark на информационной панели и щелкните его tooenter страницы управления для кластера. Щелкните записной книжки tooopen hello, связанные с кластера Spark hello, **панели мониторинга кластера** -> **книжке Jupyter** .
 
 ![Панели мониторинга кластера](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
-Также записные книжки Jupyter можно просмотреть по адресу ***https://CLUSTERNAME.azurehdinsight.net/jupyter***. Замените в этом URL-адресе фрагмент CLUSTERNAME именем вашего кластера. Для доступа к записным книжкам необходим пароль к учетной записи администратора.
+Можно также просмотреть слишком***https://CLUSTERNAME.azurehdinsight.net/jupyter*** tooaccess hello записные книжки Jupyter. Замените этот URL-адресе ИМЯ_КЛАСТЕРА hello hello имя свой кластер. Вам необходим пароль hello для записных книжек hello tooaccess учетной записи администратора.
 
 ![Просмотр записных книжек Jupyter](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
-Выберите PySpark, чтобы открыть каталог, содержащий несколько примеров предварительно подготовленных объектов Notebook на основе API PySpark. Объекты Notebook с примерами кода для этой группы статьей о Spark доступны на сайте [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark).
+Выберите PySpark toosee каталога, который содержит несколько примеров предварительно упакованные ноутбуки, использующие hello PySpark API.hello портативные компьютеры, содержащие hello образцы кода для этого набора Spark раздела можно найти по адресу [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)
 
-Объекты Notebook можно передать непосредственно из [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) на сервер Jupyter Notebook в кластере Spark. На домашней странице записной книжки Jupyter нажмите кнопку **Отправить** в правой части экрана. Откроется окно проводника. Здесь вы можете вставить URL-адрес GitHub (необработанное содержимое) для Notebook и нажать кнопку **Открыть**. 
+Вы можете отправить записных книжек hello непосредственно из [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) блокнота jupyter toohello на кластере Spark. На домашней странице hello вашей Jupyter, нажмите кнопку hello **отправить** кнопку в правой части экрана приветствия hello. Откроется окно проводника. Здесь можно вставить hello GitHub (необработанное содержимое) URL-адрес hello записной книжки и нажмите кнопку **откройте**. 
 
-В списке файлов Jupyter отобразится имя файла с кнопкой **Отправить**. Нажмите кнопку **Отправить** . Записная книжка импортирована. Повторите эти действия для отправки остальных записных книжек из этого руководства.
+Вы увидите hello имя файла в список файлов Jupyter с **отправить** еще раз. Нажмите кнопку **Отправить** . Теперь импорта записной книжки hello. Повторите эти шаги tooupload hello других записных книжек из этого пошагового руководства.
 
 > [!TIP]
-> Чтобы получить URL-адрес необработанного содержимого, размещенного на Github, щелкните правой кнопкой мыши ссылку на странице браузера и выберите команду **Копировать ссылку**. Скопированный адрес можно вставить в диалоговое окно загрузки файла Jupyter.
+> Щелкнуть правой кнопкой мыши hello ссылок в браузере и выберите **Копировать ссылку** tooget hello github необработанный URL-адрес содержимого. Этот URL-адрес можно вставить в hello отправить Jupyter explorer диалоговое окно файла.
 > 
 > 
 
 Теперь вы можете:
 
-* просмотреть код, щелкнув записную книжку;
+* Просмотреть кода hello, щелкнув записной книжки hello.
 * выполнить отдельную ячейку, нажав клавиши **SHIFT+ВВОД**;
-* выполнить всю записную книжку, последовательно щелкнув **Ячейка** -> **Выполнить**;
-* использовать автоматическую визуализацию запросов.
+* Запустите всей записной книжки hello, щелкнув **ячейки** -> **запуска**.
+* Используйте автоматическое визуализацию hello запросов.
 
 > [!TIP]
-> Ядро Pyspark автоматически визуализирует выходные данные запросов SQL (HiveQL). С помощью кнопок в меню **Тип** в записной книжке можно выбрать один из нескольких типов визуализации (таблица либо круговая, линейная, комбинированная или столбчатая диаграмма):
+> Hello PySpark ядра автоматически визуализирует hello вывод запросов SQL (HiveQL). Hello tooselect вариант среди различных типов визуализации (таблицы, круговая, строки, области или панели), получают с помощью hello **тип** кнопок меню в записной книжке hello:
 > 
 > 
 
 ![Кривая ROC логистической регрессии для универсального подхода](./media/machine-learning-data-science-spark-overview/pyspark-jupyter-autovisualization.png)
 
 ## <a name="whats-next"></a>Что дальше?
-Теперь, когда вы настроили кластер HDInsight Spark и отправили записные книжки Jupyter, все готово для работы со статьями, посвященными этим трем записным книжкам PySpark. В них рассказывается, как исследовать данные, а также как создавать и использовать модели. С помощью записной книжки по расширенному исследованию и моделированию данных можно более подробно ознакомиться с тем, как использовать перекрестную проверку, перебор гиперпараметров и оценку модели. 
+Теперь, настраиваются с кластером HDInsight Spark и переданы записные книжки Jupyter hello, все готово toowork через hello разделы, соответствующие toohello три PySpark блокнота. Они показывают как tooexplore данных и как затем toocreate и использования моделей. Расширенный просмотр данных и моделирование записной книжки показано как Hello tooinclude свертки перекрестной проверки, hyper параметр и вычисления моделей. 
 
-**Исследование и моделирование данных с помощью Spark**. Исследуйте набор данных, а затем создайте, оцените и проанализируйте модели машинного обучения, выполнив инструкции из статьи, посвященной [созданию моделей двоичной классификации и регрессии для данных с помощью набора средств Spark MLlib](machine-learning-data-science-spark-data-exploration-modeling.md).
+**Просмотр данных и моделирование с помощью Spark:** изучение набора данных hello и создать, оценки и оценивать hello моделей машинного обучения, прохождение hello [создания двоичных классификационных и регрессионных моделей данных с hello Spark Набор средств MLlib](machine-learning-data-science-spark-data-exploration-modeling.md) раздела.
 
-**Использование модели**. Дополнительные сведения об оценке моделей классификации и регрессии, созданных в этой статье, см. в статье [Оценка моделей машинного обучения, созданных с помощью Spark](machine-learning-data-science-spark-model-consumption.md).
+**Модели потребления:** toolearn tooscore hello классификационных и регрессионных моделей создан в этом разделе в статье [оценка и оценки моделей построен Spark машинного обучения](machine-learning-data-science-spark-model-consumption.md).
 
 **Перекрестная проверка и перебор гиперпараметров**. Сведения об обучении моделей с помощью перекрестной проверки и перебора гиперпараметров см. в статье [Расширенное исследование и моделирование данных с помощью Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md).
 

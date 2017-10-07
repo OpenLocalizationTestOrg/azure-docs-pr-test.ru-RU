@@ -1,6 +1,6 @@
 ---
-title: "Создание среды Azure Time Series Insights | Документация Майкрософт"
-description: "Это руководство содержит сведения о создании среды Time Series, ее подключении к источнику событий и способы анализа данных событий за несколько минут."
+title: "aaaCreate среды аналитики ряда времени Azure | Документы Microsoft"
+description: "В этом учебнике вы узнаете, как toocreate среды рядов, подключите его источник события tooan и готов tooanalyze данные события в минутах."
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: omravi
-ms.openlocfilehash: eb710795916a2d7beea75a6408a0982fb4dc8750
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7120fc9a6e4d4a4972f8cb37e4d9945cfb746fd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Создание среды Time Series Insights на портале Azure
+# <a name="create-a-new-time-series-insights-environment-in-hello-azure-portal"></a>Создание новой среды времени серии аналитики в hello портал Azure
 
-Time Series Insights — это ресурс Azure с входящим трафиком и объемом хранилища. Клиенты подготавливают среды через портал Azure, используя требуемую емкость.
+Time Series Insights — это ресурс Azure с входящим трафиком и объемом хранилища. Клиенты предоставить средах через портал Azure hello hello требуется емкость.
 
-## <a name="steps-to-create-the-environment"></a>Процедура создания среды
+## <a name="steps-toocreate-hello-environment"></a>Действия toocreate hello среды
 
-Чтобы создать среду, сделайте следующее:
+Выполните эти шаги toocreate вашей среде.
 
-1.  Выполните вход на [портал Azure](https://portal.azure.com).
-2.  Щелкните знак плюс ("+") в верхнем левом углу.
-3.  В поле поиска выполните поиск по запросу Time Series Insights.
+1.  Войдите в toohello [портал Azure](https://portal.azure.com).
+2.  Щелкните hello левому верхнему углу hello "плюс" («+»).
+3.  Найдите «Дополнительная информация ряда времени» в поле поиска hello.
 
-  ![Создание среды Time Series Insights](media/get-started/getstarted-create-environment1.png)
+  ![Создание среды времени серии аналитики hello](media/get-started/getstarted-create-environment1.png)
 
 4.  Выберите Time Series Insights и щелкните "Создать".
 
-  ![Создание группы ресурсов Time Series Insights](media/get-started/getstarted-create-environment2.png)
+  ![Создать группу ресурсов аналитики ряда времени hello](media/get-started/getstarted-create-environment2.png)
 
-5.  Укажите имя среды, которое будет представлять ее в [обозревателе Time Series](https://insights.timeseries.azure.com).
-6.  Выберите подписку. Выберите подписку, содержащую источник событий. Time Series Insights может автоматически определить ресурсы Центра Интернета вещей и концентратора событий Azure в одной подписке.
+5.  Укажите имя среды, Это имя будет представлять среды hello в [explorer ряда времени](https://insights.timeseries.azure.com).
+6.  Выберите подписку. Выберите подписку, содержащую источник событий. Аналитики ряда времени можно автоматического обнаружения центр IoT Azure и ресурсы концентратора событий, существующих в hello одной подписке.
 7.  Выберите или создайте группу ресурсов. Группы ресурсов — это набор совместно используемых ресурсов Azure.
-8.  Выберите расположение для размещения. Чтобы не перемещать данные между центрами обработки данных, выберите расположение, содержащее источник событий.
+8.  Выберите расположение для размещения. Центрирует tooavoid перемещения данных по данным, выберите папку, содержащую источник события.
 9.  Выберите ценовую категорию.
 10. Выберите емкость. Емкость среды можно изменить после ее создания.
-11. Создайте среду. Вы также можете закрепить среду на панели мониторинга, чтобы к ней можно было быстро обратиться после каждого входа в систему.
+11. Создайте среду. Панели мониторинга toohello среды для упрощения доступа можно также закрепить при каждом входе.
 
-  ![Закрепление Time Series Insights на панели мониторинга](media/get-started/getstarted-create-environment3.png)
+  ![Создание toodashboard ПИН-кода hello аналитики ряда времени](media/get-started/getstarted-create-environment3.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Определите политики доступа к данным](time-series-insights-data-access.md), чтобы получить доступ к среде на [портале Time Series Insights](https://insights.timeseries.azure.com).
-* [Создайте источник событий](time-series-insights-add-event-source.md).
-* [Отправьте события](time-series-insights-send-events.md) в источник событий.
+* [Определить политики доступа данных](time-series-insights-data-access.md) tooaccess в вашей среде [портала аналитики ряда времени](https://insights.timeseries.azure.com)
+* [Создание источника событий](time-series-insights-add-event-source.md)
+* [Отправлять события](time-series-insights-send-events.md) toohello источник события

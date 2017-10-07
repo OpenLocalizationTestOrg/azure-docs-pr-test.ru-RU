@@ -1,6 +1,6 @@
 ---
-title: "Создание управляемого образа в Azure | Документация Майкрософт"
-description: "Создание управляемого образа универсальной виртуальной машины или виртуального жесткого диска в Azure. Образы можно использовать для создания нескольких виртуальных машин, использующих управляемые диски."
+title: "aaaCreate управляемый образ в Azure | Документы Microsoft"
+description: "Создание управляемого образа универсальной виртуальной машины или виртуального жесткого диска в Azure. Изображения могут быть toocreate используется несколько виртуальных машин, использующих управляемый дисков."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,65 +15,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
 ms.author: cynthn
-ms.openlocfilehash: f64b81489ab426b50ec89af369e1581ac71848be
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d8cd6c2ce8c5d704de2c845abced85139944d682
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Создание управляемого образа универсальной виртуальной машины в Azure
 
-Ресурс управляемого образа можно создать из универсальной виртуальной машины, которая хранится в виде управляемого диска или неуправляемых дисков в учетной записи хранения. Затем образ можно использовать для создания нескольких виртуальных машин. 
+Ресурс управляемого образа можно создать из универсальной виртуальной машины, которая хранится в виде управляемого диска или неуправляемых дисков в учетной записи хранения. Здравствуйте, изображение может затем быть toocreate используется несколько виртуальных машин. 
 
 
-## <a name="generalize-the-windows-vm-using-sysprep"></a>Подготовка виртуальной машины Windows к использованию с помощью Sysprep
+## <a name="generalize-hello-windows-vm-using-sysprep"></a>Обобщить hello виртуальной Машины Windows с помощью программы Sysprep
 
-Помимо прочих действий Sysprep удаляет все сведения о вашей учетной записи и подготавливает машину к использованию в качестве образа. Сведения о Sysprep см. в статье [Использование программы Sysprep: введение](http://technet.microsoft.com/library/bb457073.aspx).
+Sysprep удаляет все ваши личные сведения, помимо прочего и подготавливает toobe машины hello, используемое в качестве изображения. Дополнительные сведения о программе Sysprep см. в разделе [как tooUse Sysprep: введение](http://technet.microsoft.com/library/bb457073.aspx).
 
-Убедитесь, что Sysprep поддерживает роли сервера, запущенные на компьютере. Дополнительные сведения см. в статье [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Поддержка серверных ролей в Sysprep).
+Убедитесь, что на компьютере hello ролей сервера hello поддерживаются программой Sysprep. Дополнительные сведения см. в статье [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Поддержка серверных ролей в Sysprep).
 
 > [!IMPORTANT]
-> Если вы еще не отправили виртуальный жесткий диск в Azure и собираетесь запустить Sysprep первый раз, прежде чем это делать, [подготовьте виртуальную машину](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+> При запуске средства Sysprep перед отправкой tooAzure вашего виртуального жесткого диска для hello в первый раз убедитесь, что у вас есть [подготовки ВМ](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) перед запуском Sysprep. 
 > 
 > 
 
-1. Выполните вход на виртуальную машину Windows.
-2. Откройте окно командной строки с правами администратора. Измените каталог на **%windir%\system32\sysprep** и запустите файл `sysprep.exe`.
-3. В диалоговом окне **Программа подготовки системы** выберите **Переход в окно приветствия системы (OOBE)** и убедитесь, что установлен флажок **Подготовка к использованию**.
+1. Войдите в систему toohello виртуальной машины Windows.
+2. Привет открыть окно командной строки с правами администратора. Измените каталог hello слишком**%windir%\system32\sysprep**, а затем запустите `sysprep.exe`.
+3. В hello **средство подготовки системы** выберите **Enter System Out-of-Box Experience (OOBE)**и убедитесь, что hello **Generalize** установлен флажок.
 4. В разделе **Параметры завершения работы** выберите **Завершение работы**.
 5. Нажмите кнопку **ОК**.
    
     ![Запуск Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. После выполнения всех необходимых действий Sysprep завершает работу виртуальной машины. Не перезапускайте виртуальную машину.
+6. По завершении работы программы Sysprep завершает hello виртуальной машины. Не перезагружайте hello виртуальной Машины.
 
 
-## <a name="create-a-managed-image-in-the-portal"></a>Создание управляемого образа на портале 
+## <a name="create-a-managed-image-in-hello-portal"></a>Создать управляемый образ на портале hello 
 
-1. Откройте [портал](https://portal.azure.com).
-2. Нажмите знак "плюс" (+), чтобы создать ресурс.
-3. В поле фильтрации поиска введите **Image**.
-4. Выберите **Image** (Образ) из результатов.
-5. В колонке **Image** (Образ) нажмите кнопку **Создать**.
-6. В поле **Имя** введите имя образа.
-7. При наличии нескольких подписок выберите подписку, которую вы хотите использовать, из раскрывающегося списка **Подписка**.
-7. В поле **Группа ресурсов** выберите **Создать** и введите имя или выберите **From existing** (Из существующего) и выберите из раскрывающегося списка используемую группу ресурсов.
-8. В поле **Расположение** выберите расположение группы ресурсов.
-9. В поле **Тип ОС** выберите тип операционной системы: Windows или Linux.
-11. В разделе **Большой двоичный объект хранилища** нажмите кнопку **Обзор**, чтобы найти виртуальный жесткий диск в службе хранилища Azure.
+1. Откройте hello [портала](https://portal.azure.com).
+2. Щелкните hello плюс toocreate новый ресурс.
+3. В поле фильтра поиска hello введите **изображения**.
+4. Выберите **изображения** из результатов hello.
+5. В hello **изображения** колонка, щелкните **создать**.
+6. В **имя**, введите имя образа hello.
+7. Если имеется несколько подписок, выберите hello правильный выбор из hello **подписки** раскрывающегося списка.
+7. В **группы ресурсов** выберите **создать новый** и введите имя или выберите **из существующего** и выберите из раскрывающегося списка hello toouse группы ресурсов.
+8. В **расположение**, выберите расположение hello группы ресурсов.
+9. В **тип ОС** выберите hello тип операционной системы Windows или Linux.
+11. В **BLOB-объекта хранилища**, нажмите кнопку **Обзор** toolook для hello виртуального жесткого диска в службе хранилища Azure.
 12. В поле **Тип учетной записи** выберите Standard_LRS или Premium_LRS. Для уровня "Стандартный" используются жесткие диски, а для уровня "Премиум" — твердотельные накопители. Для обоих уровней используется локально избыточное хранилище.
-13. Из списка **Disk caching** (Кэширование дисков) выберите соответствующий параметр кэширования дисков. Возможные параметры: **None** (Нет), **Read-only** (Только чтение) и **Read\write** (Чтение и запись).
-14. (Необязательно.) В образ можно добавить существующий диск данных, щелкнув **+ Добавить диск данных**.  
+13. В **кэширования диска** Здравствуйте, выберите соответствующий диск параметр кэширования. Параметры Hello **нет**, **только для чтения** и **находится**.
+14. Необязательно: Можно также добавить образ toohello диска данных, щелкнув **+ добавить диск данных**.  
 15. Завершив настройку параметров, нажмите кнопку **Создать**.
-16. После создания образа вы увидите его в виде ресурса **Image** в списке ресурсов группы ресурсов, которую вы выбрали.
+16. После создания образа hello, вы увидите его как **изображения** ресурс в список hello ресурсов в группе ресурсов hello выбрано.
 
 
 
 ## <a name="create-a-managed-image-of-a-vm-using-powershell"></a>Создание управляемого образа виртуальной машины с помощью PowerShell
 
-Создание образа непосредственно из виртуальной машины гарантирует, что он будет содержать все ее диски, включая диск ОС и диски данных.
+Создание образа непосредственно из виртуальных Машин гарантирует, что это изображение hello приветствия включает все hello диски, связанные с hello виртуальной Машины, включая hello диска ОС и дисков данных.
 
 
-Прежде чем начать, убедитесь, что у вас установлена последняя версия модуля PowerShell AzureRM.Compute. Выполните следующую команду, чтобы установить ее.
+Прежде чем начать, убедитесь, что последняя версия модуля AzureRM.Compute PowerShell hello hello. Запустите hello следующие tooinstall команды.
 
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -89,30 +89,30 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
     $location = "EastUS"
     $imageName = "myImage"
     ```
-2. Убедитесь, что виртуальная машина была освобождена.
+2. Убедитесь, что виртуальная машина была освобождена приветствия.
 
     ```powershell
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. Теперь задайте для виртуальной машины состояние **Generalized**(Универсальная). 
+3. Задать состояние hello hello виртуальной машины слишком**универсальная**. 
    
     ```powershell
     Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized
     ```
     
-4. Получите виртуальную машину. 
+4. Получение hello виртуальной машины. 
 
     ```powershell
     $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName
     ```
 
-5. Создайте конфигурацию образа.
+5. Создайте конфигурацию hello изображения.
 
     ```powershell
     $image = New-AzureRmImageConfig -Location $location -SourceVirtualMachineId $vm.ID 
     ```
-6. Создайте образ.
+6. Создание образа hello.
 
     ```powershell
     New-AzureRmImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
@@ -125,7 +125,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 Создайте управляемый образ с помощью универсального виртуального жесткого диска ОС.
 
 
-1.  Сначала задайте общие параметры.
+1.  Во-первых можно задать общие параметры hello:
 
     ```powershell
     $rgName = "myResourceGroupName"
@@ -134,18 +134,18 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
     $imageName = "yourImageName"
     $osVhdUri = "https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd"
     ```
-2. Остановите и освободите виртуальную машину.
+2. Здравствуйте, Step\deallocate виртуальной Машины.
 
     ```powershell
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. Пометьте виртуальную машину как универсальную.
+3. Пометьте виртуальной Машины как обобщенный hello.
 
     ```powershell
     Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized 
     ```
-4.  Создайте образ с помощью универсального виртуального жесткого диска ОС.
+4.  Создайте образ hello, с помощью общего виртуального жесткого диска операционной системы.
 
     ```powershell
     $imageConfig = New-AzureRmImageConfig -Location $location
@@ -156,7 +156,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
 ## <a name="create-a-managed-image-from-a-snapshot-using-powershell"></a>Создание управляемого образа из моментального снимка с помощью PowerShell
 
-Можно создать управляемый образ из моментального снимка виртуального жесткого диска универсальной виртуальной машины.
+Можно также создать управляемый образ из моментального снимка hello VHD из универсальной ВМ.
 
     
 1. Создайте несколько переменных. 
@@ -168,19 +168,19 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
     $imageName = "myImage"
     ```
 
-2. Получите моментальный снимок.
+2. Получение моментальных снимков hello.
 
    ```powershell
    $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgName -SnapshotName $snapshotName
    ```
    
-3. Создайте конфигурацию образа.
+3. Создайте конфигурацию hello изображения.
 
     ```powershell
     $imageConfig = New-AzureRmImageConfig -Location $location
     $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -SnapshotId $snapshot.Id
     ```
-4. Создайте образ.
+4. Создание образа hello.
 
     ```powershell
     New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
@@ -188,5 +188,5 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
     
 
 ## <a name="next-steps"></a>Дальнейшие действия
-- Теперь вы можете [создать виртуальную машину из универсального управляемого образа](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
+- Теперь вы можете [создания виртуальной Машины из образа управляемого hello обобщенный](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
 

@@ -1,6 +1,6 @@
 ---
 title: " Управление сервером обработки масштабирования в Azure Site Recovery | Документация Майкрософт"
-description: "В этой статье описывается настройка сервера обработки масштабирования в Azure Site Recovery и управление им."
+description: "В этой статье описывается как tooset и управление ею сервер обработки горизонтального масштабирования в Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: AnoopVasudavan
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: e5c01de19917235c34c035415df86291b9152bf0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3d72f9c2c7014a4ff2fa2af168aa55ad1452eae5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-a-scale-out-process-server"></a>Управление сервером обработки масштабирования
 
-Сервер обработки масштабирования выполняет роль координатора передачи данных между службами Site Recovery и локальной инфраструктурой. В этой статье описывается, как выполнить установку, настройку и администрирование серверов обработки масштабирования.
+Сервер обработки масштабирования выступает в качестве координатора для передачи данных между службами Site Recovery hello и локальной инфраструктуры. В этой статье описывается, как выполнить установку, настройку и администрирование серверов обработки масштабирования.
 
 ## <a name="prerequisites"></a>Предварительные требования
-Ниже перечислены рекомендуемые требования к оборудованию, программному обеспечению и сети для установки сервера обработки масштабирования.
+Hello ниже приведены hello рекомендуется оборудования, программного обеспечения и tooset требуется настройка сети сервер процесс масштабирования.
 
 > [!NOTE]
-> [Планирование мощности](site-recovery-capacity-planner.md) — это важный шаг для развертывания сервера обработки масштабирования, соответствующего требованиям нагрузки. Дополнительные сведения см. в разделе с [требованиями к масштабированию для сервера обработки масштабирования](#sizing-requirements-for-a-configuration-server).
+> [Планирование мощности](site-recovery-capacity-planner.md) является важным этапом tooensure развертывание сервера обработки масштабирования с конфигурацией hello, наборы требований нагрузки. Дополнительные сведения см. в разделе с [требованиями к масштабированию для сервера обработки масштабирования](#sizing-requirements-for-a-configuration-server).
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
-## <a name="downloading-the-scale-out-process-server-software"></a>Скачивание программного обеспечения сервера обработки масштабирования
-1. Войдите на портал Azure и перейдите в хранилище служб восстановления.
-2. Откройте **Инфраструктура Site Recovery** > **Серверы конфигурации** (в разделе VMware и физических компьютеров).
-3. Выберите сервер конфигурации, чтобы перейти на страницу подробных сведений о нем.
-4. Нажмите кнопку **+ Сервер обработки**.
-5. На странице **Добавление сервера обработки** в раскрывающемся списке **Укажите, где следует развернуть сервер обработки** выберите **Локальное развертывание сервера обработки масштабирования**.
+## <a name="downloading-hello-scale-out-process-server-software"></a>Загрузка программного обеспечения сервера обработки масштабирования hello
+1. Войдите в систему toohello Azure tooyour портал и обзор хранилище служб восстановления.
+2. Обзор слишком**инфраструктура Site Recovery** > **серверы конфигурации** (в разделе For VMware и физических компьютеров).
+3. Выберите toodrill сервера вашей конфигурации списка на странице сведений о конфигурации сервера hello.
+4. Нажмите кнопку hello **+ сервера обработки** кнопки.
+5. В hello **сервер обработки, добавьте** выберите **масштабное развертывание сервера обработки в локальной** параметр из hello **выберите место toodeploy сервера обработки** раскрывающийся список.
 
   ![Страница "Добавление серверов"](./media/site-recovery-vmware-to-azure-manage-scaleout-process-server/add-process-server.png)
-6. Щелкните ссылку **Download the Microsoft Azure Site Recovery Unified Setup** (Скачать единый файл установки Microsoft Azure Site Recovery), чтобы скачать последнюю версию файла установки сервера обработки масштабирования.
+6. Нажмите кнопку hello **загрузки hello установка единой Microsoft Azure Site Recovery** ссылку toodownload hello последнюю версию установки сервера обработки hello горизонтального масштабирования.
 
   > [!WARNING]
-  Версия сервера обработки масштабирования должна соответствовать версии сервера конфигурации, работающего в среде, или быть меньше ее. Простой способ обеспечить совместимость версий — использовать те же средства установки, которые недавно использовались для установки и обновления сервера конфигурации.
+  Hello версия сервера обработки масштабирования должна быть равна tooor меньше, чем версия сервера конфигурации hello в вашей среде. Совместимость версий tooensure простой способ — toouse hello же установщика бит, что вы недавно использовали tooinstall или обновить сервер конфигурации.
 
 ## <a name="installing-and-registering-a-scale-out-process-server-from-gui"></a>Установка и регистрация сервера обработки масштабирования из графического пользовательского интерфейса
-Если вы увеличите развертывание так, что количество компьютеров-источников превысит 200 или объем ежедневно изменяемых данных превысит 2 ТБ, для обработки такой нагрузки потребуются дополнительные серверы обработки.
+При наличии tooscale out развертывания за пределы 200 исходных компьютеров, или общее ежедневно обработка скорость более 2 ТБ, необходимо объем трафика hello toohandle серверы дополнительные процедуры.
 
-Ознакомьтесь с [рекомендациями по выбору размера серверов обработки](#size-recommendations-for-the-process-server) и выполните приведенные ниже инструкции по настройке сервера обработки. После настройки сервера необходимо перевести исходные компьютеры на его использование.
+Проверьте hello [размер рекомендации для внутренних серверов](#size-recommendations-for-the-process-server), а затем выполните эти инструкции tooset hello процесса сервера. После настройки сервера hello, переносе исходной машины toouse его.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-add-process-server.md)]
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="installing-and-registering-a-scale-out-process-server-using-command-line"></a>Установка и регистрация сервера обработки масштабирования с помощью командной строки
 
 ```
-UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
+UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address toobe used for data transfer] [/CSIP <IP address of CS toobe registered with>] [/PassphraseFilePath <Passphrase file path>]
 ```
 
 ### <a name="sample-usage"></a>Пример использования
@@ -71,7 +71,7 @@ UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /
 
 
 ### <a name="create-a-proxy-settings-configuration-file"></a>Создание файла конфигурации параметров прокси-сервера
-Параметр ProxySettingsFilePath принимает в качестве входных данных файл. Создайте файл, используя следующий формат, и передайте его в качестве входных данных для параметра ProxySettingsFilePath.
+Параметр ProxySettingsFilePath принимает в качестве входных данных файл. Создание файла с использованием hello ниже форматирования и передайте его в качестве входного параметра ProxySettingsFilePath.
 ```
 * [ProxySettings]
 * ProxyAuthentication = "Yes/No"
@@ -83,14 +83,14 @@ UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /
 ## <a name="modifying-proxy-settings-for-scale-out-process-server"></a>Изменение параметров прокси-сервера для сервера обработки масштабирования
 1. Войдите на сервер обработки масштабирования.
 2. Откройте командную строку PowerShell с правами администратора.
-3. Выполните следующую команду
+3. Запустите следующую команду hello
   ```
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
   net stop obengine
   net start obengine
   ```
-4. Затем перейдите в каталог **%PROGRAMDATA%\ASR\Agent** и выполните следующую команду:
+4. После просмотра каталога toohello **%PROGRAMDATA%\ASR\Agent** и выполнения hello следующую команду
   ```
   cmd
   cdpcli.exe --registermt
@@ -106,7 +106,7 @@ UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /
 [!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
 
 * Далее откройте командную строку с правами администратора.
-* Перейдите в каталог **%PROGRAMDATA%\ASR\Agent** и выполните следующую команду:
+* Обзор каталога toohello **%PROGRAMDATA%\ASR\Agent** и выполните команду hello
 
 ```
 cdpcli.exe --registermt
@@ -121,19 +121,19 @@ net start obengine
 
 ## <a name="decommissioning-a-scale-out-process-server"></a>Прекращение использования сервера обработки масштабирования
 1. Убедитесь в следующем:
-  - на портале Azure показано, что подключение сервера конфигурации установлено (состояние **Подключено**);
-  - сервер обработки по-прежнему может обмениваться данными с сервером конфигурации.
-2. Войдите на сервер обработки с правами администратора.
+  - Состояние подключения сервера конфигурации показано, как **подключен** в hello портал Azure
+  - Сервера обработки — все еще может toocommunicate с сервера конфигурации hello.
+2. Войдите в сервер обработки toohello в качестве администратора
 3. Откройте "Панель управления > Программы > Удалить программы".
-4. Удалите программы в следующей последовательности:
+4. Удалите программы hello в последовательности hello, учитывая следующие:
   * серверы конфигурации и обработки Microsoft Azure Site Recovery;
   * зависимости сервера конфигурации Microsoft Azure Site Recovery;
   * агент служб восстановления Microsoft Azure.
 
-Чтобы удаление сервера обработки отобразилось на портале Azure, может потребоваться около 15 минут.
+Он может занять too15 вверх минут для удаления tooreflect hello сервера обработки в hello портал Azure.
 
   > [!NOTE]
-  Если серверу обработки не удалось связаться с сервером конфигурации (на портале показано состояние подключения "Отключено"), необходимо выполнить следующие действия, чтобы удалить его с сервера конфигурации.
+  Если сервера обработки hello — не удается toocommunicate с hello конфигурации сервера (подключение на портале имеет состояние Disconnected), потребуется toofollow hello следующие шаги toopurge его из hello сервера конфигурации.
 
 ## <a name="unregistering-a-disconnected-scale-out-process-server-from-a-configuration-server"></a>Отмена регистрации отключенного сервера обработки масштабирования на сервере конфигурации
 
@@ -144,5 +144,5 @@ net start obengine
 | **Дополнительный сервер обработки** | **Размер диска кэша** | **Частота изменения данных** | **Защищенные компьютеры** |
 | --- | --- | --- | --- |
 |4 виртуальных ЦП (2 сокета * 2 ядра с частотой 2,5 ГГц), 8 ГБ памяти |300 ГБ |250 ГБ или менее |Репликация до 85 компьютеров |
-|8 виртуальных ЦП (2 сокета * 4 ядра с частотой 2,5 ГГц), 12 ГБ памяти |600 ГБ |От 250 ГБ до 1 ТБ |Репликация от 85 до 150 компьютеров |
-|12 виртуальных ЦП (2 сокета * 6 ядер с частотой 2,5 ГГц), 24 ГБ памяти |1 TБ |От 1 ТБ до 2 ТБ |Репликация от 150 до 225 компьютеров |
+|8 виртуальных ЦП (2 сокета * 4 ядра с частотой 2,5 ГГц), 12 ГБ памяти |600 ГБ |250 ГБ too1 ТБ |Репликация от 85 до 150 компьютеров |
+|12 виртуальных ЦП (2 сокета * 6 ядер с частотой 2,5 ГГц), 24 ГБ памяти |1 TБ |1 ТБ too2 ТБ |Репликация от 150 до 225 компьютеров |

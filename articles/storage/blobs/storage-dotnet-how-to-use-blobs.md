@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с хранилищем BLOB-объектов Azure (хранилищем объектов) с помощью .NET | Документация Майкрософт"
-description: "Хранение неструктурированных данных в облаке в хранилище BLOB-объектов Azure."
+title: "aaaGet к работе с хранилищем больших двоичных объектов Azure (хранилище объектов), с помощью .NET | Документы Microsoft"
+description: "Храните неструктурированные данные в облаке hello с хранилищем больших двоичных объектов Azure (хранилище объектов)."
 services: storage
 documentationcenter: .net
 author: mmacy
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: marsma
-ms.openlocfilehash: 70c7d6a5e1b9aa9a13481893e0baa56538be097c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3df0cf14b69d85cdc2f62cc3c8b901be102fa026
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-blob-storage-using-net"></a>Приступая к работе с хранилищем BLOB-объектов Azure с помощью .NET
 
@@ -26,10 +26,10 @@ ms.lasthandoff: 08/29/2017
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
-Хранилище BLOB-объектов Azure — это служба, которая хранит неструктурированные данные в облаке в качестве объектов или больших двоичных объектов. В хранилище BLOB-объектов могут храниться текстовые или двоичные данные любого типа, например документы, файлы мультимедиа или установщики приложений. Хранилище BLOB-объектов иногда также называют хранилищем объектов.
+Хранилище больших двоичных объектов Azure — это служба, неструктурированные данные хранятся в облаке hello как большие двоичные объекты и объекты. В хранилище BLOB-объектов могут храниться текстовые или двоичные данные любого типа, например документы, файлы мультимедиа или установщики приложений. Хранилище больших двоичных объектов также является ссылка tooas объекта хранилища.
 
 ### <a name="about-this-tutorial"></a>О данном учебнике
-В этом руководстве показано, как написать код .NET для некоторых распространенных сценариев использования хранилища BLOB-объектов Azure. Эти сценарии включают отправку, перечисление, загрузку и удаление больших двоичных объектов.
+В этом учебнике показано, как toowrite .NET кода в некоторых распространенных сценариях, с помощью хранилища больших двоичных объектов Azure. Эти сценарии включают отправку, перечисление, загрузку и удаление больших двоичных объектов.
 
 **Предварительные требования:**
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [storage-dotnet-client-library-version-include](../../../includes/storage-dotnet-client-library-version-include.md)]
 
 ### <a name="more-samples"></a>Другие примеры
-Дополнительные примеры использования хранилища BLOB-объектов см. в статье [Getting Started with Azure Blob Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) (Приступая к работе с хранилищем BLOB-объектов Azure в .NET). Вы можете скачать пример приложения и запустить его или просмотреть код на GitHub.
+Дополнительные примеры использования хранилища BLOB-объектов см. в статье [Getting Started with Azure Blob Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) (Приступая к работе с хранилищем BLOB-объектов Azure в .NET). Можно загрузить пример приложения hello и запустите его или просмотр кода hello в GitHub.
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [storage-development-environment-include](../../../includes/storage-development-environment-include.md)]
 
 ### <a name="add-using-directives"></a>Добавление директив using
-Добавьте в верхнюю часть файла `Program.cs` следующие директивы **using**:
+Добавьте следующее hello **с помощью** директивы toohello вверху hello `Program.cs` файла:
 
 ```csharp
 using Microsoft.WindowsAzure; // Namespace for CloudConfigurationManager
@@ -58,89 +58,89 @@ using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
 using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 ```
 
-### <a name="parse-the-connection-string"></a>Анализ строки подключения
+### <a name="parse-hello-connection-string"></a>Синтаксический анализ строки соединения hello
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-### <a name="create-the-blob-service-client"></a>Создание клиента службы BLOB-объектов
-Класс **CloudBlobClient** позволяет извлекать контейнеры и большие двоичные объекты, которые хранятся в хранилище BLOB-объектов. Вот один из способов создать клиента службы.
+### <a name="create-hello-blob-service-client"></a>Создание клиента службы BLOB-объектов hello
+Hello **CloudBlobClient** класс позволяет tooretrieve контейнеры и большие двоичные объекты, хранящиеся в хранилище больших двоичных объектов. Вот один из способов toocreate hello службы клиента.
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
-Теперь вы можете написать код, который считывает и записывает данные в хранилище BLOB-объектов.
+Теперь все готово toowrite код, который считывает и записывает tooBlob хранения данных.
 
 ## <a name="create-a-container"></a>Создание контейнера
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
-В этом примере показано, как создать контейнер:
+В этом примере показано, как toocreate контейнера, если он еще не существует:
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve a reference to a container.
+// Retrieve a reference tooa container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Create the container if it doesn't already exist.
+// Create hello container if it doesn't already exist.
 container.CreateIfNotExists();
 ```
 
-По умолчанию новый контейнер является закрытым. Это значит, что вам нужно указать ключ доступа к хранилищу, чтобы загрузить большие двоичные объекты из этого контейнера. Чтобы сделать файлы в этом контейнере доступными для всех пользователей, сделайте контейнер открытым, используя следующий код:
+По умолчанию hello новый контейнер является закрытым, это означает, что необходимо указать хранилища доступа ключа toodownload BLOB-объектов из этого контейнера. Если файлы toomake hello в пределах доступных tooeveryone hello контейнера, можно задать toobe контейнера hello общим с помощью hello, следующий код:
 
 ```csharp
 container.SetPermissions(
     new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 ```
 
-Любой пользователь в Интернете может видеть BLOB-объекты в открытом контейнере, но изменить или удалить их можно только при наличии ключа доступа или подписанного URL-адреса.
+Всем пользователям в Интернете hello можно увидеть в открытый контейнер BLOB-объектов. Тем не менее можно изменить или удалить их только в том случае, если у вас есть ключ доступа hello соответствующей учетной записи или подписанный URL-адрес.
 
 ## <a name="upload-a-blob-into-a-container"></a>Отправка BLOB-объекта в контейнер
-Хранилище BLOB-объектов Azure поддерживает блочные и страничные BLOB-объекты.  В большинстве случаев рекомендуется использовать блочные BLOB-объекты.
+Хранилище BLOB-объектов Azure поддерживает блочные и страничные BLOB-объекты.  В большинстве случаев блочного BLOB-объекта — hello, рекомендуется toouse типа.
 
-Для передачи файла в блочный BLOB-объект получите ссылку на контейнер и используйте ее для получения ссылки на блочный BLOB-объект. Получив ссылку на большой двоичный объект, вы можете отправить в него любой поток данных с помощью метода **UploadFromStream** . Эта операция создает большой двоичный объект, если он не существует, или заменяет его, если он существует.
+большой двоичный объект блока файла tooa tooupload получить ссылку на контейнер и использовать его tooget ссылку на большой двоичный объект блока. Получив ссылку на большой двоичный объект можно передать любой поток данных tooit с вызывающему Привет **UploadFromStream** метод. Эта операция создает hello большого двоичного объекта, если он не был найден ранее, или перезаписывает его, если он существует.
 
-В следующем примере показано, как отправить BLOB-объект в контейнер. Предполагается, что контейнер уже был создан.
+Следующий пример показывает как Hello tooupload большого двоичного объекта в контейнер и предполагается hello контейнера уже был создан.
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "myblob".
+// Retrieve reference tooa blob named "myblob".
 CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
-// Create or overwrite the "myblob" blob with contents from a local file.
+// Create or overwrite hello "myblob" blob with contents from a local file.
 using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 {
     blockBlob.UploadFromStream(fileStream);
 }
 ```
 
-## <a name="list-the-blobs-in-a-container"></a>Перечисление BLOB-объектов в контейнере
-Для перечисления BLOB-объектов в контейнере сначала необходимо получить ссылку на контейнер. Затем можно использовать метод **ListBlobs** контейнера, чтобы извлечь большие двоичные объекты и/или каталоги в нем. Для доступа к широкому набору свойств и методов возвращаемого объекта **IListBlobItem** необходимо преобразовать его в объект **CloudBlockBlob**, **CloudPageBlob** или **CloudBlobDirectory**. Если тип неизвестен, можно использовать проверку типов, чтобы определить нужный тип. Следующий код демонстрирует, как получить и вывести универсальный код ресурса (URI) каждого элемента в контейнере _photos_.
+## <a name="list-hello-blobs-in-a-container"></a>Перечисление hello больших двоичных объектов в контейнере
+toolist hello BLOB-объектов в контейнере, сначала нужно получить ссылку на контейнер. Затем можно использовать контейнер hello **ListBlobs** метод tooretrieve hello BLOB-объектов и/или каталогов в ней. широкий набор свойств и методов для возвращенной hello tooaccess **IListBlobItem**, необходимо привести tooa **CloudBlockBlob**, **CloudPageBlob**, или  **CloudBlobDirectory** объекта. Если неизвестен тип hello, можно использовать проверку типа toodetermine какие toocast его. Hello следующий код демонстрирует, как tooretrieve и вывод hello URI каждого элемента в hello _фотографии_ контейнера:
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("photos");
 
-// Loop over items within the container and output the length and URI.
+// Loop over items within hello container and output hello length and URI.
 foreach (IListBlobItem item in container.ListBlobs(null, false))
 {
     if (item.GetType() == typeof(CloudBlockBlob))
@@ -166,9 +166,9 @@ foreach (IListBlobItem item in container.ListBlobs(null, false))
 }
 ```
 
-Включив сведения о пути в имена BLOB-объектов, вы можете создать структуру виртуальных каталогов, которую можно организовывать и просматривать, как обычную файловую систему. Используется только структура виртуальных каталогов, так как единственные ресурсы, доступные в хранилище BLOB-объектов, — контейнеры и BLOB-объекты. Тем не менее, в клиентской библиотеке хранилища содержится объект **CloudBlobDirectory** , который позволяет обратится к виртуальному каталогу и упростить процесс работы с большими двоичными объектами, упорядоченными таким образом.
+Включив сведения о пути в имена BLOB-объектов, вы можете создать структуру виртуальных каталогов, которую можно организовывать и просматривать, как обычную файловую систему. Структура каталогов Hello является виртуальным только--hello только доступные ресурсы в хранилище больших двоичных объектов, контейнеры и большие двоичные объекты. Однако клиентская библиотека хранилища hello предлагает **CloudBlobDirectory** объекта виртуального каталога tooa toorefer и упростить процесс работы с большими двоичными объектами, которые упорядочены таким образом hello.
 
-Для примера рассмотрим набор блочных BLOB-объектов в контейнере *photos*.
+Например, рассмотрим следующий набор блочных больших двоичных объектов в контейнере с именем hello *фотографии*:
 
 ```
 photo1.jpg
@@ -181,7 +181,7 @@ photo1.jpg
 2011/photo7.jpg
 ```
 
-При вызове метода **ListBlobs** для контейнера *photos* (как в примере кода выше) возвращается иерархический список. Он содержит объекты **CloudBlobDirectory** и **CloudBlockBlob**, которые представляют собой каталоги и большие двоичные объекты в контейнере соответственно. Результат выглядит так:
+При вызове **ListBlobs** на hello *фотографии* контейнера (как hello предшествующий фрагмент кода), возвращается иерархический список. Он содержит оба **CloudBlobDirectory** и **CloudBlockBlob** объекты, представляющие каталоги hello и большие двоичные объекты в контейнере hello соответственно. выходные данные, полученные Hello выглядит следующим образом.
 
 ```
 Directory: https://<accountname>.blob.core.windows.net/photos/2010/
@@ -189,17 +189,17 @@ Directory: https://<accountname>.blob.core.windows.net/photos/2011/
 Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 ```
 
-При необходимости можно установить для параметра **UseFlatBlobListing** метода **ListBlobs** значение **true**. В этом случае каждый большой двоичный объект в контейнере возвращается в виде объекта **CloudBlockBlob** . Вызов метода **ListBlobs** для возврата неструктурированного списка выглядит так:
+При необходимости можно задать hello **UseFlatBlobListing** параметр hello **ListBlobs** метод **true**. В этом случае каждый большой двоичный объект в контейнере hello возвращается в виде **CloudBlockBlob** объекта. Здравствуйте вызов слишком**ListBlobs** tooreturn плоском листинге выглядит следующим образом:
 
 ```csharp
-// Loop over items within the container and output the length and URI.
+// Loop over items within hello container and output hello length and URI.
 foreach (IListBlobItem item in container.ListBlobs(null, true))
 {
     ...
 }
 ```
 
-А результаты выглядят так:
+и hello результаты выглядят следующим образом:
 
 ```
 Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
@@ -213,43 +213,43 @@ Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/
 ```
 
 ## <a name="download-blobs"></a>Скачивание больших двоичных объектов
-Для загрузки BLOB-объектов сначала нужно получить ссылку на BLOB-объект, а затем вызвать метод **DownloadToStream** . В следующем примере метод **DownloadToStream** используется для переноса содержимого большого двоичного объекта в объект потока, который затем можно сохранить в локальном файле.
+toodownload больших двоичных объектов, сначала получить ссылку на большой двоичный объект, а затем вызвать hello **методов DownloadToStream** метод. Hello следующий пример использует hello **методов DownloadToStream** метод tootransfer hello blob содержимое tooa объекта потока могут затем сохраняться tooa локального файла.
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "photo1.jpg".
+// Retrieve reference tooa blob named "photo1.jpg".
 CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");
 
-// Save blob contents to a file.
+// Save blob contents tooa file.
 using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 {
     blockBlob.DownloadToStream(fileStream);
 }
 ```
 
-Можно также использовать метод **DownloadToStream** , чтобы загрузить содержимое BLOB-объекта как текстовую строку.
+Можно также использовать hello **методов DownloadToStream** метод toodownload hello содержимое большого двоичного объекта в виде строки текста.
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "myblob.txt"
+// Retrieve reference tooa blob named "myblob.txt"
 CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
 
 string text;
@@ -261,48 +261,48 @@ using (var memoryStream = new MemoryStream())
 ```
 
 ## <a name="delete-blobs"></a>Удаление blob-объектов
-Чтобы удалить большой двоичный объект, сначала нужно получить ссылку на него, а затем вызвать метод **Delete** .
+toodelete большого двоичного объекта сначала получить ссылку на большой двоичный объект, а затем вызвать **удалить** метода.
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "myblob.txt".
+// Retrieve reference tooa blob named "myblob.txt".
 CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
 
-// Delete the blob.
+// Delete hello blob.
 blockBlob.Delete();
 ```
 
 ## <a name="list-blobs-in-pages-asynchronously"></a>Асинхронное перечисление BLOB-объектов в страницах
-Если вам нужно расположить большое количество BLOB-объектов или вы хотите управлять отображением количества объектов в результате запроса, вы можете задать расположение BLOB-объектов на странице. В этом примере вы узнаете, как расположить запрошенные результаты на странице асинхронно для того, чтобы не блокировать выполнение задачи ожиданием большого объема возвращаемых данных.
+Если следует toocontrol hello число результатов, возвращаемых в одной операцией получения листинга списка большое количество больших двоичных объектов, можно перечислить большие двоичные объекты в страницы результатов. Этот пример отображением tooreturn результатов на страницах асинхронно, так что выполнение не блокируются во время ожидания tooreturn большого набора результатов.
 
-В этом примере показано создание плоского списка больших двоичных объектов. Но вы также можете создать иерархический список, установив для параметра _useFlatBlobListing_ в методе **ListBlobsSegmentedAsync** значение _false_.
+В этом примере показано плоский перечисления больших двоичных объектов, но можно также выполнить иерархический список, установка hello _useFlatBlobListing_ параметр hello **ListBlobsSegmentedAsync** too_false_ метод.
 
-Так как метод из примера вызывает асинхронный метод, перед ним необходимо задать ключевое слово _async_. Это позволит вернуть объект **Task**. При ожидании ключевого слова для **ListBlobsSegmentedAsync** метод приостанавливает выполнение примера до тех пор, пока задача размещения результатов не завершена.
+Поскольку метод образец hello вызывает асинхронный метод, он должен предваряться символом hello _async_ ключевое слово и он должен возвращать **задачи** объекта. Hello await-ключевое слово, указанный для hello **ListBlobsSegmentedAsync** метод приостанавливает выполнение метода образец hello до завершения выполнения задачи листинг hello.
 
 ```csharp
 async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
 {
-    //List blobs to the console window, with paging.
+    //List blobs toohello console window, with paging.
     Console.WriteLine("List blobs in pages:");
 
     int i = 0;
     BlobContinuationToken continuationToken = null;
     BlobResultSegment resultSegment = null;
 
-    //Call ListBlobsSegmentedAsync and enumerate the result segment returned, while the continuation token is non-null.
-    //When the continuation token is null, the last page has been returned and execution can exit the loop.
+    //Call ListBlobsSegmentedAsync and enumerate hello result segment returned, while hello continuation token is non-null.
+    //When hello continuation token is null, hello last page has been returned and execution can exit hello loop.
     do
     {
-        //This overload allows control of the page size. You can return all remaining results by passing null for the maxResults parameter,
+        //This overload allows control of hello page size. You can return all remaining results by passing null for hello maxResults parameter,
         //or by calling a different overload.
         resultSegment = await container.ListBlobsSegmentedAsync("", true, BlobListingDetails.All, 10, continuationToken, null, null);
         if (resultSegment.Results.Count<IListBlobItem>() > 0) { Console.WriteLine("Page {0}:", ++i); }
@@ -312,39 +312,39 @@ async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer cont
         }
         Console.WriteLine();
 
-        //Get the continuation token.
+        //Get hello continuation token.
         continuationToken = resultSegment.ContinuationToken;
     }
     while (continuationToken != null);
 }
 ```
 
-## <a name="writing-to-an-append-blob"></a>Запись в расширенный большой двоичный объект
-Добавочный большой двоичный объект оптимизирован для операций добавления, например ведения журналов. Как и блочный BLOB-объект, добавочный большой двоичный объект состоит из блоков, но при добавлении нового блока в добавочный большой двоичный объект он всегда добавляется в конец этого объекта. Вы не можете обновить или удалить существующий блок в добавочном большом двоичном объекте. Идентификаторы блоков в добавочном большом двоичном объекте не отображаются, как в блочном BLOB-объекте.
+## <a name="writing-tooan-append-blob"></a>Написание tooan append больших двоичных объектов
+Добавочный большой двоичный объект оптимизирован для операций добавления, например ведения журналов. Как большой двоичный объект блока добавочный BLOB-объект состоит из блоков, но при добавлении нового большого двоичного объекта tooan append блок, это всегда присоединенных toohello конец hello большого двоичного объекта. Вы не можете обновить или удалить существующий блок в добавочном большом двоичном объекте. Идентификаторы блокировок Hello для добавочный большой двоичный объект не отображаются, как и для большого двоичного объекта.
 
-Каждый блок в добавочном большом двоичном объекте может иметь разный размер (не более 4 МБ), кроме того, добавочный большой двоичный объект может содержать не более 50 000 блоков. Таким образом, максимальный размер добавочного большого двоичного объекта немного превышает 195 ГБ (4 МБ X 50 000 блоков).
+Каждый блок в добавочный большой двоичный объект может быть разный размер копии tooa более 4 Мбайт и добавочный большой двоичный объект может содержать не более 50 000 блоков. Максимальный размер Hello добавочный большой двоичный объект таким образом — немного более 195 ГБ (4 МБ X 50 000 блоков).
 
-Приведенный ниже пример создает новый добавочный большой двоичный объект и добавляет в него некоторые данные, имитируя простые операции ведение журнала.
+Hello приведенном ниже примере создается новый добавочный большой двоичный объект и добавляет tooit некоторых данных, имитируя операция простого ведения журнала.
 
 ```csharp
-//Parse the connection string for the storage account.
+//Parse hello connection string for hello storage account.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-//Create service client for credentialed access to the Blob service.
+//Create service client for credentialed access toohello Blob service.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-//Get a reference to a container.
+//Get a reference tooa container.
 CloudBlobContainer container = blobClient.GetContainerReference("my-append-blobs");
 
-//Create the container if it does not already exist.
+//Create hello container if it does not already exist.
 container.CreateIfNotExists();
 
-//Get a reference to an append blob.
+//Get a reference tooan append blob.
 CloudAppendBlob appendBlob = container.GetAppendBlobReference("append-blob.log");
 
-//Create the append blob. Note that if the blob already exists, the CreateOrReplace() method will overwrite it.
-//You can check whether the blob exists to avoid overwriting it by using CloudAppendBlob.Exists().
+//Create hello append blob. Note that if hello blob already exists, hello CreateOrReplace() method will overwrite it.
+//You can check whether hello blob exists tooavoid overwriting it by using CloudAppendBlob.Exists().
 appendBlob.CreateOrReplace();
 
 int numBlocks = 10;
@@ -354,41 +354,41 @@ Random rnd = new Random();
 byte[] bytes = new byte[numBlocks];
 rnd.NextBytes(bytes);
 
-//Simulate a logging operation by writing text data and byte data to the end of the append blob.
+//Simulate a logging operation by writing text data and byte data toohello end of hello append blob.
 for (int i = 0; i < numBlocks; i++)
 {
     appendBlob.AppendText(String.Format("Timestamp: {0:u} \tLog Entry: {1}{2}",
         DateTime.UtcNow, bytes[i], Environment.NewLine));
 }
 
-//Read the append blob to the console window.
+//Read hello append blob toohello console window.
 Console.WriteLine(appendBlob.DownloadText());
 ```
 
-Дополнительные сведения о различиях между тремя типами больших двоичных объектов см. в статье [Основные сведения о блочных, страничных и добавочных BLOB-объектах](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
+В разделе [основные сведения о блочных, страничные большие двоичные объекты и добавьте большие двоичные объекты](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) Дополнительные сведения об отличиях hello hello три типа больших двоичных объектов.
 
 ## <a name="managing-security-for-blobs"></a>Управление системой безопасности больших двоичных объектов
-По умолчанию служба хранилища Azure защищает данные, ограничивая доступ к учетной записи пользователя, который владеет ключами доступа к учетной записи. Если вы хотите предоставить доступ к данным больших двоичных объектов в своей учетной записи хранения, важно сделать это без ущерба для безопасности ключей доступа к учетной записи. Кроме того, вы можете зашифровать данные больших двоичных объектов, чтобы обеспечить их безопасную отправку по сети в службу хранилища Azure.
+По умолчанию хранилища Azure защищает ваши данные, ограничивая доступ toohello учетной записи владельца, являющегося владеющим hello ключей доступа учетных записей. При необходимости данные большого двоичного объекта tooshare вашей учетной записи хранилища является важным toodo так без риска для безопасности hello ключей доступа к вашей учетной записи. Кроме того вы можете зашифровать tooensure данные большого двоичного объекта, безопасность, перейдя по сети hello и в хранилище Azure.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-### <a name="controlling-access-to-blob-data"></a>Управление доступом к данным больших двоичных объектов
-По умолчанию данные больших двоичных объектов в учетной записи хранения доступны только владельцу учетной записи хранения. По умолчанию для проверки подлинности запросов к хранилищу BLOB-объектов требуется ключ доступа к учетной записи. Но вы можете предоставить другим пользователям доступ к некоторым данным больших двоичных объектов. Существует два варианта.
+### <a name="controlling-access-tooblob-data"></a>Управление tooblob доступа к данным
+По умолчанию hello данные большого двоичного объекта в учетной записи — доступны только владелец учетной записи toostorage. Проверка подлинности запросов в службу хранилища больших двоичных объектов требуется hello ключ доступа учетной записи по умолчанию. Тем не менее, вы можете toomake определенных пользователей доступны tooother данных больших двоичных объектов. Существует два варианта.
 
-* **Анонимный доступ**. Вы можете предоставить общий анонимный доступ к контейнеру или его большим двоичным объектам. Дополнительные сведения см. в статье [Управление анонимным доступом на чтение к контейнерам и большим двоичным объектам](storage-manage-access-to-resources.md).
-* **Подписанные URL-адреса**. Вы можете предоставить клиентам подписанный URL-адрес (SAS), который обеспечивает делегированный доступ к ресурсу в вашей учетной записи хранения. Для этого доступа вы можете указать разрешения и интервал времени доступа. Дополнительные сведения см. в статье [Использование подписанных URL-адресов (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+* **Анонимный доступ**. Вы можете предоставить общий анонимный доступ к контейнеру или его большим двоичным объектам. В разделе [управления toocontainers анонимный доступ для чтения и большие двоичные объекты](storage-manage-access-to-resources.md) для получения дополнительной информации.
+* **Подписи коллективного доступа:** подписанного URL-адреса (SAS), предоставляющий ресурс tooa делегированный доступ в учетной записи с разрешениями, указываемые и за определенный интервал времени, указываемое могут предоставить клиентам. Дополнительные сведения см. в статье [Использование подписанных URL-адресов (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="encrypting-blob-data"></a>Шифрование данных больших двоичных объектов
-Служба хранилища Azure поддерживает шифрование больших двоичных объектов данных на стороне клиента и сервера:
+Хранилище Azure поддерживает шифрование данных больших двоичных объектов как на приветствия клиента, так и на сервере hello:
 
-* **Шифрование на стороне клиента**. Клиентская библиотека службы хранилища для .NET поддерживает шифрование данных в клиентских приложениях перед их отправкой в службу хранилища Azure и расшифровку данных во время скачивания на клиент. Библиотека также поддерживает интеграцию с хранилищем ключей Azure для управления ключами учетной записи хранения. Дополнительные сведения см. в статье [Шифрование на стороне клиента для службы хранилища Microsoft Azure](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Кроме того, см. сведения в статье [Шифрование и расшифровка BLOB-объектов в хранилище Microsoft Azure с помощью хранилища ключей Azure](storage-encrypt-decrypt-blobs-key-vault.md).
+* **Шифрование на стороне клиента:** hello клиентской библиотеки хранилища для .NET поддерживает шифрование данных в клиентские приложения перед загрузкой tooAzure хранилища и расшифровки данных при загрузке toohello клиента. Библиотека Hello также поддерживает интеграцию с хранилищем ключей Azure для управления ключами учетной записи хранилища. Дополнительные сведения см. в статье [Шифрование на стороне клиента для службы хранилища Microsoft Azure](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Кроме того, см. сведения в статье [Шифрование и расшифровка BLOB-объектов в хранилище Microsoft Azure с помощью хранилища ключей Azure](storage-encrypt-decrypt-blobs-key-vault.md).
 * **Шифрование на стороне сервера**. Служба хранилища Azure теперь поддерживает шифрование на стороне сервера. См. статью [Шифрование службы хранилища Azure для неактивных данных (предварительная версия)](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Вы ознакомились с базовыми понятиями о хранилище BLOB-объектов. Дополнительные сведения см. по следующим ссылкам.
+Теперь, когда вы узнали основы hello хранилища больших двоичных объектов, выполните следующие дополнительные toolearn ссылки.
 
 ### <a name="microsoft-azure-storage-explorer"></a>Обозреватель службы хранилища Microsoft Azure
-* [Обозреватель хранилищ Microsoft Azure (MASE)](../../vs-azure-tools-storage-manage-with-storage-explorer.md) — это бесплатное автономное приложение от корпорации Майкрософт, позволяющее визуализировать данные из службы хранилища Azure на платформе Windows, macOS и Linux.
+* [Обозреватель хранилища Microsoft Azure (MASE)](../../vs-azure-tools-storage-manage-with-storage-explorer.md) является бесплатной, отдельное приложение от Майкрософт, позволяющая toowork визуально с помощью данных из хранилища Azure в Windows, macOS и Linux.
 
 ### <a name="blob-storage-samples"></a>Примеры для хранилища BLOB-объектов
 * [Getting Started with Azure Blob Storage in .NET (Приступая к работе с хранилищем BLOB-объектов Azure в .NET)](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
@@ -398,6 +398,6 @@ Console.WriteLine(appendBlob.DownloadText());
 * [Справочник по REST API](/rest/api/storageservices/azure-storage-services-rest-api-reference)
 
 ### <a name="conceptual-guides"></a>Основные рекомендации
-* [Приступая к работе со служебной программой командной строки AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Перенесите данные с помощью командной строки программу AzCopy hello](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Приступая к работе с хранилищем файлов для .NET](../files/storage-dotnet-how-to-use-files.md)
-* [Использование хранилища больших двоичных объектов Azure с пакетом SDK веб-заданий](../../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
+* [Как toouse Azure хранилище больших двоичных объектов с hello SDK веб-заданий](../../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)

@@ -1,6 +1,6 @@
 ---
-title: "Установка и настройка Terraform для подготовки виртуальных машин и другой инфраструктуры в Azure | Документация Майкрософт"
-description: "Узнайте, как установить и настроить Terraform для создания ресурсов Azure"
+title: "aaaInstall и настройки виртуальных машин tooprovision Terraform и другой инфраструктурой в Azure | Документы Microsoft"
+description: "Узнайте, как tooinstall и настройте Terraform toocreate Azure ресурсы"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: echuvyrov
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: echuvyrov
-ms.openlocfilehash: 1f26bccf279ebb61fbf77767186d0435e4f4ba40
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 803f51a6f5357417b96264ba713791408f9935b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Установка и настройка Terraform для подготовки виртуальных машин и другой инфраструктуры в Azure 
-В этой статье описано, как установить и настроить Terraform для подготовки ресурсов, таких как виртуальные машины, в Azure. Вы узнаете, как создать и использовать учетные данные Azure, необходимые Terraform для подготовки облачных ресурсов в безопасном режиме.
+# <a name="install-and-configure-terraform-tooprovision-vms-and-other-infrastructure-into-azure"></a>Установка и настройка виртуальных машин tooprovision Terraform и другой инфраструктурой в Azure 
+В этой статье описываются необходимые шаги tooinstall hello и настройки Terraform tooprovision ресурсов, таких как виртуальные машины в Azure. Вы узнаете, как toocreate и использование Azure учетные данные tooenable Terraform tooprovision облачные ресурсы в безопасном режиме.
 
-Terraform от компании HashiCorp предоставляет простой способ определить и развернуть облачную инфраструктуру, используя настраиваемый язык шаблонов HCL. Этот настраиваемый язык [удобен для написания и прост для понимания](terraform-create-complete-vm.md). Кроме того, с помощью команды `terraform plan` вы можете визуализировать изменения, внесенные в инфраструктуру, прежде чем они будут зафиксированы. Чтобы приступить к использованию Terraform с Azure, сделайте следующее.
+HashiCorp Terraform предоставляет простой способ toodefine и развертывание облачной инфраструктуры с помощью языка настраиваемых шаблонов, называемый языком конфигурации HashiCorp (HCL). Этот пользовательский язык [toowrite легко и просто toounderstand](terraform-create-complete-vm.md). Кроме того, с помощью hello `terraform plan` команды, прежде чем зафиксировать их можно визуализировать hello изменения tooyour инфраструктуры. Выполните эти шаги toostart, с помощью Terraform с Azure.
 
 ## <a name="install-terraform"></a>Установка Terraform
-Чтобы установить Terraform, [скачайте](https://www.terraform.io/downloads.html) пакет, соответствующий вашей операционной системе, в отдельный каталог установки. Этот пакет содержит один исполняемый файл, для которого также необходимо задать глобальный путь. Инструкции по настройке пути в операционных системах Linux и Mac можно найти на [этой веб-странице](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux). Инструкции по настройке пути в Windows можно найти на [этой веб-странице](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows). Проверьте правильность установки, выполнив команду `terraform`. В качестве выходных данных должен отобразиться список доступных параметров Terraform.
+tooinstall Terraform, [загрузки](https://www.terraform.io/downloads.html) для вашей операционной системы в каталог установки отдельный пакет hello. Hello загружаемый файл содержит один исполняемый файл, для которого следует задавать глобальный путь. Для инструкции о том, как tooset hello путь в Linux и Mac, посетите страницу слишком[веб-страницу](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux). Для инструкции как tooset hello пути в Windows, посетите страницу слишком[веб-страницу](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows). tooverify установку, запустите hello `terraform` команды. В качестве выходных данных должен отобразиться список доступных параметров Terraform.
 
-Затем необходимо разрешить Terraform доступ к вашей подписке Azure для выполнения подготовки инфраструктуры.
+Далее необходимо tooallow Terraform доступа tooyour подписки Azure tooperform подготовку инфраструктуры.
 
-## <a name="set-up-terraform-access-to-azure"></a>Настройка доступа Terraform в Azure
-Чтобы позволить Terraform предоставлять ресурсы в Azure, вам необходимо создать два объекта в Azure Active Directory (Azure AD): приложение Azure AD и субъект-службы Azure AD. Затем идентификаторы этих сущностей используются в сценариях Terraform. Субъект-служба — это локальный экземпляр глобального приложения Azure AD. Субъект-службы позволяет осуществлять детальный контроль локального доступа к глобальным ресурсам.
+## <a name="set-up-terraform-access-tooazure"></a>Настройка доступа tooAzure Terraform
+tooenable Terraform tooprovision ресурсы в Azure, необходимо toocreate две сущности в Azure Active Directory (Azure AD): приложения Azure AD и субъект-служба Azure AD. Затем идентификаторы этих сущностей используются в сценариях Terraform. Субъект-служба — это локальный экземпляр глобального приложения Azure AD. Субъекта-службы позволяет ресурсы tooglobal управления детальные локального доступа.
 
-Существует несколько способов создания приложения Azure AD и субъекта-службы Azure AD. Самым простым и быстрым способом на сегодняшний день является установка с помощью интерфейса командной строки Azure CLI 2.0, который [можно скачать и установить на Windows, Mac или Linux](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli). Для создания необходимой инфраструктуры безопасности можно также воспользоваться PowerShell или Azure CLI 1.0. Ниже приведены инструкции по настройке Terraform для Azure с применением всех этих подходов.
+Существует несколько способов toocreate приложения Azure AD и субъект-служба Azure AD. Hello простым и быстрым способом сегодняшний день является toouse Azure CLI 2.0, который [можно загрузить и установить на Windows, Linux или Mac](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli). Также можно использовать PowerShell или Azure CLI 1.0 toocreate hello инфраструктуры безопасности. следующие инструкции Hello показывается, как tooconfigure Terraform для Azure с помощью всех этих подходов.
 
 ### <a name="use-azure-cli-20-for-windows-linux-or-mac-users"></a>Использование Azure CLI 2.0 (для пользователей Windows, Mac и Linux) 
-После скачивания и установки [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) войдите в систему для администрирования своей подписки Azure, выполнив следующую команду:
+После загрузки и установки hello [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli), войдите в tooadminister подписки Azure, выполнив следующую команду hello:
 
 ```
 az login
 ```
 
 >[!NOTE]
->Если вы используете облако Azure для Китая, Германии или государственных организаций, то сначала необходимо настроить Azure CLI для работы с соответствующим облаком. Для этого можно выполнить приведенную ниже команду.
+>При использовании hello Китай, Германия Azure или облаков Azure для государственных, необходимо toofirst Настройка toowork hello Azure CLI с помощью данного облака. Это можно сделать, выполнив следующие hello:
 
 ```
 az cloud set --name AzureChinaCloud|AzureGermanCloud|AzureUSGovernment
 ```
 
-Если у вас имеется несколько подписок Azure, то команда `az login` возвращает сведения о них. Настройте переменную среды `SUBSCRIPTION_ID`, чтобы она хранила значение возвращаемого поля `id` из подписки, которую необходимо использовать. 
+Если у вас несколько подписок Azure, подробные сведения об их возвращаемые hello `az login` команды. Набор hello `SUBSCRIPTION_ID` возвращено значение hello toohold переменной среды hello `id` из подписки hello требуется toouse. 
 
-Укажите подписку, которую необходимо использовать для этого сеанса.
+Задать hello подписки требуется toouse для этого сеанса.
 
 ```
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-Опросите учетную запись, чтобы получить значения идентификатора подписки и идентификатора клиента.
+Запрос учетной записи tooget hello hello-идентификатор подписки и значения идентификатора клиента.
 
 ```
 az account show --query "{subscriptionId:id, tenantId:tenantId}"
@@ -70,9 +70,9 @@ az account show --query "{subscriptionId:id, tenantId:tenantId}"
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-Вы получите значения для параметров appId, password, sp_name и tenant. Запишите значения параметров appId и password.
+Вы получите значения для параметров appId, password, sp_name и tenant. Запишите hello appId и пароль.
 
-Чтобы подтвердить свои учетные данные (субъект-службу), откройте новую оболочку и выполните следующие команды. Замените полученные значения для параметров sp_name, password и tenant:
+tooconfirm учетные данные (субъекта-службы), откройте новой оболочки и выполните следующие команды hello. Замена hello возвращаемые значения для sp_name и пароль клиента:
 
 ```
 az login --service-principal -u SP_NAME -p PASSWORD --tenant TENANT
@@ -80,40 +80,40 @@ az vm list-sizes --location westus
 ```
 
 ### <a name="use-powershell-for-windows-users"></a>Использование PowerShell (для пользователей Windows) 
-Если для записи и выполнения сценариев Terraform нужно использовать компьютер под управлением Windows и необходимо выполнять настройку с помощью PowerShell, настройте компьютер, используя соответствующие инструменты PowerShell. 
+toouse Windows toowrite компьютер и выполнить вашей Terraform сценарии и toouse PowerShell для задач настройки настройки компьютера с помощью соответствующих средств PowerShell hello. 
 
-1. Установите инструменты PowerShell, выполнив шаги в статье [Установка и настройка Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps). 
+1. Установка инструментов PowerShell с помощью инструкции hello в [Установка и настройка Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps). 
 
-2. Скачайте и выполните сценарий [azure-setup.ps1](https://github.com/echuvyrov/terraform101/blob/master/azureSetup.ps1) из консоли PowerShell.
+2. Загрузка и выполнение hello [azure setup.ps1 скрипт](https://github.com/echuvyrov/terraform101/blob/master/azureSetup.ps1) из консоли PowerShell hello.
 
-3. Чтобы запустить сценарий azure-setup.ps1, скачайте его и выполните из консоли PowerShell команду `./azure-setup.ps1 setup`. Затем войдите в свою подписку Azure с правами администратора.
+3. скрипт azure setup.ps1 toorun hello, загрузите и выполните hello `./azure-setup.ps1 setup` команду из консоли PowerShell hello. Затем войдите в tooyour подписки Azure с правами администратора.
 
 4. При появлении запроса укажите имя приложения (произвольная строка, обязательно). При необходимости при появлении запроса введите надежный пароль. Если не указать пароль, то надежный пароль будет создан автоматически с помощью библиотек безопасности .NET.
 
 ### <a name="use-azure-cli-10-for-linux-or-mac-users"></a>Использование Azure CLI 1.0 (для пользователей Linux или Mac)
-Чтобы приступить к работе с Terraform на компьютерах Linux или Mac, используя Azure CLI 1.0, установите на компьютере соответствующие библиотеки.  
+tooget работу с Terraform на компьютеры Linux и компьютерах Mac с помощью Azure CLI 1.0, соответствующие библиотеки hello установки на компьютере.  
 
-1. Для этого установите инструменты кроссплатформенного интерфейса командной строки Azure, выполнив действия в статье [Установка Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+1. Установка средств Azure xPlat CLI, следуя указаниям hello [установить CLI Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-2. Скачайте и установите процессор JSON, следуя инструкциям [здесь](https://stedolan.github.io/jq/download/).
+2. Загрузите и установите процессор JSON, следуя инструкциям hello [загрузки jq](https://stedolan.github.io/jq/download/).
 
-3. Скачайте и выполните из консоли сценарий Bash [azure-setup.sh](https://github.com/mitchellh/packer/blob/master/contrib/azure-setup.sh).
+3. Загрузка и выполнение hello [azure setup.sh скрипт](https://github.com/mitchellh/packer/blob/master/contrib/azure-setup.sh) bash скрипт из консоли hello.
 
-4. Чтобы запустить сценарий azure-setup.sh, скачайте его и выполните команду `./azure-setup setup` из консоли. Затем войдите в свою подписку Azure с правами администратора.
+4. скрипт azure setup.sh toorun hello, загрузите и выполните hello `./azure-setup setup` команду из консоли hello. Затем войдите в tooyour подписки Azure с правами администратора.
  
 5. При появлении запроса укажите имя приложения (произвольная строка, обязательно). При необходимости при появлении запроса введите надежный пароль. Если не указать пароль, то надежный пароль будет создан автоматически с помощью библиотек безопасности .NET.
 
-Все приведенные выше сценарии создают приложение Azure AD и субъект-службу. Субъект-служба получает доступ к подписке на уровне участника или владельца. Из-за высокого уровня предоставляемого доступа следует всегда защищать сведения о безопасности, которые создаются этими сценариями. Запишите все четыре блока сведений о безопасности, предоставленные этими скриптами: appId, password, subscription_id и tenant_id.
+Все предыдущие сценарии hello создание основного приложения Azure AD и службы. Участник службы Hello возвращает участника или доступ на уровне владельца на hello подписки. Из-за hello высокий уровень предоставлен доступ следует всегда защищать hello безопасности информации, создаваемой эти скрипты. Запишите все четыре блока сведений о безопасности, предоставленные этими скриптами: appId, password, subscription_id и tenant_id.
 
 ## <a name="set-environment-variables"></a>Настройка переменных среды
-После создания и настройки субъекта-службы Azure AD необходимо разрешить Terraform использовать значения кода клиента, идентификатора подписки, идентификатора клиента и секрета клиента. Вы можете сделать это, вставив эти значения в сценарии Terraform, как описано в статье [Создание базовой инфраструктуры в Azure с помощью Terraform](terraform-create-complete-vm.md). Кроме того, можно задать следующие переменные среды (тем самым избежав случайной записи своих учетных данных или предоставления к ним общего доступа):
+После создания и настройки участника-службы Azure AD, необходимо toolet Terraform знать hello ИД клиента, идентификатор подписки, идентификатор клиента и секрета toouse клиента. Вы можете сделать это, вставив эти значения в сценарии Terraform, как описано в статье [Создание базовой инфраструктуры в Azure с помощью Terraform](terraform-create-complete-vm.md). Кроме того можно задать следующие переменные среды hello (и тем самым избежать случайно извлечение или учетные данные для управления доступом):
 
 - ARM_SUBSCRIPTION_ID
 - ARM_CLIENT_ID
 - ARM_CLIENT_SECRET
 - ARM_TENANT_ID
 
-Вы можете использовать этот образец сценария оболочки для установки этих переменных:
+Эти переменные могут использоваться tooset сценарий оболочки этот образец.
 
 ```
 #!/bin/sh
@@ -124,7 +124,7 @@ export ARM_CLIENT_SECRET=your_password
 export ARM_TENANT_ID=your_tenant_id
 ```
 
-Кроме того, при использовании Terraform с облаком Azure для Китая, Azure для государственных организаций или Azure для Германии необходимо правильно задать переменную среды.
+Кроме того при использовании Terraform с Azure в Китае, или либо Azure для государственных или Германии Azure необходимо переменной среды tooset hello соответствующим образом.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Вы установили Terraform и настроили учетные данные Azure, так что вы можете начать развертывание инфраструктуры в свою подписку Azure. Теперь вы можете перейти к [созданию инфраструктуры с помощью Terraform](terraform-create-complete-vm.md).
+Вы установили Terraform и настроили учетные данные Azure, так что вы можете начать развертывание инфраструктуры в свою подписку Azure. Далее, узнайте, как слишком[создания инфраструктуры с Terraform](terraform-create-complete-vm.md).

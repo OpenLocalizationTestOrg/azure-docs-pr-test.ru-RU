@@ -1,7 +1,7 @@
 ---
 featureFlags: usabilla
-title: "Подключение Raspberry Pi (Node) к Интернету вещей Azure. Урок 3. Хранилище таблиц | Документация Майкрософт"
-description: "Отслеживайте сообщения, передаваемые с устройства в облако, по мере их записывания в хранилище таблиц Azure."
+title: "Подключение Raspberry Pi (узел) tooAzure IoT — занятия 3: хранилище таблиц | Документы Microsoft"
+description: "Они записываются в хранилище таблиц Azure tooyour наблюдать за сообщений hello устройства в облако."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -18,36 +18,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 60084906c05ff9e5396f8e2378d73f7ac939d8df
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3c2c8086d3561b7603e18ed00492fcaa0593b87
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="read-messages-persisted-in-azure-storage"></a>Чтение сообщений, сохраненных в службе хранилища Azure
 ## <a name="what-you-will-do"></a>Выполняемая задача
-Отслеживание сообщений, передаваемых с устройства в облако (то есть с устройства Raspberry Pi 3 в центр Интернета вещей), по мере записывания сообщений в хранилище таблиц Azure. Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
+Монитор hello устройства в облако сообщения, которые отправляются из центра IoT tooyour Raspberry Pi 3 в виде сообщений hello записываются tooyour хранилище таблиц Azure. Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Новые знания
-В этой статье вы узнаете, как использовать задачу gulp read-message для чтения сообщений, сохраненных в хранилище таблиц Azure.
+В этой статье вы узнаете, как toouse hello gulp задачи чтения сообщений tooread сообщения сохраняются в хранилище таблиц Azure.
 
 ## <a name="what-you-need"></a>Необходимые элементы
-Прежде чем начинать, необходимо успешно выполнить инструкции статьи, посвященный [запуску на устройстве Raspberry Pi 3 примера приложения Azure для включения индикатора](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md).
+Прежде чем запустить этот процесс, необходимо успешно выполнить [Запустите пример приложения hello Azure blink на Raspberry Pi 3](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md).
 
 ## <a name="read-new-messages-from-your-storage-account"></a>Чтение новых сообщений из учетной записи хранения
-В предыдущей статье вы запустили пример приложения на устройстве Pi. Пример приложения отправлял сообщения в центр Интернета вещей Azure. Сообщения, отправленные в центр Интернета вещей, сохраняются в хранилище таблиц Azure с помощью приложения-функции Azure. Для чтения сообщений из хранилища таблиц Azure потребуется строка подключения к хранилищу Azure.
+В предыдущей статье hello запуска примера приложения на Pi. Пример приложения Hello отправлено центр Azure IoT tooyour сообщений. Центр IoT tooyour сообщения Hello хранятся в хранилище таблиц Azure через приложение Azure функции hello. Вы должны сообщений tooread строку соединения хранения Azure hello от хранилища таблиц Azure.
 
-Чтобы прочитать сообщения, сохраненные в хранилище таблиц Azure, выполните следующие действия:
+tooread сообщения, хранящиеся в хранилище таблиц Azure, выполните следующие действия.
 
-1. Получите строку подключения, выполнив следующую команду:
+1. Получите строку подключения hello, выполнив следующие команды hello:
 
    ```bash
    az storage account list -g iot-sample --query [].name
    az storage account show-connection-string -g iot-sample -n {storage name}
    ```
 
-   Первая команда получает имя `storage name`, которое используется во второй команде для получения строки подключения. Используйте `iot-sample` в качестве значения `{resource group name}`, если вы не меняли это значение.
-2. Откройте файл конфигурации `config-raspberrypi.json` в Visual Studio Code, выполнив следующую команду.
+   Первая команда Hello получает hello `storage name` , используемый в hello второй команды tooget hello строки подключения. Используйте `iot-sample` в качестве значения hello `{resource group name}` Если вы не изменили значение hello.
+2. Привет открыть файл конфигурации `config-raspberrypi.json` в коде Visual Studio, выполнив следующую команду hello:
 
    ```bash
    # For Windows command prompt
@@ -56,21 +56,21 @@ ms.lasthandoff: 07/11/2017
    # For MacOS or Ubuntu
    code ~/.iot-hub-getting-started/config-raspberrypi.json
    ```
-3. Замените `[Azure storage connection string]` строкой подключения, полученной на шаге 1.
-4. Сохраните файл `config-raspberrypi.json`.
-5. Отправьте сообщения еще раз и считайте их из хранилища таблиц Azure, выполнив следующую команду.
+3. Замените `[Azure storage connection string]` со строкой подключения hello, полученный на шаге 1.
+4. Сохранить hello `config-raspberrypi.json` файла.
+5. Попытку отправки сообщений и их чтения из хранилища таблиц Azure, выполнив следующую команду hello:
    
    ```bash
    gulp run --read-storage
    ```
    
-   Логика чтения из хранилища таблиц Azure содержится в файле `azure-table.js`.
+   Hello логику для чтения из хранилища Azure таблицы находится в hello `azure-table.js` файла.
    
     ![gulp run --read-storage](media/iot-hub-raspberry-pi-lessons/lesson3/gulp_read_message.png)
 
 ## <a name="summary"></a>Сводка
-Вы успешно подключили устройство Pi к Центру Интернета вещей в облаке и с помощью примера приложения для включения индикатора отправили сообщения с устройства в облако. Также вы использовали приложение-функцию Azure для сохранения входящих сообщений из Центра Интернета вещей в хранилище таблиц Azure. Теперь можно перейти к отправке сообщений из облака на устройство, т. е. из Центра Интернета вещей на устройство Pi.
+Вы успешно подключен центра IoT tooyour Pi в облаке hello и использовать сообщения hello blink образец приложения toosend устройства в облако. Можно также использовать hello Azure функция приложения toostore входящих IoT hub сообщения tooyour хранилище таблиц Azure. Теперь можно отправлять сообщения облака на устройство из вашего tooPi концентратора IoT.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Run the sample application to receive cloud-to-device messages](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md) (Запуск примера приложения для получения сообщений из облака на устройство)
+[Запустите сообщений hello образец приложения tooreceive облака на устройство](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md)
 

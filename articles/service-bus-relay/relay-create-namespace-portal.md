@@ -1,6 +1,6 @@
 ---
-title: "Создание пространства имен ретранслятора с помощью портала Azure | Документация Майкрософт"
-description: "Создание пространства имен ретранслятора с помощью портала Azure."
+title: "пространство имен типа ретрансляции с помощью aaaCreate hello портал Azure | Документы Microsoft"
+description: "Как пространства имен ретрансляции с помощью toocreate hello портал Azure."
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/23/2017
 ms.author: sethm
-ms.openlocfilehash: 27cc817fd4fc2d88b0b7d87f99d58795a6b8b864
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ab3abedbe63aa2d806ffd3a0db7e4aa3c99c4b0d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-relay-namespace-using-the-azure-portal"></a>Создание пространства имен ретранслятора с помощью портала Azure
-Пространство имен — это общий контейнер для всех компонентов ретранслятора Azure. В одном пространстве имен могут содержаться несколько ретрансляторов. Часто пространства имен используются как контейнеры приложений. Сейчас создать пространство имен ретранслятора можно двумя способами.
+# <a name="create-a-relay-namespace-using-hello-azure-portal"></a>Создание ретрансляции пространства имен с помощью портала Azure hello
+Пространство имен — это общий контейнер для всех компонентов ретранслятора Azure. В одном пространстве имен могут содержаться несколько ретрансляторов. Часто пространства имен используются как контейнеры приложений. Существует в настоящее время два разных способа toocreate имен ретрансляции.
 
 1. Портал Azure (в этой статье)
 2. Шаблоны [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 
-## <a name="create-a-namespace-in-the-azure-portal"></a>Создание пространства имен на портале Azure
+## <a name="create-a-namespace-in-hello-azure-portal"></a>Создание пространства имен в hello портал Azure
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 

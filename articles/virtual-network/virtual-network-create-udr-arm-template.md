@@ -1,6 +1,6 @@
 ---
-title: "Управление маршрутизацией и виртуальными модулями в Azure с помощью шаблона | Документация Майкрософт"
-description: "Сведения о том, как управлять маршрутизацией и виртуальными модулями с помощью шаблона Azure Resource Manager."
+title: "aaaControl маршрутизации и виртуальных устройств в Azure — шаблона | Документы Microsoft"
+description: "Узнайте, как toocontrol маршрутизации и виртуальные устройства, с помощью шаблона диспетчера ресурсов Azure."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-ms.openlocfilehash: b2c962d5449d18b51cfd84b0e1992695b54d1c48
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 781340593541784d2d9772d310c041ad4a5c3101
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>Создание определяемых пользователем маршрутов с помощью шаблона
 
@@ -31,14 +31,14 @@ ms.lasthandoff: 07/11/2017
 > * [Интерфейс командной строки (классическая модель)](virtual-network-create-udr-classic-cli.md)
 
 > [!IMPORTANT]
-> Прежде чем приступить к работе с ресурсами Azure, обратите внимание на то, что в настоящее время в Azure существует две модели развертывания: классическая модель развертывания и модель развертывания с помощью Azure Resource Manager. Обязательно изучите [модели и инструменты развертывания](../azure-resource-manager/resource-manager-deployment-model.md) , прежде чем приступить к работе с какими бы то ни было ресурсами Azure. Для просмотра документации о средствах развертывания выбирайте соответствующие вкладки в верхней части данной статьи. В этой статье описывается модель развертывания с использованием менеджера ресурсов. 
+> Перед началом работы с ресурсами Azure, он является важным toounderstand, что Azure в данный момент существуют две модели развертывания: диспетчера ресурсов Azure и классическом. Обязательно изучите [модели и инструменты развертывания](../azure-resource-manager/resource-manager-deployment-model.md) , прежде чем приступить к работе с какими бы то ни было ресурсами Azure. Для просмотра документации hello для различных средств, щелкнув вкладки hello hello верхней части этой статьи. В этой статье рассматриваются hello модели развертывания диспетчера ресурсов. 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
 ## <a name="udr-resources-in-a-template-file"></a>Ресурсы определяемого пользователем маршрута в файле шаблона
-Вы можете просмотреть и скачать [образец шаблона](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR).
+Можно просматривать и загружать hello [образец шаблона](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR).
 
-В следующем разделе показано определение определяемого пользователем маршрута переднего плана в файле **azuredeploy-vnet-nsg-udr.json** для сценария.
+Hello ниже показано определение hello hello UDR переднего плана в hello **azuredeploy vnet-nsg udr.json** файл для сценария hello:
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/routeTables",
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/11/2017
         }
       ]
 
-Чтобы связать определяемый пользователем маршрут с интерфейсной подсетью, необходимо изменить определение подсети в шаблоне и использовать идентификатор ссылки для этого маршрута.
+tooassociate hello UDR toohello интерфейса подсети получить определения подсети toochange hello в шаблоне hello и используйте идентификатор ссылки hello для hello UDR.
 
     "subnets": [
         "name": "[parameters('frontEndSubnetName')]",
@@ -73,9 +73,9 @@ ms.lasthandoff: 07/11/2017
           }
         },
 
-Обратите внимание, чтобы то же самое было сделано для серверной группы безопасности сети и серверной подсети в этом шаблоне.
+Обратите внимание на то же добиваются hello внутренней NSG и hello внутренней подсети в шаблоне hello hello.
 
-Также необходимо убедиться, что на сетевой карте, которая будет использоваться для получения и пересылки пакетов, включено свойство IP-пересылки для виртуальной машины **FW1** . В разделе ниже показано определение сетевой карты для в FW1 файле azuredeploy-nsg-udr.json на основе описанного выше сценария.
+Необходимо также tooensure, hello **FW1** IP hello пересылка включена на hello сетевого Адаптера, который будет использоваться tooreceive и пересылки пакетов на Виртуальной машине. Hello ниже показано определение hello hello сетевого Адаптера для FW1 hello azuredeploy nsg-udr.json файла, в зависимости от варианта hello выше.
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/networkInterfaces",
@@ -111,17 +111,17 @@ ms.lasthandoff: 07/11/2017
       "count": "[parameters('fwCount')]"
     }
 
-## <a name="deploy-the-template-by-using-click-to-deploy"></a>Развертывание шаблона с помощью кнопки развертывания
-Образец шаблона, который находится в общедоступном репозитории, использует файл параметров, содержащий значения по умолчанию для создания описанного выше сценария. Чтобы развернуть этот шаблон, перейдите по [данной ссылке](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), нажмите **Deploy to Azure**(Развернуть в Azure), при необходимости замените значения параметров по умолчанию и следуйте указаниям на портале.
+## <a name="deploy-hello-template-by-using-click-toodeploy"></a>Развертывание с помощью шаблона hello щелкните toodeploy
+шаблон Образец Hello доступны в репозитории открытого hello использует параметр файл, содержащий сценарий hello по умолчанию значения, используемые toogenerate hello, описанный выше. toodeploy это с помощью шаблона щелкните toodeploy, выполните [эту ссылку](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), нажмите кнопку **развертывание tooAzure**, замените значения параметров по умолчанию hello при необходимости и следуйте инструкциям hello hello портала.
 
-1. Если вы ранее не использовали Azure PowerShell, следуйте инструкциям в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview) до момента входа Azure и выбора подписки.
-2. Выполните следующую команду, чтобы создать группу ресурсов:
+1. Если ранее не пользовались Azure PowerShell, см. раздел [как tooInstall и настройка Azure PowerShell](/powershell/azure/overview) и следуйте инструкциям hello все toohello hello способом завершения toosign в Azure и выберите свою подписку.
+2. Выполните следующие команды toocreate hello группа ресурсов:
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location westus
     ```
 
-3. Выполните следующую команду, чтобы развернуть шаблон.
+3. Выполните следующий шаблон hello toodeploy команды hello.
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DeployUDR -ResourceGroupName TestRG `
@@ -171,22 +171,22 @@ ms.lasthandoff: 07/11/2017
 
         ResourceId        : /subscriptions/[Subscription Id]/resourceGroups/TestRG
 
-## <a name="deploy-the-template-by-using-the-azure-cli"></a>Развертывание шаблона с помощью интерфейса командной строки Azure
+## <a name="deploy-hello-template-by-using-hello-azure-cli"></a>Развертывание hello шаблона с помощью hello Azure CLI
 
-Чтобы развернуть шаблон ARM с помощью интерфейса командной строки Azure, выполните следующие действия:
+toodeploy hello ARM шаблона с использованием hello Azure CLI, полный hello, следующие шаги:
 
-1. Если вы еще не пользовались Azure CLI, ознакомьтесь со статьей [Установка и настройка CLI Azure](../cli-install-nodejs.md) и следуйте инструкциям вплоть до выбора учетной записи Azure и подписки.
-2. Чтобы переключиться в режим Resource Manager, выполните следующую команду:
+1. Если ранее не пользовались Azure CLI, см. раздел [Установка и настройка hello Azure CLI](../cli-install-nodejs.md) и следуйте инструкциям hello toohello точку, где выбирается учетная запись Azure и подписки.
+2. Выполните следующие команды tooswitch tooResource диспетчер режим hello.
 
     ```azurecli
     azure config mode arm
     ```
 
-    Вот результат, ожидаемый для указанной выше команды:
+    Вот hello ожидается выходных данных для приведенных выше команд hello.
 
         info:    New mode is arm
 
-3. В браузере перейдите по ссылке **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, скопируйте содержимое JSON-файла и вставьте в новый файл на своем компьютере. В этом сценарии скопируйте указанные ниже значения в файл **c:\udr\azuredeploy.parameters.json**.
+3. В браузере перейдите слишком**https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, скопируйте содержимое hello hello json-файл и вставьте его в новый файл в вашей компьютер. Для этого сценария будет копирование значений hello ниже tooa файл с именем **c:\udr\azuredeploy.parameters.json**.
 
     ```json
         {
@@ -206,7 +206,7 @@ ms.lasthandoff: 07/11/2017
         }
     ```
 
-4. Чтобы развернуть новую виртуальную сеть с помощью файлов шаблонов и параметров, которые вы скачали и изменили раньше, выполните следующую команду:
+4. Выполните следующую команду, toodeploy hello новой виртуальной сети с помощью hello файлы шаблонов и параметров загрузки и изменения выше hello.
 
     ```azurecli
     azure group create -n TestRG -l westus --template-uri 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' -e 'c:\udr\azuredeploy.parameters.json'
@@ -229,7 +229,7 @@ ms.lasthandoff: 07/11/2017
         data:    
         info:    group create command OK
 
-5. Чтобы просмотреть ресурсы, созданные в новой группе ресурсов, выполните следующую команду:
+5. Выполните следующие команды tooview hello ресурсы, созданные в новую группу ресурсов hello hello.
 
     ```azurecli
     azure group show TestRG
@@ -239,7 +239,7 @@ ms.lasthandoff: 07/11/2017
 
             info:    Executing command group show
             info:    Listing resource groups
-            info:    Listing resources for the group
+            info:    Listing resources for hello group
             data:    Id:                  /subscriptions/[Subscription Id]/resourceGroups/TestRG
             data:    Name:                TestRG
             data:    Location:            westus
@@ -404,5 +404,5 @@ ms.lasthandoff: 07/11/2017
             info:    group show command OK
 
 > [!TIP]
-> Если отображаются не все ресурсы, выполните команду `azure group deployment show`, чтобы состояние подготовки развертывания имело значение *Succeded*.
+> Если все ресурсы hello не отображается, выполните hello `azure group deployment show` — состояние развертывания hello подготовки hello tooensure команда *выполнено*.
 > 

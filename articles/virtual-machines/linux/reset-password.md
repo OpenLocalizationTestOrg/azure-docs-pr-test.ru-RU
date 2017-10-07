@@ -1,6 +1,6 @@
 ---
-title: "Как сбросить локальный пароль Linux на виртуальных машинах Azure | Документация Майкрософт"
-description: "Описывается, как сбросить локальный пароль Linux на виртуальной машине Azure."
+title: "пароль tooreset локального aaaHow Linux на виртуальных машинах Azure | Документы Microsoft"
+description: "Вводит hello действия tooreset hello локальный Linux пароль на виртуальной Машине Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: Deland-Han
@@ -15,41 +15,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/3/2017
 ms.author: delhan
-ms.openlocfilehash: bd48128a078821b7a4baa02d5d7ceecc6de99608
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b28a679a36bf93c6881633eefa03aef3cd33e804
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Как сбросить локальный пароль Linux на виртуальных машинах Azure
+# <a name="how-tooreset-local-linux-password-on-azure-vms"></a>Как tooreset локальный пароль Linux на виртуальных машинах Azure
 
-В этой статье описано несколько способов сброса локальных паролей на виртуальных машинах Linux. Если истек срок действия учетной записи пользователя или требуется создать новую учетную запись, можно использовать приведенные ниже способы, чтобы создать новую учетную запись локального администратора и повторно получить доступ к виртуальной машине.
+В этой статье описывается несколько методов tooreset локальных Linux виртуальной машины (VM) паролей. Если истек срок действия учетной записи пользователя hello, или необходимо просто toocreate новую учетную запись, можно использовать следующие методы toocreate новой учетной записи локального администратора hello и повторно получить доступ toohello виртуальной Машины.
 
 ## <a name="symptoms"></a>Симптомы
 
-Невозможно подключиться к виртуальной машине, и появляется сообщение о том, что указан неправильный пароль. Кроме того, невозможно использовать VMAgent для сброса пароля на портале Azure. 
+Не удается войти в toohello ВМ и появляется сообщение о том, что это неправильный пароль, который использовался hello. Кроме того вы не может использовать VMAgent tooreset пароль на портале Azure hello. 
 
 ## <a name="manual-password-reset-procedure"></a>Процедура сброса пароля вручную
 
-1.  Удалите виртуальную машину и сохраните ее подключенные диски.
+1.  Удаление hello виртуальной Машины с сохранением hello присоединенные диски.
 
-2.  Подключите диск ОС в качестве диска данных к другой временной виртуальной машине в том же расположении.
+2.  Присоединить диск операционной системы как диск данных tooanother hello временной виртуальной Машины в hello местоположения.
 
-3.  Выполните приведенную ниже команду SSH на временной виртуальной машине, чтобы стать суперпользователем.
+3.  Запустите hello после команды SSH на временной виртуальной Машины toobecome hello суперпользователя.
 
 
     ~~~~
     sudo su
     ~~~~
 
-4.  Выполните **fdisk -l** или просмотрите системные журналы, чтобы найти только что подключенный диск. Найдите имя подключаемого диска. Затем на временной виртуальной машине просмотрите соответствующий файл журнала.
+4.  Запустите **fdisk -l** или просмотрите hello toofind журналы системы вновь подключенного диска. Найдите имя toomount hello диска. Затем на hello файл журнала временной виртуальной Машины, можно найти в соответствующей hello.
 
     ~~~~
     grep SCSI /var/log/kern.log (ubuntu)
     grep SCSI /var/log/messages (centos, suse, oracle)
     ~~~~
 
-    Ниже приведен пример выходных данных команды grep.
+    Hello ниже приведен пример выходных данных команды grep hello.
 
     ~~~~
     kernel: [ 9707.100572] sd 3:0:0:0: [sdc] Attached SCSI disk
@@ -61,7 +61,7 @@ ms.lasthandoff: 08/18/2017
     mkdir /tempmount
     ~~~~
 
-6.  Подключите диск ОС к точке подключения. Обычно требуется подключить sdc1 или sdc2. Это будет зависеть от раздела размещения в каталоге /etc с диска неисправного компьютера.
+6.  Подключите диск hello операционной системы в точке монтирования hello. Обычно требуется toomount sdc1 или sdc2. Это будет зависеть от размещения секции в каталоге/etc с диска неработающие машины hello hello.
 
     ~~~~
     mount /dev/sdc1 /tempmount
@@ -78,13 +78,13 @@ ms.lasthandoff: 08/18/2017
     cp /tempmount/etc/shadow /tempmount/etc/shadow_orig
     ~~~~
 
-8.  Сбросьте соответствующий пароль пользователя.
+8.  Сброс пароля пользователя hello, необходимо:
 
     ~~~~
     passwd <<USER>> 
     ~~~~
 
-9.  Переместите измененные файлы на правильное расположение на диске неисправного компьютера.
+9.  Перемещение hello изменить правильное расположение файлов toohello на hello неработающие диск компьютера.
 
     ~~~~
     cp /etc/passwd /tempmount/etc/passwd
@@ -92,18 +92,18 @@ ms.lasthandoff: 08/18/2017
     cp /etc/passwd_orig /etc/passwd
     cp /etc/shadow_orig /etc/shadow
     
-10. Go back to the root and unmount the disk.
+10. Go back toohello root and unmount hello disk.
 
     ~~~~
     cd / umount /tempmount
     ~~~~
 
-11. Detach the disk from the management portal.
+11. Detach hello disk from hello management portal.
 
-12. Recreate the VM.
+12. Recreate hello VM.
 
 ## Next steps
 
-* [Troubleshoot Azure VM by attaching OS disk to another Azure VM](http://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+* [Troubleshoot Azure VM by attaching OS disk tooanother Azure VM](http://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
-* [Azure CLI: How to delete and re-deploy a VM from VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+* [Azure CLI: How toodelete and re-deploy a VM from VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

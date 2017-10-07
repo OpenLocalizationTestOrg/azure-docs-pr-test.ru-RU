@@ -1,6 +1,6 @@
 ---
-title: "Как использовать хранилище BLOB-объектов (хранилище объектов) из PHP | Документация Майкрософт"
-description: "Хранение неструктурированных данных в облаке в хранилище BLOB-объектов Azure."
+title: "хранилище больших двоичных объектов toouse aaaHow (объект хранилища) из PHP | Документы Microsoft"
+description: "Храните неструктурированные данные в облаке hello с хранилищем больших двоичных объектов Azure (хранилище объектов)."
 documentationcenter: php
 services: storage
 author: mmacy
@@ -14,44 +14,44 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-ms.openlocfilehash: 2c356d7faafa8ef4591087b5b1f949b9374732be
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 331405e583c17c4f71acacdc0078b2bc71efbef0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-blob-storage-from-php"></a>Использование хранилища больших двоичных объектов из PHP
+# <a name="how-toouse-blob-storage-from-php"></a>Как toouse хранилище больших двоичных объектов из PHP
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Обзор
-Хранилище BLOB-объектов Azure — это служба, которая хранит неструктурированные данные в облаке в качестве объектов или больших двоичных объектов. В хранилище BLOB-объектов могут храниться текстовые или двоичные данные любого типа, например документы, файлы мультимедиа или установщики приложений. Хранилище BLOB-объектов иногда также называют хранилищем объектов.
+Хранилище больших двоичных объектов Azure — это служба, неструктурированные данные хранятся в облаке hello как большие двоичные объекты и объекты. В хранилище BLOB-объектов могут храниться текстовые или двоичные данные любого типа, например документы, файлы мультимедиа или установщики приложений. Хранилище больших двоичных объектов также является ссылка tooas объекта хранилища.
 
-В этом руководстве показано, как реализовать типичные сценарии с использованием службы BLOB-объектов Azure. Примеры написаны на PHP и используют [пакет SDK Azure для PHP][download]. Здесь описаны такие сценарии, как **отправка**, **перечисление**, **скачивание** и **удаление** BLOB-объектов. Дополнительные сведения о больших двоичных объектах см. в разделе [Дальнейшие действия](#next-steps).
+В этом руководстве показано, как tooperform распространенные сценарии, с помощью hello Azure служба BLOB-объектов. Hello примеры написаны на PHP и использовать hello [пакет Azure SDK для PHP][download]. Hello сценарии включают **передачи**, **вывод**, **Загрузка**, и **удаление** больших двоичных объектов. Дополнительные сведения о больших двоичных объектов см. в разделе hello [дальнейшие действия](#next-steps) раздела.
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>Создание приложения PHP
-Единственным требованием для создания приложения PHP, которое получает доступ к службе BLOB-объектов Azure, является ссылка на классы в пакете SDK для Azure для PHP непосредственно из кода. Можно использовать любые средства разработки для создания приложения, включая программу "Блокнот".
+Здравствуйте, используется только для создания приложения PHP, которое обращается к службе BLOB-объектов Azure hello hello ссылки на классы в hello Azure SDK для PHP из кода. Можно использовать любой toocreate средства разработки приложения, включая «Блокнот».
 
 В этом руководстве используются компоненты службы, которые могут быть вызваны локально в приложении PHP или в коде, работающем в веб-роли, рабочей роли или на веб-сайте Azure.
 
-## <a name="get-the-azure-client-libraries"></a>Получение клиентских библиотек Azure
+## <a name="get-hello-azure-client-libraries"></a>Получить клиентские библиотеки Azure hello
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-access-the-blob-service"></a>Настройка приложения для доступа к службе BLOB-объектов
-Чтобы использовать интерфейсы API службы BLOB-объектов Azure, требуется:
+## <a name="configure-your-application-tooaccess-hello-blob-service"></a>Для настройки приложения tooaccess hello больших двоичных объектов
+toouse hello BLOB-объектов Azure API службы, необходимо:
 
-1. Ссылка на файл автозагрузчика с использованием инструкции [require_once] и
+1. Файл автозагрузчика hello ссылка, с помощью hello [require_once] инструкции, и
 2. Ссылка на любые классы, которые могут использоваться.
 
-В следующем примере показано, как включить файл автозагрузчика и сослаться на класс **ServicesBuilder** .
+Hello следующем примере показано, как tooinclude hello автозагрузчика файла и ссылку hello **ServicesBuilder** класса.
 
 > [!NOTE]
-> В примере этой статьи предполагается, что установлены клиентские библиотеки PHP для Azure с помощью Composer. Если вы установили эти библиотеки вручную, то необходимо добавить ссылку на файл автозагрузчика `WindowsAzure.php` .
+> Примеры Hello в этой статье предполагается, что вы установили hello клиентские библиотеки PHP для Azure через редактор. При установке библиотеки hello вручную необходимо tooreference hello `WindowsAzure.php` автозагрузчика файла.
 >
 >
 
@@ -60,10 +60,10 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-В приведенных ниже примерах всегда будет отображаться оператор `require_once` , однако ссылки будут приводиться только на классы, которые необходимы для выполнения этого примера.
+В ниже примерах hello, hello `require_once` всегда отображаются инструкции, но указываются только классы hello, необходимые для tooexecute пример hello.
 
 ## <a name="set-up-an-azure-storage-connection"></a>Настройка подключения к службе хранилища Azure
-Чтобы создать экземпляр клиента службы BLOB-объектов Azure, сначала необходимо сформировать правильную строку подключения. Формат строки подключения к службе BLOB-объектов:
+tooinstantiate клиента службы BLOB-объектов Azure, сначала нужно допустимую строку соединения. Hello для строки подключения для службы BLOB-объектов hello выглядит следующим образом:
 
 Для доступа к службе в режиме реального времени:
 
@@ -71,20 +71,20 @@ use WindowsAzure\Common\ServicesBuilder;
 DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 ```
 
-Для доступа к эмулятору хранения:
+Для доступа к hello эмулятор хранилища:
 
 ```php
 UseDevelopmentStorage=true
 ```
 
-Чтобы создать клиент любой службы Azure, необходимо использовать класс **ServicesBuilder** . Вы можете:
+toocreate любого клиента службы Azure необходимо toouse hello **ServicesBuilder** класса. Вы можете:
 
-* передать строку подключения напрямую или
-* использовать **CloudConfigurationManager (CCM)** для проверки нескольких внешних источников на наличие строки подключения:
+* Передайте hello подключения напрямую строка tooit или
+* использовать hello **CloudConfigurationManager (CCM)** toocheck нескольких внешних источников для hello строки подключения:
   * по умолчанию предоставляется поддержка одного внешнего источника — переменных среды;
-  * можно добавить новые источники, расширив класс **ConnectionStringSource** .
+  * Можно добавлять новые источники, расширяя hello **ConnectionStringSource** класса.
 
-В приведенных здесь примерах строка подключения передается напрямую.
+Приведенные ниже примеры hello hello строки подключения будут передаваться напрямую.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -97,7 +97,7 @@ $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionSt
 ## <a name="create-a-container"></a>Создание контейнера
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-Объект **BlobRestProxy** позволяет создать контейнер BLOB-объектов с помощью метода **createContainer**. При создании контейнера можно задать параметры контейнера, однако это не является обязательным. (В приведенном ниже примере показано, как задать список управления доступом (ACL) и метаданные контейнера.)
+Объект **BlobRestProxy** объектов позволяет создавать контейнер больших двоичных объектов с hello **createContainer** метод. При создании контейнера, можно задать параметры для hello контейнера, но это не требуется. (hello приведенном ниже примере показано, как доступ к tooset hello контейнера списка управления Доступом, а также метаданные контейнера).
 
 ```php
 require_once 'vendor\autoload.php';
@@ -119,16 +119,16 @@ $createContainerOptions = new CreateContainerOptions();
 // PublicAccessType::CONTAINER_AND_BLOBS and PublicAccessType::BLOBS_ONLY.
 // CONTAINER_AND_BLOBS:
 // Specifies full public read access for container and blob data.
-// proxys can enumerate blobs within the container via anonymous
-// request, but cannot enumerate containers within the storage account.
+// proxys can enumerate blobs within hello container via anonymous
+// request, but cannot enumerate containers within hello storage account.
 //
 // BLOBS_ONLY:
 // Specifies public read access for blobs. Blob data within this
 // container can be read via anonymous request, but container data is not
-// available. proxys cannot enumerate blobs within the container via
+// available. proxys cannot enumerate blobs within hello container via
 // anonymous request.
-// If this value is not specified in the request, container data is
-// private to the account owner.
+// If this value is not specified in hello request, container data is
+// private toohello account owner.
 $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
 
 // Set container metadata.
@@ -149,12 +149,12 @@ catch(ServiceException $e){
 }
 ```
 
-Вызов **setPublicAccess(PublicAccessType::CONTAINER\_AND\_BLOBS)** делает контейнер и данные BLOB-объектов доступными через анонимные запросы. Вызов **setPublicAccess(PublicAccessType::BLOBS_ONLY)** делает доступными через анонимные запросы только данные BLOB-объектов. Дополнительные сведения о списках управления доступом контейнеров см. в статье [Set Container ACL][container-acl] (Задание списка управления доступом для контейнера).
+Вызов **setPublicAccess (PublicAccessType::CONTAINER\_AND\_больших двоичных ОБЪЕКТОВ)** делает hello контейнерах и больших двоичных данных, доступные через анонимные запросы. Вызов **setPublicAccess(PublicAccessType::BLOBS_ONLY)** делает доступными через анонимные запросы только данные BLOB-объектов. Дополнительные сведения о списках управления доступом контейнеров см. в статье [Set Container ACL][container-acl] (Задание списка управления доступом для контейнера).
 
 Дополнительные сведения о кодах ошибок службы BLOB-объектов см. в разделе [Blob Service Error Codes][error-codes] (Коды ошибок службы BLOB-объектов).
 
 ## <a name="upload-a-blob-into-a-container"></a>Отправка BLOB-объекта в контейнер
-Чтобы передать файл в виде BLOB-объекта, используйте метод **BlobRestProxy->createBlockBlob**. Эта операция создает большой двоичный объект, если он еще не существует, или заменяет его, если он существует. В примере кода предполагается, что контейнер уже был создан и использует [fopen][fopen] для открытия файла в виде потока.
+файл в качестве большого двоичного объекта используйте hello tooupload **BlobRestProxy -> createBlockBlob** метод. Эта операция создает hello большого двоичного объекта, если он не существует, или перезаписывает его, если это так. Hello в следующем примере предполагается, этот контейнер hello уже создан и использует [fopen] [ fopen] tooopen hello файл как поток.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -183,10 +183,10 @@ catch(ServiceException $e){
 }
 ```
 
-Обратите внимание, что в предыдущем примере большой двоичный объект передается в виде потока. Однако BLOB-объект можно передать в качестве строки с помощью, к примеру, функции [file\_get\_contents][file_get_contents]. Чтобы сделать это, используя предыдущий пример, измените `$content = fopen("c:\myfile.txt", "r");` на `$content = file_get_contents("c:\myfile.txt");`.
+Обратите внимание, что предыдущий образец hello загружает большой двоичный объект в виде потока. Тем не менее, большой двоичный объект можно также передать в строку, используя, например, hello [файл\_получить\_содержимого] [ file_get_contents] функции. toodo этого с помощью предыдущего образца hello, изменить `$content = fopen("c:\myfile.txt", "r");` слишком`$content = file_get_contents("c:\myfile.txt");`.
 
-## <a name="list-the-blobs-in-a-container"></a>Перечисление BLOB-объектов в контейнере
-Чтобы получить список BLOB-объектов в контейнере, используйте метод **BlobRestProxy->listBlobs** с циклом **foreach** для перебора результатов. Следующий код выводит имя каждого большого двоичного объекта в контейнере и соответствующий URI в браузере.
+## <a name="list-hello-blobs-in-a-container"></a>Перечисление hello больших двоичных объектов в контейнере
+toolist hello BLOB-объектов в контейнере, используйте hello **BlobRestProxy -> listBlobs** метод с **foreach** цикл tooloop из результатов hello. Hello следующий код отображает hello имени каждого BLOB-объекта в качестве выходных данных в контейнере и toohello его URI браузера.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -219,7 +219,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="download-a-blob"></a>Загрузка BLOB-объектов
-Чтобы загрузить BLOB-объект, вызовите метод **BlobRestProxy->getBlob**, затем вызовите метод **getContentStream** для результирующего объекта **GetBlobResult**.
+toodownload большой двоичный объект hello вызовов **BlobRestProxy -> getBlob** метод, то вызов hello **getContentStream** метод на возникающие hello **GetBlobResult** объекта.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -246,10 +246,10 @@ catch(ServiceException $e){
 }
 ```
 
-Обратите внимание, что приведенный выше пример получает BLOB-объект как ресурс потока (поведение по умолчанию). Однако можно использовать функцию [stream\_get\_contents][stream-get-contents] для преобразования возвращенного потока в строку.
+Обратите внимание, что приведенном выше примере hello возвращает большой двоичный объект как ресурс потока (поведение по умолчанию hello). Тем не менее, можно использовать hello [поток\_получить\_содержимого] [ stream-get-contents] hello tooconvert функция возвращена строка tooa потока.
 
 ## <a name="delete-a-blob"></a>Удаление большого двоичного объекта
-Чтобы удалить BLOB-объект, передайте имя контейнера и имя BLOB-объекта в **BlobRestProxy->deleteBlob**.
+toodelete большого двоичного объекта, передать имя контейнера hello и имя большого двоичного объекта слишком**BlobRestProxy -> deleteBlob**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -276,7 +276,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="delete-a-blob-container"></a>Удаление контейнера blob-объектов
-Наконец, чтобы удалить контейнер BLOB-объектов, передайте имя контейнера в **BlobRestProxy->deleteContainer**.
+Наконец, toodelete контейнер больших двоичных объектов, передайте имя контейнера hello слишком**BlobRestProxy -> deleteContainer**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -302,14 +302,14 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Вы изучили основную информацию о службе BLOB-объектов Azure. Дополнительную информацию о более сложных задачах по использованию хранилища можно найти по следующим ссылкам.
+Теперь, когда вы узнали основы hello hello службы BLOB-объектов Azure, выполните эти ссылки toolearn о более сложных задач хранилища.
 
-* Посетите [блог команды разработчиков службы хранилища Azure](http://blogs.msdn.com/b/windowsazurestorage/)
-* Ознакомьтесь с [примером блочного BLOB-объекта РНР](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php).
-* Ознакомьтесь с [примером страничного BLOB-объекта PHP](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php).
-* [Приступая к работе со служебной программой командной строки AzCopy](storage-use-azcopy.md)
+* Посетите hello [блог группы разработчиков хранилища Azure](http://blogs.msdn.com/b/windowsazurestorage/)
+* В разделе hello [пример большого двоичного объекта блока PHP](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php).
+* В разделе hello [пример большой двоичный объект страницы PHP](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php).
+* [Перенесите данные с помощью служебной программы командной строки AzCopy hello](storage-use-azcopy.md)
 
-Дополнительную информацию можно найти также в [Центре разработчика PHP](/develop/php/).
+Дополнительные сведения см. также: hello [Центр разработчика PHP](/develop/php/).
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
 [container-acl]: http://msdn.microsoft.com/library/azure/dd179391.aspx

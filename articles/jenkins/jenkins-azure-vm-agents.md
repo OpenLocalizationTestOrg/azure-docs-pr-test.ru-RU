@@ -1,5 +1,5 @@
 ---
-title: "Использование агентов виртуальных машин для непрерывной интеграции с Jenkins."
+title: "агенты ВМ Azure aaaUse для непрерывная интеграция с Jenkins."
 description: "Агенты виртуальных машин Azure в качестве подчиненных модулей Jenkins."
 services: multiple
 documentationcenter: 
@@ -15,57 +15,57 @@ ms.topic: hero-article
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0b22a559fbc03158a6d4398603d1a7d2874d7b67
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2388e6919d0280372166fbd325d80dafb00d7550
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-vm-agents-for-continuous-integration-with-jenkins"></a>Использование агентов виртуальных машин для непрерывной интеграции с Jenkins.
 
-В этом кратком руководстве объясняется, как с помощью подключаемого модуля агентов виртуальных машин Azure для Jenkins создать в Azure агент Linux (Ubuntu) по запросу.
+Это краткое руководство показывает, как toouse hello toocreate подключаемый модуль агента ВМ Jenkins агент Linux (Ubuntu) по запросу в Azure.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Ниже указаны требования для работы с руководством.
+toocomplete краткого руководства:
 
-* Если главный модуль Jenkins еще не создан, можно начать с [шаблона решения](install-jenkins-solution-template.md) 
-* Если у вас еще нет субъекта-службы Azure, см. статью [Создание субъекта-службы Azure с помощью Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
+* Если главный Jenkins еще нет можно начать с hello [шаблон решения](install-jenkins-solution-template.md) 
+* См. слишком[создании субъекта-службы Azure с помощью Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) Если вы еще не участника-службы Azure.
 
 ## <a name="install-azure-vm-agents-plugin"></a>Установка подключаемого модуля агентов виртуальных машин
 
-Если вы начали с [шаблона решения](install-jenkins-solution-template.md), подключаемый модуль агентов виртуальных машин Azure устанавливается в главном модуле Jenkins.
+При запуске из hello [шаблон решения](install-jenkins-solution-template.md), подключаемый модуль агента ВМ Azure hello устанавливается в базе данных master Jenkins hello.
 
-Если нет, установите подключаемый модуль **агентов виртуальных машин** с панели мониторинга Jenkins.
+В противном случае установка hello **агента ВМ** подключаемого модуля из панели мониторинга Jenkins hello.
 
-## <a name="configure-the-plugin"></a>Настройка подключаемого модуля
+## <a name="configure-hello-plugin"></a>Настроить подключаемый модуль hello
 
-* На панели мониторинга Jenkins последовательно выберите элементы **Manage Jenkins (Управление Jenkins) -> Configure System (Настройка системы) ->**. Прокрутите до нижней части страницы и найдите раздел с раскрывающимся списком **Add new cloud** (Добавление нового облака). В меню выберите **Microsoft Azure VM Agents** (Агенты виртуальных машин Microsoft Azure)
-* Выберите существующую учетную запись из раскрывающегося списка учетных данных Azure.  Чтобы добавить новый **субъект-службу Microsoft Azure**, введите следующие значения: идентификатор подписки, идентификатор клиента, секрет клиента и конечная точка маркера OAuth 2.0.
+* Панели мониторинга Jenkins hello, нажмите кнопку **Jenkins управления -> Настройка системы ->**. Прокрутите toohello внизу страницы hello и найдите раздел hello с раскрывающимся hello **Добавление нового облака**. Меню "hello" выберите **агенты ВМ Microsoft Azure**
+* Выберите существующую учетную запись из раскрывающегося списка hello учетные данные Azure.  tooadd новый **субъекта-службы Microsoft Azure,** введите hello следующие значения: идентификатор подписки, идентификатор клиента, секрет клиента и конечная точка маркера OAuth 2.0.
 
 ![Учетные данные Azure](./media/jenkins-azure-vm-agents/service-principal.png)
 
-* Нажмите кнопку **Verify configuration** (Проверить конфигурацию), чтобы убедиться в правильности конфигурации профиля.
-* Сохраните конфигурацию и перейдите к следующему шагу.
+* Нажмите кнопку **Проверьте конфигурацию** toomake правильность конфигурации профиля hello.
+* Сохранить конфигурацию hello и продолжить toohello следующий шаг.
 
 ## <a name="template-configuration"></a>Конфигурация шаблона
 
 ### <a name="general-configuration"></a>Общая конфигурация
-Настройте шаблон для определения агента виртуальных машин Azure. 
+Настройте шаблон для использования toodefine агента ВМ Azure. 
 
-* Нажмите кнопку **Добавить**, чтобы добавить шаблон. 
+* Нажмите кнопку **добавить** tooadd шаблона. 
 * Введите имя нового шаблона. 
-* В поле метки введите ubuntu. Эта метка используется во время настройки задания.
-* Выберите нужный регион в поле со списком.
-* Выберите нужный размер виртуальной машины.
-* Укажите имя учетной записи хранения Azure или оставьте это поле пустым, чтобы по умолчанию использовать значение jenkinsarmst.
-* Укажите период удержания в минутах. Этот параметр определяет время ожидания (в минутах) Jenkins перед автоматическим удалением неактивного агента. Укажите 0, если не хотите, чтобы неактивные агенты удалялись автоматически.
+* Для метки hello введите «ubuntu.» Эта метка используется во время настройки задания hello.
+* Выберите нужный регион hello со списком «hello».
+* Выберите hello желаемый размер виртуальной Машины.
+* Укажите имя учетной записи хранилища Azure hello, или оставьте имя по умолчанию hello пустой toouse «jenkinsarmst».
+* Укажите срок хранения hello в минутах. Этот параметр определяет hello число минут ожидания Jenkins перед автоматическое удаление неактивных агента. Укажите 0, если не требуется toobe простоя агентов, удаляются автоматически.
 
 ![Общая конфигурация](./media/jenkins-azure-vm-agents/general-config.png)
 
 ### <a name="image-configuration"></a>Конфигурация образа
 
-Чтобы создать агент Linux (Ubuntu), выберите **Image reference** (Ссылка на образ) и используйте в качестве примера указанную ниже конфигурацию. Последние поддерживаемые образы Azure см. в [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1).
+Выберите toocreate агент Linux (Ubuntu) **изображения ссылку** и hello используется следующая конфигурация в качестве примера. См. слишком[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) hello Azure последние поддерживаемые изображения.
 
 * Издатель образа: Canonical
 * Предложение образа: UbuntuServer
@@ -84,23 +84,23 @@ sudo apt-get install -y openjdk-7-jdk
 ```
 ![Конфигурация образа](./media/jenkins-azure-vm-agents/image-config.png)
 
-* Нажмите кнопку **Verify Template** (Проверить шаблон) для проверки конфигурации.
+* Нажмите кнопку **Проверка шаблона** tooverify hello конфигурации.
 * Щелкните **Сохранить**.
 
 ## <a name="create-a-job-in-jenkins"></a>Создание задания в Jenkins
 
-* На панели мониторинга Jenkins щелкните элемент **New Item**(Создать элемент). 
+* Панели мониторинга Jenkins hello, нажмите кнопку **новый элемент**. 
 * Введите имя, выберите **Freestyle project** (Универсальный проект) и нажмите кнопку **ОК**.
-* На вкладке **General** (Общие сведения) выберите Restrict where project can be run (Ограничения для запуска проекта) и введите для выражения метки значение ubuntu. Теперь в раскрывающемся списке отображается надпись ubuntu.
+* В hello **Общие** вкладки, выберите «Ограничить, где проект может работать» и тип «ubuntu» в выражении метки. Теперь отображается «ubuntu» в раскрывающемся списке hello.
 * Щелкните **Сохранить**.
 
 ![Настройка задания](./media/jenkins-azure-vm-agents/job-config.png)
 
 ## <a name="build-your-new-project"></a>Сборка нового проекта
 
-* Вернитесь на панель мониторинга Jenkins.
-* Щелкните правой кнопкой мыши созданное задание и выберите команду **Build now** (Собрать). Сборка запущена. 
-* По завершении сборки перейдите к окну **Console output** (Вывод на консоль). Вы увидите, что сборка выполнена в Azure удаленно.
+* Вы можете вернуться toohello Jenkins мониторинга.
+* Создать новое задание hello щелкните правой кнопкой мыши, нажмите кнопку **сборки теперь**. Сборка запущена. 
+* После завершения построения hello go слишком**вывод на консоль**. Вы увидите, что сборки hello удаленно выполнялась в Azure.
 
 ![Вывод на консоль](./media/jenkins-azure-vm-agents/console-output.png)
 

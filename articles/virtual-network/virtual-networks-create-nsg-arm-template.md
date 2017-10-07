@@ -1,6 +1,6 @@
 ---
-title: "Создание групп безопасности сети с помощью шаблона Azure Resource Manager | Документация Майкрософт"
-description: "Узнайте, как создавать и развертывать группы безопасности сети с помощью шаблона Azure Resource Manager."
+title: "aaaCreate сетевых групп безопасности - шаблона диспетчера ресурсов Azure | Документы Microsoft"
+description: "Узнайте, как toocreate и развертывание сетевых групп безопасности с помощью шаблона диспетчера ресурсов Azure."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88f7e5b2144daee7bf1c8e7312ba98e6fa967899
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3750168284fea7b41c8c0f908b0d31a9da5e38ce
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>Создание групп безопасности сети с помощью шаблона Azure Resource Manager
 
@@ -30,14 +30,14 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-В этой статье описывается модель развертывания с использованием менеджера ресурсов. Вы также можете [создавать группы безопасности сети с помощью классической модели развертывания](virtual-networks-create-nsg-classic-ps.md).
+В этой статье рассматриваются hello модели развертывания диспетчера ресурсов. Вы также можете [создать Nsg в hello классической модели развертывания](virtual-networks-create-nsg-classic-ps.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
 ## <a name="nsg-resources-in-a-template-file"></a>Ресурсы сетевой группы безопасности в файле шаблона
-Вы можете просмотреть и скачать [образец шаблона](https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/NSGs.json).
+Можно просматривать и загружать hello [образец шаблона](https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/NSGs.json).
 
-В следующем разделе показано определение группы безопасности сети переднего плана на основе этого сценария.
+Hello ниже показано определение hello hello NSG переднего плана, в зависимости от варианта hello.
 
 ```json
 "apiVersion": "2015-06-15",
@@ -80,7 +80,7 @@ ms.lasthandoff: 07/11/2017
   ]
 }
 ```
-Чтобы связать группу безопасности сети с подсетью переднего плана, необходимо изменить определение подсети в шаблоне и использовать идентификатор ссылки для группы.
+tooassociate hello NSG toohello интерфейса подсети получить определения подсети toochange hello в шаблоне hello и используйте идентификатор ссылки hello для hello NSG.
 
 ```json
 "subnets": [
@@ -95,16 +95,16 @@ ms.lasthandoff: 07/11/2017
   }, 
 ```
 
-Обратите внимание, чтобы то же самое было сделано для серверной группы безопасности сети и серверной подсети в этом шаблоне.
+Обратите внимание на то же добиваются hello внутренней NSG и hello внутренней подсети в шаблоне hello hello.
 
-## <a name="deploy-the-arm-template-by-using-click-to-deploy"></a>Развертывание шаблона ARM с помощью кнопки развертывания
-Образец шаблона, который находится в общедоступном репозитории, использует файл параметров, содержащий значения по умолчанию для создания описанного выше сценария. Чтобы развернуть этот шаблон, перейдите по [данной ссылке](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG), нажмите **Deploy to Azure**(Развернуть в Azure), при необходимости замените значения параметров по умолчанию и следуйте указаниям на портале.
+## <a name="deploy-hello-arm-template-by-using-click-toodeploy"></a>Развертывание с помощью шаблона hello ARM щелкните toodeploy
+шаблон Образец Hello доступны в репозитории открытого hello использует параметр файл, содержащий сценарий hello по умолчанию значения, используемые toogenerate hello, описанный выше. toodeploy это с помощью шаблона щелкните toodeploy, выполните [эту ссылку](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG), нажмите кнопку **развертывание tooAzure**, замените значения параметров по умолчанию hello при необходимости и следуйте инструкциям hello hello портала.
 
-## <a name="deploy-the-arm-template-by-using-powershell"></a>Развертывание шаблона ARM с помощью PowerShell
-Чтобы развернуть шаблон ARM, загруженный с помощью PowerShell, выполните описанные ниже действия.
+## <a name="deploy-hello-arm-template-by-using-powershell"></a>Развертывание шаблона hello ARM с помощью PowerShell
+toodeploy hello ARM загруженный шаблон с помощью PowerShell, выполните шаги hello.
 
-1. Если вы ранее не использовали Azure PowerShell, следуйте инструкциям по установке и настройке Azure PowerShell в [этой статье](/powershell/azure/overview).
-2. Запустите командлет **`New-AzureRmResourceGroup`** для создания группы ресурсов с помощью шаблона.
+1. Если ранее не пользовались Azure PowerShell, выполните инструкции hello hello [как tooInstall и настройка Azure PowerShell](/powershell/azure/overview) tooinstall и настройте его.
+2. Запустите hello  **`New-AzureRmResourceGroup`**  toocreate командлет группы ресурсов с помощью hello шаблона.
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location uswest `
@@ -148,21 +148,21 @@ ms.lasthandoff: 07/11/2017
    
         ResourceId        : /subscriptions/[Subscription Id]/resourceGroups/TestRG
 
-## <a name="deploy-the-arm-template-by-using-the-azure-cli"></a>Развертывание шаблона ARM с помощью интерфейса командной строки Azure
-Чтобы развернуть шаблон ARM с помощью интерфейса командной строки Azure, выполните следующие действия.
+## <a name="deploy-hello-arm-template-by-using-hello-azure-cli"></a>Развертывание шаблона hello ARM с помощью hello Azure CLI
+toodeploy hello ARM шаблона с использованием hello Azure CLI, выполните шаги hello.
 
-1. Если вы еще не пользовались Azure CLI, ознакомьтесь со статьей [Установка и настройка CLI Azure](../cli-install-nodejs.md) и следуйте инструкциям вплоть до выбора учетной записи Azure и подписки.
-2. Выполните команду **`azure config mode`** , чтобы переключиться в режим диспетчера ресурсов, как показано ниже.
+1. Если ранее не пользовались Azure CLI, см. раздел [Установка и настройка hello Azure CLI](../cli-install-nodejs.md) и следуйте инструкциям hello toohello точку, где выбирается учетная запись Azure и подписки.
+2. Запустите hello  **`azure config mode`**  tooswitch tooResource Manager режим команд, как показано ниже.
 
     ```azurecli
     azure config mode arm
     ```
 
-    Вот результат, ожидаемый для указанной выше команды:
+    Hello Вот hello ожидается выходные данные команды hello:
 
         info:    New mode is arm
 
-3. Выполните командлет **`azure group deployment create`** , чтобы развернуть новую виртуальную сеть с помощью файлов шаблона и параметров, которые вы загрузили и изменили раньше. В списке, который откроется после выполнения команды, будут указаны используемые параметры.
+3. Запустите hello  **`azure group deployment create`**  файлы новой виртуальной сети с помощью шаблонов hello и параметров командлета toodeploy hello вы загрузили и изменить выше. Список Hello отображаться после вывода hello объясняется hello параметров, используемых.
 
     ```azurecli
     azure group create -n TestRG -l westus -f 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' -e 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'
@@ -185,8 +185,8 @@ ms.lasthandoff: 07/11/2017
         data:    
         info:    group create command OK
    
-   * **-n (или --name)**. Имя создаваемой группы ресурсов.
-   * **-l (или --location)**. Регион Azure, в котором будет создана группа ресурсов.
-   * **-f (или --template-file)**. Путь к файлу шаблона ARM.
-   * **-e (или --parameters-file)**. Путь к файлу параметров ARM.
+   * **-n (или --name)**. Имя hello ресурсов группы toobe создан.
+   * **-l (или --location)**. Регион Azure, где будет создана группа ресурсов hello.
+   * **-f (или --template-file)**. Путь к файлу шаблона tooyour ARM.
+   * **-e (или --parameters-file)**. Путь к файлу параметров tooyour ARM.
 

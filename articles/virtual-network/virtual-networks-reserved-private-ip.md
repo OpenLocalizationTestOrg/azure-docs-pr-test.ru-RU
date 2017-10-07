@@ -1,6 +1,6 @@
 ---
-title: "Настройка статического внутреннего частного IP-адреса для классической виртуальной машины Azure"
-description: "Основные сведения о статических внутренних IP-адресах (DIP) и управлении ими"
+title: "aaaStatic внутренних частных IP - Azure VM - классический"
+description: "Основные сведения о статического внутреннего IP-адреса (DIP) и как toomanage их"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: jdial
-ms.openlocfilehash: cf9ee59ca4e44ed01836c2efb1f4df5f073bf6e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5abe1c59f2f3ed19bcf56c269dfe57ac32d4f601
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Как задать статический внутренний частный IP-адрес с помощью PowerShell (классическая модель)
-В большинстве случаев для виртуальной машины не нужно указывать статический внутренний IP-адрес. Виртуальные машины в виртуальной сети будут автоматически получать внутренний IP-адрес из указанного вами диапазона. Однако в некоторых случаях указание статического IP-адреса для конкретной виртуальной машины имеет смысл. Например, если на виртуальной машине планируется запускать DNS или она будет контроллером домена. Статический внутренний IP-адрес остается у виртуальной машины даже при переходе в состояние остановки или отзыва. 
+# <a name="how-tooset-a-static-internal-private-ip-address-using-powershell-classic"></a>Как tooset статический внутренний частного IP адрес, с помощью PowerShell (классические)
+В большинстве случаев нет необходимости toospecify статический внутренний IP-адрес для виртуальной машины. Виртуальные машины в виртуальной сети будут автоматически получать внутренний IP-адрес из указанного вами диапазона. Однако в некоторых случаях указание статического IP-адреса для конкретной виртуальной машины имеет смысл. Например, если ВМ является постоянной toorun DNS или будет контроллером домена. Статический внутренний IP-адрес остается с hello виртуальной Машины, даже в состоянии остановки или отзыва. 
 
 > [!IMPORTANT]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний корпорация Майкрософт рекомендует [использовать модель развертывания с помощью Resource Manager](virtual-networks-static-private-ip-arm-ps.md).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания hello [модели развертывания диспетчера ресурсов](virtual-networks-static-private-ip-arm-ps.md).
 > 
 > 
 
-## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Проверка доступности определенного IP-адреса
-Чтобы проверить, доступен ли IP-адрес *10.0.0.7* в виртуальной сети с именем *TestVnet*, выполните следующую команду PowerShell и проверьте значение для *IsAvailable*:
+## <a name="how-tooverify-if-a-specific-ip-address-is-available"></a>Как tooverify, если доступен определенный IP-адрес
+tooverify Если hello IP-адрес *10.0.0.7* доступен в виртуальной сети с именем *TestVnet*, запустите следующую команду PowerShell hello и проверьте значение hello *IsAvailable*:
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 10.0.0.7 
 
@@ -40,12 +40,12 @@ ms.lasthandoff: 07/11/2017
     OperationStatus      : Succeeded
 
 > [!NOTE]
-> Если требуется протестировать указанную выше команду в защищенной среде, следуйте указаниям из статьи [Создание (классической) виртуальной сети с помощью портала предварительной версии Azure](virtual-networks-create-vnet-classic-pportal.md), чтобы создать виртуальную сеть *TestVnet* и убедиться в том, что она использует адресное пространство *10.0.0.0/8*.
+> Команда hello tootest выше в безопасной среде выполните рекомендации hello в [Создание виртуальной сети (классические)](virtual-networks-create-vnet-classic-pportal.md) toocreate виртуальную сеть с именем *TestVnet* и убедитесь, он использует hello  *10.0.0.0/8* адресное пространство.
 > 
 > 
 
-## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>Указание статического внутреннего IP-адреса при создании виртуальной машины
-Приведенный ниже сценарий PowerShell создает облачную службу *TestService*, затем получает образ из Azure, после чего создает виртуальную машину *TestVM* в новой облачной службе с использованием полученного образа, задает для этой виртуальной машины нахождение в подсети *Subnet-1* и устанавливает *10.0.0.7* статическим внутренним IP-адресом виртуальной машины.
+## <a name="how-toospecify-a-static-internal-ip-when-creating-a-vm"></a>Как toospecify статического внутреннего IP-адреса при создании виртуальной Машины
+Приведенный ниже сценарий PowerShell Hello создает новую облачную службу с именем *TestService*, затем извлекает изображение из Azure, а затем создает Виртуальную машину с именем *TestVM* в hello новой облачной службы с помощью образа получить hello Задает hello toobe виртуальной Машины в подсеть с именем *Subnet-1*и задает *10.0.0.7* как статический внутренний IP-адрес, для hello виртуальной Машины:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -55,8 +55,8 @@ ms.lasthandoff: 07/11/2017
     | Set-AzureStaticVNetIP -IPAddress 10.0.0.7 `
     | New-AzureVM -ServiceName "TestService" –VNetName TestVnet
 
-## <a name="how-to-retrieve-static-internal-ip-information-for-a-vm"></a>Получение сведений о статическом внутреннем IP-адресе виртуальной машины
-Чтобы просмотреть сведения о статическом внутреннем IP-адресе виртуальной машины, созданной с помощью приведенного выше сценария, выполните следующую команду PowerShell и обратите внимание на значения *IpAddress*:
+## <a name="how-tooretrieve-static-internal-ip-information-for-a-vm"></a>Как tooretrieve статические внутренние IP сведения для виртуальной Машины
+tooview hello статические внутренние IP сведения для hello создания ВМ с hello-сценарий, приведенный выше, запустите следующую команду PowerShell hello и просмотрите значения hello *IP-адрес*:
 
     Get-AzureVM -Name TestVM -ServiceName TestService
 
@@ -87,15 +87,15 @@ ms.lasthandoff: 07/11/2017
     OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
     OperationStatus             : OK
 
-## <a name="how-to-remove-a-static-internal-ip-from-a-vm"></a>Удаление статического внутреннего IP-адреса с виртуальной машины
-Чтобы удалить статический внутренний IP-адрес, добавленный на виртуальную машину в приведенном выше сценарии, выполните следующую команду PowerShell:
+## <a name="how-tooremove-a-static-internal-ip-from-a-vm"></a>Как tooremove статического внутреннего IP-адреса, от виртуальной Машины
+tooremove hello статический внутренний IP-адрес добавлен toohello ВМ в скрипте hello выше, выполните следующую команду PowerShell hello:
 
     Get-AzureVM -ServiceName TestService -Name TestVM `
     | Remove-AzureStaticVNetIP `
     | Update-AzureVM
 
-## <a name="how-to-add-a-static-internal-ip-to-an-existing-vm"></a>Добавление статического внутреннего IP-адреса для существующей виртуальной машины
-Чтобы добавить статический внутренний IP-адрес для виртуальной машины, созданной с помощью приведенного выше сценария, выполните следующую команду:
+## <a name="how-tooadd-a-static-internal-ip-tooan-existing-vm"></a>Как tooadd статического внутреннего IP tooan существующей виртуальной Машины
+tooadd статические внутренние toohello IP виртуальной Машины, созданной с помощью скрипта hello выше runt следующей команды:
 
     Get-AzureVM -ServiceName TestService000 -Name TestVM `
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `

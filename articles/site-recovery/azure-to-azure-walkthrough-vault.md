@@ -1,6 +1,6 @@
 ---
-title: "Настройка хранилища для репликации виртуальной машины Azure между регионами с помощью Azure Site Recovery | Документация Майкрософт"
-description: "В этой статье кратко описаны шаги по настройке хранилища для репликации Azure между регионами Azure с помощью Azure Site Recovery."
+title: "aaaSet копирование хранилища для виртуальной Машины Azure repliction между регионами с Azure Site Recovery | Документы Microsoft"
+description: "Собраны действия hello необходимо tooset копии хранилища Azure репликации между регионах Azure, с помощью Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.openlocfilehash: e03d17992ee0b12049636e40188950bcc4a6f31e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9959c59c7ea57114763f13bf060404ddd267ba80
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="step-4-set-up-a-vault-for-azure-to-azure-replication"></a>Шаг 4. Настройка хранилища для репликации из Azure в Azure
+# <a name="step-4-set-up-a-vault-for-azure-tooazure-replication"></a>Шаг 4: Настройка хранилища Azure tooAzure репликации
 
-После [планирования сетей](azure-to-azure-walkthrough-network.md) вы можете воспользоваться этой статьей, чтобы настроить хранилище для виртуальных машин Azure, реплицируемых в другой регион Azure, с помощью службы [Azure Site Recovery](site-recovery-overview.md) на портале Azure.
+После [Планирование сетей](azure-to-azure-walkthrough-network.md), использование этой статьи tooset копии хранилища для виртуальных машин (ВМ) Azure репликации tooanother регион Azure, с помощью hello [Azure Site Recovery](site-recovery-overview.md) в hello портал Azure.
 
-- После выполнения инструкций в этой статье у вас будет настроенное хранилище служб восстановления.
-- Все комментарии можно добавить в конце этой статьи. Вопросы можно задать на [форуме по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+- Завершив hello статьи, необходимо настроить хранилище служб восстановления.
+- Отправлять все комментарии hello нижней части этой статьи, или задать вопросы в hello [форум по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 
@@ -42,9 +42,9 @@ ms.lasthandoff: 08/03/2017
 
 >[!NOTE]
 >
-> Советуем создавать хранилище служб восстановления в расположении, куда вы хотите реплицировать ваши виртуальные машины. Например, если целевое расположение центральная часть США, создайте хранилище в **центральной части США**.
+> Рекомендуется создать хранилище служб восстановления hello в hello место хранения вашей tooreplicate виртуальных машин. Например, если в целевом расположении hello центральный нам, создайте хранилище hello в **центральной части США**.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Перейдите к статье [Шаг 5. Включение репликации для виртуальных машин Azure](azure-to-azure-walkthrough-enable-replication.md).
+Go слишком[шаг 5: включение репликации](azure-to-azure-walkthrough-enable-replication.md)

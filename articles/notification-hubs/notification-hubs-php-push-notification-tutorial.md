@@ -1,6 +1,6 @@
 ---
-title: "Использование концентраторов уведомлений с PHP"
-description: "Узнайте, как использовать центры уведомлений Azure из серверной части PHP."
+title: "aaaHow toouse концентраторов уведомлений с PHP"
+description: "Узнайте, как toouse концентраторов уведомлений Azure из внутренней PHP."
 services: notification-hubs
 documentationcenter: 
 author: ysxu
@@ -14,48 +14,48 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: yuaxu
-ms.openlocfilehash: c27b6308ff528224a0398e0ff40537db05417bb0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6cd426286a684006a07867fcf44a8ff71be7efa8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-notification-hubs-from-php"></a>Использование концентраторов уведомлений из PHP
+# <a name="how-toouse-notification-hubs-from-php"></a>Как toouse концентраторы уведомлений из PHP
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Вы можете обращаться ко всем функциям концентраторов уведомлений из серверной части Java/PHP/Ruby, используя интерфейс REST концентраторов уведомлений в соответствии с описанием в разделе MSDN [Интерфейсы REST концентраторов уведомлений](http://msdn.microsoft.com/library/dn223264.aspx).
+Из внутренней Java, PHP и Ruby доступны все функции концентраторов уведомлений с помощью интерфейса REST концентратора уведомлений hello, как описано в разделе MSDN hello [интерфейсы API REST концентраторов уведомлений](http://msdn.microsoft.com/library/dn223264.aspx).
 
 В этом разделе описывается:
 
 * построение клиента REST для функций концентраторов уведомлений на PHP;
-* использование [Учебника по началу работы](notification-hubs-ios-apple-push-notification-apns-get-started.md) с выбранной мобильной платформой, реализация серверной части на PHP.
+* Выполните hello [учебника запущенную Get](notification-hubs-ios-apple-push-notification-apns-get-started.md) для вашей платформы мобильных устройств по выбору, реализация hello серверную часть в PHP.
 
 ## <a name="client-interface"></a>Интерфейс клиента
-Основной интерфейс клиента может предоставлять те же методы, которые доступны в [пакете SDK Центров уведомлений .NET](http://msdn.microsoft.com/library/jj933431.aspx). Это позволяет напрямую переводить все руководства и примеры, доступные на этом сайте в настоящий момент и пополняемые интернет-сообществом.
+Hello основного клиентского интерфейса предоставляет hello же методы, доступные в hello [.NET SDK концентраторы уведомлений](http://msdn.microsoft.com/library/jj933431.aspx), это позволит вам toodirectly перевести все hello учебники и образцы, доступных в настоящее время этот сайт и hello сообщества hello, представленные Интернета.
 
-Весь доступный код находится в [примера оболочки REST PHP].
+Можно найти все доступные в hello кода hello [образца программы-оболочки PHP REST].
 
-Например, чтобы создать клиента, необходимо выполнить следующие действия.
+Например toocreate клиента:
 
     $hub = new NotificationHub("connection string", "hubname");    
 
-Отправка собственного уведомления iOS.
+toosend уведомление о собственном iOS:
 
     $notification = new Notification("apple", '{"aps":{"alert": "Hello!"}}');
     $hub->sendNotification($notification, null);
 
 ## <a name="implementation"></a>Реализация
-Если вы еще этого не делали, выполните шаги, описанные в [учебнике по началу работы] , до последнего раздела, в котором вам нужно реализовать серверную часть.
-Кроме того, при необходимости можно воспользоваться кодом из [примера оболочки REST PHP] и перейти непосредственно к разделу [Завершение работы с руководством](#complete-tutorial).
+Если вы еще не сделали, выполните наши [учебника запущенную Get] вверх toohello последний раздел, при наличии tooimplement hello серверной части.
+Кроме того, если требуется, можно использовать код hello из hello [образца программы-оболочки PHP REST] и перейти непосредственно toohello [завершения hello учебника](#complete-tutorial) раздела.
 
-Подробные сведения о реализации полноценной оболочки REST можно найти в [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). В этом разделе описывается реализация основных действий на PHP, необходимых для доступа к конечным точкам REST концентраторов уведомлений.
+Здравствуйте, все сведения tooimplement полный оболочки REST можно найти на [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). В этом разделе описывается реализация PHP hello hello основных шагов требуется tooaccess конечные точки REST концентраторов уведомлений:
 
-1. Проанализируйте строку подключения
-2. Создайте маркер проверки подлинности
-3. Выполните вызов HTTP
+1. Синтаксический анализ строки соединения hello
+2. Создание маркера авторизации hello
+3. Выполнить вызов hello HTTP
 
-### <a name="parse-the-connection-string"></a>Проанализируйте строку подключения
-Ниже показан основной класс, реализующий клиента, конструктор которого выполняет анализ строки подключения:
+### <a name="parse-hello-connection-string"></a>Синтаксический анализ строки соединения hello
+Вот hello Главный класс реализации hello клиента, конструктор которого выполняет синтаксический анализ строки соединения hello.
 
     class NotificationHub {
         const API_VERSION = "?api-version=2013-10";
@@ -91,8 +91,8 @@ ms.lasthandoff: 07/11/2017
 
 
 ### <a name="create-security-token"></a>Создание маркера безопасности
-Подробные сведения о создании токенов безопасности можно найти [здесь](http://msdn.microsoft.com/library/dn495627.aspx).
-Для создания токена на основе универсального кода ресурса (URI) текущего запроса и учетных данных, извлеченных из строки подключения, необходимо добавить следующий метод в класс **NotificationHub** .
+доступны Hello сведения для создания маркера безопасности hello [здесь](http://msdn.microsoft.com/library/dn495627.aspx).
+Hello следующий метод был добавлен toobe toohello **концентратора уведомлений** класса toocreate hello токены на hello URI текущего запроса hello и hello учетные данные, извлеченные из строки подключения hello.
 
     private function generateSasToken($uri) {
         $targetUri = strtolower(rawurlencode(strtolower($uri)));
@@ -134,9 +134,9 @@ ms.lasthandoff: 07/11/2017
 
 Этот класс представляет собой контейнер для собственного тела уведомления, либо набор свойств, в случае с шаблонным уведомлением, а также набор заголовков, содержащих свойства формата (собственная платформа или шаблон) и специальные свойства платформы (например, свойство срока действия Apple и заголовки WNS).
 
-Обратитесь к [Документации по REST API для концентраторов уведомлений](http://msdn.microsoft.com/library/dn495827.aspx) и изучите форматы специализированных платформ уведомлений, чтобы узнать обо всех доступных параметрах.
+См. toohello [документации по API-интерфейс REST концентраторов уведомлений](http://msdn.microsoft.com/library/dn495827.aspx) и hello форматы уведомлений платформы для всех hello доступные параметры.
 
-Имея этот класс, мы можем создавать методы отправки уведомлений внутри класса **NotificationHub** .
+Используя этот класс, теперь можно написать отправки hello методы уведомления внутри hello **концентратора уведомлений** класса.
 
     public function sendNotification($notification, $tagsOrTagExpression="") {
         if (is_array($tagsOrTagExpression)) {
@@ -180,7 +180,7 @@ ms.lasthandoff: 07/11/2017
             CURLOPT_POSTFIELDS => $notification->payload
         ));
 
-        // Send the request
+        // Send hello request
         $response = curl_exec($ch);
 
         // Check for errors
@@ -195,16 +195,16 @@ ms.lasthandoff: 07/11/2017
         }
     } 
 
-Указанные выше методы отправляют запрос HTTP POST в конечную точку "/messages" концентратора уведомлений, с надлежащим телом и заголовками для отправки уведомления.
+Hello выше методы отправки HTTP POST запроса toohello /messages конечной точки с телом правильный hello и заголовки toosend hello уведомления центра уведомлений.
 
-## <a name="complete-tutorial"></a>Завершение работы с учебником
-Теперь вы можете завершить работу с учебником по началу работы, отправив уведомление из серверной части PHP.
+## <a name="complete-tutorial"></a>Учебник завершения hello
+Теперь можно завершить учебника приступить к работе hello путем отправки уведомления hello из внутренней PHP.
 
-Инициализируйте клиент концентратора уведомлений (замените строку подключения и имя концентратора в соответствии с инструкциями в [учебнике по началу работы]):
+Инициализировать концентраторы уведомлений клиента (замените имя концентратора и строка соединения hello, как описано в hello [учебника запущенную Get]):
 
     $hub = new NotificationHub("connection string", "hubname");    
 
-Затем добавьте код отправки, определяемый целевой мобильной платформой.
+Затем добавьте код отправки hello в зависимости от целевой платформы мобильных устройств.
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Магазин Windows и Windows Phone 8.1 (без Silverlight)
     $toast = '<toast><visual><binding template="ToastText01"><text id="1">Hello from PHP!</text></binding></visual></toast>';
@@ -243,14 +243,14 @@ ms.lasthandoff: 07/11/2017
 После выполнения кода PHP на целевом устройстве должно отобразиться уведомление.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом разделе было показано, как создать простой клиент Java REST для концентраторов уведомлений. На данном этапе можно сделать следующее.
+В этом разделе мы показали, как toocreate простой Java REST клиента для концентраторов уведомлений. На данном этапе можно сделать следующее.
 
-* Загрузить полный [примера оболочки REST PHP], содержащий весь указанный выше код.
-* Продолжить изучение функции тегов в концентраторах уведомлений в [учебнике "Срочные новости"]
-* Изучить отправку уведомлений отдельным пользователям в [учебнике "Уведомление пользователей"]
+* Загрузить полный hello [образца программы-оболочки PHP REST], который содержит все приведенный выше код hello.
+* Продолжить изучение теги в hello [новостями учебник] функции концентраторов уведомлений
+* Дополнительные сведения о принудительной отправке уведомлений tooindividual пользователей в [уведомить пользователей учебник]
 
-Дополнительную информацию можно найти также в [Центре разработчика PHP](/develop/php/).
+Дополнительные сведения см. также: hello [Центр разработчика PHP](/develop/php/).
 
-[примера оболочки REST PHP]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
-[учебнике по началу работы]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[образца программы-оболочки PHP REST]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
+[учебника запущенную Get]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 

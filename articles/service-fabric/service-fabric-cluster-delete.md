@@ -1,6 +1,6 @@
 ---
-title: "Удаление кластера Azure и его ресурсов | Документация Майкрософт"
-description: "Сведения о том, как полностью удалить кластер Service Fabric путем удаления содержащей кластер группы ресурсов или выборочного удаления отдельных ресурсов."
+title: "aaaDelete Azure кластера и его ресурсам | Документы Microsoft"
+description: "Сведения об использовании delete toocompletely структуры службы кластера либо удаление группы ресурсов hello, содержащий hello кластера или путем выборочного удаления ресурсов."
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/24/2017
 ms.author: chackdan
-ms.openlocfilehash: 7672aa12421fbe4ad86e7315d6a7a06c2ff5124d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5c15a4184644da715cd69397f2150de86ab433ba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Удаление кластера Service Fabric в Azure и используемых им ресурсов
-Кластер Service Fabric состоит из многих других ресурсов Azure помимо собственно ресурса кластера. Чтобы полностью удалить кластер Service Fabric, необходимо также удалить все ресурсы, из которых он состоит.
-Вы можете сделать это одним из двух способов: удалить группу ресурсов, в которой находится кластер (при этом будет удален ресурс кластера и другие ресурсы в группе ресурсов), или удалить ресурс кластера и связанные с ним ресурсы по отдельности (но не другие ресурсы в группе ресурсов).
+# <a name="delete-a-service-fabric-cluster-on-azure-and-hello-resources-it-uses"></a>Удаление кластера Service Fabric на Azure и hello ресурсы, используемые в нем
+Кластера Service Fabric состоит из многих других ресурсов Azure в дополнение к этому toohello сам ресурс кластера. Поэтому toocompletely Удаление кластера Service Fabric требуется также toodelete Здравствуйте, все ресурсы, которые оно состоит из.
+У вас есть два варианта: либо удаление hello группы ресурсов, hello кластера находится в (которая удаляет hello кластерных ресурсов и другие ресурсы в группе ресурсов hello) или специально удалить ресурс кластера hello и связанные с ним ресурсы (но не другие ресурсы в группе ресурсов hello).
 
 > [!NOTE]
-> Удаление ресурса кластера **не** приводит к удалению всех прочих ресурсов, из которых состоит кластер Service Fabric.
+> Удаление ресурса кластера hello **не** удаления всех hello другие ресурсы, которые состоят из кластера Service Fabric.
 > 
 > 
 
-## <a name="delete-the-entire-resource-group-rg-that-the-service-fabric-cluster-is-in"></a>Удаление всей группы ресурсов, в которой находится кластер Service Fabric
-Это самый простой способ, который гарантирует удаление всех ресурсов, связанных с кластером, включая группу ресурсов. Группу ресурсов можно удалить с помощью PowerShell или через портал Azure. Если выбранная группа ресурсов содержит ресурсы, которые не относятся к кластеру Service Fabric, можно удалить отдельные ресурсы.
+## <a name="delete-hello-entire-resource-group-rg-that-hello-service-fabric-cluster-is-in"></a>Удалите hello весь ресурс (группа Ресурсов), hello кластера Service Fabric
+Это простой способ tooensure hello удалить все ресурсы hello, связанной с кластером, включая группу ресурсов hello. Можно удалить группу ресурсов hello, с помощью PowerShell или с помощью портала Azure hello. Если группы ресурсов содержит ресурсы, которые не являются связанные tooService структуры кластера, можно удалить отдельные ресурсы.
 
-### <a name="delete-the-resource-group-using-azure-powershell"></a>Удаление группы ресурсов с помощью Azure PowerShell
-Группу ресурсов также можно удалить, выполнив следующие командлеты Azure PowerShell. Убедитесь, что на компьютере установлена среда Azure PowerShell 1.0 или более поздней версии. Если вы не сделали этого ранее, выполните инструкции в статье [Как установить и настроить Azure PowerShell](/powershell/azure/overview)
+### <a name="delete-hello-resource-group-using-azure-powershell"></a>Удаление группы ресурсов hello, с помощью Azure PowerShell
+Можно также удалить группу ресурсов hello, выполнив следующие командлеты Azure PowerShell hello. Убедитесь, что на компьютере установлена среда Azure PowerShell 1.0 или более поздней версии. Если вы не выполнили это перед, выполните hello действия, описанные в [как tooinstall и настройка Azure PowerShell.](/powershell/azure/overview)
 
-Откройте PowerShell и выполните следующие командлеты PowerShell:
+Откройте окно PowerShell и выполните следующие командлеты PS hello:
 
 ```powershell
 Login-AzureRmAccount
@@ -43,61 +43,61 @@ Login-AzureRmAccount
 Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 ```
 
-Будет выведен запрос на подтверждение удаления, если вы не использовали параметр *-Force* . После подтверждения группа ресурсов и все содержащиеся в ней ресурсы будут удалены.
+Удаление hello prompt tooconfirm будет работать, если вы не использовали hello *-Force* параметр. На подтверждение hello RG и все ресурсы hello, содержащиеся в нем удаляются.
 
-### <a name="delete-a-resource-group-in-the-azure-portal"></a>Удаление группы ресурсов на портале Azure
-1. Войдите на [портал Azure](https://portal.azure.com).
-2. Перейдите к нужному кластеру Service Fabric.
-3. Щелкните имя группы ресурсов на странице "Основные компоненты" кластера.
-4. Откроется страница **Resource Group Essentials** (Основные компоненты группы ресурсов).
+### <a name="delete-a-resource-group-in-hello-azure-portal"></a>Удаление группы ресурсов в hello портал Azure
+1. Имя входа toohello [портал Azure](https://portal.azure.com).
+2. Переход кластера Service Fabric toohello требуется toodelete.
+3. Щелкните имя группы ресурсов на странице essentials кластера hello hello.
+4. Откроется окно hello **Essentials группы ресурсов** страницы.
 5. Нажмите кнопку **Delete**(Удалить).
-6. Следуйте инструкциям на этой странице, чтобы завершить удаление группы ресурсов.
+6. Следуйте инструкциям hello на этой странице toocomplete hello удаления группы ресурсов hello.
 
 ![Удаление группы ресурсов][ResourceGroupDelete]
 
-## <a name="delete-the-cluster-resource-and-the-resources-it-uses-but-not-other-resources-in-the-resource-group"></a>Удаление ресурса кластера и используемых им ресурсов, но не других ресурсов в группе ресурсов
-Если в группе ресурсов содержатся только ресурсы, связанные с кластером Service Fabric, который требуется удалить, проще всего будет удалить группу ресурсов целиком. Если требуется выборочно удалить ресурсы в группе ресурсов, выполните следующие действия.
+## <a name="delete-hello-cluster-resource-and-hello-resources-it-uses-but-not-other-resources-in-hello-resource-group"></a>Удалить ресурс кластера hello и hello ресурсы, используемые в нем, но не другие ресурсы в группе ресурсов hello
+Если группы ресурсов содержит только ресурсы, связанные toohello кластера Service Fabric требуется toodelete, а затем проще toodelete hello весь ресурс группа. Если вы собираетесь tooselectively delete hello ресурсы по одному в группе ресурсов, выполните следующие действия.
 
-Если кластер развернут с помощью портала или с помощью одного из шаблонов Resource Manager для Service Fabric из коллекции шаблонов, то все ресурсы, используемые кластером, помечены следующими двумя тегами. С их помощью можно определить, какие ресурсы требуется удалить.
+При развертывании кластера с помощью портала hello, или с помощью одного из шаблонов диспетчера ресурсов структуры службы hello из галереи шаблонов hello ресурсами hello, hello кластера использует помечены hello, следующие два теги. Их можно использовать, какие ресурсы должны toodecide toodelete.
 
-***Тег 1:*** ключ = clusterName, значение = "имя кластера".
+***Тег #1:*** ключ = clusterName, значение = «имя кластера hello»
 
 ***Тег 2:*** ключ = resourceName, значение = ServiceFabric.
 
-### <a name="delete-specific-resources-in-the-azure-portal"></a>Удаление отдельных ресурсов на портале Azure
-1. Войдите на [портал Azure](https://portal.azure.com).
-2. Перейдите к нужному кластеру Service Fabric.
-3. В колонке "Основные компоненты" перейдите к элементу **Все параметры** .
-4. В разделе **Управление ресурсами** колонки параметров щелкните **Теги**.
-5. Щелкните один из **тегов** в колонке тегов, чтобы получить список всех ресурсов с этим тегом.
+### <a name="delete-specific-resources-in-hello-azure-portal"></a>Удаление конкретных ресурсов hello портал Azure
+1. Имя входа toohello [портал Azure](https://portal.azure.com).
+2. Переход кластера Service Fabric toohello требуется toodelete.
+3. Go слишком**все параметры** колонке essentials hello.
+4. Щелкните **теги** под **управление ресурсами** в колонке параметров hello.
+5. Выберите одну из hello **теги** в tooget колонки теги hello список всех ресурсов hello с этим тегом.
    
     ![Теги ресурсов][ResourceTags]
-6. Получив список ресурсов с тегом, вы можете выбрать и удалить нужные ресурсы.
+6. Получив hello перечень ресурсов, заключенное в теги, щелкните на каждом из ресурсов hello и удалите их.
    
     ![Ресурсы с тегами][TaggedResources]
 
-### <a name="delete-the-resources-using-azure-powershell"></a>Удаление ресурсов с помощью Azure PowerShell
-Отдельные ресурсы также можно удалить, выполнив следующие командлеты Azure PowerShell. Убедитесь, что на компьютере установлена среда Azure PowerShell 1.0 или более поздней версии. Если вы не сделали этого ранее, выполните инструкции в статье [Как установить и настроить Azure PowerShell](/powershell/azure/overview)
+### <a name="delete-hello-resources-using-azure-powershell"></a>Удаление hello ресурсов с помощью Azure PowerShell
+Hello ресурсы по одному можно удалить, выполнив следующие командлеты Azure PowerShell hello. Убедитесь, что на компьютере установлена среда Azure PowerShell 1.0 или более поздней версии. Если вы не выполнили это перед, выполните hello действия, описанные в [как tooinstall и настройка Azure PowerShell.](/powershell/azure/overview)
 
-Откройте PowerShell и выполните следующие командлеты PowerShell:
+Откройте окно PowerShell и выполните следующие командлеты PS hello:
 
 ```powershell
 Login-AzureRmAccount
 ```
-Для каждого ресурса, который требуется удалить, выполните следующую команду:
+Для каждого ресурса hello нужны toodelete, hello следующей:
 
 ```powershell
-Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "<Resource Type>" -ResourceGroupName "<name of the resource group>" -Force
+Remove-AzureRmResource -ResourceName "<name of hello Resource>" -ResourceType "<Resource Type>" -ResourceGroupName "<name of hello resource group>" -Force
 ```
 
-Чтобы удалить ресурс кластера, выполните следующую команду:
+toodelete hello ресурса кластера, запустите следующие hello:
 
 ```powershell
-Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Microsoft.ServiceFabric/clusters" -ResourceGroupName "<name of the resource group>" -Force
+Remove-AzureRmResource -ResourceName "<name of hello Resource>" -ResourceType "Microsoft.ServiceFabric/clusters" -ResourceGroupName "<name of hello resource group>" -Force
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения об обновлении кластера и секционировании служб см. в следующих статьях.
+После tooalso hello чтения сведения о обновлением кластера и секционирование службы:
 
 * [Узнайте об обновлениях кластера.](service-fabric-cluster-upgrade.md)
 * [Узнайте о секционировании служб с отслеживанием для максимального масштабирования.](service-fabric-concepts-partitioning.md)

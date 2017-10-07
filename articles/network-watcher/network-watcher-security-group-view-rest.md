@@ -1,6 +1,6 @@
 ---
-title: "Анализ безопасности сети с помощью представления группы безопасности Наблюдателя за сетями (REST API) | Документация Майкрософт"
-description: "В этой статье вы узнаете, как проанализировать безопасность виртуальных машин, используя представление группы безопасности, с помощью PowerShell."
+title: "Сетевая безопасность aaaAnalyze с представлением группы безопасности Наблюдатель сети Azure — REST API | Документы Microsoft"
+description: "В этой статье описывается, как toouse tooanalyze PowerShell в виртуальной машины, безопасность в представление \"Группа безопасности\"."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: afced52b3ae6f3b7f400364f5ec7d049aa166590
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0858a64a9454816e05f06dadb9536ad0c755e90e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Анализ безопасности виртуальной машины с использованием представления группы безопасности в REST API
 
@@ -28,17 +28,17 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-Представление группы безопасности возвращает настроенные и действующие правила сетевой безопасности, применяемые к виртуальной машине. Эта возможность полезна для аудита и диагностики групп безопасности сети и настроенных на виртуальной машине правил, позволяющих обеспечить разрешение или отклонение трафика соответствующим образом. В этой статье мы покажем, как получить эффективные правила безопасности и применить их к виртуальной машине с помощью REST API.
+Представление "Группа безопасности" возвращает правила безопасности сети настроены и эффективным, примененные tooa виртуальной машины. Эта возможность является полезным tooaudit и диагностики сетевых групп безопасности и правила, настроенные на tooensure трафика виртуальных Машин выполняется правильно разрешен или запрещен. В этой статье мы покажем, как tooretrieve безопасности hello эффективный и примененные правила tooa виртуальной машины, с помощью API-интерфейса REST
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В этом сценарии вы вызовите REST API Наблюдателя за сетями, чтобы получить представление группы безопасности для виртуальной машины. Чтобы вызвать REST API при помощи командлетов PowerShell, вам потребуется ARMClient. Пакет ARMClient можно скачать на сайте [Chocolatey](https://chocolatey.org/packages/ARMClient).
+В этом случае вызов представление группы безопасности hello tooget hello API-интерфейса Rest Наблюдатель сети для виртуальной машины. ARMclient — используется toocall hello REST API с помощью PowerShell. Пакет ARMClient можно скачать на сайте [Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-В этом сценарии предполагается, что вы создали Наблюдатель за сетями в соответствии с инструкциями в статье [Create an Azure Network Watcher instance](network-watcher-create.md) (Наблюдатель за сетями: создание экземпляра службы). Предполагается также, что у вас есть группа ресурсов с допустимой виртуальной машиной.
+Этот сценарий предполагает уже были выполнены шаги hello в [создать Наблюдатель сети](network-watcher-create.md) toocreate Наблюдатель сети. сценарий Hello также предполагается, что группа ресурсов с действительной виртуальной машиной существует toobe используется.
 
 ## <a name="scenario"></a>Сценарий
 
-В сценарии, описанном в этой статье, вы получите эффективные правила безопасности и примените их к указанной виртуальной машине.
+Hello сценарий, описанный в этой статье извлекает hello эффективный и примененных правил для данной виртуальной машине.
 
 ## <a name="log-in-with-armclient"></a>Вход с помощью ARMClient
 
@@ -48,10 +48,10 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Получение виртуальной машины
 
-Чтобы получить сведения о виртуальной машине, выполните приведенный ниже скрипт, указав в нем следующие переменные:
+Запустите следующий сценарий tooreturn виртуальных machineThe hello после кода требуется переменных:
 
-- **subscriptionId** — идентификатор подписки, который можно получить с помощью командлета **Get-AzureRMSubscription**;
-- **resourceGroupName** — имя группы ресурсов, в которой содержатся виртуальные машины.
+- **subscriptionId** -идентификатор подписки hello также можно получить с помощью hello **Get AzureRMSubscription** командлета.
+- **resourceGroupName** — hello имя группы ресурсов, содержащем виртуальные машины.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -60,7 +60,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Вам потребуется **идентификатор**, расположенный под строкой `Microsoft.Compute/virtualMachines` в ответе, как показано в примере ниже.
+Hello сведения, необходимые — hello **идентификатор** под типа hello `Microsoft.Compute/virtualMachines` в ответ, как показано в следующий пример hello:
 
 ```json
 ...,
@@ -92,7 +92,7 @@ pute/virtualMachines/{vmName}/extensions/CustomScriptExtension"
 
 ## <a name="get-security-group-view-for-virtual-machine"></a>Получение представления группы безопасности для виртуальной машины
 
-Приведенный ниже пример запрашивает представление группы безопасности целевой виртуальной машины. Полученный после выполнения результат можно использовать, чтобы сравнить правила и параметры безопасности, определенные источником. Это позволит оценить изменения конфигурации.
+Следующий пример Hello запрашивает представление группы безопасности hello целевой виртуальной машины. Hello результаты из этого примера может быть используется toocompare toohello правила и определяется toolook происхождения hello изменение параметров безопасности.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -109,9 +109,9 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/securityGroupView?api-version=2016-12-01" $requestBody -verbose
 ```
 
-## <a name="view-the-response"></a>Просмотр ответа
+## <a name="view-hello-response"></a>Просмотреть ответ hello
 
-Ниже приведен пример ответа, возвращенного после выполнения предыдущей команды. В результатах приводятся все действующие и применяемые правила безопасности на виртуальной машине, разделенные по группам **NetworkInterfaceSecurityRules**, **DefaultSecurityRules** и **EffectiveSecurityRules**.
+Следующий образец Hello — hello ответ, возвращаемый из предшествующих команда hello. Hello результаты показывают все правила безопасности эффективный и примененные hello на виртуальной машине hello разбит на группы **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, и  **EffectiveSecurityRules**.
 
 ```json
 
@@ -181,6 +181,6 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Сведения об автоматизации проверки групп безопасности сети см. в статье [Auditing Network Security Groups (NSG) with Network Watcher](network-watcher-security-group-view-powershell.md) (Выполнение аудита групп безопасности сети с помощью Наблюдателя за сетями).
+Посетите [аудита безопасности сети группы (NSG) с Наблюдатель сети](network-watcher-security-group-view-powershell.md) toolearn способ проверки tooautomate групп безопасности сети.
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Непрерывная интеграция и доставка Jenkins c помощью Kubernetes в Службе контейнеров Azure | Документация Майкрософт"
-description: "Автоматизация процесса непрерывной интеграции и доставки с помощью Jenkins для развертывания и обновления контейнерного приложения на платформе Kubernetes в Службе контейнеров Azure"
+title: "aaaJenkins CI или компакт-диска с Kubernetes в службе контейнера Azure | Документы Microsoft"
+description: "Как обрабатывать tooautomate CI или компакт-диска с Jenkins toodeploy и обновление контейнерного приложения на Kubernetes в службе контейнера Azure"
 services: container-service
 documentationcenter: 
 author: chzbrgr71
@@ -17,25 +17,25 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: briar
 ms.custom: mvc
-ms.openlocfilehash: 2078d0694fc4dd6e83ecd2792588b4254980cd78
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e00e13bf06619bed73e82878777e55458ea3dd77
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="jenkins-integration-with-azure-container-service-and-kubernetes"></a>Интеграция Jenkins со Службой контейнеров Azure и Kubernetes 
-В этом руководстве мы поэтапно рассмотрим процесс настройки непрерывной интеграции многоконтейнерного приложения с кластером Kubernetes в Службе контейнеров Azure с помощью платформы Jenkins. Рабочий процесс обновляет образ контейнера в Docker Hub и модули Kubernetes с помощью развертывания. 
+В этом учебнике мы будем рассматривать hello tooset процесс непрерывной интеграции приложения несколькими контейнера в Azure контейнера службы Kubernetes с помощью платформы Jenkins hello. рабочий процесс Hello обновляет образ контейнера hello в Docker Hub и обновляет hello Kubernetes модулей с помощью развертывания развертывания. 
 
 ## <a name="high-level-process"></a>Общий процесс
-Основные шаги, описанные в этой статье: 
+Hello основные шаги, описанные в этой статье приведены. 
 - установка кластера Kubernetes в службе контейнеров Azure;
-- настройка Jenkins и настройка доступа к службе контейнеров;
-- создание рабочего процесса Jenkins;
-- тестирование полного цикла процесса непрерывной интеграции и доставки.
+- Установка Jenkins и настройка tooContainer доступа службы
+- Создание рабочего процесса Jenkins
+- Тестирование tooend окончания процесса CI/CD hello
 
 ## <a name="install-a-kubernetes-cluster"></a>Установка кластера Kubernetes
     
-Разверните кластер Kubernetes в Службе контейнеров Azure с помощью описанных ниже шагов. Подробную документацию можно найти [здесь](container-service-kubernetes-walkthrough.md).
+Развертывание кластера Kubernetes hello в контейнер службы Azure, используя следующие шаги hello. Подробную документацию можно найти [здесь](container-service-kubernetes-walkthrough.md).
 
 ### <a name="step-1-create-a-resource-group"></a>Шаг 1. Создание группы ресурсов
 ```azurecli
@@ -45,9 +45,9 @@ LOCATION=westus
 az group create --name=$RESOURCE_GROUP --location=$LOCATION
 ```
 
-### <a name="step-2-deploy-the-cluster"></a>Шаг 2. Развертывание кластера
+### <a name="step-2-deploy-hello-cluster"></a>Шаг 2: Развертывание кластера hello
 > [!NOTE]
-> Для следующих шагов понадобится локальный открытый ключ SSH, хранимый в папке ~/.ssh.
+> Hello следующих шагов требуется локальный SSH открытого ключа, хранящегося в папке ~/.ssh hello.
 >
 
 ```azurecli
@@ -67,20 +67,20 @@ az acs create \
 --agent-vm-size=Standard_D1_v2
 ```
 
-## <a name="set-up-jenkins-and-configure-access-to-container-service"></a>Настройка Jenkins и настройка доступа к службе контейнеров
+## <a name="set-up-jenkins-and-configure-access-toocontainer-service"></a>Установка Jenkins и настройка tooContainer доступа службы
 
 ### <a name="step-1-install-jenkins"></a>Шаг 1. Установка Jenkins
-1. Создайте виртуальную машину Azure с Ubuntu 16.04 LTS.  Так как позднее в этом руководстве потребуется подключиться к данной виртуальной машине с помощью Bash на локальном компьютере, задайте для параметра "Тип проверки подлинности" значение "Открытый ключ SSH" и вставьте открытый ключ SSH, хранящийся на локальном компьютере в папке ~/.ssh.  Кроме того, запишите указываемое имя пользователя, так как позже оно понадобится для просмотра панели мониторинга Jenkins и подключения к виртуальной машине Jenkins.
+1. Создайте виртуальную машину Azure с Ubuntu 16.04 LTS.  Поскольку далее в hello шагов будет необходимо tooconnect toothis виртуальной Машины с помощью bash на локальном компьютере, открытый ключ «Тип проверки подлинности» hello too'SSH набор "и вставить hello открытый ключ SSH, хранящиеся локально в папке ~/.ssh.  Кроме того запишите hello «Имя пользователя», указать, поскольку это имя пользователя будет необходимые tooview hello Jenkins мониторинга и для соединения toohello Jenkins ВМ на последующих этапах.
 2. Установите Jenkins, используя эти [инструкции](https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu). Более подробное руководство находится на сайте [howtoforge.com](https://www.howtoforge.com/tutorial/how-to-install-jenkins-with-apache-on-ubuntu-16-04).
-3. Для просмотра панели мониторинга Jenkins на локальном компьютере измените параметры группы безопасности сети Azure, чтобы открыть порт 8080, добавив правило входящего трафика, разрешающее доступ к порту 8080.  Кроме того, можно задать перенаправление портов командой `ssh -i ~/.ssh/id_rsa -L 8080:localhost:8080 <your_jenkins_user>@<your_jenkins_public_ip`.
-4. Подключитесь к серверу Jenkins в браузере, перейдя по общедоступному IP-адресу (http://<ваш_общедоступный_IP-адрес_Jenkins>:8080), и разблокируйте панель мониторинга Jenkins в первый раз, воспользовавшись начальным паролем администратора.  Пароль администратора хранится в папке /var/lib/jenkins/secrets/initialAdminPassword на виртуальной машине Jenkins.  Простой способ получить этот пароль — подключиться по протоколу SSH к виртуальной машине Jenkins: `ssh <your_jenkins_user>@<your_jenkins_public_ip>`.  Затем следует выполнить команду `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
-5. Установите Docker на компьютер с Jenkins с помощью этих [инструкций](https://docs.docker.com/cs-engine/1.13/#install-on-ubuntu-1404-lts-or-1604-lts). Это позволит выполнять команды Docker в заданиях Jenkins.
-6. Настройте разрешения Docker таким образом, чтобы предоставить Jenkins доступ к конечной точке Docker.
+3. tooview Здравствуйте Jenkins панели мониторинга на локальном компьютере, обновить tooallow группы порт 8080 hello Azure сетевой безопасности, добавив правило входящего трафика, разрешающее доступ tooport 8080.  Кроме того, можно задать перенаправление портов командой `ssh -i ~/.ssh/id_rsa -L 8080:localhost:8080 <your_jenkins_user>@<your_jenkins_public_ip`.
+4. Подключение с помощью обозревателя hello, перейдя по toohello общедоступный IP-адрес сервера Jenkins tooyour (http:// < your_jenkins_public_ip >: 8080) и разблокировать панель мониторинга Jenkins hello для hello первый раз с паролем администратора начальной hello.  пароль администратора Hello хранится по /var/lib/jenkins/secrets/initialAdminPassword на hello Jenkins виртуальной Машины.  Легко tooget этот пароль должен быть tooSSH в hello ВМ Jenkins: `ssh <your_jenkins_user>@<your_jenkins_public_ip>`.  Затем следует выполнить команду `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
+5. Установка Docker на hello Jenkins компьютера с помощью этих [инструкции](https://docs.docker.com/cs-engine/1.13/#install-on-ubuntu-1404-lts-or-1604-lts). Это позволяет в режиме Jenkins toobe команды Docker.
+6. Настройка Docker разрешения tooallow Jenkins tooaccess hello Docker конечной точки.
 
     ```bash
     sudo chmod 777 /run/docker.sock
     ```
-8. Установите интерфейс командной строки `kubectl` на платформе Jenkins. Дополнительные сведения см. в статье [Installing and Setting up kubectl](https://kubernetes.io/docs/tasks/kubectl/install/) (Установка и настройка Kubectl).  Задания Jenkins будут использовать kubectl для управления кластером Kubernetes и его развертывания.
+8. Установите интерфейс командной строки `kubectl` на платформе Jenkins. Дополнительные сведения см. в статье [Installing and Setting up kubectl](https://kubernetes.io/docs/tasks/kubectl/install/) (Установка и настройка Kubectl).  Jenkins задания будут использовать toomanage «kubectl» и развернуть кластер Kubernetes toohello.
 
     ```bash
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -90,13 +90,13 @@ az acs create \
     sudo mv ./kubectl /usr/local/bin/kubectl
     ```
 
-### <a name="step-2-set-up-access-to-the-kubernetes-cluster"></a>Шаг 2. Настройка доступа к кластеру Kubernetes
+### <a name="step-2-set-up-access-toohello-kubernetes-cluster"></a>Шаг 2: Настройка кластера Kubernetes toohello доступа
 
 > [!NOTE]
-> Описанные ниже действия можно выполнить несколькими способами. Мы советуем использовать самый простой для вас.
+> Существует несколько подходов tooaccomplishing hello, следующие шаги. Используйте hello подход, который является простым для вас.
 >
 
-1. Скопируйте файл конфигурации `kubectl` на компьютер Jenkins, чтобы у заданий Jenkins был доступ к кластеру Kubernetes. Эти инструкции предполагают, что вы используете Bash с компьютера, отличного от виртуальной машины Jenkins, и что локальный открытый ключ SSH хранится в папке ~/.ssh на этом компьютере.
+1. Копировать hello `kubectl` Jenkins компьютера таким образом, что задания Jenkins кластера Kubernetes toohello доступа toohello файла конфигурации. Эти инструкции предполагают используется bash с другого компьютера, чем hello Jenkins ВМ и что локальный открытый ключ SSH хранится в папке ~/.ssh машины hello.
 
 ```bash
 export KUBE_MASTER=<your_cluster_master_fqdn>
@@ -108,7 +108,7 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 && sudo ssh -i ~/.ssh/id_rsa $JENKINS_USER@$JENKINS_SERVER sudo cp /home/$JENKINS_USER/.kube/config /var/lib/jenkins/.kube/config \
 ```
         
-2. Из среды с Jenkins проверьте, что кластер Kubernetes доступен.  Для этого подключитесь по протоколу SSH к виртуальной машине Jenkins: `ssh <your_jenkins_user>@<your_jenkins_public_ip>`.  Затем убедитесь, что Jenkins может подключиться к кластеру: `kubectl cluster-info`.
+2. Проверка из службы Jenkins, hello Kubernetes кластера доступен.  toodo, SSH в hello ВМ Jenkins: `ssh <your_jenkins_user>@<your_jenkins_public_ip>`.  Затем, убедитесь в Jenkins успешного подключения кластера tooyour: `kubectl cluster-info`.
     
 
 ## <a name="create-a-jenkins-workflow"></a>Создание рабочего процесса Jenkins
@@ -116,15 +116,15 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 ### <a name="prerequisites"></a>Предварительные требования
 
 - Учетная запись GitHub для репозитория кода.
-- Учетная запись Docker Hub для хранения и обновления образов.
+- Концентратор учетной записи toostore и обновление образов docker.
 - Контейнерное приложение, которое можно повторно создать и обновить. Вы можете использовать пример контейнерного приложения, написанного на языке Golang: https://github.com/chzbrgr71/go-web. 
 
 > [!NOTE]
-> Описанные ниже действия необходимо выполнить, используя собственную учетную запись GitHub. Вы можете спокойно клонировать указанный выше репозиторий, однако для настройки доступа к объектам webhook и Jenkins необходимо использовать собственную учетную запись.
+> Hello следующие действия должны выполняться в вашу учетную запись GitHub. Вы hello свободного tooclone выше репозитория, но необходимо использовать собственные веб-перехватчиков hello tooconfigure для учетной записи и доступ к Jenkins.
 >
 
 ### <a name="step-1-deploy-initial-v1-of-application"></a>Шаг 1. Развертывание первоначального приложения версии 1
-1. Создайте приложение на компьютере разработчика с помощью приведенных ниже команд. Замените имя репозитория `myrepo` на свое собственное.
+1. Построение приложения hello с компьютера разработчика hello с hello, следующие команды. Замените имя репозитория `myrepo` на свое собственное.
     
     ```bash
     git clone https://github.com/chzbrgr71/go-web.git
@@ -132,17 +132,17 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
     docker build -t myrepo/go-web .
     ```
 
-2. Отправьте образ в Docker Hub.
+2. Отправьте образ tooDocker концентратора.
 
     ```bash
     docker login
     docker push myrepo/go-web
     ```
 
-3. Выполните развертывание в кластере Kubernetes.
+3. Развертывание кластера Kubernetes toohello.
     
     > [!NOTE] 
-    > Измените файл `go-web.yaml`, чтобы обновить образ контейнера и репозиторий.
+    > Изменить hello `go-web.yaml` файл tooupdate ваш образ контейнера и репозитория.
     >
         
     ```bash
@@ -153,18 +153,18 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 2. В разделе **GitHub** выберите **Add GitHub Server** (Добавить сервер GitHub).
 3. Оставьте значение поля **API URL** (URL-адрес API) без изменений.
 4. В разделе **Credentials** (Учетные данные) добавьте учетные данные Jenkins с помощью пункта **Secret text** (Секретный текст). Мы советуем использовать персональные маркеры доступа GitHub, которые можно настроить с помощью параметров учетной записи пользователя GitHub. Дополнительные сведения см. [здесь](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
-5. Нажмите кнопку **Test connection** (Проверить подключение), чтобы убедиться, что оно настроено правильно.
+5. Нажмите кнопку **Проверка соединения** tooensure настроена правильно.
 6. В разделе **Global Properties** (Глобальные свойства) добавьте переменную среды `DOCKER_HUB` и укажите пароль Docker Hub. (Это полезно в этом демонстрационном примере, однако в рабочем сценарии необходимо использовать более безопасный метод.)
 7. Щелкните Save (Сохранить).
 
 ![Доступ к Jenkins на GitHub](./media/container-service-kubernetes-jenkins/jenkins-github-access.png)
 
-### <a name="step-3-create-the-jenkins-workflow"></a>Шаг 3. Создание рабочего процесса Jenkins
+### <a name="step-3-create-hello-jenkins-workflow"></a>Шаг 3: Создание рабочего процесса Jenkins hello
 1. Создайте элемент Jenkins.
 2. Введите имя (например, go-web) и выберите **Freestyle Project** (Любой проект). 
-3. Выберите **проект GitHub** и укажите URL-адрес репозитория GitHub.
-4. В разделе **Source Code Management** (Управление исходным кодом) укажите URL-адрес и учетные данные репозитория GitHub. 
-5. Добавьте **шаг сборки** типа **Execute shell** (Запустить оболочку) и используйте следующий текст:
+3. Проверьте **GitHub проекта** и укажите URL-адрес hello в репозитории GitHub tooyour.
+4. В **управление исходным кодом**, укажите URL-адрес репозитория GitHub hello и учетные данные. 
+5. Добавить **этап построения** типа **выполнение оболочки** и hello используйте следующий текст:
 
     ```bash
     WEB_IMAGE_NAME="myrepo/go-web:kube${BUILD_NUMBER}"
@@ -173,7 +173,7 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
     docker push $WEB_IMAGE_NAME
     ```
 
-6. Добавьте другой **шаг сборки** типа **Execute shell** (Запустить оболочку) и используйте следующий текст:
+6. Добавьте еще один **этап построения** типа **выполнение оболочки** и hello используйте следующий текст:
 
     ```bash
     WEB_IMAGE_NAME="myrepo/go-web:kube${BUILD_NUMBER}"
@@ -182,21 +182,21 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 
 ![Шаги сборки Jenkins](./media/container-service-kubernetes-jenkins/jenkins-build-steps.png)
     
-7. Сохраните элемент Jenkins и протестируйте его с помощью параметра **Build Now** (Собрать сейчас).
+7. Сохранить элемент Jenkins hello и тестирование с **сборки теперь**.
 
 ### <a name="step-4-connect-github-webhook"></a>Шаг 4. Подключение объекта webhook GitHub
-1. В созданном элементе Jenkins щелкните **Configure** (Настройка).
-2. В разделе **Build Triggers** (Создание тригерров) выберите **GitHub hook trigger for GITScm polling** (Обработчик триггера Github для опроса GITScm) и щелкните **Save** (Сохранить). Это автоматически настроит объект webhook GitHub.
+1. В элементе Jenkins hello, вы создали, щелкните **Настройка**.
+2. В разделе **Build Triggers** (Создание тригерров) выберите **GitHub hook trigger for GITScm polling** (Обработчик триггера Github для опроса GITScm) и щелкните **Save** (Сохранить). Это автоматически настраивает веб-перехватчика hello GitHub.
 3. В репозитории GitHub для go-web щелкните **Settings > Webhooks** (Параметры > Объекты webhook).
-4. Убедитесь, что URL-адрес webhook для Jenkins успешно добавлен. URL-адрес должен заканчиваться на github-webhook.
+4. Убедитесь, что hello Jenkins веб-перехватчика, когда URL-адрес был успешно добавлен. Hello URL-адрес должен оканчиваться на «github-веб-перехватчика».
 
 ![Конфигурация webhook для Jenkins](./media/container-service-kubernetes-jenkins/jenkins-webhook.png)
 
-## <a name="test-the-cicd-process-end-to-end"></a>Тестирование полного цикла процесса непрерывной интеграции и доставки
+## <a name="test-hello-cicd-process-end-tooend"></a>Тестирование tooend окончания процесса CI/CD hello
 
-1. Обновите код репозитория и синхронизируйте его с репозиторием GitHub.
-2. С помощью консоли Jenkins проверьте **историю сборки** и убедитесь, что задание выполнено. Просмотрите выходные данные консоли, чтобы увидеть подробные сведения.
-3. Просмотрите сведения об обновленном развертывании с помощью Kubernetes:
+1. Обновление кода для репозитория hello и принудительной или синхронизации с репозиторием GitHub hello.
+2. Из консоли Jenkins hello, установите флажок hello **журнала построения** и проверить, hello выполнения задания. Просмотр сведений toosee выходные данные консоли.
+3. Из Kubernetes просмотреть сведения о hello обновление развертывания:
 
     ```bash
     kubectl rollout history deployment/go-web
@@ -206,4 +206,4 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 
 - Выполните развертывание реестра контейнеров Azure и сохраните образы в безопасном репозитории. Ознакомьтесь с [документацией по реестру контейнеров Azure](https://docs.microsoft.com/azure/container-registry).
 - Создайте более сложный рабочий процесс, который включает в себя параллельное развертывание и автоматическое тестирование в Jenkins.
-- Дополнительные сведения о непрерывной интеграции и доставке Jenkins при использовании Kubernetes см. в [блоге Jenkins](https://jenkins.io/blog/2015/07/24/integrating-kubernetes-and-jenkins/).
+- Дополнительные сведения о конфигурации или компакт-ДИСК с Jenkins и Kubernetes см. в разделе hello [Jenkins блог](https://jenkins.io/blog/2015/07/24/integrating-kubernetes-and-jenkins/).

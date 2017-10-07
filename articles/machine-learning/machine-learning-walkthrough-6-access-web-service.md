@@ -1,6 +1,6 @@
 ---
-title: "Шаг 6. Доступ к веб-службе машинного обучения | Документация Майкрософт"
-description: "Шестой этап разработки прогнозного решения: доступ к активной веб-службе машинного обучения Azure."
+title: "Шаг 6: Доступ к службе Web обучения машины hello | Документы Microsoft"
+description: "Шаг 6 hello разработка прогнозирующего решения Пошаговое руководство: доступ к активную службу Azure Machine Learning веб."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: d309f6c4749a80c81859b693a2bd5927e8fe0e54
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 211de0294092c6a6b5e6eb608d5d3b88107674c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Шаг 6 пошагового руководства: доступ к веб-службе Машинного обучения Azure
+# <a name="walkthrough-step-6-access-hello-azure-machine-learning-web-service"></a>Пошаговое руководство шаг 6: Доступ к веб-службы машинного обучения Azure hello
 
-Это последний этап пошагового руководства [Разработка решения для прогнозной аналитики в службе машинного обучения Azure](machine-learning-walkthrough-develop-predictive-solution.md)
+Это последний шаг hello hello пошагового руководства, [разрабатывать решения для прогнозирующего анализа в машинном обучении Azure](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Создание рабочей области машинного обучения](machine-learning-walkthrough-1-create-ml-workspace.md)
 2. [Отправка существующих данных](machine-learning-walkthrough-2-upload-data.md)
 3. [Создание нового эксперимента](machine-learning-walkthrough-3-create-new-experiment.md)
-4. [Обучение и анализ моделей](machine-learning-walkthrough-4-train-and-evaluate-models.md)
-5. [Развертывание веб-службы](machine-learning-walkthrough-5-publish-web-service.md)
-6. **Доступ к веб-службе**
+4. [Обучать и оценивать модели hello](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5. [Развернуть веб-службу hello](machine-learning-walkthrough-5-publish-web-service.md)
+6. **Доступ к веб-службе hello**
 
 - - -
-На предыдущем шаге в этом руководстве мы развернули веб-службу, использующую модель прогнозирования риска некредитоспособности. Теперь пользователи могут отправлять в нее данные и получать результаты. 
+Hello на предыдущем шаге в этом пошаговом руководстве мы развернуть веб-службы, использующей модель прогнозирования риск нашей кредита. Теперь пользователи могут toosend tooit данных и получения результатов. 
 
-Это веб-служба Azure, которая может получать и возвращать данные с помощью REST API одним из двух способов:  
+Hello веб-службы — это служба Azure web, которое может принимать и возвращать данные с помощью API REST в одном из двух способов:  
 
-* **Запрос и ответ** — пользователь отправляет одну или несколько строк данных о кредитах в службу с помощью протокола HTTP, а служба в качестве ответа возвращает один или несколько наборов результатов.
-* **Пакетное выполнение** — пользователь сохраняет одну или несколько строк данных о кредитах в BLOB-объекте Azure, а затем отправляет адрес BLOB-объекта в Azure. Служба оценивает все строки данных во входном BLOB-объекте, сохраняет результаты в другом BLOB-объекте и возвращает URL-адрес данного контейнера.  
+* **Запрос-ответ** - hello пользователь отправляет один или более строк toohello данных кредитной службы с помощью протокола HTTP и hello отвечает службы с одного или нескольких наборов результатов.
+* **Пакетное выполнение** - hello пользователь сохраняет одну или несколько строк данных кредита в Azure BLOB-объектов, а затем отправляет расположение toohello hello BLOB-объектов. оценки службы Hello, все hello строки данных в Здравствуйте входного BLOB-объекта, магазины hello приводит к другой большой двоичный объект и возвращает hello URL-адрес этого контейнера.  
 
-Быстрее и проще всего получить доступ к классической веб-службе через [веб-приложение службы "запрос-ответ" машинного обучения Azure](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) или [шаблон веб-приложения службы пакетного выполнения машинного обучения Azure](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
+Здравствуйте tooaccess быстрее и проще всего классического веб-службе осуществляется через hello [веб-приложения Azure ML запрос-ответ службы](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) или [Azure ML пакетного выполнения службы веб-приложения шаблона](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
 
-С помощью шаблонов веб-служб можно создать пользовательское веб-приложение, которое "знает" входные данные вашей веб-службы и ожидаемые результаты. Вам нужно всего лишь предоставить доступ к веб-службе и данным, а шаблон выполнит все остальные действия.
+С помощью шаблонов веб-служб можно создать пользовательское веб-приложение, которое "знает" входные данные вашей веб-службы и ожидаемые результаты. Все, что нужно toodo — обеспечить доступ tooyour веб-службы и обработки данных и шаблон hello hello rest.
 
-Дополнительные сведения об использовании шаблонов веб-приложений см.в статье [Использование веб-службы машинного обучения Azure с шаблоном веб-приложения](machine-learning-consume-web-service-with-web-app-template.md).
+Дополнительные сведения об использовании hello веб-приложения шаблонов см. в разделе [Azure Machine Learning Web службы с веб-приложения шаблон потребителя](machine-learning-consume-web-service-with-web-app-template.md).
 
-Можно также разработать настраиваемое приложение для доступа к веб-службе с помощью стартового кода в языках программирования R, C# и Python.
+Можно также разработать пользовательское приложение tooaccess hello веб-службы с помощью начальный код, предоставляются в R, C# и языка программирования Python.
 
-Дополнительные сведения см. в статье [Как использовать веб-службу машинного обучения Azure](machine-learning-consume-web-services.md).
+Можно найти подробные сведения в [как tooconsume в Azure Machine обучения, веб-службу](machine-learning-consume-web-services.md).
 
