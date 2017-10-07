@@ -1,5 +1,5 @@
 ---
-title: "Начало работы с разделами и подписками служебной шины Azure | Документация Майкрософт"
+title: "aaaGet работы с Azure Service Bus разделы и подписки | Документы Microsoft"
 description: "Написание консольного приложения C#, которое использует обмен сообщениями служебной шины для разделов и подписок"
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,86 +14,86 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/30/2017
 ms.author: sethm
-ms.openlocfilehash: 9401ada519f600b0d2817f06a396e16607a24129
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 619d602599d97ecff2ded0681a383b19f1a8b7ad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-service-bus-topics"></a><span data-ttu-id="a8852-103">Начало работы с разделами служебной шины</span><span class="sxs-lookup"><span data-stu-id="a8852-103">Get started with Service Bus topics</span></span>
+# <a name="get-started-with-service-bus-topics"></a><span data-ttu-id="be3f0-103">Начало работы с разделами служебной шины</span><span class="sxs-lookup"><span data-stu-id="be3f0-103">Get started with Service Bus topics</span></span>
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-## <a name="what-will-be-accomplished"></a><span data-ttu-id="a8852-104">Что будет выполнено</span><span class="sxs-lookup"><span data-stu-id="a8852-104">What will be accomplished</span></span>
+## <a name="what-will-be-accomplished"></a><span data-ttu-id="be3f0-104">Что будет выполнено</span><span class="sxs-lookup"><span data-stu-id="be3f0-104">What will be accomplished</span></span>
 
-<span data-ttu-id="a8852-105">В этом руководстве рассматриваются следующие действия:</span><span class="sxs-lookup"><span data-stu-id="a8852-105">This tutorial covers the following steps:</span></span>
+<span data-ttu-id="be3f0-105">В этом учебнике hello следующие шаги:</span><span class="sxs-lookup"><span data-stu-id="be3f0-105">This tutorial covers hello following steps:</span></span>
 
-1. <span data-ttu-id="a8852-106">Создание пространства имен служебной шины с помощью портала Azure.</span><span class="sxs-lookup"><span data-stu-id="a8852-106">Create a Service Bus namespace, using the Azure portal.</span></span>
-2. <span data-ttu-id="a8852-107">Создание раздела служебной шины с помощью портала Azure.</span><span class="sxs-lookup"><span data-stu-id="a8852-107">Create a Service Bus topic, using the Azure portal.</span></span>
-3. <span data-ttu-id="a8852-108">Создание подписки на этот раздел служебной шины с помощью портала Azure.</span><span class="sxs-lookup"><span data-stu-id="a8852-108">Create a Service Bus subscription to that topic, using the Azure portal.</span></span>
-4. <span data-ttu-id="a8852-109">Создание консольного приложения для отправки сообщения в раздел.</span><span class="sxs-lookup"><span data-stu-id="a8852-109">Write a console application to send a message to the topic.</span></span>
-5. <span data-ttu-id="a8852-110">Создание консольного приложения для получения этого сообщения из подписки.</span><span class="sxs-lookup"><span data-stu-id="a8852-110">Write a console application to receive that message from the subscription.</span></span>
+1. <span data-ttu-id="be3f0-106">Создание пространства имен Service Bus, с помощью портала Azure hello.</span><span class="sxs-lookup"><span data-stu-id="be3f0-106">Create a Service Bus namespace, using hello Azure portal.</span></span>
+2. <span data-ttu-id="be3f0-107">Создайте раздел служебной шины, с помощью портала Azure hello.</span><span class="sxs-lookup"><span data-stu-id="be3f0-107">Create a Service Bus topic, using hello Azure portal.</span></span>
+3. <span data-ttu-id="be3f0-108">Создайте раздел toothat подписки Service Bus, с помощью hello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="be3f0-108">Create a Service Bus subscription toothat topic, using hello Azure portal.</span></span>
+4. <span data-ttu-id="be3f0-109">Написания приложения консоли toosend раздела toohello сообщения.</span><span class="sxs-lookup"><span data-stu-id="be3f0-109">Write a console application toosend a message toohello topic.</span></span>
+5. <span data-ttu-id="be3f0-110">Запись tooreceive консольного приложения это сообщение от подписки hello.</span><span class="sxs-lookup"><span data-stu-id="be3f0-110">Write a console application tooreceive that message from hello subscription.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="a8852-111">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="a8852-111">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="be3f0-111">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="be3f0-111">Prerequisites</span></span>
 
-1. <span data-ttu-id="a8852-112">[Visual Studio 2015 или более поздней версии.](http://www.visualstudio.com)</span><span class="sxs-lookup"><span data-stu-id="a8852-112">[Visual Studio 2015 or higher](http://www.visualstudio.com).</span></span> <span data-ttu-id="a8852-113">В описанных в этом руководстве примерах используется Visual Studio 2017.</span><span class="sxs-lookup"><span data-stu-id="a8852-113">The examples in this tutorial use Visual Studio 2017.</span></span>
-2. <span data-ttu-id="a8852-114">Подписка Azure.</span><span class="sxs-lookup"><span data-stu-id="a8852-114">An Azure subscription.</span></span>
+1. <span data-ttu-id="be3f0-112">[Visual Studio 2015 или более поздней версии.](http://www.visualstudio.com)</span><span class="sxs-lookup"><span data-stu-id="be3f0-112">[Visual Studio 2015 or higher](http://www.visualstudio.com).</span></span> <span data-ttu-id="be3f0-113">Hello примерах в этом учебнике используется Visual Studio 2017 г.</span><span class="sxs-lookup"><span data-stu-id="be3f0-113">hello examples in this tutorial use Visual Studio 2017.</span></span>
+2. <span data-ttu-id="be3f0-114">Подписка Azure.</span><span class="sxs-lookup"><span data-stu-id="be3f0-114">An Azure subscription.</span></span>
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a><span data-ttu-id="a8852-115">1. Создание пространства имен с помощью портала Azure</span><span class="sxs-lookup"><span data-stu-id="a8852-115">1. Create a namespace using the Azure portal</span></span>
+## <a name="1-create-a-namespace-using-hello-azure-portal"></a><span data-ttu-id="be3f0-115">1. Создание пространства имен с помощью портала Azure hello</span><span class="sxs-lookup"><span data-stu-id="be3f0-115">1. Create a namespace using hello Azure portal</span></span>
 
-<span data-ttu-id="a8852-116">Если пространство имен для обмена сообщениями служебной шины уже создано, перейдите к разделу [Создание раздела с помощью портала Azure](#2-create-a-topic-using-the-azure-portal).</span><span class="sxs-lookup"><span data-stu-id="a8852-116">If you have already created a Service Bus Messaging namespace, jump to the [Create a topic using the Azure portal](#2-create-a-topic-using-the-azure-portal) section.</span></span>
+<span data-ttu-id="be3f0-116">Если вы уже создали пространство имен обмена сообщениями Service Bus, перехода toohello [создайте раздел с помощью портала Azure hello](#2-create-a-topic-using-the-azure-portal) раздела.</span><span class="sxs-lookup"><span data-stu-id="be3f0-116">If you have already created a Service Bus Messaging namespace, jump toohello [Create a topic using hello Azure portal](#2-create-a-topic-using-the-azure-portal) section.</span></span>
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-topic-using-the-azure-portal"></a><span data-ttu-id="a8852-117">2) Создание раздела с помощью портала Azure</span><span class="sxs-lookup"><span data-stu-id="a8852-117">2. Create a topic using the Azure portal</span></span>
+## <a name="2-create-a-topic-using-hello-azure-portal"></a><span data-ttu-id="be3f0-117">2. Создайте раздел с помощью портала Azure hello</span><span class="sxs-lookup"><span data-stu-id="be3f0-117">2. Create a topic using hello Azure portal</span></span>
 
-1. <span data-ttu-id="a8852-118">Войдите на [портал Azure][azure-portal].</span><span class="sxs-lookup"><span data-stu-id="a8852-118">Log on to the [Azure portal][azure-portal].</span></span>
-2. <span data-ttu-id="a8852-119">В левой области навигации портала щелкните **Служебная шина**. Если элемент **Служебная шина** не отображается, щелкните **Больше служб**.</span><span class="sxs-lookup"><span data-stu-id="a8852-119">In the left navigation pane of the portal, click **Service Bus** (if you don't see **Service Bus**, click **More services**).</span></span>
-3. <span data-ttu-id="a8852-120">Щелкните пространство имен, в котором хотите создать раздел.</span><span class="sxs-lookup"><span data-stu-id="a8852-120">Click the namespace in which you would like to create the topic.</span></span> <span data-ttu-id="a8852-121">Появится колонка обзора пространства имен:</span><span class="sxs-lookup"><span data-stu-id="a8852-121">The namespace overview blade appears:</span></span>
+1. <span data-ttu-id="be3f0-118">Войдите на toohello [портал Azure][azure-portal].</span><span class="sxs-lookup"><span data-stu-id="be3f0-118">Log on toohello [Azure portal][azure-portal].</span></span>
+2. <span data-ttu-id="be3f0-119">В области навигации слева hello hello портала щелкните **Service Bus** (Если вы не видите **Service Bus**, нажмите кнопку **дополнительные службы**).</span><span class="sxs-lookup"><span data-stu-id="be3f0-119">In hello left navigation pane of hello portal, click **Service Bus** (if you don't see **Service Bus**, click **More services**).</span></span>
+3. <span data-ttu-id="be3f0-120">Щелкните hello пространство имен, в котором вы хотите toocreate hello раздела.</span><span class="sxs-lookup"><span data-stu-id="be3f0-120">Click hello namespace in which you would like toocreate hello topic.</span></span> <span data-ttu-id="be3f0-121">Откроется колонка Обзор Hello пространство имен:</span><span class="sxs-lookup"><span data-stu-id="be3f0-121">hello namespace overview blade appears:</span></span>
    
     ![Создание раздела][createtopic1]
-4. <span data-ttu-id="a8852-123">В колонке **Пространство имен служебной шины** выберите **Разделы** и щелкните **Добавить раздел**.</span><span class="sxs-lookup"><span data-stu-id="a8852-123">In the **Service Bus namespace** blade, click **Topics**, then click **Add topic**.</span></span>
+4. <span data-ttu-id="be3f0-123">В hello **пространства имен Service Bus** колонка, щелкните **разделы**, нажмите кнопку **добавить раздел**.</span><span class="sxs-lookup"><span data-stu-id="be3f0-123">In hello **Service Bus namespace** blade, click **Topics**, then click **Add topic**.</span></span>
    
     ![Выбор разделов][createtopic2]
-5. <span data-ttu-id="a8852-125">Введите имя темы и снимите флажок для параметра **Включить секционирование**.</span><span class="sxs-lookup"><span data-stu-id="a8852-125">Enter a name for the topic, and uncheck the **Enable partitioning** option.</span></span> <span data-ttu-id="a8852-126">Для других параметров оставьте значения по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="a8852-126">Leave the other options with their default values.</span></span>
+5. <span data-ttu-id="be3f0-125">Введите имя для раздела hello и снимите флажок hello **включить секционирование** параметр.</span><span class="sxs-lookup"><span data-stu-id="be3f0-125">Enter a name for hello topic, and uncheck hello **Enable partitioning** option.</span></span> <span data-ttu-id="be3f0-126">Hello других параметров оставьте их значения по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="be3f0-126">Leave hello other options with their default values.</span></span>
    
     ![Нажмите кнопку "Создать"][createtopic3]
-6. <span data-ttu-id="a8852-128">Щелкните кнопку **Создать**в нижней части колонки.</span><span class="sxs-lookup"><span data-stu-id="a8852-128">At the bottom of the blade, click **Create**.</span></span>
+6. <span data-ttu-id="be3f0-128">Hello нижней части колонки hello, нажмите кнопку **создать**.</span><span class="sxs-lookup"><span data-stu-id="be3f0-128">At hello bottom of hello blade, click **Create**.</span></span>
 
-## <a name="3-create-a-subscription-to-the-topic"></a><span data-ttu-id="a8852-129">3. Создание подписки на раздел</span><span class="sxs-lookup"><span data-stu-id="a8852-129">3. Create a subscription to the topic</span></span>
+## <a name="3-create-a-subscription-toohello-topic"></a><span data-ttu-id="be3f0-129">3. Создание раздела toohello подписки</span><span class="sxs-lookup"><span data-stu-id="be3f0-129">3. Create a subscription toohello topic</span></span>
 
-1. <span data-ttu-id="a8852-130">В области ресурсов на портале выберите пространство имен, созданное на этапе 1, и щелкните имя раздела, созданное на этапе 2.</span><span class="sxs-lookup"><span data-stu-id="a8852-130">In the portal resources pane, click the namespace you created in step 1, then click name of the topic you created in step 2.</span></span>
-2. <span data-ttu-id="a8852-131">На панели обзора вверху щелкните знак плюса рядом с надписью **Подписка**, чтобы добавить подписку на этот раздел.</span><span class="sxs-lookup"><span data-stu-id="a8852-131">A the top of the overview pane, click the plus sign next to **Subscription** to add a subscription to this topic.</span></span>
+1. <span data-ttu-id="be3f0-130">В области портала ресурсы hello щелкните hello пространства имен, созданный на шаге 1, а затем щелкните имя раздела hello, созданный на шаге 2.</span><span class="sxs-lookup"><span data-stu-id="be3f0-130">In hello portal resources pane, click hello namespace you created in step 1, then click name of hello topic you created in step 2.</span></span>
+2. <span data-ttu-id="be3f0-131">Hello вверху области "Обзор" hello, щелкните hello плюс рядом входа слишком**подписки** tooadd toothis подписки раздела.</span><span class="sxs-lookup"><span data-stu-id="be3f0-131">A hello top of hello overview pane, click hello plus sign next too**Subscription** tooadd a subscription toothis topic.</span></span>
 
     ![Создание подписки][createtopic4]
 
-3. <span data-ttu-id="a8852-133">Введите имя подписки.</span><span class="sxs-lookup"><span data-stu-id="a8852-133">Enter a name for the subscription.</span></span> <span data-ttu-id="a8852-134">Для других параметров оставьте значения по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="a8852-134">Leave the other options with their default values.</span></span>
+3. <span data-ttu-id="be3f0-133">Введите имя для подписки hello.</span><span class="sxs-lookup"><span data-stu-id="be3f0-133">Enter a name for hello subscription.</span></span> <span data-ttu-id="be3f0-134">Hello других параметров оставьте их значения по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="be3f0-134">Leave hello other options with their default values.</span></span>
 
-## <a name="4-send-messages-to-the-topic"></a><span data-ttu-id="a8852-135">4. Отправка сообщений в раздел</span><span class="sxs-lookup"><span data-stu-id="a8852-135">4. Send messages to the topic</span></span>
+## <a name="4-send-messages-toohello-topic"></a><span data-ttu-id="be3f0-135">4. Отправить toohello темы о сообщениях</span><span class="sxs-lookup"><span data-stu-id="be3f0-135">4. Send messages toohello topic</span></span>
 
-<span data-ttu-id="a8852-136">Для отправки сообщений в раздел мы создадим консольное приложение C# с помощью Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="a8852-136">To send messages to the topic, we write a C# console application using Visual Studio.</span></span>
+<span data-ttu-id="be3f0-136">раздел toohello toosend сообщения, мы написать консольное приложение C# с помощью Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="be3f0-136">toosend messages toohello topic, we write a C# console application using Visual Studio.</span></span>
 
-### <a name="create-a-console-application"></a><span data-ttu-id="a8852-137">Создание консольного приложение</span><span class="sxs-lookup"><span data-stu-id="a8852-137">Create a console application</span></span>
+### <a name="create-a-console-application"></a><span data-ttu-id="be3f0-137">Создание консольного приложение</span><span class="sxs-lookup"><span data-stu-id="be3f0-137">Create a console application</span></span>
 
-<span data-ttu-id="a8852-138">Откройте Visual Studio и создайте проект **Консольное приложение (.NET Framework)**.</span><span class="sxs-lookup"><span data-stu-id="a8852-138">Launch Visual Studio and create a new **Console app (.NET Framework)** project.</span></span>
+<span data-ttu-id="be3f0-138">Откройте Visual Studio и создайте проект **Консольное приложение (.NET Framework)**.</span><span class="sxs-lookup"><span data-stu-id="be3f0-138">Launch Visual Studio and create a new **Console app (.NET Framework)** project.</span></span>
 
-### <a name="add-the-service-bus-nuget-package"></a><span data-ttu-id="a8852-139">Получение пакета NuGet для служебной шины</span><span class="sxs-lookup"><span data-stu-id="a8852-139">Add the Service Bus NuGet package</span></span>
+### <a name="add-hello-service-bus-nuget-package"></a><span data-ttu-id="be3f0-139">Добавление пакета шины обслуживания NuGet hello</span><span class="sxs-lookup"><span data-stu-id="be3f0-139">Add hello Service Bus NuGet package</span></span>
 
-1. <span data-ttu-id="a8852-140">Щелкните созданный проект правой кнопкой мыши и выберите **Управление пакетами NuGet**.</span><span class="sxs-lookup"><span data-stu-id="a8852-140">Right-click the newly created project and select **Manage NuGet Packages**.</span></span>
-2. <span data-ttu-id="a8852-141">Откройте вкладку **Обзор**, выполните поиск по фразе **служебная шина Microsoft Azure** и выберите элемент **WindowsAzure.ServiceBus**.</span><span class="sxs-lookup"><span data-stu-id="a8852-141">Click the **Browse** tab, search for **Microsoft Azure Service Bus**, and then select the **WindowsAzure.ServiceBus** item.</span></span> <span data-ttu-id="a8852-142">Щелкните **Установить** , чтобы выполнить установку, а затем закройте это диалоговое окно.</span><span class="sxs-lookup"><span data-stu-id="a8852-142">Click **Install** to complete the installation, then close this dialog box.</span></span>
+1. <span data-ttu-id="be3f0-140">Щелкните правой кнопкой мыши только что созданный hello проекта и выберите **управление пакетами NuGet**.</span><span class="sxs-lookup"><span data-stu-id="be3f0-140">Right-click hello newly created project and select **Manage NuGet Packages**.</span></span>
+2. <span data-ttu-id="be3f0-141">Щелкните hello **Обзор** вкладке выполните поиск **Microsoft Azure Service Bus**и затем выберите hello **WindowsAzure.ServiceBus** элемента.</span><span class="sxs-lookup"><span data-stu-id="be3f0-141">Click hello **Browse** tab, search for **Microsoft Azure Service Bus**, and then select hello **WindowsAzure.ServiceBus** item.</span></span> <span data-ttu-id="be3f0-142">Нажмите кнопку **установить** toocomplete hello установки, а затем закрыть диалоговое окно.</span><span class="sxs-lookup"><span data-stu-id="be3f0-142">Click **Install** toocomplete hello installation, then close this dialog box.</span></span>
    
     ![Установка пакета NuGet][nuget-pkg]
 
-### <a name="write-some-code-to-send-a-message-to-the-topic"></a><span data-ttu-id="a8852-144">Написание кода для отправки сообщения в раздел</span><span class="sxs-lookup"><span data-stu-id="a8852-144">Write some code to send a message to the topic</span></span>
+### <a name="write-some-code-toosend-a-message-toohello-topic"></a><span data-ttu-id="be3f0-144">Написания некоторые toosend код раздела toohello сообщения</span><span class="sxs-lookup"><span data-stu-id="be3f0-144">Write some code toosend a message toohello topic</span></span>
 
-1. <span data-ttu-id="a8852-145">Добавьте следующую инструкцию `using` в начало файла Program.cs.</span><span class="sxs-lookup"><span data-stu-id="a8852-145">Add the following `using` statement to the top of the Program.cs file.</span></span>
+1. <span data-ttu-id="be3f0-145">Добавьте следующее hello `using` инструкции toohello верхней части файла Program.cs hello.</span><span class="sxs-lookup"><span data-stu-id="be3f0-145">Add hello following `using` statement toohello top of hello Program.cs file.</span></span>
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-2. <span data-ttu-id="a8852-146">Добавьте в метод `Main` следующий код.</span><span class="sxs-lookup"><span data-stu-id="a8852-146">Add the following code to the `Main` method.</span></span> <span data-ttu-id="a8852-147">Укажите для переменной `connectionString` строку подключения, полученную при создании пространства имен, и задайте для `topicName` имя раздела, которое использовалось при его создании.</span><span class="sxs-lookup"><span data-stu-id="a8852-147">Set the `connectionString` variable to the connection string that you obtained when creating the namespace, and set `topicName` to the name that you used when creating the topic.</span></span>
+2. <span data-ttu-id="be3f0-146">Добавьте следующий код toohello hello `Main` метод.</span><span class="sxs-lookup"><span data-stu-id="be3f0-146">Add hello following code toohello `Main` method.</span></span> <span data-ttu-id="be3f0-147">Набор hello `connectionString` строка соединения переменной toohello, полученный при создании имен hello, а также задать `topicName` toohello имя, которое использовалось при создании раздела hello.</span><span class="sxs-lookup"><span data-stu-id="be3f0-147">Set hello `connectionString` variable toohello connection string that you obtained when creating hello namespace, and set `topicName` toohello name that you used when creating hello topic.</span></span>
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -107,11 +107,11 @@ ms.lasthandoff: 07/11/2017
 
     client.Send(message);
 
-    Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+    Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
     Console.ReadLine();
     ```
    
-    <span data-ttu-id="a8852-148">Вот как будет выглядеть файл Program.cs.</span><span class="sxs-lookup"><span data-stu-id="a8852-148">Here is what your Program.cs file should look like.</span></span>
+    <span data-ttu-id="be3f0-148">Вот как будет выглядеть файл Program.cs.</span><span class="sxs-lookup"><span data-stu-id="be3f0-148">Here is what your Program.cs file should look like.</span></span>
    
     ```csharp
     using System;
@@ -138,25 +138,25 @@ ms.lasthandoff: 07/11/2017
 
                 client.Send(message);
 
-                Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+                Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
                 Console.ReadLine();
             }
         }
     }
     ```
-3. <span data-ttu-id="a8852-149">Запустите программу и перейдите на портал Azure. В колонке **Обзор** щелкните имя раздела в пространстве имен.</span><span class="sxs-lookup"><span data-stu-id="a8852-149">Run the program, and check the Azure portal: click the name of your topic in the namespace **Overview** blade.</span></span> <span data-ttu-id="a8852-150">Отобразится колонка раздела **Основные**.</span><span class="sxs-lookup"><span data-stu-id="a8852-150">The topic **Essentials** blade is displayed.</span></span> <span data-ttu-id="a8852-151">Обратите внимание, что для каждой подписки внизу колонки параметр **Количество сообщений** должен иметь значение 1.</span><span class="sxs-lookup"><span data-stu-id="a8852-151">In the subscription(s) listed near the bottom of the blade, notice that the **Message Count** value for each subscription should now be 1.</span></span> <span data-ttu-id="a8852-152">Каждый раз при запуске приложения отправителя без получения сообщений (как указано в следующем разделе) это значение увеличивается на 1.</span><span class="sxs-lookup"><span data-stu-id="a8852-152">Each time you run the sender application without retrieving the messages (as described in the next section), this value increases by 1.</span></span> <span data-ttu-id="a8852-153">А при каждом добавлении сообщения в раздел или подписку текущий размер раздела увеличивается, как и значение параметра **Текущий** в колонке **Основные**.</span><span class="sxs-lookup"><span data-stu-id="a8852-153">Also note that the current size of the topic increments the **Current** value on the **Essentials** blade each time the app adds a message to the topic/subscription.</span></span>
+3. <span data-ttu-id="be3f0-149">Запустите программу hello и проверьте hello портала Azure: щелкните имя раздела в пространстве имен hello hello **Обзор** колонку.</span><span class="sxs-lookup"><span data-stu-id="be3f0-149">Run hello program, and check hello Azure portal: click hello name of your topic in hello namespace **Overview** blade.</span></span> <span data-ttu-id="be3f0-150">раздел Hello **Essentials** колонке отображается.</span><span class="sxs-lookup"><span data-stu-id="be3f0-150">hello topic **Essentials** blade is displayed.</span></span> <span data-ttu-id="be3f0-151">Hello подписок в списке hello нижней части колонки hello, обратите внимание, что hello **число сообщений** значение для каждой подписки теперь должен быть равен 1.</span><span class="sxs-lookup"><span data-stu-id="be3f0-151">In hello subscription(s) listed near hello bottom of hello blade, notice that hello **Message Count** value for each subscription should now be 1.</span></span> <span data-ttu-id="be3f0-152">Каждый раз, в случае запуска приложения отправителя hello без получения сообщений hello (как описано в следующем разделе hello), это значение увеличивается на 1.</span><span class="sxs-lookup"><span data-stu-id="be3f0-152">Each time you run hello sender application without retrieving hello messages (as described in hello next section), this value increases by 1.</span></span> <span data-ttu-id="be3f0-153">Также Обратите внимание, текущий размер hello hello разделе шагом hello **текущей** значение hello **Essentials** колонке каждый раз, приложение hello добавляет toohello сообщения раздела или подписки.</span><span class="sxs-lookup"><span data-stu-id="be3f0-153">Also note that hello current size of hello topic increments hello **Current** value on hello **Essentials** blade each time hello app adds a message toohello topic/subscription.</span></span>
    
       ![Размер сообщения][topic-message]
 
-## <a name="5-receive-messages-from-the-subscription"></a><span data-ttu-id="a8852-155">5. Получение сообщений из подписки</span><span class="sxs-lookup"><span data-stu-id="a8852-155">5. Receive messages from the subscription</span></span>
+## <a name="5-receive-messages-from-hello-subscription"></a><span data-ttu-id="be3f0-155">5. Получение сообщений из подписки hello</span><span class="sxs-lookup"><span data-stu-id="be3f0-155">5. Receive messages from hello subscription</span></span>
 
-1. <span data-ttu-id="a8852-156">Чтобы получить только что отправленные сообщения, создайте консольное приложение и добавьте ссылку на пакет NuGet служебной шины в соответствии с инструкциями для предыдущего приложения отправителя.</span><span class="sxs-lookup"><span data-stu-id="a8852-156">To receive the message or messages you just sent, create a new console application and add a reference to the Service Bus NuGet package, similar to the previous sender application.</span></span>
-2. <span data-ttu-id="a8852-157">Добавьте следующую инструкцию `using` в начало файла Program.cs.</span><span class="sxs-lookup"><span data-stu-id="a8852-157">Add the following `using` statement to the top of the Program.cs file.</span></span>
+1. <span data-ttu-id="be3f0-156">tooreceive приветственных сообщений или сообщений, который вы отправили, создайте новое консольное приложение и добавить пакет шины обслуживания NuGet toohello ссылку, аналогичные приложения отправителя toohello предыдущего.</span><span class="sxs-lookup"><span data-stu-id="be3f0-156">tooreceive hello message or messages you just sent, create a new console application and add a reference toohello Service Bus NuGet package, similar toohello previous sender application.</span></span>
+2. <span data-ttu-id="be3f0-157">Добавьте следующее hello `using` инструкции toohello верхней части файла Program.cs hello.</span><span class="sxs-lookup"><span data-stu-id="be3f0-157">Add hello following `using` statement toohello top of hello Program.cs file.</span></span>
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. <span data-ttu-id="a8852-158">Добавьте в метод `Main` следующий код.</span><span class="sxs-lookup"><span data-stu-id="a8852-158">Add the following code to the `Main` method.</span></span> <span data-ttu-id="a8852-159">Укажите для переменной `connectionString` строку подключения, полученную при создании пространства имен, и задайте для `topicName` имя раздела, которое использовалось при его создании.</span><span class="sxs-lookup"><span data-stu-id="a8852-159">Set the `connectionString` variable to the connection string you obtained when creating the namespace, and set `topicName` to the name that you used when creating the topic.</span></span>
+3. <span data-ttu-id="be3f0-158">Добавьте следующий код toohello hello `Main` метод.</span><span class="sxs-lookup"><span data-stu-id="be3f0-158">Add hello following code toohello `Main` method.</span></span> <span data-ttu-id="be3f0-159">Набор hello `connectionString` строка соединения переменной toohello, можно получить при создании имен hello и задайте `topicName` toohello имя, которое использовалось при создании раздела hello.</span><span class="sxs-lookup"><span data-stu-id="be3f0-159">Set hello `connectionString` variable toohello connection string you obtained when creating hello namespace, and set `topicName` toohello name that you used when creating hello topic.</span></span>
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -170,11 +170,11 @@ ms.lasthandoff: 07/11/2017
       Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
     });
    
-    Console.WriteLine("Press ENTER to exit program");
+    Console.WriteLine("Press ENTER tooexit program");
     Console.ReadLine();
     ```
    
-    <span data-ttu-id="a8852-160">Вот как будет выглядеть файл Program.cs.</span><span class="sxs-lookup"><span data-stu-id="a8852-160">Here is what your Program.cs file should look like:</span></span>
+    <span data-ttu-id="be3f0-160">Вот как будет выглядеть файл Program.cs.</span><span class="sxs-lookup"><span data-stu-id="be3f0-160">Here is what your Program.cs file should look like:</span></span>
    
     ```csharp
     using System;
@@ -197,21 +197,21 @@ ms.lasthandoff: 07/11/2017
             Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
           });
 
-          Console.WriteLine("Press ENTER to exit program");   
+          Console.WriteLine("Press ENTER tooexit program");   
           Console.ReadLine();
         }
       }
     }
     ```
-4. <span data-ttu-id="a8852-161">Запустите программу и перейдите на портал еще раз.</span><span class="sxs-lookup"><span data-stu-id="a8852-161">Run the program, and check the portal again.</span></span> <span data-ttu-id="a8852-162">Обратите внимание, что параметры **Количество сообщений** и **Текущий** имеют значение 0.</span><span class="sxs-lookup"><span data-stu-id="a8852-162">Notice that the **Message Count** and **Current** values are now 0.</span></span>
+4. <span data-ttu-id="be3f0-161">Запустите программу hello и снова проверьте hello портала.</span><span class="sxs-lookup"><span data-stu-id="be3f0-161">Run hello program, and check hello portal again.</span></span> <span data-ttu-id="be3f0-162">Обратите внимание, что hello **число сообщений** и **текущей** значения в данный момент 0.</span><span class="sxs-lookup"><span data-stu-id="be3f0-162">Notice that hello **Message Count** and **Current** values are now 0.</span></span>
    
     ![Длина раздела][topic-message-receive]
 
-<span data-ttu-id="a8852-164">Поздравляем!</span><span class="sxs-lookup"><span data-stu-id="a8852-164">Congratulations!</span></span> <span data-ttu-id="a8852-165">Вы создали раздел и подписку, а также отправили и получили сообщение.</span><span class="sxs-lookup"><span data-stu-id="a8852-165">You have now created a topic and subscription, sent a message, and received that message.</span></span>
+<span data-ttu-id="be3f0-164">Поздравляем!</span><span class="sxs-lookup"><span data-stu-id="be3f0-164">Congratulations!</span></span> <span data-ttu-id="be3f0-165">Вы создали раздел и подписку, а также отправили и получили сообщение.</span><span class="sxs-lookup"><span data-stu-id="be3f0-165">You have now created a topic and subscription, sent a message, and received that message.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="a8852-166">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="a8852-166">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="be3f0-166">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="be3f0-166">Next steps</span></span>
 
-<span data-ttu-id="a8852-167">Ознакомьтесь с [примерами в репозитории GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples), демонстрирующими расширенные возможности обмена сообщениями служебной шины.</span><span class="sxs-lookup"><span data-stu-id="a8852-167">Check out our [GitHub repository with samples](https://github.com/Azure/azure-service-bus/tree/master/samples) that demonstrate some of the more advanced features of Service Bus messaging.</span></span>
+<span data-ttu-id="be3f0-167">Извлечение нашей [репозитории GitHub с примерами](https://github.com/Azure/azure-service-bus/tree/master/samples) , показаны некоторые дополнительные возможности обмена сообщениями Service Bus hello.</span><span class="sxs-lookup"><span data-stu-id="be3f0-167">Check out our [GitHub repository with samples](https://github.com/Azure/azure-service-bus/tree/master/samples) that demonstrate some of hello more advanced features of Service Bus messaging.</span></span>
 
 <!--Image references-->
 

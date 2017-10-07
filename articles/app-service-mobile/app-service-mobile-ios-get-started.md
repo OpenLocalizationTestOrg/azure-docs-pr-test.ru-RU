@@ -1,6 +1,6 @@
 ---
-title: "Создание мобильного приложения для iOS в службе мобильных приложений Azure | Документация Майкрософт"
-description: "Изучите этот учебник, чтобы начать работу с серверным частями мобильных приложений Azure для разработки приложений iOS на Objective-C или Swift"
+title: "aaaCreate приложения iOS на мобильные приложения службы приложений Azure | Документы Microsoft"
+description: "Выполните этот учебник tooget, с помощью серверных системах мобильного приложения Azure для разработки приложений iOS в Objective-C или Swift"
 services: app-service\mobile
 documentationcenter: ios
 author: ggailey777
@@ -14,27 +14,27 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 36936ae66c458fcbedeec95cfa2f573a40c8af53
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 869fa971f7b5ab4a7119bbfa92808185d2ecdf8a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-ios-app"></a><span data-ttu-id="4e64c-103">Создание приложения iOS</span><span class="sxs-lookup"><span data-stu-id="4e64c-103">Create an iOS app</span></span>
+# <a name="create-an-ios-app"></a><span data-ttu-id="def2b-103">Создание приложения iOS</span><span class="sxs-lookup"><span data-stu-id="def2b-103">Create an iOS app</span></span>
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a><span data-ttu-id="4e64c-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="4e64c-104">Overview</span></span>
-<span data-ttu-id="4e64c-105">В этом руководстве показано, как добавить облачную серверную службу [мобильных приложений Azure](app-service-mobile-value-prop.md)в приложение iOS.</span><span class="sxs-lookup"><span data-stu-id="4e64c-105">This tutorial shows how to add [Azure Mobile Apps](app-service-mobile-value-prop.md), a cloud backend service, to an iOS app.</span></span> <span data-ttu-id="4e64c-106">Сначала мы создадим новую серверную часть мобильного приложения.</span><span class="sxs-lookup"><span data-stu-id="4e64c-106">We'll first create a new mobile backend.</span></span> <span data-ttu-id="4e64c-107">Затем мы воспользуемся простым приложением iOS *Список дел* для хранения данных в Azure.</span><span class="sxs-lookup"><span data-stu-id="4e64c-107">Then, we'll use a simple *Todo list* iOS app to store data in Azure.</span></span>
+## <a name="overview"></a><span data-ttu-id="def2b-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="def2b-104">Overview</span></span>
+<span data-ttu-id="def2b-105">В этом учебнике показано как tooadd [мобильных приложений Azure](app-service-mobile-value-prop.md), облачной серверной службы, приложение iOS tooan.</span><span class="sxs-lookup"><span data-stu-id="def2b-105">This tutorial shows how tooadd [Azure Mobile Apps](app-service-mobile-value-prop.md), a cloud backend service, tooan iOS app.</span></span> <span data-ttu-id="def2b-106">Сначала мы создадим новую серверную часть мобильного приложения.</span><span class="sxs-lookup"><span data-stu-id="def2b-106">We'll first create a new mobile backend.</span></span> <span data-ttu-id="def2b-107">Затем мы будем использовать простой *Todo list* данные toostore приложения iOS в Azure.</span><span class="sxs-lookup"><span data-stu-id="def2b-107">Then, we'll use a simple *Todo list* iOS app toostore data in Azure.</span></span>
 
-<span data-ttu-id="4e64c-108">Для работы с этим учебником требуется [учетная запись Azure](https://azure.microsoft.com/pricing/free-trial/)</span><span class="sxs-lookup"><span data-stu-id="4e64c-108">To complete this tutorial, you need a Mac and [an Azure account](https://azure.microsoft.com/pricing/free-trial/)</span></span>
+<span data-ttu-id="def2b-108">toocomplete этого учебника требуется компьютер Mac и [учетная запись Azure](https://azure.microsoft.com/pricing/free-trial/)</span><span class="sxs-lookup"><span data-stu-id="def2b-108">toocomplete this tutorial, you need a Mac and [an Azure account](https://azure.microsoft.com/pricing/free-trial/)</span></span>
 
-## <a name="step-i-create-a-new-azure-mobile-app-backend"></a><span data-ttu-id="4e64c-109">Шаг 1. Создание серверной части мобильного приложения Azure</span><span class="sxs-lookup"><span data-stu-id="4e64c-109">Step I: Create a new Azure mobile app backend</span></span>
+## <a name="step-i-create-a-new-azure-mobile-app-backend"></a><span data-ttu-id="def2b-109">Шаг 1. Создание серверной части мобильного приложения Azure</span><span class="sxs-lookup"><span data-stu-id="def2b-109">Step I: Create a new Azure mobile app backend</span></span>
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="step-ii-configure-the-backend-project"></a><span data-ttu-id="4e64c-110">Шаг 2. Настройка проекта серверной части</span><span class="sxs-lookup"><span data-stu-id="4e64c-110">Step II: Configure the backend project</span></span>
+## <a name="step-ii-configure-hello-backend-project"></a><span data-ttu-id="def2b-110">Шаг II: Настройка hello серверного проекта</span><span class="sxs-lookup"><span data-stu-id="def2b-110">Step II: Configure hello backend project</span></span>
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="step-iii-download-and-run-the-ios-app"></a><span data-ttu-id="4e64c-111">Шаг 3. Скачивание и запуск приложения iOS</span><span class="sxs-lookup"><span data-stu-id="4e64c-111">Step III: Download and run the iOS app</span></span>
+## <a name="step-iii-download-and-run-hello-ios-app"></a><span data-ttu-id="def2b-111">Шаг III: Загрузите и запустите приложение hello iOS</span><span class="sxs-lookup"><span data-stu-id="def2b-111">Step III: Download and run hello iOS app</span></span>
 [!INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
 <!-- URLs -->

@@ -22,7 +22,7 @@
 ## Создание шаблонов
 ### [Рекомендации по работе с шаблонами](resource-manager-template-best-practices.md)
 ### [Разделы шаблона](resource-group-authoring-templates.md)
-### [Использование ссылок на другие шаблоны](resource-group-linked-templates.md)
+### [Шаблоны tooother ссылку](resource-group-linked-templates.md)
 ### [Определение зависимости между ресурсами](resource-group-define-dependencies.md)
 ### [Развертывание нескольких экземпляров ресурсов в шаблонах Azure Resource Manager](resource-group-create-multiple.md)
 ### [Определение расположения](resource-manager-template-location.md)
@@ -53,8 +53,8 @@
 ### [Интерфейс командной строки Azure](xplat-cli-azure-resource-manager.md)
 ### [Портал](resource-group-portal.md)
 ### [REST API](resource-manager-rest-api.md)
-### [Организация ресурсов с помощью тегов](resource-group-using-tags.md)
-### [Перемещение ресурсов в новую группу или подписку](resource-group-move-resources.md)
+### [Использовать теги tooorganize ресурсы](resource-group-using-tags.md)
+### [Перемещение ресурсов toonew группы или подписки](resource-group-move-resources.md)
 ### [Примеры реализации корпоративного каркаса Azure](resource-manager-subscription-examples.md)
 
 ## Контроль доступа
@@ -63,13 +63,13 @@
 #### [Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Azure CLI 1.0](resource-group-authenticate-service-principal-cli.md)
 #### [Портал](resource-group-create-service-principal-portal.md)
-### [API проверки подлинности для доступа к подпискам](resource-manager-api-authentication.md)
+### [Проверка подлинности API tooaccess подписки](resource-manager-api-authentication.md)
 ### [Блокировка ресурсов](resource-group-lock-resources.md)
 
 ## Задание политик ресурсов
 ### [Что представляют собой политики ресурсов?](resource-manager-policy.md)
-### [Назначение политик с помощью портала](resource-manager-policy-portal.md)
-### [Назначение политик с помощью скриптов](resource-manager-policy-create-assign.md)
+### [С помощью портала tooassign политики](resource-manager-policy-portal.md)
+### [Используйте политику tooassign сценариев](resource-manager-policy-create-assign.md)
 ### Примеры
 #### [Теги](resource-manager-policy-tags.md)
 #### [Соглашения об именовании](resource-manager-policy-naming-convention.md)

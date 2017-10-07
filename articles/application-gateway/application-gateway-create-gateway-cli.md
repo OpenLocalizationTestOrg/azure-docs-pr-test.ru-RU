@@ -1,6 +1,6 @@
 ---
-title: "Создание шлюза приложений Azure с помощью Azure CLI 2.0 | Документация Майкрософт"
-description: "Узнайте, как создать шлюз приложений с помощью Azure CLI 2.0 в Resource Manager"
+title: "aaaCreate шлюза приложения Azure - CLI Azure 2.0 | Документы Microsoft"
+description: "Узнайте, как toocreate шлюза с помощью приложения hello Azure CLI 2.0 в диспетчере ресурсов"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,89 +15,89 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
-ms.openlocfilehash: 052410db8c7619c7990dc319951a55663f2c2ba1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 952065586cd87d253882438bb779b768d9fd59fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli-20"></a><span data-ttu-id="57ed5-103">Создание шлюза приложений с помощью Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="57ed5-103">Create an application gateway by using the Azure CLI 2.0</span></span>
+# <a name="create-an-application-gateway-by-using-hello-azure-cli-20"></a><span data-ttu-id="ef955-103">Создание шлюза приложения с помощью Azure CLI 2.0 hello</span><span class="sxs-lookup"><span data-stu-id="ef955-103">Create an application gateway by using hello Azure CLI 2.0</span></span>
 
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="57ed5-104">Портал Azure</span><span class="sxs-lookup"><span data-stu-id="57ed5-104">Azure portal</span></span>](application-gateway-create-gateway-portal.md)
-> * [<span data-ttu-id="57ed5-105">PowerShell и диспетчер ресурсов Azure</span><span class="sxs-lookup"><span data-stu-id="57ed5-105">Azure Resource Manager PowerShell</span></span>](application-gateway-create-gateway-arm.md)
-> * [<span data-ttu-id="57ed5-106">Классическая модель — Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="57ed5-106">Azure Classic PowerShell</span></span>](application-gateway-create-gateway.md)
-> * [<span data-ttu-id="57ed5-107">Шаблон Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="57ed5-107">Azure Resource Manager template</span></span>](application-gateway-create-gateway-arm-template.md)
-> * [<span data-ttu-id="57ed5-108">Azure CLI 1.0</span><span class="sxs-lookup"><span data-stu-id="57ed5-108">Azure CLI 1.0</span></span>](application-gateway-create-gateway-cli.md)
-> * [<span data-ttu-id="57ed5-109">Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="57ed5-109">Azure CLI 2.0</span></span>](application-gateway-create-gateway-cli.md)
+> * [<span data-ttu-id="ef955-104">Портал Azure</span><span class="sxs-lookup"><span data-stu-id="ef955-104">Azure portal</span></span>](application-gateway-create-gateway-portal.md)
+> * [<span data-ttu-id="ef955-105">PowerShell и диспетчер ресурсов Azure</span><span class="sxs-lookup"><span data-stu-id="ef955-105">Azure Resource Manager PowerShell</span></span>](application-gateway-create-gateway-arm.md)
+> * [<span data-ttu-id="ef955-106">Классическая модель — Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="ef955-106">Azure Classic PowerShell</span></span>](application-gateway-create-gateway.md)
+> * [<span data-ttu-id="ef955-107">Шаблон Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="ef955-107">Azure Resource Manager template</span></span>](application-gateway-create-gateway-arm-template.md)
+> * [<span data-ttu-id="ef955-108">Azure CLI 1.0</span><span class="sxs-lookup"><span data-stu-id="ef955-108">Azure CLI 1.0</span></span>](application-gateway-create-gateway-cli.md)
+> * [<span data-ttu-id="ef955-109">Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="ef955-109">Azure CLI 2.0</span></span>](application-gateway-create-gateway-cli.md)
 
-<span data-ttu-id="57ed5-110">Шлюз приложений — это выделенный виртуальный модуль, предоставляющий контроллер доставки приложений (ADC) как услугу, который обеспечивает для приложения множество функций балансировки нагрузки уровня 7.</span><span class="sxs-lookup"><span data-stu-id="57ed5-110">Application Gateway is a dedicated virtual appliance that provides application delivery controller (ADC) as a service, offering various layer 7 load balancing capabilities for your application.</span></span>
+<span data-ttu-id="ef955-110">Шлюз приложений — это выделенный виртуальный модуль, предоставляющий контроллер доставки приложений (ADC) как услугу, который обеспечивает для приложения множество функций балансировки нагрузки уровня 7.</span><span class="sxs-lookup"><span data-stu-id="ef955-110">Application Gateway is a dedicated virtual appliance that provides application delivery controller (ADC) as a service, offering various layer 7 load balancing capabilities for your application.</span></span>
 
-## <a name="cli-versions-to-complete-the-task"></a><span data-ttu-id="57ed5-111">Версии интерфейса командной строки для выполнения задачи</span><span class="sxs-lookup"><span data-stu-id="57ed5-111">CLI versions to complete the task</span></span>
+## <a name="cli-versions-toocomplete-hello-task"></a><span data-ttu-id="ef955-111">Задача hello toocomplete версии CLI</span><span class="sxs-lookup"><span data-stu-id="ef955-111">CLI versions toocomplete hello task</span></span>
 
-<span data-ttu-id="57ed5-112">Вы можете выполнить задачу, используя одну из следующих версий интерфейса командной строки.</span><span class="sxs-lookup"><span data-stu-id="57ed5-112">You can complete the task using one of the following CLI versions:</span></span>
+<span data-ttu-id="ef955-112">Можно выполнить с помощью одного из следующих версий CLI hello задачу hello.</span><span class="sxs-lookup"><span data-stu-id="ef955-112">You can complete hello task using one of hello following CLI versions:</span></span>
 
-* <span data-ttu-id="57ed5-113">[Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md) — это интерфейс командной строки для классической модели развертывания и модели развертывания Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="57ed5-113">[Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md) - our CLI for the classic and resource management deployment models.</span></span>
-* <span data-ttu-id="57ed5-114">[Azure CLI 2.0](application-gateway-create-gateway-cli.md) — это интерфейс командной строки нового поколения для модели развертывания Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="57ed5-114">[Azure CLI 2.0](application-gateway-create-gateway-cli.md) - our next generation CLI for the resource management deployment model</span></span>
+* <span data-ttu-id="ef955-113">[Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md) -нашей CLI для hello классический и ресурса управления развертывания моделей.</span><span class="sxs-lookup"><span data-stu-id="ef955-113">[Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md) - our CLI for hello classic and resource management deployment models.</span></span>
+* <span data-ttu-id="ef955-114">[Azure CLI 2.0](application-gateway-create-gateway-cli.md) -нашей нового поколения CLI для модели развертывания hello ресурсов управления</span><span class="sxs-lookup"><span data-stu-id="ef955-114">[Azure CLI 2.0](application-gateway-create-gateway-cli.md) - our next generation CLI for hello resource management deployment model</span></span>
 
-## <a name="prerequisite-install-the-azure-cli-20"></a><span data-ttu-id="57ed5-115">Предварительные требования. Установка Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="57ed5-115">Prerequisite: Install the Azure CLI 2.0</span></span>
+## <a name="prerequisite-install-hello-azure-cli-20"></a><span data-ttu-id="ef955-115">Необходимое условие: Установите hello Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="ef955-115">Prerequisite: Install hello Azure CLI 2.0</span></span>
 
-<span data-ttu-id="57ed5-116">Для выполнения действий, описанных в этой статье, требуется [установить интерфейс командной строки Azure для Mac, Linux и Windows (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).</span><span class="sxs-lookup"><span data-stu-id="57ed5-116">To perform the steps in this article, you need to [install the Azure Command-Line Interface for Mac, Linux, and Windows (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).</span></span>
-
-> [!NOTE]
-> <span data-ttu-id="57ed5-117">Если у вас нет учетной записи Azure, то вам потребуется получить ее.</span><span class="sxs-lookup"><span data-stu-id="57ed5-117">If you don't have an Azure account, you need one.</span></span> <span data-ttu-id="57ed5-118">Зарегистрируйтесь, чтобы получить [бесплатную пробную версию](../active-directory/sign-up-organization.md).</span><span class="sxs-lookup"><span data-stu-id="57ed5-118">Go sign up for a [free trial here](../active-directory/sign-up-organization.md).</span></span>
-
-## <a name="scenario"></a><span data-ttu-id="57ed5-119">Сценарий</span><span class="sxs-lookup"><span data-stu-id="57ed5-119">Scenario</span></span>
-
-<span data-ttu-id="57ed5-120">В этом сценарии вы узнаете, как создать шлюз приложений с помощью портала Azure.</span><span class="sxs-lookup"><span data-stu-id="57ed5-120">In this scenario, you learn how to create an application gateway using the Azure portal.</span></span>
-
-<span data-ttu-id="57ed5-121">Вы узнаете:</span><span class="sxs-lookup"><span data-stu-id="57ed5-121">This scenario will:</span></span>
-
-* <span data-ttu-id="57ed5-122">как создать средний шлюз приложений с двумя экземплярами;</span><span class="sxs-lookup"><span data-stu-id="57ed5-122">Create a medium application gateway with two instances.</span></span>
-* <span data-ttu-id="57ed5-123">как создать виртуальную сеть AdatumAppGatewayVNET с зарезервированным блоком CIDR (10.0.0.0/16);</span><span class="sxs-lookup"><span data-stu-id="57ed5-123">Create a virtual network named AdatumAppGatewayVNET with a reserved CIDR block of 10.0.0.0/16.</span></span>
-* <span data-ttu-id="57ed5-124">как создать подсеть с именем Appgatewaysubnet и блоком CIDR (10.0.0.0/28);</span><span class="sxs-lookup"><span data-stu-id="57ed5-124">Create a subnet called Appgatewaysubnet that uses 10.0.0.0/28 as its CIDR block.</span></span>
+<span data-ttu-id="ef955-116">tooperform hello шаги в этой статье, вы должны слишком[Установка hello интерфейса командной строки Azure для Mac, Linux и Windows (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).</span><span class="sxs-lookup"><span data-stu-id="ef955-116">tooperform hello steps in this article, you need too[install hello Azure Command-Line Interface for Mac, Linux, and Windows (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="57ed5-125">Дополнительная настройка шлюза приложений, включая пользовательские пробы работоспособности, серверный пул адресов и дополнительные правила, осуществляется после настройки шлюза приложений, а не во время первоначального развертывания.</span><span class="sxs-lookup"><span data-stu-id="57ed5-125">Additional configuration of the application gateway, including custom health probes, backend pool addresses, and additional rules are configured after the application gateway is configured and not during initial deployment.</span></span>
+> <span data-ttu-id="ef955-117">Если у вас нет учетной записи Azure, то вам потребуется получить ее.</span><span class="sxs-lookup"><span data-stu-id="ef955-117">If you don't have an Azure account, you need one.</span></span> <span data-ttu-id="ef955-118">Зарегистрируйтесь, чтобы получить [бесплатную пробную версию](../active-directory/sign-up-organization.md).</span><span class="sxs-lookup"><span data-stu-id="ef955-118">Go sign up for a [free trial here](../active-directory/sign-up-organization.md).</span></span>
 
-## <a name="before-you-begin"></a><span data-ttu-id="57ed5-126">Перед началом работы</span><span class="sxs-lookup"><span data-stu-id="57ed5-126">Before you begin</span></span>
+## <a name="scenario"></a><span data-ttu-id="ef955-119">Сценарий</span><span class="sxs-lookup"><span data-stu-id="ef955-119">Scenario</span></span>
 
-<span data-ttu-id="57ed5-127">Шлюзу приложений Azure требуется собственная подсеть.</span><span class="sxs-lookup"><span data-stu-id="57ed5-127">Azure Application Gateway requires its own subnet.</span></span> <span data-ttu-id="57ed5-128">При создании виртуальной сети обязательно оставьте достаточно адресного пространства для нескольких подсетей.</span><span class="sxs-lookup"><span data-stu-id="57ed5-128">When creating a virtual network, ensure that you leave enough address space to have multiple subnets.</span></span> <span data-ttu-id="57ed5-129">После развертывания шлюза приложений в подсети в нее можно добавлять только дополнительные шлюзы приложений.</span><span class="sxs-lookup"><span data-stu-id="57ed5-129">Once you deploy an application gateway to a subnet, only additional application gateways can be added to the subnet.</span></span>
+<span data-ttu-id="ef955-120">В этом сценарии вы узнаете, как шлюз приложения с помощью toocreate hello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="ef955-120">In this scenario, you learn how toocreate an application gateway using hello Azure portal.</span></span>
 
-## <a name="log-in-to-azure"></a><span data-ttu-id="57ed5-130">Вход в Azure</span><span class="sxs-lookup"><span data-stu-id="57ed5-130">Log in to Azure</span></span>
+<span data-ttu-id="ef955-121">Вы узнаете:</span><span class="sxs-lookup"><span data-stu-id="ef955-121">This scenario will:</span></span>
 
-<span data-ttu-id="57ed5-131">Откройте **командную строку Microsoft Azure**, и выполните вход.</span><span class="sxs-lookup"><span data-stu-id="57ed5-131">Open the **Microsoft Azure Command Prompt**, and log in.</span></span> 
+* <span data-ttu-id="ef955-122">как создать средний шлюз приложений с двумя экземплярами;</span><span class="sxs-lookup"><span data-stu-id="ef955-122">Create a medium application gateway with two instances.</span></span>
+* <span data-ttu-id="ef955-123">как создать виртуальную сеть AdatumAppGatewayVNET с зарезервированным блоком CIDR (10.0.0.0/16);</span><span class="sxs-lookup"><span data-stu-id="ef955-123">Create a virtual network named AdatumAppGatewayVNET with a reserved CIDR block of 10.0.0.0/16.</span></span>
+* <span data-ttu-id="ef955-124">как создать подсеть с именем Appgatewaysubnet и блоком CIDR (10.0.0.0/28);</span><span class="sxs-lookup"><span data-stu-id="ef955-124">Create a subnet called Appgatewaysubnet that uses 10.0.0.0/28 as its CIDR block.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="ef955-125">Дополнительная настройка шлюза приложения hello, включая пользовательские работоспособности проверяет, пул адресов серверной части и дополнительные правила настраиваются после настройки шлюза приложения hello, а не во время первоначального развертывания.</span><span class="sxs-lookup"><span data-stu-id="ef955-125">Additional configuration of hello application gateway, including custom health probes, backend pool addresses, and additional rules are configured after hello application gateway is configured and not during initial deployment.</span></span>
+
+## <a name="before-you-begin"></a><span data-ttu-id="ef955-126">Перед началом работы</span><span class="sxs-lookup"><span data-stu-id="ef955-126">Before you begin</span></span>
+
+<span data-ttu-id="ef955-127">Шлюзу приложений Azure требуется собственная подсеть.</span><span class="sxs-lookup"><span data-stu-id="ef955-127">Azure Application Gateway requires its own subnet.</span></span> <span data-ttu-id="ef955-128">При создании виртуальной сети, убедитесь, оставьте достаточно toohave пространства адресов несколько подсетей.</span><span class="sxs-lookup"><span data-stu-id="ef955-128">When creating a virtual network, ensure that you leave enough address space toohave multiple subnets.</span></span> <span data-ttu-id="ef955-129">После развертывания приложения шлюза tooa подсети шлюзы только дополнительное приложение можно добавить toohello подсети.</span><span class="sxs-lookup"><span data-stu-id="ef955-129">Once you deploy an application gateway tooa subnet, only additional application gateways can be added toohello subnet.</span></span>
+
+## <a name="log-in-tooazure"></a><span data-ttu-id="ef955-130">Войдите в tooAzure</span><span class="sxs-lookup"><span data-stu-id="ef955-130">Log in tooAzure</span></span>
+
+<span data-ttu-id="ef955-131">Откройте hello **командной строки пакета Microsoft Azure**и войдите в систему.</span><span class="sxs-lookup"><span data-stu-id="ef955-131">Open hello **Microsoft Azure Command Prompt**, and log in.</span></span> 
 
 ```azurecli-interactive
 az login -u "username"
 ```
 
 > [!NOTE]
-> <span data-ttu-id="57ed5-132">Команду `az login` также можно использовать без параметра для входа на устройство, при котором требуется ввести код на странице aka.ms/devicelogin.</span><span class="sxs-lookup"><span data-stu-id="57ed5-132">You can also use `az login` without the switch for device login that requires entering a code at aka.ms/devicelogin.</span></span>
+> <span data-ttu-id="ef955-132">Можно также использовать `az login` без ключа hello для входа устройство, которое требуется ввод кода на aka.ms/devicelogin.</span><span class="sxs-lookup"><span data-stu-id="ef955-132">You can also use `az login` without hello switch for device login that requires entering a code at aka.ms/devicelogin.</span></span>
 
-<span data-ttu-id="57ed5-133">Введя предыдущий пример, вы получите код.</span><span class="sxs-lookup"><span data-stu-id="57ed5-133">Once you type the preceding example, a code is provided.</span></span> <span data-ttu-id="57ed5-134">В браузере перейдите по адресу https://aka.ms/devicelogin, чтобы продолжить процедуру входа.</span><span class="sxs-lookup"><span data-stu-id="57ed5-134">Navigate to https://aka.ms/devicelogin in a browser to continue the login process.</span></span>
+<span data-ttu-id="ef955-133">После ввода предшествующий пример hello предоставляется код.</span><span class="sxs-lookup"><span data-stu-id="ef955-133">Once you type hello preceding example, a code is provided.</span></span> <span data-ttu-id="ef955-134">Перейдите toohttps://aka.ms/devicelogin в процессе входа hello toocontinue браузера.</span><span class="sxs-lookup"><span data-stu-id="ef955-134">Navigate toohttps://aka.ms/devicelogin in a browser toocontinue hello login process.</span></span>
 
 ![Команда, выводящая имя пользователя устройства][1]
 
-<span data-ttu-id="57ed5-136">В браузере введите полученный код.</span><span class="sxs-lookup"><span data-stu-id="57ed5-136">In the browser, enter the code you received.</span></span> <span data-ttu-id="57ed5-137">Вы будете перенаправлены на страницу входа.</span><span class="sxs-lookup"><span data-stu-id="57ed5-137">You are redirected to a sign-in page.</span></span>
+<span data-ttu-id="ef955-136">В браузере hello введите полученный код hello.</span><span class="sxs-lookup"><span data-stu-id="ef955-136">In hello browser, enter hello code you received.</span></span> <span data-ttu-id="ef955-137">Все перенаправленные tooa-на страницу входа.</span><span class="sxs-lookup"><span data-stu-id="ef955-137">You are redirected tooa sign-in page.</span></span>
 
-![Ввод кода в браузере][2]
+![Код tooenter браузера][2]
 
-<span data-ttu-id="57ed5-139">Когда вы выполните вход, введя код, закройте браузер, чтобы продолжить работу.</span><span class="sxs-lookup"><span data-stu-id="57ed5-139">Once the code has been entered you are signed in, close the browser to continue on with the scenario.</span></span>
+<span data-ttu-id="ef955-139">После ввода кода hello вы войдете в toocontinue hello закрыть браузер на со сценарием hello.</span><span class="sxs-lookup"><span data-stu-id="ef955-139">Once hello code has been entered you are signed in, close hello browser toocontinue on with hello scenario.</span></span>
 
 ![Вход выполнен][3]
 
-## <a name="create-the-resource-group"></a><span data-ttu-id="57ed5-141">Создание группы ресурсов</span><span class="sxs-lookup"><span data-stu-id="57ed5-141">Create the resource group</span></span>
+## <a name="create-hello-resource-group"></a><span data-ttu-id="ef955-141">Создать группу ресурсов hello</span><span class="sxs-lookup"><span data-stu-id="ef955-141">Create hello resource group</span></span>
 
-<span data-ttu-id="57ed5-142">Перед созданием шлюза приложений создается группа ресурсов, которая будет содержать шлюз приложений.</span><span class="sxs-lookup"><span data-stu-id="57ed5-142">Before creating the application gateway, a resource group is created to contain the application gateway.</span></span> <span data-ttu-id="57ed5-143">Ниже показана команда для создания группы ресурсов.</span><span class="sxs-lookup"><span data-stu-id="57ed5-143">The following shows the command.</span></span>
+<span data-ttu-id="ef955-142">Перед созданием шлюза приложения hello, шлюз приложения hello toocontain создания группы ресурсов.</span><span class="sxs-lookup"><span data-stu-id="ef955-142">Before creating hello application gateway, a resource group is created toocontain hello application gateway.</span></span> <span data-ttu-id="ef955-143">Hello ниже показана команда hello.</span><span class="sxs-lookup"><span data-stu-id="ef955-143">hello following shows hello command.</span></span>
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location "eastus"
 ```
 
-## <a name="create-the-application-gateway"></a><span data-ttu-id="57ed5-144">Создание шлюза приложений</span><span class="sxs-lookup"><span data-stu-id="57ed5-144">Create the application gateway</span></span>
+## <a name="create-hello-application-gateway"></a><span data-ttu-id="ef955-144">Создание шлюза приложения hello</span><span class="sxs-lookup"><span data-stu-id="ef955-144">Create hello application gateway</span></span>
 
-<span data-ttu-id="57ed5-145">IP-адреса серверной части — это IP-адреса внутреннего сервера.</span><span class="sxs-lookup"><span data-stu-id="57ed5-145">The IP addresses used for the backend are the IP addresses for your backend server.</span></span> <span data-ttu-id="57ed5-146">Эти значения могут быть частными IP-адресами в виртуальной сети, общедоступными IP-адресами или полными доменными именами для внутренних серверов.</span><span class="sxs-lookup"><span data-stu-id="57ed5-146">These values can be either private IPs in the virtual network, public ips, or fully qualified domain names for your backend servers.</span></span> <span data-ttu-id="57ed5-147">В следующем примере создается шлюз приложений с дополнительными параметрами конфигурации, задающими настройки HTTP, порты и правила.</span><span class="sxs-lookup"><span data-stu-id="57ed5-147">The following example creates an application gateway with additional configuration settings for http settings, ports, and rules.</span></span>
+<span data-ttu-id="ef955-145">IP-адреса Hello для внутренних hello — hello IP-адреса для сервера базы данных.</span><span class="sxs-lookup"><span data-stu-id="ef955-145">hello IP addresses used for hello backend are hello IP addresses for your backend server.</span></span> <span data-ttu-id="ef955-146">Эти значения могут быть либо частных IP-адресов в виртуальной сети hello, общедоступные IP-адреса или полные доменные имена для внутренних серверов.</span><span class="sxs-lookup"><span data-stu-id="ef955-146">These values can be either private IPs in hello virtual network, public ips, or fully qualified domain names for your backend servers.</span></span> <span data-ttu-id="ef955-147">Hello пример создает шлюза приложения с дополнительными параметрами конфигурации для настройки http, порты и правил.</span><span class="sxs-lookup"><span data-stu-id="ef955-147">hello following example creates an application gateway with additional configuration settings for http settings, ports, and rules.</span></span>
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -121,7 +121,7 @@ az network application-gateway create \
 
 ```
 
-<span data-ttu-id="57ed5-148">В предыдущем примере показано множество свойств, которые не являются обязательными во время создания шлюза приложения.</span><span class="sxs-lookup"><span data-stu-id="57ed5-148">The preceding example shows many properties that are not required during the creation of an application gateway.</span></span> <span data-ttu-id="57ed5-149">Следующий пример кода создает шлюз приложений с использованием требуемой информации.</span><span class="sxs-lookup"><span data-stu-id="57ed5-149">The following code example creates an application gateway with the required information.</span></span>
+<span data-ttu-id="ef955-148">Hello выше примере многие свойства, которые не требуются во время создания шлюза приложения hello.</span><span class="sxs-lookup"><span data-stu-id="ef955-148">hello preceding example shows many properties that are not required during hello creation of an application gateway.</span></span> <span data-ttu-id="ef955-149">Следующий пример кода Hello создает шлюза приложения hello необходимые сведения.</span><span class="sxs-lookup"><span data-stu-id="ef955-149">hello following code example creates an application gateway with hello required information.</span></span>
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -137,14 +137,14 @@ az network application-gateway create \
 ```
  
 > [!NOTE]
-> <span data-ttu-id="57ed5-150">Чтобы вывести список параметров, которые можно указать во время создания, выполните команду `az network application-gateway create --help`.</span><span class="sxs-lookup"><span data-stu-id="57ed5-150">For a list of parameters that can be provided during creation run the following command: `az network application-gateway create --help`.</span></span>
+> <span data-ttu-id="ef955-150">Список параметров, которые могут быть предоставлены во время создания запуска hello следующую команду: `az network application-gateway create --help`.</span><span class="sxs-lookup"><span data-stu-id="ef955-150">For a list of parameters that can be provided during creation run hello following command: `az network application-gateway create --help`.</span></span>
 
-<span data-ttu-id="57ed5-151">В этом примере создается базовый шлюз приложений с параметрами по умолчанию для прослушивателя, серверного пула, протокола HTTP серверной части и правил.</span><span class="sxs-lookup"><span data-stu-id="57ed5-151">This example creates a basic application gateway with default settings for the listener, backend pool, backend http settings, and rules.</span></span> <span data-ttu-id="57ed5-152">Вы сможете изменить эти параметры в соответствии с развертыванием после успешного завершения подготовки.</span><span class="sxs-lookup"><span data-stu-id="57ed5-152">You can modify these settings to suit your deployment once the provisioning is successful.</span></span>
-<span data-ttu-id="57ed5-153">Если на предыдущем шаге вы уже определили для веб-приложения внутренний пул, то после создания шлюза запускается балансировка нагрузки.</span><span class="sxs-lookup"><span data-stu-id="57ed5-153">If you already have your web application defined with the backend pool in the preceding steps, once created, load balancing begins.</span></span>
+<span data-ttu-id="ef955-151">Этот пример создает шлюз простое приложение с параметрами по умолчанию для прослушивателя hello, внутреннего пула, параметров серверного http и правил.</span><span class="sxs-lookup"><span data-stu-id="ef955-151">This example creates a basic application gateway with default settings for hello listener, backend pool, backend http settings, and rules.</span></span> <span data-ttu-id="ef955-152">Вы можете изменить эти параметры toosuit развертывания после успешной подготовки hello.</span><span class="sxs-lookup"><span data-stu-id="ef955-152">You can modify these settings toosuit your deployment once hello provisioning is successful.</span></span>
+<span data-ttu-id="ef955-153">Балансировка нагрузки начинается при наличии веб-приложения с внутреннего пула hello в предыдущих шагах, после ее создания, hello.</span><span class="sxs-lookup"><span data-stu-id="ef955-153">If you already have your web application defined with hello backend pool in hello preceding steps, once created, load balancing begins.</span></span>
 
-## <a name="get-application-gateway-dns-name"></a><span data-ttu-id="57ed5-154">Получение DNS-имени шлюза приложений</span><span class="sxs-lookup"><span data-stu-id="57ed5-154">Get application gateway DNS name</span></span>
+## <a name="get-application-gateway-dns-name"></a><span data-ttu-id="ef955-154">Получение DNS-имени шлюза приложений</span><span class="sxs-lookup"><span data-stu-id="ef955-154">Get application gateway DNS name</span></span>
 
-<span data-ttu-id="57ed5-155">После создания шлюза следует настроить внешний интерфейс для обмена данными.</span><span class="sxs-lookup"><span data-stu-id="57ed5-155">Once the gateway is created, the next step is to configure the front end for communication.</span></span> <span data-ttu-id="57ed5-156">Если вы используете общедоступный IP-адрес, шлюзу приложений требуется динамически назначаемое непонятное имя DNS.</span><span class="sxs-lookup"><span data-stu-id="57ed5-156">When using a public IP, application gateway requires a dynamically assigned DNS name, which is not friendly.</span></span> <span data-ttu-id="57ed5-157">Чтобы гарантировать попадание пользователей на шлюз приложений, можно использовать запись CNAME, чтобы указать общедоступную конечную точку шлюза приложений.</span><span class="sxs-lookup"><span data-stu-id="57ed5-157">To ensure end users can hit the application gateway, a CNAME record can be used to point to the public endpoint of the application gateway.</span></span> <span data-ttu-id="57ed5-158">[Настройка пользовательского имени домена в Azure](../dns/dns-custom-domain.md).</span><span class="sxs-lookup"><span data-stu-id="57ed5-158">[Configuring a custom domain name for in Azure](../dns/dns-custom-domain.md).</span></span> <span data-ttu-id="57ed5-159">Чтобы настроить псевдоним, извлеките подробные сведения о шлюзе приложений и соответствующий IP-адрес или DNS-имя с помощью элемента PublicIPAddress, связанного со шлюзом приложений.</span><span class="sxs-lookup"><span data-stu-id="57ed5-159">To configure an alias, retrieve details of the application gateway and its associated IP/DNS name using the PublicIPAddress element attached to the application gateway.</span></span> <span data-ttu-id="57ed5-160">DNS-имя шлюза приложений должно использоваться для создания записи CNAME, указывающей двум веб-приложениям на это DNS-имя.</span><span class="sxs-lookup"><span data-stu-id="57ed5-160">The application gateway's DNS name should be used to create a CNAME record, which points the two web applications to this DNS name.</span></span> <span data-ttu-id="57ed5-161">Использование записи A не рекомендуется, так как виртуальный IP-адрес может измениться после перезапуска приложения шлюза.</span><span class="sxs-lookup"><span data-stu-id="57ed5-161">The use of A-records is not recommended since the VIP may change on restart of application gateway.</span></span>
+<span data-ttu-id="ef955-155">После создания шлюза hello hello следующим шагом является tooconfigure hello внешнего интерфейса для обмена данными.</span><span class="sxs-lookup"><span data-stu-id="ef955-155">Once hello gateway is created, hello next step is tooconfigure hello front end for communication.</span></span> <span data-ttu-id="ef955-156">Если вы используете общедоступный IP-адрес, шлюзу приложений требуется динамически назначаемое непонятное имя DNS.</span><span class="sxs-lookup"><span data-stu-id="ef955-156">When using a public IP, application gateway requires a dynamically assigned DNS name, which is not friendly.</span></span> <span data-ttu-id="ef955-157">tooensure конечным пользователям возможность нажать шлюза приложения hello, запись CNAME может быть используется toopoint toohello общедоступную конечную точку шлюза приложения hello.</span><span class="sxs-lookup"><span data-stu-id="ef955-157">tooensure end users can hit hello application gateway, a CNAME record can be used toopoint toohello public endpoint of hello application gateway.</span></span> <span data-ttu-id="ef955-158">[Настройка пользовательского имени домена в Azure](../dns/dns-custom-domain.md).</span><span class="sxs-lookup"><span data-stu-id="ef955-158">[Configuring a custom domain name for in Azure](../dns/dns-custom-domain.md).</span></span> <span data-ttu-id="ef955-159">tooconfigure псевдоним, получить сведения о шлюза приложения hello и соответствующее IP или DNS-имя с помощью шлюза hello PublicIPAddress элемент toohello подключенных приложений.</span><span class="sxs-lookup"><span data-stu-id="ef955-159">tooconfigure an alias, retrieve details of hello application gateway and its associated IP/DNS name using hello PublicIPAddress element attached toohello application gateway.</span></span> <span data-ttu-id="ef955-160">шлюз приложения Hello DNS-имя должно быть используется toocreate запись CNAME, какие точки hello двух web приложений toothis DNS-имя.</span><span class="sxs-lookup"><span data-stu-id="ef955-160">hello application gateway's DNS name should be used toocreate a CNAME record, which points hello two web applications toothis DNS name.</span></span> <span data-ttu-id="ef955-161">Использование Hello записи A не рекомендуется, поскольку hello виртуального IP-адреса могут изменяться при перезагрузке шлюз приложений.</span><span class="sxs-lookup"><span data-stu-id="ef955-161">hello use of A-records is not recommended since hello VIP may change on restart of application gateway.</span></span>
 
 
 ```azurecli-interactive
@@ -187,19 +187,19 @@ az network public-ip show --name "pip" --resource-group "AdatumAppGatewayRG"
 }
 ```
 
-## <a name="delete-all-resources"></a><span data-ttu-id="57ed5-162">Удаление всех ресурсов</span><span class="sxs-lookup"><span data-stu-id="57ed5-162">Delete all resources</span></span>
+## <a name="delete-all-resources"></a><span data-ttu-id="ef955-162">Удаление всех ресурсов</span><span class="sxs-lookup"><span data-stu-id="ef955-162">Delete all resources</span></span>
 
-<span data-ttu-id="57ed5-163">Чтобы удалить все ресурсы, созданные в этой статье, выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="57ed5-163">To delete all resources created in this article, complete the following steps:</span></span>
+<span data-ttu-id="ef955-163">toodelete все ресурсы, которые созданы в этой статье завершения hello, следующие шаги:</span><span class="sxs-lookup"><span data-stu-id="ef955-163">toodelete all resources created in this article, complete hello following steps:</span></span>
 
 ```azurecli-interactive
 az group delete --name AdatumAppGatewayRG
 ```
  
-## <a name="next-steps"></a><span data-ttu-id="57ed5-164">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="57ed5-164">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ef955-164">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="ef955-164">Next steps</span></span>
 
-<span data-ttu-id="57ed5-165">Узнайте, как создавать пользовательские пробы работоспособности, посетив страницу [Create a custom probe for Application Gateway by using the portal](application-gateway-create-probe-portal.md)</span><span class="sxs-lookup"><span data-stu-id="57ed5-165">Learn how to create custom health probes by visiting [Create a custom health probe](application-gateway-create-probe-portal.md)</span></span>
+<span data-ttu-id="ef955-165">Узнайте, как пользовательские работоспособности toocreate проверяет, посетив [пробу пользовательского состояния](application-gateway-create-probe-portal.md)</span><span class="sxs-lookup"><span data-stu-id="ef955-165">Learn how toocreate custom health probes by visiting [Create a custom health probe](application-gateway-create-probe-portal.md)</span></span>
 
-<span data-ttu-id="57ed5-166">Узнайте, как настроить разгрузку SSL и убрать дорогостоящее шифрование SSL с веб-серверов, посетив страницу [Настройка шлюза приложений для разгрузки SSL с помощью диспетчера ресурсов Azure](application-gateway-ssl-arm.md)</span><span class="sxs-lookup"><span data-stu-id="57ed5-166">Learn how to configure SSL Offloading and take the costly SSL decryption off your web servers by visiting [Configure SSL Offload](application-gateway-ssl-arm.md)</span></span>
+<span data-ttu-id="ef955-166">Узнайте, как tooconfigure разгрузки SSL и дешифрования SSL дорогостоящих take hello off веб-серверов, посетив [Настройка разгрузки SSL](application-gateway-ssl-arm.md)</span><span class="sxs-lookup"><span data-stu-id="ef955-166">Learn how tooconfigure SSL Offloading and take hello costly SSL decryption off your web servers by visiting [Configure SSL Offload](application-gateway-ssl-arm.md)</span></span>
 
 <!--Image references-->
 

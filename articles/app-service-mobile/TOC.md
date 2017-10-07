@@ -46,13 +46,13 @@
 #### [Включение автономной синхронизации](app-service-mobile-android-get-started-offline-data.md)
 #### [Добавление проверки подлинности](app-service-mobile-android-get-started-users.md)
 #### [Добавление push-уведомлений](app-service-mobile-android-get-started-push.md)
-#### [Работа с пакетом SDK для клиента](app-service-mobile-android-how-to-use-client-library.md)
+#### [Работа с клиентом hello SDK](app-service-mobile-android-how-to-use-client-library.md)
 
 ### Cordova;
 #### [Включение автономной синхронизации](app-service-mobile-cordova-get-started-offline-data.md)
 #### [Добавление проверки подлинности](app-service-mobile-cordova-get-started-users.md)
 #### [Добавление push-уведомлений](app-service-mobile-cordova-get-started-push.md)
-#### Работа с пакетом SDK для клиента
+#### Работа с клиентом hello SDK
 ##### [Cordova](app-service-mobile-cordova-how-to-use-client-library.md)
 ##### [JavaScript/HTML](app-service-mobile-html-how-to-use-client-library.md)
 
@@ -60,52 +60,52 @@
 #### [Включение автономной синхронизации](app-service-mobile-ios-get-started-offline-data.md)
 #### [Добавление проверки подлинности](app-service-mobile-ios-get-started-users.md)
 #### [Добавление push-уведомлений](app-service-mobile-ios-get-started-push.md)
-#### [Работа с пакетом SDK для клиента](app-service-mobile-ios-how-to-use-client-library.md)
+#### [Работа с клиентом hello SDK](app-service-mobile-ios-how-to-use-client-library.md)
 
 ### Windows
 #### [Включение автономной синхронизации](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)
 #### [Добавление проверки подлинности](app-service-mobile-windows-store-dotnet-get-started-users.md)
 #### [Добавление push-уведомлений](app-service-mobile-windows-store-dotnet-get-started-push.md)
-#### [Работа с пакетом SDK для клиента](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Работа с клиентом hello SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.Android
 #### [Включение автономной синхронизации](app-service-mobile-xamarin-android-get-started-offline-data.md)
 #### [Добавление проверки подлинности](app-service-mobile-xamarin-android-get-started-users.md)
 #### [Добавление push-уведомлений](app-service-mobile-xamarin-android-get-started-push.md)
-#### [Работа с пакетом SDK для клиента](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Работа с клиентом hello SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.Forms
 #### [Включение автономной синхронизации](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 #### [Добавление проверки подлинности](app-service-mobile-xamarin-forms-get-started-users.md)
 #### [Добавление push-уведомлений](app-service-mobile-xamarin-forms-get-started-push.md)
-#### [Работа с пакетом SDK для клиента](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Работа с клиентом hello SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.iOS
 #### [Включение автономной синхронизации](app-service-mobile-xamarin-ios-get-started-offline-data.md)
 #### [Добавление проверки подлинности](app-service-mobile-xamarin-ios-get-started-users.md)
 #### [Добавление push-уведомлений](app-service-mobile-xamarin-ios-get-started-push.md)
-#### [Работа с пакетом SDK для клиента](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Работа с клиентом hello SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
 
-### Работа с пакетом SDK для сервера
+### Работать с SDK сервера hello
 #### [Сервер .NET](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)
 #### [Сервер Node.js](app-service-mobile-node-backend-how-to-use-server-sdk.md)
 #### [Управление версиями клиента и сервера](app-service-mobile-client-and-server-versioning.md)
 
 ### Веб-задания
-#### [Информация о пакете SDK веб-заданий](../app-service-web/websites-dotnet-webjobs-sdk.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Что такое hello SDK веб-заданий Azure](../app-service-web/websites-dotnet-webjobs-sdk.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Создание веб-задания .NET в службе приложений Azure](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Использование хранилища больших двоичных объектов Azure с пакетом SDK веб-заданий](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Использование пакета SDK веб-заданий для работы с хранилищем очередей Azure](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Использование служебной шины Azure с пакетом SDK для веб-заданий](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Использование табличного хранилища Azure с пакетом SDK веб-заданий](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Как toouse Azure хранилище больших двоичных объектов с hello SDK веб-заданий](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Как toouse Azure очередь хранилища с hello SDK веб-заданий](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Как toouse шины обслуживания Azure с hello SDK веб-заданий](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Как toouse Azure таблицу хранилища с hello SDK веб-заданий](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ### Среда службы приложений
 #### [Создание веб-приложения в среде служб приложений](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Создание среды службы приложений с внутренней подсистемой балансировки нагрузки с помощью шаблонов Azure Resource Manager](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Как tooCreate ILB ASE с помощью Azure Resource Manager шаблонов](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Создание внутренней подсистемы балансировки нагрузки](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## [Развертывание](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Развертывание в службу приложений](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Развертывание tooApp службы](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Развертывание синхронизации облака](../app-service-web/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Непрерывное развертывание](../app-service-web/app-service-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Промежуточные среды](../app-service-web/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -137,14 +137,14 @@
 ### [Среда службы приложений](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Настройка](../app-service-web/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Настраиваемые параметры конфигурации](../app-service-web/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Как управлять входящим трафиком](../app-service-web/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Как toocontrol входящего трафика](../app-service-web/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Общие сведения о сетевой архитектуре](../app-service-web/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Сведения о настройке сети для работы с ExpressRoute](../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Миграция
-### [Сравнение службы приложений и мобильных служб](app-service-mobile-value-prop-migration-from-mobile-services.md)
-### [Миграция существующей мобильной службы в службу приложений](app-service-mobile-migrating-from-mobile-services.md)
-### Обновление существующей мобильной службы до службы приложений
+### [Сравнение средств служб приложений служб tooMobile](app-service-mobile-value-prop-migration-from-mobile-services.md)
+### [Миграция существующих tooApp мобильной службы, службы](app-service-mobile-migrating-from-mobile-services.md)
+### Обновление существующей мобильной службы tooApp службы
 #### [Сервер .NET](app-service-mobile-net-upgrading-from-mobile-services.md)
 #### [Сервер Node.js](app-service-mobile-node-backend-upgrading-from-mobile-services.md)
 
@@ -167,12 +167,12 @@
 ### Защита среды службы приложений
 #### [Настройка брандмауэра веб-приложения](../app-service-web/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Реализация многоуровневой архитектуры безопасности](../app-service-web/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Безопасное подключение к серверным ресурсам](../app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Безопасное подключение tooBackend ресурсы](../app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Резервное копирование
 ### [Архивация приложения в Azure](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Восстановление приложения в Azure](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Использование REST для резервного копирования и восстановления приложений службы приложений](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Использование REST tooback и восстановление приложения служб приложений](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## [Мониторинг](../app-service-web/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Включение ведения журналов диагностики](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -193,15 +193,15 @@
 
 ## Интеграция
 ### [Доступ к локальным ресурсам с помощью гибридных подключений](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Как отправлять электронную почту с помощью SendGrid и Azure](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Экспорт в PowerApps и Microsoft Flow](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Как toosend электронной почты с помощью SendGrid с помощью Azure](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Экспортировать tooPowerApps и Microsoft Flow](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Устранение неполадок
 ### Общие действия по устранению неполадок в мобильных приложениях
 #### [Сервер .NET](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk)
 #### [Сервер Node.js](app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging)
 ### [Включение ведения журналов диагностики](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Журналы потоковой передачи и консоль](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Журналы потоковой передачи и консоли hello](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # Справочные материалы

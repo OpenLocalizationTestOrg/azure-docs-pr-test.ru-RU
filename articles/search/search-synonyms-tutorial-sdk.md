@@ -1,6 +1,6 @@
 ---
-title: "Руководство по предварительной версии синонимов в Поиске Azure | Документация Майкрософт"
-description: "Добавление предварительной версии функции синонимов в индекс в Поиске Azure."
+title: "aaaSynonyms Предварительный Просмотр учебника в поиске Azure | Документы Microsoft"
+description: "Добавьте индекс hello синонимы предварительной версии компонентов tooan в поиске Azure."
 services: search
 manager: jhubbard
 documentationcenter: 
@@ -12,33 +12,33 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 03/31/2017
 ms.author: heidist
-ms.openlocfilehash: 014959ed471f796d2184f0f8ff10d15cdc8a2ec6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 055c1cbafb945823a3dc4da0c522db236b1d192c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="synonym-preview-c-tutorial-for-azure-search"></a><span data-ttu-id="6407b-103">Руководство по C# для синонимов (предварительная версия) в Поиске Azure</span><span class="sxs-lookup"><span data-stu-id="6407b-103">Synonym (preview) C# tutorial for Azure Search</span></span>
+# <a name="synonym-preview-c-tutorial-for-azure-search"></a><span data-ttu-id="31e6d-103">Руководство по C# для синонимов (предварительная версия) в Поиске Azure</span><span class="sxs-lookup"><span data-stu-id="31e6d-103">Synonym (preview) C# tutorial for Azure Search</span></span>
 
-<span data-ttu-id="6407b-104">Синонимы позволяют расширить запрос с помощью сопоставления семантически эквивалентных терминов с входными терминами.</span><span class="sxs-lookup"><span data-stu-id="6407b-104">Synonyms expand a query by matching on terms considered semantically equivalent to the input term.</span></span> <span data-ttu-id="6407b-105">Например, вы можете сопоставить термин "машина" с документами, в которых встречается слово "автомобиль" или "транспортное средство".</span><span class="sxs-lookup"><span data-stu-id="6407b-105">For example, you might want "car" to match documents containing the terms "automobile" or "vehicle".</span></span>
+<span data-ttu-id="31e6d-104">Синонимы разверните запроса путем сопоставления на условиях, считаются входной термин toohello семантически эквивалентны.</span><span class="sxs-lookup"><span data-stu-id="31e6d-104">Synonyms expand a query by matching on terms considered semantically equivalent toohello input term.</span></span> <span data-ttu-id="31e6d-105">Например может потребоваться документы toomatch «машина», содержащие hello слова «автомобиль» или «машина».</span><span class="sxs-lookup"><span data-stu-id="31e6d-105">For example, you might want "car" toomatch documents containing hello terms "automobile" or "vehicle".</span></span>
 
-<span data-ttu-id="6407b-106">В Поиске Azure синонимы определены в *сопоставлении синонимов* с помощью *правил сопоставления*, связывающих эквивалентные термины.</span><span class="sxs-lookup"><span data-stu-id="6407b-106">In Azure Search, synonyms are defined in a *synonym map*, through *mapping rules* that associate equivalent terms.</span></span> <span data-ttu-id="6407b-107">Вы можете создать несколько сопоставлений синонимов, разместить их как ресурс служб, доступный для любого индекса, а затем указать ссылку на используемый на уровне поля.</span><span class="sxs-lookup"><span data-stu-id="6407b-107">You can create multiple synonym maps, post them as a service-wide resource available to any index, and then reference which one to use at the field level.</span></span> <span data-ttu-id="6407b-108">Во время выполнения запроса, кроме поиска индекса, Поиск Azure обязательно просмотрит сопоставление синонимов, если один из них указан в каком-либо поле, используемом в этом запросе.</span><span class="sxs-lookup"><span data-stu-id="6407b-108">At query time, in addition to searching an index, Azure Search does a lookup in a synonym map, if one is specified on fields used in the query.</span></span>
+<span data-ttu-id="31e6d-106">В Поиске Azure синонимы определены в *сопоставлении синонимов* с помощью *правил сопоставления*, связывающих эквивалентные термины.</span><span class="sxs-lookup"><span data-stu-id="31e6d-106">In Azure Search, synonyms are defined in a *synonym map*, through *mapping rules* that associate equivalent terms.</span></span> <span data-ttu-id="31e6d-107">Создайте несколько карт синоним, задайте их как доступные tooany индекс ресурса службы и затем ссылаться на какие один toouse на уровне полей hello.</span><span class="sxs-lookup"><span data-stu-id="31e6d-107">You can create multiple synonym maps, post them as a service-wide resource available tooany index, and then reference which one toouse at hello field level.</span></span> <span data-ttu-id="31e6d-108">Во время обработки запроса кроме toosearching индекса поиска Azure выполняет поиск в сопоставлении синоним, если он указан на поля, используемые в запросе hello.</span><span class="sxs-lookup"><span data-stu-id="31e6d-108">At query time, in addition toosearching an index, Azure Search does a lookup in a synonym map, if one is specified on fields used in hello query.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="6407b-109">Сейчас возможности синонимов доступны в предварительной версии и поддерживаются только последними предварительными версиями API и пакетов SDK (предварительной версией API — 2016-09-01 и пакета SDK — 4.x).</span><span class="sxs-lookup"><span data-stu-id="6407b-109">The synonyms feature is currently in preview and only supported in the latest preview API and SDK versions (api-version=2016-09-01-Preview, SDK version 4.x-preview).</span></span> <span data-ttu-id="6407b-110">Портал Azure такую поддержку пока не предоставляет.</span><span class="sxs-lookup"><span data-stu-id="6407b-110">There is no Azure portal support at this time.</span></span> <span data-ttu-id="6407b-111">Предварительные версии API не регулируются Соглашением об уровне обслуживания, и так как предварительные возможности могут измениться, мы не рекомендуем использовать их в рабочих приложениях.</span><span class="sxs-lookup"><span data-stu-id="6407b-111">Preview APIs are not under SLA and preview features may change, so we do not recommend using them in production applications.</span></span>
+> <span data-ttu-id="31e6d-109">синонимы Hello компонент в настоящий момент в Предварительный просмотр и поддерживается в только hello последнюю предварительную версию API и версии пакета SDK (api-version = 2016-09-01-Preview, версия пакета SDK 4.x-preview).</span><span class="sxs-lookup"><span data-stu-id="31e6d-109">hello synonyms feature is currently in preview and only supported in hello latest preview API and SDK versions (api-version=2016-09-01-Preview, SDK version 4.x-preview).</span></span> <span data-ttu-id="31e6d-110">Портал Azure такую поддержку пока не предоставляет.</span><span class="sxs-lookup"><span data-stu-id="31e6d-110">There is no Azure portal support at this time.</span></span> <span data-ttu-id="31e6d-111">Предварительные версии API не регулируются Соглашением об уровне обслуживания, и так как предварительные возможности могут измениться, мы не рекомендуем использовать их в рабочих приложениях.</span><span class="sxs-lookup"><span data-stu-id="31e6d-111">Preview APIs are not under SLA and preview features may change, so we do not recommend using them in production applications.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="6407b-112">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="6407b-112">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="31e6d-112">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="31e6d-112">Prerequisites</span></span>
 
-<span data-ttu-id="6407b-113">Ниже приведены предварительные требования, описанные в этом руководстве.</span><span class="sxs-lookup"><span data-stu-id="6407b-113">Tutorial requirements include the following:</span></span>
+<span data-ttu-id="31e6d-113">Учебник требования включают hello следующее:</span><span class="sxs-lookup"><span data-stu-id="31e6d-113">Tutorial requirements include hello following:</span></span>
 
-* [<span data-ttu-id="6407b-114">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6407b-114">Visual Studio</span></span>](https://www.visualstudio.com/downloads/)
-* [<span data-ttu-id="6407b-115">Служба поиска Azure</span><span class="sxs-lookup"><span data-stu-id="6407b-115">Azure Search service</span></span>](search-create-service-portal.md)
-* [<span data-ttu-id="6407b-116">Предварительная версия библиотеки Microsoft.Azure.Search .NET</span><span class="sxs-lookup"><span data-stu-id="6407b-116">Preview version of Microsoft.Azure.Search .NET library</span></span>](https://aka.ms/search-sdk-preview)
-* [<span data-ttu-id="6407b-117">Использование службы поиска Azure в приложении .NET</span><span class="sxs-lookup"><span data-stu-id="6407b-117">How to use Azure Search from a .NET Application</span></span>](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [<span data-ttu-id="31e6d-114">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="31e6d-114">Visual Studio</span></span>](https://www.visualstudio.com/downloads/)
+* [<span data-ttu-id="31e6d-115">Служба поиска Azure</span><span class="sxs-lookup"><span data-stu-id="31e6d-115">Azure Search service</span></span>](search-create-service-portal.md)
+* [<span data-ttu-id="31e6d-116">Предварительная версия библиотеки Microsoft.Azure.Search .NET</span><span class="sxs-lookup"><span data-stu-id="31e6d-116">Preview version of Microsoft.Azure.Search .NET library</span></span>](https://aka.ms/search-sdk-preview)
+* [<span data-ttu-id="31e6d-117">Как выполнить поиск Azure toouse из приложения .NET</span><span class="sxs-lookup"><span data-stu-id="31e6d-117">How toouse Azure Search from a .NET Application</span></span>](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
-## <a name="overview"></a><span data-ttu-id="6407b-118">Обзор</span><span class="sxs-lookup"><span data-stu-id="6407b-118">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="31e6d-118">Обзор</span><span class="sxs-lookup"><span data-stu-id="31e6d-118">Overview</span></span>
 
-<span data-ttu-id="6407b-119">Значение синонимов показано в запросах "до" и "после".</span><span class="sxs-lookup"><span data-stu-id="6407b-119">Before-and-after queries demonstrate the value of synonyms.</span></span> <span data-ttu-id="6407b-120">В этом руководстве мы используем пример приложения, выполняющий запросы и возвращающий результаты для примера индекса.</span><span class="sxs-lookup"><span data-stu-id="6407b-120">In this tutorial, we use a sample application that executes queries and returns results on a sample index.</span></span> <span data-ttu-id="6407b-121">Пример приложения создает небольшой индекс с именем hotels с двумя документами.</span><span class="sxs-lookup"><span data-stu-id="6407b-121">The sample application creates a small index named "hotels" populated with two documents.</span></span> <span data-ttu-id="6407b-122">Приложение выполняет поисковые запросы с помощью терминов и фраз, которые отсутствуют в индексе, что вызывает функцию синонимов, и поиск выполняется повторно.</span><span class="sxs-lookup"><span data-stu-id="6407b-122">The application executes search queries using terms and phrases that do not appear in the index, enables the synonyms feature, then issues the same searches again.</span></span> <span data-ttu-id="6407b-123">В примере кода ниже показан общий поток.</span><span class="sxs-lookup"><span data-stu-id="6407b-123">The code below demonstrates the overall flow.</span></span>
+<span data-ttu-id="31e6d-119">До и после запросов показано значение hello синонимов.</span><span class="sxs-lookup"><span data-stu-id="31e6d-119">Before-and-after queries demonstrate hello value of synonyms.</span></span> <span data-ttu-id="31e6d-120">В этом руководстве мы используем пример приложения, выполняющий запросы и возвращающий результаты для примера индекса.</span><span class="sxs-lookup"><span data-stu-id="31e6d-120">In this tutorial, we use a sample application that executes queries and returns results on a sample index.</span></span> <span data-ttu-id="31e6d-121">Пример приложения Hello создает небольшой индекс с именем «гостиницы» заполняется двух документов.</span><span class="sxs-lookup"><span data-stu-id="31e6d-121">hello sample application creates a small index named "hotels" populated with two documents.</span></span> <span data-ttu-id="31e6d-122">приложение Hello выполняет запросов поиска с применением термины и фразы, которые не отображаются в индексе hello, включает hello синонимы, то проблем hello же поиск еще раз.</span><span class="sxs-lookup"><span data-stu-id="31e6d-122">hello application executes search queries using terms and phrases that do not appear in hello index, enables hello synonyms feature, then issues hello same searches again.</span></span> <span data-ttu-id="31e6d-123">Приведенный ниже код Hello показывает hello общий поток.</span><span class="sxs-lookup"><span data-stu-id="31e6d-123">hello code below demonstrates hello overall flow.</span></span>
 
 ```csharp
   static void Main(string[] args)
@@ -63,53 +63,53 @@ ms.lasthandoff: 07/11/2017
       Console.WriteLine("{0}", "Adding synonyms...\n");
       UploadSynonyms(serviceClient);
       EnableSynonymsInHotelsIndex(serviceClient);
-      Thread.Sleep(10000); // Wait for the changes to propagate
+      Thread.Sleep(10000); // Wait for hello changes toopropagate
 
       RunQueriesWithNonExistentTermsInIndex(indexClientForQueries);
 
-      Console.WriteLine("{0}", "Complete.  Press any key to end application...\n");
+      Console.WriteLine("{0}", "Complete.  Press any key tooend application...\n");
 
       Console.ReadKey();
   }
 ```
-<span data-ttu-id="6407b-124">В статье [Использование службы поиска Azure в приложении .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk) вы ознакомитесь с действиями по созданию и заполнению примера индекса.</span><span class="sxs-lookup"><span data-stu-id="6407b-124">The steps to create and populate the sample index are explained in [How to use Azure Search from a .NET Application](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).</span></span>
+<span data-ttu-id="31e6d-124">Здравствуйте toocreate действия и заполнение индекса образец hello приведены в [как toouse Azure поиска из приложения .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).</span><span class="sxs-lookup"><span data-stu-id="31e6d-124">hello steps toocreate and populate hello sample index are explained in [How toouse Azure Search from a .NET Application](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).</span></span>
 
-## <a name="before-queries"></a><span data-ttu-id="6407b-125">Запросы "до"</span><span class="sxs-lookup"><span data-stu-id="6407b-125">"Before" queries</span></span>
+## <a name="before-queries"></a><span data-ttu-id="31e6d-125">Запросы "до"</span><span class="sxs-lookup"><span data-stu-id="31e6d-125">"Before" queries</span></span>
 
-<span data-ttu-id="6407b-126">С помощью `RunQueriesWithNonExistentTermsInIndex` мы отправляли запросы на поиск таких терминов, как "пять звезд", "Интернет" и "отели среднего класса".</span><span class="sxs-lookup"><span data-stu-id="6407b-126">In `RunQueriesWithNonExistentTermsInIndex`, we issue search queries with "five star", "internet", and "economy AND hotel".</span></span>
+<span data-ttu-id="31e6d-126">С помощью `RunQueriesWithNonExistentTermsInIndex` мы отправляли запросы на поиск таких терминов, как "пять звезд", "Интернет" и "отели среднего класса".</span><span class="sxs-lookup"><span data-stu-id="31e6d-126">In `RunQueriesWithNonExistentTermsInIndex`, we issue search queries with "five star", "internet", and "economy AND hotel".</span></span>
 ```csharp
-Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
+Console.WriteLine("Search hello entire index for hello phrase \"five star\":\n");
 results = indexClient.Documents.Search<Hotel>("\"five star\"", parameters);
 WriteDocuments(results);
 
-Console.WriteLine("Search the entire index for the term 'internet':\n");
+Console.WriteLine("Search hello entire index for hello term 'internet':\n");
 results = indexClient.Documents.Search<Hotel>("internet", parameters);
 WriteDocuments(results);
 
-Console.WriteLine("Search the entire index for the terms 'economy' AND 'hotel':\n");
+Console.WriteLine("Search hello entire index for hello terms 'economy' AND 'hotel':\n");
 results = indexClient.Documents.Search<Hotel>("economy AND hotel", parameters);
 WriteDocuments(results);
 ```
-<span data-ttu-id="6407b-127">Ни в одном из двух индексированных документов нет этих выражений, поэтому мы используем следующие выходные данные из первой функции `RunQueriesWithNonExistentTermsInIndex`.</span><span class="sxs-lookup"><span data-stu-id="6407b-127">Neither of the two indexed documents contain the terms, so we get the following output from the first `RunQueriesWithNonExistentTermsInIndex`.</span></span>
+<span data-ttu-id="31e6d-127">Ни один из двух индексированных документов hello терминами hello, поэтому мы получаем следующие hello, выходные данные из hello сначала `RunQueriesWithNonExistentTermsInIndex`.</span><span class="sxs-lookup"><span data-stu-id="31e6d-127">Neither of hello two indexed documents contain hello terms, so we get hello following output from hello first `RunQueriesWithNonExistentTermsInIndex`.</span></span>
 ~~~
-Search the entire index for the phrase "five star":
+Search hello entire index for hello phrase "five star":
 
 no document matched
 
-Search the entire index for the term 'internet':
+Search hello entire index for hello term 'internet':
 
 no document matched
 
-Search the entire index for the terms 'economy' AND 'hotel':
+Search hello entire index for hello terms 'economy' AND 'hotel':
 
 no document matched
 ~~~
 
-## <a name="enable-synonyms"></a><span data-ttu-id="6407b-128">Включение поиска синонимов</span><span class="sxs-lookup"><span data-stu-id="6407b-128">Enable synonyms</span></span>
+## <a name="enable-synonyms"></a><span data-ttu-id="31e6d-128">Включение поиска синонимов</span><span class="sxs-lookup"><span data-stu-id="31e6d-128">Enable synonyms</span></span>
 
-<span data-ttu-id="6407b-129">Чтобы включить поиск синонимов, нам потребуется выполнить два действия.</span><span class="sxs-lookup"><span data-stu-id="6407b-129">Enabling synonyms is a two-step process.</span></span> <span data-ttu-id="6407b-130">Сначала нам необходимо определить и отправить правила синонимов, а затем настроить поля для их использования.</span><span class="sxs-lookup"><span data-stu-id="6407b-130">We first define and upload synonym rules and then configure fields to use them.</span></span> <span data-ttu-id="6407b-131">Описание этого процесса вы можете найти в `UploadSynonyms` и `EnableSynonymsInHotelsIndex`.</span><span class="sxs-lookup"><span data-stu-id="6407b-131">The process is outlined in `UploadSynonyms` and `EnableSynonymsInHotelsIndex`.</span></span>
+<span data-ttu-id="31e6d-129">Чтобы включить поиск синонимов, нам потребуется выполнить два действия.</span><span class="sxs-lookup"><span data-stu-id="31e6d-129">Enabling synonyms is a two-step process.</span></span> <span data-ttu-id="31e6d-130">Мы сначала определить и отправить правила синонима, а затем настройте поля toouse их.</span><span class="sxs-lookup"><span data-stu-id="31e6d-130">We first define and upload synonym rules and then configure fields toouse them.</span></span> <span data-ttu-id="31e6d-131">описывается процесс Hello в `UploadSynonyms` и `EnableSynonymsInHotelsIndex`.</span><span class="sxs-lookup"><span data-stu-id="31e6d-131">hello process is outlined in `UploadSynonyms` and `EnableSynonymsInHotelsIndex`.</span></span>
 
-1. <span data-ttu-id="6407b-132">Добавьте сопоставление синонимов в свою службу поиска.</span><span class="sxs-lookup"><span data-stu-id="6407b-132">Add a synonym map to your search service.</span></span> <span data-ttu-id="6407b-133">С помощью `UploadSynonyms` мы определим четыре правила в сопоставлении синонимов desc-synonymmap и добавим его в службу.</span><span class="sxs-lookup"><span data-stu-id="6407b-133">In `UploadSynonyms`, we define four rules in our synonym map 'desc-synonymmap' and upload to the service.</span></span>
+1. <span data-ttu-id="31e6d-132">Добавление службы поиска tooyour карты синоним.</span><span class="sxs-lookup"><span data-stu-id="31e6d-132">Add a synonym map tooyour search service.</span></span> <span data-ttu-id="31e6d-133">В `UploadSynonyms`, мы определить четыре правила в нашу карту синоним «desc synonymmap» и toohello служба отправки.</span><span class="sxs-lookup"><span data-stu-id="31e6d-133">In `UploadSynonyms`, we define four rules in our synonym map 'desc-synonymmap' and upload toohello service.</span></span>
 ```csharp
     var synonymMap = new SynonymMap()
     {
@@ -123,9 +123,9 @@ no document matched
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
 ```
-<span data-ttu-id="6407b-134">Сопоставление синонимов должно соответствовать стандартному формату `solr` с открытым кодом.</span><span class="sxs-lookup"><span data-stu-id="6407b-134">A synonym map must conform to the open source standard `solr` format.</span></span> <span data-ttu-id="6407b-135">Сведения об этом формате вы найдете в разделе `Apache Solr synonym format` статьи [Synonyms in Azure Search](search-synonyms.md) (Синонимы в Поиске Azure).</span><span class="sxs-lookup"><span data-stu-id="6407b-135">The format is explained in [Synonyms in Azure Search](search-synonyms.md) under the section `Apache Solr synonym format`.</span></span>
+<span data-ttu-id="31e6d-134">Карта синонима должно соответствовать toohello открытого стандарта `solr` формат.</span><span class="sxs-lookup"><span data-stu-id="31e6d-134">A synonym map must conform toohello open source standard `solr` format.</span></span> <span data-ttu-id="31e6d-135">Формат Hello описан в [синонимы в поиске Azure](search-synonyms.md) в разделе "hello" `Apache Solr synonym format`.</span><span class="sxs-lookup"><span data-stu-id="31e6d-135">hello format is explained in [Synonyms in Azure Search](search-synonyms.md) under hello section `Apache Solr synonym format`.</span></span>
 
-2. <span data-ttu-id="6407b-136">Настройте поля, поддерживающие поиск, чтобы использовать сопоставление синонимов в определении индекса.</span><span class="sxs-lookup"><span data-stu-id="6407b-136">Configure searchable fields to use the synonym map in the index definition.</span></span> <span data-ttu-id="6407b-137">С помощью `EnableSynonymsInHotelsIndex` мы можем включить поиск синонимов для двух полей — `category` и `tags`. Для этого необходимо задать свойство `synonymMaps` для имени добавленного сопоставления синонимов.</span><span class="sxs-lookup"><span data-stu-id="6407b-137">In `EnableSynonymsInHotelsIndex`, we enable synonyms on two fields `category` and `tags` by setting the `synonymMaps` property to the name of the newly uploaded synonym map.</span></span>
+2. <span data-ttu-id="31e6d-136">Настройка поля поиска toouse hello синоним схемы в определении индекса hello.</span><span class="sxs-lookup"><span data-stu-id="31e6d-136">Configure searchable fields toouse hello synonym map in hello index definition.</span></span> <span data-ttu-id="31e6d-137">В `EnableSynonymsInHotelsIndex`, мы можем добавить синонимы по двум полям `category` и `tags` путем установки hello `synonymMaps` имя свойства toohello hello вновь отправлен карты синоним.</span><span class="sxs-lookup"><span data-stu-id="31e6d-137">In `EnableSynonymsInHotelsIndex`, we enable synonyms on two fields `category` and `tags` by setting hello `synonymMaps` property toohello name of hello newly uploaded synonym map.</span></span>
 ```csharp
   Index index = serviceClient.Indexes.Get("hotels");
   index.Fields.First(f => f.Name == "category").SynonymMaps = new[] { "desc-synonymmap" };
@@ -133,37 +133,37 @@ no document matched
 
   serviceClient.Indexes.CreateOrUpdate(index);
 ```
-<span data-ttu-id="6407b-138">Когда вы добавите сопоставление синонимов, необходимость в перестроении индексов отпадет.</span><span class="sxs-lookup"><span data-stu-id="6407b-138">When you add a synonym map, index rebuilds are not required.</span></span> <span data-ttu-id="6407b-139">Чтобы использовать новое сопоставление синонимов, вы можете добавить это сопоставление в свою службу, а затем изменить существующие определения полей в любом индексе.</span><span class="sxs-lookup"><span data-stu-id="6407b-139">You can add a synonym map to your service, and then amend existing field definitions in any index to use the new synonym map.</span></span> <span data-ttu-id="6407b-140">Добавление новых атрибутов никак не скажется на доступности индексов.</span><span class="sxs-lookup"><span data-stu-id="6407b-140">The addition of new attributes has no impact on index availability.</span></span> <span data-ttu-id="6407b-141">То же относится и к отключению поиска синонимов для поля.</span><span class="sxs-lookup"><span data-stu-id="6407b-141">The same applies in disabling synonyms for a field.</span></span> <span data-ttu-id="6407b-142">Вы можете просто задать для пустого списка свойство `synonymMaps`.</span><span class="sxs-lookup"><span data-stu-id="6407b-142">You can simply set the `synonymMaps` property to an empty list.</span></span>
+<span data-ttu-id="31e6d-138">Когда вы добавите сопоставление синонимов, необходимость в перестроении индексов отпадет.</span><span class="sxs-lookup"><span data-stu-id="31e6d-138">When you add a synonym map, index rebuilds are not required.</span></span> <span data-ttu-id="31e6d-139">Добавление службы tooyour синоним карты и затем измените существующие определения полей в любой индекс toouse hello нового синонима карты.</span><span class="sxs-lookup"><span data-stu-id="31e6d-139">You can add a synonym map tooyour service, and then amend existing field definitions in any index toouse hello new synonym map.</span></span> <span data-ttu-id="31e6d-140">Добавление новых атрибутов Hello не оказывает влияния на доступность индекса.</span><span class="sxs-lookup"><span data-stu-id="31e6d-140">hello addition of new attributes has no impact on index availability.</span></span> <span data-ttu-id="31e6d-141">Здравствуйте, же правило применяется к выключению синонимы для поля.</span><span class="sxs-lookup"><span data-stu-id="31e6d-141">hello same applies in disabling synonyms for a field.</span></span> <span data-ttu-id="31e6d-142">Достаточно просто задать hello `synonymMaps` свойство tooan пустой список.</span><span class="sxs-lookup"><span data-stu-id="31e6d-142">You can simply set hello `synonymMaps` property tooan empty list.</span></span>
 ```csharp
   index.Fields.First(f => f.Name == "category").SynonymMaps = new List<string>();
 ```
 
-## <a name="after-queries"></a><span data-ttu-id="6407b-143">Запросы "после"</span><span class="sxs-lookup"><span data-stu-id="6407b-143">"After" queries</span></span>
+## <a name="after-queries"></a><span data-ttu-id="31e6d-143">Запросы "после"</span><span class="sxs-lookup"><span data-stu-id="31e6d-143">"After" queries</span></span>
 
-<span data-ttu-id="6407b-144">После добавления сопоставления синонимов и обновления индекса, необходимых для использования этого сопоставления, мы получаем следующие выходные данные, вызвав функцию `RunQueriesWithNonExistentTermsInIndex` второй раз:</span><span class="sxs-lookup"><span data-stu-id="6407b-144">After the synonym map is uploaded and the index is updated to use the synonym map, the second `RunQueriesWithNonExistentTermsInIndex` call outputs the following:</span></span>
+<span data-ttu-id="31e6d-144">После отправки карты синоним hello и индекс hello обновленные toouse hello синоним карты, во-вторых hello `RunQueriesWithNonExistentTermsInIndex` вызова выводит hello следующее:</span><span class="sxs-lookup"><span data-stu-id="31e6d-144">After hello synonym map is uploaded and hello index is updated toouse hello synonym map, hello second `RunQueriesWithNonExistentTermsInIndex` call outputs hello following:</span></span>
 
 ~~~
-Search the entire index for the phrase "five star":
+Search hello entire index for hello phrase "five star":
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]
 
-Search the entire index for the term 'internet':
+Search hello entire index for hello term 'internet':
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]
 
-Search the entire index for the terms 'economy' AND 'hotel':
+Search hello entire index for hello terms 'economy' AND 'hotel':
 
 Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ~~~
-<span data-ttu-id="6407b-145">Первый запрос находит документ из правила `five star=>luxury`.</span><span class="sxs-lookup"><span data-stu-id="6407b-145">The first query finds the document from the rule `five star=>luxury`.</span></span> <span data-ttu-id="6407b-146">Для второго запроса поиск расширяется с помощью термина `internet,wifi`, а для третьего при поиске соответствующих документов используются оба термина запросов — `hotel, motel` и `economy,inexpensive=>budget`.</span><span class="sxs-lookup"><span data-stu-id="6407b-146">The second query expands the search using `internet,wifi` and the third using both `hotel, motel` and `economy,inexpensive=>budget` in finding the documents they matched.</span></span>
+<span data-ttu-id="31e6d-145">первый запрос Hello находит hello документа из правила hello `five star=>luxury`.</span><span class="sxs-lookup"><span data-stu-id="31e6d-145">hello first query finds hello document from hello rule `five star=>luxury`.</span></span> <span data-ttu-id="31e6d-146">Hello второй запрос расширяет hello поиска с помощью `internet,wifi` и hello в-третьих, используя оба `hotel, motel` и `economy,inexpensive=>budget` в поиск документов hello их соответствие.</span><span class="sxs-lookup"><span data-stu-id="31e6d-146">hello second query expands hello search using `internet,wifi` and hello third using both `hotel, motel` and `economy,inexpensive=>budget` in finding hello documents they matched.</span></span>
 
-<span data-ttu-id="6407b-147">Добавление синонимов полностью изменяет возможности поиска.</span><span class="sxs-lookup"><span data-stu-id="6407b-147">Adding synonyms completely changes the search experience.</span></span> <span data-ttu-id="6407b-148">При работе с этим руководством исходным запросам не удалось вернуть информативные результаты, несмотря на соответствующие документы в индексе.</span><span class="sxs-lookup"><span data-stu-id="6407b-148">In this tutorial, the original queries failed to return meaningful results even though the documents in our index were relevant.</span></span> <span data-ttu-id="6407b-149">Включив поиск синонимов, мы можем расширить индекс, чтобы включить распространенные термины, не изменяя при этом базовые данные в индексе.</span><span class="sxs-lookup"><span data-stu-id="6407b-149">By enabling synonyms, we can expand an index to include terms in common use, with no changes to underlying data in the index.</span></span>
+<span data-ttu-id="31e6d-147">Добавление синонимов полностью изменяет интерфейс поиска hello.</span><span class="sxs-lookup"><span data-stu-id="31e6d-147">Adding synonyms completely changes hello search experience.</span></span> <span data-ttu-id="31e6d-148">В этом учебнике hello исходного запросов не tooreturn значимые результаты, даже если документы hello в наш индекс, соответствовали.</span><span class="sxs-lookup"><span data-stu-id="31e6d-148">In this tutorial, hello original queries failed tooreturn meaningful results even though hello documents in our index were relevant.</span></span> <span data-ttu-id="31e6d-149">Включение синонимы, мы разверните tooinclude индекс часто применяемые условия без данных toounderlying изменения в индекс hello.</span><span class="sxs-lookup"><span data-stu-id="31e6d-149">By enabling synonyms, we can expand an index tooinclude terms in common use, with no changes toounderlying data in hello index.</span></span>
 
-## <a name="sample-application-source-code"></a><span data-ttu-id="6407b-150">Исходный код образца приложения</span><span class="sxs-lookup"><span data-stu-id="6407b-150">Sample application source code</span></span>
-<span data-ttu-id="6407b-151">Полный исходный код образца приложения, используемого в этом пошаговом руководстве, см. в репозитории [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).</span><span class="sxs-lookup"><span data-stu-id="6407b-151">You can find the full source code of the sample application used in this walk through on [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).</span></span>
+## <a name="sample-application-source-code"></a><span data-ttu-id="31e6d-150">Исходный код образца приложения</span><span class="sxs-lookup"><span data-stu-id="31e6d-150">Sample application source code</span></span>
+<span data-ttu-id="31e6d-151">Можно найти hello полный исходный код образца приложения hello, используемые в этом пошагового на [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).</span><span class="sxs-lookup"><span data-stu-id="31e6d-151">You can find hello full source code of hello sample application used in this walk through on [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="6407b-152">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="6407b-152">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="31e6d-152">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="31e6d-152">Next steps</span></span>
 
-* <span data-ttu-id="6407b-153">Ознакомьтесь со сведениями об [использовании синонимов в Поиске Azure](search-synonyms.md).</span><span class="sxs-lookup"><span data-stu-id="6407b-153">Review [How to use synonyms in Azure Search](search-synonyms.md)</span></span>
-* <span data-ttu-id="6407b-154">Ознакомьтесь с [документацией по API REST для синонимов](https://aka.ms/rgm6rq).</span><span class="sxs-lookup"><span data-stu-id="6407b-154">Review [Synonyms REST API documentation](https://aka.ms/rgm6rq)</span></span>
-* <span data-ttu-id="6407b-155">Изучите справочную информацию о [пакете SDK для .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) и [REST API](https://docs.microsoft.com/rest/api/searchservice/).</span><span class="sxs-lookup"><span data-stu-id="6407b-155">Browse the references for the [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) and [REST API](https://docs.microsoft.com/rest/api/searchservice/).</span></span>
+* <span data-ttu-id="31e6d-153">Просмотрите [как синонимы toouse в поиске Azure](search-synonyms.md)</span><span class="sxs-lookup"><span data-stu-id="31e6d-153">Review [How toouse synonyms in Azure Search](search-synonyms.md)</span></span>
+* <span data-ttu-id="31e6d-154">Ознакомьтесь с [документацией по API REST для синонимов](https://aka.ms/rgm6rq).</span><span class="sxs-lookup"><span data-stu-id="31e6d-154">Review [Synonyms REST API documentation](https://aka.ms/rgm6rq)</span></span>
+* <span data-ttu-id="31e6d-155">Обзор hello ссылки для hello [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) и [API-интерфейса REST](https://docs.microsoft.com/rest/api/searchservice/).</span><span class="sxs-lookup"><span data-stu-id="31e6d-155">Browse hello references for hello [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) and [REST API](https://docs.microsoft.com/rest/api/searchservice/).</span></span>

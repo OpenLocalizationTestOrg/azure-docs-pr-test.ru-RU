@@ -1,6 +1,6 @@
 ---
-title: "Защита развертывания Интернета вещей Azure | Документация Майкрософт"
-description: "Защита развертывания Интернета вещей. Эта статья содержит рекомендации по обеспечению безопасности при подготовке, подключении и получении доступа на устройствах к службе устройств Центра Интернета вещей."
+title: "aaaSecure развертывания Azure IoT | Документы Microsoft"
+description: "Как toosecure IoT развертывания. Содержит рекомендации по безопасности подготовки устройства, соединений и toohello доступа центра IoT службы."
 services: iot-hub
 documentationcenter: 
 author: YuriDio
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.openlocfilehash: 47a3a2973c2b2c7c104d6c404573801375723182
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0fc71f5ed2747531360eaebbbaab21b1ff268520
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 
-## <a name="see-also"></a><span data-ttu-id="c9c70-104">Дополнительные материалы</span><span class="sxs-lookup"><span data-stu-id="c9c70-104">See also</span></span>
-<span data-ttu-id="c9c70-105">Для дальнейшего изучения возможностей центра IoT см. следующие статьи:</span><span class="sxs-lookup"><span data-stu-id="c9c70-105">To further explore the capabilities of IoT Hub, see:</span></span>
+## <a name="see-also"></a><span data-ttu-id="02b7e-104">См. также</span><span class="sxs-lookup"><span data-stu-id="02b7e-104">See also</span></span>
+<span data-ttu-id="02b7e-105">Изучение возможностей hello центра IoT toofurther см. в разделе:</span><span class="sxs-lookup"><span data-stu-id="02b7e-105">toofurther explore hello capabilities of IoT Hub, see:</span></span>
 
-* <span data-ttu-id="c9c70-106">[Отправка сообщений с устройства в облако с помощью имитации устройства (Linux) с использованием Edge Интернета вещей Azure][lnk-iotedge]</span><span class="sxs-lookup"><span data-stu-id="c9c70-106">[Simulating a device with Azure IoT Edge][lnk-iotedge]</span></span>
+* <span data-ttu-id="02b7e-106">[Отправка сообщений с устройства в облако с помощью имитации устройства (Linux) с использованием Edge Интернета вещей Azure][lnk-iotedge]</span><span class="sxs-lookup"><span data-stu-id="02b7e-106">[Simulating a device with Azure IoT Edge][lnk-iotedge]</span></span>
 
 [lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md

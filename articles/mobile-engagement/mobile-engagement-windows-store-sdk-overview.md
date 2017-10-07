@@ -1,5 +1,5 @@
 ---
-title: "Интеграция пакета SDK универсальных приложений Windows для Служб мобильного взаимодействия Azure | Документация Майкрософт"
+title: "aaaAzure универсальной интеграции пакета SDK Mobile Engagement Windows | Документы Microsoft"
 description: "Интеграция универсальных приложений для Windows с пакетом SDK для Служб мобильного взаимодействия Azure"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,63 +14,63 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2f88e58adb349a2a4eb43b0f182f99b3e8b8cfd4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="windows-universal-sdk-integration-for-azure-mobile-engagement"></a><span data-ttu-id="0846d-103">Интеграция пакета SDK универсальных приложений для Windows для Служб мобильного взаимодействия Azure</span><span class="sxs-lookup"><span data-stu-id="0846d-103">Windows Universal SDK Integration for Azure Mobile Engagement</span></span>
-<span data-ttu-id="0846d-104">В этом документе описываются все параметры интеграции и конфигурации, доступные для пакета SDK универсальных приложений для Windows для Служб мобильного взаимодействия Azure.</span><span class="sxs-lookup"><span data-stu-id="0846d-104">This document describes all the integration and configuration options available for the Azure Mobile Engagement Windows Universal SDK.</span></span>
+# <a name="windows-universal-sdk-integration-for-azure-mobile-engagement"></a><span data-ttu-id="99263-103">Интеграция пакета SDK универсальных приложений для Windows для Служб мобильного взаимодействия Azure</span><span class="sxs-lookup"><span data-stu-id="99263-103">Windows Universal SDK Integration for Azure Mobile Engagement</span></span>
+<span data-ttu-id="99263-104">В этом документе приводится описание всех hello интеграции и настройки параметров для универсальной SDK Azure Mobile Engagement Windows hello.</span><span class="sxs-lookup"><span data-stu-id="99263-104">This document describes all hello integration and configuration options available for hello Azure Mobile Engagement Windows Universal SDK.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="0846d-105">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="0846d-105">Prerequisites</span></span>
-<span data-ttu-id="0846d-106">Прежде чем приступить к этому учебнику, необходимо изучить [наш 15-минутный учебник](mobile-engagement-windows-store-dotnet-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="0846d-106">Before starting this tutorial, you must first complete our [15-minute tutorial](mobile-engagement-windows-store-dotnet-get-started.md).</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="99263-105">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="99263-105">Prerequisites</span></span>
+<span data-ttu-id="99263-106">Прежде чем приступить к этому учебнику, необходимо изучить [наш 15-минутный учебник](mobile-engagement-windows-store-dotnet-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="99263-106">Before starting this tutorial, you must first complete our [15-minute tutorial](mobile-engagement-windows-store-dotnet-get-started.md).</span></span>
 
-## <a name="advanced-features"></a><span data-ttu-id="0846d-107">Дополнительные функции</span><span class="sxs-lookup"><span data-stu-id="0846d-107">Advanced features</span></span>
-### <a name="reporting-features"></a><span data-ttu-id="0846d-108">Функции отчетов</span><span class="sxs-lookup"><span data-stu-id="0846d-108">Reporting features</span></span>
-<span data-ttu-id="0846d-109">Можно добавить такие функции:</span><span class="sxs-lookup"><span data-stu-id="0846d-109">You can add these features:</span></span>
+## <a name="advanced-features"></a><span data-ttu-id="99263-107">Дополнительные функции</span><span class="sxs-lookup"><span data-stu-id="99263-107">Advanced features</span></span>
+### <a name="reporting-features"></a><span data-ttu-id="99263-108">Функции отчетов</span><span class="sxs-lookup"><span data-stu-id="99263-108">Reporting features</span></span>
+<span data-ttu-id="99263-109">Можно добавить такие функции:</span><span class="sxs-lookup"><span data-stu-id="99263-109">You can add these features:</span></span>
 
-1. [<span data-ttu-id="0846d-110">дополнительные параметры отчетов;</span><span class="sxs-lookup"><span data-stu-id="0846d-110">Advanced reporting options</span></span>](mobile-engagement-windows-store-advanced-reporting.md)
-2. [<span data-ttu-id="0846d-111">Расширенные параметры конфигурации</span><span class="sxs-lookup"><span data-stu-id="0846d-111">Advanced configuration options</span></span>](mobile-engagement-windows-store-advanced-configuration.md)
+1. [<span data-ttu-id="99263-110">дополнительные параметры отчетов;</span><span class="sxs-lookup"><span data-stu-id="99263-110">Advanced reporting options</span></span>](mobile-engagement-windows-store-advanced-reporting.md)
+2. [<span data-ttu-id="99263-111">Расширенные параметры конфигурации</span><span class="sxs-lookup"><span data-stu-id="99263-111">Advanced configuration options</span></span>](mobile-engagement-windows-store-advanced-configuration.md)
 
-### <a name="notifications"></a><span data-ttu-id="0846d-112">Уведомления</span><span class="sxs-lookup"><span data-stu-id="0846d-112">Notifications</span></span>
-[<span data-ttu-id="0846d-113">Как интегрировать Reach (Notifications) в универсальное приложение для Windows</span><span class="sxs-lookup"><span data-stu-id="0846d-113">How to integrate Reach (Notifications) in your Windows Universal app</span></span>](mobile-engagement-windows-store-integrate-engagement-reach.md)
+### <a name="notifications"></a><span data-ttu-id="99263-112">Уведомления</span><span class="sxs-lookup"><span data-stu-id="99263-112">Notifications</span></span>
+[<span data-ttu-id="99263-113">Как toointegrate Reach (уведомлений) в приложении Windows Universal.</span><span class="sxs-lookup"><span data-stu-id="99263-113">How toointegrate Reach (Notifications) in your Windows Universal app</span></span>](mobile-engagement-windows-store-integrate-engagement-reach.md)
 
-### <a name="tag-plan-implementation"></a><span data-ttu-id="0846d-114">Реализация плана добавления тегов:</span><span class="sxs-lookup"><span data-stu-id="0846d-114">Tag plan implementation:</span></span>
-[<span data-ttu-id="0846d-115">Как использовать API для расширенного добавления тегов Служб мобильного взаимодействия в универсальном приложении для Windows</span><span class="sxs-lookup"><span data-stu-id="0846d-115">How to use the advanced Mobile Engagement tagging API in your Windows Universal app</span></span>](mobile-engagement-windows-store-use-engagement-api.md)
+### <a name="tag-plan-implementation"></a><span data-ttu-id="99263-114">Реализация плана добавления тегов:</span><span class="sxs-lookup"><span data-stu-id="99263-114">Tag plan implementation:</span></span>
+[<span data-ttu-id="99263-115">Как toouse hello advanced мобильного охвата, добавление тегов API в приложении Windows Universal.</span><span class="sxs-lookup"><span data-stu-id="99263-115">How toouse hello advanced Mobile Engagement tagging API in your Windows Universal app</span></span>](mobile-engagement-windows-store-use-engagement-api.md)
 
-## <a name="release-notes"></a><span data-ttu-id="0846d-116">Заметки о выпуске</span><span class="sxs-lookup"><span data-stu-id="0846d-116">Release notes</span></span>
-### <a name="341-11032016"></a><span data-ttu-id="0846d-117">3.4.1 (03.11.2016)</span><span class="sxs-lookup"><span data-stu-id="0846d-117">3.4.1 (11/03/2016)</span></span>
+## <a name="release-notes"></a><span data-ttu-id="99263-116">Заметки о выпуске</span><span class="sxs-lookup"><span data-stu-id="99263-116">Release notes</span></span>
+### <a name="341-11032016"></a><span data-ttu-id="99263-117">3.4.1 (03.11.2016)</span><span class="sxs-lookup"><span data-stu-id="99263-117">3.4.1 (11/03/2016)</span></span>
 
-* <span data-ttu-id="0846d-118">Улучшение стабильности.</span><span class="sxs-lookup"><span data-stu-id="0846d-118">Stability improvements.</span></span>
+* <span data-ttu-id="99263-118">Улучшение стабильности.</span><span class="sxs-lookup"><span data-stu-id="99263-118">Stability improvements.</span></span>
 
-<span data-ttu-id="0846d-119">Сведения о предыдущих версиях см. в [полных заметках о выпуске](mobile-engagement-windows-store-release-notes.md).</span><span class="sxs-lookup"><span data-stu-id="0846d-119">For earlier versions, see the [complete release notes](mobile-engagement-windows-store-release-notes.md)</span></span>
+<span data-ttu-id="99263-119">Для более ранних версий, в разделе hello [завершения заметки о выпуске](mobile-engagement-windows-store-release-notes.md)</span><span class="sxs-lookup"><span data-stu-id="99263-119">For earlier versions, see hello [complete release notes](mobile-engagement-windows-store-release-notes.md)</span></span>
 
-## <a name="upgrade-procedures"></a><span data-ttu-id="0846d-120">Процедуры обновления</span><span class="sxs-lookup"><span data-stu-id="0846d-120">Upgrade procedures</span></span>
-<span data-ttu-id="0846d-121">Если вы уже интегрировали в приложение старую версию службы Engagement, при обновлении пакета SDK необходимо учитывать следующее.</span><span class="sxs-lookup"><span data-stu-id="0846d-121">If you already have integrated an older version of Engagement into your application, you have to consider the following points when upgrading the SDK.</span></span>
+## <a name="upgrade-procedures"></a><span data-ttu-id="99263-120">Процедуры обновления</span><span class="sxs-lookup"><span data-stu-id="99263-120">Upgrade procedures</span></span>
+<span data-ttu-id="99263-121">Если уже имеется встроенный более старой версии участия в приложение, у вас есть hello tooconsider при обновлении hello SDK следующие точки.</span><span class="sxs-lookup"><span data-stu-id="99263-121">If you already have integrated an older version of Engagement into your application, you have tooconsider hello following points when upgrading hello SDK.</span></span>
 
-<span data-ttu-id="0846d-122">Если вы пропустили несколько версий пакета SDK, то вам понадобится выполнить несколько процедур.</span><span class="sxs-lookup"><span data-stu-id="0846d-122">If you missed several versions of the SDK, you may have to follow several procedures.</span></span> <span data-ttu-id="0846d-123">Посмотрите полные [процедуры обновления](mobile-engagement-windows-store-upgrade-procedure.md).</span><span class="sxs-lookup"><span data-stu-id="0846d-123">See the complete [Upgrade Procedures](mobile-engagement-windows-store-upgrade-procedure.md).</span></span> <span data-ttu-id="0846d-124">Например, при миграции с версии 0.10.1 в версию 0.11.0 необходимо сначала выполнить процедуру миграции «с 0.9.0 в 0.10.1», а затем процедуру миграции «с 0.10.1 в 0.11.0».</span><span class="sxs-lookup"><span data-stu-id="0846d-124">For example if you migrate from 0.10.1 to 0.11.0 you have to first follow the "from 0.9.0 to 0.10.1" procedure then the "from 0.10.1 to 0.11.0" procedure.</span></span>
+<span data-ttu-id="99263-122">Если вы пропустили несколько версий пакета SDK для hello, возможно toofollow несколько процедур.</span><span class="sxs-lookup"><span data-stu-id="99263-122">If you missed several versions of hello SDK, you may have toofollow several procedures.</span></span> <span data-ttu-id="99263-123">См. полный hello [обновление процедуры](mobile-engagement-windows-store-upgrade-procedure.md).</span><span class="sxs-lookup"><span data-stu-id="99263-123">See hello complete [Upgrade Procedures](mobile-engagement-windows-store-upgrade-procedure.md).</span></span> <span data-ttu-id="99263-124">Например, если выполняется миграция из 0.10.1 too0.11.0, у вас есть toofirst выполните hello» из 0.9.0 too0.10.1» процедуры, а затем hello» из 0.10.1 too0.11.0» процедуры.</span><span class="sxs-lookup"><span data-stu-id="99263-124">For example if you migrate from 0.10.1 too0.11.0 you have toofirst follow hello "from 0.9.0 too0.10.1" procedure then hello "from 0.10.1 too0.11.0" procedure.</span></span>
 
-### <a name="from-330-to-340"></a><span data-ttu-id="0846d-125">С 3.3.0 в 3.4.0</span><span class="sxs-lookup"><span data-stu-id="0846d-125">From 3.3.0 to 3.4.0</span></span>
-#### <a name="test-logs"></a><span data-ttu-id="0846d-126">Журналы тестирования</span><span class="sxs-lookup"><span data-stu-id="0846d-126">Test logs</span></span>
-<span data-ttu-id="0846d-127">Теперь журналы консоли, созданные с помощью пакета SDK, можно включать, отключать или фильтровать.</span><span class="sxs-lookup"><span data-stu-id="0846d-127">Console logs produced by the SDK can now be enabled/disabled/filtered.</span></span> <span data-ttu-id="0846d-128">Для настройки обновите свойство `EngagementAgent.Instance.TestLogEnabled`, присвоив ему одно из значений, доступных в перечислении `EngagementTestLogLevel`, например:</span><span class="sxs-lookup"><span data-stu-id="0846d-128">To customize, update the property `EngagementAgent.Instance.TestLogEnabled` to one of the values available from the `EngagementTestLogLevel` enumeration, for instance:</span></span>
+### <a name="from-330-too340"></a><span data-ttu-id="99263-125">Из 3.3.0 too3.4.0</span><span class="sxs-lookup"><span data-stu-id="99263-125">From 3.3.0 too3.4.0</span></span>
+#### <a name="test-logs"></a><span data-ttu-id="99263-126">Журналы тестирования</span><span class="sxs-lookup"><span data-stu-id="99263-126">Test logs</span></span>
+<span data-ttu-id="99263-127">Журналы консоли, созданные hello SDK теперь может быть включен и отключен и фильтруются.</span><span class="sxs-lookup"><span data-stu-id="99263-127">Console logs produced by hello SDK can now be enabled/disabled/filtered.</span></span> <span data-ttu-id="99263-128">toocustomize обновить свойство hello `EngagementAgent.Instance.TestLogEnabled` tooone hello значений, доступных из hello `EngagementTestLogLevel` перечисления, например:</span><span class="sxs-lookup"><span data-stu-id="99263-128">toocustomize, update hello property `EngagementAgent.Instance.TestLogEnabled` tooone of hello values available from hello `EngagementTestLogLevel` enumeration, for instance:</span></span>
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
-#### <a name="resources"></a><span data-ttu-id="0846d-129">Ресурсы</span><span class="sxs-lookup"><span data-stu-id="0846d-129">Resources</span></span>
-<span data-ttu-id="0846d-130">Было улучшено наложение Reach.</span><span class="sxs-lookup"><span data-stu-id="0846d-130">The Reach overlay has been improved.</span></span> <span data-ttu-id="0846d-131">Оно входит в состав ресурсов пакета SDK NuGet.</span><span class="sxs-lookup"><span data-stu-id="0846d-131">It is part of the SDK NuGet package resources.</span></span>
+#### <a name="resources"></a><span data-ttu-id="99263-129">Ресурсы</span><span class="sxs-lookup"><span data-stu-id="99263-129">Resources</span></span>
+<span data-ttu-id="99263-130">Улучшена Hello Reach наложения.</span><span class="sxs-lookup"><span data-stu-id="99263-130">hello Reach overlay has been improved.</span></span> <span data-ttu-id="99263-131">Он является частью ресурсы пакета SDK NuGet hello.</span><span class="sxs-lookup"><span data-stu-id="99263-131">It is part of hello SDK NuGet package resources.</span></span>
 
-<span data-ttu-id="0846d-132">Во время обновления до новой версии пакета SDK можно выбрать возможность сохранения существующих файлов из папки наложения для ресурсов.</span><span class="sxs-lookup"><span data-stu-id="0846d-132">While upgrading to the new version of the SDK, you can choose whether you want to keep your existing files from the overlay folder of your resources or not:</span></span>
+<span data-ttu-id="99263-132">При обновлении toohello новую версию пакета SDK для hello, можно выбрать, следует tookeep ли существующие файлы из hello наложения папки ресурсов или нет.</span><span class="sxs-lookup"><span data-stu-id="99263-132">While upgrading toohello new version of hello SDK, you can choose whether you want tookeep your existing files from hello overlay folder of your resources or not:</span></span>
 
-* <span data-ttu-id="0846d-133">Если вы используете предыдущее наложение или интегрируете элементы `WebView` вручную, можно оставить существующие файлы — наложение будет работать.</span><span class="sxs-lookup"><span data-stu-id="0846d-133">If the previous overlay is working for you, or you are integrating the `WebView` elements manually, then you can decide to keep your exiting files, it will still work.</span></span>
-* <span data-ttu-id="0846d-134">Чтобы выполнить обновление до нового наложения, замените всю папку `overlay` из ресурсов на новую из пакета SDK (приложения UWP: после обновления можно получить новую папку наложения из %USERPROFILE%\\.nuget\packages\MicrosoftAzure.MobileEngagement\3.4.0\content\win81\Resources).</span><span class="sxs-lookup"><span data-stu-id="0846d-134">To update to the new overlay, replace the whole `overlay` folder from your resources with the new one from the SDK package (UWP apps: after the upgrade, you can get the new overlay folder from %USERPROFILE%\\.nuget\packages\MicrosoftAzure.MobileEngagement\3.4.0\content\win81\Resources).</span></span>
+* <span data-ttu-id="99263-133">Если предыдущих наложения hello работает для вас или интеграции hello `WebView` элементы вручную, можно указать tookeep на выход из файлов, она по-прежнему будет работать.</span><span class="sxs-lookup"><span data-stu-id="99263-133">If hello previous overlay is working for you, or you are integrating hello `WebView` elements manually, then you can decide tookeep your exiting files, it will still work.</span></span>
+* <span data-ttu-id="99263-134">новый наложения toohello tooupdate, hello замены всего `overlay` папку из ресурсов с hello новый из пакета SDK для hello (приложений UWP: после обновления hello можно получить hello наложения папку % USERPROFILE %\\.nuget\packages\ MicrosoftAzure.MobileEngagement\3.4.0\content\win81\Resources).</span><span class="sxs-lookup"><span data-stu-id="99263-134">tooupdate toohello new overlay, replace hello whole `overlay` folder from your resources with hello new one from hello SDK package (UWP apps: after hello upgrade, you can get hello new overlay folder from %USERPROFILE%\\.nuget\packages\MicrosoftAzure.MobileEngagement\3.4.0\content\win81\Resources).</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="0846d-135">Новое наложение перезапишет изменения, внесенные в предыдущую версию.</span><span class="sxs-lookup"><span data-stu-id="0846d-135">Using the new overlay overwrites any customizations made on the previous version.</span></span>
+> <span data-ttu-id="99263-135">С помощью нового наложения hello перезаписывает все настройки, произведенные в предыдущей версии hello.</span><span class="sxs-lookup"><span data-stu-id="99263-135">Using hello new overlay overwrites any customizations made on hello previous version.</span></span>
 > 
 > 
 
-### <a name="upgrade-from-older-versions"></a><span data-ttu-id="0846d-136">Обновление предыдущих версий</span><span class="sxs-lookup"><span data-stu-id="0846d-136">Upgrade from older versions</span></span>
-<span data-ttu-id="0846d-137">См. статью [Процедуры обновления SDK универсальных приложений для Windows](mobile-engagement-windows-store-upgrade-procedure.md).</span><span class="sxs-lookup"><span data-stu-id="0846d-137">See [Upgrade Procedures](mobile-engagement-windows-store-upgrade-procedure.md)</span></span>
+### <a name="upgrade-from-older-versions"></a><span data-ttu-id="99263-136">Обновление предыдущих версий</span><span class="sxs-lookup"><span data-stu-id="99263-136">Upgrade from older versions</span></span>
+<span data-ttu-id="99263-137">См. статью [Процедуры обновления SDK универсальных приложений для Windows](mobile-engagement-windows-store-upgrade-procedure.md).</span><span class="sxs-lookup"><span data-stu-id="99263-137">See [Upgrade Procedures](mobile-engagement-windows-store-upgrade-procedure.md)</span></span>
 

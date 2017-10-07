@@ -1,5 +1,5 @@
 ---
-title: "Идентификация Azure | Документация Майкрософт"
+title: "aaaAzure удостоверений | Документы Microsoft"
 description: "Узнайте, как использовать Azure Active Directory."
 services: active-directory
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/26/2017
 ms.author: Jeff.Gilbert
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0b04382124894edc3a250fe2422e32a8cc298778
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e57890c9c3c99ad5d61dc775a2387fd312253360
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="the-fundamentals-of-azure-identity-management"></a><span data-ttu-id="43dbf-103">Основы управления удостоверениями Azure</span><span class="sxs-lookup"><span data-stu-id="43dbf-103">The fundamentals of Azure identity management</span></span>
+# <a name="hello-fundamentals-of-azure-identity-management"></a><span data-ttu-id="30399-103">Основные принципы управления удостоверениями Azure Hello</span><span class="sxs-lookup"><span data-stu-id="30399-103">hello fundamentals of Azure identity management</span></span>
 [!INCLUDE [identity](../../includes/identity.md)]

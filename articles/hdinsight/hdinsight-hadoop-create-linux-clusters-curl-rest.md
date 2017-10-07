@@ -1,6 +1,6 @@
 ---
-title: "Создание кластеров Hadoop с помощью REST API Azure | Документы Майкрософт"
-description: "Узнайте, как создавать кластеры HDInsight, отправив шаблоны Azure Resource Manager в Azure REST API."
+title: "aaaCreate Hadoop кластеры, использующие Azure REST API - Azure | Документы Microsoft"
+description: "Узнайте, как кластеры toocreate HDInsight, отправляя toohello шаблонов диспетчера ресурсов Azure Azure REST API."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,31 +16,31 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/10/2017
 ms.author: larryfr
-ms.openlocfilehash: a36a41c231472ceeeb46d02ddb65549b1c79728a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 87b585e5084eccdc3d7c57483deabb4ad6e32597
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-hadoop-clusters-using-the-azure-rest-api"></a><span data-ttu-id="271cc-103">Создание кластеров Hadoop с помощью Azure REST API</span><span class="sxs-lookup"><span data-stu-id="271cc-103">Create Hadoop clusters using the Azure REST API</span></span>
+# <a name="create-hadoop-clusters-using-hello-azure-rest-api"></a><span data-ttu-id="fed39-103">Создавать кластеры Hadoop, с помощью Azure REST API hello</span><span class="sxs-lookup"><span data-stu-id="fed39-103">Create Hadoop clusters using hello Azure REST API</span></span>
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-<span data-ttu-id="271cc-104">Узнайте, как создавать кластеры HDInsight с помощью шаблонов Azure Resource Manager и Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="271cc-104">Learn how to create an HDInsight cluster using an Azure Resource Manager template and the Azure REST API.</span></span>
+<span data-ttu-id="fed39-104">Узнайте, как toocreate HDInsight кластера с помощью шаблона диспетчера ресурсов Azure и hello Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="fed39-104">Learn how toocreate an HDInsight cluster using an Azure Resource Manager template and hello Azure REST API.</span></span>
 
-<span data-ttu-id="271cc-105">Azure REST API позволяет управлять службами, размещенными на платформе Azure, в том числе создавать ресурсы, например кластеры HDInsight.</span><span class="sxs-lookup"><span data-stu-id="271cc-105">The Azure REST API allows you to perform management operations on services hosted in the Azure platform, including the creation of new resources such as HDInsight clusters.</span></span>
+<span data-ttu-id="fed39-105">Hello Azure REST API позволяет выполнять операции управления tooperform служб, размещенных в hello платформы Azure, включая создание новых ресурсов, таких как кластеры HDInsight hello.</span><span class="sxs-lookup"><span data-stu-id="fed39-105">hello Azure REST API allows you tooperform management operations on services hosted in hello Azure platform, including hello creation of new resources such as HDInsight clusters.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="271cc-106">Linux — это единственная операционная система, используемая для работы с HDInsight 3.4 или более поздних версий.</span><span class="sxs-lookup"><span data-stu-id="271cc-106">Linux is the only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="271cc-107">Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="271cc-107">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
+> <span data-ttu-id="fed39-106">Linux — hello только операционную систему, используемую в HDInsight версии 3.4 или более поздней.</span><span class="sxs-lookup"><span data-stu-id="fed39-106">Linux is hello only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="fed39-107">Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="fed39-107">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="271cc-108">В описанных в этом документе инструкциях для связи с Azure REST API используется служебная программа [curl (https://curl.haxx.se/)](https://curl.haxx.se/).</span><span class="sxs-lookup"><span data-stu-id="271cc-108">The steps in this document use the [curl (https://curl.haxx.se/)](https://curl.haxx.se/) utility to communicate with the Azure REST API.</span></span>
+> <span data-ttu-id="fed39-108">Hello шагов в этот документ используйте hello [curl (https://curl.haxx.se/)](https://curl.haxx.se/) toocommunicate программы с hello Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="fed39-108">hello steps in this document use hello [curl (https://curl.haxx.se/)](https://curl.haxx.se/) utility toocommunicate with hello Azure REST API.</span></span>
 
-## <a name="create-a-template"></a><span data-ttu-id="271cc-109">Создание шаблона</span><span class="sxs-lookup"><span data-stu-id="271cc-109">Create a template</span></span>
+## <a name="create-a-template"></a><span data-ttu-id="fed39-109">Создание шаблона</span><span class="sxs-lookup"><span data-stu-id="fed39-109">Create a template</span></span>
 
-<span data-ttu-id="271cc-110">Шаблоны Azure Resource Manager — это документы JSON, описывающие **группу ресурсов** и все входящие в нее ресурсы (например, HDInsight). Такой подход позволяет определять ресурсы, требуемые для работы с HDInsight, в один шаблон.</span><span class="sxs-lookup"><span data-stu-id="271cc-110">Azure Resource Manager templates are JSON documents that describe a **resource group** and all resources in it (such as HDInsight.) This template-based approach allows you to define the resources that you need for HDInsight in one template.</span></span>
+<span data-ttu-id="fed39-110">Шаблоны Azure Resource Manager — это документы JSON, описывающие **группу ресурсов** и все входящие в нее ресурсы (например, HDInsight). Такой подход на основе шаблона позволяет toodefine hello ресурсы, которые необходимы для HDInsight в один шаблон.</span><span class="sxs-lookup"><span data-stu-id="fed39-110">Azure Resource Manager templates are JSON documents that describe a **resource group** and all resources in it (such as HDInsight.) This template-based approach allows you toodefine hello resources that you need for HDInsight in one template.</span></span>
 
-<span data-ttu-id="271cc-111">Ниже приведен документ JSON, представляющий собой результат слияния файлов параметров и шаблона, доступного по адресу [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password). Будет создан кластер под управлением Linux с паролем для защиты учетной записи пользователя SSH.</span><span class="sxs-lookup"><span data-stu-id="271cc-111">The following JSON document is a merger of the template and parameters files from [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), which creates a Linux-based cluster using a password to secure the SSH user account.</span></span>
+<span data-ttu-id="fed39-111">Hello следующий документ JSON является слияния hello файлы шаблонов и параметров из [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), который создает на основе Linux кластер с помощью типа hello toosecure пароль учетной записи пользователя SSH.</span><span class="sxs-lookup"><span data-stu-id="fed39-111">hello following JSON document is a merger of hello template and parameters files from [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), which creates a Linux-based cluster using a password toosecure hello SSH user account.</span></span>
 
    ```json
    {
@@ -56,50 +56,50 @@ ms.lasthandoff: 08/18/2017
                        "storm",
                        "spark"],
                        "metadata": {
-                           "description": "The type of the HDInsight cluster to create."
+                           "description": "hello type of hello HDInsight cluster toocreate."
                        }
                    },
                    "clusterName": {
                        "type": "string",
                        "metadata": {
-                           "description": "The name of the HDInsight cluster to create."
+                           "description": "hello name of hello HDInsight cluster toocreate."
                        }
                    },
                    "clusterLoginUserName": {
                        "type": "string",
                        "metadata": {
-                           "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+                           "description": "These credentials can be used toosubmit jobs toohello cluster and toolog into cluster dashboards."
                        }
                    },
                    "clusterLoginPassword": {
                        "type": "securestring",
                        "metadata": {
-                           "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                           "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
                        }
                    },
                    "sshUserName": {
                        "type": "string",
                        "metadata": {
-                           "description": "These credentials can be used to remotely access the cluster."
+                           "description": "These credentials can be used tooremotely access hello cluster."
                        }
                    },
                    "sshPassword": {
                        "type": "securestring",
                        "metadata": {
-                           "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                           "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
                        }
                    },
                    "clusterStorageAccountName": {
                        "type": "string",
                        "metadata": {
-                           "description": "The name of the storage account to be created and be used as the cluster's storage."
+                           "description": "hello name of hello storage account toobe created and be used as hello cluster's storage."
                        }
                    },
                    "clusterWorkerNodeCount": {
                        "type": "int",
                        "defaultValue": 4,
                        "metadata": {
-                           "description": "The number of nodes in the HDInsight cluster."
+                           "description": "hello number of nodes in hello HDInsight cluster."
                        }
                    }
                },
@@ -215,60 +215,60 @@ ms.lasthandoff: 08/18/2017
    }
    ```
 
-<span data-ttu-id="271cc-112">Этот пример используется при выполнении действий в этом документе.</span><span class="sxs-lookup"><span data-stu-id="271cc-112">This example is used in the steps in this document.</span></span> <span data-ttu-id="271cc-113">Замените пример *значений* в разделе **Параметры** значениями для своего кластера.</span><span class="sxs-lookup"><span data-stu-id="271cc-113">Replace the example *values* in the **Parameters** section with the values for your cluster.</span></span>
+<span data-ttu-id="fed39-112">В этом примере используется в hello в данном пошаговом руководстве.</span><span class="sxs-lookup"><span data-stu-id="fed39-112">This example is used in hello steps in this document.</span></span> <span data-ttu-id="fed39-113">Замените пример hello *значения* в hello **параметры** раздел со значениями hello для кластера.</span><span class="sxs-lookup"><span data-stu-id="fed39-113">Replace hello example *values* in hello **Parameters** section with hello values for your cluster.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="271cc-114">Шаблон использует стандартное количество рабочих узлов (4) для кластера HDInsight.</span><span class="sxs-lookup"><span data-stu-id="271cc-114">The template uses the default number of worker nodes (4) for an HDInsight cluster.</span></span> <span data-ttu-id="271cc-115">Если вы планируете использовать более 32 рабочих узлов, для головного узла потребуется минимум 8-ядерный процессор и 14 ГБ ОЗУ.</span><span class="sxs-lookup"><span data-stu-id="271cc-115">If you plan on more than 32 worker nodes, then you must select a head node size with at least 8 cores and 14 GB ram.</span></span>
+> <span data-ttu-id="fed39-114">шаблон Hello использует по умолчанию hello, число рабочих узлов (4) для кластера HDInsight.</span><span class="sxs-lookup"><span data-stu-id="fed39-114">hello template uses hello default number of worker nodes (4) for an HDInsight cluster.</span></span> <span data-ttu-id="fed39-115">Если вы планируете использовать более 32 рабочих узлов, для головного узла потребуется минимум 8-ядерный процессор и 14 ГБ ОЗУ.</span><span class="sxs-lookup"><span data-stu-id="fed39-115">If you plan on more than 32 worker nodes, then you must select a head node size with at least 8 cores and 14 GB ram.</span></span>
 >
-> <span data-ttu-id="271cc-116">Дополнительные сведения о размерах узлов и их стоимости см. на странице с [ценами на HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="271cc-116">For more information on node sizes and associated costs, see [HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).</span></span>
+> <span data-ttu-id="fed39-116">Дополнительные сведения о размерах узлов и их стоимости см. на странице с [ценами на HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="fed39-116">For more information on node sizes and associated costs, see [HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).</span></span>
 
-## <a name="log-in-to-your-azure-subscription"></a><span data-ttu-id="271cc-117">Вход в подписку Azure</span><span class="sxs-lookup"><span data-stu-id="271cc-117">Log in to your Azure subscription</span></span>
+## <a name="log-in-tooyour-azure-subscription"></a><span data-ttu-id="fed39-117">Войдите в tooyour подписки Azure</span><span class="sxs-lookup"><span data-stu-id="fed39-117">Log in tooyour Azure subscription</span></span>
 
-<span data-ttu-id="271cc-118">Выполните действия, описанные в статье [Get started with Azure CLI 2.0 (Preview)](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) (Приступая к работе с Azure CLI 2.0 (предварительная версия)) и подключитесь к подписке, используя команду `az login`.</span><span class="sxs-lookup"><span data-stu-id="271cc-118">Follow the steps documented in [Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) and connect to your subscription using the `az login` command.</span></span>
+<span data-ttu-id="fed39-118">Выполните hello шагов, описанных в [Приступая к работе с Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) и подключите tooyour подписку, используя hello `az login` команды.</span><span class="sxs-lookup"><span data-stu-id="fed39-118">Follow hello steps documented in [Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) and connect tooyour subscription using hello `az login` command.</span></span>
 
-## <a name="create-a-service-principal"></a><span data-ttu-id="271cc-119">Создание субъекта-службы</span><span class="sxs-lookup"><span data-stu-id="271cc-119">Create a service principal</span></span>
+## <a name="create-a-service-principal"></a><span data-ttu-id="fed39-119">Создание субъекта-службы</span><span class="sxs-lookup"><span data-stu-id="fed39-119">Create a service principal</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="271cc-120">Приведенные действия представляют собой сокращенную версию раздела *Создание субъекта-службы с использованием пароля* статьи [Использование интерфейса командной строки Azure для создания субъекта-службы и доступа к ресурсам](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password).</span><span class="sxs-lookup"><span data-stu-id="271cc-120">These steps are an abridged version of the *Create service principal with password* section of the [Use Azure CLI to create a service principal to access resources](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) document.</span></span> <span data-ttu-id="271cc-121">Выполнив эти действия, вы создадите субъект-службу, используемый для аутентификации в Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="271cc-121">These steps create a service principal that is used to authenticate to the Azure REST API.</span></span>
+> <span data-ttu-id="fed39-120">Эти действия не сокращенную версию hello *создания участника службы с паролем* раздел hello [toocreate использование Azure CLI участника службы ресурсов tooaccess](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) документа.</span><span class="sxs-lookup"><span data-stu-id="fed39-120">These steps are an abridged version of hello *Create service principal with password* section of hello [Use Azure CLI toocreate a service principal tooaccess resources](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) document.</span></span> <span data-ttu-id="fed39-121">Эти шаги создают участника службы, используемые tooauthenticate toohello Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="fed39-121">These steps create a service principal that is used tooauthenticate toohello Azure REST API.</span></span>
 
-1. <span data-ttu-id="271cc-122">Используйте следующую команду в командной строке, чтобы вывести список подписок Azure.</span><span class="sxs-lookup"><span data-stu-id="271cc-122">From a command line, use the following command to list your Azure subscriptions.</span></span>
+1. <span data-ttu-id="fed39-122">Из командной строки используйте следующие команды toolist hello подписками Azure.</span><span class="sxs-lookup"><span data-stu-id="fed39-122">From a command line, use hello following command toolist your Azure subscriptions.</span></span>
 
    ```bash
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    <span data-ttu-id="271cc-123">Из списка выберите подписку, которую нужно использовать, и обратите внимание на столбцы **Subscription_ID** и __Tenant_ID__.</span><span class="sxs-lookup"><span data-stu-id="271cc-123">In the list, select the subscription that you want to use and note the **Subscription_ID** and __Tenant_ID__ columns.</span></span> <span data-ttu-id="271cc-124">Сохраните эти значения.</span><span class="sxs-lookup"><span data-stu-id="271cc-124">Save these values.</span></span>
+    <span data-ttu-id="fed39-123">В списке hello выберите hello подписки требуется toouse и обратите внимание, hello **ИД_ПОДПИСКИ** и __Tenant_ID__ столбцы.</span><span class="sxs-lookup"><span data-stu-id="fed39-123">In hello list, select hello subscription that you want toouse and note hello **Subscription_ID** and __Tenant_ID__ columns.</span></span> <span data-ttu-id="fed39-124">Сохраните эти значения.</span><span class="sxs-lookup"><span data-stu-id="fed39-124">Save these values.</span></span>
 
-2. <span data-ttu-id="271cc-125">Используйте следующую команду, чтобы создать приложение в Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="271cc-125">Use the following command to create an application in Azure Active Directory.</span></span>
+2. <span data-ttu-id="fed39-125">Используйте следующие команды toocreate приложения в Azure Active Directory hello.</span><span class="sxs-lookup"><span data-stu-id="fed39-125">Use hello following command toocreate an application in Azure Active Directory.</span></span>
 
    ```bash
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    <span data-ttu-id="271cc-126">Замените значения `--display-name`, `--homepage` и `--identifier-uris` собственными.</span><span class="sxs-lookup"><span data-stu-id="271cc-126">Replace the values for the `--display-name`, `--homepage`, and `--identifier-uris` with your own values.</span></span> <span data-ttu-id="271cc-127">Введите пароль для новой записи Active Directory.</span><span class="sxs-lookup"><span data-stu-id="271cc-127">Provide a password for the new Active Directory entry.</span></span>
+    <span data-ttu-id="fed39-126">Замените значения hello hello `--display-name`, `--homepage`, и `--identifier-uris` собственными значениями.</span><span class="sxs-lookup"><span data-stu-id="fed39-126">Replace hello values for hello `--display-name`, `--homepage`, and `--identifier-uris` with your own values.</span></span> <span data-ttu-id="fed39-127">Введите пароль для новой записи Active Directory hello.</span><span class="sxs-lookup"><span data-stu-id="fed39-127">Provide a password for hello new Active Directory entry.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="271cc-128">Значения `--home-page` и `--identifier-uris` не обязательно должны ссылаться на фактическую веб-страницу, размещенную в Интернете.</span><span class="sxs-lookup"><span data-stu-id="271cc-128">The `--home-page` and `--identifier-uris` values don't need to reference an actual web page hosted on the internet.</span></span> <span data-ttu-id="271cc-129">Это должны быть уникальные универсальные коды ресурса.</span><span class="sxs-lookup"><span data-stu-id="271cc-129">They must be unique URIs.</span></span>
+   > <span data-ttu-id="fed39-128">Hello `--home-page` и `--identifier-uris` значения не должны tooreference фактической веб-страницы, размещенной на hello Интернета.</span><span class="sxs-lookup"><span data-stu-id="fed39-128">hello `--home-page` and `--identifier-uris` values don't need tooreference an actual web page hosted on hello internet.</span></span> <span data-ttu-id="fed39-129">Это должны быть уникальные универсальные коды ресурса.</span><span class="sxs-lookup"><span data-stu-id="fed39-129">They must be unique URIs.</span></span>
 
-   <span data-ttu-id="271cc-130">Эта команда возвращает значение __App ID__ для нового приложения.</span><span class="sxs-lookup"><span data-stu-id="271cc-130">The value returned from this command is the __App ID__ for the new application.</span></span> <span data-ttu-id="271cc-131">Сохраните его.</span><span class="sxs-lookup"><span data-stu-id="271cc-131">Save this value.</span></span>
+   <span data-ttu-id="fed39-130">Hello значение, возвращаемое из этой команды — hello __идентификатор приложения__ для нового приложения hello.</span><span class="sxs-lookup"><span data-stu-id="fed39-130">hello value returned from this command is hello __App ID__ for hello new application.</span></span> <span data-ttu-id="fed39-131">Сохраните его.</span><span class="sxs-lookup"><span data-stu-id="fed39-131">Save this value.</span></span>
 
-3. <span data-ttu-id="271cc-132">Используйте следующую команду, чтобы создать субъект-службу с помощью **App ID**:</span><span class="sxs-lookup"><span data-stu-id="271cc-132">Use the following command to create a service principal using the **App ID**.</span></span>
+3. <span data-ttu-id="fed39-132">Используйте hello следующая команда toocreate участника службы с помощью hello **идентификатор приложения**.</span><span class="sxs-lookup"><span data-stu-id="fed39-132">Use hello following command toocreate a service principal using hello **App ID**.</span></span>
 
    ```bash
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     <span data-ttu-id="271cc-133">Эта команда возвращает значение __Object ID__.</span><span class="sxs-lookup"><span data-stu-id="271cc-133">The value returned from this command is the __Object ID__.</span></span> <span data-ttu-id="271cc-134">Сохраните его.</span><span class="sxs-lookup"><span data-stu-id="271cc-134">Save this value.</span></span>
+     <span data-ttu-id="fed39-133">Hello значение, возвращаемое из этой команды — hello __идентификатор объекта__.</span><span class="sxs-lookup"><span data-stu-id="fed39-133">hello value returned from this command is hello __Object ID__.</span></span> <span data-ttu-id="fed39-134">Сохраните его.</span><span class="sxs-lookup"><span data-stu-id="fed39-134">Save this value.</span></span>
 
-4. <span data-ttu-id="271cc-135">Назначьте роль **Владелец** субъекту-службе, используя значение **Object ID**.</span><span class="sxs-lookup"><span data-stu-id="271cc-135">Assign the **Owner** role to the service principal using the **Object ID** value.</span></span> <span data-ttu-id="271cc-136">Используйте **идентификатор подписки**, полученный ранее.</span><span class="sxs-lookup"><span data-stu-id="271cc-136">Use the **subscription ID** you obtained earlier.</span></span>
+4. <span data-ttu-id="fed39-135">Назначить hello **владельца** с помощью hello участника-службы роли toohello **идентификатор объекта** значение.</span><span class="sxs-lookup"><span data-stu-id="fed39-135">Assign hello **Owner** role toohello service principal using hello **Object ID** value.</span></span> <span data-ttu-id="fed39-136">Используйте hello **идентификатор подписки** полученного ранее.</span><span class="sxs-lookup"><span data-stu-id="fed39-136">Use hello **subscription ID** you obtained earlier.</span></span>
 
    ```bash
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
-## <a name="get-an-authentication-token"></a><span data-ttu-id="271cc-137">Получение маркера проверки подлинности</span><span class="sxs-lookup"><span data-stu-id="271cc-137">Get an authentication token</span></span>
+## <a name="get-an-authentication-token"></a><span data-ttu-id="fed39-137">Получение маркера проверки подлинности</span><span class="sxs-lookup"><span data-stu-id="fed39-137">Get an authentication token</span></span>
 
-<span data-ttu-id="271cc-138">Используйте следующую команду, чтобы получить маркер аутентификации:</span><span class="sxs-lookup"><span data-stu-id="271cc-138">Use the following command to retrieve an authentication token:</span></span>
+<span data-ttu-id="fed39-138">Используйте hello, следующая команда tooretrieve маркер проверки подлинности:</span><span class="sxs-lookup"><span data-stu-id="fed39-138">Use hello following command tooretrieve an authentication token:</span></span>
 
 ```bash
 curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
@@ -280,11 +280,11 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-<span data-ttu-id="271cc-139">Задайте для `$TENANTID`, `$APPID` и `$PASSWORD` полученные или указанные ранее значения.</span><span class="sxs-lookup"><span data-stu-id="271cc-139">Set `$TENANTID`, `$APPID`, and `$PASSWORD` to the values obtained or used previously.</span></span>
+<span data-ttu-id="fed39-139">Задать `$TENANTID`, `$APPID`, и `$PASSWORD` toohello значений, полученных или ранее.</span><span class="sxs-lookup"><span data-stu-id="fed39-139">Set `$TENANTID`, `$APPID`, and `$PASSWORD` toohello values obtained or used previously.</span></span>
 
-<span data-ttu-id="271cc-140">Если этот запрос завершится успешно, будет получен ответ серии 200, и тело ответа будет содержать документ JSON.</span><span class="sxs-lookup"><span data-stu-id="271cc-140">If this request is successful, you receive a 200 series response and the response body contains a JSON document.</span></span>
+<span data-ttu-id="fed39-140">При успешном выполнении этот запрос был получен ответ 200 рядов и hello текст ответа содержит документ JSON.</span><span class="sxs-lookup"><span data-stu-id="fed39-140">If this request is successful, you receive a 200 series response and hello response body contains a JSON document.</span></span>
 
-<span data-ttu-id="271cc-141">Документ JSON, возвращаемый этим запросом, содержит элемент **access_token**.</span><span class="sxs-lookup"><span data-stu-id="271cc-141">The JSON document returned by this request contains an element named **access_token**.</span></span> <span data-ttu-id="271cc-142">Значение **access_token** используется для проверки подлинности запросов API REST.</span><span class="sxs-lookup"><span data-stu-id="271cc-142">The value of **access_token** is used to authentication requests to the REST API.</span></span>
+<span data-ttu-id="fed39-141">Hello JSON-документа, возвращаемого этим запросом содержит элемент с именем **access_token**.</span><span class="sxs-lookup"><span data-stu-id="fed39-141">hello JSON document returned by this request contains an element named **access_token**.</span></span> <span data-ttu-id="fed39-142">Здравствуйте, значение **access_token** — toohello запросов используется tooauthentication API-интерфейса REST.</span><span class="sxs-lookup"><span data-stu-id="fed39-142">hello value of **access_token** is used tooauthentication requests toohello REST API.</span></span>
 
 ```json
 {
@@ -296,14 +296,14 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 }
 ```
 
-## <a name="create-a-resource-group"></a><span data-ttu-id="271cc-143">Создание группы ресурсов</span><span class="sxs-lookup"><span data-stu-id="271cc-143">Create a resource group</span></span>
+## <a name="create-a-resource-group"></a><span data-ttu-id="fed39-143">Создание группы ресурсов</span><span class="sxs-lookup"><span data-stu-id="fed39-143">Create a resource group</span></span>
 
-<span data-ttu-id="271cc-144">Чтобы создать группу ресурсов, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="271cc-144">Use the following to create a resource group.</span></span>
+<span data-ttu-id="fed39-144">Используйте hello, следуя toocreate группу ресурсов.</span><span class="sxs-lookup"><span data-stu-id="fed39-144">Use hello following toocreate a resource group.</span></span>
 
-* <span data-ttu-id="271cc-145">Задайте `$SUBSCRIPTIONID` для идентификатора подписки, полученного при создании субъекта-службы.</span><span class="sxs-lookup"><span data-stu-id="271cc-145">Set `$SUBSCRIPTIONID` to the subscription ID received while creating the service principal.</span></span>
-* <span data-ttu-id="271cc-146">Для маркера доступа, полученного на предыдущем этапе, задайте `$ACCESSTOKEN`.</span><span class="sxs-lookup"><span data-stu-id="271cc-146">Set `$ACCESSTOKEN` to the access token received in the previous step.</span></span>
-* <span data-ttu-id="271cc-147">Замените `DATACENTERLOCATION` центром обработки данных, в котором вы хотите создать группу ресурсов и ресурсы.</span><span class="sxs-lookup"><span data-stu-id="271cc-147">Replace `DATACENTERLOCATION` with the data center you wish to create the resource group, and resources, in.</span></span> <span data-ttu-id="271cc-148">Например, "Южно-центральный регион США".</span><span class="sxs-lookup"><span data-stu-id="271cc-148">For example, 'South Central US'.</span></span>
-* <span data-ttu-id="271cc-149">Задайте для `$RESOURCEGROUPNAME` имя, которое хотите использовать для этой группы:</span><span class="sxs-lookup"><span data-stu-id="271cc-149">Set `$RESOURCEGROUPNAME` to the name you wish to use for this group:</span></span>
+* <span data-ttu-id="fed39-145">Задать `$SUBSCRIPTIONID` toohello идентификатор подписки, полученных при создании hello участника-службы.</span><span class="sxs-lookup"><span data-stu-id="fed39-145">Set `$SUBSCRIPTIONID` toohello subscription ID received while creating hello service principal.</span></span>
+* <span data-ttu-id="fed39-146">Задать `$ACCESSTOKEN` toohello маркер доступа, полученный в предыдущем шаге hello.</span><span class="sxs-lookup"><span data-stu-id="fed39-146">Set `$ACCESSTOKEN` toohello access token received in hello previous step.</span></span>
+* <span data-ttu-id="fed39-147">Замените `DATACENTERLOCATION` hello центра данных нужно toocreate hello ресурсов группы, а ресурсы, в.</span><span class="sxs-lookup"><span data-stu-id="fed39-147">Replace `DATACENTERLOCATION` with hello data center you wish toocreate hello resource group, and resources, in.</span></span> <span data-ttu-id="fed39-148">Например, "Южно-центральный регион США".</span><span class="sxs-lookup"><span data-stu-id="fed39-148">For example, 'South Central US'.</span></span>
+* <span data-ttu-id="fed39-149">Задать `$RESOURCEGROUPNAME` toohello имени toouse для этой группы:</span><span class="sxs-lookup"><span data-stu-id="fed39-149">Set `$RESOURCEGROUPNAME` toohello name you wish toouse for this group:</span></span>
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -314,34 +314,34 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-<span data-ttu-id="271cc-150">Если этот запрос завершится успешно, будет получен ответ серии 200, и тело ответа будет включать в себя документ JSON, содержащий информацию о группе.</span><span class="sxs-lookup"><span data-stu-id="271cc-150">If this request is successful, you receive a 200 series response and the response body contains a JSON document containing information about the group.</span></span> <span data-ttu-id="271cc-151">Элемент `"provisioningState"` будет содержать значение `"Succeeded"`.</span><span class="sxs-lookup"><span data-stu-id="271cc-151">The `"provisioningState"` element contains a value of `"Succeeded"`.</span></span>
+<span data-ttu-id="fed39-150">При успешном выполнении этот запрос был получен ответ 200 рядов и hello текст ответа содержит документ JSON, содержащий сведения о группе hello.</span><span class="sxs-lookup"><span data-stu-id="fed39-150">If this request is successful, you receive a 200 series response and hello response body contains a JSON document containing information about hello group.</span></span> <span data-ttu-id="fed39-151">Hello `"provisioningState"` элемент содержит значение `"Succeeded"`.</span><span class="sxs-lookup"><span data-stu-id="fed39-151">hello `"provisioningState"` element contains a value of `"Succeeded"`.</span></span>
 
-## <a name="create-a-deployment"></a><span data-ttu-id="271cc-152">Создание развертывания</span><span class="sxs-lookup"><span data-stu-id="271cc-152">Create a deployment</span></span>
+## <a name="create-a-deployment"></a><span data-ttu-id="fed39-152">Создание развертывания</span><span class="sxs-lookup"><span data-stu-id="fed39-152">Create a deployment</span></span>
 
-<span data-ttu-id="271cc-153">Используйте следующую команду, чтобы развернуть шаблон в группе ресурсов.</span><span class="sxs-lookup"><span data-stu-id="271cc-153">Use the following command to deploy the template to the resource group.</span></span>
+<span data-ttu-id="fed39-153">Используйте hello, следующая команда toodeploy hello шаблона toohello группы ресурсов.</span><span class="sxs-lookup"><span data-stu-id="fed39-153">Use hello following command toodeploy hello template toohello resource group.</span></span>
 
-* <span data-ttu-id="271cc-154">Задайте для `$DEPLOYMENTNAME` имя, которое хотите использовать для этого развертывания.</span><span class="sxs-lookup"><span data-stu-id="271cc-154">Set `$DEPLOYMENTNAME` to the name you wish to use for this deployment.</span></span>
+* <span data-ttu-id="fed39-154">Задать `$DEPLOYMENTNAME` toohello имени toouse для этого развертывания.</span><span class="sxs-lookup"><span data-stu-id="fed39-154">Set `$DEPLOYMENTNAME` toohello name you wish toouse for this deployment.</span></span>
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
 -H "Authorization: Bearer $ACCESSTOKEN" \
 -H "Content-Type: application/json" \
--d "{set your body string to the template and parameters}"
+-d "{set your body string toohello template and parameters}"
 ```
 
 > [!NOTE]
-> <span data-ttu-id="271cc-155">При сохранении шаблона в файл вместо `-d "{ template and parameters}"` можно использовать следующую команду:</span><span class="sxs-lookup"><span data-stu-id="271cc-155">If you saved the template to a file, you can use the following command instead of `-d "{ template and parameters}"`:</span></span>
+> <span data-ttu-id="fed39-155">Если вы сохранили файл tooa шаблона hello, можно использовать следующую команду, а не hello `-d "{ template and parameters}"`:</span><span class="sxs-lookup"><span data-stu-id="fed39-155">If you saved hello template tooa file, you can use hello following command instead of `-d "{ template and parameters}"`:</span></span>
 >
 > `--data-binary "@/path/to/file.json"`
 
-<span data-ttu-id="271cc-156">Если этот запрос завершится успешно, будет получен ответ серии 200, и тело ответа будет включать в себя документ JSON, содержащий информацию об операции развертывания.</span><span class="sxs-lookup"><span data-stu-id="271cc-156">If this request is successful, you receive a 200 series response and the response body contains a JSON document containing information about the deployment operation.</span></span>
+<span data-ttu-id="fed39-156">При успешном выполнении этот запрос был получен ответ 200 рядов и hello текст ответа содержит документ JSON, содержащий сведения об операции развертывания hello.</span><span class="sxs-lookup"><span data-stu-id="fed39-156">If this request is successful, you receive a 200 series response and hello response body contains a JSON document containing information about hello deployment operation.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="271cc-157">Развертывание было отправлено, но не завершено.</span><span class="sxs-lookup"><span data-stu-id="271cc-157">The deployment has been submitted, but has not completed.</span></span> <span data-ttu-id="271cc-158">Для завершения развертывания может потребоваться несколько минут, обычно около 15.</span><span class="sxs-lookup"><span data-stu-id="271cc-158">It can take several minutes, usually around 15, for the deployment to complete.</span></span>
+> <span data-ttu-id="fed39-157">Hello развертывания был отправлен, но не завершена.</span><span class="sxs-lookup"><span data-stu-id="fed39-157">hello deployment has been submitted, but has not completed.</span></span> <span data-ttu-id="fed39-158">Он может занять несколько минут, обычно около 15 для развертывания toocomplete hello.</span><span class="sxs-lookup"><span data-stu-id="fed39-158">It can take several minutes, usually around 15, for hello deployment toocomplete.</span></span>
 
-## <a name="check-the-status-of-a-deployment"></a><span data-ttu-id="271cc-159">Проверка состояния развертывания</span><span class="sxs-lookup"><span data-stu-id="271cc-159">Check the status of a deployment</span></span>
+## <a name="check-hello-status-of-a-deployment"></a><span data-ttu-id="fed39-159">Проверьте состояние развертывания hello</span><span class="sxs-lookup"><span data-stu-id="fed39-159">Check hello status of a deployment</span></span>
 
-<span data-ttu-id="271cc-160">Чтобы проверить состояние развертывания, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="271cc-160">To check the status of the deployment, use the following command:</span></span>
+<span data-ttu-id="fed39-160">состояние hello toocheck развертывания hello, hello используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="fed39-160">toocheck hello status of hello deployment, use hello following command:</span></span>
 
 ```bash
 curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -349,29 +349,29 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-<span data-ttu-id="271cc-161">Эта команда возвращает документ JSON, содержащий сведения об операции развертывания.</span><span class="sxs-lookup"><span data-stu-id="271cc-161">This command returns a JSON document containing information about the deployment operation.</span></span> <span data-ttu-id="271cc-162">Элемент `"provisioningState"` содержит сведения о состоянии развертывания.</span><span class="sxs-lookup"><span data-stu-id="271cc-162">The `"provisioningState"` element contains the status of the deployment.</span></span> <span data-ttu-id="271cc-163">Если элемент содержит значение `"Succeeded"`, развертывание завершилось успешно.</span><span class="sxs-lookup"><span data-stu-id="271cc-163">If this element contains a value of `"Succeeded"`, then the deployment has completed successfully.</span></span>
+<span data-ttu-id="fed39-161">Эта команда возвращает документ JSON, содержащий сведения об операции развертывания hello.</span><span class="sxs-lookup"><span data-stu-id="fed39-161">This command returns a JSON document containing information about hello deployment operation.</span></span> <span data-ttu-id="fed39-162">Hello `"provisioningState"` элемент содержит состояние hello hello развертывания.</span><span class="sxs-lookup"><span data-stu-id="fed39-162">hello `"provisioningState"` element contains hello status of hello deployment.</span></span> <span data-ttu-id="fed39-163">Если этот элемент содержит значение `"Succeeded"`, а затем hello развертывания успешно завершена.</span><span class="sxs-lookup"><span data-stu-id="fed39-163">If this element contains a value of `"Succeeded"`, then hello deployment has completed successfully.</span></span>
 
-## <a name="troubleshoot"></a><span data-ttu-id="271cc-164">Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="271cc-164">Troubleshoot</span></span>
+## <a name="troubleshoot"></a><span data-ttu-id="fed39-164">Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="fed39-164">Troubleshoot</span></span>
 
-<span data-ttu-id="271cc-165">Если при создании кластеров HDInsight возникли проблемы, см. раздел [Создание кластеров](hdinsight-administer-use-portal-linux.md#create-clusters).</span><span class="sxs-lookup"><span data-stu-id="271cc-165">If you run into issues with creating HDInsight clusters, see [access control requirements](hdinsight-administer-use-portal-linux.md#create-clusters).</span></span>
+<span data-ttu-id="fed39-165">Если при создании кластеров HDInsight возникли проблемы, см. раздел [Создание кластеров](hdinsight-administer-use-portal-linux.md#create-clusters).</span><span class="sxs-lookup"><span data-stu-id="fed39-165">If you run into issues with creating HDInsight clusters, see [access control requirements](hdinsight-administer-use-portal-linux.md#create-clusters).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="271cc-166">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="271cc-166">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="fed39-166">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="fed39-166">Next steps</span></span>
 
-<span data-ttu-id="271cc-167">Теперь, когда вы успешно создали кластер HDInsight, обратитесь к следующим статьям, чтобы научиться работать с кластером.</span><span class="sxs-lookup"><span data-stu-id="271cc-167">Now that you have successfully created an HDInsight cluster, use the following to learn how to work with your cluster.</span></span>
+<span data-ttu-id="fed39-167">Теперь, когда вы успешно создали кластер HDInsight, используйте следующие toolearn как hello toowork с кластером.</span><span class="sxs-lookup"><span data-stu-id="fed39-167">Now that you have successfully created an HDInsight cluster, use hello following toolearn how toowork with your cluster.</span></span>
 
-### <a name="hadoop-clusters"></a><span data-ttu-id="271cc-168">Кластеры Hadoop</span><span class="sxs-lookup"><span data-stu-id="271cc-168">Hadoop clusters</span></span>
+### <a name="hadoop-clusters"></a><span data-ttu-id="fed39-168">Кластеры Hadoop</span><span class="sxs-lookup"><span data-stu-id="fed39-168">Hadoop clusters</span></span>
 
-* [<span data-ttu-id="271cc-169">Использование Hive с HDInsight</span><span class="sxs-lookup"><span data-stu-id="271cc-169">Use Hive with HDInsight</span></span>](hdinsight-use-hive.md)
-* [<span data-ttu-id="271cc-170">Использование Pig с HDInsight</span><span class="sxs-lookup"><span data-stu-id="271cc-170">Use Pig with HDInsight</span></span>](hdinsight-use-pig.md)
-* [<span data-ttu-id="271cc-171">Использование MapReduce с HDInsight</span><span class="sxs-lookup"><span data-stu-id="271cc-171">Use MapReduce with HDInsight</span></span>](hdinsight-use-mapreduce.md)
+* [<span data-ttu-id="fed39-169">Использование Hive с HDInsight</span><span class="sxs-lookup"><span data-stu-id="fed39-169">Use Hive with HDInsight</span></span>](hdinsight-use-hive.md)
+* [<span data-ttu-id="fed39-170">Использование Pig с HDInsight</span><span class="sxs-lookup"><span data-stu-id="fed39-170">Use Pig with HDInsight</span></span>](hdinsight-use-pig.md)
+* [<span data-ttu-id="fed39-171">Использование MapReduce с HDInsight</span><span class="sxs-lookup"><span data-stu-id="fed39-171">Use MapReduce with HDInsight</span></span>](hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a><span data-ttu-id="271cc-172">Кластеры HBase</span><span class="sxs-lookup"><span data-stu-id="271cc-172">HBase clusters</span></span>
+### <a name="hbase-clusters"></a><span data-ttu-id="fed39-172">Кластеры HBase</span><span class="sxs-lookup"><span data-stu-id="fed39-172">HBase clusters</span></span>
 
-* [<span data-ttu-id="271cc-173">Начало работы с HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="271cc-173">Get started with HBase on HDInsight</span></span>](hdinsight-hbase-tutorial-get-started-linux.md)
-* [<span data-ttu-id="271cc-174">Разработка приложений Java для HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="271cc-174">Develop Java applications for HBase on HDInsight</span></span>](hdinsight-hbase-build-java-maven-linux.md)
+* [<span data-ttu-id="fed39-173">Начало работы с HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="fed39-173">Get started with HBase on HDInsight</span></span>](hdinsight-hbase-tutorial-get-started-linux.md)
+* [<span data-ttu-id="fed39-174">Разработка приложений Java для HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="fed39-174">Develop Java applications for HBase on HDInsight</span></span>](hdinsight-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a><span data-ttu-id="271cc-175">Кластеры Storm</span><span class="sxs-lookup"><span data-stu-id="271cc-175">Storm clusters</span></span>
+### <a name="storm-clusters"></a><span data-ttu-id="fed39-175">Кластеры Storm</span><span class="sxs-lookup"><span data-stu-id="fed39-175">Storm clusters</span></span>
 
-* [<span data-ttu-id="271cc-176">Разработка приложений Java для Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="271cc-176">Develop Java topologies for Storm on HDInsight</span></span>](hdinsight-storm-develop-java-topology.md)
-* [<span data-ttu-id="271cc-177">Использование компонентов Python в Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="271cc-177">Use Python components in Storm on HDInsight</span></span>](hdinsight-storm-develop-python-topology.md)
-* [<span data-ttu-id="271cc-178">Развертывание и мониторинг топологий с помощью Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="271cc-178">Deploy and monitor topologies with Storm on HDInsight</span></span>](hdinsight-storm-deploy-monitor-topology-linux.md)
+* [<span data-ttu-id="fed39-176">Разработка приложений Java для Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="fed39-176">Develop Java topologies for Storm on HDInsight</span></span>](hdinsight-storm-develop-java-topology.md)
+* [<span data-ttu-id="fed39-177">Использование компонентов Python в Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="fed39-177">Use Python components in Storm on HDInsight</span></span>](hdinsight-storm-develop-python-topology.md)
+* [<span data-ttu-id="fed39-178">Развертывание и мониторинг топологий с помощью Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="fed39-178">Deploy and monitor topologies with Storm on HDInsight</span></span>](hdinsight-storm-deploy-monitor-topology-linux.md)

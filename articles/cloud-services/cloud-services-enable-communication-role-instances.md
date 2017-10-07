@@ -1,6 +1,6 @@
 ---
-title: "Обмен данными между ролями в облачных службах | Документация Майкрософт"
-description: "Для экземпляров ролей в облачных службах могут быть определены конечные точки (http, https, tcp, udp), взаимодействующие с внешней средой или с другими экземплярами ролей."
+title: "aaaCommunication для ролей в облачных службах | Документы Microsoft"
+description: "Экземпляры ролей в облачных служб может иметь конечных точек (http, https, tcp, udp) определенных, взаимодействующих с hello вне или от других экземпляров ролей."
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-ms.openlocfilehash: 8e171d56bb67c971337fa383014988074ec828b1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1fb39215ceb8a3f0381ef5e108c1149de115ff8e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a><span data-ttu-id="88bb5-103">Включение обмена данными между экземплярами роли в Azure</span><span class="sxs-lookup"><span data-stu-id="88bb5-103">Enable communication for role instances in azure</span></span>
-<span data-ttu-id="88bb5-104">Ролей облачной службы взаимодействуют через внутренние и внешние подключения.</span><span class="sxs-lookup"><span data-stu-id="88bb5-104">Cloud service roles communicate through internal and external connections.</span></span> <span data-ttu-id="88bb5-105">Внешние подключения называются **входными конечными точками**, а внутренние подключения — **внутренними конечными точками**.</span><span class="sxs-lookup"><span data-stu-id="88bb5-105">External connections are called **input endpoints** while internal connections are called **internal endpoints**.</span></span> <span data-ttu-id="88bb5-106">В этом разделе описывается изменение [определения службы](cloud-services-model-and-package.md#csdef) для создания конечных точек.</span><span class="sxs-lookup"><span data-stu-id="88bb5-106">This topic describes how to modify the [service definition](cloud-services-model-and-package.md#csdef) to create endpoints.</span></span>
+# <a name="enable-communication-for-role-instances-in-azure"></a><span data-ttu-id="385bc-103">Включение обмена данными между экземплярами роли в Azure</span><span class="sxs-lookup"><span data-stu-id="385bc-103">Enable communication for role instances in azure</span></span>
+<span data-ttu-id="385bc-104">Ролей облачной службы взаимодействуют через внутренние и внешние подключения.</span><span class="sxs-lookup"><span data-stu-id="385bc-104">Cloud service roles communicate through internal and external connections.</span></span> <span data-ttu-id="385bc-105">Внешние подключения называются **входными конечными точками**, а внутренние подключения — **внутренними конечными точками**.</span><span class="sxs-lookup"><span data-stu-id="385bc-105">External connections are called **input endpoints** while internal connections are called **internal endpoints**.</span></span> <span data-ttu-id="385bc-106">В этом разделе описывается способ toomodify hello [службы определение](cloud-services-model-and-package.md#csdef) toocreate конечных точек.</span><span class="sxs-lookup"><span data-stu-id="385bc-106">This topic describes how toomodify hello [service definition](cloud-services-model-and-package.md#csdef) toocreate endpoints.</span></span>
 
-## <a name="input-endpoint"></a><span data-ttu-id="88bb5-107">Входная конечная точка</span><span class="sxs-lookup"><span data-stu-id="88bb5-107">Input endpoint</span></span>
-<span data-ttu-id="88bb5-108">Входная конечная точка используется, когда необходимо предоставить порт вовне.</span><span class="sxs-lookup"><span data-stu-id="88bb5-108">The input endpoint is used when you want to expose a port to the outside.</span></span> <span data-ttu-id="88bb5-109">Необходимо указать тип протокола и порт конечной точки, которые затем применяются для внешнего и внутреннего портов конечной точки.</span><span class="sxs-lookup"><span data-stu-id="88bb5-109">You specify the protocol type and the port of the endpoint which then applies for both the external and internal ports for the endpoint.</span></span> <span data-ttu-id="88bb5-110">Если требуется, для конечной точки можно указать другой внутренний порт с помощью атрибута [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) .</span><span class="sxs-lookup"><span data-stu-id="88bb5-110">If you want, you can specify a different internal port for the endpoint with the [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) attribute.</span></span>
+## <a name="input-endpoint"></a><span data-ttu-id="385bc-107">Входная конечная точка</span><span class="sxs-lookup"><span data-stu-id="385bc-107">Input endpoint</span></span>
+<span data-ttu-id="385bc-108">Конечная точка ввода Hello используется в том случае, если tooexpose toohello порт за пределами.</span><span class="sxs-lookup"><span data-stu-id="385bc-108">hello input endpoint is used when you want tooexpose a port toohello outside.</span></span> <span data-ttu-id="385bc-109">Укажите тип hello протокола и порта hello hello конечной точки, которая применяется для hello внешних и внутренних портов для конечной точки hello.</span><span class="sxs-lookup"><span data-stu-id="385bc-109">You specify hello protocol type and hello port of hello endpoint which then applies for both hello external and internal ports for hello endpoint.</span></span> <span data-ttu-id="385bc-110">Если требуется, можно указать другой внутренний порт для конечной точки hello с hello [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) атрибута.</span><span class="sxs-lookup"><span data-stu-id="385bc-110">If you want, you can specify a different internal port for hello endpoint with hello [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) attribute.</span></span>
 
-<span data-ttu-id="88bb5-111">Входная конечная точка может использовать следующие протоколы: **http, https, tcp, udp**.</span><span class="sxs-lookup"><span data-stu-id="88bb5-111">The input endpoint can use the following protocols: **http, https, tcp, udp**.</span></span>
+<span data-ttu-id="385bc-111">Конечная точка ввода Hello можно использовать следующие протоколы hello: **http, https, tcp, udp**.</span><span class="sxs-lookup"><span data-stu-id="385bc-111">hello input endpoint can use hello following protocols: **http, https, tcp, udp**.</span></span>
 
-<span data-ttu-id="88bb5-112">Чтобы создать входную конечную точку, добавьте дочерний элемент **InputEndpoint** в элемент **Endpoints** веб-роли или рабочей роли.</span><span class="sxs-lookup"><span data-stu-id="88bb5-112">To create an input endpoint, add the **InputEndpoint** child element to the **Endpoints** element of either a web or worker role.</span></span>
+<span data-ttu-id="385bc-112">добавить конечную точку ввода, toocreate hello **InputEndpoint** toohello дочерний элемент **конечные точки** элемент web и рабочей роли.</span><span class="sxs-lookup"><span data-stu-id="385bc-112">toocreate an input endpoint, add hello **InputEndpoint** child element toohello **Endpoints** element of either a web or worker role.</span></span>
 
 ```xml
 <Endpoints>
@@ -36,12 +36,12 @@ ms.lasthandoff: 07/11/2017
 </Endpoints> 
 ```
 
-## <a name="instance-input-endpoint"></a><span data-ttu-id="88bb5-113">Входная конечная точка экземпляра</span><span class="sxs-lookup"><span data-stu-id="88bb5-113">Instance input endpoint</span></span>
-<span data-ttu-id="88bb5-114">Входные конечные точки экземпляра похожи на входные конечные точки, однако позволяют сопоставить определенные общедоступные порты для каждого отдельного экземпляра роли с помощью перенаправления портов в балансировщик нагрузки.</span><span class="sxs-lookup"><span data-stu-id="88bb5-114">Instance input endpoints are similar to input endpoints but allows you map specific public-facing ports for each individual role instance by using port forwarding on the load balancer.</span></span> <span data-ttu-id="88bb5-115">Можно указать один общедоступный порт или диапазон портов.</span><span class="sxs-lookup"><span data-stu-id="88bb5-115">You can specify a single public-facing port, or a range of ports.</span></span>
+## <a name="instance-input-endpoint"></a><span data-ttu-id="385bc-113">Входная конечная точка экземпляра</span><span class="sxs-lookup"><span data-stu-id="385bc-113">Instance input endpoint</span></span>
+<span data-ttu-id="385bc-114">Аналогично конечные точки tooinput входные конечные точки, но позволяет сопоставить определенные порты общедоступным для каждого экземпляра отдельные роли благодаря перенаправлению портов в подсистеме балансировки нагрузки hello.</span><span class="sxs-lookup"><span data-stu-id="385bc-114">Instance input endpoints are similar tooinput endpoints but allows you map specific public-facing ports for each individual role instance by using port forwarding on hello load balancer.</span></span> <span data-ttu-id="385bc-115">Можно указать один общедоступный порт или диапазон портов.</span><span class="sxs-lookup"><span data-stu-id="385bc-115">You can specify a single public-facing port, or a range of ports.</span></span>
 
-<span data-ttu-id="88bb5-116">Входная конечная точка экземпляра может использовать только протокол **TCP** или **UDP**.</span><span class="sxs-lookup"><span data-stu-id="88bb5-116">The instance input endpoint can only use **tcp** or **udp** as the protocol.</span></span>
+<span data-ttu-id="385bc-116">можно использовать только конечная точка ввода экземпляра Hello **tcp** или **udp** в качестве протокола hello.</span><span class="sxs-lookup"><span data-stu-id="385bc-116">hello instance input endpoint can only use **tcp** or **udp** as hello protocol.</span></span>
 
-<span data-ttu-id="88bb5-117">Чтобы создать входную конечную точку экземпляра, добавьте дочерний элемент **InstanceInputEndpoint** в элемент **Endpoints** веб-роли или рабочей роли.</span><span class="sxs-lookup"><span data-stu-id="88bb5-117">To create an instance input endpoint, add the **InstanceInputEndpoint** child element to the **Endpoints** element of either a web or worker role.</span></span>
+<span data-ttu-id="385bc-117">добавить конечные точки ввода экземпляра toocreate hello **InstanceInputEndpoint** дочерний элемент toohello **конечные точки** элемент web и рабочей роли.</span><span class="sxs-lookup"><span data-stu-id="385bc-117">toocreate an instance input endpoint, add hello **InstanceInputEndpoint** child element toohello **Endpoints** element of either a web or worker role.</span></span>
 
 ```xml
 <Endpoints>
@@ -53,12 +53,12 @@ ms.lasthandoff: 07/11/2017
 </Endpoints>
 ```
 
-## <a name="internal-endpoint"></a><span data-ttu-id="88bb5-118">Внутренняя конечная точка</span><span class="sxs-lookup"><span data-stu-id="88bb5-118">Internal endpoint</span></span>
-<span data-ttu-id="88bb5-119">Внутренние конечные точки доступны для подключения между экземплярами.</span><span class="sxs-lookup"><span data-stu-id="88bb5-119">Internal endpoints are available for instance-to-instance communication.</span></span> <span data-ttu-id="88bb5-120">Порт является необязательным, и если он не указан, конечной точке назначается динамический порт.</span><span class="sxs-lookup"><span data-stu-id="88bb5-120">The port is optional and if omitted, a dynamic port is assigned to the endpoint.</span></span> <span data-ttu-id="88bb5-121">Можно использовать диапазон портов.</span><span class="sxs-lookup"><span data-stu-id="88bb5-121">A port range can be used.</span></span> <span data-ttu-id="88bb5-122">Существует ограничение: до 5 внутренних конечных точек на роль.</span><span class="sxs-lookup"><span data-stu-id="88bb5-122">There is a limit of five internal endpoints per role.</span></span>
+## <a name="internal-endpoint"></a><span data-ttu-id="385bc-118">Внутренняя конечная точка</span><span class="sxs-lookup"><span data-stu-id="385bc-118">Internal endpoint</span></span>
+<span data-ttu-id="385bc-119">Внутренние конечные точки доступны для подключения между экземплярами.</span><span class="sxs-lookup"><span data-stu-id="385bc-119">Internal endpoints are available for instance-to-instance communication.</span></span> <span data-ttu-id="385bc-120">Hello порт является необязательным, и если не указано, динамический порт назначается toohello конечной точки.</span><span class="sxs-lookup"><span data-stu-id="385bc-120">hello port is optional and if omitted, a dynamic port is assigned toohello endpoint.</span></span> <span data-ttu-id="385bc-121">Можно использовать диапазон портов.</span><span class="sxs-lookup"><span data-stu-id="385bc-121">A port range can be used.</span></span> <span data-ttu-id="385bc-122">Существует ограничение: до 5 внутренних конечных точек на роль.</span><span class="sxs-lookup"><span data-stu-id="385bc-122">There is a limit of five internal endpoints per role.</span></span>
 
-<span data-ttu-id="88bb5-123">Внутренняя конечная точка может использовать следующие протоколы: **http, tcp, udp, any**.</span><span class="sxs-lookup"><span data-stu-id="88bb5-123">The internal endpoint can use the following protocols: **http, tcp, udp, any**.</span></span>
+<span data-ttu-id="385bc-123">Hello внутренней конечной точки можно использовать следующие протоколы hello: **http, tcp, udp, любой**.</span><span class="sxs-lookup"><span data-stu-id="385bc-123">hello internal endpoint can use hello following protocols: **http, tcp, udp, any**.</span></span>
 
-<span data-ttu-id="88bb5-124">Чтобы создать внутреннюю входную конечную точку, добавьте дочерний элемент **InternalEndpoint** в элемент **Endpoints** веб-роли или рабочей роли.</span><span class="sxs-lookup"><span data-stu-id="88bb5-124">To create an internal input endpoint, add the **InternalEndpoint** child element to the **Endpoints** element of either a web or worker role.</span></span>
+<span data-ttu-id="385bc-124">toocreate внутренней конечной точки ввода, добавить hello **InternalEndpoint** дочерний элемент toohello **конечные точки** элемент web и рабочей роли.</span><span class="sxs-lookup"><span data-stu-id="385bc-124">toocreate an internal input endpoint, add hello **InternalEndpoint** child element toohello **Endpoints** element of either a web or worker role.</span></span>
 
 ```xml
 <Endpoints>
@@ -66,7 +66,7 @@ ms.lasthandoff: 07/11/2017
 </Endpoints> 
 ```
 
-<span data-ttu-id="88bb5-125">Можно также использовать диапазон портов.</span><span class="sxs-lookup"><span data-stu-id="88bb5-125">You can also use a port range.</span></span>
+<span data-ttu-id="385bc-125">Можно также использовать диапазон портов.</span><span class="sxs-lookup"><span data-stu-id="385bc-125">You can also use a port range.</span></span>
 
 ```xml
 <Endpoints>
@@ -77,42 +77,42 @@ ms.lasthandoff: 07/11/2017
 ```
 
 
-## <a name="worker-roles-vs-web-roles"></a><span data-ttu-id="88bb5-126">Рабочие роли и Веб-роли</span><span class="sxs-lookup"><span data-stu-id="88bb5-126">Worker roles vs. Web roles</span></span>
-<span data-ttu-id="88bb5-127">При работе с веб-ролями и рабочими ролями существует одно незначительное отличие, связанное с конечными точками.</span><span class="sxs-lookup"><span data-stu-id="88bb5-127">There is one minor difference with endpoints when working with both worker and web roles.</span></span> <span data-ttu-id="88bb5-128">У веб-роли должна быть как минимум одна выходная конечная точка, использующая протокол **HTTP** .</span><span class="sxs-lookup"><span data-stu-id="88bb5-128">The web role must have at minimum a single input endpoint using the **HTTP** protocol.</span></span>
+## <a name="worker-roles-vs-web-roles"></a><span data-ttu-id="385bc-126">Рабочие роли и Веб-роли</span><span class="sxs-lookup"><span data-stu-id="385bc-126">Worker roles vs. Web roles</span></span>
+<span data-ttu-id="385bc-127">При работе с веб-ролями и рабочими ролями существует одно незначительное отличие, связанное с конечными точками.</span><span class="sxs-lookup"><span data-stu-id="385bc-127">There is one minor difference with endpoints when working with both worker and web roles.</span></span> <span data-ttu-id="385bc-128">Hello веб-роль должна иметь как минимум одну конечную точку ввода с помощью hello **HTTP** протокола.</span><span class="sxs-lookup"><span data-stu-id="385bc-128">hello web role must have at minimum a single input endpoint using hello **HTTP** protocol.</span></span>
 
 ```xml
 <Endpoints>
   <InputEndpoint name="StandardWeb" protocol="http" port="80" localPort="80" />
-  <!-- more endpoints may be declared after the first InputEndPoint -->
+  <!-- more endpoints may be declared after hello first InputEndPoint -->
 </Endpoints>
 ```
 
-## <a name="using-the-net-sdk-to-access-an-endpoint"></a><span data-ttu-id="88bb5-129">Использование пакета SDK для .NET для доступа к конечной точке</span><span class="sxs-lookup"><span data-stu-id="88bb5-129">Using the .NET SDK to access an endpoint</span></span>
-<span data-ttu-id="88bb5-130">Управляемая библиотека Azure предоставляет методы для обмена данными между экземплярами роли во время выполнения.</span><span class="sxs-lookup"><span data-stu-id="88bb5-130">The Azure Managed Library provides methods for role instances to communicate at runtime.</span></span> <span data-ttu-id="88bb5-131">Из кода, выполняемого в экземпляре роли, можно получить информацию о существовании других экземпляров роли и их конечных точек, а также сведения о текущем экземпляре роли.</span><span class="sxs-lookup"><span data-stu-id="88bb5-131">From code running within a role instance, you can retrieve information about the existence of other role instances and their endpoints, as well as information about the current role instance.</span></span>
+## <a name="using-hello-net-sdk-tooaccess-an-endpoint"></a><span data-ttu-id="385bc-129">С помощью tooaccess .NET SDK hello конечной точки</span><span class="sxs-lookup"><span data-stu-id="385bc-129">Using hello .NET SDK tooaccess an endpoint</span></span>
+<span data-ttu-id="385bc-130">Hello управляемая библиотека Azure предоставляет методы для toocommunicate экземпляров ролей во время выполнения.</span><span class="sxs-lookup"><span data-stu-id="385bc-130">hello Azure Managed Library provides methods for role instances toocommunicate at runtime.</span></span> <span data-ttu-id="385bc-131">Из кода, выполняемого в экземпляре роли можно получить сведения о hello наличие других экземпляров ролей и их конечные точки, а также сведения о текущей роли экземпляра hello.</span><span class="sxs-lookup"><span data-stu-id="385bc-131">From code running within a role instance, you can retrieve information about hello existence of other role instances and their endpoints, as well as information about hello current role instance.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="88bb5-132">Можно получать сведения только о тех экземплярах, которые запущены в облачной службе и для которых определена по крайней мере одна внутренняя конечная точка.</span><span class="sxs-lookup"><span data-stu-id="88bb5-132">You can only retrieve information about role instances that are running in your cloud service and that define at least one internal endpoint.</span></span> <span data-ttu-id="88bb5-133">Нельзя получить данные об экземплярах роли, запущенных в другой службе.</span><span class="sxs-lookup"><span data-stu-id="88bb5-133">You cannot obtain data about role instances running in a different service.</span></span>
+> <span data-ttu-id="385bc-132">Можно получать сведения только о тех экземплярах, которые запущены в облачной службе и для которых определена по крайней мере одна внутренняя конечная точка.</span><span class="sxs-lookup"><span data-stu-id="385bc-132">You can only retrieve information about role instances that are running in your cloud service and that define at least one internal endpoint.</span></span> <span data-ttu-id="385bc-133">Нельзя получить данные об экземплярах роли, запущенных в другой службе.</span><span class="sxs-lookup"><span data-stu-id="385bc-133">You cannot obtain data about role instances running in a different service.</span></span>
 > 
 > 
 
-<span data-ttu-id="88bb5-134">Для получения экземпляров роли можно использовать свойство [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) .</span><span class="sxs-lookup"><span data-stu-id="88bb5-134">You can use the [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) property to retrieve instances of a role.</span></span> <span data-ttu-id="88bb5-135">Сначала используйте [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx), чтобы вернуть ссылку на текущий экземпляр роли, а затем используйте свойство [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx), чтобы вернуть ссылку на саму роль.</span><span class="sxs-lookup"><span data-stu-id="88bb5-135">First use the [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) to return a reference to the current role instance, and then use the [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) property to return a reference to the role itself.</span></span>
+<span data-ttu-id="385bc-134">Можно использовать hello [экземпляров](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) свойство tooretrieve экземпляров роли.</span><span class="sxs-lookup"><span data-stu-id="385bc-134">You can use hello [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) property tooretrieve instances of a role.</span></span> <span data-ttu-id="385bc-135">Сначала с помощью hello [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) tooreturn ссылки toohello текущей роли, а затем используйте hello [роли](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) свойство tooreturn самой роли toohello ссылки.</span><span class="sxs-lookup"><span data-stu-id="385bc-135">First use hello [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) tooreturn a reference toohello current role instance, and then use hello [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) property tooreturn a reference toohello role itself.</span></span>
 
-<span data-ttu-id="88bb5-136">При программном подключении к экземпляру роли с помощью пакета SDK для .NET сравнительно легко получить доступ к информации о конечной точке.</span><span class="sxs-lookup"><span data-stu-id="88bb5-136">When you connect to a role instance programmatically through the .NET SDK, it's relatively easy to access the endpoint information.</span></span> <span data-ttu-id="88bb5-137">Например, после подключения к среде определенной роли можно получить порт определенной конечной точки с помощью этого кода:</span><span class="sxs-lookup"><span data-stu-id="88bb5-137">For example, after you've already connected to a specific role environment, you can get the port of a specific endpoint with this code:</span></span>
+<span data-ttu-id="385bc-136">При подключении экземпляра роли tooa программно через hello .NET SDK, это относительно легко tooaccess сведения о конечной точке hello.</span><span class="sxs-lookup"><span data-stu-id="385bc-136">When you connect tooa role instance programmatically through hello .NET SDK, it's relatively easy tooaccess hello endpoint information.</span></span> <span data-ttu-id="385bc-137">Например после вы уже подключены среды tooa определенной роли, можно получить порт hello определенной конечной точке с этим кодом:</span><span class="sxs-lookup"><span data-stu-id="385bc-137">For example, after you've already connected tooa specific role environment, you can get hello port of a specific endpoint with this code:</span></span>
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-<span data-ttu-id="88bb5-138">Свойство **Instances** возвращает коллекцию объектов **RoleInstance**.</span><span class="sxs-lookup"><span data-stu-id="88bb5-138">The **Instances** property returns a collection of **RoleInstance** objects.</span></span> <span data-ttu-id="88bb5-139">Эта коллекция всегда содержит текущий экземпляр.</span><span class="sxs-lookup"><span data-stu-id="88bb5-139">This collection always contains the current instance.</span></span> <span data-ttu-id="88bb5-140">Если роль не определяет внутреннюю конечную точку, коллекция содержит текущий экземпляр, но не содержит других экземпляров.</span><span class="sxs-lookup"><span data-stu-id="88bb5-140">If the role does not define an internal endpoint, the collection includes the current instance but no other instances.</span></span> <span data-ttu-id="88bb5-141">Число экземпляров роли в коллекции всегда будет равно 1, когда для роли не определена внутренняя конечная точка.</span><span class="sxs-lookup"><span data-stu-id="88bb5-141">The number of role instances in the collection will always be 1 in the case where no internal endpoint is defined for the role.</span></span> <span data-ttu-id="88bb5-142">Если роль определяет внутреннюю конечную точку, ее экземпляры можно обнаружить во время выполнения, и число экземпляров в коллекции будет соответствовать числу экземпляров, указанных для роли в файле конфигурации службы.</span><span class="sxs-lookup"><span data-stu-id="88bb5-142">If the role defines an internal endpoint, its instances are discoverable at runtime, and the number of instances in the collection will correspond to the number of instances specified for the role in the service configuration file.</span></span>
+<span data-ttu-id="385bc-138">Hello **экземпляров** свойство возвращает коллекцию **RoleInstance** объектов.</span><span class="sxs-lookup"><span data-stu-id="385bc-138">hello **Instances** property returns a collection of **RoleInstance** objects.</span></span> <span data-ttu-id="385bc-139">Эта коллекция всегда содержит текущий экземпляр hello.</span><span class="sxs-lookup"><span data-stu-id="385bc-139">This collection always contains hello current instance.</span></span> <span data-ttu-id="385bc-140">Если роль hello не определяет внутреннюю конечную точку, коллекция hello включает hello текущего экземпляра, но не другие экземпляры.</span><span class="sxs-lookup"><span data-stu-id="385bc-140">If hello role does not define an internal endpoint, hello collection includes hello current instance but no other instances.</span></span> <span data-ttu-id="385bc-141">Hello число экземпляров роли в коллекции hello всегда будет 1 в случае hello, где нет внутренней конечной точки для роли hello.</span><span class="sxs-lookup"><span data-stu-id="385bc-141">hello number of role instances in hello collection will always be 1 in hello case where no internal endpoint is defined for hello role.</span></span> <span data-ttu-id="385bc-142">Если роль hello определяет внутреннюю конечную точку, его экземпляры могут быть обнаружены во время выполнения, и hello число экземпляров в коллекции hello будет соответствовать toohello число экземпляров, указанные для роли hello в файл конфигурации службы hello.</span><span class="sxs-lookup"><span data-stu-id="385bc-142">If hello role defines an internal endpoint, its instances are discoverable at runtime, and hello number of instances in hello collection will correspond toohello number of instances specified for hello role in hello service configuration file.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="88bb5-143">Управляемая библиотека Azure не предоставляет средства определения работоспособности других экземпляров роли, но вы можете реализовать такие оценки работоспособности самостоятельно, если службе нужна подобная функциональность.</span><span class="sxs-lookup"><span data-stu-id="88bb5-143">The Azure Managed Library does not provide a means of determining the health of other role instances, but you can implement such health assessments yourself if your service needs this functionality.</span></span> <span data-ttu-id="88bb5-144">Можно использовать [систему диагностики Azure](cloud-services-dotnet-diagnostics.md) для получения информации о выполняемых экземплярах роли.</span><span class="sxs-lookup"><span data-stu-id="88bb5-144">You can use [Azure Diagnostics](cloud-services-dotnet-diagnostics.md) to obtain information about running role instances.</span></span>
+> <span data-ttu-id="385bc-143">Hello управляемая библиотека Azure не предоставляет средства определения работоспособности hello других экземпляров роли, но вы можно реализовать самостоятельно Если службе нужна подобная функциональность.</span><span class="sxs-lookup"><span data-stu-id="385bc-143">hello Azure Managed Library does not provide a means of determining hello health of other role instances, but you can implement such health assessments yourself if your service needs this functionality.</span></span> <span data-ttu-id="385bc-144">Можно использовать [диагностики Azure](cloud-services-dotnet-diagnostics.md) tooobtain сведения о выполнении экземпляров роли.</span><span class="sxs-lookup"><span data-stu-id="385bc-144">You can use [Azure Diagnostics](cloud-services-dotnet-diagnostics.md) tooobtain information about running role instances.</span></span>
 > 
 > 
 
-<span data-ttu-id="88bb5-145">Чтобы определить номер порта внутренней конечной точки экземпляра роли, можно использовать свойство [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) , чтобы вернуть объект Dictionary, содержащий имена конечных точек и их IP-адреса и порты.</span><span class="sxs-lookup"><span data-stu-id="88bb5-145">To determine the port number for an internal endpoint on a role instance, you can use the [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) property to return a Dictionary object that contains endpoint names and their corresponding IP addresses and ports.</span></span> <span data-ttu-id="88bb5-146">Свойство [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) возвращает IP-адрес и порт указанной конечной точкой.</span><span class="sxs-lookup"><span data-stu-id="88bb5-146">The [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) property returns the IP address and port for a specified endpoint.</span></span> <span data-ttu-id="88bb5-147">Свойство **PublicIPEndpoint** возвращает порт для конечной точки с балансировкой нагрузки.</span><span class="sxs-lookup"><span data-stu-id="88bb5-147">The **PublicIPEndpoint** property returns the port for a load balanced endpoint.</span></span> <span data-ttu-id="88bb5-148">Часть IP-адреса в свойстве **PublicIPEndpoint** не используется.</span><span class="sxs-lookup"><span data-stu-id="88bb5-148">The IP address portion of the **PublicIPEndpoint** property is not used.</span></span>
+<span data-ttu-id="385bc-145">toodetermine hello номер порта для внутренней конечной точки в экземпляре роли, можно использовать hello [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) tooreturn свойство объект словаря, который содержит имена конечных точек и их соответствующие IP-адреса и порты.</span><span class="sxs-lookup"><span data-stu-id="385bc-145">toodetermine hello port number for an internal endpoint on a role instance, you can use hello [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) property tooreturn a Dictionary object that contains endpoint names and their corresponding IP addresses and ports.</span></span> <span data-ttu-id="385bc-146">Hello [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) свойство возвращает hello IP-адрес и порт для указанной конечной точкой.</span><span class="sxs-lookup"><span data-stu-id="385bc-146">hello [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) property returns hello IP address and port for a specified endpoint.</span></span> <span data-ttu-id="385bc-147">Hello **PublicIPEndpoint** свойство возвращает hello порт для конечной точки с балансировкой нагрузки.</span><span class="sxs-lookup"><span data-stu-id="385bc-147">hello **PublicIPEndpoint** property returns hello port for a load balanced endpoint.</span></span> <span data-ttu-id="385bc-148">часть Hello IP-адреса hello **PublicIPEndpoint** свойство не используется.</span><span class="sxs-lookup"><span data-stu-id="385bc-148">hello IP address portion of hello **PublicIPEndpoint** property is not used.</span></span>
 
-<span data-ttu-id="88bb5-149">Вот пример, в котором выполняется итерация экземпляров роли.</span><span class="sxs-lookup"><span data-stu-id="88bb5-149">Here is an example that iterates role instances.</span></span>
+<span data-ttu-id="385bc-149">Вот пример, в котором выполняется итерация экземпляров роли.</span><span class="sxs-lookup"><span data-stu-id="385bc-149">Here is an example that iterates role instances.</span></span>
 
 ```csharp
 foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Instances)
@@ -125,10 +125,10 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 }
 ```
 
-<span data-ttu-id="88bb5-150">Ниже приведен пример рабочей роли, которая получает конечную точку, предоставляемую через определение службы, и начинает прослушивание подключений.</span><span class="sxs-lookup"><span data-stu-id="88bb5-150">Here is an example of a worker role that gets the endpoint exposed through the service definition and starts listening for connections.</span></span>
+<span data-ttu-id="385bc-150">Ниже приведен пример рабочей роли, который получает конечную точку hello, предоставленную до определения службы hello и начинает прослушивание подключений.</span><span class="sxs-lookup"><span data-stu-id="385bc-150">Here is an example of a worker role that gets hello endpoint exposed through hello service definition and starts listening for connections.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="88bb5-151">Этот код будет работать только для развернутой службы.</span><span class="sxs-lookup"><span data-stu-id="88bb5-151">This code will only work for a deployed service.</span></span> <span data-ttu-id="88bb5-152">При выполнении в эмуляторе вычислений Azure элементы конфигурации службы, создающие конечные точки прямых портов (элементы**InstanceInputEndpoint** ), игнорируются.</span><span class="sxs-lookup"><span data-stu-id="88bb5-152">When running in the Azure Compute Emulator, service configuration elements that create direct port endpoints (**InstanceInputEndpoint** elements) are ignored.</span></span>
+> <span data-ttu-id="385bc-151">Этот код будет работать только для развернутой службы.</span><span class="sxs-lookup"><span data-stu-id="385bc-151">This code will only work for a deployed service.</span></span> <span data-ttu-id="385bc-152">При выполнении в эмуляторе вычислений Azure hello службы элементы конфигурации для создания конечных точек прямого порта (**InstanceInputEndpoint** элементов) учитываются.</span><span class="sxs-lookup"><span data-stu-id="385bc-152">When running in hello Azure Compute Emulator, service configuration elements that create direct port endpoints (**InstanceInputEndpoint** elements) are ignored.</span></span>
 > 
 > 
 
@@ -167,7 +167,7 @@ namespace WorkerRole1
         var listener = new Socket(
           myInternalEp.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
-        // Bind socket listener to internal endpoint and listen
+        // Bind socket listener toointernal endpoint and listen
         listener.Bind(myInternalEp);
         listener.Listen(10);
         Trace.TraceInformation("Listening on IP:{0},Port: {1}",
@@ -175,7 +175,7 @@ namespace WorkerRole1
 
         while (true)
         {
-          // Block the thread and wait for a client request
+          // Block hello thread and wait for a client request
           Socket handler = listener.Accept();
           Trace.TraceInformation("Client request received.");
 
@@ -205,23 +205,23 @@ namespace WorkerRole1
 
     public override bool OnStart()
     {
-      // Set the maximum number of concurrent connections 
+      // Set hello maximum number of concurrent connections 
       ServicePointManager.DefaultConnectionLimit = 12;
 
       // For information on handling configuration changes
-      // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
+      // see hello MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
       return base.OnStart();
     }
   }
 }
 ```
 
-## <a name="network-traffic-rules-to-control-role-communication"></a><span data-ttu-id="88bb5-153">Правила сетевого трафика для управления обменом данными между ролями</span><span class="sxs-lookup"><span data-stu-id="88bb5-153">Network traffic rules to control role communication</span></span>
-<span data-ttu-id="88bb5-154">После определения внутренних конечных точек можно добавить правила сетевого трафика (на основании созданных конечных точек), чтобы управлять обменом данными между экземплярами роли.</span><span class="sxs-lookup"><span data-stu-id="88bb5-154">After you define internal endpoints, you can add network traffic rules (based on the endpoints that you created) to control how role instances can communicate with each other.</span></span> <span data-ttu-id="88bb5-155">На следующей схеме показаны некоторые общие сценарии управления обменом данными между ролями:</span><span class="sxs-lookup"><span data-stu-id="88bb5-155">The following diagram shows some common scenarios for controlling role communication:</span></span>
+## <a name="network-traffic-rules-toocontrol-role-communication"></a><span data-ttu-id="385bc-153">Роль правил трафика toocontrol сетью</span><span class="sxs-lookup"><span data-stu-id="385bc-153">Network traffic rules toocontrol role communication</span></span>
+<span data-ttu-id="385bc-154">После задания внутренних конечных точек можно добавить сетевого трафика (hello конечных точек, которые были созданы с учетом) правила toocontrol как экземпляры роли могут взаимодействовать друг с другом.</span><span class="sxs-lookup"><span data-stu-id="385bc-154">After you define internal endpoints, you can add network traffic rules (based on hello endpoints that you created) toocontrol how role instances can communicate with each other.</span></span> <span data-ttu-id="385bc-155">Hello следующей диаграмме показаны некоторые общие сценарии по управлению взаимодействием ролей:</span><span class="sxs-lookup"><span data-stu-id="385bc-155">hello following diagram shows some common scenarios for controlling role communication:</span></span>
 
-<span data-ttu-id="88bb5-156">![Сценарии использования правил сетевого трафика](./media/cloud-services-enable-communication-role-instances/scenarios.png "Сценарии использования правил сетевого трафика")</span><span class="sxs-lookup"><span data-stu-id="88bb5-156">![Network Traffic Rules Scenarios](./media/cloud-services-enable-communication-role-instances/scenarios.png "Network Traffic Rules Scenarios")</span></span>
+<span data-ttu-id="385bc-156">![Сценарии использования правил сетевого трафика](./media/cloud-services-enable-communication-role-instances/scenarios.png "Сценарии использования правил сетевого трафика")</span><span class="sxs-lookup"><span data-stu-id="385bc-156">![Network Traffic Rules Scenarios](./media/cloud-services-enable-communication-role-instances/scenarios.png "Network Traffic Rules Scenarios")</span></span>
 
-<span data-ttu-id="88bb5-157">В следующем примере кода показаны определения ролей, показанных на предыдущей схеме.</span><span class="sxs-lookup"><span data-stu-id="88bb5-157">The following code example shows role definitions for the roles shown in the previous diagram.</span></span> <span data-ttu-id="88bb5-158">В каждом определении роли определена по крайней мере одна внутренняя конечная точка:</span><span class="sxs-lookup"><span data-stu-id="88bb5-158">Each role definition includes at least one internal endpoint defined:</span></span>
+<span data-ttu-id="385bc-157">Hello примере кода показан определения роли для роли hello hello предыдущей иллюстрации.</span><span class="sxs-lookup"><span data-stu-id="385bc-157">hello following code example shows role definitions for hello roles shown in hello previous diagram.</span></span> <span data-ttu-id="385bc-158">В каждом определении роли определена по крайней мере одна внутренняя конечная точка:</span><span class="sxs-lookup"><span data-stu-id="385bc-158">Each role definition includes at least one internal endpoint defined:</span></span>
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -253,14 +253,14 @@ namespace WorkerRole1
 ```
 
 > [!NOTE]
-> <span data-ttu-id="88bb5-159">Обмен данными между ролями с внутренним конечными точками с фиксированными и автоматически назначенными портами может быть ограничен.</span><span class="sxs-lookup"><span data-stu-id="88bb5-159">Restriction of communication between roles can occur with internal endpoints of both fixed and automatically assigned ports.</span></span>
+> <span data-ttu-id="385bc-159">Обмен данными между ролями с внутренним конечными точками с фиксированными и автоматически назначенными портами может быть ограничен.</span><span class="sxs-lookup"><span data-stu-id="385bc-159">Restriction of communication between roles can occur with internal endpoints of both fixed and automatically assigned ports.</span></span>
 > 
 > 
 
-<span data-ttu-id="88bb5-160">По умолчанию после определения внутренней конечной точки данные могут передаваться из одной роли во внутреннюю конечную точку другой роли без каких-либо ограничений.</span><span class="sxs-lookup"><span data-stu-id="88bb5-160">By default, after an internal endpoint is defined, communication can flow from any role to the internal endpoint of a role without any restrictions.</span></span> <span data-ttu-id="88bb5-161">Чтобы ограничить обмен данными, необходимо добавить элемент **NetworkTrafficRules** в элемент **ServiceDefinition** в файле определения службы.</span><span class="sxs-lookup"><span data-stu-id="88bb5-161">To restrict communication, you must add a **NetworkTrafficRules** element to the **ServiceDefinition** element in the service definition file.</span></span>
+<span data-ttu-id="385bc-160">По умолчанию определив внутреннюю конечную точку, могут передаваться из любой роли toohello внутренней конечной точке другой роли без каких-либо ограничений.</span><span class="sxs-lookup"><span data-stu-id="385bc-160">By default, after an internal endpoint is defined, communication can flow from any role toohello internal endpoint of a role without any restrictions.</span></span> <span data-ttu-id="385bc-161">toorestrict связи, необходимо добавить **NetworkTrafficRules** toohello элемент **ServiceDefinition** элемент в файле определения службы hello.</span><span class="sxs-lookup"><span data-stu-id="385bc-161">toorestrict communication, you must add a **NetworkTrafficRules** element toohello **ServiceDefinition** element in hello service definition file.</span></span>
 
-### <a name="scenario-1"></a><span data-ttu-id="88bb5-162">Сценарий 1</span><span class="sxs-lookup"><span data-stu-id="88bb5-162">Scenario 1</span></span>
-<span data-ttu-id="88bb5-163">Разрешен только сетевой трафик из **WebRole1** в **WorkerRole1**.</span><span class="sxs-lookup"><span data-stu-id="88bb5-163">Only allow network traffic from **WebRole1** to **WorkerRole1**.</span></span>
+### <a name="scenario-1"></a><span data-ttu-id="385bc-162">Сценарий 1</span><span class="sxs-lookup"><span data-stu-id="385bc-162">Scenario 1</span></span>
+<span data-ttu-id="385bc-163">Разрешить только сетевой трафик от **WebRole1** слишком**WorkerRole1**.</span><span class="sxs-lookup"><span data-stu-id="385bc-163">Only allow network traffic from **WebRole1** too**WorkerRole1**.</span></span>
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -278,8 +278,8 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-### <a name="scenario-2"></a><span data-ttu-id="88bb5-164">Сценарий 2</span><span class="sxs-lookup"><span data-stu-id="88bb5-164">Scenario 2</span></span>
-<span data-ttu-id="88bb5-165">Разрешен только сетевой трафик из **WebRole1** в **WorkerRole1** и **WorkerRole2**.</span><span class="sxs-lookup"><span data-stu-id="88bb5-165">Only allows network traffic from **WebRole1** to **WorkerRole1** and **WorkerRole2**.</span></span>
+### <a name="scenario-2"></a><span data-ttu-id="385bc-164">Сценарий 2</span><span class="sxs-lookup"><span data-stu-id="385bc-164">Scenario 2</span></span>
+<span data-ttu-id="385bc-165">Разрешен только сетевой трафик от **WebRole1** слишком**WorkerRole1** и **WorkerRole2**.</span><span class="sxs-lookup"><span data-stu-id="385bc-165">Only allows network traffic from **WebRole1** too**WorkerRole1** and **WorkerRole2**.</span></span>
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -297,8 +297,8 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-### <a name="scenario-3"></a><span data-ttu-id="88bb5-166">Сценарий 3</span><span class="sxs-lookup"><span data-stu-id="88bb5-166">Scenario 3</span></span>
-<span data-ttu-id="88bb5-167">Разрешен только сетевой трафик из **WebRole1** в **WorkerRole1** и из **WorkerRole1** в **WorkerRole2**.</span><span class="sxs-lookup"><span data-stu-id="88bb5-167">Only allows network traffic from **WebRole1** to **WorkerRole1**, and **WorkerRole1** to **WorkerRole2**.</span></span>
+### <a name="scenario-3"></a><span data-ttu-id="385bc-166">Сценарий 3</span><span class="sxs-lookup"><span data-stu-id="385bc-166">Scenario 3</span></span>
+<span data-ttu-id="385bc-167">Разрешен только сетевой трафик от **WebRole1** слишком**WorkerRole1**, и **WorkerRole1** слишком**WorkerRole2**.</span><span class="sxs-lookup"><span data-stu-id="385bc-167">Only allows network traffic from **WebRole1** too**WorkerRole1**, and **WorkerRole1** too**WorkerRole2**.</span></span>
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -326,8 +326,8 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-### <a name="scenario-4"></a><span data-ttu-id="88bb5-168">Сценарий 4</span><span class="sxs-lookup"><span data-stu-id="88bb5-168">Scenario 4</span></span>
-<span data-ttu-id="88bb5-169">Разрешен только сетевой трафик из **WebRole1** в **WorkerRole1**, из **WebRole1** в **WorkerRole2** и из **WorkerRole1** в **WorkerRole2**.</span><span class="sxs-lookup"><span data-stu-id="88bb5-169">Only allows network traffic from **WebRole1** to **WorkerRole1**, **WebRole1** to **WorkerRole2**, and **WorkerRole1** to **WorkerRole2**.</span></span>
+### <a name="scenario-4"></a><span data-ttu-id="385bc-168">Сценарий 4</span><span class="sxs-lookup"><span data-stu-id="385bc-168">Scenario 4</span></span>
+<span data-ttu-id="385bc-169">Разрешен только сетевой трафик от **WebRole1** слишком**WorkerRole1**, **WebRole1** слишком**WorkerRole2**, и  **WorkerRole1** слишком**WorkerRole2**.</span><span class="sxs-lookup"><span data-stu-id="385bc-169">Only allows network traffic from **WebRole1** too**WorkerRole1**, **WebRole1** too**WorkerRole2**, and **WorkerRole1** too**WorkerRole2**.</span></span>
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -367,8 +367,8 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-<span data-ttu-id="88bb5-170">Справочник по схеме XML для элементов, используемых выше, можно найти [здесь](https://msdn.microsoft.com/library/azure/gg557551.aspx).</span><span class="sxs-lookup"><span data-stu-id="88bb5-170">An XML schema reference for the elements used above can be found [here](https://msdn.microsoft.com/library/azure/gg557551.aspx).</span></span>
+<span data-ttu-id="385bc-170">Справочник по схеме XML для элементов hello выше можно найти [здесь](https://msdn.microsoft.com/library/azure/gg557551.aspx).</span><span class="sxs-lookup"><span data-stu-id="385bc-170">An XML schema reference for hello elements used above can be found [here](https://msdn.microsoft.com/library/azure/gg557551.aspx).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="88bb5-171">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="88bb5-171">Next steps</span></span>
-<span data-ttu-id="88bb5-172">Дополнительная информация о [модели](cloud-services-model-and-package.md)облачной службы</span><span class="sxs-lookup"><span data-stu-id="88bb5-172">Read more about the Cloud Service [model](cloud-services-model-and-package.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="385bc-171">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="385bc-171">Next steps</span></span>
+<span data-ttu-id="385bc-172">Дополнительные сведения о hello облачной службы [модели](cloud-services-model-and-package.md).</span><span class="sxs-lookup"><span data-stu-id="385bc-172">Read more about hello Cloud Service [model](cloud-services-model-and-package.md).</span></span>
 

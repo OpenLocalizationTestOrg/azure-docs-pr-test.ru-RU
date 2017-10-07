@@ -1,5 +1,5 @@
 ---
-title: "Получение событий от концентраторов событий Azure с помощью Java | Документация Майкрософт"
+title: "события aaaReceive из концентраторов событий Azure с помощью Java | Документы Microsoft"
 description: "Узнайте основные сведения о получении событий от концентраторов событий с помощью Java."
 services: event-hubs
 documentationcenter: 
@@ -14,49 +14,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 3c1b455e6298367dc50f0943b58f6cf1e7f1c5fd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 05414a22e6616296752c678bb0af887d6f070c12
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="receive-events-from-azure-event-hubs-using-java"></a><span data-ttu-id="1ecee-103">Получение событий от концентраторов событий Azure с помощью Java</span><span class="sxs-lookup"><span data-stu-id="1ecee-103">Receive events from Azure Event Hubs using Java</span></span>
+# <a name="receive-events-from-azure-event-hubs-using-java"></a><span data-ttu-id="0211b-103">Получение событий от концентраторов событий Azure с помощью Java</span><span class="sxs-lookup"><span data-stu-id="0211b-103">Receive events from Azure Event Hubs using Java</span></span>
 
 
-## <a name="introduction"></a><span data-ttu-id="1ecee-104">Введение</span><span class="sxs-lookup"><span data-stu-id="1ecee-104">Introduction</span></span>
-<span data-ttu-id="1ecee-105">Концентраторы событий — это высокомасштабируемая система, способная принимать миллионы событий в секунду, благодаря которой приложения могут обрабатывать и анализировать большие объемы данных от подключенных устройств и приложений.</span><span class="sxs-lookup"><span data-stu-id="1ecee-105">Event Hubs is a highly scalable ingestion system that can ingest millions of events per second, enabling an application to process and analyze the massive amounts of data produced by your connected devices and applications.</span></span> <span data-ttu-id="1ecee-106">После сбора данных в концентраторах событий их можно преобразовать и сохранить с помощью любого поставщика аналитики в реальном времени или в кластере хранилища.</span><span class="sxs-lookup"><span data-stu-id="1ecee-106">Once collected into Event Hubs, you can transform and store data using any real-time analytics provider or storage cluster.</span></span>
+## <a name="introduction"></a><span data-ttu-id="0211b-104">Введение</span><span class="sxs-lookup"><span data-stu-id="0211b-104">Introduction</span></span>
+<span data-ttu-id="0211b-105">Концентраторы событий — это система высокой степенью масштабирования приема, можно принять миллионов событий в секунду, включение tooprocess приложения и анализировать hello значительные объемы данных, создаваемых подключенных устройств и приложений.</span><span class="sxs-lookup"><span data-stu-id="0211b-105">Event Hubs is a highly scalable ingestion system that can ingest millions of events per second, enabling an application tooprocess and analyze hello massive amounts of data produced by your connected devices and applications.</span></span> <span data-ttu-id="0211b-106">После сбора данных в концентраторах событий их можно преобразовать и сохранить с помощью любого поставщика аналитики в реальном времени или в кластере хранилища.</span><span class="sxs-lookup"><span data-stu-id="0211b-106">Once collected into Event Hubs, you can transform and store data using any real-time analytics provider or storage cluster.</span></span>
 
-<span data-ttu-id="1ecee-107">Дополнительные сведения см. в [обзоре концентраторов событий][Event Hubs overview].</span><span class="sxs-lookup"><span data-stu-id="1ecee-107">For more information, see the [Event Hubs overview][Event Hubs overview].</span></span>
+<span data-ttu-id="0211b-107">Дополнительные сведения см. в разделе hello [Обзор концентраторов событий][Event Hubs overview].</span><span class="sxs-lookup"><span data-stu-id="0211b-107">For more information, see hello [Event Hubs overview][Event Hubs overview].</span></span>
 
-<span data-ttu-id="1ecee-108">В этом руководстве показано, как получать события из концентратора событий с помощью консольного приложения, написанного на языке Java.</span><span class="sxs-lookup"><span data-stu-id="1ecee-108">This tutorial shows how to receive events into an event hub using a console application written in Java.</span></span>
+<span data-ttu-id="0211b-108">В этом учебнике показано как tooreceive событий в концентратор событий с помощью консольного приложения, написанного на языке Java.</span><span class="sxs-lookup"><span data-stu-id="0211b-108">This tutorial shows how tooreceive events into an event hub using a console application written in Java.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="1ecee-109">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="1ecee-109">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="0211b-109">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="0211b-109">Prerequisites</span></span>
 
-<span data-ttu-id="1ecee-110">Для работы с данным руководством вам потребуется:</span><span class="sxs-lookup"><span data-stu-id="1ecee-110">In order to complete this tutorial, you need the following prerequisites:</span></span>
+<span data-ttu-id="0211b-110">Порядок toocomplete этого учебника нужен hello следующие предварительные требования:</span><span class="sxs-lookup"><span data-stu-id="0211b-110">In order toocomplete this tutorial, you need hello following prerequisites:</span></span>
 
-* <span data-ttu-id="1ecee-111">Среда разработки Java.</span><span class="sxs-lookup"><span data-stu-id="1ecee-111">A Java development environment.</span></span> <span data-ttu-id="1ecee-112">Для этого руководства предполагается использование среды [Eclipse](https://www.eclipse.org/).</span><span class="sxs-lookup"><span data-stu-id="1ecee-112">For this tutorial, we assume [Eclipse](https://www.eclipse.org/).</span></span>
-* <span data-ttu-id="1ecee-113">Активная учетная запись Azure.</span><span class="sxs-lookup"><span data-stu-id="1ecee-113">An active Azure account.</span></span> <br/><span data-ttu-id="1ecee-114">Если ее нет, можно создать бесплатную учетную запись всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="1ecee-114">If you don't have an account, you can create a free account in just a couple of minutes.</span></span> <span data-ttu-id="1ecee-115">Дополнительные сведения см. в разделе <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Бесплатная пробная версия Azure</a>.</span><span class="sxs-lookup"><span data-stu-id="1ecee-115">For details, see <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure Free Trial</a>.</span></span>
+* <span data-ttu-id="0211b-111">Среда разработки Java.</span><span class="sxs-lookup"><span data-stu-id="0211b-111">A Java development environment.</span></span> <span data-ttu-id="0211b-112">Для этого руководства предполагается использование среды [Eclipse](https://www.eclipse.org/).</span><span class="sxs-lookup"><span data-stu-id="0211b-112">For this tutorial, we assume [Eclipse](https://www.eclipse.org/).</span></span>
+* <span data-ttu-id="0211b-113">Активная учетная запись Azure.</span><span class="sxs-lookup"><span data-stu-id="0211b-113">An active Azure account.</span></span> <br/><span data-ttu-id="0211b-114">Если ее нет, можно создать бесплатную учетную запись всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="0211b-114">If you don't have an account, you can create a free account in just a couple of minutes.</span></span> <span data-ttu-id="0211b-115">Дополнительные сведения см. в разделе <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Бесплатная пробная версия Azure</a>.</span><span class="sxs-lookup"><span data-stu-id="0211b-115">For details, see <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure Free Trial</a>.</span></span>
 
-## <a name="receive-messages-with-eventprocessorhost-in-java"></a><span data-ttu-id="1ecee-116">Прием сообщений через EventProcessorHost в Java</span><span class="sxs-lookup"><span data-stu-id="1ecee-116">Receive messages with EventProcessorHost in Java</span></span>
+## <a name="receive-messages-with-eventprocessorhost-in-java"></a><span data-ttu-id="0211b-116">Прием сообщений через EventProcessorHost в Java</span><span class="sxs-lookup"><span data-stu-id="0211b-116">Receive messages with EventProcessorHost in Java</span></span>
 
-<span data-ttu-id="1ecee-117">**EventProcessorHost** — это класс Java, который упрощает прием событий от концентраторов событий путем управления постоянными контрольными точками и параллельно принимает сообщения от этих концентраторов событий.</span><span class="sxs-lookup"><span data-stu-id="1ecee-117">**EventProcessorHost** is a Java class that simplifies receiving events from Event Hubs by managing persistent checkpoints and parallel receives from those Event Hubs.</span></span> <span data-ttu-id="1ecee-118">С помощью класса EventProcessorHost можно разделить события между несколькими получателями, даже если они размещены на разных узлах.</span><span class="sxs-lookup"><span data-stu-id="1ecee-118">Using EventProcessorHost, you can split events across multiple receivers, even when hosted in different nodes.</span></span> <span data-ttu-id="1ecee-119">В этом примере показано, как использовать EventProcessorHost для одного получателя.</span><span class="sxs-lookup"><span data-stu-id="1ecee-119">This example shows how to use EventProcessorHost for a single receiver.</span></span>
+<span data-ttu-id="0211b-117">**EventProcessorHost** — это класс Java, который упрощает прием событий от концентраторов событий путем управления постоянными контрольными точками и параллельно принимает сообщения от этих концентраторов событий.</span><span class="sxs-lookup"><span data-stu-id="0211b-117">**EventProcessorHost** is a Java class that simplifies receiving events from Event Hubs by managing persistent checkpoints and parallel receives from those Event Hubs.</span></span> <span data-ttu-id="0211b-118">С помощью класса EventProcessorHost можно разделить события между несколькими получателями, даже если они размещены на разных узлах.</span><span class="sxs-lookup"><span data-stu-id="0211b-118">Using EventProcessorHost, you can split events across multiple receivers, even when hosted in different nodes.</span></span> <span data-ttu-id="0211b-119">В этом примере показано, как toouse EventProcessorHost для одного получателя.</span><span class="sxs-lookup"><span data-stu-id="0211b-119">This example shows how toouse EventProcessorHost for a single receiver.</span></span>
 
-### <a name="create-a-storage-account"></a><span data-ttu-id="1ecee-120">Создайте учетную запись хранения.</span><span class="sxs-lookup"><span data-stu-id="1ecee-120">Create a storage account</span></span>
-<span data-ttu-id="1ecee-121">Для использования класса EventProcessorHost необходимо настроить [учетную запись хранения Azure][Azure Storage account]:</span><span class="sxs-lookup"><span data-stu-id="1ecee-121">To use EventProcessorHost, you must have an [Azure Storage account][Azure Storage account]:</span></span>
+### <a name="create-a-storage-account"></a><span data-ttu-id="0211b-120">Создайте учетную запись хранения.</span><span class="sxs-lookup"><span data-stu-id="0211b-120">Create a storage account</span></span>
+<span data-ttu-id="0211b-121">необходим toouse EventProcessorHost [учетной записи хранилища Azure][Azure Storage account]:</span><span class="sxs-lookup"><span data-stu-id="0211b-121">toouse EventProcessorHost, you must have an [Azure Storage account][Azure Storage account]:</span></span>
 
-1. <span data-ttu-id="1ecee-122">Войдите на [портал Azure][Azure portal] и щелкните **+Создать** в левой части экрана.</span><span class="sxs-lookup"><span data-stu-id="1ecee-122">Log on to the [Azure portal][Azure portal], and click **+ New** on the left-hand side of the screen.</span></span>
-2. <span data-ttu-id="1ecee-123">Щелкните **Хранилище**, а затем — **Учетная запись хранения**.</span><span class="sxs-lookup"><span data-stu-id="1ecee-123">Click **Storage**, then click **Storage account**.</span></span> <span data-ttu-id="1ecee-124">В колонке **Создание учетной записи хранилища** введите имя учетной записи хранилища.</span><span class="sxs-lookup"><span data-stu-id="1ecee-124">In the **Create storage account** blade, type a name for the storage account.</span></span> <span data-ttu-id="1ecee-125">Заполните остальные поля, выберите нужный регион и нажмите кнопку **Создать**.</span><span class="sxs-lookup"><span data-stu-id="1ecee-125">Complete the rest of the fields, select your desired region, and then click **Create**.</span></span>
+1. <span data-ttu-id="0211b-122">Войдите на toohello [портал Azure][Azure portal]и нажмите кнопку **+ создать** hello левой части экрана приветствия.</span><span class="sxs-lookup"><span data-stu-id="0211b-122">Log on toohello [Azure portal][Azure portal], and click **+ New** on hello left-hand side of hello screen.</span></span>
+2. <span data-ttu-id="0211b-123">Щелкните **Хранилище**, а затем — **Учетная запись хранения**.</span><span class="sxs-lookup"><span data-stu-id="0211b-123">Click **Storage**, then click **Storage account**.</span></span> <span data-ttu-id="0211b-124">В hello **создать учетную запись хранения** колонки, введите имя для учетной записи хранения hello.</span><span class="sxs-lookup"><span data-stu-id="0211b-124">In hello **Create storage account** blade, type a name for hello storage account.</span></span> <span data-ttu-id="0211b-125">Выполните оставшиеся hello hello поля, выберите нужный регион и нажмите кнопку **создать**.</span><span class="sxs-lookup"><span data-stu-id="0211b-125">Complete hello rest of hello fields, select your desired region, and then click **Create**.</span></span>
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
-3. <span data-ttu-id="1ecee-126">Выберите созданную учетную запись хранения и нажмите кнопку **Управление ключами доступа**.</span><span class="sxs-lookup"><span data-stu-id="1ecee-126">Click the newly created storage account, and then click **Manage Access Keys**:</span></span>
+3. <span data-ttu-id="0211b-126">Выберите только что созданный hello учетной записи хранилища и нажмите кнопку **управление ключами доступа**:</span><span class="sxs-lookup"><span data-stu-id="0211b-126">Click hello newly created storage account, and then click **Manage Access Keys**:</span></span>
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
-    <span data-ttu-id="1ecee-127">Скопируйте первичный ключ доступа во временную папку, чтобы использовать позже в этом руководстве.</span><span class="sxs-lookup"><span data-stu-id="1ecee-127">Copy the primary access key to a temporary location, to use later in this tutorial.</span></span>
+    <span data-ttu-id="0211b-127">Скопируйте hello первичного ключа tooa временный путь для доступа, toouse далее в этом учебнике.</span><span class="sxs-lookup"><span data-stu-id="0211b-127">Copy hello primary access key tooa temporary location, toouse later in this tutorial.</span></span>
 
-### <a name="create-a-java-project-using-the-eventprocessor-host"></a><span data-ttu-id="1ecee-128">Создание проекта Java с помощью EventProcessorHost</span><span class="sxs-lookup"><span data-stu-id="1ecee-128">Create a Java project using the EventProcessor Host</span></span>
-<span data-ttu-id="1ecee-129">Клиентская библиотека Java для концентраторов событий доступна для использования в проектах из [центрального репозитория Maven][Maven Package]. Ссылаться на нее можно, используя следующее объявление зависимости в файле проекта Maven:</span><span class="sxs-lookup"><span data-stu-id="1ecee-129">The Java client library for Event Hubs is available for use in Maven projects from the [Maven Central Repository][Maven Package], and can be referenced using the following dependency declaration inside your Maven project file:</span></span>    
+### <a name="create-a-java-project-using-hello-eventprocessor-host"></a><span data-ttu-id="0211b-128">Создание проекта Java с помощью hello EventProcessor узла</span><span class="sxs-lookup"><span data-stu-id="0211b-128">Create a Java project using hello EventProcessor Host</span></span>
+<span data-ttu-id="0211b-129">Hello клиентской библиотеки Java для концентраторов событий доступна для использования в проектах Maven из hello [центральный репозиторий Maven][Maven Package]и можно указывать hello объявления зависимостей внутри вашей Файл проекта maven:</span><span class="sxs-lookup"><span data-stu-id="0211b-129">hello Java client library for Event Hubs is available for use in Maven projects from hello [Maven Central Repository][Maven Package], and can be referenced using hello following dependency declaration inside your Maven project file:</span></span>    
 
 ```xml
 <dependency>
@@ -76,9 +76,9 @@ ms.lasthandoff: 08/29/2017
 </dependency>
 ```
 
-<span data-ttu-id="1ecee-130">Для различных типов сред сборки можно явно получить последние выпущенные JAR-файлы из [центрального репозитория Maven][Maven Package] или из [точки распространения выпусков на GitHub](https://github.com/Azure/azure-event-hubs/releases).</span><span class="sxs-lookup"><span data-stu-id="1ecee-130">For different types of build environments, you can explicitly obtain the latest released JAR files from the [Maven Central Repository][Maven Package] or from [the release distribution point on GitHub](https://github.com/Azure/azure-event-hubs/releases).</span></span>  
+<span data-ttu-id="0211b-130">Для различных типов среды сборки c, можно явно загрузить файлы JAR hello последнего выпуска из hello [центральный репозиторий Maven] [ Maven Package] или из [hello на точки распространения выпуска GitHub](https://github.com/Azure/azure-event-hubs/releases).</span><span class="sxs-lookup"><span data-stu-id="0211b-130">For different types of build environments, you can explicitly obtain hello latest released JAR files from hello [Maven Central Repository][Maven Package] or from [hello release distribution point on GitHub](https://github.com/Azure/azure-event-hubs/releases).</span></span>  
 
-1. <span data-ttu-id="1ecee-131">Следующий пример сначала создает новый проект Maven для приложения консоли или оболочки в избранной среде разработки Java.</span><span class="sxs-lookup"><span data-stu-id="1ecee-131">For the following sample, first create a new Maven project for a console/shell application in your favorite Java development environment.</span></span> <span data-ttu-id="1ecee-132">Класс называется `ErrorNotificationHandler`.</span><span class="sxs-lookup"><span data-stu-id="1ecee-132">The class is called `ErrorNotificationHandler`.</span></span>     
+1. <span data-ttu-id="0211b-131">Для следующих образец hello сначала необходимо создайте новый проект Maven для приложений консоли или оболочки в избранные среда разработки Java.</span><span class="sxs-lookup"><span data-stu-id="0211b-131">For hello following sample, first create a new Maven project for a console/shell application in your favorite Java development environment.</span></span> <span data-ttu-id="0211b-132">Класс Hello называется `ErrorNotificationHandler`.</span><span class="sxs-lookup"><span data-stu-id="0211b-132">hello class is called `ErrorNotificationHandler`.</span></span>     
    
     ```java
     import java.util.function.Consumer;
@@ -93,7 +93,7 @@ ms.lasthandoff: 08/29/2017
         }
     }
     ```
-2. <span data-ttu-id="1ecee-133">Создайте новый класс с именем `EventProcessor`с помощью следующего кода:</span><span class="sxs-lookup"><span data-stu-id="1ecee-133">Use the following code to create a new class called `EventProcessor`.</span></span>
+2. <span data-ttu-id="0211b-133">Используйте hello следующий код toocreate новый класс с именем `EventProcessor`.</span><span class="sxs-lookup"><span data-stu-id="0211b-133">Use hello following code toocreate a new class called `EventProcessor`.</span></span>
    
     ```java
     import com.microsoft.azure.eventhubs.EventData;
@@ -146,7 +146,7 @@ ms.lasthandoff: 08/29/2017
         }
     }
     ```
-3. <span data-ttu-id="1ecee-134">Создайте еще один класс с именем `EventProcessorSample` с помощью следующего кода.</span><span class="sxs-lookup"><span data-stu-id="1ecee-134">Create one more class called `EventProcessorSample`, using the following code.</span></span>
+3. <span data-ttu-id="0211b-134">Создайте один дополнительные класс с именем `EventProcessorSample`, с использованием hello следующий код.</span><span class="sxs-lookup"><span data-stu-id="0211b-134">Create one more class called `EventProcessorSample`, using hello following code.</span></span>
    
     ```java
     import com.microsoft.azure.eventprocessorhost.*;
@@ -192,7 +192,7 @@ ms.lasthandoff: 08/29/2017
                 }
             }
    
-            System.out.println("Press enter to stop");
+            System.out.println("Press enter toostop");
             try
             {
                 System.in.read();
@@ -211,7 +211,7 @@ ms.lasthandoff: 08/29/2017
         }
     }
     ```
-4. <span data-ttu-id="1ecee-135">Замените значения в следующих полях значениями, которые использовались при создании концентратора событий и учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="1ecee-135">Replace the following fields with the values used when you created the event hub and storage account.</span></span>
+4. <span data-ttu-id="0211b-135">Замените следующие поля со значениями hello использовались при создании учетные записи хранилища и концентратора событий hello hello.</span><span class="sxs-lookup"><span data-stu-id="0211b-135">Replace hello following fields with hello values used when you created hello event hub and storage account.</span></span>
    
     ```java
     final String namespaceName = "----ServiceBusNamespaceName-----";
@@ -225,16 +225,16 @@ ms.lasthandoff: 08/29/2017
     ```
 
 > [!NOTE]
-> <span data-ttu-id="1ecee-136">В данном учебнике используется один экземпляр EventProcessorHost.</span><span class="sxs-lookup"><span data-stu-id="1ecee-136">This tutorial uses a single instance of EventProcessorHost.</span></span> <span data-ttu-id="1ecee-137">Чтобы увеличить пропускную способность, рекомендуется запустить несколько экземпляров EventProcessorHost (желательно на отдельных компьютерах).</span><span class="sxs-lookup"><span data-stu-id="1ecee-137">To increase throughput, it is recommended that you run multiple instances of EventProcessorHost, preferably on separate machines.</span></span>  <span data-ttu-id="1ecee-138">Это также обеспечивает избыточность.</span><span class="sxs-lookup"><span data-stu-id="1ecee-138">This provides redundancy as well.</span></span> <span data-ttu-id="1ecee-139">В этом случае различные экземпляры автоматически координируются друг с другом для распределения нагрузки полученных событий.</span><span class="sxs-lookup"><span data-stu-id="1ecee-139">In those cases, the various instances automatically coordinate with each other in order to load balance the received events.</span></span> <span data-ttu-id="1ecee-140">Если каждый из нескольких получателей должен обрабатывать *все* события, то необходимо использовать понятие **ConsumerGroup** .</span><span class="sxs-lookup"><span data-stu-id="1ecee-140">If you want multiple receivers to each process *all* the events, you must use the **ConsumerGroup** concept.</span></span> <span data-ttu-id="1ecee-141">При получении события от разных компьютеров может оказаться полезным указать имена экземпляров EventProcessorHost в компьютерах (или ролях), где они развернуты.</span><span class="sxs-lookup"><span data-stu-id="1ecee-141">When receiving events from different machines, it might be useful to specify names for EventProcessorHost instances based on the machines (or roles) in which they are deployed.</span></span>
+> <span data-ttu-id="0211b-136">В данном учебнике используется один экземпляр EventProcessorHost.</span><span class="sxs-lookup"><span data-stu-id="0211b-136">This tutorial uses a single instance of EventProcessorHost.</span></span> <span data-ttu-id="0211b-137">tooincrease пропускной способности, рекомендуется запускать несколько экземпляров EventProcessorHost, предпочтительно на разных компьютерах.</span><span class="sxs-lookup"><span data-stu-id="0211b-137">tooincrease throughput, it is recommended that you run multiple instances of EventProcessorHost, preferably on separate machines.</span></span>  <span data-ttu-id="0211b-138">Это также обеспечивает избыточность.</span><span class="sxs-lookup"><span data-stu-id="0211b-138">This provides redundancy as well.</span></span> <span data-ttu-id="0211b-139">В таких случаях приветствия различные экземпляры автоматически координации друг с другом в порядке tooload баланс hello полученные события.</span><span class="sxs-lookup"><span data-stu-id="0211b-139">In those cases, hello various instances automatically coordinate with each other in order tooload balance hello received events.</span></span> <span data-ttu-id="0211b-140">Если требуется несколько получателей tooeach процесс *все* hello событий, необходимо использовать hello **ConsumerGroup** концепции.</span><span class="sxs-lookup"><span data-stu-id="0211b-140">If you want multiple receivers tooeach process *all* hello events, you must use hello **ConsumerGroup** concept.</span></span> <span data-ttu-id="0211b-141">При получении события из разных компьютерах, бывает полезно toospecify имена для EventProcessorHost экземпляров на основе машины hello (или ролей), в котором они развернуты.</span><span class="sxs-lookup"><span data-stu-id="0211b-141">When receiving events from different machines, it might be useful toospecify names for EventProcessorHost instances based on hello machines (or roles) in which they are deployed.</span></span>
 > 
 > 
 
-## <a name="next-steps"></a><span data-ttu-id="1ecee-142">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="1ecee-142">Next steps</span></span>
-<span data-ttu-id="1ecee-143">Дополнительные сведения о концентраторах событий см. в следующих источниках:</span><span class="sxs-lookup"><span data-stu-id="1ecee-143">You can learn more about Event Hubs by visiting the following links:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="0211b-142">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="0211b-142">Next steps</span></span>
+<span data-ttu-id="0211b-143">На сайте ссылкам hello, изучите более подробную концентраторов событий:</span><span class="sxs-lookup"><span data-stu-id="0211b-143">You can learn more about Event Hubs by visiting hello following links:</span></span>
 
-* [<span data-ttu-id="1ecee-144">Обзор концентраторов событий</span><span class="sxs-lookup"><span data-stu-id="1ecee-144">Event Hubs overview</span></span>](event-hubs-what-is-event-hubs.md)
-* [<span data-ttu-id="1ecee-145">Создание концентратора событий</span><span class="sxs-lookup"><span data-stu-id="1ecee-145">Create an Event Hub</span></span>](event-hubs-create.md)
-* [<span data-ttu-id="1ecee-146">Часто задаваемые вопросы о концентраторах событий</span><span class="sxs-lookup"><span data-stu-id="1ecee-146">Event Hubs FAQ</span></span>](event-hubs-faq.md)
+* [<span data-ttu-id="0211b-144">Обзор концентраторов событий</span><span class="sxs-lookup"><span data-stu-id="0211b-144">Event Hubs overview</span></span>](event-hubs-what-is-event-hubs.md)
+* [<span data-ttu-id="0211b-145">Создание концентратора событий</span><span class="sxs-lookup"><span data-stu-id="0211b-145">Create an Event Hub</span></span>](event-hubs-create.md)
+* [<span data-ttu-id="0211b-146">Часто задаваемые вопросы о концентраторах событий</span><span class="sxs-lookup"><span data-stu-id="0211b-146">Event Hubs FAQ</span></span>](event-hubs-faq.md)
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md

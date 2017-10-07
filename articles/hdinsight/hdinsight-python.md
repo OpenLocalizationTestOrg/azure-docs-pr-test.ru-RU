@@ -1,6 +1,6 @@
 ---
-title: "Использование определяемых пользователем функций Python с Apache Hive и Pig в Azure HDInsight | Документация Майкрософт"
-description: "Узнайте, как использовать пользовательские функции (UDF) технологической платформы Hadoop на базе Azure — Python с Hive и Pig в HDInsight."
+title: "aaaPython определяемой пользователем функции с Apache Hive и Pig - Azure HDInsight | Документы Microsoft"
+description: "Узнайте, как toouse Python пользовательской функции (UDF) из Hive и Pig в HDInsight Hadoop технологии hello стека в Azure."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,39 +16,39 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 9b67ded05a52f1e68580434667495cf6cf939871
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 26d8160cc6ed7fc22c3f06f7c1c9954c224b2366
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a><span data-ttu-id="907f3-103">Использование пользовательских функций Python с Hive и Pig в Azure HDInsight</span><span class="sxs-lookup"><span data-stu-id="907f3-103">Use Python User Defined Functions (UDF) with Hive and Pig in HDInsight</span></span>
+# <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a><span data-ttu-id="cd91a-103">Использование пользовательских функций Python с Hive и Pig в Azure HDInsight</span><span class="sxs-lookup"><span data-stu-id="cd91a-103">Use Python User Defined Functions (UDF) with Hive and Pig in HDInsight</span></span>
 
-<span data-ttu-id="907f3-104">Узнайте, как использовать определяемые пользователем функции (UDF) Python с Apache Hive и Pig в Hadoop на кластерах Azure HDInsight.</span><span class="sxs-lookup"><span data-stu-id="907f3-104">Learn how to use Python user-defined functions (UDF) with Apache Hive and Pig in Hadoop on Azure HDInsight.</span></span>
+<span data-ttu-id="cd91a-104">Узнайте, как toouse Python определяемой пользователем функции (UDF) с Apache Hive и Pig в Hadoop в Azure HDInsight.</span><span class="sxs-lookup"><span data-stu-id="cd91a-104">Learn how toouse Python user-defined functions (UDF) with Apache Hive and Pig in Hadoop on Azure HDInsight.</span></span>
 
-## <span data-ttu-id="907f3-105"><a name="python"></a>Python в HDInsight</span><span class="sxs-lookup"><span data-stu-id="907f3-105"><a name="python"></a>Python on HDInsight</span></span>
+## <span data-ttu-id="cd91a-105"><a name="python"></a>Python в HDInsight</span><span class="sxs-lookup"><span data-stu-id="cd91a-105"><a name="python"></a>Python on HDInsight</span></span>
 
-<span data-ttu-id="907f3-106">По умолчанию на кластерах HDInsight 3.0 и более поздних версиях установлен Python версии 2.7.</span><span class="sxs-lookup"><span data-stu-id="907f3-106">Python2.7 is installed by default on HDInsight 3.0 and later.</span></span> <span data-ttu-id="907f3-107">Apache Hive можно использовать с этой версией Python для потоковой обработки.</span><span class="sxs-lookup"><span data-stu-id="907f3-107">Apache Hive can be used with this version of Python for stream processing.</span></span> <span data-ttu-id="907f3-108">При этом для передачи данных между Hive и определяемой пользователем функцией используется STDOUT и STDIN.</span><span class="sxs-lookup"><span data-stu-id="907f3-108">Stream processing uses STDOUT and STDIN to pass data between Hive and the UDF.</span></span>
+<span data-ttu-id="cd91a-106">По умолчанию на кластерах HDInsight 3.0 и более поздних версиях установлен Python версии 2.7.</span><span class="sxs-lookup"><span data-stu-id="cd91a-106">Python2.7 is installed by default on HDInsight 3.0 and later.</span></span> <span data-ttu-id="cd91a-107">Apache Hive можно использовать с этой версией Python для потоковой обработки.</span><span class="sxs-lookup"><span data-stu-id="cd91a-107">Apache Hive can be used with this version of Python for stream processing.</span></span> <span data-ttu-id="cd91a-108">STDOUT и STDIN toopass данных Hive и hello определяемой пользователем функции используется для обработки потока.</span><span class="sxs-lookup"><span data-stu-id="cd91a-108">Stream processing uses STDOUT and STDIN toopass data between Hive and hello UDF.</span></span>
 
-<span data-ttu-id="907f3-109">В состав HDInsight также входят Jython, который представляет собой реализацию Python, написанную на Java.</span><span class="sxs-lookup"><span data-stu-id="907f3-109">HDInsight also includes Jython, which is a Python implementation written in Java.</span></span> <span data-ttu-id="907f3-110">Jython выполняется непосредственно на виртуальной машине Java и не использует потоковую передачу.</span><span class="sxs-lookup"><span data-stu-id="907f3-110">Jython runs directly on the Java Virtual Machine and does not use streaming.</span></span> <span data-ttu-id="907f3-111">Jython является рекомендуемым интерпретатором Python при использовании Python с Pig.</span><span class="sxs-lookup"><span data-stu-id="907f3-111">Jython is the recommended Python interpreter when using Python with Pig.</span></span>
+<span data-ttu-id="cd91a-109">В состав HDInsight также входят Jython, который представляет собой реализацию Python, написанную на Java.</span><span class="sxs-lookup"><span data-stu-id="cd91a-109">HDInsight also includes Jython, which is a Python implementation written in Java.</span></span> <span data-ttu-id="cd91a-110">Jython запускается непосредственно на виртуальной машине Java hello и не использовать потоковую передачу.</span><span class="sxs-lookup"><span data-stu-id="cd91a-110">Jython runs directly on hello Java Virtual Machine and does not use streaming.</span></span> <span data-ttu-id="cd91a-111">Jython является hello рекомендуется интерпретатор Python при использовании Python с Pig.</span><span class="sxs-lookup"><span data-stu-id="cd91a-111">Jython is hello recommended Python interpreter when using Python with Pig.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="907f3-112">Шаги в этом документе основаны на следующих предположениях:</span><span class="sxs-lookup"><span data-stu-id="907f3-112">The steps in this document make the following assumptions:</span></span> 
+> <span data-ttu-id="cd91a-112">Hello в данном пошаговом руководстве сделать hello следующие допущения:</span><span class="sxs-lookup"><span data-stu-id="cd91a-112">hello steps in this document make hello following assumptions:</span></span> 
 >
-> * <span data-ttu-id="907f3-113">Вы создаете скрипты Python в локальной среде разработки.</span><span class="sxs-lookup"><span data-stu-id="907f3-113">You create the Python scripts on your local development environment.</span></span>
-> * <span data-ttu-id="907f3-114">Вы отправляете скрипты в HDInsight, используя либо команду `scp` из локального сеанса Bash либо предоставленный сценарий PowerShell.</span><span class="sxs-lookup"><span data-stu-id="907f3-114">You upload the scripts to HDInsight using either the `scp` command from a local Bash session or the provided PowerShell script.</span></span>
+> * <span data-ttu-id="cd91a-113">Можно создавать hello сценариев Python в локальной среде разработки.</span><span class="sxs-lookup"><span data-stu-id="cd91a-113">You create hello Python scripts on your local development environment.</span></span>
+> * <span data-ttu-id="cd91a-114">Отправка tooHDInsight hello сценарии, с помощью либо hello `scp` из локального сеанса Bash или hello, предоставленный скрипт PowerShell.</span><span class="sxs-lookup"><span data-stu-id="cd91a-114">You upload hello scripts tooHDInsight using either hello `scp` command from a local Bash session or hello provided PowerShell script.</span></span>
 >
-> <span data-ttu-id="907f3-115">Если вы хотите использовать предварительную версию [Azure Cloud Shell (оболочка)](https://docs.microsoft.com/azure/cloud-shell/overview) для работы с HDInsight, вам необходимо:</span><span class="sxs-lookup"><span data-stu-id="907f3-115">If you want to use the [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) preview to work with HDInsight, then you must:</span></span>
+> <span data-ttu-id="cd91a-115">Если требуется toouse hello [оболочки облако Azure (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) предварительного просмотра toowork с HDInsight, необходимо:</span><span class="sxs-lookup"><span data-stu-id="cd91a-115">If you want toouse hello [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) preview toowork with HDInsight, then you must:</span></span>
 >
-> * <span data-ttu-id="907f3-116">Создать скрипты в среде Cloud Shell.</span><span class="sxs-lookup"><span data-stu-id="907f3-116">Create the scripts inside the cloud shell environment.</span></span>
-> * <span data-ttu-id="907f3-117">Использовать `scp` для отправки файлов из Cloud Shell в HDInsight.</span><span class="sxs-lookup"><span data-stu-id="907f3-117">Use `scp` to upload the files from the cloud shell to HDInsight.</span></span>
-> * <span data-ttu-id="907f3-118">Использовать `ssh` из Cloud Shell для подключения к HDInsight и выполнения примеров.</span><span class="sxs-lookup"><span data-stu-id="907f3-118">Use `ssh` from the cloud shell to connect to HDInsight and run the examples.</span></span>
+> * <span data-ttu-id="cd91a-116">Создайте скрипты hello внутри hello облачной среде оболочки.</span><span class="sxs-lookup"><span data-stu-id="cd91a-116">Create hello scripts inside hello cloud shell environment.</span></span>
+> * <span data-ttu-id="cd91a-117">Используйте `scp` tooupload hello файлы из hello облако tooHDInsight оболочки.</span><span class="sxs-lookup"><span data-stu-id="cd91a-117">Use `scp` tooupload hello files from hello cloud shell tooHDInsight.</span></span>
+> * <span data-ttu-id="cd91a-118">Используйте `ssh` из tooHDInsight tooconnect оболочки облака hello и примеры выполнения hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-118">Use `ssh` from hello cloud shell tooconnect tooHDInsight and run hello examples.</span></span>
 
-## <span data-ttu-id="907f3-119"><a name="hivepython"></a>Определяемая пользователем функция Hive</span><span class="sxs-lookup"><span data-stu-id="907f3-119"><a name="hivepython"></a>Hive UDF</span></span>
+## <span data-ttu-id="cd91a-119"><a name="hivepython"></a>Определяемая пользователем функция Hive</span><span class="sxs-lookup"><span data-stu-id="cd91a-119"><a name="hivepython"></a>Hive UDF</span></span>
 
-<span data-ttu-id="907f3-120">Скрипт Python можно использовать в качестве определяемой пользователем функции из Hive через HiveQL с помощью инструкции `TRANSFORM`.</span><span class="sxs-lookup"><span data-stu-id="907f3-120">Python can be used as a UDF from Hive through the HiveQL `TRANSFORM` statement.</span></span> <span data-ttu-id="907f3-121">Например, следующий запрос HiveQL вызывает файл `hiveudf.py`, хранящийся в учетной записи хранения Azure по умолчанию для кластера.</span><span class="sxs-lookup"><span data-stu-id="907f3-121">For example, the following HiveQL invokes the `hiveudf.py` file stored in the default Azure Storage account for the cluster.</span></span>
+<span data-ttu-id="cd91a-120">Python можно использовать в качестве определяемой пользователем функции из куста через hello HiveQL `TRANSFORM` инструкции.</span><span class="sxs-lookup"><span data-stu-id="cd91a-120">Python can be used as a UDF from Hive through hello HiveQL `TRANSFORM` statement.</span></span> <span data-ttu-id="cd91a-121">Например, следующая HiveQL hello вызывает hello `hiveudf.py` файлов, хранящихся в учетной записи хранилища Azure по умолчанию hello для hello кластера.</span><span class="sxs-lookup"><span data-stu-id="cd91a-121">For example, hello following HiveQL invokes hello `hiveudf.py` file stored in hello default Azure Storage account for hello cluster.</span></span>
 
-<span data-ttu-id="907f3-122">**HDInsight под управлением Linux**</span><span class="sxs-lookup"><span data-stu-id="907f3-122">**Linux-based HDInsight**</span></span>
+<span data-ttu-id="cd91a-122">**HDInsight под управлением Linux**</span><span class="sxs-lookup"><span data-stu-id="cd91a-122">**Linux-based HDInsight**</span></span>
 
 ```hiveql
 add file wasb:///hiveudf.py;
@@ -60,7 +60,7 @@ FROM hivesampletable
 ORDER BY clientid LIMIT 50;
 ```
 
-<span data-ttu-id="907f3-123">**HDInsight под управлением Windows**</span><span class="sxs-lookup"><span data-stu-id="907f3-123">**Windows-based HDInsight**</span></span>
+<span data-ttu-id="cd91a-123">**HDInsight под управлением Windows**</span><span class="sxs-lookup"><span data-stu-id="cd91a-123">**Windows-based HDInsight**</span></span>
 
 ```hiveql
 add file wasb:///hiveudf.py;
@@ -73,20 +73,20 @@ ORDER BY clientid LIMIT 50;
 ```
 
 > [!NOTE]
-> <span data-ttu-id="907f3-124">В кластерах HDInsight под управлением Windows оператор `USING` должен задавать полный путь к python.exe.</span><span class="sxs-lookup"><span data-stu-id="907f3-124">On Windows-based HDInsight clusters, the `USING` clause must specify the full path to python.exe.</span></span>
+> <span data-ttu-id="cd91a-124">В кластерах HDInsight под управлением Windows hello `USING` предложение должно содержать полный путь toopython.exe hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-124">On Windows-based HDInsight clusters, hello `USING` clause must specify hello full path toopython.exe.</span></span>
 
-<span data-ttu-id="907f3-125">Вот что делает данный пример:</span><span class="sxs-lookup"><span data-stu-id="907f3-125">Here's what this example does:</span></span>
+<span data-ttu-id="cd91a-125">Вот что делает данный пример:</span><span class="sxs-lookup"><span data-stu-id="cd91a-125">Here's what this example does:</span></span>
 
-1. <span data-ttu-id="907f3-126">Инструкция `add file` в начале файла добавляет файл `hiveudf.py` в распределенный кэш, и он становится доступен всем узлам кластера.</span><span class="sxs-lookup"><span data-stu-id="907f3-126">The `add file` statement at the beginning of the file adds the `hiveudf.py` file to the distributed cache, so it's accessible by all nodes in the cluster.</span></span>
-2. <span data-ttu-id="907f3-127">Инструкция `SELECT TRANSFORM ... USING` выбирает данные из `hivesampletable`.</span><span class="sxs-lookup"><span data-stu-id="907f3-127">The `SELECT TRANSFORM ... USING` statement selects data from the `hivesampletable`.</span></span> <span data-ttu-id="907f3-128">Она также передает параметры clientid, devicemake и devicemodel в скрипт `hiveudf.py`.</span><span class="sxs-lookup"><span data-stu-id="907f3-128">It also passes the clientid, devicemake, and devicemodel values to the `hiveudf.py` script.</span></span>
-3. <span data-ttu-id="907f3-129">Предложение `AS` описывает поля, возвращаемые из `hiveudf.py`.</span><span class="sxs-lookup"><span data-stu-id="907f3-129">The `AS` clause describes the fields returned from `hiveudf.py`.</span></span>
+1. <span data-ttu-id="cd91a-126">Hello `add file` инструкция в начале hello hello файла добавляет hello `hiveudf.py` toohello файл распределенный кэш, поэтому оно доступно для всех узлов в кластере hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-126">hello `add file` statement at hello beginning of hello file adds hello `hiveudf.py` file toohello distributed cache, so it's accessible by all nodes in hello cluster.</span></span>
+2. <span data-ttu-id="cd91a-127">Hello `SELECT TRANSFORM ... USING` инструкция выбирает данные из hello `hivesampletable`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-127">hello `SELECT TRANSFORM ... USING` statement selects data from hello `hivesampletable`.</span></span> <span data-ttu-id="cd91a-128">Он также передает hello clientid, devicemake и toohello значения devicemodel `hiveudf.py` сценария.</span><span class="sxs-lookup"><span data-stu-id="cd91a-128">It also passes hello clientid, devicemake, and devicemodel values toohello `hiveudf.py` script.</span></span>
+3. <span data-ttu-id="cd91a-129">Hello `AS` предложение описывает hello полей, возвращенных `hiveudf.py`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-129">hello `AS` clause describes hello fields returned from `hiveudf.py`.</span></span>
 
 <a name="streamingpy"></a>
 
-### <a name="create-the-hiveudfpy-file"></a><span data-ttu-id="907f3-130">Создание файла hiveudf.py</span><span class="sxs-lookup"><span data-stu-id="907f3-130">Create the hiveudf.py file</span></span>
+### <a name="create-hello-hiveudfpy-file"></a><span data-ttu-id="cd91a-130">Создайте файл hiveudf.py hello</span><span class="sxs-lookup"><span data-stu-id="cd91a-130">Create hello hiveudf.py file</span></span>
 
 
-<span data-ttu-id="907f3-131">В среде разработки создайте текстовый файл с именем `hiveudf.py`.</span><span class="sxs-lookup"><span data-stu-id="907f3-131">On your development environment, create a text file named `hiveudf.py`.</span></span> <span data-ttu-id="907f3-132">Используйте следующий код в качестве содержимого файла:</span><span class="sxs-lookup"><span data-stu-id="907f3-132">Use the following code as the contents of the file:</span></span>
+<span data-ttu-id="cd91a-131">В среде разработки создайте текстовый файл с именем `hiveudf.py`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-131">On your development environment, create a text file named `hiveudf.py`.</span></span> <span data-ttu-id="cd91a-132">Используйте следующий код как hello содержимое файла hello hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-132">Use hello following code as hello contents of hello file:</span></span>
 
 ```python
 #!/usr/bin/env python
@@ -105,34 +105,34 @@ while True:
     print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])
 ```
 
-<span data-ttu-id="907f3-133">Сценарий выполняет следующие действия:</span><span class="sxs-lookup"><span data-stu-id="907f3-133">This script performs the following actions:</span></span>
+<span data-ttu-id="cd91a-133">Скрипт выполняет следующие действия hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-133">This script performs hello following actions:</span></span>
 
-1. <span data-ttu-id="907f3-134">Чтение данных из STDIN.</span><span class="sxs-lookup"><span data-stu-id="907f3-134">Read a line of data from STDIN.</span></span>
-2. <span data-ttu-id="907f3-135">Стоящий в конце знак новой строки удаляется с помощью `string.strip(line, "\n ")`.</span><span class="sxs-lookup"><span data-stu-id="907f3-135">The trailing newline character is removed using `string.strip(line, "\n ")`.</span></span>
-3. <span data-ttu-id="907f3-136">При обработке потока в одной строке будут содержаться все значения, разделенные символом табуляции.</span><span class="sxs-lookup"><span data-stu-id="907f3-136">When doing stream processing, a single line contains all the values with a tab character between each value.</span></span> <span data-ttu-id="907f3-137">Поэтому можно использовать `string.split(line, "\t")` для разделения входящих данных при каждой табуляции, возвращая лишь поля.</span><span class="sxs-lookup"><span data-stu-id="907f3-137">So `string.split(line, "\t")` can be used to split the input at each tab, returning just the fields.</span></span>
-4. <span data-ttu-id="907f3-138">По завершении обработки результат должен быть записан в поток STDOUT в виде одной строки, с разделенными символами табуляции полями.</span><span class="sxs-lookup"><span data-stu-id="907f3-138">When processing is complete, the output must be written to STDOUT as a single line, with a tab between each field.</span></span> <span data-ttu-id="907f3-139">Пример: `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.</span><span class="sxs-lookup"><span data-stu-id="907f3-139">For example, `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.</span></span>
-5. <span data-ttu-id="907f3-140">Цикл `while` повторяется до тех пор, пока считывается `line`.</span><span class="sxs-lookup"><span data-stu-id="907f3-140">The `while` loop repeats until no `line` is read.</span></span>
+1. <span data-ttu-id="cd91a-134">Чтение данных из STDIN.</span><span class="sxs-lookup"><span data-stu-id="cd91a-134">Read a line of data from STDIN.</span></span>
+2. <span data-ttu-id="cd91a-135">символ перевода строки в конце Hello удаляется при помощи `string.strip(line, "\n ")`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-135">hello trailing newline character is removed using `string.strip(line, "\n ")`.</span></span>
+3. <span data-ttu-id="cd91a-136">При выполнении потока обработки, одна строка содержит все значения hello символом табуляции между значениями.</span><span class="sxs-lookup"><span data-stu-id="cd91a-136">When doing stream processing, a single line contains all hello values with a tab character between each value.</span></span> <span data-ttu-id="cd91a-137">Поэтому `string.split(line, "\t")` может быть hello используется toosplit ввода данных на каждой вкладке, возврат только поля hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-137">So `string.split(line, "\t")` can be used toosplit hello input at each tab, returning just hello fields.</span></span>
+4. <span data-ttu-id="cd91a-138">После завершения обработки hello выходные данные должны записываться tooSTDOUT как одна строка с вкладкой между каждого поля.</span><span class="sxs-lookup"><span data-stu-id="cd91a-138">When processing is complete, hello output must be written tooSTDOUT as a single line, with a tab between each field.</span></span> <span data-ttu-id="cd91a-139">Например, `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-139">For example, `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.</span></span>
+5. <span data-ttu-id="cd91a-140">Hello `while` цикл повторяется, пока нет `line` доступен для чтения.</span><span class="sxs-lookup"><span data-stu-id="cd91a-140">hello `while` loop repeats until no `line` is read.</span></span>
 
-<span data-ttu-id="907f3-141">Выходные данные скрипта представляют собой объединенные входные значения для `devicemake` и `devicemodel`, а также хэш для объединенного значения.</span><span class="sxs-lookup"><span data-stu-id="907f3-141">The script output is a concatenation of the input values for `devicemake` and `devicemodel`, and a hash of the concatenated value.</span></span>
+<span data-ttu-id="cd91a-141">выходные данные сценария Hello представляет собой объединение hello входных значений для `devicemake` и `devicemodel`, и хэш hello объединенному значению.</span><span class="sxs-lookup"><span data-stu-id="cd91a-141">hello script output is a concatenation of hello input values for `devicemake` and `devicemodel`, and a hash of hello concatenated value.</span></span>
 
-<span data-ttu-id="907f3-142">Сведения о выполнении этого примера в кластере HDInsight см. в разделе [Выполнение примеров](#running).</span><span class="sxs-lookup"><span data-stu-id="907f3-142">See [Running the examples](#running) for how to run this example on your HDInsight cluster.</span></span>
+<span data-ttu-id="cd91a-142">В разделе [выполнением примеров hello](#running) как toorun в этом примере в кластере HDInsight.</span><span class="sxs-lookup"><span data-stu-id="cd91a-142">See [Running hello examples](#running) for how toorun this example on your HDInsight cluster.</span></span>
 
-## <span data-ttu-id="907f3-143"><a name="pigpython"></a>Определяемая пользователем функция Pig</span><span class="sxs-lookup"><span data-stu-id="907f3-143"><a name="pigpython"></a>Pig UDF</span></span>
+## <span data-ttu-id="cd91a-143"><a name="pigpython"></a>Определяемая пользователем функция Pig</span><span class="sxs-lookup"><span data-stu-id="cd91a-143"><a name="pigpython"></a>Pig UDF</span></span>
 
-<span data-ttu-id="907f3-144">Скрипт Python можно использовать в виде определяемой пользователем функции из Pig с использованием инструкции `GENERATE`.</span><span class="sxs-lookup"><span data-stu-id="907f3-144">A Python script can be used as a UDF from Pig through the `GENERATE` statement.</span></span> <span data-ttu-id="907f3-145">Вы можете запустить скрипт с помощью Jython или CPython.</span><span class="sxs-lookup"><span data-stu-id="907f3-145">You can run the script using either Jython or C Python.</span></span>
+<span data-ttu-id="cd91a-144">Скрипт на Python можно использовать как определяемой пользователем функции из Pig через hello `GENERATE` инструкции.</span><span class="sxs-lookup"><span data-stu-id="cd91a-144">A Python script can be used as a UDF from Pig through hello `GENERATE` statement.</span></span> <span data-ttu-id="cd91a-145">Можно запустить скрипт hello, с помощью Jython или C Python.</span><span class="sxs-lookup"><span data-stu-id="cd91a-145">You can run hello script using either Jython or C Python.</span></span>
 
-* <span data-ttu-id="907f3-146">Jython работает на виртуальной машине Java и изначально может вызываться из Pig.</span><span class="sxs-lookup"><span data-stu-id="907f3-146">Jython runs on the JVM, and can natively be called from Pig.</span></span>
-* <span data-ttu-id="907f3-147">CPython является внешним процессом, поэтому данные из Pig на JVM отправляются в скрипт, выполняющийся в процессе Python.</span><span class="sxs-lookup"><span data-stu-id="907f3-147">C Python is an external process, so the data from Pig on the JVM is sent out to the script running in a Python process.</span></span> <span data-ttu-id="907f3-148">Выходные данные скрипта Python отправляются обратно в Pig.</span><span class="sxs-lookup"><span data-stu-id="907f3-148">The output of the Python script is sent back into Pig.</span></span>
+* <span data-ttu-id="cd91a-146">Jython выполняется на hello виртуальной машины Java и изначально могут быть вызваны из Pig.</span><span class="sxs-lookup"><span data-stu-id="cd91a-146">Jython runs on hello JVM, and can natively be called from Pig.</span></span>
+* <span data-ttu-id="cd91a-147">C Python является внешний процесс, поэтому hello данные из Pig на hello виртуальной машины Java отправляется toohello скрипт, выполняемый в процессе Python.</span><span class="sxs-lookup"><span data-stu-id="cd91a-147">C Python is an external process, so hello data from Pig on hello JVM is sent out toohello script running in a Python process.</span></span> <span data-ttu-id="cd91a-148">выходные данные Hello hello сценарий Python отправляется обратно в Pig.</span><span class="sxs-lookup"><span data-stu-id="cd91a-148">hello output of hello Python script is sent back into Pig.</span></span>
 
-<span data-ttu-id="907f3-149">Чтобы указать интерпретатор Python, используйте `register` при указании ссылки на скрипт Python.</span><span class="sxs-lookup"><span data-stu-id="907f3-149">To specify the Python interpreter, use `register` when referencing the Python script.</span></span> <span data-ttu-id="907f3-150">Следующие примеры регистрируют скрипты с Pig в качестве `myfuncs`:</span><span class="sxs-lookup"><span data-stu-id="907f3-150">The following examples register scripts with Pig as `myfuncs`:</span></span>
+<span data-ttu-id="cd91a-149">интерпретатор Python hello toospecify, используйте `register` при ссылке на сценарий Python hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-149">toospecify hello Python interpreter, use `register` when referencing hello Python script.</span></span> <span data-ttu-id="cd91a-150">Hello следующие примеры зарегистрировать скрипты Pig как `myfuncs`:</span><span class="sxs-lookup"><span data-stu-id="cd91a-150">hello following examples register scripts with Pig as `myfuncs`:</span></span>
 
-* <span data-ttu-id="907f3-151">**Для использования Jython:** `register '/path/to/pigudf.py' using jython as myfuncs;`</span><span class="sxs-lookup"><span data-stu-id="907f3-151">**To use Jython**: `register '/path/to/pigudf.py' using jython as myfuncs;`</span></span>
-* <span data-ttu-id="907f3-152">**Для использования CPython:** `register '/path/to/pigudf.py' using streaming_python as myfuncs;`</span><span class="sxs-lookup"><span data-stu-id="907f3-152">**To use C Python**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`</span></span>
+* <span data-ttu-id="cd91a-151">**toouse Jython**:`register '/path/to/pigudf.py' using jython as myfuncs;`</span><span class="sxs-lookup"><span data-stu-id="cd91a-151">**toouse Jython**: `register '/path/to/pigudf.py' using jython as myfuncs;`</span></span>
+* <span data-ttu-id="cd91a-152">**toouse C Python**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`</span><span class="sxs-lookup"><span data-stu-id="cd91a-152">**toouse C Python**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="907f3-153">При использовании Jython путь к файлу pig_jython может быть локальным путем или путем WASB://.</span><span class="sxs-lookup"><span data-stu-id="907f3-153">When using Jython, the path to the pig_jython file can be either a local path or a WASB:// path.</span></span> <span data-ttu-id="907f3-154">Но при использовании CPython необходимо указать ссылку на файл в локальной файловой системе узла, который используется для отправки задания Pig.</span><span class="sxs-lookup"><span data-stu-id="907f3-154">However, when using C Python, you must reference a file on the local file system of the node that you are using to submit the Pig job.</span></span>
+> <span data-ttu-id="cd91a-153">При использовании Jython, toohello pig_jython hello путь к файлу может быть локальным путем или WASB: / / path.</span><span class="sxs-lookup"><span data-stu-id="cd91a-153">When using Jython, hello path toohello pig_jython file can be either a local path or a WASB:// path.</span></span> <span data-ttu-id="cd91a-154">Однако при использовании C Python, должны ссылаться на файл hello локальной файловой системе, что вы используете задание Pig toosubmit hello узла hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-154">However, when using C Python, you must reference a file on hello local file system of hello node that you are using toosubmit hello Pig job.</span></span>
 
-<span data-ttu-id="907f3-155">После регистрации язык Pig Latin будет одинаковым для обоих примеров:</span><span class="sxs-lookup"><span data-stu-id="907f3-155">Once past registration, the Pig Latin for this example is the same for both:</span></span>
+<span data-ttu-id="cd91a-155">После после регистрации, hello латиница Pig в этом примере hello одинаковым для обоих:</span><span class="sxs-lookup"><span data-stu-id="cd91a-155">Once past registration, hello Pig Latin for this example is hello same for both:</span></span>
 
 ```pig
 LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
@@ -141,21 +141,21 @@ DETAILS = FOREACH LOG GENERATE myfuncs.create_structure(LINE);
 DUMP DETAILS;
 ```
 
-<span data-ttu-id="907f3-156">Вот что делает данный пример:</span><span class="sxs-lookup"><span data-stu-id="907f3-156">Here's what this example does:</span></span>
+<span data-ttu-id="cd91a-156">Вот что делает данный пример:</span><span class="sxs-lookup"><span data-stu-id="cd91a-156">Here's what this example does:</span></span>
 
-1. <span data-ttu-id="907f3-157">Первая строка загружает образец файла данных `sample.log` в `LOGS`.</span><span class="sxs-lookup"><span data-stu-id="907f3-157">The first line loads the sample data file, `sample.log` into `LOGS`.</span></span> <span data-ttu-id="907f3-158">Она также определяет каждую запись как массив символов `chararray`.</span><span class="sxs-lookup"><span data-stu-id="907f3-158">It also defines each record as a `chararray`.</span></span>
-2. <span data-ttu-id="907f3-159">Следующая строка отфильтровывает все пустые значения, сохраняя результат работы в `LOG`.</span><span class="sxs-lookup"><span data-stu-id="907f3-159">The next line filters out any null values, storing the result of the operation into `LOG`.</span></span>
-3. <span data-ttu-id="907f3-160">Затем выполняется итерация по записям в `LOG` и используется инструкция `GENERATE` для вызова метода `create_structure`, содержащегося в скрипте Python или Jython, загруженном как `myfuncs`.</span><span class="sxs-lookup"><span data-stu-id="907f3-160">Next, it iterates over the records in `LOG` and uses `GENERATE` to invoke the `create_structure` method contained in the Python/Jython script loaded as `myfuncs`.</span></span> <span data-ttu-id="907f3-161">`LINE` используется для передачи текущей записи в функцию.</span><span class="sxs-lookup"><span data-stu-id="907f3-161">`LINE` is used to pass the current record to the function.</span></span>
-4. <span data-ttu-id="907f3-162">Наконец, выходные данные сбрасываются в поток STDOUT командой `DUMP`.</span><span class="sxs-lookup"><span data-stu-id="907f3-162">Finally, the outputs are dumped to STDOUT using the `DUMP` command.</span></span> <span data-ttu-id="907f3-163">После завершения операции эта команда выведет результат.</span><span class="sxs-lookup"><span data-stu-id="907f3-163">This command displays the results after the operation completes.</span></span>
+1. <span data-ttu-id="cd91a-157">Первая строка Hello загружает hello образец файла данных `sample.log` в `LOGS`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-157">hello first line loads hello sample data file, `sample.log` into `LOGS`.</span></span> <span data-ttu-id="cd91a-158">Она также определяет каждую запись как массив символов `chararray`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-158">It also defines each record as a `chararray`.</span></span>
+2. <span data-ttu-id="cd91a-159">Следующая строка Hello отфильтровывает все пустые значения, хранение hello результат операции hello в `LOG`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-159">hello next line filters out any null values, storing hello result of hello operation into `LOG`.</span></span>
+3. <span data-ttu-id="cd91a-160">Затем он выполняет перебор записей hello в `LOG` и использует `GENERATE` tooinvoke hello `create_structure` метод, содержащийся в сценарий Python или Jython hello загружен как `myfuncs`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-160">Next, it iterates over hello records in `LOG` and uses `GENERATE` tooinvoke hello `create_structure` method contained in hello Python/Jython script loaded as `myfuncs`.</span></span> <span data-ttu-id="cd91a-161">`LINE`— используется toopass текущей записи toohello функции hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-161">`LINE` is used toopass hello current record toohello function.</span></span>
+4. <span data-ttu-id="cd91a-162">Наконец, результаты hello являются которого был создан дамп tooSTDOUT, с помощью hello `DUMP` команды.</span><span class="sxs-lookup"><span data-stu-id="cd91a-162">Finally, hello outputs are dumped tooSTDOUT using hello `DUMP` command.</span></span> <span data-ttu-id="cd91a-163">Эта команда отображает результаты hello после завершения операции hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-163">This command displays hello results after hello operation completes.</span></span>
 
-### <a name="create-the-pigudfpy-file"></a><span data-ttu-id="907f3-164">Создание файла pigudf.py</span><span class="sxs-lookup"><span data-stu-id="907f3-164">Create the pigudf.py file</span></span>
+### <a name="create-hello-pigudfpy-file"></a><span data-ttu-id="cd91a-164">Создайте файл pigudf.py hello</span><span class="sxs-lookup"><span data-stu-id="cd91a-164">Create hello pigudf.py file</span></span>
 
-<span data-ttu-id="907f3-165">В среде разработки создайте текстовый файл с именем `pigudf.py`.</span><span class="sxs-lookup"><span data-stu-id="907f3-165">On your development environment, create a text file named `pigudf.py`.</span></span> <span data-ttu-id="907f3-166">Используйте следующий код в качестве содержимого файла:</span><span class="sxs-lookup"><span data-stu-id="907f3-166">Use the following code as the contents of the file:</span></span>
+<span data-ttu-id="cd91a-165">В среде разработки создайте текстовый файл с именем `pigudf.py`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-165">On your development environment, create a text file named `pigudf.py`.</span></span> <span data-ttu-id="cd91a-166">Используйте следующий код как hello содержимое файла hello hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-166">Use hello following code as hello contents of hello file:</span></span>
 
 <a name="streamingpy"></a>
 
 ```python
-# Uncomment the following if using C Python
+# Uncomment hello following if using C Python
 #from pig_util import outputSchema
 
 @outputSchema("log: {(date:chararray, time:chararray, classname:chararray, level:chararray, detail:chararray)}")
@@ -166,61 +166,61 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-<span data-ttu-id="907f3-167">В примере Pig Latin мы определили вход `LINE` в виде массива строк, потому что для ввода нет согласованной схемы.</span><span class="sxs-lookup"><span data-stu-id="907f3-167">In the Pig Latin example, we defined the `LINE` input as a chararray because there is no consistent schema for the input.</span></span> <span data-ttu-id="907f3-168">Скрипт Python выполняет преобразование данных в согласованную схему на выходе.</span><span class="sxs-lookup"><span data-stu-id="907f3-168">The Python script transforms the data into a consistent schema for output.</span></span>
+<span data-ttu-id="cd91a-167">В примере hello латиница Pig, мы определили hello `LINE` вводимый в виде chararray, так как нет согласованной схемы для ввода hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-167">In hello Pig Latin example, we defined hello `LINE` input as a chararray because there is no consistent schema for hello input.</span></span> <span data-ttu-id="cd91a-168">сценарий Python Hello преобразует данные hello в согласованной схеме для выходных данных.</span><span class="sxs-lookup"><span data-stu-id="cd91a-168">hello Python script transforms hello data into a consistent schema for output.</span></span>
 
-1. <span data-ttu-id="907f3-169">Инструкция `@outputSchema` задает формат данных, в котором они возвращаются в Pig.</span><span class="sxs-lookup"><span data-stu-id="907f3-169">The `@outputSchema` statement defines the format of the data that is returned to Pig.</span></span> <span data-ttu-id="907f3-170">В данном случае это **data bag**, являющийся типом данных Pig.</span><span class="sxs-lookup"><span data-stu-id="907f3-170">In this case, it's a **data bag**, which is a Pig data type.</span></span> <span data-ttu-id="907f3-171">Корзина содержит следующие поля, все они имеют тип "Массив строк" (строки):</span><span class="sxs-lookup"><span data-stu-id="907f3-171">The bag contains the following fields, all of which are chararray (strings):</span></span>
+1. <span data-ttu-id="cd91a-169">Hello `@outputSchema` инструкция определяет формат hello данные, возвращаемые tooPig hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-169">hello `@outputSchema` statement defines hello format of hello data that is returned tooPig.</span></span> <span data-ttu-id="cd91a-170">В данном случае это **data bag**, являющийся типом данных Pig.</span><span class="sxs-lookup"><span data-stu-id="cd91a-170">In this case, it's a **data bag**, which is a Pig data type.</span></span> <span data-ttu-id="cd91a-171">Hello контейнер содержит hello следующие поля, являющиеся chararray (строк):</span><span class="sxs-lookup"><span data-stu-id="cd91a-171">hello bag contains hello following fields, all of which are chararray (strings):</span></span>
 
-   * <span data-ttu-id="907f3-172">date — дата создания записи журнала;</span><span class="sxs-lookup"><span data-stu-id="907f3-172">date - the date the log entry was created</span></span>
-   * <span data-ttu-id="907f3-173">date — время создания записи журнала;</span><span class="sxs-lookup"><span data-stu-id="907f3-173">time - the time the log entry was created</span></span>
-   * <span data-ttu-id="907f3-174">classname — имя класса, для которого создана запись;</span><span class="sxs-lookup"><span data-stu-id="907f3-174">classname - the class name the entry was created for</span></span>
-   * <span data-ttu-id="907f3-175">level — уровень журналирования;</span><span class="sxs-lookup"><span data-stu-id="907f3-175">level - the log level</span></span>
-   * <span data-ttu-id="907f3-176">detail — подробная информация о записи журнала.</span><span class="sxs-lookup"><span data-stu-id="907f3-176">detail - verbose details for the log entry</span></span>
+   * <span data-ttu-id="cd91a-172">Дата — hello даты hello запись журнала была создана</span><span class="sxs-lookup"><span data-stu-id="cd91a-172">date - hello date hello log entry was created</span></span>
+   * <span data-ttu-id="cd91a-173">время - hello время создания записи журнала hello</span><span class="sxs-lookup"><span data-stu-id="cd91a-173">time - hello time hello log entry was created</span></span>
+   * <span data-ttu-id="cd91a-174">className - была создана запись hello имя класса hello для</span><span class="sxs-lookup"><span data-stu-id="cd91a-174">classname - hello class name hello entry was created for</span></span>
+   * <span data-ttu-id="cd91a-175">уровень - hello уровень ведения журнала</span><span class="sxs-lookup"><span data-stu-id="cd91a-175">level - hello log level</span></span>
+   * <span data-ttu-id="cd91a-176">Подробные сведения для hello подробности - запись журнала</span><span class="sxs-lookup"><span data-stu-id="cd91a-176">detail - verbose details for hello log entry</span></span>
 
-2. <span data-ttu-id="907f3-177">Затем `def create_structure(input)` определяет функцию, в которую Pig отправляет строковые элементы.</span><span class="sxs-lookup"><span data-stu-id="907f3-177">Next, the `def create_structure(input)` defines the function that Pig passes line items to.</span></span>
+2. <span data-ttu-id="cd91a-177">Здравствуйте, затем `def create_structure(input)` определяет функцию hello, Pig передает строки элементов.</span><span class="sxs-lookup"><span data-stu-id="cd91a-177">Next, hello `def create_structure(input)` defines hello function that Pig passes line items to.</span></span>
 
-3. <span data-ttu-id="907f3-178">Данные для примера, `sample.log`, в основном соответствуют схеме даты, времени, имени класса, уровня и подробной информации, которую мы хотим возвращать.</span><span class="sxs-lookup"><span data-stu-id="907f3-178">The example data, `sample.log`, mostly conforms to the date, time, classname, level, and detail schema we want to return.</span></span> <span data-ttu-id="907f3-179">Однако он содержит несколько строк, начинающихся с `*java.lang.Exception*`.</span><span class="sxs-lookup"><span data-stu-id="907f3-179">However, it contains a few lines that begin with `*java.lang.Exception*`.</span></span> <span data-ttu-id="907f3-180">Эти строки должны быть изменены в соответствии со схемой.</span><span class="sxs-lookup"><span data-stu-id="907f3-180">These lines must be modified to match the schema.</span></span> <span data-ttu-id="907f3-181">Инструкция `if` проверяет на наличие таких строк, затем манипулирует входными данными, переставляя строку `*java.lang.Exception*` в конец, формируя данные в соответствии с ожидаемой схемой.</span><span class="sxs-lookup"><span data-stu-id="907f3-181">The `if` statement checks for those, then massages the input data to move the `*java.lang.Exception*` string to the end, bringing the data in-line with our expected output schema.</span></span>
+3. <span data-ttu-id="cd91a-178">Hello данные примера `sample.log`, главным образом соответствует toohello даты, времени, classname, уровня и подробные сведения о схеме, мы хотим tooreturn.</span><span class="sxs-lookup"><span data-stu-id="cd91a-178">hello example data, `sample.log`, mostly conforms toohello date, time, classname, level, and detail schema we want tooreturn.</span></span> <span data-ttu-id="cd91a-179">Однако он содержит несколько строк, начинающихся с `*java.lang.Exception*`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-179">However, it contains a few lines that begin with `*java.lang.Exception*`.</span></span> <span data-ttu-id="cd91a-180">Эти строки должны быть измененный toomatch hello схемы.</span><span class="sxs-lookup"><span data-stu-id="cd91a-180">These lines must be modified toomatch hello schema.</span></span> <span data-ttu-id="cd91a-181">Hello `if` проверке инструкцией наличия их, а затем Массаж hello hello toomove входных данных `*java.lang.Exception*` конец toohello строки, переводя hello данных в строках с нашей ожидаемые выходные данные схемы.</span><span class="sxs-lookup"><span data-stu-id="cd91a-181">hello `if` statement checks for those, then massages hello input data toomove hello `*java.lang.Exception*` string toohello end, bringing hello data in-line with our expected output schema.</span></span>
 
-4. <span data-ttu-id="907f3-182">Затем команда `split` используется для разделения данных по первым четырем символам пробела.</span><span class="sxs-lookup"><span data-stu-id="907f3-182">Next, the `split` command is used to split the data at the first four space characters.</span></span> <span data-ttu-id="907f3-183">Выходным данным присваиваются значения `date`, `time`, `classname`, `level` и `detail`.</span><span class="sxs-lookup"><span data-stu-id="907f3-183">The output is assigned into `date`, `time`, `classname`, `level`, and `detail`.</span></span>
+4. <span data-ttu-id="cd91a-182">Здравствуйте, затем `split` команда является данных hello используется toosplit в первых четырех пространства символов hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-182">Next, hello `split` command is used toosplit hello data at hello first four space characters.</span></span> <span data-ttu-id="cd91a-183">выходные данные Hello назначается в `date`, `time`, `classname`, `level`, и `detail`.</span><span class="sxs-lookup"><span data-stu-id="cd91a-183">hello output is assigned into `date`, `time`, `classname`, `level`, and `detail`.</span></span>
 
-5. <span data-ttu-id="907f3-184">И результаты возвращаются в Pig.</span><span class="sxs-lookup"><span data-stu-id="907f3-184">Finally, the values are returned to Pig.</span></span>
+5. <span data-ttu-id="cd91a-184">Наконец tooPig возвращаются значения hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-184">Finally, hello values are returned tooPig.</span></span>
 
-<span data-ttu-id="907f3-185">Когда данные возвращаются в Pig, они имеют согласованную схему, определенную инструкцией `@outputSchema`.</span><span class="sxs-lookup"><span data-stu-id="907f3-185">When the data is returned to Pig, it has a consistent schema as defined in the `@outputSchema` statement.</span></span>
+<span data-ttu-id="cd91a-185">При возврате данных hello tooPig, как определено в hello имеет согласованных схем `@outputSchema` инструкции.</span><span class="sxs-lookup"><span data-stu-id="cd91a-185">When hello data is returned tooPig, it has a consistent schema as defined in hello `@outputSchema` statement.</span></span>
 
-## <span data-ttu-id="907f3-186"><a name="running"></a>Отправка и выполнение примеров</span><span class="sxs-lookup"><span data-stu-id="907f3-186"><a name="running"></a>Upload and run the examples</span></span>
+## <span data-ttu-id="cd91a-186"><a name="running"></a>Загрузка и запуск примеров hello</span><span class="sxs-lookup"><span data-stu-id="cd91a-186"><a name="running"></a>Upload and run hello examples</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="907f3-187">Действия с **SSH** работают только с кластером HDInsight на базе Linux.</span><span class="sxs-lookup"><span data-stu-id="907f3-187">The **SSH** steps only work with a Linux-based HDInsight cluster.</span></span> <span data-ttu-id="907f3-188">Действия с **PowerShell** работают с кластером HDInsight на базе Linux и Windows, но требуют клиента Windows.</span><span class="sxs-lookup"><span data-stu-id="907f3-188">The **PowerShell** steps work with either a Linux or Windows-based HDInsight cluster, but require a Windows client.</span></span>
+> <span data-ttu-id="cd91a-187">Hello **SSH** действия работают только с кластером HDInsight под управлением Linux.</span><span class="sxs-lookup"><span data-stu-id="cd91a-187">hello **SSH** steps only work with a Linux-based HDInsight cluster.</span></span> <span data-ttu-id="cd91a-188">Hello **PowerShell** шаги работы с кластером HDInsight под управлением Windows или Linux, но требуется клиент Windows.</span><span class="sxs-lookup"><span data-stu-id="cd91a-188">hello **PowerShell** steps work with either a Linux or Windows-based HDInsight cluster, but require a Windows client.</span></span>
 
-### <a name="ssh"></a><span data-ttu-id="907f3-189">SSH</span><span class="sxs-lookup"><span data-stu-id="907f3-189">SSH</span></span>
+### <a name="ssh"></a><span data-ttu-id="cd91a-189">SSH</span><span class="sxs-lookup"><span data-stu-id="cd91a-189">SSH</span></span>
 
-<span data-ttu-id="907f3-190">Дополнительные сведения об использовании SSH см. в разделе [Подключение к HDInsight (Hadoop) с помощью SSH](hdinsight-hadoop-linux-use-ssh-unix.md).</span><span class="sxs-lookup"><span data-stu-id="907f3-190">For more information on using SSH, see [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span></span>
+<span data-ttu-id="cd91a-190">Дополнительные сведения об использовании SSH см. в разделе [Подключение к HDInsight (Hadoop) с помощью SSH](hdinsight-hadoop-linux-use-ssh-unix.md).</span><span class="sxs-lookup"><span data-stu-id="cd91a-190">For more information on using SSH, see [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span></span>
 
-1. <span data-ttu-id="907f3-191">Используйте `scp` для копирования файлов в кластер HDInsight.</span><span class="sxs-lookup"><span data-stu-id="907f3-191">Use `scp` to copy the files to your HDInsight cluster.</span></span> <span data-ttu-id="907f3-192">Например, следующая команда позволяет скопировать файлы в кластер с именем **mycluster**.</span><span class="sxs-lookup"><span data-stu-id="907f3-192">For example, the following command copies the files to a cluster named **mycluster**.</span></span>
+1. <span data-ttu-id="cd91a-191">Используйте `scp` toocopy hello файлы tooyour HDInsight кластера.</span><span class="sxs-lookup"><span data-stu-id="cd91a-191">Use `scp` toocopy hello files tooyour HDInsight cluster.</span></span> <span data-ttu-id="cd91a-192">Например, hello следующую команду, копии hello файлы tooa кластер с именем **mycluster**.</span><span class="sxs-lookup"><span data-stu-id="cd91a-192">For example, hello following command copies hello files tooa cluster named **mycluster**.</span></span>
 
     ```bash
     scp hiveudf.py pigudf.py myuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-2. <span data-ttu-id="907f3-193">Используйте SSH, чтобы подключиться к кластеру.</span><span class="sxs-lookup"><span data-stu-id="907f3-193">Use SSH to connect to the cluster.</span></span>
+2. <span data-ttu-id="cd91a-193">Использование кластера toohello tooconnect SSH.</span><span class="sxs-lookup"><span data-stu-id="cd91a-193">Use SSH tooconnect toohello cluster.</span></span>
 
     ```bash
     ssh myuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. <span data-ttu-id="907f3-194">В сеансе SSH добавьте переданные ранее файлы Python в хранилище WASB для кластера.</span><span class="sxs-lookup"><span data-stu-id="907f3-194">From the SSH session, add the python files uploaded previously to the WASB storage for the cluster.</span></span>
+3. <span data-ttu-id="cd91a-194">Из сеанса SSH hello добавьте файлы python hello предварительно передана toohello WASB хранилища для кластера hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-194">From hello SSH session, add hello python files uploaded previously toohello WASB storage for hello cluster.</span></span>
 
     ```bash
     hdfs dfs -put hiveudf.py /hiveudf.py
     hdfs dfs -put pigudf.py /pigudf.py
     ```
 
-<span data-ttu-id="907f3-195">После передачи файлов выполните следующие действия для выполнения заданий Hive и Pig.</span><span class="sxs-lookup"><span data-stu-id="907f3-195">After uploading the files, use the following steps to run the Hive and Pig jobs.</span></span>
+<span data-ttu-id="cd91a-195">После отправки файлов hello, используйте hello ниже приведены действия, toorun hello Hive и Pig заданий.</span><span class="sxs-lookup"><span data-stu-id="cd91a-195">After uploading hello files, use hello following steps toorun hello Hive and Pig jobs.</span></span>
 
-#### <a name="use-the-hive-udf"></a><span data-ttu-id="907f3-196">Использование определяемой пользователем функции Hive</span><span class="sxs-lookup"><span data-stu-id="907f3-196">Use the Hive UDF</span></span>
+#### <a name="use-hello-hive-udf"></a><span data-ttu-id="cd91a-196">Использовать hello Hive определяемой пользователем функции</span><span class="sxs-lookup"><span data-stu-id="cd91a-196">Use hello Hive UDF</span></span>
 
-1. <span data-ttu-id="907f3-197">Используйте команду `hive` , чтобы запустить оболочку Hive.</span><span class="sxs-lookup"><span data-stu-id="907f3-197">Use the `hive` command to start the hive shell.</span></span> <span data-ttu-id="907f3-198">После загрузки оболочки вы увидите запрос `hive>` .</span><span class="sxs-lookup"><span data-stu-id="907f3-198">You should see a `hive>` prompt once the shell has loaded.</span></span>
+1. <span data-ttu-id="cd91a-197">Используйте hello `hive` командная оболочка куст toostart hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-197">Use hello `hive` command toostart hello hive shell.</span></span> <span data-ttu-id="cd91a-198">Вы увидите `hive>` запрашивать сразу после загрузки hello оболочки.</span><span class="sxs-lookup"><span data-stu-id="cd91a-198">You should see a `hive>` prompt once hello shell has loaded.</span></span>
 
-2. <span data-ttu-id="907f3-199">Введите следующий запрос `hive>` в командной строке:</span><span class="sxs-lookup"><span data-stu-id="907f3-199">Enter the following query at the `hive>` prompt:</span></span>
+2. <span data-ttu-id="cd91a-199">Введите следующий запрос на hello hello `hive>` строки:</span><span class="sxs-lookup"><span data-stu-id="cd91a-199">Enter hello following query at hello `hive>` prompt:</span></span>
 
    ```hive
    add file wasb:///hiveudf.py;
@@ -231,7 +231,7 @@ def create_structure(input):
    ORDER BY clientid LIMIT 50;
    ```
 
-3. <span data-ttu-id="907f3-200">После ввода последней строки запустится задание.</span><span class="sxs-lookup"><span data-stu-id="907f3-200">After entering the last line, the job should start.</span></span> <span data-ttu-id="907f3-201">По завершении задания эта команда возвращает выходные данные следующего вида:</span><span class="sxs-lookup"><span data-stu-id="907f3-201">Once the job completes, it returns output similar to the following example:</span></span>
+3. <span data-ttu-id="cd91a-200">После ввода последней строкой hello, будет запущено задание hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-200">After entering hello last line, hello job should start.</span></span> <span data-ttu-id="cd91a-201">После завершения задания hello, он возвращает выходные данные примерно toohello следующий пример:</span><span class="sxs-lookup"><span data-stu-id="cd91a-201">Once hello job completes, it returns output similar toohello following example:</span></span>
 
         100041    RIM 9650    d476f3687700442549a83fac4560c51c
         100041    RIM 9650    d476f3687700442549a83fac4560c51c
@@ -239,11 +239,11 @@ def create_structure(input):
         100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
         100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-#### <a name="use-the-pig-udf"></a><span data-ttu-id="907f3-202">Использование определяемой пользователем функции Pig</span><span class="sxs-lookup"><span data-stu-id="907f3-202">Use the Pig UDF</span></span>
+#### <a name="use-hello-pig-udf"></a><span data-ttu-id="cd91a-202">Использовать hello Pig определяемой пользователем функции</span><span class="sxs-lookup"><span data-stu-id="cd91a-202">Use hello Pig UDF</span></span>
 
-1. <span data-ttu-id="907f3-203">Используйте команду `pig` , чтобы запустить оболочку.</span><span class="sxs-lookup"><span data-stu-id="907f3-203">Use the `pig` command to start the shell.</span></span> <span data-ttu-id="907f3-204">После загрузки оболочки вы увидите запрос `grunt>`.</span><span class="sxs-lookup"><span data-stu-id="907f3-204">You see a `grunt>` prompt once the shell has loaded.</span></span>
+1. <span data-ttu-id="cd91a-203">Используйте hello `pig` командная оболочка toostart hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-203">Use hello `pig` command toostart hello shell.</span></span> <span data-ttu-id="cd91a-204">Вы видите `grunt>` запрашивать сразу после загрузки hello оболочки.</span><span class="sxs-lookup"><span data-stu-id="cd91a-204">You see a `grunt>` prompt once hello shell has loaded.</span></span>
 
-2. <span data-ttu-id="907f3-205">В окне запроса `grunt>` введите следующие операторы:</span><span class="sxs-lookup"><span data-stu-id="907f3-205">Enter the following statements at the `grunt>` prompt:</span></span>
+2. <span data-ttu-id="cd91a-205">Введите следующие инструкции на hello hello `grunt>` строки:</span><span class="sxs-lookup"><span data-stu-id="cd91a-205">Enter hello following statements at hello `grunt>` prompt:</span></span>
 
    ```pig
    Register wasb:///pigudf.py using jython as myfuncs;
@@ -253,7 +253,7 @@ def create_structure(input):
    DUMP DETAILS;
    ```
 
-3. <span data-ttu-id="907f3-206">После ввода указанной строки должно запуститься задание.</span><span class="sxs-lookup"><span data-stu-id="907f3-206">After entering the following line, the job should start.</span></span> <span data-ttu-id="907f3-207">По завершении задания эта команда возвращает выходные данные следующего вида:</span><span class="sxs-lookup"><span data-stu-id="907f3-207">Once the job completes, it returns output similar to the following data:</span></span>
+3. <span data-ttu-id="cd91a-206">После ввода следующей строкой hello, будет запущено задание hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-206">After entering hello following line, hello job should start.</span></span> <span data-ttu-id="cd91a-207">После завершения задания hello, он возвращает выходные данные примерно toohello следующие данные:</span><span class="sxs-lookup"><span data-stu-id="cd91a-207">Once hello job completes, it returns output similar toohello following data:</span></span>
 
         ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
         ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
@@ -261,21 +261,21 @@ def create_structure(input):
         ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
         ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-4. <span data-ttu-id="907f3-208">Используйте `quit` для выхода из оболочки Grunt, а затем следующую команду для изменения файла pigudf.py в локальной файловой системе:</span><span class="sxs-lookup"><span data-stu-id="907f3-208">Use `quit` to exit the Grunt shell, and then use the following to edit the pigudf.py file on the local file system:</span></span>
+4. <span data-ttu-id="cd91a-208">Используйте `quit` tooexit hello Grunt оболочки, а затем используйте следующие tooedit hello pigudf.py файл в локальной файловой системе hello hello:</span><span class="sxs-lookup"><span data-stu-id="cd91a-208">Use `quit` tooexit hello Grunt shell, and then use hello following tooedit hello pigudf.py file on hello local file system:</span></span>
 
     ```bash
     nano pigudf.py
     ```
 
-5. <span data-ttu-id="907f3-209">Войдите в редактор и раскомментируйте следующую строку, удалив символ `#` в начале строки.</span><span class="sxs-lookup"><span data-stu-id="907f3-209">Once in the editor, uncomment the following line by removing the `#` character from the beginning of the line:</span></span>
+5. <span data-ttu-id="cd91a-209">Один раз в редакторе hello раскомментируйте hello, следующей строкой, удалив hello `#` в начале hello hello строки:</span><span class="sxs-lookup"><span data-stu-id="cd91a-209">Once in hello editor, uncomment hello following line by removing hello `#` character from hello beginning of hello line:</span></span>
 
     ```bash
     #from pig_util import outputSchema
     ```
 
-    <span data-ttu-id="907f3-210">Закончив вносить изменения, нажмите сочетание клавиш CTRL+X, чтобы выйти из редактора.</span><span class="sxs-lookup"><span data-stu-id="907f3-210">Once the change has been made, use Ctrl+X to exit the editor.</span></span> <span data-ttu-id="907f3-211">Выберите Y и нажмите ВВОД, чтобы сохранить изменения.</span><span class="sxs-lookup"><span data-stu-id="907f3-211">Select Y, and then enter to save the changes.</span></span>
+    <span data-ttu-id="cd91a-210">После изменения hello, используйте редактор hello tooexit Ctrl + X.</span><span class="sxs-lookup"><span data-stu-id="cd91a-210">Once hello change has been made, use Ctrl+X tooexit hello editor.</span></span> <span data-ttu-id="cd91a-211">Выберите Y, а затем введите toosave hello изменения.</span><span class="sxs-lookup"><span data-stu-id="cd91a-211">Select Y, and then enter toosave hello changes.</span></span>
 
-6. <span data-ttu-id="907f3-212">Используйте команду `pig` , чтобы снова запустить оболочку.</span><span class="sxs-lookup"><span data-stu-id="907f3-212">Use the `pig` command to start the shell again.</span></span> <span data-ttu-id="907f3-213">При появлении запроса `grunt>` введите следующие инструкции, чтобы запустить сценарий Python с помощью интерпретатора CPython.</span><span class="sxs-lookup"><span data-stu-id="907f3-213">Once you are at the `grunt>` prompt, use the following to run the Python script using the C Python interpreter.</span></span>
+6. <span data-ttu-id="cd91a-212">Используйте hello `pig` командная оболочка hello toostart еще раз.</span><span class="sxs-lookup"><span data-stu-id="cd91a-212">Use hello `pig` command toostart hello shell again.</span></span> <span data-ttu-id="cd91a-213">После перехода на hello `grunt>` запрос, используйте следующий сценарий Python hello toorun, с помощью интерпретатора C Python hello hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-213">Once you are at hello `grunt>` prompt, use hello following toorun hello Python script using hello C Python interpreter.</span></span>
 
    ```pig
    Register 'pigudf.py' using streaming_python as myfuncs;
@@ -285,17 +285,17 @@ def create_structure(input):
    DUMP DETAILS;
    ```
 
-    <span data-ttu-id="907f3-214">Когда это задание будет выполнено, вы увидите такой же результат, как при запуске сценария с помощью Jython.</span><span class="sxs-lookup"><span data-stu-id="907f3-214">Once this job completes, you should see the same output as when you previously ran the script using Jython.</span></span>
+    <span data-ttu-id="cd91a-214">После завершения этого задания, как при запуске скрипта hello, с помощью Jython должна появиться одинаковые выходные hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-214">Once this job completes, you should see hello same output as when you previously ran hello script using Jython.</span></span>
 
-### <a name="powershell-upload-the-files"></a><span data-ttu-id="907f3-215">PowerShell: отправка файлов</span><span class="sxs-lookup"><span data-stu-id="907f3-215">PowerShell: Upload the files</span></span>
+### <a name="powershell-upload-hello-files"></a><span data-ttu-id="cd91a-215">PowerShell: Отправка hello файлов</span><span class="sxs-lookup"><span data-stu-id="cd91a-215">PowerShell: Upload hello files</span></span>
 
-<span data-ttu-id="907f3-216">Вы можете использовать PowerShell для отправки файлов на сервер HDInsight.</span><span class="sxs-lookup"><span data-stu-id="907f3-216">You can use PowerShell to upload the files to the HDInsight server.</span></span> <span data-ttu-id="907f3-217">Используйте следующий скрипт для отправки файлов Python:</span><span class="sxs-lookup"><span data-stu-id="907f3-217">Use the following script to upload the Python files:</span></span>
+<span data-ttu-id="cd91a-216">Можно использовать PowerShell tooupload hello файлы toohello HDInsight сервера.</span><span class="sxs-lookup"><span data-stu-id="cd91a-216">You can use PowerShell tooupload hello files toohello HDInsight server.</span></span> <span data-ttu-id="cd91a-217">Используйте следующие файлы Python hello tooupload сценария hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-217">Use hello following script tooupload hello Python files:</span></span>
 
 > [!IMPORTANT] 
-> <span data-ttu-id="907f3-218">В этом разделе используется Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="907f3-218">The steps in this section use Azure PowerShell.</span></span> <span data-ttu-id="907f3-219">Дополнительные сведения об использовании Azure PowerShell см. в статье [How to install and configure Azure PowerShell](/powershell/azure/overview) (Как установить и настроить Azure PowerShell).</span><span class="sxs-lookup"><span data-stu-id="907f3-219">For more information on using Azure PowerShell, see [How to install and configure Azure PowerShell](/powershell/azure/overview).</span></span>
+> <span data-ttu-id="cd91a-218">Hello шаги в этом разделе с помощью Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="cd91a-218">hello steps in this section use Azure PowerShell.</span></span> <span data-ttu-id="cd91a-219">Дополнительные сведения об использовании Azure PowerShell см. в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="cd91a-219">For more information on using Azure PowerShell, see [How tooinstall and configure Azure PowerShell](/powershell/azure/overview).</span></span>
 
 ```powershell
-# Login to your Azure subscription
+# Login tooyour Azure subscription
 # Is there an active Azure subscription?
 $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
@@ -304,8 +304,8 @@ if(-not($sub))
 }
 
 # Get cluster info
-$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-# Change the path to match the file location on your system
+$clusterName = Read-Host -Prompt "Enter hello HDInsight cluster name"
+# Change hello path toomatch hello file location on your system
 $pathToStreamingFile = "C:\path\to\hiveudf.py"
 $pathToJythonFile = "C:\path\to\pigudf.py"
 
@@ -317,7 +317,7 @@ $storageAccountKey=(Get-AzureRmStorageAccountKey `
     -Name $storageAccountName `
 -ResourceGroupName $resourceGroup)[0].Value
 
-#Create a storage content and upload the file
+#Create a storage content and upload hello file
 $context = New-AzureStorageContext `
     -StorageAccountName $storageAccountName `
     -StorageAccountKey $storageAccountKey
@@ -335,22 +335,22 @@ Set-AzureStorageBlobContent `
     -Context $context
 ```
 > [!IMPORTANT]
-> <span data-ttu-id="907f3-220">Измените значение `C:\path\to` на путь к файлам в среде разработки.</span><span class="sxs-lookup"><span data-stu-id="907f3-220">Change the `C:\path\to` value to the path to the files on your development environment.</span></span>
+> <span data-ttu-id="cd91a-220">Изменение hello `C:\path\to` важные файлы toohello toohello пути в среде разработки.</span><span class="sxs-lookup"><span data-stu-id="cd91a-220">Change hello `C:\path\to` value toohello path toohello files on your development environment.</span></span>
 
-<span data-ttu-id="907f3-221">Этот скрипт получает информацию для кластера HDInsight, извлекает учетную запись и ключ для учетной записи хранения по умолчанию и загружает файлы в корневую папку контейнера.</span><span class="sxs-lookup"><span data-stu-id="907f3-221">This script retrieves information for your HDInsight cluster, then extracts the account and key for the default storage account, and uploads the files to the root of the container.</span></span>
+<span data-ttu-id="cd91a-221">Этот скрипт возвращает сведения о кластеру HDInsight, а затем извлекает hello учетной записи и ключ учетной записи хранения по умолчанию hello и передачи hello файлы toohello корневого контейнера hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-221">This script retrieves information for your HDInsight cluster, then extracts hello account and key for hello default storage account, and uploads hello files toohello root of hello container.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="907f3-222">Дополнительные сведения о загрузке файлов см. в статье [Отправка данных для заданий Hadoop в HDInsight](hdinsight-upload-data.md).</span><span class="sxs-lookup"><span data-stu-id="907f3-222">For more information on uploading files, see the [Upload data for Hadoop jobs in HDInsight](hdinsight-upload-data.md) document.</span></span>
+> <span data-ttu-id="cd91a-222">Дополнительные сведения о передаче файлов см. в разделе hello [передать данные для заданий Hadoop в HDInsight](hdinsight-upload-data.md) документа.</span><span class="sxs-lookup"><span data-stu-id="cd91a-222">For more information on uploading files, see hello [Upload data for Hadoop jobs in HDInsight](hdinsight-upload-data.md) document.</span></span>
 
-#### <a name="powershell-use-the-hive-udf"></a><span data-ttu-id="907f3-223">PowerShell: использование определяемой пользователем функции Hive</span><span class="sxs-lookup"><span data-stu-id="907f3-223">PowerShell: Use the Hive UDF</span></span>
+#### <a name="powershell-use-hello-hive-udf"></a><span data-ttu-id="cd91a-223">PowerShell: Использование hello Hive определяемой пользователем функции</span><span class="sxs-lookup"><span data-stu-id="cd91a-223">PowerShell: Use hello Hive UDF</span></span>
 
-<span data-ttu-id="907f3-224">PowerShell также можно использовать для удаленного запуска запросов на использование Hive.</span><span class="sxs-lookup"><span data-stu-id="907f3-224">PowerShell can also be used to remotely run Hive queries.</span></span> <span data-ttu-id="907f3-225">Используйте следующий сценарий PowerShell для запуска запроса Hive, который использует скрипт **hiveudf.py**:</span><span class="sxs-lookup"><span data-stu-id="907f3-225">Use the following PowerShell script to run a Hive query that uses **hiveudf.py** script:</span></span>
+<span data-ttu-id="cd91a-224">PowerShell можно также используется tooremotely выполнения запросов Hive.</span><span class="sxs-lookup"><span data-stu-id="cd91a-224">PowerShell can also be used tooremotely run Hive queries.</span></span> <span data-ttu-id="cd91a-225">Hello используйте следующий сценарий PowerShell toorun запрос Hive, который использует **hiveudf.py** сценария:</span><span class="sxs-lookup"><span data-stu-id="cd91a-225">Use hello following PowerShell script toorun a Hive query that uses **hiveudf.py** script:</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="907f3-226">Перед запуском он предлагает вам ввести сведения об HTTPS и учетной записи администратора для кластера HDInsight.</span><span class="sxs-lookup"><span data-stu-id="907f3-226">Before running, the script prompts you for the HTTPs/Admin account information for your HDInsight cluster.</span></span>
+> <span data-ttu-id="cd91a-226">Перед запуском, hello сценарий предложит hello HTTPs/Admin сведения об учетной записи для кластера HDInsight.</span><span class="sxs-lookup"><span data-stu-id="cd91a-226">Before running, hello script prompts you for hello HTTPs/Admin account information for your HDInsight cluster.</span></span>
 
 ```powershell
-# Login to your Azure subscription
+# Login tooyour Azure subscription
 # Is there an active Azure subscription?
 $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
@@ -359,10 +359,10 @@ if(-not($sub))
 }
 
 # Get cluster info
-$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-$creds=Get-Credential -Message "Enter the login for the cluster"
+$clusterName = Read-Host -Prompt "Enter hello HDInsight cluster name"
+$creds=Get-Credential -Message "Enter hello login for hello cluster"
 
-# If using a Windows-based HDInsight cluster, change the USING statement to:
+# If using a Windows-based HDInsight cluster, change hello USING statement to:
 # "USING 'D:\Python27\python.exe hiveudf.py' AS " +
 $HiveQuery = "add file wasb:///hiveudf.py;" +
                 "SELECT TRANSFORM (clientid, devicemake, devicemodel) " +
@@ -378,25 +378,25 @@ $job = Start-AzureRmHDInsightJob `
     -ClusterName $clusterName `
     -JobDefinition $jobDefinition `
     -HttpCredential $creds
-Write-Host "Wait for the Hive job to complete ..." -ForegroundColor Green
+Write-Host "Wait for hello Hive job toocomplete ..." -ForegroundColor Green
 Wait-AzureRmHDInsightJob `
     -JobId $job.JobId `
     -ClusterName $clusterName `
     -HttpCredential $creds
-# Uncomment the following to see stderr output
+# Uncomment hello following toosee stderr output
 # Get-AzureRmHDInsightJobOutput `
 #   -Clustername $clusterName `
 #   -JobId $job.JobId `
 #   -HttpCredential $creds `
 #   -DisplayOutputType StandardError
-Write-Host "Display the standard output ..." -ForegroundColor Green
+Write-Host "Display hello standard output ..." -ForegroundColor Green
 Get-AzureRmHDInsightJobOutput `
     -Clustername $clusterName `
     -JobId $job.JobId `
     -HttpCredential $creds
 ```
 
-<span data-ttu-id="907f3-227">Результат выполнения задания **Hive** должен выглядеть аналогично следующему примеру:</span><span class="sxs-lookup"><span data-stu-id="907f3-227">The output for the **Hive** job should appear similar to the following example:</span></span>
+<span data-ttu-id="cd91a-227">Здравствуйте, выходные данные для hello **Hive** задания появится примерно toohello в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="cd91a-227">hello output for hello **Hive** job should appear similar toohello following example:</span></span>
 
     100041    RIM 9650    d476f3687700442549a83fac4560c51c
     100041    RIM 9650    d476f3687700442549a83fac4560c51c
@@ -404,15 +404,15 @@ Get-AzureRmHDInsightJobOutput `
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-#### <a name="pig-jython"></a><span data-ttu-id="907f3-228">Pig (Jython)</span><span class="sxs-lookup"><span data-stu-id="907f3-228">Pig (Jython)</span></span>
+#### <a name="pig-jython"></a><span data-ttu-id="cd91a-228">Pig (Jython)</span><span class="sxs-lookup"><span data-stu-id="cd91a-228">Pig (Jython)</span></span>
 
-<span data-ttu-id="907f3-229">PowerShell также можно использовать для запуска заданий Pig Latin.</span><span class="sxs-lookup"><span data-stu-id="907f3-229">PowerShell can also be used to run Pig Latin jobs.</span></span> <span data-ttu-id="907f3-230">Для запуска задания Pig Latin, использующего скрипт **pigudf.py**, используйте следующий сценарий PowerShell:</span><span class="sxs-lookup"><span data-stu-id="907f3-230">To run a Pig Latin job that uses the **pigudf.py** script, use the following PowerShell script:</span></span>
+<span data-ttu-id="cd91a-229">PowerShell также может быть используется toorun Pig латиница заданий.</span><span class="sxs-lookup"><span data-stu-id="cd91a-229">PowerShell can also be used toorun Pig Latin jobs.</span></span> <span data-ttu-id="cd91a-230">Латинская Pig задания, использующего hello toorun **pigudf.py** сценария, используйте следующий сценарий PowerShell hello:</span><span class="sxs-lookup"><span data-stu-id="cd91a-230">toorun a Pig Latin job that uses hello **pigudf.py** script, use hello following PowerShell script:</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="907f3-231">При удаленной отправке задания с помощью PowerShell нельзя использовать CPython в качестве интерпретатора.</span><span class="sxs-lookup"><span data-stu-id="907f3-231">When remotely submitting a job using PowerShell, it is not possible to use C Python as the interpreter.</span></span>
+> <span data-ttu-id="cd91a-231">Когда удаленно отправке задания с помощью PowerShell, не возможные toouse C Python интерпретатора hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-231">When remotely submitting a job using PowerShell, it is not possible toouse C Python as hello interpreter.</span></span>
 
 ```powershell
-# Login to your Azure subscription
+# Login tooyour Azure subscription
 # Is there an active Azure subscription?
 $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
@@ -421,8 +421,8 @@ if(-not($sub))
 }
 
 # Get cluster info
-$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-$creds=Get-Credential -Message "Enter the login for the cluster"
+$clusterName = Read-Host -Prompt "Enter hello HDInsight cluster name"
+$creds=Get-Credential -Message "Enter hello login for hello cluster"
 
 $PigQuery = "Register wasb:///pigudf.py using jython as myfuncs;" +
             "LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);" +
@@ -437,25 +437,25 @@ $job = Start-AzureRmHDInsightJob `
     -JobDefinition $jobDefinition `
     -HttpCredential $creds
 
-Write-Host "Wait for the Pig job to complete ..." -ForegroundColor Green
+Write-Host "Wait for hello Pig job toocomplete ..." -ForegroundColor Green
 Wait-AzureRmHDInsightJob `
     -Job $job.JobId `
     -ClusterName $clusterName `
     -HttpCredential $creds
-# Uncomment the following to see stderr output
+# Uncomment hello following toosee stderr output
 # Get-AzureRmHDInsightJobOutput `
 #    -Clustername $clusterName `
 #    -JobId $job.JobId `
 #    -HttpCredential $creds `
 #    -DisplayOutputType StandardError
-Write-Host "Display the standard output ..." -ForegroundColor Green
+Write-Host "Display hello standard output ..." -ForegroundColor Green
 Get-AzureRmHDInsightJobOutput `
     -Clustername $clusterName `
     -JobId $job.JobId `
     -HttpCredential $creds
 ```
 
-<span data-ttu-id="907f3-232">Результат выполнения задания **Pig** должен выглядеть аналогично следующим данным:</span><span class="sxs-lookup"><span data-stu-id="907f3-232">The output for the **Pig** job should appear similar to the following data:</span></span>
+<span data-ttu-id="cd91a-232">Здравствуйте, выходные данные для hello **Pig** задания появится примерно toohello следующие данные:</span><span class="sxs-lookup"><span data-stu-id="cd91a-232">hello output for hello **Pig** job should appear similar toohello following data:</span></span>
 
     ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
     ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
@@ -463,17 +463,17 @@ Get-AzureRmHDInsightJobOutput `
     ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
     ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-## <span data-ttu-id="907f3-233"><a name="troubleshooting"></a>Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="907f3-233"><a name="troubleshooting"></a>Troubleshooting</span></span>
+## <span data-ttu-id="cd91a-233"><a name="troubleshooting"></a>Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="cd91a-233"><a name="troubleshooting"></a>Troubleshooting</span></span>
 
-### <a name="errors-when-running-jobs"></a><span data-ttu-id="907f3-234">Ошибки при выполнении заданий</span><span class="sxs-lookup"><span data-stu-id="907f3-234">Errors when running jobs</span></span>
+### <a name="errors-when-running-jobs"></a><span data-ttu-id="cd91a-234">Ошибки при выполнении заданий</span><span class="sxs-lookup"><span data-stu-id="cd91a-234">Errors when running jobs</span></span>
 
-<span data-ttu-id="907f3-235">При выполнении задания hive может возникнуть ошибка, аналогичная приведенной ниже:</span><span class="sxs-lookup"><span data-stu-id="907f3-235">When running the hive job, you may encounter an error similar to the following text:</span></span>
+<span data-ttu-id="cd91a-235">При запуске задания hive hello, может появиться ошибка примерно toohello после текста:</span><span class="sxs-lookup"><span data-stu-id="cd91a-235">When running hello hive job, you may encounter an error similar toohello following text:</span></span>
 
-    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing tooyour custom script. It may have crashed with an error.
 
-<span data-ttu-id="907f3-236">Эта проблема может быть вызвана символами окончания строк в файле Python.</span><span class="sxs-lookup"><span data-stu-id="907f3-236">This problem may be caused by the line endings in the Python file.</span></span> <span data-ttu-id="907f3-237">Многие редакторы Windows по умолчанию используют символы CRLF, но в приложениях Linux обычно ожидается использование символа LF.</span><span class="sxs-lookup"><span data-stu-id="907f3-237">Many Windows editors default to using CRLF as the line ending, but Linux applications usually expect LF.</span></span>
+<span data-ttu-id="cd91a-236">Это проблема может быть вызвана по hello разрывы строк в файле Python hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-236">This problem may be caused by hello line endings in hello Python file.</span></span> <span data-ttu-id="cd91a-237">Многие редакторы Windows по умолчанию toousing CRLF конца линии hello, но приложения Linux обычно ожидается, что LF.</span><span class="sxs-lookup"><span data-stu-id="cd91a-237">Many Windows editors default toousing CRLF as hello line ending, but Linux applications usually expect LF.</span></span>
 
-<span data-ttu-id="907f3-238">Вы можете использовать следующие команды PowerShell для удаления символов CR перед передачей файла в HDInsight:</span><span class="sxs-lookup"><span data-stu-id="907f3-238">You can use the following PowerShell statements to remove the CR characters before uploading the file to HDInsight:</span></span>
+<span data-ttu-id="cd91a-238">Можно использовать следующие PowerShell инструкций tooremove hello CR символы перед отправкой файла tooHDInsight hello hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-238">You can use hello following PowerShell statements tooremove hello CR characters before uploading hello file tooHDInsight:</span></span>
 
 ```powershell
 $original_file ='c:\path\to\hiveudf.py'
@@ -481,9 +481,9 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 [IO.File]::WriteAllText($original_file, $text)
 ```
 
-### <a name="powershell-scripts"></a><span data-ttu-id="907f3-239">Сценарии PowerShell</span><span class="sxs-lookup"><span data-stu-id="907f3-239">PowerShell scripts</span></span>
+### <a name="powershell-scripts"></a><span data-ttu-id="cd91a-239">Сценарии PowerShell</span><span class="sxs-lookup"><span data-stu-id="cd91a-239">PowerShell scripts</span></span>
 
-<span data-ttu-id="907f3-240">Оба примера скриптов PowerShell, используемых для запуска примеров, содержат закомментированную строку, которая отображает вывод ошибок для задания.</span><span class="sxs-lookup"><span data-stu-id="907f3-240">Both of the example PowerShell scripts used to run the examples contain a commented line that displays error output for the job.</span></span> <span data-ttu-id="907f3-241">Если вы не видите ожидаемых результатов задания, раскомментируйте следующую строку и просмотрите информацию об ошибках на предмет отображения проблемы.</span><span class="sxs-lookup"><span data-stu-id="907f3-241">If you are not seeing the expected output for the job, uncomment the following line and see if the error information indicates a problem.</span></span>
+<span data-ttu-id="cd91a-240">Оба примера hello сценариев PowerShell, используемых toorun hello примеры содержат соответствующей строки, которая отображает вывод ошибок для задания hello.</span><span class="sxs-lookup"><span data-stu-id="cd91a-240">Both of hello example PowerShell scripts used toorun hello examples contain a commented line that displays error output for hello job.</span></span> <span data-ttu-id="cd91a-241">Если выходные данные hello ожидается для задания hello не видны, раскомментируйте hello следующую команду и если hello сведения об ошибке указывает на проблему в разделе.</span><span class="sxs-lookup"><span data-stu-id="cd91a-241">If you are not seeing hello expected output for hello job, uncomment hello following line and see if hello error information indicates a problem.</span></span>
 
 ```powershell
 # Get-AzureRmHDInsightJobOutput `
@@ -493,19 +493,19 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
         -DisplayOutputType StandardError
 ```
 
-<span data-ttu-id="907f3-242">Сведения об ошибках (STDERR) и результат выполнения задания (STDOUT) также записываются в хранилище HDInsight.</span><span class="sxs-lookup"><span data-stu-id="907f3-242">The error information (STDERR) and the result of the job (STDOUT) are also logged to your HDInsight storage.</span></span>
+<span data-ttu-id="cd91a-242">сведения об ошибке Hello (STDERR) и результат hello hello задания (STDOUT), также регистрируется tooyour HDInsight хранилища.</span><span class="sxs-lookup"><span data-stu-id="cd91a-242">hello error information (STDERR) and hello result of hello job (STDOUT) are also logged tooyour HDInsight storage.</span></span>
 
-| <span data-ttu-id="907f3-243">Для данного задания...</span><span class="sxs-lookup"><span data-stu-id="907f3-243">For this job...</span></span> | <span data-ttu-id="907f3-244">Смотрите эти файлы в контейнере</span><span class="sxs-lookup"><span data-stu-id="907f3-244">Look at these files in the blob container</span></span> |
+| <span data-ttu-id="cd91a-243">Для данного задания...</span><span class="sxs-lookup"><span data-stu-id="cd91a-243">For this job...</span></span> | <span data-ttu-id="cd91a-244">Рассмотрим эти файлы в контейнер больших двоичных объектов hello</span><span class="sxs-lookup"><span data-stu-id="cd91a-244">Look at these files in hello blob container</span></span> |
 | --- | --- |
-| <span data-ttu-id="907f3-245">Hive</span><span class="sxs-lookup"><span data-stu-id="907f3-245">Hive</span></span> |<span data-ttu-id="907f3-246">/HivePython/stderr</span><span class="sxs-lookup"><span data-stu-id="907f3-246">/HivePython/stderr</span></span><p><span data-ttu-id="907f3-247">/HivePython/stdout</span><span class="sxs-lookup"><span data-stu-id="907f3-247">/HivePython/stdout</span></span> |
-| <span data-ttu-id="907f3-248">Pig,</span><span class="sxs-lookup"><span data-stu-id="907f3-248">Pig</span></span> |<span data-ttu-id="907f3-249">/PigPython/stderr</span><span class="sxs-lookup"><span data-stu-id="907f3-249">/PigPython/stderr</span></span><p><span data-ttu-id="907f3-250">/PigPython/stdout</span><span class="sxs-lookup"><span data-stu-id="907f3-250">/PigPython/stdout</span></span> |
+| <span data-ttu-id="cd91a-245">Hive</span><span class="sxs-lookup"><span data-stu-id="cd91a-245">Hive</span></span> |<span data-ttu-id="cd91a-246">/HivePython/stderr</span><span class="sxs-lookup"><span data-stu-id="cd91a-246">/HivePython/stderr</span></span><p><span data-ttu-id="cd91a-247">/HivePython/stdout</span><span class="sxs-lookup"><span data-stu-id="cd91a-247">/HivePython/stdout</span></span> |
+| <span data-ttu-id="cd91a-248">Pig,</span><span class="sxs-lookup"><span data-stu-id="cd91a-248">Pig</span></span> |<span data-ttu-id="cd91a-249">/PigPython/stderr</span><span class="sxs-lookup"><span data-stu-id="cd91a-249">/PigPython/stderr</span></span><p><span data-ttu-id="cd91a-250">/PigPython/stdout</span><span class="sxs-lookup"><span data-stu-id="cd91a-250">/PigPython/stdout</span></span> |
 
-## <span data-ttu-id="907f3-251"><a name="next"></a>Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="907f3-251"><a name="next"></a>Next steps</span></span>
+## <span data-ttu-id="cd91a-251"><a name="next"></a>Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="cd91a-251"><a name="next"></a>Next steps</span></span>
 
-<span data-ttu-id="907f3-252">Если вам нужно загрузить модули Python, которые не поставляются по умолчанию, см. статью [How to deploy a Python module to Windows Azure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx) (Как развернуть модуль Python в Windows Azure HDInsight).</span><span class="sxs-lookup"><span data-stu-id="907f3-252">If you need to load Python modules that aren't provided by default, see [How to deploy a module to Azure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).</span></span>
+<span data-ttu-id="cd91a-252">При необходимости tooload Python модули, которые не предоставляются по умолчанию. в разделе [как toodeploy модуль tooAzure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).</span><span class="sxs-lookup"><span data-stu-id="cd91a-252">If you need tooload Python modules that aren't provided by default, see [How toodeploy a module tooAzure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).</span></span>
 
-<span data-ttu-id="907f3-253">Сведения о других способах использования Pig и Hive и дополнительную информацию об использовании MapReduce см. в следующих документах:</span><span class="sxs-lookup"><span data-stu-id="907f3-253">For other ways to use Pig, Hive, and to learn about using MapReduce, see the following documents:</span></span>
+<span data-ttu-id="cd91a-253">Другие способы toouse Pig, Hive и toolearn об использовании MapReduce в разделе hello следующие документы:</span><span class="sxs-lookup"><span data-stu-id="cd91a-253">For other ways toouse Pig, Hive, and toolearn about using MapReduce, see hello following documents:</span></span>
 
-* [<span data-ttu-id="907f3-254">Использование Hive с HDInsight</span><span class="sxs-lookup"><span data-stu-id="907f3-254">Use Hive with HDInsight</span></span>](hdinsight-use-hive.md)
-* [<span data-ttu-id="907f3-255">Использование Pig с HDInsight</span><span class="sxs-lookup"><span data-stu-id="907f3-255">Use Pig with HDInsight</span></span>](hdinsight-use-pig.md)
-* [<span data-ttu-id="907f3-256">Использование MapReduce с HDInsight</span><span class="sxs-lookup"><span data-stu-id="907f3-256">Use MapReduce with HDInsight</span></span>](hdinsight-use-mapreduce.md)
+* [<span data-ttu-id="cd91a-254">Использование Hive с HDInsight</span><span class="sxs-lookup"><span data-stu-id="cd91a-254">Use Hive with HDInsight</span></span>](hdinsight-use-hive.md)
+* [<span data-ttu-id="cd91a-255">Использование Pig с HDInsight</span><span class="sxs-lookup"><span data-stu-id="cd91a-255">Use Pig with HDInsight</span></span>](hdinsight-use-pig.md)
+* [<span data-ttu-id="cd91a-256">Использование MapReduce с HDInsight</span><span class="sxs-lookup"><span data-stu-id="cd91a-256">Use MapReduce with HDInsight</span></span>](hdinsight-use-mapreduce.md)

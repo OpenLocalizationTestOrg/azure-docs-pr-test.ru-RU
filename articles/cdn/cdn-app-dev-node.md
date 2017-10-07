@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с пакетом SDK Azure CDN для Node.js | Документация Майкрософт"
-description: "Узнайте, как создать приложение Node.js для управления Azure CDN."
+title: "aaaGet работы с hello CDN Azure SDK для Node.js | Документы Microsoft"
+description: "Узнайте, как toomanage приложений Node.js toowrite Azure CDN."
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 46ae8cd9775432d126cbde856c1fb06ea319297e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6c805e5fb8e0b471e8b248cb2f4b29efd6c85940
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-azure-cdn-development"></a><span data-ttu-id="acb5e-103">Приступая к разработке для Azure CDN</span><span class="sxs-lookup"><span data-stu-id="acb5e-103">Get started with Azure CDN development</span></span>
+# <a name="get-started-with-azure-cdn-development"></a><span data-ttu-id="4c59e-103">Приступая к разработке для Azure CDN</span><span class="sxs-lookup"><span data-stu-id="4c59e-103">Get started with Azure CDN development</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="acb5e-104">Node.js</span><span class="sxs-lookup"><span data-stu-id="acb5e-104">Node.js</span></span>](cdn-app-dev-node.md)
-> * [<span data-ttu-id="acb5e-105">.NET</span><span class="sxs-lookup"><span data-stu-id="acb5e-105">.NET</span></span>](cdn-app-dev-net.md)
+> * [<span data-ttu-id="4c59e-104">Node.js</span><span class="sxs-lookup"><span data-stu-id="4c59e-104">Node.js</span></span>](cdn-app-dev-node.md)
+> * [<span data-ttu-id="4c59e-105">.NET</span><span class="sxs-lookup"><span data-stu-id="4c59e-105">.NET</span></span>](cdn-app-dev-net.md)
 > 
 > 
 
-<span data-ttu-id="acb5e-106">С помощью [пакета SDK Azure CDN для Node.js](https://www.npmjs.com/package/azure-arm-cdn) можно автоматизировать создание профилей и конечных точек CDN и управление ими.</span><span class="sxs-lookup"><span data-stu-id="acb5e-106">You can use the [Azure CDN SDK for Node.js](https://www.npmjs.com/package/azure-arm-cdn) to automate creation and management of CDN profiles and endpoints.</span></span>  <span data-ttu-id="acb5e-107">В этом руководстве описывается создание простого консольного приложения Node.js с примерами некоторых доступных операций.</span><span class="sxs-lookup"><span data-stu-id="acb5e-107">This tutorial walks through the creation of a simple Node.js console application that demonstrates several of the available operations.</span></span>  <span data-ttu-id="acb5e-108">Это руководство не содержит подробные сведения обо всех свойствах пакета Azure CDN SDK для Node.js.</span><span class="sxs-lookup"><span data-stu-id="acb5e-108">This tutorial is not intended to describe all aspects of the Azure CDN SDK for Node.js in detail.</span></span>
+<span data-ttu-id="4c59e-106">Можно использовать hello [Azure CDN SDK для Node.js](https://www.npmjs.com/package/azure-arm-cdn) tooautomate создания и управления профилями CDN и конечных точек.</span><span class="sxs-lookup"><span data-stu-id="4c59e-106">You can use hello [Azure CDN SDK for Node.js](https://www.npmjs.com/package/azure-arm-cdn) tooautomate creation and management of CDN profiles and endpoints.</span></span>  <span data-ttu-id="4c59e-107">Этого учебника вы научитесь hello создание простой Node.js консольное приложение, которое показано несколько доступных операций hello.</span><span class="sxs-lookup"><span data-stu-id="4c59e-107">This tutorial walks through hello creation of a simple Node.js console application that demonstrates several of hello available operations.</span></span>  <span data-ttu-id="4c59e-108">Этот учебник является не предназначен toodescribe все аспекты hello CDN Azure SDK для Node.js подробно.</span><span class="sxs-lookup"><span data-stu-id="4c59e-108">This tutorial is not intended toodescribe all aspects of hello Azure CDN SDK for Node.js in detail.</span></span>
 
-<span data-ttu-id="acb5e-109">Для работы с этим учебником должен быть установлен и настроен компонент [Node.js](http://www.nodejs.org) **4.x.x** или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="acb5e-109">To complete this tutorial, you should already have [Node.js](http://www.nodejs.org) **4.x.x** or higher installed and configured.</span></span>  <span data-ttu-id="acb5e-110">Для создания приложения Node.js вы можете использовать любой текстовый редактор.</span><span class="sxs-lookup"><span data-stu-id="acb5e-110">You can use any text editor you want to create your Node.js application.</span></span>  <span data-ttu-id="acb5e-111">Например, в этом учебнике используется [Visual Studio Code](https://code.visualstudio.com).</span><span class="sxs-lookup"><span data-stu-id="acb5e-111">To write this tutorial, I used [Visual Studio Code](https://code.visualstudio.com).</span></span>  
+<span data-ttu-id="4c59e-109">toocomplete этого учебника необходимо иметь [Node.js](http://www.nodejs.org) **4.х** или более поздней версии установлен и настроен.</span><span class="sxs-lookup"><span data-stu-id="4c59e-109">toocomplete this tutorial, you should already have [Node.js](http://www.nodejs.org) **4.x.x** or higher installed and configured.</span></span>  <span data-ttu-id="4c59e-110">Можно использовать любой текстовый редактор, требуется toocreate приложение Node.js.</span><span class="sxs-lookup"><span data-stu-id="4c59e-110">You can use any text editor you want toocreate your Node.js application.</span></span>  <span data-ttu-id="4c59e-111">toowrite этого учебника, я использовал [кода Visual Studio](https://code.visualstudio.com).</span><span class="sxs-lookup"><span data-stu-id="4c59e-111">toowrite this tutorial, I used [Visual Studio Code](https://code.visualstudio.com).</span></span>  
 
 > [!TIP]
-> <span data-ttu-id="acb5e-112">[Завершенный проект из этого учебника](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) доступен для скачивания на сайте MSDN.</span><span class="sxs-lookup"><span data-stu-id="acb5e-112">The [completed project from this tutorial](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) is available for download on MSDN.</span></span>
+> <span data-ttu-id="4c59e-112">Hello [завершенный проект из этого учебника](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) доступен для загрузки на сайте MSDN.</span><span class="sxs-lookup"><span data-stu-id="4c59e-112">hello [completed project from this tutorial](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) is available for download on MSDN.</span></span>
 > 
 > 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
-## <a name="create-your-project-and-add-npm-dependencies"></a><span data-ttu-id="acb5e-113">Создание проекта и добавление зависимостей NPM</span><span class="sxs-lookup"><span data-stu-id="acb5e-113">Create your project and add NPM dependencies</span></span>
-<span data-ttu-id="acb5e-114">Создав группу ресурсов для профилей CDN и назначив приложению Azure AD разрешения для управления профилями CDN и конечными точками в этой группе, мы можем приступить к созданию своего приложения.</span><span class="sxs-lookup"><span data-stu-id="acb5e-114">Now that we've created a resource group for our CDN profiles and given our Azure AD application permission to manage CDN profiles and endpoints within that group, we can start creating our application.</span></span>
+## <a name="create-your-project-and-add-npm-dependencies"></a><span data-ttu-id="4c59e-113">Создание проекта и добавление зависимостей NPM</span><span class="sxs-lookup"><span data-stu-id="4c59e-113">Create your project and add NPM dependencies</span></span>
+<span data-ttu-id="4c59e-114">Теперь, что мы создали группу ресурсов для наших CDN профилей и заданным нашей профили CDN toomanage разрешений приложения Azure AD и конечных точек в пределах этой группы, можно начать создание нашего приложения.</span><span class="sxs-lookup"><span data-stu-id="4c59e-114">Now that we've created a resource group for our CDN profiles and given our Azure AD application permission toomanage CDN profiles and endpoints within that group, we can start creating our application.</span></span>
 
-<span data-ttu-id="acb5e-115">Создайте папку для хранения приложения.</span><span class="sxs-lookup"><span data-stu-id="acb5e-115">Create a folder to store your application.</span></span>  <span data-ttu-id="acb5e-116">С помощью консоли, в которой средства Node.js включены в текущий путь, перейдите в эту новую папку и инициализируйте проект с помощью следующей команды:</span><span class="sxs-lookup"><span data-stu-id="acb5e-116">From a console with the Node.js tools in your current path, set your current location to this new folder and initialize your project by executing:</span></span>
+<span data-ttu-id="4c59e-115">Создайте toostore папку приложения.</span><span class="sxs-lookup"><span data-stu-id="4c59e-115">Create a folder toostore your application.</span></span>  <span data-ttu-id="4c59e-116">В консоли с Node.js tools hello в текущем пути установить текущую папку новый toothis расположение и инициализировать проект, выполнив:</span><span class="sxs-lookup"><span data-stu-id="4c59e-116">From a console with hello Node.js tools in your current path, set your current location toothis new folder and initialize your project by executing:</span></span>
 
     npm init
 
-<span data-ttu-id="acb5e-117">Вам будет предложено ответить на ряд вопросов для инициализации проекта.</span><span class="sxs-lookup"><span data-stu-id="acb5e-117">You will then be presented a series of questions to initialize your project.</span></span>  <span data-ttu-id="acb5e-118">В качестве **точки входа**в этом руководстве используется *app.js*.</span><span class="sxs-lookup"><span data-stu-id="acb5e-118">For **entry point**, this tutorial uses *app.js*.</span></span>  <span data-ttu-id="acb5e-119">В приведенном ниже примере вы можете увидеть значения других параметров.</span><span class="sxs-lookup"><span data-stu-id="acb5e-119">You can see my other choices in the following example.</span></span>
+<span data-ttu-id="4c59e-117">После этого будет представлен ряд вопросов tooinitialize проекта.</span><span class="sxs-lookup"><span data-stu-id="4c59e-117">You will then be presented a series of questions tooinitialize your project.</span></span>  <span data-ttu-id="4c59e-118">В качестве **точки входа**в этом руководстве используется *app.js*.</span><span class="sxs-lookup"><span data-stu-id="4c59e-118">For **entry point**, this tutorial uses *app.js*.</span></span>  <span data-ttu-id="4c59e-119">Вы увидите Мои другие варианты hello в следующем примере.</span><span class="sxs-lookup"><span data-stu-id="4c59e-119">You can see my other choices in hello following example.</span></span>
 
 ![Выходные данные NPM](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-<span data-ttu-id="acb5e-121">Теперь наш проект будет инициализирован с помощью файла *packages.json* .</span><span class="sxs-lookup"><span data-stu-id="acb5e-121">Our project is now initialized with a *packages.json* file.</span></span>  <span data-ttu-id="acb5e-122">В проекте будут использоваться некоторые библиотеки Azure, содержащиеся в пакетах NPM.</span><span class="sxs-lookup"><span data-stu-id="acb5e-122">Our project is going to use some Azure libraries contained in NPM packages.</span></span>  <span data-ttu-id="acb5e-123">Мы будем использовать клиентскую среду Azure для Node.js (ms-rest-azure) и клиентскую библиотеку Azure CDN для Node.js (azure-arm-cd).</span><span class="sxs-lookup"><span data-stu-id="acb5e-123">We'll use the Azure Client Runtime for Node.js (ms-rest-azure) and the Azure CDN Client Library for Node.js (azure-arm-cd).</span></span>  <span data-ttu-id="acb5e-124">Давайте добавим эти зависимости в проект.</span><span class="sxs-lookup"><span data-stu-id="acb5e-124">Let's add those to the project as dependencies.</span></span>
+<span data-ttu-id="4c59e-121">Теперь наш проект будет инициализирован с помощью файла *packages.json* .</span><span class="sxs-lookup"><span data-stu-id="4c59e-121">Our project is now initialized with a *packages.json* file.</span></span>  <span data-ttu-id="4c59e-122">Наш проект будет toouse некоторые Azure библиотеки из пакета NPM.</span><span class="sxs-lookup"><span data-stu-id="4c59e-122">Our project is going toouse some Azure libraries contained in NPM packages.</span></span>  <span data-ttu-id="4c59e-123">Мы будем использовать hello среды выполнения клиента Azure для Node.js (ms rest azure) и hello клиентская библиотека CDN Azure для Node.js (azure arm cd).</span><span class="sxs-lookup"><span data-stu-id="4c59e-123">We'll use hello Azure Client Runtime for Node.js (ms-rest-azure) and hello Azure CDN Client Library for Node.js (azure-arm-cd).</span></span>  <span data-ttu-id="4c59e-124">Давайте добавим эти toohello проект как зависимости.</span><span class="sxs-lookup"><span data-stu-id="4c59e-124">Let's add those toohello project as dependencies.</span></span>
 
     npm install --save ms-rest-azure
     npm install --save azure-arm-cdn
 
-<span data-ttu-id="acb5e-125">Когда установка этих пакетов завершится, файл *package.json* должен выглядеть примерно так (номер версии может отличаться):</span><span class="sxs-lookup"><span data-stu-id="acb5e-125">After the packages are done installing, the *package.json* file should look similar to this example (version numbers may differ):</span></span>
+<span data-ttu-id="4c59e-125">После этого пакеты hello установка, hello *package.json* файл должен выглядеть аналогичный пример toothis (версия цифры могут отличаться):</span><span class="sxs-lookup"><span data-stu-id="4c59e-125">After hello packages are done installing, hello *package.json* file should look similar toothis example (version numbers may differ):</span></span>
 
 ``` json
 {
@@ -74,18 +74,18 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-<span data-ttu-id="acb5e-126">И, наконец, создайте с помощью текстового редактора пустой текстовый файл и сохраните его с именем *app.js*в корневой папке проекта.</span><span class="sxs-lookup"><span data-stu-id="acb5e-126">Finally, using your text editor, create a blank text file and save it in the root of our project folder as *app.js*.</span></span>  <span data-ttu-id="acb5e-127">Теперь мы готовы приступить к написанию кода.</span><span class="sxs-lookup"><span data-stu-id="acb5e-127">We're now ready to begin writing code.</span></span>
+<span data-ttu-id="4c59e-126">Наконец, используя текстовый редактор, создайте пустой текстовый файл и сохраните его в корне hello нашей папки проекта, как *в файле app.js*.</span><span class="sxs-lookup"><span data-stu-id="4c59e-126">Finally, using your text editor, create a blank text file and save it in hello root of our project folder as *app.js*.</span></span>  <span data-ttu-id="4c59e-127">Теперь мы готовы toobegin написания кода.</span><span class="sxs-lookup"><span data-stu-id="4c59e-127">We're now ready toobegin writing code.</span></span>
 
-## <a name="requires-constants-authentication-and-structure"></a><span data-ttu-id="acb5e-128">Требования, константы, проверка подлинности и структура</span><span class="sxs-lookup"><span data-stu-id="acb5e-128">Requires, constants, authentication, and structure</span></span>
-<span data-ttu-id="acb5e-129">Давайте откроем файл *app.js* в редакторе и создадим базовую структуру нашей программы.</span><span class="sxs-lookup"><span data-stu-id="acb5e-129">With *app.js* open in our editor, let's get the basic structure of our program written.</span></span>
+## <a name="requires-constants-authentication-and-structure"></a><span data-ttu-id="4c59e-128">Требования, константы, проверка подлинности и структура</span><span class="sxs-lookup"><span data-stu-id="4c59e-128">Requires, constants, authentication, and structure</span></span>
+<span data-ttu-id="4c59e-129">С *в файле app.js* в наш редактор, приступим к базовой структуры нашей программы, написанной hello.</span><span class="sxs-lookup"><span data-stu-id="4c59e-129">With *app.js* open in our editor, let's get hello basic structure of our program written.</span></span>
 
-1. <span data-ttu-id="acb5e-130">В начале файла добавьте строки required для всех наших пакетов NPM:</span><span class="sxs-lookup"><span data-stu-id="acb5e-130">Add the "requires" for our NPM packages at the top with the following:</span></span>
+1. <span data-ttu-id="4c59e-130">Добавьте hello» требует» для наших пакета NPM вверху hello hello следующее:</span><span class="sxs-lookup"><span data-stu-id="4c59e-130">Add hello "requires" for our NPM packages at hello top with hello following:</span></span>
    
     ``` javascript
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. <span data-ttu-id="acb5e-131">Необходимо определить несколько констант, которые будут использоваться нашими методами.</span><span class="sxs-lookup"><span data-stu-id="acb5e-131">We need to define some constants our methods will use.</span></span>  <span data-ttu-id="acb5e-132">Добавьте следующий код.</span><span class="sxs-lookup"><span data-stu-id="acb5e-132">Add the following.</span></span>  <span data-ttu-id="acb5e-133">Обязательно замените заполнители, включая **&lt;угловые скобки&gt;**, собственными значениями.</span><span class="sxs-lookup"><span data-stu-id="acb5e-133">Be sure to replace the placeholders, including the **&lt;angle brackets&gt;**, with your own values as needed.</span></span>
+2. <span data-ttu-id="4c59e-131">Мы должны toodefine некоторые константы, которые будут использовать наши методы.</span><span class="sxs-lookup"><span data-stu-id="4c59e-131">We need toodefine some constants our methods will use.</span></span>  <span data-ttu-id="4c59e-132">Добавьте следующее hello.</span><span class="sxs-lookup"><span data-stu-id="4c59e-132">Add hello following.</span></span>  <span data-ttu-id="4c59e-133">Быть заполнители hello, включая hello убедиться, что tooreplace  **&lt;угловые скобки&gt;**, собственными значениями, при необходимости.</span><span class="sxs-lookup"><span data-stu-id="4c59e-133">Be sure tooreplace hello placeholders, including hello **&lt;angle brackets&gt;**, with your own values as needed.</span></span>
    
     ``` javascript
     //Tenant app constants
@@ -98,17 +98,17 @@ ms.lasthandoff: 07/11/2017
     const resourceGroupName = "CdnConsoleTutorial";
     const resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
-3. <span data-ttu-id="acb5e-134">Далее мы создадим клиент управления CDN и передадим ему наши учетные данные.</span><span class="sxs-lookup"><span data-stu-id="acb5e-134">Next, we'll instantiate the CDN management client and give it our credentials.</span></span>
+3. <span data-ttu-id="4c59e-134">Затем мы создать клиента управления CDN hello и присвойте ему нашей учетные данные.</span><span class="sxs-lookup"><span data-stu-id="4c59e-134">Next, we'll instantiate hello CDN management client and give it our credentials.</span></span>
    
     ``` javascript
     var credentials = new msRestAzure.ApplicationTokenCredentials(clientId, tenantId, clientSecret);
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    <span data-ttu-id="acb5e-135">Если вы используете аутентификацию отдельных пользователей, эти две строки будут выглядеть немного иначе.</span><span class="sxs-lookup"><span data-stu-id="acb5e-135">If you are using individual user authentication, these two lines will look slightly different.</span></span>
+    <span data-ttu-id="4c59e-135">Если вы используете аутентификацию отдельных пользователей, эти две строки будут выглядеть немного иначе.</span><span class="sxs-lookup"><span data-stu-id="4c59e-135">If you are using individual user authentication, these two lines will look slightly different.</span></span>
    
    > [!IMPORTANT]
-   > <span data-ttu-id="acb5e-136">Используйте приведенный пример кода, только если решили использовать аутентификацию отдельных пользователей, а не субъект-службу.</span><span class="sxs-lookup"><span data-stu-id="acb5e-136">Only use this code sample if you are choosing to have individual user authentication instead of a service principal.</span></span>  <span data-ttu-id="acb5e-137">Следите за тем, чтобы ваши учетные данные пользователя хранились в секрете.</span><span class="sxs-lookup"><span data-stu-id="acb5e-137">Be careful to guard your individual user credentials and keep them secret.</span></span>
+   > <span data-ttu-id="4c59e-136">Этот пример кода следует используйте только при выборе toohave проверки подлинности пользователя вместо участника-службы.</span><span class="sxs-lookup"><span data-stu-id="4c59e-136">Only use this code sample if you are choosing toohave individual user authentication instead of a service principal.</span></span>  <span data-ttu-id="4c59e-137">Быть тщательно tooguard учетные данные пользователя и храните их в тайне.</span><span class="sxs-lookup"><span data-stu-id="4c59e-137">Be careful tooguard your individual user credentials and keep them secret.</span></span>
    > 
    > 
    
@@ -118,8 +118,8 @@ ms.lasthandoff: 07/11/2017
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    <span data-ttu-id="acb5e-138">Не забудьте заменить правильными данными все элементы в **&lt;угловых скобках&gt;**.</span><span class="sxs-lookup"><span data-stu-id="acb5e-138">Be sure to replace the items in **&lt;angle brackets&gt;** with the correct information.</span></span>  <span data-ttu-id="acb5e-139">Вместо `<redirect URI>`укажите универсальный код ресурса (URI) перенаправления, который вы ввели при регистрации приложения в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="acb5e-139">For `<redirect URI>`, use the redirect URI you entered when you registered the application in Azure AD.</span></span>
-4. <span data-ttu-id="acb5e-140">Консольное приложение Node.js будет принимать некоторые параметры командной строки.</span><span class="sxs-lookup"><span data-stu-id="acb5e-140">Our Node.js console application is going to take some command-line parameters.</span></span>  <span data-ttu-id="acb5e-141">Давайте добавим проверку того, что передан хотя бы один параметр.</span><span class="sxs-lookup"><span data-stu-id="acb5e-141">Let's validate that at least one parameter was passed.</span></span>
+    <span data-ttu-id="4c59e-138">Представлять tooreplace убедиться, что элементы hello в  **&lt;угловые скобки&gt;**  с hello исправить информацию.</span><span class="sxs-lookup"><span data-stu-id="4c59e-138">Be sure tooreplace hello items in **&lt;angle brackets&gt;** with hello correct information.</span></span>  <span data-ttu-id="4c59e-139">Для `<redirect URI>`, использование перенаправления hello URI, введенное при регистрации приложения hello в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="4c59e-139">For `<redirect URI>`, use hello redirect URI you entered when you registered hello application in Azure AD.</span></span>
+4. <span data-ttu-id="4c59e-140">Наш Node.js консольного приложения будет tootake некоторые параметры командной строки.</span><span class="sxs-lookup"><span data-stu-id="4c59e-140">Our Node.js console application is going tootake some command-line parameters.</span></span>  <span data-ttu-id="4c59e-141">Давайте добавим проверку того, что передан хотя бы один параметр.</span><span class="sxs-lookup"><span data-stu-id="4c59e-141">Let's validate that at least one parameter was passed.</span></span>
    
    ```javascript
    //Collect command-line parameters
@@ -133,7 +133,7 @@ ms.lasthandoff: 07/11/2017
        process.exit(1);
    }
    ```
-5. <span data-ttu-id="acb5e-142">Теперь мы добрались до основной части нашей программы — мы будем запускать другие функции в зависимости от того, какие параметры были переданы.</span><span class="sxs-lookup"><span data-stu-id="acb5e-142">That brings us to the main part of our program, where we branch off to other functions based on what parameters were passed.</span></span>
+5. <span data-ttu-id="4c59e-142">Мы заканчиваем toohello основную часть нашей программы, где мы ответвлениями tooother функции в зависимости от того, какие параметры были переданы.</span><span class="sxs-lookup"><span data-stu-id="4c59e-142">That brings us toohello main part of our program, where we branch off tooother functions based on what parameters were passed.</span></span>
    
     ```javascript
     switch(parms[0].toLowerCase())
@@ -159,7 +159,7 @@ ms.lasthandoff: 07/11/2017
             process.exit(1);
     }
     ```
-6. <span data-ttu-id="acb5e-143">Также мы будем проверять, передано ли нужное число параметров; если параметры имеют неправильный формат, будут отображены подсказки.</span><span class="sxs-lookup"><span data-stu-id="acb5e-143">At several places in our program, we'll need to make sure the right number of parameters were passed in and display some help if they don't look correct.</span></span>  <span data-ttu-id="acb5e-144">Давайте создадим для этого функции.</span><span class="sxs-lookup"><span data-stu-id="acb5e-144">Let's create functions to do that.</span></span>
+6. <span data-ttu-id="4c59e-143">В нескольких местах в нашей программе нам нужно убедиться, что были переданы в hello правильное количество параметров и отображения справки, если они выглядят правильно toomake.</span><span class="sxs-lookup"><span data-stu-id="4c59e-143">At several places in our program, we'll need toomake sure hello right number of parameters were passed in and display some help if they don't look correct.</span></span>  <span data-ttu-id="4c59e-144">Давайте создадим toodo функции.</span><span class="sxs-lookup"><span data-stu-id="4c59e-144">Let's create functions toodo that.</span></span>
    
    ```javascript
    function requireParms(parmCount) {
@@ -197,7 +197,7 @@ ms.lasthandoff: 07/11/2017
        }
    }
    ```
-7. <span data-ttu-id="acb5e-145">Кроме того, мы будем использовать на клиенте управления CDN асинхронные функции, поэтому нам нужен метод для обратного вызова после завершения их работы.</span><span class="sxs-lookup"><span data-stu-id="acb5e-145">Finally, the functions we'll be using on the CDN management client are asynchronous, so they need a method to call back when they're done.</span></span>  <span data-ttu-id="acb5e-146">Давайте создадим такой метод, который будет отображать данные, полученные от клиента управления CDN (если они есть) и корректно завершать работу программы.</span><span class="sxs-lookup"><span data-stu-id="acb5e-146">Let's make one that can display the output from the CDN management client (if any) and exit the program gracefully.</span></span>
+7. <span data-ttu-id="4c59e-145">Наконец hello функций, которые мы будем использовать на клиенте управления CDN hello являются асинхронными, поэтому они должны toocall метод обратно в том случае, когда они все готово.</span><span class="sxs-lookup"><span data-stu-id="4c59e-145">Finally, hello functions we'll be using on hello CDN management client are asynchronous, so they need a method toocall back when they're done.</span></span>  <span data-ttu-id="4c59e-146">Сделаем, можно отобразить hello вывод hello CDN управления клиента (если таковые имеются) и корректно завершить работу программы hello.</span><span class="sxs-lookup"><span data-stu-id="4c59e-146">Let's make one that can display hello output from hello CDN management client (if any) and exit hello program gracefully.</span></span>
    
     ```javascript
     function callback(err, result, request, response) {
@@ -211,10 +211,10 @@ ms.lasthandoff: 07/11/2017
     }
     ```
 
-<span data-ttu-id="acb5e-147">Теперь базовая структура программы полностью готова, и мы можем создать функции, вызываемые на основе полученных параметров.</span><span class="sxs-lookup"><span data-stu-id="acb5e-147">Now that the basic structure of our program is written, we should create the functions called based on our parameters.</span></span>
+<span data-ttu-id="4c59e-147">Теперь, когда записывается hello базовой структуры программы, следует создавать hello функции на основе наших параметров.</span><span class="sxs-lookup"><span data-stu-id="4c59e-147">Now that hello basic structure of our program is written, we should create hello functions called based on our parameters.</span></span>
 
-## <a name="list-cdn-profiles-and-endpoints"></a><span data-ttu-id="acb5e-148">Вывод списка профилей CDN и конечных точек</span><span class="sxs-lookup"><span data-stu-id="acb5e-148">List CDN profiles and endpoints</span></span>
-<span data-ttu-id="acb5e-149">Давайте начнем с кода, который выводит список существующих профилей и конечных точек.</span><span class="sxs-lookup"><span data-stu-id="acb5e-149">Let's start with code to list our existing profiles and endpoints.</span></span>  <span data-ttu-id="acb5e-150">Я дополню код комментариями с описанием синтаксиса, чтобы было понятно, для чего предназначен каждый параметр.</span><span class="sxs-lookup"><span data-stu-id="acb5e-150">My code comments provide the expected syntax so we know where each parameter goes.</span></span>
+## <a name="list-cdn-profiles-and-endpoints"></a><span data-ttu-id="4c59e-148">Вывод списка профилей CDN и конечных точек</span><span class="sxs-lookup"><span data-stu-id="4c59e-148">List CDN profiles and endpoints</span></span>
+<span data-ttu-id="4c59e-149">Начнем с кодом toolist наши существующие профили и конечных точек.</span><span class="sxs-lookup"><span data-stu-id="4c59e-149">Let's start with code toolist our existing profiles and endpoints.</span></span>  <span data-ttu-id="4c59e-150">Комментарии к коду предоставляют hello ожидается синтаксис, чтобы узнать, где каждый параметр становится.</span><span class="sxs-lookup"><span data-stu-id="4c59e-150">My code comments provide hello expected syntax so we know where each parameter goes.</span></span>
 
 ```javascript
 // list profiles
@@ -241,8 +241,8 @@ function cdnList(){
 }
 ```
 
-## <a name="create-cdn-profiles-and-endpoints"></a><span data-ttu-id="acb5e-151">Создание профилей CDN и конечных точек</span><span class="sxs-lookup"><span data-stu-id="acb5e-151">Create CDN profiles and endpoints</span></span>
-<span data-ttu-id="acb5e-152">Теперь давайте напишем функцию для создания профилей и конечных точек.</span><span class="sxs-lookup"><span data-stu-id="acb5e-152">Next, we'll write the functions to create profiles and endpoints.</span></span>
+## <a name="create-cdn-profiles-and-endpoints"></a><span data-ttu-id="4c59e-151">Создание профилей CDN и конечных точек</span><span class="sxs-lookup"><span data-stu-id="4c59e-151">Create CDN profiles and endpoints</span></span>
+<span data-ttu-id="4c59e-152">Далее мы записываем профили toocreate функции hello и конечных точек.</span><span class="sxs-lookup"><span data-stu-id="4c59e-152">Next, we'll write hello functions toocreate profiles and endpoints.</span></span>
 
 ```javascript
 function cdnCreate() {
@@ -293,8 +293,8 @@ function cdnCreateEndpoint() {
 }
 ```
 
-## <a name="purge-an-endpoint"></a><span data-ttu-id="acb5e-153">Очистка конечной точки</span><span class="sxs-lookup"><span data-stu-id="acb5e-153">Purge an endpoint</span></span>
-<span data-ttu-id="acb5e-154">Одной из задач, которая может выполняться в программе после создания конечной точки, является очистка содержимого в ней.</span><span class="sxs-lookup"><span data-stu-id="acb5e-154">Assuming the endpoint has been created, one common task that we might want to perform in our program is purging content in our endpoint.</span></span>
+## <a name="purge-an-endpoint"></a><span data-ttu-id="4c59e-153">Очистка конечной точки</span><span class="sxs-lookup"><span data-stu-id="4c59e-153">Purge an endpoint</span></span>
+<span data-ttu-id="4c59e-154">Предположим, что hello конечная точка создана, одной из общих задач, может потребоваться tooperform нашей программы удаления содержимого в конечной точки.</span><span class="sxs-lookup"><span data-stu-id="4c59e-154">Assuming hello endpoint has been created, one common task that we might want tooperform in our program is purging content in our endpoint.</span></span>
 
 ```javascript
 // purge <profile name> <endpoint name> <path>
@@ -306,8 +306,8 @@ function cdnPurge() {
 }
 ```
 
-## <a name="delete-cdn-profiles-and-endpoints"></a><span data-ttu-id="acb5e-155">Удаление профилей CDN и конечных точек</span><span class="sxs-lookup"><span data-stu-id="acb5e-155">Delete CDN profiles and endpoints</span></span>
-<span data-ttu-id="acb5e-156">Наша последняя функция будет удалять конечные точки и профили.</span><span class="sxs-lookup"><span data-stu-id="acb5e-156">The last function we will include deletes endpoints and profiles.</span></span>
+## <a name="delete-cdn-profiles-and-endpoints"></a><span data-ttu-id="4c59e-155">Удаление профилей CDN и конечных точек</span><span class="sxs-lookup"><span data-stu-id="4c59e-155">Delete CDN profiles and endpoints</span></span>
+<span data-ttu-id="4c59e-156">Hello последнюю функцию, которую будет реализована в удаляет конечные точки и профили.</span><span class="sxs-lookup"><span data-stu-id="4c59e-156">hello last function we will include deletes endpoints and profiles.</span></span>
 
 ```javascript
 function cdnDelete() {
@@ -335,36 +335,36 @@ function cdnDelete() {
 }
 ```
 
-## <a name="running-the-program"></a><span data-ttu-id="acb5e-157">Запуск программы</span><span class="sxs-lookup"><span data-stu-id="acb5e-157">Running the program</span></span>
-<span data-ttu-id="acb5e-158">Теперь мы можем выполнить нашу программу Node.js в любом удобном отладчике или консоли.</span><span class="sxs-lookup"><span data-stu-id="acb5e-158">We can now execute our Node.js program using our favorite debugger or at the console.</span></span>
+## <a name="running-hello-program"></a><span data-ttu-id="4c59e-157">Запуск программы hello</span><span class="sxs-lookup"><span data-stu-id="4c59e-157">Running hello program</span></span>
+<span data-ttu-id="4c59e-158">Теперь можно выполнить нашей программы Node.js с помощью наших любимых отладчика или с помощью консоли hello.</span><span class="sxs-lookup"><span data-stu-id="4c59e-158">We can now execute our Node.js program using our favorite debugger or at hello console.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="acb5e-159">Если вы используете в качестве отладчика Visual Studio Code, вам потребуется настроить среду для передачи параметров командной строки.</span><span class="sxs-lookup"><span data-stu-id="acb5e-159">If you're using Visual Studio Code as your debugger, you'll need to set up your environment to pass in the command-line parameters.</span></span>  <span data-ttu-id="acb5e-160">Для этой цели в Visual Studio Code используется файл **lanuch.json** .</span><span class="sxs-lookup"><span data-stu-id="acb5e-160">Visual Studio Code does this in the **lanuch.json** file.</span></span>  <span data-ttu-id="acb5e-161">Найдите в нем свойство **args** и добавьте массив строковых значений со своими параметрами следующего вида: `"args": ["list", "profiles"]`.</span><span class="sxs-lookup"><span data-stu-id="acb5e-161">Look for a property named **args** and add an array of string values for your parameters, so that it looks similar to this:  `"args": ["list", "profiles"]`.</span></span>
+> <span data-ttu-id="4c59e-159">Если вы используете Visual Studio Code как отладчик, вам потребуется tooset копирование toopass вашей среды, параметры командной строки, hello.</span><span class="sxs-lookup"><span data-stu-id="4c59e-159">If you're using Visual Studio Code as your debugger, you'll need tooset up your environment toopass in hello command-line parameters.</span></span>  <span data-ttu-id="4c59e-160">Код Visual Studio для этого применяется hello **lanuch.json** файла.</span><span class="sxs-lookup"><span data-stu-id="4c59e-160">Visual Studio Code does this in hello **lanuch.json** file.</span></span>  <span data-ttu-id="4c59e-161">Найдите свойство с именем **args** и добавить массив строковых значений параметров, таким образом, аналогичные toothis: `"args": ["list", "profiles"]`.</span><span class="sxs-lookup"><span data-stu-id="4c59e-161">Look for a property named **args** and add an array of string values for your parameters, so that it looks similar toothis:  `"args": ["list", "profiles"]`.</span></span>
 > 
 > 
 
-<span data-ttu-id="acb5e-162">Давайте начнем с получения списка профилей.</span><span class="sxs-lookup"><span data-stu-id="acb5e-162">Let's start by listing our profiles.</span></span>
+<span data-ttu-id="4c59e-162">Давайте начнем с получения списка профилей.</span><span class="sxs-lookup"><span data-stu-id="4c59e-162">Let's start by listing our profiles.</span></span>
 
 ![Список профилей](./media/cdn-app-dev-node/cdn-list-profiles.png)
 
-<span data-ttu-id="acb5e-164">Мы получили пустой массив.</span><span class="sxs-lookup"><span data-stu-id="acb5e-164">We got back an empty array.</span></span>  <span data-ttu-id="acb5e-165">Так и должно быть, ведь в нашей группе ресурсов пока нет профилей.</span><span class="sxs-lookup"><span data-stu-id="acb5e-165">Since we don't have any profiles in our resource group, that's expected.</span></span>  <span data-ttu-id="acb5e-166">Теперь давайте создадим профиль.</span><span class="sxs-lookup"><span data-stu-id="acb5e-166">Let's create a profile now.</span></span>
+<span data-ttu-id="4c59e-164">Мы получили пустой массив.</span><span class="sxs-lookup"><span data-stu-id="4c59e-164">We got back an empty array.</span></span>  <span data-ttu-id="4c59e-165">Так и должно быть, ведь в нашей группе ресурсов пока нет профилей.</span><span class="sxs-lookup"><span data-stu-id="4c59e-165">Since we don't have any profiles in our resource group, that's expected.</span></span>  <span data-ttu-id="4c59e-166">Теперь давайте создадим профиль.</span><span class="sxs-lookup"><span data-stu-id="4c59e-166">Let's create a profile now.</span></span>
 
 ![Создание профиля](./media/cdn-app-dev-node/cdn-create-profile.png)
 
-<span data-ttu-id="acb5e-168">Теперь мы добавим конечную точку.</span><span class="sxs-lookup"><span data-stu-id="acb5e-168">Now, let's add an endpoint.</span></span>
+<span data-ttu-id="4c59e-168">Теперь мы добавим конечную точку.</span><span class="sxs-lookup"><span data-stu-id="4c59e-168">Now, let's add an endpoint.</span></span>
 
 ![Создать конечную точку](./media/cdn-app-dev-node/cdn-create-endpoint.png)
 
-<span data-ttu-id="acb5e-170">И в завершение давайте удалим профиль.</span><span class="sxs-lookup"><span data-stu-id="acb5e-170">Finally, let's delete our profile.</span></span>
+<span data-ttu-id="4c59e-170">И в завершение давайте удалим профиль.</span><span class="sxs-lookup"><span data-stu-id="4c59e-170">Finally, let's delete our profile.</span></span>
 
 ![Удаление профиля](./media/cdn-app-dev-node/cdn-delete-profile.png)
 
-## <a name="next-steps"></a><span data-ttu-id="acb5e-172">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="acb5e-172">Next Steps</span></span>
-<span data-ttu-id="acb5e-173">Чтобы просмотреть описываемый в этом руководстве готовый проект, [скачайте пример](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).</span><span class="sxs-lookup"><span data-stu-id="acb5e-173">To see the completed project from this walkthrough, [download the sample](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="4c59e-172">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="4c59e-172">Next Steps</span></span>
+<span data-ttu-id="4c59e-173">toosee hello завершения проекта из этого пошагового руководства [загрузить образец hello](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).</span><span class="sxs-lookup"><span data-stu-id="4c59e-173">toosee hello completed project from this walkthrough, [download hello sample](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).</span></span>
 
-<span data-ttu-id="acb5e-174">Справочную информацию о пакете SDK Azure CDN для Node.js вы найдете [здесь](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).</span><span class="sxs-lookup"><span data-stu-id="acb5e-174">To see the reference for the Azure CDN SDK for Node.js, view the [reference](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).</span></span>
+<span data-ttu-id="4c59e-174">Справочник hello toosee для hello Azure CDN SDK для Node.js hello представление [ссылка](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).</span><span class="sxs-lookup"><span data-stu-id="4c59e-174">toosee hello reference for hello Azure CDN SDK for Node.js, view hello [reference](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).</span></span>
 
-<span data-ttu-id="acb5e-175">Чтобы получить дополнительную документацию о пакете SDK Azure для Node.js, откройте [полный справочник](http://azure.github.io/azure-sdk-for-node/).</span><span class="sxs-lookup"><span data-stu-id="acb5e-175">To find additional documentation on the Azure SDK for Node.js, view the [full reference](http://azure.github.io/azure-sdk-for-node/).</span></span>
+<span data-ttu-id="4c59e-175">дополнительную документацию по hello Azure SDK для Node.js hello представление toofind [полный Справочник по](http://azure.github.io/azure-sdk-for-node/).</span><span class="sxs-lookup"><span data-stu-id="4c59e-175">toofind additional documentation on hello Azure SDK for Node.js, view hello [full reference](http://azure.github.io/azure-sdk-for-node/).</span></span>
 
-<span data-ttu-id="acb5e-176">Управление ресурсами CDN с помощью [PowerShell](cdn-manage-powershell.md).</span><span class="sxs-lookup"><span data-stu-id="acb5e-176">Manage your CDN resources with [PowerShell](cdn-manage-powershell.md).</span></span>
+<span data-ttu-id="4c59e-176">Управление ресурсами CDN с помощью [PowerShell](cdn-manage-powershell.md).</span><span class="sxs-lookup"><span data-stu-id="4c59e-176">Manage your CDN resources with [PowerShell](cdn-manage-powershell.md).</span></span>
 
