@@ -1,6 +1,6 @@
 ---
-title: "Вывод списка всех заданий импорта и экспорта Azure | Документация Майкрософт"
-description: "Узнайте, как вывести список всех заданий службы импорта и экспорта Azure в подписке."
+title: "aaaList всех заданий импорта и экспорта Azure | MicrosoftDocs"
+description: "Узнайте, как toolist все службы импорта и экспорта Azure hello заданий в подписке."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 1977bfc0e516088310f45ecdd960287eeed2c2d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0e12bf3dc3f2084a1987ac362cf8d1041059543c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enumerating-jobs-in-the-azure-importexport-service"></a><span data-ttu-id="d07eb-103">Перечисление заданий в службе импорта и экспорта Azure</span><span class="sxs-lookup"><span data-stu-id="d07eb-103">Enumerating jobs in the Azure Import/Export service</span></span>
-<span data-ttu-id="d07eb-104">Чтобы перечислить все задания в подписке, вызовите операцию [List Jobs](/rest/api/storageimportexport/jobs#Jobs_List).</span><span class="sxs-lookup"><span data-stu-id="d07eb-104">To enumerate all jobs in a subscription, call the [List Jobs](/rest/api/storageimportexport/jobs#Jobs_List) operation.</span></span> <span data-ttu-id="d07eb-105">`List Jobs` возвращает список заданий, а также перечисленные ниже атрибуты:</span><span class="sxs-lookup"><span data-stu-id="d07eb-105">`List Jobs` returns a list of jobs as well as the following attributes:</span></span>
+# <a name="enumerating-jobs-in-hello-azure-importexport-service"></a><span data-ttu-id="1bcae-103">Перечисление заданий в hello службы импорта и экспорта Azure</span><span class="sxs-lookup"><span data-stu-id="1bcae-103">Enumerating jobs in hello Azure Import/Export service</span></span>
+<span data-ttu-id="1bcae-104">tooenumerate все задания в подписке, вызов hello [список заданий](/rest/api/storageimportexport/jobs#Jobs_List) операции.</span><span class="sxs-lookup"><span data-stu-id="1bcae-104">tooenumerate all jobs in a subscription, call hello [List Jobs](/rest/api/storageimportexport/jobs#Jobs_List) operation.</span></span> <span data-ttu-id="1bcae-105">`List Jobs`Возвращает список заданий, а также hello следующие атрибуты:</span><span class="sxs-lookup"><span data-stu-id="1bcae-105">`List Jobs` returns a list of jobs as well as hello following attributes:</span></span>
 
--   <span data-ttu-id="d07eb-106">тип задания (импорт или экспорт);</span><span class="sxs-lookup"><span data-stu-id="d07eb-106">The type of job (Import or Export)</span></span>
+-   <span data-ttu-id="1bcae-106">Hello тип задания (Импорт или экспорт)</span><span class="sxs-lookup"><span data-stu-id="1bcae-106">hello type of job (Import or Export)</span></span>
 
--   <span data-ttu-id="d07eb-107">текущее состояние задания;</span><span class="sxs-lookup"><span data-stu-id="d07eb-107">The current job state</span></span>
+-   <span data-ttu-id="1bcae-107">Текущее состояние задания Hello</span><span class="sxs-lookup"><span data-stu-id="1bcae-107">hello current job state</span></span>
 
--   <span data-ttu-id="d07eb-108">связанная с задание учетная запись хранения.</span><span class="sxs-lookup"><span data-stu-id="d07eb-108">The job's associated storage account</span></span>
+-   <span data-ttu-id="1bcae-108">Задание Hello соответствующей учетной записи</span><span class="sxs-lookup"><span data-stu-id="1bcae-108">hello job's associated storage account</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="d07eb-109">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="d07eb-109">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="1bcae-109">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="1bcae-109">Next steps</span></span>
 
-* [<span data-ttu-id="d07eb-110">Использование REST API службы импорта и экспорта Azure</span><span class="sxs-lookup"><span data-stu-id="d07eb-110">Using the Import/Export service REST API</span></span>](storage-import-export-using-the-rest-api.md)
+* [<span data-ttu-id="1bcae-110">С помощью REST API службы импорта и экспорта hello</span><span class="sxs-lookup"><span data-stu-id="1bcae-110">Using hello Import/Export service REST API</span></span>](storage-import-export-using-the-rest-api.md)

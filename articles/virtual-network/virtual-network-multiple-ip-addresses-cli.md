@@ -1,6 +1,6 @@
 ---
-title: "Виртуальная машина с несколькими сетевыми картами (Azure CLI 2.0) | Документация Майкрософт"
-description: "Назначение виртуальной машине нескольких IP-адресов с помощью Azure CLI 2.0 | Resource Manager"
+title: "aaaVM несколько IP-адресов с помощью Azure CLI 2.0 hello | Документы Microsoft"
+description: "Узнайте, как tooassign несколько IP-адресов tooa виртуальную машину с помощью Azure CLI 2.0 \"hello\" | Диспетчер ресурсов."
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -15,28 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
-ms.openlocfilehash: 0e9b2ef89ca39a7988a7b2573496a605dfc604b4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 15efd853cc7c31bacb64ed052dabedd3fe4d3079
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli-20"></a><span data-ttu-id="c6fc0-103">Назначение виртуальным машинам нескольких IP-адресов с помощью Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="c6fc0-103">Assign multiple IP addresses to virtual machines using the Azure CLI 2.0</span></span>
+# <a name="assign-multiple-ip-addresses-toovirtual-machines-using-hello-azure-cli-20"></a><span data-ttu-id="05734-103">Назначить несколько IP-адресов машин toovirtual, с помощью Azure CLI 2.0 hello</span><span class="sxs-lookup"><span data-stu-id="05734-103">Assign multiple IP addresses toovirtual machines using hello Azure CLI 2.0</span></span>
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-<span data-ttu-id="c6fc0-104">В этой статье описывается создание виртуальной машины с помощью модели развертывания Azure Resource Manager с использованием Azure CLI 2.0.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-104">This article explains how to create a virtual machine (VM) through the Azure Resource Manager deployment model using the Azure CLI 2.0.</span></span> <span data-ttu-id="c6fc0-105">Для ресурсов, созданных с помощью классической модели развертывания, нельзя назначить несколько IP-адресов.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-105">Multiple IP addresses cannot be assigned to resources created through the classic deployment model.</span></span> <span data-ttu-id="c6fc0-106">Дополнительные сведения о моделях развертывания Azure см. в статье [Azure Resource Manager vs. classic deployment: Understand deployment models and the state of your resources](../resource-manager-deployment-model.md) (Развертывание с помощью Azure Resource Manager и классическое развертывание. Общие сведения о моделях развертывания и состоянии ресурсов).</span><span class="sxs-lookup"><span data-stu-id="c6fc0-106">To learn more about Azure deployment models, read the [Understand deployment models](../resource-manager-deployment-model.md) article.</span></span>
+<span data-ttu-id="05734-104">В этой статье объясняется, как toocreate виртуальной машины (VM) с помощью hello Azure Resource Manager развертывания модели с помощью hello Azure CLI 2.0.</span><span class="sxs-lookup"><span data-stu-id="05734-104">This article explains how toocreate a virtual machine (VM) through hello Azure Resource Manager deployment model using hello Azure CLI 2.0.</span></span> <span data-ttu-id="05734-105">Несколько IP-адресов нельзя назначить tooresources, созданные с помощью hello классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="05734-105">Multiple IP addresses cannot be assigned tooresources created through hello classic deployment model.</span></span> <span data-ttu-id="05734-106">Дополнительные сведения о моделях развертывания Azure, чтение hello toolearn [понять модели развертывания](../resource-manager-deployment-model.md) статьи.</span><span class="sxs-lookup"><span data-stu-id="05734-106">toolearn more about Azure deployment models, read hello [Understand deployment models](../resource-manager-deployment-model.md) article.</span></span>
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <span data-ttu-id="c6fc0-107"><a name = "create"></a>Создание виртуальной машины с несколькими IP-адресами</span><span class="sxs-lookup"><span data-stu-id="c6fc0-107"><a name = "create"></a>Create a VM with multiple IP addresses</span></span>
+## <span data-ttu-id="05734-107"><a name = "create"></a>Создание виртуальной машины с несколькими IP-адресами</span><span class="sxs-lookup"><span data-stu-id="05734-107"><a name = "create"></a>Create a VM with multiple IP addresses</span></span>
 
-<span data-ttu-id="c6fc0-108">Эту задачу можно выполнить с помощью Azure CLI 2.0 (в этой статье) или [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md).</span><span class="sxs-lookup"><span data-stu-id="c6fc0-108">You can complete this task using the Azure CLI 2.0 (this article) or the [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md).</span></span> <span data-ttu-id="c6fc0-109">Подставьте соответствующие значения для своей среды.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-109">Change the values, as appropriate, for your environment.</span></span> <span data-ttu-id="c6fc0-110">Вы можете создать пример виртуальной машины с несколькими IP-адресами, как описано в нашем сценарии.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-110">The steps that follow explain how to create an example VM with multiple IP addresses, as described in the scenario.</span></span> <span data-ttu-id="c6fc0-111">Измените имена переменных в прямых кавычках и типы IP-адресов в соответствии с требованиями своей реализации.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-111">Change variable values in "" and IP address types as required for your implementation.</span></span> 
+<span data-ttu-id="05734-108">Выполнить эту задачу с помощью hello Azure CLI 2.0 (Эта статья) или hello [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md).</span><span class="sxs-lookup"><span data-stu-id="05734-108">You can complete this task using hello Azure CLI 2.0 (this article) or hello [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md).</span></span> <span data-ttu-id="05734-109">Измените значения hello, в зависимости от среды.</span><span class="sxs-lookup"><span data-stu-id="05734-109">Change hello values, as appropriate, for your environment.</span></span> <span data-ttu-id="05734-110">Привет, описанных ниже объясняется, как toocreate пример виртуальной Машины с несколькими IP-адресов, как описано в сценарии hello.</span><span class="sxs-lookup"><span data-stu-id="05734-110">hello steps that follow explain how toocreate an example VM with multiple IP addresses, as described in hello scenario.</span></span> <span data-ttu-id="05734-111">Измените имена переменных в прямых кавычках и типы IP-адресов в соответствии с требованиями своей реализации.</span><span class="sxs-lookup"><span data-stu-id="05734-111">Change variable values in "" and IP address types as required for your implementation.</span></span> 
 
-1. <span data-ttu-id="c6fc0-112">Установите [Azure CLI 2.0](/cli/azure/install-az-cli2), если вы еще этого не сделали.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-112">Install the [Azure CLI 2.0](/cli/azure/install-az-cli2) if you don't already have it installed.</span></span>
-2. <span data-ttu-id="c6fc0-113">Создайте пару открытого и закрытого ключей SSH для виртуальных машин Linux, выполнив действия, описанные в [этой статье](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="c6fc0-113">Create an SSH public and private key pair for Linux VMs by completing the steps in the [Create an SSH public and private key pair for Linux VMs](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).</span></span>
-3. <span data-ttu-id="c6fc0-114">Выполните вход из командной оболочки, применив команду `az login`, и выберите используемую подписку.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-114">From a command shell, login with the command `az login` and select the subscription you're using.</span></span>
-4. <span data-ttu-id="c6fc0-115">Создайте виртуальную машину, выполнив следующий скрипт на компьютере Mac или Linux.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-115">Create the VM by executing the script that follows on a Linux or Mac computer.</span></span> <span data-ttu-id="c6fc0-116">Скрипт создает группу ресурсов, одну виртуальную сеть, одну сетевую карту с тремя конфигурациями IP-адреса и виртуальную машину с двумя подключенными сетевыми картами.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-116">The script creates a resource group, one virtual network (VNet), one NIC with three IP configurations, and a VM with the two NICs attached to it.</span></span> <span data-ttu-id="c6fc0-117">Сетевая карта, общедоступный IP-адрес, виртуальная сеть и виртуальная машина должны находиться в одном расположении и в одной подписке.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-117">The NIC, public IP address, virtual network, and VM resources must all exist in the same location and subscription.</span></span> <span data-ttu-id="c6fc0-118">Хотя эти ресурсы и не должны находиться в одной группе ресурсов, в следующем скрипте они находятся в одной группе ресурсов.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-118">Though the resources don't all have to exist in the same resource group, in the following script they do.</span></span>
+1. <span data-ttu-id="05734-112">Установка hello [Azure CLI 2.0](/cli/azure/install-az-cli2) если его нет.</span><span class="sxs-lookup"><span data-stu-id="05734-112">Install hello [Azure CLI 2.0](/cli/azure/install-az-cli2) if you don't already have it installed.</span></span>
+2. <span data-ttu-id="05734-113">Создание открытого и закрытого пару ключей SSH для виртуальных машин Linux, выполнив шаги hello в hello [создать открытый и закрытый пару ключей SSH для виртуальных машин Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="05734-113">Create an SSH public and private key pair for Linux VMs by completing hello steps in hello [Create an SSH public and private key pair for Linux VMs](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).</span></span>
+3. <span data-ttu-id="05734-114">В командной оболочке входа с помощью команды hello `az login` и выберите hello подписку, которую вы используете.</span><span class="sxs-lookup"><span data-stu-id="05734-114">From a command shell, login with hello command `az login` and select hello subscription you're using.</span></span>
+4. <span data-ttu-id="05734-115">Создайте hello виртуальной Машины, выполнив скрипт hello на компьютере Mac или Linux.</span><span class="sxs-lookup"><span data-stu-id="05734-115">Create hello VM by executing hello script that follows on a Linux or Mac computer.</span></span> <span data-ttu-id="05734-116">Hello скрипт создает группу ресурсов, одной виртуальной сети (VNet), один сетевой Адаптер с тремя IP-конфигурации и виртуальной Машины с tooit hello двух сетевых адаптеров присоединен.</span><span class="sxs-lookup"><span data-stu-id="05734-116">hello script creates a resource group, one virtual network (VNet), one NIC with three IP configurations, and a VM with hello two NICs attached tooit.</span></span> <span data-ttu-id="05734-117">Здравствуйте, сетевой Адаптер, общедоступный IP-адрес, виртуальной сети и ресурсы виртуальной Машины должны существовать в hello же местоположение и подписку.</span><span class="sxs-lookup"><span data-stu-id="05734-117">hello NIC, public IP address, virtual network, and VM resources must all exist in hello same location and subscription.</span></span> <span data-ttu-id="05734-118">Хотя ресурсы hello все еще нет tooexist в hello одну группу ресурсов, в следующий сценарий, как и hello.</span><span class="sxs-lookup"><span data-stu-id="05734-118">Though hello resources don't all have tooexist in hello same resource group, in hello following script they do.</span></span>
 
 ```bash
     
@@ -46,10 +46,10 @@ RgName="myResourceGroup"
 Location="westcentralus"
 az group create --name $RgName --location $Location
     
-# Create a public IP address resource with a static IP address using the `--allocation-method Static` option. If you
-# do not specify this option, the address is allocated dynamically. The address is assigned to the resource from a pool
-# of IP adresses unique to each Azure region. Download and view the file from
-# https://www.microsoft.com/en-us/download/details.aspx?id=41653 that lists the ranges for each region.
+# Create a public IP address resource with a static IP address using hello `--allocation-method Static` option. If you
+# do not specify this option, hello address is allocated dynamically. hello address is assigned toohello resource from a pool
+# of IP adresses unique tooeach Azure region. Download and view hello file from
+# https://www.microsoft.com/en-us/download/details.aspx?id=41653 that lists hello ranges for each region.
 
 PipName="myPublicIP"
 
@@ -78,8 +78,8 @@ az network vnet create \
 --subnet-name $VnetSubnetName \
 --subnet-prefix $VnetSubnetPrefix
 
-# Create a network interface connected to the subnet and associate the public IP address to it. Azure will create the
-# first IP configuration with a static private IP address and will associate the public IP address resource to it.
+# Create a network interface connected toohello subnet and associate hello public IP address tooit. Azure will create the
+# first IP configuration with a static private IP address and will associate hello public IP address resource tooit.
 
 NicName="MyNic1"
 az network nic create \
@@ -91,7 +91,7 @@ az network nic create \
 --vnet-name $VnetName \
 --public-ip-address $PipName
     
-# Create a second public IP address, a second IP configuration, and associate it to the NIC. This configuration has a
+# Create a second public IP address, a second IP configuration, and associate it toohello NIC. This configuration has a
 # static public IP address and a static private IP address.
 
 az network public-ip create \
@@ -108,7 +108,7 @@ az network nic ip-config create \
 --private-ip-address 10.0.0.5 \
 --public-ip-name myPublicIP2
 
-# Create a third IP configuration, and associate it to the NIC. This configuration has  static private IP address and   # no public IP address.
+# Create a third IP configuration, and associate it toohello NIC. This configuration has  static private IP address and # no public IP address.
 
 azure network nic ip-config create \
 --resource-group $RgName \
@@ -116,30 +116,30 @@ azure network nic ip-config create \
 --private-ip-address 10.0.0.6 \
 --name IPConfig-3
 
-# Note: Though this article assigns all IP configurations to a single NIC, you can also assign multiple IP configurations
-# to any NIC in a VM. To learn how to create a VM with multiple NICs, read the Create a VM with multiple NICs 
+# Note: Though this article assigns all IP configurations tooa single NIC, you can also assign multiple IP configurations
+# tooany NIC in a VM. toolearn how toocreate a VM with multiple NICs, read hello Create a VM with multiple NICs 
 # article: https://docs.microsoft.com/azure/virtual-network/virtual-network-deploy-multinic-arm-cli.
 
-# Create a VM and attach the NIC.
+# Create a VM and attach hello NIC.
 
 VmName="myVm"
 
-# Replace the value for the following **VmSize** variable with a value from the
-# https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes rticle. The script fails if the VM size
-# is not supported in the location you select. Run the `azure vm sizes --location estcentralus` command to get a full list
+# Replace hello value for hello following **VmSize** variable with a value from the
+# https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes rticle. hello script fails if hello VM size
+# is not supported in hello location you select. Run hello `azure vm sizes --location estcentralus` command tooget a full list
 # of VMs in US West Central, for example.
 
 VmSize="Standard_DS1"
 
-# Replace the value for the OsImage variable value with a value for *urn* from the utput returned by entering the
+# Replace hello value for hello OsImage variable value with a value for *urn* from hello utput returned by entering the
 # `az vm image list` command.
 
 OsImage="credativ:Debian:8:latest"
 
 Username="adminuser"
 
-# Replace the following value with the path to your public key file. If you're creating a Windows VM, remove the following
-# line and you'll be prompted for the password you want to configure for the VM.
+# Replace hello following value with hello path tooyour public key file. If you're creating a Windows VM, remove hello following
+# line and you'll be prompted for hello password you want tooconfigure for hello VM.
 
 SshKeyValue="~/.ssh/id_rsa.pub"
 
@@ -154,28 +154,28 @@ az vm create \
 --ssh-key-value $SshKeyValue
 ```
 
-<span data-ttu-id="c6fc0-119">Помимо виртуальной машины с сетевой картой и конфигураций из трех IP-адресов сценарий также создает следующие ресурсы.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-119">In addition to creating a VM with a NIC with 3 IP configurations, the script creates:</span></span>
+<span data-ttu-id="05734-119">В дополнение к этому toocreating ВМ с сетевой КАРТОЙ с 3 IP-конфигурации hello скрипт создает:</span><span class="sxs-lookup"><span data-stu-id="05734-119">In addition toocreating a VM with a NIC with 3 IP configurations, hello script creates:</span></span>
 
-- <span data-ttu-id="c6fc0-120">Один управляемый диск уровня "Премиум" по умолчанию. Вы можете создать диск другого типа.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-120">A single premium managed disk by default, but you have other options for the disk type you can create.</span></span> <span data-ttu-id="c6fc0-121">Дополнительные сведения см. в статье [Создание виртуальной машины Linux с помощью предварительной версии Azure CLI 2.0 (az.py)](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="c6fc0-121">Read the [Create a Linux VM using the Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) article for details.</span></span>
-- <span data-ttu-id="c6fc0-122">Виртуальная сеть с одной подсетью и двумя общедоступными IP-адресами.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-122">A virtual network with one subnet and two public IP addresses.</span></span> <span data-ttu-id="c6fc0-123">Кроме того, можно использовать *имеющиеся* виртуальные сети, подсети, сетевые карты или общедоступные IP-адреса.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-123">Alternatively, you can use *existing* virtual network, subnet, NIC, or public IP address resources.</span></span> <span data-ttu-id="c6fc0-124">Чтобы узнать, как использовать имеющиеся сетевые ресурсы, а не создавать дополнительные, введите `az vm create -h`.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-124">To learn how to use existing network resources rather than creating additional resources, enter `az vm create -h`.</span></span>
+- <span data-ttu-id="05734-120">Один premium управлять диска по умолчанию, но наличия других параметров для hello тип диска, которые можно создать.</span><span class="sxs-lookup"><span data-stu-id="05734-120">A single premium managed disk by default, but you have other options for hello disk type you can create.</span></span> <span data-ttu-id="05734-121">Чтение hello [создания ВМ Linux с помощью Azure CLI 2.0 hello](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Дополнительные сведения см.</span><span class="sxs-lookup"><span data-stu-id="05734-121">Read hello [Create a Linux VM using hello Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) article for details.</span></span>
+- <span data-ttu-id="05734-122">Виртуальная сеть с одной подсетью и двумя общедоступными IP-адресами.</span><span class="sxs-lookup"><span data-stu-id="05734-122">A virtual network with one subnet and two public IP addresses.</span></span> <span data-ttu-id="05734-123">Кроме того, можно использовать *имеющиеся* виртуальные сети, подсети, сетевые карты или общедоступные IP-адреса.</span><span class="sxs-lookup"><span data-stu-id="05734-123">Alternatively, you can use *existing* virtual network, subnet, NIC, or public IP address resources.</span></span> <span data-ttu-id="05734-124">toolearn как toouse существующие сетевые ресурсы, вместо создания дополнительных ресурсов, введите `az vm create -h`.</span><span class="sxs-lookup"><span data-stu-id="05734-124">toolearn how toouse existing network resources rather than creating additional resources, enter `az vm create -h`.</span></span>
 
-<span data-ttu-id="c6fc0-125">За общедоступные IP-адреса взимается номинальная плата.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-125">Public IP addresses have a nominal fee.</span></span> <span data-ttu-id="c6fc0-126">Дополнительные сведения о ценах на IP-адреса см. на странице [Цены на IP-адреса](https://azure.microsoft.com/pricing/details/ip-addresses).</span><span class="sxs-lookup"><span data-stu-id="c6fc0-126">To learn more about IP address pricing, read the [IP address pricing](https://azure.microsoft.com/pricing/details/ip-addresses) page.</span></span> <span data-ttu-id="c6fc0-127">Число общедоступных IP-адресов, которые можно использовать в одной подписке, ограничено.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-127">There is a limit to the number of public IP addresses that can be used in a subscription.</span></span> <span data-ttu-id="c6fc0-128">Сведения об ограничениях см. в статье [Подписка Azure, границы, квоты и ограничения службы](../azure-subscription-service-limits.md#networking-limits).</span><span class="sxs-lookup"><span data-stu-id="c6fc0-128">To learn more about the limits, read the [Azure limits](../azure-subscription-service-limits.md#networking-limits) article.</span></span>
+<span data-ttu-id="05734-125">За общедоступные IP-адреса взимается номинальная плата.</span><span class="sxs-lookup"><span data-stu-id="05734-125">Public IP addresses have a nominal fee.</span></span> <span data-ttu-id="05734-126">Дополнительные сведения о IP-адресов цен, toolearn чтения hello [цены IP адрес](https://azure.microsoft.com/pricing/details/ip-addresses) страницы.</span><span class="sxs-lookup"><span data-stu-id="05734-126">toolearn more about IP address pricing, read hello [IP address pricing](https://azure.microsoft.com/pricing/details/ip-addresses) page.</span></span> <span data-ttu-id="05734-127">Нет toohello предельное число общих IP-адресов, которые могут использоваться в подписке.</span><span class="sxs-lookup"><span data-stu-id="05734-127">There is a limit toohello number of public IP addresses that can be used in a subscription.</span></span> <span data-ttu-id="05734-128">Дополнительные об ограничениях hello, чтение hello toolearn [Azure ограничивает](../azure-subscription-service-limits.md#networking-limits) статьи.</span><span class="sxs-lookup"><span data-stu-id="05734-128">toolearn more about hello limits, read hello [Azure limits](../azure-subscription-service-limits.md#networking-limits) article.</span></span>
 
-<span data-ttu-id="c6fc0-129">Создав виртуальную машину, введите команду `az network nic show --name MyNic1 --resource-group myResourceGroup`, чтобы просмотреть конфигурацию сетевой карты.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-129">After the VM is created, enter the `az network nic show --name MyNic1 --resource-group myResourceGroup` command to view the NIC configuration.</span></span> <span data-ttu-id="c6fc0-130">Введите команду `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` для просмотра списка конфигураций IP-адресов, связанных с сетевой картой.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-130">Enter the `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` to view a list of the IP configurations associated to the NIC.</span></span>
+<span data-ttu-id="05734-129">После создания виртуальной Машины hello введите hello `az network nic show --name MyNic1 --resource-group myResourceGroup` конфигурацию сетевого Адаптера hello tooview команды.</span><span class="sxs-lookup"><span data-stu-id="05734-129">After hello VM is created, enter hello `az network nic show --name MyNic1 --resource-group myResourceGroup` command tooview hello NIC configuration.</span></span> <span data-ttu-id="05734-130">Введите hello `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` tooview список IP-конфигурации hello связанные toohello сетевого адаптера.</span><span class="sxs-lookup"><span data-stu-id="05734-130">Enter hello `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` tooview a list of hello IP configurations associated toohello NIC.</span></span>
 
-<span data-ttu-id="c6fc0-131">Добавьте в операционную систему виртуальной машины частные IP-адреса, выполнив действия, соответствующие вашей операционной системе, как описано в разделе [Добавление IP-адресов в операционную систему виртуальной машины](#os-config) этой статьи.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-131">Add the private IP addresses to the VM operating system by completing the steps for your operating system in the [Add IP addresses to a VM operating system](#os-config) section of this article.</span></span>
+<span data-ttu-id="05734-131">Добавить hello частного IP адресов toohello ВМ операционной системы, выполнив шаги hello для вашей операционной системы в hello [добавить IP-адресов операционной системы виртуальной Машины tooa](#os-config) этой статьи.</span><span class="sxs-lookup"><span data-stu-id="05734-131">Add hello private IP addresses toohello VM operating system by completing hello steps for your operating system in hello [Add IP addresses tooa VM operating system](#os-config) section of this article.</span></span>
 
-## <span data-ttu-id="c6fc0-132"><a name="add"></a>Добавление IP-адресов в виртуальную машину</span><span class="sxs-lookup"><span data-stu-id="c6fc0-132"><a name="add"></a>Add IP addresses to a VM</span></span>
+## <span data-ttu-id="05734-132"><a name="add"></a>Добавьте IP адресов tooa виртуальной Машины</span><span class="sxs-lookup"><span data-stu-id="05734-132"><a name="add"></a>Add IP addresses tooa VM</span></span>
 
-<span data-ttu-id="c6fc0-133">Выполнив следующие шаги, вы сможете назначить дополнительные частные или общедоступные IP-адреса существующим сетевым адаптерам.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-133">You can add additional private and public IP addresses to an existing NIC by completing the steps that follow.</span></span> <span data-ttu-id="c6fc0-134">Примеры созданы на основе [сценария](#Scenario), описанного в этой статье.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-134">The examples build upon the [scenario](#Scenario) described in this article.</span></span>
+<span data-ttu-id="05734-133">Можно добавить дополнительные частных и общедоступных IP адресов tooan существующего сетевого Адаптера, выполнив hello, описанных ниже.</span><span class="sxs-lookup"><span data-stu-id="05734-133">You can add additional private and public IP addresses tooan existing NIC by completing hello steps that follow.</span></span> <span data-ttu-id="05734-134">Hello примеры созданы на основе hello [сценарий](#Scenario) описано в этой статье.</span><span class="sxs-lookup"><span data-stu-id="05734-134">hello examples build upon hello [scenario](#Scenario) described in this article.</span></span>
 
-1. <span data-ttu-id="c6fc0-135">Откройте командную оболочку и в рамках одного сеанса командной строки выполните все действия, описанные в этом разделе.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-135">Open a command shell and complete the remaining steps in this section within a single session.</span></span> <span data-ttu-id="c6fc0-136">Если Azure CLI еще не установлен и не настроен, выполните инструкции из статьи по [установке Azure CLI 2.0](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json), а затем войдите в учетную запись Azure, выполнив команду `az-login`.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-136">If you don't already have Azure CLI installed and configured, complete the steps in the [Azure CLI 2.0 installation](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) article and login to your Azure account with the `az-login` command.</span></span>
+1. <span data-ttu-id="05734-135">Откройте командную строку и завершения hello оставшиеся шаги в этом разделе в одном сеансе.</span><span class="sxs-lookup"><span data-stu-id="05734-135">Open a command shell and complete hello remaining steps in this section within a single session.</span></span> <span data-ttu-id="05734-136">Если у вас еще нет Azure CLI установлен и настроен, hello завершения шагов в hello [установки Azure CLI 2.0](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) tooyour статьи и входа учетная запись Azure с hello `az-login` команды.</span><span class="sxs-lookup"><span data-stu-id="05734-136">If you don't already have Azure CLI installed and configured, complete hello steps in hello [Azure CLI 2.0 installation](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) article and login tooyour Azure account with hello `az-login` command.</span></span>
 
-2. <span data-ttu-id="c6fc0-137">Выполните действия, описанные в одном из следующих разделов, с учетом задач.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-137">Complete the steps in one of the following sections, based on your requirements:</span></span>
+2. <span data-ttu-id="05734-137">Выполните действия hello в одном из следующих разделах, в зависимости от требований hello.</span><span class="sxs-lookup"><span data-stu-id="05734-137">Complete hello steps in one of hello following sections, based on your requirements:</span></span>
 
-    <span data-ttu-id="c6fc0-138">**Добавление частного IP-адреса**</span><span class="sxs-lookup"><span data-stu-id="c6fc0-138">**Add a private IP address**</span></span>
+    <span data-ttu-id="05734-138">**Добавление частного IP-адреса**</span><span class="sxs-lookup"><span data-stu-id="05734-138">**Add a private IP address**</span></span>
     
-    <span data-ttu-id="c6fc0-139">Чтобы добавить к сетевой карте частный IP-адрес, создайте конфигурацию IP-адресов с помощью следующей команды.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-139">To add a private IP address to a NIC, you must create an IP configuration using the command that follows.</span></span> <span data-ttu-id="c6fc0-140">Статический IP-адрес должен быть свободен в используемой подсети.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-140">The static IP address must be an unused address for the subnet.</span></span>
+    <span data-ttu-id="05734-139">tooadd закрытый tooa адрес IP сетевого Адаптера, необходимо создать IP-конфигурации, с помощью команды hello ниже.</span><span class="sxs-lookup"><span data-stu-id="05734-139">tooadd a private IP address tooa NIC, you must create an IP configuration using hello command that follows.</span></span> <span data-ttu-id="05734-140">Hello статический IP-адрес должен быть неиспользуемый адрес для подсети hello.</span><span class="sxs-lookup"><span data-stu-id="05734-140">hello static IP address must be an unused address for hello subnet.</span></span>
 
     ```bash
     az network nic ip-config create \
@@ -185,17 +185,17 @@ az vm create \
     --name IPConfig-4
     ```
     
-    <span data-ttu-id="c6fc0-141">Вы можете создать любое количество конфигураций, указывая для них уникальные имена и уникальные частные IP-адреса (если используются статические IP-адреса).</span><span class="sxs-lookup"><span data-stu-id="c6fc0-141">Create as many configurations as you require, using unique configuration names and private IP addresses (for configurations with static IP addresses).</span></span>
+    <span data-ttu-id="05734-141">Вы можете создать любое количество конфигураций, указывая для них уникальные имена и уникальные частные IP-адреса (если используются статические IP-адреса).</span><span class="sxs-lookup"><span data-stu-id="05734-141">Create as many configurations as you require, using unique configuration names and private IP addresses (for configurations with static IP addresses).</span></span>
 
-    <span data-ttu-id="c6fc0-142">**Добавление общедоступного IP-адреса**</span><span class="sxs-lookup"><span data-stu-id="c6fc0-142">**Add a public IP address**</span></span>
+    <span data-ttu-id="05734-142">**Добавление общедоступного IP-адреса**</span><span class="sxs-lookup"><span data-stu-id="05734-142">**Add a public IP address**</span></span>
     
-    <span data-ttu-id="c6fc0-143">Чтобы добавить общедоступный IP-адрес, его нужно связать с новой или имеющейся IP-конфигурацией.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-143">A public IP address is added by associating it to either a new IP configuration or an existing IP configuration.</span></span> <span data-ttu-id="c6fc0-144">Выполните шаги, описанные в одном из следующих разделов, в соответствии с задачами.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-144">Complete the steps in one of the sections that follow, as you require.</span></span>
+    <span data-ttu-id="05734-143">Общедоступный IP-адрес будет добавлен, связав ее tooeither новой конфигурации IP или существующей конфигурации IP.</span><span class="sxs-lookup"><span data-stu-id="05734-143">A public IP address is added by associating it tooeither a new IP configuration or an existing IP configuration.</span></span> <span data-ttu-id="05734-144">Этапы hello в одном hello следующих разделах, сколько требуется.</span><span class="sxs-lookup"><span data-stu-id="05734-144">Complete hello steps in one of hello sections that follow, as you require.</span></span>
 
-    <span data-ttu-id="c6fc0-145">За общедоступные IP-адреса взимается номинальная плата.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-145">Public IP addresses have a nominal fee.</span></span> <span data-ttu-id="c6fc0-146">Дополнительные сведения о ценах на IP-адреса см. на странице [Цены на IP-адреса](https://azure.microsoft.com/pricing/details/ip-addresses).</span><span class="sxs-lookup"><span data-stu-id="c6fc0-146">To learn more about IP address pricing, read the [IP address pricing](https://azure.microsoft.com/pricing/details/ip-addresses) page.</span></span> <span data-ttu-id="c6fc0-147">Число общедоступных IP-адресов, которые можно использовать в одной подписке, ограничено.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-147">There is a limit to the number of public IP addresses that can be used in a subscription.</span></span> <span data-ttu-id="c6fc0-148">Сведения об ограничениях см. в статье [Подписка Azure, границы, квоты и ограничения службы](../azure-subscription-service-limits.md#networking-limits).</span><span class="sxs-lookup"><span data-stu-id="c6fc0-148">To learn more about the limits, read the [Azure limits](../azure-subscription-service-limits.md#networking-limits) article.</span></span>
+    <span data-ttu-id="05734-145">За общедоступные IP-адреса взимается номинальная плата.</span><span class="sxs-lookup"><span data-stu-id="05734-145">Public IP addresses have a nominal fee.</span></span> <span data-ttu-id="05734-146">Дополнительные сведения о IP-адресов цен, toolearn чтения hello [цены IP адрес](https://azure.microsoft.com/pricing/details/ip-addresses) страницы.</span><span class="sxs-lookup"><span data-stu-id="05734-146">toolearn more about IP address pricing, read hello [IP address pricing](https://azure.microsoft.com/pricing/details/ip-addresses) page.</span></span> <span data-ttu-id="05734-147">Нет toohello предельное число общих IP-адресов, которые могут использоваться в подписке.</span><span class="sxs-lookup"><span data-stu-id="05734-147">There is a limit toohello number of public IP addresses that can be used in a subscription.</span></span> <span data-ttu-id="05734-148">Дополнительные об ограничениях hello, чтение hello toolearn [Azure ограничивает](../azure-subscription-service-limits.md#networking-limits) статьи.</span><span class="sxs-lookup"><span data-stu-id="05734-148">toolearn more about hello limits, read hello [Azure limits](../azure-subscription-service-limits.md#networking-limits) article.</span></span>
 
-    - <span data-ttu-id="c6fc0-149">**Связывание ресурса с новой IP-конфигурацией**</span><span class="sxs-lookup"><span data-stu-id="c6fc0-149">**Associate the resource to a new IP configuration**</span></span>
+    - <span data-ttu-id="05734-149">**Связать новую конфигурацию IP hello ресурсов tooa**</span><span class="sxs-lookup"><span data-stu-id="05734-149">**Associate hello resource tooa new IP configuration**</span></span>
     
-        <span data-ttu-id="c6fc0-150">Чтобы добавить общедоступный IP-адрес в новую IP-конфигурацию, необходимо добавить и частный IP-адрес, так как все IP-конфигурации должны иметь частный IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-150">Whenever you add a public IP address in a new IP configuration, you must also add a private IP address, because all IP configurations must have a private IP address.</span></span> <span data-ttu-id="c6fc0-151">В конфигурацию можно добавить имеющийся ресурс общедоступного IP-адреса или создать новый.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-151">You can either add an existing public IP address resource, or create a new one.</span></span> <span data-ttu-id="c6fc0-152">Чтобы создать ресурс, выполните следующую команду:</span><span class="sxs-lookup"><span data-stu-id="c6fc0-152">To create a new one, enter the following command:</span></span>
+        <span data-ttu-id="05734-150">Чтобы добавить общедоступный IP-адрес в новую IP-конфигурацию, необходимо добавить и частный IP-адрес, так как все IP-конфигурации должны иметь частный IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="05734-150">Whenever you add a public IP address in a new IP configuration, you must also add a private IP address, because all IP configurations must have a private IP address.</span></span> <span data-ttu-id="05734-151">В конфигурацию можно добавить имеющийся ресурс общедоступного IP-адреса или создать новый.</span><span class="sxs-lookup"><span data-stu-id="05734-151">You can either add an existing public IP address resource, or create a new one.</span></span> <span data-ttu-id="05734-152">toocreate новый, введите следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="05734-152">toocreate a new one, enter hello following command:</span></span>
     
         ```bash
         az network public-ip create \
@@ -205,7 +205,7 @@ az vm create \
         --dns-name mypublicdns3
         ```
 
-        <span data-ttu-id="c6fc0-153">Чтобы создать новую конфигурацию IP с частным статическим IP-адресом и связанным ресурсом общедоступного IP-адреса *myPublicIP3*, введите следующую команду:</span><span class="sxs-lookup"><span data-stu-id="c6fc0-153">To create a new IP configuration with a static private IP address and the associated *myPublicIP3* public IP address resource, enter the following command:</span></span>
+        <span data-ttu-id="05734-153">toocreate новой конфигурации IP с статический частный IP-адрес и связанные hello *myPublicIP3* общедоступный IP-адрес адрес ресурса, введите следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="05734-153">toocreate a new IP configuration with a static private IP address and hello associated *myPublicIP3* public IP address resource, enter hello following command:</span></span>
 
         ```bash
         az network nic ip-config create \
@@ -216,7 +216,7 @@ az vm create \
         --public-ip-address myPublicIP3
         ```
 
-    - <span data-ttu-id="c6fc0-154">**Свяжите ресурс к существующей конфигурации IP** открытого ресурса IP-адреса может быть связан только на IP-конфигурацию, в котором уже не связан.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-154">**Associate the resource to an existing IP configuration** A public IP address resource can only be associated to an IP configuration that doesn't already have one associated.</span></span> <span data-ttu-id="c6fc0-155">Чтобы определить, связан ли с конкретной IP-конфигурацией какой-либо общедоступный IP-адрес, выполните следующую команду:</span><span class="sxs-lookup"><span data-stu-id="c6fc0-155">You can determine whether an IP configuration has an associated public IP address by entering the following command:</span></span>
+    - <span data-ttu-id="05734-154">**Существующую конфигурацию IP связан hello ресурсов tooan** открытого ресурса IP-адреса можно только связанные tooan IP-конфигурации, уже не связан.</span><span class="sxs-lookup"><span data-stu-id="05734-154">**Associate hello resource tooan existing IP configuration** A public IP address resource can only be associated tooan IP configuration that doesn't already have one associated.</span></span> <span data-ttu-id="05734-155">Можно определить, имеет ли связанный общий IP-адрес IP-адрес, введя следующую команду hello.</span><span class="sxs-lookup"><span data-stu-id="05734-155">You can determine whether an IP configuration has an associated public IP address by entering hello following command:</span></span>
 
         ```bash
         az network nic ip-config list \
@@ -225,7 +225,7 @@ az vm create \
         --query "[?provisioningState=='Succeeded'].{ Name: name, PublicIpAddressId: publicIpAddress.id }" --output table
         ```
 
-        <span data-ttu-id="c6fc0-156">Возвращаемые выходные данные:</span><span class="sxs-lookup"><span data-stu-id="c6fc0-156">Returned output:</span></span>
+        <span data-ttu-id="05734-156">Возвращаемые выходные данные:</span><span class="sxs-lookup"><span data-stu-id="05734-156">Returned output:</span></span>
     
             Name        PublicIpAddressId
             
@@ -233,7 +233,7 @@ az vm create \
             IPConfig-2  /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
             IPConfig-3
 
-        <span data-ttu-id="c6fc0-157">Столбец **PublicIpAddressId** для конфигурации *IpConfig-3* в выходных данных пуст. Это означает, что в настоящее время с этой конфигурацией не связан никакой общедоступный IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-157">Since the **PublicIpAddressId** column for *IpConfig-3* is blank in the output, no public IP address resource is currently associated to it.</span></span> <span data-ttu-id="c6fc0-158">Вы можете добавить к конфигурации IpConfig-3 имеющийся ресурс общедоступного IP-адреса или создать новый ресурс, выполнив следующую команду:</span><span class="sxs-lookup"><span data-stu-id="c6fc0-158">You can add an existing public IP address resource to IpConfig-3, or enter the following command to create one:</span></span>
+        <span data-ttu-id="05734-157">С момента hello **PublicIpAddressId** столбца для *IpConfig 3* является пустым в hello выходные данные, не открытого ресурса IP-адреса является в настоящее время связаны tooit.</span><span class="sxs-lookup"><span data-stu-id="05734-157">Since hello **PublicIpAddressId** column for *IpConfig-3* is blank in hello output, no public IP address resource is currently associated tooit.</span></span> <span data-ttu-id="05734-158">Можно добавить существующие открытый IP адрес ресурса tooIpConfig-3, или введите hello, следующая команда toocreate один:</span><span class="sxs-lookup"><span data-stu-id="05734-158">You can add an existing public IP address resource tooIpConfig-3, or enter hello following command toocreate one:</span></span>
 
         ```bash
         az network public-ip create \
@@ -244,7 +244,7 @@ az vm create \
         --allocation-method Static
         ```
     
-        <span data-ttu-id="c6fc0-159">Чтобы связать ресурс общедоступного IP-адреса с имеющейся IP-конфигурацией с именем *IPConfig-3*, выполните следующую команду:</span><span class="sxs-lookup"><span data-stu-id="c6fc0-159">Enter the following command to associate the public IP address resource to the existing IP configuration named *IPConfig-3*:</span></span>
+        <span data-ttu-id="05734-159">Введите следующую команду, общедоступный IP-адрес tooassociate hello адресов toohello существующие IP конфигурации ресурса с именем hello *IPConfig 3*:</span><span class="sxs-lookup"><span data-stu-id="05734-159">Enter hello following command tooassociate hello public IP address resource toohello existing IP configuration named *IPConfig-3*:</span></span>
     
         ```bash
         az network nic ip-config update \
@@ -254,7 +254,7 @@ az vm create \
         --public-ip myPublicIP3
         ```
 
-3. <span data-ttu-id="c6fc0-160">Просмотрите идентификаторы ресурсов частных и общедоступных IP-адресов, назначенных сетевой карте. Для этого введите следующую команду.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-160">View the private IP addresses and the public IP address resource Ids assigned to the NIC by entering the following command:</span></span>
+3. <span data-ttu-id="05734-160">Представление hello частных IP-адресов и hello открытый IP-адресов идентификаторы ресурсов, назначенных toohello hello сетевого Адаптера, введя следующую команду:</span><span class="sxs-lookup"><span data-stu-id="05734-160">View hello private IP addresses and hello public IP address resource Ids assigned toohello NIC by entering hello following command:</span></span>
 
     ```bash
     az network nic ip-config list \
@@ -263,7 +263,7 @@ az vm create \
     --query "[?provisioningState=='Succeeded'].{ Name: name, PrivateIpAddress: privateIpAddress, PrivateIpAllocationMethod: privateIpAllocationMethod, PublicIpAddressId: publicIpAddress.id }" --output table
     ```
 
-    <span data-ttu-id="c6fc0-161">Возвращаемые выходные данные:</span><span class="sxs-lookup"><span data-stu-id="c6fc0-161">Returned output:</span></span> <br>
+    <span data-ttu-id="05734-161">Возвращаемые выходные данные:</span><span class="sxs-lookup"><span data-stu-id="05734-161">Returned output:</span></span> <br>
     
         Name        PrivateIpAddress    PrivateIpAllocationMethod   PublicIpAddressId
         
@@ -272,6 +272,6 @@ az vm create \
         IPConfig-3  10.0.0.6            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP3
     
 
-4. <span data-ttu-id="c6fc0-162">Добавьте в операционную систему виртуальной машины частные IP-адреса, которые вы ранее назначили сетевой карте. Для этого выполните инструкции из раздела [Добавление IP-адресов в операционную систему виртуальной машины](#os-config) этой статьи.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-162">Add the private IP addresses you added to the NIC to the VM operating system by following the instructions in the [Add IP addresses to a VM operating system](#os-config) section of this article.</span></span> <span data-ttu-id="c6fc0-163">Не добавляйте в операционную систему общедоступные IP-адреса.</span><span class="sxs-lookup"><span data-stu-id="c6fc0-163">Do not add the public IP addresses to the operating system.</span></span>
+4. <span data-ttu-id="05734-162">Добавить hello частных IP-адресов вы добавили операционной системы ВМ toohello toohello сетевой Адаптер, следуя инструкциям hello hello [добавить IP-адресов операционной системы виртуальной Машины tooa](#os-config) этой статьи.</span><span class="sxs-lookup"><span data-stu-id="05734-162">Add hello private IP addresses you added toohello NIC toohello VM operating system by following hello instructions in hello [Add IP addresses tooa VM operating system](#os-config) section of this article.</span></span> <span data-ttu-id="05734-163">Не добавляйте hello открытый IP адресов toohello операционной системы.</span><span class="sxs-lookup"><span data-stu-id="05734-163">Do not add hello public IP addresses toohello operating system.</span></span>
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

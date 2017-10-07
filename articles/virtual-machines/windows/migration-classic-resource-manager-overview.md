@@ -1,6 +1,6 @@
 ---
-title: "Обзор переноса классических ресурсов в развертывание с помощью Azure Resource Manager | Документация Майкрософт"
-description: "В этой статье последовательно описывается поддерживаемый платформой перенос ресурсов из классической модели в модель Azure Resource Manager."
+title: "tooAzure aaaMigrate классические ресурсы диспетчера ресурсов - Обзор | Документы Microsoft"
+description: "Этой статье рассматриваются hello поддерживается платформой миграции ресурсов от классических tooAzure диспетчера ресурсов"
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2017
 ms.author: kasing
-ms.openlocfilehash: a1fcaeb24a81f37207c830dc351d366766198ac3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3c30274b8a9a3a555919a6808969bdeda2008e9b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-overview.md)]
 
-## <a name="next-steps"></a><span data-ttu-id="0526d-103">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="0526d-103">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="7afd2-103">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="7afd2-103">Next steps</span></span>
 
-* [<span data-ttu-id="0526d-104">Техническое руководство по поддерживаемому платформой переносу из классической модели в модель Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="0526d-104">Technical deep dive on platform-supported migration from classic to Azure Resource Manager</span></span>](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* <span data-ttu-id="0526d-105">[Planning for migration of IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Планирование переноса ресурсов IaaS из классической модели в модель Azure Resource Manager)</span><span class="sxs-lookup"><span data-stu-id="0526d-105">[Planning for migration of IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)</span></span>
-* [<span data-ttu-id="0526d-106">Перенос ресурсов IaaS из классической модели в модель Azure Resource Manager с помощью Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="0526d-106">Use PowerShell to migrate IaaS resources from classic to Azure Resource Manager</span></span>](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [<span data-ttu-id="0526d-107">Перенос ресурсов IaaS из классической модели в модель Azure Resource Manager с помощью интерфейса командной строки Azure</span><span class="sxs-lookup"><span data-stu-id="0526d-107">Use CLI to migrate IaaS resources from classic to Azure Resource Manager</span></span>](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* <span data-ttu-id="0526d-108">[Community tools to migrate IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Инструменты сообщества для перемещения ресурсов IaaS из классической модели в модель Azure Resource Manager)</span><span class="sxs-lookup"><span data-stu-id="0526d-108">[Community tools for assisting with migration of IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)</span></span>
-* [<span data-ttu-id="0526d-109">Распространенные ошибки миграции</span><span class="sxs-lookup"><span data-stu-id="0526d-109">Review most common migration errors</span></span>](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [<span data-ttu-id="0526d-110">Часто задаваемые вопросы о миграции из классической модели в модель Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="0526d-110">Review the most frequently asked questions about migrating IaaS resources from classic to Azure Resource Manager</span></span>](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [<span data-ttu-id="7afd2-104">Технические близкое знакомство с платформа поддерживается перенос из классической tooAzure диспетчера ресурсов</span><span class="sxs-lookup"><span data-stu-id="7afd2-104">Technical deep dive on platform-supported migration from classic tooAzure Resource Manager</span></span>](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [<span data-ttu-id="7afd2-105">Планирование миграции IaaS ресурсов от классических tooAzure диспетчера ресурсов</span><span class="sxs-lookup"><span data-stu-id="7afd2-105">Planning for migration of IaaS resources from classic tooAzure Resource Manager</span></span>](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [<span data-ttu-id="7afd2-106">Использовать ресурсы IaaS PowerShell toomigrate из классической tooAzure диспетчера ресурсов</span><span class="sxs-lookup"><span data-stu-id="7afd2-106">Use PowerShell toomigrate IaaS resources from classic tooAzure Resource Manager</span></span>](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [<span data-ttu-id="7afd2-107">Использовать ресурсы IaaS toomigrate CLI из классической tooAzure диспетчера ресурсов</span><span class="sxs-lookup"><span data-stu-id="7afd2-107">Use CLI toomigrate IaaS resources from classic tooAzure Resource Manager</span></span>](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [<span data-ttu-id="7afd2-108">Средства сообщества соблюдения миграции IaaS ресурсов от классических tooAzure диспетчера ресурсов</span><span class="sxs-lookup"><span data-stu-id="7afd2-108">Community tools for assisting with migration of IaaS resources from classic tooAzure Resource Manager</span></span>](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [<span data-ttu-id="7afd2-109">Распространенные ошибки миграции</span><span class="sxs-lookup"><span data-stu-id="7afd2-109">Review most common migration errors</span></span>](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [<span data-ttu-id="7afd2-110">Просмотрите hello наиболее часто задаваемые вопросы о миграции IaaS ресурсов от классических tooAzure диспетчера ресурсов</span><span class="sxs-lookup"><span data-stu-id="7afd2-110">Review hello most frequently asked questions about migrating IaaS resources from classic tooAzure Resource Manager</span></span>](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

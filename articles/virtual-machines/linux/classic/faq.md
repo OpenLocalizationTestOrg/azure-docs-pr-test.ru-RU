@@ -1,6 +1,6 @@
 ---
-title: "Часто задаваемые вопросы о классических виртуальных машинах Linux | Документация Майкрософт"
-description: "Приведены ответы на некоторые распространенные вопросы о виртуальных машинах Linux в Azure, созданных с помощью классической модели развертывания."
+title: "вопросы и ответы для классических виртуальных машин Linux aaaFrequently | Документы Microsoft"
+description: "Ответы на часто задаваемые вопросы о виртуальных машинах Azure Linux, созданных с помощью hello классической модели развертывания toosome."
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
-ms.openlocfilehash: 132868c00dc039e40b0782aae6da2cf29163706f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ecf36140814224f0ceeeb35b90479529d100025a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="frequently-asked-question-about-azure-linux-virtual-machines-created-with-the-classic-deployment-model"></a><span data-ttu-id="13e36-103">Вопросы и ответы по виртуальным машинам Linux в Azure, созданным при помощи классической модели развертывания</span><span class="sxs-lookup"><span data-stu-id="13e36-103">Frequently asked question about Azure Linux Virtual Machines created with the classic deployment model</span></span>
+# <a name="frequently-asked-question-about-azure-linux-virtual-machines-created-with-hello-classic-deployment-model"></a><span data-ttu-id="555b8-103">Часто задаваемые вопросы о Azure Linux виртуальных машин, созданных с помощью hello классической модели развертывания</span><span class="sxs-lookup"><span data-stu-id="555b8-103">Frequently asked question about Azure Linux Virtual Machines created with hello classic deployment model</span></span>
 > [!IMPORTANT] 
-> <span data-ttu-id="13e36-104">В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="13e36-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="13e36-105">В этой статье рассматривается использование классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="13e36-105">This article covers using the Classic deployment model.</span></span> <span data-ttu-id="13e36-106">Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="13e36-106">Microsoft recommends that most new deployments use the Resource Manager model.</span></span> <span data-ttu-id="13e36-107">Часто задаваемые вопросы для модели Resource Manager см. [здесь](../faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="13e36-107">For the FAQ when using the Resource Manager model, see [here](../faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
+> <span data-ttu-id="555b8-104">В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="555b8-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="555b8-105">В этой статье описан с помощью hello классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="555b8-105">This article covers using hello Classic deployment model.</span></span> <span data-ttu-id="555b8-106">Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="555b8-106">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span> <span data-ttu-id="555b8-107">Часто задаваемые вопросы о hello при использовании hello модель диспетчера ресурсов, см. в разделе [здесь](../faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="555b8-107">For hello FAQ when using hello Resource Manager model, see [here](../faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
 
 [!INCLUDE [virtual-machines-common-classic-faq](../../../../includes/virtual-machines-common-classic-faq.md)]
 

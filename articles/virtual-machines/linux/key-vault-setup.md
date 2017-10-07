@@ -1,6 +1,6 @@
 ---
-title: "Настройка Azure Key Vault для виртуальных машин Linux | Документация Майкрософт"
-description: "Как настроить Key Vault для использования с виртуальной машиной Azure Resource Manager c помощью интерфейса командной строки 2.0."
+title: "aaaSet копирование хранилища ключей Azure для виртуальных машин Linux | Документы Microsoft"
+description: "Как tooset копии хранилища ключей для использования в виртуальной машине Azure Resource Manager с hello CLI 2.0."
 services: virtual-machines-linux
 documentationcenter: 
 author: singhkays
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: singhkay
-ms.openlocfilehash: 2cc9b4c978e9a4deb0c8443c4b0f9e301a7cf492
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a5dc1fbe59a71b4456ba5b9bbacdb90440064757
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli-20"></a><span data-ttu-id="25cd1-103">Как настроить Key Vault для виртуальных машин с помощью Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="25cd1-103">How to set up Key Vault for virtual machines with the Azure CLI 2.0</span></span>
+# <a name="how-tooset-up-key-vault-for-virtual-machines-with-hello-azure-cli-20"></a><span data-ttu-id="0b61a-103">Как tooset копию ключа хранилища для виртуальных машин с hello Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="0b61a-103">How tooset up Key Vault for virtual machines with hello Azure CLI 2.0</span></span>
 
-<span data-ttu-id="25cd1-104">В стеке Azure Resource Manager секреты и сертификаты представляют собой ресурсы, которые предоставляются Key Vault.</span><span class="sxs-lookup"><span data-stu-id="25cd1-104">In the Azure Resource Manager stack, secrets/certificates are modeled as resources that are provided by Key Vault.</span></span> <span data-ttu-id="25cd1-105">Чтобы больше узнать о хранилище ключей Azure, ознакомьтесь с разделом [Что такое хранилище ключей Azure?](../../key-vault/key-vault-whatis.md)</span><span class="sxs-lookup"><span data-stu-id="25cd1-105">To learn more about Azure Key Vault, see [What is Azure Key Vault?](../../key-vault/key-vault-whatis.md)</span></span> <span data-ttu-id="25cd1-106">Чтобы Key Vault можно было использовать для виртуальных машин Azure Resource Manager, свойству *EnabledForDeployment* в Key Vault должно быть присвоено значение true.</span><span class="sxs-lookup"><span data-stu-id="25cd1-106">In order for Key Vault to be used with Azure Resource Manager VMs, the *EnabledForDeployment* property on Key Vault must be set to true.</span></span> <span data-ttu-id="25cd1-107">В этой статье показано, как настроить Key Vault для использования с виртуальными машинами Azure с помощью Azure CLI 2.0.</span><span class="sxs-lookup"><span data-stu-id="25cd1-107">This article shows you how to set up Key Vault for use with Azure virtual machines (VMs) using the Azure CLI 2.0.</span></span> <span data-ttu-id="25cd1-108">Эти действия можно также выполнить с помощью [Azure CLI 1.0](key-vault-setup-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="25cd1-108">You can also perform these steps with the [Azure CLI 1.0](key-vault-setup-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
+<span data-ttu-id="0b61a-104">В стеке диспетчера ресурсов Azure hello секреты или сертификаты моделируются в виде ресурсов, предоставляемых хранилищем ключей.</span><span class="sxs-lookup"><span data-stu-id="0b61a-104">In hello Azure Resource Manager stack, secrets/certificates are modeled as resources that are provided by Key Vault.</span></span> <span data-ttu-id="0b61a-105">toolearn Дополнительные сведения о хранилище ключей Azure, в разделе [что такое хранилище ключей Azure?](../../key-vault/key-vault-whatis.md)</span><span class="sxs-lookup"><span data-stu-id="0b61a-105">toolearn more about Azure Key Vault, see [What is Azure Key Vault?](../../key-vault/key-vault-whatis.md)</span></span> <span data-ttu-id="0b61a-106">Чтобы использовать с виртуальными машинами Azure Resource Manager toobe хранилище ключей, hello *EnabledForDeployment* свойства хранилища ключей должен быть указан tootrue.</span><span class="sxs-lookup"><span data-stu-id="0b61a-106">In order for Key Vault toobe used with Azure Resource Manager VMs, hello *EnabledForDeployment* property on Key Vault must be set tootrue.</span></span> <span data-ttu-id="0b61a-107">В этой статье рассказывается, как tooset копии хранилища ключей для использования с виртуальными машинами Azure (ВМ) с помощью hello Azure CLI 2.0.</span><span class="sxs-lookup"><span data-stu-id="0b61a-107">This article shows you how tooset up Key Vault for use with Azure virtual machines (VMs) using hello Azure CLI 2.0.</span></span> <span data-ttu-id="0b61a-108">Можно также выполнить следующие действия с hello [Azure CLI 1.0](key-vault-setup-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="0b61a-108">You can also perform these steps with hello [Azure CLI 1.0](key-vault-setup-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
 
-<span data-ttu-id="25cd1-109">Чтобы выполнить эти действия, нужно установить последнюю версию [Azure CLI 2.0](/cli/azure/install-az-cli2) и войти в учетную запись Azure с помощью команды [az login](/cli/azure/#login).</span><span class="sxs-lookup"><span data-stu-id="25cd1-109">To perform these steps, you need the latest [Azure CLI 2.0](/cli/azure/install-az-cli2) installed and logged in to an Azure account using [az login](/cli/azure/#login).</span></span>
+<span data-ttu-id="0b61a-109">tooperform эти шаги, необходимые hello последней [Azure CLI 2.0](/cli/azure/install-az-cli2) установлен и войти в систему с учетной записью Azure tooan [входа az](/cli/azure/#login).</span><span class="sxs-lookup"><span data-stu-id="0b61a-109">tooperform these steps, you need hello latest [Azure CLI 2.0](/cli/azure/install-az-cli2) installed and logged in tooan Azure account using [az login](/cli/azure/#login).</span></span>
 
-## <a name="create-a-key-vault"></a><span data-ttu-id="25cd1-110">создать хранилище ключей;</span><span class="sxs-lookup"><span data-stu-id="25cd1-110">Create a Key Vault</span></span>
-<span data-ttu-id="25cd1-111">Создайте Key Vault и назначьте политику развертывания с помощью команды [az keyvault create](/cli/azure/keyvault#create).</span><span class="sxs-lookup"><span data-stu-id="25cd1-111">Create a key vault and assign the deployment policy with [az keyvault create](/cli/azure/keyvault#create).</span></span> <span data-ttu-id="25cd1-112">В следующем примере создается Key Vault `myKeyVault` в группе ресурсов `myResourceGroup`.</span><span class="sxs-lookup"><span data-stu-id="25cd1-112">The following example creates a key vault named `myKeyVault` in the `myResourceGroup` resource group:</span></span>
+## <a name="create-a-key-vault"></a><span data-ttu-id="0b61a-110">создать хранилище ключей;</span><span class="sxs-lookup"><span data-stu-id="0b61a-110">Create a Key Vault</span></span>
+<span data-ttu-id="0b61a-111">Создание хранилища ключей и назначение политики развертывания hello с [az keyvault создать](/cli/azure/keyvault#create).</span><span class="sxs-lookup"><span data-stu-id="0b61a-111">Create a key vault and assign hello deployment policy with [az keyvault create](/cli/azure/keyvault#create).</span></span> <span data-ttu-id="0b61a-112">Hello следующий пример создает хранилища ключей с именем `myKeyVault` в hello `myResourceGroup` группа ресурсов:</span><span class="sxs-lookup"><span data-stu-id="0b61a-112">hello following example creates a key vault named `myKeyVault` in hello `myResourceGroup` resource group:</span></span>
 
 ```azurecli
 az keyvault create -l westus -n myKeyVault -g myResourceGroup --enabled-for-deployment true
 ```
 
-## <a name="update-a-key-vault-for-use-with-vms"></a><span data-ttu-id="25cd1-113">Обновление Key Vault для использования с виртуальными машинами</span><span class="sxs-lookup"><span data-stu-id="25cd1-113">Update a Key Vault for use with VMs</span></span>
-<span data-ttu-id="25cd1-114">Установите политику развертывания в существующем Key Vault с помощью команды [az keyvault update](/cli/azure/keyvault#update).</span><span class="sxs-lookup"><span data-stu-id="25cd1-114">Set the deployment policy on an existing key vault with [az keyvault update](/cli/azure/keyvault#update).</span></span> <span data-ttu-id="25cd1-115">В следующем примере обновляется Key Vault `myKeyVault` в группе ресурсов `myResourceGroup`.</span><span class="sxs-lookup"><span data-stu-id="25cd1-115">The following updates the key vault named `myKeyVault` in the `myResourceGroup` resource group:</span></span>
+## <a name="update-a-key-vault-for-use-with-vms"></a><span data-ttu-id="0b61a-113">Обновление Key Vault для использования с виртуальными машинами</span><span class="sxs-lookup"><span data-stu-id="0b61a-113">Update a Key Vault for use with VMs</span></span>
+<span data-ttu-id="0b61a-114">Задать политику развертывания hello в существующем хранилище ключей с [обновление keyvault az](/cli/azure/keyvault#update).</span><span class="sxs-lookup"><span data-stu-id="0b61a-114">Set hello deployment policy on an existing key vault with [az keyvault update](/cli/azure/keyvault#update).</span></span> <span data-ttu-id="0b61a-115">Hello следующие обновления hello хранилища ключей с именем `myKeyVault` в hello `myResourceGroup` группа ресурсов:</span><span class="sxs-lookup"><span data-stu-id="0b61a-115">hello following updates hello key vault named `myKeyVault` in hello `myResourceGroup` resource group:</span></span>
 
 ```azurecli
 az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForDeployment=true
 ```
 
-## <a name="use-templates-to-set-up-key-vault"></a><span data-ttu-id="25cd1-116">Использование шаблонов для настройки хранилища ключей</span><span class="sxs-lookup"><span data-stu-id="25cd1-116">Use templates to set up Key Vault</span></span>
-<span data-ttu-id="25cd1-117">При использовании шаблона свойству `enabledForDeployment` ресурса Key Vault нужно присвоить значение `true`, как показано ниже.</span><span class="sxs-lookup"><span data-stu-id="25cd1-117">When you use a template, you need to set the `enabledForDeployment` property to `true` for the Key Vault resource as follows:</span></span>
+## <a name="use-templates-tooset-up-key-vault"></a><span data-ttu-id="0b61a-116">Используйте шаблоны tooset копии хранилища ключей</span><span class="sxs-lookup"><span data-stu-id="0b61a-116">Use templates tooset up Key Vault</span></span>
+<span data-ttu-id="0b61a-117">При использовании шаблона необходимо tooset hello `enabledForDeployment` свойство слишком`true` для ресурса хранилища ключей hello следующим образом:</span><span class="sxs-lookup"><span data-stu-id="0b61a-117">When you use a template, you need tooset hello `enabledForDeployment` property too`true` for hello Key Vault resource as follows:</span></span>
 
 ```json
 {
@@ -58,5 +58,5 @@ az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForD
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="25cd1-118">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="25cd1-118">Next steps</span></span>
-<span data-ttu-id="25cd1-119">Сведения о других параметрах, которые можно настроить при создании Key Vault с помощью шаблонов, см. в разделе [Create a Key Vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/) (Создание Key Vault).</span><span class="sxs-lookup"><span data-stu-id="25cd1-119">For other options that you can configure when you create a Key Vault by using templates, see [Create a key vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="0b61a-118">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="0b61a-118">Next steps</span></span>
+<span data-ttu-id="0b61a-119">Сведения о других параметрах, которые можно настроить при создании Key Vault с помощью шаблонов, см. в разделе [Create a Key Vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/) (Создание Key Vault).</span><span class="sxs-lookup"><span data-stu-id="0b61a-119">For other options that you can configure when you create a Key Vault by using templates, see [Create a key vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).</span></span>

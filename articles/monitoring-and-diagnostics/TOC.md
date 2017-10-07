@@ -32,14 +32,14 @@
 ### [Автомасштабирование масштабируемых наборов виртуальных машин с помощью шаблонов Resource Manager](insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Автомасштабирование виртуальных машин в масштабируемых наборах виртуальных машин](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Настройка веб-перехватчиков webhook и уведомлений по электронной почте для автомасштабирования](insights-autoscale-to-webhook-email.md)
-## Использование журнала действий
+## Использовать журнал действий hello
 ### [Просмотр событий в журнале действий](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Настройка оповещений о событиях журнала действий](monitoring-activity-log-alerts.md)
 ### [Архивация журнала действий](monitoring-archive-activity-log.md)
-### [Потоковая передача журналов действий в концентраторы событий](monitoring-stream-activity-logs-event-hubs.md)
+### [TooEvent журнала активности потока концентраторы](monitoring-stream-activity-logs-event-hubs.md)
 ### [Операции аудита с помощью диспетчера ресурсов](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Создание оповещений о журнале действий с помощью Resource Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
-### [Переход к использованию оповещений журнала действий](monitoring-migrate-management-alerts.md)
+### [Перенос предупреждения журнала tooActivity](monitoring-migrate-management-alerts.md)
 ## Использование уведомлений службы
 ### [Просмотр уведомлений службы](monitoring-service-notifications.md)
 ### [Настройка оповещений об уведомлениях службы](monitoring-activity-log-alerts-on-service-notifications.md)
@@ -50,13 +50,13 @@
 ### [Создание групп действий с помощью Resource Manager](monitoring-create-action-group-with-resource-manager-template.md)
 ## Управление журналами диагностики
 ### [Архив](monitoring-archive-diagnostic-logs.md)
-### [Потоковая передача в концентраторы событий](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+### [Поток tooEvent концентраторы](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 ### [Активация параметров диагностики с помощью шаблонов Resource Manager](monitoring-enable-diagnostic-logs-using-template.md)
-## Использование REST API
+## Используйте API-интерфейса REST hello
 ### [Пошаговое руководство по использованию REST API](monitoring-rest-api-walkthrough.md)
 ## Использование расширения системы диагностики Azure
-### [Отправка в Application Insights](azure-diagnostics-configure-application-insights.md)
-### [Отправка в концентраторы событий](azure-diagnostics-streaming-event-hubs.md)
+### [Отправить tooApplication аналитики](azure-diagnostics-configure-application-insights.md)
+### [Отправить tooEvent концентраторы](azure-diagnostics-streaming-event-hubs.md)
 ### [Устранение неполадок](azure-diagnostics-troubleshooting.md)
 
 # Справочные материалы

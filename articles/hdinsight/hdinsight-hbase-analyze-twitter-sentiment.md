@@ -1,6 +1,6 @@
 ---
-title: "Анализ мнений пользователей Twitter в режиме реального времени с использованием HBase в Azure | Документы Майкрософт"
-description: "Узнайте, как проводить анализ мнений в режиме реального времени на основе данных большого размера Twitter с помощью HBase в кластере HDInsight (Hadoop)."
+title: "в режиме реального времени мнений Twitter aaaAnalyze с HBase - Azure | Документы Microsoft"
+description: "Узнайте, как анализ мнений в режиме реального времени toodo большие данные из Twitter с базой HBase в кластер HDInsight (Hadoop)."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -15,76 +15,76 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jgao
-ms.openlocfilehash: 4d5bb90c0e7573afb75282810c9ba58e7163e127
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 87e5c0c0a90d222a3f0bc3c3f3fce1e938320480
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="analyze-real-time-twitter-sentiment-with-hbase-in-hdinsight"></a><span data-ttu-id="17ee0-103">Анализ мнений пользователей Twitter в режиме реального времени с использованием HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="17ee0-103">Analyze real-time Twitter sentiment with HBase in HDInsight</span></span>
-<span data-ttu-id="17ee0-104">Узнайте, как выполнять [анализ тональности](http://en.wikipedia.org/wiki/Sentiment_analysis) в режиме реального времени на основе больших данных Twitter, используя кластер HBase в HDInsight.</span><span class="sxs-lookup"><span data-stu-id="17ee0-104">Learn how to do real-time [sentiment analysis](http://en.wikipedia.org/wiki/Sentiment_analysis) of big data from Twitter by using a HBase cluster in HDInsight.</span></span>
+# <a name="analyze-real-time-twitter-sentiment-with-hbase-in-hdinsight"></a><span data-ttu-id="373a4-103">Анализ мнений пользователей Twitter в режиме реального времени с использованием HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="373a4-103">Analyze real-time Twitter sentiment with HBase in HDInsight</span></span>
+<span data-ttu-id="373a4-104">Узнайте, как toodo в режиме реального времени [анализ мнений](http://en.wikipedia.org/wiki/Sentiment_analysis) больших данных, Twitter, используя кластер HBase в HDInsight.</span><span class="sxs-lookup"><span data-stu-id="373a4-104">Learn how toodo real-time [sentiment analysis](http://en.wikipedia.org/wiki/Sentiment_analysis) of big data from Twitter by using a HBase cluster in HDInsight.</span></span>
 
-<span data-ttu-id="17ee0-105">Социальные веб-сайты являются одной из основных движущих сил для внедрения данных большого размера.</span><span class="sxs-lookup"><span data-stu-id="17ee0-105">Social websites are one of the major driving forces for big data adoption.</span></span> <span data-ttu-id="17ee0-106">Общедоступные API, предоставляемые сайтами, такими как Twitter, — полезный источник данных для анализа и понимания популярных тенденций.</span><span class="sxs-lookup"><span data-stu-id="17ee0-106">Public APIs provided by sites like Twitter are a useful source of data for analyzing and understanding popular trends.</span></span> <span data-ttu-id="17ee0-107">В этом руководстве вы создадите консольное приложение-службу, работающее в потоковом режиме, и веб-приложение ASP.NET для выполнения следующих задач:</span><span class="sxs-lookup"><span data-stu-id="17ee0-107">In this tutorial, you develop a console streaming service application and an ASP.NET web application to perform the following:</span></span>
+<span data-ttu-id="373a4-105">Социальных веб-узлы, одним из основных факторов определяющим hello внедрения больших данных.</span><span class="sxs-lookup"><span data-stu-id="373a4-105">Social websites are one of hello major driving forces for big data adoption.</span></span> <span data-ttu-id="373a4-106">Общедоступные API, предоставляемые сайтами, такими как Twitter, — полезный источник данных для анализа и понимания популярных тенденций.</span><span class="sxs-lookup"><span data-stu-id="373a4-106">Public APIs provided by sites like Twitter are a useful source of data for analyzing and understanding popular trends.</span></span> <span data-ttu-id="373a4-107">В этом учебнике разрабатывать консоли потоковой передачи приложения службы и ASP.NET web приложения tooperform hello следующие:</span><span class="sxs-lookup"><span data-stu-id="373a4-107">In this tutorial, you develop a console streaming service application and an ASP.NET web application tooperform hello following:</span></span>
 
 ![Анализ мнений пользователей Twitter с использованием HBase в HDInsight][img-app-arch]
 
-* <span data-ttu-id="17ee0-109">Приложение потоковой передачи</span><span class="sxs-lookup"><span data-stu-id="17ee0-109">The streaming application</span></span>
+* <span data-ttu-id="373a4-109">Потоковая передача приложения Hello</span><span class="sxs-lookup"><span data-stu-id="373a4-109">hello streaming application</span></span>
 
-  * <span data-ttu-id="17ee0-110">получение твитов с геотегами в режиме реального времени с помощью API потоковой передачи Twitter;</span><span class="sxs-lookup"><span data-stu-id="17ee0-110">get geo-tagged tweets in real time by using the Twitter streaming API</span></span>
-  * <span data-ttu-id="17ee0-111">оценка мнений на основе этих твитов;</span><span class="sxs-lookup"><span data-stu-id="17ee0-111">evaluate the sentiment of these tweets</span></span>
-  * <span data-ttu-id="17ee0-112">сохранение информации о мнениях в HBase с помощью пакета SDK для Microsoft HBase.</span><span class="sxs-lookup"><span data-stu-id="17ee0-112">store the sentiment information in HBase by using the Microsoft HBase SDK</span></span>
-* <span data-ttu-id="17ee0-113">Приложение веб-сайтов Azure:</span><span class="sxs-lookup"><span data-stu-id="17ee0-113">The Azure Websites application</span></span>
+  * <span data-ttu-id="373a4-110">Получение твитов geo тегом в режиме реального времени с помощью hello Twitter потоковой передачи API</span><span class="sxs-lookup"><span data-stu-id="373a4-110">get geo-tagged tweets in real time by using hello Twitter streaming API</span></span>
+  * <span data-ttu-id="373a4-111">Оценка этих твиты идея hello</span><span class="sxs-lookup"><span data-stu-id="373a4-111">evaluate hello sentiment of these tweets</span></span>
+  * <span data-ttu-id="373a4-112">хранить сведения в HBase с помощью hello Microsoft HBase SDK мнений hello</span><span class="sxs-lookup"><span data-stu-id="373a4-112">store hello sentiment information in HBase by using hello Microsoft HBase SDK</span></span>
+* <span data-ttu-id="373a4-113">Hello приложения веб-сайтов Azure</span><span class="sxs-lookup"><span data-stu-id="373a4-113">hello Azure Websites application</span></span>
 
-  * <span data-ttu-id="17ee0-114">отображение статистических результатов в режиме реального времени на картах Bing с помощью веб-приложения ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="17ee0-114">plot the real-time statistical results on Bing maps by using an ASP.NET web application.</span></span> <span data-ttu-id="17ee0-115">Твиты визуализируются следующим образом:</span><span class="sxs-lookup"><span data-stu-id="17ee0-115">A visualization of the tweets is similar to the following screenshot:</span></span>
+  * <span data-ttu-id="373a4-114">отобразить hello в режиме реального времени статистических результатов в Bing maps с помощью веб-приложения ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="373a4-114">plot hello real-time statistical results on Bing maps by using an ASP.NET web application.</span></span> <span data-ttu-id="373a4-115">Визуализация hello твиты — примерно toohello следующий снимок экрана:</span><span class="sxs-lookup"><span data-stu-id="373a4-115">A visualization of hello tweets is similar toohello following screenshot:</span></span>
 
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
 
-    <span data-ttu-id="17ee0-117">Вы можете выполнять запросы твитов, используя определенные ключевые слова, чтобы узнать, является ли выражаемое в твитах мнение в целом положительным, отрицательным или нейтральным.</span><span class="sxs-lookup"><span data-stu-id="17ee0-117">You are able to query tweets with certain keywords to get a sense of if the expressed opinion in the tweets is positive, negative, or neutral.</span></span>
+    <span data-ttu-id="373a4-117">Если пользователь находится может tooquery твиты с tooget определенные ключевые слова представление о мнение hello выражается в твиты hello положительным, отрицательным или нейтральной.</span><span class="sxs-lookup"><span data-stu-id="373a4-117">You are able tooquery tweets with certain keywords tooget a sense of if hello expressed opinion in hello tweets is positive, negative, or neutral.</span></span>
 
-<span data-ttu-id="17ee0-118">Пример готового решения Visual Studio можно найти на портале GitHub: [приложение анализа общественных мнений в реальном времени](https://github.com/maxluk/tweet-sentiment).</span><span class="sxs-lookup"><span data-stu-id="17ee0-118">A complete Visual Studio solution sample can be found on GitHub: [Realtime social sentiment analysis app](https://github.com/maxluk/tweet-sentiment).</span></span>
+<span data-ttu-id="373a4-118">Пример готового решения Visual Studio можно найти на портале GitHub: [приложение анализа общественных мнений в реальном времени](https://github.com/maxluk/tweet-sentiment).</span><span class="sxs-lookup"><span data-stu-id="373a4-118">A complete Visual Studio solution sample can be found on GitHub: [Realtime social sentiment analysis app](https://github.com/maxluk/tweet-sentiment).</span></span>
 
-### <a name="prerequisites"></a><span data-ttu-id="17ee0-119">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="17ee0-119">Prerequisites</span></span>
-<span data-ttu-id="17ee0-120">Перед началом работы с этим учебником необходимо иметь следующее:</span><span class="sxs-lookup"><span data-stu-id="17ee0-120">Before you begin this tutorial, you must have the following:</span></span>
+### <a name="prerequisites"></a><span data-ttu-id="373a4-119">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="373a4-119">Prerequisites</span></span>
+<span data-ttu-id="373a4-120">Прежде чем начать работу с учебником, необходимо иметь следующие hello.</span><span class="sxs-lookup"><span data-stu-id="373a4-120">Before you begin this tutorial, you must have hello following:</span></span>
 
-* <span data-ttu-id="17ee0-121">**Кластер HBase в HDInsight.**</span><span class="sxs-lookup"><span data-stu-id="17ee0-121">**An HBase cluster in HDInsight**.</span></span> <span data-ttu-id="17ee0-122">Инструкции по созданию кластера см. в статье [Руководство по HBase. Приступая к работе с Apache HBase на Hadoop под управлением Linux в HDInsight][hbase-get-started].</span><span class="sxs-lookup"><span data-stu-id="17ee0-122">For instructions about creating clusters, see  [Get started using HBase with Hadoop in HDInsight][hbase-get-started].</span></span> 
+* <span data-ttu-id="373a4-121">**Кластер HBase в HDInsight.**</span><span class="sxs-lookup"><span data-stu-id="373a4-121">**An HBase cluster in HDInsight**.</span></span> <span data-ttu-id="373a4-122">Инструкции по созданию кластера см. в статье [Руководство по HBase. Приступая к работе с Apache HBase на Hadoop под управлением Linux в HDInsight][hbase-get-started].</span><span class="sxs-lookup"><span data-stu-id="373a4-122">For instructions about creating clusters, see  [Get started using HBase with Hadoop in HDInsight][hbase-get-started].</span></span> 
 
-* <span data-ttu-id="17ee0-123">**Рабочая станция**, на которой установлено программное обеспечение Visual Studio 2013/2015/2017.</span><span class="sxs-lookup"><span data-stu-id="17ee0-123">**A workstation** with Visual Studio 2013/2015/2017 installed.</span></span> <span data-ttu-id="17ee0-124">Инструкции см. в статье [Установка Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx).</span><span class="sxs-lookup"><span data-stu-id="17ee0-124">For instructions, see [Installing Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx).</span></span>
+* <span data-ttu-id="373a4-123">**Рабочая станция**, на которой установлено программное обеспечение Visual Studio 2013/2015/2017.</span><span class="sxs-lookup"><span data-stu-id="373a4-123">**A workstation** with Visual Studio 2013/2015/2017 installed.</span></span> <span data-ttu-id="373a4-124">Инструкции см. в статье [Установка Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx).</span><span class="sxs-lookup"><span data-stu-id="373a4-124">For instructions, see [Installing Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx).</span></span>
 
-## <a name="create-a-twitter-application-id-and-secrets"></a><span data-ttu-id="17ee0-125">Создание идентификатора и секретов приложения Twitter</span><span class="sxs-lookup"><span data-stu-id="17ee0-125">Create a Twitter application ID and secrets</span></span>
-<span data-ttu-id="17ee0-126">В интерфейсах API потоковой передачи Twitter для авторизации запросов используется протокол [OAuth](http://oauth.net/) .</span><span class="sxs-lookup"><span data-stu-id="17ee0-126">The Twitter streaming APIs use [OAuth](http://oauth.net/) to authorize requests.</span></span> <span data-ttu-id="17ee0-127">Первый шаг для начала использования OAuth состоит в создании нового приложения на сайте разработчиков Twitter.</span><span class="sxs-lookup"><span data-stu-id="17ee0-127">The first step to use OAuth is to create a new application on the Twitter developer site.</span></span>
+## <a name="create-a-twitter-application-id-and-secrets"></a><span data-ttu-id="373a4-125">Создание идентификатора и секретов приложения Twitter</span><span class="sxs-lookup"><span data-stu-id="373a4-125">Create a Twitter application ID and secrets</span></span>
+<span data-ttu-id="373a4-126">Hello использовать потоковый API-интерфейсов Twitter [OAuth](http://oauth.net/) tooauthorize запросов.</span><span class="sxs-lookup"><span data-stu-id="373a4-126">hello Twitter streaming APIs use [OAuth](http://oauth.net/) tooauthorize requests.</span></span> <span data-ttu-id="373a4-127">Hello первый шаг toouse OAuth является toocreate новое приложение на сайте разработчика hello Twitter.</span><span class="sxs-lookup"><span data-stu-id="373a4-127">hello first step toouse OAuth is toocreate a new application on hello Twitter developer site.</span></span>
 
-<span data-ttu-id="17ee0-128">**Создание идентификатора и секретов приложения Twitter**</span><span class="sxs-lookup"><span data-stu-id="17ee0-128">**To create Twitter application ID and secrets**</span></span>
+<span data-ttu-id="373a4-128">**Идентификатор приложения Twitter toocreate и секреты**</span><span class="sxs-lookup"><span data-stu-id="373a4-128">**toocreate Twitter application ID and secrets**</span></span>
 
-1. <span data-ttu-id="17ee0-129">Войдите на сайт [приложений Twitter](https://apps.twitter.com/).</span><span class="sxs-lookup"><span data-stu-id="17ee0-129">Sign in to [Twitter Apps](https://apps.twitter.com/).</span></span> <span data-ttu-id="17ee0-130">Перейдите по ссылке **Войти сейчас** , если у вас нет учетной записи Twitter.</span><span class="sxs-lookup"><span data-stu-id="17ee0-130">Click the **Sign up now** link if you don't have a Twitter account.</span></span>
-2. <span data-ttu-id="17ee0-131">Щелкните **Создать новое приложение**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-131">Click **Create New App**.</span></span>
-3. <span data-ttu-id="17ee0-132">Введите **имя**, **описание** и **веб-сайт**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-132">Enter a **Name**, **Description**, and **Website**.</span></span> <span data-ttu-id="17ee0-133">Имя приложения Twitter должно быть уникальным.</span><span class="sxs-lookup"><span data-stu-id="17ee0-133">The Twitter application name must be a unique name.</span></span> <span data-ttu-id="17ee0-134">Поле "Веб-сайт" на самом деле не используется.</span><span class="sxs-lookup"><span data-stu-id="17ee0-134">The Website field is not really used.</span></span> <span data-ttu-id="17ee0-135">В нем не обязательно указывать действительный URL-адрес.</span><span class="sxs-lookup"><span data-stu-id="17ee0-135">It doesn't have to be a valid URL.</span></span>
-4. <span data-ttu-id="17ee0-136">Установите флажок **Я принимаю** и нажмите кнопку **Создать приложение Twitter**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-136">Check **Yes, I agree**, and then click **Create your Twitter application**.</span></span>
-5. <span data-ttu-id="17ee0-137">Щелкните вкладку **Разрешения** и выберите **Только для чтения**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-137">Click the **Permissions** tab, and then click **Read only**.</span></span> <span data-ttu-id="17ee0-138">Для работы с этим руководством достаточно разрешения только для чтения.</span><span class="sxs-lookup"><span data-stu-id="17ee0-138">The read-only permission is sufficient for this tutorial.</span></span>
-6. <span data-ttu-id="17ee0-139">Перейдите на вкладку **Ключи и токены доступа** .</span><span class="sxs-lookup"><span data-stu-id="17ee0-139">Click the **Keys and Access Tokens** tab.</span></span>
-7. <span data-ttu-id="17ee0-140">Щелкните **Создать маркер доступа** в нижней части страницы.</span><span class="sxs-lookup"><span data-stu-id="17ee0-140">Click **Create my access token** on the bottom of the page.</span></span>
-9. <span data-ttu-id="17ee0-141">Скопируйте значения **Consumer Key (API Key)** (Ключ клиента (ключ API)), **Consumer secret (API Secret)** (Секрет клиента (секрет API)), **Маркер доступа** и **Access token secret** (Секрет маркера доступа).</span><span class="sxs-lookup"><span data-stu-id="17ee0-141">Copy the **Consumer Key (API Key)**, **Consumer Secret (API Secret)**, **Access token**, and **Access token secret** values.</span></span> <span data-ttu-id="17ee0-142">Эти значения вам понадобятся позже при работе с этим руководством.</span><span class="sxs-lookup"><span data-stu-id="17ee0-142">You need these values later in the tutorial.</span></span>
+1. <span data-ttu-id="373a4-129">Войдите в слишком[Twitter приложения](https://apps.twitter.com/).</span><span class="sxs-lookup"><span data-stu-id="373a4-129">Sign in too[Twitter Apps](https://apps.twitter.com/).</span></span> <span data-ttu-id="373a4-130">Нажмите кнопку hello **Зарегистрируйтесь сейчас** ссылку, если у вас нет учетной записи Twitter.</span><span class="sxs-lookup"><span data-stu-id="373a4-130">Click hello **Sign up now** link if you don't have a Twitter account.</span></span>
+2. <span data-ttu-id="373a4-131">Щелкните **Создать новое приложение**.</span><span class="sxs-lookup"><span data-stu-id="373a4-131">Click **Create New App**.</span></span>
+3. <span data-ttu-id="373a4-132">Введите **имя**, **описание** и **веб-сайт**.</span><span class="sxs-lookup"><span data-stu-id="373a4-132">Enter a **Name**, **Description**, and **Website**.</span></span> <span data-ttu-id="373a4-133">Имя приложения Hello Twitter должно быть уникальное имя.</span><span class="sxs-lookup"><span data-stu-id="373a4-133">hello Twitter application name must be a unique name.</span></span> <span data-ttu-id="373a4-134">поле веб-сайт Hello действительно не используется.</span><span class="sxs-lookup"><span data-stu-id="373a4-134">hello Website field is not really used.</span></span> <span data-ttu-id="373a4-135">Это не обязательно toobe допустимый URL-адрес.</span><span class="sxs-lookup"><span data-stu-id="373a4-135">It doesn't have toobe a valid URL.</span></span>
+4. <span data-ttu-id="373a4-136">Установите флажок **Я принимаю** и нажмите кнопку **Создать приложение Twitter**.</span><span class="sxs-lookup"><span data-stu-id="373a4-136">Check **Yes, I agree**, and then click **Create your Twitter application**.</span></span>
+5. <span data-ttu-id="373a4-137">Нажмите кнопку hello **разрешений** , а затем щелкните **только для чтения**.</span><span class="sxs-lookup"><span data-stu-id="373a4-137">Click hello **Permissions** tab, and then click **Read only**.</span></span> <span data-ttu-id="373a4-138">для этого учебника, достаточно Hello разрешение только для чтения.</span><span class="sxs-lookup"><span data-stu-id="373a4-138">hello read-only permission is sufficient for this tutorial.</span></span>
+6. <span data-ttu-id="373a4-139">Нажмите кнопку hello **ключей и маркеры доступа** вкладки.</span><span class="sxs-lookup"><span data-stu-id="373a4-139">Click hello **Keys and Access Tokens** tab.</span></span>
+7. <span data-ttu-id="373a4-140">Нажмите кнопку **создать Мой маркер доступа** hello нижней части страницы приветствия.</span><span class="sxs-lookup"><span data-stu-id="373a4-140">Click **Create my access token** on hello bottom of hello page.</span></span>
+9. <span data-ttu-id="373a4-141">Копировать hello **потребителя ключом (API)**, **секрет пользователя (секрет API)**, **маркер доступа**, и **секрет маркера доступа** значения.</span><span class="sxs-lookup"><span data-stu-id="373a4-141">Copy hello **Consumer Key (API Key)**, **Consumer Secret (API Secret)**, **Access token**, and **Access token secret** values.</span></span> <span data-ttu-id="373a4-142">Эти значения должны далее в учебнике hello.</span><span class="sxs-lookup"><span data-stu-id="373a4-142">You need these values later in hello tutorial.</span></span>
 
-    > <span data-ttu-id="17ee0-143">![ПРИМЕЧАНИЕ] Кнопка теста OAuth больше не работает.</span><span class="sxs-lookup"><span data-stu-id="17ee0-143">![NOTE] The Test OAuth button does not work anymore.</span></span>
+    > <span data-ttu-id="373a4-143">! [Примечание] hello OAuth теста кнопка не перестал работать.</span><span class="sxs-lookup"><span data-stu-id="373a4-143">![NOTE] hello Test OAuth button does not work anymore.</span></span>
 
-## <a name="create-twitter-streaming-service"></a><span data-ttu-id="17ee0-144">Создание службы потоковой передачи данных Twitter</span><span class="sxs-lookup"><span data-stu-id="17ee0-144">Create Twitter streaming service</span></span>
-<span data-ttu-id="17ee0-145">Вам необходимо создать приложение для получения твитов, расчета оценки мнений на их основе и отправки обработанных слов из твитов в HBase.</span><span class="sxs-lookup"><span data-stu-id="17ee0-145">You need to create an application to get tweets, calculate tweet sentiment score, and send the processed tweet words to HBase.</span></span>
+## <a name="create-twitter-streaming-service"></a><span data-ttu-id="373a4-144">Создание службы потоковой передачи данных Twitter</span><span class="sxs-lookup"><span data-stu-id="373a4-144">Create Twitter streaming service</span></span>
+<span data-ttu-id="373a4-145">Требуется toocreate твиты tooget приложения рассчитывается показатель мнений твит и отправлять tooHBase слова твит hello обработки.</span><span class="sxs-lookup"><span data-stu-id="373a4-145">You need toocreate an application tooget tweets, calculate tweet sentiment score, and send hello processed tweet words tooHBase.</span></span>
 
-<span data-ttu-id="17ee0-146">**Создание приложения потоковой передачи**</span><span class="sxs-lookup"><span data-stu-id="17ee0-146">**To create the streaming application**</span></span>
+<span data-ttu-id="373a4-146">**Потоковая передача приложения hello toocreate**</span><span class="sxs-lookup"><span data-stu-id="373a4-146">**toocreate hello streaming application**</span></span>
 
-1. <span data-ttu-id="17ee0-147">Откройте **Visual Studio** и создайте консольное приложение Visual C# под названием **TweetSentimentStreaming**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-147">Open **Visual Studio**, and create a Visual C# console application called **TweetSentimentStreaming**.</span></span>
-2. <span data-ttu-id="17ee0-148">В **консоли диспетчера пакетов**выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="17ee0-148">From **Package Manager Console**, run the following commands:</span></span>
+1. <span data-ttu-id="373a4-147">Откройте **Visual Studio** и создайте консольное приложение Visual C# под названием **TweetSentimentStreaming**.</span><span class="sxs-lookup"><span data-stu-id="373a4-147">Open **Visual Studio**, and create a Visual C# console application called **TweetSentimentStreaming**.</span></span>
+2. <span data-ttu-id="373a4-148">Из **консоль диспетчера пакетов**, запустите hello следующих команд:</span><span class="sxs-lookup"><span data-stu-id="373a4-148">From **Package Manager Console**, run hello following commands:</span></span>
 
         Install-Package Microsoft.HBase.Client -version 0.4.2.0
         Install-Package TweetinviAPI -version 1.0.0.0
 
-    <span data-ttu-id="17ee0-149">Эти команды установят [пакет SDK для HBase .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/), представляющий собой клиентскую библиотеку для доступа к кластеру HBase, и пакет [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/), который используется для доступа к API Twitter.</span><span class="sxs-lookup"><span data-stu-id="17ee0-149">These commands install the [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) package, which is the client library to access the HBase cluster, and the [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) package, which is used to access the Twitter API.</span></span>
+    <span data-ttu-id="373a4-149">Эти команды устанавливают hello [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) пакет, который представляет hello hello клиент библиотеки tooaccess кластер HBase и hello [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) пакет, являющийся используется tooaccess hello Twitter API.</span><span class="sxs-lookup"><span data-stu-id="373a4-149">These commands install hello [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) package, which is hello client library tooaccess hello HBase cluster, and hello [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) package, which is used tooaccess hello Twitter API.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="17ee0-150">Пример, использованный в этой статье, был проверен с помощью указанной выше версии.</span><span class="sxs-lookup"><span data-stu-id="17ee0-150">The sample used in this article has been tested using the version specified above.</span></span>  <span data-ttu-id="17ee0-151">Вы можете удалить параметр -version и установить последнюю версию.</span><span class="sxs-lookup"><span data-stu-id="17ee0-151">You can remove the -version switch to install the latest version.</span></span>
+   > <span data-ttu-id="373a4-150">Образец Hello, используемые в этой статье были проверены с помощью версии hello, указанных выше.</span><span class="sxs-lookup"><span data-stu-id="373a4-150">hello sample used in this article has been tested using hello version specified above.</span></span>  <span data-ttu-id="373a4-151">Можно удалить hello - коммутатора tooinstall hello последней версии.</span><span class="sxs-lookup"><span data-stu-id="373a4-151">You can remove hello -version switch tooinstall hello latest version.</span></span>
    >
    >
-3. <span data-ttu-id="17ee0-152">В **обозревателе решений** добавьте **System.Configuration** в ссылку.</span><span class="sxs-lookup"><span data-stu-id="17ee0-152">From **Solution Explorer**, add **System.Configuration** to the reference.</span></span>
-4. <span data-ttu-id="17ee0-153">Добавьте в проект **HBaseWriter.cs**новый файл класса, а затем замените код следующим.</span><span class="sxs-lookup"><span data-stu-id="17ee0-153">Add a new class file to the project called **HBaseWriter.cs**, and then replace the code with the following:</span></span>
+3. <span data-ttu-id="373a4-152">Из **обозревателе решений**, добавьте **System.Configuration** toohello ссылки.</span><span class="sxs-lookup"><span data-stu-id="373a4-152">From **Solution Explorer**, add **System.Configuration** toohello reference.</span></span>
+4. <span data-ttu-id="373a4-153">Добавьте новый проект toohello файл класса с именем **HBaseWriter.cs**и затем замените код hello hello следующее:</span><span class="sxs-lookup"><span data-stu-id="373a4-153">Add a new class file toohello project called **HBaseWriter.cs**, and then replace hello code with hello following:</span></span>
 
         using System;
         using System.Collections.Generic;
@@ -103,8 +103,8 @@ ms.lasthandoff: 08/03/2017
             {
                 // HDinsight HBase cluster and HBase table information
                 const string CLUSTERNAME = "https://<Enter Your Cluster Name>.azurehdinsight.net/";
-                const string HADOOPUSERNAME = "admin"; //the default name is "admin"
-                const string HADOOPUSERPASSWORD = "<Enter the Hadoop User Password>";
+                const string HADOOPUSERNAME = "admin"; //hello default name is "admin"
+                const string HADOOPUSERPASSWORD = "<Enter hello Hadoop User Password>";
 
                 const string HBASETABLENAME = "tweets_by_words";
                 const string COUNT_ROW_KEY = "~ROWCOUNT";
@@ -112,13 +112,13 @@ ms.lasthandoff: 08/03/2017
 
                 long rowCount = 0;
 
-                // Sentiment dictionary file and the punctuation characters
+                // Sentiment dictionary file and hello punctuation characters
                 const string DICTIONARYFILENAME = @"..\..\dictionary.tsv";
                 private static char[] _punctuationChars = new[] {
             ' ', '!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/',   //ascii 23--47
             ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~' };   //ascii 58--64 + misc.
 
-                // For writting to HBase
+                // For writting tooHBase
                 HBaseClient client;
 
                 // a sentiment dictionary for estimate sentiment. It is loaded from a physical file.
@@ -129,13 +129,13 @@ ms.lasthandoff: 08/03/2017
                 Queue<ITweet> queue = new Queue<ITweet>();
                 bool threadRunning = true;
 
-                // This function connects to HBase, loads the sentiment dictionary, and starts the thread for writting.
+                // This function connects tooHBase, loads hello sentiment dictionary, and starts hello thread for writting.
                 public HBaseWriter()
                 {
                     ClusterCredentials credentials = new ClusterCredentials(new Uri(CLUSTERNAME), HADOOPUSERNAME, HADOOPUSERPASSWORD);
                     client = new HBaseClient(credentials);
 
-                    // create the HBase table if it doesn't exist
+                    // create hello HBase table if it doesn't exist
                     if (!client.ListTablesAsync().Result.name.Contains(HBASETABLENAME))
                     {
                         TableSchema tableSchema = new TableSchema();
@@ -151,7 +151,7 @@ ms.lasthandoff: 08/03/2017
                     // Load sentiment dictionary from a file
                     LoadDictionary();
 
-                    // Start a thread for writting to HBase
+                    // Start a thread for writting tooHBase
                     writerThread = new Thread(new ThreadStart(WriterThreadFunction));
                     writerThread.Start();
                 }
@@ -179,7 +179,7 @@ ms.lasthandoff: 08/03/2017
                     }
                     catch(Exception ex)
                     {
-                        if (ex.InnerException.Message.Equals("The remote server returned an error: (404) Not Found.", StringComparison.OrdinalIgnoreCase))
+                        if (ex.InnerException.Message.Equals("hello remote server returned an error: (404) Not Found.", StringComparison.OrdinalIgnoreCase))
                         {
                             return 0;
                         }
@@ -193,7 +193,7 @@ ms.lasthandoff: 08/03/2017
                     return 0;
                 }
 
-                // Enqueue the Tweets received
+                // Enqueue hello Tweets received
                 public void WriteTweet(ITweet tweet)
                 {
                     lock (queue)
@@ -260,19 +260,19 @@ ms.lasthandoff: 08/03/2017
                     }
                 }
 
-                // Popular a CellSet object to be written into HBase
+                // Popular a CellSet object toobe written into HBase
                 private void CreateTweetByWordsCells(CellSet set, ITweet tweet)
                 {
-                    // Split the Tweet into words
+                    // Split hello Tweet into words
                     string[] words = tweet.Text.ToLower().Split(_punctuationChars);
 
-                    // Calculate sentiment score base on the words
+                    // Calculate sentiment score base on hello words
                     int sentimentScore = CalcSentimentScore(words);
                     var word_pairs = words.Take(words.Length - 1)
                                         .Select((word, idx) => string.Format("{0} {1}", word, words[idx + 1]));
                     var all_words = words.Concat(word_pairs).ToList();
 
-                    // For each word in the Tweet add a row to the HBase table
+                    // For each word in hello Tweet add a row toohello HBase table
                     foreach (string word in all_words)
                     {
                         string time_index = (ulong.MaxValue - (ulong)tweet.CreatedAt.ToBinary()).ToString().PadLeft(20) + tweet.IdStr;
@@ -281,7 +281,7 @@ ms.lasthandoff: 08/03/2017
                         // Create a row
                         var row = new CellSet.Row { key = Encoding.UTF8.GetBytes(key) };
 
-                        // Add columns to the row, including Tweet identifier, language, coordinator(if available), and sentiment
+                        // Add columns toohello row, including Tweet identifier, language, coordinator(if available), and sentiment
                         var value = new Cell { column = Encoding.UTF8.GetBytes("d:id_str"), data = Encoding.UTF8.GetBytes(tweet.IdStr) };
                         row.values.Add(value);
 
@@ -302,7 +302,7 @@ ms.lasthandoff: 08/03/2017
                     }
                 }
 
-                // Write a Tweet (CellSet) to HBase
+                // Write a Tweet (CellSet) tooHBase
                 public void WriterThreadFunction()
                 {
                     try
@@ -321,7 +321,7 @@ ms.lasthandoff: 08/03/2017
                                     } while (queue.Count > 0);
                                 }
 
-                                // Write the Tweet by words cell set to the HBase table
+                                // Write hello Tweet by words cell set toohello HBase table
                                 client.StoreCellsAsync(HBASETABLENAME, set).Wait();
                                 Console.WriteLine("\tRows written: {0}", set.rows.Count);
                             }
@@ -344,8 +344,8 @@ ms.lasthandoff: 08/03/2017
                 public string Polarity { get; set; }
             }
         }
-5. <span data-ttu-id="17ee0-154">Задайте константы в коде выше, в том числе **CLUSTERNAME**, **HADOOPUSERNAME**, **HADOOPUSERPASSWORD** и DICTIONARYFILENAME.</span><span class="sxs-lookup"><span data-stu-id="17ee0-154">Set the constants in the previous code, including **CLUSTERNAME**, **HADOOPUSERNAME**, **HADOOPUSERPASSWORD**, and DICTIONARYFILENAME.</span></span> <span data-ttu-id="17ee0-155">DICTIONARYFILENAME содержит имя и расположение файла direction.tsv.</span><span class="sxs-lookup"><span data-stu-id="17ee0-155">The DICTIONARYFILENAME is the filename and the location of the direction.tsv.</span></span>  <span data-ttu-id="17ee0-156">Этот файл можно скачать по ссылке **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-156">The file can be downloaded from **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv**.</span></span> <span data-ttu-id="17ee0-157">Если вы хотите изменить имя таблицы HBase, вам необходимо соответствующим образом изменить имя таблицы в веб-приложении.</span><span class="sxs-lookup"><span data-stu-id="17ee0-157">If you want to change the HBase table name, you must change the table name in the web application accordingly.</span></span>
-6. <span data-ttu-id="17ee0-158">Откройте файл **Program.cs**и замените код следующим.</span><span class="sxs-lookup"><span data-stu-id="17ee0-158">Open **Program.cs**, and replace the code with the following:</span></span>
+5. <span data-ttu-id="373a4-154">Значение константы hello в предшествующем коде hello, включая **CLUSTERNAME**, **HADOOPUSERNAME**, **HADOOPUSERPASSWORD**и DICTIONARYFILENAME.</span><span class="sxs-lookup"><span data-stu-id="373a4-154">Set hello constants in hello previous code, including **CLUSTERNAME**, **HADOOPUSERNAME**, **HADOOPUSERPASSWORD**, and DICTIONARYFILENAME.</span></span> <span data-ttu-id="373a4-155">Hello DICTIONARYFILENAME — hello имени и расположения hello hello direction.tsv.</span><span class="sxs-lookup"><span data-stu-id="373a4-155">hello DICTIONARYFILENAME is hello filename and hello location of hello direction.tsv.</span></span>  <span data-ttu-id="373a4-156">можно загрузить из файла Hello **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv**.</span><span class="sxs-lookup"><span data-stu-id="373a4-156">hello file can be downloaded from **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv**.</span></span> <span data-ttu-id="373a4-157">Если требуется имя таблицы HBase toochange hello, необходимо изменить имя таблицы hello в веб-приложение hello соответствующим образом.</span><span class="sxs-lookup"><span data-stu-id="373a4-157">If you want toochange hello HBase table name, you must change hello table name in hello web application accordingly.</span></span>
+6. <span data-ttu-id="373a4-158">Откройте **Program.cs**и замените код hello hello следующее:</span><span class="sxs-lookup"><span data-stu-id="373a4-158">Open **Program.cs**, and replace hello code with hello following:</span></span>
 
         using System;
         using System.Diagnostics;
@@ -386,7 +386,7 @@ ms.lasthandoff: 08/03/2017
                                 tweetCount++;
                                 var tweet = args.Tweet;
 
-                                // Write Tweets to HBase
+                                // Write Tweets tooHBase
                                 hbase.WriteTweet(tweet);
 
                                 if (timer.ElapsedMilliseconds > 1000)
@@ -416,50 +416,50 @@ ms.lasthandoff: 08/03/2017
 
             }
         }
-7. <span data-ttu-id="17ee0-159">Задайте константы, в том числе **TWITTERAPPACCESSTOKEN**, **TWITTERAPPACCESSTOKENSECRET**, **TWITTERAPPAPIKEY** и **TWITTERAPPAPISECRET**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-159">Set the constants including **TWITTERAPPACCESSTOKEN**, **TWITTERAPPACCESSTOKENSECRET**, **TWITTERAPPAPIKEY** and **TWITTERAPPAPISECRET**.</span></span>
+7. <span data-ttu-id="373a4-159">Значение константы hello, в том числе **TWITTERAPPACCESSTOKEN**, **TWITTERAPPACCESSTOKENSECRET**, **TWITTERAPPAPIKEY** и **TWITTERAPPAPISECRET**.</span><span class="sxs-lookup"><span data-stu-id="373a4-159">Set hello constants including **TWITTERAPPACCESSTOKEN**, **TWITTERAPPACCESSTOKENSECRET**, **TWITTERAPPAPIKEY** and **TWITTERAPPAPISECRET**.</span></span>
 
-<span data-ttu-id="17ee0-160">Чтобы запустить службу потоковой передачи, нажмите клавишу **F5**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-160">To run the streaming service, press **F5**.</span></span> <span data-ttu-id="17ee0-161">Далее представлен снимок экрана консольного приложения:</span><span class="sxs-lookup"><span data-stu-id="17ee0-161">The following is a screenshot of the console application:</span></span>
+<span data-ttu-id="373a4-160">hello toorun службы, нажмите клавишу потоковой передачи **F5**.</span><span class="sxs-lookup"><span data-stu-id="373a4-160">toorun hello streaming service, press **F5**.</span></span> <span data-ttu-id="373a4-161">Hello ниже приведен снимок экрана приветствия консольного приложения.</span><span class="sxs-lookup"><span data-stu-id="373a4-161">hello following is a screenshot of hello console application:</span></span>
 
 ![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
 
-<span data-ttu-id="17ee0-163">Оставьте консольное приложение потоковой передачи запущенным, пока вы занимаетесь разработкой веб-приложения. Это даст возможность собрать больше данных.</span><span class="sxs-lookup"><span data-stu-id="17ee0-163">Keep the streaming console application running while you develop the web application, so you have more data to use.</span></span> <span data-ttu-id="17ee0-164">Чтобы просмотреть данные, добавленные в таблицу, можно использовать оболочку HBase.</span><span class="sxs-lookup"><span data-stu-id="17ee0-164">To examine the data inserted into the table, you can use HBase Shell.</span></span> <span data-ttu-id="17ee0-165">См. статью [Руководство по HBase. Приступая к работе с Apache HBase на Hadoop под управлением Windows в HDInsight](hdinsight-hbase-tutorial-get-started-linux.md#create-tables-and-insert-data).</span><span class="sxs-lookup"><span data-stu-id="17ee0-165">See [Get started with HBase in HDInsight](hdinsight-hbase-tutorial-get-started-linux.md#create-tables-and-insert-data).</span></span>
+<span data-ttu-id="373a4-163">Сохраните hello консольного приложения во время разработки веб-приложения hello, поэтому у вас есть несколько toouse данных потоковой передачи.</span><span class="sxs-lookup"><span data-stu-id="373a4-163">Keep hello streaming console application running while you develop hello web application, so you have more data toouse.</span></span> <span data-ttu-id="373a4-164">tooexamine hello данных, вставленных в таблицу hello, можно использовать оболочку HBase.</span><span class="sxs-lookup"><span data-stu-id="373a4-164">tooexamine hello data inserted into hello table, you can use HBase Shell.</span></span> <span data-ttu-id="373a4-165">См. статью [Руководство по HBase. Приступая к работе с Apache HBase на Hadoop под управлением Windows в HDInsight](hdinsight-hbase-tutorial-get-started-linux.md#create-tables-and-insert-data).</span><span class="sxs-lookup"><span data-stu-id="373a4-165">See [Get started with HBase in HDInsight](hdinsight-hbase-tutorial-get-started-linux.md#create-tables-and-insert-data).</span></span>
 
-## <a name="visualize-real-time-sentiment"></a><span data-ttu-id="17ee0-166">Визуализация мнений в режиме реального времени</span><span class="sxs-lookup"><span data-stu-id="17ee0-166">Visualize real-time sentiment</span></span>
-<span data-ttu-id="17ee0-167">Этот подраздел посвящен созданию веб-приложения ASP.NET MVC для чтения мнений из HBase в режиме реального времени и отображения данных на картах Bing.</span><span class="sxs-lookup"><span data-stu-id="17ee0-167">In this section, you create an ASP.NET MVC web application to read the real-time sentiment data from HBase and plot the data on Bing maps.</span></span>
+## <a name="visualize-real-time-sentiment"></a><span data-ttu-id="373a4-166">Визуализация мнений в режиме реального времени</span><span class="sxs-lookup"><span data-stu-id="373a4-166">Visualize real-time sentiment</span></span>
+<span data-ttu-id="373a4-167">В этом разделе можно создать ASP.NET MVC данных веб-приложения tooread hello мнений в режиме реального времени с данным hello HBase и построения на Bing maps.</span><span class="sxs-lookup"><span data-stu-id="373a4-167">In this section, you create an ASP.NET MVC web application tooread hello real-time sentiment data from HBase and plot hello data on Bing maps.</span></span>
 
-<span data-ttu-id="17ee0-168">**Создание веб-приложения ASP.NET MVC**</span><span class="sxs-lookup"><span data-stu-id="17ee0-168">**To create an ASP.NET MVC Web application**</span></span>
+<span data-ttu-id="373a4-168">**toocreate приложений ASP.NET MVC**</span><span class="sxs-lookup"><span data-stu-id="373a4-168">**toocreate an ASP.NET MVC Web application**</span></span>
 
-1. <span data-ttu-id="17ee0-169">Откройте Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="17ee0-169">Open Visual Studio.</span></span>
-2. <span data-ttu-id="17ee0-170">В меню **Файл** выберите пункт **Создать**, а затем щелкните **Проект**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-170">Click **File**, click **New**, and then click **Project**.</span></span>
-3. <span data-ttu-id="17ee0-171">Введите следующие сведения:</span><span class="sxs-lookup"><span data-stu-id="17ee0-171">Enter the following information:</span></span>
+1. <span data-ttu-id="373a4-169">Откройте Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="373a4-169">Open Visual Studio.</span></span>
+2. <span data-ttu-id="373a4-170">В меню **Файл** выберите пункт **Создать**, а затем щелкните **Проект**.</span><span class="sxs-lookup"><span data-stu-id="373a4-170">Click **File**, click **New**, and then click **Project**.</span></span>
+3. <span data-ttu-id="373a4-171">Введите hello следующую информацию:</span><span class="sxs-lookup"><span data-stu-id="373a4-171">Enter hello following information:</span></span>
 
-   * <span data-ttu-id="17ee0-172">Категория шаблона: **Visual C# или веб-сайт**</span><span class="sxs-lookup"><span data-stu-id="17ee0-172">Template category: **Visual C#/Web**</span></span>
-   * <span data-ttu-id="17ee0-173">Шаблон: **веб-приложение ASP.NET**</span><span class="sxs-lookup"><span data-stu-id="17ee0-173">Template: **ASP.NET Web Application**</span></span>
-   * <span data-ttu-id="17ee0-174">Имя: **TweetSentimentWeb**</span><span class="sxs-lookup"><span data-stu-id="17ee0-174">Name: **TweetSentimentWeb**</span></span>
-   * <span data-ttu-id="17ee0-175">Расположение: **C:\Tutorials**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-175">Location: **C:\Tutorials**</span></span>
-4. <span data-ttu-id="17ee0-176">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-176">Click **OK**.</span></span>
-5. <span data-ttu-id="17ee0-177">В разделе **Выбор шаблона** щелкните **MVC**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-177">In **Select a template**, click **MVC**.</span></span>
-6. <span data-ttu-id="17ee0-178">В **Microsoft Azure** щелкните **Управление подписками**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-178">In **Microsoft Azure**, click **Manage Subscriptions**.</span></span>
-7. <span data-ttu-id="17ee0-179">В окне **Управление подписками Microsoft Azure** щелкните **Вход**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-179">From **Manage Microsoft Azure Subscriptions**, click **Sign in**.</span></span>
-8. <span data-ttu-id="17ee0-180">Введите учетные данные Azure.</span><span class="sxs-lookup"><span data-stu-id="17ee0-180">Enter your Azure credentials.</span></span> <span data-ttu-id="17ee0-181">Сведения о вашей подписке Azure отображаются на вкладке **Учетные записи**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-181">Your Azure subscription information is shown on the **Accounts** tab.</span></span>
-9. <span data-ttu-id="17ee0-182">Щелкните **Закрыть**, чтобы закрыть окно **Управление подписками Microsoft Azure**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-182">Click **Close** to close the **Manage Microsoft Azure Subscriptions** window.</span></span>
-10. <span data-ttu-id="17ee0-183">В окне **New ASP.NET Project - TweetSentimentWeb** (Новый проект ASP.NET — TweetSentimentWeb) нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-183">From **New ASP.NET Project - TweetSentimentWeb**, click **OK**.</span></span>
-11. <span data-ttu-id="17ee0-184">В окне **Configure Microsoft Azure Site Settings** (Настройка параметров сайта Microsoft Azure) выберите ближайший к вам **регион**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-184">From **Configure Microsoft Azure Site Settings**, select the **Region** that is closest to you.</span></span> <span data-ttu-id="17ee0-185">Указывать сервер базы данных не нужно.</span><span class="sxs-lookup"><span data-stu-id="17ee0-185">You don't need to specify a database server.</span></span>
-12. <span data-ttu-id="17ee0-186">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-186">Click **OK**.</span></span>
+   * <span data-ttu-id="373a4-172">Категория шаблона: **Visual C# или веб-сайт**</span><span class="sxs-lookup"><span data-stu-id="373a4-172">Template category: **Visual C#/Web**</span></span>
+   * <span data-ttu-id="373a4-173">Шаблон: **веб-приложение ASP.NET**</span><span class="sxs-lookup"><span data-stu-id="373a4-173">Template: **ASP.NET Web Application**</span></span>
+   * <span data-ttu-id="373a4-174">Имя: **TweetSentimentWeb**</span><span class="sxs-lookup"><span data-stu-id="373a4-174">Name: **TweetSentimentWeb**</span></span>
+   * <span data-ttu-id="373a4-175">Расположение: **C:\Tutorials**.</span><span class="sxs-lookup"><span data-stu-id="373a4-175">Location: **C:\Tutorials**</span></span>
+4. <span data-ttu-id="373a4-176">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="373a4-176">Click **OK**.</span></span>
+5. <span data-ttu-id="373a4-177">В разделе **Выбор шаблона** щелкните **MVC**.</span><span class="sxs-lookup"><span data-stu-id="373a4-177">In **Select a template**, click **MVC**.</span></span>
+6. <span data-ttu-id="373a4-178">В **Microsoft Azure** щелкните **Управление подписками**.</span><span class="sxs-lookup"><span data-stu-id="373a4-178">In **Microsoft Azure**, click **Manage Subscriptions**.</span></span>
+7. <span data-ttu-id="373a4-179">В окне **Управление подписками Microsoft Azure** щелкните **Вход**.</span><span class="sxs-lookup"><span data-stu-id="373a4-179">From **Manage Microsoft Azure Subscriptions**, click **Sign in**.</span></span>
+8. <span data-ttu-id="373a4-180">Введите учетные данные Azure.</span><span class="sxs-lookup"><span data-stu-id="373a4-180">Enter your Azure credentials.</span></span> <span data-ttu-id="373a4-181">Сведения о ваших подписках Azure отображается на hello **учетные записи** вкладки.</span><span class="sxs-lookup"><span data-stu-id="373a4-181">Your Azure subscription information is shown on hello **Accounts** tab.</span></span>
+9. <span data-ttu-id="373a4-182">Нажмите кнопку **закрыть** tooclose hello **управление подписками Microsoft Azure** окна.</span><span class="sxs-lookup"><span data-stu-id="373a4-182">Click **Close** tooclose hello **Manage Microsoft Azure Subscriptions** window.</span></span>
+10. <span data-ttu-id="373a4-183">В окне **New ASP.NET Project - TweetSentimentWeb** (Новый проект ASP.NET — TweetSentimentWeb) нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="373a4-183">From **New ASP.NET Project - TweetSentimentWeb**, click **OK**.</span></span>
+11. <span data-ttu-id="373a4-184">Из **настроить параметры сайта Microsoft Azure**выберите hello **область** именно ближайшего tooyou.</span><span class="sxs-lookup"><span data-stu-id="373a4-184">From **Configure Microsoft Azure Site Settings**, select hello **Region** that is closest tooyou.</span></span> <span data-ttu-id="373a4-185">Не нужно toospecify сервера базы данных.</span><span class="sxs-lookup"><span data-stu-id="373a4-185">You don't need toospecify a database server.</span></span>
+12. <span data-ttu-id="373a4-186">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="373a4-186">Click **OK**.</span></span>
 
-<span data-ttu-id="17ee0-187">**Установка пакетов Nuget**</span><span class="sxs-lookup"><span data-stu-id="17ee0-187">**To install NuGet packages**</span></span>
+<span data-ttu-id="373a4-187">**пакеты NuGet tooinstall**</span><span class="sxs-lookup"><span data-stu-id="373a4-187">**tooinstall NuGet packages**</span></span>
 
-1. <span data-ttu-id="17ee0-188">В меню **Средства** щелкните **Диспетчер пакетов Nuget**, а затем щелкните **Консоль диспетчера пакетов**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-188">From the **Tools** menu, click **Nuget Package Manager**, and then click **Package Manager Console**.</span></span> <span data-ttu-id="17ee0-189">В нижней части страницы откроется консольная панель.</span><span class="sxs-lookup"><span data-stu-id="17ee0-189">The console panel is opened at the bottom of the page.</span></span>
-2. <span data-ttu-id="17ee0-190">Используйте следующую команду, чтобы установить [пакет SDK для .NET HBase](https://www.nuget.org/packages/Microsoft.HBase.Client/) , который представляет клиентскую библиотеку для доступа к кластеру HBase:</span><span class="sxs-lookup"><span data-stu-id="17ee0-190">Use the following command to install the [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) package, which is the client library to access HBase cluster:</span></span>
+1. <span data-ttu-id="373a4-188">Из hello **средства** меню, нажмите кнопку **диспетчера пакетов Nuget**, а затем нажмите кнопку **консоль диспетчера пакетов**.</span><span class="sxs-lookup"><span data-stu-id="373a4-188">From hello **Tools** menu, click **Nuget Package Manager**, and then click **Package Manager Console**.</span></span> <span data-ttu-id="373a4-189">открывается панель консоли Hello hello нижней части страницы приветствия.</span><span class="sxs-lookup"><span data-stu-id="373a4-189">hello console panel is opened at hello bottom of hello page.</span></span>
+2. <span data-ttu-id="373a4-190">Используйте hello следующая команда tooinstall hello [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) пакет, который представляет hello клиента библиотеки tooaccess кластер HBase:</span><span class="sxs-lookup"><span data-stu-id="373a4-190">Use hello following command tooinstall hello [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) package, which is hello client library tooaccess HBase cluster:</span></span>
 
         Install-Package Microsoft.HBase.Client
 
-<span data-ttu-id="17ee0-191">**Добавление класса HBaseReader**</span><span class="sxs-lookup"><span data-stu-id="17ee0-191">**To add HBaseReader class**</span></span>
+<span data-ttu-id="373a4-191">**tooadd HBaseReader-класс**</span><span class="sxs-lookup"><span data-stu-id="373a4-191">**tooadd HBaseReader class**</span></span>
 
-1. <span data-ttu-id="17ee0-192">В **обозревателе решений** разверните элемент **TweetSentiment**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-192">From **Solution Explorer**, expand **TweetSentiment**.</span></span>
-2. <span data-ttu-id="17ee0-193">Щелкните правой кнопкой мыши элемент **Модели**, выберите пункт **Добавить** и щелкните **Класс**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-193">Right-click **Models**, click **Add**, and then click **Class**.</span></span>
-3. <span data-ttu-id="17ee0-194">В поле **Имя** введите **HBaseReader.cs** и щелкните **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-194">In the **Name** field, type **HBaseReader.cs**, and then click **Add**.</span></span>
-4. <span data-ttu-id="17ee0-195">Замените код на приведенный ниже:</span><span class="sxs-lookup"><span data-stu-id="17ee0-195">Replace the code with the following:</span></span>
+1. <span data-ttu-id="373a4-192">В **обозревателе решений** разверните элемент **TweetSentiment**.</span><span class="sxs-lookup"><span data-stu-id="373a4-192">From **Solution Explorer**, expand **TweetSentiment**.</span></span>
+2. <span data-ttu-id="373a4-193">Щелкните правой кнопкой мыши элемент **Модели**, выберите пункт **Добавить** и щелкните **Класс**.</span><span class="sxs-lookup"><span data-stu-id="373a4-193">Right-click **Models**, click **Add**, and then click **Class**.</span></span>
+3. <span data-ttu-id="373a4-194">В hello **имя** введите **HBaseReader.cs**, а затем нажмите кнопку **добавить**.</span><span class="sxs-lookup"><span data-stu-id="373a4-194">In hello **Name** field, type **HBaseReader.cs**, and then click **Add**.</span></span>
+4. <span data-ttu-id="373a4-195">Замените код hello hello следующее:</span><span class="sxs-lookup"><span data-stu-id="373a4-195">Replace hello code with hello following:</span></span>
 
         using System;
         using System.Collections.Generic;
@@ -485,7 +485,7 @@ ms.lasthandoff: 08/03/2017
                 const string HADOOPUSERPASSWORD = "<HBaseCluserUserPassword>";
                 const string HBASETABLENAME = "tweets_by_words";
 
-                // The constructor
+                // hello constructor
                 public HBaseReader()
                 {
                     ClusterCredentials creds = new ClusterCredentials(
@@ -495,12 +495,12 @@ ms.lasthandoff: 08/03/2017
                     client = new HBaseClient(creds);
                 }
 
-                // Query Tweets sentiment data from the HBase table asynchronously
+                // Query Tweets sentiment data from hello HBase table asynchronously
                 public async Task<IEnumerable<Tweet>> QueryTweetsByKeywordAsync(string keyword)
                 {
                     List<Tweet> list = new List<Tweet>();
 
-                    // Demonstrate Filtering the data from the past 6 hours the row key
+                    // Demonstrate Filtering hello data from hello past 6 hours hello row key
                     string timeIndex = (ulong.MaxValue -
                         (ulong)DateTime.UtcNow.Subtract(new TimeSpan(6, 0, 0)).ToBinary()).ToString().PadLeft(20);
                     string startRow = keyword + "_" + timeIndex;
@@ -522,7 +522,7 @@ ms.lasthandoff: 08/03/2017
                     {
                         foreach (CellSet.Row row in next.rows)
                         {
-                            // find the cell with string pattern "d:coor"
+                            // find hello cell with string pattern "d:coor"
                             var coordinates =
                                 row.values.Find(c => Encoding.UTF8.GetString(c.column) == "d:coor");
 
@@ -567,23 +567,23 @@ ms.lasthandoff: 08/03/2017
                 public int Sentiment { get; set; }
             }
         }
-5. <span data-ttu-id="17ee0-196">В классе **HBaseReader** измените значения констант следующим образом:</span><span class="sxs-lookup"><span data-stu-id="17ee0-196">Inside the **HBaseReader** class, change the constant values as follows:</span></span>
+5. <span data-ttu-id="373a4-196">Внутри hello **HBaseReader** класса, измените значения констант hello следующим образом:</span><span class="sxs-lookup"><span data-stu-id="373a4-196">Inside hello **HBaseReader** class, change hello constant values as follows:</span></span>
 
-   * <span data-ttu-id="17ee0-197">**CLUSTERNAME**: имя кластера HBase, например *https://<HBaseClusterName>.azurehdinsight.net/*.</span><span class="sxs-lookup"><span data-stu-id="17ee0-197">**CLUSTERNAME**: The HBase cluster name, for example, *https://<HBaseClusterName>.azurehdinsight.net/*.</span></span>
-   * <span data-ttu-id="17ee0-198">**HADOOPUSERNAME**: имя пользователя Hadoop в кластере HBase.</span><span class="sxs-lookup"><span data-stu-id="17ee0-198">**HADOOPUSERNAME**: The HBase cluster Hadoop user user name.</span></span> <span data-ttu-id="17ee0-199">Имя по умолчанию — *admin*.</span><span class="sxs-lookup"><span data-stu-id="17ee0-199">The default name is *admin*.</span></span>
-   * <span data-ttu-id="17ee0-200">**HADOOPUSERPASSWORD**: пароль пользователя Hadoop в кластере HBase.</span><span class="sxs-lookup"><span data-stu-id="17ee0-200">**HADOOPUSERPASSWORD**: The HBase cluster Hadoop user password.</span></span>
-   * <span data-ttu-id="17ee0-201">**HBASETABLENAME**: tweets_by_words.</span><span class="sxs-lookup"><span data-stu-id="17ee0-201">**HBASETABLENAME** = "tweets_by_words";</span></span>
+   * <span data-ttu-id="373a4-197">**ИМЯ_КЛАСТЕРА**: hello HBase имя кластера, например, *https://<HBaseClusterName>.azurehdinsight.net/*.</span><span class="sxs-lookup"><span data-stu-id="373a4-197">**CLUSTERNAME**: hello HBase cluster name, for example, *https://<HBaseClusterName>.azurehdinsight.net/*.</span></span>
+   * <span data-ttu-id="373a4-198">**HADOOPUSERNAME**: hello HBase кластера Hadoop пользователя имя пользователя.</span><span class="sxs-lookup"><span data-stu-id="373a4-198">**HADOOPUSERNAME**: hello HBase cluster Hadoop user user name.</span></span> <span data-ttu-id="373a4-199">имя по умолчанию Hello — *администратора*.</span><span class="sxs-lookup"><span data-stu-id="373a4-199">hello default name is *admin*.</span></span>
+   * <span data-ttu-id="373a4-200">**HADOOPUSERPASSWORD**: hello HBase кластера Hadoop пользователя пароль.</span><span class="sxs-lookup"><span data-stu-id="373a4-200">**HADOOPUSERPASSWORD**: hello HBase cluster Hadoop user password.</span></span>
+   * <span data-ttu-id="373a4-201">**HBASETABLENAME**: tweets_by_words.</span><span class="sxs-lookup"><span data-stu-id="373a4-201">**HBASETABLENAME** = "tweets_by_words";</span></span>
 
-     <span data-ttu-id="17ee0-202">Имя таблицы HBase — **tweets_by_words**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-202">The HBase table name is **"tweets_by_words";**.</span></span> <span data-ttu-id="17ee0-203">Значения должны совпадать со значениями, отправленными в службу потоковой передачи, чтобы веб-приложение считывало данные из той же таблицы HBase.</span><span class="sxs-lookup"><span data-stu-id="17ee0-203">The values must match the values you sent in the streaming service, so that the web application reads the data from the same HBase table.</span></span>
+     <span data-ttu-id="373a4-202">Имя таблицы в HBase Hello **«tweets_by_words»;**.</span><span class="sxs-lookup"><span data-stu-id="373a4-202">hello HBase table name is **"tweets_by_words";**.</span></span> <span data-ttu-id="373a4-203">значения Hello, должна соответствовать значениям hello отправлялась hello службы, потоковой передачи, чтобы веб-приложение hello hello данные считываются из hello одной таблицы в HBase.</span><span class="sxs-lookup"><span data-stu-id="373a4-203">hello values must match hello values you sent in hello streaming service, so that hello web application reads hello data from hello same HBase table.</span></span>
 
-<span data-ttu-id="17ee0-204">**Добавление контроллера TweetsController**</span><span class="sxs-lookup"><span data-stu-id="17ee0-204">**To add TweetsController controller**</span></span>
+<span data-ttu-id="373a4-204">**tooadd TweetsController контроллера**</span><span class="sxs-lookup"><span data-stu-id="373a4-204">**tooadd TweetsController controller**</span></span>
 
-1. <span data-ttu-id="17ee0-205">В **обозревателе решений** разверните элемент **TweetSentimentWeb**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-205">From **Solution Explorer**, expand **TweetSentimentWeb**.</span></span>
-2. <span data-ttu-id="17ee0-206">Щелкните правой кнопкой мыши элемент **Контроллеры**, выберите пункт **Добавить**, а затем щелкните **Контроллер**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-206">Right-click **Controllers**, click **Add**, and then click **Controller**.</span></span>
-3. <span data-ttu-id="17ee0-207">Щелкните элемент **Контроллер Web API 2 — пустой** и нажмите кнопку **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-207">Click **Web API 2 Controller - Empty**, and then click **Add**.</span></span>
-4. <span data-ttu-id="17ee0-208">В поле **Имя контроллера** введите **TweetsController** и нажмите кнопку **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-208">In the **Controller name** field, type **TweetsController**, and then click **Add**.</span></span>
-5. <span data-ttu-id="17ee0-209">В **обозревателе решений**дважды щелкните файл TweetsController.cs, чтобы открыть его.</span><span class="sxs-lookup"><span data-stu-id="17ee0-209">From **Solution Explorer**, double-click TweetsController.cs to open the file.</span></span>
-6. <span data-ttu-id="17ee0-210">Измените файл так, чтобы он выглядел следующим образом:</span><span class="sxs-lookup"><span data-stu-id="17ee0-210">Modify the file, so it looks like the following:</span></span>
+1. <span data-ttu-id="373a4-205">В **обозревателе решений** разверните элемент **TweetSentimentWeb**.</span><span class="sxs-lookup"><span data-stu-id="373a4-205">From **Solution Explorer**, expand **TweetSentimentWeb**.</span></span>
+2. <span data-ttu-id="373a4-206">Щелкните правой кнопкой мыши элемент **Контроллеры**, выберите пункт **Добавить**, а затем щелкните **Контроллер**.</span><span class="sxs-lookup"><span data-stu-id="373a4-206">Right-click **Controllers**, click **Add**, and then click **Controller**.</span></span>
+3. <span data-ttu-id="373a4-207">Щелкните элемент **Контроллер Web API 2 — пустой** и нажмите кнопку **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="373a4-207">Click **Web API 2 Controller - Empty**, and then click **Add**.</span></span>
+4. <span data-ttu-id="373a4-208">В hello **имя контроллера** введите **TweetsController**, а затем нажмите кнопку **добавить**.</span><span class="sxs-lookup"><span data-stu-id="373a4-208">In hello **Controller name** field, type **TweetsController**, and then click **Add**.</span></span>
+5. <span data-ttu-id="373a4-209">Из **обозревателе решений**, дважды щелкните файл hello tooopen TweetsController.cs.</span><span class="sxs-lookup"><span data-stu-id="373a4-209">From **Solution Explorer**, double-click TweetsController.cs tooopen hello file.</span></span>
+6. <span data-ttu-id="373a4-210">Измените файл hello, чтобы он выглядел hello следующим образом:</span><span class="sxs-lookup"><span data-stu-id="373a4-210">Modify hello file, so it looks like hello following:</span></span>
 
         using System;
         using System.Collections.Generic;
@@ -608,12 +608,12 @@ ms.lasthandoff: 08/03/2017
             }
         }
 
-<span data-ttu-id="17ee0-211">**Добавление файла heatmap.js**</span><span class="sxs-lookup"><span data-stu-id="17ee0-211">**To add heatmap.js**</span></span>
+<span data-ttu-id="373a4-211">**tooadd heatmap.js**</span><span class="sxs-lookup"><span data-stu-id="373a4-211">**tooadd heatmap.js**</span></span>
 
-1. <span data-ttu-id="17ee0-212">В **обозревателе решений** разверните элемент **TweetSentimentWeb**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-212">From **Solution Explorer**, expand **TweetSentimentWeb**.</span></span>
-2. <span data-ttu-id="17ee0-213">Щелкните правой кнопкой мыши элемент **Скрипты**, выберите пункт **Добавить** и щелкните **Файл JavaScript**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-213">Right-click **Scripts**, click **Add**, click **JavaScript File**.</span></span>
-3. <span data-ttu-id="17ee0-214">В поле **Имя элемента** введите **heatmap.js**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-214">In the **Item name** field, type **heatmap.js**.</span></span>
-4. <span data-ttu-id="17ee0-215">Скопируйте приведенный ниже код и вставьте его в файл.</span><span class="sxs-lookup"><span data-stu-id="17ee0-215">Paste the following code into the file.</span></span> <span data-ttu-id="17ee0-216">Код был создан Аластером Эйтчисоном (Alastair Aitchison).</span><span class="sxs-lookup"><span data-stu-id="17ee0-216">The code was written by Alastair Aitchison.</span></span> <span data-ttu-id="17ee0-217">Дополнительные сведения см. в статье [Bing Maps AJAX v7 HeatMap Library](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/) (Библиотека тепловых карт AJAX вер. 7 для Карт Bing).</span><span class="sxs-lookup"><span data-stu-id="17ee0-217">For more information, see [Bing Maps AJAX v7 HeatMap Library](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/).</span></span>
+1. <span data-ttu-id="373a4-212">В **обозревателе решений** разверните элемент **TweetSentimentWeb**.</span><span class="sxs-lookup"><span data-stu-id="373a4-212">From **Solution Explorer**, expand **TweetSentimentWeb**.</span></span>
+2. <span data-ttu-id="373a4-213">Щелкните правой кнопкой мыши элемент **Скрипты**, выберите пункт **Добавить** и щелкните **Файл JavaScript**.</span><span class="sxs-lookup"><span data-stu-id="373a4-213">Right-click **Scripts**, click **Add**, click **JavaScript File**.</span></span>
+3. <span data-ttu-id="373a4-214">В hello **имя элемента** введите **heatmap.js**.</span><span class="sxs-lookup"><span data-stu-id="373a4-214">In hello **Item name** field, type **heatmap.js**.</span></span>
+4. <span data-ttu-id="373a4-215">Вставьте следующий код в файл hello hello.</span><span class="sxs-lookup"><span data-stu-id="373a4-215">Paste hello following code into hello file.</span></span> <span data-ttu-id="373a4-216">Hello кода было написано с Alastair Aitchison.</span><span class="sxs-lookup"><span data-stu-id="373a4-216">hello code was written by Alastair Aitchison.</span></span> <span data-ttu-id="373a4-217">Дополнительные сведения см. в статье [Bing Maps AJAX v7 HeatMap Library](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/) (Библиотека тепловых карт AJAX вер. 7 для Карт Bing).</span><span class="sxs-lookup"><span data-stu-id="373a4-217">For more information, see [Bing Maps AJAX v7 HeatMap Library](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/).</span></span>
 
         /*******************************************************************************
         * Author: Alastair Aitchison
@@ -621,22 +621,22 @@ ms.lasthandoff: 08/03/2017
         * Date: 15th April 2011
         *
         * Description:
-        * This JavaScript file provides an algorithm that can be used to add a heatmap
-        * overlay on a Bing Maps v7 control. The intensity and temperature palette
-        * of the heatmap are designed to be easily customisable.
+        * This JavaScript file provides an algorithm that can be used tooadd a heatmap
+        * overlay on a Bing Maps v7 control. hello intensity and temperature palette
+        * of hello heatmap are designed toobe easily customisable.
         *
         * Requirements:
-        * The heatmap layer itself is created dynamically on the client-side using
-        * the HTML5 &lt;canvas> element, and therefore requires a browser that supports
+        * hello heatmap layer itself is created dynamically on hello client-side using
+        * hello HTML5 &lt;canvas> element, and therefore requires a browser that supports
         * this element. It has been tested on IE9, Firefox 3.6/4 and
         * Chrome 10 browsers. If you can confirm whether it works on other browsers or
-        * not, I'd love to hear from you!
+        * not, I'd love toohear from you!
         *
         * Usage:
-        * The HeatMapLayer constructor requires:
-        * - A reference to a map object
+        * hello HeatMapLayer constructor requires:
+        * - A reference tooa map object
         * - An array or Microsoft.Maps.Location items
-        * - Optional parameters to customise the appearance of the layer
+        * - Optional parameters toocustomise hello appearance of hello layer
         *  (Radius,, Unit, Intensity, and ColourGradient), and a callback function
         */
 
@@ -652,16 +652,16 @@ ms.lasthandoff: 08/03/2017
 
             // Set default options
             var _options = {
-                // Opacity at the centre of each heat point
+                // Opacity at hello centre of each heat point
                 intensity: 0.5,
 
                 // Affected radius of each heat point
                 radius: 1000,
 
-                // Whether the radius is an absolute pixel value or meters
+                // Whether hello radius is an absolute pixel value or meters
                 unit: 'meters',
 
-                // Colour temperature gradient of the map
+                // Colour temperature gradient of hello map
                 colourgradient: {
                     "0.00": 'rgba(255,0,255,20)',  // Magenta
                     "0.25": 'rgba(0,0,255,40)',    // Blue
@@ -670,7 +670,7 @@ ms.lasthandoff: 08/03/2017
                     "1.00": 'rgba(255,0,0,150)'    // Red
                 },
 
-                // Callback function to be fired after heatmap layer has been redrawn
+                // Callback function toobe fired after heatmap layer has been redrawn
                 callback: null
             };
 
@@ -679,7 +679,7 @@ ms.lasthandoff: 08/03/2017
                 var _mapDiv = _map.getRootElement();
 
                 if (_mapDiv.childNodes.length >= 3 && _mapDiv.childNodes[2].childNodes.length >= 2) {
-                    // Create the canvas element
+                    // Create hello canvas element
                     _canvas = document.createElement('canvas');
                     _canvas.style.position = 'relative';
 
@@ -691,16 +691,16 @@ ms.lasthandoff: 08/03/2017
 
                     _mapDiv.childNodes[2].childNodes[1].appendChild(container);
 
-                    // Override defaults with any options passed in the constructor
+                    // Override defaults with any options passed in hello constructor
                     _setOptions(options);
 
                     // Load array of location data
                     _setPoints(locations);
 
-                    // Create a colour gradient from the suppied colourstops
+                    // Create a colour gradient from hello suppied colourstops
                     _temperaturemap = _createColourGradient(_options.colourgradient);
 
-                    // Wire up the event handler to redraw heatmap canvas
+                    // Wire up hello event handler tooredraw heatmap canvas
                     _viewchangestarthandler = Microsoft.Maps.Events.addHandler(_map, 'viewchangestart', _clearHeatMap);
                     _viewchangeendhandler = Microsoft.Maps.Events.addHandler(_map, 'viewchangeend', _createHeatMap);
 
@@ -712,7 +712,7 @@ ms.lasthandoff: 08/03/2017
                 }
             }
 
-            // Resets the heat map
+            // Resets hello heat map
             function _clearHeatMap() {
                 var ctx = _canvas.getContext("2d");
                 ctx.clearRect(0, 0, _canvas.width, _canvas.height);
@@ -730,19 +730,19 @@ ms.lasthandoff: 08/03/2017
                 return ctx.getImageData(0, 0, 256, 1).data;
             }
 
-            // Applies a colour gradient to the intensity map
+            // Applies a colour gradient toohello intensity map
             function _colouriseHeatMap() {
                 var ctx = _canvas.getContext("2d");
                 var dat = ctx.getImageData(0, 0, _canvas.width, _canvas.height);
                 var pix = dat.data; // pix is a CanvasPixelArray containing height x width x 4 bytes of data (RGBA)
                 for (var p = 0, len = pix.length; p < len;) {
-                    var a = pix[p + 3] * 4; // get the alpha of this pixel
-                    if (a != 0) { // If there is any data to plot
-                        pix[p] = _temperaturemap[a]; // set the red value of the gradient that corresponds to this alpha
-                        pix[p + 1] = _temperaturemap[a + 1]; //set the green value based on alpha
-                        pix[p + 2] = _temperaturemap[a + 2]; //set the blue value based on alpha
+                    var a = pix[p + 3] * 4; // get hello alpha of this pixel
+                    if (a != 0) { // If there is any data tooplot
+                        pix[p] = _temperaturemap[a]; // set hello red value of hello gradient that corresponds toothis alpha
+                        pix[p + 1] = _temperaturemap[a + 1]; //set hello green value based on alpha
+                        pix[p + 2] = _temperaturemap[a + 2]; //set hello blue value based on alpha
                     }
-                    p += 4; // Move on to the next pixel
+                    p += 4; // Move on toohello next pixel
                 }
                 ctx.putImageData(dat, 0, 0);
             }
@@ -754,22 +754,22 @@ ms.lasthandoff: 08/03/2017
                 }
             }
 
-            // Sets the heatmap points from an array of Microsoft.Maps.Locations  
+            // Sets hello heatmap points from an array of Microsoft.Maps.Locations  
             function _setPoints(locations) {
                 _locations = locations;
             }
 
-            // Main method to draw the heatmap
+            // Main method toodraw hello heatmap
             function _createHeatMap() {
-                // Ensure the canvas matches the current dimensions of the map
-                // This also has the effect of resetting the canvas
+                // Ensure hello canvas matches hello current dimensions of hello map
+                // This also has hello effect of resetting hello canvas
                 _canvas.height = _map.getHeight();
                 _canvas.width = _map.getWidth();
 
                 _canvas.style.top = -_canvas.height / 2 + 'px';
                 _canvas.style.left = -_canvas.width / 2 + 'px';
 
-                // Calculate the pixel radius of each heatpoint at the current map zoom
+                // Calculate hello pixel radius of each heatpoint at hello current map zoom
                 if (_options.unit == "pixels") {
                     radiusInPixel = _options.radius;
                 } else {
@@ -778,12 +778,12 @@ ms.lasthandoff: 08/03/2017
 
                 var ctx = _canvas.getContext("2d");
 
-                // Convert lat/long to pixel location
+                // Convert lat/long toopixel location
                 var pixlocs = _map.tryLocationToPixel(_locations, Microsoft.Maps.PixelReference.control);
                 var shadow = 'rgba(0, 0, 0, ' + _options.intensity + ')';
                 var mapWidth = 256 * Math.pow(2, _map.getZoom());
 
-                // Create the Intensity Map by looping through each location
+                // Create hello Intensity Map by looping through each location
                 for (var i = 0, len = pixlocs.length; i < len; i++) {
                     var x = pixlocs[i].x;
                     var y = pixlocs[i].y;
@@ -797,15 +797,15 @@ ms.lasthandoff: 08/03/2017
                     grd.addColorStop(0.0, shadow);
                     grd.addColorStop(1.0, 'transparent');
 
-                    // Draw the heatpoint onto the canvas
+                    // Draw hello heatpoint onto hello canvas
                     ctx.fillStyle = grd;
                     ctx.fillRect(x - radiusInPixel, y - radiusInPixel, 2 * radiusInPixel, 2 * radiusInPixel);
                 }
 
-                // Apply the specified colour gradient to the intensity map
+                // Apply hello specified colour gradient toohello intensity map
                 _colouriseHeatMap();
 
-                // Call the callback function, if specified
+                // Call hello callback function, if specified
                 if (_options.callback) {
                     _options.callback();
                 }
@@ -830,17 +830,17 @@ ms.lasthandoff: 08/03/2017
                 _setOptions(options);
             }
 
-            // Sets an array of Microsoft.Maps.Locations from which the heatmap is created
+            // Sets an array of Microsoft.Maps.Locations from which hello heatmap is created
             this.SetPoints = function (locations) {
-                // Reset the existing heatmap layer
+                // Reset hello existing heatmap layer
                 _clearHeatMap();
-                // Pass in the new set of locations
+                // Pass in hello new set of locations
                 _setPoints(locations);
-                // Recreate the layer
+                // Recreate hello layer
                 _createHeatMap();
             }
 
-            // Removes the heatmap layer from the DOM
+            // Removes hello heatmap layer from hello DOM
             this.Remove = function () {
                 _canvas.parentNode.parentNode.removeChild(_canvas.parentNode);
 
@@ -855,19 +855,19 @@ ms.lasthandoff: 08/03/2017
                 _viewchangeendhandler = null;
             }
 
-            // Call the initialisation routine
+            // Call hello initialisation routine
             _init();
         };
 
-        // Call the Module Loaded method
+        // Call hello Module Loaded method
         Microsoft.Maps.moduleLoaded('HeatMapModule');
 
-<span data-ttu-id="17ee0-218">**Добавление файла twitterStream.js**</span><span class="sxs-lookup"><span data-stu-id="17ee0-218">**To add twitterStream.js**</span></span>
+<span data-ttu-id="373a4-218">**tooadd twitterStream.js**</span><span class="sxs-lookup"><span data-stu-id="373a4-218">**tooadd twitterStream.js**</span></span>
 
-1. <span data-ttu-id="17ee0-219">В **обозревателе решений** разверните элемент **TweetSentimentWeb**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-219">From **Solution Explorer**, expand **TweetSentimentWeb**.</span></span>
-2. <span data-ttu-id="17ee0-220">Щелкните правой кнопкой мыши элемент **Скрипты**, выберите пункт **Добавить** и щелкните **Файл JavaScript**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-220">Right-click **Scripts**, click **Add**, click **JavaScript File**.</span></span>
-3. <span data-ttu-id="17ee0-221">В поле **Имя элемента** введите **twitterStream.js**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-221">In the **Item name** field, type**twitterStream.js**.</span></span>
-4. <span data-ttu-id="17ee0-222">Скопируйте следующий код и вставьте его в файл:</span><span class="sxs-lookup"><span data-stu-id="17ee0-222">Copy and paste the following code into the file:</span></span>
+1. <span data-ttu-id="373a4-219">В **обозревателе решений** разверните элемент **TweetSentimentWeb**.</span><span class="sxs-lookup"><span data-stu-id="373a4-219">From **Solution Explorer**, expand **TweetSentimentWeb**.</span></span>
+2. <span data-ttu-id="373a4-220">Щелкните правой кнопкой мыши элемент **Скрипты**, выберите пункт **Добавить** и щелкните **Файл JavaScript**.</span><span class="sxs-lookup"><span data-stu-id="373a4-220">Right-click **Scripts**, click **Add**, click **JavaScript File**.</span></span>
+3. <span data-ttu-id="373a4-221">В hello **имя элемента** введите**twitterStream.js**.</span><span class="sxs-lookup"><span data-stu-id="373a4-221">In hello **Item name** field, type**twitterStream.js**.</span></span>
+4. <span data-ttu-id="373a4-222">Скопируйте и вставьте следующий код в файл hello hello:</span><span class="sxs-lookup"><span data-stu-id="373a4-222">Copy and paste hello following code into hello file:</span></span>
 
         var liveTweetsPos = [];
         var liveTweets = [];
@@ -878,7 +878,7 @@ ms.lasthandoff: 08/03/2017
         var heatmapPos;
 
         function initialize() {
-            // Initialize the map
+            // Initialize hello map
             var options = {
                 credentials: "AvFJTZPZv8l3gF8VC3Y7BPBd0r7LKo8dqKG02EAlqg9WAi0M7la6zSIT-HwkMQbx",
                 center: new Microsoft.Maps.Location(23.0, 8.0),
@@ -891,24 +891,24 @@ ms.lasthandoff: 08/03/2017
             // Heatmap options for positive, neutral and negative layers
 
             var heatmapOptions = {
-                // Opacity at the centre of each heat point
+                // Opacity at hello centre of each heat point
                 intensity: 0.5,
 
                 // Affected radius of each heat point
                 radius: 15,
 
-                // Whether the radius is an absolute pixel value or meters
+                // Whether hello radius is an absolute pixel value or meters
                 unit: 'pixels'
             };
 
             var heatmapPosOptions = {
-                // Opacity at the centre of each heat point
+                // Opacity at hello centre of each heat point
                 intensity: 0.5,
 
                 // Affected radius of each heat point
                 radius: 15,
 
-                // Whether the radius is an absolute pixel value or meters
+                // Whether hello radius is an absolute pixel value or meters
                 unit: 'pixels',
 
                 colourgradient: {
@@ -926,13 +926,13 @@ ms.lasthandoff: 08/03/2017
             };
 
             var heatmapNegOptions = {
-                // Opacity at the centre of each heat point
+                // Opacity at hello centre of each heat point
                 intensity: 0.5,
 
                 // Affected radius of each heat point
                 radius: 15,
 
-                // Whether the radius is an absolute pixel value or meters
+                // Whether hello radius is an absolute pixel value or meters
                 unit: 'pixels',
 
                 colourgradient: {
@@ -949,7 +949,7 @@ ms.lasthandoff: 08/03/2017
                 }
             };
 
-            // Register and load the Client Side HeatMap Module
+            // Register and load hello Client Side HeatMap Module
             Microsoft.Maps.registerModule("HeatMapModule", "scripts/heatmap.js");
             Microsoft.Maps.loadModule("HeatMapModule", {
                 callback: function () {
@@ -993,7 +993,7 @@ ms.lasthandoff: 08/03/2017
         }
 
         function addTweet(item) {
-            //Add tweet to the heat map arrays.
+            //Add tweet toohello heat map arrays.
             var tweetLocation = new Microsoft.Maps.Location(item.Latitude, item.Longtitude);
             if (item.Sentiment > 0) {
                 liveTweetsPos.push(tweetLocation);
@@ -1063,10 +1063,10 @@ ms.lasthandoff: 08/03/2017
             }
         }
 
-<span data-ttu-id="17ee0-223">**Изменение файла layout.cshtml**</span><span class="sxs-lookup"><span data-stu-id="17ee0-223">**To modify the layout.cshtml**</span></span>
+<span data-ttu-id="373a4-223">**toomodify hello layout.cshtml**</span><span class="sxs-lookup"><span data-stu-id="373a4-223">**toomodify hello layout.cshtml**</span></span>
 
-1. <span data-ttu-id="17ee0-224">В **обозревателе решений** последовательно разверните узлы **TweetSentimentWeb**, **Представления**, **Общий ресурс**, а затем дважды щелкните элемент _**Layout.cshtml**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-224">From **Solution Explorer**, expand **TweetSentimentWeb**, expand **Views**, expand **Shared**, and then double-click _**Layout.cshtml**.</span></span>
-2. <span data-ttu-id="17ee0-225">Замените содержимое на приведенное ниже:</span><span class="sxs-lookup"><span data-stu-id="17ee0-225">Replace the content with the following:</span></span>
+1. <span data-ttu-id="373a4-224">В **обозревателе решений** последовательно разверните узлы **TweetSentimentWeb**, **Представления**, **Общий ресурс**, а затем дважды щелкните элемент _**Layout.cshtml**.</span><span class="sxs-lookup"><span data-stu-id="373a4-224">From **Solution Explorer**, expand **TweetSentimentWeb**, expand **Views**, expand **Shared**, and then double-click _**Layout.cshtml**.</span></span>
+2. <span data-ttu-id="373a4-225">Замените содержимое hello hello следующее:</span><span class="sxs-lookup"><span data-stu-id="373a4-225">Replace hello content with hello following:</span></span>
 
         <!DOCTYPE html>
         <html>
@@ -1126,10 +1126,10 @@ ms.lasthandoff: 08/03/2017
         </body>
         </html>
 
-<span data-ttu-id="17ee0-226">**Изменение файла Index.cshtml**</span><span class="sxs-lookup"><span data-stu-id="17ee0-226">**To modify the Index.cshtml**</span></span>
+<span data-ttu-id="373a4-226">**toomodify hello Index.cshtml**</span><span class="sxs-lookup"><span data-stu-id="373a4-226">**toomodify hello Index.cshtml**</span></span>
 
-1. <span data-ttu-id="17ee0-227">В **обозревателе решений** последовательно разверните узлы **TweetSentimentWeb**, **Представления**, **Главная**, а затем дважды щелкните элемент **Index.cshtml**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-227">From **Solution Explorer**, expand **TweetSentimentWeb**, expand **Views**, expand **Home**, and then double-click **Index.cshtml**.</span></span>
-2. <span data-ttu-id="17ee0-228">Замените содержимое на приведенное ниже:</span><span class="sxs-lookup"><span data-stu-id="17ee0-228">Replace the content with the following:</span></span>
+1. <span data-ttu-id="373a4-227">В **обозревателе решений** последовательно разверните узлы **TweetSentimentWeb**, **Представления**, **Главная**, а затем дважды щелкните элемент **Index.cshtml**.</span><span class="sxs-lookup"><span data-stu-id="373a4-227">From **Solution Explorer**, expand **TweetSentimentWeb**, expand **Views**, expand **Home**, and then double-click **Index.cshtml**.</span></span>
+2. <span data-ttu-id="373a4-228">Замените содержимое hello hello следующее:</span><span class="sxs-lookup"><span data-stu-id="373a4-228">Replace hello content with hello following:</span></span>
 
         @{
             ViewBag.Title = "Tweet Sentiment";
@@ -1139,10 +1139,10 @@ ms.lasthandoff: 08/03/2017
             <div id="map_canvas"/>
         </div>
 
-<span data-ttu-id="17ee0-229">**Изменение файла site.css**</span><span class="sxs-lookup"><span data-stu-id="17ee0-229">**To modify the site.css file**</span></span>
+<span data-ttu-id="373a4-229">**файл site.css toomodify hello**</span><span class="sxs-lookup"><span data-stu-id="373a4-229">**toomodify hello site.css file**</span></span>
 
-1. <span data-ttu-id="17ee0-230">В **обозревателе решений** последовательно разверните узлы **TweetSentimentWeb** и **Содержимое**, а затем дважды щелкните элемент **Site.css**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-230">From **Solution Explorer**, expand **TweetSentimentWeb**, expand **Content**, and then double-click **Site.css**.</span></span>
-2. <span data-ttu-id="17ee0-231">Добавьте в файл следующий код:</span><span class="sxs-lookup"><span data-stu-id="17ee0-231">Append the following code to the file:</span></span>
+1. <span data-ttu-id="373a4-230">В **обозревателе решений** последовательно разверните узлы **TweetSentimentWeb** и **Содержимое**, а затем дважды щелкните элемент **Site.css**.</span><span class="sxs-lookup"><span data-stu-id="373a4-230">From **Solution Explorer**, expand **TweetSentimentWeb**, expand **Content**, and then double-click **Site.css**.</span></span>
+2. <span data-ttu-id="373a4-231">Добавьте следующие toohello файл кода hello:</span><span class="sxs-lookup"><span data-stu-id="373a4-231">Append hello following code toohello file:</span></span>
 
         /* make container, and thus map, 100% width */
         .map_container {
@@ -1162,39 +1162,39 @@ ms.lasthandoff: 08/03/2017
           font-size: 30px;
         }
 
-<span data-ttu-id="17ee0-232">**Изменение файла global.asax**</span><span class="sxs-lookup"><span data-stu-id="17ee0-232">**To modify the global.asax file**</span></span>
+<span data-ttu-id="373a4-232">**файл global.asax toomodify hello**</span><span class="sxs-lookup"><span data-stu-id="373a4-232">**toomodify hello global.asax file**</span></span>
 
-1. <span data-ttu-id="17ee0-233">В **обозревателе решений** разверните узел **TweetSentimentWeb** и дважды щелкните элемент **Global.asax**.</span><span class="sxs-lookup"><span data-stu-id="17ee0-233">From **Solution Explorer**, expand **TweetSentimentWeb**, and then double-click **Global.asax**.</span></span>
-2. <span data-ttu-id="17ee0-234">Добавьте следующий оператор **using** :</span><span class="sxs-lookup"><span data-stu-id="17ee0-234">Add the following **using** statement:</span></span>
+1. <span data-ttu-id="373a4-233">В **обозревателе решений** разверните узел **TweetSentimentWeb** и дважды щелкните элемент **Global.asax**.</span><span class="sxs-lookup"><span data-stu-id="373a4-233">From **Solution Explorer**, expand **TweetSentimentWeb**, and then double-click **Global.asax**.</span></span>
+2. <span data-ttu-id="373a4-234">Добавьте следующее hello **с помощью** инструкции:</span><span class="sxs-lookup"><span data-stu-id="373a4-234">Add hello following **using** statement:</span></span>
 
         using System.Web.Http;
-3. <span data-ttu-id="17ee0-235">Добавьте в функцию **Application_Start()** следующие строки:</span><span class="sxs-lookup"><span data-stu-id="17ee0-235">Add the following lines inside the **Application_Start()** function:</span></span>
+3. <span data-ttu-id="373a4-235">Добавьте следующие строки внутри hello hello **Application_Start()** функции:</span><span class="sxs-lookup"><span data-stu-id="373a4-235">Add hello following lines inside hello **Application_Start()** function:</span></span>
 
         // Register API routes
         GlobalConfiguration.Configure(WebApiConfig.Register);
 
-    <span data-ttu-id="17ee0-236">Измените регистрацию маршрутов API так, чтобы веб-контроллер API работал внутри приложения MVC.</span><span class="sxs-lookup"><span data-stu-id="17ee0-236">Modify the registration of the API routes to make the Web API controller work inside the MVC application.</span></span>
+    <span data-ttu-id="373a4-236">Изменение регистрации hello hello API маршрутов toomake hello веб-API контроллера работы внутри приложения MVC hello.</span><span class="sxs-lookup"><span data-stu-id="373a4-236">Modify hello registration of hello API routes toomake hello Web API controller work inside hello MVC application.</span></span>
 
-<span data-ttu-id="17ee0-237">**Запуск веб-приложения**</span><span class="sxs-lookup"><span data-stu-id="17ee0-237">**To run the web application**</span></span>
+<span data-ttu-id="373a4-237">**toorun hello веб-приложения**</span><span class="sxs-lookup"><span data-stu-id="373a4-237">**toorun hello web application**</span></span>
 
-1. <span data-ttu-id="17ee0-238">Убедитесь, что консольное приложение службы потоковой передачи выполняется, чтобы вы могли просматривать изменения в режиме реального времени.</span><span class="sxs-lookup"><span data-stu-id="17ee0-238">Verify that the streaming service console application is still running so you can see the real-time changes.</span></span>
-2. <span data-ttu-id="17ee0-239">Нажмите клавишу **F5** , чтобы запустить веб-приложение.</span><span class="sxs-lookup"><span data-stu-id="17ee0-239">Press **F5** to run the web application:</span></span>
+1. <span data-ttu-id="373a4-238">Убедитесь, что hello потоковой передачи консольного приложения службы по-прежнему запущен, поэтому можно заметить изменения в режиме реального времени hello.</span><span class="sxs-lookup"><span data-stu-id="373a4-238">Verify that hello streaming service console application is still running so you can see hello real-time changes.</span></span>
+2. <span data-ttu-id="373a4-239">Нажмите клавишу **F5** toorun hello веб-приложения:</span><span class="sxs-lookup"><span data-stu-id="373a4-239">Press **F5** toorun hello web application:</span></span>
 
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
-3. <span data-ttu-id="17ee0-241">Введите в текстовом поле ключевое слово и нажмите кнопку **Go**(Найти).</span><span class="sxs-lookup"><span data-stu-id="17ee0-241">In the text box, enter a keyword, and then click **Go**.</span></span>  <span data-ttu-id="17ee0-242">В зависимости от того, какие данные собраны в таблице HBase, некоторые ключевые слова, возможно, не будут найдены.</span><span class="sxs-lookup"><span data-stu-id="17ee0-242">Depending on the data collected in the HBase table, some keywords might not be found.</span></span> <span data-ttu-id="17ee0-243">Попробуйте использовать распространенные ключевые слова, такие как «нравится», «xbox» и «playstation».</span><span class="sxs-lookup"><span data-stu-id="17ee0-243">Try some common keywords, such as "love," "xbox," and "playstation."</span></span>
-4. <span data-ttu-id="17ee0-244">Переключитесь между категориями **Positive** (Положительное), **Neutral** (Нейтральное) и **Negative** (Отрицательное), чтобы сравнить мнения.</span><span class="sxs-lookup"><span data-stu-id="17ee0-244">Toggle among **Positive**, **Neutral**, and **Negative** to compare sentiment on the subject.</span></span>
-5. <span data-ttu-id="17ee0-245">Дайте службе потоковой передачи поработать еще час, а затем выполните поиск по тому же ключевому слову и сравните результаты.</span><span class="sxs-lookup"><span data-stu-id="17ee0-245">Let the streaming service run for another hour, and then search the same keywords, and compare the results.</span></span>
+3. <span data-ttu-id="373a4-241">В текстовом поле hello, введите ключевое слово и нажмите кнопку **Go**.</span><span class="sxs-lookup"><span data-stu-id="373a4-241">In hello text box, enter a keyword, and then click **Go**.</span></span>  <span data-ttu-id="373a4-242">В зависимости от hello данные, собранные в таблице HBase hello некоторые ключевые слова не могут быть найдены.</span><span class="sxs-lookup"><span data-stu-id="373a4-242">Depending on hello data collected in hello HBase table, some keywords might not be found.</span></span> <span data-ttu-id="373a4-243">Попробуйте использовать распространенные ключевые слова, такие как «нравится», «xbox» и «playstation».</span><span class="sxs-lookup"><span data-stu-id="373a4-243">Try some common keywords, such as "love," "xbox," and "playstation."</span></span>
+4. <span data-ttu-id="373a4-244">Переключение между **положительное**, **Neutral**, и **отрицательное** мнений toocompare по теме hello.</span><span class="sxs-lookup"><span data-stu-id="373a4-244">Toggle among **Positive**, **Neutral**, and **Negative** toocompare sentiment on hello subject.</span></span>
+5. <span data-ttu-id="373a4-245">Позволить hello потоковой службы, запустите на второй час, и найдите hello же ключевые слова и сравнить результаты hello.</span><span class="sxs-lookup"><span data-stu-id="373a4-245">Let hello streaming service run for another hour, and then search hello same keywords, and compare hello results.</span></span>
 
-<span data-ttu-id="17ee0-246">При желании вы можете также развернуть приложение на Веб-сайтах Azure.</span><span class="sxs-lookup"><span data-stu-id="17ee0-246">Optionally, you can deploy the application to Azure Websites.</span></span> <span data-ttu-id="17ee0-247">Инструкции см. в статье [Развертывание веб-приложения ASP.NET в службе приложений Azure с помощью Visual Studio][website-get-started].</span><span class="sxs-lookup"><span data-stu-id="17ee0-247">For instructions, see [Get started with Azure Websites and ASP.NET][website-get-started].</span></span>
+<span data-ttu-id="373a4-246">При необходимости вы можете развернуть приложение hello tooAzure веб-сайтов.</span><span class="sxs-lookup"><span data-stu-id="373a4-246">Optionally, you can deploy hello application tooAzure Websites.</span></span> <span data-ttu-id="373a4-247">Инструкции см. в статье [Развертывание веб-приложения ASP.NET в службе приложений Azure с помощью Visual Studio][website-get-started].</span><span class="sxs-lookup"><span data-stu-id="373a4-247">For instructions, see [Get started with Azure Websites and ASP.NET][website-get-started].</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="17ee0-248">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="17ee0-248">Next Steps</span></span>
-<span data-ttu-id="17ee0-249">Из этого учебника вы узнали, как получать твиты, анализировать мнения на их основе, сохранять полученные оценки мнений в HBase и представлять данные по мнениям пользователей Twitter на Картах Bing в режиме реального времени.</span><span class="sxs-lookup"><span data-stu-id="17ee0-249">In this tutorial, you learned how to get tweets, analyze the sentiment of tweets, save the sentiment data to HBase, and present the real-time Twitter sentiment data to Bing maps.</span></span> <span data-ttu-id="17ee0-250">Дополнительные сведения см. на следующих ресурсах:</span><span class="sxs-lookup"><span data-stu-id="17ee0-250">To learn more, see:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="373a4-248">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="373a4-248">Next Steps</span></span>
+<span data-ttu-id="373a4-249">В этом учебнике вы узнали, как tooget твиты, анализ мнений hello объекта твиты сохранения tooHBase данных мнений hello и присутствует hello в режиме реального времени Twitter мнений tooBing сопоставления данных.</span><span class="sxs-lookup"><span data-stu-id="373a4-249">In this tutorial, you learned how tooget tweets, analyze hello sentiment of tweets, save hello sentiment data tooHBase, and present hello real-time Twitter sentiment data tooBing maps.</span></span> <span data-ttu-id="373a4-250">toolearn более, см.:</span><span class="sxs-lookup"><span data-stu-id="373a4-250">toolearn more, see:</span></span>
 
-* <span data-ttu-id="17ee0-251">[Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux][hdinsight-get-started]</span><span class="sxs-lookup"><span data-stu-id="17ee0-251">[Get started with HDInsight][hdinsight-get-started]</span></span>
-* [<span data-ttu-id="17ee0-252">Настройка репликации HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="17ee0-252">Configure HBase replication in HDInsight</span></span>](hdinsight-hbase-replication.md)
-* <span data-ttu-id="17ee0-253">[Анализ данных Twitter с помощью Hadoop в HDInsight][hdinsight-analyze-twitter-data]</span><span class="sxs-lookup"><span data-stu-id="17ee0-253">[Analyze Twitter data with Hadoop in HDInsight][hdinsight-analyze-twitter-data]</span></span>
-* <span data-ttu-id="17ee0-254">[Анализ данных о задержке рейсов с помощью Hive в HDInsight][hdinsight-analyze-flight-delay-data]</span><span class="sxs-lookup"><span data-stu-id="17ee0-254">[Analyze flight delay data using HDInsight][hdinsight-analyze-flight-delay-data]</span></span>
-* <span data-ttu-id="17ee0-255">[Разработка программ MapReduce на Java для Hadoop в HDInsight на платформе Linux][hdinsight-develop-mapreduce]</span><span class="sxs-lookup"><span data-stu-id="17ee0-255">[Develop Java MapReduce programs for HDInsight][hdinsight-develop-mapreduce]</span></span>
+* <span data-ttu-id="373a4-251">[Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux][hdinsight-get-started]</span><span class="sxs-lookup"><span data-stu-id="373a4-251">[Get started with HDInsight][hdinsight-get-started]</span></span>
+* [<span data-ttu-id="373a4-252">Настройка репликации HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="373a4-252">Configure HBase replication in HDInsight</span></span>](hdinsight-hbase-replication.md)
+* <span data-ttu-id="373a4-253">[Анализ данных Twitter с помощью Hadoop в HDInsight][hdinsight-analyze-twitter-data]</span><span class="sxs-lookup"><span data-stu-id="373a4-253">[Analyze Twitter data with Hadoop in HDInsight][hdinsight-analyze-twitter-data]</span></span>
+* <span data-ttu-id="373a4-254">[Анализ данных о задержке рейсов с помощью Hive в HDInsight][hdinsight-analyze-flight-delay-data]</span><span class="sxs-lookup"><span data-stu-id="373a4-254">[Analyze flight delay data using HDInsight][hdinsight-analyze-flight-delay-data]</span></span>
+* <span data-ttu-id="373a4-255">[Разработка программ MapReduce на Java для Hadoop в HDInsight на платформе Linux][hdinsight-develop-mapreduce]</span><span class="sxs-lookup"><span data-stu-id="373a4-255">[Develop Java MapReduce programs for HDInsight][hdinsight-develop-mapreduce]</span></span>
 
 [hbase-get-started]: hdinsight-hbase-tutorial-get-started-linux.md
 [website-get-started]: ../app-service-web/app-service-web-get-started-dotnet.md

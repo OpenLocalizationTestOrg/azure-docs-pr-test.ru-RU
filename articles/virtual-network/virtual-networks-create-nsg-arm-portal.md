@@ -1,6 +1,6 @@
 ---
-title: "Управление группами безопасности сети с помощью портала Azure | Документация Майкрософт"
-description: "Узнайте, как управлять группами безопасности сети с помощью портала Azure."
+title: "группы безопасности сети aaaManage - портал Azure | Документы Microsoft"
+description: "Узнайте, как с помощью групп безопасности сети toomanage hello портал Azure."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecb4fb4608628f5a1bd54fac6af19fecfa4508f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 53fb29e60cbc2a535f6cf03e430d9e703e97b216
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-network-security-groups-using-the-azure-portal"></a><span data-ttu-id="95807-103">Управление группами безопасности сети с помощью портала Azure</span><span class="sxs-lookup"><span data-stu-id="95807-103">Manage network security groups using the Azure portal</span></span>
+# <a name="manage-network-security-groups-using-hello-azure-portal"></a><span data-ttu-id="19e3b-103">Управление группами безопасности сети с помощью портала Azure hello</span><span class="sxs-lookup"><span data-stu-id="19e3b-103">Manage network security groups using hello Azure portal</span></span>
 
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
@@ -30,68 +30,68 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-<span data-ttu-id="95807-104">В этой статье описывается модель развертывания с использованием менеджера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="95807-104">This article covers the Resource Manager deployment model.</span></span> <span data-ttu-id="95807-105">Вы также можете [создавать группы безопасности сети с помощью классической модели развертывания](virtual-networks-create-nsg-classic-ps.md).</span><span class="sxs-lookup"><span data-stu-id="95807-105">You can also [create NSGs in the classic deployment model](virtual-networks-create-nsg-classic-ps.md).</span></span>
+<span data-ttu-id="19e3b-104">В этой статье рассматриваются hello модели развертывания диспетчера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="19e3b-104">This article covers hello Resource Manager deployment model.</span></span> <span data-ttu-id="19e3b-105">Вы также можете [создать Nsg в hello классической модели развертывания](virtual-networks-create-nsg-classic-ps.md).</span><span class="sxs-lookup"><span data-stu-id="19e3b-105">You can also [create NSGs in hello classic deployment model](virtual-networks-create-nsg-classic-ps.md).</span></span>
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-<span data-ttu-id="95807-106">Для приведенных ниже примеров команд PowerShell требуется уже созданная простая среда, основанная на приведенном выше сценарии.</span><span class="sxs-lookup"><span data-stu-id="95807-106">The sample PowerShell commands below expect a simple environment already created based on the scenario above.</span></span> <span data-ttu-id="95807-107">Чтобы выполнять команды в том виде, в котором они представлены в этом документе, сначала создайте тестовую среду, развернув [этот шаблон](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), нажмите **Deploy to Azure**(Развернуть в Azure), при необходимости замените значения параметров по умолчанию и следуйте указаниям на портале.</span><span class="sxs-lookup"><span data-stu-id="95807-107">If you want to run the commands as they are displayed in this document, first build the test environment by deploying [this template](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), click **Deploy to Azure**, replace the default parameter values if necessary, and follow the instructions in the portal.</span></span> <span data-ttu-id="95807-108">В описанных ниже действиях используйте **RG-NSG** в качестве имени группы ресурсов, в которой был развернут шаблон.</span><span class="sxs-lookup"><span data-stu-id="95807-108">The steps below use **RG-NSG** as the name of the resource group the template was deployed to.</span></span>
+<span data-ttu-id="19e3b-106">Образец Hello PowerShell приведенную ниже команду ожидать простой среде уже создан на основании hello сценарии выше.</span><span class="sxs-lookup"><span data-stu-id="19e3b-106">hello sample PowerShell commands below expect a simple environment already created based on hello scenario above.</span></span> <span data-ttu-id="19e3b-107">Toorun hello команд, отображаемых в этом документе, сначала построения необходимо hello тестовой среды, развернув [этот шаблон](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), нажмите кнопку **развертывание tooAzure**, замените значения параметров по умолчанию hello При необходимости и выполнения инструкции hello в hello портала.</span><span class="sxs-lookup"><span data-stu-id="19e3b-107">If you want toorun hello commands as they are displayed in this document, first build hello test environment by deploying [this template](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), click **Deploy tooAzure**, replace hello default parameter values if necessary, and follow hello instructions in hello portal.</span></span> <span data-ttu-id="19e3b-108">ниже используйте шагов Hello **RG NSG** как hello имя hello ресурсов группы hello шаблона было развернуто.</span><span class="sxs-lookup"><span data-stu-id="19e3b-108">hello steps below use **RG-NSG** as hello name of hello resource group hello template was deployed to.</span></span>
 
-## <a name="create-the-nsg-frontend-nsg"></a><span data-ttu-id="95807-109">Создание группы безопасности сети NSG-FrontEnd</span><span class="sxs-lookup"><span data-stu-id="95807-109">Create the NSG-FrontEnd NSG</span></span>
-<span data-ttu-id="95807-110">Чтобы создать группу безопасности сети **NSG-FrontEnd** , как показано в описанном выше сценарии, выполните указанные ниже действия.</span><span class="sxs-lookup"><span data-stu-id="95807-110">To create the **NSG-FrontEnd** NSG as shown in the scenario above, follow the steps below.</span></span>
+## <a name="create-hello-nsg-frontend-nsg"></a><span data-ttu-id="19e3b-109">Создать hello переднего плана NSG NSG</span><span class="sxs-lookup"><span data-stu-id="19e3b-109">Create hello NSG-FrontEnd NSG</span></span>
+<span data-ttu-id="19e3b-110">toocreate hello **NSG-FrontEnd** NSG, как показано в приведенном выше сценарии hello, выполните шаги hello.</span><span class="sxs-lookup"><span data-stu-id="19e3b-110">toocreate hello **NSG-FrontEnd** NSG as shown in hello scenario above, follow hello steps below.</span></span>
 
-1. <span data-ttu-id="95807-111">В браузере откройте адрес http://portal.azure.com и войдите с помощью учетной записи Azure.</span><span class="sxs-lookup"><span data-stu-id="95807-111">From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.</span></span>
-2. <span data-ttu-id="95807-112">Щелкните **Обзор >** > **Сетевые группы безопасности**.</span><span class="sxs-lookup"><span data-stu-id="95807-112">Click **Browse >** > **Network Security Groups**.</span></span>
+1. <span data-ttu-id="19e3b-111">В браузере перейдите toohttp://portal.azure.com и при необходимости выполните вход с помощью учетной записи Azure.</span><span class="sxs-lookup"><span data-stu-id="19e3b-111">From a browser, navigate toohttp://portal.azure.com and, if necessary, sign in with your Azure account.</span></span>
+2. <span data-ttu-id="19e3b-112">Щелкните **Обзор >** > **Сетевые группы безопасности**.</span><span class="sxs-lookup"><span data-stu-id="19e3b-112">Click **Browse >** > **Network Security Groups**.</span></span>
    
     ![Портал Azure — группы безопасности сети](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
-3. <span data-ttu-id="95807-114">В колонке **Сетевые группы безопасности** выберите **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="95807-114">In the **Network security groups** blade, click **Add**.</span></span>
+3. <span data-ttu-id="19e3b-114">В hello **сетевых групп безопасности** колонка, щелкните **добавить**.</span><span class="sxs-lookup"><span data-stu-id="19e3b-114">In hello **Network security groups** blade, click **Add**.</span></span>
    
     ![Портал Azure — группы безопасности сети](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
-4. <span data-ttu-id="95807-116">В колонке **Создание группы безопасности сети** создайте группу безопасности *NSG-FrontEnd* в группе ресурсов *RG-NSG*, а затем щелкните **Создать**.</span><span class="sxs-lookup"><span data-stu-id="95807-116">In the **Create network security group** blade, create an NSG named *NSG-FrontEnd* in the *RG-NSG* resource group, and then click **Create**.</span></span>
+4. <span data-ttu-id="19e3b-116">В hello **создать группу безопасности сети** колонке создать NSG с именем *NSG-FrontEnd* в hello *RG NSG* группы ресурсов, а затем щелкните **создать**.</span><span class="sxs-lookup"><span data-stu-id="19e3b-116">In hello **Create network security group** blade, create an NSG named *NSG-FrontEnd* in hello *RG-NSG* resource group, and then click **Create**.</span></span>
    
     ![Портал Azure — группы безопасности сети](./media/virtual-networks-create-nsg-arm-pportal/figure13.png)
 
-## <a name="create-rules-in-an-existing-nsg"></a><span data-ttu-id="95807-118">Создание правил в существующей сетевой группе безопасности</span><span class="sxs-lookup"><span data-stu-id="95807-118">Create rules in an existing NSG</span></span>
-<span data-ttu-id="95807-119">Чтобы создать правила в существующей группе безопасности сети с помощью портала Azure, выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="95807-119">To create rules in an existing NSG from the Azure portal, follow the steps below.</span></span>
+## <a name="create-rules-in-an-existing-nsg"></a><span data-ttu-id="19e3b-118">Создание правил в существующей сетевой группе безопасности</span><span class="sxs-lookup"><span data-stu-id="19e3b-118">Create rules in an existing NSG</span></span>
+<span data-ttu-id="19e3b-119">правила toocreate в существующей NSG из hello портал Azure, выполните шаги hello.</span><span class="sxs-lookup"><span data-stu-id="19e3b-119">toocreate rules in an existing NSG from hello Azure portal, follow hello steps below.</span></span>
 
-1. <span data-ttu-id="95807-120">Щелкните **Обзор >** > **Сетевые группы безопасности**.</span><span class="sxs-lookup"><span data-stu-id="95807-120">Click **Browse >** > **Network security groups**.</span></span>
-2. <span data-ttu-id="95807-121">В списке групп выберите **NSG-FrontEnd** > **Правила безопасности для входящего трафика**</span><span class="sxs-lookup"><span data-stu-id="95807-121">In the list of NSGs, click **NSG-FrontEnd** > **Inbound security rules**</span></span>
+1. <span data-ttu-id="19e3b-120">Щелкните **Обзор >** > **Сетевые группы безопасности**.</span><span class="sxs-lookup"><span data-stu-id="19e3b-120">Click **Browse >** > **Network security groups**.</span></span>
+2. <span data-ttu-id="19e3b-121">В списке hello Nsg, выберите **NSG-FrontEnd** > **безопасности правила для входящих подключений**</span><span class="sxs-lookup"><span data-stu-id="19e3b-121">In hello list of NSGs, click **NSG-FrontEnd** > **Inbound security rules**</span></span>
    
     ![Портал Azure — NSG-FrontEnd](./media/virtual-networks-create-nsg-arm-pportal/figure2.png)
-3. <span data-ttu-id="95807-123">В списке **Правила безопасности для входящего трафика**, нажмите **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="95807-123">In the list of **Inbound security rules**, click **Add**.</span></span>
+3. <span data-ttu-id="19e3b-123">В списке hello **безопасности правила для входящих подключений**, нажмите кнопку **добавить**.</span><span class="sxs-lookup"><span data-stu-id="19e3b-123">In hello list of **Inbound security rules**, click **Add**.</span></span>
    
     ![Портал Azure — добавление правила](./media/virtual-networks-create-nsg-arm-pportal/figure3.png)
-4. <span data-ttu-id="95807-125">В колонке **Добавление правила безопасности для входящего трафика** создайте правило под названием *web-rule* с приоритетом *200*, которое разрешает доступ по протоколу *TCP* к порту *80* на любой виртуальной машине из любого источника, и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="95807-125">In the **Add inbound security rule** blade, create a rule named *web-rule* with priority of *200* allowing access via *TCP* to port *80* to any VM from any source, and then click **OK**.</span></span> <span data-ttu-id="95807-126">Обратите внимание, что для большинства этих параметров уже заданы значения по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="95807-126">Notice that most of these settings are default values already.</span></span>
+4. <span data-ttu-id="19e3b-125">В hello **добавить правило безопасности для входящего трафика** колонки, создать правило с именем *правило web* с приоритетом *200* доступ через *TCP* tooport *80* tooany виртуальной Машины из любого источника и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="19e3b-125">In hello **Add inbound security rule** blade, create a rule named *web-rule* with priority of *200* allowing access via *TCP* tooport *80* tooany VM from any source, and then click **OK**.</span></span> <span data-ttu-id="19e3b-126">Обратите внимание, что для большинства этих параметров уже заданы значения по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="19e3b-126">Notice that most of these settings are default values already.</span></span>
    
     ![Портал Azure — параметры правила](./media/virtual-networks-create-nsg-arm-pportal/figure4.png)
-5. <span data-ttu-id="95807-128">Через несколько секунд новое правило появится в сетевой группе безопасности.</span><span class="sxs-lookup"><span data-stu-id="95807-128">After a few seconds you will see the new rule in the NSG.</span></span>
+5. <span data-ttu-id="19e3b-128">Через несколько секунд hello новое правило появится в hello NSG.</span><span class="sxs-lookup"><span data-stu-id="19e3b-128">After a few seconds you will see hello new rule in hello NSG.</span></span>
    
     ![Портал Azure — новое правило](./media/virtual-networks-create-nsg-arm-pportal/figure5.png)
-6. <span data-ttu-id="95807-130">Повторите действия до шага 6, чтобы создать правило входящих подключений *rdp-rule* с приоритетом *250*, которое разрешает доступ через *TCP*-порт *3389* к любой виртуальной машине из любого источника.</span><span class="sxs-lookup"><span data-stu-id="95807-130">Repeat steps  to 6 to create an inbound rule named *rdp-rule* with a priority of *250* allowing access via *TCP* to port *3389* to any VM from any source.</span></span>
+6. <span data-ttu-id="19e3b-130">Повторите шаги too6 toocreate входящее правило с именем *rdp правило* с приоритетом *250* доступ через *TCP* tooport *3389* tooany виртуальной Машины из любого источника.</span><span class="sxs-lookup"><span data-stu-id="19e3b-130">Repeat steps  too6 toocreate an inbound rule named *rdp-rule* with a priority of *250* allowing access via *TCP* tooport *3389* tooany VM from any source.</span></span>
 
-## <a name="associate-the-nsg-to-the-frontend-subnet"></a><span data-ttu-id="95807-131">Связывание группы безопасности сети с подсетью FrontEnd</span><span class="sxs-lookup"><span data-stu-id="95807-131">Associate the NSG to the FrontEnd subnet</span></span>
-1. <span data-ttu-id="95807-132">Щелкните **Обзор >** > **Группы ресурсов** > **RG NSG**.</span><span class="sxs-lookup"><span data-stu-id="95807-132">Click **Browse >** > **Resource groups** > **RG-NSG**.</span></span>
-2. <span data-ttu-id="95807-133">В колонке **RG-NSG** выберите **...** > **TestVNet**.</span><span class="sxs-lookup"><span data-stu-id="95807-133">In the **RG-NSG** blade, click **...** > **TestVNet**.</span></span>
+## <a name="associate-hello-nsg-toohello-frontend-subnet"></a><span data-ttu-id="19e3b-131">Связать hello NSG toohello внешней подсети</span><span class="sxs-lookup"><span data-stu-id="19e3b-131">Associate hello NSG toohello FrontEnd subnet</span></span>
+1. <span data-ttu-id="19e3b-132">Щелкните **Обзор >** > **Группы ресурсов** > **RG NSG**.</span><span class="sxs-lookup"><span data-stu-id="19e3b-132">Click **Browse >** > **Resource groups** > **RG-NSG**.</span></span>
+2. <span data-ttu-id="19e3b-133">В hello **RG NSG** колонка, щелкните **...**   >  **TestVNet**.</span><span class="sxs-lookup"><span data-stu-id="19e3b-133">In hello **RG-NSG** blade, click **...** > **TestVNet**.</span></span>
    
     ![Портал Azure — TestVNet](./media/virtual-networks-create-nsg-arm-pportal/figure14.png)
-3. <span data-ttu-id="95807-135">В колонке **Параметры** выберите пункты **Подсети** > **FrontEnd** > **Группа безопасности сети** > **NSG-FrontEnd**.</span><span class="sxs-lookup"><span data-stu-id="95807-135">In the **Settings** blade, click **Subnets** > **FrontEnd** > **Network security group** > **NSG-FrontEnd**.</span></span>
+3. <span data-ttu-id="19e3b-135">В hello **параметры** колонка, щелкните **подсети** > **переднего плана** > **сетевой группы безопасности**  >  **NSG-FrontEnd**.</span><span class="sxs-lookup"><span data-stu-id="19e3b-135">In hello **Settings** blade, click **Subnets** > **FrontEnd** > **Network security group** > **NSG-FrontEnd**.</span></span>
    
     ![Портал Azure — параметры подсети](./media/virtual-networks-create-nsg-arm-pportal/figure15.png)
-4. <span data-ttu-id="95807-137">В колонке **FrontEnd** нажмите кнопку **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="95807-137">In the **FrontEnd** blade, click **Save**.</span></span>
+4. <span data-ttu-id="19e3b-137">В hello **переднего плана** колонка, щелкните **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="19e3b-137">In hello **FrontEnd** blade, click **Save**.</span></span>
    
     ![Портал Azure — параметры подсети](./media/virtual-networks-create-nsg-arm-pportal/figure16.png)
 
-## <a name="create-the-nsg-backend-nsg"></a><span data-ttu-id="95807-139">Создание группы безопасности сети NSG-BackEnd</span><span class="sxs-lookup"><span data-stu-id="95807-139">Create the NSG-BackEnd NSG</span></span>
-<span data-ttu-id="95807-140">Чтобы создать группу безопасности сети **NSG-BackEnd** и связать ее с подсетью **BackEnd**, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="95807-140">To create the **NSG-BackEnd** NSG and associate it to the **BackEnd** subnet, follow the steps below.</span></span>
+## <a name="create-hello-nsg-backend-nsg"></a><span data-ttu-id="19e3b-139">Создать hello серверной NSG NSG</span><span class="sxs-lookup"><span data-stu-id="19e3b-139">Create hello NSG-BackEnd NSG</span></span>
+<span data-ttu-id="19e3b-140">toocreate hello **NSG серверной** NSG и связать его toohello **серверной** подсети, выполните следующие действия hello.</span><span class="sxs-lookup"><span data-stu-id="19e3b-140">toocreate hello **NSG-BackEnd** NSG and associate it toohello **BackEnd** subnet, follow hello steps below.</span></span>
 
-1. <span data-ttu-id="95807-141">Повторите шаги раздела [Создание группы безопасности сети NSG-FrontEnd](#Create-the-NSG-FrontEnd-NSG) , чтобы создать группу безопасности сети *NSG-FrontEnd*</span><span class="sxs-lookup"><span data-stu-id="95807-141">Repeat the steps in [Create the NSG-FrontEnd NSG](#Create-the-NSG-FrontEnd-NSG) to create an NSG named *NSG-BackEnd*</span></span>
-2. <span data-ttu-id="95807-142">Повторите шаги раздела [Создание правил в существующей сетевой группе безопасности](#Create-rules-in-an-existing-NSG) , чтобы создать правила **входящих подключений** , приведенные в таблице ниже.</span><span class="sxs-lookup"><span data-stu-id="95807-142">Repeat the steps in [Create rules in an existing NSG](#Create-rules-in-an-existing-NSG) to create the **inbound** rules in the table below.</span></span>
+1. <span data-ttu-id="19e3b-141">Повторите hello шагов в [hello Создание внешнего интерфейса NSG NSG](#Create-the-NSG-FrontEnd-NSG) toocreate NSG с именем *серверной NSG*</span><span class="sxs-lookup"><span data-stu-id="19e3b-141">Repeat hello steps in [Create hello NSG-FrontEnd NSG](#Create-the-NSG-FrontEnd-NSG) toocreate an NSG named *NSG-BackEnd*</span></span>
+2. <span data-ttu-id="19e3b-142">Повторите hello шагов в [создавать правила в существующей NSG](#Create-rules-in-an-existing-NSG) toocreate hello **входящих** правила в следующей таблице hello.</span><span class="sxs-lookup"><span data-stu-id="19e3b-142">Repeat hello steps in [Create rules in an existing NSG](#Create-rules-in-an-existing-NSG) toocreate hello **inbound** rules in hello table below.</span></span>
    
-   | <span data-ttu-id="95807-143">Правило входящих подключений</span><span class="sxs-lookup"><span data-stu-id="95807-143">Inbound rule</span></span> | <span data-ttu-id="95807-144">Правило исходящих подключений</span><span class="sxs-lookup"><span data-stu-id="95807-144">Outbound rule</span></span> |
+   | <span data-ttu-id="19e3b-143">Правило входящих подключений</span><span class="sxs-lookup"><span data-stu-id="19e3b-143">Inbound rule</span></span> | <span data-ttu-id="19e3b-144">Правило исходящих подключений</span><span class="sxs-lookup"><span data-stu-id="19e3b-144">Outbound rule</span></span> |
    | --- | --- |
    | ![Портал Azure — правило входящих подключений](./media/virtual-networks-create-nsg-arm-pportal/figure17.png) |![Портал Azure — правило исходящих подключений](./media/virtual-networks-create-nsg-arm-pportal/figure18.png) |
-3. <span data-ttu-id="95807-147">Повторите шаги раздела [Связывание группы безопасности сети с подсетью FrontEnd](#Associate-the-NSG-to-the-FrontEnd-subnet), чтобы связать группу безопасности сети **NSG-BackEnd** с подсетью **BackEnd**.</span><span class="sxs-lookup"><span data-stu-id="95807-147">Repeat the steps in [Associate the NSG to the FrontEnd subnet](#Associate-the-NSG-to-the-FrontEnd-subnet) to associate the **NSG-Backend** NSG to the **BackEnd** subnet.</span></span>
+3. <span data-ttu-id="19e3b-147">Повторите hello шагов в [связать hello NSG toohello внешней подсети](#Associate-the-NSG-to-the-FrontEnd-subnet) tooassociate hello **NSG серверной** NSG toohello **серверной** подсети.</span><span class="sxs-lookup"><span data-stu-id="19e3b-147">Repeat hello steps in [Associate hello NSG toohello FrontEnd subnet](#Associate-the-NSG-to-the-FrontEnd-subnet) tooassociate hello **NSG-Backend** NSG toohello **BackEnd** subnet.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="95807-148">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="95807-148">Next Steps</span></span>
-* <span data-ttu-id="95807-149">Узнайте, как [управлять существующими группами безопасности сети](virtual-network-manage-nsg-arm-portal.md)</span><span class="sxs-lookup"><span data-stu-id="95807-149">Learn how to [manage existing NSGs](virtual-network-manage-nsg-arm-portal.md)</span></span>
-* <span data-ttu-id="95807-150">[Включите ведение журнала](virtual-network-nsg-manage-log.md) для групп безопасности сети.</span><span class="sxs-lookup"><span data-stu-id="95807-150">[Enable logging](virtual-network-nsg-manage-log.md) for NSGs.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="19e3b-148">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="19e3b-148">Next Steps</span></span>
+* <span data-ttu-id="19e3b-149">Узнайте, каким образом слишком[Управление существующей Nsg](virtual-network-manage-nsg-arm-portal.md)</span><span class="sxs-lookup"><span data-stu-id="19e3b-149">Learn how too[manage existing NSGs](virtual-network-manage-nsg-arm-portal.md)</span></span>
+* <span data-ttu-id="19e3b-150">[Включите ведение журнала](virtual-network-nsg-manage-log.md) для групп безопасности сети.</span><span class="sxs-lookup"><span data-stu-id="19e3b-150">[Enable logging](virtual-network-nsg-manage-log.md) for NSGs.</span></span>
 

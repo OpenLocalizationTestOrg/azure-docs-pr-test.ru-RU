@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с Центром Интернета вещей Azure (Node) | Документация Майкрософт"
-description: "Узнайте, как отправлять сообщения из устройства на облако в Центр Интернета вещей Azure с помощью пакетов SDK Интернета вещей для Node.js. Создайте виртуальное устройство и приложения службы для регистрации устройства, отправки сообщений и чтения сообщений из Центра Интернета вещей."
+title: "aaaGet работы с Azure IoT Hub (узел) | Документы Microsoft"
+description: "Узнайте, как toosend устройства в облако сообщений tooAzure центр IoT с помощью IoT пакеты SDK для Node.js. Создать имитированное устройство и службы приложений tooregister устройства, отправлять сообщения и чтения сообщений из центра IoT."
 services: iot-hub
 documentationcenter: nodejs
 author: dominicbetts
@@ -15,64 +15,64 @@ ms.workload: na
 ms.date: 05/22/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b27a34c0f1f127628912ad68a002e15cc838b4d0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d0747895365f2359a9c38ea1e85a5881d6efec0b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-simulated-device-to-your-iot-hub-using-node"></a><span data-ttu-id="40f6b-104">Подключение виртуального устройства к Центру Интернета вещей с помощью Node</span><span class="sxs-lookup"><span data-stu-id="40f6b-104">Connect your simulated device to your IoT hub using Node</span></span>
+# <a name="connect-your-simulated-device-tooyour-iot-hub-using-node"></a><span data-ttu-id="41dfb-104">Подключиться с помощью узла концентратор IoT tooyour имитированное устройство</span><span class="sxs-lookup"><span data-stu-id="41dfb-104">Connect your simulated device tooyour IoT hub using Node</span></span>
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-<span data-ttu-id="40f6b-105">С помощью этого руководства вы создадите три консольных приложения Node.js:</span><span class="sxs-lookup"><span data-stu-id="40f6b-105">At the end of this tutorial, you have three Node.js console apps:</span></span>
+<span data-ttu-id="41dfb-105">В конце этого учебника hello у вас есть три Node.js консольные приложения:</span><span class="sxs-lookup"><span data-stu-id="41dfb-105">At hello end of this tutorial, you have three Node.js console apps:</span></span>
 
-* <span data-ttu-id="40f6b-106">**CreateDeviceIdentity.js**. Создает удостоверение устройства и соответствующий ключ безопасности для подключения имитирующего устройство приложения.</span><span class="sxs-lookup"><span data-stu-id="40f6b-106">**CreateDeviceIdentity.js**, which creates a device identity and associated security key to connect your simulated device app.</span></span>
-* <span data-ttu-id="40f6b-107">**ReadDeviceToCloudMessages.js**. Отображает данные телеметрии, отправленные приложением, которое имитирует устройство.</span><span class="sxs-lookup"><span data-stu-id="40f6b-107">**ReadDeviceToCloudMessages.js**, which displays the telemetry sent by your simulated device app.</span></span>
-* <span data-ttu-id="40f6b-108">**SimulatedDevice.js** — подключается к Центру Интернета вещей с созданным ранее удостоверением устройства и отправляет сообщения телеметрии с частотой один раз в секунду с использованием протокола MQTT.</span><span class="sxs-lookup"><span data-stu-id="40f6b-108">**SimulatedDevice.js**, which connects to your IoT hub with the device identity created earlier, and sends a telemetry message every second using the MQTT protocol.</span></span>
+* <span data-ttu-id="41dfb-106">**CreateDeviceIdentity.js**, которая создает удостоверения устройства и связана защита ключа tooconnect приложение имитации устройства.</span><span class="sxs-lookup"><span data-stu-id="41dfb-106">**CreateDeviceIdentity.js**, which creates a device identity and associated security key tooconnect your simulated device app.</span></span>
+* <span data-ttu-id="41dfb-107">**ReadDeviceToCloudMessages.js**, которая отображает hello телеметрии, отправленные приложения имитированное устройство.</span><span class="sxs-lookup"><span data-stu-id="41dfb-107">**ReadDeviceToCloudMessages.js**, which displays hello telemetry sent by your simulated device app.</span></span>
+* <span data-ttu-id="41dfb-108">**SimulatedDevice.js**, который подключается центра IoT tooyour с идентификатором hello устройства, созданный ранее и будет отправлять данные телеметрии каждый второй с помощью протокола MQTT "hello".</span><span class="sxs-lookup"><span data-stu-id="41dfb-108">**SimulatedDevice.js**, which connects tooyour IoT hub with hello device identity created earlier, and sends a telemetry message every second using hello MQTT protocol.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="40f6b-109">Статья о [пакетах SDK для Центра Интернета вещей Azure][lnk-hub-sdks] содержит сведения о различных пакетах SDK, которые можно использовать для создания приложений, которые будут работать на устройствах и в серверной части решения.</span><span class="sxs-lookup"><span data-stu-id="40f6b-109">The article [Azure IoT SDKs][lnk-hub-sdks] provides information about the Azure IoT SDKs that you can use to build both applications to run on devices and your solution back end.</span></span>
+> <span data-ttu-id="41dfb-109">статья Hello [пакеты SDK Azure IoT] [ lnk-hub-sdks] предоставляет сведения о hello Azure IoT пакетов SDK, которые можно использовать toobuild toorun обоих приложений на устройствах и серверной части вашего решения.</span><span class="sxs-lookup"><span data-stu-id="41dfb-109">hello article [Azure IoT SDKs][lnk-hub-sdks] provides information about hello Azure IoT SDKs that you can use toobuild both applications toorun on devices and your solution back end.</span></span>
 > 
 > 
 
-<span data-ttu-id="40f6b-110">Для работы с этим учебником требуется:</span><span class="sxs-lookup"><span data-stu-id="40f6b-110">To complete this tutorial, you need the following:</span></span>
+<span data-ttu-id="41dfb-110">toocomplete этого учебника требуется hello следующие:</span><span class="sxs-lookup"><span data-stu-id="41dfb-110">toocomplete this tutorial, you need hello following:</span></span>
 
-* <span data-ttu-id="40f6b-111">Node.js версии 0.10.x или более поздней.</span><span class="sxs-lookup"><span data-stu-id="40f6b-111">Node.js version 0.10.x or later.</span></span>
-* <span data-ttu-id="40f6b-112">Активная учетная запись Azure.</span><span class="sxs-lookup"><span data-stu-id="40f6b-112">An active Azure account.</span></span> <span data-ttu-id="40f6b-113">Если ее нет, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="40f6b-113">(If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.)</span></span>
+* <span data-ttu-id="41dfb-111">Node.js версии 0.10.x или более поздней.</span><span class="sxs-lookup"><span data-stu-id="41dfb-111">Node.js version 0.10.x or later.</span></span>
+* <span data-ttu-id="41dfb-112">Активная учетная запись Azure.</span><span class="sxs-lookup"><span data-stu-id="41dfb-112">An active Azure account.</span></span> <span data-ttu-id="41dfb-113">Если ее нет, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="41dfb-113">(If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.)</span></span>
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-<span data-ttu-id="40f6b-114">Теперь центр IoT создан</span><span class="sxs-lookup"><span data-stu-id="40f6b-114">You have now created your IoT hub.</span></span> <span data-ttu-id="40f6b-115">и у вас есть соответствующие имя узла и строка подключения, необходимые для завершения работы с этим руководством.</span><span class="sxs-lookup"><span data-stu-id="40f6b-115">You have the IoT Hub host name and the IoT Hub connection string that you need to complete the rest of this tutorial.</span></span>
+<span data-ttu-id="41dfb-114">Теперь Центр Интернета вещей создан.</span><span class="sxs-lookup"><span data-stu-id="41dfb-114">You have now created your IoT hub.</span></span> <span data-ttu-id="41dfb-115">У вас есть hello имя узла Центр IoT и hello центра IoT строку соединения, необходимость toocomplete hello конца данного учебника.</span><span class="sxs-lookup"><span data-stu-id="41dfb-115">You have hello IoT Hub host name and hello IoT Hub connection string that you need toocomplete hello rest of this tutorial.</span></span>
 
-## <a name="create-a-device-identity"></a><span data-ttu-id="40f6b-116">Создание удостоверения устройства</span><span class="sxs-lookup"><span data-stu-id="40f6b-116">Create a device identity</span></span>
-<span data-ttu-id="40f6b-117">В этом разделе вам предстоит написать консольное приложение Node.js, которое создает удостоверение устройства в реестре удостоверений в центре IoT.</span><span class="sxs-lookup"><span data-stu-id="40f6b-117">In this section, you create a Node.js console app that creates a device identity in the identity registry in your IoT hub.</span></span> <span data-ttu-id="40f6b-118">Устройство может подключиться к Центру Интернета вещей, только если в реестре удостоверений есть соответствующая запись.</span><span class="sxs-lookup"><span data-stu-id="40f6b-118">A device can only connect to IoT hub if it has an entry in the identity registry.</span></span> <span data-ttu-id="40f6b-119">Дополнительные сведения см. в разделе, посвященном **реестру удостоверений**, в [руководстве разработчика по Центру Интернета вещей Azure][lnk-devguide-identity].</span><span class="sxs-lookup"><span data-stu-id="40f6b-119">For more information, see the **Identity Registry** section of the [IoT Hub developer guide][lnk-devguide-identity].</span></span> <span data-ttu-id="40f6b-120">При запуске этого консольного приложения создается уникальный идентификатор устройства и ключ, с помощью которых выполняется идентификация во время отправки сообщений из устройства в облако для центра IoT.</span><span class="sxs-lookup"><span data-stu-id="40f6b-120">When you run this console app, it generates a unique device ID and key that your device can use to identify itself when it sends device-to-cloud messages to IoT Hub.</span></span>
+## <a name="create-a-device-identity"></a><span data-ttu-id="41dfb-116">Создание удостоверения устройства</span><span class="sxs-lookup"><span data-stu-id="41dfb-116">Create a device identity</span></span>
+<span data-ttu-id="41dfb-117">В этом разделе создайте консольное приложение Node.js, которое создает удостоверение устройства в реестре hello identity в вашего центра IoT.</span><span class="sxs-lookup"><span data-stu-id="41dfb-117">In this section, you create a Node.js console app that creates a device identity in hello identity registry in your IoT hub.</span></span> <span data-ttu-id="41dfb-118">Устройства могут подключаться концентратора tooIoT только в том случае, если он имеет запись в реестре удостоверений hello.</span><span class="sxs-lookup"><span data-stu-id="41dfb-118">A device can only connect tooIoT hub if it has an entry in hello identity registry.</span></span> <span data-ttu-id="41dfb-119">Дополнительные сведения см. в разделе hello **реестра удостоверений** раздел hello [руководстве для разработчиков центра IoT][lnk-devguide-identity].</span><span class="sxs-lookup"><span data-stu-id="41dfb-119">For more information, see hello **Identity Registry** section of hello [IoT Hub developer guide][lnk-devguide-identity].</span></span> <span data-ttu-id="41dfb-120">При запуске это консольное приложение, он создает уникальный идентификатор устройства и ключ, что при отправке устройства в облако, устройство может использовать tooidentify самого сообщения tooIoT концентратора.</span><span class="sxs-lookup"><span data-stu-id="41dfb-120">When you run this console app, it generates a unique device ID and key that your device can use tooidentify itself when it sends device-to-cloud messages tooIoT Hub.</span></span>
 
-1. <span data-ttu-id="40f6b-121">Создайте пустую папку с именем **createdeviceidentity**.</span><span class="sxs-lookup"><span data-stu-id="40f6b-121">Create a new empty folder called **createdeviceidentity**.</span></span> <span data-ttu-id="40f6b-122">В папке **createdeviceidentity** создайте файл package.json, используя следующую команду в командной строке.</span><span class="sxs-lookup"><span data-stu-id="40f6b-122">In the **createdeviceidentity** folder, create a package.json file using the following command at your command prompt.</span></span> <span data-ttu-id="40f6b-123">Примите значения по умолчанию:</span><span class="sxs-lookup"><span data-stu-id="40f6b-123">Accept all the defaults:</span></span>
+1. <span data-ttu-id="41dfb-121">Создайте пустую папку с именем **createdeviceidentity**.</span><span class="sxs-lookup"><span data-stu-id="41dfb-121">Create a new empty folder called **createdeviceidentity**.</span></span> <span data-ttu-id="41dfb-122">В hello **createdeviceidentity** папки, создайте файл package.json, используя следующую команду в командной строке hello.</span><span class="sxs-lookup"><span data-stu-id="41dfb-122">In hello **createdeviceidentity** folder, create a package.json file using hello following command at your command prompt.</span></span> <span data-ttu-id="41dfb-123">Примите все значения по умолчанию hello:</span><span class="sxs-lookup"><span data-stu-id="41dfb-123">Accept all hello defaults:</span></span>
    
     ```
     npm init
     ```
-2. <span data-ttu-id="40f6b-124">В командной строке в папке **createdeviceidentity** выполните следующую команду, чтобы установить пакет SDK для службы **azure-iothub**:</span><span class="sxs-lookup"><span data-stu-id="40f6b-124">At your command prompt in the **createdeviceidentity** folder, run the following command to install the **azure-iothub** Service SDK package:</span></span>
+2. <span data-ttu-id="41dfb-124">В командной строке в hello **createdeviceidentity** папку, следующая команда tooinstall hello hello **центром IOT azure** пакета SDK для службы:</span><span class="sxs-lookup"><span data-stu-id="41dfb-124">At your command prompt in hello **createdeviceidentity** folder, run hello following command tooinstall hello **azure-iothub** Service SDK package:</span></span>
    
     ```
     npm install azure-iothub --save
     ```
-3. <span data-ttu-id="40f6b-125">В текстовом редакторе создайте файл **CreateDeviceIdentity.js** в папке **createdeviceidentity**.</span><span class="sxs-lookup"><span data-stu-id="40f6b-125">Using a text editor, create a **CreateDeviceIdentity.js** file in the **createdeviceidentity** folder.</span></span>
-4. <span data-ttu-id="40f6b-126">Добавьте следующую инструкцию `require` в начало файла **CreateDeviceIdentity.js** :</span><span class="sxs-lookup"><span data-stu-id="40f6b-126">Add the following `require` statement at the start of the **CreateDeviceIdentity.js** file:</span></span>
+3. <span data-ttu-id="41dfb-125">В текстовом редакторе создайте **CreateDeviceIdentity.js** файла в hello **createdeviceidentity** папки.</span><span class="sxs-lookup"><span data-stu-id="41dfb-125">Using a text editor, create a **CreateDeviceIdentity.js** file in hello **createdeviceidentity** folder.</span></span>
+4. <span data-ttu-id="41dfb-126">Добавьте следующее hello `require` инструкции в начале hello hello **CreateDeviceIdentity.js** файла:</span><span class="sxs-lookup"><span data-stu-id="41dfb-126">Add hello following `require` statement at hello start of hello **CreateDeviceIdentity.js** file:</span></span>
    
     ```
     'use strict';
    
     var iothub = require('azure-iothub');
     ```
-5. <span data-ttu-id="40f6b-127">Добавьте следующий код в файл **CreateDeviceIdentity.js**, заменив заполнитель строкой подключения к Центру Интернета вещей, созданному в предыдущем разделе:</span><span class="sxs-lookup"><span data-stu-id="40f6b-127">Add the following code to the **CreateDeviceIdentity.js** file and replace the placeholder value with the IoT Hub connection string for the hub you created in the previous section:</span></span> 
+5. <span data-ttu-id="41dfb-127">Добавьте следующий код toohello hello **CreateDeviceIdentity.js** и замените значение заполнителя hello hello центра IoT строку подключения для hello концентратора, созданный в предыдущем разделе hello:</span><span class="sxs-lookup"><span data-stu-id="41dfb-127">Add hello following code toohello **CreateDeviceIdentity.js** file and replace hello placeholder value with hello IoT Hub connection string for hello hub you created in hello previous section:</span></span> 
    
     ```
     var connectionString = '{iothub connection string}';
    
     var registry = iothub.Registry.fromConnectionString(connectionString);
     ```
-6. <span data-ttu-id="40f6b-128">Добавьте следующий код, чтобы создать определение устройства в реестре удостоверений в Центре Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="40f6b-128">Add the following code to create a device definition in the identity registry in your IoT hub.</span></span> <span data-ttu-id="40f6b-129">Этот код создает устройство, если идентификатор устройства отсутствует в реестре удостоверений. В противном случае он возвращает ключ существующего устройства:</span><span class="sxs-lookup"><span data-stu-id="40f6b-129">This code creates a device if the device ID does not exist in the identity registry, otherwise it returns the key of the existing device:</span></span>
+6. <span data-ttu-id="41dfb-128">Добавьте следующий код toocreate определение устройства в реестре hello identity в вашего центра IoT hello.</span><span class="sxs-lookup"><span data-stu-id="41dfb-128">Add hello following code toocreate a device definition in hello identity registry in your IoT hub.</span></span> <span data-ttu-id="41dfb-129">Этот код создает устройства, если идентификатор устройства hello не существует в реестре удостоверений hello, в противном случае он возвращает ключ hello hello существующее устройство:</span><span class="sxs-lookup"><span data-stu-id="41dfb-129">This code creates a device if hello device ID does not exist in hello identity registry, otherwise it returns hello key of hello existing device:</span></span>
    
     ```
     var device = {
@@ -96,52 +96,52 @@ ms.lasthandoff: 08/29/2017
     ```
    [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
-7. <span data-ttu-id="40f6b-130">Сохраните и закройте файл **CreateDeviceIdentity.js** .</span><span class="sxs-lookup"><span data-stu-id="40f6b-130">Save and close **CreateDeviceIdentity.js** file.</span></span>
-8. <span data-ttu-id="40f6b-131">Чтобы запустить приложение **createdeviceidentity**, выполните в командной строке в папке createdeviceidentity следующую команду:</span><span class="sxs-lookup"><span data-stu-id="40f6b-131">To run the **createdeviceidentity** application, execute the following command at the command prompt in the createdeviceidentity folder:</span></span>
+7. <span data-ttu-id="41dfb-130">Сохраните и закройте файл **CreateDeviceIdentity.js** .</span><span class="sxs-lookup"><span data-stu-id="41dfb-130">Save and close **CreateDeviceIdentity.js** file.</span></span>
+8. <span data-ttu-id="41dfb-131">toorun hello **createdeviceidentity** приложения, выполните следующую команду в командной строке hello в папке createdeviceidentity hello hello:</span><span class="sxs-lookup"><span data-stu-id="41dfb-131">toorun hello **createdeviceidentity** application, execute hello following command at hello command prompt in hello createdeviceidentity folder:</span></span>
    
     ```
     node CreateDeviceIdentity.js 
     ```
-9. <span data-ttu-id="40f6b-132">Запишите значения полей **Идентификатор устройства** и **Device key** (Ключ устройства).</span><span class="sxs-lookup"><span data-stu-id="40f6b-132">Make a note of the **Device ID** and **Device key**.</span></span> <span data-ttu-id="40f6b-133">Эти значения понадобятся вам позже, когда вы будете создавать приложение, которое подключается к центру IoT как устройство.</span><span class="sxs-lookup"><span data-stu-id="40f6b-133">You need these values later when you create an application that connects to IoT Hub as a device.</span></span>
+9. <span data-ttu-id="41dfb-132">Запишите hello **идентификатор устройства** и **ключ устройства**.</span><span class="sxs-lookup"><span data-stu-id="41dfb-132">Make a note of hello **Device ID** and **Device key**.</span></span> <span data-ttu-id="41dfb-133">Эти значения должны позже при создании приложения, которое подключается tooIoT концентратора как устройство.</span><span class="sxs-lookup"><span data-stu-id="41dfb-133">You need these values later when you create an application that connects tooIoT Hub as a device.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="40f6b-134">В реестре удостоверений в Центре Интернета вещей хранятся только идентификаторы устройств, необходимые для безопасного доступа к Центру Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="40f6b-134">The IoT Hub identity registry only stores device identities to enable secure access to the IoT hub.</span></span> <span data-ttu-id="40f6b-135">В этом реестре хранятся идентификаторы и ключи устройств, которые используются в качестве учетных данных безопасности, и флажок включения или выключения, который позволяет вам отключить доступ для отдельного устройства.</span><span class="sxs-lookup"><span data-stu-id="40f6b-135">It stores device IDs and keys to use as security credentials and an enabled/disabled flag that you can use to disable access for an individual device.</span></span> <span data-ttu-id="40f6b-136">Если в приложении необходимо хранить другие метаданные для конкретного устройства, следует использовать хранилище конкретного приложения.</span><span class="sxs-lookup"><span data-stu-id="40f6b-136">If your application needs to store other device-specific metadata, it should use an application-specific store.</span></span> <span data-ttu-id="40f6b-137">Дополнительные сведения см. в [руководстве для разработчиков Центра Интернета вещей][lnk-devguide-identity].</span><span class="sxs-lookup"><span data-stu-id="40f6b-137">For more information, see the [IoT Hub developer guide][lnk-devguide-identity].</span></span>
+> <span data-ttu-id="41dfb-134">Hello реестра удостоверений центра IoT хранится только toohello устройства удостоверения tooenable безопасного доступа центра IoT.</span><span class="sxs-lookup"><span data-stu-id="41dfb-134">hello IoT Hub identity registry only stores device identities tooenable secure access toohello IoT hub.</span></span> <span data-ttu-id="41dfb-135">Он сохраняет идентификаторы и ключи toouse устройства как учетные данные безопасности и включение или отключение флага, что toodisable доступа можно использовать для отдельных устройств.</span><span class="sxs-lookup"><span data-stu-id="41dfb-135">It stores device IDs and keys toouse as security credentials and an enabled/disabled flag that you can use toodisable access for an individual device.</span></span> <span data-ttu-id="41dfb-136">Если приложению toostore другие метаданные для конкретного устройства, его следует использовать хранилище конкретного приложения.</span><span class="sxs-lookup"><span data-stu-id="41dfb-136">If your application needs toostore other device-specific metadata, it should use an application-specific store.</span></span> <span data-ttu-id="41dfb-137">Дополнительные сведения см. в разделе hello [руководстве для разработчиков центра IoT][lnk-devguide-identity].</span><span class="sxs-lookup"><span data-stu-id="41dfb-137">For more information, see hello [IoT Hub developer guide][lnk-devguide-identity].</span></span>
 > 
 > 
 
 <a id="D2C_node"></a>
-## <a name="receive-device-to-cloud-messages"></a><span data-ttu-id="40f6b-138">Получение сообщений с устройства в облако</span><span class="sxs-lookup"><span data-stu-id="40f6b-138">Receive device-to-cloud messages</span></span>
-<span data-ttu-id="40f6b-139">В этом разделе вы научитесь создавать консольное приложение Node.js, которое считывает сообщения, передаваемые с устройства в облако из центра IoT.</span><span class="sxs-lookup"><span data-stu-id="40f6b-139">In this section, you create a Node.js console app that reads device-to-cloud messages from IoT Hub.</span></span> <span data-ttu-id="40f6b-140">Центр Интернета вещей предоставляет совместимую с [концентраторами событий][lnk-event-hubs-overview] конечную точку для считывания сообщений, передаваемых с устройства в облако.</span><span class="sxs-lookup"><span data-stu-id="40f6b-140">An IoT hub exposes an [Event Hubs][lnk-event-hubs-overview]-compatible endpoint to enable you to read device-to-cloud messages.</span></span> <span data-ttu-id="40f6b-141">Для простоты в этом руководстве создается базовый модуль чтения, который не подходит для развертывания с высокой пропускной способностью.</span><span class="sxs-lookup"><span data-stu-id="40f6b-141">To keep things simple, this tutorial creates a basic reader that is not suitable for a high throughput deployment.</span></span> <span data-ttu-id="40f6b-142">В руководстве по [обработке сообщений, передаваемых с устройства в облако][lnk-process-d2c-tutorial], показано, как обрабатывать такие сообщения в больших количествах.</span><span class="sxs-lookup"><span data-stu-id="40f6b-142">The [Process device-to-cloud messages][lnk-process-d2c-tutorial] tutorial shows you how to process device-to-cloud messages at scale.</span></span> <span data-ttu-id="40f6b-143">В руководстве по [началу работы с концентраторами событий][lnk-eventhubs-tutorial] приведены дополнительные сведения о том, как обрабатываются сообщения из концентраторов событий. Это руководство применимо к конечным точкам Центра Интернета вещей, совместимым с концентраторами событий.</span><span class="sxs-lookup"><span data-stu-id="40f6b-143">The [Get Started with Event Hubs][lnk-eventhubs-tutorial] tutorial provides further information on how to process messages from Event Hubs and is applicable to the IoT Hub Event Hub-compatible endpoints.</span></span>
+## <a name="receive-device-to-cloud-messages"></a><span data-ttu-id="41dfb-138">Получение сообщений с устройства в облако</span><span class="sxs-lookup"><span data-stu-id="41dfb-138">Receive device-to-cloud messages</span></span>
+<span data-ttu-id="41dfb-139">В этом разделе вы научитесь создавать консольное приложение Node.js, которое считывает сообщения, передаваемые с устройства в облако из центра IoT.</span><span class="sxs-lookup"><span data-stu-id="41dfb-139">In this section, you create a Node.js console app that reads device-to-cloud messages from IoT Hub.</span></span> <span data-ttu-id="41dfb-140">Центр IoT предоставляет [концентраторов событий][lnk-event-hubs-overview]-совместимую конечную точку tooenable вам сообщения tooread устройства в облако.</span><span class="sxs-lookup"><span data-stu-id="41dfb-140">An IoT hub exposes an [Event Hubs][lnk-event-hubs-overview]-compatible endpoint tooenable you tooread device-to-cloud messages.</span></span> <span data-ttu-id="41dfb-141">простые действия tookeep, данный учебник создает основные средства чтения, не подходит для развертывания высокой пропускной способностью.</span><span class="sxs-lookup"><span data-stu-id="41dfb-141">tookeep things simple, this tutorial creates a basic reader that is not suitable for a high throughput deployment.</span></span> <span data-ttu-id="41dfb-142">Hello [обрабатывать сообщения из устройства в облако] [ lnk-process-d2c-tutorial] учебнике показано, как сообщения tooprocess устройства в облако в масштабе.</span><span class="sxs-lookup"><span data-stu-id="41dfb-142">hello [Process device-to-cloud messages][lnk-process-d2c-tutorial] tutorial shows you how tooprocess device-to-cloud messages at scale.</span></span> <span data-ttu-id="41dfb-143">Hello [Приступая к работе с концентраторами событий] [ lnk-eventhubs-tutorial] учебника содержатся дополнительные сведения о предоставлении tooprocess сообщений из концентраторов событий и определяется применимо toohello конечными точками события концентратора IoT Hub совместимой.</span><span class="sxs-lookup"><span data-stu-id="41dfb-143">hello [Get Started with Event Hubs][lnk-eventhubs-tutorial] tutorial provides further information on how tooprocess messages from Event Hubs and is applicable toohello IoT Hub Event Hub-compatible endpoints.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="40f6b-144">Совместимая с концентраторами событий конечная точка для чтения сообщений, отправляемых с устройства в облако, всегда использует протокол AMQP.</span><span class="sxs-lookup"><span data-stu-id="40f6b-144">The Event Hub-compatible endpoint for reading device-to-cloud messages always uses the AMQP protocol.</span></span>
+> <span data-ttu-id="41dfb-144">Hello концентратора событий-совместимой конечной точки для чтения сообщения из устройства в облако, всегда использует протокол AMQP hello.</span><span class="sxs-lookup"><span data-stu-id="41dfb-144">hello Event Hub-compatible endpoint for reading device-to-cloud messages always uses hello AMQP protocol.</span></span>
 > 
 > 
 
-1. <span data-ttu-id="40f6b-145">Создайте пустую папку с именем **readdevicetocloudmessages**.</span><span class="sxs-lookup"><span data-stu-id="40f6b-145">Create an empty folder called **readdevicetocloudmessages**.</span></span> <span data-ttu-id="40f6b-146">В папке **readdevicetocloudmessages** создайте файл package.json, используя следующую команду в командной строке.</span><span class="sxs-lookup"><span data-stu-id="40f6b-146">In the **readdevicetocloudmessages** folder, create a package.json file using the following command at your command prompt.</span></span> <span data-ttu-id="40f6b-147">Примите значения по умолчанию:</span><span class="sxs-lookup"><span data-stu-id="40f6b-147">Accept all the defaults:</span></span>
+1. <span data-ttu-id="41dfb-145">Создайте пустую папку с именем **readdevicetocloudmessages**.</span><span class="sxs-lookup"><span data-stu-id="41dfb-145">Create an empty folder called **readdevicetocloudmessages**.</span></span> <span data-ttu-id="41dfb-146">В hello **readdevicetocloudmessages** папки, создайте файл package.json, используя следующую команду в командной строке hello.</span><span class="sxs-lookup"><span data-stu-id="41dfb-146">In hello **readdevicetocloudmessages** folder, create a package.json file using hello following command at your command prompt.</span></span> <span data-ttu-id="41dfb-147">Примите все значения по умолчанию hello:</span><span class="sxs-lookup"><span data-stu-id="41dfb-147">Accept all hello defaults:</span></span>
    
     ```
     npm init
     ```
-2. <span data-ttu-id="40f6b-148">В командной строке в папке **readdevicetocloudmessages** выполните следующую команду, чтобы установить пакет **azure-event-hubs**:</span><span class="sxs-lookup"><span data-stu-id="40f6b-148">At your command prompt in the **readdevicetocloudmessages** folder, run the following command to install the **azure-event-hubs** package:</span></span>
+2. <span data-ttu-id="41dfb-148">В командной строке в hello **readdevicetocloudmessages** папку, следующая команда tooinstall hello hello **концентраторов событий azure** пакета:</span><span class="sxs-lookup"><span data-stu-id="41dfb-148">At your command prompt in hello **readdevicetocloudmessages** folder, run hello following command tooinstall hello **azure-event-hubs** package:</span></span>
    
     ```
     npm install azure-event-hubs --save
     ```
-3. <span data-ttu-id="40f6b-149">В текстовом редакторе создайте файл **ReadDeviceToCloudMessages.js** в папке **readdevicetocloudmessages**.</span><span class="sxs-lookup"><span data-stu-id="40f6b-149">Using a text editor, create a **ReadDeviceToCloudMessages.js** file in the **readdevicetocloudmessages** folder.</span></span>
-4. <span data-ttu-id="40f6b-150">Добавьте следующие инструкции `require` в начало файла **ReadDeviceToCloudMessages.js** :</span><span class="sxs-lookup"><span data-stu-id="40f6b-150">Add the following `require` statements at the start of the **ReadDeviceToCloudMessages.js** file:</span></span>
+3. <span data-ttu-id="41dfb-149">В текстовом редакторе создайте **ReadDeviceToCloudMessages.js** файла в hello **readdevicetocloudmessages** папки.</span><span class="sxs-lookup"><span data-stu-id="41dfb-149">Using a text editor, create a **ReadDeviceToCloudMessages.js** file in hello **readdevicetocloudmessages** folder.</span></span>
+4. <span data-ttu-id="41dfb-150">Добавьте следующее hello `require` инструкции на hello начала hello **ReadDeviceToCloudMessages.js** файла:</span><span class="sxs-lookup"><span data-stu-id="41dfb-150">Add hello following `require` statements at hello start of hello **ReadDeviceToCloudMessages.js** file:</span></span>
    
     ```
     'use strict';
    
     var EventHubClient = require('azure-event-hubs').Client;
     ```
-5. <span data-ttu-id="40f6b-151">Добавьте следующее объявление переменной и замените заполнитель строкой подключения к своему экземпляру Центра Интернета вещей:</span><span class="sxs-lookup"><span data-stu-id="40f6b-151">Add the following variable declaration and replace the placeholder value with the IoT Hub connection string for your hub:</span></span>
+5. <span data-ttu-id="41dfb-151">Добавьте следующие объявления переменных hello и замените значение заполнителя hello hello центра IoT строку подключения для концентратор.</span><span class="sxs-lookup"><span data-stu-id="41dfb-151">Add hello following variable declaration and replace hello placeholder value with hello IoT Hub connection string for your hub:</span></span>
    
     ```
     var connectionString = '{iothub connection string}';
     ```
-6. <span data-ttu-id="40f6b-152">Добавьте следующие две функции для вывода результатов на консоль:</span><span class="sxs-lookup"><span data-stu-id="40f6b-152">Add the following two functions that print output to the console:</span></span>
+6. <span data-ttu-id="41dfb-152">Добавьте следующие две функции, которые печати выходных данных консоли toohello hello:</span><span class="sxs-lookup"><span data-stu-id="41dfb-152">Add hello following two functions that print output toohello console:</span></span>
    
     ```
     var printError = function (err) {
@@ -154,7 +154,7 @@ ms.lasthandoff: 08/29/2017
       console.log('');
     };
     ```
-7. <span data-ttu-id="40f6b-153">Добавьте следующий код, чтобы создать **EventHubClient**, открыть подключение к Центру Интернета вещей и создать получатель для каждой секции.</span><span class="sxs-lookup"><span data-stu-id="40f6b-153">Add the following code to create the **EventHubClient**, open the connection to your IoT Hub, and create a receiver for each partition.</span></span> <span data-ttu-id="40f6b-154">Это приложение использует фильтр во время создания приемника, чтобы приемник считывал только сообщения, отправленные в центр IoT после запуска получателя.</span><span class="sxs-lookup"><span data-stu-id="40f6b-154">This application uses a filter when it creates a receiver so that the receiver only reads messages sent to IoT Hub after the receiver starts running.</span></span> <span data-ttu-id="40f6b-155">Этот фильтр удобно использовать в тестовой среде для просмотра только текущего набора сообщений.</span><span class="sxs-lookup"><span data-stu-id="40f6b-155">This filter is useful in a test environment so you see just the current set of messages.</span></span> <span data-ttu-id="40f6b-156">В рабочей среде убедитесь, что ваш код обрабатывает все сообщения.</span><span class="sxs-lookup"><span data-stu-id="40f6b-156">In a production environment, your code should make sure that it processes all the messages.</span></span> <span data-ttu-id="40f6b-157">Дополнительные сведения см. в руководстве [по обработке сообщений Центра Интернета вещей, отправляемых с устройства в облако][lnk-process-d2c-tutorial].</span><span class="sxs-lookup"><span data-stu-id="40f6b-157">For more information, see the [How to process IoT Hub device-to-cloud messages][lnk-process-d2c-tutorial] tutorial:</span></span>
+7. <span data-ttu-id="41dfb-153">Добавьте следующий код toocreate hello hello **EventHubClient**откройте tooyour подключения hello центр IoT и Создание приемника для каждой секции.</span><span class="sxs-lookup"><span data-stu-id="41dfb-153">Add hello following code toocreate hello **EventHubClient**, open hello connection tooyour IoT Hub, and create a receiver for each partition.</span></span> <span data-ttu-id="41dfb-154">Это приложение использует фильтр при создании получателя, чтобы hello приемник считывает только сообщения, отправленные tooIoT концентратора после hello получатель начинает выполнение.</span><span class="sxs-lookup"><span data-stu-id="41dfb-154">This application uses a filter when it creates a receiver so that hello receiver only reads messages sent tooIoT Hub after hello receiver starts running.</span></span> <span data-ttu-id="41dfb-155">Этот фильтр может применяться в тестовой среде, чтобы видеть только hello текущего набора сообщений.</span><span class="sxs-lookup"><span data-stu-id="41dfb-155">This filter is useful in a test environment so you see just hello current set of messages.</span></span> <span data-ttu-id="41dfb-156">В рабочей среде кода следует убедиться, оно обрабатывает все сообщения hello.</span><span class="sxs-lookup"><span data-stu-id="41dfb-156">In a production environment, your code should make sure that it processes all hello messages.</span></span> <span data-ttu-id="41dfb-157">Дополнительные сведения см. в разделе hello [как tooprocess сообщения из устройства в облако центра IoT] [ lnk-process-d2c-tutorial] учебника:</span><span class="sxs-lookup"><span data-stu-id="41dfb-157">For more information, see hello [How tooprocess IoT Hub device-to-cloud messages][lnk-process-d2c-tutorial] tutorial:</span></span>
    
     ```
     var client = EventHubClient.fromConnectionString(connectionString);
@@ -171,23 +171,23 @@ ms.lasthandoff: 08/29/2017
         })
         .catch(printError);
     ```
-8. <span data-ttu-id="40f6b-158">Сохраните и закройте файл **ReadDeviceToCloudMessages.js** .</span><span class="sxs-lookup"><span data-stu-id="40f6b-158">Save and close the **ReadDeviceToCloudMessages.js** file.</span></span>
+8. <span data-ttu-id="41dfb-158">Сохраните и закройте hello **ReadDeviceToCloudMessages.js** файла.</span><span class="sxs-lookup"><span data-stu-id="41dfb-158">Save and close hello **ReadDeviceToCloudMessages.js** file.</span></span>
 
-## <a name="create-a-simulated-device-app"></a><span data-ttu-id="40f6b-159">Создание приложения виртуального устройства</span><span class="sxs-lookup"><span data-stu-id="40f6b-159">Create a simulated device app</span></span>
-<span data-ttu-id="40f6b-160">В этом разделе вам предстоит создать консольное приложение Node.js, которое имитирует устройство, отправляющее сообщения с устройства в облако в центр IoT.</span><span class="sxs-lookup"><span data-stu-id="40f6b-160">In this section, you create a Node.js console app that simulates a device that sends device-to-cloud messages to an IoT hub.</span></span>
+## <a name="create-a-simulated-device-app"></a><span data-ttu-id="41dfb-159">Создание приложения виртуального устройства</span><span class="sxs-lookup"><span data-stu-id="41dfb-159">Create a simulated device app</span></span>
+<span data-ttu-id="41dfb-160">В этом разделе создайте консольное приложение Node.js, которое имитирует устройство, которое отправляет центр IoT tooan сообщения из устройства в облако.</span><span class="sxs-lookup"><span data-stu-id="41dfb-160">In this section, you create a Node.js console app that simulates a device that sends device-to-cloud messages tooan IoT hub.</span></span>
 
-1. <span data-ttu-id="40f6b-161">Создайте пустую папку с именем **simulateddevice**.</span><span class="sxs-lookup"><span data-stu-id="40f6b-161">Create an empty folder called **simulateddevice**.</span></span> <span data-ttu-id="40f6b-162">В папке **simulateddevice** создайте файл package.json, используя следующую команду в командной строке.</span><span class="sxs-lookup"><span data-stu-id="40f6b-162">In the **simulateddevice** folder, create a package.json file using the following command at your command prompt.</span></span> <span data-ttu-id="40f6b-163">Примите значения по умолчанию:</span><span class="sxs-lookup"><span data-stu-id="40f6b-163">Accept all the defaults:</span></span>
+1. <span data-ttu-id="41dfb-161">Создайте пустую папку с именем **simulateddevice**.</span><span class="sxs-lookup"><span data-stu-id="41dfb-161">Create an empty folder called **simulateddevice**.</span></span> <span data-ttu-id="41dfb-162">В hello **simulateddevice** папки, создайте файл package.json, используя следующую команду в командной строке hello.</span><span class="sxs-lookup"><span data-stu-id="41dfb-162">In hello **simulateddevice** folder, create a package.json file using hello following command at your command prompt.</span></span> <span data-ttu-id="41dfb-163">Примите все значения по умолчанию hello:</span><span class="sxs-lookup"><span data-stu-id="41dfb-163">Accept all hello defaults:</span></span>
    
     ```
     npm init
     ```
-2. <span data-ttu-id="40f6b-164">В командной строке в папке **simulateddevice** выполните следующую команду, чтобы установить пакет SDK для устройства **azure-iot-device** и пакет **azure-iot-device-mqtt**:</span><span class="sxs-lookup"><span data-stu-id="40f6b-164">At your command prompt in the **simulateddevice** folder, run the following command to install the **azure-iot-device** Device SDK package and **azure-iot-device-mqtt** package:</span></span>
+2. <span data-ttu-id="41dfb-164">В командной строке в hello **simulateddevice** папку, следующая команда tooinstall hello hello **azure iot устройства** пакета SDK для устройства и **azure-iot устройства mqtt**пакета:</span><span class="sxs-lookup"><span data-stu-id="41dfb-164">At your command prompt in hello **simulateddevice** folder, run hello following command tooinstall hello **azure-iot-device** Device SDK package and **azure-iot-device-mqtt** package:</span></span>
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. <span data-ttu-id="40f6b-165">В текстовом редакторе создайте файл **SimulatedDevice.js** в папке **simulateddevice**.</span><span class="sxs-lookup"><span data-stu-id="40f6b-165">Using a text editor, create a **SimulatedDevice.js** file in the **simulateddevice** folder.</span></span>
-4. <span data-ttu-id="40f6b-166">Добавьте следующие инструкции `require` в начало файла **SimulatedDevice.js** :</span><span class="sxs-lookup"><span data-stu-id="40f6b-166">Add the following `require` statements at the start of the **SimulatedDevice.js** file:</span></span>
+3. <span data-ttu-id="41dfb-165">В текстовом редакторе создайте **SimulatedDevice.js** файла в hello **simulateddevice** папки.</span><span class="sxs-lookup"><span data-stu-id="41dfb-165">Using a text editor, create a **SimulatedDevice.js** file in hello **simulateddevice** folder.</span></span>
+4. <span data-ttu-id="41dfb-166">Добавьте следующее hello `require` инструкции на hello начала hello **SimulatedDevice.js** файла:</span><span class="sxs-lookup"><span data-stu-id="41dfb-166">Add hello following `require` statements at hello start of hello **SimulatedDevice.js** file:</span></span>
    
     ```
     'use strict';
@@ -195,14 +195,14 @@ ms.lasthandoff: 08/29/2017
     var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
     var Message = require('azure-iot-device').Message;
     ```
-5. <span data-ttu-id="40f6b-167">Добавьте переменную **connectionString**, чтобы создать с ее помощью экземпляр **клиента**.</span><span class="sxs-lookup"><span data-stu-id="40f6b-167">Add a **connectionString** variable and use it to create a **Client** instance.</span></span> <span data-ttu-id="40f6b-168">Замените **{youriothostname}** именем центра IoT, созданного в разделе *Создание центра IoT* .</span><span class="sxs-lookup"><span data-stu-id="40f6b-168">Replace **{youriothostname}** with the name of the IoT hub you created the *Create an IoT Hub* section.</span></span> <span data-ttu-id="40f6b-169">Замените **{yourdevicekey}** ключом устройства, созданным в разделе *Создание удостоверения устройства* :</span><span class="sxs-lookup"><span data-stu-id="40f6b-169">Replace **{yourdevicekey}** with the device key value you generated in the *Create a device identity* section:</span></span>
+5. <span data-ttu-id="41dfb-167">Добавить **connectionString** переменной и использовать его toocreate **клиента** экземпляра.</span><span class="sxs-lookup"><span data-stu-id="41dfb-167">Add a **connectionString** variable and use it toocreate a **Client** instance.</span></span> <span data-ttu-id="41dfb-168">Замените **{youriothostname}** с именем hello hello центра IoT вы создали hello *создать центр IoT* раздела.</span><span class="sxs-lookup"><span data-stu-id="41dfb-168">Replace **{youriothostname}** with hello name of hello IoT hub you created hello *Create an IoT Hub* section.</span></span> <span data-ttu-id="41dfb-169">Замените **{yourdevicekey}** со значением ключа устройства hello созданный hello *создать удостоверение устройства* раздела:</span><span class="sxs-lookup"><span data-stu-id="41dfb-169">Replace **{yourdevicekey}** with hello device key value you generated in hello *Create a device identity* section:</span></span>
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myFirstNodeDevice;SharedAccessKey={yourdevicekey}';
    
     var client = clientFromConnectionString(connectionString);
     ```
-6. <span data-ttu-id="40f6b-170">Добавьте следующую функцию для вывода данных приложения:</span><span class="sxs-lookup"><span data-stu-id="40f6b-170">Add the following function to display output from the application:</span></span>
+6. <span data-ttu-id="41dfb-170">Добавьте следующие выходные данные функции toodisplay из приложения hello hello:</span><span class="sxs-lookup"><span data-stu-id="41dfb-170">Add hello following function toodisplay output from hello application:</span></span>
    
     ```
     function printResultFor(op) {
@@ -212,7 +212,7 @@ ms.lasthandoff: 08/29/2017
       };
     }
     ```
-7. <span data-ttu-id="40f6b-171">Создайте обратный вызов и используйте функцию **setInterval**, чтобы отправлять сообщение в Центр Интернета вещей каждую секунду:</span><span class="sxs-lookup"><span data-stu-id="40f6b-171">Create a callback and use the **setInterval** function to send a message to your IoT hub every second:</span></span>
+7. <span data-ttu-id="41dfb-171">Создание обратного вызова и использовать hello **setInterval** функции toosend концентратор IoT tooyour сообщение каждую секунду:</span><span class="sxs-lookup"><span data-stu-id="41dfb-171">Create a callback and use hello **setInterval** function toosend a message tooyour IoT hub every second:</span></span>
    
     ```
     var connectCallback = function (err) {
@@ -221,7 +221,7 @@ ms.lasthandoff: 08/29/2017
       } else {
         console.log('Client connected');
    
-        // Create a message and send it to the IoT Hub every second
+        // Create a message and send it toohello IoT Hub every second
         setInterval(function(){
             var temperature = 20 + (Math.random() * 15);
             var humidity = 60 + (Math.random() * 20);            
@@ -234,49 +234,49 @@ ms.lasthandoff: 08/29/2017
       }
     };
     ```
-8. <span data-ttu-id="40f6b-172">Откройте подключение к центру IoT и начните отправку сообщений.</span><span class="sxs-lookup"><span data-stu-id="40f6b-172">Open the connection to your IoT Hub and start sending messages:</span></span>
+8. <span data-ttu-id="41dfb-172">Откройте tooyour подключения hello центр IoT и приступить к отправке сообщений:</span><span class="sxs-lookup"><span data-stu-id="41dfb-172">Open hello connection tooyour IoT Hub and start sending messages:</span></span>
    
     ```
     client.open(connectCallback);
     ```
-9. <span data-ttu-id="40f6b-173">Сохраните и закройте файл **SimulatedDevice.js** .</span><span class="sxs-lookup"><span data-stu-id="40f6b-173">Save and close the **SimulatedDevice.js** file.</span></span>
+9. <span data-ttu-id="41dfb-173">Сохраните и закройте hello **SimulatedDevice.js** файла.</span><span class="sxs-lookup"><span data-stu-id="41dfb-173">Save and close hello **SimulatedDevice.js** file.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="40f6b-174">Для простоты в этом руководстве не реализуются политики повтора.</span><span class="sxs-lookup"><span data-stu-id="40f6b-174">To keep things simple, this tutorial does not implement any retry policy.</span></span> <span data-ttu-id="40f6b-175">В рабочем коде следует реализовать политики повторных попыток (например, с экспоненциальной задержкой), как указано в статье [Обработка временного сбоя][lnk-transient-faults] на сайте MSDN.</span><span class="sxs-lookup"><span data-stu-id="40f6b-175">In production code, you should implement retry policies (such as an exponential backoff), as suggested in the MSDN article [Transient Fault Handling][lnk-transient-faults].</span></span>
+> <span data-ttu-id="41dfb-174">простые действия tookeep, этот учебник не реализует никакую политику повтора.</span><span class="sxs-lookup"><span data-stu-id="41dfb-174">tookeep things simple, this tutorial does not implement any retry policy.</span></span> <span data-ttu-id="41dfb-175">В рабочем коде следует реализовать политики повтора (например экспоненциальную отсрочку), описанным в статье MSDN hello [обработка временных сбоев][lnk-transient-faults].</span><span class="sxs-lookup"><span data-stu-id="41dfb-175">In production code, you should implement retry policies (such as an exponential backoff), as suggested in hello MSDN article [Transient Fault Handling][lnk-transient-faults].</span></span>
 > 
 > 
 
-## <a name="run-the-apps"></a><span data-ttu-id="40f6b-176">Запуск приложений</span><span class="sxs-lookup"><span data-stu-id="40f6b-176">Run the apps</span></span>
-<span data-ttu-id="40f6b-177">Теперь все готово к запуску приложений.</span><span class="sxs-lookup"><span data-stu-id="40f6b-177">You are now ready to run the apps.</span></span>
+## <a name="run-hello-apps"></a><span data-ttu-id="41dfb-176">Запускайте приложения hello</span><span class="sxs-lookup"><span data-stu-id="41dfb-176">Run hello apps</span></span>
+<span data-ttu-id="41dfb-177">Теперь вы находитесь toorun готовности приложения hello.</span><span class="sxs-lookup"><span data-stu-id="41dfb-177">You are now ready toorun hello apps.</span></span>
 
-1. <span data-ttu-id="40f6b-178">В командной строке в папке **readdevicetocloudmessages** выполните следующую команду, чтобы начать наблюдение за Центром Интернета вещей:</span><span class="sxs-lookup"><span data-stu-id="40f6b-178">At a command prompt in the **readdevicetocloudmessages** folder, run the following command to begin monitoring your IoT hub:</span></span>
+1. <span data-ttu-id="41dfb-178">В командной строке в hello **readdevicetocloudmessages** папки, запустите следующие команды toobegin мониторинга вашего центра IoT hello:</span><span class="sxs-lookup"><span data-stu-id="41dfb-178">At a command prompt in hello **readdevicetocloudmessages** folder, run hello following command toobegin monitoring your IoT hub:</span></span>
    
     ```
     node ReadDeviceToCloudMessages.js 
     ```
    
-    ![Приложение службы Центра Интернета вещей на платформе Node.js для мониторинга сообщений, отправляемых с устройства в облако][7]
-2. <span data-ttu-id="40f6b-180">В командной строке в папке **simulateddevice** выполните следующую команду, чтобы начать отправку данных телеметрии в Центр Интернета вещей:</span><span class="sxs-lookup"><span data-stu-id="40f6b-180">At a command prompt in the **simulateddevice** folder, run the following command to begin sending telemetry data to your IoT hub:</span></span>
+    ![Сообщения из устройства в облако node.js центр IoT службы приложения toomonitor][7]
+2. <span data-ttu-id="41dfb-180">В командной строке в hello **simulateddevice** папки, запустите hello, следующая команда toobegin отправки центра IoT tooyour данных телеметрии:</span><span class="sxs-lookup"><span data-stu-id="41dfb-180">At a command prompt in hello **simulateddevice** folder, run hello following command toobegin sending telemetry data tooyour IoT hub:</span></span>
    
     ```
     node SimulatedDevice.js
     ```
    
-    ![Приложение устройства Центра Интернета вещей на платформе Node.js для отправки сообщений с устройства в облако][8]
-3. <span data-ttu-id="40f6b-182">На плитке **Использование** на [портале Azure][lnk-portal] отображается количество сообщений, отправленных в Центр Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="40f6b-182">The **Usage** tile in the [Azure portal][lnk-portal] shows the number of messages sent to the IoT hub:</span></span>
+    ![Устройства в облако сообщения toosend приложения node.js центр IoT устройства][8]
+3. <span data-ttu-id="41dfb-182">Hello **использование** плитки в hello [портал Azure] [ lnk-portal] показано hello число сообщений, отправляемых toohello центр IoT:</span><span class="sxs-lookup"><span data-stu-id="41dfb-182">hello **Usage** tile in hello [Azure portal][lnk-portal] shows hello number of messages sent toohello IoT hub:</span></span>
    
-    ![Плитка "Использование" на портале Azure, отображающая количество сообщений, отправленных в Центр Интернета вещей][43]
+    ![Azure портала использование плитки, показывающего количество сообщений, отправляемых tooIoT концентратора][43]
 
-## <a name="next-steps"></a><span data-ttu-id="40f6b-184">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="40f6b-184">Next steps</span></span>
-<span data-ttu-id="40f6b-185">В этом руководстве мы настроили новый Центр Интернета вещей на портале Azure и создали удостоверение устройства в реестре удостоверений Центра Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="40f6b-185">In this tutorial, you configured a new IoT hub in the Azure portal, and then created a device identity in the IoT hub's identity registry.</span></span> <span data-ttu-id="40f6b-186">Это удостоверение позволяет приложению виртуального устройства отправлять в Центр Интернета вещей сообщения, передаваемые из устройства в облако.</span><span class="sxs-lookup"><span data-stu-id="40f6b-186">You used this device identity to enable the simulated device app to send device-to-cloud messages to the IoT hub.</span></span> <span data-ttu-id="40f6b-187">Кроме того, мы создали приложение, которое отображает сообщения, полученные Центром Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="40f6b-187">You also created an app that displays the messages received by the IoT hub.</span></span> 
+## <a name="next-steps"></a><span data-ttu-id="41dfb-184">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="41dfb-184">Next steps</span></span>
+<span data-ttu-id="41dfb-185">В этом учебнике настроен центр IoT в hello портал Azure и затем создать удостоверение устройства в реестре удостоверений центра IoT hello.</span><span class="sxs-lookup"><span data-stu-id="41dfb-185">In this tutorial, you configured a new IoT hub in hello Azure portal, and then created a device identity in hello IoT hub's identity registry.</span></span> <span data-ttu-id="41dfb-186">Вы использовали устройства удостоверения tooenable hello имитируемые устройства приложения toosend сообщения из устройства в облако toohello центр IoT.</span><span class="sxs-lookup"><span data-stu-id="41dfb-186">You used this device identity tooenable hello simulated device app toosend device-to-cloud messages toohello IoT hub.</span></span> <span data-ttu-id="41dfb-187">Также было создано приложение, которое отображает hello сообщений, полученных центра IoT hello.</span><span class="sxs-lookup"><span data-stu-id="41dfb-187">You also created an app that displays hello messages received by hello IoT hub.</span></span> 
 
-<span data-ttu-id="40f6b-188">Чтобы продолжить знакомство с Центром Интернета вещей и изучить другие сценарии Интернета вещей, см. следующие ресурсы:</span><span class="sxs-lookup"><span data-stu-id="40f6b-188">To continue getting started with IoT Hub and to explore other IoT scenarios, see:</span></span>
+<span data-ttu-id="41dfb-188">Приступая к работе toocontinue центр IoT и tooexplore других сценариев IoT просмотреть:</span><span class="sxs-lookup"><span data-stu-id="41dfb-188">toocontinue getting started with IoT Hub and tooexplore other IoT scenarios, see:</span></span>
 
-* <span data-ttu-id="40f6b-189">[Подключение устройства к Azure IoT][lnk-connect-device]</span><span class="sxs-lookup"><span data-stu-id="40f6b-189">[Connecting your device][lnk-connect-device]</span></span>
-* <span data-ttu-id="40f6b-190">[How to get started with device management (Node)][lnk-device-management] (Начало работы с управлением устройствами (Node))</span><span class="sxs-lookup"><span data-stu-id="40f6b-190">[Getting started with device management][lnk-device-management]</span></span>
-* <span data-ttu-id="40f6b-191">[Explore Azure IoT Edge architecture on Linux][lnk-iot-edge] (Приступая к работе с архитектурой Azure IoT Edge в Linux)</span><span class="sxs-lookup"><span data-stu-id="40f6b-191">[Getting started with Azure IoT Edge][lnk-iot-edge]</span></span>
+* <span data-ttu-id="41dfb-189">[Подключение устройства к Azure IoT][lnk-connect-device]</span><span class="sxs-lookup"><span data-stu-id="41dfb-189">[Connecting your device][lnk-connect-device]</span></span>
+* <span data-ttu-id="41dfb-190">[How to get started with device management (Node)][lnk-device-management] (Начало работы с управлением устройствами (Node))</span><span class="sxs-lookup"><span data-stu-id="41dfb-190">[Getting started with device management][lnk-device-management]</span></span>
+* <span data-ttu-id="41dfb-191">[Explore Azure IoT Edge architecture on Linux][lnk-iot-edge] (Приступая к работе с архитектурой Azure IoT Edge в Linux)</span><span class="sxs-lookup"><span data-stu-id="41dfb-191">[Getting started with Azure IoT Edge][lnk-iot-edge]</span></span>
 
-<span data-ttu-id="40f6b-192">Сведения о том, как расширить решение для Интернета вещей и обрабатывать сообщения, отправляемые с устройства в облако в большом количестве, см. [здесь][lnk-process-d2c-tutorial].</span><span class="sxs-lookup"><span data-stu-id="40f6b-192">To learn how to extend your IoT solution and process device-to-cloud messages at scale, see the [Process device-to-cloud messages][lnk-process-d2c-tutorial] tutorial.</span></span>
+<span data-ttu-id="41dfb-192">toolearn tooextend сообщений в масштабе, IoT решение и процесс устройства в облако. в статье hello [обрабатывать сообщения из устройства в облако] [ lnk-process-d2c-tutorial] учебника.</span><span class="sxs-lookup"><span data-stu-id="41dfb-192">toolearn how tooextend your IoT solution and process device-to-cloud messages at scale, see hello [Process device-to-cloud messages][lnk-process-d2c-tutorial] tutorial.</span></span>
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 

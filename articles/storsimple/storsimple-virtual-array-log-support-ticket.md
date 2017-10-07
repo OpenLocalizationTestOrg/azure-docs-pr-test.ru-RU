@@ -1,6 +1,6 @@
 ---
-title: "Регистрация запроса в службу поддержки с помощью диспетчера устройств StorSimple | Документация Майкрософт"
-description: "В статье описываются возможности диагностики диспетчера устройств StorSimple и способы его использования для устранения неполадок в виртуальном массиве StorSimple."
+title: "обращение в службу поддержки через диспетчер устройств StorSimple aaaLog | Документы Microsoft"
+description: "Описывает hello устройства StorSimple возможности диагностики и объясняется, как toouse его tootroubleshoot виртуального массива StorSimple."
 services: storsimple
 documentationcenter: 
 author: manuaery
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 658afbc178814389fefd7941e2ca030741bd08e8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ae5eafff726d8ee310af26a13150e40ff861be0e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a><span data-ttu-id="09973-103">Использование службы диспетчера устройств StorSimple для регистрации запроса в службу поддержки для виртуального массива StorSimple</span><span class="sxs-lookup"><span data-stu-id="09973-103">Use the StorSimple Device Manager service to log a Support request for the StorSimple Virtual Array</span></span>
+# <a name="use-hello-storsimple-device-manager-service-toolog-a-support-request-for-hello-storsimple-virtual-array"></a><span data-ttu-id="a3e00-103">Использовать toolog службы диспетчера StorSimple устройство hello запрос на техническую поддержку для hello StorSimple Virtual Array</span><span class="sxs-lookup"><span data-stu-id="a3e00-103">Use hello StorSimple Device Manager service toolog a Support request for hello StorSimple Virtual Array</span></span>
 
-## <a name="overview"></a><span data-ttu-id="09973-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="09973-104">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="a3e00-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="a3e00-104">Overview</span></span>
 
-<span data-ttu-id="09973-105">Диспетчер устройств StorSimple предоставляет возможность **регистрации новых запросов в службу поддержки** в колонке сводных данных о службе.</span><span class="sxs-lookup"><span data-stu-id="09973-105">The StorSimple Device Manager provides the capability to **log a new support request** within the service summary blade.</span></span> <span data-ttu-id="09973-106">В этой статье объясняется, как зарегистрировать новый запрос и управлять его жизненным циклом на портале.</span><span class="sxs-lookup"><span data-stu-id="09973-106">This article explains how you can log a new support request and manage its lifecycle from within the portal.</span></span>
+<span data-ttu-id="a3e00-105">Hello устройства StorSimple предоставляет возможность hello слишком**входа нового запроса на обслуживание** в колонке сводки hello службы.</span><span class="sxs-lookup"><span data-stu-id="a3e00-105">hello StorSimple Device Manager provides hello capability too**log a new support request** within hello service summary blade.</span></span> <span data-ttu-id="a3e00-106">В этой статье объясняется, как пользователь может входить нового запроса на обслуживание и управления его жизненным циклом из портала hello.</span><span class="sxs-lookup"><span data-stu-id="a3e00-106">This article explains how you can log a new support request and manage its lifecycle from within hello portal.</span></span>
 
-## <a name="new-support-request"></a><span data-ttu-id="09973-107">Новый запрос на техническую поддержку</span><span class="sxs-lookup"><span data-stu-id="09973-107">New support request</span></span>
+## <a name="new-support-request"></a><span data-ttu-id="a3e00-107">Новый запрос на техническую поддержку</span><span class="sxs-lookup"><span data-stu-id="a3e00-107">New support request</span></span>
 
-<span data-ttu-id="09973-108">В зависимости от [плана поддержки](https://azure.microsoft.com/support/plans/) запросы в службу поддержки для решения проблем с виртуальным массивом StorSimple можно создать непосредственно в колонке сводных данных о службе диспетчера устройств StorSimple.</span><span class="sxs-lookup"><span data-stu-id="09973-108">Depending upon your [support plan](https://azure.microsoft.com/support/plans/), you can create support tickets for an issue on your StorSimple Virtual array directly from the StorSimple Device Manager service summary blade.</span></span>
+<span data-ttu-id="a3e00-108">В зависимости от вашей [план поддержки](https://azure.microsoft.com/support/plans/), вы можете создавать билеты поддержки проблемы на StorSimple виртуального массива непосредственно из колонки сводки службы диспетчера StorSimple устройство hello.</span><span class="sxs-lookup"><span data-stu-id="a3e00-108">Depending upon your [support plan](https://azure.microsoft.com/support/plans/), you can create support tickets for an issue on your StorSimple Virtual array directly from hello StorSimple Device Manager service summary blade.</span></span>
 
-#### <a name="to-log-a-new-request"></a><span data-ttu-id="09973-109">Регистрация нового запроса</span><span class="sxs-lookup"><span data-stu-id="09973-109">To log a new request</span></span>
+#### <a name="toolog-a-new-request"></a><span data-ttu-id="a3e00-109">toolog новый запрос</span><span class="sxs-lookup"><span data-stu-id="a3e00-109">toolog a new request</span></span>
 
-1. <span data-ttu-id="09973-110">Откройте службу диспетчера устройств StorSimple.</span><span class="sxs-lookup"><span data-stu-id="09973-110">Go to your StorSimple Device Manager service.</span></span> <span data-ttu-id="09973-111">В настройках колонки сводных данных о службе перейдите в раздел **Поддержка и устранение неполадок** и щелкните **Новый запрос в службу поддержки**.</span><span class="sxs-lookup"><span data-stu-id="09973-111">In the service summary blade settings, go to **SUPPORT + TROUBLESHOOTING** section and then click **New support request**.</span></span>
+1. <span data-ttu-id="a3e00-110">Перейдите в службе диспетчера StorSimple устройство tooyour.</span><span class="sxs-lookup"><span data-stu-id="a3e00-110">Go tooyour StorSimple Device Manager service.</span></span> <span data-ttu-id="a3e00-111">В параметры сводки колонке службы hello, перейдите слишком**поддержки + Устранение неполадок** статьи, а затем нажмите кнопку **New поддерживает запрос**.</span><span class="sxs-lookup"><span data-stu-id="a3e00-111">In hello service summary blade settings, go too**SUPPORT + TROUBLESHOOTING** section and then click **New support request**.</span></span>
    
     ![Новый запрос на техническую поддержку](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
-2. <span data-ttu-id="09973-113">В колонке **Основное** выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="09973-113">In the **Basics** blade, do the following:</span></span>
+2. <span data-ttu-id="a3e00-113">В hello **основы** колонке hello следующие:</span><span class="sxs-lookup"><span data-stu-id="a3e00-113">In hello **Basics** blade, do hello following:</span></span>
 
-    1. <span data-ttu-id="09973-114">В раскрывающемся списке **Тип проблемы** выберите **Техническая**.</span><span class="sxs-lookup"><span data-stu-id="09973-114">From the **Issue type** dropdown list, select **Technical**.</span></span> 
+    1. <span data-ttu-id="a3e00-114">Из hello **выдачи типа** раскрывающегося списка выберите **технические**.</span><span class="sxs-lookup"><span data-stu-id="a3e00-114">From hello **Issue type** dropdown list, select **Technical**.</span></span> 
     
-    2. <span data-ttu-id="09973-115">Текущая **подписка**, тип **службы** и **ресурс** (служба диспетчера устройств StorSimple) выбираются автоматически.</span><span class="sxs-lookup"><span data-stu-id="09973-115">The current **Subscription**, **Service** type, and the **Resource** (StorSimple Device Manager service) are automatically chosen.</span></span> 
+    2. <span data-ttu-id="a3e00-115">Hello текущей **подписки**, **службы** тип и hello **ресурсов** (служба диспетчера StorSimple устройство) выбираются автоматически.</span><span class="sxs-lookup"><span data-stu-id="a3e00-115">hello current **Subscription**, **Service** type, and hello **Resource** (StorSimple Device Manager service) are automatically chosen.</span></span> 
 
-    3. <span data-ttu-id="09973-116">Укажите одно или несколько устройств, зарегистрированных в службе, с которыми возникли проблемы.</span><span class="sxs-lookup"><span data-stu-id="09973-116">Specify one or more devices registered to your service that are experiencing issues.</span></span>
+    3. <span data-ttu-id="a3e00-116">Укажите один или несколько службы tooyour зарегистрированных устройств, возникают проблемы.</span><span class="sxs-lookup"><span data-stu-id="a3e00-116">Specify one or more devices registered tooyour service that are experiencing issues.</span></span>
 
-    4. <span data-ttu-id="09973-117">Выберите соответствующий **план поддержки** при наличии нескольких планов, связанных с подпиской.</span><span class="sxs-lookup"><span data-stu-id="09973-117">Choose an appropriate **support plan** if you have multiple plans associated with your subscription.</span></span> <span data-ttu-id="09973-118">Чтобы получить техническую поддержку, у вас должен быть платный план поддержки.</span><span class="sxs-lookup"><span data-stu-id="09973-118">You need a paid support plan to enable Technical Support.</span></span>
+    4. <span data-ttu-id="a3e00-117">Выберите соответствующий **план поддержки** при наличии нескольких планов, связанных с подпиской.</span><span class="sxs-lookup"><span data-stu-id="a3e00-117">Choose an appropriate **support plan** if you have multiple plans associated with your subscription.</span></span> <span data-ttu-id="a3e00-118">Требуется платная поддержка tooenable плана, службой технической поддержки.</span><span class="sxs-lookup"><span data-stu-id="a3e00-118">You need a paid support plan tooenable Technical Support.</span></span>
 
-3. <span data-ttu-id="09973-119">На **шаге 2** выберите тип **серьезности** и укажите, с чем связана проблема: с массивом или со службой диспетчера устройств StorSimple.</span><span class="sxs-lookup"><span data-stu-id="09973-119">In **Step 2**, choose the **Severity** and specify if the issue is related to the array or the StorSimple Device Manager service.</span></span> <span data-ttu-id="09973-120">Кроме того, выберите **категорию** этой проблемы и предоставьте больше **сведений** о проблеме.</span><span class="sxs-lookup"><span data-stu-id="09973-120">Also, choose a **Category** for this issue and provide more **Details** about the issue.</span></span>
+3. <span data-ttu-id="a3e00-119">В **шаг 2**, выберите hello **серьезность** и укажите, является ли проблема hello связанные toohello массива или hello службы диспетчера StorSimple устройство.</span><span class="sxs-lookup"><span data-stu-id="a3e00-119">In **Step 2**, choose hello **Severity** and specify if hello issue is related toohello array or hello StorSimple Device Manager service.</span></span> <span data-ttu-id="a3e00-120">Кроме того, выбрать **категории** для данного выпуска и поддерживают более **сведения** о проблеме hello.</span><span class="sxs-lookup"><span data-stu-id="a3e00-120">Also, choose a **Category** for this issue and provide more **Details** about hello issue.</span></span>
    
     ![Новый запрос на техническую поддержку](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
-4. <span data-ttu-id="09973-122">На **шаге 3** предоставьте свои контактные данные.</span><span class="sxs-lookup"><span data-stu-id="09973-122">In **Step 3**, provide your contact information.</span></span> <span data-ttu-id="09973-123">Служба технической поддержки Майкрософт будет использовать эту информацию, чтобы связаться с вами для получения дополнительных сведений, диагностики и устранения проблемы.</span><span class="sxs-lookup"><span data-stu-id="09973-123">Microsoft Support will use this information to reach out to you for further information, diagnosis, and resolution.</span></span>
+4. <span data-ttu-id="a3e00-122">На **шаге 3** предоставьте свои контактные данные.</span><span class="sxs-lookup"><span data-stu-id="a3e00-122">In **Step 3**, provide your contact information.</span></span> <span data-ttu-id="a3e00-123">Для получения дополнительных сведений, диагностики и разрешения технической поддержки Майкрософт будет использовать этот tooreach сведения о tooyou.</span><span class="sxs-lookup"><span data-stu-id="a3e00-123">Microsoft Support will use this information tooreach out tooyou for further information, diagnosis, and resolution.</span></span>
    
     ![Новый запрос на техническую поддержку](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
-## <a name="manage-a-support-request"></a><span data-ttu-id="09973-125">Управление запросом в службу поддержки</span><span class="sxs-lookup"><span data-stu-id="09973-125">Manage a support request</span></span>
+## <a name="manage-a-support-request"></a><span data-ttu-id="a3e00-125">Управление запросом в службу поддержки</span><span class="sxs-lookup"><span data-stu-id="a3e00-125">Manage a support request</span></span>
 
-<span data-ttu-id="09973-126">После создания запроса вы можете управлять его жизненным циклом, не покидая портал.</span><span class="sxs-lookup"><span data-stu-id="09973-126">After creating a support ticket, you can manage the lifecycle of the ticket from within the portal.</span></span>
+<span data-ttu-id="a3e00-126">После создания запроса в службу поддержки, можно управлять жизненным hello билета hello из портала hello.</span><span class="sxs-lookup"><span data-stu-id="a3e00-126">After creating a support ticket, you can manage hello lifecycle of hello ticket from within hello portal.</span></span>
 
-#### <a name="to-manage-your-support-requests"></a><span data-ttu-id="09973-127">Управление запросами в службу поддержки</span><span class="sxs-lookup"><span data-stu-id="09973-127">To manage your support requests</span></span>
+#### <a name="toomanage-your-support-requests"></a><span data-ttu-id="a3e00-127">запросы к поддержки toomanage</span><span class="sxs-lookup"><span data-stu-id="a3e00-127">toomanage your support requests</span></span>
 
-<span data-ttu-id="09973-128">Чтобы открыть страницу справки и поддержки, последовательно щелкните **Обзор > Справка и поддержка**.</span><span class="sxs-lookup"><span data-stu-id="09973-128">To get to the help and support page, navigate to **Browse > Help + support**.</span></span>
+<span data-ttu-id="a3e00-128">tooget toohello справки и поддержки страницы, перейдите слишком**Обзор > Справка и поддержка**.</span><span class="sxs-lookup"><span data-stu-id="a3e00-128">tooget toohello help and support page, navigate too**Browse > Help + support**.</span></span>
 
 ![Управление запросами на поддержку](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 
-## <a name="next-steps"></a><span data-ttu-id="09973-130">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="09973-130">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="a3e00-130">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="a3e00-130">Next steps</span></span>
 
-<span data-ttu-id="09973-131">[Устранение неполадок виртуального массива StorSimple с помощью диспетчера устройств StorSimple](storsimple-virtual-array-diagnose-problems.md)</span><span class="sxs-lookup"><span data-stu-id="09973-131">Learn how to [diagnose and solve problems related to your StorSimple Virtual array](storsimple-virtual-array-diagnose-problems.md)</span></span>
+<span data-ttu-id="a3e00-131">Узнайте, каким образом слишком[диагностики и устранения неполадок связанных tooyour StorSimple Virtual array](storsimple-virtual-array-diagnose-problems.md)</span><span class="sxs-lookup"><span data-stu-id="a3e00-131">Learn how too[diagnose and solve problems related tooyour StorSimple Virtual array](storsimple-virtual-array-diagnose-problems.md)</span></span>
 

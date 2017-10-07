@@ -1,6 +1,6 @@
 ---
-title: "Основные команды Azure CLI 1.0 для Linux и Mac | Документация Майкрософт"
-description: "Основные команды Azure CLI 1.0 для управления виртуальными машинами в режиме Azure Resource Manager в Linux и Mac."
+title: "aaaBasic команд 1.0 Azure CLI для Linux и Mac | Документы Microsoft"
+description: "Основные tooget команды Azure CLI 1.0 вы взял на себя управление виртуальные машины в режим диспетчера ресурсов Azure на Mac и Linux"
 services: virtual-machines-linux
 documentationcenter: 
 author: RicksterCDN
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 67830e40065f8c09f2b04de431aa17ecf5a83d2e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 58019dc5aefad801b976d261f4a239f5cf8c6dad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="common-azure-cli-10-commands-on-linux-and-mac"></a><span data-ttu-id="fca4e-103">Основные команды Azure CLI 1.0 в Linux и Mac</span><span class="sxs-lookup"><span data-stu-id="fca4e-103">Common Azure CLI 1.0 commands on Linux and Mac</span></span>
+# <a name="common-azure-cli-10-commands-on-linux-and-mac"></a><span data-ttu-id="466da-103">Основные команды Azure CLI 1.0 в Linux и Mac</span><span class="sxs-lookup"><span data-stu-id="466da-103">Common Azure CLI 1.0 commands on Linux and Mac</span></span>
 [!INCLUDE [virtual-machines-common-cli-manage-nodejs](../../../includes/virtual-machines-common-cli-manage-nodejs.md)]

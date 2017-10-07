@@ -1,6 +1,6 @@
 ---
-title: "Как сбросить локальный пароль Linux на виртуальных машинах Azure | Документация Майкрософт"
-description: "Описывается, как сбросить локальный пароль Linux на виртуальной машине Azure."
+title: "пароль tooreset локального aaaHow Linux на виртуальных машинах Azure | Документы Microsoft"
+description: "Вводит hello действия tooreset hello локальный Linux пароль на виртуальной Машине Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: Deland-Han
@@ -15,59 +15,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/3/2017
 ms.author: delhan
-ms.openlocfilehash: 084cdb26c7dfd8f46fb6ec7f8c48f7b4a327e2ab
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3827e32186c5f034d9bb6fc502dc26708b52a00a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-reset-local-linux-password-on-azure-vms"></a><span data-ttu-id="86676-103">Как сбросить локальный пароль Linux на виртуальных машинах Azure</span><span class="sxs-lookup"><span data-stu-id="86676-103">How to reset local Linux password on Azure VMs</span></span>
+# <a name="how-tooreset-local-linux-password-on-azure-vms"></a><span data-ttu-id="19e50-103">Как tooreset локальный пароль Linux на виртуальных машинах Azure</span><span class="sxs-lookup"><span data-stu-id="19e50-103">How tooreset local Linux password on Azure VMs</span></span>
 
-<span data-ttu-id="86676-104">В этой статье описано несколько способов сброса локальных паролей на виртуальных машинах Linux.</span><span class="sxs-lookup"><span data-stu-id="86676-104">This article introduces several methods to reset local Linux Virtual Machine (VM) passwords.</span></span> <span data-ttu-id="86676-105">Если истек срок действия учетной записи пользователя или требуется создать новую учетную запись, можно использовать приведенные ниже способы, чтобы создать новую учетную запись локального администратора и повторно получить доступ к виртуальной машине.</span><span class="sxs-lookup"><span data-stu-id="86676-105">If the user account is expired or you just want to create a new account, you can use the following methods to create a new local admin account and re-gain access to the VM.</span></span>
+<span data-ttu-id="19e50-104">В этой статье описывается несколько методов tooreset локальных Linux виртуальной машины (VM) паролей.</span><span class="sxs-lookup"><span data-stu-id="19e50-104">This article introduces several methods tooreset local Linux Virtual Machine (VM) passwords.</span></span> <span data-ttu-id="19e50-105">Если истек срок действия учетной записи пользователя hello, или необходимо просто toocreate новую учетную запись, можно использовать следующие методы toocreate новой учетной записи локального администратора hello и повторно получить доступ toohello виртуальной Машины.</span><span class="sxs-lookup"><span data-stu-id="19e50-105">If hello user account is expired or you just want toocreate a new account, you can use hello following methods toocreate a new local admin account and re-gain access toohello VM.</span></span>
 
-## <a name="symptoms"></a><span data-ttu-id="86676-106">Симптомы</span><span class="sxs-lookup"><span data-stu-id="86676-106">Symptoms</span></span>
+## <a name="symptoms"></a><span data-ttu-id="19e50-106">Симптомы</span><span class="sxs-lookup"><span data-stu-id="19e50-106">Symptoms</span></span>
 
-<span data-ttu-id="86676-107">Невозможно подключиться к виртуальной машине, и появляется сообщение о том, что указан неправильный пароль.</span><span class="sxs-lookup"><span data-stu-id="86676-107">You can't log in to the VM, and you receive a message that indicates that the password that you used is incorrect.</span></span> <span data-ttu-id="86676-108">Кроме того, невозможно использовать VMAgent для сброса пароля на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="86676-108">Additionally, you can't use VMAgent to reset your password on the Azure Portal.</span></span> 
+<span data-ttu-id="19e50-107">Не удается войти в toohello ВМ и появляется сообщение о том, что это неправильный пароль, который использовался hello.</span><span class="sxs-lookup"><span data-stu-id="19e50-107">You can't log in toohello VM, and you receive a message that indicates that hello password that you used is incorrect.</span></span> <span data-ttu-id="19e50-108">Кроме того вы не может использовать VMAgent tooreset пароль на портале Azure hello.</span><span class="sxs-lookup"><span data-stu-id="19e50-108">Additionally, you can't use VMAgent tooreset your password on hello Azure Portal.</span></span> 
 
-## <a name="manual-password-reset-procedure"></a><span data-ttu-id="86676-109">Процедура сброса пароля вручную</span><span class="sxs-lookup"><span data-stu-id="86676-109">Manual Password Reset procedure</span></span>
+## <a name="manual-password-reset-procedure"></a><span data-ttu-id="19e50-109">Процедура сброса пароля вручную</span><span class="sxs-lookup"><span data-stu-id="19e50-109">Manual Password Reset procedure</span></span>
 
-1.  <span data-ttu-id="86676-110">Удалите виртуальную машину и сохраните ее подключенные диски.</span><span class="sxs-lookup"><span data-stu-id="86676-110">Delete the VM and keep the attached disks.</span></span>
+1.  <span data-ttu-id="19e50-110">Удаление hello виртуальной Машины с сохранением hello присоединенные диски.</span><span class="sxs-lookup"><span data-stu-id="19e50-110">Delete hello VM and keep hello attached disks.</span></span>
 
-2.  <span data-ttu-id="86676-111">Подключите диск ОС в качестве диска данных к другой временной виртуальной машине в том же расположении.</span><span class="sxs-lookup"><span data-stu-id="86676-111">Attach the OS Drive as a data disk to another temporal VM in the same location.</span></span>
+2.  <span data-ttu-id="19e50-111">Присоединить диск операционной системы как диск данных tooanother hello временной виртуальной Машины в hello местоположения.</span><span class="sxs-lookup"><span data-stu-id="19e50-111">Attach hello OS Drive as a data disk tooanother temporal VM in hello same location.</span></span>
 
-3.  <span data-ttu-id="86676-112">Выполните приведенную ниже команду SSH на временной виртуальной машине, чтобы стать суперпользователем.</span><span class="sxs-lookup"><span data-stu-id="86676-112">Run the following SSH command on the temporal VM to become a super-user.</span></span>
+3.  <span data-ttu-id="19e50-112">Запустите hello после команды SSH на временной виртуальной Машины toobecome hello суперпользователя.</span><span class="sxs-lookup"><span data-stu-id="19e50-112">Run hello following SSH command on hello temporal VM toobecome a super-user.</span></span>
 
 
     ~~~~
     sudo su
     ~~~~
 
-4.  <span data-ttu-id="86676-113">Выполните **fdisk -l** или просмотрите системные журналы, чтобы найти только что подключенный диск.</span><span class="sxs-lookup"><span data-stu-id="86676-113">Run **fdisk -l** or look at system logs to find the newly attached disk.</span></span> <span data-ttu-id="86676-114">Найдите имя подключаемого диска.</span><span class="sxs-lookup"><span data-stu-id="86676-114">Locate the drive name to mount.</span></span> <span data-ttu-id="86676-115">Затем на временной виртуальной машине просмотрите соответствующий файл журнала.</span><span class="sxs-lookup"><span data-stu-id="86676-115">Then on the temporal VM, look in the relevant log file.</span></span>
+4.  <span data-ttu-id="19e50-113">Запустите **fdisk -l** или просмотрите hello toofind журналы системы вновь подключенного диска.</span><span class="sxs-lookup"><span data-stu-id="19e50-113">Run **fdisk -l** or look at system logs toofind hello newly attached disk.</span></span> <span data-ttu-id="19e50-114">Найдите имя toomount hello диска.</span><span class="sxs-lookup"><span data-stu-id="19e50-114">Locate hello drive name toomount.</span></span> <span data-ttu-id="19e50-115">Затем на hello файл журнала временной виртуальной Машины, можно найти в соответствующей hello.</span><span class="sxs-lookup"><span data-stu-id="19e50-115">Then on hello temporal VM, look in hello relevant log file.</span></span>
 
     ~~~~
     grep SCSI /var/log/kern.log (ubuntu)
     grep SCSI /var/log/messages (centos, suse, oracle)
     ~~~~
 
-    <span data-ttu-id="86676-116">Ниже приведен пример выходных данных команды grep.</span><span class="sxs-lookup"><span data-stu-id="86676-116">The following is example output of the grep command:</span></span>
+    <span data-ttu-id="19e50-116">Hello ниже приведен пример выходных данных команды grep hello.</span><span class="sxs-lookup"><span data-stu-id="19e50-116">hello following is example output of hello grep command:</span></span>
 
     ~~~~
     kernel: [ 9707.100572] sd 3:0:0:0: [sdc] Attached SCSI disk
     ~~~~
 
-5.  <span data-ttu-id="86676-117">Создайте точку подключения **tempmount**.</span><span class="sxs-lookup"><span data-stu-id="86676-117">Create a mount point called **tempmount**.</span></span>
+5.  <span data-ttu-id="19e50-117">Создайте точку подключения **tempmount**.</span><span class="sxs-lookup"><span data-stu-id="19e50-117">Create a mount point called **tempmount**.</span></span>
 
     ~~~~
     mkdir /tempmount
     ~~~~
 
-6.  <span data-ttu-id="86676-118">Подключите диск ОС к точке подключения.</span><span class="sxs-lookup"><span data-stu-id="86676-118">Mount the OS disk on the mount point.</span></span> <span data-ttu-id="86676-119">Обычно требуется подключить sdc1 или sdc2.</span><span class="sxs-lookup"><span data-stu-id="86676-119">You usually need to mount sdc1 or sdc2.</span></span> <span data-ttu-id="86676-120">Это будет зависеть от раздела размещения в каталоге /etc с диска неисправного компьютера.</span><span class="sxs-lookup"><span data-stu-id="86676-120">This will depend on the hosting partition in /etc directory from the broken machine disk.</span></span>
+6.  <span data-ttu-id="19e50-118">Подключите диск hello операционной системы в точке монтирования hello.</span><span class="sxs-lookup"><span data-stu-id="19e50-118">Mount hello OS disk on hello mount point.</span></span> <span data-ttu-id="19e50-119">Обычно требуется toomount sdc1 или sdc2.</span><span class="sxs-lookup"><span data-stu-id="19e50-119">You usually need toomount sdc1 or sdc2.</span></span> <span data-ttu-id="19e50-120">Это будет зависеть от размещения секции в каталоге/etc с диска неработающие машины hello hello.</span><span class="sxs-lookup"><span data-stu-id="19e50-120">This will depend on hello hosting partition in /etc directory from hello broken machine disk.</span></span>
 
     ~~~~
     mount /dev/sdc1 /tempmount
     ~~~~
 
-7.  <span data-ttu-id="86676-121">Создайте резервную копию перед внесением каких-либо изменений.</span><span class="sxs-lookup"><span data-stu-id="86676-121">Perform a backup before making any changes:</span></span>
+7.  <span data-ttu-id="19e50-121">Создайте резервную копию перед внесением каких-либо изменений.</span><span class="sxs-lookup"><span data-stu-id="19e50-121">Perform a backup before making any changes:</span></span>
 
     ~~~~
     cp /etc/passwd /etc/passwd_orig    
@@ -78,13 +78,13 @@ ms.lasthandoff: 07/11/2017
     cp /tempmount/etc/shadow /tempmount/etc/shadow_orig
     ~~~~
 
-8.  <span data-ttu-id="86676-122">Сбросьте соответствующий пароль пользователя.</span><span class="sxs-lookup"><span data-stu-id="86676-122">Reset the user’s password that you need:</span></span>
+8.  <span data-ttu-id="19e50-122">Сброс пароля пользователя hello, необходимо:</span><span class="sxs-lookup"><span data-stu-id="19e50-122">Reset hello user’s password that you need:</span></span>
 
     ~~~~
     passwd <<USER>> 
     ~~~~
 
-9.  <span data-ttu-id="86676-123">Переместите измененные файлы на правильное расположение на диске неисправного компьютера.</span><span class="sxs-lookup"><span data-stu-id="86676-123">Move the modified files to the correct location on the broken machine's disk.</span></span>
+9.  <span data-ttu-id="19e50-123">Перемещение hello изменить правильное расположение файлов toohello на hello неработающие диск компьютера.</span><span class="sxs-lookup"><span data-stu-id="19e50-123">Move hello modified files toohello correct location on hello broken machine's disk.</span></span>
 
     ~~~~
     cp /etc/passwd /tempmount/etc/passwd
@@ -92,18 +92,18 @@ ms.lasthandoff: 07/11/2017
     cp /etc/passwd_orig /etc/passwd
     cp /etc/shadow_orig /etc/shadow
     
-10. Go back to the root and unmount the disk.
+10. Go back toohello root and unmount hello disk.
 
     ~~~~
-    <span data-ttu-id="86676-124">cd / umount /tempmount</span><span class="sxs-lookup"><span data-stu-id="86676-124">cd / umount /tempmount</span></span>
+    <span data-ttu-id="19e50-124">cd / umount /tempmount</span><span class="sxs-lookup"><span data-stu-id="19e50-124">cd / umount /tempmount</span></span>
     ~~~~
 
-11. Detach the disk from the management portal.
+11. Detach hello disk from hello management portal.
 
-12. Recreate the VM.
+12. Recreate hello VM.
 
 ## Next steps
 
-* [Troubleshoot Azure VM by attaching OS disk to another Azure VM](http://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+* [Troubleshoot Azure VM by attaching OS disk tooanother Azure VM](http://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
-* [Azure CLI: How to delete and re-deploy a VM from VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+* [Azure CLI: How toodelete and re-deploy a VM from VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

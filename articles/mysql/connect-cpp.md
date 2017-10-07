@@ -1,6 +1,6 @@
 ---
-title: "Подключение к базе данных Azure для MySQL с помощью C++ | Документация Майкрософт"
-description: "В этом кратком руководстве представлен пример кода C++, который можно использовать для подключения к базе данных Azure для MySQL и запроса данных из нее."
+title: "Подключение tooAzure базы данных MySQL из C++ | Документы Microsoft"
+description: "Это краткое руководство содержит пример кода C++ можно использовать tooconnect и запроса данных из базы данных Azure для MySQL."
 services: mysql
 author: seanli1988
 ms.author: seal
@@ -11,56 +11,56 @@ ms.custom: mvc
 ms.devlang: C++
 ms.topic: hero-article
 ms.date: 08/03/2017
-ms.openlocfilehash: 63388b83b913d95136140fa4c56af0dbebbdad81
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d027597bf02b1eacab9b8808957399f6e54e63cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a><span data-ttu-id="b92ba-103">База данных Azure для MySQL: подключение и запрос данных с помощью Connector/C++</span><span class="sxs-lookup"><span data-stu-id="b92ba-103">Azure Database for MySQL: Use Connector/C++ to connect and query data</span></span>
-<span data-ttu-id="b92ba-104">В этом кратком руководстве объясняется, как подключиться к базе данных Azure для MySQL с помощью приложения C++.</span><span class="sxs-lookup"><span data-stu-id="b92ba-104">This quickstart demonstrates how to connect to an Azure Database for MySQL using a C++ application.</span></span> <span data-ttu-id="b92ba-105">Здесь также показано, как использовать инструкции SQL для запроса, вставки, обновления и удаления данных в базе данных.</span><span class="sxs-lookup"><span data-stu-id="b92ba-105">It shows how to use SQL statements to query, insert, update, and delete data in the database.</span></span> <span data-ttu-id="b92ba-106">В этой статье предполагается, что у вас уже есть опыт разработки на C++ и вы только начали работу с базой данных Azure для MySQL.</span><span class="sxs-lookup"><span data-stu-id="b92ba-106">The steps in this article assume that you are familiar with developing using C++, and that you are new to working with Azure Database for MySQL.</span></span>
+# <a name="azure-database-for-mysql-use-connectorc-tooconnect-and-query-data"></a><span data-ttu-id="5cb32-103">База данных Azure для MySQL: tooconnect и запрашивают данные, использовать соединитель/C++</span><span class="sxs-lookup"><span data-stu-id="5cb32-103">Azure Database for MySQL: Use Connector/C++ tooconnect and query data</span></span>
+<span data-ttu-id="5cb32-104">Это краткое руководство демонстрирует, как tooconnect tooan Azure этой базы данных MySQL с помощью приложения C++.</span><span class="sxs-lookup"><span data-stu-id="5cb32-104">This quickstart demonstrates how tooconnect tooan Azure Database for MySQL using a C++ application.</span></span> <span data-ttu-id="5cb32-105">Показано, как tooquery инструкций SQL toouse, вставка, обновление и удаление данных в базе данных hello.</span><span class="sxs-lookup"><span data-stu-id="5cb32-105">It shows how toouse SQL statements tooquery, insert, update, and delete data in hello database.</span></span> <span data-ttu-id="5cb32-106">Hello в этой статье предполагается, что вы знакомы с разработка с использованием C++ и наличие новых tooworking с базой данных Azure для MySQL.</span><span class="sxs-lookup"><span data-stu-id="5cb32-106">hello steps in this article assume that you are familiar with developing using C++, and that you are new tooworking with Azure Database for MySQL.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="b92ba-107">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="b92ba-107">Prerequisites</span></span>
-<span data-ttu-id="b92ba-108">В качестве отправной точки в этом кратком руководстве используются ресурсы, созданные в соответствии со следующими материалами:</span><span class="sxs-lookup"><span data-stu-id="b92ba-108">This quickstart uses the resources created in either of these guides as a starting point:</span></span>
-- <span data-ttu-id="b92ba-109">[Create an Azure Database for MySQL server using Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md) (Создание сервера базы данных Azure для MySQL с помощью портала Azure)</span><span class="sxs-lookup"><span data-stu-id="b92ba-109">[Create an Azure Database for MySQL server using Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md)</span></span>
-- <span data-ttu-id="b92ba-110">[Create an Azure Database for MySQL server using Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) (Создание сервера базы данных Azure для MySQL с помощью Azure CLI)</span><span class="sxs-lookup"><span data-stu-id="b92ba-110">[Create an Azure Database for MySQL server using Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="5cb32-107">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="5cb32-107">Prerequisites</span></span>
+<span data-ttu-id="5cb32-108">Это краткое руководство использует ресурсы hello, созданные в любой из этих руководствах по в качестве отправной точки.</span><span class="sxs-lookup"><span data-stu-id="5cb32-108">This quickstart uses hello resources created in either of these guides as a starting point:</span></span>
+- <span data-ttu-id="5cb32-109">[Create an Azure Database for MySQL server using Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md) (Создание сервера базы данных Azure для MySQL с помощью портала Azure)</span><span class="sxs-lookup"><span data-stu-id="5cb32-109">[Create an Azure Database for MySQL server using Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md)</span></span>
+- <span data-ttu-id="5cb32-110">[Create an Azure Database for MySQL server using Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) (Создание сервера базы данных Azure для MySQL с помощью Azure CLI)</span><span class="sxs-lookup"><span data-stu-id="5cb32-110">[Create an Azure Database for MySQL server using Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)</span></span>
 
-<span data-ttu-id="b92ba-111">Также вам потребуется:</span><span class="sxs-lookup"><span data-stu-id="b92ba-111">You also need to:</span></span>
-- <span data-ttu-id="b92ba-112">установить [.NET Framework](https://www.microsoft.com/net/download);</span><span class="sxs-lookup"><span data-stu-id="b92ba-112">Install [.NET Framework](https://www.microsoft.com/net/download)</span></span>
-- <span data-ttu-id="b92ba-113">установить [Visual Studio](https://www.visualstudio.com/downloads/);</span><span class="sxs-lookup"><span data-stu-id="b92ba-113">Install [Visual Studio](https://www.visualstudio.com/downloads/)</span></span>
-- <span data-ttu-id="b92ba-114">установить [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/);</span><span class="sxs-lookup"><span data-stu-id="b92ba-114">Install [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/)</span></span> 
-- <span data-ttu-id="b92ba-115">установить [Boost](http://www.boost.org/).</span><span class="sxs-lookup"><span data-stu-id="b92ba-115">Install [Boost](http://www.boost.org/)</span></span>
+<span data-ttu-id="5cb32-111">Также вам потребуется:</span><span class="sxs-lookup"><span data-stu-id="5cb32-111">You also need to:</span></span>
+- <span data-ttu-id="5cb32-112">установить [.NET Framework](https://www.microsoft.com/net/download);</span><span class="sxs-lookup"><span data-stu-id="5cb32-112">Install [.NET Framework](https://www.microsoft.com/net/download)</span></span>
+- <span data-ttu-id="5cb32-113">установить [Visual Studio](https://www.visualstudio.com/downloads/);</span><span class="sxs-lookup"><span data-stu-id="5cb32-113">Install [Visual Studio](https://www.visualstudio.com/downloads/)</span></span>
+- <span data-ttu-id="5cb32-114">установить [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/);</span><span class="sxs-lookup"><span data-stu-id="5cb32-114">Install [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/)</span></span> 
+- <span data-ttu-id="5cb32-115">установить [Boost](http://www.boost.org/).</span><span class="sxs-lookup"><span data-stu-id="5cb32-115">Install [Boost](http://www.boost.org/)</span></span>
 
-## <a name="install-visual-studio-and-net"></a><span data-ttu-id="b92ba-116">Установка Visual Studio и .NET</span><span class="sxs-lookup"><span data-stu-id="b92ba-116">Install Visual Studio and .NET</span></span>
-<span data-ttu-id="b92ba-117">В этом разделе предполагается, что у вас уже есть опыт разработки с использованием .NET.</span><span class="sxs-lookup"><span data-stu-id="b92ba-117">The steps in this section assume that you are familiar with developing using .NET.</span></span>
+## <a name="install-visual-studio-and-net"></a><span data-ttu-id="5cb32-116">Установка Visual Studio и .NET</span><span class="sxs-lookup"><span data-stu-id="5cb32-116">Install Visual Studio and .NET</span></span>
+<span data-ttu-id="5cb32-117">Hello в этом разделе предполагается, что вы знакомы с разработка с использованием .NET.</span><span class="sxs-lookup"><span data-stu-id="5cb32-117">hello steps in this section assume that you are familiar with developing using .NET.</span></span>
 
-### <a name="windows"></a><span data-ttu-id="b92ba-118">**Windows**</span><span class="sxs-lookup"><span data-stu-id="b92ba-118">**Windows**</span></span>
-1. <span data-ttu-id="b92ba-119">Установите Visual Studio Community 2017, полнофункциональную расширяемую бесплатную среду IDE для создания современных приложений под Android, iOS, Windows, а также веб-приложений, приложений базы данных и облачных служб.</span><span class="sxs-lookup"><span data-stu-id="b92ba-119">Install Visual Studio 2017 Community, which is a full featured, extensible, free IDE for creating modern applications for Android, iOS, Windows, as well as web & database applications and cloud services.</span></span> <span data-ttu-id="b92ba-120">Вы можете установить полную версию .NET Framework или только .NET Core.</span><span class="sxs-lookup"><span data-stu-id="b92ba-120">You can install either the full .NET Framework or just .NET Core.</span></span> <span data-ttu-id="b92ba-121">Фрагменты кода в кратком руководстве работают с любой из них.</span><span class="sxs-lookup"><span data-stu-id="b92ba-121">The code snippets in the Quickstart work with either.</span></span> <span data-ttu-id="b92ba-122">Если среда Visual Studio уже установлена на вашем компьютере, то вы можете пропустить следующие два шага.</span><span class="sxs-lookup"><span data-stu-id="b92ba-122">If you already have Visual Studio installed on your machine, skip the next two steps.</span></span>
-   - <span data-ttu-id="b92ba-123">Скачайте [установщик Visual Studio 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).</span><span class="sxs-lookup"><span data-stu-id="b92ba-123">Download the [Visual Studio 2017 installer](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).</span></span> 
-   - <span data-ttu-id="b92ba-124">Запустите установщик и выполните указанные действия, чтобы завершить установку.</span><span class="sxs-lookup"><span data-stu-id="b92ba-124">Run the installer and follow the installation prompts to complete the installation.</span></span>
+### <a name="windows"></a><span data-ttu-id="5cb32-118">**Windows**</span><span class="sxs-lookup"><span data-stu-id="5cb32-118">**Windows**</span></span>
+1. <span data-ttu-id="5cb32-119">Установите Visual Studio Community 2017, полнофункциональную расширяемую бесплатную среду IDE для создания современных приложений под Android, iOS, Windows, а также веб-приложений, приложений базы данных и облачных служб.</span><span class="sxs-lookup"><span data-stu-id="5cb32-119">Install Visual Studio 2017 Community, which is a full featured, extensible, free IDE for creating modern applications for Android, iOS, Windows, as well as web & database applications and cloud services.</span></span> <span data-ttu-id="5cb32-120">Можно установить либо hello полной версии .NET Framework, либо просто .NET Core.</span><span class="sxs-lookup"><span data-stu-id="5cb32-120">You can install either hello full .NET Framework or just .NET Core.</span></span> <span data-ttu-id="5cb32-121">фрагменты кода Hello в hello краткое руководство работать с.</span><span class="sxs-lookup"><span data-stu-id="5cb32-121">hello code snippets in hello Quickstart work with either.</span></span> <span data-ttu-id="5cb32-122">Если уже установлены на компьютере Visual Studio, пропустите следующие два шага hello.</span><span class="sxs-lookup"><span data-stu-id="5cb32-122">If you already have Visual Studio installed on your machine, skip hello next two steps.</span></span>
+   - <span data-ttu-id="5cb32-123">Загрузите hello [установщик Visual Studio 2017 г](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).</span><span class="sxs-lookup"><span data-stu-id="5cb32-123">Download hello [Visual Studio 2017 installer](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).</span></span> 
+   - <span data-ttu-id="5cb32-124">Запустите установщик hello и следуйте hello установки приглашения toocomplete hello установки.</span><span class="sxs-lookup"><span data-stu-id="5cb32-124">Run hello installer and follow hello installation prompts toocomplete hello installation.</span></span>
 
-### <a name="configure-visual-studio"></a><span data-ttu-id="b92ba-125">**Настройка Visual Studio**</span><span class="sxs-lookup"><span data-stu-id="b92ba-125">**Configure Visual Studio**</span></span>
-1. <span data-ttu-id="b92ba-126">В Visual Studio последовательно выберите элементы "Свойство проекта" > "Свойства конфигурации" > C/C++ > "Компоновщик" > "Общие" > "Дополнительные каталоги библиотек" и добавьте каталог lib\opt соединителя C++ (например, C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt).</span><span class="sxs-lookup"><span data-stu-id="b92ba-126">From Visual Studio, project property > configuration properties > C/C++ > linker > general > additional library directories, add the lib\opt directory (i.e.: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt) of the c++ connector.</span></span>
-2. <span data-ttu-id="b92ba-127">В Visual Studio последовательно выберите элементы "Свойство проекта" > "Свойства конфигурации" > C/C++ > "Общие" > "Дополнительные каталоги включаемых файлов".</span><span class="sxs-lookup"><span data-stu-id="b92ba-127">From Visual Studio, project property > configuration properties > C/C++ > general > additional include directories</span></span>
-   - <span data-ttu-id="b92ba-128">Добавьте каталог include/ соединителя C++ (например, C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)</span><span class="sxs-lookup"><span data-stu-id="b92ba-128">Add include/ directory of c++ connector (i.e.: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)</span></span>
-   - <span data-ttu-id="b92ba-129">Добавьте корневой каталог библиотеки Boost (например, C:\boost_1_64_0\)</span><span class="sxs-lookup"><span data-stu-id="b92ba-129">Add Boost library's root directory (i.e.: C:\boost_1_64_0\)</span></span>
-3. <span data-ttu-id="b92ba-130">В Visual Studio последовательно выберите "Свойство проекта" > "Свойства конфигурации" > C/C++ > "Компоновщик" > "Ввод" > "Дополнительные зависимости" и добавьте mysqlcppconn.lib в текстовое поле.</span><span class="sxs-lookup"><span data-stu-id="b92ba-130">From Visual Studio, project property > configuration properties > C/C++ > linker > Input > Additional Dependencies, add mysqlcppconn.lib into the text field</span></span>
-4. <span data-ttu-id="b92ba-131">Скопируйте файл mysqlcppconn.dll из папки библиотеки соединителя C++, указанной на шаге 3, в каталог, где хранится исполняемый файл приложения, или добавьте его в переменную среды, чтобы приложение смогло найти его.</span><span class="sxs-lookup"><span data-stu-id="b92ba-131">Either copy mysqlcppconn.dll from the c++ connector library folder in step 3 to the same directory as the application executable or add it to the environment variable so your application can find it.</span></span>
+### <a name="configure-visual-studio"></a><span data-ttu-id="5cb32-125">**Настройка Visual Studio**</span><span class="sxs-lookup"><span data-stu-id="5cb32-125">**Configure Visual Studio**</span></span>
+1. <span data-ttu-id="5cb32-126">Из Visual Studio, проект свойство > Свойства конфигурации > C/C++ > компоновщика > Общие > Дополнительные каталоги библиотек, добавьте каталог lib\opt hello (т. е.: C:\Program Files (x86) \MySQL\MySQL C++ соединитель 1.1.9\lib\opt) hello c ++ соединитель.</span><span class="sxs-lookup"><span data-stu-id="5cb32-126">From Visual Studio, project property > configuration properties > C/C++ > linker > general > additional library directories, add hello lib\opt directory (i.e.: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt) of hello c++ connector.</span></span>
+2. <span data-ttu-id="5cb32-127">В Visual Studio последовательно выберите элементы "Свойство проекта" > "Свойства конфигурации" > C/C++ > "Общие" > "Дополнительные каталоги включаемых файлов".</span><span class="sxs-lookup"><span data-stu-id="5cb32-127">From Visual Studio, project property > configuration properties > C/C++ > general > additional include directories</span></span>
+   - <span data-ttu-id="5cb32-128">Добавьте каталог include/ соединителя C++ (например, C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)</span><span class="sxs-lookup"><span data-stu-id="5cb32-128">Add include/ directory of c++ connector (i.e.: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)</span></span>
+   - <span data-ttu-id="5cb32-129">Добавьте корневой каталог библиотеки Boost (например, C:\boost_1_64_0\)</span><span class="sxs-lookup"><span data-stu-id="5cb32-129">Add Boost library's root directory (i.e.: C:\boost_1_64_0\)</span></span>
+3. <span data-ttu-id="5cb32-130">В Visual Studio проекта свойство > Свойства конфигурации > C/C++ > компоновщика > входных данных > дополнительных зависимостей, добавьте mysqlcppconn.lib в поле текста hello</span><span class="sxs-lookup"><span data-stu-id="5cb32-130">From Visual Studio, project property > configuration properties > C/C++ > linker > Input > Additional Dependencies, add mysqlcppconn.lib into hello text field</span></span>
+4. <span data-ttu-id="5cb32-131">Либо mysqlcppconn.dll копии из hello c ++ соединителя папку библиотеки в шаге 3 toohello же каталоге, что исполняемый файл приложения hello или добавить его toohello переменной среды, чтобы приложения могли найти его.</span><span class="sxs-lookup"><span data-stu-id="5cb32-131">Either copy mysqlcppconn.dll from hello c++ connector library folder in step 3 toohello same directory as hello application executable or add it toohello environment variable so your application can find it.</span></span>
 
-## <a name="get-connection-information"></a><span data-ttu-id="b92ba-132">Получение сведений о подключении</span><span class="sxs-lookup"><span data-stu-id="b92ba-132">Get connection information</span></span>
-<span data-ttu-id="b92ba-133">Получите сведения о подключении, необходимые для подключения к базе данных Azure.для MySQL.</span><span class="sxs-lookup"><span data-stu-id="b92ba-133">Get the connection information needed to connect to the Azure Database for MySQL.</span></span> <span data-ttu-id="b92ba-134">Вам потребуется полное имя сервера и учетные данные для входа.</span><span class="sxs-lookup"><span data-stu-id="b92ba-134">You need the fully qualified server name and login credentials.</span></span>
+## <a name="get-connection-information"></a><span data-ttu-id="5cb32-132">Получение сведений о подключении</span><span class="sxs-lookup"><span data-stu-id="5cb32-132">Get connection information</span></span>
+<span data-ttu-id="5cb32-133">Получите toohello tooconnect базы данных Azure для hello подключения сведения, необходимые для MySQL.</span><span class="sxs-lookup"><span data-stu-id="5cb32-133">Get hello connection information needed tooconnect toohello Azure Database for MySQL.</span></span> <span data-ttu-id="5cb32-134">Необходимо hello server полное имя и учетные данные входа.</span><span class="sxs-lookup"><span data-stu-id="5cb32-134">You need hello fully qualified server name and login credentials.</span></span>
 
-1. <span data-ttu-id="b92ba-135">Войдите на [портал Azure](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="b92ba-135">Log in to the [Azure portal](https://portal.azure.com/).</span></span>
-2. <span data-ttu-id="b92ba-136">В меню слева на портале Azure щелкните **Все ресурсы** и выполните поиск по имени созданного сервера, например **myserver4demo**.</span><span class="sxs-lookup"><span data-stu-id="b92ba-136">From the left-hand menu in Azure portal, click **All resources** and search for the server you have created, such as **myserver4demo**.</span></span>
-3. <span data-ttu-id="b92ba-137">Щелкните имя сервера.</span><span class="sxs-lookup"><span data-stu-id="b92ba-137">Click the server name.</span></span>
-4. <span data-ttu-id="b92ba-138">Откройте страницу **свойств** сервера.</span><span class="sxs-lookup"><span data-stu-id="b92ba-138">Select the server's **Properties** page.</span></span> <span data-ttu-id="b92ba-139">Запишите значения **имени сервера** и **имени для входа администратора сервера**.</span><span class="sxs-lookup"><span data-stu-id="b92ba-139">Make a note of the **Server name** and **Server admin login name**.</span></span>
- <span data-ttu-id="b92ba-140">![Имя сервера базы данных Azure для MySQL](./media/connect-cpp/1_server-properties-name-login.png)</span><span class="sxs-lookup"><span data-stu-id="b92ba-140">![Azure Database for MySQL server name](./media/connect-cpp/1_server-properties-name-login.png)</span></span>
-5. <span data-ttu-id="b92ba-141">Если вы забыли данные для входа на сервер, перейдите на страницу **Обзор**, чтобы просмотреть имя администратора сервера и при необходимости сбросить пароль.</span><span class="sxs-lookup"><span data-stu-id="b92ba-141">If you forget your server login information, navigate to the **Overview** page to view the Server admin login name and, if necessary, reset the password.</span></span>
+1. <span data-ttu-id="5cb32-135">Войдите в toohello [портал Azure](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="5cb32-135">Log in toohello [Azure portal](https://portal.azure.com/).</span></span>
+2. <span data-ttu-id="5cb32-136">Hello левого меню на портале Azure, щелкните **все ресурсы** и выполните поиск сервера hello, вы создали, таких как **myserver4demo**.</span><span class="sxs-lookup"><span data-stu-id="5cb32-136">From hello left-hand menu in Azure portal, click **All resources** and search for hello server you have created, such as **myserver4demo**.</span></span>
+3. <span data-ttu-id="5cb32-137">Щелкните имя сервера hello.</span><span class="sxs-lookup"><span data-stu-id="5cb32-137">Click hello server name.</span></span>
+4. <span data-ttu-id="5cb32-138">Выберите hello server **свойства** страницы.</span><span class="sxs-lookup"><span data-stu-id="5cb32-138">Select hello server's **Properties** page.</span></span> <span data-ttu-id="5cb32-139">Запишите hello **имя сервера** и **имя входа администратора сервера**.</span><span class="sxs-lookup"><span data-stu-id="5cb32-139">Make a note of hello **Server name** and **Server admin login name**.</span></span>
+ <span data-ttu-id="5cb32-140">![Имя сервера базы данных Azure для MySQL](./media/connect-cpp/1_server-properties-name-login.png)</span><span class="sxs-lookup"><span data-stu-id="5cb32-140">![Azure Database for MySQL server name](./media/connect-cpp/1_server-properties-name-login.png)</span></span>
+5. <span data-ttu-id="5cb32-141">Если вы забыли учетные данные входа сервера, перейдите toohello **Обзор** страница hello tooview: имя пользователя администратора сервера и, при необходимости переустановить пароль hello.</span><span class="sxs-lookup"><span data-stu-id="5cb32-141">If you forget your server login information, navigate toohello **Overview** page tooview hello Server admin login name and, if necessary, reset hello password.</span></span>
 
-## <a name="connect-create-table-and-insert-data"></a><span data-ttu-id="b92ba-142">Подключение, создание таблицы и вставка данных</span><span class="sxs-lookup"><span data-stu-id="b92ba-142">Connect, create table, and insert data</span></span>
-<span data-ttu-id="b92ba-143">Используйте приведенный ниже код для подключения и загрузки данных с помощью инструкций SQL **CREATE TABLE** и **INSERT INTO**.</span><span class="sxs-lookup"><span data-stu-id="b92ba-143">Use the following code to connect and load the data using **CREATE TABLE** and  **INSERT INTO** SQL statements.</span></span> <span data-ttu-id="b92ba-144">В коде используется класс sql::Driver с методом connect(), чтобы установить подключение к MySQL.</span><span class="sxs-lookup"><span data-stu-id="b92ba-144">The code uses sql::Driver class with the connect() method to establish a connection to MySQL.</span></span> <span data-ttu-id="b92ba-145">Затем код использует методы createStatement() и execute() для выполнения команд базы данных.</span><span class="sxs-lookup"><span data-stu-id="b92ba-145">Then the code uses method createStatement() and execute() to run the database commands.</span></span> 
+## <a name="connect-create-table-and-insert-data"></a><span data-ttu-id="5cb32-142">Подключение, создание таблицы и вставка данных</span><span class="sxs-lookup"><span data-stu-id="5cb32-142">Connect, create table, and insert data</span></span>
+<span data-ttu-id="5cb32-143">Используйте следующие hello кода tooconnect и загружать данные при помощи hello **CREATE TABLE** и **INSERT INTO** инструкции SQL.</span><span class="sxs-lookup"><span data-stu-id="5cb32-143">Use hello following code tooconnect and load hello data using **CREATE TABLE** and  **INSERT INTO** SQL statements.</span></span> <span data-ttu-id="5cb32-144">Hello код использует класс sql::Driver с hello connect() метод tooestablish tooMySQL соединения.</span><span class="sxs-lookup"><span data-stu-id="5cb32-144">hello code uses sql::Driver class with hello connect() method tooestablish a connection tooMySQL.</span></span> <span data-ttu-id="5cb32-145">Затем hello код использует метод createStatement() и execute() toorun hello команд базы данных.</span><span class="sxs-lookup"><span data-stu-id="5cb32-145">Then hello code uses method createStatement() and execute() toorun hello database commands.</span></span> 
 
-<span data-ttu-id="b92ba-146">Замените значения параметров Host, DBName, User и Password значениями, указанными при создании сервера и базы данных.</span><span class="sxs-lookup"><span data-stu-id="b92ba-146">Replace the Host, DBName, User, and Password parameters with the values that you specified when you created the server and database.</span></span> 
+<span data-ttu-id="5cb32-146">Замените параметры узла, DBName, пользователя и пароль hello значениями hello, указанный при создании hello сервера и базы данных.</span><span class="sxs-lookup"><span data-stu-id="5cb32-146">Replace hello Host, DBName, User, and Password parameters with hello values that you specified when you created hello server and database.</span></span> 
 
 ```c++
 #include <stdlib.h>
@@ -83,12 +83,12 @@ int main()
     try
     {
         driver = get_driver_instance();
-        //for demonstration only. never save password in the code!
+        //for demonstration only. never save password in hello code!
         con = driver>connect("tcp://myserver4demo.mysql.database.azure.com:3306/quickstartdb", "myadmin@myserver4demo", "server_admin_password");
     }
     catch (sql::SQLException e)
     {
-        cout << "Could not connect to database. Error message: " << e.what() << endl;
+        cout << "Could not connect toodatabase. Error message: " << e.what() << endl;
         system("pause");
         exit(1);
     }
@@ -123,11 +123,11 @@ int main()
 
 ```
 
-## <a name="read-data"></a><span data-ttu-id="b92ba-147">Считывание данных</span><span class="sxs-lookup"><span data-stu-id="b92ba-147">Read data</span></span>
+## <a name="read-data"></a><span data-ttu-id="5cb32-147">Считывание данных</span><span class="sxs-lookup"><span data-stu-id="5cb32-147">Read data</span></span>
 
-<span data-ttu-id="b92ba-148">Используйте указанный ниже код с инструкцией SQL **SELECT** для подключения и чтения данных.</span><span class="sxs-lookup"><span data-stu-id="b92ba-148">Use the following code to connect and read the data using a **SELECT** SQL statement.</span></span> <span data-ttu-id="b92ba-149">В коде используется класс sql::Driver с методом connect(), чтобы установить подключение к MySQL.</span><span class="sxs-lookup"><span data-stu-id="b92ba-149">The code uses sql::Driver class with the connect() method to establish a connection to MySQL.</span></span> <span data-ttu-id="b92ba-150">Затем код использует методы prepareStatement() и executeQuery() для выполнения команд SELECT.</span><span class="sxs-lookup"><span data-stu-id="b92ba-150">Then the code uses method prepareStatement() and executeQuery() to run the select commands.</span></span> <span data-ttu-id="b92ba-151">Наконец, код использует метод next() для перехода к записям в итоговом наборе.</span><span class="sxs-lookup"><span data-stu-id="b92ba-151">Finally the code uses next() to advance to the records in the results.</span></span> <span data-ttu-id="b92ba-152">Затем используются методы getInt() и getString() для анализа значений в записи.</span><span class="sxs-lookup"><span data-stu-id="b92ba-152">Then the code uses getInt() and getString() to parse the values in the record.</span></span>
+<span data-ttu-id="5cb32-148">Используйте следующие hello кода tooconnect и чтения данных с помощью hello **ВЫБЕРИТЕ** инструкции SQL.</span><span class="sxs-lookup"><span data-stu-id="5cb32-148">Use hello following code tooconnect and read hello data using a **SELECT** SQL statement.</span></span> <span data-ttu-id="5cb32-149">Hello код использует класс sql::Driver с hello connect() метод tooestablish tooMySQL соединения.</span><span class="sxs-lookup"><span data-stu-id="5cb32-149">hello code uses sql::Driver class with hello connect() method tooestablish a connection tooMySQL.</span></span> <span data-ttu-id="5cb32-150">Затем hello код использует метод prepareStatement() и executeQuery() toorun hello выбрать команды.</span><span class="sxs-lookup"><span data-stu-id="5cb32-150">Then hello code uses method prepareStatement() and executeQuery() toorun hello select commands.</span></span> <span data-ttu-id="5cb32-151">Наконец кода hello использует записи toohello tooadvance next() в результатах hello.</span><span class="sxs-lookup"><span data-stu-id="5cb32-151">Finally hello code uses next() tooadvance toohello records in hello results.</span></span> <span data-ttu-id="5cb32-152">Затем код hello использует getInt() getString() tooparse hello значения и в записи hello.</span><span class="sxs-lookup"><span data-stu-id="5cb32-152">Then hello code uses getInt() and getString() tooparse hello values in hello record.</span></span>
 
-<span data-ttu-id="b92ba-153">Замените значения параметров Host, DBName, User и Password значениями, указанными при создании сервера и базы данных.</span><span class="sxs-lookup"><span data-stu-id="b92ba-153">Replace the Host, DBName, User, and Password parameters with the values that you specified when you created the server and database.</span></span> 
+<span data-ttu-id="5cb32-153">Замените параметры узла, DBName, пользователя и пароль hello значениями hello, указанный при создании hello сервера и базы данных.</span><span class="sxs-lookup"><span data-stu-id="5cb32-153">Replace hello Host, DBName, User, and Password parameters with hello values that you specified when you created hello server and database.</span></span> 
 
 ```csharp
 #include <stdlib.h>
@@ -151,12 +151,12 @@ int main()
     try
     {
         driver = get_driver_instance();
-        //for demonstration only. never save password in the code!
+        //for demonstration only. never save password in hello code!
         con = driver>connect("tcp://myserver4demo.mysql.database.azure.com:3306/quickstartdb", "myadmin@myserver4demo", "server_admin_password");
     }
     catch (sql::SQLException e)
     {
-        cout << "Could not connect to database. Error message: " << e.what() << endl;
+        cout << "Could not connect toodatabase. Error message: " << e.what() << endl;
         system("pause");
         exit(1);
     }   
@@ -176,10 +176,10 @@ int main()
 }
 ```
 
-## <a name="update-data"></a><span data-ttu-id="b92ba-154">Обновление данных</span><span class="sxs-lookup"><span data-stu-id="b92ba-154">Update data</span></span>
-<span data-ttu-id="b92ba-155">Используйте указанный ниже код с инструкцией SQL **UPDATE** для подключения и чтения данных.</span><span class="sxs-lookup"><span data-stu-id="b92ba-155">Use the following code to connect and read the data using a **UPDATE** SQL statement.</span></span> <span data-ttu-id="b92ba-156">В коде используется класс sql::Driver с методом connect(), чтобы установить подключение к MySQL.</span><span class="sxs-lookup"><span data-stu-id="b92ba-156">The code uses sql::Driver class with the connect() method to establish a connection to MySQL.</span></span> <span data-ttu-id="b92ba-157">Затем код использует методы prepareStatement() и executeQuery() для выполнения команд UPDATE.</span><span class="sxs-lookup"><span data-stu-id="b92ba-157">Then the code uses method prepareStatement() and executeQuery() to run the update commands.</span></span> 
+## <a name="update-data"></a><span data-ttu-id="5cb32-154">Обновление данных</span><span class="sxs-lookup"><span data-stu-id="5cb32-154">Update data</span></span>
+<span data-ttu-id="5cb32-155">Используйте следующие hello кода tooconnect и чтения данных с помощью hello **обновление** инструкции SQL.</span><span class="sxs-lookup"><span data-stu-id="5cb32-155">Use hello following code tooconnect and read hello data using a **UPDATE** SQL statement.</span></span> <span data-ttu-id="5cb32-156">Hello код использует класс sql::Driver с hello connect() метод tooestablish tooMySQL соединения.</span><span class="sxs-lookup"><span data-stu-id="5cb32-156">hello code uses sql::Driver class with hello connect() method tooestablish a connection tooMySQL.</span></span> <span data-ttu-id="5cb32-157">Затем hello код использует метод prepareStatement() и executeQuery() toorun hello команды обновления.</span><span class="sxs-lookup"><span data-stu-id="5cb32-157">Then hello code uses method prepareStatement() and executeQuery() toorun hello update commands.</span></span> 
 
-<span data-ttu-id="b92ba-158">Замените значения параметров Host, DBName, User и Password значениями, указанными при создании сервера и базы данных.</span><span class="sxs-lookup"><span data-stu-id="b92ba-158">Replace the Host, DBName, User, and Password parameters with the values that you specified when you created the server and database.</span></span> 
+<span data-ttu-id="5cb32-158">Замените параметры узла, DBName, пользователя и пароль hello значениями hello, указанный при создании hello сервера и базы данных.</span><span class="sxs-lookup"><span data-stu-id="5cb32-158">Replace hello Host, DBName, User, and Password parameters with hello values that you specified when you created hello server and database.</span></span> 
 
 ```csharp
 #include <stdlib.h>
@@ -201,12 +201,12 @@ int main()
     try
     {
         driver = get_driver_instance();
-        //for demonstration only. never save password in the code!
+        //for demonstration only. never save password in hello code!
         con = driver>connect("tcp://myserver4demo.mysql.database.azure.com:3306/quickstartdb", "myadmin@myserver4demo", "server_admin_password");
     }
     catch (sql::SQLException e)
     {
-        cout << "Could not connect to database. Error message: " << e.what() << endl;
+        cout << "Could not connect toodatabase. Error message: " << e.what() << endl;
         system("pause");
         exit(1);
     }   
@@ -226,10 +226,10 @@ int main()
 ```
 
 
-## <a name="delete-data"></a><span data-ttu-id="b92ba-159">Удаление данных</span><span class="sxs-lookup"><span data-stu-id="b92ba-159">Delete data</span></span>
-<span data-ttu-id="b92ba-160">Используйте указанный ниже код с инструкцией SQL **DELETE** для подключения и чтения данных.</span><span class="sxs-lookup"><span data-stu-id="b92ba-160">Use the following code to connect and read the data using a **DELETE** SQL statement.</span></span> <span data-ttu-id="b92ba-161">В коде используется класс sql::Driver с методом connect(), чтобы установить подключение к MySQL.</span><span class="sxs-lookup"><span data-stu-id="b92ba-161">The code uses sql::Driver class with the connect() method to establish a connection to MySQL.</span></span> <span data-ttu-id="b92ba-162">Затем код использует методы prepareStatement() и executeQuery() для выполнения команд DELETE.</span><span class="sxs-lookup"><span data-stu-id="b92ba-162">Then the code uses method prepareStatement() and executeQuery() to run the delete commands.</span></span>
+## <a name="delete-data"></a><span data-ttu-id="5cb32-159">Удаление данных</span><span class="sxs-lookup"><span data-stu-id="5cb32-159">Delete data</span></span>
+<span data-ttu-id="5cb32-160">Используйте следующие hello кода tooconnect и чтения данных с помощью hello **удалить** инструкции SQL.</span><span class="sxs-lookup"><span data-stu-id="5cb32-160">Use hello following code tooconnect and read hello data using a **DELETE** SQL statement.</span></span> <span data-ttu-id="5cb32-161">Hello код использует класс sql::Driver с hello connect() метод tooestablish tooMySQL соединения.</span><span class="sxs-lookup"><span data-stu-id="5cb32-161">hello code uses sql::Driver class with hello connect() method tooestablish a connection tooMySQL.</span></span> <span data-ttu-id="5cb32-162">Затем hello код использует метод prepareStatement() executeQuery() toorun hello команд и удаления.</span><span class="sxs-lookup"><span data-stu-id="5cb32-162">Then hello code uses method prepareStatement() and executeQuery() toorun hello delete commands.</span></span>
 
-<span data-ttu-id="b92ba-163">Замените значения параметров Host, DBName, User и Password значениями, указанными при создании сервера и базы данных.</span><span class="sxs-lookup"><span data-stu-id="b92ba-163">Replace the Host, DBName, User, and Password parameters with the values that you specified when you created the server and database.</span></span> 
+<span data-ttu-id="5cb32-163">Замените параметры узла, DBName, пользователя и пароль hello значениями hello, указанный при создании hello сервера и базы данных.</span><span class="sxs-lookup"><span data-stu-id="5cb32-163">Replace hello Host, DBName, User, and Password parameters with hello values that you specified when you created hello server and database.</span></span> 
 
 ```csharp
 #include <stdlib.h>
@@ -253,12 +253,12 @@ int main()
     try
     {
         driver = get_driver_instance();
-        //for demonstration only. never save password in the code!
+        //for demonstration only. never save password in hello code!
         con = driver>connect("tcp://myserver4demo.mysql.database.azure.com:3306/quickstartdb", "myadmin@myserver4demo", "server_admin_password");
     }
     catch (sql::SQLException e)
     {
-        cout << "Could not connect to database. Error message: " << e.what() << endl;
+        cout << "Could not connect toodatabase. Error message: " << e.what() << endl;
         system("pause");
         exit(1);
     }
@@ -277,6 +277,6 @@ int main()
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="b92ba-164">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="b92ba-164">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="5cb32-164">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="5cb32-164">Next steps</span></span>
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="b92ba-165">Перенос базы данных MySQL в базу данных Azure для MySQL с помощью резервного копирования и восстановления</span><span class="sxs-lookup"><span data-stu-id="b92ba-165">Migrate your MySQL database to Azure Database for MySQL using dump and restore</span></span>](concepts-migrate-dump-restore.md)
+> [<span data-ttu-id="5cb32-165">Перенести вашей tooAzure базы данных MySQL базы данных MySQL с помощью дампа и восстановления</span><span class="sxs-lookup"><span data-stu-id="5cb32-165">Migrate your MySQL database tooAzure Database for MySQL using dump and restore</span></span>](concepts-migrate-dump-restore.md)
