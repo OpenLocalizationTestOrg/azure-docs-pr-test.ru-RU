@@ -1,6 +1,6 @@
 ---
-title: "Перемещение ресурсов веб-приложений в другую группу ресурсов."
-description: "Описываются сценарии, в которых вы можете перемещать веб-приложения и службы приложений из одной группы ресурсов в другую."
+title: "веб-приложения ресурсы aaaMove tooanother группы ресурсов"
+description: "Описывает сценарии hello, где веб-приложения и службы приложений можно перемещать из одной группы ресурсов tooanother."
 services: app-service
 documentationcenter: 
 author: ZainRizvi
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: zarizvi
-ms.openlocfilehash: 1b5059dc052005b6079f70ecf6771a3771df8d87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 931012fee656b7f8a4b2c225c38739a9171d3b2e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="supported-move-configurations"></a><span data-ttu-id="d4ccf-103">Поддерживаемые конфигурации перемещения</span><span class="sxs-lookup"><span data-stu-id="d4ccf-103">Supported Move Configurations</span></span>
-<span data-ttu-id="d4ccf-104">Ресурсы веб-приложений Azure можно перемещать с помощью [API перемещения ресурсов Resource Manager](../azure-resource-manager/resource-group-move-resources.md).</span><span class="sxs-lookup"><span data-stu-id="d4ccf-104">You can move Azure Web App resources using the [Resource Manager Move Resources API](../azure-resource-manager/resource-group-move-resources.md).</span></span>
+# <a name="supported-move-configurations"></a><span data-ttu-id="07306-103">Поддерживаемые конфигурации перемещения</span><span class="sxs-lookup"><span data-stu-id="07306-103">Supported Move Configurations</span></span>
+<span data-ttu-id="07306-104">Можно перемещать ресурсы веб-приложения Azure с помощью hello [API переместить ресурсы ресурсов диспетчера](../azure-resource-manager/resource-group-move-resources.md).</span><span class="sxs-lookup"><span data-stu-id="07306-104">You can move Azure Web App resources using hello [Resource Manager Move Resources API](../azure-resource-manager/resource-group-move-resources.md).</span></span>
 
-<span data-ttu-id="d4ccf-105">Веб-приложения Azure в настоящее время поддерживают следующие сценарии перемещения.</span><span class="sxs-lookup"><span data-stu-id="d4ccf-105">Azure Web Apps currently supports the following move scenarios:</span></span>
+<span data-ttu-id="07306-105">Azure веб-приложений в настоящее время поддерживает следующие сценарии перемещения hello:</span><span class="sxs-lookup"><span data-stu-id="07306-105">Azure Web Apps currently supports hello following move scenarios:</span></span>
 
-* <span data-ttu-id="d4ccf-106">Перемещение всего содержимого группы ресурсов (веб-приложений, планов обслуживания приложений и сертификатов) в другую группу ресурсов.</span><span class="sxs-lookup"><span data-stu-id="d4ccf-106">Move the entire contents of a resource group (web apps, app service plans, and certificates) to another resource group.</span></span> 
+* <span data-ttu-id="07306-106">Переместить все содержимое hello группы ресурсов (веб-приложений, планах службы приложений и сертификатов) tooanother группы ресурсов.</span><span class="sxs-lookup"><span data-stu-id="07306-106">Move hello entire contents of a resource group (web apps, app service plans, and certificates) tooanother resource group.</span></span> 
    > [!Note]
-   > <span data-ttu-id="d4ccf-107">В этом сценарии конечная группа ресурсов не может содержать никаких ресурсов Microsoft.Web.</span><span class="sxs-lookup"><span data-stu-id="d4ccf-107">The destination resource group can not contain any Microsoft.Web resources in this scenario.</span></span>
+   > <span data-ttu-id="07306-107">Hello целевая группа ресурсов не может содержать любой Microsoft.Web ресурсы в этом сценарии.</span><span class="sxs-lookup"><span data-stu-id="07306-107">hello destination resource group can not contain any Microsoft.Web resources in this scenario.</span></span>
 
-* <span data-ttu-id="d4ccf-108">Перемещение отдельных веб-приложений в другую группу ресурсов с сохранением их размещения в текущем плане службы приложений (план службы приложений остается в старой группе ресурсов).</span><span class="sxs-lookup"><span data-stu-id="d4ccf-108">Move individual web apps to a different resource group, while still hosting them in their current app service plan (the app service plan stays in the old resource group).</span></span>
+* <span data-ttu-id="07306-108">Перемещаемое отдельных web apps tooa другой группе ресурсов, по-прежнему их размещение в их текущего плана службы приложений (hello приложения службы план остается в группе ресурсов старого hello).</span><span class="sxs-lookup"><span data-stu-id="07306-108">Move individual web apps tooa different resource group, while still hosting them in their current app service plan (hello app service plan stays in hello old resource group).</span></span>
 
 

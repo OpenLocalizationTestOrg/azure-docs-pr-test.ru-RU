@@ -1,5 +1,5 @@
 ---
-title: "Сброс пароля для пользователя в Azure Active Directory | Документация Майкрософт"
+title: "aaaReset hello пароля для пользователя в Azure Active Directory | Документы Microsoft"
 description: "Сведения о процедуре сброса пароля пользователя в Azure Active Directory, выполняемой администратором."
 services: active-directory
 documentationcenter: 
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: deec642a240cb6f088210748b0ef3a3636a88405
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8ed7643d9ad375b1e46bac8f5aa610b03fccf3fc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reset-a-password-for-a-user-in-the-azure-classic-portal"></a><span data-ttu-id="7cfb2-103">Сброс пароля пользователя на классическом портале Azure</span><span class="sxs-lookup"><span data-stu-id="7cfb2-103">Reset a password for a user in the Azure classic portal</span></span>
+# <a name="reset-a-password-for-a-user-in-hello-azure-classic-portal"></a><span data-ttu-id="df3b0-103">Сброс пароля для пользователя в hello классический портал Azure</span><span class="sxs-lookup"><span data-stu-id="df3b0-103">Reset a password for a user in hello Azure classic portal</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="7cfb2-104">Портал Azure</span><span class="sxs-lookup"><span data-stu-id="7cfb2-104">Azure portal</span></span>](active-directory-users-reset-password-azure-portal.md)
-> * [<span data-ttu-id="7cfb2-105">классический портал Azure</span><span class="sxs-lookup"><span data-stu-id="7cfb2-105">Azure classic portal</span></span>](active-directory-create-users-reset-password.md)
+> * [<span data-ttu-id="df3b0-104">Портал Azure</span><span class="sxs-lookup"><span data-stu-id="df3b0-104">Azure portal</span></span>](active-directory-users-reset-password-azure-portal.md)
+> * [<span data-ttu-id="df3b0-105">классическом портале Azure</span><span class="sxs-lookup"><span data-stu-id="df3b0-105">Azure classic portal</span></span>](active-directory-create-users-reset-password.md)
 >
 >
 
-<span data-ttu-id="7cfb2-106">Azure Active Directory (Azure AD) упрощает процесс сброса пароля пользователя, если пользователь забыл пароль и доступ к его учетной записи заблокирован или при выполнении рутинной процедуры по обеспечению безопасности.</span><span class="sxs-lookup"><span data-stu-id="7cfb2-106">Azure Active Directory (Azure AD) simplifies the process of resetting a user's password if they forget and are locked out, or while performing routine security maintenance.</span></span> 
+<span data-ttu-id="df3b0-106">Azure Active Directory (Azure AD) упрощает процесс сброса пароля пользователя, если они забыли и блокируются out или при выполнении процедуры безопасности обслуживания hello.</span><span class="sxs-lookup"><span data-stu-id="df3b0-106">Azure Active Directory (Azure AD) simplifies hello process of resetting a user's password if they forget and are locked out, or while performing routine security maintenance.</span></span> 
 
 > [!IMPORTANT]
-> <span data-ttu-id="7cfb2-107">Для управления службой Azure AD мы рекомендуем использовать [Центр администрирования Azure AD](https://aad.portal.azure.com) на портале Azure, а не классический портал Azure, который упоминается в этой статье.</span><span class="sxs-lookup"><span data-stu-id="7cfb2-107">Microsoft recommends that you manage Azure AD using the [Azure AD admin center](https://aad.portal.azure.com) in the Azure portal instead of using the Azure classic portal referenced in this article.</span></span> <span data-ttu-id="7cfb2-108">См. дополнительные сведения о [сбросе пароля пользователя в центре администрирования Azure Active Directory](active-directory-users-reset-password-azure-portal.md).</span><span class="sxs-lookup"><span data-stu-id="7cfb2-108">For how to reset a user password in the Azure AD admin center, see [Reset the password for a user in Azure Active Directory](active-directory-users-reset-password-azure-portal.md).</span></span>
+> <span data-ttu-id="df3b0-107">Корпорация Майкрософт рекомендует управлять Azure AD, используя hello [Центр администрирования Azure AD](https://aad.portal.azure.com) в hello портал Azure, вместо использования hello классический портал Azure, в этой статье.</span><span class="sxs-lookup"><span data-stu-id="df3b0-107">Microsoft recommends that you manage Azure AD using hello [Azure AD admin center](https://aad.portal.azure.com) in hello Azure portal instead of using hello Azure classic portal referenced in this article.</span></span> <span data-ttu-id="df3b0-108">Для tooreset пароль пользователя в центре администрирования hello Azure AD, в статье [Сброс hello пароля для пользователя в Azure Active Directory](active-directory-users-reset-password-azure-portal.md).</span><span class="sxs-lookup"><span data-stu-id="df3b0-108">For how tooreset a user password in hello Azure AD admin center, see [Reset hello password for a user in Azure Active Directory](active-directory-users-reset-password-azure-portal.md).</span></span>
 
-1. <span data-ttu-id="7cfb2-109">Откройте свой каталог.</span><span class="sxs-lookup"><span data-stu-id="7cfb2-109">Open your directory.</span></span>
-2. <span data-ttu-id="7cfb2-110">Перейдите на вкладку **Пользователи** , а затем выберите отображаемое имя пользователя, которое нужно изменить.</span><span class="sxs-lookup"><span data-stu-id="7cfb2-110">Select the **Users** tab, and then select the display name of the user you want to change.</span></span>
-3. <span data-ttu-id="7cfb2-111">На панели команд выберите **Сбросить пароль**.</span><span class="sxs-lookup"><span data-stu-id="7cfb2-111">In the command bar, select **Reset Password**.</span></span>
-4. <span data-ttu-id="7cfb2-112">Щелкните **сбросить**в диалоговом окне сброса.</span><span class="sxs-lookup"><span data-stu-id="7cfb2-112">In the reset password dialog, click **reset**.</span></span>
-5. <span data-ttu-id="7cfb2-113">Чтобы завершить сброс пароля, установите флажок.</span><span class="sxs-lookup"><span data-stu-id="7cfb2-113">Select the check mark to finish resetting the password.</span></span>
+1. <span data-ttu-id="df3b0-109">Откройте свой каталог.</span><span class="sxs-lookup"><span data-stu-id="df3b0-109">Open your directory.</span></span>
+2. <span data-ttu-id="df3b0-110">Выберите hello **пользователей** вкладку и выберите hello отображаемым именем hello нужного toochange пользователя.</span><span class="sxs-lookup"><span data-stu-id="df3b0-110">Select hello **Users** tab, and then select hello display name of hello user you want toochange.</span></span>
+3. <span data-ttu-id="df3b0-111">В панели команд hello, выберите **Смена пароля**.</span><span class="sxs-lookup"><span data-stu-id="df3b0-111">In hello command bar, select **Reset Password**.</span></span>
+4. <span data-ttu-id="df3b0-112">В диалоговом окне приветствия сброса пароля, нажмите кнопку **Сброс**.</span><span class="sxs-lookup"><span data-stu-id="df3b0-112">In hello reset password dialog, click **reset**.</span></span>
+5. <span data-ttu-id="df3b0-113">Установите флажок toofinish hello, сброс пароля hello.</span><span class="sxs-lookup"><span data-stu-id="df3b0-113">Select hello check mark toofinish resetting hello password.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="7cfb2-114">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="7cfb2-114">Next steps</span></span>
-* [<span data-ttu-id="7cfb2-115">Добавление новых пользователей в Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="7cfb2-115">Add new users to Azure Active Directory</span></span>](active-directory-create-users.md)
-* [<span data-ttu-id="7cfb2-116">Администрирование Azure AD</span><span class="sxs-lookup"><span data-stu-id="7cfb2-116">Administering Azure AD</span></span>](active-directory-administer.md)
-* [<span data-ttu-id="7cfb2-117">Управление паролями в Azure AD</span><span class="sxs-lookup"><span data-stu-id="7cfb2-117">Manage passwords in Azure AD</span></span>](active-directory-manage-passwords.md)
-* [<span data-ttu-id="7cfb2-118">Управление группами в Azure AD</span><span class="sxs-lookup"><span data-stu-id="7cfb2-118">Manage groups in Azure AD</span></span>](active-directory-manage-groups.md)
+## <a name="next-steps"></a><span data-ttu-id="df3b0-114">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="df3b0-114">Next steps</span></span>
+* [<span data-ttu-id="df3b0-115">Добавить новый tooAzure пользователей Active Directory</span><span class="sxs-lookup"><span data-stu-id="df3b0-115">Add new users tooAzure Active Directory</span></span>](active-directory-create-users.md)
+* [<span data-ttu-id="df3b0-116">Администрирование Azure AD</span><span class="sxs-lookup"><span data-stu-id="df3b0-116">Administering Azure AD</span></span>](active-directory-administer.md)
+* [<span data-ttu-id="df3b0-117">Управление паролями в Azure AD</span><span class="sxs-lookup"><span data-stu-id="df3b0-117">Manage passwords in Azure AD</span></span>](active-directory-manage-passwords.md)
+* [<span data-ttu-id="df3b0-118">Управление группами в Azure AD</span><span class="sxs-lookup"><span data-stu-id="df3b0-118">Manage groups in Azure AD</span></span>](active-directory-manage-groups.md)

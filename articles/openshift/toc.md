@@ -2,7 +2,7 @@
 # Быстрое начало работы
 ## [OpenShift: шаблон сообщества](https://azure.microsoft.com/en-us/resources/templates/openshift-origin-rhel/)
 # Учебники
-## [Развертывание на виртуальных машинах Azure](/azure/virtual-machines/linux/openshift-get-started)
+## [Развертывание виртуальных машин tooAzure](/azure/virtual-machines/linux/openshift-get-started)
 # Ресурсы
 ## [Стратегия развития Azure](https://azure.microsoft.com/roadmap/)
 ## [Шаблон контейнера OpenShift](https://github.com/Microsoft/openshift-container-platform)

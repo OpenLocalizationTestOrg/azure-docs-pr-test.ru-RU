@@ -1,6 +1,6 @@
 ---
-title: "Контейнеры на виртуальных машинах Linux в Azure | Документация Майкрософт"
-description: "Описание виртуальных машин, контейнеров Docker и Linux, а также их использования в группах в Azure, включая преимущества каждого из них и сценарии, в которых лучше всего работает соответствующий подход."
+title: "aaaContainers Linux виртуальных машинах Azure | Документы Microsoft"
+description: "Описывает виртуальных машин, Docker и контейнеров Linux и их использование в группах каждый в Azure, в том числе преимущества каждого hello и сценарии, в которых каждый подход работает очень хорошо."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: squillace
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
-ms.openlocfilehash: 3ca47d67e513c73fde040461be9c403a085503ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7e41e424e44359f0b17e5ee42b6798cac32e52f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="virtual-machines-vs-containers-in-azure"></a><span data-ttu-id="02f2e-103">Сравнение виртуальных машин и контейнеров в Azure</span><span class="sxs-lookup"><span data-stu-id="02f2e-103">Virtual Machines vs. Containers in Azure</span></span>
+# <a name="virtual-machines-vs-containers-in-azure"></a><span data-ttu-id="c4a3d-103">Сравнение виртуальных машин и контейнеров в Azure</span><span class="sxs-lookup"><span data-stu-id="c4a3d-103">Virtual Machines vs. Containers in Azure</span></span>
 [!INCLUDE [virtual-machines-common-and-containers](../../../includes/virtual-machines-common-containers.md)]
 

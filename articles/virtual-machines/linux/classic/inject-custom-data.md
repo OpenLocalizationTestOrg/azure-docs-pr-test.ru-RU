@@ -1,6 +1,6 @@
 ---
-title: "Вставка данных в виртуальные машины Linux в Azure | Документация Майкрософт"
-description: "В этом разделе описывается включение пользовательских данных в виртуальную машину Azure во время создания экземпляра, а также поиск пользовательских данных в Windows или Linux."
+title: "aaaInject данных в виртуальных машин Linux в Azure | Документы Microsoft"
+description: "В этом разделе описывается, как tooinject пользовательских данных в Azure виртуальные машины при создании экземпляра hello и как toolocate hello пользовательских данных в Windows или Linux."
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2016
 ms.author: rasquill
-ms.openlocfilehash: 8dd04c26f10950b13fe0689a96b3e12250715019
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a3197e06a8d367eab6336577e5cfb6d2d6858441
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="injecting-custom-data-into-an-azure-virtual-machine"></a><span data-ttu-id="02f01-103">Включение пользовательских данных в виртуальную машину Azure</span><span class="sxs-lookup"><span data-stu-id="02f01-103">Injecting custom data into an Azure virtual machine</span></span>
+# <a name="injecting-custom-data-into-an-azure-virtual-machine"></a><span data-ttu-id="2764e-103">Включение пользовательских данных в виртуальную машину Azure</span><span class="sxs-lookup"><span data-stu-id="2764e-103">Injecting custom data into an Azure virtual machine</span></span>
 > [!IMPORTANT] 
-> <span data-ttu-id="02f01-104">В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="02f01-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="02f01-105">В этой статье рассматривается использование классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="02f01-105">This article covers using the Classic deployment model.</span></span> <span data-ttu-id="02f01-106">Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="02f01-106">Microsoft recommends that most new deployments use the Resource Manager model.</span></span> <span data-ttu-id="02f01-107">Дополнительные сведения об использовании расширения пользовательских сценариев с моделью Resource Manager см. [здесь](../extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="02f01-107">For information about using the Custom Script Extension with the Resource Manager model, see [here](../extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
+> <span data-ttu-id="2764e-104">В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="2764e-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="2764e-105">В этой статье описан с помощью hello классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="2764e-105">This article covers using hello Classic deployment model.</span></span> <span data-ttu-id="2764e-106">Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="2764e-106">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span> <span data-ttu-id="2764e-107">Сведения об использовании hello настраиваемое расширение скриптов с моделью hello диспетчера ресурсов см. в разделе [здесь](../extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="2764e-107">For information about using hello Custom Script Extension with hello Resource Manager model, see [here](../extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
 
 [!INCLUDE [virtual-machines-common-classic-inject-custom-data](../../../../includes/virtual-machines-common-classic-inject-custom-data.md)]
 

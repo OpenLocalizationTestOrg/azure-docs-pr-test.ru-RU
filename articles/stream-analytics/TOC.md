@@ -24,9 +24,9 @@
 ### [Интеграция определяемых пользователем функций JavaScript](stream-analytics-javascript-user-defined-functions.md)
 ### [Интеграция машинного обучения и REST API](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [Формирование выходных данных](stream-analytics-define-outputs.md)
-### [Вывод в функциях Azure](stream-analytics-functions-redis.md)
-### [Вывод в Data Lake Store](stream-analytics-data-lake-output.md)
-### [Вывод в DocumentDB](stream-analytics-documentdb-output.md)
+### [Выходные данные функции tooAzure](stream-analytics-functions-redis.md)
+### [Хранилище Озера tooData выходных данных](stream-analytics-data-lake-output.md)
+### [TooDocumentDB выходные данные](stream-analytics-documentdb-output.md)
 
 ## Мониторинг и оптимизация
 ### [Добавление оповещений](stream-analytics-set-up-alerts.md)
@@ -34,7 +34,7 @@
 ### [Программный мониторинг заданий](stream-analytics-monitor-jobs.md)
 ### [Мониторинг заданий с помощью PowerShell](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 ### [Оптимизация единиц потоковой передачи](stream-analytics-streaming-unit-consumption.md)
-### [Масштабирование для повышения пропускной способности](stream-analytics-scale-jobs.md)
+### [Пропускная способность tooincrease шкалы](stream-analytics-scale-jobs.md)
 ### [Масштабирование для функций машинного обучения](stream-analytics-scale-with-machine-learning-functions.md)
 
 ## Управление
@@ -52,7 +52,7 @@
 
 ## Автоматизация
 ### [Инструменты для Visual Studio](stream-analytics-tools-for-visual-studio.md)
-### [Использование пакета SDK для .NET для управления](stream-analytics-dotnet-management-sdk.md)
+### [Использовать hello управления .NET SDK](stream-analytics-dotnet-management-sdk.md)
 ### [Работа с PowerShell одним щелчком](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # Справочные материалы

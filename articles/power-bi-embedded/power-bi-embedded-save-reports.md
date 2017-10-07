@@ -1,6 +1,6 @@
 ---
-title: "Сохранение отчетов в Azure Power BI Embedded | Документация Майкрософт"
-description: "Узнайте, как сохранять отчеты в Power BI Embedded. Для выполнения этого действия необходимы соответствующие разрешения."
+title: "aaaSave отчеты в Azure Power BI Embedded | Документы Microsoft"
+description: "Узнайте, как внедренные toosave отчеты в Power BI. Это требует соответствующие разрешения в порядке toowork успешно."
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,38 +15,38 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: ad895004cc2972f2ded81566186325a16d401151
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 984537ce1ce1afc787d6c6c9f61ae8d6226d1171
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="save-reports-in-power-bi-embedded"></a><span data-ttu-id="1d1ca-104">Сохранение отчетов в Power BI Embedded</span><span class="sxs-lookup"><span data-stu-id="1d1ca-104">Save reports in Power BI Embedded</span></span>
+# <a name="save-reports-in-power-bi-embedded"></a><span data-ttu-id="3925a-104">Сохранение отчетов в Power BI Embedded</span><span class="sxs-lookup"><span data-stu-id="3925a-104">Save reports in Power BI Embedded</span></span>
 
-<span data-ttu-id="1d1ca-105">Узнайте, как сохранять отчеты в Power BI Embedded.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-105">Learn how to save reports within Power BI embedded.</span></span> <span data-ttu-id="1d1ca-106">Для выполнения этого действия необходимы соответствующие разрешения.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-106">This requires proper permissions in order to work successfully.</span></span>
+<span data-ttu-id="3925a-105">Узнайте, как внедренные toosave отчеты в Power BI.</span><span class="sxs-lookup"><span data-stu-id="3925a-105">Learn how toosave reports within Power BI embedded.</span></span> <span data-ttu-id="3925a-106">Это требует соответствующие разрешения в порядке toowork успешно.</span><span class="sxs-lookup"><span data-stu-id="3925a-106">This requires proper permissions in order toowork successfully.</span></span>
 
-<span data-ttu-id="1d1ca-107">В Power BI Embedded можно изменить существующие отчеты и сохранить их.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-107">Within Power BI Embedded, you can edit existing reports and save them.</span></span> <span data-ttu-id="1d1ca-108">Также можно создать отчет и сохранить его как новый отчет.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-108">You can also create a new report and save as a new report to create one.</span></span>
+<span data-ttu-id="3925a-107">В Power BI Embedded можно изменить существующие отчеты и сохранить их.</span><span class="sxs-lookup"><span data-stu-id="3925a-107">Within Power BI Embedded, you can edit existing reports and save them.</span></span> <span data-ttu-id="3925a-108">Можно также создать новый отчет и сохранить как новый отчет toocreate, один.</span><span class="sxs-lookup"><span data-stu-id="3925a-108">You can also create a new report and save as a new report toocreate one.</span></span>
 
-<span data-ttu-id="1d1ca-109">Чтобы сохранить отчет, сначала необходимо создать маркер для определенного отчета с соответствующими областями:</span><span class="sxs-lookup"><span data-stu-id="1d1ca-109">In order to save a report you first need to create a token for the specific report with the right scopes:</span></span>
+<span data-ttu-id="3925a-109">В порядке toosave отчета необходимо сначала toocreate маркер для конкретного отчета hello hello правой области:</span><span class="sxs-lookup"><span data-stu-id="3925a-109">In order toosave a report you first need toocreate a token for hello specific report with hello right scopes:</span></span>
 
-* <span data-ttu-id="1d1ca-110">для использования команды "Сохранить" необходима область Report.ReadWrite;</span><span class="sxs-lookup"><span data-stu-id="1d1ca-110">To enable save Report.ReadWrite scope is required</span></span>
-* <span data-ttu-id="1d1ca-111">для использования команды "Сохранить как" необходимы области Report.Read и Workspace.Report.Copy;</span><span class="sxs-lookup"><span data-stu-id="1d1ca-111">To enable save as, Report.Read and Workspace.Report.Copy scopes are required</span></span>
-* <span data-ttu-id="1d1ca-112">для использования команд "Сохранить" и "Сохранить как" необходимы области Report.ReadWrite и Workspace.Report.Copy.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-112">To enable save and save as, Report.ReadWrite and Workspace.Report.Copy are requierd</span></span>
+* <span data-ttu-id="3925a-110">tooenable сохранить Report.ReadWrite область является обязательным</span><span class="sxs-lookup"><span data-stu-id="3925a-110">tooenable save Report.ReadWrite scope is required</span></span>
+* <span data-ttu-id="3925a-111">tooenable Сохранить как Report.Read и Workspace.Report.Copy областей являются обязательными</span><span class="sxs-lookup"><span data-stu-id="3925a-111">tooenable save as, Report.Read and Workspace.Report.Copy scopes are required</span></span>
+* <span data-ttu-id="3925a-112">Сохранить tooenable и сохранить как, Report.ReadWrite и Workspace.Report.Copy будут requierd</span><span class="sxs-lookup"><span data-stu-id="3925a-112">tooenable save and save as, Report.ReadWrite and Workspace.Report.Copy are requierd</span></span>
 
-<span data-ttu-id="1d1ca-113">Соответственно, чтобы правильно добавить в меню "Файл" кнопки "Сохранить" и "Сохранить как", при внедрении отчета необходимо предоставить правильные разрешения в конфигурации внедрения:</span><span class="sxs-lookup"><span data-stu-id="1d1ca-113">Respectively in order to enable the right save/save as buttons in file menu you need to provide the right permission in the Embed configuration when you Embed the report:</span></span>
+<span data-ttu-id="3925a-113">Соответственно в порядке tooenable hello правой сохранения и сохранения как кнопки в меню "файл" требуется tooprovide hello правой разрешение в конфигурации внедрения hello при можно внедрить hello отчета:</span><span class="sxs-lookup"><span data-stu-id="3925a-113">Respectively in order tooenable hello right save/save as buttons in file menu you need tooprovide hello right permission in hello Embed configuration when you Embed hello report:</span></span>
 
-* <span data-ttu-id="1d1ca-114">models.Permissions.ReadWrite</span><span class="sxs-lookup"><span data-stu-id="1d1ca-114">models.Permissions.ReadWrite</span></span>
-* <span data-ttu-id="1d1ca-115">models.Permissions.Copy</span><span class="sxs-lookup"><span data-stu-id="1d1ca-115">models.Permissions.Copy</span></span>
-* <span data-ttu-id="1d1ca-116">models.Permissions.All</span><span class="sxs-lookup"><span data-stu-id="1d1ca-116">models.Permissions.All</span></span>
+* <span data-ttu-id="3925a-114">models.Permissions.ReadWrite</span><span class="sxs-lookup"><span data-stu-id="3925a-114">models.Permissions.ReadWrite</span></span>
+* <span data-ttu-id="3925a-115">models.Permissions.Copy</span><span class="sxs-lookup"><span data-stu-id="3925a-115">models.Permissions.Copy</span></span>
+* <span data-ttu-id="3925a-116">models.Permissions.All</span><span class="sxs-lookup"><span data-stu-id="3925a-116">models.Permissions.All</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="1d1ca-117">Для маркера доступа также требуются соответствующие области.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-117">Your access token also needs the appropriate scopes.</span></span> <span data-ttu-id="1d1ca-118">Дополнительные сведения см. в разделе [Области](power-bi-embedded-app-token-flow.md#scopes).</span><span class="sxs-lookup"><span data-stu-id="1d1ca-118">For more information, see [Scopes](power-bi-embedded-app-token-flow.md#scopes).</span></span>
+> <span data-ttu-id="3925a-117">Срок действия токена доступа также должен hello соответствующие области.</span><span class="sxs-lookup"><span data-stu-id="3925a-117">Your access token also needs hello appropriate scopes.</span></span> <span data-ttu-id="3925a-118">Дополнительные сведения см. в разделе [Области](power-bi-embedded-app-token-flow.md#scopes).</span><span class="sxs-lookup"><span data-stu-id="3925a-118">For more information, see [Scopes](power-bi-embedded-app-token-flow.md#scopes).</span></span>
 
-## <a name="embed-report-in-edit-mode"></a><span data-ttu-id="1d1ca-119">Внедрение отчета в режиме правки</span><span class="sxs-lookup"><span data-stu-id="1d1ca-119">Embed report in edit mode</span></span>
+## <a name="embed-report-in-edit-mode"></a><span data-ttu-id="3925a-119">Внедрение отчета в режиме правки</span><span class="sxs-lookup"><span data-stu-id="3925a-119">Embed report in edit mode</span></span>
 
-<span data-ttu-id="1d1ca-120">Предположим, что вам требуется внедрить отчет в свое приложение в режиме правки. Для этого просто передайте необходимые свойства в конфигурацию внедрения и выполните вызов powerbi.embed().</span><span class="sxs-lookup"><span data-stu-id="1d1ca-120">Let's say you want to Embed a report in edit mode inside your app, to do so just pass the right properties in Embed configuration and call powerbi.embed().</span></span> <span data-ttu-id="1d1ca-121">Необходимо будет предоставить разрешения и параметр viewMode, чтобы кнопки "Сохранить" и "Сохранить как" отображались в режиме правки.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-121">You will need to supply permissions and a viewMode in order to see the save and save as buttons when in edit mode.</span></span> <span data-ttu-id="1d1ca-122">Дополнительные сведения см. в статье [Embed Configuration Details](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details) (Сведения о конфигурации внедрения).</span><span class="sxs-lookup"><span data-stu-id="1d1ca-122">For more information, see [Embed configuration details](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).</span></span>
+<span data-ttu-id="3925a-120">Давайте предположим нужно tooEmbed отчетов в режиме редактирования, внутри приложения, toodo, поэтому просто передать свойства прав hello в конфигурации внедрения и вызвать powerbi.embed().</span><span class="sxs-lookup"><span data-stu-id="3925a-120">Let's say you want tooEmbed a report in edit mode inside your app, toodo so just pass hello right properties in Embed configuration and call powerbi.embed().</span></span> <span data-ttu-id="3925a-121">Необходимо будет toosupply разрешения и viewMode в hello toosee порядок сохранения и сохраните как кнопки в режиме редактирования.</span><span class="sxs-lookup"><span data-stu-id="3925a-121">You will need toosupply permissions and a viewMode in order toosee hello save and save as buttons when in edit mode.</span></span> <span data-ttu-id="3925a-122">Дополнительные сведения см. в статье [Embed Configuration Details](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details) (Сведения о конфигурации внедрения).</span><span class="sxs-lookup"><span data-stu-id="3925a-122">For more information, see [Embed configuration details](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).</span></span>
 
-<span data-ttu-id="1d1ca-123">Например, в JavaScript:</span><span class="sxs-lookup"><span data-stu-id="1d1ca-123">For example in JavaScript:</span></span>
+<span data-ttu-id="3925a-123">Например, в JavaScript:</span><span class="sxs-lookup"><span data-stu-id="3925a-123">For example in JavaScript:</span></span>
 
 ```
    <div id="reportContainer"></div>
@@ -54,7 +54,7 @@ ms.lasthandoff: 07/11/2017
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
-    // Embed configuration used to describe the what and how to embed.
+    // Embed configuration used toodescribe hello what and how tooembed.
     // This object is used when calling powerbi.embed.
     // This also includes settings and options such as filters.
     // You can find more information at https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details.
@@ -71,31 +71,31 @@ ms.lasthandoff: 07/11/2017
         }
     };
 
-    // Get a reference to the embedded report HTML element
+    // Get a reference toohello embedded report HTML element
     var reportContainer = $('#reportContainer')[0];
 
-    // Embed the report and display it within the div container.
+    // Embed hello report and display it within hello div container.
     var report = powerbi.embed(reportContainer, config);
 ```
 
-<span data-ttu-id="1d1ca-124">Теперь отчет будет внедрен в приложение в режиме правки.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-124">Now a report will be embedded in your app in edit mode.</span></span>
+<span data-ttu-id="3925a-124">Теперь отчет будет внедрен в приложение в режиме правки.</span><span class="sxs-lookup"><span data-stu-id="3925a-124">Now a report will be embedded in your app in edit mode.</span></span>
 
-## <a name="save-report"></a><span data-ttu-id="1d1ca-125">Сохранение отчета</span><span class="sxs-lookup"><span data-stu-id="1d1ca-125">Save report</span></span>
+## <a name="save-report"></a><span data-ttu-id="3925a-125">Сохранение отчета</span><span class="sxs-lookup"><span data-stu-id="3925a-125">Save report</span></span>
 
-<span data-ttu-id="1d1ca-126">После внедрения отчета в режиме правки с правильными разрешениями и маркером можно сохранить этот отчет, используя меню "Файл" или JavaScript:</span><span class="sxs-lookup"><span data-stu-id="1d1ca-126">After Embbeding the report in edit mode with the right token and permissions you can save the report from the file menu or from javascript:</span></span>
+<span data-ttu-id="3925a-126">После изменения отчета hello Embbeding в режиме с правом маркера hello и разрешения можно сохранить hello отчетов из меню "файл" hello, или из кода javascript:</span><span class="sxs-lookup"><span data-stu-id="3925a-126">After Embbeding hello report in edit mode with hello right token and permissions you can save hello report from hello file menu or from javascript:</span></span>
 
 ```
- // Get a reference to the embedded report.
+ // Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
 
  // Save report
     report.save();
 ```
 
-## <a name="save-as"></a><span data-ttu-id="1d1ca-127">Сохранить как</span><span class="sxs-lookup"><span data-stu-id="1d1ca-127">Save as</span></span>
+## <a name="save-as"></a><span data-ttu-id="3925a-127">Сохранить как</span><span class="sxs-lookup"><span data-stu-id="3925a-127">Save as</span></span>
 
 ```
-// Get a reference to the embedded report.
+// Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
     
     var saveAsParameters = {
@@ -107,9 +107,9 @@ ms.lasthandoff: 07/11/2017
 ```
 
 > [!IMPORTANT]
-> <span data-ttu-id="1d1ca-128">Создание отчета завершается только после выполнения команды *Сохранить как*.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-128">Only after *save as* is a new report created.</span></span> <span data-ttu-id="1d1ca-129">Если выбрать команду "Сохранить", то на холсте продолжает отображаться старый отчет в режиме правки, а не новый отчет.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-129">After the save, the canvas is still showing the old report in edit mode and not the new report.</span></span> <span data-ttu-id="1d1ca-130">Необходимо будет внедрить отчет, который был создан.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-130">You will need to embed the new report that was created.</span></span> <span data-ttu-id="1d1ca-131">Для этого потребуется новый маркер доступа, так как они создаются отдельно для каждого отчета.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-131">This requires a new access token as they are created per report.</span></span>
+> <span data-ttu-id="3925a-128">Создание отчета завершается только после выполнения команды *Сохранить как*.</span><span class="sxs-lookup"><span data-stu-id="3925a-128">Only after *save as* is a new report created.</span></span> <span data-ttu-id="3925a-129">После сохранения hello, hello холст по-прежнему отображаются hello старого отчета в изменить режим и не hello новый отчет.</span><span class="sxs-lookup"><span data-stu-id="3925a-129">After hello save, hello canvas is still showing hello old report in edit mode and not hello new report.</span></span> <span data-ttu-id="3925a-130">Вам потребуется tooembed hello новый отчет был создан.</span><span class="sxs-lookup"><span data-stu-id="3925a-130">You will need tooembed hello new report that was created.</span></span> <span data-ttu-id="3925a-131">Для этого потребуется новый маркер доступа, так как они создаются отдельно для каждого отчета.</span><span class="sxs-lookup"><span data-stu-id="3925a-131">This requires a new access token as they are created per report.</span></span>
 
-<span data-ttu-id="1d1ca-132">После выполнения команды *Сохранить как* необходимо будет загрузить новый отчет.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-132">You will then need to load the new report after a *save as*.</span></span> <span data-ttu-id="1d1ca-133">Данная процедура аналогична процедуре внедрения любого отчета.</span><span class="sxs-lookup"><span data-stu-id="1d1ca-133">This is similar to embedding any report.</span></span>
+<span data-ttu-id="3925a-132">Затем необходимо будет tooload hello новый отчет после *сохранение*.</span><span class="sxs-lookup"><span data-stu-id="3925a-132">You will then need tooload hello new report after a *save as*.</span></span> <span data-ttu-id="3925a-133">Это — примерно tooembedding любой отчет.</span><span class="sxs-lookup"><span data-stu-id="3925a-133">This is similar tooembedding any report.</span></span>
 
 ```
 <div id="reportContainer"></div>
@@ -120,20 +120,20 @@ var embedConfiguration = {
         reportId: '5dac7a4a-4452-46b3-99f6-a25915e0fe54',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
 ```
 
-## <a name="see-also"></a><span data-ttu-id="1d1ca-134">См. также</span><span class="sxs-lookup"><span data-stu-id="1d1ca-134">See also</span></span>
+## <a name="see-also"></a><span data-ttu-id="3925a-134">См. также</span><span class="sxs-lookup"><span data-stu-id="3925a-134">See also</span></span>
 
-[<span data-ttu-id="1d1ca-135">Приступая к работе с примером Microsoft Power BI Embedded</span><span class="sxs-lookup"><span data-stu-id="1d1ca-135">Get started with sample</span></span>](power-bi-embedded-get-started-sample.md)  
-[<span data-ttu-id="1d1ca-136">Внедрение отчета в Power BI Embedded</span><span class="sxs-lookup"><span data-stu-id="1d1ca-136">Embed a report</span></span>](power-bi-embedded-embed-report.md)  
-[<span data-ttu-id="1d1ca-137">Создание отчета из набора данных</span><span class="sxs-lookup"><span data-stu-id="1d1ca-137">Create a new report from a dataset</span></span>](power-bi-embedded-create-report-from-dataset.md)  
-[<span data-ttu-id="1d1ca-138">Аутентификация и авторизация в Power BI Embedded</span><span class="sxs-lookup"><span data-stu-id="1d1ca-138">Authenticating and authorizing in Power BI Embedded</span></span>](power-bi-embedded-app-token-flow.md)  
-[<span data-ttu-id="1d1ca-139">Power BI Desktop</span><span class="sxs-lookup"><span data-stu-id="1d1ca-139">Power BI Desktop</span></span>](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
-[<span data-ttu-id="1d1ca-140">Пример внедрения JavaScript</span><span class="sxs-lookup"><span data-stu-id="1d1ca-140">JavaScript Embed Sample</span></span>](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-<span data-ttu-id="1d1ca-141">У вас имеются и другие вопросы?</span><span class="sxs-lookup"><span data-stu-id="1d1ca-141">More questions?</span></span> [<span data-ttu-id="1d1ca-142">Попробуйте задать их в сообществе Power BI</span><span class="sxs-lookup"><span data-stu-id="1d1ca-142">Try the Power BI Community</span></span>](http://community.powerbi.com/)
+[<span data-ttu-id="3925a-135">Приступая к работе с примером Microsoft Power BI Embedded</span><span class="sxs-lookup"><span data-stu-id="3925a-135">Get started with sample</span></span>](power-bi-embedded-get-started-sample.md)  
+[<span data-ttu-id="3925a-136">Внедрение отчета в Power BI Embedded</span><span class="sxs-lookup"><span data-stu-id="3925a-136">Embed a report</span></span>](power-bi-embedded-embed-report.md)  
+[<span data-ttu-id="3925a-137">Создание отчета из набора данных</span><span class="sxs-lookup"><span data-stu-id="3925a-137">Create a new report from a dataset</span></span>](power-bi-embedded-create-report-from-dataset.md)  
+[<span data-ttu-id="3925a-138">Аутентификация и авторизация в Power BI Embedded</span><span class="sxs-lookup"><span data-stu-id="3925a-138">Authenticating and authorizing in Power BI Embedded</span></span>](power-bi-embedded-app-token-flow.md)  
+[<span data-ttu-id="3925a-139">Power BI Desktop</span><span class="sxs-lookup"><span data-stu-id="3925a-139">Power BI Desktop</span></span>](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
+[<span data-ttu-id="3925a-140">Пример внедрения JavaScript</span><span class="sxs-lookup"><span data-stu-id="3925a-140">JavaScript Embed Sample</span></span>](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
+<span data-ttu-id="3925a-141">У вас имеются и другие вопросы?</span><span class="sxs-lookup"><span data-stu-id="3925a-141">More questions?</span></span> [<span data-ttu-id="3925a-142">Повторите hello сообщества Power BI</span><span class="sxs-lookup"><span data-stu-id="3925a-142">Try hello Power BI Community</span></span>](http://community.powerbi.com/)
 

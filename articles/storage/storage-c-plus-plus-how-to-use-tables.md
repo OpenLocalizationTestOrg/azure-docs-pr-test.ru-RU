@@ -1,6 +1,6 @@
 ---
-title: "Использование хранилища таблиц (C++) | Документация Майкрософт"
-description: "Хранение структурированных данных в облаке в хранилище таблиц Azure (хранилище данных NoSQL)."
+title: "aaaHow toouse хранилище таблиц (C++) | Документы Microsoft"
+description: "Хранения структурированных данных в облаке hello, с помощью хранилища таблиц Azure, хранилище данных NoSQL."
 services: storage
 documentationcenter: .net
 author: seguler
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.openlocfilehash: d68843153921c72f6e808f62e82d3686c7e2f160
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8eee0031350ab6ff3f76fb288b2f896687aa17a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-table-storage-from-c"></a><span data-ttu-id="183e6-103">Использование табличного хранилища из C++</span><span class="sxs-lookup"><span data-stu-id="183e6-103">How to use Table storage from C++</span></span>
+# <a name="how-toouse-table-storage-from-c"></a><span data-ttu-id="3547f-103">Как toouse хранилище таблиц из C++</span><span class="sxs-lookup"><span data-stu-id="3547f-103">How toouse Table storage from C++</span></span>
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-## <a name="overview"></a><span data-ttu-id="183e6-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="183e6-104">Overview</span></span>
-<span data-ttu-id="183e6-105">В этом руководстве показано, как реализовать типичные сценарии с использованием службы табличного хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="183e6-105">This guide will show you how to perform common scenarios by using the Azure Table storage service.</span></span> <span data-ttu-id="183e6-106">Примеры написаны на C++ и используют [клиентскую библиотеку хранилища Azure для C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).</span><span class="sxs-lookup"><span data-stu-id="183e6-106">The samples are written in C++ and use the [Azure Storage Client Library for C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).</span></span> <span data-ttu-id="183e6-107">Здесь описаны такие сценарии, как **создание и удаление таблицы**, а также **работа с сущностями таблиц**.</span><span class="sxs-lookup"><span data-stu-id="183e6-107">The scenarios covered include **creating and deleting a table** and **working with table entities**.</span></span>
+## <a name="overview"></a><span data-ttu-id="3547f-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="3547f-104">Overview</span></span>
+<span data-ttu-id="3547f-105">В этом руководстве будет показано, как tooperform распространенных сценариев с помощью hello службы хранилища таблиц Azure.</span><span class="sxs-lookup"><span data-stu-id="3547f-105">This guide will show you how tooperform common scenarios by using hello Azure Table storage service.</span></span> <span data-ttu-id="3547f-106">Примеры Hello на языке C++ и использовать hello [клиентская библиотека хранилища Azure для C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).</span><span class="sxs-lookup"><span data-stu-id="3547f-106">hello samples are written in C++ and use hello [Azure Storage Client Library for C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).</span></span> <span data-ttu-id="3547f-107">Hello сценарии включают **Создание и удаление таблицы** и **работа с сущностями таблицы**.</span><span class="sxs-lookup"><span data-stu-id="3547f-107">hello scenarios covered include **creating and deleting a table** and **working with table entities**.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="183e6-108">Данное руководство предназначено для клиентской библиотеки хранилища Azure для С++ версии 1.0.0 и выше.</span><span class="sxs-lookup"><span data-stu-id="183e6-108">This guide targets the Azure Storage Client Library for C++ version 1.0.0 and above.</span></span> <span data-ttu-id="183e6-109">Рекомендуемая версия клиентской библиотеки хранилища — 2.2.0. Она доступна на сайте [NuGet](http://www.nuget.org/packages/wastorage) или [GitHub](https://github.com/Azure/azure-storage-cpp/).</span><span class="sxs-lookup"><span data-stu-id="183e6-109">The recommended version is Storage Client Library 2.2.0, which is available via [NuGet](http://www.nuget.org/packages/wastorage) or [GitHub](https://github.com/Azure/azure-storage-cpp/).</span></span>
+> <span data-ttu-id="3547f-108">Это руководство по цели hello клиентская библиотека хранилища Azure для C++ версии 1.0.0 и более поздних версий.</span><span class="sxs-lookup"><span data-stu-id="3547f-108">This guide targets hello Azure Storage Client Library for C++ version 1.0.0 and above.</span></span> <span data-ttu-id="3547f-109">Hello рекомендуемое версии клиентской библиотеки хранилища 2.2.0, которая доступна через [NuGet](http://www.nuget.org/packages/wastorage) или [GitHub](https://github.com/Azure/azure-storage-cpp/).</span><span class="sxs-lookup"><span data-stu-id="3547f-109">hello recommended version is Storage Client Library 2.2.0, which is available via [NuGet](http://www.nuget.org/packages/wastorage) or [GitHub](https://github.com/Azure/azure-storage-cpp/).</span></span>
 > 
 > 
 
@@ -36,91 +36,91 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-c-application"></a><span data-ttu-id="183e6-110">Создание приложения на C++</span><span class="sxs-lookup"><span data-stu-id="183e6-110">Create a C++ application</span></span>
-<span data-ttu-id="183e6-111">В этом руководстве будут использоваться компоненты хранилища, которые могут выполняться в приложениях на C++.</span><span class="sxs-lookup"><span data-stu-id="183e6-111">In this guide, you will use storage features that can be run within a C++ application.</span></span> <span data-ttu-id="183e6-112">Для этого необходимо установить клиентскую библиотеку хранилища Azure для C++ и создать учетную запись хранения Azure в подписке Azure.</span><span class="sxs-lookup"><span data-stu-id="183e6-112">To do so, you will need to install the Azure Storage Client Library for C++ and create an Azure storage account in your Azure subscription.</span></span>  
+## <a name="create-a-c-application"></a><span data-ttu-id="3547f-110">Создание приложения на C++</span><span class="sxs-lookup"><span data-stu-id="3547f-110">Create a C++ application</span></span>
+<span data-ttu-id="3547f-111">В этом руководстве будут использоваться компоненты хранилища, которые могут выполняться в приложениях на C++.</span><span class="sxs-lookup"><span data-stu-id="3547f-111">In this guide, you will use storage features that can be run within a C++ application.</span></span> <span data-ttu-id="3547f-112">toodo таким образом, вам потребуется tooinstall hello клиентская библиотека хранилища Azure для C++ и создать учетную запись хранилища Azure в подписке Azure.</span><span class="sxs-lookup"><span data-stu-id="3547f-112">toodo so, you will need tooinstall hello Azure Storage Client Library for C++ and create an Azure storage account in your Azure subscription.</span></span>  
 
-<span data-ttu-id="183e6-113">Чтобы установить клиентскую библиотеку хранилища для C++, можно использовать следующие методы.</span><span class="sxs-lookup"><span data-stu-id="183e6-113">To install the Azure Storage Client Library for C++, you can use the following methods:</span></span>
+<span data-ttu-id="3547f-113">hello tooinstall клиентская библиотека хранилища Azure для C++, можно использовать следующие методы hello:</span><span class="sxs-lookup"><span data-stu-id="3547f-113">tooinstall hello Azure Storage Client Library for C++, you can use hello following methods:</span></span>
 
-* <span data-ttu-id="183e6-114">**Linux:** следуйте инструкциям, указанным на странице [README клиентской библиотеки службы хранилища Azure для C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) .</span><span class="sxs-lookup"><span data-stu-id="183e6-114">**Linux:** Follow the instructions given on the [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) page.</span></span>  
-* <span data-ttu-id="183e6-115">**Windows:** в Visual Studio нажмите **Инструменты > Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.</span><span class="sxs-lookup"><span data-stu-id="183e6-115">**Windows:** In Visual Studio, click **Tools > NuGet Package Manager > Package Manager Console**.</span></span> <span data-ttu-id="183e6-116">Введите следующую команду в [консоли диспетчера пакетов NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) и нажмите клавишу ВВОД.</span><span class="sxs-lookup"><span data-stu-id="183e6-116">Type the following command into the [NuGet Package Manager console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) and press Enter.</span></span>  
+* <span data-ttu-id="3547f-114">**Linux —** следуйте инструкциям hello hello [клиентская библиотека хранилища Azure для C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) страницы.</span><span class="sxs-lookup"><span data-stu-id="3547f-114">**Linux:** Follow hello instructions given on hello [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) page.</span></span>  
+* <span data-ttu-id="3547f-115">**Windows:** в Visual Studio нажмите **Инструменты > Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.</span><span class="sxs-lookup"><span data-stu-id="3547f-115">**Windows:** In Visual Studio, click **Tools > NuGet Package Manager > Package Manager Console**.</span></span> <span data-ttu-id="3547f-116">Команда hello введите следующее в hello [консоль диспетчера пакетов NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) и нажмите клавишу ВВОД.</span><span class="sxs-lookup"><span data-stu-id="3547f-116">Type hello following command into hello [NuGet Package Manager console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) and press Enter.</span></span>  
   
-     <span data-ttu-id="183e6-117">Install-Package wastorage</span><span class="sxs-lookup"><span data-stu-id="183e6-117">Install-Package wastorage</span></span>
+     <span data-ttu-id="3547f-117">Install-Package wastorage</span><span class="sxs-lookup"><span data-stu-id="3547f-117">Install-Package wastorage</span></span>
 
-## <a name="configure-your-application-to-access-table-storage"></a><span data-ttu-id="183e6-118">Настройка приложения для доступа к хранилищу таблиц</span><span class="sxs-lookup"><span data-stu-id="183e6-118">Configure your application to access Table storage</span></span>
-<span data-ttu-id="183e6-119">Добавьте следующие инструкции в начало файла C++, где требуется использовать API-интерфейсы хранилища Azure для доступа к таблицам.</span><span class="sxs-lookup"><span data-stu-id="183e6-119">Add the following include statements to the top of the C++ file where you want to use the Azure storage APIs to access tables:</span></span>  
+## <a name="configure-your-application-tooaccess-table-storage"></a><span data-ttu-id="3547f-118">Настройка вашего приложения tooaccess хранилище таблиц</span><span class="sxs-lookup"><span data-stu-id="3547f-118">Configure your application tooaccess Table storage</span></span>
+<span data-ttu-id="3547f-119">Добавьте следующие hello включать инструкции toohello верхней части файла C++ hello место toouse hello хранилища Azure API-интерфейсы tooaccess таблиц:</span><span class="sxs-lookup"><span data-stu-id="3547f-119">Add hello following include statements toohello top of hello C++ file where you want toouse hello Azure storage APIs tooaccess tables:</span></span>  
 
 ```cpp
 #include <was/storage_account.h>
 #include <was/table.h>
 ```
 
-## <a name="set-up-an-azure-storage-connection-string"></a><span data-ttu-id="183e6-120">Настройка строки подключения к хранилищу Azure</span><span class="sxs-lookup"><span data-stu-id="183e6-120">Set up an Azure storage connection string</span></span>
-<span data-ttu-id="183e6-121">Клиент хранилища Azure использует строку подключения с целью хранения конечных точек и учетных данных для доступа к службам управления данными.</span><span class="sxs-lookup"><span data-stu-id="183e6-121">An Azure storage client uses a storage connection string to store endpoints and credentials for accessing data management services.</span></span> <span data-ttu-id="183e6-122">При запуске клиентского приложения необходимо указать строку подключения к хранилищу в указанном формате.</span><span class="sxs-lookup"><span data-stu-id="183e6-122">When running a client application, you must provide the storage connection string in the following format.</span></span> <span data-ttu-id="183e6-123">Для значений *AccountName* и *AccountKey* используйте имя учетной записи хранения и ключ доступа к хранилищу, которые соответствуют учетной записи хранения и указаны на [портале Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="183e6-123">Use the name of your storage account and the storage access key for the storage account listed in the [Azure Portal](https://portal.azure.com) for the *AccountName* and *AccountKey* values.</span></span> <span data-ttu-id="183e6-124">Сведения об учетных записях хранения и ключах доступа см. в статье [Об учетных записях хранения Azure](storage-create-storage-account.md).</span><span class="sxs-lookup"><span data-stu-id="183e6-124">For information on storage accounts and access keys, see [About Azure storage accounts](storage-create-storage-account.md).</span></span> <span data-ttu-id="183e6-125">В этом примере показано, как объявить статическое поле для размещения строки подключения:</span><span class="sxs-lookup"><span data-stu-id="183e6-125">This example shows how you can declare a static field to hold the connection string:</span></span>  
+## <a name="set-up-an-azure-storage-connection-string"></a><span data-ttu-id="3547f-120">Настройка строки подключения к хранилищу Azure</span><span class="sxs-lookup"><span data-stu-id="3547f-120">Set up an Azure storage connection string</span></span>
+<span data-ttu-id="3547f-121">Клиент хранилища Azure использует хранилища конечные точки toostore соединения строки и учетные данные для доступа к службам данных управления.</span><span class="sxs-lookup"><span data-stu-id="3547f-121">An Azure storage client uses a storage connection string toostore endpoints and credentials for accessing data management services.</span></span> <span data-ttu-id="3547f-122">При запуске клиентского приложения, необходимо указать строку соединения хранения hello в кодировке hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-122">When running a client application, you must provide hello storage connection string in hello following format.</span></span> <span data-ttu-id="3547f-123">Имя учетной записи и hello хранилища ключи доступа к хранилищу для учетной записи хранения hello используйте hello, перечисленные в hello [портала Azure](https://portal.azure.com) для hello *AccountName* и *AccountKey* значения.</span><span class="sxs-lookup"><span data-stu-id="3547f-123">Use hello name of your storage account and hello storage access key for hello storage account listed in hello [Azure Portal](https://portal.azure.com) for hello *AccountName* and *AccountKey* values.</span></span> <span data-ttu-id="3547f-124">Сведения об учетных записях хранения и ключах доступа см. в статье [Об учетных записях хранения Azure](storage-create-storage-account.md).</span><span class="sxs-lookup"><span data-stu-id="3547f-124">For information on storage accounts and access keys, see [About Azure storage accounts](storage-create-storage-account.md).</span></span> <span data-ttu-id="3547f-125">В этом примере показано, как объявить строки подключения hello toohold статического поля:</span><span class="sxs-lookup"><span data-stu-id="3547f-125">This example shows how you can declare a static field toohold hello connection string:</span></span>  
 
 ```cpp
-// Define the connection string with your values.
+// Define hello connection string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-<span data-ttu-id="183e6-126">Чтобы протестировать приложение на локальном компьютере с Windows, можно использовать [эмулятор хранения](storage-use-emulator.md) Azure, устанавливаемый с [пакетом Azure SDK](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="183e6-126">To test your application in your local Windows-based computer, you can use the Azure [storage emulator](storage-use-emulator.md) that is installed with the [Azure SDK](https://azure.microsoft.com/downloads/).</span></span> <span data-ttu-id="183e6-127">Эмулятор хранения — это служебная программа, моделирующая службы больших двоичных объектов, очередей и таблиц, которые доступны в Azure на локальном компьютере разработки.</span><span class="sxs-lookup"><span data-stu-id="183e6-127">The storage emulator is a utility that simulates the Azure Blob, Queue, and Table services available on your local development machine.</span></span> <span data-ttu-id="183e6-128">В следующем примере показано, как объявить статическое поле для размещения строки подключения для эмулятора локального хранилища.</span><span class="sxs-lookup"><span data-stu-id="183e6-128">The following example shows how you can declare a static field to hold the connection string to your local storage emulator:</span></span>  
+<span data-ttu-id="3547f-126">tootest приложения на локальном компьютере под управлением Windows, можно использовать hello Azure [эмулятор хранилища](storage-use-emulator.md) , установленная с hello [пакета Azure SDK](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="3547f-126">tootest your application in your local Windows-based computer, you can use hello Azure [storage emulator](storage-use-emulator.md) that is installed with hello [Azure SDK](https://azure.microsoft.com/downloads/).</span></span> <span data-ttu-id="3547f-127">Эмулятор хранилища Hello — это программа, которая имитирует hello Azure BLOB-объектов, очередей и таблиц служб, доступных на локальном компьютере разработчика.</span><span class="sxs-lookup"><span data-stu-id="3547f-127">hello storage emulator is a utility that simulates hello Azure Blob, Queue, and Table services available on your local development machine.</span></span> <span data-ttu-id="3547f-128">Hello следующем примере показано, как объявить статическое поле toohold hello соединения строки tooyour эмулятора локального хранилища:</span><span class="sxs-lookup"><span data-stu-id="3547f-128">hello following example shows how you can declare a static field toohold hello connection string tooyour local storage emulator:</span></span>  
 
 ```cpp
-// Define the connection string with Azure storage emulator.
+// Define hello connection string with Azure storage emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-<span data-ttu-id="183e6-129">Чтобы запустить эмулятор хранения Azure, нажмите кнопку **Пуск** или клавишу Windows.</span><span class="sxs-lookup"><span data-stu-id="183e6-129">To start the Azure storage emulator, click the **Start** button or press the Windows key.</span></span> <span data-ttu-id="183e6-130">Начните вводить **эмулятор хранения Azure**, а затем выберите **Эмулятор хранения Microsoft Azure** из списка приложений.</span><span class="sxs-lookup"><span data-stu-id="183e6-130">Begin typing **Azure Storage Emulator**, and then select **Microsoft Azure Storage Emulator** from the list of applications.</span></span>  
+<span data-ttu-id="3547f-129">toostart Здравствуйте эмулятор хранилища Azure, щелкните hello **запустить** или клавишу ключ Windows hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-129">toostart hello Azure storage emulator, click hello **Start** button or press hello Windows key.</span></span> <span data-ttu-id="3547f-130">Начните вводить **эмулятор хранилища Azure**, а затем выберите **эмулятор хранилища Microsoft Azure** hello списке приложений.</span><span class="sxs-lookup"><span data-stu-id="3547f-130">Begin typing **Azure Storage Emulator**, and then select **Microsoft Azure Storage Emulator** from hello list of applications.</span></span>  
 
-<span data-ttu-id="183e6-131">В приведенных ниже примерах предполагается, что вы использовали одно из этих двух определений для получения строки подключения к хранилищу.</span><span class="sxs-lookup"><span data-stu-id="183e6-131">The following samples assume that you have used one of these two methods to get the storage connection string.</span></span>  
+<span data-ttu-id="3547f-131">Hello следующие образцы предполагается, что используется один из этих двух методов tooget hello строки подключения к хранилищу.</span><span class="sxs-lookup"><span data-stu-id="3547f-131">hello following samples assume that you have used one of these two methods tooget hello storage connection string.</span></span>  
 
-## <a name="retrieve-your-connection-string"></a><span data-ttu-id="183e6-132">Получить строку подключения</span><span class="sxs-lookup"><span data-stu-id="183e6-132">Retrieve your connection string</span></span>
-<span data-ttu-id="183e6-133">Информацию о своей учетной записи хранения можно представить с помощью класса **cloud_storage_account**.</span><span class="sxs-lookup"><span data-stu-id="183e6-133">You can use the **cloud_storage_account** class to represent your storage account information.</span></span> <span data-ttu-id="183e6-134">Чтобы получить данные учетной записи хранения из строки подключения хранилища, можно использовать метод синтаксического анализа.</span><span class="sxs-lookup"><span data-stu-id="183e6-134">To retrieve your storage account information from the storage connection string, you can use the parse method.</span></span>
+## <a name="retrieve-your-connection-string"></a><span data-ttu-id="3547f-132">Получить строку подключения</span><span class="sxs-lookup"><span data-stu-id="3547f-132">Retrieve your connection string</span></span>
+<span data-ttu-id="3547f-133">Можно использовать hello **cloud_storage_account** класса toorepresent сведения об учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="3547f-133">You can use hello **cloud_storage_account** class toorepresent your storage account information.</span></span> <span data-ttu-id="3547f-134">tooretrieve данные из строки подключения к хранилищу hello учетной записи хранилища, можно использовать метод parse hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-134">tooretrieve your storage account information from hello storage connection string, you can use hello parse method.</span></span>
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-<span data-ttu-id="183e6-135">Затем получите ссылку на класс **cloud_table_client**. Он дает возможность извлечь эталонные объекты для таблиц и сущностей, которые хранятся в службе хранилища таблиц.</span><span class="sxs-lookup"><span data-stu-id="183e6-135">Next, get a reference to a **cloud_table_client** class, as it lets you get reference objects for tables and entities stored within the Table storage service.</span></span> <span data-ttu-id="183e6-136">Следующий код создает объект **cloud_table_client** с помощью объекта учетной записи хранения, полученного выше:</span><span class="sxs-lookup"><span data-stu-id="183e6-136">The following code creates a **cloud_table_client** object by using the storage account object we retrieved above:</span></span>  
+<span data-ttu-id="3547f-135">Затем следует получить tooa ссылку **cloud_table_client** класса, как она дает возможность ссылаться на объекты для таблиц и сущностей, сохраненными в hello службы хранилища таблиц.</span><span class="sxs-lookup"><span data-stu-id="3547f-135">Next, get a reference tooa **cloud_table_client** class, as it lets you get reference objects for tables and entities stored within hello Table storage service.</span></span> <span data-ttu-id="3547f-136">Hello следующий код создает **cloud_table_client** объекта с помощью объекта учетной записи хранилища hello, мы получить выше:</span><span class="sxs-lookup"><span data-stu-id="3547f-136">hello following code creates a **cloud_table_client** object by using hello storage account object we retrieved above:</span></span>  
 
 ```cpp
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 ```
 
-## <a name="create-a-table"></a><span data-ttu-id="183e6-137">Создание таблицы</span><span class="sxs-lookup"><span data-stu-id="183e6-137">Create a table</span></span>
-<span data-ttu-id="183e6-138">Объект **cloud_table_client** позволяет получить эталонные объекты для таблиц и сущностей.</span><span class="sxs-lookup"><span data-stu-id="183e6-138">A **cloud_table_client** object lets you get reference objects for tables and entities.</span></span> <span data-ttu-id="183e6-139">Следующий код создает объект **cloud_table_client** и использует его для создания таблицы.</span><span class="sxs-lookup"><span data-stu-id="183e6-139">The following code creates a **cloud_table_client** object and uses it to create a new table.</span></span>
+## <a name="create-a-table"></a><span data-ttu-id="3547f-137">Создание таблицы</span><span class="sxs-lookup"><span data-stu-id="3547f-137">Create a table</span></span>
+<span data-ttu-id="3547f-138">Объект **cloud_table_client** позволяет получить эталонные объекты для таблиц и сущностей.</span><span class="sxs-lookup"><span data-stu-id="3547f-138">A **cloud_table_client** object lets you get reference objects for tables and entities.</span></span> <span data-ttu-id="3547f-139">Hello следующий код создает **cloud_table_client** объекта и использует его toocreate новую таблицу.</span><span class="sxs-lookup"><span data-stu-id="3547f-139">hello following code creates a **cloud_table_client** object and uses it toocreate a new table.</span></span>
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);  
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Retrieve a reference to a table.
+// Retrieve a reference tooa table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Create the table if it doesn't exist.
+// Create hello table if it doesn't exist.
 table.create_if_not_exists();  
 ```
 
-## <a name="add-an-entity-to-a-table"></a><span data-ttu-id="183e6-140">Добавление сущности в таблицу</span><span class="sxs-lookup"><span data-stu-id="183e6-140">Add an entity to a table</span></span>
-<span data-ttu-id="183e6-141">Чтобы добавить сущность в таблицу, создайте объект **table_entity** и передайте его в **table_operation::insert_entity**.</span><span class="sxs-lookup"><span data-stu-id="183e6-141">To add an entity to a table, create a new **table_entity** object and pass it to **table_operation::insert_entity**.</span></span> <span data-ttu-id="183e6-142">Следующий код использует имя пользователя в качестве ключа строки, а фамилию клиента — как ключ раздела.</span><span class="sxs-lookup"><span data-stu-id="183e6-142">The following code uses the customer's first name as the row key and last name as the partition key.</span></span> <span data-ttu-id="183e6-143">Вместе ключ раздела и ключ строки сущности уникальным образом идентифицируют сущность в таблице.</span><span class="sxs-lookup"><span data-stu-id="183e6-143">Together, an entity's partition and row key uniquely identify the entity in the table.</span></span> <span data-ttu-id="183e6-144">Сущности с одинаковым ключом раздела можно запрашиваться быстрее, чем с разными ключами раздела, но использование различных ключей разделов обеспечивает более высокую масштабируемость параллельных операций.</span><span class="sxs-lookup"><span data-stu-id="183e6-144">Entities with the same partition key can be queried faster than those with different partition keys, but using diverse partition keys allows for greater parallel operation scalability.</span></span> <span data-ttu-id="183e6-145">Дополнительные сведения см. в статье [Производительность хранилища Microsoft Azure и контрольный список масштабируемости](storage-performance-checklist.md).</span><span class="sxs-lookup"><span data-stu-id="183e6-145">For more information, see [Microsoft Azure storage performance and scalability checklist](storage-performance-checklist.md).</span></span>
+## <a name="add-an-entity-tooa-table"></a><span data-ttu-id="3547f-140">Добавьте таблицу tooa сущности</span><span class="sxs-lookup"><span data-stu-id="3547f-140">Add an entity tooa table</span></span>
+<span data-ttu-id="3547f-141">tooadd таблицу tooa сущности, создайте новый **table_entity** и передать его слишком**table_operation::insert_entity**.</span><span class="sxs-lookup"><span data-stu-id="3547f-141">tooadd an entity tooa table, create a new **table_entity** object and pass it too**table_operation::insert_entity**.</span></span> <span data-ttu-id="3547f-142">Hello следующий код использует имя клиента hello как ключ строки hello и фамилию в качестве ключа секции hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-142">hello following code uses hello customer's first name as hello row key and last name as hello partition key.</span></span> <span data-ttu-id="3547f-143">Вместе секции и ключом строки идентификации сущности hello hello таблицы.</span><span class="sxs-lookup"><span data-stu-id="3547f-143">Together, an entity's partition and row key uniquely identify hello entity in hello table.</span></span> <span data-ttu-id="3547f-144">Ключи секций сущности с одинаковым ключом секции, которые могут запрашиваться быстрее, чем с различными приветствия, но с помощью различных разделов обеспечивает улучшенную масштабируемость параллельной операции.</span><span class="sxs-lookup"><span data-stu-id="3547f-144">Entities with hello same partition key can be queried faster than those with different partition keys, but using diverse partition keys allows for greater parallel operation scalability.</span></span> <span data-ttu-id="3547f-145">Дополнительные сведения см. в статье [Производительность хранилища Microsoft Azure и контрольный список масштабируемости](storage-performance-checklist.md).</span><span class="sxs-lookup"><span data-stu-id="3547f-145">For more information, see [Microsoft Azure storage performance and scalability checklist](storage-performance-checklist.md).</span></span>
 
-<span data-ttu-id="183e6-146">Следующий код создает новый экземпляр **table_entity** с подлежащими сохранению данными клиента.</span><span class="sxs-lookup"><span data-stu-id="183e6-146">The following code creates a new instance of **table_entity** with some customer data to be stored.</span></span> <span data-ttu-id="183e6-147">Затем код вызывает **table_operation::insert_entity** в целях создания объекта **table_operation** для вставки сущности в таблицу и связывает с ним новую сущность таблицы.</span><span class="sxs-lookup"><span data-stu-id="183e6-147">The code next calls **table_operation::insert_entity** to create a **table_operation** object to insert an entity into a table, and associates the new table entity with it.</span></span> <span data-ttu-id="183e6-148">В завершение код вызывает метод Execute для объекта **cloud_table**.</span><span class="sxs-lookup"><span data-stu-id="183e6-148">Finally, the code calls the execute method on the **cloud_table** object.</span></span> <span data-ttu-id="183e6-149">Новый объект **table_operation** отправляет запрос в службу таблиц для вставки сущности нового клиента в таблицу пользователей.</span><span class="sxs-lookup"><span data-stu-id="183e6-149">And the new **table_operation** sends a request to the Table service to insert the new customer entity into the "people" table.</span></span>  
+<span data-ttu-id="3547f-146">Hello следующий код создает новый экземпляр **table_entity** с хранимых данных toobe некоторых клиентов система.</span><span class="sxs-lookup"><span data-stu-id="3547f-146">hello following code creates a new instance of **table_entity** with some customer data toobe stored.</span></span> <span data-ttu-id="3547f-147">Здравствуйте, следующий код вызывает метод **table_operation::insert_entity** toocreate **table_operation** объекта tooinsert сущность в таблицу, и связывает hello новая сущность таблицы с ним.</span><span class="sxs-lookup"><span data-stu-id="3547f-147">hello code next calls **table_operation::insert_entity** toocreate a **table_operation** object tooinsert an entity into a table, and associates hello new table entity with it.</span></span> <span data-ttu-id="3547f-148">Наконец, hello код вызывает метод execute hello на hello **cloud_table** объекта.</span><span class="sxs-lookup"><span data-stu-id="3547f-148">Finally, hello code calls hello execute method on hello **cloud_table** object.</span></span> <span data-ttu-id="3547f-149">И новый hello **table_operation** отправляет запрос toohello службы tooinsert hello новый клиент сущности таблицы в таблицу «people» hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-149">And hello new **table_operation** sends a request toohello Table service tooinsert hello new customer entity into hello "people" table.</span></span>  
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Retrieve a reference to a table.
+// Retrieve a reference tooa table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Create the table if it doesn't exist.
+// Create hello table if it doesn't exist.
 table.create_if_not_exists();
 
 // Create a new customer entity.
@@ -132,30 +132,30 @@ properties[U("Email")] = azure::storage::entity_property(U("Walter@contoso.com")
 
 properties[U("Phone")] = azure::storage::entity_property(U("425-555-0101"));
 
-// Create the table operation that inserts the customer entity.
+// Create hello table operation that inserts hello customer entity.
 azure::storage::table_operation insert_operation = azure::storage::table_operation::insert_entity(customer1);
 
-// Execute the insert operation.
+// Execute hello insert operation.
 azure::storage::table_result insert_result = table.execute(insert_operation);
 ```
 
-## <a name="insert-a-batch-of-entities"></a><span data-ttu-id="183e6-150">Вставка пакета сущностей</span><span class="sxs-lookup"><span data-stu-id="183e6-150">Insert a batch of entities</span></span>
-<span data-ttu-id="183e6-151">Вы можете вставить пакет сущностей в службу таблиц за одну операцию записи.</span><span class="sxs-lookup"><span data-stu-id="183e6-151">You can insert a batch of entities to the Table service in one write operation.</span></span> <span data-ttu-id="183e6-152">Следующий код создает объект **table_batch_operation**, а затем добавляет в него три операции вставки.</span><span class="sxs-lookup"><span data-stu-id="183e6-152">The following code creates a **table_batch_operation** object, and then adds three insert operations to it.</span></span> <span data-ttu-id="183e6-153">Каждая операция вставки добавляется путем создания нового объекта сущности, установки его значений и последующего вызова метода вставки для объекта **table_batch_operation**, чтобы связать сущность с новой операцией вставки.</span><span class="sxs-lookup"><span data-stu-id="183e6-153">Each insert operation is added by creating a new entity object, setting its values, and then calling the insert method on the **table_batch_operation** object to associate the entity with a new insert operation.</span></span> <span data-ttu-id="183e6-154">Затем вызывается метод **cloud_table.execute** для выполнения операции.</span><span class="sxs-lookup"><span data-stu-id="183e6-154">Then, **cloud_table.execute** is called to execute the operation.</span></span>  
+## <a name="insert-a-batch-of-entities"></a><span data-ttu-id="3547f-150">Вставка пакета сущностей</span><span class="sxs-lookup"><span data-stu-id="3547f-150">Insert a batch of entities</span></span>
+<span data-ttu-id="3547f-151">Пакет toohello сущностей службы таблиц можно вставить в одну операцию записи.</span><span class="sxs-lookup"><span data-stu-id="3547f-151">You can insert a batch of entities toohello Table service in one write operation.</span></span> <span data-ttu-id="3547f-152">Hello следующий код создает **table_batch_operation** объекта, а затем добавляет три вставить tooit операций.</span><span class="sxs-lookup"><span data-stu-id="3547f-152">hello following code creates a **table_batch_operation** object, and then adds three insert operations tooit.</span></span> <span data-ttu-id="3547f-153">Каждой операции вставки добавляется путем создания нового объекта сущностей задания его значений, и последующего вызова hello вставьте метод hello **table_batch_operation** сущности hello объекта tooassociate с новым операции вставки.</span><span class="sxs-lookup"><span data-stu-id="3547f-153">Each insert operation is added by creating a new entity object, setting its values, and then calling hello insert method on hello **table_batch_operation** object tooassociate hello entity with a new insert operation.</span></span> <span data-ttu-id="3547f-154">Затем **cloud_table.execute** вызывается операция tooexecute hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-154">Then, **cloud_table.execute** is called tooexecute hello operation.</span></span>  
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Create a cloud table object for the table.
+// Create a cloud table object for hello table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
 // Define a batch operation.
 azure::storage::table_batch_operation batch_operation;
 
-// Create a customer entity and add it to the table.
+// Create a customer entity and add it toohello table.
 azure::storage::table_entity customer1(U("Smith"), U("Jeff"));
 
 azure::storage::table_entity::properties_type& properties1 = customer1.properties();
@@ -163,7 +163,7 @@ properties1.reserve(2);
 properties1[U("Email")] = azure::storage::entity_property(U("Jeff@contoso.com"));
 properties1[U("Phone")] = azure::storage::entity_property(U("425-555-0104"));
 
-// Create another customer entity and add it to the table.
+// Create another customer entity and add it toohello table.
 azure::storage::table_entity customer2(U("Smith"), U("Ben"));
 
 azure::storage::table_entity::properties_type& properties2 = customer2.properties();
@@ -171,7 +171,7 @@ properties2.reserve(2);
 properties2[U("Email")] = azure::storage::entity_property(U("Ben@contoso.com"));
 properties2[U("Phone")] = azure::storage::entity_property(U("425-555-0102"));
 
-// Create a third customer entity to add to the table.
+// Create a third customer entity tooadd toohello table.
 azure::storage::table_entity customer3(U("Smith"), U("Denise"));
 
 azure::storage::table_entity::properties_type& properties3 = customer3.properties();
@@ -179,44 +179,44 @@ properties3.reserve(2);
 properties3[U("Email")] = azure::storage::entity_property(U("Denise@contoso.com"));
 properties3[U("Phone")] = azure::storage::entity_property(U("425-555-0103"));
 
-// Add customer entities to the batch insert operation.
+// Add customer entities toohello batch insert operation.
 batch_operation.insert_or_replace_entity(customer1);
 batch_operation.insert_or_replace_entity(customer2);
 batch_operation.insert_or_replace_entity(customer3);
 
-// Execute the batch operation.
+// Execute hello batch operation.
 std::vector<azure::storage::table_result> results = table.execute_batch(batch_operation);
 ```
 
-<span data-ttu-id="183e6-155">Некоторые другие примечания к пакетным операциям:</span><span class="sxs-lookup"><span data-stu-id="183e6-155">Some things to note on batch operations:</span></span>  
+<span data-ttu-id="3547f-155">Некоторые действия toonote на пакетные операции:</span><span class="sxs-lookup"><span data-stu-id="3547f-155">Some things toonote on batch operations:</span></span>  
 
-* <span data-ttu-id="183e6-156">В отдельном пакете можно выполнить до 100 операций вставки, удаления, объединения, замены, вставки или слияния и вставки или замены в любом сочетании.</span><span class="sxs-lookup"><span data-stu-id="183e6-156">You can perform up to 100 insert, delete, merge, replace, insert-or-merge, and insert-or-replace operations in any combination in a single batch.</span></span>  
-* <span data-ttu-id="183e6-157">Пакетная операция может иметь операцию извлечения, если она является единственной операцией в пакете.</span><span class="sxs-lookup"><span data-stu-id="183e6-157">A batch operation can have a retrieve operation, if it is the only operation in the batch.</span></span>  
-* <span data-ttu-id="183e6-158">У всех сущностей в одной пакетной операции должен быть одинаковый ключ раздела.</span><span class="sxs-lookup"><span data-stu-id="183e6-158">All entities in a single batch operation must have the same partition key.</span></span>  
-* <span data-ttu-id="183e6-159">Максимальный объем полезных данных пакетной операции составляет 4 МБ.</span><span class="sxs-lookup"><span data-stu-id="183e6-159">A batch operation is limited to a 4-MB data payload.</span></span>  
+* <span data-ttu-id="3547f-156">Можно выполнять копирование too100 insert, delete, merge, replace, операции insert или merge и вставки или замены в любой комбинации в одном пакете.</span><span class="sxs-lookup"><span data-stu-id="3547f-156">You can perform up too100 insert, delete, merge, replace, insert-or-merge, and insert-or-replace operations in any combination in a single batch.</span></span>  
+* <span data-ttu-id="3547f-157">В него входит только операция hello в пакете hello пакетная операция может быть операцией извлечения.</span><span class="sxs-lookup"><span data-stu-id="3547f-157">A batch operation can have a retrieve operation, if it is hello only operation in hello batch.</span></span>  
+* <span data-ttu-id="3547f-158">Все сущности в одной пакетной операции должен иметь hello же ключ секционирования.</span><span class="sxs-lookup"><span data-stu-id="3547f-158">All entities in a single batch operation must have hello same partition key.</span></span>  
+* <span data-ttu-id="3547f-159">Пакетная операция представляет ограниченный tooa полезных данных 4 МБ.</span><span class="sxs-lookup"><span data-stu-id="3547f-159">A batch operation is limited tooa 4-MB data payload.</span></span>  
 
-## <a name="retrieve-all-entities-in-a-partition"></a><span data-ttu-id="183e6-160">Получение всех сущностей в разделе</span><span class="sxs-lookup"><span data-stu-id="183e6-160">Retrieve all entities in a partition</span></span>
-<span data-ttu-id="183e6-161">Чтобы запросить таблицу для всех сущностей в разделе, используйте объект **table_query**.</span><span class="sxs-lookup"><span data-stu-id="183e6-161">To query a table for all entities in a partition, use a **table_query** object.</span></span> <span data-ttu-id="183e6-162">Следующий пример кода задает фильтр для сущностей с ключом раздела "Smith".</span><span class="sxs-lookup"><span data-stu-id="183e6-162">The following code example specifies a filter for entities where 'Smith' is the partition key.</span></span> <span data-ttu-id="183e6-163">Этот пример выводит на консоль поля каждой сущности в результатах запроса.</span><span class="sxs-lookup"><span data-stu-id="183e6-163">This example prints the fields of each entity in the query results to the console.</span></span>  
+## <a name="retrieve-all-entities-in-a-partition"></a><span data-ttu-id="3547f-160">Получение всех сущностей в разделе</span><span class="sxs-lookup"><span data-stu-id="3547f-160">Retrieve all entities in a partition</span></span>
+<span data-ttu-id="3547f-161">таблицы для всех сущностей в секции, используйте tooquery **table_query** объекта.</span><span class="sxs-lookup"><span data-stu-id="3547f-161">tooquery a table for all entities in a partition, use a **table_query** object.</span></span> <span data-ttu-id="3547f-162">Hello следующий пример кода задает фильтр для сущности, где ключ раздела hello 'Smith'.</span><span class="sxs-lookup"><span data-stu-id="3547f-162">hello following code example specifies a filter for entities where 'Smith' is hello partition key.</span></span> <span data-ttu-id="3547f-163">Этот пример выводит hello поля в каждой сущности в консоли toohello результаты запроса hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-163">This example prints hello fields of each entity in hello query results toohello console.</span></span>  
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Create a cloud table object for the table.
+// Create a cloud table object for hello table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Construct the query operation for all customer entities where PartitionKey="Smith".
+// Construct hello query operation for all customer entities where PartitionKey="Smith".
 azure::storage::table_query query;
 
 query.set_filter_string(azure::storage::table_query::generate_filter_condition(U("PartitionKey"), azure::storage::query_comparison_operator::equal, U("Smith")));
 
-// Execute the query.
+// Execute hello query.
 azure::storage::table_query_iterator it = table.execute_query(query);
 
-// Print the fields for each customer.
+// Print hello fields for each customer.
 azure::storage::table_query_iterator end_of_results;
 for (; it != end_of_results; ++it)
 {
@@ -228,22 +228,22 @@ for (; it != end_of_results; ++it)
 }  
 ```
 
-<span data-ttu-id="183e6-164">В этом примере запрос отображает все сущности, соответствующие условиям фильтра.</span><span class="sxs-lookup"><span data-stu-id="183e6-164">The query in this example brings all the entities that match the filter criteria.</span></span> <span data-ttu-id="183e6-165">При наличии больших таблиц и необходимости часто загружать сущности таблицы мы рекомендуем хранить данные в хранилище BLOB-объектов Azure.</span><span class="sxs-lookup"><span data-stu-id="183e6-165">If you have large tables and need to download the table entities often, we recommend that you store your data in Azure storage blobs instead.</span></span>
+<span data-ttu-id="3547f-164">запрос Hello в этом примере переводит все сущности hello, соответствующие условиям фильтра hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-164">hello query in this example brings all hello entities that match hello filter criteria.</span></span> <span data-ttu-id="3547f-165">Если вы используете большие таблицы и часто требуется сущностей таблицы toodownload hello, рекомендуется хранить данные в хранилище Azure BLOB-объектов вместо.</span><span class="sxs-lookup"><span data-stu-id="3547f-165">If you have large tables and need toodownload hello table entities often, we recommend that you store your data in Azure storage blobs instead.</span></span>
 
-## <a name="retrieve-a-range-of-entities-in-a-partition"></a><span data-ttu-id="183e6-166">Получение диапазона сущностей в разделе</span><span class="sxs-lookup"><span data-stu-id="183e6-166">Retrieve a range of entities in a partition</span></span>
-<span data-ttu-id="183e6-167">Если вы не хотите запрашивать все сущности в разделе, можно указать диапазон, объединив фильтр ключа раздела с фильтром ключа строк.</span><span class="sxs-lookup"><span data-stu-id="183e6-167">If you don't want to query all the entities in a partition, you can specify a range by combining the partition key filter with a row key filter.</span></span> <span data-ttu-id="183e6-168">В следующем примере кода используются два фильтра для получения всех сущностей в разделе Smith, где ключ строки (имя) начинается с первой буквы алфавита до буквы E, после чего результаты запроса выводятся в консоль.</span><span class="sxs-lookup"><span data-stu-id="183e6-168">The following code example uses two filters to get all entities in partition 'Smith' where the row key (first name) starts with a letter earlier than 'E' in the alphabet and then prints the query results.</span></span>  
+## <a name="retrieve-a-range-of-entities-in-a-partition"></a><span data-ttu-id="3547f-166">Получение диапазона сущностей в разделе</span><span class="sxs-lookup"><span data-stu-id="3547f-166">Retrieve a range of entities in a partition</span></span>
+<span data-ttu-id="3547f-167">Если вы не хотите tooquery все сущности hello в секции, можно указать диапазон, объединяя hello фильтра ключа секции с фильтром ключа строк.</span><span class="sxs-lookup"><span data-stu-id="3547f-167">If you don't want tooquery all hello entities in a partition, you can specify a range by combining hello partition key filter with a row key filter.</span></span> <span data-ttu-id="3547f-168">Hello следующий пример кода использует два tooget фильтры всех сущностей в разделе «Smith», где начинается с буквы, более ранних, чем 'E' hello алфавита ключ строки hello (имя), а затем выводит результаты запроса hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-168">hello following code example uses two filters tooget all entities in partition 'Smith' where hello row key (first name) starts with a letter earlier than 'E' in hello alphabet and then prints hello query results.</span></span>  
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Create a cloud table object for the table.
+// Create a cloud table object for hello table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Create the table query.
+// Create hello table query.
 azure::storage::table_query query;
 
 query.set_filter_string(azure::storage::table_query::combine_filter_conditions(
@@ -252,10 +252,10 @@ query.set_filter_string(azure::storage::table_query::combine_filter_conditions(
     azure::storage::query_logical_operator::op_and,
     azure::storage::table_query::generate_filter_condition(U("RowKey"), azure::storage::query_comparison_operator::less_than, U("E"))));
 
-// Execute the query.
+// Execute hello query.
 azure::storage::table_query_iterator it = table.execute_query(query);
 
-// Loop through the results, displaying information about the entity.
+// Loop through hello results, displaying information about hello entity.
 azure::storage::table_query_iterator end_of_results;
 for (; it != end_of_results; ++it)
 {
@@ -267,23 +267,23 @@ for (; it != end_of_results; ++it)
 }  
 ```
 
-## <a name="retrieve-a-single-entity"></a><span data-ttu-id="183e6-169">Извлечение одной сущности</span><span class="sxs-lookup"><span data-stu-id="183e6-169">Retrieve a single entity</span></span>
-<span data-ttu-id="183e6-170">Можно написать запрос для получения отдельной сущности.</span><span class="sxs-lookup"><span data-stu-id="183e6-170">You can write a query to retrieve a single, specific entity.</span></span> <span data-ttu-id="183e6-171">Код ниже использует **table_operation::retrieve_entity** для указания клиента Jeff Smith.</span><span class="sxs-lookup"><span data-stu-id="183e6-171">The following code uses **table_operation::retrieve_entity** to specify the customer 'Jeff Smith'.</span></span> <span data-ttu-id="183e6-172">Данный метод возвращает только одну сущность, а не множество, и возвращенное значение находится в **table_result**.</span><span class="sxs-lookup"><span data-stu-id="183e6-172">This method returns just one entity, rather than a collection, and the returned value is in **table_result**.</span></span> <span data-ttu-id="183e6-173">Указание ключа раздела и ключа строки в запросе — самый быстрый способ извлечь одну сущность из службы таблиц.</span><span class="sxs-lookup"><span data-stu-id="183e6-173">Specifying both partition and row keys in a query is the fastest way to retrieve a single entity from the Table service.</span></span>  
+## <a name="retrieve-a-single-entity"></a><span data-ttu-id="3547f-169">Извлечение одной сущности</span><span class="sxs-lookup"><span data-stu-id="3547f-169">Retrieve a single entity</span></span>
+<span data-ttu-id="3547f-170">Можно написать tooretrieve запроса конкретную сущность.</span><span class="sxs-lookup"><span data-stu-id="3547f-170">You can write a query tooretrieve a single, specific entity.</span></span> <span data-ttu-id="3547f-171">Hello следующий код использует **table_operation::retrieve_entity** toospecify hello клиента «Джефф Петров».</span><span class="sxs-lookup"><span data-stu-id="3547f-171">hello following code uses **table_operation::retrieve_entity** toospecify hello customer 'Jeff Smith'.</span></span> <span data-ttu-id="3547f-172">Этот метод возвращает только одну сущность, а не коллекцию и hello возвращенное значение находится в **table_result**.</span><span class="sxs-lookup"><span data-stu-id="3547f-172">This method returns just one entity, rather than a collection, and hello returned value is in **table_result**.</span></span> <span data-ttu-id="3547f-173">Указание ключи секций и строк в запросе является hello самый быстрый способ tooretrieve одной сущности из службы таблиц hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-173">Specifying both partition and row keys in a query is hello fastest way tooretrieve a single entity from hello Table service.</span></span>  
 
 ```cpp
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Create a cloud table object for the table.
+// Create a cloud table object for hello table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Retrieve the entity with partition key of "Smith" and row key of "Jeff".
+// Retrieve hello entity with partition key of "Smith" and row key of "Jeff".
 azure::storage::table_operation retrieve_operation = azure::storage::table_operation::retrieve_entity(U("Smith"), U("Jeff"));
 azure::storage::table_result retrieve_result = table.execute(retrieve_operation);
 
-// Output the entity.
+// Output hello entity.
 azure::storage::table_entity entity = retrieve_result.entity();
 const azure::storage::table_entity::properties_type& properties = entity.properties();
 
@@ -292,17 +292,17 @@ std::wcout << U("PartitionKey: ") << entity.partition_key() << U(", RowKey: ") <
     << U(", Property2: ") << properties.at(U("Phone")).string_value() << std::endl;
 ```
 
-## <a name="replace-an-entity"></a><span data-ttu-id="183e6-174">Замена сущности</span><span class="sxs-lookup"><span data-stu-id="183e6-174">Replace an entity</span></span>
-<span data-ttu-id="183e6-175">Чтобы заменить сущность, извлеките ее из службы таблиц и измените объект сущности, а затем сохраните изменения в службе таблиц.</span><span class="sxs-lookup"><span data-stu-id="183e6-175">To replace an entity, retrieve it from the Table service, modify the entity object, and then save the changes back to the Table service.</span></span> <span data-ttu-id="183e6-176">Следующий код изменяет существующий номер телефона и адрес электронной почты клиента.</span><span class="sxs-lookup"><span data-stu-id="183e6-176">The following code changes an existing customer's phone number and email address.</span></span> <span data-ttu-id="183e6-177">Вместо вызова метода **table_operation::insert_entity** этот код использует **table_operation::replace_entity**.</span><span class="sxs-lookup"><span data-stu-id="183e6-177">Instead of calling **table_operation::insert_entity**, this code uses **table_operation::replace_entity**.</span></span> <span data-ttu-id="183e6-178">Из-за этого сущность будет полностью заменена на сервере, если только сущность на сервере не была изменена с момента извлечения. В подобном случае операция не будет выполнена.</span><span class="sxs-lookup"><span data-stu-id="183e6-178">This causes the entity to be fully replaced on the server, unless the entity on the server has changed since it was retrieved, in which case the operation will fail.</span></span> <span data-ttu-id="183e6-179">Это необходимо, чтобы приложение случайно не перезаписало изменения, внесенные с момента извлечения до обновления другим компонентом приложения.</span><span class="sxs-lookup"><span data-stu-id="183e6-179">This failure is to prevent your application from inadvertently overwriting a change made between the retrieval and update by another component of your application.</span></span> <span data-ttu-id="183e6-180">Правильным методом устранения этой ошибки является повторное извлечение объекта, внесение необходимых изменений (если они еще действительны) и затем выполнение еще одной операции **table_operation::replace_entity**.</span><span class="sxs-lookup"><span data-stu-id="183e6-180">The proper handling of this failure is to retrieve the entity again, make your changes (if still valid), and then perform another **table_operation::replace_entity** operation.</span></span> <span data-ttu-id="183e6-181">Ниже показано, как изменить это поведение.</span><span class="sxs-lookup"><span data-stu-id="183e6-181">The next section will show you how to override this behavior.</span></span>  
+## <a name="replace-an-entity"></a><span data-ttu-id="3547f-174">Замена сущности</span><span class="sxs-lookup"><span data-stu-id="3547f-174">Replace an entity</span></span>
+<span data-ttu-id="3547f-175">tooreplace сущности, получить его из службы таблиц hello, изменить объект сущности hello и сохранять изменения hello обратно toohello службы таблиц.</span><span class="sxs-lookup"><span data-stu-id="3547f-175">tooreplace an entity, retrieve it from hello Table service, modify hello entity object, and then save hello changes back toohello Table service.</span></span> <span data-ttu-id="3547f-176">Hello следующий код позволяет изменить адрес электронной почты и номер телефона существующего клиента.</span><span class="sxs-lookup"><span data-stu-id="3547f-176">hello following code changes an existing customer's phone number and email address.</span></span> <span data-ttu-id="3547f-177">Вместо вызова метода **table_operation::insert_entity** этот код использует **table_operation::replace_entity**.</span><span class="sxs-lookup"><span data-stu-id="3547f-177">Instead of calling **table_operation::insert_entity**, this code uses **table_operation::replace_entity**.</span></span> <span data-ttu-id="3547f-178">В этом случае toobe сущности hello полностью заменить на сервере hello, пока не изменят hello объекта на сервере hello, так как он был извлечен, в этом случае hello операция завершится ошибкой.</span><span class="sxs-lookup"><span data-stu-id="3547f-178">This causes hello entity toobe fully replaced on hello server, unless hello entity on hello server has changed since it was retrieved, in which case hello operation will fail.</span></span> <span data-ttu-id="3547f-179">Эта ошибка является tooprevent приложение случайно перезаписанный изменения внесены между hello извлечения и обновления приложения другим компонентом.</span><span class="sxs-lookup"><span data-stu-id="3547f-179">This failure is tooprevent your application from inadvertently overwriting a change made between hello retrieval and update by another component of your application.</span></span> <span data-ttu-id="3547f-180">Hello правильной обработки данного сбоя — tooretrieve hello сущность снова, внесенные изменения (если она все еще действует) и затем выполнять другую **table_operation::replace_entity** операции.</span><span class="sxs-lookup"><span data-stu-id="3547f-180">hello proper handling of this failure is tooretrieve hello entity again, make your changes (if still valid), and then perform another **table_operation::replace_entity** operation.</span></span> <span data-ttu-id="3547f-181">Hello следующем разделе будет показано, как toooverride это поведение.</span><span class="sxs-lookup"><span data-stu-id="3547f-181">hello next section will show you how toooverride this behavior.</span></span>  
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Create a cloud table object for the table.
+// Create a cloud table object for hello table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
 // Replace an entity.
@@ -316,24 +316,24 @@ properties_to_replace[U("Phone")] = azure::storage::entity_property(U("425-555-0
 // Specify a new email address.
 properties_to_replace[U("Email")] = azure::storage::entity_property(U("JeffS@contoso.com"));
 
-// Create an operation to replace the entity.
+// Create an operation tooreplace hello entity.
 azure::storage::table_operation replace_operation = azure::storage::table_operation::replace_entity(entity_to_replace);
 
-// Submit the operation to the Table service.
+// Submit hello operation toohello Table service.
 azure::storage::table_result replace_result = table.execute(replace_operation);
 ```
 
-## <a name="insert-or-replace-an-entity"></a><span data-ttu-id="183e6-182">Вставка или замена сущности</span><span class="sxs-lookup"><span data-stu-id="183e6-182">Insert-or-replace an entity</span></span>
-<span data-ttu-id="183e6-183">Операции **table_operation::replace_entity** завершатся ошибкой, если сущность была изменена с момента ее получения с сервера.</span><span class="sxs-lookup"><span data-stu-id="183e6-183">**table_operation::replace_entity** operations will fail if the entity has been changed since it was retrieved from the server.</span></span> <span data-ttu-id="183e6-184">Кроме того, для успешного выполнения действия **table_operation::replace_entity** необходимо сначала извлечь сущность с сервера.</span><span class="sxs-lookup"><span data-stu-id="183e6-184">Furthermore, you must retrieve the entity from the server first in order for **table_operation::replace_entity** to be successful.</span></span> <span data-ttu-id="183e6-185">Но иногда неизвестно, существует ли сущность на сервере и актуальны ли хранящиеся в ней значения. Обновление должно перезаписать их все.</span><span class="sxs-lookup"><span data-stu-id="183e6-185">Sometimes, however, you don't know if the entity exists on the server and the current values stored in it are irrelevant—your update should overwrite them all.</span></span> <span data-ttu-id="183e6-186">Для этого используйте операцию **table_operation::insert_or_replace_entity**.</span><span class="sxs-lookup"><span data-stu-id="183e6-186">To accomplish this, you would use a **table_operation::insert_or_replace_entity** operation.</span></span> <span data-ttu-id="183e6-187">Эта операция вставляет сущность, если она не существует, или заменяет ее, если она существует, независимо от того, когда было выполнено последнее обновление.</span><span class="sxs-lookup"><span data-stu-id="183e6-187">This operation inserts the entity if it doesn't exist, or replaces it if it does, regardless of when the last update was made.</span></span> <span data-ttu-id="183e6-188">В примере кода ниже сущность клиента для Jeff Smith все равно извлекается, но затем она сохраняется на сервере с помощью операции **table_operation::insert_or_replace_entity**.</span><span class="sxs-lookup"><span data-stu-id="183e6-188">In the following code example, the customer entity for Jeff Smith is still retrieved, but it is then saved back to the server via **table_operation::insert_or_replace_entity**.</span></span> <span data-ttu-id="183e6-189">Любые обновления сущности, внесенные между операциями извлечения и обновления, будут перезаписаны.</span><span class="sxs-lookup"><span data-stu-id="183e6-189">Any updates made to the entity between the retrieval and update operation will be overwritten.</span></span>  
+## <a name="insert-or-replace-an-entity"></a><span data-ttu-id="3547f-182">Вставка или замена сущности</span><span class="sxs-lookup"><span data-stu-id="3547f-182">Insert-or-replace an entity</span></span>
+<span data-ttu-id="3547f-183">**table_operation::replace_entity** операции могут завершаться hello объекта было изменено, поскольку он был извлечен из сервера hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-183">**table_operation::replace_entity** operations will fail if hello entity has been changed since it was retrieved from hello server.</span></span> <span data-ttu-id="3547f-184">Кроме того, необходимо извлечь hello сущности с hello сервера сначала для **table_operation::replace_entity** toobe успешно.</span><span class="sxs-lookup"><span data-stu-id="3547f-184">Furthermore, you must retrieve hello entity from hello server first in order for **table_operation::replace_entity** toobe successful.</span></span> <span data-ttu-id="3547f-185">Иногда, тем не менее, вы не знаете Если hello сущность существует на сервере hello и неприменимы hello текущие значения, сохраненные в ней — обновление перезаписывать их все.</span><span class="sxs-lookup"><span data-stu-id="3547f-185">Sometimes, however, you don't know if hello entity exists on hello server and hello current values stored in it are irrelevant—your update should overwrite them all.</span></span> <span data-ttu-id="3547f-186">tooaccomplish это, следует использовать **table_operation::insert_or_replace_entity** операции.</span><span class="sxs-lookup"><span data-stu-id="3547f-186">tooaccomplish this, you would use a **table_operation::insert_or_replace_entity** operation.</span></span> <span data-ttu-id="3547f-187">Эта операция вставляет сущность hello, если она не существует, или заменяет его, если это так, независимо от того, когда была произведена hello последнего обновления.</span><span class="sxs-lookup"><span data-stu-id="3547f-187">This operation inserts hello entity if it doesn't exist, or replaces it if it does, regardless of when hello last update was made.</span></span> <span data-ttu-id="3547f-188">В следующем примере кода hello, по-прежнему получить сущность customer hello Джефф Смит, но затем сохраняется задней toohello серверу с помощью **table_operation::insert_or_replace_entity**.</span><span class="sxs-lookup"><span data-stu-id="3547f-188">In hello following code example, hello customer entity for Jeff Smith is still retrieved, but it is then saved back toohello server via **table_operation::insert_or_replace_entity**.</span></span> <span data-ttu-id="3547f-189">Все изменения, сделанные сущности toohello между hello операции извлечения и обновления будут перезаписаны.</span><span class="sxs-lookup"><span data-stu-id="3547f-189">Any updates made toohello entity between hello retrieval and update operation will be overwritten.</span></span>  
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Create a cloud table object for the table.
+// Create a cloud table object for hello table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
 // Insert-or-replace an entity.
@@ -348,37 +348,37 @@ properties_to_insert_or_replace[U("Phone")] = azure::storage::entity_property(U(
 // Specify an email address.
 properties_to_insert_or_replace[U("Email")] = azure::storage::entity_property(U("Jeffsm@contoso.com"));
 
-// Create an operation to insert-or-replace the entity.
+// Create an operation tooinsert-or-replace hello entity.
 azure::storage::table_operation insert_or_replace_operation = azure::storage::table_operation::insert_or_replace_entity(entity_to_insert_or_replace);
 
-// Submit the operation to the Table service.
+// Submit hello operation toohello Table service.
 azure::storage::table_result insert_or_replace_result = table.execute(insert_or_replace_operation);
 ```
 
-## <a name="query-a-subset-of-entity-properties"></a><span data-ttu-id="183e6-190">Запрос подмножества свойств сущности</span><span class="sxs-lookup"><span data-stu-id="183e6-190">Query a subset of entity properties</span></span>
-<span data-ttu-id="183e6-191">Запрос к таблице может получить лишь несколько свойств сущности.</span><span class="sxs-lookup"><span data-stu-id="183e6-191">A query to a table can retrieve just a few properties from an entity.</span></span> <span data-ttu-id="183e6-192">Запрос в следующем коде использует метод **table_query::set_select_columns**, чтобы возвратить только адреса электронной почты сущностей в таблице.</span><span class="sxs-lookup"><span data-stu-id="183e6-192">The query in the following code uses the **table_query::set_select_columns** method to return only the email addresses of entities in the table.</span></span>  
+## <a name="query-a-subset-of-entity-properties"></a><span data-ttu-id="3547f-190">Запрос подмножества свойств сущности</span><span class="sxs-lookup"><span data-stu-id="3547f-190">Query a subset of entity properties</span></span>
+<span data-ttu-id="3547f-191">Таблицы tooa запроса можно получить только несколько свойств сущности.</span><span class="sxs-lookup"><span data-stu-id="3547f-191">A query tooa table can retrieve just a few properties from an entity.</span></span> <span data-ttu-id="3547f-192">Hello запрос в hello, следующий код использует hello **table_query::set_select_columns** метод tooreturn только hello адреса электронной почты сущности в таблице hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-192">hello query in hello following code uses hello **table_query::set_select_columns** method tooreturn only hello email addresses of entities in hello table.</span></span>  
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Create a cloud table object for the table.
+// Create a cloud table object for hello table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Define the query, and select only the Email property.
+// Define hello query, and select only hello Email property.
 azure::storage::table_query query;
 std::vector<utility::string_t> columns;
 
 columns.push_back(U("Email"));
 query.set_select_columns(columns);
 
-// Execute the query.
+// Execute hello query.
 azure::storage::table_query_iterator it = table.execute_query(query);
 
-// Display the results.
+// Display hello results.
 azure::storage::table_query_iterator end_of_results;
 for (; it != end_of_results; ++it)
 {
@@ -395,64 +395,64 @@ for (; it != end_of_results; ++it)
 ```
 
 > [!NOTE]
-> <span data-ttu-id="183e6-193">Запрос нескольких свойств сущности является более эффективной операцией, чем запрос всех свойств.</span><span class="sxs-lookup"><span data-stu-id="183e6-193">Querying a few properties from an entity is a more efficient operation than retrieving all properties.</span></span>
+> <span data-ttu-id="3547f-193">Запрос нескольких свойств сущности является более эффективной операцией, чем запрос всех свойств.</span><span class="sxs-lookup"><span data-stu-id="3547f-193">Querying a few properties from an entity is a more efficient operation than retrieving all properties.</span></span>
 > 
 > 
 
-## <a name="delete-an-entity"></a><span data-ttu-id="183e6-194">Удаление сущности</span><span class="sxs-lookup"><span data-stu-id="183e6-194">Delete an entity</span></span>
-<span data-ttu-id="183e6-195">Сущность можно легко удалить после ее получения.</span><span class="sxs-lookup"><span data-stu-id="183e6-195">You can easily delete an entity after you have retrieved it.</span></span> <span data-ttu-id="183e6-196">После получения сущности вызовите **table_operation::delete_entity** с подлежащей удалению сущности.</span><span class="sxs-lookup"><span data-stu-id="183e6-196">Once the entity is retrieved, call **table_operation::delete_entity** with the entity to delete.</span></span> <span data-ttu-id="183e6-197">Затем вызовите метод **cloud_table.execute**.</span><span class="sxs-lookup"><span data-stu-id="183e6-197">Then call the **cloud_table.execute** method.</span></span> <span data-ttu-id="183e6-198">Следующий код извлекает и удаляет сущность с ключом раздела Smith и ключом строки Jeff.</span><span class="sxs-lookup"><span data-stu-id="183e6-198">The following code retrieves and deletes an entity with a partition key of "Smith" and a row key of "Jeff".</span></span>  
+## <a name="delete-an-entity"></a><span data-ttu-id="3547f-194">Удаление сущности</span><span class="sxs-lookup"><span data-stu-id="3547f-194">Delete an entity</span></span>
+<span data-ttu-id="3547f-195">Сущность можно легко удалить после ее получения.</span><span class="sxs-lookup"><span data-stu-id="3547f-195">You can easily delete an entity after you have retrieved it.</span></span> <span data-ttu-id="3547f-196">Когда извлекается hello объекта, вызовите **table_operation::delete_entity** с toodelete hello сущности.</span><span class="sxs-lookup"><span data-stu-id="3547f-196">Once hello entity is retrieved, call **table_operation::delete_entity** with hello entity toodelete.</span></span> <span data-ttu-id="3547f-197">Затем вызовите hello **cloud_table.execute** метод.</span><span class="sxs-lookup"><span data-stu-id="3547f-197">Then call hello **cloud_table.execute** method.</span></span> <span data-ttu-id="3547f-198">Hello следующий код извлекает и удаляет сущность с ключом раздела «Smith» и ключ строки «Джефф».</span><span class="sxs-lookup"><span data-stu-id="3547f-198">hello following code retrieves and deletes an entity with a partition key of "Smith" and a row key of "Jeff".</span></span>  
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Create a cloud table object for the table.
+// Create a cloud table object for hello table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Create an operation to retrieve the entity with partition key of "Smith" and row key of "Jeff".
+// Create an operation tooretrieve hello entity with partition key of "Smith" and row key of "Jeff".
 azure::storage::table_operation retrieve_operation = azure::storage::table_operation::retrieve_entity(U("Smith"), U("Jeff"));
 azure::storage::table_result retrieve_result = table.execute(retrieve_operation);
 
-// Create an operation to delete the entity.
+// Create an operation toodelete hello entity.
 azure::storage::table_operation delete_operation = azure::storage::table_operation::delete_entity(retrieve_result.entity());
 
-// Submit the delete operation to the Table service.
+// Submit hello delete operation toohello Table service.
 azure::storage::table_result delete_result = table.execute(delete_operation);  
 ```
 
-## <a name="delete-a-table"></a><span data-ttu-id="183e6-199">Удаление таблицы</span><span class="sxs-lookup"><span data-stu-id="183e6-199">Delete a table</span></span>
-<span data-ttu-id="183e6-200">Наконец, следующий пример кода удаляет таблицу из учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="183e6-200">Finally, the following code example deletes a table from a storage account.</span></span> <span data-ttu-id="183e6-201">Удаленную таблицу нельзя воссоздать в течение определенного времени после удаления.</span><span class="sxs-lookup"><span data-stu-id="183e6-201">A table that has been deleted will be unavailable to be re-created for a period of time following the deletion.</span></span>  
+## <a name="delete-a-table"></a><span data-ttu-id="3547f-199">Удаление таблицы</span><span class="sxs-lookup"><span data-stu-id="3547f-199">Delete a table</span></span>
+<span data-ttu-id="3547f-200">Наконец hello, следующий пример кода удаляет таблицу из учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="3547f-200">Finally, hello following code example deletes a table from a storage account.</span></span> <span data-ttu-id="3547f-201">Таблицы, которая была удалена, будет недоступен toobe повторно создан для определенного периода времени после удаления hello.</span><span class="sxs-lookup"><span data-stu-id="3547f-201">A table that has been deleted will be unavailable toobe re-created for a period of time following hello deletion.</span></span>  
 
 ```cpp
-// Retrieve the storage account from the connection string.
+// Retrieve hello storage account from hello connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the table client.
+// Create hello table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-// Create a cloud table object for the table.
+// Create a cloud table object for hello table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Create an operation to retrieve the entity with partition key of "Smith" and row key of "Jeff".
+// Create an operation tooretrieve hello entity with partition key of "Smith" and row key of "Jeff".
 azure::storage::table_operation retrieve_operation = azure::storage::table_operation::retrieve_entity(U("Smith"), U("Jeff"));
 azure::storage::table_result retrieve_result = table.execute(retrieve_operation);
 
-// Create an operation to delete the entity.
+// Create an operation toodelete hello entity.
 azure::storage::table_operation delete_operation = azure::storage::table_operation::delete_entity(retrieve_result.entity());
 
-// Submit the delete operation to the Table service.
+// Submit hello delete operation toohello Table service.
 azure::storage::table_result delete_result = table.execute(delete_operation);
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="183e6-202">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="183e6-202">Next steps</span></span>
-<span data-ttu-id="183e6-203">Теперь, когда вы ознакомились с основными сведениями о хранилище таблиц, воспользуйтесь следующими ссылками для получения дополнительных сведений о службе хранилища Azure:</span><span class="sxs-lookup"><span data-stu-id="183e6-203">Now that you've learned the basics of table storage, follow these links to learn more about Azure Storage:</span></span>  
+## <a name="next-steps"></a><span data-ttu-id="3547f-202">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="3547f-202">Next steps</span></span>
+<span data-ttu-id="3547f-203">Теперь, когда вы узнали основы hello хранилища таблицы, выполните следующие дополнительные сведения о хранилище Azure toolearn ссылки.</span><span class="sxs-lookup"><span data-stu-id="3547f-203">Now that you've learned hello basics of table storage, follow these links toolearn more about Azure Storage:</span></span>  
 
-* <span data-ttu-id="183e6-204">[Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) — это бесплатное автономное приложение от корпорации Майкрософт, позволяющее визуализировать данные из службы хранилища Azure на платформе Windows, macOS и Linux.</span><span class="sxs-lookup"><span data-stu-id="183e6-204">[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, macOS, and Linux.</span></span>
-* [<span data-ttu-id="183e6-205">Использование хранилища BLOB-объектов из C++</span><span class="sxs-lookup"><span data-stu-id="183e6-205">How to use Blob storage from C++</span></span>](storage-c-plus-plus-how-to-use-blobs.md)
-* [<span data-ttu-id="183e6-206">Использование хранилища очередей из C++</span><span class="sxs-lookup"><span data-stu-id="183e6-206">How to use Queue storage from C++</span></span>](storage-c-plus-plus-how-to-use-queues.md)
-* [<span data-ttu-id="183e6-207">Перечисление ресурсов хранилища Azure в C++</span><span class="sxs-lookup"><span data-stu-id="183e6-207">List Azure Storage resources in C++</span></span>](storage-c-plus-plus-enumeration.md)
-* [<span data-ttu-id="183e6-208">Справочник по клиентской библиотеке хранилища для C++</span><span class="sxs-lookup"><span data-stu-id="183e6-208">Storage Client Library for C++ reference</span></span>](http://azure.github.io/azure-storage-cpp)
-* [<span data-ttu-id="183e6-209">Документация по службе хранилища Azure</span><span class="sxs-lookup"><span data-stu-id="183e6-209">Azure Storage documentation</span></span>](https://azure.microsoft.com/documentation/services/storage/)
+* <span data-ttu-id="3547f-204">[Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) является бесплатной, отдельное приложение от Майкрософт, позволяющая toowork визуально с помощью данных из хранилища Azure в Windows, macOS и Linux.</span><span class="sxs-lookup"><span data-stu-id="3547f-204">[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you toowork visually with Azure Storage data on Windows, macOS, and Linux.</span></span>
+* [<span data-ttu-id="3547f-205">Как toouse хранилища BLOB-объектов из C++</span><span class="sxs-lookup"><span data-stu-id="3547f-205">How toouse Blob storage from C++</span></span>](storage-c-plus-plus-how-to-use-blobs.md)
+* [<span data-ttu-id="3547f-206">Как toouse хранилища очередей из C++</span><span class="sxs-lookup"><span data-stu-id="3547f-206">How toouse Queue storage from C++</span></span>](storage-c-plus-plus-how-to-use-queues.md)
+* [<span data-ttu-id="3547f-207">Перечисление ресурсов хранилища Azure в C++</span><span class="sxs-lookup"><span data-stu-id="3547f-207">List Azure Storage resources in C++</span></span>](storage-c-plus-plus-enumeration.md)
+* [<span data-ttu-id="3547f-208">Справочник по клиентской библиотеке хранилища для C++</span><span class="sxs-lookup"><span data-stu-id="3547f-208">Storage Client Library for C++ reference</span></span>](http://azure.github.io/azure-storage-cpp)
+* [<span data-ttu-id="3547f-209">Документация по службе хранилища Azure</span><span class="sxs-lookup"><span data-stu-id="3547f-209">Azure Storage documentation</span></span>](https://azure.microsoft.com/documentation/services/storage/)

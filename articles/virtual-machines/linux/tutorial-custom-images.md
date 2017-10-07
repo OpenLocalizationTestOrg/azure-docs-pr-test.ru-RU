@@ -1,6 +1,6 @@
 ---
-title: "Создание пользовательских образов виртуальных машин с помощью Azure CLI | Документы Майкрософт"
-description: "Руководство по созданию настраиваемого образа виртуальной машины с помощью Azure CLI."
+title: "aaaCreate пользовательских образов виртуальной Машины с hello Azure CLI | Документы Microsoft"
+description: "Учебник - создать образ виртуальной Машины с помощью hello Azure CLI."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,78 +16,78 @@ ms.workload: infrastructure
 ms.date: 05/21/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d32980f05ad17a76793021d0a5355d597974a4e4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 217a993c0c1d48939b74108ac6c5f7a1a619416c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-custom-image-of-an-azure-vm-using-the-cli"></a><span data-ttu-id="06462-103">Создание пользовательского образа виртуальной машины Azure с помощью интерфейса командной строки</span><span class="sxs-lookup"><span data-stu-id="06462-103">Create a custom image of an Azure VM using the CLI</span></span>
+# <a name="create-a-custom-image-of-an-azure-vm-using-hello-cli"></a><span data-ttu-id="64aea-103">Создать образ виртуальной машины Azure с помощью hello CLI</span><span class="sxs-lookup"><span data-stu-id="64aea-103">Create a custom image of an Azure VM using hello CLI</span></span>
 
-<span data-ttu-id="06462-104">Пользовательские образы похожи на образы магазина, однако их можно создавать самостоятельно.</span><span class="sxs-lookup"><span data-stu-id="06462-104">Custom images are like marketplace images, but you create them yourself.</span></span> <span data-ttu-id="06462-105">Пользовательские образы можно использовать для начальной загрузки конфигураций, например при предварительной загрузке приложений, конфигураций приложений и других конфигураций операционной системы.</span><span class="sxs-lookup"><span data-stu-id="06462-105">Custom images can be used to bootstrap configurations such as preloading applications, application configurations, and other OS configurations.</span></span> <span data-ttu-id="06462-106">В рамках этого руководства вы создадите собственный пользовательский образ виртуальной машины Azure.</span><span class="sxs-lookup"><span data-stu-id="06462-106">In this tutorial, you create your own custom image of an Azure virtual machine.</span></span> <span data-ttu-id="06462-107">Вы узнаете, как выполнять такие задачи.</span><span class="sxs-lookup"><span data-stu-id="06462-107">You learn how to:</span></span>
+<span data-ttu-id="64aea-104">Пользовательские образы похожи на образы магазина, однако их можно создавать самостоятельно.</span><span class="sxs-lookup"><span data-stu-id="64aea-104">Custom images are like marketplace images, but you create them yourself.</span></span> <span data-ttu-id="64aea-105">Пользовательские изображения может быть конфигурации используется toobootstrap, такие как предварительной загрузки приложений, конфигурации приложений и других настроек операционной системы.</span><span class="sxs-lookup"><span data-stu-id="64aea-105">Custom images can be used toobootstrap configurations such as preloading applications, application configurations, and other OS configurations.</span></span> <span data-ttu-id="64aea-106">В рамках этого руководства вы создадите собственный пользовательский образ виртуальной машины Azure.</span><span class="sxs-lookup"><span data-stu-id="64aea-106">In this tutorial, you create your own custom image of an Azure virtual machine.</span></span> <span data-ttu-id="64aea-107">Вы узнаете, как выполнять такие задачи.</span><span class="sxs-lookup"><span data-stu-id="64aea-107">You learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="06462-108">отменить подготовку виртуальных машин и подготовить их к использованию;</span><span class="sxs-lookup"><span data-stu-id="06462-108">Deprovision and generalize VMs</span></span>
-> * <span data-ttu-id="06462-109">создавать пользовательский образ;</span><span class="sxs-lookup"><span data-stu-id="06462-109">Create a custom image</span></span>
-> * <span data-ttu-id="06462-110">Создание виртуальной машины из пользовательского образа</span><span class="sxs-lookup"><span data-stu-id="06462-110">Create a VM from a custom image</span></span>
-> * <span data-ttu-id="06462-111">Получение списка всех образов в подписке</span><span class="sxs-lookup"><span data-stu-id="06462-111">List all the images in your subscription</span></span>
-> * <span data-ttu-id="06462-112">Удаление образа</span><span class="sxs-lookup"><span data-stu-id="06462-112">Delete an image</span></span>
+> * <span data-ttu-id="64aea-108">отменить подготовку виртуальных машин и подготовить их к использованию;</span><span class="sxs-lookup"><span data-stu-id="64aea-108">Deprovision and generalize VMs</span></span>
+> * <span data-ttu-id="64aea-109">создавать пользовательский образ;</span><span class="sxs-lookup"><span data-stu-id="64aea-109">Create a custom image</span></span>
+> * <span data-ttu-id="64aea-110">Создание виртуальной машины из пользовательского образа</span><span class="sxs-lookup"><span data-stu-id="64aea-110">Create a VM from a custom image</span></span>
+> * <span data-ttu-id="64aea-111">Отображение списка всех образов hello в подписке</span><span class="sxs-lookup"><span data-stu-id="64aea-111">List all hello images in your subscription</span></span>
+> * <span data-ttu-id="64aea-112">удалять образ.</span><span class="sxs-lookup"><span data-stu-id="64aea-112">Delete an image</span></span>
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-<span data-ttu-id="06462-113">Если вы решили установить и использовать интерфейс командной строки локально, то для работы с этим руководством вам понадобится Azure CLI 2.0.4 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="06462-113">If you choose to install and use the CLI locally, this tutorial requires that you are running the Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="06462-114">Чтобы узнать версию, выполните команду `az --version`.</span><span class="sxs-lookup"><span data-stu-id="06462-114">Run `az --version` to find the version.</span></span> <span data-ttu-id="06462-115">Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="06462-115">If you need to install or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
+<span data-ttu-id="64aea-113">Если выбрать tooinstall и использовать hello CLI локально, упражнений этого учебника требуется, вы используете версию Azure CLI hello 2.0.4 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="64aea-113">If you choose tooinstall and use hello CLI locally, this tutorial requires that you are running hello Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="64aea-114">Запустите `az --version` версии toofind hello.</span><span class="sxs-lookup"><span data-stu-id="64aea-114">Run `az --version` toofind hello version.</span></span> <span data-ttu-id="64aea-115">Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="64aea-115">If you need tooinstall or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
 
-## <a name="before-you-begin"></a><span data-ttu-id="06462-116">Перед началом работы</span><span class="sxs-lookup"><span data-stu-id="06462-116">Before you begin</span></span>
+## <a name="before-you-begin"></a><span data-ttu-id="64aea-116">Перед началом работы</span><span class="sxs-lookup"><span data-stu-id="64aea-116">Before you begin</span></span>
 
-<span data-ttu-id="06462-117">Ниже подробно описано, как преобразовать существующую виртуальную машину в многократно используемый пользовательский образ, на основе которого можно создавать экземпляры виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="06462-117">The steps below detail how to take an existing VM and turn it into a re-usable custom image that you can use to create new VM instances.</span></span>
+<span data-ttu-id="64aea-117">в следующих шагах Hello подробно, как tootake существующей виртуальной Машины и включите его в доступных для использования пользовательского образа, который можно использовать toocreate новые экземпляры виртуальной Машины.</span><span class="sxs-lookup"><span data-stu-id="64aea-117">hello steps below detail how tootake an existing VM and turn it into a re-usable custom image that you can use toocreate new VM instances.</span></span>
 
-<span data-ttu-id="06462-118">Для выполнения примера в этом руководстве требуется виртуальная машина.</span><span class="sxs-lookup"><span data-stu-id="06462-118">To complete the example in this tutorial, you must have an existing virtual machine.</span></span> <span data-ttu-id="06462-119">Этот [пример сценария](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) позволяет создать ее при необходимости.</span><span class="sxs-lookup"><span data-stu-id="06462-119">If needed, this [script sample](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) can create one for you.</span></span> <span data-ttu-id="06462-120">При работе с примером по мере необходимости заменяйте имена групп ресурсов и виртуальных машин.</span><span class="sxs-lookup"><span data-stu-id="06462-120">When working through the tutorial, replace the resource group and VM names where needed.</span></span>
+<span data-ttu-id="64aea-118">Пример hello toocomplete в этом учебнике, необходимо иметь существующую виртуальную машину.</span><span class="sxs-lookup"><span data-stu-id="64aea-118">toocomplete hello example in this tutorial, you must have an existing virtual machine.</span></span> <span data-ttu-id="64aea-119">Этот [пример сценария](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) позволяет создать ее при необходимости.</span><span class="sxs-lookup"><span data-stu-id="64aea-119">If needed, this [script sample](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) can create one for you.</span></span> <span data-ttu-id="64aea-120">Если заменить прохождение учебника hello группы ресурсов hello и ВМ имен при необходимости.</span><span class="sxs-lookup"><span data-stu-id="64aea-120">When working through hello tutorial, replace hello resource group and VM names where needed.</span></span>
 
-## <a name="create-a-custom-image"></a><span data-ttu-id="06462-121">Создание пользовательского образа</span><span class="sxs-lookup"><span data-stu-id="06462-121">Create a custom image</span></span>
+## <a name="create-a-custom-image"></a><span data-ttu-id="64aea-121">создавать пользовательский образ;</span><span class="sxs-lookup"><span data-stu-id="64aea-121">Create a custom image</span></span>
 
-<span data-ttu-id="06462-122">Чтобы создать образ виртуальной машины, нужно подготовить виртуальную машину, выполнив отзыв, отменив выделение и пометив исходную виртуальную машину как обобщенную.</span><span class="sxs-lookup"><span data-stu-id="06462-122">To create an image of a virtual machine, you need to prepare the VM by deprovisioning, deallocating, and then marking the source VM as generalized.</span></span> <span data-ttu-id="06462-123">После подготовки виртуальной машины вы можете создать образ.</span><span class="sxs-lookup"><span data-stu-id="06462-123">Once the VM has been prepared, you can create an image.</span></span>
+<span data-ttu-id="64aea-122">toocreate образ виртуальной машины, необходимо tooprepare hello виртуальной Машины путем отмены подготовки, освобождение и пометки hello исходной виртуальной Машины, как обобщенный.</span><span class="sxs-lookup"><span data-stu-id="64aea-122">toocreate an image of a virtual machine, you need tooprepare hello VM by deprovisioning, deallocating, and then marking hello source VM as generalized.</span></span> <span data-ttu-id="64aea-123">Один раз при hello, который был подготовлен виртуальной Машины, можно создать образ.</span><span class="sxs-lookup"><span data-stu-id="64aea-123">Once hello VM has been prepared, you can create an image.</span></span>
 
-### <a name="deprovision-the-vm"></a><span data-ttu-id="06462-124">Отзыв виртуальной машины</span><span class="sxs-lookup"><span data-stu-id="06462-124">Deprovision the VM</span></span> 
+### <a name="deprovision-hello-vm"></a><span data-ttu-id="64aea-124">Hello отзыв виртуальной Машины</span><span class="sxs-lookup"><span data-stu-id="64aea-124">Deprovision hello VM</span></span> 
 
-<span data-ttu-id="06462-125">Отзыв обобщает виртуальную машину, удаляя относящиеся к ней сведения.</span><span class="sxs-lookup"><span data-stu-id="06462-125">Deprovisioning generalizes the VM by removing machine-specific information.</span></span> <span data-ttu-id="06462-126">Такое обобщение позволяет развернуть множество виртуальных машин из одного образа.</span><span class="sxs-lookup"><span data-stu-id="06462-126">This generalization makes it possible to deploy many VMs from a single image.</span></span> <span data-ttu-id="06462-127">Во время отзыва имя узла сбрасывается и принимает значение *localhost.localdomain*.</span><span class="sxs-lookup"><span data-stu-id="06462-127">During deprovisioning, the host name is reset to *localhost.localdomain*.</span></span> <span data-ttu-id="06462-128">Ключи узла SSH, конфигурации сервера доменных имен, пароль учетной записи root и кэшированные аренды DHCP также удаляются.</span><span class="sxs-lookup"><span data-stu-id="06462-128">SSH host keys, nameserver configurations, root password, and cached DHCP leases are also deleted.</span></span>
+<span data-ttu-id="64aea-125">Отзыв обобщает hello виртуальных Машин, удалив сведения о компьютере.</span><span class="sxs-lookup"><span data-stu-id="64aea-125">Deprovisioning generalizes hello VM by removing machine-specific information.</span></span> <span data-ttu-id="64aea-126">Из этого общего правила делает возможных toodeploy много виртуальных машин из одного образа.</span><span class="sxs-lookup"><span data-stu-id="64aea-126">This generalization makes it possible toodeploy many VMs from a single image.</span></span> <span data-ttu-id="64aea-127">Во время отмены подготовки, имя узла hello сбрасывается слишком*localhost.localdomain*.</span><span class="sxs-lookup"><span data-stu-id="64aea-127">During deprovisioning, hello host name is reset too*localhost.localdomain*.</span></span> <span data-ttu-id="64aea-128">Ключи узла SSH, конфигурации сервера доменных имен, пароль учетной записи root и кэшированные аренды DHCP также удаляются.</span><span class="sxs-lookup"><span data-stu-id="64aea-128">SSH host keys, nameserver configurations, root password, and cached DHCP leases are also deleted.</span></span>
 
-<span data-ttu-id="06462-129">Чтобы отозвать виртуальную машину, используйте агент виртуальной машины Azure (waagent).</span><span class="sxs-lookup"><span data-stu-id="06462-129">To deprovision the VM, use the Azure VM agent (waagent).</span></span> <span data-ttu-id="06462-130">Агент виртуальной машины Azure устанавливается на виртуальной машине и управляет подготовкой и взаимодействием с контроллером структуры Azure.</span><span class="sxs-lookup"><span data-stu-id="06462-130">The Azure VM agent is installed on the VM and manages provisioning and interacting with the Azure Fabric Controller.</span></span> <span data-ttu-id="06462-131">Дополнительные сведения см. в [руководстве пользователя агента Linux Azure](agent-user-guide.md).</span><span class="sxs-lookup"><span data-stu-id="06462-131">For more information, see the [Azure Linux Agent user guide](agent-user-guide.md).</span></span>
+<span data-ttu-id="64aea-129">hello toodeprovision виртуальной Машины, с помощью агента ВМ Azure hello (waagent).</span><span class="sxs-lookup"><span data-stu-id="64aea-129">toodeprovision hello VM, use hello Azure VM agent (waagent).</span></span> <span data-ttu-id="64aea-130">агент ВМ Azure Hello устанавливается на hello виртуальной Машины и управляет подготовки и работать с ними hello Azure Fabric Controller.</span><span class="sxs-lookup"><span data-stu-id="64aea-130">hello Azure VM agent is installed on hello VM and manages provisioning and interacting with hello Azure Fabric Controller.</span></span> <span data-ttu-id="64aea-131">Дополнительные сведения см. в разделе hello [руководство пользователя Azure Linux Agent](agent-user-guide.md).</span><span class="sxs-lookup"><span data-stu-id="64aea-131">For more information, see hello [Azure Linux Agent user guide](agent-user-guide.md).</span></span>
 
-<span data-ttu-id="06462-132">Подключитесь к виртуальной машине с помощью SSH и выполните команду для ее отзыва.</span><span class="sxs-lookup"><span data-stu-id="06462-132">Connect to your VM using SSH and run the command to deprovision the VM.</span></span> <span data-ttu-id="06462-133">При указании аргумента `+user` также удаляется последняя подготовленная учетная запись пользователя вместе со связанными данными.</span><span class="sxs-lookup"><span data-stu-id="06462-133">With the `+user` argument, the last provisioned user account and any associated data are also deleted.</span></span> <span data-ttu-id="06462-134">Замените IP-адрес в примере общедоступным IP-адресом виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="06462-134">Replace the example IP address with the public IP address of your VM.</span></span>
+<span data-ttu-id="64aea-132">Подключение tooyour виртуальной Машины с помощью SSH и выполнения hello команда toodeprovision hello виртуальной Машины.</span><span class="sxs-lookup"><span data-stu-id="64aea-132">Connect tooyour VM using SSH and run hello command toodeprovision hello VM.</span></span> <span data-ttu-id="64aea-133">С hello `+user` аргумента, hello последнюю подготовленный пользователь учетную запись и все связанные с ними данные удаляются.</span><span class="sxs-lookup"><span data-stu-id="64aea-133">With hello `+user` argument, hello last provisioned user account and any associated data are also deleted.</span></span> <span data-ttu-id="64aea-134">Замените IP-адрес hello пример hello общедоступный IP-адрес виртуальной Машины.</span><span class="sxs-lookup"><span data-stu-id="64aea-134">Replace hello example IP address with hello public IP address of your VM.</span></span>
 
-<span data-ttu-id="06462-135">Подключитесь к виртуальной машине по протоколу SSH.</span><span class="sxs-lookup"><span data-stu-id="06462-135">SSH to the VM.</span></span>
+<span data-ttu-id="64aea-135">Toohello SSH виртуальной Машины.</span><span class="sxs-lookup"><span data-stu-id="64aea-135">SSH toohello VM.</span></span>
 ```bash
 ssh azureuser@52.174.34.95
 ```
-<span data-ttu-id="06462-136">Отзовите виртуальную машину.</span><span class="sxs-lookup"><span data-stu-id="06462-136">Deprovision the VM.</span></span>
+<span data-ttu-id="64aea-136">Здравствуйте, отзыв виртуальной Машины.</span><span class="sxs-lookup"><span data-stu-id="64aea-136">Deprovision hello VM.</span></span>
 
 ```bash
 sudo waagent -deprovision+user -force
 ```
-<span data-ttu-id="06462-137">Закройте сеанс SSH.</span><span class="sxs-lookup"><span data-stu-id="06462-137">Close the SSH session.</span></span>
+<span data-ttu-id="64aea-137">Закрыть сеанс SSH hello.</span><span class="sxs-lookup"><span data-stu-id="64aea-137">Close hello SSH session.</span></span>
 
 ```bash
 exit
 ```
 
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a><span data-ttu-id="06462-138">Отмена выделения и пометка виртуальной машины как обобщенной</span><span class="sxs-lookup"><span data-stu-id="06462-138">Deallocate and mark the VM as generalized</span></span>
+### <a name="deallocate-and-mark-hello-vm-as-generalized"></a><span data-ttu-id="64aea-138">Выделение и пометить hello виртуальной Машины как обобщенный</span><span class="sxs-lookup"><span data-stu-id="64aea-138">Deallocate and mark hello VM as generalized</span></span>
 
-<span data-ttu-id="06462-139">Чтобы создать образ, нужно отменить выделение виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="06462-139">To create an image, the VM needs to be deallocated.</span></span> <span data-ttu-id="06462-140">Отмените выделение виртуальной машины с помощью команды [az vm deallocate](/cli//azure/vm#deallocate).</span><span class="sxs-lookup"><span data-stu-id="06462-140">Deallocate the VM using [az vm deallocate](/cli//azure/vm#deallocate).</span></span> 
+<span data-ttu-id="64aea-139">toocreate изображения hello виртуальной Машины должен toobe освобождена.</span><span class="sxs-lookup"><span data-stu-id="64aea-139">toocreate an image, hello VM needs toobe deallocated.</span></span> <span data-ttu-id="64aea-140">DEALLOCATE hello виртуальной Машины с помощью [ВМ az deallocate](/cli//azure/vm#deallocate).</span><span class="sxs-lookup"><span data-stu-id="64aea-140">Deallocate hello VM using [az vm deallocate](/cli//azure/vm#deallocate).</span></span> 
    
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-<span data-ttu-id="06462-141">Наконец, сообщите платформе Azure, что виртуальная машина подготовлена к использованию, выполнив команду [az vm generalize](/cli//azure/vm#generalize).</span><span class="sxs-lookup"><span data-stu-id="06462-141">Finally, set the state of the VM as generalized with [az vm generalize](/cli//azure/vm#generalize) so the Azure platform knows the VM has been generalized.</span></span> <span data-ttu-id="06462-142">Создать образ можно только из подготовленной виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="06462-142">You can only create an image from a generalized VM.</span></span>
+<span data-ttu-id="64aea-141">Задайте состояние hello hello виртуальной Машины как универсализации с [ВМ az generalize](/cli//azure/vm#generalize) чтобы hello ВМ обобщенный знал hello платформы Azure.</span><span class="sxs-lookup"><span data-stu-id="64aea-141">Finally, set hello state of hello VM as generalized with [az vm generalize](/cli//azure/vm#generalize) so hello Azure platform knows hello VM has been generalized.</span></span> <span data-ttu-id="64aea-142">Создать образ можно только из подготовленной виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="64aea-142">You can only create an image from a generalized VM.</span></span>
    
 ```azurecli-interactive 
 az vm generalize --resource-group myResourceGroup --name myVM
 ```
 
-### <a name="create-the-image"></a><span data-ttu-id="06462-143">Создание образа</span><span class="sxs-lookup"><span data-stu-id="06462-143">Create the image</span></span>
+### <a name="create-hello-image"></a><span data-ttu-id="64aea-143">Создание образа hello</span><span class="sxs-lookup"><span data-stu-id="64aea-143">Create hello image</span></span>
 
-<span data-ttu-id="06462-144">Теперь можно создать образ виртуальной машины с помощью команды [az image create](/cli//azure/image#create).</span><span class="sxs-lookup"><span data-stu-id="06462-144">Now you can create an image of the VM by using [az image create](/cli//azure/image#create).</span></span> <span data-ttu-id="06462-145">В следующем примере создается образ *myImage* из виртуальной машины *myVM*.</span><span class="sxs-lookup"><span data-stu-id="06462-145">The following example creates an image named *myImage* from a VM named *myVM*.</span></span>
+<span data-ttu-id="64aea-144">Теперь можно создавать с помощью образа виртуальной Машины hello [создать образ az](/cli//azure/image#create).</span><span class="sxs-lookup"><span data-stu-id="64aea-144">Now you can create an image of hello VM by using [az image create](/cli//azure/image#create).</span></span> <span data-ttu-id="64aea-145">Hello следующий пример создает образ с именем *myImage* из виртуальной Машины с именем *myVM*.</span><span class="sxs-lookup"><span data-stu-id="64aea-145">hello following example creates an image named *myImage* from a VM named *myVM*.</span></span>
    
 ```azurecli-interactive 
 az image create \
@@ -96,9 +96,9 @@ az image create \
     --source myVM
 ```
  
-## <a name="create-vms-from-the-image"></a><span data-ttu-id="06462-146">Создание виртуальных машин из образа</span><span class="sxs-lookup"><span data-stu-id="06462-146">Create VMs from the image</span></span>
+## <a name="create-vms-from-hello-image"></a><span data-ttu-id="64aea-146">Создать виртуальные машины из образа hello</span><span class="sxs-lookup"><span data-stu-id="64aea-146">Create VMs from hello image</span></span>
 
-<span data-ttu-id="06462-147">Теперь, когда образ готов, из него можно создать одну или несколько виртуальных машин с помощью команды [az vm create](/cli/azure/vm#create).</span><span class="sxs-lookup"><span data-stu-id="06462-147">Now that you have an image, you can create one or more new VMs from the image using [az vm create](/cli/azure/vm#create).</span></span> <span data-ttu-id="06462-148">В следующем примере создается виртуальная машина *myVMfromImage* из образа *myImage*.</span><span class="sxs-lookup"><span data-stu-id="06462-148">The following example creates a VM named *myVMfromImage* from the image named *myImage*.</span></span>
+<span data-ttu-id="64aea-147">Теперь, когда у вас есть образ, можно создать один или несколько новых виртуальных машин из hello изображения с помощью [создания виртуальной машины az](/cli/azure/vm#create).</span><span class="sxs-lookup"><span data-stu-id="64aea-147">Now that you have an image, you can create one or more new VMs from hello image using [az vm create](/cli/azure/vm#create).</span></span> <span data-ttu-id="64aea-148">Hello следующий пример создает Виртуальную машину с именем *myVMfromImage* из образа hello с именем *myImage*.</span><span class="sxs-lookup"><span data-stu-id="64aea-148">hello following example creates a VM named *myVMfromImage* from hello image named *myImage*.</span></span>
 
 ```azurecli-interactive 
 az vm create \
@@ -109,18 +109,18 @@ az vm create \
     --generate-ssh-keys
 ```
 
-## <a name="image-management"></a><span data-ttu-id="06462-149">Управление образами</span><span class="sxs-lookup"><span data-stu-id="06462-149">Image management</span></span> 
+## <a name="image-management"></a><span data-ttu-id="64aea-149">Управление образами</span><span class="sxs-lookup"><span data-stu-id="64aea-149">Image management</span></span> 
 
-<span data-ttu-id="06462-150">Ниже приведены некоторые примеры распространенных задач управления образами, а также способы их настройки с помощью Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="06462-150">Here are some examples of common image management tasks and how to complete them using the Azure CLI.</span></span>
+<span data-ttu-id="64aea-150">Ниже приведены некоторые примеры типичных задач управления изображения и как toocomplete их с помощью hello Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="64aea-150">Here are some examples of common image management tasks and how toocomplete them using hello Azure CLI.</span></span>
 
-<span data-ttu-id="06462-151">Получение списка всех образов по имени в формате таблицы.</span><span class="sxs-lookup"><span data-stu-id="06462-151">List all images by name in a table format.</span></span>
+<span data-ttu-id="64aea-151">Получение списка всех образов по имени в формате таблицы.</span><span class="sxs-lookup"><span data-stu-id="64aea-151">List all images by name in a table format.</span></span>
 
 ```azurecli-interactive 
 az image list \
   --resource-group myResourceGroup
 ```
 
-<span data-ttu-id="06462-152">Удаление образа.</span><span class="sxs-lookup"><span data-stu-id="06462-152">Delete an image.</span></span> <span data-ttu-id="06462-153">В этом примере из *myResourceGroup* удаляется образ с именем *myOldImage*.</span><span class="sxs-lookup"><span data-stu-id="06462-153">This example deletes the image named *myOldImage* from the *myResourceGroup*.</span></span>
+<span data-ttu-id="64aea-152">Удаление образа.</span><span class="sxs-lookup"><span data-stu-id="64aea-152">Delete an image.</span></span> <span data-ttu-id="64aea-153">Этот пример удаляет hello изображение с именем *myOldImage* из hello *myResourceGroup*.</span><span class="sxs-lookup"><span data-stu-id="64aea-153">This example deletes hello image named *myOldImage* from hello *myResourceGroup*.</span></span>
 
 ```azurecli-interactive 
 az image delete \
@@ -128,19 +128,19 @@ az image delete \
     --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="06462-154">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="06462-154">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="64aea-154">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="64aea-154">Next steps</span></span>
 
-<span data-ttu-id="06462-155">В рамках этого руководства вы создали пользовательский образ виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="06462-155">In this tutorial, you created a custom VM image.</span></span> <span data-ttu-id="06462-156">Вы научились выполнять следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="06462-156">You learned how to:</span></span>
+<span data-ttu-id="64aea-155">В рамках этого руководства вы создали пользовательский образ виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="64aea-155">In this tutorial, you created a custom VM image.</span></span> <span data-ttu-id="64aea-156">Вы научились выполнять следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="64aea-156">You learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="06462-157">отменять подготовку виртуальных машин и подготавливать их к использованию;</span><span class="sxs-lookup"><span data-stu-id="06462-157">Deprovision and generalize VMs</span></span>
-> * <span data-ttu-id="06462-158">создавать пользовательский образ;</span><span class="sxs-lookup"><span data-stu-id="06462-158">Create a custom image</span></span>
-> * <span data-ttu-id="06462-159">Создание виртуальной машины из пользовательского образа</span><span class="sxs-lookup"><span data-stu-id="06462-159">Create a VM from a custom image</span></span>
-> * <span data-ttu-id="06462-160">Получение списка всех образов в подписке</span><span class="sxs-lookup"><span data-stu-id="06462-160">List all the images in your subscription</span></span>
-> * <span data-ttu-id="06462-161">удалять образ.</span><span class="sxs-lookup"><span data-stu-id="06462-161">Delete an image</span></span>
+> * <span data-ttu-id="64aea-157">отменять подготовку виртуальных машин и подготавливать их к использованию;</span><span class="sxs-lookup"><span data-stu-id="64aea-157">Deprovision and generalize VMs</span></span>
+> * <span data-ttu-id="64aea-158">создавать пользовательский образ;</span><span class="sxs-lookup"><span data-stu-id="64aea-158">Create a custom image</span></span>
+> * <span data-ttu-id="64aea-159">Создание виртуальной машины из пользовательского образа</span><span class="sxs-lookup"><span data-stu-id="64aea-159">Create a VM from a custom image</span></span>
+> * <span data-ttu-id="64aea-160">Отображение списка всех образов hello в подписке</span><span class="sxs-lookup"><span data-stu-id="64aea-160">List all hello images in your subscription</span></span>
+> * <span data-ttu-id="64aea-161">удалять образ.</span><span class="sxs-lookup"><span data-stu-id="64aea-161">Delete an image</span></span>
 
-<span data-ttu-id="06462-162">Перейдите к следующему руководству, чтобы узнать о высокодоступных виртуальных машинах.</span><span class="sxs-lookup"><span data-stu-id="06462-162">Advance to the next tutorial to learn about highly available virtual machines.</span></span>
+<span data-ttu-id="64aea-162">Переместить следующий учебник toolearn toohello о виртуальных машин высокой надежности.</span><span class="sxs-lookup"><span data-stu-id="64aea-162">Advance toohello next tutorial toolearn about highly available virtual machines.</span></span>
 
 > [!div class="nextstepaction"]
-> <span data-ttu-id="06462-163">[Создание высокодоступных виртуальных машин](tutorial-availability-sets.md)</span><span class="sxs-lookup"><span data-stu-id="06462-163">[Create highly available VMs](tutorial-availability-sets.md).</span></span>
+> <span data-ttu-id="64aea-163">[Создание высокодоступных виртуальных машин](tutorial-availability-sets.md)</span><span class="sxs-lookup"><span data-stu-id="64aea-163">[Create highly available VMs](tutorial-availability-sets.md).</span></span>
 

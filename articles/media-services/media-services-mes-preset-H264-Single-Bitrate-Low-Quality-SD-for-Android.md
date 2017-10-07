@@ -1,6 +1,6 @@
 ---
-title: "H264 Single Bitrate Low Quality SD для Android | Документация Майкрософт"
-description: "Этот раздел содержит общие сведения о предустановке задачи **H264 Single Bitrate Low Quality SD для Android**."
+title: "aaaH264 Single Bitrate Low Quality SD для Android | Документы Microsoft"
+description: "Hello разделе приводится обзор hello ** H264 один Bitrate низким качеством SD для Android ** задачи конфигурации."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: af10b703615e35c28038ef5b8e15f3e58e0eecb1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: dc9c4e1bf65ea5f678ec1fc990c4cd353329c352
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="h264-single-bitrate-low-quality-sd-for-android"></a><span data-ttu-id="b5835-103">H264 Single Bitrate Low Quality SD для Android</span><span class="sxs-lookup"><span data-stu-id="b5835-103">H264 Single Bitrate Low Quality SD for Android</span></span>
-<span data-ttu-id="b5835-104">`Media Encoder Standard` определяет набор предустановок кодирования, которые можно использовать при создании заданий кодирования.</span><span class="sxs-lookup"><span data-stu-id="b5835-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="b5835-105">Можно также использовать `preset name`, чтобы указать, в какой формат нужно закодировать файл мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="b5835-105">You can either use a `preset name` to specify into which format you would like to encode your media file.</span></span> <span data-ttu-id="b5835-106">Или можно создать собственные предустановки в формате JSON или XML (с использованием кодировки UTF-8 или UTF-16).</span><span class="sxs-lookup"><span data-stu-id="b5835-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="b5835-107">Затем следует передавать пользовательскую предустановку в кодировщик.</span><span class="sxs-lookup"><span data-stu-id="b5835-107">You would then pass the custom preset to the encoder.</span></span> <span data-ttu-id="b5835-108">Список предустановок, поддерживаемых данным кодировщиком `Media Encoder Standard`, приведен в разделе [Предустановки задач для Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="b5835-108">For the list of all the preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
+# <a name="h264-single-bitrate-low-quality-sd-for-android"></a><span data-ttu-id="e309b-103">H264 Single Bitrate Low Quality SD для Android</span><span class="sxs-lookup"><span data-stu-id="e309b-103">H264 Single Bitrate Low Quality SD for Android</span></span>
+<span data-ttu-id="e309b-104">`Media Encoder Standard` определяет набор предустановок кодирования, которые можно использовать при создании заданий кодирования.</span><span class="sxs-lookup"><span data-stu-id="e309b-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="e309b-105">Можно использовать либо `preset name` toospecify в формат, который вы хотите tooencode файла мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="e309b-105">You can either use a `preset name` toospecify into which format you would like tooencode your media file.</span></span> <span data-ttu-id="e309b-106">Или можно создать собственные предустановки в формате JSON или XML (с использованием кодировки UTF-8 или UTF-16).</span><span class="sxs-lookup"><span data-stu-id="e309b-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="e309b-107">Затем следует передавать hello toohello пользовательской предустановки кодировщика.</span><span class="sxs-lookup"><span data-stu-id="e309b-107">You would then pass hello custom preset toohello encoder.</span></span> <span data-ttu-id="e309b-108">Список всех hello hello предустановленный набор имен, поддерживаемых этим `Media Encoder Standard` кодировщик, см. [предустановки задачи для Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="e309b-108">For hello list of all hello preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
   
- <span data-ttu-id="b5835-109">В этом разделе показана предустановка `H264 Single Bitrate Low Quality SD for Android` в форматах XML и JSON.</span><span class="sxs-lookup"><span data-stu-id="b5835-109">This topic shows the `H264 Single Bitrate Low Quality SD for Android` preset in XML and JSON format.</span></span>  
+ <span data-ttu-id="e309b-109">В этом разделе показано hello `H264 Single Bitrate Low Quality SD for Android` конфигурации в формате XML и JSON.</span><span class="sxs-lookup"><span data-stu-id="e309b-109">This topic shows hello `H264 Single Bitrate Low Quality SD for Android` preset in XML and JSON format.</span></span>  
   
- <span data-ttu-id="b5835-110">Данная предустановка создает отдельный MP4-файл со скоростью 56 Кбит/с и стереофоническим звуком в формате AAC.</span><span class="sxs-lookup"><span data-stu-id="b5835-110">This preset produces a single MP4 file with a bitrate of 56 kbps, and stereo AAC audio.</span></span> <span data-ttu-id="b5835-111">Чтобы получить дополнительные сведения о профиле, скорости, частоте выборки и т. п. данной предустановки, ознакомьтесь с кодом XML или JSON ниже.</span><span class="sxs-lookup"><span data-stu-id="b5835-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine the XML or JSON defined below.</span></span> <span data-ttu-id="b5835-112">Описание каждого элемента в этих предустановках и его допустимых значений см. в разделе [Схема Media Encoder Standard](media-services-mes-schema.md).</span><span class="sxs-lookup"><span data-stu-id="b5835-112">For explanations of what each element in these presets means, and the valid values for each element, see the [Media Encoder Standard schema](media-services-mes-schema.md) topic.</span></span>  
+ <span data-ttu-id="e309b-110">Данная предустановка создает отдельный MP4-файл со скоростью 56 Кбит/с и стереофоническим звуком в формате AAC.</span><span class="sxs-lookup"><span data-stu-id="e309b-110">This preset produces a single MP4 file with a bitrate of 56 kbps, and stereo AAC audio.</span></span> <span data-ttu-id="e309b-111">Подробные сведения о профиле скоростью, выборки скорость, т. д. это стиль, проверьте hello XML или JSON, описанные ниже.</span><span class="sxs-lookup"><span data-stu-id="e309b-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine hello XML or JSON defined below.</span></span> <span data-ttu-id="e309b-112">Объяснение какие каждого элемента в этих стилей означает и hello допустимые значения для каждого элемента в разделе hello [Media Encoder стандартной схеме](media-services-mes-schema.md) раздела.</span><span class="sxs-lookup"><span data-stu-id="e309b-112">For explanations of what each element in these presets means, and hello valid values for each element, see hello [Media Encoder Standard schema](media-services-mes-schema.md) topic.</span></span>  
   
- <span data-ttu-id="b5835-113">XML</span><span class="sxs-lookup"><span data-stu-id="b5835-113">XML</span></span>  
+ <span data-ttu-id="e309b-113">XML</span><span class="sxs-lookup"><span data-stu-id="e309b-113">XML</span></span>  
   
 ```  
 <?xml version="1.0" encoding="utf-16"?>  
@@ -70,7 +70,7 @@ ms.lasthandoff: 08/29/2017
 </Preset>  
 ```  
   
- <span data-ttu-id="b5835-114">JSON</span><span class="sxs-lookup"><span data-stu-id="b5835-114">JSON</span></span>  
+ <span data-ttu-id="e309b-114">JSON</span><span class="sxs-lookup"><span data-stu-id="e309b-114">JSON</span></span>  
   
 ```  
 {  

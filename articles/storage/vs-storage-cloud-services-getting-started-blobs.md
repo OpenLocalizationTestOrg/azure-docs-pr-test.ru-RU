@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с хранилищем BLOB-объектов и подключенными службами Visual Studio (облачные службы) | Документация Майкрософт"
-description: "Как приступить к работе, используя хранилище больших двоичных объектов Azure в проекте облачной службы в Visual Studio после подключения к учетной записи хранения с помощью подключенных служб Visual Studio"
+title: "aaaGet работы с Visual Studio и хранилище больших двоичных объектов подключенных служб (облачных служб) | Документы Microsoft"
+description: "Как tooget запущена с помощью хранилища больших двоичных объектов Azure в проект облачной службы в Visual Studio после подключения tooa учетной записи хранилища с помощью Visual Studio подключенные службы"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,68 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
-ms.openlocfilehash: e154c81ef3765a3c006b3c27a979be881f14d0ee
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 62fb7fcff0a90008859ebe23755f13ef0555e380
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a><span data-ttu-id="bb6fa-103">Начало работы с хранилищем больших двоичных объектов Azure и подключенными службами Visual Studio (проектами облачных служб)</span><span class="sxs-lookup"><span data-stu-id="bb6fa-103">Get started with Azure Blob Storage and Visual Studio connected services (cloud services projects)</span></span>
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a><span data-ttu-id="01e63-103">Начало работы с хранилищем больших двоичных объектов Azure и подключенными службами Visual Studio (проектами облачных служб)</span><span class="sxs-lookup"><span data-stu-id="01e63-103">Get started with Azure Blob Storage and Visual Studio connected services (cloud services projects)</span></span>
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a><span data-ttu-id="bb6fa-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="bb6fa-104">Overview</span></span>
-<span data-ttu-id="bb6fa-105">В этой статье описывается, как приступить к использованию хранилища больших двоичных объектов Azure после создания учетной записи хранения Azure с помощью диалогового окна **Добавление подключенных служб** в проекте облачных служб Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-105">This article describes how to get started with Azure Blob Storage after you created or referenced an Azure Storage account by using the Visual Studio **Add Connected Services** dialog in a Visual Studio cloud services project.</span></span> <span data-ttu-id="bb6fa-106">Мы покажем, как получить доступ к контейнерам больших двоичных объектов и как создавать их, а также как выполнять общие задачи, такие как отправка, перечисление и скачивание больших двоичных объектов.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-106">We'll show you how to access and create blob containers, and how to perform common tasks like uploading, listing, and downloading blobs.</span></span> <span data-ttu-id="bb6fa-107">Примеры написаны на C\# и используют [клиентскую библиотеку службы хранилища Microsoft Azure для .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).</span><span class="sxs-lookup"><span data-stu-id="bb6fa-107">The samples are written in C\# and use the [Microsoft Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).</span></span>
+## <a name="overview"></a><span data-ttu-id="01e63-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="01e63-104">Overview</span></span>
+<span data-ttu-id="01e63-105">В этой статье описывается, как tooget работу с BLOB-хранилища Azure, после создания или ссылка на учетную запись хранилища Azure с помощью Visual Studio hello **Добавление подключенных служб** диалогового окна в облаке Visual Studio проект служб.</span><span class="sxs-lookup"><span data-stu-id="01e63-105">This article describes how tooget started with Azure Blob Storage after you created or referenced an Azure Storage account by using hello Visual Studio **Add Connected Services** dialog in a Visual Studio cloud services project.</span></span> <span data-ttu-id="01e63-106">Мы покажем, как tooaccess и создание контейнеров больших двоичных объектов и как tooperform общих задач и отправка, вывод и загрузка больших двоичных объектов.</span><span class="sxs-lookup"><span data-stu-id="01e63-106">We'll show you how tooaccess and create blob containers, and how tooperform common tasks like uploading, listing, and downloading blobs.</span></span> <span data-ttu-id="01e63-107">Hello примеры на языке C\# и использовать hello [клиентская библиотека хранилища Microsoft Azure для .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).</span><span class="sxs-lookup"><span data-stu-id="01e63-107">hello samples are written in C\# and use hello [Microsoft Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).</span></span>
 
-<span data-ttu-id="bb6fa-108">Хранилище больших двоичных объектов Azure — это служба хранения большого количества неструктурированных данных, к которым можно получить доступ практически из любой точки мира по протоколам HTTP или HTTPS.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-108">Azure Blob Storage is a service for storing large amounts of unstructured data that can be accessed from anywhere in the world via HTTP or HTTPS.</span></span> <span data-ttu-id="bb6fa-109">Один большой двоичный объект может быть любого размера.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-109">A single blob can be any size.</span></span> <span data-ttu-id="bb6fa-110">Большими двоичными объектами могут быть изображения, аудио- и видеофайлы, необработанные данные и файлы документов.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-110">Blobs can be things like images, audio and video files, raw data, and document files.</span></span>
+<span data-ttu-id="01e63-108">Хранилище Azure BLOB-объекта — это служба для хранения больших объемов неструктурированных данных, который может осуществляться из любого места в Здравствуй, мир! через HTTP или HTTPS.</span><span class="sxs-lookup"><span data-stu-id="01e63-108">Azure Blob Storage is a service for storing large amounts of unstructured data that can be accessed from anywhere in hello world via HTTP or HTTPS.</span></span> <span data-ttu-id="01e63-109">Один большой двоичный объект может быть любого размера.</span><span class="sxs-lookup"><span data-stu-id="01e63-109">A single blob can be any size.</span></span> <span data-ttu-id="01e63-110">Большими двоичными объектами могут быть изображения, аудио- и видеофайлы, необработанные данные и файлы документов.</span><span class="sxs-lookup"><span data-stu-id="01e63-110">Blobs can be things like images, audio and video files, raw data, and document files.</span></span>
 
-<span data-ttu-id="bb6fa-111">Так же как файлы располагаются в папках, большие двоичные объекты хранилища располагаются в контейнерах.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-111">Just as files live in folders, storage blobs live in containers.</span></span> <span data-ttu-id="bb6fa-112">После создания хранилища вы можете создать один или несколько контейнеров в нем.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-112">After you have created a storage, you create one or more containers in the storage.</span></span> <span data-ttu-id="bb6fa-113">Например, можно создать хранилище с именем "Альбом", в нем создать контейнеры "изображения" для хранения файлов изображений и "аудио" для хранения аудиофайлов.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-113">For example, in a storage called "Scrapbook," you can create containers in the storage called "images" to store pictures and another called "audio" to store audio files.</span></span> <span data-ttu-id="bb6fa-114">После создания контейнеров в них можно отправлять индивидуальные большие двоичные объекты.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-114">After you create the containers, you can upload individual blob files to them.</span></span>
+<span data-ttu-id="01e63-111">Так же как файлы располагаются в папках, большие двоичные объекты хранилища располагаются в контейнерах.</span><span class="sxs-lookup"><span data-stu-id="01e63-111">Just as files live in folders, storage blobs live in containers.</span></span> <span data-ttu-id="01e63-112">После создания хранилища, можно создать один или несколько контейнеров в хранилище hello.</span><span class="sxs-lookup"><span data-stu-id="01e63-112">After you have created a storage, you create one or more containers in hello storage.</span></span> <span data-ttu-id="01e63-113">Например в хранилище, вызывается буферный «файл», контейнеров можно создать в хранилище hello, называется «images» toostore изображения и вызывается другой toostore «звук» звуковые файлы.</span><span class="sxs-lookup"><span data-stu-id="01e63-113">For example, in a storage called "Scrapbook," you can create containers in hello storage called "images" toostore pictures and another called "audio" toostore audio files.</span></span> <span data-ttu-id="01e63-114">После создания hello контейнеры, можно передать файлы toothem отдельных больших двоичных объектов.</span><span class="sxs-lookup"><span data-stu-id="01e63-114">After you create hello containers, you can upload individual blob files toothem.</span></span>
 
-* <span data-ttu-id="bb6fa-115">Дополнительные сведения о программных операциях с большими двоичными объектами см. в статье [Приступая к работе с хранилищем BLOB-объектов Azure с помощью .NET](storage-dotnet-how-to-use-blobs.md).</span><span class="sxs-lookup"><span data-stu-id="bb6fa-115">For more information on programmatically manipulating blobs, see [Get started with Azure Blob storage using .NET](storage-dotnet-how-to-use-blobs.md).</span></span>
-* <span data-ttu-id="bb6fa-116">Общие сведения о службе хранилища Azure см. в [документации по службе хранилища](https://azure.microsoft.com/documentation/services/storage/).</span><span class="sxs-lookup"><span data-stu-id="bb6fa-116">For general information about Azure Storage, see [Storage documentation](https://azure.microsoft.com/documentation/services/storage/).</span></span>
-* <span data-ttu-id="bb6fa-117">Общие сведения об облачных службах Azure см. в [документации по облачным службам](https://azure.microsoft.com/documentation/services/cloud-services/).</span><span class="sxs-lookup"><span data-stu-id="bb6fa-117">For general information about Azure Cloud Services, see [Cloud Services documentation](https://azure.microsoft.com/documentation/services/cloud-services/).</span></span>
-* <span data-ttu-id="bb6fa-118">Дополнительные сведения о программировании для приложений ASP.NET см. в разделе [ASP.NET](http://www.asp.net).</span><span class="sxs-lookup"><span data-stu-id="bb6fa-118">For more information about programming ASP.NET applications, see [ASP.NET](http://www.asp.net).</span></span>
+* <span data-ttu-id="01e63-115">Дополнительные сведения о программных операциях с большими двоичными объектами см. в статье [Приступая к работе с хранилищем BLOB-объектов Azure с помощью .NET](storage-dotnet-how-to-use-blobs.md).</span><span class="sxs-lookup"><span data-stu-id="01e63-115">For more information on programmatically manipulating blobs, see [Get started with Azure Blob storage using .NET](storage-dotnet-how-to-use-blobs.md).</span></span>
+* <span data-ttu-id="01e63-116">Общие сведения о службе хранилища Azure см. в [документации по службе хранилища](https://azure.microsoft.com/documentation/services/storage/).</span><span class="sxs-lookup"><span data-stu-id="01e63-116">For general information about Azure Storage, see [Storage documentation](https://azure.microsoft.com/documentation/services/storage/).</span></span>
+* <span data-ttu-id="01e63-117">Общие сведения об облачных службах Azure см. в [документации по облачным службам](https://azure.microsoft.com/documentation/services/cloud-services/).</span><span class="sxs-lookup"><span data-stu-id="01e63-117">For general information about Azure Cloud Services, see [Cloud Services documentation](https://azure.microsoft.com/documentation/services/cloud-services/).</span></span>
+* <span data-ttu-id="01e63-118">Дополнительные сведения о программировании для приложений ASP.NET см. в разделе [ASP.NET](http://www.asp.net).</span><span class="sxs-lookup"><span data-stu-id="01e63-118">For more information about programming ASP.NET applications, see [ASP.NET](http://www.asp.net).</span></span>
 
-## <a name="access-blob-containers-in-code"></a><span data-ttu-id="bb6fa-119">Доступ к контейнерам больших двоичных объектов в коде</span><span class="sxs-lookup"><span data-stu-id="bb6fa-119">Access blob containers in code</span></span>
-<span data-ttu-id="bb6fa-120">Для программного доступа к большим двоичным объектам в проектах облачных служб необходимо добавить следующие элементы, если они еще не существуют.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-120">To programmatically access blobs in cloud service projects, you need to add the following items, if they're not already present.</span></span>
+## <a name="access-blob-containers-in-code"></a><span data-ttu-id="01e63-119">Доступ к контейнерам больших двоичных объектов в коде</span><span class="sxs-lookup"><span data-stu-id="01e63-119">Access blob containers in code</span></span>
+<span data-ttu-id="01e63-120">tooprogrammatically доступа к большим двоичным объектам в проектах облачных служб, необходимо tooadd hello следующих элементов, в том случае, если они еще не существует.</span><span class="sxs-lookup"><span data-stu-id="01e63-120">tooprogrammatically access blobs in cloud service projects, you need tooadd hello following items, if they're not already present.</span></span>
 
-1. <span data-ttu-id="bb6fa-121">Добавьте следующие объявления пространств имен кода в начало любого файла C#,в котором вы собираетесь получать доступ к хранилищу Azure программным способом.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-121">Add the following code namespace declarations to the top of any C# file in which you wish to programmatically access Azure Storage.</span></span>
+1. <span data-ttu-id="01e63-121">Добавьте следующий код объявления пространства имен toohello начало любой файл C#, в котором вы хотите tooprogrammatically доступа хранилища Azure hello.</span><span class="sxs-lookup"><span data-stu-id="01e63-121">Add hello following code namespace declarations toohello top of any C# file in which you wish tooprogrammatically access Azure Storage.</span></span>
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
-2. <span data-ttu-id="bb6fa-122">Получите объект **CloudStorageAccount** , представляющий данные учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-122">Get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="bb6fa-123">Используйте следующий код, чтобы получить строку подключения и сведения об учетной записи хранения из конфигурации службы Azure.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-123">Use the following code to get the your storage connection string and storage account information from the Azure service configuration.</span></span>
+2. <span data-ttu-id="01e63-122">Получите объект **CloudStorageAccount** , представляющий данные учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="01e63-122">Get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="01e63-123">Hello используйте следующий код tooget hello хранения строки соединения и сведения об учетной записи хранилища из конфигурации службы Azure hello.</span><span class="sxs-lookup"><span data-stu-id="01e63-123">Use hello following code tooget hello your storage connection string and storage account information from hello Azure service configuration.</span></span>
    
         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
-3. <span data-ttu-id="bb6fa-124">Получите объект **CloudBlobClient** , чтобы указать ссылку на существующий контейнер в вашей учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-124">Get a **CloudBlobClient** object to reference an existing container in your storage account.</span></span>
+3. <span data-ttu-id="01e63-124">Получить **CloudBlobClient** объекта tooreference существующий контейнер в вашей учетной записи хранилища.</span><span class="sxs-lookup"><span data-stu-id="01e63-124">Get a **CloudBlobClient** object tooreference an existing container in your storage account.</span></span>
    
         // Create a blob client.
         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-4. <span data-ttu-id="bb6fa-125">Получите объект **CloudBlobContainer** , чтобы указать ссылку на определенный контейнер больших двоичных объектов.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-125">Get a **CloudBlobContainer** object to reference a specific blob container.</span></span>
+4. <span data-ttu-id="01e63-125">Получить **CloudBlobContainer** объекта tooreference конкретного BLOB-контейнере.</span><span class="sxs-lookup"><span data-stu-id="01e63-125">Get a **CloudBlobContainer** object tooreference a specific blob container.</span></span>
    
-        // Get a reference to a container named "mycontainer."
+        // Get a reference tooa container named "mycontainer."
         CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
 > [!NOTE]
-> <span data-ttu-id="bb6fa-126">Вставьте весь код, показанный в предыдущей процедуре, перед кодом, показанным в следующих разделах.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-126">Use all of the code shown in the previous procedure in front of the code shown in the following sections.</span></span>
+> <span data-ttu-id="01e63-126">Используйте все hello код, показанный в предыдущей процедуре hello перед hello код, показываемый в следующих разделах hello.</span><span class="sxs-lookup"><span data-stu-id="01e63-126">Use all of hello code shown in hello previous procedure in front of hello code shown in hello following sections.</span></span>
 > 
 > 
 
-## <a name="create-a-container-in-code"></a><span data-ttu-id="bb6fa-127">Создание контейнера в коде</span><span class="sxs-lookup"><span data-stu-id="bb6fa-127">Create a container in code</span></span>
+## <a name="create-a-container-in-code"></a><span data-ttu-id="01e63-127">Создание контейнера в коде</span><span class="sxs-lookup"><span data-stu-id="01e63-127">Create a container in code</span></span>
 > [!NOTE]
-> <span data-ttu-id="bb6fa-128">Некоторые интерфейсы API, которые выполняют вызовы в хранилище Azure в ASP.NET, являются асинхронными.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-128">Some APIs that perform calls out to Azure Storage in ASP.NET are asynchronous.</span></span> <span data-ttu-id="bb6fa-129">Дополнительные сведения см. в статье [Asynchronous Programming with async and await (C#)](http://msdn.microsoft.com/library/hh191443.aspx) (Асинхронное программирование с использованием ключевых слов Async и Await (C#)).</span><span class="sxs-lookup"><span data-stu-id="bb6fa-129">See [Asynchronous programming with Async and Await](http://msdn.microsoft.com/library/hh191443.aspx) for more information.</span></span> <span data-ttu-id="bb6fa-130">Код в приведенном ниже примере предполагает, что вы используете асинхронные методы программирования.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-130">The code in the following example assumes that you are using async programming methods.</span></span>
+> <span data-ttu-id="01e63-128">Некоторые интерфейсы API, выполняющие вызовы out tooAzure хранилища в ASP.NET является асинхронным.</span><span class="sxs-lookup"><span data-stu-id="01e63-128">Some APIs that perform calls out tooAzure Storage in ASP.NET are asynchronous.</span></span> <span data-ttu-id="01e63-129">Дополнительные сведения см. в статье [Asynchronous Programming with async and await (C#)](http://msdn.microsoft.com/library/hh191443.aspx) (Асинхронное программирование с использованием ключевых слов Async и Await (C#)).</span><span class="sxs-lookup"><span data-stu-id="01e63-129">See [Asynchronous programming with Async and Await](http://msdn.microsoft.com/library/hh191443.aspx) for more information.</span></span> <span data-ttu-id="01e63-130">Hello кода hello следующий пример предполагает, что вы используете асинхронные методы программирования.</span><span class="sxs-lookup"><span data-stu-id="01e63-130">hello code in hello following example assumes that you are using async programming methods.</span></span>
 > 
 > 
 
-<span data-ttu-id="bb6fa-131">Чтобы создать контейнер в учетной записи хранения, необходимо всего лишь добавить вызов **CreateIfNotExistsAsync** , как это сделано в следующем коде.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-131">To create a container in your storage account, all you need to do is add a call to **CreateIfNotExistsAsync** as in the following code:</span></span>
+<span data-ttu-id="01e63-131">toocreate контейнера в учетной записи хранения, все, что нужно toodo добавить вызов слишком**CreateIfNotExistsAsync** как hello, следующий код:</span><span class="sxs-lookup"><span data-stu-id="01e63-131">toocreate a container in your storage account, all you need toodo is add a call too**CreateIfNotExistsAsync** as in hello following code:</span></span>
 
     // If "mycontainer" doesn't exist, create it.
     await container.CreateIfNotExistsAsync();
 
 
-<span data-ttu-id="bb6fa-132">Чтобы сделать файлы в контейнере доступными для всех пользователей, сделайте контейнер общедоступным с помощью следующего примера кода.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-132">To make the files within the container available to everyone, you can set the container to be public by using the following code.</span></span>
+<span data-ttu-id="01e63-132">toomake файлов hello в доступных tooeveryone hello контейнера, можно задать toobe контейнера hello открытый с помощью hello, следующий код.</span><span class="sxs-lookup"><span data-stu-id="01e63-132">toomake hello files within hello container available tooeveryone, you can set hello container toobe public by using hello following code.</span></span>
 
     await container.SetPermissionsAsync(new BlobContainerPermissions
     {
@@ -83,26 +83,26 @@ ms.lasthandoff: 07/11/2017
     });
 
 
-<span data-ttu-id="bb6fa-133">Любой пользователь в Интернете может видеть большие двоичные объекты в открытом контейнере, но изменить или удалить их можно только при наличии ключа доступа.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-133">Anyone on the Internet can see blobs in a public container, but you can modify or delete them only if you have the appropriate access key.</span></span>
+<span data-ttu-id="01e63-133">Всем пользователям в Интернете hello можно увидеть в открытый контейнер BLOB-объектов, но можно изменить или удалить их только в том случае, если у вас есть ключ hello соответствующие права доступа.</span><span class="sxs-lookup"><span data-stu-id="01e63-133">Anyone on hello Internet can see blobs in a public container, but you can modify or delete them only if you have hello appropriate access key.</span></span>
 
-## <a name="upload-a-blob-into-a-container"></a><span data-ttu-id="bb6fa-134">Отправка BLOB-объекта в контейнер</span><span class="sxs-lookup"><span data-stu-id="bb6fa-134">Upload a blob into a container</span></span>
-<span data-ttu-id="bb6fa-135">Хранилище BLOB-объектов Azure поддерживает блочные и страничные BLOB-объекты.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-135">Azure Storage supports block blobs and page blobs.</span></span> <span data-ttu-id="bb6fa-136">В большинстве случаев рекомендуется использовать блочные BLOB-объекты.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-136">In the majority of cases, block blob is the recommended type to use.</span></span>
+## <a name="upload-a-blob-into-a-container"></a><span data-ttu-id="01e63-134">Отправка BLOB-объекта в контейнер</span><span class="sxs-lookup"><span data-stu-id="01e63-134">Upload a blob into a container</span></span>
+<span data-ttu-id="01e63-135">Хранилище BLOB-объектов Azure поддерживает блочные и страничные BLOB-объекты.</span><span class="sxs-lookup"><span data-stu-id="01e63-135">Azure Storage supports block blobs and page blobs.</span></span> <span data-ttu-id="01e63-136">В большинстве случаев hello блочного BLOB-объекта — hello, рекомендуется toouse типа.</span><span class="sxs-lookup"><span data-stu-id="01e63-136">In hello majority of cases, block blob is hello recommended type toouse.</span></span>
 
-<span data-ttu-id="bb6fa-137">Для передачи файла в блочный BLOB-объект получите ссылку на контейнер и используйте ее для получения ссылки на блочный BLOB-объект.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-137">To upload a file to a block blob, get a container reference and use it to get a block blob reference.</span></span> <span data-ttu-id="bb6fa-138">Получив ссылку на большой двоичный объект, вы можете отправить в него любой поток данных с помощью метода **UploadFromStream** .</span><span class="sxs-lookup"><span data-stu-id="bb6fa-138">Once you have a blob reference, you can upload any stream of data to it by calling the **UploadFromStream** method.</span></span> <span data-ttu-id="bb6fa-139">Эта операция создает большой двоичный объект, если он не существует, или заменяет его, если он существует.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-139">This operation creates the blob if it didn't previously exist, or overwrites it if it does exist.</span></span> <span data-ttu-id="bb6fa-140">В следующем примере показано, как отправить BLOB-объект в контейнер. Предполагается, что контейнер уже был создан.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-140">The following example shows how to upload a blob into a container and assumes that the container was already created.</span></span>
+<span data-ttu-id="01e63-137">большой двоичный объект блока файла tooa tooupload получить ссылку на контейнер и использовать его tooget ссылку на большой двоичный объект блока.</span><span class="sxs-lookup"><span data-stu-id="01e63-137">tooupload a file tooa block blob, get a container reference and use it tooget a block blob reference.</span></span> <span data-ttu-id="01e63-138">Получив ссылку на большой двоичный объект можно передать любой поток данных tooit с вызывающему Привет **UploadFromStream** метод.</span><span class="sxs-lookup"><span data-stu-id="01e63-138">Once you have a blob reference, you can upload any stream of data tooit by calling hello **UploadFromStream** method.</span></span> <span data-ttu-id="01e63-139">Эта операция создает hello большого двоичного объекта, если он не был найден ранее, или перезаписывает его, если он существует.</span><span class="sxs-lookup"><span data-stu-id="01e63-139">This operation creates hello blob if it didn't previously exist, or overwrites it if it does exist.</span></span> <span data-ttu-id="01e63-140">Следующий пример показывает как Hello tooupload большого двоичного объекта в контейнер и предполагается hello контейнера уже был создан.</span><span class="sxs-lookup"><span data-stu-id="01e63-140">hello following example shows how tooupload a blob into a container and assumes that hello container was already created.</span></span>
 
-    // Retrieve a reference to a blob named "myblob".
+    // Retrieve a reference tooa blob named "myblob".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
-    // Create or overwrite the "myblob" blob with contents from a local file.
+    // Create or overwrite hello "myblob" blob with contents from a local file.
     using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
     {
         blockBlob.UploadFromStream(fileStream);
     }
 
-## <a name="list-the-blobs-in-a-container"></a><span data-ttu-id="bb6fa-141">Перечисление BLOB-объектов в контейнере</span><span class="sxs-lookup"><span data-stu-id="bb6fa-141">List the blobs in a container</span></span>
-<span data-ttu-id="bb6fa-142">Для перечисления BLOB-объектов в контейнере сначала необходимо получить ссылку на контейнер.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-142">To list the blobs in a container, first get a container reference.</span></span> <span data-ttu-id="bb6fa-143">Затем можно использовать метод **ListBlobs** контейнера, чтобы извлечь большие двоичные объекты и/или каталоги в нем.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-143">You can then use the container's **ListBlobs** method to retrieve the blobs and/or directories within it.</span></span> <span data-ttu-id="bb6fa-144">Для доступа к широкому набору свойств и методов возвращаемого объекта **IListBlobItem** необходимо преобразовать его в объект **CloudBlockBlob**, **CloudPageBlob** или **CloudBlobDirectory**.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-144">To access the rich set of properties and methods for a  returned **IListBlobItem**, you must cast it to a **CloudBlockBlob**, **CloudPageBlob**, or **CloudBlobDirectory** object.</span></span> <span data-ttu-id="bb6fa-145">Если тип неизвестен, можно использовать проверку типов, чтобы определить нужный тип.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-145">If the type is unknown, you can use a type check to determine which to cast it to.</span></span> <span data-ttu-id="bb6fa-146">Следующий код демонстрирует, как получить и вывести универсальный код ресурса (URI) каждого элемента в контейнере **photos** .</span><span class="sxs-lookup"><span data-stu-id="bb6fa-146">The following code demonstrates how to retrieve and output the URI of each item in the **photos** container:</span></span>
+## <a name="list-hello-blobs-in-a-container"></a><span data-ttu-id="01e63-141">Перечисление hello больших двоичных объектов в контейнере</span><span class="sxs-lookup"><span data-stu-id="01e63-141">List hello blobs in a container</span></span>
+<span data-ttu-id="01e63-142">toolist hello BLOB-объектов в контейнере, сначала нужно получить ссылку на контейнер.</span><span class="sxs-lookup"><span data-stu-id="01e63-142">toolist hello blobs in a container, first get a container reference.</span></span> <span data-ttu-id="01e63-143">Затем можно использовать контейнер hello **ListBlobs** метод tooretrieve hello BLOB-объектов и/или каталогов в ней.</span><span class="sxs-lookup"><span data-stu-id="01e63-143">You can then use hello container's **ListBlobs** method tooretrieve hello blobs and/or directories within it.</span></span> <span data-ttu-id="01e63-144">широкий набор свойств и методов для возвращенной hello tooaccess **IListBlobItem**, необходимо привести tooa **CloudBlockBlob**, **CloudPageBlob**, или  **CloudBlobDirectory** объекта.</span><span class="sxs-lookup"><span data-stu-id="01e63-144">tooaccess hello rich set of properties and methods for a  returned **IListBlobItem**, you must cast it tooa **CloudBlockBlob**, **CloudPageBlob**, or **CloudBlobDirectory** object.</span></span> <span data-ttu-id="01e63-145">Если неизвестен тип hello, можно использовать проверку типа toodetermine какие toocast его.</span><span class="sxs-lookup"><span data-stu-id="01e63-145">If hello type is unknown, you can use a type check toodetermine which toocast it to.</span></span> <span data-ttu-id="01e63-146">Hello следующий код демонстрирует, как tooretrieve и вывод hello URI каждого элемента в hello **фотографии** контейнера:</span><span class="sxs-lookup"><span data-stu-id="01e63-146">hello following code demonstrates how tooretrieve and output hello URI of each item in hello **photos** container:</span></span>
 
-    // Loop over items within the container and output the length and URI.
+    // Loop over items within hello container and output hello length and URI.
     foreach (IListBlobItem item in container.ListBlobs(null, false))
     {
         if (item.GetType() == typeof(CloudBlockBlob))
@@ -127,7 +127,7 @@ ms.lasthandoff: 07/11/2017
         }
     }
 
-<span data-ttu-id="bb6fa-147">Как показано в предыдущем примере кода, служба BLOB-объектов также использует концепцию каталогов внутри контейнеров.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-147">As shown in the previous code sample, the blob service has the concept of directories within containers, as well.</span></span> <span data-ttu-id="bb6fa-148">Таким образом, можно организовать BLOB-объекты в структуре, похожей на папки.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-148">This is so that you can organize your blobs in a more folder-like structure.</span></span> <span data-ttu-id="bb6fa-149">Для примера рассмотрим следующий набор блочных BLOB-объектов в контейнере **photos**.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-149">For example, consider the following set of block blobs in a container named **photos**:</span></span>
+<span data-ttu-id="01e63-147">Как показано в предыдущем образце кода hello hello BLOB-объектов имеет концепции hello каталогов в контейнерах, а также.</span><span class="sxs-lookup"><span data-stu-id="01e63-147">As shown in hello previous code sample, hello blob service has hello concept of directories within containers, as well.</span></span> <span data-ttu-id="01e63-148">Таким образом, можно организовать BLOB-объекты в структуре, похожей на папки.</span><span class="sxs-lookup"><span data-stu-id="01e63-148">This is so that you can organize your blobs in a more folder-like structure.</span></span> <span data-ttu-id="01e63-149">Например, рассмотрим следующий набор блочных больших двоичных объектов в контейнере с именем hello **фотографии**:</span><span class="sxs-lookup"><span data-stu-id="01e63-149">For example, consider hello following set of block blobs in a container named **photos**:</span></span>
 
     photo1.jpg
     2010/architecture/description.txt
@@ -138,22 +138,22 @@ ms.lasthandoff: 07/11/2017
     2011/architecture/description.txt
     2011/photo7.jpg
 
-<span data-ttu-id="bb6fa-150">При вызове метода **ListBlobs** контейнера (как в примере выше) возвращаемая коллекция будет содержать объекты **CloudBlobDirectory** и **CloudBlockBlob**, представляющие каталоги и большие двоичные объекты верхнего уровня.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-150">When you call **ListBlobs** on the container (as in the previous sample), the collection returned contains **CloudBlobDirectory** and **CloudBlockBlob** objects representing the directories and blobs contained at the top level.</span></span> <span data-ttu-id="bb6fa-151">В результате получается следующее:</span><span class="sxs-lookup"><span data-stu-id="bb6fa-151">Here is the resulting output:</span></span>
+<span data-ttu-id="01e63-150">При вызове **ListBlobs** в контейнере hello (как в предыдущем примере hello), содержит hello коллекция, возвращенная **CloudBlobDirectory** и **CloudBlockBlob** объектов представляющий hello каталоги и большие двоичные объекты, содержащиеся на верхнем уровне hello.</span><span class="sxs-lookup"><span data-stu-id="01e63-150">When you call **ListBlobs** on hello container (as in hello previous sample), hello collection returned contains **CloudBlobDirectory** and **CloudBlockBlob** objects representing hello directories and blobs contained at hello top level.</span></span> <span data-ttu-id="01e63-151">Ниже приведен результат hello:</span><span class="sxs-lookup"><span data-stu-id="01e63-151">Here is hello resulting output:</span></span>
 
     Directory: https://<accountname>.blob.core.windows.net/photos/2010/
     Directory: https://<accountname>.blob.core.windows.net/photos/2011/
     Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
 
-<span data-ttu-id="bb6fa-152">При необходимости можно установить для параметра **UseFlatBlobListing** метода **ListBlobs** значение **true**.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-152">Optionally, you can set the **UseFlatBlobListing** parameter of of the **ListBlobs** method to **true**.</span></span> <span data-ttu-id="bb6fa-153">Это приведет к возвращению каждого большого двоичного объекта в виде **CloudBlockBlob**независимо от того, какой каталог используется.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-153">This results in every blob being returned as a **CloudBlockBlob**, regardless of directory.</span></span> <span data-ttu-id="bb6fa-154">Вот как выглядит вызов метода **ListBlobs**.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-154">Here is the call to **ListBlobs**:</span></span>
+<span data-ttu-id="01e63-152">При необходимости можно задать hello **UseFlatBlobListing** параметра hello **ListBlobs** метод **true**.</span><span class="sxs-lookup"><span data-stu-id="01e63-152">Optionally, you can set hello **UseFlatBlobListing** parameter of of hello **ListBlobs** method to **true**.</span></span> <span data-ttu-id="01e63-153">Это приведет к возвращению каждого большого двоичного объекта в виде **CloudBlockBlob**независимо от того, какой каталог используется.</span><span class="sxs-lookup"><span data-stu-id="01e63-153">This results in every blob being returned as a **CloudBlockBlob**, regardless of directory.</span></span> <span data-ttu-id="01e63-154">Вот вызов hello слишком**ListBlobs**:</span><span class="sxs-lookup"><span data-stu-id="01e63-154">Here is hello call too**ListBlobs**:</span></span>
 
-    // Loop over items within the container and output the length and URI.
+    // Loop over items within hello container and output hello length and URI.
     foreach (IListBlobItem item in container.ListBlobs(null, true))
     {
        ...
     }
 
-<span data-ttu-id="bb6fa-155">А это — результат:</span><span class="sxs-lookup"><span data-stu-id="bb6fa-155">and here are the results:</span></span>
+<span data-ttu-id="01e63-155">а вот hello результаты:</span><span class="sxs-lookup"><span data-stu-id="01e63-155">and here are hello results:</span></span>
 
     Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
     Block blob of length 314618: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo3.jpg
@@ -164,23 +164,23 @@ ms.lasthandoff: 07/11/2017
     Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/2011/photo7.jpg
     Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
-<span data-ttu-id="bb6fa-156">Дополнительные сведения см. в описании метода [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx).</span><span class="sxs-lookup"><span data-stu-id="bb6fa-156">For more information, see [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx).</span></span>
+<span data-ttu-id="01e63-156">Дополнительные сведения см. в описании метода [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx).</span><span class="sxs-lookup"><span data-stu-id="01e63-156">For more information, see [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx).</span></span>
 
-## <a name="download-blobs"></a><span data-ttu-id="bb6fa-157">Скачивание больших двоичных объектов</span><span class="sxs-lookup"><span data-stu-id="bb6fa-157">Download blobs</span></span>
-<span data-ttu-id="bb6fa-158">Для загрузки BLOB-объектов сначала нужно получить ссылку на BLOB-объект, а затем вызвать метод **DownloadToStream** .</span><span class="sxs-lookup"><span data-stu-id="bb6fa-158">To download blobs, first retrieve a blob reference and then call the **DownloadToStream** method.</span></span> <span data-ttu-id="bb6fa-159">В следующем примере метод **DownloadToStream** используется для переноса содержимого большого двоичного объекта в объект потока, который затем можно сохранить в локальном файле.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-159">The following example uses the **DownloadToStream** method to transfer the blob contents to a stream object that you can then persist to a local file.</span></span>
+## <a name="download-blobs"></a><span data-ttu-id="01e63-157">Скачивание больших двоичных объектов</span><span class="sxs-lookup"><span data-stu-id="01e63-157">Download blobs</span></span>
+<span data-ttu-id="01e63-158">toodownload больших двоичных объектов, сначала получить ссылку на большой двоичный объект, а затем вызвать hello **методов DownloadToStream** метод.</span><span class="sxs-lookup"><span data-stu-id="01e63-158">toodownload blobs, first retrieve a blob reference and then call hello **DownloadToStream** method.</span></span> <span data-ttu-id="01e63-159">Hello следующий пример использует hello **методов DownloadToStream** метод tootransfer hello blob содержимое tooa объекта потока могут затем сохраняться tooa локального файла.</span><span class="sxs-lookup"><span data-stu-id="01e63-159">hello following example uses hello **DownloadToStream** method tootransfer hello blob contents tooa stream object that you can then persist tooa local file.</span></span>
 
-    // Get a reference to a blob named "photo1.jpg".
+    // Get a reference tooa blob named "photo1.jpg".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");
 
-    // Save blob contents to a file.
+    // Save blob contents tooa file.
     using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
     {
         blockBlob.DownloadToStream(fileStream);
     }
 
-<span data-ttu-id="bb6fa-160">Можно также использовать метод **DownloadToStream** , чтобы загрузить содержимое BLOB-объекта как текстовую строку.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-160">You can also use the **DownloadToStream** method to download the contents of a blob as a text string.</span></span>
+<span data-ttu-id="01e63-160">Можно также использовать hello **методов DownloadToStream** метод toodownload hello содержимое большого двоичного объекта в виде строки текста.</span><span class="sxs-lookup"><span data-stu-id="01e63-160">You can also use hello **DownloadToStream** method toodownload hello contents of a blob as a text string.</span></span>
 
-    // Get a reference to a blob named "myblob.txt"
+    // Get a reference tooa blob named "myblob.txt"
     CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
 
     string text;
@@ -190,37 +190,37 @@ ms.lasthandoff: 07/11/2017
         text = System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
     }
 
-## <a name="delete-blobs"></a><span data-ttu-id="bb6fa-161">Удаление blob-объектов</span><span class="sxs-lookup"><span data-stu-id="bb6fa-161">Delete blobs</span></span>
-<span data-ttu-id="bb6fa-162">Чтобы удалить большой двоичный объект, сначала нужно получить ссылку на него, а затем вызвать метод **Delete** .</span><span class="sxs-lookup"><span data-stu-id="bb6fa-162">To delete a blob, first get a blob reference and then call the **Delete** method.</span></span>
+## <a name="delete-blobs"></a><span data-ttu-id="01e63-161">Удаление blob-объектов</span><span class="sxs-lookup"><span data-stu-id="01e63-161">Delete blobs</span></span>
+<span data-ttu-id="01e63-162">toodelete большого двоичного объекта сначала получить ссылку на большой двоичный объект, а затем вызвать **удалить** метод.</span><span class="sxs-lookup"><span data-stu-id="01e63-162">toodelete a blob, first get a blob reference and then call the **Delete** method.</span></span>
 
-    // Get a reference to a blob named "myblob.txt".
+    // Get a reference tooa blob named "myblob.txt".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
 
-    // Delete the blob.
+    // Delete hello blob.
     blockBlob.Delete();
 
 
-## <a name="list-blobs-in-pages-asynchronously"></a><span data-ttu-id="bb6fa-163">Асинхронное перечисление BLOB-объектов в страницах</span><span class="sxs-lookup"><span data-stu-id="bb6fa-163">List blobs in pages asynchronously</span></span>
-<span data-ttu-id="bb6fa-164">Если вам нужно расположить большое количество BLOB-объектов или вы хотите управлять отображением количества объектов в результате запроса, вы можете задать расположение BLOB-объектов на странице.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-164">If you are listing a large number of blobs, or you want to control the number of results you return in one listing operation, you can list blobs in pages of results.</span></span> <span data-ttu-id="bb6fa-165">В этом примере вы узнаете, как расположить запрошенные результаты на странице асинхронно для того, чтобы не блокировать выполнение задачи ожиданием большого объема возвращаемых данных.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-165">This example shows how to return results in pages asynchronously, so that execution is not blocked while waiting to return a large set of results.</span></span>
+## <a name="list-blobs-in-pages-asynchronously"></a><span data-ttu-id="01e63-163">Асинхронное перечисление BLOB-объектов в страницах</span><span class="sxs-lookup"><span data-stu-id="01e63-163">List blobs in pages asynchronously</span></span>
+<span data-ttu-id="01e63-164">Если следует toocontrol hello число результатов, возвращаемых в одной операцией получения листинга списка большое количество больших двоичных объектов, можно перечислить большие двоичные объекты в страницы результатов.</span><span class="sxs-lookup"><span data-stu-id="01e63-164">If you are listing a large number of blobs, or you want toocontrol hello number of results you return in one listing operation, you can list blobs in pages of results.</span></span> <span data-ttu-id="01e63-165">Этот пример отображением tooreturn результатов на страницах асинхронно, так что выполнение не блокируются во время ожидания tooreturn большого набора результатов.</span><span class="sxs-lookup"><span data-stu-id="01e63-165">This example shows how tooreturn results in pages asynchronously, so that execution is not blocked while waiting tooreturn a large set of results.</span></span>
 
-<span data-ttu-id="bb6fa-166">В этом примере показано создание плоского списка больших двоичных объектов. Но вы также можете создать иерархический список, установив для параметра **useFlatBlobListing** в методе **ListBlobsSegmentedAsync** значение **false**.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-166">This example shows a flat blob listing, but you can also perform a hierarchical listing, by setting the **useFlatBlobListing** parameter of the **ListBlobsSegmentedAsync** method to **false**.</span></span>
+<span data-ttu-id="01e63-166">В этом примере показано плоский перечисления больших двоичных объектов, но можно также выполнить иерархический список, установка hello **useFlatBlobListing** параметр hello **ListBlobsSegmentedAsync** метод слишком **false**.</span><span class="sxs-lookup"><span data-stu-id="01e63-166">This example shows a flat blob listing, but you can also perform a hierarchical listing, by setting hello **useFlatBlobListing** parameter of hello **ListBlobsSegmentedAsync** method too**false**.</span></span>
 
-<span data-ttu-id="bb6fa-167">Так как метод из примера вызывает асинхронный метод, перед ним необходимо задать ключевое слово **async**. Это позволит вернуть объект **Task**.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-167">Because the sample method calls an asynchronous method, it must be prefaced with the **async** keyword, and it must return a **Task** object.</span></span> <span data-ttu-id="bb6fa-168">При ожидании ключевого слова для **ListBlobsSegmentedAsync** метод приостанавливает выполнение примера до тех пор, пока задача размещения результатов не завершена.</span><span class="sxs-lookup"><span data-stu-id="bb6fa-168">The await keyword specified for the **ListBlobsSegmentedAsync** method suspends execution of the sample method until the listing task completes.</span></span>
+<span data-ttu-id="01e63-167">Поскольку метод образец hello вызывает асинхронный метод, он должен предваряться символом hello **async** ключевое слово и он должен возвращать **задачи** объекта.</span><span class="sxs-lookup"><span data-stu-id="01e63-167">Because hello sample method calls an asynchronous method, it must be prefaced with hello **async** keyword, and it must return a **Task** object.</span></span> <span data-ttu-id="01e63-168">Hello await-ключевое слово, указанный для hello **ListBlobsSegmentedAsync** метод приостанавливает выполнение метода образец hello до завершения выполнения задачи листинг hello.</span><span class="sxs-lookup"><span data-stu-id="01e63-168">hello await keyword specified for hello **ListBlobsSegmentedAsync** method suspends execution of hello sample method until hello listing task completes.</span></span>
 
     async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
     {
-        // List blobs to the console window, with paging.
+        // List blobs toohello console window, with paging.
         Console.WriteLine("List blobs in pages:");
 
         int i = 0;
         BlobContinuationToken continuationToken = null;
         BlobResultSegment resultSegment = null;
 
-        // Call ListBlobsSegmentedAsync and enumerate the result segment returned, while the continuation token is non-null.
-        // When the continuation token is null, the last page has been returned and execution can exit the loop.
+        // Call ListBlobsSegmentedAsync and enumerate hello result segment returned, while hello continuation token is non-null.
+        // When hello continuation token is null, hello last page has been returned and execution can exit hello loop.
         do
         {
-            // This overload allows control of the page size. You can return all remaining results by passing null for the maxResults parameter,
+            // This overload allows control of hello page size. You can return all remaining results by passing null for hello maxResults parameter,
             // or by calling a different overload.
             resultSegment = await container.ListBlobsSegmentedAsync("", true, BlobListingDetails.All, 10, continuationToken, null, null);
             if (resultSegment.Results.Count<IListBlobItem>() > 0) { Console.WriteLine("Page {0}:", ++i); }
@@ -230,12 +230,12 @@ ms.lasthandoff: 07/11/2017
             }
             Console.WriteLine();
 
-            //Get the continuation token.
+            //Get hello continuation token.
             continuationToken = resultSegment.ContinuationToken;
         }
         while (continuationToken != null);
     }
 
-## <a name="next-steps"></a><span data-ttu-id="bb6fa-169">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="bb6fa-169">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="01e63-169">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="01e63-169">Next steps</span></span>
 [!INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
