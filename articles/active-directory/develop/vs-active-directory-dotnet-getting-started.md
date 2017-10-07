@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с Azure AD в проектах MVC в Visual Studio | Документация Майкрософт"
-description: "Как приступить к использованию Azure Active Directory в проектах MVC после подключения или создания Azure AD с помощью подключенных служб Visual Studio"
+title: "aaaGet работы с Azure AD в проектах Visual Studio MVC | Документы Microsoft"
+description: "Запуск с помощью Azure Active Directory в проектах MVC после подключения tooor создания Azure AD с помощью Visual Studio tooget подключенные службы"
 services: active-directory
 documentationcenter: 
 author: kraigb
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: c4d49cfc9887e422b3eaed2b96348c99eca48881
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 807824dd6e4e57e443f8a7322cf2e5326384316d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-azure-active-directory-and-visual-studio-connected-services-mvc-projects"></a>Начало работы с Azure Active Directory и подключенными службами Visual Studio (проекты MVC)
 > [!div class="op_single_selector"]
@@ -28,11 +28,11 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-## <a name="requiring-authentication-to-access-controllers"></a>Требование проверки подлинности для доступа к контроллерам
-Ко всем контроллерам в проекте добавлен атрибут **Authorize** . Этот атрибут обеспечивает аутентификацию пользователей перед их доступом к контроллерам. Для анонимного доступа к контроллеру удалить с него этот атрибут. Если необходимо задать разрешения на более детальном уровне, примените атрибут к каждому методу, требующему проверки подлинности, а не к классу контроллера.
+## <a name="requiring-authentication-tooaccess-controllers"></a>Требование проверки подлинности tooaccess контроллеров
+Все контроллеры в проекте были снабженных hello **авторизовать** атрибута. Этот атрибут требует проверку подлинности перед доступом эти контроллеры toobe пользователя hello. tooallow hello контроллера toobe доступна анонимно, удалите этот атрибут из контроллера hello. Tooset hello разрешения на более детальном уровне, применить метод tooeach атрибут hello, требующей авторизации вместо применения его toohello класс контроллера.
 
 ## <a name="adding-signin--signout-controls"></a>Добавление элементов управления SignIn и SignOut
-Чтобы добавить элементы управления SignIn и SignOut, используйте частичное представление **_LoginPartial.cshtml** для добавления функций к одному из представлений. Вот пример добавления такой функциональности в стандартное представление **_Layout.cshtml**. (обратите внимание на последний элемент в теге div с классом navbar-collapse):
+hello tooadd SignIn, SignOut управляет tooyour представления, можно использовать hello **_LoginPartial.cshtml** tooone частичного представления tooadd hello функциональные возможности ваших представлений. Ниже приведен пример hello функциональность добавлены toohello стандартных **_Layout.cshtml** представления. (Обратите внимание, hello последнего элемента div hello с класс переходов свертывания):
 
 <pre>
     &lt;!DOCTYPE html&gt; 

@@ -1,6 +1,6 @@
 ---
-title: "Выпуски Azure Active Directory | Документация Майкрософт"
-description: "В этой статье описываются бесплатные и платные выпуски Azure Active Directory. Azure Active Directory Basic, Azure Active Directory Premium P1 и Azure Active Directory Premium P2 — платные выпуски."
+title: "выпуски Active Directory aaaAzure | Документы Microsoft"
+description: "В этой статье описываются бесплатные и платные выпуски Azure Active Directory. Azure Active Directory Basic Azure Active Directory Premium P1 и Azure Active Directory Premium P2 — hello платных выпусков."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 9d10ebf9d7bd07bd126302a6ecf442d809e00196
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 59478692020e84c7bf3fc96cba81eba4e9eb1ae6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-editions"></a>Выпуски Azure Active Directory
-Все бизнес-службы Microsoft Online используют Azure Active Directory (Azure AD) для входа и других задач, связанных с идентификацией. Если вы подписаны на любую из бизнес-служб Microsoft Online (например, Office 365 или Microsoft Azure), о вы получите Azure AD с доступом ко всем бесплатным возможностям, описанным ниже.  
+Все бизнес-службы Microsoft Online используют Azure Active Directory (Azure AD) для входа и других задач, связанных с идентификацией. Если вы подписались tooany бизнес-служб Microsoft Online (например, Office 365 или Microsoft Azure), вы получаете Azure AD с tooall доступ из hello бесплатные функции, описанные ниже.  
 
-Azure Active Directory (Azure AD) — это комплексное высокодоступное облачное решение для управления удостоверениями и доступом, предоставляющее базовые службы каталогов, расширенные функции управления удостоверениями и функции управления доступом к приложениям. Кроме того, Azure Active Directory предоставляет разработчикам обширную стандартизированную платформу, которая позволяет им управлять доступом к приложениям с помощью централизованной политики и правил. В бесплатной версии Azure Active Directory можно управлять учетными записями пользователей и групп, синхронизацией с локальными каталогами, настроить единый вход для Azure, Office 365 и нескольких тысяч популярных приложений SaaS, таких как Salesforce, Workday, Concur, DocuSign, Google Apps, Box, ServiceNow, Dropbox и др. Дополнительные сведения о службе Azure Active Directory приведены в статье [Что такое Microsoft Azure Active Directory](active-directory-whatis.md).
+Azure Active Directory (Azure AD) — это комплексное высокодоступное облачное решение для управления удостоверениями и доступом, предоставляющее базовые службы каталогов, расширенные функции управления удостоверениями и функции управления доступом к приложениям. Azure Active Directory предлагает широкие возможности, основанную на стандартах платформу, которая позволяет разработчикам toodeliver доступа tootheir приложения управления, на основе централизованной политики и правил. С выпуском Azure Active Directory Free hello можно управлять пользователями и группами, синхронизировать с локальными каталогами, настроить единый вход для Azure, Office 365 и тысяч популярных приложений SaaS, таких как Salesforce, Workday, Concur, DocuSign, Google Apps, Box, ServiceNow, Dropbox и многое другое. чтение toolearn Дополнительные сведения о Azure Active Directory, [возможности Azure AD?](active-directory-whatis.md)
 
-Для улучшения работы Azure Active Directory можно добавить платные возможности, которые доступны в выпусках Azure Active Directory Basic, Azure Active Directory Premium P1 и Azure Active Directory Premium P2. Платные версии Azure Active Directory строятся на основе существующего бесплатного каталога, предоставляя возможности уровня предприятия, включающие самообслуживание, улучшенный мониторинг, отчеты о безопасности, многофакторную проверку подлинности (MFA) и безопасный доступ для мобильного персонала.
+tooenhance в Azure Active Directory, можно добавить платный возможности с помощью Azure Active Directory Basic Premium P1 и Premium P2 выпуски hello. Платные версии Azure Active Directory строятся на основе существующего бесплатного каталога, предоставляя возможности уровня предприятия, включающие самообслуживание, улучшенный мониторинг, отчеты о безопасности, Многофакторную Идентификацию (MFA) и безопасный доступ для мобильного персонала.
 
-Подписки Office 365 включают дополнительные функции Azure Active Directory, описанные в следующей сравнительной таблице.
+Подписка Office 365 включает дополнительные возможности Azure Active Directory, описанные в следующей таблице сравнения hello.
 
 > [!NOTE]
-> Сведения о ценах для различных выпусков см. на странице [Azure Active Directory: цены](https://azure.microsoft.com/pricing/details/active-directory/). В настоящий момент выпуски Azure Active Directory Premium P1, Azure Active Directory Premium P2 и Azure Active Directory Basic не поддерживаются в Китае. Для получения дополнительных сведений свяжитесь с нами через форум, посвященный Azure Active Directory.
+> Hello цены параметры из этих выпусков, в разделе [ценах Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/). В настоящий момент выпуски Azure Active Directory Premium P1, Azure Active Directory Premium P2 и Azure Active Directory Basic не поддерживаются в Китае. Свяжитесь с нами по hello форуме по Azure Active Directory для получения дополнительной информации.
 >
 >
 
-* **Базовый выпуск Azure Active Directory** предназначен для пользователей, которые в основном работают в облаке, и предоставляет преимущественно облачный доступ к приложениям и решения для самостоятельного управления удостоверениями. С Базовым выпуском Azure Active Directory вы получаете улучшение производительности и функции для снижения затрат, такие как управление доступом на основе групп, самостоятельный сброс пароля для облачных приложений и прокси-сервер приложений Azure Active Directory (для публикации локальных веб-приложений с помощью Azure Active Directory). Все это поддерживается соглашением об уровне обслуживания корпоративного уровня (время бесперебойной работы на уровне 99,9%).
-* Выпуск **Azure Active Directory Premium P1** предназначен для организаций с более высокими требованиями по управлению удостоверениями и доступом. В выпуск Azure Active Directory Premium добавлены широкие функциональные возможности управления удостоверениями корпоративного уровня. Он также позволяет гибридным пользователям легко получить доступ к локальным и облачным возможностям. Этот выпуск включает все необходимое для доступа к приложениям, самостоятельного управления удостоверениями и управления доступом (IAM), защиты удостоверений и безопасности в облаке для специалистов по работе с информацией и администраторов удостоверений в гибридных средах. Он поддерживает расширенные ресурсы администрирования и делегирования, такие как динамические группы и самостоятельное управление группами. Он включает Диспетчер удостоверений Microsoft (средство для управления локальными удостоверениями и управления доступом) и предоставляет возможности обратной записи для облака, позволяя реализовать такие решения, как самостоятельный сброс паролей для локальных пользователей облака.
-* Выпуск **Azure Active Directory Premium P2** содержит дополнительные средства защиты для всех пользователей и администраторов. Это новое предложение включает в себя все возможности Azure AD Premium P1, а также наши новые функции: защиту идентификации и управление привилегированными пользователями. Защита идентификации Azure Active Directory использует миллиарды сигналов для предоставления условного доступа на основе рисков к приложениям и важным данным организации. Мы также помогаем управлять привилегированными учетными записями и защищать их с помощью Azure Active Directory Privileged Identity Management, что позволяет обнаруживать, ограничивать права и отслеживать администраторов и их доступ к ресурсам, а также своевременно предоставлять доступ, когда он необходим.  
+* **Базовый выпуск Azure Active Directory** предназначен для пользователей, которые в основном работают в облаке, и предоставляет преимущественно облачный доступ к приложениям и решения для самостоятельного управления удостоверениями. Выпуск Basic hello Azure Active Directory получить улучшение производительности и затрат, уменьшая таких функций, как управление доступом на основе группы, самостоятельного сброса паролей для облачных приложений и Azure Active Directory прокси (toopublish в локальной веб приложений с помощью Azure Active Directory), все поддерживаемый временем работоспособности 99,9% SLA корпоративного уровня.
+* **Azure Active Directory Premium P1** -разработан tooempower организаций с более высокими задачи по управлению удостоверениями и доступом, Azure Active Directory Premium edition добавляет возможности управления удостоверениями корпоративного уровня многофункциональных и tooseamlessly пользователей гибридного позволяет обращаться к локальной и облачных возможностей. Этот выпуск включает все необходимое для информационных работников и администраторов удостоверения в гибридных средах для доступа к приложениям, самостоятельного управления удостоверениями и доступом (IAM), защиты идентификации и безопасности в облаке hello. Он поддерживает расширенные ресурсы администрирования и делегирования, такие как динамические группы и самостоятельное управление группами. Он включает Диспетчер удостоверений Microsoft (средство для управления локальными удостоверениями и управления доступом) и предоставляет возможности обратной записи для облака, позволяя реализовать такие решения, как самостоятельный сброс паролей для локальных пользователей облака.
+* **Azure Active Directory Premium P2** -, разработанные с помощью дополнительную защиту для всех пользователей и администраторов, это новое предложение включает все функциональные возможности hello в Azure AD Premium P1, а также новый защиты идентификации, а также привилегированными пользователями Управление. Azure Active Directory Identity Protection использует миллиарды сигналы tooprovide условного доступа на основе риск tooyour приложений и важные корпоративные данные. Мы также помогают управлять и защиты привилегированных учетных записей с Azure Active Directory Privileged Identity Management, поэтому вы сможете обнаруживать, ограничения и отслеживать Администраторы и их tooresources доступа и обеспечивают доступ just-in-time, при необходимости.  
 
-Чтобы войти в Active Directory Premium и начать использовать данный выпуск, ознакомьтесь с руководством [Приступая к работе с Azure Active Directory Premium](active-directory-get-started-premium.md).
+toosign вверх и приступить к использованию Active Directory Premium в настоящее время в разделе [Приступая к работе с Azure Active Directory Premium](active-directory-get-started-premium.md).
 
 > [!NOTE]
 > Ряд возможностей Azure Active Directory доступен по схеме с оплатой по мере использования.
 >
-> * Active Directory B2C — решение для управления удостоверениями и доступом для клиентских приложений. Дополнительные сведения см. в разделе [Документация по Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/).
+> * Active Directory B2C — hello удостоверениями и доступом решение по управлению потребительском приложений. Дополнительные сведения см. в разделе [Документация по Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/).
 > * Многофакторная Идентификация Azure может использоваться на уровне каждого пользователя или поставщика проверки подлинности. Дополнительные сведения см. в статье [Что такое Azure Multi-factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
 >
 >
 
 ## <a name="comparing-generally-available-features"></a>Сравнение общедоступных функций
 > [!NOTE]
-> Различные представления данных см. в разделе [Функции и возможности Azure Active Directory](https://www.microsoft.com/en/server-cloud/products/azure-active-directory/features.aspx).
+> Различные представления данных, в разделе hello [Azure Active Directory возможности](https://www.microsoft.com/en/server-cloud/products/azure-active-directory/features.aspx).
 >
 >
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 * [Управление пользователями и группами (добавление, обновление и удаление), подготовка на основе пользователя, регистрация устройств](#usergroup-management-addupdatedelete-user-based-provisioning-device-registration)
 * [Единый вход (SSO)](#single-sign-on-sso)
 * [Самостоятельное изменение паролей для пользователей облака](#self-service-password-change-for-cloud-users)
-* [Подключение (механизм синхронизации, позволяющий организовать совместный доступ к локальным каталогам через Azure Active Directory)](#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory)
+* [Подключение (модуль синхронизации, который расширяет tooAzure каталогов в локальной среде Active Directory)](#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory)
 * [Отчеты о безопасности и использовании](#securityusage-reports)
 
 **Функции уровня "Базовый"**
@@ -88,20 +88,20 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 
 **Присоединение к Azure Active Directory — только функции Windows 10**
 
-* [Подключите устройство к службам Azure AD, Desktop SSO, Microsoft Passport для Azure AD и службе восстановления Administrator Bitlocker](#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery)
-* [Автоматическая регистрация в MDM, самостоятельное восстановление BitLocker, присоединение дополнительных локальных администраторов к устройствам под управлением Windows 10 с помощью присоединения к Azure AD](#mdm-auto-enrollment)
+* [Присоединение устройства tooAzure AD, SSO рабочего стола Microsoft Passport для Azure AD, восстановления Bitlocker администратора](#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery)
+* [MDM автоматической регистрации, восстановления Bitlocker самообслуживания устройства tooWindows 10 дополнительных локальных администраторов с помощью присоединения Azure AD](#mdm-auto-enrollment)
 
 ## <a name="common-features"></a>Общие функции
 #### <a name="directory-objects"></a>Объекты каталога
 **Тип:** общие функции
 
-Квота использования по умолчанию — 150 000 объектов. Объект — это запись в службе каталогов, представленная уникальным именем. Примером объекта является запись пользователя, применяемая для проверки подлинности. Если вам необходимо превысить квоту по умолчанию, обратитесь в службу поддержки. Предельное количество объектов в 500 000 не касается Office 365, Microsoft Intune или любой другой платной веб-службы Майкрософт, которые используют Azure Active Directory в качестве служб каталогов.
+квоты на использование по умолчанию Hello — 150 000 объектов. Объект — это запись в службе каталогов hello, представленное его уникальное различающееся имя. Примером объекта является запись пользователя, применяемая для проверки подлинности. Если вам требуется tooexceed эта квота по умолчанию, обратитесь в службу поддержки. ограничение Hello 500 КБ объектов не применяется к Office 365, Microsoft Intune или любые другие платная веб-службы, основанный на Azure Active Directory для службы каталогов.
 
 **Доступность.**
 
 | Free Edition | Basic Edition | Выпуски Premium (P1 и P2) | Только приложения Office 365 |
 |:---:|:---:|:---:|:---:|
-| До 500 000 объектов |Отсутствие ограничений на количество объектов |Отсутствие ограничений на количество объектов |Отсутствие ограничения на количество объектов для учетных записей пользователей Office 365 |
+| Копирование too500 000 объектов |Отсутствие ограничений на количество объектов |Отсутствие ограничений на количество объектов |Отсутствие ограничения на количество объектов для учетных записей пользователей Office 365 |
 
 #### <a name="usergroup-management-addupdatedelete-user-based-provisioning-device-registration"></a>Управление пользователями и группами (добавление, обновление и удаление), подготовка на основе пользователя, регистрация устройств
 **Тип:** общие функции
@@ -126,8 +126,8 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 |:---:|:---:|:---:|:---:|
 | 10 приложений на пользователя (1) |10 приложений на пользователя (1) |Без ограничений (2) |10 приложений на пользователя (1) |
 
-1. В службе Azure AD уровней "Бесплатный" и "Базовый" пользователи могут использовать единый вход для доступа к 10 приложениям.
-2. Самостоятельная интеграция любого приложения с поддержкой проверки подлинности SAML, SCIM или на основе форм с помощью шаблонов в меню коллекции приложений. Дополнительные сведения см. в статье [Настройка единого входа для приложений, которых нет в коллекции приложений Azure Active Directory](active-directory-saas-custom-apps.md).
+1. С помощью Azure AD Free и Azure AD Basic конечные пользователи имеют право tooget единого входа для приложения too10.
+2. Интеграция самообслуживания любом приложении, поддерживающем SAML, SCIM или проверки подлинности на основе форм с помощью шаблонов в меню библиотеки приложения hello. Дополнительные сведения см. в разделе [Настройка одной tooapplications входа, которых нет в коллекции приложений Azure Active Directory hello](active-directory-saas-custom-apps.md).
 
 **Дополнительные сведения:**
 
@@ -144,9 +144,9 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 
 **Дополнительные сведения:**
 
-* [Как изменить свой пароль](active-directory-passwords-update-your-own-password.md#reset-or-unlock-my-password-for-a-work-or-school-account)
+* [Как tooupdate свой пароль](active-directory-passwords-update-your-own-password.md#reset-or-unlock-my-password-for-a-work-or-school-account)
 
-#### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>Подключение (механизм синхронизации, позволяющий организовать совместный доступ к локальным каталогам через Azure Active Directory)
+#### <a name="connect--sync-engine-that-extends-on-premises-directories-tooazure-active-directory"></a>Подключение (модуль синхронизации, который расширяет tooAzure каталогов в локальной среде Active Directory)
 **Тип:** общие функции
 
 **Доступность.**
@@ -184,7 +184,7 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 
 **Дополнительные сведения:**
 
-* [Использование группы для управления доступом к приложениям SaaS](active-directory-accessmanagement-group-saasapps.md)
+* [С помощью приложения tooSaaS для доступа к toomanage группы](active-directory-accessmanagement-group-saasapps.md)
 
 #### <a name="self-service-password-reset-for-cloud-users"></a>Самостоятельный сброс паролей для пользователей облака
 **Тип:** функции уровня "Базовый"
@@ -210,7 +210,7 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 
 **Дополнительные сведения:**
 
-* [Добавление фирменной символики компании на страницах  входа и панели доступа](active-directory-add-company-branding.md)
+* [Добавить корпоративную фирменную символику tooyour страницы входа и панели доступа](active-directory-add-company-branding.md)
 
 #### <a name="application-proxy"></a>Прокси приложения
 **Тип:** функции уровня "Базовый"
@@ -223,7 +223,7 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 
 **Дополнительные сведения:**
 
-* [Как обеспечить безопасный удаленный доступ к локальным приложениям](active-directory-application-proxy-get-started.md)
+* [Как tooprovide безопасный удаленный доступ tooon локальные приложения](active-directory-application-proxy-get-started.md)
 
 #### <a name="sla-999"></a>Соглашение об уровне обслуживания 99,9 %
 **Тип:** функции уровня "Базовый"
@@ -266,7 +266,7 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 
 | Free Edition | Basic Edition | Выпуски Premium (P1 и P2) | Только приложения Office 365 |
 |:---:|:---:|:---:|:---:|
-| &nbsp; | &nbsp; |![Проверка][12] |Ограничено облачной средой для приложений Office 365 |
+| &nbsp; | &nbsp; |![Проверка][12] |Ограниченная toocloud только для приложений Office 365 |
 
 **Дополнительные сведения:**
 
@@ -274,7 +274,7 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 
 
 #### <a name="mim-cal-mim-server"></a>Сервер "MIM CAL + MIM"
-Права на программное обеспечение Microsoft Identity Manager Server предоставляются вместе с лицензиями на любой выпуск Windows Server. Так как Microsoft Identity Manager работает в операционной системе Windows Server, то при использовании на сервере допустимой лицензионной копии Windows Server можно установить и использовать на этом сервере Microsoft Identity Manager. Для Microsoft Identity Manager Server не требуется отдельной лицензии.
+Права на программное обеспечение Microsoft Identity Manager Server предоставляются вместе с лицензиями на любой выпуск Windows Server. Поскольку Microsoft Identity Manager работает на ОС Windows Server hello, при условии, что hello сервере, является допустимым, лицензионная копия Windows Server, а затем Microsoft Identity Manager можно установить и использовать на этом сервере. Для Microsoft Identity Manager Server не требуется отдельной лицензии.
 
 **Тип:** функции уровня "Премиум"
 
@@ -308,7 +308,7 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 
 **Дополнительные сведения:**
 
-* [Мониторинг локальной инфраструктуры идентификации и служб синхронизации в облаке.](active-directory-aadconnect-health.md)
+* [Мониторинг вашей локальной инфраструктуры и синхронизации службы удостоверений в облаке hello](active-directory-aadconnect-health.md)
 
 #### <a name="automatic-password-rollover-for-group-accounts"></a>Автоматическая ротация паролей для групповых учетных записей
 **Тип:** функции уровня "Премиум"
@@ -334,7 +334,7 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 | &nbsp; | &nbsp; | ![Проверка][12] | &nbsp; |
 
 ## <a name="azure-active-directory-join--windows-10-only--related-features"></a>Присоединение к Azure Active Directory — только функции Windows 10
-#### <a name="join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery"></a>Подключите устройство к службам Azure AD, Desktop SSO, Microsoft Passport для Azure AD и службе восстановления Administrator Bitlocker
+#### <a name="join-a-device-tooazure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery"></a>Присоединение устройства tooAzure AD, SSO рабочего стола Microsoft Passport для Azure AD, восстановления Bitlocker администратора
 **Тип:** присоединение к Azure Active Directory — только функции Windows 10
 
 **Доступность.**
@@ -344,7 +344,7 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 | ![Проверка][12] |![Проверка][12] |![Проверка][12] |![Проверка][12] |
 
 
-#### <a name="mdm-auto-enrollment"></a>Автоматическая регистрация в MDM, самостоятельное восстановление BitLocker, присоединение дополнительных локальных администраторов к устройствам под управлением Windows 10 с помощью присоединения к Azure AD
+#### <a name="mdm-auto-enrollment"></a>MDM автоматической регистрации, восстановления Bitlocker самообслуживания устройства tooWindows 10 дополнительных локальных администраторов с помощью присоединения Azure AD
 **Тип:** присоединение к Azure Active Directory — только функции Windows 10
 
 **Доступность.**
@@ -368,7 +368,7 @@ Azure Active Directory (Azure AD) — это комплексное высоко
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * [Начало работы с Azure Active Directory Premium](active-directory-get-started-premium.md)
-* [Добавление фирменной символики компании на страницах входа и панели доступа](active-directory-add-company-branding.md)
+* [Добавить корпоративную фирменную символику tooyour входа и панели доступа](active-directory-add-company-branding.md)
 * [Просмотр отчетов о доступе и использовании](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->

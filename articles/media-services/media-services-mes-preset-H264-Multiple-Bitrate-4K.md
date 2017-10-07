@@ -1,6 +1,6 @@
 ---
-title: "Предустановка Media Encoder Standard в Azure: H264 Multiple Bitrate 4K | Документация Майкрософт"
-description: "Этот раздел содержит общие сведения о предустановке задачи **H264 Multiple Bitrate 4K**."
+title: "Multiple Bitrate 4K Media Encoder Стандартная предустановленная aaaH264 - Azure | Документы Microsoft"
+description: "Hello разделе приводится обзор hello ** H264 Multiple Bitrate 4 K ** задач предустановки."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 4f0863f3db1bfc814971fca740e460012b1aca60
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e22e0bd3bb110f54f7d624e099b5e34e8d4820a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4K
-`Media Encoder Standard` определяет набор предустановок кодирования, которые можно использовать при создании заданий кодирования. Можно также использовать `preset name`, чтобы указать, в какой формат нужно закодировать файл мультимедиа. Или можно создать собственные предустановки в формате JSON или XML (с использованием кодировки UTF-8 или UTF-16). Затем следует передавать пользовательскую предустановку в кодировщик. Список предустановок, поддерживаемых данным кодировщиком `Media Encoder Standard`, приведен в разделе [Предустановки задач для Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` определяет набор предустановок кодирования, которые можно использовать при создании заданий кодирования. Можно использовать либо `preset name` toospecify в формат, который вы хотите tooencode файла мультимедиа. Или можно создать собственные предустановки в формате JSON или XML (с использованием кодировки UTF-8 или UTF-16). Затем следует передавать hello toohello пользовательской предустановки кодировщика. Список всех hello hello предустановленный набор имен, поддерживаемых этим `Media Encoder Standard` кодировщик, см. [предустановки задачи для Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- В этом разделе показана предустановка `H264 Multiple Bitrate 4K` в форматах XML и JSON.  
+ В этом разделе показано hello `H264 Multiple Bitrate 4K` конфигурации в формате XML и JSON.  
   
- Данная предустановка создает набор из 12 MP4-файлов с одинаковыми группами GOP, скоростями 1000–20 000 Кбит/с и стереофоническим звуком в формате AAC. Чтобы получить дополнительные сведения о профиле, скорости, частоте выборки и т. п. данной предустановки, ознакомьтесь с кодом XML или JSON ниже. Описание каждого элемента в этих предустановках и его допустимых значений см. в разделе [Схема Media Encoder Standard](media-services-mes-schema.md).  
-  
-> [!NOTE]
->  Для кодирования в формат 4K необходимы зарезервированные единицы типа "Премиум". Дополнительные сведения см. в статье [Масштабирование кодирования](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
+ Данная конфигурация создается набор 12 GOP-файлами формата MP4, начиная от 20000 Кбит/с too1000 Кбит/с и стереозвук AAC. Подробные сведения о профиле скоростью, выборки скорость, т. д. это стиль, проверьте hello XML или JSON, описанные ниже. Объяснение какие каждого элемента в этих стилей означает и hello допустимые значения для каждого элемента в разделе hello [Media Encoder стандартной схеме](media-services-mes-schema.md) раздела.  
   
 > [!NOTE]
->  При изменении значений `Width` и `Height` слоев убедитесь в сохранении пропорций. Например: 1920x1080, 1280x720, 1080x576, 640x360. Не следует использовать смешанные сочетания пропорций, например: 1280x720, 720x480, 640x360.  
+>  Вы должны получить hello Premium защищены кодирует тип единицы измерения с 4 КБ. Дополнительные сведения см. в разделе [как tooScale кодировка](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
+  
+> [!NOTE]
+>  При изменении hello `Width` и `Height` значений между слоями, убедитесь в том, пропорции, hello остаются неизменными. Например: 1920x1080, 1280x720, 1080x576, 640x360. Не следует использовать смешанные сочетания пропорций, например: 1280x720, 720x480, 640x360.  
   
  XML  
   

@@ -1,6 +1,6 @@
 ---
-title: "Шаблоны проблем в службе управления API Azure | Документация Майкрософт"
-description: "Сведения о настройке содержимого страниц проблем на портале разработчика в службе управления API Azure."
+title: "шаблоны aaaIssue в службе управления API Azure | Документы Microsoft"
+description: "Узнайте, как toocustomize hello содержимого страниц проблема hello hello портал разработчиков в службе управления API Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: e13344df198bca4f73c75fa58221436b94e2f258
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e12902e52c164f73902a97f15ea550790dfecf1c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Шаблоны проблем в службе управления API Azure
-Служба управления API Azure позволяет настраивать содержимое страниц портала разработчика с помощью набора шаблонов. С помощью синтаксиса [DotLiquid](http://dotliquidmarkup.org/), выбранного редактора, например [DotLiquid для разработчиков](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), и указанного набора локализованных [строковых ресурсов](api-management-template-resources.md#strings), [ресурсов глифов](api-management-template-resources.md#glyphs), а также [элементов управления на странице](api-management-page-controls.md) можно гибко настраивать содержимое страниц по своему усмотрению с использованием этих шаблонов.  
+Управления API Azure предоставляет hello возможность toocustomize hello содержимое страницы портала разработчиков с помощью набора шаблонов, которые настраивают их содержимого. С помощью [DotLiquid](http://dotliquidmarkup.org/) синтаксис и hello редактора, таких как [DotLiquid для конструкторов](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), предоставленным набором локализации и [строковые ресурсы](api-management-template-resources.md#strings), [ Ресурсы глиф](api-management-template-resources.md#glyphs), и [страницы элементов управления](api-management-page-controls.md), у вас есть гибкость tooconfigure hello содержимого hello страниц по своему усмотрению, с помощью этих шаблонов.  
   
- С помощью шаблонов в этом разделе вы сможете настроить содержимое страниц проблем на портале разработчика.  
+ шаблоны Hello в этом разделе разрешить доступ к содержимому hello toocustomize страниц hello проблемы на портале разработчиков hello.  
   
 -   [Список проблем](#IssueList)  
   
 > [!NOTE]
->  Примеры шаблонов по умолчанию включены в следующую документацию, но могут в любой момент измениться, так как ведется постоянная работа по их улучшению. Актуальные шаблоны по умолчанию можно просмотреть на портале разработчика, перейдя к требуемому отдельному шаблону. Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](api-management-developer-portal-templates.md).  
+>  Примеры шаблонов по умолчанию включены в следующие документации hello, но являются toochange субъекта из-за toocontinuous улучшения. Можно просмотреть шаблоны динамической по умолчанию hello в портал разработчиков hello, перейдя по toohello требуемого отдельных шаблонов. Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](api-management-developer-portal-templates.md).  
   
 ##  <a name="IssueList"></a> Список проблем  
- Шаблон **списка проблем** позволяет настроить текст страницы со списком проблем на портале разработчика.  
+ Hello **список проблем** шаблон позволяет текст hello toocustomize страницу списка hello проблемы на портале разработчиков hello.  
   
  ![Список проблем на портале разработчика](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "список проблем на портале разработчика APIM")  
   
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ### <a name="controls"></a>Управление  
- В шаблоне `Issue list` можно использовать следующие [элементы управления страницы](api-management-page-controls.md).  
+ Hello `Issue list` шаблона может использовать следующие hello [страницы элементов управления](api-management-page-controls.md).  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
@@ -96,10 +96,10 @@ ms.lasthandoff: 07/11/2017
   
 |Свойство|Тип|Описание|  
 |--------------|----------|-----------------|  
-|Проблемы|Коллекция сущностей [проблем](api-management-template-data-model-reference.md#Issue).|Проблемы, которые отображаются для текущего пользователя.|  
-|Разбиение по страницам|Сущность [разбиения по страницам](api-management-template-data-model-reference.md#Paging).|Сведения о разбиении по страницам для коллекции приложений.|  
-|IsAuthenticated|Логическое|Указывает, выполнил ли текущий пользователь вход на портал разработчика.|  
-|CanReportIssues|Логическое|Указывает, имеет ли текущий пользователь разрешения на сообщение о проблеме.|  
+|Проблемы|Коллекция сущностей [проблем](api-management-template-data-model-reference.md#Issue).|Hello проблемы видимым toohello текущего пользователя.|  
+|Разбиение по страницам|Сущность [разбиения по страницам](api-management-template-data-model-reference.md#Paging).|сведения о Hello разбиения на страницы для коллекции приложения hello.|  
+|IsAuthenticated|Логическое|Является ли текущий пользователь hello портал разработчиков toohello вошедшего в систему.|  
+|CanReportIssues|Логическое|Hello текущий пользователь имеет ли toofile разрешения проблемы.|  
 |Поиск|строка|Это свойство является устаревшим и не должно использоваться.|  
   
 ### <a name="sample-template-data"></a>Пример данных шаблона  
@@ -110,8 +110,8 @@ ms.lasthandoff: 07/11/2017
         {  
             "Id": "5702b68bb16653124c8f9ba7",  
             "ApiId": "570275f1b16653124c8f9ba3",  
-            "Title": "I couldn't figure out how to connect my application to the API",  
-            "Description": "I'm having trouble connecting my application to the backend API.",  
+            "Title": "I couldn't figure out how tooconnect my application toohello API",  
+            "Description": "I'm having trouble connecting my application toohello backend API.",  
             "SubscriptionDeveloperName": "Clayton",  
             "IssueState": "Proposed",  
             "ReportedOn": "2016-04-04T18:46:35.64",  
@@ -134,4 +134,4 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](api-management-developer-portal-templates.md).
+Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](api-management-developer-portal-templates.md).

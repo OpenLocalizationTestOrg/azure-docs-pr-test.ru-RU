@@ -1,6 +1,6 @@
 ---
-title: "Преобразование данных с помощью действия Hive в Azure | Документация Майкрософт"
-description: "Узнайте, как с помощью действия Hive в фабрике данных Azure выполнять запросы Hive к кластеру HDInsight по требованию или собственному кластеру HDInsight."
+title: "aaaTransform данных, с помощью действия Hive - Azure | Документы Microsoft"
+description: "Дополнительные сведения об использовании hello действие Hive в запросы Hive toorun фабрики данных Azure в кластере HDInsight на запросу или свой собственный."
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
-ms.openlocfilehash: a3e9b2d0a8c851939acd228d8086ddfc9f38a4c1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 032400cdb8e8f9873f85b811b4ad7380f4410edf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Преобразование данных с помощью действия Hive в фабрике данных Azure 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,10 +33,10 @@ ms.lasthandoff: 07/11/2017
 > * [Действие U-SQL в Data Lake Analytics](data-factory-usql-activity.md)
 > * [Настраиваемое действие .NET](data-factory-use-custom-activities.md)
 
-Действие Hive HDInsight в [конвейере](data-factory-create-pipelines.md) фабрики данных выполняет запросы Hive к [вашему собственному](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) кластеру HDInsight или кластеру HDInsight [по запросу](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) под управлением Windows или Linux. Данная статья основана на материалах статьи о [действиях преобразования данных](data-factory-data-transformation-activities.md) , в которой приведен общий обзор преобразования данных и список поддерживаемых действий преобразования.
+Hello действие Hive в HDInsight в фабрике данных [конвейера](data-factory-create-pipelines.md) выполняет запросы Hive на [собственные](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) или [по требованию](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) кластера HDInsight под управлением Windows и Linux. Эта статья основана на hello [действия преобразования данных](data-factory-data-transformation-activities.md) статьи, которая дан обзор преобразования данных и hello поддерживается преобразование действий.
 
 > [!NOTE] 
-> Если вы не знакомы с фабрикой данных Azure, сначала ознакомьтесь со статьей [Введение в фабрику данных Azure](data-factory-introduction.md) и руководством [Создание первого конвейера для преобразования данных с помощью кластера Hadoop](data-factory-build-your-first-pipeline.md). 
+> Если новый tooAzure фабрики данных, прочтите [tooAzure введение фабрики данных](data-factory-introduction.md) и hello учебника: [создания вашего первого конвейера данных](data-factory-build-your-first-pipeline.md) перед считыванием в этой статье. 
 
 ## <a name="syntax"></a>Синтаксис
 
@@ -72,20 +72,20 @@ ms.lasthandoff: 07/11/2017
 ## <a name="syntax-details"></a>Сведения о синтаксисе
 | Свойство | Описание | Обязательно |
 | --- | --- | --- |
-| name |Имя действия. |Да |
-| Описание |Текст, описывающий, для чего используется действие |Нет |
+| name |Имя действия hello |Да |
+| Описание |Текст, описывающий, какое действие hello используется для |Нет |
 | type |HDInsightHive. |Да |
-| inputs |Входные данные, используемые действием Hive |Нет |
-| outputs |Выходные данные, создаваемые действием Hive |Да |
-| linkedServiceName (имя связанной службы) |Ссылка на кластер HDInsight, зарегистрированный в качестве связанной службы в фабрике данных. |Да |
-| script |Указывается встроенный сценарий Hive. |Нет |
-| script path |Путь к файлу сценария Hive в хранилище BLOB-объектов Azure. Можно использовать либо свойство script, либо свойство scriptPath, но не оба сразу. В имени файла учитывается регистр знаков. |Нет |
-| defines |Параметры в виде пары "ключ-значение", ссылки на которые указываются в сценарии Hive с помощью элемента hiveconf. |Нет |
+| inputs |Входные данные, используемые действием Hive hello |Нет |
+| outputs |Выходные данные, полученные в результате действия Hive hello |Да |
+| linkedServiceName (имя связанной службы) |Кластер HDInsight toohello ссылка зарегистрирован как связанной службы в фабрике данных |Да |
+| script |Укажите встроенного скрипта Hive hello |Нет |
+| script path |Хранилище hello Hive скрипт в службе хранилища BLOB-объектов Azure и предоставить файл toohello путь hello. Можно использовать либо свойство script, либо свойство scriptPath, но не оба сразу. Имя файла Hello учитывается регистр. |Нет |
+| defines |Укажите параметры как пары "ключ значение" для ссылки на куст скрипте hello «hiveconf» |Нет |
 
 ## <a name="example"></a>Пример
-Рассмотрим пример с аналитикой игровых журналов. Предположим, вы хотите определить время, которое пользователи проводят за игрой, выпущенной вашей компанией. 
+Давайте рассмотрим пример игры журналы аналитики, где требуется tooidentify hello времени, затраченного пользователями, игры, запускаемого по вашей компании. 
 
-Ниже приведен журнал игры с разделителями-запятыми (`,`), содержащий следующие поля: ProfileID, SessionStart, Duration, SrcIPAddress и GameType.
+Hello следующий журнал приведен пример игры журнала, который является запятая (`,`) разделены и содержит следующие поля — ProfileID, SessionStart, длительность, SrcIPAddress и GameType hello.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -95,7 +95,7 @@ ms.lasthandoff: 07/11/2017
 .....
 ```
 
-**Сценарий Hive** для обработки этих данных выглядит так:
+Hello **скрипта Hive** tooprocess эти данные:
 
 ```
 DROP TABLE IF EXISTS HiveSampleIn; 
@@ -122,18 +122,18 @@ Select
 FROM HiveSampleIn Group by ProfileID
 ```
 
-Чтобы выполнить его в конвейере фабрики данных, необходимо сделать следующее.
+tooexecute этот куст сценария в конвейере фабрики данных, требуются следующие toodo hello
 
-1. Создайте связанную службу для регистрации [собственного вычислительного кластера HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) или настройте [вычислительный кластер HDInsight по запросу](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Назовем эту связанную службу HDInsightLinkedService.
-2. Создайте [связанную службу](data-factory-azure-blob-connector.md) для настройки подключения к хранилищу BLOB-объектов Azure, в котором хранятся данные. Назовем эту связанную службу StorageLinkedService.
-3. Создайте [наборы данных](data-factory-create-datasets.md) , указывающие на входные и выходные данные. Назовем входной набор данных HiveSampleIn, а выходной — HiveSampleOut.
-4. Скопируйте запрос Hive в файл и сохраните его в хранилище BLOB-объектов Azure, настроенном на шаге 2. Если хранилище, в котором размещаются данные, отличается от хранилища, в котором размещаются этот файл запроса, создайте отдельную связанную службу хранилища Azure и добавьте ссылку на нее в действие. Используйте свойство **scriptPath **, чтобы указать путь к файлу запроса Hive, и **scriptLinkedService**, чтобы определить службу хранилища Azure, содержащую файл сценария. 
+1. Создание tooregister связанной службы [собственные HDInsight вычислительный кластер](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) или настроить [вычислительный кластер HDInsight по требованию](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Назовем эту связанную службу HDInsightLinkedService.
+2. Создание [связанная служба](data-factory-azure-blob-connector.md) tooconfigure hello подключения tooAzure хранилища BLOB-данных размещение данных hello. Назовем эту связанную службу StorageLinkedService.
+3. Создание [наборы данных](data-factory-create-datasets.md) и toohello входных данных, а затем hello выходных данных. Давайте hello вызовов входной набор данных «HiveSampleIn» и hello выходной набор данных «HiveSampleOut»
+4. Запрос Hive hello Копировать как файл tooAzure хранилища больших двоичных объектов, настроенную на шаге #2. Если hello хранилища для размещения данных hello отличается от hello одно размещение этот файл запроса, создайте отдельный связанной службой хранилища Azure и tooit в действии hello. Используйте ** scriptPath ** hello путь toospecify toohive-файл запроса и **scriptLinkedService** toospecify hello хранилища Azure, содержащей файл скрипта hello. 
    
    > [!NOTE]
-   > Также можно добавить сценарий Hive непосредственно в определение действия, используя свойство **script** . Мы не рекомендуем это делать, так как вам потребуется экранировать все специальные знаки в сценарии в документе JSON, что может вызвать проблемы при отладке. Мы рекомендуем следовать инструкциям, описанным в шаге 4.
+   > Можно также предоставить с помощью hello встроенного скрипта Hive hello в определении действия hello **сценарий** свойство. Не рекомендуется этот подход, а все специальные символы в скрипте hello в документе JSON hello необходимо экранировать toobe может причина отладки проблем. Hello рекомендуется toofollow шаг #4.
    > 
    > 
-5. Создайте конвейер с действием HDInsightHive. Это действие обрабатывает и преобразует данные.
+5. Создайте конвейер с hello HDInsightHive действия. Действие Hello процессов и преобразований данных hello.
 
     ```JSON   
     {   
@@ -167,15 +167,15 @@ FROM HiveSampleIn Group by ProfileID
         }
     }
     ```
-6. Разверните конвейер. Дополнительные сведения см. в разделе [Создание конвейеров](data-factory-create-pipelines.md). 
-7. Отслеживайте состояние конвейера, используя функции мониторинга и управления фабрикой данных. Подробные сведения см. в статье [Мониторинг конвейеров фабрики данных и управление ими](data-factory-monitor-manage-pipelines.md). 
+6. Развертывание конвейера hello. Дополнительные сведения см. в разделе [Создание конвейеров](data-factory-create-pipelines.md). 
+7. Отслеживание с помощью мониторинга фабрики данных hello конвейера hello и административные представления. Подробные сведения см. в статье [Мониторинг конвейеров фабрики данных и управление ими](data-factory-monitor-manage-pipelines.md). 
 
 ## <a name="specifying-parameters-for-a-hive-script"></a>Настройка параметров для сценария Hive
-В этом примере журналы игры ежедневно добавляются в хранилище BLOB-объектов Azure и хранятся в папках, разбитых по дате и времени. Вам необходимо параметризовать сценарий Hive, чтобы адрес входной папки передавался во время выполнения динамически, а выходной набор данных сегментировался по дате и времени.
+В этом примере журналы игры ежедневно добавляются в хранилище BLOB-объектов Azure и хранятся в папках, разбитых по дате и времени. Требуется, чтобы скрипт Hive tooparameterize hello и передать входные папку hello динамически во время выполнения, а также выходом hello, разбитый на дату и время.
 
-Чтобы использовать параметризованный сценарий Hive, выполните следующие действия.
+toouse параметризованные скрипт Hive, выполните следующие hello
 
-* Задайте параметры в разделе **defines**.
+* Задать параметры hello в **определяет**.
 
     ```JSON  
     {
@@ -213,7 +213,7 @@ FROM HiveSampleIn Group by ProfileID
       }
     }
     ```
-* Добавьте ссылку на параметр в сценарий Hive с помощью элемента **${hiveconf:parameterName}**. 
+* В hello скрипт Hive ссылаться с помощью параметра toohello **${hiveconf: ParameterName}**. 
   
     ```
     DROP TABLE IF EXISTS HiveSampleIn; 

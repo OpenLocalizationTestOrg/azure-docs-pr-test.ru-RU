@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Dropbox for Business | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в Dropbox for Business."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Dropbox для бизнеса."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,131 +13,131 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: a56a5af171eaca259db29f25fee4331a77313420
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3f33a43ca8fbd60486d7a400ae8246af768376ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>Руководство. Интеграция Azure Active Directory с Dropbox for Business
 
-В этом руководстве описано, как интегрировать Dropbox for Business с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Dropbox для бизнеса с помощью Azure Active Directory (Azure AD).
 
-Интеграция Dropbox for Business с Azure AD обеспечивает перечисленные ниже преимущества.
+Интеграция Dropbox для бизнеса с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к приложению Dropbox for Business.
-- Вы можете включить автоматический вход пользователей в Dropbox for Business (единый вход) с использованием учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooDropbox для бизнеса
+- Вы можете включить вашей пользователей tooautomatically get вошедшего tooDropbox для бизнеса (Single Sign-On) учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Dropbox for Business, вам потребуется:
+tooconfigure интеграция Azure AD с Dropbox для бизнеса требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Dropbox for Business с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Dropbox for Business из коллекции
+1. Добавление из галереи hello Dropbox для бизнеса
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-dropbox-for-business-from-the-gallery"></a>Добавление Dropbox for Business из коллекции
-Чтобы настроить интеграцию Dropbox for Business с Azure AD, необходимо добавить Dropbox for Business из коллекции в список управляемых приложений SaaS.
+## <a name="adding-dropbox-for-business-from-hello-gallery"></a>Добавление из галереи hello Dropbox для бизнеса
+интеграции hello tooconfigure Dropbox для бизнеса в Azure AD, необходимо tooadd Dropbox для бизнеса из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Dropbox for Business из коллекции, выполните указанные ниже действия.**
+**tooadd Dropbox для бизнеса из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. В верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. Нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна "hello".
 
     ![Приложения][3]
 
-4. В поле поиска введите **Dropbox for Business**.
+4. Введите в поле поиска hello **Dropbox для бизнеса**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_search.png)
 
-5. В области результатов выберите **Dropbox for Business** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **Dropbox для бизнеса**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Dropbox for Business с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Dropbox for Business соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Dropbox for Business.
+Для единого входа toowork Azure AD необходима tooknow какой пользователь hello аналога в Dropbox для бизнеса — tooa пользователя в Azure AD. Другими словами связи между hello связанных пользователей в Dropbox для бизнеса и пользователя Azure AD должен установить toobe.
 
-Чтобы установить эту связь, следует указать **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Dropbox for Business.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в Dropbox для бизнеса.
 
-Чтобы настроить и проверить единый вход Azure AD в Dropbox for Business, вам потребуется выполнить действия в перечисленных ниже стандартных блоках.
+tooconfigure и теста Azure AD единого входа с Dropbox для бизнеса, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Dropbox for Business](#creating-a-dropbox-for-business-test-user)** требуется для создания пользователя Britta Simon в Dropbox for Business, связанного с соответствующим пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание Dropbox для бизнеса тестового пользователя](#creating-a-dropbox-for-business-test-user)**  -toohave аналог Саймон Britta в Dropbox для бизнеса, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Dropbox for Business.
+В этом разделе Azure AD единым входом в портал Azure hello включить и настроить единый вход в Dropbox для бизнес-приложений.
 
-**Чтобы настроить единый вход Azure AD в Dropbox for Business, выполните указанные ниже действия.**
+**Azure AD tooconfigure единого входа с Dropbox для бизнеса, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Dropbox for Business** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Dropbox для бизнеса** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Dropbox for Business** выполните указанные ниже действия.
+3. На hello **Dropbox для бизнеса домена и URL-адреса** выполните следующие шаги hello:
 
-    а. Войдите в клиент Dropbox for Business. 
+    а. Войдите на tooyour Dropbox для бизнеса. 
    
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769509.png "Настройка единого входа")
    
-    b. На панели навигации слева щелкните **Консоль администрирования**. 
+    b. Hello hello левой панели навигации щелкните **консоли администрирования**. 
    
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769510.png "Настройка единого входа")
    
-    c. В **консоли администрирования** выберите пункт **Проверка подлинности** в левой области навигации. 
+    c. На hello **консоли администрирования**, нажмите кнопку **проверки подлинности** hello левой панели навигации. 
    
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769511.png "Настройка единого входа")
    
-    г) В разделе **Единый вход** установите флажок **Включить единый вход** и нажмите кнопку **Дополнительно**, чтобы развернуть этот раздел.  
+    d. В hello **единого входа** выберите **Включить единый вход**, а затем нажмите кнопку **дополнительные** tooexpand в этом разделе.  
    
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769512.png "Настройка единого входа")
    
-    д. Скопируйте URL-адрес рядом с пунктом **Users can sign in by entering their email address or they can go directly to**(Пользователи могут входить, указывая адрес электронной почты, или напрямую переходить по адресу). 
+    д. Скопируйте URL-адрес hello рядом слишком**пользователи могут войти, введя свой адрес электронной почты или переходить непосредственно к**. 
     
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769513.png)
     
-    f. На портале Azure в текстовом поле **URL-адрес входа** вставьте URL-адрес.
+    f. На портал Azure, в hello hello **URL-адрес входа** в текстовое поле URL-адрес для вставки hello.
 
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_url.png)
 
-     В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://www.dropbox.com/sso/<id>`
+     В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://www.dropbox.com/sso/<id>`
 
     > [!NOTE] 
-    > Это значение приведено для примера. Измените его на фактический URL-адрес входа, полученный в разделе "Единый вход". Для получения этого значения обратитесь в [службу поддержки клиентов Dropbox for Business](https://www.dropbox.com/business/contact). 
+    > Это значение приведено для примера. Обновите значение hello с hello фактический URL-адрес входа получить из их раздела единого входа. Обратитесь к [Dropbox для бизнеса клиента поддержки](https://www.dropbox.com/business/contact) tooget это значение. 
  
-4. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_certificate.png) 
 
@@ -145,53 +145,53 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_general_400.png)
 
-6. В разделе **Настройка Dropbox for Business** щелкните **Настроить Dropbox for Business**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **Dropbox для бизнеса конфигурации** щелкните **настроить Dropbox для бизнеса** tooopen **Настройка входа** окна. Копировать hello **SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_configure.png) 
 
-7. Чтобы настроить единый вход на стороне **Dropbox for Business**, перейдите в клиент Dropbox for Business, а затем в разделе **Единый вход** на странице **Проверка подлинности** выполните указанные ниже действия. 
+7. tooconfigure единого входа на **Dropbox для бизнеса** стороны, перейдите на клиенте Dropbox для бизнеса, в hello **единого входа** раздел hello **проверки подлинности** страницы, выполните следующие шаги hello. 
    
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769516.png "Настройка единого входа")
    
     а. Установите флажок **Обязательно**.
    
-    b. На портале Azure в окне **Настройка единого входа** скопируйте значение в поле **URL-адрес службы единого входа SAML** и вставьте его в текстовое поле **Sign-in URL** (URL-адрес для входа).
+    b. В hello в hello портала Azure **Настройка входа** окна, hello копирования **SAML единого входа URL-адрес службы** значение, а затем вставьте его в hello **URL-адрес входа** текстового поля.
 
-    c. Щелкните **Choose certificate** (Выбрать сертификат), а затем выберите **файл сертификата в кодировке Base64**.
+    c. Нажмите кнопку **изменить сертификат**, а затем найдите tooyour **файл сертификата в кодировке Base64**.
 
-    г) Щелкните **Сохранить изменения**, чтобы завершить настройку клиента Dropbox for Business.
+    d. Нажмите кнопку **сохранить изменения** toocomplete hello конфигурации на клиенте DropBox для бизнеса.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_01.png) 
 
-2.  Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2.  hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_02.png) 
 
-3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
+3. Вверху hello hello диалоговое окно, нажмите кнопку **добавить** tooopen hello **пользователя** диалогового окна.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
@@ -199,28 +199,28 @@ ms.lasthandoff: 07/11/2017
 
 В этом разделе вы создадите в Dropbox for Business пользователя с именем Britta Simon. Приложение Dropbox for Business поддерживает JIT-подготовку. Эта функция включена по умолчанию.
 
-В этом разделе никакие действия с вашей стороны не требуются. Если пользователь в Dropbox for Business еще не существует, он создается при попытке доступа к приложению Dropbox for Business.
+В этом разделе никакие действия с вашей стороны не требуются. Если пользователь еще не существует в Dropbox для бизнеса, создается новый, при попытке tooaccess Dropbox для бизнеса.
 
 >[!Note]
->Если вам нужно вручную создать пользователя, обратитесь в [службу поддержки клиентов Dropbox for Business](https://www.dropbox.com/business/contact). 
+>При необходимости пользователь вручную, обратитесь к toocreate [Dropbox для бизнеса клиента поддержки](https://www.dropbox.com/business/contact) 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как предоставить пользователю Britta Simon доступ к Dropbox for Business, чтобы он мог использовать единый вход Azure.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooDropbox для бизнеса.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon приложению Dropbox for Business, выполните указанные ниже действия.**
+**tooassign tooDropbox Britta Simon для бизнеса, выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Dropbox for Business**.
+2. В списке приложений hello выберите **Dropbox для бизнеса**.
 
     ![Настройка единого входа](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -228,7 +228,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -236,13 +236,13 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-При выборе плитки Dropbox for Business на панели доступа должна появиться страница входа приложения Dropbox for Business.
+При нажатии кнопки hello Dropbox для бизнеса плитки в панели доступа hello, вы должны получить страницу входа для Dropbox для бизнес-приложений.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Руководство по настройке Google Apps для автоматической подготовки пользователей](active-directory-saas-dropboxforbusiness-provisioning-tutorial.md)
 

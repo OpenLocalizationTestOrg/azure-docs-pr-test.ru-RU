@@ -1,6 +1,6 @@
 ---
-title: "Подключение Arduino к Интернету вещей Azure. Урок 1. Развертывание приложения | Документация Майкрософт"
-description: "Клонируйте пример приложения Arduino из Github и разверните его с помощью инструмента Gulp на плате Adafruit Feather M0 WiFi. Этот пример приложения включает и отключает GPIO"
+title: "Подключение Arduino tooAzure IoT — занятия 1: развертывание приложения | Документы Microsoft"
+description: "Клонировать hello образец приложения Arduino из GitHub и запустите это приложение tooyour Wi-Fi M0 Растушевка Adafruit gulp toodeploy. В этом образце приложения мигает hello объект групповой ПОЛИТИКИ"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,36 +17,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 4431808ac6182d194e841c087c8f89f1a12b1911
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5bf8e4ae88e070aeacf34bfc43b8d2daeeb1a2fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-deploy-the-blink-application"></a>Создание и развертывание приложения для включения индикатора
+# <a name="create-and-deploy-hello-blink-application"></a>Создание и развертывание приложения hello мерцания
 ## <a name="what-you-will-do"></a>Выполняемая задача
-Клонируйте пример приложения Arduino для включения индикатора из Github и разверните его с помощью средства Gulp на плате Adafruit Feather M0 WiFi Arduino. Этот пример приложения будет каждые две секунды включать встроенный светодиодный индикатор GPIO #13.
+Клонировать hello образец приложения Arduino из GitHub и использовать hello gulp средство toodeploy hello образец приложения tooyour Adafruit Растушевка M0 Wi-Fi Arduino системной платы. Каждое приложение hello объект групповой ПОЛИТИКИ #13 на barod для Hello образец ПРИВЕЛО каждые две секунды.
 
-Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок][troubleshooting-page].
+Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок][troubleshooting-page].
 
 ## <a name="what-you-will-learn"></a>Новые знания
-* Как развертывать и запускать пример приложения на плате Arduino.
+* Как toodeploy и выполнения hello образец приложения в Arduino на доске.
 
 ## <a name="what-you-need"></a>Необходимые элементы
-Необходимо успешно выполнить следующие операции:
+Необходимо успешно выполнить hello следующие операции:
 
 * [Настройка устройства][configure-your-device]
-* [Get the tools][get-the-tools] (Получение инструментов)
+* [Получить средства hello][get-the-tools]
 
-## <a name="open-the-sample-application"></a>Открытие примера приложения
-Чтобы открыть пример приложения, сделайте следующее:
+## <a name="open-hello-sample-application"></a>Привет открыть образец приложения
+tooopen hello образец приложения, выполните следующие действия:
 
-1. Клонируйте пример репозитория из GitHub, выполнив следующую команду.
+1. Клонирование репозитория образец hello из GitHub, выполнив следующую команду hello:
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-c-feather-m0-getting-started.git
    ```
-2. Откройте пример приложения в Visual Studio Code, выполнив следующие команды:
+2. Откройте пример приложения hello в коде Visual Studio, выполнив следующие команды hello:
 
    ```bash
    cd iot-hub-c-feather-m0-getting-started
@@ -56,27 +56,27 @@ ms.lasthandoff: 07/11/2017
 
    ![Структура репозитория][repo-structure]
 
-Файл `app.ino` в подпапке `app` — это ключевой исходный файл, содержащий код для управления светодиодным индикатором.
+Hello `app.ino` файла в hello `app` подпапка является hello ключа исходного файла, содержащего hello toocontrol кода hello Индикатора.
 
 ### <a name="install-application-dependencies"></a>Установка зависимостей приложения
-Установите библиотеки и другие модули, необходимые для примера приложения, выполнив следующую команду:
+Установка библиотеки hello и другие модули, необходимые для образца приложения hello, выполнив следующую команду hello:
 
 ```bash
 npm install
 ```
 
-## <a name="configure-the-device-connection"></a>Настройка подключения устройства
-Чтобы настроить подключение устройства, выполните следующие действия.
+## <a name="configure-hello-device-connection"></a>Настройка подключения устройства hello
+tooconfigure Здравствуйте подключения устройства, выполните следующие действия:
 
-1. Получите последовательный порт устройства, используя интерфейс командной строки обнаружения устройств:
+1. Получите hello последовательного порта hello устройства с cli обнаружения устройства hello.
 
    ```bash
    devdisco list --usb
    ```
 
-   Вы должны увидеть результат, аналогичный приведенному ниже и найти COM-порт вашей платы Arduino:![Обнаружение устройства][device-discovery]
+   Должны видеть выходные данные, аналогичные следующие toohello и найти COM-порт hello usb плата Arduino: ![обнаружение устройств][device-discovery]
 
-2. Откройте файл `config.json` в папке занятия и добавьте значение найденного номера COM-порта:
+2. Привет открыть файл `config.json` в hello папку занятия и добавьте значение hello hello, найти номер COM-порта:
 
    ```json
    {
@@ -85,45 +85,45 @@ npm install
    ```
    ![config.json][config-json]
    > [!NOTE]
-   > Для COM-порта на платформе Windows он имеет формат `COM1, COM2, ...`. На macOS или Ubuntu он начинается с `/dev/`.
+   > Для порта hello COM, на платформе Windows, он имеет формат hello `COM1, COM2, ...`. На macOS или Ubuntu он начинается с `/dev/`.
 
-## <a name="deploy-and-run-the-sample-application"></a>Развертывание и запуск примера приложения
-### <a name="install-the-required-tools-for-your-arduino-board"></a>Установка необходимых инструментов для платы Arduino
+## <a name="deploy-and-run-hello-sample-application"></a>Развертывание и запуск образца приложения hello
+### <a name="install-hello-required-tools-for-your-arduino-board"></a>Установка средств требуется hello плата Arduino
 
-Установите пакет SDK для Центра Интернета вещей Azure для платы Arduino, выполнив следующую команду:
+Установите hello Azure IoT Hub SDK плата Arduino, выполнив hello следующую команду:
 
 ```bash
 gulp install-tools
 ```
 
-В зависимости от сетевого подключения для выполнения этой команды может потребоваться много времени.
+Эта задача может занять длительное время toocomplete, в зависимости от сетевого подключения.
 
 > [!NOTE]
-> Завершите работу экземпляра IDE Arduino при выполнении задач Gulp: `install-tools`, `run`.
+> Завершите работу hello экземпляр Arduino IDE при выполнении задачи gulp: `install-tools`, `run`.
 
-### <a name="deploy-and-run-the-sample-app"></a>Развертывание и запуск примера приложения
-Разверните и запустите пример приложения, выполнив следующую команду.
+### <a name="deploy-and-run-hello-sample-app"></a>Развертывание и запуск образца приложения hello
+Развертывание и запуск образца приложения hello, выполнив следующую команду hello:
 
 ```bash
 gulp run
 
-# You can monitor the serial port by running listen task:
+# You can monitor hello serial port by running listen task:
 gulp listen
 
 # Or you can combine above two gulp tasks into one:
 gulp run --listen
 ```
 
-### <a name="verify-the-app-works"></a>Проверка работы приложения
-Если светодиодный индикатор не мигает, см. способы решения распространенных проблем в [руководстве по устранению неполадок][troubleshooting-page].
+### <a name="verify-hello-app-works"></a>Проверки работы приложения hello
+Если вы не видите hello Индикатор мигает, см. раздел hello [руководство по устранению неполадок] [ troubleshooting-page] для решения проблемы toocommon.
 
 ![Светодиодный индикатор мигает][led-blinking]
 
 ## <a name="summary"></a>Сводка
-Вы установили необходимые инструменты для работы с платой Arduino и развернули пример приложения, заставляющего светодиодный индикатор мигать. Теперь можно приступать к созданию, развертыванию и запуску другого примера приложения, которое подключает плату Arduino к Центру Интернета вещей Azure для отправки и получения сообщений.
+Вы установили toowork hello необходимые средства с вашей платой Arduino и развернуть образец приложения tooyour Arduino плата tooblink hello Индикатора. Вы теперь можно создать, развернуть и запустить другой пример приложения, который подключается ваш tooAzure платы Arduino toosend центр IoT и получать сообщения.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Get the Azure tools][get-the-azure-tools] (Получение инструментов Azure)
+[Получить инструменты Azure hello][get-the-azure-tools]
 
 <!-- Images and links -->
 

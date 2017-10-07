@@ -1,5 +1,5 @@
 ---
-title: "Пример сценария Azure PowerShell. Мониторинг веб-приложения с помощью журналов веб-сервера | Документация Майкрософт"
+title: "Пример сценария PowerShell - aaaAzure наблюдения за веб-приложения в журналы веб-сервера | Документы Microsoft"
 description: "Пример сценария Azure PowerShell для мониторинга веб-приложения с помощью журналов веб-сервера."
 services: app-service\web
 documentationcenter: 
@@ -16,25 +16,25 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 34a3dd318cb9896342fce870922ecd113b3ed08d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: efaae1e19f5153e33d1f5d5decadb9f6c4649f8b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-a-web-app-with-web-server-logs"></a>Мониторинг веб-приложения с помощью журналов веб-сервера
 
-В этом сценарии вы создадите группу ресурсов, план службы приложений, веб-приложение, а также настроите веб-приложение для включения журналов веб-сервера. Затем вы скачаете файлы журналов для просмотра.
+В этом случае будет создавать группы ресурсов, план обслуживания приложений, веб-приложения и настройте журналы hello web app tooenable веб-сервера. Затем вы загружаете hello файлы журналов для просмотра.
 
-При необходимости установите Azure PowerShell с помощью инструкции, приведенной в [руководстве Azure PowerShell](/powershell/azure/overview), а затем выполните команду `Login-AzureRmAccount`, чтобы создать подключение к Azure.
+При необходимости установите Azure PowerShell с помощью инструкции hello, найденные в hello hello [руководство по Azure PowerShell](/powershell/azure/overview), а затем запустите `Login-AzureRmAccount` toocreate соединения с Azure.
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-powershell[main](../../../powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1 "Мониторинг веб-приложения с помощью журналов веб-сервера")]
+[!code-powershell[main](../../../powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1 "Monitor a web app with web server logs")]
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполнив пример сценария, вы можете удалить группу ресурсов, веб-приложение и все связанные ресурсы, используя следующую команду.
+После выполнения сценария образец hello hello, следующая команда может быть группа ресурсов используется tooremove hello, веб-приложения и все связанные ресурсы.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -42,7 +42,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует hello, следующие команды. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
@@ -54,6 +54,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о модуле Azure PowerShell см. в [документации по Azure PowerShell](/powershell/azure/overview).
+Дополнительные сведения о hello модуля Azure PowerShell см. в разделе [документация по Azure PowerShell](/powershell/azure/overview).
 
-Дополнительные примеры сценариев Azure PowerShell для веб-приложений службы приложений Azure доступны [здесь](../app-service-powershell-samples.md).
+Дополнительные примеры Azure Powershell для веб-приложениях службы приложений Azure можно найти в hello [примеры Azure PowerShell](../app-service-powershell-samples.md).

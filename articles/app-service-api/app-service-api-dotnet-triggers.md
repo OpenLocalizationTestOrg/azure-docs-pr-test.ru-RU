@@ -1,6 +1,6 @@
 ---
-title: "Триггеры приложения API службы приложений | Документация Майкрософт"
-description: "Как реализовать триггеры в приложении API в службе приложений Azure"
+title: "триггеры приложение API службы aaaApp | Документы Microsoft"
+description: "Как триггеры tooimplement в приложении API в службе приложений Azure"
 services: logic-apps
 documentationcenter: .net
 author: guangyang
@@ -14,53 +14,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2016
 ms.author: rachelap
-ms.openlocfilehash: 3ddfb142e7f1a47e2a8564387da785acf36fa61f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2d6b6a942a23c0a93987e9c48b69ecc739bfd814
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-app-service-api-app-triggers"></a>Триггеры приложения API службы приложений Azure
 > [!NOTE]
-> Эта версия статьи предназначена для приложений API со схемой версии 2014-12-01-preview.
+> Эта версия статьи hello применяется версия схемы 2014-12-01-preview tooAPI приложений.
 >
 >
 
 ## <a name="overview"></a>Обзор
-В этой статье описывается, как реализовать триггеры приложения API и использовать их из приложения логики.
+В этой статье объясняется, как приложение tooimplement API триггеры и использовать их из приложения логики.
 
-Все фрагменты кода в этом разделе копируются из [примера кода приложения API FileWatcher](http://go.microsoft.com/fwlink/?LinkId=534802).
+Все фрагменты кода hello в этом разделе, копируются из hello [образец кода приложения API образца FileWatcher](http://go.microsoft.com/fwlink/?LinkId=534802).
 
-Обратите внимание, что необходимо загрузить следующий пакет nuget для создания и запуска кода в этой статье: [http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/).
+Обратите внимание, что вы будете toodownload hello следующий пакет nuget для кода hello в этой статье toobuild и запустите: [http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/).
 
 ## <a name="what-are-api-app-triggers"></a>Что такое триггеры приложения API?
-Приложения API создают события, чтобы клиенты приложения API могли предпринять соответствующие действия в ответ на событие. Механизм на основе REST API, который поддерживает такой сценарий, называется триггер приложения API.
+Это очень распространенный сценарий для API приложения toofire событие клиенты API приложение hello предпринять соответствующие действия hello в ответ toohello событий. Hello механизм на основе REST API, который поддерживает такой сценарий называется триггер приложения API.
 
-Например, предположим, что код клиента использует [приложение API с соединителем Twitter](../connectors/connectors-create-api-twitter.md) и код должен выполнять определенное действие на основании новых твитов с конкретными словами. В таком случае можно настроить извещающий или опрашивающий триггер для упрощения этой задачи.
+Например, предположим, что код клиента использует hello [приложения Twitter API соединителя](../connectors/connectors-create-api-twitter.md) и код должен tooperform действие на основании новых твиты, которые содержат конкретные слова. В этом случае вы можете настроить триггер опроса и принудительной toofacilitate этой потребности.
 
 ## <a name="poll-trigger-versus-push-trigger"></a>Сравнение триггера опроса и извещающего триггера
 На данный момент поддерживаются два типа триггеров:
 
-* триггер опроса — клиент опрашивает приложение API для обнаружения уведомления о событии, которые было создано;
-* извещающий триггер — клиент получает уведомление от приложения API, когда создается событие.
+* Триггер опроса - Клиент опрашивает приложения hello API для уведомления о событии активна в данный момент
+* Триггер Push - клиент получает уведомление от приложения hello API при запуске события
 
 ### <a name="poll-trigger"></a>Триггер опроса
-Триггер опроса реализуется как обычный REST API и ожидает, что его клиенты (например, приложения логики) опросят его для получения уведомлений. Хотя клиент может сохранять состояние, сам триггер опроса не имеет состояния.
+Триггер опроса реализуется в виде регулярного API REST и ожидает его toopoll клиентов (таких как приложения логики) в порядке tooget уведомления. Пока клиент hello могут сохранять состояние, самим триггером hello опроса без сохранения состояния.
 
-Следующая информация о пакетах запросов и ответов показывает некоторые ключевые аспекты контракта триггера опроса:
+следующие сведения, касающиеся приветственных пакетов запросов и ответов Hello иллюстрируют некоторые ключевые аспекты hello опроса триггер контракта.
 
 * Запрос
   * Метод HTTP: GET
   * Параметры
-    * triggerState — этот необязательный параметр позволяет клиентам указать их состояние, чтобы триггер опроса мог правильно определить, следует ли возвращать уведомления, основываясь на указанном состоянии.
+    * triggerState - этот дополнительный параметр позволяет клиентам toospecify свое состояние так, hello опроса триггер может правильно решить, указано ли уведомление tooreturn или hello не на основе состояния.
     * Параметры, относящиеся к API
 * Ответ
-  * Код состояния **200** — запрос действителен, и существует уведомление от триггера. Содержимое уведомления будет являться текстом ответа. Заголовок «Retry-After» в ответе указывает, что необходимо получить дополнительные данные уведомления с последующим вызовом запроса.
-  * Код состояния **202** — запрос действителен, но нет новых уведомлений от триггера.
-  * Код состояния **4xx** — запрос недействителен. Клиенту не следует повторять запрос.
-  * Код состояния **5xx** — запрос привел к появлению внутренней ошибки сервера и/или временной проблемы. Клиенту следует повторить запрос.
+  * Код состояния **200** - запрос является допустимым, и есть уведомление из триггера hello. содержимое Hello hello уведомления будет hello текст ответа. Заголовок «Retry-After» в ответ hello указывает, что дополнительные уведомления данные необходимо получить с помощью вызова последующего запроса.
+  * Код состояния **202** — запрос является допустимым, но нет новых уведомления из триггера hello.
+  * Код состояния **4xx** — запрос недействителен. Hello клиента не следует повторить запрос hello.
+  * Код состояния **5xx** — запрос привел к появлению внутренней ошибки сервера и/или временной проблемы. Hello клиенту следует повторить запрос hello.
 
-В следующем фрагменте кода приведен пример реализации триггера опроса.
+Следующий фрагмент кода Hello примером может служить как триггер tooimplement опрос.
 
     // Implement a poll trigger.
     [HttpGet]
@@ -71,54 +71,54 @@ ms.lasthandoff: 07/11/2017
         // Additional parameters
         string searchPattern = "*")
     {
-        // Check to see whether there is any file touched after the timestamp.
+        // Check toosee whether there is any file touched after hello timestamp.
         var lastTriggerTimeUtc = DateTime.Parse(triggerState).ToUniversalTime();
         var touchedFiles = Directory.EnumerateFiles(rootPath, searchPattern, SearchOption.AllDirectories)
             .Select(f => FileInfoWrapper.FromFileInfo(new FileInfo(f)))
             .Where(fi => fi.LastAccessTimeUtc > lastTriggerTimeUtc);
 
-        // If there are files touched after the timestamp, return their information.
+        // If there are files touched after hello timestamp, return their information.
         if (touchedFiles != null && touchedFiles.Count() != 0)
         {
-            // Extension method provided by the AppService service SDK.
+            // Extension method provided by hello AppService service SDK.
             return this.Request.EventTriggered(new { files = touchedFiles });
         }
-        // If there are no files touched after the timestamp, tell the caller to poll again after 1 mintue.
+        // If there are no files touched after hello timestamp, tell hello caller toopoll again after 1 mintue.
         else
         {
-            // Extension method provided by the AppService service SDK.
+            // Extension method provided by hello AppService service SDK.
             return this.Request.EventWaitPoll(new TimeSpan(0, 1, 0));
         }
     }
 
-Чтобы протестировать этот триггер опроса, выполните следующие действия.
+tootest запустить этот опроса, выполните следующие действия:
 
-1. Разверните приложение API с параметром проверки подлинности **общедоступный (анонимный)**.
-2. Вызовите операцию **touch** для обращения к файлу. На следующем изображении приведен пример запроса через инструмент Postman.
+1. Развертывание hello API приложения с помощью параметра проверки подлинности из **открытого анонимного**.
+2. Вызовите hello **touch** операции tootouch файла. Следующие изображения Hello показывает пример запроса через почтальон.
    ![Вызов операции «touch» через Postman](./media/app-service-api-dotnet-triggers/calltouchfilefrompostman.PNG)
-3. Вызовите триггер опроса, для которого значение параметра **triggerState** соответствует метке времени ранее шага 2. На следующем изображении приведен пример запроса через инструмент Postman.
+3. Вызвать триггер опроса hello с hello **triggerState** параметру tooa время отметки предыдущих tooStep #2. Hello на иллюстрации показан пример запроса hello через почтальон.
    ![Вызов триггера опроса через Postman](./media/app-service-api-dotnet-triggers/callpolltriggerfrompostman.PNG)
 
 ### <a name="push-trigger"></a>Извещающий триггер
-Извещающий триггер реализован в виде регулярного REST API, который отправляет уведомления на клиенты, зарегистрированные для получения уведомлений о возникновении определенных событий.
+Извещающий триггер реализуется в виде регулярного API REST, который помещает tooclients уведомления, зарегистрировавшего toobe уведомления при запуске определенных событий.
 
-Следующая информация о пакетах запросов и ответов показывает некоторые ключевые аспекты контракта извещающего триггера.
+следующие сведения, касающиеся приветственных пакетов запросов и ответов Hello иллюстрируют некоторые ключевые аспекты hello принудительной триггер контракта.
 
 * Запрос
   * Метод HTTP: PUT
   * Параметры
-    * triggerId: обязательно — непрозрачная строка (например, GUID), представляющая регистрацию извещающего триггера.
-    * callbackUrl: обязательно — URL-адрес обратного вызова, осуществляемого при возникновении события. Вызов — это простой вызов POST HTTP.
+    * triggerId: требуется — непрозрачный строки (например, GUID), представляет hello регистрации извещающий триггер.
+    * callbackUrl: требуется - URL-адрес hello tooinvoke обратного вызова при запуске события hello. вызов Hello является простым вызовом POST HTTP.
     * Параметры, относящиеся к API
 * Ответ
-  * Код состояния **200** — запрос на регистрацию клиента успешно завершен.
-  * Код состояния **4xx** — запрос недействителен. Клиенту не следует повторять запрос.
-  * Код состояния **5xx** — запрос привел к появлению внутренней ошибки сервера и/или временной проблемы. Клиенту следует повторить запрос.
+  * Код состояния **200** -клиент tooregister запрос успешно.
+  * Код состояния **4xx** — запрос недействителен. Hello клиента не следует повторить запрос hello.
+  * Код состояния **5xx** — запрос привел к появлению внутренней ошибки сервера и/или временной проблемы. Hello клиенту следует повторить запрос hello.
 * Обратный вызов
   * Метод HTTP: POST
   * Текст запроса: содержимое уведомления.
 
-В следующем фрагменте кода приведен пример реализации извещающего триггера.
+Следующий фрагмент кода Hello примером может служить как триггер tooimplement push:
 
     // Implement a push trigger.
     [HttpPut]
@@ -126,14 +126,14 @@ ms.lasthandoff: 07/11/2017
     public HttpResponseMessage TouchedFilesPushTrigger(
         // triggerId is an opaque string.
         string triggerId,
-        // A helper class provided by the AppService service SDK.
-        // Here it defines the input of the push trigger is a string and the output to the callback is a FileInfoWrapper object.
+        // A helper class provided by hello AppService service SDK.
+        // Here it defines hello input of hello push trigger is a string and hello output toohello callback is a FileInfoWrapper object.
         [FromBody]TriggerInput<string, FileInfoWrapper> triggerInput)
     {
-        // Register the trigger to some trigger store.
+        // Register hello trigger toosome trigger store.
         triggerStore.RegisterTrigger(triggerId, rootPath, triggerInput);
 
-        // Extension method provided by the AppService service SDK indicating the registration is completed.
+        // Extension method provided by hello AppService service SDK indicating hello registration is completed.
         return this.Request.PushTriggerRegistered(triggerInput.GetCallback());
     }
 
@@ -165,53 +165,53 @@ ms.lasthandoff: 07/11/2017
         public void RegisterTrigger(string triggerId, string rootPath,
             TriggerInput<string, FileInfoWrapper> triggerInput)
         {
-            // Use FileSystemWatcher to listen to file change event.
+            // Use FileSystemWatcher toolisten toofile change event.
             var filter = string.IsNullOrEmpty(triggerInput.inputs) ? "*" : triggerInput.inputs;
             var watcher = new FileSystemWatcher(rootPath, filter);
             watcher.IncludeSubdirectories = true;
             watcher.EnableRaisingEvents = true;
             watcher.NotifyFilter = NotifyFilters.LastAccess;
 
-            // When some file is changed, fire the push trigger.
+            // When some file is changed, fire hello push trigger.
             watcher.Changed +=
                 (sender, e) => watcher_Changed(sender, e,
                     Runtime.FromAppSettings(),
                     triggerInput.GetCallback());
 
-            // Assoicate the FileSystemWatcher object with the triggerId.
+            // Assoicate hello FileSystemWatcher object with hello triggerId.
             _store[triggerId] = watcher;
 
         }
 
-        // Fire the assoicated push trigger when some file is changed.
+        // Fire hello assoicated push trigger when some file is changed.
         void watcher_Changed(object sender, FileSystemEventArgs e,
-            // AppService runtime object needed to invoke the callback.
+            // AppService runtime object needed tooinvoke hello callback.
             Runtime runtime,
-            // The callback to invoke.
+            // hello callback tooinvoke.
             ClientTriggerCallback<FileInfoWrapper> callback)
         {
-            // Helper method provided by AppService service SDK to invoke a push trigger callback.
+            // Helper method provided by AppService service SDK tooinvoke a push trigger callback.
             callback.InvokeAsync(runtime, FileInfoWrapper.FromFileInfo(new FileInfo(e.FullPath)));
         }
     }
 
-Чтобы протестировать этот триггер опроса, выполните следующие действия.
+tootest запустить этот опроса, выполните следующие действия:
 
-1. Разверните приложение API с параметром проверки подлинности **общедоступный (анонимный)**.
-2. Перейдите к [http://requestb.in/](http://requestb.in/) для создания RequestBin, который будет использоваться в качестве URL-адрес обратного вызова.
-3. Вызовите извещающий триггер со значением идентификатора GUID **triggerId** и URL-адресом RequestBin — **callbackUrl**.
+1. Развертывание hello API приложения с помощью параметра проверки подлинности из **открытого анонимного**.
+2. Обзор слишком[http://requestb.in/](http://requestb.in/) toocreate RequestBin, который будет использоваться в качестве URL-адрес обратного вызова.
+3. Вызовите hello извещающий триггер с GUID как **triggerId** и hello RequestBin URL-адрес как **callbackUrl**.
    ![Вызов извещающего триггера через Postman](./media/app-service-api-dotnet-triggers/callpushtriggerfrompostman.PNG)
-4. Вызовите операцию **touch** для обращения к файлу. На следующем изображении приведен пример запроса через инструмент Postman.
+4. Вызовите hello **touch** операции tootouch файла. Следующие изображения Hello показывает пример запроса через почтальон.
    ![Вызов операции «touch» через Postman](./media/app-service-api-dotnet-triggers/calltouchfilefrompostman.PNG)
-5. Проверьте RequestBin, чтобы убедиться, что обратный вызов извещающего триггера выполняется с выводом свойства.
+5. Убедитесь, что tooconfirm RequestBin hello, hello обратного вызова триггера push вызывается с выходного свойства.
    ![Вызов триггера опроса через Postman](./media/app-service-api-dotnet-triggers/pushtriggercallbackinrequestbin.PNG)
 
 ### <a name="describe-triggers-in-api-definition"></a>Описание триггеров в определении API
-После реализации триггеров и развертывания приложения API в Azure перейдите к колонке **Определение API** на портале предварительной версии Azure и вы увидите, что триггеры автоматически распознаются в пользовательском интерфейсе, управляемом с помощью определения Swagger 2.0 приложения API.
+После реализации триггеров hello и развертыванию ваш tooAzure API приложения, перейдите toohello **определения API** колонки в портал предварительной версии Azure hello и вы увидите, триггеры автоматически распознаются в hello пользовательского интерфейса, который управляется событиями Здравствуйте, определение Swagger 2.0 API приложение hello API.
 
 ![Колонка определения API](./media/app-service-api-dotnet-triggers/apidefinitionblade.PNG)
 
-Если нажать кнопку **Загрузить Swagger** и открыть файл JSON, вы увидите результаты, аналогичные следующим:
+Если щелкнуть hello **загрузки Swagger** кнопку и откройте hello JSON-файл, вы увидите примерно toohello результаты следующие:
 
     "/api/files/poll/TouchedFiles": {
       "get": {
@@ -228,20 +228,20 @@ ms.lasthandoff: 07/11/2017
       }
     }
 
-Свойство расширения **x-ms-schedular-trigger** определяет, как триггеры описаны в определении API, оно автоматически добавляется на шлюзе приложения API при запросе определения API через шлюз, если запрос осуществляется к одному из следующих критериев. (Это свойство также можно добавить вручную.)
+Здравствуйте, свойства расширения **x-ms-schedular триггер** заключается в том, как триггеры описанных в определении API и автоматически добавляется шлюзом приложения hello API при запросе определения hello API через шлюз hello hello запрос tooone из Здравствуйте, следующие условия. (Это свойство также можно добавить вручную.)
 
 * Триггер опроса
-  * Если используется метод HTTP **GET**.
-  * Если свойство **operationId** содержит строку **trigger**.
-  * Если свойство **parameters** включает параметр со свойством **name**, для которого установлено значение **triggerState**.
+  * Если hello метод HTTP **получить**.
+  * Если hello **идентификатором операции** свойство содержит строку hello **триггер**.
+  * Если hello **параметры** свойства включает параметр с **имя** значение свойства слишком**triggerState**.
 * Извещающий триггер
-  * Если используется метод HTTP **PUT**.
-  * Если свойство **operationId** содержит строку **trigger**.
-  * Если свойство **parameters** включает параметр со свойством **name**, для которого установлено значение **triggerId**.
+  * Если hello метод HTTP **ПОМЕСТИТЬ**.
+  * Если hello **идентификатором операции** свойство содержит строку hello **триггер**.
+  * Если hello **параметры** свойства включает параметр с **имя** значение свойства слишком**triggerId**.
 
 ## <a name="use-api-app-triggers-in-logic-apps"></a>Использование триггеров приложения API в приложениях логики
-### <a name="list-and-configure-api-app-triggers-in-the-logic-apps-designer"></a>Перечисление и настройка триггеров приложения API в конструкторе приложений логики
-При создании приложения логики в той же группе ресурсов, что и приложение API, можно добавить его на полотно конструктора, просто щелкнув его. Это показано на следующих изображениях.
+### <a name="list-and-configure-api-app-triggers-in-hello-logic-apps-designer"></a>Просматривать и настраивать триггеры API приложения в конструкторе приложений логики hello
+При создании приложения логики в hello же группе ресурсов Здравствуйте приложения API, можно будет tooadd его toohello полотне конструктора, просто щелкнув его. Это иллюстрирует Hello следующие образы:
 
 ![Триггеры в конструкторе приложения логики](./media/app-service-api-dotnet-triggers/triggersinlogicappdesigner.PNG)
 
@@ -250,15 +250,15 @@ ms.lasthandoff: 07/11/2017
 ![Настройка извещающего триггера в конструкторе приложения логики](./media/app-service-api-dotnet-triggers/configurepushtriggerinlogicappdesigner.PNG)
 
 ## <a name="optimize-api-app-triggers-for-logic-apps"></a>Оптимизация триггеров приложения API для приложений логики
-После добавления триггеров в приложение API можно выполнить несколько действий для более удобного использования приложения API в приложении логики.
+После добавления триггеры tooan API приложения существует несколько вы можете делать tooimprove hello качества при использовании приложения hello API в приложение логики.
 
-Например, для параметра **triggerState** триггеров опроса должно быть присвоено следующее выражение в приложении логики. Это выражение должно оценивать последний вызов триггера из приложения логики и возвращают данное значение.  
+Здравствуйте, например, **triggerState** параметр для триггеров опроса должен быть установлен toohello следующее выражение в приложение логику hello. Это выражение следует оценить hello последнего вызова hello триггера из hello логику приложения и возвращать это значение.  
 
     @coalesce(triggers()?.outputs?.body?['triggerState'], '')
 
-Примечание. Объяснение функций, используемых в выражении выше, см. в документации о [языке определения рабочего процесса приложения логики](https://msdn.microsoft.com/library/azure/dn948512.aspx).
+Примечание: Описание функции hello, используемые в выражении hello выше, см. документацию toohello на [язык определения рабочих процессов приложений логики](https://msdn.microsoft.com/library/azure/dn948512.aspx).
 
-Пользователям приложения логики необходимо указать упомянутое выше выражение для параметра **triggerState** при использовании триггера. Это значение может быть предварительно задано с помощью конструктора приложения логики через свойство расширения **x-ms-scheduler-recommendation**.  Свойству расширения **x-ms-visibility** может быть присвоено значение *internal* , чтобы сам параметр не отображался в конструкторе.  Это показано в следующем фрагменте.
+Логика приложения пользователи должны будут выражение hello tooprovide выше для hello **triggerState** параметр при использовании hello триггера. Это возможно toohave это значение конфигурации hello логику приложения конструктора через свойство расширения hello **x-ms планировщика рекомендация**.  Hello **x-ms видимость** расширение может быть установлено значение tooa *внутренней* , чтобы сам параметр hello не отображается в конструкторе hello.  Привет, следующий фрагмент кода показывает, что.
 
     "/api/Messages/poll": {
       "get": {
@@ -278,11 +278,11 @@ ms.lasthandoff: 07/11/2017
       }
     }
 
-Для извещающих триггеров параметр **triggerId** должен однозначно определять приложение логики. Рекомендуется присвоить этому свойству имя рабочего процесса с помощью следующего выражения:
+Триггеры принудительной hello **triggerId** параметр должен однозначно определять приложение hello логику. Рекомендуется tooset toohello имени этого свойства hello рабочего процесса с помощью hello, следующее выражение:
 
     @workflow().name
 
-С помощью свойств расширения **x-ms-scheduler-recommendation** и **x-ms-visibility** в его определении API приложение API может настроить конструктор приложения логики на автоматическую установку этого выражения для пользователя.
+С помощью hello **x-ms планировщика рекомендация** и **x-ms видимость** свойства расширения в его определения API, hello приложения API может передать задайте конструктора tooautomatically toohello логику приложения выражение для пользователя hello.
 
         "parameters":[  
           {  
@@ -296,11 +296,11 @@ ms.lasthandoff: 07/11/2017
 
 
 ### <a name="add-extension-properties-in-api-defintion"></a>Добавление свойств расширения в определение API
-В определение API можно добавить дополнительные сведения о метаданных, например свойства расширения **x-ms-scheduler-recommendation** и **x-ms-visibility**, одним из двух способов: статическим или динамическим.
+Дополнительные сведения о метаданных - как свойства расширения hello **x-ms планировщика рекомендация** и **x-ms видимость** -могут добавляться в определении-hello API в одном из двух способов: статическим или динамическим.
 
-Для статических метаданных можно непосредственно редактировать файл */metadata/apiDefinition.swagger.json* в проекте и добавить свойства вручную.
+Для статических метаданных можно непосредственно редактировать hello */metadata/apiDefinition.swagger.json* и вручную добавьте hello свойств файла в проекте.
 
-Для приложений API, использующих динамические метаданные, можно изменить файл SwaggerConfig.cs и добавить фильтр операции, который может добавить эти расширения.
+Для приложений API, с помощью динамических метаданных можно изменить hello SwaggerConfig.cs файл tooadd операции фильтр, который можно добавить эти расширения.
 
     GlobalConfiguration.Configuration
         .EnableSwagger(c =>
@@ -311,9 +311,9 @@ ms.lasthandoff: 07/11/2017
             }
 
 
-Ниже приведен пример реализации этого класса для упрощения сценария с динамическими метаданными.
+Hello ниже приведен пример как этот класс может быть реализовано toofacilitate hello динамических метаданных сценария.
 
-    // Add extension properties on the triggerState parameter
+    // Add extension properties on hello triggerState parameter
     public class TriggerStateFilter : IOperationFilter
     {
 
@@ -331,8 +331,8 @@ ms.lasthandoff: 07/11/2017
                     }
 
                     // add 2 vendor extensions
-                    // x-ms-visibility: set to 'internal' to signify this is an internal field
-                    // x-ms-scheduler-recommendation: set to a value that logic app can use
+                    // x-ms-visibility: set too'internal' toosignify this is an internal field
+                    // x-ms-scheduler-recommendation: set tooa value that logic app can use
                     triggerStateParam.vendorExtensions.Add("x-ms-visibility", "internal");
                     triggerStateParam.vendorExtensions.Add("x-ms-scheduler-recommendation",
                                                            "@coalesce(triggers()?.outputs?.body?['triggerState'], '')");

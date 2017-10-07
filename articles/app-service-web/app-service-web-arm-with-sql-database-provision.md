@@ -1,6 +1,6 @@
 ---
-title: "Подготовка к работе веб-приложения, использующего базу данных SQL"
-description: "Используйте шаблон диспетчера ресурсов Azure для развертывания веб-приложения с базой данных SQL."
+title: "aaaProvision веб-приложения, использующего базу данных SQL"
+description: "Используйте toodeploy шаблона диспетчера ресурсов Azure веб-приложения, который содержит базу данных SQL."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
-ms.openlocfilehash: cc34f684f8c50e95a62cb7b04fd2ddce5deb68d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 189c0122d201e88f15013bf241d66652ef23df4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="provision-a-web-app-with-a-sql-database"></a>Подготовка веб-приложения к работе с базой данных SQL
-В этом разделе рассказывается, как создать шаблон диспетчера ресурсов Azure, выполняющий развертывание веб-приложения и базы данных SQL. Вы узнаете, как определить развертываемые ресурсы и параметры, указываемые при развертывании. Этот шаблон можно использовать для собственных развертываний или настроить его в соответствии с вашими требованиями.
+В этом разделе вы узнаете, как toocreate шаблона диспетчера ресурсов Azure для развертывания веб-приложения и базы данных SQL. Вы узнаете, как toodefine какие ресурсы развертываются с указанием как toodefine параметры, которые при выполнении развертывания hello. Этот шаблон используется для собственных развертывания или настройте его toomeet вашим требованиям.
 
 Дополнительные сведения о создании шаблонов см. в статье [Создание шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Дополнительные сведения о развертывании приложений см. в статье [Предсказуемое развертывание сложного приложения в Azure](app-service-deploy-complex-application-predictably.md).
 
-Полная версия шаблона приведена в файле [Шаблон веб-приложения с базой данных SQL](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).
+Полный шаблон hello, см. [шаблона веб-приложения с помощью SQL база данных](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -41,29 +41,29 @@ ms.lasthandoff: 07/11/2017
 * Правила оповещения
 * Анализ приложения
 
-Чтобы выполнить развертывание автоматически, нажмите следующую кнопку.
+toorun hello развертывания автоматически, нажмите кнопку hello следующие кнопки:
 
-[![Развертывание в Azure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
+[![Развертывание tooAzure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
 
-## <a name="parameters-to-specify"></a>Указываемые параметры
+## <a name="parameters-toospecify"></a>Параметры toospecify
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 ### <a name="administratorlogin"></a>administratorLogin
-Имя учетной записи администратора сервера баз данных.
+Здравствуйте, toouse имя учетной записи администратора сервера базы данных hello.
 
     "administratorLogin": {
       "type": "string"
     }
 
 ### <a name="administratorloginpassword"></a>administratorLoginPassword
-Пароль администратора сервера баз данных.
+Hello toouse пароль администратора сервера базы данных hello.
 
     "administratorLoginPassword": {
       "type": "securestring"
     }
 
 ### <a name="databasename"></a>databaseName
-Имя создаваемой базы данных.
+имя новой базы данных toocreate hello Hello.
 
     "databaseName": {
       "type": "string",
@@ -71,7 +71,7 @@ ms.lasthandoff: 07/11/2017
     }
 
 ### <a name="collation"></a>collation
-Параметры сортировки базы данных, определяющие надлежащий порядок использования символов.
+Hello toouse параметры сортировки базы данных для правильной регулирующей hello использование символов.
 
     "collation": {
       "type": "string",
@@ -79,7 +79,7 @@ ms.lasthandoff: 07/11/2017
     }
 
 ### <a name="edition"></a>edition
-Тип создаваемой базы данных.
+Тип Hello toocreate базы данных.
 
     "edition": {
       "type": "string",
@@ -90,12 +90,12 @@ ms.lasthandoff: 07/11/2017
         "Premium"
       ],
       "metadata": {
-        "description": "The type of database to create."
+        "description": "hello type of database toocreate."
       }
     }
 
 ### <a name="maxsizebytes"></a>maxSizeBytes
-Максимальный размер базы данных в байтах.
+Hello максимальный размер, в байтах для hello базы данных.
 
     "maxSizeBytes": {
       "type": "string",
@@ -103,7 +103,7 @@ ms.lasthandoff: 07/11/2017
     }
 
 ### <a name="requestedserviceobjectivename"></a>requestedServiceObjectiveName
-Имя, соответствующее уровню производительности выпуска. 
+Hello имя соответствующего toohello уровень производительности для выпуска. 
 
     "requestedServiceObjectiveName": {
       "type": "string",
@@ -118,12 +118,12 @@ ms.lasthandoff: 07/11/2017
         "P3"
       ],
       "metadata": {
-        "description": "Describes the performance level for Edition"
+        "description": "Describes hello performance level for Edition"
       }
     }
 
 ## <a name="variables-for-names"></a>Переменные для имен
-В этом шаблоне находятся переменные, которые используются для создания имен, используемых в шаблоне. В значениях переменных используется функция **uniqueString** , формирующая имя по идентификатору группы ресурсов в качестве аргумента.
+Этот шаблон включает переменные, создавать имена, используемые в шаблоне hello. использовать значения переменных Hello hello **uniqueString** функции toogenerate имя из идентификатора группы ресурсов hello.
 
     "variables": {
         "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -132,9 +132,9 @@ ms.lasthandoff: 07/11/2017
     },
 
 
-## <a name="resources-to-deploy"></a>Развертываемые ресурсы
+## <a name="resources-toodeploy"></a>Toodeploy ресурсы
 ### <a name="sql-server-and-database"></a>Сервер SQL Server и база данных SQL
-Создает новый сервер SQL Server и базу данных. Имя сервера задается с помощью параметра **serverName**, а его расположение — с помощью параметра **serverLocation**. При создании нового сервера баз данных необходимо указать имя и пароль учетной записи администратора. 
+Создает новый сервер SQL Server и базу данных. указано имя сервера hello Hello в hello **serverName** параметр и hello расположении, указанном в hello **serverLocation** параметра. При создании нового сервера hello, необходимо предоставить имя входа и паролем администратора сервера базы данных hello. 
 
     {
       "name": "[variables('sqlserverName')]",
@@ -373,7 +373,7 @@ ms.lasthandoff: 07/11/2017
       },
       "properties": {
         "name": "[concat('CPUHigh ', variables('hostingPlanName'))]",
-        "description": "[concat('The average CPU is high across all the instances of ', variables('hostingPlanName'))]",
+        "description": "[concat('hello average CPU is high across all hello instances of ', variables('hostingPlanName'))]",
         "isEnabled": false,
         "condition": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
@@ -407,7 +407,7 @@ ms.lasthandoff: 07/11/2017
       },
       "properties": {
         "name": "[concat('LongHttpQueue ', variables('hostingPlanName'))]",
-        "description": "[concat('The HTTP queue for the instances of ', variables('hostingPlanName'), ' has a large number of pending requests.')]",
+        "description": "[concat('hello HTTP queue for hello instances of ', variables('hostingPlanName'), ' has a large number of pending requests.')]",
         "isEnabled": false,
         "condition": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
@@ -446,7 +446,7 @@ ms.lasthandoff: 07/11/2017
       }
     }
 
-## <a name="commands-to-run-deployment"></a>Команды для выполнения развертывания
+## <a name="commands-toorun-deployment"></a>Команды toorun развертывания
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
@@ -462,6 +462,6 @@ ms.lasthandoff: 07/11/2017
     az resource deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json --parameters '@azuredeploy.parameters.json'
 
 > [!NOTE]
-> Содержимое JSON-файла параметров см. в [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).
+> Содержимое JSON-файл параметров hello, см. [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).
 >
 >

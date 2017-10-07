@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с ScaleX Enterprise | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в ScaleX Enterprise."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и ScaleX Enterprise."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,129 +13,129 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 0ebed0c2605862426384c0e219e52c9d626b6246
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e398b98d9e0957b5f92c82359651c345d22c3a54
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Руководство по интеграции Azure Active Directory с ScaleX Enterprise
 
-В этом руководстве описано, как интегрировать ScaleX Enterprise с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate ScaleX предприятия в Azure Active Directory (Azure AD).
 
-Интеграция ScaleX Enterprise с Azure AD обеспечивает следующие преимущества:
+Интеграция ScaleX предприятия с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать, у кого есть доступ к приложению ScaleX Enterprise.
-- Вы можете включить автоматический вход пользователей в ScaleX Enterprise (единый вход) с использованием учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooScaleX предприятия
+- Можно включить на пользователей tooautomatically get вошедшего tooScaleX предприятия (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+Если необходимо, чтобы tooknow см. Дополнительные сведения об интеграции приложений SaaS в Azure AD. [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с ScaleX Enterprise, вам потребуется:
+tooconfigure интеграция Azure AD с ScaleX Enterprise требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка ScaleX Enterprise с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление ScaleX Enterprise из коллекции
+1. Добавление ScaleX Enterprise из коллекции hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-scalex-enterprise-from-the-gallery"></a>Добавление ScaleX Enterprise из коллекции
-Чтобы настроить интеграцию приложения ScaleX Enterprise с Azure AD, вам нужно добавить это приложение из коллекции в свой список управляемых приложений SaaS.
+## <a name="adding-scalex-enterprise-from-hello-gallery"></a>Добавление ScaleX Enterprise из коллекции hello
+tooconfigure hello интеграции ScaleX Enterprise в tooAzure AD, вы должны tooadd ScaleX Enterprise из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Добавление приложения ScaleX Enterprise из коллекции**
+**tooadd ScaleX Enterprise из галереи hello выполните hello следующие шаги.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Нажмите кнопку **Добавить** в верхней части диалогового окна.
+3. Нажмите кнопку **добавить** кнопку в верхней части hello диалогового окна "hello".
 
     ![Приложения][3]
 
-4. В поле поиска введите **ScaleX Enterprise**.
+4. Введите в поле поиска hello **ScaleX Enterprise**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_search.png)
 
-5. На панели результатов выберите **ScaleX Enterprise** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello, выберите **ScaleX Enterprise**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в ScaleX Enterprise с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа службе Azure AD нужно знать, какой пользователь в ScaleX Enterprise соответствует пользователю в Azure AD. Иными словами, нужно установить связь между пользователем Azure AD и соответствующим пользователем в ScaleX Enterprise.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello ScaleX предприятии является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello ScaleX предприятия должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в ScaleX Enterprise.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** ScaleX предприятия.
 
-Чтобы настроить и проверить единый вход Azure AD в ScaleX Enterprise, выполните следующие действия:
+tooconfigure и теста Azure AD единого входа с ScaleX Enterprise, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя ScaleX Enterprise](#creating-a-scalex-enterprise-test-user)** требуется для создания пользователя Britta Simon в ScaleX Enterprise, связанного с соответствующим пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя ScaleX Enterprise](#creating-a-scalex-enterprise-test-user)**  -toohave аналог Саймон Britta ScaleX предприятии, которая является представлением связанного toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе мы включим на портале Azure единый вход Azure AD и настроим его в приложении ScaleX Enterprise.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении ScaleX предприятия.
 
-**Настройка единого входа Azure AD в ScaleX Enterprise**
+**tooconfigure Azure AD единого входа с помощью ScaleX Enterprise выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **ScaleX Enterprise** щелкните **Единый вход**.
+1. В hello в hello портала Azure **ScaleX Enterprise** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна, как **режим** выберите **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_samlbase.png)
 
-3. Если вы хотите настроить приложение в режиме, инициированном **поставщиком удостоверений**, то в разделе **Домены и URL-адреса приложения ScaleX Enterprise** сделайте следующее:
+3. На hello **ScaleX домена предприятия и URL-адреса** выполните hello, выполните действия, при желании tooconfigure приложения hello в **IDP** инициировал режим:
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_url1.png)
 
-    а. В текстовом поле **Идентификатор** введите значение в следующем формате: `https://platform.rescale.com/saml2/<company id>/`.
+    а. В hello **идентификатор** текстовое значение hello типа, используя следующий шаблон hello:`https://platform.rescale.com/saml2/<company id>/`
 
-    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://platform.rescale.com/saml2/<company id>/acs/`.
+    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://platform.rescale.com/saml2/<company id>/acs/`
 
-4. Установите флажок **Показать дополнительные параметры URL-адресов**, если вы хотите настроить приложение для работы в режиме, инициируемом **поставщиком услуг**.
+4. Проверьте **Показывать дополнительные параметры URL-адреса**, если нужно, чтобы приложение hello tooconfigure в **SP** инициировал режим:
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_url2.png)
 
-    В текстовом поле **URL-адрес для входа** введите значение в следующем формате: `https://platform.rescale.com/saml2/<company id>/sso/`.
+    В hello **URL-адрес входа** текстовое значение hello типа, используя следующий шаблон hello:`https://platform.rescale.com/saml2/<company id>/sso/`
      
     > [!NOTE] 
-    > Значения, указанные выше, приведены в качестве примера. Измените их на фактические значения идентификатора, URL-адреса ответа или URL-адреса входа. Чтобы получить эти значения, обратитесь в [службу поддержки клиентов ScaleX Enterprise](http://info.rescale.com/contact_sales). 
+    > Они не hello реальные значения. Обновите эти значения с hello фактический идентификатор, URL-адрес ответа или URL-адрес входа. Обратитесь к [группа поддержки ScaleX корпоративный клиент](http://info.rescale.com/contact_sales) tooget эти значения. 
 
-5. Приложение ScaleX ожидает проверочные утверждения SAML в определенном формате, который требует изменить настраиваемые сопоставления атрибутов для конфигурации атрибутов токена SAML. Установите флажок **Просмотреть и изменить все другие атрибуты пользователей**, чтобы открыть пользовательские параметры атрибутов.
+5. Приложение ScaleX ожидает утверждения SAML hello в определенном формате, требующий вы toomodify настраиваемого атрибута сопоставления tooyour атрибутов токена конфигурация SAML. Нажмите кнопку **представление и редактировать все остальные атрибуты пользователя** флажок tooopen hello пользовательские атрибуты параметров.
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/scalex_attributes.png)
     
-    а. Щелкните правой кнопкой мыши атрибут **name** и щелкните "Удалить".
+    а. Щелкните правой кнопкой мыши атрибут hello **имя** и нажмите кнопку Удалить.
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/delete_attribute_name.png)
 
-    b. Щелкните атрибут **emailaddress**, чтобы открыть окно "Изменить атрибут". Измените его значение с **user.mail** на **user.userprincipalname** и нажмите кнопку "ОК".
+    b. Нажмите кнопку **emailaddress** атрибута tooopen hello изменение атрибута окна. Измените его значение с **user.mail** слишком**user.userprincipalname** и нажмите кнопку ОК.
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/edit_email_attribute.png)   
     
-5. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
+5. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_certificate.png) 
 
@@ -143,99 +143,99 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_general_400.png)
     
-7. В разделе **Настройка ScaleX Enterprise** щелкните **Настроить ScaleX Enterprise**, чтобы открыть окно **Настройка единого входа**. Скопируйте **идентификатор сущности SAML** и **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+7. На hello **конфигурация предприятия ScaleX** щелкните **настроить корпоративный ScaleX** tooopen **Настройка входа** окна. Копировать hello **идентификатор сущности SAML** и **SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_configure.png) 
 
-8. Чтобы настроить единый вход на стороне **ScaleX Enterprise**, войдите на веб-сайт компании ScaleX Enterprise в качестве администратора.
+8. tooconfigure единого входа на **ScaleX Enterprise** стороны, toohello веб-сайт корпоративного ScaleX компании от имени администратора имени входа.
 
-9. В правом верхнем углу щелкните меню и выберите **Contoso Administration** (Администрирование Contoso).
+9. Щелкните меню hello в верхнем hello справа и выберите **администрирования Contoso**.
 
     > [!NOTE] 
     > Contoso является лишь примером. Используйте фактическое название компании. 
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/Test_Admin.png) 
 
-10. В верхнем меню выберите **Integrations** (Интеграции) и щелкните **Single Sign-On** (Единый вход).
+10. Выберите **интеграции** из hello верхнем меню и выберите **Single Sign-On**.
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/admin_sso.png) 
 
-11. Заполните форму следующим образом.
+11. Заполните форму hello следующим образом.
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/scalex_admin_save.png) 
     
     а. Выберите **Create any user who can authenticate with SSO** (Создание любого пользователя, который может выполнить проверку подлинности с помощью единого входа).
 
-    b. **Service Provider SAML** (Поставщик услуг SAML). Вставьте значение ***urn:oasis:names:tc:SAML:2.0:nameid-format:persistent***.
+    b. **Поставщик услуг saml**: вставьте значение hello ***urn: oasis: имена: tc: SAML:2.0:nameid-формат: постоянное***
 
-    c. **Name of Identity Provider email field in ACS response** (Имя поля электронного адреса поставщика удостоверений в ответе ACS). Вставьте значение `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. **Имя поля электронной почты поставщика удостоверений в ACS ответ**: вставьте значение hello`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    d. **Identity Provider EntityDescriptor Entity ID** (Идентификатор сущности EntityDescriptor поставщика удостоверений). Вставьте значение **идентификатора сущности SAML**, скопированное с портала Azure.
+    d. **Идентификатор сущности EntityDescriptor поставщика удостоверений:** hello вставить **идентификатор сущности SAML** значения, скопированные из hello портал Azure.
 
-    д. **Identity Provider SingleSignOnService URL** (URL-адрес SingleSignOnService поставщика удостоверений). Вставьте значение **URL-адреса службы единого входа SAML**, скопированное на портале Azure.
+    д. **Удостоверение поставщика SingleSignOnService URL-адрес:** hello вставить **SAML единого входа URL-адрес службы** из hello портал Azure.
 
-    f. **Identity Provider public X509 certificate** (Общий сертификат X509 поставщика удостоверений). Откройте сертификат X509, скачанный на портале Azure, в Блокноте и вставьте содержимое в это поле. Убедитесь в отсутствии разрыва строк в середине содержимого сертификата.
+    f. **Сертификат открытого X509 поставщика удостоверений:** Привет открыть X509 сертификат будет загружен из hello Azure в Блокнот и вставьте содержимое hello в этом поле. Убедитесь, что не разрывы строк в hello средней hello содержимого сертификата.
     
-    g. Установите следующие флажки: **Enabled, Encrypt NameID and Sign AuthnRequests** (Включено, Шифрование идентификатора имени, Подпись AuthnRequests).
+    ж. Проверьте следующие флажки hello: **включено, шифрование NameID и AuthnRequests входа.**
 
-    h. Нажмите кнопку **Update SSO Settings** (Обновить параметры единого входа), чтобы сохранить настройки.
+    h. Нажмите кнопку **параметры единого входа обновления** toosave hello параметры.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-scalexenterprise-tutorial/create_aaduser_01.png) 
 
-2. Перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
+2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-scalexenterprise-tutorial/create_aaduser_02.png) 
 
-3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
+3. Вверху hello hello диалоговое окно, нажмите кнопку **добавить** tooopen hello **пользователя** диалогового окна.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-scalexenterprise-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-scalexenterprise-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-scalex-enterprise-test-user"></a>Создание тестового пользователя ScaleX Enterprise
 
-Чтобы пользователи Azure AD могли входить в ScaleX Enterprise, их нужно подготовить для ScaleX Enterprise. В случае с ScaleX Enterprise подготовка пользователей осуществляется автоматически, при этом никакие ручные действия не требуются. Для всех пользователей, которые успешно выполнят проверку подлинности с помощью учетных данных единого входа, будет автоматически выполняться подготовка на стороне ScaleX.
+Пользователи toolog tooenable Azure AD в tooScaleX Enterprise, их необходимо подготовить в tooScaleX предприятия. В случае hello ScaleX Enterprise Подготовка пользователей осуществляется автоматическое и вручную действия, не требуются. На стороне ScaleX hello будет автоматически подготовлен любого пользователя, прошедшего проверку подлинности с использованием учетных данных единого входа.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе мы разрешим пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к ScaleX Enterprise.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления Enterprise tooScaleX доступа пользователя.
 
 ![Назначение пользователя][200] 
 
-**Назначение пользователя Britta Simon приложению ScaleX Enterprise**
+**tooassign Britta Simon tooScaleX Enterprise, выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **ScaleX Enterprise**.
+2. В списке приложений hello выберите **ScaleX Enterprise**.
 
     ![Настройка единого входа](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -243,7 +243,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -251,14 +251,14 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув плитку ScaleX Enterprise на панели доступа, вы автоматически войдете в приложение ScaleX Enterprise. Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586).
+Щелкните hello ScaleX Enterprise плитку в hello панели доступа, вы получите автоматически вошедшего tooyour ScaleX корпоративного приложения. Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](https://msdn.microsoft.com/library/dn308586).
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

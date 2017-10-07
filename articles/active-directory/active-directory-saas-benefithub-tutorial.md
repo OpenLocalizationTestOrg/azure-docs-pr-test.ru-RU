@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с BenefitHub | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и BenefitHub."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и BenefitHub."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,136 +13,136 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 8df9c0d8443d6685253207ed1915c780275014fc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c07d6e44e8cbc79afd79c900664011b059206b56
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>Руководство по интеграции Azure Active Directory с BenefitHub
 
-В этом руководстве описано, как интегрировать BenefitHub с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate BenefitHub с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением BenefitHub обеспечивает следующие преимущества:
+Интеграция с Azure AD BenefitHub предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к BenefitHub.
-- Вы можете включить автоматический вход пользователей в BenefitHub (единый вход) с использованием учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooBenefitHub
+- Можно включить на пользователей tooautomatically get вошедшего tooBenefitHub (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с BenefitHub, вам потребуется:
+tooconfigure интеграция Azure AD с BenefitHub требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка BenefitHub с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление BenefitHub из коллекции
+1. Добавление BenefitHub из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-benefithub-from-the-gallery"></a>Добавление BenefitHub из коллекции
-Чтобы настроить интеграцию BenefitHub с Azure AD, необходимо добавить BenefitHub из коллекции в список управляемых приложений SaaS.
+## <a name="adding-benefithub-from-hello-gallery"></a>Добавление BenefitHub из галереи hello
+tooconfigure hello интеграции BenefitHub в Azure AD, вы должны tooadd BenefitHub из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить BenefitHub из коллекции, сделайте следующее.**
+**tooadd BenefitHub из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **BenefitHub**.
+4. Введите в поле поиска hello **BenefitHub**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_search.png)
 
-5. На панели результатов выберите **BenefitHub** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello выберите **BenefitHub**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в BenefitHub с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в BenefitHub соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в BenefitHub.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в BenefitHub является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в BenefitHub должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в BenefitHub.
+В BenefitHub, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в BenefitHub, вам потребуется выполнить действия в следующих стандартных блоках.
+tooconfigure и теста Azure AD единого входа с BenefitHub, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя BenefitHub](#creating-a-benefithub-test-user)** нужно для того, чтобы в BenefitHub также существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя BenefitHub](#creating-a-benefithub-test-user)**  -toohave аналог Саймон Britta в BenefitHub, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В данном разделе описано, как включить единый вход в Azure AD на портале Azure и настроить его в приложении BenefitHub.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении BenefitHub.
 
-**Чтобы настроить единый вход Azure AD в BenefitHub, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с BenefitHub, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **BenefitHub** щелкните **Единый вход**.
+1. В hello в hello портала Azure **BenefitHub** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения BenefitHub** сделайте следующее.
+3. На hello **URL-адреса и домена BenefitHub** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_url1.png)
   
-    а. В текстовом поле **Идентификатор** введите `urn:benefithub:passport`.
+    а. В hello **идентификатор** введите:`urn:benefithub:passport`
     
-    b. В текстовом поле **URL-адрес ответа** введите: `https://passport.benefithub.info/saml/post/ac`.
+    b. В hello **URL-адрес ответа** введите:`https://passport.benefithub.info/saml/post/ac`
 
-4. Приложение BenefitHub ожидает проверочные утверждения SAML в определенном формате, который требует добавить настраиваемые сопоставления атрибутов в вашу конфигурацию атрибутов токена SAML. Настройте следующие утверждения для этого приложения. Управлять значениями этих атрибутов можно в разделе **Атрибуты пользователя** на странице интеграции приложения. 
+4. Hello BenefitHub приложения ожидает утверждения SAML hello в определенном формате, требующий вы tooadd настраиваемого атрибута сопоставления tooyour атрибутов токена конфигурация SAML. Настройка следующих утверждений для этого приложения hello. Вы можете управлять hello значения этих атрибутов из hello»**атрибуты пользователя**» на странице интеграции приложения. 
 
     ![Настройка единого входа](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_attribute.png)
 
-5. В разделе **Атрибуты пользователя** диалогового окна **Единый вход** настройте атрибут токена SAML, как показано на рисунке выше, и выполните следующие действия.
+5. В hello **атрибуты пользователя** раздела, посвященного hello **единого входа** диалогового окна настройки атрибутов токена SAML, как показано в hello предшествующий образ и выполнить следующие шаги hello:
     
     | Имя атрибута | Значение атрибута |
     | ------------------- | -------------------- |    
     | organizationid | < organizationid > |
 
     > [!NOTE]
-    > Это значение атрибута приведено для примера. Введите вместо этого значения фактическое значение organizationid. Обратитесь к [группе поддержки BenefitHub](https://www.benefithub.com/Home/ContactUs) для получения фактического значения organizationid.
+    > Это значение атрибута приведено для примера. Введите вместо этого значения фактическое значение organizationid. Обратитесь к [BenefitHub поддержки](https://www.benefithub.com/Home/ContactUs) tooget hello фактическое organizationid.
     
-    а. Щелкните **Добавить атрибут**, чтобы открыть диалоговое окно **Добавление атрибута**.
+    а. Нажмите кнопку **добавить атрибут** tooopen hello **Добавление атрибута** диалогового окна.
 
     ![Настройка единого входа](./media/active-directory-saas-benefithub-tutorial/tutorial_attribute_04.png)
 
     ![Настройка единого входа](./media/active-directory-saas-benefithub-tutorial/tutorial_attribute_05.png)
 
-    b. В текстовом поле **Имя** введите имя атрибута, отображаемое для этой строки.
+    b. В hello **имя** в текстовое поле имя атрибута типа hello, показанный для этой строки.
     
-    c. В списке **Значение** выберите значение атрибута, отображаемое для этой строки.
+    c. Из hello **значение** списка значение атрибута типа hello, показанный для этой строки.
     
-    г) Нажмите кнопку **ОК**.
+    d. Нажмите кнопку **ОК**.
 
     > [!NOTE] 
-    > Чтобы настроить утверждение SAML, обратитесь в [службу поддержки BenefitHub](https://www.benefithub.com/Home/ContactUs) и запросите значение атрибута уникального идентификатора для своего клиента. Это значение необходимо для настройки пользовательского утверждения для вашего приложения.
+    > Перед настройкой hello утверждения SAML, необходимо toocontact вашей [BenefitHub поддержки](https://www.benefithub.com/Home/ContactUs) и запросить значение hello hello уникальный идентификатор атрибута для вашего клиента. Необходимо, чтобы это значение tooconfigure hello пользовательского утверждения для приложения.
 
-6. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+6. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_certificate.png) 
 
@@ -150,63 +150,63 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-benefithub-tutorial/tutorial_general_400.png)
 
-8. Чтобы настроить единый вход на стороне **BenefitHub**, отправьте скачанный **XML-файл метаданных** [группе поддержки BenefitHub](https://www.benefithub.com/Home/ContactUs). Специалисты службы поддержки настроят подключение единого входа SAML на обеих сторонах подключения.
+8. tooconfigure единого входа на **BenefitHub** стороны, необходимо загрузить hello toosend **метаданные в формате XML** слишком[BenefitHub поддержки](https://www.benefithub.com/Home/ContactUs). Они устанавливаются hello toohave этот параметр задан правильно на обеих сторонах соединения единого входа SAML.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-benefithub-test-user"></a>Создание тестового пользователя BenefitHub
 
-В этом разделе описано, как создать пользователя Britta Simon в приложении BenefitHub. Обратитесь к [группе поддержки BenefitHub](https://www.benefithub.com/Home/ContactUs), чтобы добавить пользователей на платформу BenefitHub. Перед использованием единого входа необходимо создать и активировать пользователей. 
+В этом разделе описано, как создать пользователя Britta Simon в приложении BenefitHub. Работать с [BenefitHub поддержки](https://www.benefithub.com/Home/ContactUs) для добавления пользователей hello в платформе BenefitHub hello. Перед использованием единого входа необходимо создать и активировать пользователей. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к BenefitHub.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooBenefitHub доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в BenefitHub, сделайте следующее.**
+**tooassign tooBenefitHub Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **BenefitHub**.
+2. В списке приложений hello выберите **BenefitHub**.
 
     ![Настройка единого входа](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -214,7 +214,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -222,14 +222,14 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент "BenefitHub" на панели доступа, вы автоматически войдете в приложение BenefitHub.
+При нажатии кнопки hello BenefitHub плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour BenefitHub приложения.
 Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

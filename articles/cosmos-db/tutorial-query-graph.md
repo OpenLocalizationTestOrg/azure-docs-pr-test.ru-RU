@@ -1,6 +1,6 @@
 ---
-title: "Как выполнять запросы к данным графа в базе данных Azure Cosmos DB | Документация Майкрософт"
-description: "Узнайте, как выполнять запросы к данным графа в базе данных Azure Cosmos DB"
+title: "aaaHow tooquery графические данные в базе данных Azure Cosmos? | Документация Майкрософт"
+description: "Дополнительные сведения tooquery графические данные в базе данных Azure Cosmos"
 services: cosmos-db
 documentationcenter: 
 author: dennyglee
@@ -15,28 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: denlee
-ms.openlocfilehash: 81713c72da037f127e81239d214d7a877247dca1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fdde881edd6c488e2fea51e5c9665e1d736009fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-how-to-query-with-the-graph-api-preview"></a>Как выполнять запросы к данным в базе данных Azure Cosmos DB с помощью API Graph (предварительная версия)
+# <a name="azure-cosmos-db-how-tooquery-with-hello-graph-api-preview"></a>Azure Cosmos DB: Как tooquery с hello API Graph (Предварительная версия)?
 
-[API Graph](graph-introduction.md) (предварительная версия) базы данных Azure Cosmos DB поддерживает запросы [Gremlin](https://docs.mongodb.com/manual/tutorial/query-documents/). В этой статье приведены примеры документов и запросов, которые помогут вам начать работу. Подробная справка по Gremlin содержится в [этой статье](gremlin-support.md).
+Hello Azure Cosmos DB [Graph API](graph-introduction.md) (Предварительная версия) поддерживает [Gremlin](https://docs.mongodb.com/manual/tutorial/query-documents/) запросов. Эта статья предоставляет образцы документов и запрашивает tooget, которого вы начали. Подробные справочные сведения Gremlin предоставляется в hello [Gremlin поддержки](gremlin-support.md) статьи.
 
-В этой статье рассматриваются следующие задачи: 
+В этой статье рассматриваются hello следующие задачи: 
 
 > [!div class="checklist"]
 > * Выполнение запросов к данным с помощью Gremlin.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы такие запросы работали, у вас должна быть учетная запись базы данных Azure Cosmos DB и данные графа в контейнере. У вас их нет? Завершите [краткое руководство](create-graph-dotnet.md) или [руководство разработчика](tutorial-query-graph.md), чтобы создать учетную запись и заполнить базу данных. Вы можете выполнить следующие запросы с помощью [библиотеки графов .NET базы данных Azure Cosmos DB](graph-sdk-dotnet.md), [консоли Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) или предпочитаемого драйвера Gremlin.
+Для toowork эти запросы необходимо иметь учетную запись Azure Cosmos DB и иметь графические данные в контейнере hello. У вас их нет? Полный hello [краткое руководство 5-минутного](create-graph-dotnet.md) или hello [учебнике для разработчиков](tutorial-query-graph.md) toocreate учетную запись и заполнить базу данных. Можно выполнить следующие запросы, использующие hello hello [библиотека Azure Cosmos DB .NET graph](graph-sdk-dotnet.md), [Gremlin консоли](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console), или избранные Gremlin драйвера.
 
-## <a name="count-vertices-in-the-graph"></a>Подсчет вершин в графе
+## <a name="count-vertices-in-hello-graph"></a>Число вершин в hello graph
 
-В следующем фрагменте показано, как подсчитать количество вершин в графе:
+Следующий фрагмент кода Hello показано, как toocount hello число вершин в hello graph.
 
 ```
 g.V().count()
@@ -44,7 +44,7 @@ g.V().count()
 
 ## <a name="filters"></a>Фильтры
 
-Вы можете выполнять фильтрацию с помощью шагов Gremlin `has` и `hasLabel`, а также объединять их с помощью операторов `and`, `or` и `not` для создания более сложных фильтров. База данных Azure Cosmos DB предоставляет схемонезависимое индексирование всех свойств в ваших вершинах и степенях для быстрого выполнения запросов:
+Можно выполнять фильтров с помощью элемента Gremlin `has` и `hasLabel` действия, а затем объедините их с помощью `and`, `or`, и `not` toobuild более сложные фильтры. База данных Azure Cosmos DB предоставляет схемонезависимое индексирование всех свойств в ваших вершинах и степенях для быстрого выполнения запросов:
 
 ```
 g.V().hasLabel('person').has('age', gt(40))
@@ -52,7 +52,7 @@ g.V().hasLabel('person').has('age', gt(40))
 
 ## <a name="projection"></a>Проекция
 
-Вы можете проецировать некоторые свойства в результатах запроса с помощью шага `values`:
+Вы можете проецировать некоторые свойства в hello результатов запроса, с помощью hello `values` шаг:
 
 ```
 g.V().hasLabel('person').values('firstName')
@@ -60,28 +60,28 @@ g.V().hasLabel('person').values('firstName')
 
 ## <a name="find-related-edges-and-vertices"></a>Поиск связанных ребер и вершин
 
-Пока мы видели только операторы запросов, которые работают в любой базе данных. Графы способны быстро и эффективно выполнять операции обхода, когда вам необходимо перейти к связанным ребрам и вершинам. Давайте найдем всех друзей Томаса. Мы сделаем это с помощью шага Gremlin `outE`, чтобы найти все исходящие от Томаса ребра, а затем переместимся к вершинам исходящих ребер с помощью шага Gremlin `inV`:
+Пока мы видели только операторы запросов, которые работают в любой базе данных. Графы быстрым и эффективным для обхода операций при необходимости toonavigate toorelated границ и вершин. Давайте найдем всех друзей Томаса. Это делается с помощью элемента Gremlin `outE` шаг все hello исходящей линии Томаса toofind, а затем обходе toohello в вершины с границ с помощью элемента Gremlin `inV` шаг:
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person')
 ```
 
-Следующий запрос выполняет два прыжка, чтобы найти всех друзей друзей Томаса, вызвав `outE` и `inV` два раза. 
+Hello следующий запрос выполняет два toofind прыжков все Thomas» друзьях друзей», путем вызова `outE` и `inV` два раза. 
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 
-Вы можете создавать более сложные запросы и внедрять эффективную логику обхода графа с помощью Gremlin, включая сочетание выражений фильтров, выполнение цикла с помощью шага `loop` и реализацию условной навигации с помощью шага `choose`. Дополнительные сведения о возможностях, допустимых благодаря поддержке Gremlin, см. в [этой статье](gremlin-support.md).
+Можно создавать более сложные запросы и реализовать логику обхода мощные graph с помощью Gremlin, включая смешивание фильтра, выражения, выполнение цикла с помощью hello `loop` шаг и реализации условной навигации с помощью hello `choose` шаг. Дополнительные сведения о возможностях, допустимых благодаря поддержке Gremlin, см. в [этой статье](gremlin-support.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом руководстве вы выполнили следующее:
+В этом учебнике вы сделали hello следующее:
 
 > [!div class="checklist"]
-> * Вы научились выполнять запросы с помощью Graph. 
+> * Узнать, как с помощью Graph tooquery 
 
-Теперь вы можете приступать к следующему руководству, чтобы узнать, как глобально распределять данные.
+Вы можете теперь приступить Далее учебника toolearn toohello как toodistribute данных глобально.
 
 > [!div class="nextstepaction"]
 > [Глобальное распределение данных](tutorial-global-distribution-documentdb.md)

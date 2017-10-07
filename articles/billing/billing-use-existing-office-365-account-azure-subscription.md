@@ -1,6 +1,6 @@
 ---
-title: "Регистрация в Azure с помощью учетной записи Office 365 | Документация Майкрософт"
-description: "Узнайте, как создать подписку Azure с помощью учетной записи Office 365"
+title: "aaaSign для использования Azure с учетной записью Office 365 | Документы Microsoft"
+description: "Узнайте, как toocreate подписки Azure с помощью учетной записи Office 365"
 services: 
 documentationcenter: 
 author: JiangChen79
@@ -15,44 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: cjiang
-ms.openlocfilehash: 923b3ca8a2e2b1d7f44cd77946a02e1d30839f14
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: cc331bf7222b5b03e740cb40a214bc13ef585f54
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Регистрация для получения подписки Azure с помощью учетной записи Office 365
-Если у вас есть подписка Office 365, то вы можете использовать учетную запись Office 365 для создания подписки Azure. Войдите на [портал Azure](https://portal.azure.com/), используя имя пользователя и пароль Office 365. Если вы хотите настроить виртуальные машины или использовать другие службы Azure, то необходимо зарегистрироваться для получения подписки Azure. Вы можете предоставить другим пользователям доступ к своей подписке Azure, а также [использовать управление доступом на основе ролей для управления доступом к подписке и ресурсам Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+При наличии подписки Office 365, можно использовать ваш toocreate учетной записи Office 365 подписки Azure. Войдите в toohello [портал Azure](https://portal.azure.com/) с помощью Office 365 имя пользователя и пароль. Если требуется tooset копирование виртуальных машин или использовать другие службы Azure, необходимо зарегистрироваться для получения подписки Azure. Подписки Azure могут совместно использовать с другими пользователями и [tooyour toomanage доступ для управления доступом на основе ролей подписки Azure и ресурсов](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)
 
-При наличии учетной записи Office 365 и подписки Azure см. статью [Связывание клиента Office 365 с подпиской Azure](billing-add-office-365-tenant-to-azure-subscription.md).
+При наличии учетной записи Office 365 и подписки Azure, в разделе [связать tooan клиента Office 365 подписки Azure](billing-add-office-365-tenant-to-azure-subscription.md).
 
 ## <a name="get-an-azure-subscription-using-your-office-365-account"></a>Получение подписки Azure с помощью учетной записи Office 365
 
 Зарегистрировавшись в Azure с помощью имени пользователя и пароля Office 365 вы сэкономьте время и предотвратите увеличение числа учетных записей. 
 
 1. Зарегистрируйтесь на сайте [Azure.com](https://account.azure.com/signup?offer=MS-AZR-0044p&appId=docs). 
-2. Войдите, используя имя пользователя и пароль Office 365. Используемой учетной записи не нужны права администратора. Если у вас есть несколько учетных записей Office 365, убедитесь, что используются учетные данные учетной записи Office 365, которую требуется связать с подпиской Azure. 
+2. Войдите, используя имя пользователя и пароль Office 365. используемая учетная запись Hello не требуются права администратора toohave. Если имеется более одной учетной записи Office 365, убедитесь, что вы используете hello учетные данные для учетной записи Office 365 hello требуется tooassociate с подпиской Azure. 
 
-   ![Снимок экрана, на котором показана страница входа.](./media/billing-use-existing-office-365-account-azure-subscription/billing-sign-in-with-office-365-account.png)
+   ![Снимок экрана, показывающий страницу входа hello.](./media/billing-use-existing-office-365-account-azure-subscription/billing-sign-in-with-office-365-account.png)
 
-3. Введите необходимые сведения и завершите процесс регистрации. Некоторые данные можно не указывать, если у вас уже есть учетная запись Office 365.
+3. Введите hello необходимые сведения и полный hello процесс регистрации. Некоторые данные можно не указывать, если у вас уже есть учетная запись Office 365.
 
-    ![Снимок экрана, на котором показана форма регистрации.](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
+    ![Снимок экрана, показывающий hello форму регистрации.](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
 
-- Если необходимо добавить других пользователей организации в подписку Azure, то см. статью [Начало работы с управлением доступом на портале Azure](../active-directory/role-based-access-control-what-is.md). 
+- Если необходимо tooadd другие пользователи в вашей организации toohello подписки Azure, см. раздел [Приступая к управлению доступом в hello портал Azure](../active-directory/role-based-access-control-what-is.md). 
 
 ## <a id="more-about-subs">Справочная информация о подписках Azure и Office 365</a>
-Office 365 и Azure используют службу Azure AD для управления пользователями и подписками. Считайте, что каталог Azure — это контейнер, в котором можно группировать пользователей и подписки. Чтобы использовать одну учетную запись пользователя для подписок Azure и Office 365, подписки Azure должны быть созданы в одном каталоге с подписками Office 365. Помните на следующие моменты.
+Office 365 и Azure используйте hello Azure AD toomanage пользователями служб и подписок. Hello Azure directory аналогично контейнера, в котором можно группировать пользователей и подписок. toouse hello одинаковые учетные записи пользователей для подписки Azure и Office 365, вы должны убедиться, что toomake, hello Azure подписки создаются в hello же каталоге, что подписки Office 365 hello. Имейте в виду hello после точки.
 
 * Подписка создается в каталоге.
-* Пользователи принадлежат к каталогам.
-* Подписка сохраняется в каталоге пользователя, который ее создал. Подписка Office 365 и Azure привязаны к одной учетной записи.
-* Подписки Azure принадлежат отдельным пользователям в каталоге.
-* Подписки Office 365 принадлежат самому каталогу. Пользователи с соответствующими разрешениями в каталоге могут управлять этими подписками.
+* Пользователь должен принадлежать toodirectories
+* Подписку попадает в каталоге hello hello пользователь, создавший подписку hello. Поэтому подписки Office 365 — связанные toohello учетную запись как подписки Azure.
+* Подписки Azure, принадлежащие отдельным пользователям в каталоге hello
+* Подписки Office 365 принадлежат самому каталогу hello. Пользователи с соответствующими разрешениями hello в каталоге hello могут управлять эти подписки.
 
-![Снимок экрана, на котором показана связь между каталогом, пользователями и подписками.](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
+![Снимок экрана, показывающий связь hello hello directory, пользователей и подписок.](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
 
 Дополнительные сведения см. в статье [Связь между подписками Azure и службой Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="need-help-contact-support"></a>Требуется помощь? Обратитесь в службу поддержки.
-Если вам все еще нужна помощь, [обратитесь в службу поддержки](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), которая поможет быстро устранить проблему. 
+Если вы по-прежнему нужна помощь, [обратитесь в службу поддержки](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget быстро устранить проблему. 

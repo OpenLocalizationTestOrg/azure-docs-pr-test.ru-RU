@@ -1,46 +1,29 @@
 ---
-title: "Дополнительное занятие для учебника по службам Azure Analysis Services: \"Неоднородные иерархии\" | Документы Майкрософт"
-description: "Описывает исправление неоднородных иерархий в учебном проекте служб Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 05/26/2017
-ms.author: owend
-ms.openlocfilehash: 0f02ff73eb126cc397312e87bde50b3ee2d6ce53
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+Заголовок: aaa» Azure Analysis Services tutorial дополнительного занятия: неоднородные иерархии | Документы Microsoft» Описание: описание, как toofix неоднородные иерархии в учебнике hello Azure Analysis Services.
+службы: documentationcenter служб analysis services: '' Автор: диспетчер minewiskan: редактор erikre: '' теги: ''
+
+MS.AssetId: ms.service: ms.devlang служб analysis services: н/д ms.topic: get-started-article ms.tgt_pltfrm: ms.workload н/д: н/д ms.date: 26/05/2017 ms.author: owend
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>Дополнительное занятие. Неоднородные иерархии
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-В этом дополнительном занятии вы устраните распространенную проблему, которая возникает при сведении иерархий, содержащих пустые значения (члены) на различных уровнях. Например, организация, где прямыми подчиненными высокопоставленного руководителя являются как руководители подразделений, так и не руководящие работники. Или географические иерархии, состоящие из комбинации страна+регион+город, где некоторые города не относятся к конкретному штату или конкретной провинции, например Вашингтон, округ Колумбия, или Ватикан. Когда иерархия содержит пустые члены, она часто опускается на другие — или неоднородные — уровни.
+В этом дополнительном занятии вы устраните распространенную проблему, которая возникает при сведении иерархий, содержащих пустые значения (члены) на различных уровнях. Например, организация, где прямыми подчиненными высокопоставленного руководителя являются как руководители подразделений, так и не руководящие работники. Или географические иерархии, состоящие из комбинации страна+регион+город, где некоторые города не относятся к конкретному штату или конкретной провинции, например Вашингтон, округ Колумбия, или Ватикан. Если пустые элементы иерархии, его часто заканчиваются toodifferent или неоднородной, уровни.
 
 ![aas-lesson-detail-ragged-hierarchies-table](../tutorials/media/aas-lesson-detail-ragged-hierarchies-table.png)
 
-Табличные модели на уровне совместимости 1400 имеют дополнительное свойство **Скрыть члены** для иерархий. Значение **По умолчанию** предполагает отсутствие пустых членов на всех уровнях. Значение **Скрыть пустые члены** исключает пустые члены из иерархии при добавлении в сводную таблицу или отчет.  
+Табличные модели на уровне совместимости hello 1400 имеют дополнительный **скрыть элементы** свойство для иерархии. Hello **по умолчанию** предполагается нет пустой членов на любом уровне. Hello **скрыть пустые элементы** позволяет исключить пустые элементы из иерархии hello при добавлении tooa сводной таблице или отчете.  
   
-Предполагаемое время выполнения этого занятия: **20 минут**  
+Предполагаемое время toocomplete на этом занятии: **20 минут**  
   
 ## <a name="prerequisites"></a>Предварительные требования  
-Это дополнительное занятие входит в учебник по табличному моделированию. Прежде чем выполнять задачи из этого дополнительного занятия, следует завершить все предыдущие занятия или располагать готовым учебным проектом модели интернет-продаж Adventure Works. 
+Это дополнительное занятие входит в учебник по табличному моделированию. Перед выполнением задачи hello в этом дополнительном занятии, необходимо завершить все предыдущие занятия или иметь завершенный проект образце модели Интернет-продаж Adventure Works. 
 
-Если вы создали проект AW Internet Sales во время прохождения этого учебника, то ваша модель еще не содержит неоднородные иерархии или данные. Для выполнения этого дополнительного занятия нужно сначала создать проблему, добавив несколько дополнительных таблиц, создать связи, вычисляемые столбцы, меры и новую иерархию "Organization". Эта часть займет около 15 минут. Затем вам потребуется решить проблему за несколько минут.  
+При создании проекта Интернет-продаж AW hello hello учебника по модели не еще содержит любые данные или неровными иерархиями. toocomplete этого дополнительного занятия необходимо определить toocreate Здравствуйте проблему, добавив некоторые дополнительные таблицы, создавать связи, вычисляемые столбцы, меры и новую иерархию организации. Эта часть займет около 15 минут. После этого вы получаете toosolve его через несколько минут.  
 
 ## <a name="add-tables-and-objects"></a>Добавление таблиц и объектов
   
-### <a name="to-add-new-tables-to-your-model"></a>Порядок добавления таблиц в модель
+### <a name="tooadd-new-tables-tooyour-model"></a>tooadd новой таблицы tooyour модели
   
 1.  В обозревателе табличных моделей разверните пункт **Источники данных**, щелкните правой кнопкой мыши подключение и выберите элемент **Импортировать новые таблицы**.
   
@@ -48,7 +31,7 @@ ms.lasthandoff: 07/11/2017
 
 3.  В редакторе запросов щелкните элемент **Импорт**.
 
-4.  Создайте следующие [связи](../tutorials/aas-lesson-4-create-relationships.md):
+4.  Создайте ниже hello [связи](../tutorials/aas-lesson-4-create-relationships.md):
 
     | Таблица 1           | столбец       | Направление фильтра   | Таблица 2     | столбец      | Активна |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
@@ -56,9 +39,9 @@ ms.lasthandoff: 07/11/2017
     | FactResellerSales | DueDate      | значение по умолчанию            | DimDate     | Дата        | Нет     |
     | FactResellerSales | ShipDateKey  | значение по умолчанию            | DimDate     | Дата        | Нет     |
     | FactResellerSales | ProductKey   | значение по умолчанию            | DimProduct  | ProductKey  | Да    |
-    | FactResellerSales | EmployeeKey  | В обе таблицы | DimEmployee | EmployeeKey | Да    |
+    | FactResellerSales | EmployeeKey  | tooBoth таблиц | DimEmployee | EmployeeKey | Да    |
 
-5. В таблице **DimEmployee** создайте следующие [вычисляемые столбцы](../tutorials/aas-lesson-5-create-calculated-columns.md): 
+5. В hello **DimEmployee** таблице, создайте следующие hello [вычисляемых столбцов](../tutorials/aas-lesson-5-create-calculated-columns.md): 
 
     **Путь** 
     ```
@@ -95,23 +78,23 @@ ms.lasthandoff: 07/11/2017
     =LOOKUPVALUE(DimEmployee[FullName],DimEmployee[EmployeeKey],PATHITEM([Path],1,5)) 
     ```
 
-6.  В таблице **DimEmployee** создайте [иерархию](../tutorials/aas-lesson-9-create-hierarchies.md) с именем **Organization**. Добавьте следующие столбцы в указанном порядке: **Level1**, **Level2**, **Level3**, **Level4**, **Level5**.
+6.  В hello **DimEmployee** , куда вводится [иерархии](../tutorials/aas-lesson-9-create-hierarchies.md) с именем **организации**. Добавьте следующие столбцы в порядке hello: **Level1**, **Level2**, **Level3**, **Level4**, **уровень 5**.
 
-7.  В таблице **FactResellerSales** создайте следующую [меру](../tutorials/aas-lesson-6-create-measures.md):
+7.  В hello **FactResellerSales** таблице, создайте следующие hello [мер](../tutorials/aas-lesson-6-create-measures.md):
 
     ```
     ResellerTotalSales:=SUM([SalesAmount])
     ```
 
-8.  Используйте функцию [Анализ в Excel](../tutorials/aas-lesson-12-analyze-in-excel.md), чтобы открыть Excel и автоматически создать сводную таблицу.
+8.  Используйте [анализ в Excel](../tutorials/aas-lesson-12-analyze-in-excel.md) tooopen Excel и автоматически создать сводную таблицу.
 
-9.  В области **Поля сводной таблицы** добавьте иерархию **Organization** из таблицы **DimEmployee** в поле **Строки** и меру **ResellerTotalSales** из таблицы **FactResellerSales** в поле **Значения**.
+9.  В **полей сводной таблицы**, добавить hello **организации** иерархии из hello **DimEmployee** таблице слишком**строк**и hello **ResellerTotalSales** меру из hello **FactResellerSales** таблице слишком**значения**.
 
     ![aas-lesson-detail-ragged-hierarchies-pivottable](../tutorials/media/aas-lesson-detail-ragged-hierarchies-pivottable.png)
 
-    Как можно видеть в сводной таблице, иерархия отображает неоднородные строки. Имеется множество строк с пустыми членами.
+    Как видно в сводной таблице hello hello иерархии отображаются строки, без выравнивания. Имеется множество строк с пустыми членами.
 
-## <a name="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property"></a>Исправление неоднородной иерархии с помощью установки свойства "Скрыть члены"
+## <a name="toofix-hello-ragged-hierarchy-by-setting-hello-hide-members-property"></a>toofix hello неоднородные иерархии, присвоив свойству hello скрытие членов
 
 1.  В **обозревателе табличных моделей** разверните пункт **Таблицы** > **DimEmployee** > **Иерархии** > **Organization**.
 
@@ -119,7 +102,7 @@ ms.lasthandoff: 07/11/2017
 
     ![aas-lesson-detail-ragged-hierarchies-hidemembers](../tutorials/media/aas-lesson-detail-ragged-hierarchies-hidemembers.png)
 
-3.  Вернитесь в Excel и обновите сводную таблицу. 
+3.  Обратно в Excel обновите hello сводной таблицы. 
 
     ![aas-lesson-detail-ragged-hierarchies-pivottable-refresh](../tutorials/media/aas-lesson-detail-ragged-hierarchies-pivottable-refresh.png)
 

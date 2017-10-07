@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок синхронизации паролей с помощью службы синхронизации Azure AD Connect | Документация Майкрософт"
-description: "Эта статья содержит сведения по устранению неполадок синхронизации паролей."
+title: "Синхронизация паролей aaaTroubleshoot с Azure AD Connect sync | Документы Microsoft"
+description: "Эта статья содержит сведения о том, как tootroubleshoot проблем с синхронизацией паролей."
 services: active-directory
 documentationcenter: 
 author: AndKjell
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 33fa6a8867764975a57b8727e7705529d1d7506a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 390eafec792cb39251627c14cb754f8bb30035b5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>Устранение неполадок синхронизации паролей с помощью службы синхронизации Azure AD Connect
-В этой статье приводятся пошаговые инструкции для устранения неполадок, связанных с синхронизацией паролей. Неполадки синхронизации паролей могут возникать либо в подмножестве пользователей, либо у всех. Для развертывания Azure Active Directory (Azure AD) Connect версии 1.1.524.0 или более поздних теперь есть командлет диагностики, который вы можете использовать для устранения неполадок синхронизации паролей.
+В этом разделе шаги как tootroubleshoot проблемы с синхронизацией паролей. Неполадки синхронизации паролей могут возникать либо в подмножестве пользователей, либо у всех. Для Azure Active Directory (Azure AD) подключения развертывания к версии 1.1.524.0 или более поздней версии, теперь есть командлет диагностики, которые можно использовать tootroubleshoot проблем синхронизации паролей:
 
-* Если пароли не синхронизируются, перейдите к разделу [Пароли не синхронизируются: устранение неполадок с помощью командлета диагностики](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet).
+* Если имеется проблема, где нет пароли синхронизируются, см. toohello [не пароли синхронизируются: Устранение неполадок с помощью командлета диагностики hello](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet) раздела.
 
-* Если возникла проблема с отдельными объектами, перейдите к разделу [Пароли не синхронизируются одним объектом: устранение неполадок с помощью командлета диагностики](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet).
+* Если имеется проблема с отдельными объектами ссылаются toohello [одного объекта не выполняют синхронизацию паролей: Устранение неполадок с помощью командлета диагностики hello](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) раздела.
 
 Для ранних версий развертывания Azure AD Connect:
 
-* Если пароли не синхронизируются, перейдите к разделу [Пароли не синхронизируются: шаги по устранению неполадок вручную](#no-passwords-are-synchronized-manual-troubleshooting-steps).
+* Если имеется проблема, где нет пароли синхронизируются, см. toohello [не пароли синхронизируются: вручную шаги по устранению неполадок](#no-passwords-are-synchronized-manual-troubleshooting-steps) раздела.
 
-* Если возникла проблема с отдельными объектами, перейдите к разделу [Пароли не синхронизируются одним объектом: шаги по устранению неполадок вручную](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps).
+* Если имеется проблема с отдельными объектами ссылаются toohello [одного объекта не выполняют синхронизацию паролей: вручную шаги по устранению неполадок](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) раздела.
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Пароли не синхронизируются: устранение неполадок с помощью командлета диагностики
-Вы можете использовать командлет `Invoke-ADSyncDiagnostics`, чтобы выяснить, почему не происходит синхронизация паролей.
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-hello-diagnostic-cmdlet"></a>Выполняется синхронизация паролей не: Устранение неполадок с помощью командлета диагностики hello
+Можно использовать hello `Invoke-ADSyncDiagnostics` toofigure командлет out почему не пароли синхронизируются.
 
 > [!NOTE]
-> Командлет `Invoke-ADSyncDiagnostics` доступен только для Azure AD Connect версии 1.1.524.0 или более поздней.
+> Hello `Invoke-ADSyncDiagnostics` командлет доступен только для Azure AD Connect версии 1.1.524.0 или более поздней версии.
 
-### <a name="run-the-diagnostics-cmdlet"></a>Запуск командлета диагностики
-Чтобы устранить неполадки, связанные с синхронизацией паролей, сделайте следующее:
+### <a name="run-hello-diagnostics-cmdlet"></a>Запустите командлет диагностики hello
+проблемы tootroubleshoot, где нет пароли синхронизируются:
 
-1. Откройте новый сеанс Windows PowerShell на сервере Azure AD Connect с помощью параметра **Запуск от имени администратора**.
+1. Откройте новый сеанс Windows PowerShell на сервере Azure AD Connect с hello **Запуск от имени администратора** параметр.
 
 2. Запустите `Set-ExecutionPolicy RemoteSigned` или `Set-ExecutionPolicy Unrestricted`.
 
@@ -50,72 +50,72 @@ ms.lasthandoff: 08/18/2017
 
 4. Запустите `Invoke-ADSyncDiagnostics -PasswordSync`.
 
-### <a name="understand-the-results-of-the-cmdlet"></a>Изучение результатов выполнения командлета
-Командлет диагностики выполняет следующие проверки.
+### <a name="understand-hello-results-of-hello-cmdlet"></a>Изучите результаты hello hello командлета
+Hello диагностики командлет выполняет следующие проверки hello:
 
-* Проверяет, чтобы для вашего клиента Azure AD была включена функция синхронизации паролей.
+* Проверяет, hello включена функция синхронизации паролей для вашего клиента Azure AD.
 
-* Проверяет, чтобы сервер Azure AD Connect не находился в промежуточном режиме.
+* Проверяет, hello Azure AD Connect, сервер не находится в промежуточный режим.
 
-* Для каждого существующего локального соединителя Active Directory (который соответствует существующему лесу Active Directory):
+* Для каждой существующей локальной Active Directory connector (которая соответствует tooan существующий лес Active Directory):
 
-   * Проверяет, чтобы была включена функция синхронизации паролей.
+   * Проверяет, hello включена функция синхронизации паролей.
    
-   * Ищет события пульса синхронизации паролей в журнале событий приложений Windows.
+   * Выполняет поиск событий пульса синхронизации паролей в hello журналы событий приложений Windows.
 
-   * Для каждого домена Active Directory в локальном соединителе Active Directory:
+   * Для каждого домена Active Directory под hello локальный Соединитель Active Directory:
 
-      * Проверяет, чтобы из сервера Azure AD Connect можно было получить доступ к домену.
+      * Проверяет, hello домен доступен с сервера hello Azure AD Connect.
 
-      * Проверяет, чтобы учетные записи доменных служб Active Directory (AD DS), используемые локальным соединителем Active Directory, имели правильные имя пользователя, пароль и разрешения, необходимые для синхронизации паролей.
+      * Проверяет наличие hello правильное имя пользователя, пароль и разрешения, необходимые для синхронизации паролей учетных записей доменных служб Active Directory (AD DS) hello, используемых hello локальный Соединитель Active Directory.
 
-На схеме ниже отображаются результаты командлета для локальной топологии Active Directory с одним доменом:
+Привет, следующая схема иллюстрирует hello результаты командлета hello топологии одного домена в локальной среде Active Directory:
 
 ![Диагностические выходные данные для синхронизации паролей](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalgeneral.png)
 
-В оставшейся части этого раздела описываются определенные результаты, возвращенные командлетом, и соответствующие неполадки.
+Hello оставшейся части этого раздела описываются определенные результаты, возвращаемые командлетом hello и соответствующих проблем.
 
 #### <a name="password-synchronization-feature-isnt-enabled"></a>Отключена функция синхронизации паролей
-Если вы не включили синхронизацию паролей с помощью мастера Azure AD Connect, возвращается следующая ошибка:
+Если вы не включили синхронизации паролей с помощью мастера hello Azure AD Connect, возвращается hello следующая ошибка:
 
 ![Отключена функция синхронизации паролей](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobaldisabled.png)
 
 #### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Сервер Azure AD Connect находится в промежуточном режиме
-Если сервер Azure AD Connect находится в промежуточном режиме, синхронизация паролей временно отключена и возвращается следующая ошибка:
+В случае сервера Azure AD Connect hello в промежуточный режим синхронизации паролей временно отключена и hello будет возвращена следующая ошибка:
 
 ![Сервер Azure AD Connect находится в промежуточном режиме](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalstaging.png)
 
 #### <a name="no-password-synchronization-heartbeat-events"></a>Отсутствуют события пульса синхронизации паролей
-У каждого локального соединителя Active Directory есть свой собственный канал синхронизации паролей. Если установлен канал синхронизации паролей и нет необходимости синхронизировать какие-либо изменения пароля, в журнале событий приложений Windows каждые 30 минут создается событие пульса (EventId 654). Для каждого локального соединителя Active Directory командлет ищет соответствующие события пульса за последние три часа. Если событие пульса не найдено, возвращается следующая ошибка:
+У каждого локального соединителя Active Directory есть свой собственный канал синхронизации паролей. Если не синхронизировать изменения toobe любой пароль система устанавливается канал синхронизации пароля hello, событие пульса (EventId 654) создается один раз каждые 30 минут в журнале событий приложений Windows hello. Для каждого локального соединителя Active Directory, hello командлет ищет соответствующие события пульса в hello последние три часа. Если событие пульса не найден, hello будет возвращена следующая ошибка:
 
 ![Отсутствует событие пульса синхронизации паролей](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalnoheartbeat.png)
 
 #### <a name="ad-ds-account-does-not-have-correct-permissions"></a>Учетная запись AD DS не имеет необходимых разрешений
-Если учетная запись AD DS, используемая локальным соединителем Active Directory для синхронизации хэшей паролей, не содержит соответствующих разрешений, возвращается следующая ошибка:
+Если учетная запись hello AD DS, используемый hello в локальной среде хэши паролей toosynchronize Соединитель Active Directory не имеет соответствующих разрешений hello hello будет возвращена следующая ошибка:
 
 ![Неверные учетные данные](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>Неправильный пароль или имя пользователя учетной записи AD DS
-Если учетная запись AD DS, используемая локальным соединителем Active Directory для синхронизации хэшей паролей, содержит неправильный пароль или имя пользователя, возвращается следующая ошибка:
+Если hello Доменных службах Active Directory учетная запись используется hello хэши паролей toosynchronize Соединитель Active Directory в локальной среде имеет неправильное имя пользователя или пароль, hello будет возвращена следующая ошибка:
 
 ![Неверные учетные данные](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalaccountincorrectcredential.png)
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Пароли не синхронизируются одним объектом: устранение неполадок с помощью командлета диагностики
-Вы можете использовать командлет `Invoke-ADSyncDiagnostics`, чтобы определить, почему пароли не синхронизируются одним объектом.
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-hello-diagnostic-cmdlet"></a>Один объект не выполняют синхронизацию паролей: Устранение неполадок с помощью командлета диагностики hello
+Можно использовать hello `Invoke-ADSyncDiagnostics` toodetermine командлета, почему один объект не выполняется синхронизация паролей.
 
 > [!NOTE]
-> Командлет `Invoke-ADSyncDiagnostics` доступен только для Azure AD Connect версии 1.1.524.0 или более поздней.
+> Hello `Invoke-ADSyncDiagnostics` командлет доступен только для Azure AD Connect версии 1.1.524.0 или более поздней версии.
 
-### <a name="run-the-diagnostics-cmdlet"></a>Запуск командлета диагностики
-Чтобы устранить неполадки, связанные с синхронизацией паролей, сделайте следующее:
+### <a name="run-hello-diagnostics-cmdlet"></a>Запустите командлет диагностики hello
+проблемы tootroubleshoot, где нет пароли синхронизируются:
 
-1. Откройте новый сеанс Windows PowerShell на сервере Azure AD Connect с помощью параметра **Запуск от имени администратора**.
+1. Откройте новый сеанс Windows PowerShell на сервере Azure AD Connect с hello **Запуск от имени администратора** параметр.
 
 2. Запустите `Set-ExecutionPolicy RemoteSigned` или `Set-ExecutionPolicy Unrestricted`.
 
 3. Запустите `Import-Module ADSyncDiagnostics`.
 
-4. Выполните следующий командлет:
+4. Выполните следующий командлет hello.
    ```
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
@@ -124,158 +124,158 @@ ms.lasthandoff: 08/18/2017
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
    ```
 
-### <a name="understand-the-results-of-the-cmdlet"></a>Изучение результатов выполнения командлета
-Командлет диагностики выполняет следующие проверки.
+### <a name="understand-hello-results-of-hello-cmdlet"></a>Изучите результаты hello hello командлета
+Hello диагностики командлет выполняет следующие проверки hello:
 
-* Проверяет состояние объекта Active Directory в пространстве соединителя Active Directory, метавселенной и пространстве соединителя Azure AD.
+* Проверяет состояние hello объекта Active Directory hello в пространство соединителя Active Directory hello, метавселенной и Azure AD пространством соединителя.
 
-* Проверяет, чтобы с синхронизацией паролей были включены правила синхронизации, и чтобы они были применены к объекту Active Directory.
+* Проверяет, что отсутствуют правила синхронизации с синхронизацией паролей включен и применяется toohello объекта Active Directory.
 
-* Пытается извлечь и отобразить результаты последней попытки синхронизации паролей для объекта.
+* Пытается tooretrieve и отображение результатов hello hello последней попытки toosynchronize hello пароля для hello объекта.
 
-На схеме ниже отображаются результаты командлета при устранении неполадок синхронизации паролей для одного объекта:
+Привет, следующая схема иллюстрирует hello результаты командлета hello при устранении неполадок синхронизации паролей для одного объекта:
 
 ![Диагностические выходные данные для синхронизации паролей для одного объекта](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectgeneral.png)
 
-В оставшейся части этого раздела описываются определенные результаты, возвращенные командлетом, и соответствующие неполадки.
+Hello оставшейся части этого раздела описываются определенных результатов, возвращаемых командлетом hello и соответствующих проблем.
 
-#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Невозможно экспортировать в Azure AD объект Active Directory
-Синхронизация паролей для этой локальной учетной записи Active Directory завершается сбоем, так как в клиенте Azure AD отсутствует соответствующий объект. Возвращается следующая ошибка:
+#### <a name="hello-active-directory-object-isnt-exported-tooazure-ad"></a>объект Active Directory Hello не экспортированного tooAzure AD
+Синхронизация паролей для этой учетной записи локальной службы каталогов Active Directory завершается ошибкой, так как отсутствует соответствующий объект в клиенте Azure AD hello. возвращается следующая ошибка Hello:
 
 ![Отсутствует объект Azure AD](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectnotexported.png)
 
 #### <a name="user-has-a-temporary-password"></a>У пользователя временный пароль
-В настоящее время Azure AD Connect не поддерживает синхронизацию временных паролей с Azure AD. Пароль может рассматриваться как временный, если для локального пользователя Active Directory установлен параметр **смены пароля при следующем входе в систему**. Возвращается следующая ошибка:
+В настоящее время Azure AD Connect не поддерживает синхронизацию временных паролей с Azure AD. Пароль считается toobe временные Если hello **смену пароля при следующем входе в систему** был установлен на hello локального пользователя Active Directory. возвращается следующая ошибка Hello:
 
 ![Временный пароль не экспортируется](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjecttemporarypassword.png)
 
-#### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>Результаты последней попытки синхронизации пароля недоступны
-По умолчанию Azure AD Connect хранит результаты синхронизации паролей семь дней. Если для выбранного объекта Active Directory результаты недоступны, возвращается следующее предупреждение:
+#### <a name="results-of-last-attempt-toosynchronize-password-arent-available"></a>Результаты выполнения последней попытки toosynchronize пароль недоступны
+По умолчанию Azure AD Connect сохраняются результаты hello попыток синхронизации паролей на семь дней. Если нет результатов для выбранного hello объекта Active Directory, возвращается hello следующие предупреждения:
 
 ![Диагностические выходные данные для одного объекта: отсутствует история синхронизации паролей](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectnohistory.png)
 
 
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Пароли не синхронизируются: шаги по устранению неполадок вручную
-Чтобы выяснить, почему не происходит синхронизация паролей, выполните следующие действия:
+Выполните эти шаги toodetermine, почему не пароли синхронизируются.
 
-1. Переведен ли сервер Connect в [промежуточный режим](active-directory-aadconnectsync-operations.md#staging-mode)? Сервер, находящийся в промежуточном режиме, не синхронизирует пароли.
+1. — Сервер Connect hello в [промежуточный режим](active-directory-aadconnectsync-operations.md#staging-mode)? Сервер, находящийся в промежуточном режиме, не синхронизирует пароли.
 
-2. Выполните сценарий, приведенный в разделе [Получение состояния параметров синхронизации паролей](#get-the-status-of-password-sync-settings). В этом разделе рассматривается конфигурация синхронизации паролей.  
+2. Выполнение скрипта hello hello [получить состояние hello синхронизации паролей](#get-the-status-of-password-sync-settings) раздела. Он предоставляет общие сведения о конфигурации синхронизации пароля hello.  
 
     ![Выходные данные сценария PowerShell из параметров синхронизации паролей](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/psverifyconfig.png)  
 
-3. Если в Azure AD не включена функция синхронизации паролей или не добавлено состояние канала синхронизации, запустите мастер установки Azure AD Connect. Выберите **Настроить параметры синхронизации** и снимите флажок синхронизации паролей. Это позволит временно отключить функцию. Затем снова запустите мастер установки и включите синхронизацию паролей. Запустите скрипт снова и проверьте правильность конфигурации.
+3. Если функция hello не включена в Azure AD или состояние канала синхронизации hello не включена, запустите мастер установки Connect hello. Выберите **Настроить параметры синхронизации** и снимите флажок синхронизации паролей. Это изменение временно отключает функцию «hello». Затем снова запустите мастер hello и повторное включение синхронизации паролей. Запустите сценарий hello снова tooverify, hello конфигурации указано правильно.
 
-4. Проверьте журнал событий на наличие ошибок. Найдите следующие события, которые могут указывать на проблему:
-    * Источник: "Directory synchronization" ID: 0, 611, 652, 655. Если вы видите эти события, то это свидетельствует о проблеме с подключением. Сообщение в журнале событий содержит сведения о лесе, в котором возникла проблема. Дополнительные сведения см. в разделе о [проблеме с подключением](#connectivity problem).
+4. Просмотрите журнал ошибок hello. Найдите следующие события, указывающие на проблему hello:
+    * Источник: "Directory synchronization" ID: 0, 611, 652, 655. Если вы видите эти события, то это свидетельствует о проблеме с подключением. сообщения журнала событий Hello содержит сведения лесу, где возникла проблема. Дополнительные сведения см. в разделе о [проблеме с подключением](#connectivity problem).
 
-5. Если нет пульса или не сработали другие методы, то [запустите полную синхронизацию всех паролей](#trigger-a-full-sync-of-all-passwords). Этот сценарий необходимо выполнить только один раз.
+5. Если нет пульса или не сработали другие методы, то [запустите полную синхронизацию всех паролей](#trigger-a-full-sync-of-all-passwords). Запустите сценарий hello только один раз.
 
-6. Ознакомьтесь с разделом [Пароли не синхронизируются одним объектом](#one-object-is-not-synchronizing-passwords).
+6. В разделе hello [Устранение один объект, который не выполняют синхронизацию паролей](#one-object-is-not-synchronizing-passwords) раздела.
 
 ### <a name="connectivity-problems"></a>Проблемы с подключением
 
 Проверьте, есть ли подключение к Azure AD.
 
-Имеет ли учетная запись необходимые разрешения для чтения хэшей паролей во всех доменах? Если при установке Connect вы использовали стандартные параметры, то у вас уже должны быть необходимые разрешения. 
+Требуется хэши паролей hello tooread разрешения во всех доменах hello учетная запись? Если вы установили подключение с помощью экспресс-параметры, разрешения hello уже должен быть правильно. 
 
-Если вы использовали выборочную установку, задайте разрешения вручную следующим образом:
+Если вы использовали выборочную установку, разрешения hello вручную, выполнив hello ниже:
     
-1. Чтобы найти учетную запись, используемую соединителем Active Directory, запустите **Synchronization Service Manager**. 
+1. hello toofind учетная запись, используемая службой соединителя Active Directory hello, start **диспетчер службы синхронизации**. 
  
-2. Перейдите в раздел **Connectors** (Соединители), а затем найдите локальный лес Active Directory, в котором устраняются неполадки. 
+2. Go слишком**соединители**и выполните поиск в лесу Active Directory локальной hello, устранении неполадок. 
  
-3. Выберите соединитель и щелкните **Properties** (Свойства). 
+3. Выберите соединитель hello и нажмите кнопку **свойства**. 
  
-4. Выберите **Подключиться к лесу Active Directory**.  
+4. Go слишком**подключения леса tooActive**.  
     
     ![Учетная запись, используемая соединителем Active Directory](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/connectoraccount.png)  
-    Запишите имя пользователя и домен, в котором размещена учетная запись.
+    Обратите внимание, hello имя пользователя и домен hello, где расположена учетная запись hello.
     
-5. Запустите **Пользователи и компьютеры Active Directory** и проверьте, чтобы для учетной записи, найденной на предыдущем шаге, в корне всех доменов в лесу были заданы следующие разрешения:
+5. Запуск **Active Directory — пользователи и компьютеры**и убедитесь, что учетная запись hello, найденные ранее имеет разрешения выполните hello в корне hello всех доменов в лесу:
     * Репликация изменений каталога
     * Репликация всех изменений каталога
 
-6. Доступны ли контроллеры домена для Azure AD Connect? Если серверу Connect не удается подключиться ко всем контроллерам домена, настройте параметр **Only use preferred domain controller** (Использовать только предпочтительные контроллеры домена).  
+6. Являются hello контроллерами домена, которые доступны для Azure AD Connect? Если подключение сервера hello не может подключаться tooall контроллеров домена, настройте **использовать предпочтительный контроллер домена только**.  
     
     ![Контроллер домена, используемый соединителем Active Directory](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/preferreddc.png)  
     
-7. Вернитесь в меню **Synchronization Service Manager** и выберите **Configure Directory Partitions** (Настройка разделов каталога). 
+7. Возврат слишком**Synchronization Service Manager** и **Настройка раздела каталога**. 
  
-8. В списке **Select directory partitions** (Выбор разделов каталога) выберите свой домен, установите флажок **Only use preferred domain controllers** (Использовать только предпочтительные контроллеры домена), а затем щелкните **Configure** (Настроить). 
+8. Выберите домен в **выберите разделы каталога**выберите hello **использовать только контроллеры домена предпочтительный** флажок и нажмите кнопку **Настройка**. 
 
-9. В списке введите контроллеры домена, которые будет использовать Connect для синхронизации паролей. Этот же список используется для импорта и экспорта. Выполните эти действия для всех доменов.
+9. В списке hello введите hello контроллеры домена, подключение следует использовать для синхронизации паролей. Hello один список используется для импорта и экспорта также. Выполните эти действия для всех доменов.
 
-10. Если в сценарии отображается отсутствие пульса, тогда запустите сценарий, приведенный в разделе [Запуск полной синхронизации всех паролей](#trigger-a-full-sync-of-all-passwords).
+10. Если hello сценарий показывает, что не пакетов пульса, выполните сценарий hello в [запуска полной синхронизации всех паролей](#trigger-a-full-sync-of-all-passwords).
 
 ## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Пароли не синхронизируются одним объектом: шаги по устранению неполадок вручную
-Проблемы, связанные с синхронизацией паролей, можно легко устранить, просмотрев состояние объекта.
+Можно легко устранения неполадок синхронизации паролей, проверив состояние hello объекта.
 
-1. В средстве **Пользователи и компьютеры Active Directory** найдите пользователя, а затем убедитесь в отсутствии флажка для параметра **Требовать смены пароля при следующем входе в систему**.  
+1. В **Active Directory — пользователи и компьютеры**, поиск пользователя hello и убедитесь, что hello **пользователь должен сменить пароль при следующем входе в систему** флажок снят.  
 
     ![Повышение производительности в Active Directory с помощью синхронизации паролей](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/adprodpassword.png)  
 
-    Если флажок установлен, пользователь должен войти в систему и сменить пароль. Временные пароли не синхронизируются с Azure AD.
+    Если установлен флажок "hello", попросите toosign пользователя hello в и смену пароля hello. Временные пароли не синхронизируются с Azure AD.
 
-2. Если с паролем в Active Directory все в порядке, отследите пользователя в модуле синхронизации. Отследив пользователя от локального Active Directory до Azure AD, вы сможете убедиться в отсутствии ошибок в объекте.
+2. Если пароль hello верны в Active Directory, выполните пользователя hello в модуль синхронизации hello. Следующие hello пользователя из локальной Active Directory tooAzure AD вы увидите, имеются ли описательное сообщение об ошибке hello объекта.
 
-    а. Запустите [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md).
+    а. Запуск hello [диспетчер службы синхронизации](active-directory-aadconnectsync-service-manager-ui.md).
 
     b. Щелкните **Соединители**.
 
-    c. Выберите **соединитель Active Directory**, к которому относится пользователь.
+    c. Выберите hello **Соединитель Active Directory** где находится пользователь hello.
 
-    г) Выберите **Search Connector Space**(Поиск пространства соединителя).
+    d. Выберите **Search Connector Space**(Поиск пространства соединителя).
 
-    д. В поле **Scope** (Область) выберите **DN or Anchor** (Различающееся имя или привязка), а затем введите полное различающееся имя пользователя, для которого требуется устранить неполадки.
+    д. В hello **область** выберите **DN или привязки**и введите полное имя DN hello пользователя hello, устранении неполадок.
 
     ![Поиск пользователя в пространстве соединителя с различающимся именем](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/searchcs.png)  
 
-    f. Найдите нужного пользователя и нажмите кнопку **Properties** (Свойства), чтобы просмотреть все атрибуты. Если в результатах поиска нет нужного пользователя, то проверьте [правила фильтрации](active-directory-aadconnectsync-configure-filtering.md) и выполните действия, описанные в разделе [Примените и проверьте изменения](active-directory-aadconnectsync-configure-filtering.md#apply-and-verify-changes). После этого пользователь должен отобразиться в Connect.
+    f. Найдите hello пользователя ищете и нажмите кнопку **свойства** toosee все hello атрибуты. Если пользователь hello не hello результат поиска, проверьте вашей [правила фильтрации](active-directory-aadconnectsync-configure-filtering.md) и убедитесь, что запускается [применить и проверка изменений](active-directory-aadconnectsync-configure-filtering.md#apply-and-verify-changes) для tooappear пользователя hello в соединение.
 
-    ж. Чтобы просмотреть сведения о синхронизации паролей объекта за прошедшую неделю, щелкните **Log** (Журнал).  
+    ж. щелкните последнюю неделю toosee пароль hello синхронизации сведений hello объекта для hello **журнала**.  
 
     ![Сведения журнала для объекта](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/csobjectlog.png)  
 
-    Если журнал объекта пуст, то Azure AD Connect не сможет считать хэш паролей из Active Directory. Перейдите к устранению неполадок, описанных в разделе [Проблема подключения](#connectivity-errors). Если состояние имеет значение, отличное от **успешного**, то воспользуйтесь таблицей в разделе [Журнал синхронизации паролей](#password-sync-log).
+    Если журнал hello объекта пуст, Azure AD Connect был хэш пароля невозможно tooread hello из Active Directory. Перейдите к устранению неполадок, описанных в разделе [Проблема подключения](#connectivity-errors). Если вы видите любое другое значение, чем **успех**, см. таблицу toohello в [журнал синхронизации паролей](#password-sync-log).
 
-    h. Выберите вкладку **Lineage** (Журнал обращений и преобразований) и убедитесь, что по крайней мере для одного правила синхронизации в колонке **PasswordSync** задано значение **True**. В конфигурации по умолчанию правило синхронизации имеет имя **In from AD - User AccountEnabled**.  
+    h. Выберите hello **журнала обращений и преобразований** вкладку и убедитесь, что это правило синхронизации по крайней мере один в hello **PasswordSync** столбец **True**. В конфигурации по умолчанию hello hello правило синхронизации hello называется **в из AD — User AccountEnabled**.  
 
     ![Сведения о пользователе в журнале обращений и преобразований](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/cspasswordsync.png)  
 
-    i. Щелкните **Metaverse Object Properties** (Свойства объекта метавселенной), чтобы показать список атрибутов пользователя.  
+    i. Нажмите кнопку **свойства объекта метавселенной** toodisplay список атрибутов пользователей.  
 
     ![Сведения метавселенной](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/mvpasswordsync.png)  
 
-    Атрибут **cloudFiltered** должен отсутствовать. Убедитесь, что атрибуты домена (domainFQDN и domainNetBios) имеют ожидаемые значения.
+    Атрибут **cloudFiltered** должен отсутствовать. Убедитесь, что атрибуты домена hello (domainFQDN и domainNetBios) hello ожидаемые значения.
 
-    j. Щелкните вкладку **Connectors** (Соединители). Вы должны увидеть соединители для локального Active Directory и Azure AD.
+    j. Нажмите кнопку hello **соединители** вкладки. Убедитесь, что вы видите tooboth соединители локальной Active Directory и Azure AD.
 
     ![Сведения метавселенной](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/mvconnectors.png)  
 
-    k. Выберите строку, которая представляет Azure AD, щелкните **Properties** (Свойства), а затем щелкните вкладку **Lineage** (Журнал обращений и преобразований). Объект пространства соединителя должен содержать правило исходящих подключений в колонке **синхронизации паролей** с заданным значением **True**. В конфигурации по умолчанию это будет правило синхронизации с именем **Out to AAD - User Join**.  
+    k. Выберите hello строку, представляющую Azure AD щелкните **свойства**и нажмите кнопку hello **журнала обращений и преобразований** объект пространства соединителя hello вкладку должны иметь исходящего правила в hello **PasswordSync** столбец установлен слишком**True**. В конфигурации по умолчанию hello hello правило синхронизации hello называется **Out tooAAD - User Join**.  
 
     ![Диалоговое окно свойств объекта пространства соединителя](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/cspasswordsync2.png)  
 
 ### <a name="password-sync-log"></a>Журнал синхронизации паролей
-В столбце "Состояние" могут содержаться перечисленные ниже значения.
+Hello Status может содержать hello следующие значения:
 
 | Состояние | Description (Описание) |
 | --- | --- |
 | Успешно |Пароль успешно синхронизирован |
-| FilteredByTarget |Для пароля установлено значение **Пользователь должен изменить пароль при следующем входе**. Пароль не синхронизирован. |
-| NoTargetConnection |Объект отсутствует в метавселенной или в пространстве соединителя Azure AD. |
-| SourceConnectorNotPresent |Объект не найден в локальном пространстве соединителя Active Directory. |
-| TargetNotExportedToDirectory |Объект в пространстве соединителя Azure AD еще не экспортирован. |
+| FilteredByTarget |Задать пароль слишком**пользователь должен сменить пароль при следующем входе в систему**. Пароль не синхронизирован. |
+| NoTargetConnection |Ни один из объектов в метавселенной hello или в пространство соединителя hello Azure AD. |
+| SourceConnectorNotPresent |Объект не найден в пространство соединителя hello в локальной среде Active Directory. |
+| TargetNotExportedToDirectory |Hello объекта в hello пространство соединителя Azure AD не экспортированы. |
 | MigratedCheckDetailsForMoreInfo |Запись журнала создана до выхода версии 1.0.9125.0 и отображается в исходном состоянии. |
 | Ошибка |Служба вернула неизвестную ошибку. |
-| Unknown |Произошла ошибка при попытке обработать пакет хэшей паролей.  |
+| Unknown |Произошла ошибка при попытке tooprocess пакет хэши паролей.  |
 | MissingAttribute |Недоступны определенные атрибуты (например, хэш Kerberos), необходимые доменным службам Azure AD. |
-| RetryRequestedByTarget |Ранее были недоступны определенные атрибуты (например, хэш Kerberos), необходимые доменным службам Azure AD. Предпринята попытка повторно синхронизировать хэш пароля пользователя. |
+| RetryRequestedByTarget |Ранее были недоступны определенные атрибуты (например, хэш Kerberos), необходимые доменным службам Azure AD. Выполняется попытка tooresynchronize hello хэш пароля пользователя. |
 
-## <a name="scripts-to-help-troubleshooting"></a>Сценарии, помогающие при устранении неполадок
+## <a name="scripts-toohelp-troubleshooting"></a>Устранение неполадок toohelp сценариев
 
-### <a name="get-the-status-of-password-sync-settings"></a>Получение состояния параметров синхронизации паролей
+### <a name="get-hello-status-of-password-sync-settings"></a>Получить состояние hello синхронизации паролей
 ```
 Import-Module ADSync
 $connectors = Get-ADSyncConnector
@@ -314,7 +314,7 @@ if ($aadConnectors -ne $null -and $adConnectors -ne $null)
     }
     else
     {
-        Write-Warning "More than one Azure AD Connectors found. Please update the script to use the appropriate Connector."
+        Write-Warning "More than one Azure AD Connectors found. Please update hello script toouse hello appropriate Connector."
     }
 }
 Write-Host
@@ -331,9 +331,9 @@ Write-Host
 
 #### <a name="trigger-a-full-sync-of-all-passwords"></a>Запуск полной синхронизации всех паролей
 > [!NOTE]
-> Запустите этот сценарий только один раз. Если одного раза мало, то это значит, что проблема в чем-то другом. Для устранения этой проблемы обратитесь в службу поддержки Майкрософт.
+> Запустите этот сценарий только один раз. Если вам требуется toorun его несколько раз, либо является проблема hello. tootroubleshoot hello проблему, обратитесь в службу поддержки Майкрософт.
 
-Полную синхронизацию всех паролей можно активировать с помощью следующего сценария:
+Полная синхронизация всех паролей можно запускать с помощью hello следующий скрипт:
 
 ```
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"

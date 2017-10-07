@@ -1,6 +1,6 @@
 ---
-title: "Авторизация учетных записей разработчиков с помощью протокола OAuth 2.0 в службе управления Azure API | Документация Майкрософт"
-description: "Сведения об авторизации пользователей с помощью OAuth 2.0 в службе управления API."
+title: "с помощью OAuth 2.0 в Azure API управления учетными записями разработчиков aaaAuthorize | Документы Microsoft"
+description: "Узнайте, как tooauthorize пользователей, используя OAuth 2.0 в службе управления API."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,126 +14,126 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: a19c453bb3271374b587f3d0b35adad55863b490
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 934901dd6df399470a3257bf7a3a9b9fb5f40d5e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Авторизация учетных записей разработчиков с помощью протокола OAuth 2.0 в службе управления Azure API
-Многие интерфейсы API поддерживают протокол [OAuth 2.0](http://oauth.net/2/) , позволяющий защитить API, а также и предоставлять доступ только действительным пользователям и только к ресурсам, на которые эти пользователи имеют право. Чтобы использовать интерактивную  консоль разработчика управления API Azure с такими API, служба позволяет настроить экземпляр службы для работы с API с поддержкой OAuth 2.0.
+# <a name="how-tooauthorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Как разработчик tooauthorize учетных записей с помощью OAuth 2.0 в Azure API Management
+Многие API-интерфейсы поддерживают [OAuth 2.0](http://oauth.net/2/) toosecure hello API и убедитесь, что только допустимые пользователи имеют доступ, и они доступны только ресурсы toowhich они выполняется под названием. В Azure API порядок toouse управления интерактивной консоли разработчика с такие интерфейсы API, служба hello позволяет tooconfigure toowork экземпляра вашей службы с вашей OAuth 2.0 включена API.
 
 ## <a name="prerequisites"> </a>Предварительные требования
-В этом руководстве описано, как настроить экземпляр службы API Management для авторизации учетных записей разработчиков по протоколу OAuth 2.0. В нем не рассматривается настройка поставщика OAuth 2.0. Настройка каждого поставщика OAuth 2.0 имеет свои особенности, хотя инструкции в целом схожи, а данные, необходимые для настройки этого протокола в экземпляре службы API Management, одинаковы. В примерах в этом разделе в качестве поставщика OAuth 2.0 используется служба Azure Active Directory.
+В этом руководстве показано, как tooconfigure вашей toouse экземпляра службы управления API авторизации OAuth 2.0 для разработчика учетные записи, но не показывается, как поставщик tooconfigure OAuth 2.0. Hello конфигурации для каждого OAuth 2.0, поставщик может быть различным, несмотря на то, что шаги hello похожи и образов hello необходимые сведения, используемые в настройке OAuth 2.0 в вашего экземпляра службы управления API hello таким же. В примерах в этом разделе в качестве поставщика OAuth 2.0 используется служба Azure Active Directory.
 
 > [!NOTE]
-> Дополнительные сведения о настройке OAuth 2.0 с использованием Azure Active Directory см. в примере [WebApp-GraphAPI-DotNet][WebApp-GraphAPI-DotNet].
+> Дополнительные сведения о настройке OAuth 2.0, с помощью Azure Active Directory см. в разделе hello [WebApp-GraphAPI-DotNet] [ WebApp-GraphAPI-DotNet] образца.
 > 
 > 
 
 ## <a name="step1"> </a>Настройка сервера авторизации OAuth 2.0 в управлении API
-Чтобы начать работу, щелкните **Publisher portal** (Портал издателя) на портале Azure для службы управления API.
+tooget работу, нажмите кнопку **портал издателя** в hello портала Azure для службы управления API.
 
 ![Портал издателя][api-management-management-console]
 
 > [!NOTE]
-> Если экземпляр службы управления API еще не создан, см. раздел [Создание экземпляра управления API][Create an API Management service instance] в руководстве [Начало работы со службой управления Azure API][Get started with Azure API Management].
+> Если вы еще не создали экземпляра службы управления API, см. раздел [создания экземпляра службы управления API] [ Create an API Management service instance] в hello [приступить к работе со службой управления API Azure] [ Get started with Azure API Management] учебника.
 > 
 > 
 
-В меню **Управление API** слева выберите пункт **Безопасность**, перейдите на вкладку **OAuth 2.0** и щелкните ссылку **Add authorization server** (Добавить сервер авторизации).
+Нажмите кнопку **безопасности** из hello **API управления** hello, пункт меню **OAuth 2.0**, а затем нажмите кнопку **добавить сервер авторизации**.
 
 ![OAuth 2.0][api-management-oauth2]
 
-После перехода по ссылке **Add authorization server**открывается форма нового сервера авторизации.
+После нажатия кнопки **добавить сервер авторизации**, отображается hello новую форму сервера авторизации.
 
 ![Новый сервер][api-management-oauth2-server-1]
 
-В полях **Имя** и **Описание** введите имя и (при желании) описание. 
+Введите имя и описание (необязательно) в hello **имя** и **описание** поля. 
 
 > [!NOTE]
-> Эти поля служат для идентификации сервера авторизации OAuth 2.0 в текущем экземпляре службы API Management. Их значения не извлекаются с сервера OAuth 2.0.
+> Эти поля обязательны для сервера авторизации используется tooidentify hello OAuth 2.0 в текущем экземпляре службы управления API hello и их значения не исходят от сервера hello OAuth 2.0.
 > 
 > 
 
-Заполните поле **Client registration page URL** (URL-адрес страницы регистрации клиента). Это страница, на которой пользователи могут создавать свои учетные записи и управлять ими. Ее URL-адрес зависит от используемого поставщика OAuth 2.0. **URL-адрес страницы регистрации клиента** указывает на страницу, на которой пользователи могут создавать и настраивать собственные учетные записи для поставщиков OAuth 2.0, поддерживающих пользовательское управление учетными записями. В некоторых организациях эта функциональность не настраивается и не используется, даже если поставщик OAuth 2.0 ее поддерживает. Если у вашего поставщика OAuth 2.0 не настроено пользовательское управление учетными записями, введите здесь URL-адрес-заполнитель, такой как URL-адрес вашей компании или URL-адрес `https://placeholder.contoso.com`.
+Введите hello **URL-адрес страницы регистрации клиента**. Эта страница является, где пользователи могут создавать и управлять их учетными записями и изменяется в зависимости от используемого поставщика hello OAuth 2.0. Hello **URL-адрес страницы регистрации клиента** точки toohello страницы, что у пользователей, можно использовать toocreate и настроить свои собственные учетные записи для поставщиков OAuth 2.0, которые поддерживают управление учетными записями пользователей. В некоторых организациях применения этих функциональных возможностей, даже если это поддерживает поставщик hello OAuth 2.0 или не задан. Если нет Управление пользователями учетных записей, которые настроены для поставщика OAuth 2.0, введите URL заполнитель например hello URL-адрес вашей компании или URL-адреса таких как `https://placeholder.contoso.com`.
 
-В следующем разделе формы содержатся параметры **Authorization code grant types** (Типы предоставления кода авторизации), **Authorization endpoint URL** (URL-адрес конечной точки авторизации) и **Authorization request method** (Метод запроса авторизации).
+Следующий раздел Hello hello формы содержит hello **типы разрешений кода авторизации**, **URL-адрес конечной точки авторизации**, и **метод запроса авторизации** параметры.
 
 ![Новый сервер][api-management-oauth2-server-2]
 
-Установите нужные флажки в разделе **Authorization code grant types** . **Authorization code** (Код авторизации).
+Укажите hello **типы разрешений кода авторизации** путем проверки типов требуемого hello. **Authorization code** (Код авторизации).
 
-Введите URL-адрес в поле **Authorization endpoint URL**. Для Azure Active Directory этот URL-адрес будет аналогичен следующему URL-адресу, где `<client_id>` заменяется идентификатором клиента, по которому сервер OAuth 2.0 опознает ваше приложение.
+Введите hello **URL-адрес конечной точки авторизации**. Для Azure Active Directory, этот URL-адрес будет примерно toohello URL-адреса, где `<client_id>` заменяется hello идентификатор клиента, который идентифицирует сервер приложений toohello OAuth 2.0.
 
 `https://login.microsoftonline.com/<client_id>/oauth2/authorize`
 
-Параметр **Authorization request method** указывает на то, каким образом запрос авторизации отправляется на сервер OAuth 2.0. По умолчанию выбран вариант **GET** .
+Hello **метод запроса авторизации** определяет способ отправки запроса авторизации hello server toohello OAuth 2.0. По умолчанию выбран вариант **GET** .
 
-В следующем разделе можно настроить параметры **Token endpoint URL** (URL-адрес конечной точки маркера), **Client authentication methods** (Способы проверки подлинности клиента), **Access token sending method** (Способ отправки маркера доступа) и **Default scope** (Область по умолчанию).
+Следующий раздел Hello находится там, где hello **токен URL-адрес конечной точки**, **методы проверки подлинности клиента**, **маркера доступа метод отправки**, и **областьпоумолчанию** указаны.
 
 ![Новый сервер][api-management-oauth2-server-3]
 
-Для сервера OAuth 2.0 Azure Active Directory параметр**Token endpoint URL** будет иметь следующий формат, где `<APPID>` имеет вид `yourapp.onmicrosoft.com`.
+Сервер Azure Active Directory OAuth 2.0 hello **токен URL-адрес конечной точки** будет иметь следующий формат, hello где `<APPID>` имеет формат hello `yourapp.onmicrosoft.com`.
 
 `https://login.microsoftonline.com/<APPID>/oauth2/token`
 
-Параметр **Client authentication methods** по умолчанию имеет значение **Basic** (Обычная), а параметр **Access token sending method** — значение **Authorization header** (Заголовок авторизации). Эти значения можно настроить в данном разделе формы вместе с параметром **Default scope**.
+по умолчанию Hello **методы проверки подлинности клиента** — **основные**, и **маркера доступа метод отправки** — **заголовок авторизации**. Эти значения можно настроить на этот раздел hello форме вместе с hello **область по умолчанию**.
 
-В разделе **Client credentials** (Учетные данные клиента) содержатся поля **Client ID** (Идентификатор клиента) и **Client secret** (Секрет клиента), значения которых получены в ходе создания и настройки сервера OAuth 2.0. После определения значений **Client ID** и **Client secret** генерируется параметр **redirect_uri** (URI перенаправления) для **кода авторизации**. Этот универсальный код ресурса (URI) используется для настройки URL-адреса ответа в конфигурации сервера OAuth 2.0.
+Hello **учетные данные клиента** раздел содержит hello **идентификатор клиента** и **секрет клиента**, которой предоставляются во время процесса создания и настройки hello вашей OAuth 2.0 сервер. Здравствуйте, один раз **идентификатор клиента** и **секрет клиента** указаны, hello **redirect_uri** для hello **код авторизации** создается. Этот URI является URL-адрес ответа hello tooconfigure используется при настройке сервера OAuth 2.0.
 
 ![Новый сервер][api-management-oauth2-server-4]
 
-Если параметр **Authorization code grant types** имеет значение **Resource owner password** (Пароль владельца ресурса), то в разделе **Resource owner password credentials** (Учетные данные владельца ресурса) нужно указать соответствующие учетные данные. В противном случае эти поля можно оставить пустыми.
+Если **типы разрешений кода авторизации** задано слишком**пароль владельца ресурса**, hello **учетные данные владельца ресурса** раздел является используется toospecify эти учетные записи; в противном случае можно оставить пустым.
 
 ![Новый сервер][api-management-oauth2-server-5]
 
-После заполнения формы нажмите кнопку **Save** (Сохранить), чтобы сохранить конфигурацию сервера авторизации OAuth 2.0 для службы API Management. Сохранив конфигурацию сервера, вы можете настроить интерфейсы API для ее использования, как описано в следующем разделе.
+После завершения hello формы щелкните **Сохранить** конфигурации сервера авторизации toosave hello API управления OAuth 2.0. После сохранения конфигурации сервера hello можно настроить интерфейсы API toouse этой конфигурации, как показано в следующем разделе hello.
 
-## <a name="step2"> </a>Настройка API для авторизации пользователей по протоколу OAuth 2.0
-В меню **API Management** (Управление API) слева выберите пункт **APIs** (Интерфейсы API), щелкните имя нужного API, перейдите на вкладку **Security** (Безопасность) и установите флажок **OAuth 2.0**.
+## <a name="step2"></a>Настройка API toouse авторизации пользователя OAuth 2.0
+Нажмите кнопку **API-интерфейсы** из hello **API управления** меню hello слева, щелкните имя требуемого hello API hello, **безопасности**и установите флажок hello для **OAuth 2.0**.
 
 ![Авторизация пользователя][api-management-user-authorization]
 
-В раскрывающемся списке **Authorization server** (Сервер авторизации) выберите нужный пункт и нажмите кнопку **Save** (Сохранить).
+Выберите hello требуемого **сервер авторизации** hello раскрывающегося списка и нажмите кнопку **Сохранить**.
 
 ![Авторизация пользователя][api-management-user-authorization-save]
 
-## <a name="step3"> </a>Тестирование авторизации пользователей по протоколу OAuth 2.0 на портале разработчика
-Настроив сервер авторизации OAuth 2.0 и его использование интерфейсом API, вы можете протестировать сервер, перейдя на портал разработчика и вызвав интерфейс API.  В правом верхнем меню выберите пункт **Developer portal** (Портал разработчика).
+## <a name="step3"></a>Проверки авторизации пользователя hello OAuth 2.0 в hello портал разработчиков
+После настройки сервера авторизации OAuth 2.0 и настройки вашей toouse API сервера можно проверить его, перейдя toohello портал разработчиков и вызова интерфейса API.  Нажмите кнопку **портал разработчиков** в правом верхнем меню hello.
 
 ![Портал разработчика][api-management-developer-portal-menu]
 
-Щелкните **APIs** в меню вверху и выберите **Echo API**.
+Нажмите кнопку **API-интерфейсы** в верхнем меню hello и выберите **Echo API**.
 
 ![Echo API][api-management-apis-echo-api]
 
 > [!NOTE]
-> Если есть только один настроенный или видимый API для данной учетной записи, тогда щелчок по API сразу приведет к операциям для этого API.
+> Если у вас есть только один API-Интерфейс настройки или видимым tooyour учетной записи, выбрав API-интерфейсы вы перейдете непосредственно toohello операции для этого API-интерфейса.
 > 
 > 
 
-Выберите операцию **GET Resource**, щелкните **Open Console** (Открыть консоль) и выберите в раскрывающемся списке пункт **Authorization code** (Код авторизации).
+Выберите hello **получить ресурс** операцию, нажмите кнопку **откройте консоль**и выберите **код авторизации** hello в раскрывающемся списке.
 
 ![Открытие консоли][api-management-open-console]
 
-После выбора пункта **Authorization code** появляется всплывающее окно с формой входа поставщика OAuth 2.0. В этом примере форма входа предоставляется службой Azure Active Directory.
+Когда **код авторизации** — флажок установлен, всплывающее окно отображается с hello формы входа поставщика hello OAuth 2.0. В этом примере hello входа в форме обеспечивается Azure Active Directory.
 
 > [!NOTE]
-> Если всплывающие окна отключены, то в браузере появится запрос на их включение. Включив всплывающие окна, еще раз выберите пункт **Authorization code** , чтобы открыть форму входа.
+> При наличии всплывающих окон отключено, будет предложено tooenable их браузером hello. После того как вы включите их, выберите **код авторизации** снова и hello будет показана форма входа.
 > 
 > 
 
 ![входа][api-management-oauth2-signin]
 
-После входа поле **Request headers** (Заголовки запроса) заполняется заголовком `Authorization : Bearer`, используемым для авторизации запроса.
+После входа hello **заголовки запроса** заполняются `Authorization : Bearer` заголовок, который авторизует запрос hello.
 
 ![Маркер заголовка запроса][api-management-request-header-token]
 
-Теперь вы можете настроить остальные параметры и отправить запрос. 
+На этом этапе можно настроить hello требуемого значения для оставшихся параметров hello и отправить запрос hello. 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Для получения дополнительных сведений об использовании OAuth 2.0 и службы управления API см. следующий видеоролик и эту [статью](api-management-howto-protect-backend-with-aad.md).
+Дополнительные сведения об использовании OAuth 2.0 и API управления см. ниже hello видео- и сопутствующие [статьи](api-management-howto-protect-backend-with-aad.md).
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Protecting-Web-API-Backend-with-Azure-Active-Directory-and-API-Management/player]
 > 
@@ -155,10 +155,10 @@ ms.lasthandoff: 08/03/2017
 [api-management-apis-echo-api]: ./media/api-management-howto-oauth2/api-management-apis-echo-api.png
 
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to add and publish a product]: api-management-howto-add-products.md
+[How tooadd operations tooan API]: api-management-howto-add-operations.md
+[How tooadd and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
-[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: api-management-get-started.md
 [API Management policy reference]: api-management-policy-reference.md
@@ -170,7 +170,7 @@ ms.lasthandoff: 08/03/2017
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1
-[Configure an API to use OAuth 2.0 user authorization]: #step2
-[Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
+[Configure an API toouse OAuth 2.0 user authorization]: #step2
+[Test hello OAuth 2.0 user authorization in hello Developer Portal]: #step3
 [Next steps]: #next-steps
 

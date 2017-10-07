@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Bambu by Sprout Social | Документы Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и Bambu by Sprout Social."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Bambu по Sprout социальных сетей."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,112 +13,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 985966d26f6ed0dcd4db47589abf94260ce62bf0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c9998772c032476f9a18054873022f55b4bb78be
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>Руководство по интеграции Azure Active Directory с Bambu by Sprout Social
 
-В этом руководстве описано, как интегрировать Azure Active Directory (Azure AD) с Bambu by Sprout Social.
+В этом учебнике вы узнаете, как toointegrate Bambu по Sprout социальных сетей, с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с Bambu by Sprout Social обеспечивает следующие преимущества:
+Интеграция Bambu по Sprout социальных сетей с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Bambu by Sprout Social.
-- Вы можете включить автоматический вход пользователей в Bambu by Sprout Social (единый вход) с использованием учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooBambu по Sprout социальных сетей
+- Вы можете включить вашей пользователей tooautomatically get вошедшего tooBambu Sprout социальных (Single Sign-On), их учетные записи Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 <!--## Overview
 
-To enable single sign-on with Bambu by Sprout Social, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Bambu by Sprout Social.
+tooenable single sign-on with Bambu by Sprout Social, it must be configured toouse Azure Active Directory as an identity provider. This guide provides information and tips on how tooperform this configuration in Bambu by Sprout Social.
 
 >[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
+>This embedded guide is brand new in hello new Azure portal, and we’d love toohear your thoughts. Use hello Feedback ? button at hello top of hello portal tooprovide feedback. hello older guide for using hello [Azure classic portal](https://manage.windowsazure.com) tooconfigure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Bambu by Sprout Social, вам потребуется:
+tooconfigure интеграция Azure AD с Bambu по Sprout социальных сетей необходимо hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Bambu by Sprout Social с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не следует использовать рабочую среду при отсутствии необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Bambu by Sprout Social из коллекции
+1. Добавление Bambu Sprout социальных сетей, из коллекции hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-bambu-by-sprout-social-from-the-gallery"></a>Добавление Bambu by Sprout Social из коллекции
-Чтобы настроить интеграцию Bambu by Sprout Social с Azure AD, нужно добавить Bambu из коллекции в список управляемых приложений SaaS.
+## <a name="adding-bambu-by-sprout-social-from-hello-gallery"></a>Добавление Bambu Sprout социальных сетей, из коллекции hello
+tooconfigure hello интеграции Bambu по Sprout социальных сетей в Azure AD, вы должны tooadd Bambu Sprout социальных сетей, из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Bambu by Sprout Social из коллекции, сделайте следующее:**
+**tooadd Bambu по Sprout социальных сетей, из коллекции hello выполните hello следующие шаги.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портала Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. Нажмите кнопку **новое приложение** кнопку сверху "hello" hello диалоговое окно tooadd новое приложение.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Bambu by Sprout Social**.
+4. Введите в поле поиска hello **Bambu по Sprout социальных**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_search.png)
 
-5. На панели результатов выберите **Bambu by Sprout Social** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello, выберите **Bambu по Sprout социальных**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Bambu by Sprout Social с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Bambu by Sprout Social соответствует пользователю в Azure AD. Иными словами, нужно установить связь между пользователем Azure AD и соответствующим пользователем в Bambu by Sprout Social.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Bambu по Sprout социальных является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Bambu по Sprout социальных должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве **имени пользователя** в Bambu by Sprout Social.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **имя пользователя** в Bambu по Sprout социальных сетей.
 
-Чтобы настроить и проверить единый вход Azure AD в Bambu by Sprout Social, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с Bambu по Sprout социальных сетей, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Bambu by Sprout Social](#creating-a-bambu-by-sprout-social-test-user)** требуется для создания в Bambu by Sprout Social пользователя Britta Simon, связанного с представлением этого же пользователя в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание Bambu Sprout социальных пользователем теста](#creating-a-bambu-by-sprout-social-test-user)**  -toohave аналог Саймон Britta в Bambu по Sprout социальных сетей, представление связанных toohello Azure AD ей.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В данном разделе описано, как включить единый вход в Azure AD на портале Azure и настроить его в Bambu by Sprout Social.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в вашей Bambu Sprout социальных приложением.
 
-**Чтобы настроить единый вход Azure AD в Bambu by Sprout Social, сделайте следующее:**
+**tooconfigure Azure AD единого входа с Bambu по Sprout социальных сетей, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Bambu by Sprout Social** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Bambu по Sprout социальных** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна, как **режим** выберите **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_samlbase.png)
 
-3. В разделе **Домен и URL-адреса единого входа в Bambu by Sprout Social** не нужно выполнять никаких действий, поскольку приложение уже предварительно интегрировано с Azure. 
+3. На hello **Bambu Sprout социальных доменом и URL-адреса** статьи, hello пользователь не имеет tooperform все меры как приложение hello уже заранее интегрировано с Azure. 
 
     ![Настройка единого входа](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_url.png)
 
-4. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните XML-файл на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и сохраните hello XML-файл на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_certificate.png) 
 
@@ -126,81 +126,81 @@ To enable single sign-on with Bambu by Sprout Social, it must be configured to u
 
     ![Настройка единого входа](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_general_400.png)
     
-6. В разделе **Настройка Bambu by Sprout Social** щелкните **Настроить Bambu by Sprout Social**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **Bambu Sprout социальных конфигурацией** щелкните **Настройка Bambu по Sprout социальных** tooopen **Настройка входа** окна. Копировать hello **SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_configure.png) 
 
-7. Чтобы настроить единый вход на стороне **Bambu by Sprout Social**, нужно отправить скачанный **XML метаданных** и **URL-адрес службы единого входа SAML** в [службу поддержки Bambu by Sprout Social](mailto:support@getbambu.com). Это позволит службе поддержки правильно настроить подключение единого входа SAML на обоих сторонах.
+7. tooconfigure единого входа на **Bambu по Sprout социальных** стороны, необходимо загрузить hello toosend **метаданные в формате XML** и **SAML единого входа URL-адрес службы** слишком[Bambu Sprout социальных поддержки](mailto:support@getbambu.com). Они будут устанавливается в порядке toohave hello правильно настроенной на обеих сторонах соединения единого входа SAML.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello **Конфигурации** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 <!--### Next steps
 
-To ensure users can sign-in to Bambu by Sprout Social after it has been configured to use Azure Active Directory, review the following tasks and topics:
+tooensure users can sign-in tooBambu by Sprout Social after it has been configured toouse Azure Active Directory, review hello following tasks and topics:
 
-- User accounts must be pre-provisioned into Bambu by Sprout Social prior to sign-in. To set this up, see Provisioning.
+- User accounts must be pre-provisioned into Bambu by Sprout Social prior toosign-in. tooset this up, see Provisioning.
  
-- Users must be assigned access to Bambu by Sprout Social in Azure AD to sign-in. To assign users, see Users.
+- Users must be assigned access tooBambu by Sprout Social in Azure AD toosign-in. tooassign users, see Users.
  
-- To configure access polices for Bambu by Sprout Social users, see Access Policies.
+- tooconfigure access polices for Bambu by Sprout Social users, see Access Policies.
  
-- For additional information on deploying single sign-on to users, see [this article](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
+- For additional information on deploying single sign-on toousers, see [this article](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bambubysproutsocial-tutorial/create_aaduser_01.png) 
 
-2. Перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
+2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bambubysproutsocial-tutorial/create_aaduser_02.png) 
 
-3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
+3. Вверху hello диалоговое окно приветствия щелкните **добавить** tooopen hello **пользователя** диалогового окна.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bambubysproutsocial-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bambubysproutsocial-tutorial/create_aaduser_04.png) 
 
-    А. В текстовом поле **Name** (Имя) введите **Britta Simon**.
+    а. В hello **имя** введите **Britta Simon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи Britta Simon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из Саймон Britta.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-bambu-by-sprout-social-test-user"></a>Создание тестового пользователя для Bambu by Sprout Social
 
-Приложение поддерживает JIT-подготовку пользователей, поэтому после проверки подлинности пользователи будут созданы в приложении автоматически.
+В время подготовки пользователей и после проверки подлинности пользователей в приложении hello автоматически создаются непосредственно поддерживает приложение.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив доступ к Bambu by Sprout Social.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления ее tooBambu доступ по Sprout социальных сетей.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в приложении Bambu by Sprout Social, сделайте следующее:**
+**tooassign tooBambu Britta Simon по Sprout социальных сетей, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Bambu by Sprout Social**.
+2. В списке приложений hello выберите **Bambu по Sprout социальных**.
 
     ![Настройка единого входа](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -208,7 +208,7 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -216,13 +216,13 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент Bambu by Sprout Social на панели доступа, вы автоматически войдете в приложение Bambu by Sprout Social. Дополнительные сведения о панели доступа можно найти в статье [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586). 
+При нажатии кнопки hello Bambu по Sprout социальных плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Bambu Sprout социальных приложением. Дополнительные сведения о панели доступа можно найти в статье [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

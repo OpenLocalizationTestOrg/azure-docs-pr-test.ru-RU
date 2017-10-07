@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Wingspan eTMF | Документы Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и Wingspan eTMF."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Wingspan eTMF."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,113 +13,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 8c76fb64229abcad0cabb910e7c170979a79d839
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ed5fda5318a0d3841af8b2db4fb74db550befaea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Руководство. Интеграция Azure Active Directory с Wingspan eTMF
 
-В этом руководстве описано, как интегрировать Wingspan eTMF с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как eTMF Wingspan toointegrate с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением Wingspan eTMF обеспечивает следующие преимущества.
+Интеграция с Azure AD Wingspan eTMF предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Wingspan eTMF.
-- Вы можете включить автоматический вход пользователей в Wingspan eTMF (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooWingspan eTMF
+- Можно включить вашей пользователей tooautomatically get вошедшего tooWingspan eTMF (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Wingspan eTMF, вам потребуется:
+tooconfigure интеграция Azure AD с Wingspan eTMF требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка на Wingspan eTMF с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом руководстве, состоит из двух стандартных блоков.
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Wingspan eTMF из коллекции
+1. Добавление Wingspan eTMF из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-wingspan-etmf-from-the-gallery"></a>Добавление Wingspan eTMF из коллекции
-Чтобы настроить интеграцию Wingspan eTMF с Azure AD, необходимо добавить Wingspan eTMF из коллекции в список управляемых приложений SaaS.
+## <a name="adding-wingspan-etmf-from-hello-gallery"></a>Добавление Wingspan eTMF из галереи hello
+tooconfigure hello интеграции Wingspan eTMF в Azure AD, вы должны eTMF Wingspan tooadd из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Wingspan eTMF из коллекции, выполните следующие действия.**
+**eTMF Wingspan tooadd из галереи hello выполните hello следующие шаги.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Wingspan eTMF**.
+4. Введите в поле поиска hello **Wingspan eTMF**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_wingspanetmf_search.png)
 
-5. На панели результатов выберите **Wingspan eTMF** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **Wingspan eTMF**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_wingspanetmf_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описываются настройка и проверка единого входа Azure AD в Wingspan eTMF с использованием тестового пользователя Britta Simon.
 
-Чтобы настроить единый вход, Azure AD необходимо знать, какой пользователь в Wingspan eTMF соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Wingspan eTMF.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Wingspan eTMF является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Wingspan eTMF должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Wingspan eTMF.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в Wingspan eTMF.
 
-Чтобы настроить и проверить единый вход Azure AD в Wingspan eTMF, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с Wingspan eTMF, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Wingspan eTMF](#creating-a-wingspan-etmf-test-user)** требуется для создания в Wingspan eTMF пользователя Britta Simon, связанного с представлением этого же пользователя в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя eTMF Wingspan](#creating-a-wingspan-etmf-test-user)**  -toohave аналог Саймон Britta в eTMF Wingspan, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Wingspan eTMF.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении eTMF Wingspan.
 
-**Чтобы настроить единый вход Azure AD в Wingspan eTMF, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с Wingspan eTMF выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Wingspan eTMF** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Wingspan eTMF** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_wingspanetmf_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Wingspan eTMF** сделайте следующее.
+3. На hello **Wingspan eTMF доменов и URL-адреса** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_wingspanetmf_url11.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<customer name>.<instance name>.mywingspan.com/saml`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<customer name>.<instance name>.mywingspan.com/saml`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `http://saml.<instance name>.wingspan.com/shibboleth`
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`http://saml.<instance name>.wingspan.com/shibboleth`
 
-    c. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<customer name>.<instance name>.mywingspan.com/`.
+    c. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<customer name>.<instance name>.mywingspan.com/`
      
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом единого входа, идентификатором и URL-адресом ответа, включая реальное имя клиента и имя экземпляра. Чтобы получить их, обратитесь в [службу поддержки клиентов Wingspan eTMF](http://www.wingspan.com/contact-us/). 
+    > Эти значения не являются реальными hello. Обновите эти значения с hello фактический URL-адрес входа, идентификатор и ответ URL-адрес включая hello реальное имя клиента и имя экземпляра. Обратитесь к [группа поддержки клиента eTMF Wingspan](http://www.wingspan.com/contact-us/) tooget эти значения. 
 
-4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_wingspanetmf_certificate.png) 
 
@@ -127,64 +127,64 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_general_400.png)
 
-6. Чтобы настроить единый вход на стороне **Wingspan eTMF**, отправьте в [службу поддержки Wingspan eTMF](http://www.wingspan.com/contact-us/) скачанный **XML-файл метаданных**. Специалисты службы поддержки правильно настроят подключение единого входа SAML для приложения на обеих сторонах.
+6. tooconfigure единого входа на **Wingspan eTMF** стороны, необходимо загрузить hello toosend **метаданные в формате XML** слишком[Wingspan eTMF поддержки](http://www.wingspan.com/contact-us/). Они настроили это toohave hello правильно настроенной на обеих сторонах соединения единого входа SAML.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-wingspanetmf-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-wingspanetmf-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-wingspanetmf-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-wingspanetmf-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-wingspan-etmf-test-user"></a>Создание тестового пользователя Wingspan eTMF
 
-В этом разделе описано, как создать пользователя Britta Simon в приложении Wingspan eTMF. Обратитесь в [службу поддержки Wingspan eTMF](http://www.wingspan.com/contact-us/), чтобы добавить пользователей в приложение Wingspan eTMF. Перед использованием единого входа необходимо создать и активировать пользователей.
+В этом разделе описано, как создать пользователя Britta Simon в приложении Wingspan eTMF. Работать с [Wingspan eTMF поддержки](http://www.wingspan.com/contact-us/) tooadd пользователей hello в hello Wingspan eTMF приложения. Перед использованием единого входа необходимо создать и активировать пользователей.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как позволить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к Wingspan eTMF.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooWingspan eTMF.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в Wingspan eTMF, выполните следующие действия.**
+**tooassign eTMF tooWingspan Britta Simon, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Wingspan eTMF**.
+2. В списке приложений hello выберите **Wingspan eTMF**.
 
     ![Настройка единого входа](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_wingspanetmf_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -192,7 +192,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -200,13 +200,13 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа. 
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello. 
 
-Щелкните плитку Wingspan eTMF на панели доступа. Вы будете перенаправлены на страницу входа организации. После успешного входа вы сможете войти в приложение Wingspan eTMF. Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586).
+Щелкните плитку eTMF Wingspan hello в hello панели доступа, могут быть перенаправлены на страницу входа tooOrganization. После успешного входа будет подписан на tooyour Wingspan eTMF приложения. Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

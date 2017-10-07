@@ -2,7 +2,7 @@
 ## [Что такое службы Azure Analysis Services?](analysis-services-overview.md)
 ## [Поддерживаемые источники данных](analysis-services-datasource.md)
 ## [Аутентификация и пользовательские разрешения](analysis-services-manage-users.md)
-## [Подключение к локальным источникам данных](analysis-services-gateway.md)
+## [Подключение tooon локальные источники данных](analysis-services-gateway.md)
 ## [Уровень совместимости](analysis-services-compat-level.md)
 ## [Высокая доступность](analysis-services-bcdr.md)
 
@@ -12,7 +12,7 @@
 ## [Развертывание модели из Visual Studio](analysis-services-deploy.md)
 ## [Создание модели на портале Azure (предварительная версия)](analysis-services-create-model-portal.md)
 
-# Инструкции 
+# Как слишком
 ## [Управление сервером](analysis-services-manage.md)
 ## [Управление пользователями баз данных](analysis-services-database-users.md)
 ## [Управление администраторами сервера](analysis-services-server-admins.md)

@@ -1,6 +1,6 @@
 ---
-title: "Развертывание ресурсов с помощью PowerShell и шаблона | Документация Майкрософт"
-description: "Узнайте, как использовать Azure Resource Manager и Azure PowerShell для развертывания ресурсов в Azure. Эти ресурсы определяются в шаблоне Resource Manager."
+title: "aaaDeploy ресурсы с помощью PowerShell и шаблона | Документы Microsoft"
+description: "С помощью диспетчера ресурсов Azure и Azure PowerShell toodeploy tooAzure ресурсов. Hello ресурсы определяются в шаблоне диспетчера ресурсов."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5f395abf8ebdfbac18fd17d8183b392673e280ec
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 41506811ba3c2ea5df6313db70978ade50f71161
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell
 
-В этом разделе объясняется, как использовать Azure PowerShell с шаблонами Resource Manager для развертывания ресурсов в Azure. Если вы не знакомы с основными понятиями, связанными с развертыванием решений Azure и управлением ими, то см. [обзор Azure Resource Manager](resource-group-overview.md).
+В этом разделе объясняется, как toouse Azure PowerShell с toodeploy шаблонов диспетчера ресурсов вашей tooAzure ресурсов. Если вы не знакомы с основными понятиями hello развертывания и управлению решения Azure см [Обзор диспетчера ресурсов Azure](resource-group-overview.md).
 
-Развертываемый шаблон Resource Manager может быть локальным файлом на вашем компьютере или внешним файлом, расположенным в репозитории, например в GitHub. Шаблон, развертываемый в этой статье, доступен в разделе [Пример шаблона](#sample-template) или как [шаблон учетной записи хранения в GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
+шаблон диспетчера ресурсов Hello развертывание может быть локальный файл на компьютере или внешнем файле, расположенном в репозитория GitHub. шаблон Hello развертывания в этой статье доступен в hello [образец шаблона](#sample-template) раздел, или как [шаблона учетной записи хранилища в GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
 [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install.md)]
 
@@ -32,15 +32,15 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="deploy-a-template-from-your-local-machine"></a>Развертывание шаблона с локального компьютера
 
-При развертывании ресурсов в Azure выполните следующие действия:
+При развертывании tooAzure ресурсы можно:
 
-1. Вход в учетную запись Azure
-2. Создайте группу ресурсов, которая послужит в качестве контейнера для развертываемых ресурсов. Имя группы ресурсов может содержать только буквы, цифры, точки, знаки подчеркивания, дефисы и скобки. Оно может содержать до 90 знаков и не может заканчиваться точкой.
-3. Разверните в группе ресурсов шаблон, определяющий ресурсы, которые необходимо создать.
+1. Войдите в tooyour учетная запись Azure
+2. Создание группы ресурсов, выступающее в роли контейнера hello hello развертывания ресурсов. Имя группы ресурсов hello Hello может содержать только буквенно-цифровые символы, точки, символы подчеркивания, дефисы и скобки. Возможность ее too90 символов. не может заканчиваться точкой.
+3. Развертывание toohello группы ресурсов hello шаблона, определяющий ресурсы toocreate hello
 
-Шаблон может включать параметры, которые позволяют настроить развертывание. Например, вы можете предоставить значения, предназначенные для конкретной среды (такой как среда разработки, тестирования и рабочая среда). Пример шаблона определяет параметр для номера SKU учетной записи хранения.
+Шаблон может включать параметры, позволяющие toocustomize hello развертывания. Например, вы можете предоставить значения, предназначенные для конкретной среды (такой как среда разработки, тестирования и рабочая среда). Образец Hello шаблона определяет параметр для учетной записи хранения hello SKU.
 
-В следующем примере создается группа ресурсов и развертывается шаблон с локального компьютера:
+Следующий пример Hello создает группу ресурсов и развертывает шаблона с локального компьютера:
 
 ```powershell
 Login-AzureRmAccount
@@ -50,7 +50,7 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
-Развертывание может занять несколько минут. По завершении появится сообщение, содержащее результат:
+Hello развертывания может занять несколько минут toocomplete. По завершении появится сообщение, содержащее результат hello:
 
 ```powershell
 ProvisioningState       : Succeeded
@@ -58,9 +58,9 @@ ProvisioningState       : Succeeded
 
 ## <a name="deploy-a-template-from-an-external-source"></a>Развертывание шаблона из внешнего источника
 
-Шаблоны Resource Manager можно хранить не на локальном компьютере, а на внешнем источнике. Вы можете хранить шаблоны в репозитории системы управления версиями (например, GitHub). А также их можно хранить в учетной записи хранения Azure для общего доступа в организации.
+Вместо сохранения шаблонов диспетчера ресурсов на локальном компьютере, то лучше toostore их во внешнем местоположении. Вы можете хранить шаблоны в репозитории системы управления версиями (например, GitHub). А также их можно хранить в учетной записи хранения Azure для общего доступа в организации.
 
-Для развертывания внешнего шаблона используйте параметр **TemplateUri**. Используйте универсальный код ресурса (URI) в примере для развертывания примера шаблона из GitHub.
+использовать toodeploy шаблоном внешних hello **TemplateUri** параметра. Используйте hello URI в шаблоне образец hello toodeploy пример hello из GitHub.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -68,11 +68,11 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
   -storageAccountType Standard_GRS
 ```
 
-В предыдущем примере для шаблона требуется общедоступный код URI, который подходит для большинства сценариев, так как шаблон не должен содержать конфиденциальные данные. Если необходимо указать конфиденциальные данные (например, пароль администратора), то передайте это значение с помощью безопасного параметра. Но если вы не хотите, чтобы шаблон был общедоступным, то можно защитить его, сохранив в закрытом контейнере хранилища. Сведения о развертывании шаблона, требующего маркер подписанного URL-адреса (SAS), см. в статье [Развертывание частного шаблона Resource Manager с использованием токена SAS и Azure PowerShell](resource-manager-powershell-sas-token.md).
+Hello предыдущего примера требуется общедоступный код URI hello шаблона, который работает в большинстве случаев, поскольку шаблон не следует включать конфиденциальные данные. Если вам требуется toospecify конфиденциальные данные (например, пароль администратора), можно передайте в качестве безопасного параметра. Тем не менее если не требуется toobe ваш шаблон доступен из Интернета, можно защитить его путем сохранения его в контейнер закрытого хранения. Сведения о развертывании шаблона, требующего маркер подписанного URL-адреса (SAS), см. в статье [Развертывание частного шаблона Resource Manager с использованием токена SAS и Azure PowerShell](resource-manager-powershell-sas-token.md).
 
 ## <a name="parameter-files"></a>Файлы параметров
 
-Вместо передачи параметров в виде встроенных значений в сценарии вам может быть проще использовать JSON-файл, содержащий значения параметров. Файл параметров должен быть в указанном ниже формате.
+Вместо передачи параметров в качестве встроенных значений в скрипте, может оказаться проще toouse JSON-файл, содержащий значения параметров hello. файл параметров Hello должны быть hello следующий формат:
 
 ```json
 {
@@ -86,11 +86,11 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 }
 ```
 
-Обратите внимание, что раздел parameters содержит имя параметра, которое совпадает с параметром, определенным в шаблоне (storageAccountType). Файл параметров содержит значение для параметра. Во время развертывания это значение автоматически передается в шаблон. Можно создать несколько файлов параметров для различных сценариев развертывания, а затем передать соответствующий файл параметров. 
+Обратите внимание, что раздел параметров hello содержит имя параметра, которое соответствует hello параметра, определенного в шаблоне (storageAccountType). файл параметров Hello содержит значение параметра hello. Это значение автоматически передается toohello шаблона во время развертывания. Можно создать несколько файлов параметров для различных сценариев развертывания и затем передайте файл hello соответствующий параметр. 
 
-Скопируйте предыдущий пример и сохраните его как файл с именем `storage.parameters.json`.
+Скопируйте предшествующий пример hello и сохраните его как файл с именем `storage.parameters.json`.
 
-Чтобы передать локальный файл параметров, используйте параметр **TemplateParameterFile**:
+использовать файл локального параметра toopass hello **TemplateParameterFile** параметр:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -98,7 +98,7 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-Чтобы передать внешний файл параметров, используйте параметр **TemplateParameterUri**:
+toopass файл внешнего параметра использовать hello **TemplateParameterUri** параметр:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -106,35 +106,35 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
 
-Вы можете использовать в ходе одной операции развертывания как встроенные параметры, так и локальный файл параметров. Например, часть значений можно указать в локальном файле параметров, а другую часть — в команде развертывания. Если значения для одного параметра указаны одновременно и в локальном файле параметров, и в командной строке, более высокий приоритет имеет значение из командной строки.
+Можно использовать встроенные параметры и локального параметра файлов в hello же операции развертывания. Например можно указать некоторые значения в файле локального параметра hello и добавить другие встроенные значения во время развертывания. При указании значения для параметра в файл локального параметра hello и встроенные hello встроенного значение имеет приоритет.
 
-Тем не менее при использовании внешнего файла параметров нельзя передавать другие значения в командной строке или локальном файле. Если в параметре **TemplateParameterUri** указан файл параметров, все параметры командной строки игнорируются. Все значения параметров следует указать во внешнем файле. Если в шаблоне используется конфиденциальное значение, которое нельзя включать в файл параметров, то его можно передать в хранилище ключей. Кроме того, можно динамически указать значения всех параметров в командной строке.
+Тем не менее при использовании внешнего файла параметров нельзя передавать другие значения в командной строке или локальном файле. При указании файла параметров в hello **TemplateParameterUri** параметр, все встроенные параметры игнорируются. Укажите все значения параметров в файле внешних hello. Если шаблон включает конфиденциальное значение, нельзя включать в файл параметров hello, добавьте хранилище ключей, значение tooa или динамически предоставляют встроенные значения параметра.
 
-Если шаблон содержит параметр, имя которого совпадает с именем одного из параметров в команде PowerShell, параметр из шаблон отображается с постфиксом **FromTemplate**. Предположим, что параметр **ResourceGroupName** в шаблоне конфликтует с параметром **ResourceGroupName** в командлете [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment). Вам будет предложено указать значение для параметра **ResourceGroupNameFromTemplate**. В общем случае следует избегать этой путаницы, не присваивая параметрам имена параметров, используемых для операций развертывания.
+Если шаблон включает параметр с hello точно такое же имя в качестве одного из параметров hello в hello команду PowerShell, PowerShell представляет параметр hello из шаблона с постфиксной hello **FromTemplate**. Например, параметр с именем **ResourceGroupName** на шаблон конфликтует с hello **ResourceGroupName** параметр в hello [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)командлета. Запрос tooprovide являются значение для **ResourceGroupNameFromTemplate**. В общем случае следует избегать этой путаницы, не присвоив имена параметров с hello точно такое же имя в качестве параметров, используемых для операций развертывания.
 
 ## <a name="test-a-template-deployment"></a>Тестовое развертывание шаблона
 
-Чтобы проверить шаблон и значения параметров без фактического развертывания ресурсов, используйте [Test-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/test-azurermresourcegroupdeployment). 
+использовать ваш шаблон и значения параметров без фактического развертывания все ресурсы, tootest [AzureRmResourceGroupDeployment теста](/powershell/module/azurerm.resources/test-azurermresourcegroupdeployment). 
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
-Если ошибок не обнаружено, то команда завершается без ответа. Если обнаруживается ошибка, то команда возвращает сообщение об ошибке. Например, при попытке передать недопустимое значение для номера SKU учетной записи хранения возвращается следующая ошибка:
+Если ошибки не обнаружены, завершения выполнения команды hello без ответа. Если обнаруживается ошибка, hello команда возвращает сообщение об ошибке. Например toopass неправильное значение для учетной записи хранения hello SKU, система выдаст hello следующая ошибка:
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType badSku
 
 Code    : InvalidTemplate
-Message : Deployment template validation failed: 'The provided value 'badSku' for the template parameter 'storageAccountType'
-          at line '15' and column '24' is not valid. The parameter value is not part of the allowed value(s):
+Message : Deployment template validation failed: 'hello provided value 'badSku' for hello template parameter 'storageAccountType'
+          at line '15' and column '24' is not valid. hello parameter value is not part of hello allowed value(s):
           'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.
 Details :
 ```
 
-Если шаблон содержит синтаксическую ошибку, то команда возвращает сообщение об ошибке, указывающее, что ей не удалось проанализировать шаблон. В сообщении указывается номер строки и позиция ошибки синтаксического анализа.
+Если шаблон содержит синтаксическую ошибку, команда hello возвращает ошибку, указывающую, что не удалось проанализировать шаблон hello. сообщение Hello указывает hello номер строки и положение hello Ошибка синтаксического анализа.
 
 ```powershell
 Test-AzureRmResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
@@ -143,7 +143,7 @@ Test-AzureRmResourceGroupDeployment : After parsing a value an unexpected charac
 
 [!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
 
-Чтобы использовать полный режим, используйте параметр `Mode`.
+полный режим toouse, используйте hello `Mode` параметр:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Mode Complete -Name ExampleDeployment `
@@ -152,7 +152,7 @@ New-AzureRmResourceGroupDeployment -Mode Complete -Name ExampleDeployment `
 
 ## <a name="sample-template"></a>Пример шаблона
 
-Для примеров в этой статье используется следующий шаблон. Скопируйте и сохраните его как файл с именем storage.json. Сведения о создании этого шаблона см. в статье [Создание первого шаблона Azure Resource Manager](resource-manager-create-first-template.md).  
+Hello следующий шаблон используется для hello примеры в этом разделе. Скопируйте и сохраните его как файл с именем storage.json. toounderstand как toocreate этого шаблона, в разделе [создать свой первый диспетчера ресурсов Azure](resource-manager-create-first-template.md).  
 
 ```json
 {
@@ -200,10 +200,10 @@ New-AzureRmResourceGroupDeployment -Mode Complete -Name ExampleDeployment `
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* В примерах этой статьи ресурсы развертываются в группу ресурсов в подписке по умолчанию. Чтобы использовать другую подписку, см. статью [Управление несколькими подписками Azure](/powershell/azure/manage-subscriptions-azureps).
+* Примеры Hello в этой статье развертывания группы ресурсов tooa ресурсы в подписке по умолчанию. toouse другую подписку, в разделе [управления несколькими подписками Azure](/powershell/azure/manage-subscriptions-azureps).
 * Полный пример сценария, развертывающего шаблон, см. в статье [Сценарий для развертывания шаблона Resource Manager](resource-manager-samples-powershell-deploy.md).
-* Сведения об определении параметров в шаблоне см. в статье [Описание структуры и синтаксиса шаблонов Azure Resource Manager](resource-group-authoring-templates.md).
+* toodefine параметры в шаблоне, в статье toounderstand [понять структуру hello и синтаксис шаблоны Azure Resource Manager](resource-group-authoring-templates.md).
 * Советы по устранению распространенных ошибок развертывания см. в разделе [Устранение распространенных ошибок развертывания в Azure с помощью Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Сведения о развертывании шаблона, которому нужен токен SAS, см. в статье [Развертывание частного шаблона с помощью маркера SAS](resource-manager-powershell-sas-token.md).
-* Руководство по использованию Resource Manager для эффективного управления подписками в организациях см [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Шаблон Azure для организаций. Рекомендуемая система управления подпиской).
+* Для получения рекомендаций по как предприятия могут использовать диспетчер ресурсов tooeffectively управление подписками см. в разделе [корпоративные функции формирования шаблонов - управление конкретные подписки](resource-manager-subscription-governance.md).
 

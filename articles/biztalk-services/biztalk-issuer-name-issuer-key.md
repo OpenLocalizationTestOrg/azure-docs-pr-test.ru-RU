@@ -1,6 +1,6 @@
 ---
-title: "Имя издателя и ключ издателя в службах BizTalk | Документация Майкрософт"
-description: "Узнайте, как извлечь имя и ключ издателя для Service Bus или управления доступом (ACS) в службах BizTalk. MABS, WABS"
+title: "aaaIssuer имя и ключ поставщика в службах BizTalk | Документы Microsoft"
+description: "Дополнительные сведения о том, как tooretrieve имя издателя и ключ издателя для шины обслуживания или управления доступом (ACS) в службах BizTalk. MABS, WABS"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: b9fd985c23558596408e78eadae00dd0f95c4214
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cc84c2820724ae3e7fc7c40ddbcd83a169add911
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>Службы BizTalk: имя и ключ издателя
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-В службах BizTalk в Azure используются имя и ключ издателя Service Bus, а также имя и ключ издателя службы Access Control. В частности:
+Службы BizTalk Azure использует hello имя издателя шины обслуживания и ключ издателя и hello имя издателя контроля доступа и ключ издателя. В частности:
 
 | Задача | Используемые имя и ключ издателя |
 | --- | --- |
 | Развертывание приложения из Visual Studio |Имя и ключ издателя для службы Access Control |
-| Настройка портала служб BizTalk в Azure |Имя и ключ издателя для службы Access Control |
-| Создание бизнес-ретрансляций со службами адаптера BizTalk в Visual Studio |Имя и ключ издателя шины обслуживания |
+| Настройка hello портале служб BizTalk Azure |Имя и ключ издателя для службы Access Control |
+| Создание ретрансляции больших двоичных ОБЪЕКТОВ с hello службы адаптера BizTalk в Visual Studio |Имя и ключ издателя шины обслуживания |
 
-В этом разделе перечислены шаги для извлечения имени и ключа издателя. 
+В этом разделе перечислены hello действия tooretrieve hello имя издателя и ключ издателя. 
 
 ## <a name="access-control-issuer-name-and-issuer-key"></a>Имя и ключ издателя для службы Access Control
-Имя и ключ издателя для службы Access Control используются в следующих областях:
+Hello имя издателя контроля доступа и ключ издателя используются hello следующее:
 
-* Приложение службы BizTalk в Azure, созданное в среде Visual Studio: для успешного развертывания в Azure приложения службы BizTalk, созданного в среде Visual Studio, необходимо ввести имя и ключ издателя для службы Access Control. 
-* Портал служб BizTalk Azure. При открытии портала служб BizTalk во время создания службы BizTalk имя и ключ издателя для службы контроля доступа автоматически регистрируются для развертываний с теми же значениями службы контроля доступа.
+* Приложение службы Azure BizTalk, созданных в Visual Studio: toosuccessfully развернуть приложение службы BizTalk в Visual Studio tooAzure, введите имя издателя контроля доступа hello и ключ издателя. 
+* Hello портале служб BizTalk Azure: при создание службы BizTalk откройте hello портале служб BizTalk, имя издателя управления доступом и ключ издателя автоматически регистрируются для развертываний с hello одинаковые значения для управления доступом.
 
-### <a name="get-the-access-control-issuer-name-and-issuer-key"></a>Имя и ключ издателя для службы контроля доступа
+### <a name="get-hello-access-control-issuer-name-and-issuer-key"></a>Получить hello имя издателя контроля доступа и ключ издателя
 
-Чтобы использовать ACS для аутентификации и получить значения имени и ключа издателя, сделайте следующее:
+toouse ACS для проверки подлинности и get Здравствуйте значения имени издателя и ключ издателя, hello общие шаги включают:
 
-1. Установите [командлеты Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+1. Установка hello [командлетов Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
 2. Добавьте учетную запись Azure: `Add-AzureAccount`.
 3. Получите имя подписки: `get-azuresubscription`.
 4. Выберите свою подписку: `select-azuresubscription <name of your subscription>`. 
-5. Создайте пространство имен: `new-azuresbnamespace <name for the service bus> "Location" -CreateACSNamespace $true -NamespaceType Messaging`.
+5. Создайте пространство имен: `new-azuresbnamespace <name for hello service bus> "Location" -CreateACSNamespace $true -NamespaceType Messaging`.
 
     Пример:`new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
       
-5. При создании пространства имен ACS (занимает несколько минут) значения имени и ключа издателя указываются в строке подключения: 
+5. Когда создается новое пространство имен ACS hello (это может занять несколько минут), hello имя издателя и ключ издателя значения перечислены в строке подключения hello: 
 
     ```
     Name                  : biztalksbnamespace
@@ -66,34 +66,34 @@ ms.lasthandoff: 07/11/2017
     NamespaceType         : Messaging
     ```
 
-Итог:  
+toosummarize:  
 имя издателя — SharedSecretIssuer;  
 ключ издателя — SharedSecretKey.
 
-Дополнительные сведения о командлете [New-AzureSBNamespace](https://msdn.microsoft.com/library/dn495165.aspx). 
+Подробнее об hello [New-AzureSBNamespace](https://msdn.microsoft.com/library/dn495165.aspx) командлета. 
 
 ## <a name="service-bus-issuer-name-and-issuer-key"></a>Имя и ключ издателя шины обслуживания
-Имя и ключ издателя шины обслуживания используются службами адаптера BizTalk. В проекте служб BizTalk в Visual Studio можно использовать службы адаптера BizTalk для подключения к локальной бизнес-системе. Для подключения создайте бизнес-ретранслятор и введите сведения о бизнес-системе. При этом также вводится имя и ключ издателя шины обслуживания.
+Имя и ключ издателя шины обслуживания используются службами адаптера BizTalk. В проекте службы BizTalk в Visual Studio используйте Line of Business (LOB) hello службы адаптера BizTalk tooconnect tooan в локальной системе. tooconnect, создать hello посредника LOB и введите свои данные системы LOB. При этом также введите имя издателя шины обслуживания hello и ключ издателя.
 
-### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>Чтобы извлечь имя и ключ издателя Service Bus
-1. Перейдите на [классический портал Azure](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. В левой области навигации щелкните **Шина обслуживания**.
-3. Выберите пространство имен. На панели задач выберите **Сведения о подключении**. Появятся поля **Издатель по умолчанию** (имя издателя) и **Ключ по умолчанию** (ключ издателя). Эти значения можно скопировать.  
+### <a name="tooretrieve-hello-service-bus-issuer-name-and-issuer-key"></a>hello tooretrieve имя издателя шины обслуживания и ключ издателя
+1. Войдите в toohello [классический портал Azure](http://go.microsoft.com/fwlink/p/?LinkID=213885).
+2. В области навигации слева hello выберите **Service Bus**.
+3. Выберите пространство имен. На панели задач hello, выберите **сведения о соединении**. При этом отображаются hello **поставщика по умолчанию** (имя поставщика) и **ключ по умолчанию** (ключ). Эти значения можно скопировать.  
 
-Итог:  
+toosummarize:  
 Имя издателя = издатель по умолчанию  
 Ключ издателя = ключ по умолчанию
 
 ## <a name="next"></a>Далее
 Дополнительная информация о службах BizTalk в Azure
 
-* [Установка пакета SDK для служб BizTalk Azure](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [Установка пакета SDK служб BizTalk Azure hello](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
 * [Руководства по службам BizTalk Azure](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
-* [Как приступить к работе с пакетом SDK для служб BizTalk Azure](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Как я запустить с помощью hello пакета SDK служб BizTalk Azure](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Службы BizTalk Azure](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>См. также
-* [Инструкция по использованию службы управления ACS для настройки удостоверений службы](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
+* [Как: использование службы управления ACS tooConfigure удостоверения службы](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
 * [Службы BizTalk. Диаграмма выпусков Developer, Basic, Standard и Premium](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
 * [Службы BizTalk: подготовка с использованием классического портала Azure](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 * [Службы BizTalk. Диаграмма состояния подготовки](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>

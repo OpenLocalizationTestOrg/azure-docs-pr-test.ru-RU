@@ -1,6 +1,6 @@
 ---
-title: "Все аспекты безопасности решения Интернета вещей Azure | Документация Майкрософт"
-description: "Использование встроенных средств обеспечения безопасности Центра Интернета вещей Microsoft Azure и Azure IoT Suite."
+title: "aaaSecure вашего решения Azure IoT из hello основание вверх | Документы Microsoft"
+description: "Как toouse hello встроенных средств защиты Microsoft Azure IoT Hub и набор."
 services: iot-hub
 documentationcenter: 
 author: YuriDio
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.openlocfilehash: 6a0ac22e85a85dca9bad06aa2c722523d3086537
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8009b19cf3cdff0507158513097a0709bbac06e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 [!INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
 
-## <a name="see-also"></a>Дополнительные материалы
-Дополнительные сведения о безопасности решения IoT см.:
+## <a name="see-also"></a>См. также
+toolearn Дополнительные сведения о защите вашего решения IoT. в разделе:
 
 * [Рекомендации по обеспечению безопасности "Интернета вещей"][lnk-security-best-practices]
 * [Архитектура безопасности "Интернета вещей"][lnk-security-architecture]
 * [Защита развертывания IoT][lnk-security-deployment]
 
-Для дальнейшего изучения возможностей центра IoT см. следующие статьи:
+Изучение возможностей hello центра IoT toofurther см. в разделе:
 
 * [Отправка сообщений с устройства в облако с помощью имитации устройства (Linux) с использованием Edge Интернета вещей Azure][lnk-iotedge]
 

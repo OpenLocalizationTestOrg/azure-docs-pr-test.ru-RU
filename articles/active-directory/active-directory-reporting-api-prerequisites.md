@@ -1,6 +1,6 @@
 ---
-title: "Предварительные требования для доступа к API отчетов Azure AD. | Документация Майкрософт"
-description: "Узнайте о предварительных требованиях для доступа к API отчетов Azure AD"
+title: "aaaPrerequisites tooaccess hello Azure AD отчетов API. | Документация Майкрософт"
+description: "Дополнительные сведения об отчетности API hello Azure AD tooaccess hello предварительные требования"
 services: active-directory
 documentationcenter: 
 author: dhanyahk
@@ -14,154 +14,154 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-ms.openlocfilehash: 6e409fc56b77f37dac7f37382e664c577666ad4d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e9d7ceaedb07d18fbd75b70d68b5cfbebc756c36
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Предварительные требования для доступа к API отчетов Azure AD
-[Интерфейсы API отчетов Azure AD](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) предоставляют программный доступ к данным с помощью набора интерфейсов API на базе REST. Эти интерфейсы API можно вызвать, используя различные языки и инструменты программирования.
+# <a name="prerequisites-tooaccess-hello-azure-ad-reporting-api"></a>API отчетов hello Azure AD tooaccess предварительные требования
+Hello [reporting API-интерфейсов Azure AD](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) предоставить программный доступ к данным toohello через набор API на основе REST. Эти интерфейсы API можно вызвать, используя различные языки и инструменты программирования.
 
-API отчетов использует [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) для авторизации доступа к веб-API. 
+модуль отчетов API Hello [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) tooauthorize доступа toohello веб-API. 
 
-Чтобы подготовить доступ к API отчетов, сделайте следующее:
+tooprepare вашей reporting API toohello доступ, необходимо:
 
 1. Создайте приложение в клиенте Azure AD. 
-2. Предоставьте ему соответствующие разрешения для доступа к данным Azure AD.
+2. Приложения соответствующие разрешения GRANT hello tooaccess hello данных Azure AD
 3. Получите параметры конфигурации из каталога.
 
 Чтобы задать вопросы, обговорить проблемы или предоставить отзыв, обратитесь в [службу поддержки по инструментам создания отчетов AAD](mailto:aadreportinghelp@microsoft.com).
 
 ## <a name="create-an-azure-ad-application"></a>Создание приложения Azure AD
-Чтобы настроить для каталога доступ к API отчетов Azure AD, необходимо войти на классический портал Azure с помощью учетной записи администратора подписки Azure, которой также назначена роль участника каталога глобального администратора в клиенте Azure AD.
+tooconfigure directory API отчетов tooaccess hello Azure AD, необходимо войти в toohello классический портал Azure с учетной записью администратора подписки Azure, который также является членом роли каталога hello глобального администратора в клиенте Azure AD.
 
 > [!IMPORTANT]
-> В приложениях, работающих под учетными данными с такими административными правами, доступно много возможностей. Поэтому храните в надежном месте идентификатор приложения и секретные учетные данные.
+> Приложениям, выполняемым учетные данные с правами «admin», как это может быть очень мощные, поэтому имейте безопасного убедиться, что tookeep hello идентификатор и секрет учетные данные приложения.
 > 
 > 
 
-1. На [классическом портале Azure](https://manage.windowsazure.com)в области навигации слева щелкните **Active Directory**.
+1. В hello [классический портал Azure](https://manage.windowsazure.com), на левой панели навигации hello, нажмите кнопку **Active Directory**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/01.png) 
-2. Выберите свой каталог в списке каталогов **Active Directory** .
-3. В меню вверху щелкните **Приложения**.
+2. Из hello **active directory** список, выберите свой каталог.
+3. В меню в верхней части hello hello выберите **приложений**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/02.png) 
-4. На нижней панели щелкните **Добавить**.
+4. На нижней панели hello щелкните **добавить**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/03.png) 
-5. В диалоговом окне **Что необходимо сделать?** щелкните **Добавить приложение, разрабатываемое моей организацией**. 
+5. На hello **что вам требуется toodo?** диалоговое окно, нажмите кнопку **добавить приложение, разрабатываемое моей организацией**. 
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/04.png) 
-6. В диалоговом окне **Расскажите о своем приложении** выполните следующие действия. 
+6. На hello **Расскажите о своем приложении** диалоговое окно, выполните следующие шаги hello: 
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/05.png) 
    
-    а. В текстовом поле **Имя** введите имя (например, приложение API отчетов).
+    а. В hello **имя** текстовом поле введите имя (например: приложения API для отчетов).
    
     b. Выберите **Веб-приложение и/или веб-API**.
    
     c. Щелкните **Далее**.
-7. В диалоговом окне **Свойства приложения** выполните следующие действия: 
+7. На hello **свойства приложения** диалоговое окно, выполните следующие шаги hello: 
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/06.png) 
    
-    а. В текстовом поле **URL-адрес входа** введите `https://localhost`.
+    а. В hello **URL-адрес входа** введите `https://localhost`.
    
-    b. В текстовом поле **URI кода приложения** введите ```https://localhost/ReportingApiApp```.
+    b. В hello **URI идентификатора приложения** введите ```https://localhost/ReportingApiApp```.
    
     c. Нажмите **Завершено**.
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>Предоставление приложению разрешения на использование API
-1. На [классическом портале Azure](https://manage.windowsazure.com/)в области навигации слева щелкните **Active Directory**.
+## <a name="grant-your-application-permission-toouse-hello-api"></a>Предоставьте разрешение hello toouse API вашего приложения
+1. В hello [классический портал Azure](https://manage.windowsazure.com/), на левой панели навигации hello, нажмите кнопку **Active Directory**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/01.png) 
-2. Выберите свой каталог в списке каталогов **Active Directory** .
-3. В меню вверху щелкните **Приложения**.
+2. Из hello **active directory** список, выберите свой каталог.
+3. В меню в верхней части hello hello выберите **приложений**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/02.png)
-4. В списке приложений выберите созданное приложение.
+4. В списке приложений hello выберите только что созданный приложения.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/07.png)
-5. В верхнем меню щелкните **Настроить**.
+5. В меню в верхней части hello hello выберите **Настройка**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/08.png)
-6. В разделе **Разрешения для других приложений** для ресурса **Azure Active Directory** щелкните раскрывающийся список **Разрешения приложения** и выберите пункт **Прочитать данные каталога**.
+6. В hello **tooother разрешения приложений** раздел для hello **Azure Active Directory** ресурсов, щелкните hello **разрешения приложения** раскрывающегося списка, а затем Выберите **читать данные каталога**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/09.png)
-7. На нижней панели щелкните **Сохранить**.
+7. На нижней панели hello щелкните **Сохранить**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/10.png)
 
 ## <a name="gather-configuration-settings-from-your-directory"></a>Получите параметры конфигурации из каталога.
-В этом разделе показано, как получить из каталога следующие параметры:
+В этом разделе показано, как hello tooget следующие параметры из каталога:
 
 * Доменное имя
 * Идентификатор клиента
 * Секрет клиента
 
-Эти значения необходимы при настройке вызовов API отчетов. 
+Эти значения необходимо при настройке отчетов API toohello вызовов. 
 
 ### <a name="get-your-domain-name"></a>Получение имени домена
-1. На [классическом портале Azure](https://manage.windowsazure.com)в области навигации слева щелкните **Active Directory**.
+1. В hello [классический портал Azure](https://manage.windowsazure.com), на левой панели навигации hello, нажмите кнопку **Active Directory**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/01.png) 
-2. Выберите свой каталог в списке каталогов **Active Directory** .
-3. В меню вверху щелкните **Домены**.
+2. Из hello **active directory** список, выберите свой каталог.
+3. В меню в верхней части hello hello выберите **домены**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/11.png) 
-4. Скопируйте имя домена в столбце **Доменное имя** .
+4. В hello **доменное имя** столбца, скопируйте имя домена.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/12.png) 
 
-### <a name="get-the-applications-client-id"></a>Получение идентификатора клиента приложения
-1. На [классическом портале Azure](https://manage.windowsazure.com)в области навигации слева щелкните **Active Directory**.
+### <a name="get-hello-applications-client-id"></a>Получить идентификатор клиента приложения hello
+1. В hello [классический портал Azure](https://manage.windowsazure.com), на левой панели навигации hello, нажмите кнопку **Active Directory**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/01.png) 
-2. Выберите свой каталог в списке каталогов **Active Directory** .
-3. В меню вверху щелкните **Приложения**.
+2. Из hello **active directory** список, выберите свой каталог.
+3. В меню в верхней части hello hello выберите **приложений**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/02.png) 
-4. В списке приложений выберите созданное приложение.
+4. В списке приложений hello выберите только что созданный приложения.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/07.png)
-5. В верхнем меню щелкните **Настроить**.
+5. В меню в верхней части hello hello выберите **Настройка**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/08.png)
 6. Скопируйте значение **идентификатор клиента**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/13.png)
 
-### <a name="get-the-applications-client-secret"></a>Получение секрета клиента приложения
-Чтобы получить секретный ключ клиента приложения, необходимо создать ключ и сохранить его значение при сохранении нового ключа, так как это значение невозможно получить позже.
+### <a name="get-hello-applications-client-secret"></a>Получить секрет клиента приложения hello
+tooget клиентского приложения в тайне, нужно toocreate новый ключ и сохранить его значение при сохранении hello новый ключ, так как он не возможные tooretrieve позже больше это значение.
 
-1. На [классическом портале Azure](https://manage.windowsazure.com)в области навигации слева щелкните **Active Directory**.
+1. В hello [классический портал Azure](https://manage.windowsazure.com), на левой панели навигации hello, нажмите кнопку **Active Directory**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/01.png) 
-2. Выберите свой каталог в списке каталогов **Active Directory** .
-3. В меню вверху щелкните **Приложения**.
+2. Из hello **active directory** список, выберите свой каталог.
+3. В меню в верхней части hello hello выберите **приложений**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/02.png) 
-4. В списке приложений выберите созданное приложение.
+4. В списке приложений hello выберите только что созданный приложения.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/07.png)
-5. В верхнем меню щелкните **Настроить**.
+5. В меню в верхней части hello hello выберите **Настройка**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/08.png)
-6. В разделе **Ключи** сделайте следующее: 
+6. В hello **ключей** выполните следующие шаги hello: 
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/14.png)
    
-    а. В списке значений длительности выберите значение длительности.
+    а. Выберите из списка длительность hello длительность
    
-    b. На нижней панели щелкните **Сохранить**.
+    b. На нижней панели hello щелкните **Сохранить**.
    
     ![Регистрация приложения](./media/active-directory-reporting-api-prerequisites/10.png)
    
-    c. Скопируйте значение ключа.
+    c. Скопируйте значение ключа hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Хотите получать доступ к данным из API отчетов Azure AD программным образом? См. статью [Приступая к работе с API отчетов Azure Active Directory](active-directory-reporting-api-getting-started.md).
-* Дополнительные сведения об отчетах Azure Active Directory см. в статье [Руководство по отчетам Azure Active Directory](active-directory-reporting-guide.md).  
+* Бы вы, как данные из Azure AD hello hello tooaccess reporting API программным способом Извлечение [Приступая к работе с Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md).
+* Если вы хотите toofind дополнительных сведений об отчетах Azure Active Directory, см. раздел hello [Azure Active Directory руководство по отчетам](active-directory-reporting-guide.md).  
 

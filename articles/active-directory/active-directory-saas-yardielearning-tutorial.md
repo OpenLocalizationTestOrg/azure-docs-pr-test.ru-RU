@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Yardi eLearning | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в Yardi eLearning."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Yardi электронного обучения."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: e7b36b692ad2a8bc3a3f5203d93882af96fd2109
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 47c95fe024e76a67aa5c5b3ee6f81cbafc50ff07
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Учебник. Интеграция Azure Active Directory с Yardi eLearning
 
-Это руководство описывает интеграцию Azure Active Directory (Azure AD) с приложением Yardi Learning.
+В этом учебнике вы узнаете, как электронного Yardi toointegrate с Azure Active Directory (Azure AD).
 
-Интеграция приложения Yardi eLearning с Azure AD обеспечивает следующие преимущества.
+Интеграция Yardi электронного обучения с помощью Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ пользователей к Yardi eLearning.
-- Вы можете включить автоматический вход пользователей в Yardi eLearning (единый вход) с использованием учетных записей Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего электронного tooYardi доступа
+- Можно включить на пользователей tooautomatically get tooYardi вошедшего электронного (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Yardi eLearning, вам потребуется:
+tooconfigure интеграция Azure AD с помощью электронного Yardi требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Yardi eLearning с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Yardi eLearning из коллекции
+1. Добавление электронного Yardi из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-yardi-elearning-from-the-gallery"></a>Добавление Yardi eLearning из коллекции
-Чтобы настроить интеграцию Yardi eLearning с Azure AD, необходимо добавить Yardi eLearning из коллекции в список управляемых приложений SaaS.
+## <a name="adding-yardi-elearning-from-hello-gallery"></a>Добавление электронного Yardi из галереи hello
+tooconfigure hello интеграции Yardi электронного обучения в Azure AD, вы должны электронного Yardi tooadd из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Yardi eLearning из коллекции, выполните указанные далее действия.**
+**tooadd Yardi электронного из галереи hello выполните hello следующие шаги.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Yardi eLearning**.
+4. Введите в поле поиска hello **Yardi электронного**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-yardielearning-tutorial/tutorial_yardielearning_search.png)
 
-5. На панели результатов выберите **Yardi eLearning** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **электронного Yardi**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-yardielearning-tutorial/tutorial_yardielearning_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 Этот раздел описывает настройку и проверку единого входа Azure AD в Yardi eLearning с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD нужно знать, какой пользователь в Yardi eLearning соответствует пользователю в Azure AD. То есть необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Yardi eLearning.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Yardi электронного является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Yardi электронного должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Yardi eLearning.
+В Yardi электронного обучения, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Yardi eLearning, вам потребуется выполнить действия в указанных далее стандартных блоках.
+tooconfigure и теста Azure AD единого входа с Yardi электронного обучения, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Yardi eLearning](#creating-a-yardi-elearning-test-user)** требуется для создания пользователя Britta Simon в Yardi eLearning, связанного с соответствующим представлением в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя электронного Yardi](#creating-a-yardi-elearning-test-user)**  -toohave аналог Саймон Britta в Yardi электронного обучения, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-Этот раздел описывает, как включить единый вход Azure AD на портале Azure и настроить его в приложении Yardi eLearning.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Yardi электронного обучения.
 
-**Чтобы настроить единый вход Azure AD в Yardi eLearning, выполните указанные далее действия.**
+**tooconfigure Azure AD единого входа с помощью электронного Yardi выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Yardi eLearning**  щелкните **Единый вход**.
+1. В hello в hello портала Azure **электронного Yardi** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-yardielearning-tutorial/tutorial_yardielearning_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Yardi eLearning** выполните следующие действия:
+3. На hello **Yardi электронного URL-адреса и домена** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-yardielearning-tutorial/tutorial_yardielearning_url.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<companyname>.yardielearning.com/login`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.yardielearning.com/login`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<companyname>.yardielearning.com/trust`
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.yardielearning.com/trust`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить эти значения, обратитесь в [службу поддержки клиентов Yardi eLearning](mailto:elearning@yardi.com). 
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки клиента электронного Yardi](mailto:elearning@yardi.com) tooget эти значения. 
  
-4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-yardielearning-tutorial/tutorial_yardielearning_certificate.png) 
 
@@ -125,69 +125,69 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-yardielearning-tutorial/tutorial_general_400.png)
 
-8. Чтобы настроить единый вход на стороне **Yardi eLearning** , отправьте скачанный **XML-файл метаданных** в [службу поддержки Yardi eLearning](mailto:elearning@yardi.com). 
+8. tooconfigure единого входа на **электронного Yardi** стороны, необходимо загрузить hello toosend **метаданные в формате XML** слишком[группа поддержки электронного Yardi](mailto:elearning@yardi.com). 
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-yardielearning-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-yardielearning-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-yardielearning-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-yardielearning-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-yardi-elearning-test-user"></a>Создание тестового пользователя Yardi eLearning
 
-Цель этого раздела — создать в приложении Yardi eLearning пользователя с именем Britta Simon. Приложение Yardi eLearning поддерживает JIT-подготовку. Эта функция включена по умолчанию.
+Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в Yardi электронного обучения. Приложение Yardi eLearning поддерживает JIT-подготовку. Эта функция включена по умолчанию.
 
-В этом разделе никакие действия с вашей стороны не требуются. Пользователь создается при попытке получить доступ к приложению Yardi eLearning (если он еще не создан). 
+В этом разделе никакие действия с вашей стороны не требуются. Новый пользователь создается во время попытки tooaccess Yardi электронного, если он еще не существует. 
 
 >[!NOTE]
->Если вам требуется вручную создать пользователя, нужно обратиться в [службу поддержки Yardi eLearning](mailto:elearning@yardi.com).
+>Если требуется toocreate пользователя вручную, необходимо toocontact hello [группа поддержки электронного Yardi](mailto:elearning@yardi.com).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-Этот раздел описывает, как позволить пользователю Britta Simon использовать единый вход Azure, предоставив ему доступ к Yardi eLearning.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooYardi электронного.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon приложению Yardi eLearning, выполните указанные далее действия.**
+**tooassign Britta Simon tooYardi электронного обучения, выполнять hello следующие шаги:**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **Yardi eLearning**.
+2. В списке приложений hello выберите **Yardi электронного**.
 
     ![Настройка единого входа](./media/active-directory-saas-yardielearning-tutorial/tutorial_yardielearning_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -195,7 +195,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -203,13 +203,13 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".
 
-Щелкнув элемент Yardi eLearning на панели доступа, вы автоматически войдете в приложение Yardi eLearning. 
+При выборе плитки электронного Yardi hello в hello панели доступа, следует получать автоматически вошедшего tooyour Yardi электронного приложения. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

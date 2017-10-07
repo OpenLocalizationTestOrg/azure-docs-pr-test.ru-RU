@@ -1,6 +1,6 @@
 ---
-title: "Пример скрипта Azure CLI. Подключение веб-приложения к кэшу Redis | Документация Майкрософт"
-description: "Пример скрипта Azure CLI. Подключение веб-приложения к кэшу Redis"
+title: "Образец скрипта CLI - aaaAzure подключения tooa redis веб-приложения кэша | Документы Microsoft"
+description: "Сценарий Azure CLI пример — подключить кэш redis tooa web app"
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,15 +16,15 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: b697c8508a6c3422b6b0d0ca36843a9c884b505f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b911e6643591b8f07aeb64d4d62876c0fa156a8a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-web-app-to-a-redis-cache"></a>Подключение веб-приложения к кэшу Redis
+# <a name="connect-a-web-app-tooa-redis-cache"></a>Подключение веб-приложения tooa redis кэша
 
-Из этой статьи вы узнаете, как создать кэш Redis для Azure и веб-приложение Azure. Затем вы свяжете базу кэш Redis с веб-приложением, используя параметры приложения.
+В этом сценарии вы узнаете, как toocreate Azure redis кэша и Azure веб-приложение. Затем будет связан hello redis кэша toohello веб-приложения с помощью параметров приложения.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -34,25 +34,25 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/connect-to-redis/connect-to-redis.sh "Кэш Redis для Azure")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/connect-to-redis/connect-to-redis.sh "Azure Redis Cache")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Для создания группы ресурсов, веб-приложения, кэша Redis и всех связанных ресурсов этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует hello, следующие команды redis toocreate группу ресурсов веб-приложения, кэш и все связанные ресурсы. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | Создает группу ресурсов, в которой хранятся все ресурсы. |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | Создает план службы приложений. Это как ферма сервера для веб-приложения Azure. |
 | [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Создает веб-приложение Azure. |
-| [az redis create](https://docs.microsoft.com/en-us/cli/azure/redis#create) | Создает экземпляр кэша Redis. Здесь будут храниться данные. |
-| [az redis list-keys](https://docs.microsoft.com/en-us/cli/azure/redis#list-keys) | Создает список ключей доступа для экземпляра кэша Redis. |
+| [az redis create](https://docs.microsoft.com/en-us/cli/azure/redis#create) | Создает экземпляр кэша Redis. Это происходит, где будут храниться данные hello. |
+| [az redis list-keys](https://docs.microsoft.com/en-us/cli/azure/redis#list-keys) | Список ключей доступа hello для экземпляра кэша redis hello. |
 | [az webapp config appsettings set](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#set) | Создает или обновляет параметр приложения для веб-приложения Azure. Параметры приложения представляются в качестве переменных среды для приложения. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры скриптов Azure CLI для службы приложений см. в [документации по службе приложений Azure](../app-service-cli-samples.md).
+Дополнительные образцы сценариев CLI приложения службы можно найти в hello [документации по службе приложений Azure](../app-service-cli-samples.md).

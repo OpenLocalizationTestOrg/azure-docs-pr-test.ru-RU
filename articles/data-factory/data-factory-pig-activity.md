@@ -1,6 +1,6 @@
 ---
-title: "Преобразование данных с помощью действия Pig в фабрике данных Azure | Документация Майкрософт"
-description: "Узнайте, как с помощью действия Pig в фабрике данных Azure выполнять запросы Pig к собственному кластеру HDInsight или к кластеру HDInsight по требованию."
+title: "Использование Pig действия в фабрике данных Azure данных aaaTransform | Документы Microsoft"
+description: "Дополнительные сведения об использовании hello действие Pig в скриптах Pig toorun фабрики данных Azure в кластере HDInsight на запросу или свой собственный."
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
-ms.openlocfilehash: 182a637ab98955129d269e2afc3ba581aa1a7c03
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3ad096c4a9e8603b09f574f6d129b4339a75d381
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Преобразование данных с помощью действия Pig в фабрике данных Azure
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,10 +33,10 @@ ms.lasthandoff: 07/11/2017
 > * [Действие U-SQL в Data Lake Analytics](data-factory-usql-activity.md)
 > * [Настраиваемое действие .NET](data-factory-use-custom-activities.md)
 
-Действие Pig HDInsight в [конвейере](data-factory-create-pipelines.md) фабрики данных выполняет запросы Pig к [вашему собственному](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) кластеру HDInsight или кластеру HDInsight [по запросу](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) под управлением Windows или Linux. Данная статья основана на материалах статьи о [действиях преобразования данных](data-factory-data-transformation-activities.md) , в которой приведен общий обзор преобразования данных и список поддерживаемых действий преобразования.
+Hello действие Pig с HDInsight в фабрике данных [конвейера](data-factory-create-pipelines.md) выполняет запросы Pig на [собственные](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) или [по требованию](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) кластера HDInsight под управлением Windows и Linux. Эта статья основана на hello [действия преобразования данных](data-factory-data-transformation-activities.md) статьи, которая дан обзор преобразования данных и hello поддерживается преобразование действий.
 
 > [!NOTE] 
-> Если вы не знакомы с фабрикой данных Azure, сначала ознакомьтесь со статьей [Введение в фабрику данных Azure](data-factory-introduction.md) и руководством [Создание первого конвейера для преобразования данных с помощью кластера Hadoop](data-factory-build-your-first-pipeline.md). 
+> Если новый tooAzure фабрики данных, прочтите [tooAzure введение фабрики данных](data-factory-introduction.md) и hello учебника: [создания вашего первого конвейера данных](data-factory-build-your-first-pipeline.md) перед считыванием в этой статье. 
 
 ## <a name="syntax"></a>Синтаксис
 
@@ -79,20 +79,20 @@ ms.lasthandoff: 07/11/2017
 ## <a name="syntax-details"></a>Сведения о синтаксисе
 | Свойство | Описание | Обязательно |
 | --- | --- | --- |
-| name |Имя действия. |Да |
-| Описание |Текст, описывающий, для чего используется действие |Нет |
+| name |Имя действия hello |Да |
+| Описание |Текст, описывающий, какое действие hello используется для |Нет |
 | type |HDinsightPig |Да |
-| inputs |Входные данные, используемые действием Pig. |Нет |
-| outputs |Выходные данные, создаваемые действием Pig. |Да |
-| linkedServiceName (имя связанной службы) |Ссылка на кластер HDInsight, зарегистрированный в качестве связанной службы в фабрике данных. |Да |
-| script |Указывается встроенный сценарий Pig. |Нет |
-| script path |Путь к файлу сценария Pig в хранилище BLOB-объектов Azure. Можно использовать либо свойство script, либо свойство scriptPath, но не оба сразу. В имени файла учитывается регистр знаков. |Нет |
-| defines |Параметры в виде пары "ключ — значение", ссылки на которые указываются в сценарии Pig. |Нет |
+| inputs |Один или несколько входов занятая hello действие Pig |Нет |
+| outputs |Один или несколько выходов созданные hello действие Pig |Да |
+| linkedServiceName (имя связанной службы) |Кластер HDInsight toohello ссылка зарегистрирован как связанной службы в фабрике данных |Да |
+| script |Укажите встроенного скрипта Pig hello |Нет |
+| script path |Хранить сценарий Pig hello в службе хранилища BLOB-объектов Azure и предоставить файл toohello путь hello. Можно использовать либо свойство script, либо свойство scriptPath, но не оба сразу. Имя файла Hello учитывается регистр. |Нет |
+| defines |Укажите параметры как пары "ключ значение" для ссылки в пределах hello сценарий Pig |Нет |
 
 ## <a name="example"></a>Пример
-Рассмотрим пример с аналитикой игровых журналов. Предположим, вы хотите определить время, которое игроки проводят за игрой, выпущенной вашей компанией.
+Давайте рассмотрим пример игры журналы аналитики, место tooidentify hello времени, затраченного игроки, игры, запускаемого по вашей компании.
 
-Ниже приведен журнал игры в формате CSV-файла. Он содержит следующие поля: ProfileID, SessionStart, Duration, SrcIPAddress и GameType.
+Следующий пример игры журнала Hello — это файл запятыми (,). Он содержит следующие поля — ProfileID, SessionStart, длительность, SrcIPAddress и GameType hello.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -102,7 +102,7 @@ ms.lasthandoff: 07/11/2017
 .....
 ```
 
-**Сценарий Pig** для обработки этих данных выглядит так:
+Hello **сценарий Pig** tooprocess эти данные:
 
 ```
 PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -114,18 +114,18 @@ PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampl
 Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/sampleoutpig/' USING PigStorage (',');
 ```
 
-Чтобы выполнить его в конвейере фабрики данных, выполните следующие действия:
+tooexecute Pig для этого сценария в конвейере фабрики данных hello следующие шаги:
 
-1. Создайте связанную службу для регистрации [собственного вычислительного кластера HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) или настройте [вычислительный кластер HDInsight по запросу](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Назовем эту связанную службу **HDInsightLinkedService**.
-2. Создайте [связанную службу](data-factory-azure-blob-connector.md) для настройки подключения к хранилищу BLOB-объектов Azure, в котором хранятся данные. Назовем эту связанную службу **StorageLinkedService**.
-3. Создайте [наборы данных](data-factory-create-datasets.md) , указывающие на входные и выходные данные. Назовем входной набор данных **PigSampleIn**, а выходной — **PigSampleOut**.
-4. Скопируйте запрос Pig в файл, настроенный хранилищем BLOB-объектов Azure на шаге 2. Если хранилище BLOB-объектов Azure, размещающее данные, отличается от хранилища, размещающего файл запроса, то создайте отдельную связанную службу хранилища Azure. Добавьте ссылку на эту связанную службу в конфигурации действия. Используйте свойство scriptPath для указания пути к файлу сценария Pig и **scriptLinkedService**. 
+1. Создание tooregister связанной службы [собственные HDInsight вычислительный кластер](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) или настроить [вычислительный кластер HDInsight по требованию](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Назовем эту связанную службу **HDInsightLinkedService**.
+2. Создание [связанная служба](data-factory-azure-blob-connector.md) tooconfigure hello подключения tooAzure хранилища BLOB-данных размещение данных hello. Назовем эту связанную службу **StorageLinkedService**.
+3. Создание [наборы данных](data-factory-create-datasets.md) и toohello входных данных, а затем hello выходных данных. Давайте назовем входного набора данных hello **PigSampleIn** и hello выходной набор данных **PigSampleOut**.
+4. Скопируйте запрос Pig hello в файл hello хранилища больших двоичных объектов, настроенную на шаге #2. Если hello хранилища Azure, на котором размещена hello данных отличается от hello один, на котором размещается файл запрос hello, создайте отдельный связанной службой хранилища Azure. См. в связанных toohello службы в конфигурации действия hello. Используйте ** scriptPath ** файл сценария toopig путь hello toospecify и **scriptLinkedService**. 
    
    > [!NOTE]
-   > Также можно добавить сценарий Pig непосредственно в определение действия, используя свойство **script** . Однако мы не рекомендуем это делать, так как в этом случае потребуется экранировать все специальные знаки в сценарии, что может вызвать проблемы при отладке. Мы рекомендуем следовать инструкциям, описанным в шаге 4.
+   > Можно также предоставить с помощью hello hello встроенного скрипта Pig в определении действия hello **сценарий** свойство. Однако не рекомендуется этот подход, как все специальные символы в скрипте hello должен toobe escape-последовательность и может вызвать проблемы отладки. Hello рекомендуется toofollow шаг #4.
    > 
    > 
-5. Создайте конвейер с действием HDInsightPig. Это действие обрабатывает входные данные, запуская сценарий Pig в кластере HDInsight.
+5. Создайте конвейер hello с hello HDInsightPig действия. Это действие обрабатывает входные данные hello путем выполнения сценария Pig в кластере HDInsight.
 
     ```JSON   
     {
@@ -159,15 +159,15 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
       }
     } 
     ```
-6. Разверните конвейер. Дополнительные сведения см. в разделе [Создание конвейеров](data-factory-create-pipelines.md). 
-7. Отслеживайте состояние конвейера, используя функции мониторинга и управления фабрикой данных. Подробные сведения см. в статье [Мониторинг конвейеров фабрики данных и управление ими](data-factory-monitor-manage-pipelines.md).
+6. Развертывание конвейера hello. Дополнительные сведения см. в разделе [Создание конвейеров](data-factory-create-pipelines.md). 
+7. Отслеживание с помощью мониторинга фабрики данных hello конвейера hello и административные представления. Подробные сведения см. в статье [Мониторинг конвейеров фабрики данных и управление ими](data-factory-monitor-manage-pipelines.md).
 
 ## <a name="specifying-parameters-for-a-pig-script"></a>Указание параметров для сценария Pig
-Рассмотрим следующий пример: журналы игры ежедневно добавляются в хранилище BLOB-объектов Azure и хранятся в папках, разбитых по дате и времени. Вам необходимо параметризовать сценарий Pig так, чтобы адрес входной папки передавался во время выполнения динамически, а выходной набор данных также сегментировался по дате и времени.
+Рассмотрим следующий пример hello: игры журналы, полученный ежедневно в хранилище больших двоичных объектов Azure и сохраняются в папке секционированные по дате и времени. Сценарий Pig tooparameterize hello и передать входные папку hello динамически во время выполнения, а также выходом hello, разбитый на дату и время.
 
-Чтобы использовать параметризованный сценарии Pig, выполните описанные ниже действия.
+toouse параметризованные сценарий Pig, выполните hello следующие действия.
 
-* Задайте параметры в разделе **defines**.
+* Задать параметры hello в **определяет**.
 
     ```JSON  
     {
@@ -205,7 +205,7 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
       }
     }
     ```  
-* В сценарии Pig сошлитесь на параметры с помощью**$parameterName**, как показано в следующем примере.
+* В hello сценарий Pig, ссылаетесь toohello параметров с помощью "**$parameterName**" как показано в следующий пример hello:
 
     ```  
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);    

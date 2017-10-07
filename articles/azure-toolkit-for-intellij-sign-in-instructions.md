@@ -1,6 +1,6 @@
 ---
-title: "Инструкции по входу для набора средств Azure для IntelliJ | Документация Майкрософт"
-description: "Сведения о входе в Microsoft Azure с помощью набора средств Azure для IntelliJ."
+title: "aaaSign в инструкции для hello Azure Toolkit для IntelliJ | Документы Microsoft"
+description: "Узнайте, как toosign в tooMicrosoft Azure с помощью hello Azure Toolkit для IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,144 +14,144 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 4e2ed072bdaea0a71fef042c0c72b7656a42bbe8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2de781fc19267cce133b1e6456481497e165fce4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sign-in-instructions-for-the-azure-toolkit-for-intellij"></a>Инструкции по входу для набора средств Azure для IntelliJ
+# <a name="sign-in-instructions-for-hello-azure-toolkit-for-intellij"></a>Вход инструкции для hello Azure Toolkit для IntelliJ
 
-Набор средств Azure для IntelliJ предоставляет два метода для входа в систему с помощью учетной записи Azure:
+набор средств Azure для IntelliJ Hello предоставляет два метода для входа в учетную запись Azure tooyour:
 
-  * **Интерактивный.** Учетные данные Azure необходимо вводить при каждом входе в учетную запись.
-  * **Автоматический.** Вы создаете файл учетных данных, который можно использовать для автоматического входа в учетную запись Azure.
+  * **Интерактивный**: Введите учетные данные Azure при каждом входе в tooyour учетная запись Azure.
+  * **Автоматическое**: Создание файла учетных данных, можно использовать tooautomatically входа в tooyour учетная запись Azure.
 
-В разделах ниже описано использование каждого из методов.
+Hello ниже описано, как toouse каждого метода.
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="sign-in-to-your-azure-account-interactively"></a>Интерактивный вход в учетную запись Azure
+## <a name="sign-in-tooyour-azure-account-interactively"></a>Интерактивного входа в учетную запись Azure tooyour
 
-Чтобы войти в Azure, вручную введя учетные данные Azure, сделайте следующее:
+toosign в tooAzure, вручную введя свои учетные данные Azure hello следующие:
 
 1. Откройте проект с помощью IntelliJ IDEA.
 
-2. Выберите **Tools** (Средства), наведите указатель мыши на пункт **Azure**, а затем щелкните **Azure Sign In** (Вход в Azure).
+2. Нажмите кнопку **средства**, слишком точки**Azure**, а затем нажмите кнопку **входа в Azure**.
 
-   ![Команда Azure Sign In (Вход в Azure) в IntelliJ][I01]
+   ![Hello команда IntelliJ входа в Azure][I01]
 
-3. В окне **Azure Sign In** (Вход в Azure) выберите **Interactive** (Интерактивный) и щелкните **Sign in** (Войти).
+3. В hello **входа в Azure** выберите **Interactive**, а затем нажмите кнопку **входа в**.
 
-   ![Окно Azure Sign In (Вход в Azure) с выбранным значением Interactive (Интерактивный)][I02]
+   ![Hello входа в Azure окно с выбранной Interactive][I02]
 
-4. При отображении диалогового окна **Azure Log In** (Вход в Azure) введите учетные данные и щелкните **Sign in** (Войти).
+4. В hello **журнала в Azure** диалоговое окно, введите свои учетные данные Azure и нажмите кнопку **входа**.
 
-   ![Диалоговое окно входа Azure][I03]
+   ![Hello Azure входа диалоговое окно][I03]
 
-5. В диалоговом окне **Select Subscriptions** (Выбор подписок) выберите нужные подписки и нажмите кнопку **ОК**.
+5. В hello **подписки выберите** диалоговое окно, выберите hello подписки требуется toouse и нажмите кнопку **ОК**.
 
-   ![Диалоговое окно выбора подписок][I04]
+   ![диалоговое окно Выбор подписки Hello][I04]
 
 ## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-interactively"></a>Выход из учетной записи Azure после интерактивного входа
 
-После настройки учетной записи с помощью действий, описанных в предыдущем разделе, вы будете автоматически выходить из своей учетной записи Azure при каждом перезапуске IntelliJ IDEA. Но если вы хотите выйти из учетной записи Azure, *не перезапуская* IntelliJ IDEA, сделайте следующее:
+После настройки учетной записи с помощью hello в предыдущих шагах, будет автоматически выполнен из учетной записи Azure каждый раз при перезапуске IntelliJ ИДЕЯ. Тем не менее если вам нужны toosign учетной записью Azure *без* перезапуска ИДЕЯ IntelliJ hello следующие.
 
-1. В IntelliJ IDEA в меню **Tools** (Средства) наведите указатель мыши на пункт **Azure**, а затем щелкните **Azure Sign Out** (Выход из Azure).
+1. В ПОНЯТИЕ IntelliJ, hello **средства** меню точки слишком**Azure**и нажмите кнопку **выйти Azure**.
 
-   ![Команда Azure Sign Out (Выход из Azure) в IntelliJ][L01]
+   ![Hello IntelliJ Azure входа с выходом-команда][L01]
 
-2. В диалоговом окне подтверждения **выхода из Azure** нажмите кнопку **Да**.
+2. В hello **выйти Azure** окне подтверждения нажмите кнопку **Да**.
 
-   ![Диалоговое окно подтверждения выхода из Azure][L02]
+   ![Hello Azure выйти окно подтверждения][L02]
 
-## <a name="sign-in-to-your-azure-account-automatically"></a>Автоматический вход в учетную запись Azure
+## <a name="sign-in-tooyour-azure-account-automatically"></a>Автоматический вход tooyour учетная запись Azure
 
-В этом разделе показано, как создать файл учетных данных, содержащий данные субъекта-службы. После выполнения этого процесса Eclipse использует файл учетных данных для автоматического входа в Azure при каждом открытии проекта.
+В этом разделе показано, как создать файл учетных данных, содержащий данные субъекта-службы. После завершения этого процесса Eclipse использует hello учетные данные файла tooautomatically выхода в tooAzure каждый раз при откройте свой проект.
 
 1. Откройте проект с помощью IntelliJ IDEA.
 
-2. В меню **Tools** (Средства) наведите указатель мыши на пункт **Azure**, а затем щелкните **Azure Sign In** (Вход в Azure).
+2. На hello **средства** меню выберите пункт слишком**Azure**и нажмите кнопку **входа в Azure**.
 
-   ![Команда Azure Sign In (Вход в Azure) в IntelliJ][A01]
+   ![Hello команда IntelliJ входа в Azure][A01]
 
-3. В диалоговом окне **Azure Sign In** (Вход в Azure) выберите **Automated** (Автоматически) и щелкните **New** (Создать).
+3. В hello **входа в Azure** выберите **автоматизирован**, а затем нажмите кнопку **New**.
 
-   ![Окно Azure Sign In (Вход в Azure) с выбранным значением Automated (Автоматически)][A02]
+   ![Вход в Azure окна Hello с выбран автоматический][A02]
 
-4. В диалоговом окне **входа в Azure** введите учетные данные и щелкните **Sign in** (Войти).
+4. В hello **диалоговое окно входа Azure** окно, введите свои учетные данные Azure и нажмите кнопку **входа**.
 
-   ![Диалоговое окно входа Azure][A03]
+   ![Hello Azure входа диалоговое окно][A03]
 
-5. В диалоговом окне **Create authentication files** (Создание файлов проверки подлинности) выберите нужные подписки, конечный каталог и нажмите кнопку **Start** (Начать).
+5. В hello **создать файлы для проверки подлинности** окно, выберите hello подписки требуется toouse, выберите каталог назначения и нажмите кнопку **запустить**.
 
-   ![Окно Create authentication files (Создание файлов проверки подлинности)][A04]
+   ![Создание файлов для проверки подлинности окна Hello][A04]
 
-6. В диалоговом окне **Service Principal Creation Status** (Состояние создания субъекта-службы) после успешного создания файлов нажмите кнопку **ОК**.
+6. В hello **состояние создания участника службы** диалоговое окно, после успешного создания файлов, нажмите кнопку **ОК**.
 
-   ![Диалоговое окно Service Principal Creation Status (Состояние создания субъекта-службы)][A05]
+   ![диалоговое окно состояния создания участника службы Hello][A05]
 
-7. В окне **Azure Sign In** (Вход в Azure) щелкните **Sign in** (Войти).
+7. В hello **входа в Azure** окно, нажмите кнопку **входа**.
 
    ![Диалоговое окно входа в Azure][A06]
 
-8. В диалоговом окне **Select Subscriptions** (Выбор подписок) выберите нужные подписки и нажмите кнопку **ОК**.
+8. В hello **подписки выберите** диалоговое окно, выберите hello подписки требуется toouse и нажмите кнопку **ОК**.
 
-   ![Диалоговое окно выбора подписок][A07]
+   ![диалоговое окно Выбор подписки Hello][A07]
 
 ## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-automatically"></a>Выход из учетной записи Azure после автоматического входа
 
-После настройки учетной записи с помощью действий, описанных в предыдущем разделе, набор средств Azure автоматически входит в учетную запись Azure при каждом перезапуске IntelliJ IDEA. Чтобы выйти из учетной записи Azure и предотвратить автоматический вход набора средств Azure, сделайте следующее:
+После настройки учетной записи с помощью предыдущих шагах hello hello набора средств Azure автоматически вход в tooyour при каждом перезапуске IntelliJ ИДЕЯ учетная запись Azure. Тем не менее, toosign со стороны вашей учетной записью Azure и предотвратить hello набора средств Azure из автоматического входа, hello следующие:
 
-1. В IntelliJ IDEA в меню **Tools** (Средства) наведите указатель мыши на пункт **Azure**, а затем щелкните **Azure Sign Out** (Выход из Azure).
+1. В ПОНЯТИЕ IntelliJ, hello **средства** меню точки слишком**Azure**и нажмите кнопку **выйти Azure**.
 
-   ![Команда Azure Sign Out (Выход из Azure) в IntelliJ][L01]
+   ![Hello IntelliJ Azure входа с выходом-команда][L01]
 
-2. В диалоговом окне подтверждения **выхода из Azure** нажмите кнопку **Да**.
+2. В hello **выйти Azure** окне подтверждения нажмите кнопку **Да**.
 
-   ![Диалоговое окно подтверждения выхода из Azure][L03]
+   ![Hello Azure выйти окно подтверждения][L03]
 
-## <a name="sign-in-to-your-azure-account-automatically-by-using-an-existing-credentials-file"></a>Автоматический вход в учетную запись Azure с помощью имеющегося файла учетных данных
+## <a name="sign-in-tooyour-azure-account-automatically-by-using-an-existing-credentials-file"></a>Автоматический вход в систему tooyour учетная запись Azure с помощью существующего файла учетных данных
 
-Если вы выходите из учетной записи Azure во время использования IntelliJ IDEA, вам потребуется использовать созданный файл учетных данных для автоматического входа в учетную запись Azure. Чтобы настроить набор средств Azure для Eclipse на использование имеющегося файла учетных данных, сделайте следующее:
+Если при использовании IntelliJ ИДЕЯ, следует выйти из учетной записи Azure, необходимо использовать знак tooautomatically файл существующие учетные данные обратно в toohello учетной записи. hello tooconfigure набора средств Azure для Eclipse toouse существующий файл учетных данных, hello следующие:
 
 1. Откройте проект с помощью IntelliJ IDEA.
 
-2. В меню **Tools** (Средства) наведите указатель мыши на пункт **Azure**, а затем щелкните **Azure Sign In** (Вход в Azure).
+2. На hello **средства** меню выберите пункт слишком**Azure**и нажмите кнопку **входа в Azure**.
 
-   ![Команда Azure Sign In (Вход в Azure) в IntelliJ][A01]
+   ![Hello команда IntelliJ входа в Azure][A01]
 
-3. В диалоговом окне **Azure Sign In** (Вход в Azure) выберите **Automated** (Автоматически) и щелкните **Browse** (Обзор).
+3. В hello **входа в Azure** выберите **автоматизирован**, а затем нажмите кнопку **Обзор**.
 
-   ![Окно Azure Sign In (Вход в Azure) с выбранным значением Automated (Автоматически)][A02]
+   ![Вход в Azure окна Hello с выбран автоматический][A02]
 
-4. В диалоговом окне **Select Authentication File** (Выбор файла проверки подлинности) выберите созданный ранее файл учетных данных ранее и нажмите кнопку **Select** (Выбрать).
+4. В hello **выберите файл проверки подлинности** диалоговое окно, выберите файл ранее созданные учетные данные и нажмите кнопку **выберите**.
 
-   ![Диалоговое окно Select Authentication File (Выбор файла проверки подлинности)][A08]
+   ![Выберите файл проверки подлинности Hello-диалоговое окно][A08]
 
-5. В окне **Azure Sign In** (Вход в Azure) щелкните **Sign in** (Войти).
+5. В hello **входа в Azure** окно, нажмите кнопку **входа**.
 
-   ![Окно Azure Sign In (Вход в Azure) с выбранным значением Automated (Автоматически)][A06]
+   ![Вход в Azure окна Hello с выбран автоматический][A06]
 
-6. В диалоговом окне **Select Subscriptions** (Выбор подписок) выберите нужные подписки и нажмите кнопку **ОК**.
+6. В hello **подписки выберите** диалоговое окно, выберите hello подписки требуется toouse и нажмите кнопку **ОК**.
 
-   ![Диалоговое окно выбора подписок][A07]
+   ![диалоговое окно Выбор подписки Hello][A07]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о наборах средств Azure для Java IDE см. по следующим ссылкам:
+Дополнительные сведения о hello наборы инструментов Azure для Java интегрированными средами разработки. в разделе hello ссылкам:
 
 * [Набор средств Azure для Eclipse]
-  * [Новые возможности набора средств Azure для Eclipse]
-  * [Установка набора средств Azure для Eclipse]
-  * [Инструкции по входу для набора средств Azure для Eclipse]
+  * [Новые возможности средств Azure для Eclipse hello]
+  * [Установка средств Azure для Eclipse hello]
+  * [Инструкции вход для hello средств Azure для Eclipse]
   * [Создание веб-приложения Azure (цен. категория "Базовый") с помощью Eclipse]
 * [Набор средств Azure для IntelliJ]
-  * [Новые возможности набора средств Azure для IntelliJ]
-  * [Установка набора средств Azure для IntelliJ]
-  * *Инструкции по входу для набора средств Azure для IntelliJ (эта статья)*
+  * [Новые возможности средств Azure для IntelliJ hello]
+  * [Установка hello Azure Toolkit для IntelliJ]
+  * *Вход инструкции для hello Azure Toolkit для IntelliJ* (Эта статья)
   * [Создание веб-приложения Azure (цен. категория "Базовый") в IntelliJ]
 
-Дополнительные сведения об использовании Azure см. в [центре разработчиков Java для Azure] и на странице [инструментов Java для Visual Studio Team Services].
+Дополнительные сведения об использовании Azure с Java см. в разделе hello [центра разработчиков Java Azure] и hello [Java средств для Visual Studio Team Services].
 
 <!-- URL List -->
 
@@ -159,15 +159,15 @@ ms.lasthandoff: 07/11/2017
 [Набор средств Azure для IntelliJ]: ./azure-toolkit-for-intellij.md
 [Создание веб-приложения Azure (цен. категория "Базовый") с помощью Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Создание веб-приложения Azure (цен. категория "Базовый") в IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Установка набора средств Azure для Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Установка набора средств Azure для IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Инструкции по входу для набора средств Azure для Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Sign-in instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[Новые возможности набора средств Azure для Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
-[Новые возможности набора средств Azure для IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+[Установка средств Azure для Eclipse hello]: ./azure-toolkit-for-eclipse-installation.md
+[Установка hello Azure Toolkit для IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Инструкции вход для hello средств Azure для Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Sign-in instructions for hello Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Новые возможности средств Azure для Eclipse hello]: ./azure-toolkit-for-eclipse-whats-new.md
+[Новые возможности средств Azure для IntelliJ hello]: ./azure-toolkit-for-intellij-whats-new.md
 
-[центре разработчиков Java для Azure]: https://azure.microsoft.com/develop/java/
-[инструментов Java для Visual Studio Team Services]: https://java.visualstudio.com/ (Инструменты Java для Visual Studio Team Services)
+[центра разработчиков Java Azure]: https://azure.microsoft.com/develop/java/
+[Java средств для Visual Studio Team Services]: https://java.visualstudio.com/ (Инструменты Java для Visual Studio Team Services)
 
 <!-- IMG List -->
 

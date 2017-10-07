@@ -1,6 +1,6 @@
 ---
-title: "Фильтрация и предварительная обработка в пакете SDK для Azure Application Insights | Документация Майкрософт"
-description: "Из этой статьи вы узнаете, как создать обработчики и инициализаторы телеметрии для того, чтобы пакет SDK мог выполнять фильтрацию, и как добавлять свойства к данным перед отправкой данных телеметрии на портал Application Insights."
+title: "aaaFiltering и предварительной обработки в hello Azure пакет SDK Application Insights | Документы Microsoft"
+description: "Написания процессоров телеметрии и телеметрии инициализаторы для hello SDK toofilter или добавить свойства toohello данных перед отправкой портале Application Insights toohello телеметрии hello."
 services: application-insights
 documentationcenter: 
 author: beckylino
@@ -13,45 +13,45 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
-ms.openlocfilehash: 17e66775dd2cd1c858594102f1ddb32e2fbbccc8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 51b9db69b2375b8799718f1b0e1af77620dc2692
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Фильтрация и предварительная обработка данных телеметрии в пакете SDK для Application Insights
+# <a name="filtering-and-preprocessing-telemetry-in-hello-application-insights-sdk"></a>Фильтрация и предварительной обработки данных телеметрии из hello пакет SDK Application Insights
 
 
-Чтобы настроить способ сбора и обработки данных телеметрии перед их отправкой в службу Application Insights, можно написать и настроить подключаемые модули для пакета SDK Application Insights.
+Можно записывать и настраивать подключаемые модули для hello пакет SDK Application Insights toocustomize как телеметрии отслеживаются и обработаны перед отправкой toohello служба Application Insights.
 
-* [Выборка](app-insights-sampling.md) сокращает объем данных телеметрии, не искажая статистические данные. Благодаря выборке связанные точки данных хранятся вместе, что облегчает навигацию между ними во время диагностики проблемы. На портале общее количество умножается, чтобы компенсировать выборку.
-* Фильтрация с использованием обработчиков данных телеметрии для [ASP.NET](#filtering) или [Java](app-insights-java-filter-telemetry.md) позволяет выбирать или изменять данные телеметрии в пакете SDK перед отправкой на сервер. Например, можно уменьшить объем данных телеметрии, исключив запросы от роботов. Но с помощью фильтрации сократить трафик проще, чем при помощи выборки. Хотя фильтрация обеспечивает более жесткий контроль над передаваемыми данными, следует не забывать и о влиянии на статистику (например, когда отфильтровываются все успешные запросы).
-* [Инициализаторы телеметрии добавляют свойства](#add-properties) к любым данным телеметрии, отправляемым из вашего приложения, включая данные телеметрии из стандартных модулей. Например, можно добавить вычисляемые значения или номера версий, по которым будут отфильтрованы данные на портале.
-* [API пакета SDK](app-insights-api-custom-events-metrics.md) используется для отправки пользовательских событий и показателей.
+* [Выборка](app-insights-sampling.md) уменьшает объем hello телеметрии без влияния на статистике. Благодаря выборке связанные точки данных хранятся вместе, что облегчает навигацию между ними во время диагностики проблемы. На портале hello hello общего числа, умноженному toocompensate для выборки hello.
+* Фильтрация с помощью телеметрии процессоров [для ASP.NET](#filtering) или [Java](app-insights-java-filter-telemetry.md) позволяет выбрать или изменить данные телеметрии из пакета SDK для hello перед отправкой toohello сервера. Например можно сократить объем hello телеметрии, исключив из программы-роботы запросов. Однако фильтрации более общее трафик tooreducing подход, чем при выборке. Позволяет контролировать то, что передается, но у вас есть toobe виду, что оно влияет на статистике - например, если нужно отфильтровать всех успешных запросов.
+* [Инициализаторы телеметрии добавлять свойства](#add-properties) tooany телеметрии, отправленных из приложений, включая данные телеметрии из стандартных модулях hello. Например можно добавить вычисляемые значения; или номера версий, какие данные hello toofilter hello портала.
+* [Hello API пакета SDK](app-insights-api-custom-events-metrics.md) используется toosend пользовательские события и метрики.
 
 Перед началом работы:
 
-* Установите [пакет SDK Application Insights для ASP.NET](app-insights-asp-net.md) или [пакет SDK Application Insights для Java](app-insights-java-get-started.md) в свое приложение.
+* Установите hello Application Insights [пакет SDK для ASP.NET](app-insights-asp-net.md) или [пакета SDK для Java](app-insights-java-get-started.md) в вашем приложении.
 
 <a name="filtering"></a>
 
 ## <a name="filtering-itelemetryprocessor"></a>Фильтрация: ITelemetryProcessor
-Такой подход позволяет более тщательно и непосредственно контролировать включение элементов в поток данных телеметрии и исключение из него. Этот метод можно использовать совместно с выборкой или по отдельности.
+Такой подход позволяет непосредственно контролировать то, что включаются или исключаются из потока данных телеметрии hello. Этот метод можно использовать совместно с выборкой или по отдельности.
 
-Для фильтрации данных телеметрии нужно создать обработчик данных телеметрии и зарегистрировать его с помощью пакета SDK. Все данные телеметрии обрабатываются процессором, и можно исключить их из потока или добавить свойства. Сюда входят данные телеметрии из стандартных модулей, таких как сборщик запросов HTTP и сборщик зависимостей, а также данные телеметрии, созданные вами самостоятельно. Например, можно отфильтровать данные телеметрии о запросах из программ-роботов или успешных вызовах зависимости.
+телеметрии toofilter процессора телеметрии и затем зарегистрируйте его в пакет SDK для hello. Все данные телеметрии проходит через процессора, и вы можете toodrop его из hello потока или добавить свойства. Сюда входят стандартные модули hello как сборщик запрос HTTP hello и hello зависимостей сборщика данных телеметрии, а также данные телеметрии, созданный самостоятельно. Например, можно отфильтровать данные телеметрии о запросах из программ-роботов или успешных вызовах зависимости.
 
 > [!WARNING]
-> Фильтрация данных телеметрии, отправленных из пакета SDK с помощью обработчиков, может исказить отображаемую на портале статистику и затруднить отслеживание связанных элементов.
+> Фильтрация hello телеметрии, отправленные hello SDK с помощью процессоров могут исказить статистику hello портале hello и сделать его сложно toofollow связанные элементы.
 >
 > Вместо этого попробуйте использовать [выборку](app-insights-sampling.md).
 >
 >
 
 ### <a name="create-a-telemetry-processor-c"></a>Создание обработчика данных телеметрии (C#)
-1. Убедитесь, что в проекте используется пакет SDK для Application Insights 2.0.0 или более поздней версии. Щелкните правой кнопкой мыши проект в обозревателе решений Visual Studio и выберите "Управление пакетами NuGet". В диспетчере пакетов NuGet выберите Microsoft.ApplicationInsights.Web.
-2. Чтобы создать фильтр, реализуйте обработчик ITelemetryProcessor. Это еще одна точка расширения, как и модуль телеметрии, инициализатор телеметрии или канал телеметрии.
+1. Убедитесь, что hello пакет SDK Application Insights в проект версии 2.0.0 или более поздней версии. Щелкните правой кнопкой мыши проект в обозревателе решений Visual Studio и выберите "Управление пакетами NuGet". В диспетчере пакетов NuGet выберите Microsoft.ApplicationInsights.Web.
+2. Фильтр, toocreate реализовать ITelemetryProcessor. Это еще одна точка расширения, как и модуль телеметрии, инициализатор телеметрии или канал телеметрии.
 
-    Обратите внимание, что обработчики данных телеметрии создают цепь обработки. При создании экземпляра обработчика данных телеметрии ссылка передается в следующий обработчик в цепочке. Когда точка данных телеметрии передается в метод Process, он выполняет свою работу и затем вызывает следующий обработчик данных телеметрии в цепочке.
+    Обратите внимание, что обработчики данных телеметрии создают цепь обработки. При создании экземпляра процессора телеметрии, передаваемому процессоров следующего toohello ссылку в цепочке hello. Когда точки данных телеметрии передается методу toohello, он выполняет свой код и затем вызывает hello процессоров следующего телеметрии в цепочке hello.
 
     ``` C#
 
@@ -66,16 +66,16 @@ ms.lasthandoff: 08/18/2017
         // You can pass values from .config
         public string MyParamFromConfigFile { get; set; }
 
-        // Link processors to each other in a chain.
+        // Link processors tooeach other in a chain.
         public SuccessfulDependencyFilter(ITelemetryProcessor next)
         {
             this.Next = next;
         }
         public void Process(ITelemetry item)
         {
-            // To filter out an item, just return
+            // toofilter out an item, just return
             if (!OKtoSend(item)) { return; }
-            // Modify the item if required
+            // Modify hello item if required
             ModifyItem(item);
 
             this.Next.Process(item);
@@ -111,16 +111,16 @@ ms.lasthandoff: 08/18/2017
 
 ```
 
-(Это тот же раздел, где инициализируется фильтр выборки.)
+(Это hello один раздел, где инициализировать фильтр выборки.)
 
-Можно передавать строковые значения из файла конфигурации, указав открытые именованные свойства в классе.
+Строковые значения можно передать в файле .config hello, предоставляя открытые именованные свойства в классе.
 
 > [!WARNING]
-> Будьте внимательны и задайте имя типа и имена свойств в файле конфигурации, совпадающие с именами классов и свойств в коде. Если файл конфигурации ссылается на несуществующий тип или свойство, пакет SDK может не суметь отправить данные телеметрии без уведомления.
+> Будьте внимательны, имя типа toomatch hello и любые имена свойств в классе toohello файл .config hello и имена свойств в коде hello. Если файл .config hello ссылается на несуществующий тип или свойство, hello SDK может выполняться не toosend любой телеметрии.
 >
 >
 
-**Другой способ** — инициализировать фильтр в коде. Вставьте обработчик в цепочку в соответствующем классе инициализации, например AppStart в Global.asax.cs:
+**Кроме того** можно инициализировать фильтр hello в коде. В классе подходящий инициализации — например AppStart Global.asax.cs - вставьте процессор в цепочку hello:
 
 ```C#
 
@@ -138,7 +138,7 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="example-filters"></a>Примеры фильтров
 #### <a name="synthetic-requests"></a>Искусственные запросы
-Вы можете отфильтровывать программы-роботы и веб-тесты. Хотя обозреватель метрик позволяет отфильтровывать искусственные источники, этот вариант сокращает трафик, фильтруя источники в пакете SDK.
+Вы можете отфильтровывать программы-роботы и веб-тесты. Несмотря на то, что дает обозревателя метрик hello toofilter параметр искусственных источники, этот параметр уменьшает трафик с помощью фильтрации их в пакет SDK для hello.
 
 ``` C#
 
@@ -164,7 +164,7 @@ public void Process(ITelemetry item)
     if (request != null &&
     request.ResponseCode.Equals("401", StringComparison.OrdinalIgnoreCase))
     {
-        // To filter out an item, just terminate the chain:
+        // toofilter out an item, just terminate hello chain:
         return;
     }
     // Send everything else:
@@ -174,10 +174,10 @@ public void Process(ITelemetry item)
 ```
 
 #### <a name="filter-out-fast-remote-dependency-calls"></a>Фильтрация быстрых удаленных вызовов зависимостей
-Если требуется диагностировать только вызовы, которые выполняются медленно, можно отфильтровать быстрые вызовы.
+Если требуется только toodiagnose вызовов, которые выполняются медленно, отфильтровывайте те fast hello.
 
 > [!NOTE]
-> Это приведет к искажению статистических данных, отображаемых на портале. Диаграмма зависимостей будет выглядеть так, как будто все вызовы зависимостей завершились ошибкой.
+> Это приведет к искажению hello статистические данные, отображаемые на портале hello. Диаграмма зависимостей Hello будет выглядеть как hello зависимостей, вызываются все ошибки.
 >
 >
 
@@ -197,17 +197,17 @@ public void Process(ITelemetry item)
 ```
 
 #### <a name="diagnose-dependency-issues"></a>Неполадки диагностики зависимостей
-[этом блоге](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) описан проект, в котором диагностика неполадок с зависимостями реализована в виде автоматического опрашивания зависимостей.
+[Этот блог](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) описаны проблемы зависимостей проекта toodiagnose отправляя toodependencies регулярных проверок связи автоматически.
 
 
 <a name="add-properties"></a>
 
 ## <a name="add-properties-itelemetryinitializer"></a>Добавление свойств: ITelemetryInitializer
-Используйте инициализаторы телеметрии, чтобы определить глобальные свойства, которые передаются со всеми данными телеметрии, и переопределить выбранное поведение стандартных модулей телеметрии.
+Использование данных телеметрии инициализаторы toodefine глобальные свойства, которые отправляются с все данные телеметрии; и toooverride поведения модулей стандартной телеметрии hello.
 
-Например, пакет Application Insights for Web собирает телеметрию о HTTP-запросах. По умолчанию любой запрос с кодом ответа > = 400 он помечает как неудавшийся. Если вам нужно, чтобы значение 400 считалось успешным, задайте инициализатор телеметрии, в котором можно настроить свойство Success.
+Например hello Application Insights для веб-пакет собирает данные телеметрии, о HTTP-запросов. По умолчанию любой запрос с кодом ответа > = 400 он помечает как неудавшийся. Однако если вы хотите tootreat 400 как успех, можно указать инициализатор телеметрии, который задает свойство Success hello.
 
-Если задан инициализатор телеметрии, он вызывается всякий раз, когда вызывается любой метод Track*(). Это относится также к модулям, вызываемым модулями стандартной телеметрии. Обычно эти модули не задают свойство, которое уже задал инициализатор.
+Если указан инициализатор телеметрии, он вызывается всякий раз, когда любой из hello Track*() вызывать методы. Сюда входят методы, называемые модулями стандартной телеметрии hello. Обычно эти модули не задают свойство, которое уже задал инициализатор.
 
 **Определение инициализатора**
 
@@ -223,7 +223,7 @@ public void Process(ITelemetry item)
     namespace MvcWebRole.Telemetry
     {
       /*
-       * Custom TelemetryInitializer that overrides the default SDK
+       * Custom TelemetryInitializer that overrides hello default SDK
        * behavior of treating response codes >= 400 as failed requests
        *
        */
@@ -239,12 +239,12 @@ public void Process(ITelemetry item)
             if (!parsed) return;
             if (code >= 400 && code < 500)
             {
-                // If we set the Success property, the SDK won't change it:
+                // If we set hello Success property, hello SDK won't change it:
                 requestTelemetry.Success = true;
-                // Allow us to filter these requests in the portal:
+                // Allow us toofilter these requests in hello portal:
                 requestTelemetry.Context.Properties["Overridden400s"] = "true";
             }
-            // else leave the SDK to set the Success property      
+            // else leave hello SDK tooset hello Success property      
         }
       }
     }
@@ -262,7 +262,7 @@ public void Process(ITelemetry item)
       </TelemetryInitializers>
     </ApplicationInsights>
 
-*Другой способ* — создать экземпляр инициализатора в коде, например в Global.aspx.cs.
+*Кроме того* можно создать экземпляр инициализатора hello в коде, например в Global.aspx.cs:
 
 ```C#
     protected void Application_Start()
@@ -281,7 +281,7 @@ public void Process(ITelemetry item)
 ### <a name="javascript-telemetry-initializers"></a>Инициализаторы телеметрии JavaScript
 *JavaScript*
 
-Вставьте инициализатор телеметрии сразу после кода инициализации, полученного на портале:
+Вставьте инициализатор телеметрии сразу после кода инициализации hello, полученный на портале hello:
 
 ```JS
 
@@ -301,17 +301,17 @@ public void Process(ITelemetry item)
             appInsights.context.addTelemetryInitializer(function (envelope) {
                 var telemetryItem = envelope.data.baseData;
 
-                // To check the telemetry item’s type - for example PageView:
+                // toocheck hello telemetry item’s type - for example PageView:
                 if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
                     // this statement removes url from all page view documents
                     telemetryItem.url = "URL CENSORED";
                 }
 
-                // To set custom properties:
+                // tooset custom properties:
                 telemetryItem.properties = telemetryItem.properties || {};
                 telemetryItem.properties["globalProperty"] = "boo";
 
-                // To set custom metrics:
+                // tooset custom metrics:
                 telemetryItem.measurements = telemetryItem.measurements || {};
                 telemetryItem.measurements["globalMetric"] = 100;
             });
@@ -323,16 +323,16 @@ public void Process(ITelemetry item)
     </script>
 ```
 
-Краткое описание ненастраиваемых свойств, доступных в коллекции telemetryItem, см. в разделе [Экспорт модели данных Application Insights](app-insights-export-data-model.md).
+Сводка hello не настраиваемые свойства, предоставляемые hello telemetryItem. в разделе [Экспорт модели данных приложения аналитики](app-insights-export-data-model.md).
 
 Вы можете добавить любое количество инициализаторов по своему усмотрению.
 
 ## <a name="itelemetryprocessor-and-itelemetryinitializer"></a>ITelemetryProcessor и ITelemetryInitializer
-Различия между обработчиком и инициализатором данных телеметрии
+Что такое hello различие между процессорами телеметрии и телеметрии инициализаторы
 
-* Обработчик и инициализатор данных телеметрии можно использовать для выполнения одинаковых заданий, например для добавления свойств в телеметрию.
+* Существуют некоторые перекрытия в работе с ними: оба могут иметь tootelemetry используется tooadd свойства.
 * Свойство TelemetryInitializers всегда выполняется перед TelemetryProcessors.
-* Свойство TelemetryProcessors позволяет полностью заменить или удалить элемент телеметрии.
+* TelemetryProcessors позволяют toocompletely заменить или удалить элемент телеметрии.
 * Свойство TelemetryProcessors не обрабатывает данные телеметрии счетчика производительности.
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Подключение облачной службы к пользовательскому контроллеру домена | Документация Майкрософт"
-description: "Сведения о подключении веб-ролей и рабочих ролей к личному домену AD с помощью PowerShell и расширения домена AD"
+title: "aaaConnect tooa облачной службы настраиваемый контроллер домена | Документы Microsoft"
+description: "Узнайте, как tooconnect tooa пользовательских рабочих и веб-роли домена AD с помощью PowerShell и расширение домена AD"
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 17f6918371678ac849198bff4e3b3eea8678c660
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9540190ccf17c03e55159c6c68429eee29e0a558
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Подключение ролей облачных служб Azure к контроллеру личного домена AD, размещенному в Azure
-Сначала настройте виртуальную сеть в Azure. Затем добавьте к ней контроллер домена Active Directory (размещенный на виртуальной машине Azure). После этого добавьте имеющиеся роли облачных служб в заранее созданную виртуальную сеть и подключите их к контроллеру домена.
+# <a name="connecting-azure-cloud-services-roles-tooa-custom-ad-domain-controller-hosted-in-azure"></a>Подключение пользовательского tooa Azure облачной службы роли контроллера домена AD размещено в Azure
+Сначала настройте виртуальную сеть в Azure. Затем мы добавим toohello (размещенный на виртуальных машинах Azure) контроллер домена Active Directory виртуальной сети. Далее мы будет toohello роли службы для существующей облачной ранее созданной виртуальной сети, а затем подключите их toohello контроллера домена.
 
-Прежде чем начать, пара моментов, которые стоит запомнить:
+Прежде чем начать, пару из tookeep действия в виду:
 
-1. В этом руководстве используется Azure PowerShell. Поэтому убедитесь, что это средство установлено и готово к использованию. Справку об установке Azure PowerShell см. в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview).
-2. Экземпляры контроллера домена AD и веб-ролей или рабочих ролей должны быть в виртуальной сети.
+1. В этом учебнике используется PowerShell, поэтому проверьте, есть Azure PowerShell установлена и готова toogo. tooget справку по настройке Azure PowerShell, в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
+2. Контроллер домена AD и рабочих и веб-роли экземпляры должны toobe в hello виртуальной сети.
 
-Следуйте этому пошаговому руководству и, если возникнут проблемы, оставьте нам комментарий в конце статьи. Кто-нибудь из наших сотрудников вам ответит (да, мы читаем ваши комментарии).
+Выполните в этом пошаговом руководстве и если возникнут проблемы, отправьте нам комментарий в конце hello hello статьи. Свяжется tooyou (Да, мы чтения комментариев).
 
-Сеть, на которую ссылается облачная служба, должна быть **классической виртуальной сетью**.
+Hello сеть, на который ссылается hello облачная служба должна быть **классической виртуальной сети**.
 
 ## <a name="create-a-virtual-network"></a>Создайте виртуальную сеть
-Создать виртуальную сеть в Azure можно с помощью портала Azure или PowerShell. В этом руководстве используется PowerShell. Сведения о создании виртуальной сети с помощью портала Azure см. в статье [Создание виртуальной сети с несколькими подсетями](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Можно создать виртуальную сеть в Azure с помощью портала Azure hello или PowerShell. В этом руководстве используется PowerShell. в виртуальной сети с помощью toocreate hello Azure портала, см. в разделе [Создание виртуальной сети](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
 
 ```powershell
 #Create Virtual Network
@@ -63,9 +63,9 @@ Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath
 ```
 
 ## <a name="create-a-virtual-machine"></a>Создание виртуальной машины
-Выполнив настройку виртуальной сети, необходимо будет создать контроллер домена AD. В этом учебнике выполняется настройка контроллера домена AD на виртуальной машине Azure.
+После завершения настройки hello виртуальной сети, необходимо будет toocreate контроллер домена AD. В этом учебнике выполняется настройка контроллера домена AD на виртуальной машине Azure.
 
-Для этого создайте виртуальную машину с помощью PowerShell, используя следующие команды.
+toodo, создание виртуальной машины с помощью PowerShell, с помощью hello, следующие команды:
 
 ```powershell
 # Initialize variables
@@ -79,25 +79,25 @@ $username = '<your-username>'
 $password = '<your-password>'
 $affgrp = '<your- affgrp>'
 
-# Create a VM and add it to the Virtual Network
+# Create a VM and add it toohello Virtual Network
 
 New-AzureQuickVM -Windows -ServiceName $vmsvc1 -Name $vm1 -ImageName $imgname -AdminUsername $username -Password $password -AffinityGroup $affgrp -SubnetNames $subnetname -VNetName $vnetname
 ```
 
-## <a name="promote-your-virtual-machine-to-a-domain-controller"></a>Повысьте уровень виртуальной машины до контроллера домена
-Чтобы настроить виртуальную машину в качестве контроллера домена AD, необходимо войти в нее и настроить.
+## <a name="promote-your-virtual-machine-tooa-domain-controller"></a>Повышение уровня tooa вашей виртуальной машины контроллера домена
+hello tooconfigure виртуальную машину как контроллер домена AD, может потребоваться toolog в toohello виртуальной Машины и настроить его.
 
-Для входа в виртуальную машину можно получить RDP-файл через PowerShell, используя следующие команды.
+toolog в toohello виртуальной Машины hello RDP-файл можно получить с помощью PowerShell hello используйте следующие команды:
 
 ```powershell
 # Get RDP file
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-Войдя в виртуальную машину, настройте ее в качестве контроллера домена AD, следуя указаниям пошагового руководства [How to set up your customer AD Domain Controller](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx) (Настройка личного контроллера домена AD).
+После входа в toohello виртуальной Машины, настроить виртуальную машину как контроллер домена AD, следующие пошаговые руководства hello на [как tooset вашего клиента контроллера домена AD](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
 
-## <a name="add-your-cloud-service-to-the-virtual-network"></a>Добавление облачной службы в виртуальную сеть
-Затем необходимо добавить развертывание облачной службы в новую виртуальную сеть. Для этого измените файл CSCFG облачной службы, добавив в него соответствующие разделы с помощью Visual Studio или другого редактора.
+## <a name="add-your-cloud-service-toohello-virtual-network"></a>Добавить toohello вашей облачной службе виртуальной сети
+Далее необходимо tooadd вашей облачной службы развертывания toohello новой виртуальной сети. toodo, изменить облака службы cscfg, добавив tooyour cscfg hello соответствующие разделы, с помощью Visual Studio или hello редактора по своему усмотрению.
 
 ```xml
 <ServiceConfiguration serviceName="[hosted-service-name]" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="[os-family]" osVersion="*">
@@ -128,10 +128,10 @@ Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-
 </ServiceConfiguration>
 ```
 
-Затем создайте проект облачной службы и выполните его развертывание в Azure. Справку о развертывании пакета облачных служб в Azure см. в статье [Создание и развертывание облачной службы](cloud-services-how-to-create-deploy.md#how-to-deploy-a-cloud-service).
+После построения проекта облачной службы и развернуть ее tooAzure. tooget сведения о развертывании вашей tooAzure пакета облачной службы в разделе [как tooCreate и развертывание облачной службы](cloud-services-how-to-create-deploy.md#how-to-deploy-a-cloud-service)
 
-## <a name="connect-your-webworker-roles-to-the-domain"></a>Подключение веб- и рабочих ролей к домену
-Выполнив развертывание проекта облачной службы в Azure, подключите экземпляры ролей к личному домену AD с помощью расширения доменов AD. Чтобы добавить расширение доменов AD к существующему развертыванию облачной службы и присоединить личный домен, выполните в PowerShell следующие команды:
+## <a name="connect-your-webworker-roles-toohello-domain"></a>Подключение домена toohello рабочих и веб-роли
+После развертывания проекта облачной службы в Azure подключаться домена toohello пользовательские AD экземпляров роли с помощью hello расширение домена AD. hello tooadd развертывания существующей облачной службы для расширения домена AD tooyour и присоединение к домену пользовательские "hello", выполните следующие команды в PowerShell hello:
 
 ```powershell
 # Initialize domain variables
@@ -142,14 +142,14 @@ $dmpswd = '<your-domain-password>'
 $dmspwd = ConvertTo-SecureString $dmpswd -AsPlainText -Force
 $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd)
 
-# Add AD Domain Extension to the cloud service roles
+# Add AD Domain Extension toohello cloud service roles
 
 Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35
 ```
 
 И это все.
 
-Облачные службы должны быть присоединены к контроллеру личного домена. Дополнительные сведения о различных параметрах для настройки расширения домена AD см. в справке PowerShell. Вот несколько примеров.
+Облачные службы должно быть присоединены к домену tooyour пользовательского домена контроллера. Если вы хотите toolearn Здравствуйте, Дополнительные сведения о различных функций, доступных для помощь tooconfigure расширение домена AD, используйте hello PowerShell. Вот несколько примеров.
 
 ```powershell
 help Set-AzureServiceADDomainExtension

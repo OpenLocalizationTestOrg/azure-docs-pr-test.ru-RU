@@ -1,6 +1,6 @@
 ---
-title: "Подключение Raspberry Pi (C) к Интернету вещей Azure. Урок 1. Развертывание приложения | Документация Майкрософт"
-description: "Клонируйте пример приложения C из Github и разверните его с помощью инструмента Gulp на устройстве Raspberry Pi 3. Это приложение будет каждые две секунды включать и выключать светодиодный индикатор на компьютере."
+title: "Connect Raspberry PI (C) tooAzure IoT — занятия 1: развертывание приложения | Документы Microsoft"
+description: "Клонировать пример C приложения hello из GitHub и gulp toodeploy tooyour Raspberry Pi 3 этого приложения плата. В этом образце приложения мигает hello Индикатор подключен toohello плата каждые две секунды."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,54 +17,54 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 2ae409c6a39521711777ec329d2507a2801cc985
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e90c3360c4de1873313db19561c781eb21dbf1d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-deploy-the-blink-application"></a>Создание и развертывание приложения для включения индикатора
+# <a name="create-and-deploy-hello-blink-application"></a>Создание и развертывание приложения hello мерцания
 ## <a name="what-you-will-do"></a>Выполняемая задача
-Клонирование примера приложения C из GitHub и его развертывание с помощью инструмента Gulp на устройстве Raspberry Pi 3. Этот пример приложения будет каждые две секунды включать светодиодный индикатор, подключенный к плате. Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
+Клонировать hello образец приложения C из GitHub и использовать tooRaspberry образец приложения средство toodeploy hello gulp hello Pi 3. Пример приложения Hello мигает hello Индикатор подключен toohello плата каждые две секунды. Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Новые знания
 В этой статье вы узнаете следующее:
 
-* Как использовать средство `device-discover-cli` для получения сетевых сведений о плате Pi.
-* Как развертывать и запускать пример приложения на плате Pi.
-* Как развертывать и отлаживать приложения, работающие удаленно на плате Pi.
+* Как toouse hello `device-discover-cli` tooretrieve средство сети сведения о Pi.
+* Как toodeploy и выполнения hello образец приложения на Pi.
+* Как toodeploy и отладки приложения, выполняющегося удаленно на Pi.
 
 ## <a name="what-you-need"></a>Необходимые элементы
-Необходимо успешно выполнить следующие операции:
+Необходимо успешно выполнить hello следующие операции:
 
 * [Настройка устройства](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)
-* [Получение инструментов](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
+* [Получить средства hello](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
 
-## <a name="obtain-the-ip-address-and-host-name-of-pi"></a>Получение IP-адреса и имени узла для платы Pi
-В командной строке Windows или в окне терминала на устройстве под управлением macOS или Ubuntu выполните следующую команду.
+## <a name="obtain-hello-ip-address-and-host-name-of-pi"></a>Получить hello IP адрес и имя узла Pi
+В Windows или терминала в macOS или Ubuntu откройте командную строку и затем выполните hello следующую команду:
 
 ```bash
 devdisco list --eth
 ```
 
-Должен отобразиться результат, аналогичный приведенному ниже:
+Вы увидите выходные данные, аналогичные toohello следующее:
 
 ![Обнаружение устройства](media/iot-hub-raspberry-pi-lessons/lesson1/device_discovery.png)
 
-Запишите значения `IP address` и `hostname` для платы Pi. Эти сведения потребуются позже в данной статье.
+Запишите hello `IP address` и `hostname` числа пи. Эти сведения потребуются позже в данной статье.
 
 > [!NOTE]
-> Убедитесь, что плата Pi подключена к той же сети, что и компьютер. Например, если компьютер подключен к беспроводной сети, а плата Pi подключена к проводной сети, то IP-адрес может не отобразиться в выходных данных devdisco.
+> Убедитесь, что Pi подключенных toohello сетевых как на компьютере. Например, если компьютер находится подключенных tooa беспроводной сети при подключенном tooa проводной сети Pi, могут отображаться не hello IP адрес в выходных данных devdisco hello.
 
-## <a name="open-the-sample-application"></a>Открытие примера приложения
-Чтобы открыть пример приложения, сделайте следующее:
+## <a name="open-hello-sample-application"></a>Привет открыть образец приложения
+tooopen hello образец приложения, выполните следующие действия:
 
-1. Клонируйте пример репозитория из GitHub, выполнив следующую команду.
+1. Клонирование репозитория образец hello из GitHub, выполнив следующую команду hello:
    
     ```bash
     git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getting-started.git
     ```
-2. Откройте пример приложения в Visual Studio Code, выполнив следующие команды:
+2. Откройте пример приложения hello в коде Visual Studio, выполнив следующие команды hello:
    
     ```bash
     cd iot-hub-c-raspberrypi-getting-started
@@ -74,27 +74,27 @@ devdisco list --eth
 
 ![Структура репозитория](media/iot-hub-raspberry-pi-lessons/lesson1/vscode-blink-c-mac.png)
 
-Файл `main.c` в подпапке `app` — это ключевой исходный файл, содержащий код для управления светодиодным индикатором.
+Hello `main.c` файла в hello `app` подпапка является hello ключа исходного файла, содержащего hello toocontrol кода hello Индикатора.
 
 ### <a name="install-application-dependencies"></a>Установка зависимостей приложения
-Установите библиотеки и другие модули, необходимые для примера приложения, выполнив следующую команду:
+Установка библиотеки hello и другие модули, необходимые для образца приложения hello, выполнив следующую команду hello:
 
 ```bash
 npm install
 ```
 
-## <a name="configure-the-device-connection"></a>Настройка подключения устройства
-Чтобы настроить подключение устройства, выполните следующие действия.
+## <a name="configure-hello-device-connection"></a>Настройка подключения устройства hello
+tooconfigure Здравствуйте подключения устройства, выполните следующие действия:
 
-1. Создайте файл конфигурации устройства, выполнив приведенную ниже команду.
+1. Создайте файл конфигурации устройства hello, выполнив hello следующую команду:
    
    ```bash
    gulp init
    ```
    
-   Файл конфигурации `config-raspberrypi.json` содержит учетные данные пользователя для входа в Pi. Чтобы избежать утечки учетных данных пользователя, файл конфигурации создается в подпапке `.iot-hub-getting-started` домашней папки на компьютере.
+   файл конфигурации Hello `config-raspberrypi.json` содержит учетные данные пользователя hello использовать toolog в tooPi. tooavoid hello утечки учетных данных пользователя, создается файл конфигурации hello hello во вложенной папке `.iot-hub-getting-started` hello домашней папки на компьютере.
 
-2. Откройте файл конфигурации устройства в Visual Studio Code, выполнив приведенную ниже команду.
+2. Откройте файл конфигурации устройства hello в коде Visual Studio, выполнив следующую команду hello:
    
    ```bash
    # For Windows command prompt
@@ -104,18 +104,18 @@ npm install
    code ~/.iot-hub-getting-started/config-raspberrypi.json
    ```
 
-3. Замените заполнитель `[device hostname or IP address]` IP-адресом или именем узла, которые вы записали ранее в разделе "Получение IP-адреса и имени узла для платы Pi".
+3. Замените заполнитель hello `[device hostname or IP address]` с hello IP-адрес или имя узла hello, полученный ранее на «Получение hello IP адрес и имя узла пи.»
    
    ![Config.json](media/iot-hub-raspberry-pi-lessons/lesson1/vscode-config-mac.png)
 
 > [!NOTE]
-> При подключении к устройству Raspberry Pi вместо имени пользователя и пароля можно использовать ключ SSH. Чтобы сделать это необходимо для создания ключа с помощью **ssh-keygen** и **pi ssh-copy-id @\<адрес устройства\>**.
+> SSH-ключ можно использовать вместо имени пользователя и пароль при подключении tooRaspberry Pi. Чтобы toodo это будет иметь toogenerate hello ключ при помощи **ssh-keygen** и **pi ssh-copy-id @\<адрес устройства\>**.
 >
 > В Windows эти команды доступны следующие в **Git Bash**.
 >
-> В MacOS необходимо выполнить команду **brew install ssh-copy-id**.
+> На MacOS необходимо toorun **brew установить ssh-copy-id**.
 >
-> После успешной отправки ключа на устройство Raspberry Pi замените **device_password** свойством **device_key_path** в файле **config-raspberrypi.json**.
+> После успешной отправки hello ключа toohello Raspberry Pi, замените **device_password** с **device_key_path** свойство в **raspberrypi.json конфигурации**.
 >
 > Обновленные строки должны выглядеть следующим образом:
 > ```javascript
@@ -123,31 +123,31 @@ npm install
 > "device_key_path": "id_rsa",
 > ```
 
-Поздравляем! Вы успешно создали первый пример приложения для платы Pi.
+Поздравляем! Первый пример приложения hello для Pi успешно создана.
 
-## <a name="deploy-and-run-the-sample-application"></a>Развертывание и запуск примера приложения
-### <a name="install-the-azure-iot-hub-sdk-on-pi"></a>Установка пакета SDK для Центра Интернета вещей на устройстве Pi
-Установите пакет SDK для Центра Интернета вещей на устройстве Pi, выполнив следующую команду:
+## <a name="deploy-and-run-hello-sample-application"></a>Развертывание и запуск образца приложения hello
+### <a name="install-hello-azure-iot-hub-sdk-on-pi"></a>Установите пакет SDK Azure IoT Hub hello на Pi
+Установите hello Azure IoT Hub SDK на Pi, выполнив hello следующую команду:
 
 ```bash
 gulp install-tools
 ```
 
-При первом выполнении этой задачи на ее завершение может уйти несколько минут.
+Эта задача может занять несколько минут toocomplete hello первый раз при запуске.
 
-### <a name="deploy-and-run-the-sample-app"></a>Развертывание и запуск примера приложения
-Разверните и запустите пример приложения, выполнив следующую команду.
+### <a name="deploy-and-run-hello-sample-app"></a>Развертывание и запуск образца приложения hello
+Развертывание и запуск образца приложения hello, выполнив следующую команду hello:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-### <a name="verify-the-app-works"></a>Проверка работы приложения
-После того, как светодиодный индикатор мигнет 20 раз, пример приложения завершит работу автоматически. Если индикатор не мигает, см. способы решения распространенных проблем в [руководстве по устранению неполадок](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
+### <a name="verify-hello-app-works"></a>Проверки работы приложения hello
+Пример приложения Hello автоматически завершается после hello Индикатор мигает в течение 20 раз. Если вы не видите hello Индикатор мигает, см. раздел hello [руководство по устранению неполадок](iot-hub-raspberry-pi-kit-c-troubleshooting.md) для решения проблемы toocommon.
 ![Индикатор мигает](media/iot-hub-raspberry-pi-lessons/lesson1/led_blinking.jpg)
 
 ## <a name="summary"></a>Сводка
-Вы установили необходимые средства для работы с платой Pi и развернули пример приложения, заставляющего светодиодный индикатор мигать. Теперь можно приступать к созданию, развертыванию и запуску другого примера приложения, которое подключает плату Pi к Центру Интернета вещей Azure для отправки и получения сообщений.
+Вы установили hello необходимые средства toowork с Pi и развернуть образец приложения tooPi tooblink hello Индикатора. Вы теперь можно создать, развернуть и выполнения другой пример приложения, которое подключается Pi tooAzure toosend центр IoT и получать сообщения.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Get Azure tools](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-win32.md) (Получение инструментов Azure)

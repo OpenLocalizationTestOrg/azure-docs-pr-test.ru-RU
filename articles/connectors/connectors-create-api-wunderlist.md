@@ -1,6 +1,6 @@
 ---
-title: "Соединитель Wunderlist в Azure Logic Apps | Документация Майкрософт"
-description: "Из этой статьи вы узнаете, как создать подключение к Wunderlist и с его помощью создавать рабочие процессы в приложениях логики."
+title: "Соединитель aaaWunderlist я n Azure логику приложений | Документы Microsoft"
+description: "Создать tooWunderlist соединения и использовать это подключение toobuild рабочего процесса в приложениях для логики."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 899110992cc52ca5edf1706320fd5570473de784
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8b960a0bd8a16d51933dfc75e7291c8a0ae0f923
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-wunderlist-connector"></a>Начало работы с соединителем Wunderlist
-Wunderlist — это приложение для ведения списка дел и управления задачами, помогающее справляться с делами.  Wunderlist позволяет легко составлять и вести списки дел, а также предоставлять к ним доступ, будь то отправка списка покупок, работа над проектом или планирование отпуска. Wunderlist мгновенно синхронизируется между телефоном, планшетом и компьютером, обеспечивая доступ к задачам из любой точки мира.
+# <a name="get-started-with-hello-wunderlist-connector"></a>Начало работы с соединителем Wunderlist hello
+Wunderlist предоставлен список todo и люди toohelp диспетчера задач получить их stuff сделать.  Вы просматриваете список покупок на любимые, работе с проектом или планирования отпуск, Wunderlist позволяет легко toocapture, совместного использования и завершена вашей to¬dos. Wunderlist мгновенно синхронизируется между телефоном, планшетом и компьютером, обеспечивая доступ к задачам из любой точки мира.
 
 Для начала создайте приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-wunderlist"></a>Создание подключения к Wunderlist
-Для создания приложений логики с помощью Wunderlist необходимо создать **подключение**, а затем указать данные для приведенных ниже свойств.
+## <a name="create-a-connection-toowunderlist"></a>Создание tooWunderlist подключения
+приложения логики toocreate с Wunderlist, необходимо сначала создать **подключения** затем укажите подробности hello для hello следующие свойства:
 
 | Свойство | Обязательно | Description (Описание) |
 | --- | --- | --- |
 | Маркер |Да |Учетные данные Wunderlist |
 
-Созданное подключение можно использовать для выполнения действий и прослушивания триггеров.
+После создания подключения hello, можно использовать его действия tooexecute hello и прослушивать hello триггеры.
 
-> [!INCLUDE [Steps to create a connection to Wunderlist](../../includes/connectors-create-api-wunderlist.md)]
+> [!INCLUDE [Steps toocreate a connection tooWunderlist](../../includes/connectors-create-api-wunderlist.md)]
 > 
 
 ## <a name="connector-specific-details"></a>Сведения о соединителях
 
-Информацию о существующих ограничениях, а также о триггерах и действиях, определенных в Swagger, см. в статье со [сведениями о соединителях](/connectors/wunderlist/).
+Просмотреть все триггеры и действия, определенные в hello swagger и любые пределы в hello см. также [сведений о соединителе](/connectors/wunderlist/).
 
 ## <a name="more-connectors"></a>Дополнительные сведения о соединителях
-Вы можете вернуться к [списку интерфейсов API](apis-list.md).
+Вернитесь к предыдущему окну toohello [API-интерфейсы списка](apis-list.md).

@@ -1,6 +1,6 @@
 ---
-title: "Использование когнитивных возможностей U-SQL в Azure Data Lake Analytics | Документация Майкрософт"
-description: "Использование аналитики когнитивных возможностей в U-SQL"
+title: "возможности aaaUsing Когнитивных U-SQL аналитики Озера данных Azure | Документы Microsoft"
+description: "Узнайте, как toouse hello аналитики Когнитивных возможностей в U-SQL"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: f77329f9838d6e824afa7234de90f62257a004de
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2c9ac71f490e929070fa0e72b93c3ffdb1ab243b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>Руководство по началу работы с когнитивными возможностями U-SQL
+# <a name="tutorial-get-started-with-hello-cognitive-capabilities-of-u-sql"></a>Учебник: Приступая к работе с возможностями Когнитивных hello U-SQL
 
-Когнитивные возможности U-SQL позволяют разработчикам использовать аналитику в программах, которые работают с большими данными. В целом этот процесс прост:
+Когнитивных возможности U-SQL позволяют разработчикам toouse поместить аналитики в свои программы большие наборы данных. Здравствуйте, общий процесс в простой:
 
-* Включите когнитивные функции для сценария U-SQL с помощью инструкции REFERENCE ASSEMBLY.
-* Вызовите операцию PROCESS, чтобы использовать когнитивные возможности 
+* Использовать когнитивных функции hello ССЫЛОЧНУЮ СБОРКУ инструкций tooenable hello для hello скрипт U-SQL
+* Вызовите операцию ПРОЦЕССА hello Когнитивных возможности toouse hello 
 
 ## <a name="imaging-scenarios"></a>Сценарии создания образов
 
 ### <a name="example-image-tagging"></a>Пример: добавление тегов к образу
 
-В следующем примере показано комплексное использование возможностей образа, с помощью которых можно распознать объекты на изображениях.
+Hello в следующем примере показано использование конца в конец hello imaging объектов toodetect возможностей в изображениях.
 
     REFERENCE ASSEMBLY ImageCommon;
     REFERENCE ASSEMBLY FaceSdk;
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/11/2017
         FROM @"/images/{FileName:*}.jpg"
         USING new Cognition.Vision.ImageExtractor();
 
-    // Extract the number of objects on each image and tag them 
+    // Extract hello number of objects on each image and tag them 
     @objects =
         PROCESS @imgs 
         PRODUCE FileName,
@@ -120,7 +120,7 @@ ms.lasthandoff: 07/11/2017
                 Text
         USING new Cognition.Text.KeyPhraseExtractor();
 
-    // Tokenize the key phrases.
+    // Tokenize hello key phrases.
     @kpsplits =
         SELECT No,
             Year,

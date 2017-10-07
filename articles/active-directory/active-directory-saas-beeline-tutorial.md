@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с BeeLine | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и BeeLine."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и BeeLine."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,119 +13,119 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 93acbd90bbe5f0a40bf3f56edb766a0fdd30f68f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 92f228d33980c21ad934185ab89d73795f7f69bd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Руководство по интеграции Azure Active Directory с Beeline
 
-В этом руководстве описано, как интегрировать BeeLine с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate BeeLine с Azure Active Directory (Azure AD).
 
-Интеграция BeeLine с Azure AD обеспечивает следующие преимущества:
+Интеграция с Azure AD BeeLine предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к BeeLine.
-- Вы можете включить автоматический вход пользователей в BeeLine (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooBeeLine
+- Можно включить на пользователей tooautomatically get вошедшего tooBeeLine (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с BeeLine, вам потребуется:
+tooconfigure интеграция Azure AD с BeeLine требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка BeeLine с активированной функцией единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление BeeLine из коллекции.
+1. Добавление BeeLine из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-beeline-from-the-gallery"></a>Добавление BeeLine из коллекции
-Чтобы настроить интеграцию приложения BeeLine с Azure AD, необходимо добавить это приложение из коллекции в список управляемых приложений SaaS.
+## <a name="adding-beeline-from-hello-gallery"></a>Добавление BeeLine из галереи hello
+tooconfigure hello интеграции BeeLine в Azure AD, вы должны tooadd BeeLine из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить BeeLine из коллекции, выполните следующие действия.**
+**tooadd BeeLine из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **BeeLine**.
+4. Введите в поле поиска hello **BeeLine**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-beeline-tutorial/tutorial_beeline_search.png)
 
-5. На панели результатов выберите **BeeLine** и щелкните **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello выберите **BeeLine**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-beeline-tutorial/tutorial_beeline_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в BeeLine с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, Azure AD необходимо знать, какой пользователь в BeeLine соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в BeeLine.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в BeeLine является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в BeeLine должен установить toobe.
 
-Чтобы установить эту связь, присвойте **имя пользователя** в Azure AD в качестве значения **Имя пользователя** в BeeLine.
+В BeeLine, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в BeeLine, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с BeeLine, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя BeeLine](#creating-a-beeline-test-user)** требуется для создания пользователя Britta Simon в BeeLine, связанного с соответствующим пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя BeeLine](#creating-a-beeline-test-user)**  -toohave аналог Саймон Britta в BeeLine, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В данном разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении BeeLine.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении BeeLine.
 
-**Чтобы настроить единый вход Azure AD в BeeLine, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с BeeLine, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **BeeLine** щелкните **Единый вход**.
+1. В hello в hello портала Azure **BeeLine** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-beeline-tutorial/tutorial_beeline_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения BeeLine** выполните следующие действия:
+3. На hello **URL-адреса и домена BeeLine** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-beeline-tutorial/tutorial_beeline_url.png)
 
-    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://projects.beeline.net/<instancename>`
+    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://projects.beeline.net/<instancename>`
 
-    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате:
+    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:
     | |
     |--|
     | `https://projects.beeline.net/<instancename>/SSO_External.ashx`|
     | `https://projects.beeline.net/<companyname>/SSO_External.ashx` |
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Измените их на фактические значения идентификатора и URL-адреса ответа. Чтобы получить эти значения, обратитесь в [службу поддержки BeeLine](https://www.beeline.com/contact-us/).
+    > Эти значения приведены в качестве примера. Обновите эти значения с hello фактический идентификатор и ответ URL-адрес. Обратитесь к [BeeLine поддержки](https://www.beeline.com/contact-us/) tooget эти значения.
  
-4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-beeline-tutorial/tutorial_beeline_certificate.png) 
 
-5. Приложение Beeline ожидает утверждения SAML в определенном формате. Обратитесь в [службу поддержки BeeLine](https://www.beeline.com/contact-us/), чтобы определить правильный идентификатор пользователя, который будет сопоставляться в приложении. Необходимо выполнить рекомендации от [службы поддержки BeeLine](https://www.beeline.com/contact-us/), касающиеся атрибута, который она хочет использовать для данного сопоставления. Управлять значением этого атрибута можно на вкладке **Атрибуты пользователя** приложения. На следующем снимке экрана приведен пример. Утверждение **Идентификатор пользователя** было сопоставлено с атрибутом **userprincipalname**. Таким образом был получен уникальный идентификатор пользователя, который будет отправляться в приложение Beeline в каждом успешном ответе SAML.
+5. Приложение Beeline ожидает утверждения SAML hello в определенном формате. Можно работать с [BeeLine поддержки](https://www.beeline.com/contact-us/) первый tooidentify hello идентификатор пользователя, который будет сопоставлена с приложение hello. Также выполните рекомендации hello из [BeeLine поддержки](https://www.beeline.com/contact-us/) о hello атрибут, который хочет toouse для данного сопоставления. Вы можете управлять hello значение этого атрибута из hello **атрибуты пользователя** вкладку приложения hello. пример Hello следующий снимок экрана для этого. Здесь мы сопоставленной hello **идентификатор пользователя** утверждение со hello **userprincipalname** атрибут, который предоставляет уникальный идентификатор, который будет отправлен toohello Beeline приложения в hello каждой успешной SAML Ответ.
 
     ![Настройка единого входа](./media/active-directory-saas-beeline-tutorial/tutorial_attribute.png)  
 
@@ -133,68 +133,68 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-beeline-tutorial/tutorial_general_400.png)
 
-7. В разделе **Настройка BeeLine** щелкните **Настроить BeeLine**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода** и **идентификатор сущности SAM** из раздела **Краткий справочник**.
+7. На hello **конфигурации BeeLine** щелкните **Настройка BeeLine** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода** и **идентификатор сущности SAML** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-beeline-tutorial/tutorial_beeline_configure.png) 
 
-8. Для настройки единого входа на стороне **BeeLine** необходимо отправить скачанный **XML-файл метаданных** и **идентификатор сущности SAML**, **URL-адрес выхода** в [службу поддержки BeeLine](https://www.beeline.com/contact-us/).
+8. tooconfigure единого входа на **BeeLine** стороны, необходимо загрузить hello toosend **метаданные в формате XML** и **идентификатор сущности SAML**, **URL-адрес выхода**слишком[BeeLine поддержки](https://www.beeline.com/contact-us/).
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-beeline-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-beeline-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-beeline-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-beeline-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-beeline-test-user"></a>Создание тестового пользователя BeeLine
 
-В этом разделе описано, как создать пользователя Britta Simon в приложении Beeline. Перед выполнением единого входа все пользователи должны быть подготовлены в приложении BeeLine. Для этого обратитесь в [службу поддержки BeeLine](https://www.beeline.com/contact-us/). 
+В этом разделе описано, как создать пользователя Britta Simon в приложении Beeline. Beeline приложению все пользователи toobe hello, подготовить в приложении hello перед выполнением единого входа. Таким образом работают с hello [BeeLine поддержки](https://www.beeline.com/contact-us/) tooprovision этих пользователей в приложение hello. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как предоставить пользователю Britta Simon доступ к BeeLine, чтобы он мог использовать единый вход Azure.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooBeeLine доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в BeeLine, выполните следующие действия.**
+**tooassign tooBeeLine Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **BeeLine**.
+2. В списке приложений hello выберите **BeeLine**.
 
     ![Настройка единого входа](./media/active-directory-saas-beeline-tutorial/tutorial_beeline_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -202,7 +202,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -210,11 +210,11 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа. Щелкнув элемент Beeline на панели доступа, вы автоматически войдете в приложение Beeline.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello. При нажатии кнопки hello Beeline плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Beeline приложения.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

@@ -1,5 +1,5 @@
 ---
-title: "Группы правил и правила CRS брандмауэра веб-приложения шлюза приложений Azure | Документация Майкрософт"
+title: "брандмауэр веб-приложения Application Gateway aaaAzure CRS правила и группы правил | Документы Microsoft"
 description: "Эта страница содержит сведения о группах правил и правилах CRS брандмауэра веб-приложения."
 documentationcenter: na
 services: application-gateway
@@ -15,17 +15,17 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-ms.openlocfilehash: 9f4445b7ceb5b39c7907b1ca4c7bf0ad52ba8212
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6be139847392baeb235bc48b079335c1e0d8287b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Список групп правил и правил CRS брандмауэра веб-приложения
 
-Брандмауэр веб-приложения шлюза приложений (WAF) позволяет устранить уязвимости веб-приложений и защитить их от эксплойтов. Для этого существуют правила, определяемые по основным наборам правил OWASP версии 2.2.9 или 3.0. Эти правила можно отключать по отдельности. В этой статье приведены текущие правила и наборы правил.
+Брандмауэр веб-приложения шлюза приложений (WAF) позволяет устранить уязвимости веб-приложений и защитить их от эксплойтов. Это осуществляется посредством правила, которые определены в зависимости от наборов правил OWASP core hello 2.2.9 или 3.0. Эти правила можно отключать по отдельности. Эта статья содержит текущие правила hello и предлагаемые наборов правил.
 
-В следующих таблицах представлены группы правил и правила, доступные при использовании шлюза приложений с брандмауэром веб-приложения.  В каждой таблице указаны правила из конкретной группы правил для определенной версии CRS.
+Hello следующие таблицы: hello группы правил и правил, доступных при использовании шлюза приложений с брандмауэр веб-приложения.  Каждая таблица представляет правила hello, найденные в группу правил для определенной версии CRS.
 
 ##<a name="owasp30"></a> OWASP_3.0
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 07/11/2017
 |920011|Правило 920011|
 |920012|Правило 920012|
 |920100|Недопустимая строка HTTP-запроса|
-|920130|Не удалось проанализировать текст запроса|
+|920130|Не удалось выполнить tooparse текст запроса.|
 |920140|Составной текст запроса не прошел строгую проверку =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
 |920160|Тип заголовка HTTP Content-Length не является числовым|
 |920170|Заголовок GET или HEAD с содержимым текста|
@@ -342,7 +342,7 @@ ms.lasthandoff: 07/11/2017
 |---|---|
 |960911|Недопустимая строка HTTP-запроса|
 |981227|Ошибка Apache = недопустимый URI в запросе|
-|960912|Не удалось проанализировать текст запроса|
+|960912|Не удалось выполнить tooparse текст запроса.|
 |960914|Составной текст запроса не прошел строгую проверку =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
 |960915|Составное средство синтаксического анализа обнаружило возможную несогласованную границу|
 |960016|Тип заголовка HTTP Content-Length не является числовым|
@@ -400,9 +400,9 @@ ms.lasthandoff: 07/11/2017
 
 |Идентификатор правила|Описание|
 |---|---|
-|990002|Запрос указывает, что сканер системы безопасности отсканировал сайт|
-|990901|Запрос указывает, что сканер системы безопасности отсканировал сайт|
-|990902|Запрос указывает, что сканер системы безопасности отсканировал сайт|
+|990002|Запрос указывает hello сканируется безопасности сайта|
+|990901|Запрос указывает hello сканируется безопасности сайта|
+|990902|Запрос указывает hello сканируется безопасности сайта|
 |990012|Несанкционированная программа-обходчик веб-сайта|
 
 ### <a name="crs40"></a> crs_40_generic_attacks
@@ -592,6 +592,6 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об отключении правил WAF см. в статье о [настройке правил WAF](application-gateway-customize-waf-rules-portal.md).
+Узнайте, как toodisable WAF правила, посетив: [WAF настроить правила](application-gateway-customize-waf-rules-portal.md)
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png

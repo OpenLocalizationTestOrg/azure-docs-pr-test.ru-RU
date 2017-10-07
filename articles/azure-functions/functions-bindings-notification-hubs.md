@@ -1,6 +1,6 @@
 ---
-title: "Выходная привязка центра уведомлений для Функций Azure | Документация Майкрософт"
-description: "Узнайте, как использовать привязки центра уведомлений Azure в функциях Azure."
+title: "Концентратор уведомлений функции привязки aaaAzure | Документы Microsoft"
+description: "Понять, как привязки toouse концентратор уведомлений Azure в функциях Azure."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -16,39 +16,39 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: glenga
-ms.openlocfilehash: fa3d37b963c1bb6b58127b9180cd657d7b1dabcc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d192424a8ec701d02f8bcb4aa4c1d189b20537a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-notification-hub-output-binding"></a>Выходная привязка центра уведомлений для функций Azure
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Эта статья объясняет, как настроить и запрограммировать привязки центра уведомлений Azure в функциях Azure. 
+В этой статье объясняется, как привязки концентратор уведомлений Azure tooconfigure и код в функциях Azure. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Функции могут отправлять push-уведомления всего несколькими строками кода, используя настроенный центр уведомлений Azure. Однако центр уведомлений Azure нужно настроить для служб уведомлений платформы (PNS), которые необходимо использовать. Чтобы получить дополнительные сведения о настройке центра уведомлений Azure и разработке клиентских приложений, которые регистрируют для получения уведомлений, перейдите к статье [Приступая к работе с центрами уведомлений](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) и щелкните необходимую клиентскую платформу вверху.
+Функции могут отправлять push-уведомления всего несколькими строками кода, используя настроенный центр уведомлений Azure. Однако hello концентратор уведомлений Azure должны быть настроены для платформы уведомления службы (PNS) необходимо toouse hello. Дополнительные сведения о настройке концентратор уведомлений Azure и разработка клиентских приложений, которые регистрируют tooreceive уведомления см. в разделе [Приступая к работе с концентраторами уведомлений](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) и выберите целевую платформу на приветствия клиента Вверх.
 
-Можно отправлять собственные или шаблонные уведомления. Собственные уведомления нацелены на определенную платформу уведомлений, указанную в свойстве `platform` привязки для вывода. Шаблонное уведомление можно использовать для нескольких платформ.   
+Hello уведомлений, отправляемых может быть собственный уведомления или шаблон уведомления. Получения собственных уведомлений платформы уведомлений, настроенной в hello `platform` свойство hello привязка для вывода. Шаблон уведомления могут быть tootarget используется несколько платформ.   
 
 ## <a name="notification-hub-output-binding-properties"></a>Свойства привязки для вывода центра уведомлений
-Файл function.json содержит следующие свойства:
+файл function.json Hello предоставляет hello следующие свойства:
 
-* `name` — имя переменной, используемой в коде функции для сообщения центра уведомлений.
-* `type` — для этого свойства следует задать значение *notificationHub*.
-* `tagExpression` — с помощью выражений тегов можно указать, что уведомления должны отправляться на устройства, зарегистрированные для получения уведомлений, соответствующих выражению тега.  Дополнительные сведения см. в статье [Маршрутизация и выражения тегов](../notification-hubs/notification-hubs-tags-segment-push-message.md).
-* `hubName` — имя ресурса центра уведомлений на портале Azure.
-* `connection` — строка подключения **параметра приложения** , для которой задано значение *DefaultFullSharedAccessSignature* для центра уведомлений.
-* `direction` — для этого свойства необходимо задать значение *out*. 
-* `platform` — свойство платформы, которое указывает целевую платформу уведомлений для ваших уведомлений. Необходимо установить одно из следующих значений.
-  * По умолчанию, если свойство платформы отсутствует в выходной привязке, шаблонные уведомления могут использоваться для любой платформы, настроенной в концентраторе уведомлений Azure. Дополнительные общие сведения об использовании шаблонов для отправки кроссплатформенных уведомлений с помощью центра уведомлений Azure см. в разделе [Шаблоны](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
-  * `apns` — служба push-уведомлений Apple. Дополнительные сведения о настройке центра уведомлений для APNs и получении уведомлений в клиентском приложении см. в разделе [Отправка push-уведомлений с помощью центров уведомлений Azure в iOS](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md). 
-  * `adm` — [Amazon Device Messaging](https://developer.amazon.com/device-messaging). Дополнительные сведения о настройке центра уведомлений для ADM и получении уведомлений в приложении Kindle см. в разделе [Приступая к работе с Центрами уведомлений для приложений Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md). 
-  * `gcm` — [Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Также поддерживается новая версия GCM, Firebase Cloud Messaging. Дополнительные сведения о настройке центра уведомлений для GCM или FCM и получении уведомлений в клиентском приложении Android см. в разделе [Отправка push-уведомлений в приложения Android с помощью центров уведомлений Azure](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md).
-  * `wns` — [службы push-уведомлений Windows](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview) для различных платформ Windows. Службы WNS поддерживают также Windows Phone 8.1 и более поздние версии. Дополнительные сведения о настройке центра уведомлений для WNS и получении уведомлений в приложении универсальной платформы Windows (UWP) см. в разделе [Начало работы с Центрами уведомлений для приложений универсальной платформы Windows](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-  * `mpns` — [служба push-уведомлений Майкрософт](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx). Данная платформа поддерживает Windows Phone 8 и более ранние версии платформ Windows Phone. Дополнительные сведения о настройке центра уведомлений для MPNS и получении уведомлений в приложении Windows Phone см. в разделе [Отправка push-уведомлений в приложения Windows Phone с помощью центров уведомлений Azure](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).
+* `name`: Переменной имя, используемое в коде функция для концентратора уведомлений приветственное сообщение.
+* `type`: необходимо задать слишком*«концентратора уведомлений»*.
+* `tagExpression`: Выражения с тегами разрешить toospecify доставить уведомления tooa набора устройств, имеющих зарегистрированные tooreceive уведомлений, которые соответствуют hello выражение тегов.  Дополнительные сведения см. в статье [Маршрутизация и выражения тегов](../notification-hubs/notification-hubs-tags-segment-push-message.md).
+* `hubName`: Имя ресурса концентратора уведомлений hello в hello портал Azure.
+* `connection`: Строка подключения должна быть **параметр приложения** toohello задать строку подключения *DefaultFullSharedAccessSignature* значения для центра уведомлений.
+* `direction`: необходимо задать слишком*«out»*. 
+* `platform`: свойство платформы hello указывает платформу уведомления hello целей уведомления. Должен быть hello следующие значения:
+  * По умолчанию если выходных данных hello привязки указано свойство платформы hello шаблон уведомления может быть используется tootarget на любой платформе, настроенного на hello концентратор уведомлений Azure. Дополнительные сведения об использовании шаблонов в целом toosend кросс-уведомлений платформы с концентратор уведомлений Azure. в разделе [шаблоны](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+  * `apns` — служба push-уведомлений Apple. Дополнительные сведения о настройке hello концентратора уведомлений для APNS и получение уведомления hello в клиентском приложении см. в разделе [tooiOS уведомления Принудительная отправка с концентраторами уведомлений Azure](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md) 
+  * `adm` — [Amazon Device Messaging](https://developer.amazon.com/device-messaging). Дополнительные сведения о настройке hello концентратора уведомлений для ADM и получение hello уведомления в приложении Kindle см. в разделе [Приступая к работе с концентраторами уведомлений для Kindle приложений](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md) 
+  * `gcm` — [Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Firebase Cloud Messaging, являющийся hello новую версию GCM, также поддерживается. Дополнительные сведения о настройке hello концентратора уведомлений для GCM/FCM и получение hello уведомления в клиентское приложение для Android см. в разделе [tooAndroid уведомления Принудительная отправка с концентраторами уведомлений Azure](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)
+  * `wns` — [службы push-уведомлений Windows](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview) для различных платформ Windows. Службы WNS поддерживают также Windows Phone 8.1 и более поздние версии. Дополнительные сведения о настройке hello концентратора уведомлений для службы WNS и получение hello уведомления в приложении универсальной платформы Windows (UWP) см. в разделе [Приступая к работе с уведомления концентраторов для универсальной платформы приложений для Windows](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+  * `mpns` — [служба push-уведомлений Майкрософт](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx). Данная платформа поддерживает Windows Phone 8 и более ранние версии платформ Windows Phone. Дополнительные сведения о настройке hello концентратора уведомлений для MPNS и получение hello уведомления в приложения Windows Phone см. в разделе [Отправка push-уведомлений с концентраторами уведомлений Azure на Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)
 
 Пример файла function.json:
 
@@ -70,17 +70,17 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="notification-hub-connection-string-setup"></a>Настройка строки подключения центра уведомлений
-Для использования привязки для вывода центра уведомлений необходимо настроить отдельную строку подключения. Это можно сделать на вкладке *Интеграция*, выбрав центр уведомлений или создав его. 
+Привязка для вывода toouse концентратор уведомлений, необходимо настроить hello строку подключения для hello концентратора. Это можно сделать на hello *Интеграция* вкладку, выбрав концентратор уведомлений или создать новую. 
 
-Можно также вручную добавить строку подключения для имеющегося центра, указав ее в качестве значения *DefaultFullSharedAccessSignature* для центра уведомлений. Эта строка подключения предоставляет разрешение на доступ к функции для отправки сообщений с уведомлениями. Для доступа к строке подключения *DefaultFullSharedAccessSignature* нажмите кнопку **Ключи** в главной колонке для ресурса центра уведомлений на портале Azure. Чтобы добавить строку подключения для центра вручную, сделайте следующее: 
+Можно также вручную добавить строку подключения для существующий концентратор, добавив строку подключения для hello *DefaultFullSharedAccessSignature* tooyour концентратора уведомлений. Эта строка подключения предоставляет доступ к функции разрешение toosend уведомляющих сообщений. Hello *DefaultFullSharedAccessSignature* значение строки подключения может осуществляться из hello **ключей** кнопку в главной колонке hello ресурса концентратора уведомлений в hello портал Azure. toomanually добавить строку подключения для вашего концентратора hello используйте следующие шаги: 
 
-1. В колонке **Приложение-функция** на портале Azure щелкните **Параметры приложения-функции > Перейти к параметрам службы приложений**.
-2. В колонке **Параметры** щелкните раздел **Параметры приложения**.
-3. Прокрутите страницу вниз до раздела **Параметры приложения** и добавьте именованную запись в качестве значения *DefaultFullSharedAccessSignature* для центра уведомлений.
-4. Укажите имя строки параметров приложения в выходных привязках. Это имя должно быть аналогично строке **MyHubConnectionString**, использованной в приведенном выше примере.
+1. На hello **функции приложения** колонке hello портала Azure щелкните **параметрами приложения функции > Перейти параметры службы tooApp**.
+2. В hello **параметры** колонка, щелкните **параметры приложения**.
+3. Прокрутите вниз toohello **параметры приложения** раздела и Добавление именованного записи для *DefaultFullSharedAccessSignature* значения для центра уведомлений.
+4. Ссылаться на строку имени параметра в hello привязок выходного приложения. Аналогичные слишком**MyHubConnectionString** используется в приведенном выше примере hello.
 
 ## <a name="apns-native-notifications-with-c-queue-triggers"></a>Использование собственных уведомлений APNs с триггерами очереди на языке C#
-В этом примере показано, как использовать типы, определенные в [библиотеке центров уведомлений Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/), для отправки собственного уведомления APNs. 
+В этом примере показано, как toouse типы, определенные в hello [библиотека концентраторы уведомлений Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) toosend собственные уведомления APNS. 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -94,15 +94,15 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
 
-    // In this example the queue item is a new user to be processed in the form of a JSON string with 
+    // In this example hello queue item is a new user toobe processed in hello form of a JSON string with 
     // a "name" value.
     //
-    // The JSON format for a native APNS notification is ...
+    // hello JSON format for a native APNS notification is ...
     // { "aps": { "alert": "notification message" }}  
 
     log.Info($"Sending APNS notification of a new user");    
     dynamic user = JsonConvert.DeserializeObject(myQueueItem);    
-    string apnsNotificationPayload = "{\"aps\": {\"alert\": \"A new user wants to be added (" + 
+    string apnsNotificationPayload = "{\"aps\": {\"alert\": \"A new user wants toobe added (" + 
                                         user.name + ")\" }}";
     log.Info($"{apnsNotificationPayload}");
     await notification.AddAsync(new AppleNotification(apnsNotificationPayload));        
@@ -110,7 +110,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 ```
 
 ## <a name="gcm-native-notifications-with-c-queue-triggers"></a>Использование собственных уведомлений GCM с триггерами очереди на языке C#
-В этом примере показано, как использовать типы, определенные в [библиотеке центров уведомлений Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/), для отправки собственного уведомления GCM. 
+В этом примере показано, как toouse типы, определенные в hello [библиотека концентраторы уведомлений Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) toosend собственные уведомления GCM. 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -124,15 +124,15 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
 
-    // In this example the queue item is a new user to be processed in the form of a JSON string with 
+    // In this example hello queue item is a new user toobe processed in hello form of a JSON string with 
     // a "name" value.
     //
-    // The JSON format for a native GCM notification is ...
+    // hello JSON format for a native GCM notification is ...
     // { "data": { "message": "notification message" }}  
 
     log.Info($"Sending GCM notification of a new user");    
     dynamic user = JsonConvert.DeserializeObject(myQueueItem);    
-    string gcmNotificationPayload = "{\"data\": {\"message\": \"A new user wants to be added (" + 
+    string gcmNotificationPayload = "{\"data\": {\"message\": \"A new user wants toobe added (" + 
                                         user.name + ")\" }}";
     log.Info($"{gcmNotificationPayload}");
     await notification.AddAsync(new GcmNotification(gcmNotificationPayload));        
@@ -140,7 +140,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 ```
 
 ## <a name="wns-native-notifications-with-c-queue-triggers"></a>Использование собственных уведомлений WNS с триггерами очереди на языке C#
-В этом примере показано, как использовать типы, определенные в [библиотеке центров уведомлений Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/), для отправки всплывающего уведомления WNS. 
+В этом примере показано, как toouse типы, определенные в hello [библиотека концентраторы уведомлений Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) toosend собственного WNS всплывающих уведомлений. 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -154,10 +154,10 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
 
-    // In this example the queue item is a new user to be processed in the form of a JSON string with 
+    // In this example hello queue item is a new user toobe processed in hello form of a JSON string with 
     // a "name" value.
     //
-    // The XML format for a native WNS toast notification is ...
+    // hello XML format for a native WNS toast notification is ...
     // <?xml version="1.0" encoding="utf-8"?>
     // <toast>
     //      <visual>
@@ -172,7 +172,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
     string wnsNotificationPayload = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
                                     "<toast><visual><binding template=\"ToastText01\">" +
                                         "<text id=\"1\">" + 
-                                            "A new user wants to be added (" + user.name + ")" + 
+                                            "A new user wants toobe added (" + user.name + ")" + 
                                         "</text>" +
                                     "</binding></visual></toast>";
 
@@ -210,7 +210,7 @@ let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
 ```
 
 ## <a name="template-example-using-an-out-parameter"></a>Пример шаблона с параметром вывода
-В этом примере отправляется уведомление для [регистрации шаблона](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md), содержащего заполнитель `message`.
+Этот пример отправляет уведомление [регистрацию шаблона](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , содержащий `message` заполнителя в шаблоне hello.
 
 ```cs
 using System;
@@ -232,7 +232,7 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 ```
 
 ## <a name="template-example-with-asynchronous-function"></a>Пример шаблона с асинхронной функцией
-При использовании асинхронного кода параметры вывода не допускаются. В этом случае для возвращения шаблонного уведомления следует использовать `IAsyncCollector`. Ниже приведен пример асинхронного кода, описанного выше. 
+При использовании асинхронного кода параметры вывода не допускаются. В этом случае использовать `IAsyncCollector` tooreturn создания шаблона уведомления. Hello ниже приведен пример асинхронной приведенного выше кода hello. 
 
 ```cs
 using System;
@@ -243,20 +243,20 @@ public static async Task Run(string myQueueItem, IAsyncCollector<IDictionary<str
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
 
-    log.Info($"Sending Template Notification to Notification Hub");
+    log.Info($"Sending Template Notification tooNotification Hub");
     await notification.AddAsync(GetTemplateProperties(myQueueItem));    
 }
 
 private static IDictionary<string, string> GetTemplateProperties(string message)
 {
     Dictionary<string, string> templateProperties = new Dictionary<string, string>();
-    templateProperties["user"] = "A new user wants to be added : " + message;
+    templateProperties["user"] = "A new user wants toobe added : " + message;
     return templateProperties;
 }
 ```
 
 ## <a name="template-example-using-json"></a>Пример шаблона с использованием JSON
-В этом примере отправляется уведомление для [регистрации шаблона](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md), содержащего заполнитель `message` и использующего допустимую строку JSON.
+Этот пример отправляет уведомление [регистрацию шаблона](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , содержащий `message` заполнитель в шаблон hello, используя допустимую строку JSON.
 
 ```cs
 using System;
@@ -269,7 +269,7 @@ public static void Run(string myQueueItem,  out string notification, TraceWriter
 ```
 
 ## <a name="template-example-using-notification-hubs-library-types"></a>Пример шаблона, в котором используются типы из библиотеки центров уведомлений
-В этом примере показано, как использовать типы, определенные в [библиотеке центров уведомлений Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/). 
+В этом примере показано, как toouse типы, определенные в hello [библиотека концентраторы уведомлений Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/). 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"

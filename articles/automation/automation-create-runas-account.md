@@ -1,6 +1,6 @@
 ---
-title: "Создание учетной записи запуска от имени службы автоматизации Azure | Документация Майкрософт"
-description: "В этой статье объясняется, как обновлять учетную запись службы автоматизации и создавать учетные записи запуска от имени с помощью PowerShell или портала."
+title: "aaaCreate Azure Automation учетные записи запуска от | Документы Microsoft"
+description: "В этой статье описывается как tooupdate автоматической учетной записи или создайте учетные записи запуска от имени с помощью PowerShell или с портала hello."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,87 +14,87 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/27/2017
 ms.author: magoedte
-ms.openlocfilehash: eaf6eb49bbfe4572827fcc101d1f552b48ab91e6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 94eb54fa0b518056a726d17146c63411e248273b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Обновление проверки подлинности учетных записей службы автоматизации с использованием учетных записей запуска от имени 
-Существующую учетную запись службы автоматизации можно обновлять с помощью портала или PowerShell в следующих случаях:
+Вы можете обновить существующую учетную запись автоматизации с портала hello или используйте PowerShell, если:
 
-* Вы создали учетную запись службы автоматизации, но не создали учетную запись запуска от имени.
-* У вас уже есть учетная запись службы автоматизации для управления ресурсами Resource Manager, и вы хотите обновить ее, чтобы включить учетную запись запуска от имени в процедуру проверки подлинности модуля runbook.
-* У вас есть учетная запись службы автоматизации для управления классическими ресурсами, и вы хотите обновить ее, чтобы использовать классическую учетную запись запуска от имени, а не создавать учетную запись и переносить в нее модули runbook и ресурсы.   
-* Вы хотите создать учетную запись запуска от имени и классическую учетную запись запуска от имени, используя сертификат, выданный центром сертификации предприятия.
+* Создание учетной записи автоматизации, но отклонить toocreate hello запуска от имени учетной записи.
+* Ресурсы диспетчера ресурсов автоматизации toomanage учетной записи уже используется, и требуется tooupdate hello tooinclude hello запуска от имени учетной записи для проверки подлинности runbook.
+* Учетная запись автоматизации toomanage классические ресурсы уже используется и нужно tooupdate его toouse hello классический запуска от имени учетной записи вместо создания новой учетной записи и переход к tooit Runbook и активов.   
+* Требуется toocreate запуска от имени, а классические учетной записи запуска с помощью сертификата, выданного вашего центра сертификации предприятия (ЦС).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* Этот скрипт можно выполнять только в ОС Windows 10 и Windows Server 2016 с модулями Azure Resource Manager 3.0.0 или более поздней версии. Более ранние версии Windows не поддерживаются.
-* Azure PowerShell 1.0 или более поздней версии. Сведения о выпуске PowerShell 1.0 см. в статье [Приступая к работе с командлетами Azure PowerShell](/powershell/azureps-cmdlets-docs).
-* Учетная запись службы автоматизации, указанная как значение для параметров *-AutomationAccountName* и *-ApplicationDisplayName* в приведенных ниже сценариях PowerShell.
+* Hello сценарий может быть запущена только в Windows 10 и Windows Server 2016 с модулями Azure Resource Manager 3.0.0 и более поздней версии. Более ранние версии Windows не поддерживаются.
+* Azure PowerShell 1.0 или более поздней версии. Сведения о выпуске hello PowerShell 1.0 см. в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* Учетная запись автоматизации, на которую ссылается как значение hello для hello *— AutomationAccountName* и *- ApplicationDisplayName* параметры в следующем скрипте PowerShell hello.
 
-Чтобы получить значения для параметров *SubscriptionID*, *ResourceGroup* и *AutomationAccountName*, которые являются обязательными для скрипта, сделайте следующее:
+tooget hello значения для *SubscriptionID*, *ResourceGroup*, и *AutomationAccountName*, которой являются обязательными параметрами для скрипта hello, hello следующие:
 
-1. На портале Azure выберите свою учетную запись службы автоматизации в колонке **Учетная запись службы автоматизации** и выберите **Все параметры**.  
-2. В колонке **Все параметры** в разделе **Параметры учетной записи** выберите **Свойства**. 
-3. Обратите внимание на значения в колонке **Свойства**.<br><br> ![Колонка "Свойства" учетной записи службы автоматизации](media/automation-create-runas-account/automation-account-properties.png)  
+1. В hello портал Azure, выберите учетную запись автоматизации на hello **учетной записи автоматизации** колонки, а затем выберите **все параметры**.  
+2. На hello **все параметры** колонки в разделе **параметры учетной записи**выберите **свойства**. 
+3. Запишите значения hello на hello **свойства** колонку.<br><br> ![колонку «Свойства» учетной записи автоматизации Hello](media/automation-create-runas-account/automation-account-properties.png)  
 
-### <a name="required-permissions-to-update-your-automation-account"></a>Необходимые разрешения для обновления учетной записи службы автоматизации
-Чтобы обновить учетную запись службы автоматизации, вам потребуются следующие привилегии и разрешения, необходимые для работы с этим руководством.   
+### <a name="required-permissions-tooupdate-your-automation-account"></a>Необходимые разрешения tooupdate ваша учетная запись автоматизации
+tooupdate учетной записи автоматизации, должны иметь hello следующие специальные права и разрешения, необходимые toocomplete в этом разделе.   
  
-* Необходимо добавить учетную запись AD к роли с разрешениями, аналогичными роли участника для ресурсов Microsoft.Automation, как описано в статье [Управление доступом на основе ролей в службе автоматизации Azure](automation-role-based-access-control.md#contributor-role-permissions).  
-* Пользователи без прав администратора в клиенте Azure AD могут [регистрировать приложения AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions), если для параметра регистрации установлено значение **Да**.  Если для этого параметра задано значение **Нет**, пользователю потребуются права глобального администратора в Azure AD, чтобы выполнить это действие. 
+* Учетная запись пользователя AD должен toobe добавлены tooa роль с роль участника toohello эквивалентные разрешения Microsoft.Automation ресурсов, как описано в статье [управления доступом на основе ролей в службе автоматизации Azure](automation-role-based-access-control.md#contributor-role-permissions).  
+* Пользователи без прав администратора в клиенте Azure AD могут [регистрировать приложения AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions) при регистрации приложения hello параметра установлено слишком**Да**.  Если параметр регистрации приложения hello задано слишком**нет**, hello пользователь, выполняющий это действие должно быть глобальным администратором в Azure AD. 
 
-Если пользователь, которому назначают роль глобального администратора или соадминистратора подписки, не является участником экземпляра подписки Active Directory, он будет добавлен в Active Directory в качестве гостя. В этом случае отобразится соответствующее предупреждение "У вас нет разрешений на создание…" в колонке **Добавление учетной записи службы автоматизации**. Пользователей, которым назначена роль соадминистратора или глобального администратора, можно удалить из экземпляра подписки Active Directory, а затем повторно добавить, чтобы предоставить им права полного доступа к Active Directory. Чтобы проверить это, на портале Azure в области **Azure Active Directory** выберите **Пользователи и группы** и **Все пользователи**. Выбрав нужного пользователя, щелкните **Профиль**. Значение атрибута **Тип пользователя** в профиле пользователя не должно соответствовать значению **Гость**.
+Если вы не является членом экземпляра Active Directory hello подписки до добавления toohello глобальный администратор или соадминистратор роли hello подписки, tooActive Directory добавляются как Гость. В этом случае вы получите «у вас разрешения toocreate...» Предупреждение, hello **Добавление учетной записи автоматизации** колонку. Пользователи, добавленные toohello глобальный администратор или соадминистратор роль сначала можно удалить из экземпляра Active Directory hello подписки и повторно добавлен toomake их полный пользователя в Active Directory. tooverify этой ситуации из hello **Azure Active Directory** панели hello Azure portal, **пользователей и групп**выберите **всех пользователей** и после выбора hello конкретного пользователя, **профиль**. Здравствуйте, значение hello **тип пользователя** атрибут профиля hello пользователи не должны быть равны **гостевой**.
 
-## <a name="create-run-as-account-from-the-portal"></a>Создание учетной записи запуска от имени на портале
-В этом разделе указаны действия, с помощью которых на портале Azure можно обновить учетную запись службы автоматизации Azure.  Учетная запись запуска от имени и классическая учетная запись запуска от имени создаются отдельно. Если управлять ресурсами на классическом портале Azure не требуется, можно просто создать учетную запись запуска от имени Azure.  
+## <a name="create-run-as-account-from-hello-portal"></a>Создание учетной записи запуска от имени с портала hello
+В этом разделе выполняйте следующие действия tooupdate hello учетной записи службы автоматизации Azure hello портал Azure.  Создается hello учетные записи запуска от имени и классический запуска от имени по отдельности, и toomanage ресурсы в классический портал Azure hello не нужны, можно просто создать hello Azure Запуск от имени учетной записи.  
 
-В результате этого процесса создаются следующие элементы учетной записи службы автоматизации.
+процесс Hello создает hello следующих элементов в учетной записи автоматизации.
 
 **Для учетной записи запуска от имени:**
 
-* Создается приложение Azure AD с самозаверяющим сертификатом, учетная запись субъекта-службы для этого приложения в Azure AD, а также назначается роль участника для учетной записи в текущей подписке. Вместо этой роли можно использовать роль владельца или любую другую роль. Дополнительные сведения см. в статье [Управление доступом на основе ролей в службе автоматизации Azure](automation-role-based-access-control.md).
-* Ресурс сертификатов службы автоматизации с именем *AzureRunAsCertificate* в указанной учетной записи службы автоматизации. Этот ресурс содержит закрытый ключ сертификата, используемый в приложении Azure AD.
-* Ресурс подключений службы автоматизации с именем *AzureRunAsConnection* в указанной учетной записи службы автоматизации. Этот ресурс содержит идентификаторы приложения, клиента и подписки, а также отпечаток сертификата.
+* Создание приложения Azure AD с помощью самозаверяющего сертификата, создает учетную запись участника службы для приложения hello в Azure AD и назначает hello роль участника для учетной записи hello в текущей подписке. Можно изменить этот параметр tooOwner или любая другая роль. Дополнительные сведения см. в статье [Управление доступом на основе ролей в службе автоматизации Azure](automation-role-based-access-control.md).
+* Создает ресурс-контейнер сертификата службы автоматизации с именем *AzureRunAsCertificate* в hello указана учетная запись автоматизации. Hello активов сертификат содержит закрытый ключ сертификата hello, используемого приложением hello Azure AD.
+* Создает ресурс подключения автоматизации с именем *AzureRunAsConnection* в hello указана учетная запись автоматизации. ресурс-контейнер подключений Hello содержит идентификатор приложения hello, идентификатора клиента, идентификатор подписки и отпечаток сертификата.
 
 **Для классической учетной записи запуска от имени Azure:**
 
-* Ресурс сертификатов службы автоматизации с именем *AzureClassicRunAsCertificate* в указанной учетной записи службы автоматизации. Этот ресурс содержит закрытый ключ сертификата, используемый в сертификате управления.
-* Ресурс подключений службы автоматизации с именем *AzureClassicRunAsConnection* в указанной учетной записи службы автоматизации. Этот ресурс содержит имя подписки, идентификатор подписки и имя ресурса сертификатов.
+* Создает ресурс-контейнер сертификата службы автоматизации с именем *AzureClassicRunAsCertificate* в hello указана учетная запись автоматизации. Hello активов сертификат содержит закрытый ключ сертификата hello используемый сертификат управления hello.
+* Создает ресурс подключения автоматизации с именем *AzureClassicRunAsConnection* в hello указана учетная запись автоматизации. ресурс-контейнер подключений Hello содержит имя подписки hello, идентификатор подписки и имя актива сертификатов.
 
-1. Войдите на портал Azure с помощью учетной записи, которая является участником роли "Администраторы подписки" и соадминистратором подписки.
-2. В разделе **Параметры учетной записи** колонки учетной записи службы автоматизации выберите **Учетные записи запуска от имени**.  
-3. В зависимости от того, какую учетную запись необходимо создать, выберите **Учетная запись запуска от имени Azure** или **Классическая учетная запись запуска от имени Azure**.  После выбора отобразится колонка **Добавить учетную запись запуска от имени Azure** или **Добавить классическую учетную запись запуска от имени Azure**. Просмотрев общие сведения, нажмите кнопку **Создать**, чтобы продолжить создание учетной записи запуска от имени.  
-4. Пока Azure создает учетную запись запуска от имени, можно отслеживать ход выполнения в меню раздела **Уведомления**, где на баннере отображается уведомление о создании учетной записи.  Процесс создания может занять несколько минут.  
+1. Войдите в систему toohello портал Azure с учетную запись, которая является членом роли администраторов подписки hello и соадминистратором подписки hello.
+2. В колонке учетной записи автоматизации hello, выберите **учетные записи запуска от** в разделе "hello" **параметры учетной записи**.  
+3. В зависимости от того, какую учетную запись необходимо создать, выберите **Учетная запись запуска от имени Azure** или **Классическая учетная запись запуска от имени Azure**.  После выбора либо hello **добавьте запуска от имени Azure** или **добавьте Azure классические учетная запись запуска от** колонке отображается и просмотрев hello Общие сведения, нажмите кнопку **создать** tooproceed с Создание учетной записи запуска от имени.  
+4. Пока Azure создает hello запуска от имени учетной записи, можно отслеживать ход выполнения hello в **уведомления** из hello меню и заголовок отобразится создается учетная запись hello.  Этот процесс может занять несколько минут toocomplete.  
 
 ## <a name="create-run-as-account-using-powershell-script"></a>Создание учетной записи запуска от имени с использованием скрипта PowerShell
-Этот сценарий PowerShell включает в себя поддержку следующих конфигураций:
+Этот сценарий PowerShell поддерживает hello конфигурации.
 
 * создание учетной записи запуска от имени с использованием самозаверяющего сертификата;
 * создание учетной записи запуска от имени и классической учетной записи запуска от имени с использованием самозаверяющего сертификата;
 * создание учетной записи запуска от имени и классической учетной записи запуска от имени Azure с использованием корпоративного сертификата;
-* создание учетной записи запуска от имени и классической учетной записи запуска от имени с использованием самозаверяющего сертификата в облаке Azure для государственных организаций.
+* Создайте учетную запись запуска от имени и классический учетной записи запуска с помощью самозаверяющего сертификата в облако Azure для государственных hello.
 
-В зависимости от выбранного варианта конфигурации сценарий создает приведенные ниже элементы.
+В зависимости от hello параметров настройки при выборе hello скрипт создает hello следующих элементов.
 
 **Для учетной записи запуска от имени:**
 
-* Приложение Azure AD, используемое для экспорта самозаверяющего сертификата или открытого ключа корпоративного сертификата, и учетную запись субъекта-службы для этого приложения в Azure AD, а также назначает роль участника в текущей подписке. Вместо этой роли можно использовать роль владельца или любую другую роль. Дополнительные сведения см. в статье [Управление доступом на основе ролей в службе автоматизации Azure](automation-role-based-access-control.md).
-* Ресурс сертификатов службы автоматизации с именем *AzureRunAsCertificate* в указанной учетной записи службы автоматизации. Этот ресурс содержит закрытый ключ сертификата, используемый в приложении Azure AD.
-* Ресурс подключений службы автоматизации с именем *AzureRunAsConnection* в указанной учетной записи службы автоматизации. Этот ресурс содержит идентификаторы приложения, клиента и подписки, а также отпечаток сертификата.
+* Создает Azure AD приложения toobe экспортируются вместе с любой hello самозаверяющий или enterprise открытый ключ сертификата, создает основной учетной записи службы для приложения hello в Azure AD и назначает hello роль участника для учетной записи hello в существующую подписка. Можно изменить этот параметр tooOwner или любая другая роль. Дополнительные сведения см. в статье [Управление доступом на основе ролей в службе автоматизации Azure](automation-role-based-access-control.md).
+* Создает ресурс-контейнер сертификата службы автоматизации с именем *AzureRunAsCertificate* в hello указана учетная запись автоматизации. Hello активов сертификат содержит закрытый ключ сертификата hello, используемого приложением hello Azure AD.
+* Создает ресурс подключения автоматизации с именем *AzureRunAsConnection* в hello указана учетная запись автоматизации. ресурс-контейнер подключений Hello содержит идентификатор приложения hello, идентификатора клиента, идентификатор подписки и отпечаток сертификата.
 
 **Для классической учетной записи запуска от имени Azure:**
 
-* Ресурс сертификатов службы автоматизации с именем *AzureClassicRunAsCertificate* в указанной учетной записи службы автоматизации. Этот ресурс содержит закрытый ключ сертификата, используемый в сертификате управления.
-* Ресурс подключений службы автоматизации с именем *AzureClassicRunAsConnection* в указанной учетной записи службы автоматизации. Этот ресурс содержит имя подписки, идентификатор подписки и имя ресурса сертификатов.
+* Создает ресурс-контейнер сертификата службы автоматизации с именем *AzureClassicRunAsCertificate* в hello указана учетная запись автоматизации. Hello активов сертификат содержит закрытый ключ сертификата hello используемый сертификат управления hello.
+* Создает ресурс подключения автоматизации с именем *AzureClassicRunAsConnection* в hello указана учетная запись автоматизации. ресурс-контейнер подключений Hello содержит имя подписки hello, идентификатор подписки и имя актива сертификатов.
 
 >[!NOTE]
-> Если вы выбрали создание классической учетной записи запуска от имени, после выполнения сценария отправьте открытый сертификат (файл в формате CER) в хранилище управления подписки, в которой создана учетная запись службы автоматизации.
+> При выборе любой из параметров для создания классических запуска от имени учетной записи, после выполнения сценария hello передачи hello открытый сертификат управления (CER-файл с расширением) toohello хранения для подписки hello этой учетной записи автоматизации hello был создан в.
 > 
 
-1. Сохраните приведенный ниже сценарий на компьютере. В этом примере используйте имя файла *New-RunAsAccount.ps1*.
+1. Сохраните следующий сценарий на компьютере hello. В этом примере, сохраните его с именем файла hello *New RunAsAccount.ps1*.
 
         #Requires -RunAsAdministrator
         Param (
@@ -164,7 +164,7 @@ ms.lasthandoff: 08/03/2017
         $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId
         $GetServicePrincipal = Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id
 
-        # Sleep here for a few seconds to allow the service principal application to become active (ordinarily takes a few seconds)
+        # Sleep here for a few seconds tooallow hello service principal application toobecome active (ordinarily takes a few seconds)
         Sleep -s 15
         $NewRole = New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
         $Retries = 0;
@@ -195,7 +195,7 @@ ms.lasthandoff: 08/03/2017
         $AzureRMProfileVersion= (Get-Module AzureRM.Profile).Version
         if (!(($AzureRMProfileVersion.Major -ge 3 -and $AzureRMProfileVersion.Minor -ge 0) -or ($AzureRMProfileVersion.Major -gt 3)))
         {
-            Write-Error -Message "Please install the latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
+            Write-Error -Message "Please install hello latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
             return
         }
 
@@ -222,16 +222,16 @@ ms.lasthandoff: 08/03/2017
         $PfxCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($PfxCertPathForRunAsAccount, $PfxCertPlainPasswordForRunAsAccount)
         $ApplicationId=CreateServicePrincipal $PfxCert $ApplicationDisplayName
 
-        # Create the Automation certificate asset
+        # Create hello Automation certificate asset
         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $CertifcateAssetName $PfxCertPathForRunAsAccount $PfxCertPlainPasswordForRunAsAccount $true
 
-        # Populate the ConnectionFieldValues
+        # Populate hello ConnectionFieldValues
         $SubscriptionInfo = Get-AzureRmSubscription -SubscriptionId $SubscriptionId
         $TenantID = $SubscriptionInfo | Select TenantId -First 1
         $Thumbprint = $PfxCert.Thumbprint
         $ConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId}
 
-        # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
+        # Create an Automation connection asset named AzureRunAsConnection in hello Automation account. This connection uses hello service principal.
         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ConnectionAssetName $ConnectionTypeName $ConnectionFieldValues
 
         if ($CreateClassicRunAsAccount) {
@@ -239,9 +239,9 @@ ms.lasthandoff: 08/03/2017
              $ClassicRunAsAccountCertifcateAssetName = "AzureClassicRunAsCertificate"
              $ClassicRunAsAccountConnectionAssetName = "AzureClassicRunAsConnection"
              $ClassicRunAsAccountConnectionTypeName = "AzureClassicCertificate "
-             $UploadMessage = "Please upload the .cer format of #CERT# to the Management store by following the steps below." + [Environment]::NewLine +
-                     "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
-                     "Then click Upload and upload the .cer format of #CERT#"
+             $UploadMessage = "Please upload hello .cer format of #CERT# toohello Management store by following hello steps below." + [Environment]::NewLine +
+                     "Log in toohello Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
+                     "Then click Upload and upload hello .cer format of #CERT#"
 
               if ($EnterpriseCertPathForClassicRunAsAccount -and $EnterpriseCertPlainPasswordForClassicRunAsAccount ) {
               $PfxCertPathForClassicRunAsAccount = $EnterpriseCertPathForClassicRunAsAccount
@@ -256,22 +256,22 @@ ms.lasthandoff: 08/03/2017
               CreateSelfSignedCertificate $KeyVaultName $ClassicRunAsAccountCertificateName $PfxCertPlainPasswordForClassicRunAsAccount $PfxCertPathForClassicRunAsAccount $CerCertPathForClassicRunAsAccount $SelfSignedCertNoOfMonthsUntilExpired
         }
 
-        # Create the Automation certificate asset
+        # Create hello Automation certificate asset
         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountCertifcateAssetName $PfxCertPathForClassicRunAsAccount $PfxCertPlainPasswordForClassicRunAsAccount $false
 
-        # Populate the ConnectionFieldValues
+        # Populate hello ConnectionFieldValues
         $SubscriptionName = $subscription.Subscription.Name
         $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
 
-        # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
+        # Create an Automation connection asset named AzureRunAsConnection in hello Automation account. This connection uses hello service principal.
         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountConnectionAssetName $ClassicRunAsAccountConnectionTypeName $ClassicRunAsAccountConnectionFieldValues
 
         Write-Host -ForegroundColor red $UploadMessage
         }
 
-2. На компьютере запустите с повышенными правами **Windows PowerShell** с **начального** экрана.
-3. Из оболочки командной строки с повышенными привилегиями перейдите в папку, которая содержит сценарий, созданный на этапе 1.  
-4. Выполните этот сценарий, установив значения параметров в зависимости от требуемой конфигурации.
+2. На компьютере, запустите **Windows PowerShell** из hello **запустить** экрана с повышенными правами пользователя.
+3. Из hello повышенными оболочка командной строки, toohello откройте папку, содержащую hello скрипт, созданный на шаге 1.  
+4. Выполните сценарий hello, используя значения параметров hello hello конфигурации, требуемую.
 
     **Создание учетной записи запуска от имени с использованием самозаверяющего сертификата**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false`
@@ -282,19 +282,19 @@ ms.lasthandoff: 08/03/2017
     **Создание учетной записи запуска от имени и классической учетной записи запуска от имени Azure с использованием корпоративного сертификата**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>`
 
-    **Создание учетной записи запуска от имени и классической учетной записи запуска от имени с использованием самозаверяющего сертификата в облаке Azure для государственных организаций**  
+    **Создание учетной записи запуска от имени и классический учетной записи запуска с помощью самозаверяющего сертификата в облако Azure для государственных hello**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment`
 
     > [!NOTE]
-    > После выполнения сценария появится запрос на проверку подлинности в Azure. Войдите в систему, используя учетную запись, которая является участником роли "Администраторы подписки" и соадминистратором подписки.
+    > После выполнения сценария hello, появится запрос tooauthenticate с Azure. Войдите с учетной записью, которая является членом роли администраторов подписки hello и соадминистратором подписки hello.
     >
     >
 
-После выполнения сценария обратите внимание на следующее.
-* Если вы создали классическую учетную запись запуска от имени с использованием самозаверяющего открытого сертификата (CER-файл), сценарий создает ее и сохраняет в папке временных файлов на компьютере в профиле пользователя, который выполнял сеанс PowerShell: *%Профиль_пользователя%\AppData\Local\Temp*.
-* Если вы создали классическую учетную запись запуска от имени с использованием открытого корпоративного сертификата (CER-файл), используйте этот сертификат. Следуя инструкциям, [отправьте сертификат управления API на классический портал Azure](../azure-api-management-certs.md), а затем используйте [пример кода для проверки подлинности](automation-verify-runas-authentication.md#classic-run-as-authentication), чтобы проверить конфигурацию учетных данных с помощью классических ресурсов развертывания Azure. 
-* Если вы *не* создали классическую учетную запись запуска от имени, выполните проверку подлинности с помощью ресурсов Resource Manager и проверьте конфигурацию учетных данных, используя [этот пример кода](automation-verify-runas-authentication.md#automation-run-as-authentication).
+После успешного выполнения сценария hello Обратите внимание hello следующее:
+* При создании классического учетной записи запуска с общей самозаверяющего сертификата (CER-файл), hello скрипт создает и сохраняет его toohello в папке временных файлов на компьютере в пользовательском профиле hello *%USERPROFILE%\AppData\Local\Temp*, мы использовали сеанс PowerShell tooexecute hello.
+* Если вы создали классическую учетную запись запуска от имени с использованием открытого корпоративного сертификата (CER-файл), используйте этот сертификат. Следуйте инструкциям hello [передачи toohello сертификата API управления классический портал Azure](../azure-api-management-certs.md)и последующей проверки hello конфигурации учетных данных с ресурсами классическое развертывание с помощью hello [пример кода tooauthenticate с Azure классические ресурсы развертывания](automation-verify-runas-authentication.md#classic-run-as-authentication). 
+* Если вы уже сделали *не* создания классических учетной записи запуска, проверки подлинности в ресурсах диспетчера ресурсов и проверка конфигурации hello учетных данных с помощью hello [пример кода для проверки подлинности с помощью службы управления ресурсы](automation-verify-runas-authentication.md#automation-run-as-authentication).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Дополнительные сведения о субъектах-службах см. в статье [Объекты приложения и субъекта-службы в Azure Active Directory](../active-directory/active-directory-application-objects.md).
-* Дополнительные сведения о сертификатах и службах Azure см. в статье [Общие сведения о сертификатах для облачных служб Azure](../cloud-services/cloud-services-certs-create.md).
+* Дополнительные сведения о субъектах ссылаться слишком[участника-службы и объекты приложений](../active-directory/active-directory-application-objects.md).
+* Дополнительные сведения о сертификатах и служб Azure см. в разделе слишком[Общие сведения о сертификатах для облачных служб Azure](../cloud-services/cloud-services-certs-create.md).

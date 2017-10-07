@@ -1,6 +1,6 @@
 ---
-title: "Использование Azure Data Lake Store с помощью интерфейса командной строки Azure CLI 2.0 | Документация Майкрософт"
-description: "Использование кроссплатформенного интерфейса командной строки Azure 2.0 для создания учетной записи Data Lake Store и выполнения базовых операций"
+title: "интерфейс tooget aaaUse Azure 2.0 командной строки к выполнению хранилища Озера данных Azure | Документы Microsoft"
+description: "Использование командной строки Azure кросс платформенных 2.0 toocreate учетной записи хранилища Озера данных и выполнения основных операций"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.openlocfilehash: ed78d25f2bac0a9996f1796ee503f31a36940977
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 374dcd6cdbc13ad19f6c65502329986ecae60ef2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Начало работы с Azure Data Lake Store с помощью Azure CLI 2.0
 > [!div class="op_single_selector"]
@@ -33,13 +33,13 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Узнайте, как с помощью Azure CLI 2.0 создать учетную запись Azure Data Lake Store и выполнять такие базовые операции, как создание папок, передача и загрузка файлов данных, удаление учетной записи и т. д. Дополнительные сведения о Data Lake Store см. в [обзоре Data Lake Store](data-lake-store-overview.md).
+Узнайте, как toocreate toouse Azure CLI 2.0 Azure Озера данных хранения учетной записи и выполнения основных операций, таких как создание папками, отправка и загрузка файлов данных, удалите учетную запись, и т. д. Дополнительные сведения о хранилище озера данных см. в [обзоре Data Lake Store](data-lake-store-overview.md).
 
-Azure CLI 2.0 — это новый интерфейс командной строки Azure для управления ресурсами Azure. Его можно использовать в Windows, Linux и macOS. Дополнительные сведения см. в [обзоре Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview). Полный список команд и синтаксис см. в [справочнике интерфейса командной строки 2.0 Azure Data Lake Store](https://docs.microsoft.com/cli/azure/dls).
+Hello Azure CLI 2.0 — это новый интерфейс командной строки Azure для управления ресурсами Azure. Его можно использовать в Windows, Linux и macOS. Дополнительные сведения см. в [обзоре Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview). Вы также можете изучить hello [хранилища Озера данных Azure, CLI 2.0 ссылка](https://docs.microsoft.com/cli/azure/dls) полный список команд и синтаксис.
 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Перед началом работы с этой статьей необходимо иметь следующее:
+Прежде чем приступать к этой статье, необходимо иметь следующие hello:
 
 * **Подписка Azure**. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -47,10 +47,10 @@ Azure CLI 2.0 — это новый интерфейс командной ст
 
 ## <a name="authentication"></a>Аутентификация
 
-В этой статье используется более простой подход к проверке подлинности в службе Data Lake Store, в которую выполняется вход от имени пользователя. Уровень доступа к учетной записи Data Lake Store и файловой системе зависит от уровня доступа пользователя, который вошел в систему. Существуют разные способы проверки подлинности в Data Lake Store, включая **проверку подлинности пользователя** и **проверку подлинности с взаимодействием между службами**. Инструкции и дополнительные сведения об аутентификации см. в разделах [Аутентификация пользователей](data-lake-store-end-user-authenticate-using-active-directory.md) и [Аутентификация между службами](data-lake-store-authenticate-using-active-directory.md).
+В этой статье используется более простой подход к проверке подлинности в службе Data Lake Store, в которую выполняется вход от имени пользователя. Hello доступ уровня хранилища Озера tooData учетной записи и файловая система распространяется уровень доступа hello приветствия вошедшего пользователя. Однако существуют другие методы как хорошо tooauthenticate с хранилища Озера данных, которые являются **проверки подлинности для конечных пользователей** или **проверки подлинности службы для службы**. Инструкции и Дополнительные сведения о том, как tooauthenticate, в разделе [проверки подлинности для конечных пользователей](data-lake-store-end-user-authenticate-using-active-directory.md) или [проверки подлинности службы для службы](data-lake-store-authenticate-using-active-directory.md).
 
 
-## <a name="log-in-to-your-azure-subscription"></a>Вход в подписку Azure
+## <a name="log-in-tooyour-azure-subscription"></a>Войдите в tooyour подписки Azure
 
 1. Войдите в подписку Azure.
 
@@ -58,9 +58,9 @@ Azure CLI 2.0 — это новый интерфейс командной ст
     az login
     ```
 
-    Получите код для использования на следующем шаге. Откройте в веб-браузере страницу https://aka.ms/devicelogin и введите код для аутентификации. Вам будет предложено выполнить вход с использованием учетных данных.
+    В следующем шаге hello получить toouse кода. Используйте страницу https://aka.ms/devicelogin hello tooopen веб браузера и введите tooauthenticate кода hello. Все запрашиваемые toolog, используя свои учетные данные.
 
-2. После входа вы увидите список всех подписок Azure, связанных с вашей учетной записи. Чтобы выбрать определенную подписку, выполните следующую команду.
+2. После входа список окна hello всех hello подписки Azure, которые связаны с вашей учетной записи. Используйте hello, следующая команда toouse конкретной подписки.
    
     ```azurecli
     az account set --subscription <subscription id> 
@@ -68,13 +68,13 @@ Azure CLI 2.0 — это новый интерфейс командной ст
 
 ## <a name="create-an-azure-data-lake-store-account"></a>Создание учетной записи хранения озера данных Azure
 
-1. Создайте новую группу ресурсов. В следующей команде укажите значения параметров, которые требуется использовать. Если имя расположения содержит пробелы, заключите его в кавычки. Например, "East US 2". 
+1. Создайте новую группу ресурсов. В hello следующую команду предоставляют значения параметров, которые вы хотите toouse hello. Если имя расположения hello содержит пробелы, необходимо поместите его в кавычки. Например, "East US 2". 
    
     ```azurecli
     az group create --location "East US 2" --name myresourcegroup
     ```
 
-2. Создайте учетную запись хранилища озера данных.
+2. Создайте учетную запись хранилища Озера данных hello.
    
     ```azurecli
     az dls account create --account mydatalakestore --resource-group myresourcegroup
@@ -82,42 +82,42 @@ Azure CLI 2.0 — это новый интерфейс командной ст
 
 ## <a name="create-folders-in-a-data-lake-store-account"></a>Создание папок в учетной записи хранения озера данных
 
-Чтобы хранить данные и управлять ими, вы можете создать папки в своей учетной записи хранилища озера данных Azure. Используйте следующую команду, чтобы создать папку с именем **mynewfolder** в корневом каталоге Data Lake Store.
+Можно создать папки под вашей toomanage учетной записи хранилища Озера данных Azure и хранения данных. Следующая команда toocreate папка hello используйте **mynewfolder** hello корню hello хранилища Озера данных.
 
 ```azurecli
 az dls fs create --account mydatalakestore --path /mynewfolder --folder
 ```
 
 > [!NOTE]
-> Команда создаст папку, используя параметр `--folder`. Если этот параметр отсутствует, команда создаст пустой файл с именем mynewfolder в корневом каталоге учетной записи Data Lake Store.
+> Hello `--folder` параметр гарантирует, что команда hello создает папку. Если этот параметр не указан, команда hello создает пустой файл с именем mynewfolder в корне hello hello хранилища Озера данных.
 > 
 >
 
-## <a name="upload-data-to-a-data-lake-store-account"></a>Отправка данных в учетную запись Data Lake Store
+## <a name="upload-data-tooa-data-lake-store-account"></a>Отправка учетной записи хранилища Озера данных tooa данных
 
-Данные можно передавать в Data Lake Store непосредственно на корневой уровень или в папку, созданную в учетной записи. Фрагменты кода ниже показывают, как передать некоторые примеры данных в папку (**mynewfolder**), которая была создана в предыдущем шаге.
+Можно передать хранилища Озера данных tooData непосредственно на hello корневого уровня или tooa папку, созданную в пределах учетной записи hello. фрагменты кода Hello ниже показано, как tooupload некоторые папку с образцами данных toohello (**mynewfolder**) был создан в предыдущем разделе hello.
 
-Если у вас нет под рукой подходящих для этих целей данных, передайте папку **Ambulance Data** из [репозитория Git для озера данных Azure](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData). Загрузите файл и сохраните его в локальном каталоге на компьютере, например в расположении C:\sampledata\.
+Если вы ищете некоторые tooupload образец данных, вы можете получить hello **скорая помощь данных** папку из hello [репозитории Озера данных Azure](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData). Загрузите файл hello и сохранить его в локальный каталог на компьютере, например C:\sampledata\.
 
 ```azurecli
 az dls fs upload --account mydatalakestore --source-path "C:\SampleData\AmbulanceData\vehicle1_09142014.csv" --destination-path "/mynewfolder/vehicle1_09142014.csv"
 ```
 
 > [!NOTE]
-> Укажите полный путь в качестве назначения, включая имя файла.
+> Для назначения hello необходимо указать hello полный путь, включая имя файла hello.
 > 
 >
 
 
 ## <a name="list-files-in-a-data-lake-store-account"></a>Вывод списка файлов в учетной записи Data Lake Store
 
-Чтобы вывести список файлов в учетной записи хранилища озера данных, используйте следующую команду.
+Используйте следующие команды toolist hello файлы в учетную запись хранилища Озера данных hello.
 
 ```azurecli
 az dls fs list --account mydatalakestore --path /mynewfolder
 ```
 
-Результат этой команды должен выглядеть примерно так:
+выходные данные Hello объекта должны быть примерно следующее toohello:
 
     [
         {
@@ -139,30 +139,30 @@ az dls fs list --account mydatalakestore --path /mynewfolder
 
 ## <a name="rename-download-and-delete-data-from-a-data-lake-store-account"></a>Переименование, скачивание и удаление данных из Data Lake Store 
 
-* **Чтобы переименовать файл**, используйте следующую команду:
+* **файл toorename**, использовать hello следующую команду:
   
     ```azurecli
     az dls fs move --account mydatalakestore --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
     ```
 
-* **Чтобы загрузить файл**, используйте следующую команду. Убедитесь, что указанный конечный путь уже существует.
+* **файл toodownload**, используйте следующую команду hello. Убедитесь, что путь hello назначения уже существует.
   
     ```azurecli     
     az dls fs download --account mydatalakestore --source-path /mynewfolder/vehicle1_09142014_copy.csv --destination-path "C:\mysampledata\vehicle1_09142014_copy.csv"
     ```
 
     > [!NOTE]
-    > Команда создаст целевую папку, если она не существует.
+    > Hello команда создает папку назначения hello, если он не существует.
     > 
     >
 
-* **Чтобы удалить файл**, используйте следующую команду:
+* **файл toodelete**, использовать hello следующую команду:
   
     ```azurecli
     az dls fs delete --account mydatalakestore --path /mynewfolder/vehicle1_09142014_copy.csv
     ```
 
-    Если вы хотите удалить папку **mynewfolder** и файл **vehicle1_09142014_copy.csv** с помощью одной команды, используйте параметр --recurse.
+    Папка hello toodelete **mynewfolder** и файл hello **vehicle1_09142014_copy.csv** вместе в одной команде, используйте hello--recurse параметра
 
     ```azurecli
     az dls fs delete --account mydatalakestore --path /mynewfolder --recurse
@@ -170,27 +170,27 @@ az dls fs list --account mydatalakestore --path /mynewfolder
 
 ## <a name="work-with-permissions-and-acls-for-a-data-lake-store-account"></a>Работа с разрешениями и списками управления доступом для учетной записи Data Lake Store
 
-Из этого раздела вы узнаете, как управлять списками управления доступом и разрешениями, с помощью Azure CLI 2.0. Подробные сведения о реализации списков ACL в Azure Data Lake Store см. в статье [Контроль доступа в Azure Data Lake Store](data-lake-store-access-control.md).
+В этом разделе вы узнаете о том, как toomanage списки управления доступом и разрешения с помощью Azure CLI 2.0. Подробные сведения о реализации списков ACL в Azure Data Lake Store см. в статье [Контроль доступа в Azure Data Lake Store](data-lake-store-access-control.md).
 
-* **Чтобы обновить владельца файла или папки**, используйте следующую команду:
+* **tooupdate hello владельца файла или папки**, использовать hello следующую команду:
 
     ```azurecli
     az dls fs access set-owner --account mydatalakestore --path /mynewfolder/vehicle1_09142014.csv --group 80a3ed5f-959e-4696-ba3c-d3c8b2db6766 --owner 6361e05d-c381-4275-a932-5535806bb323
     ```
 
-* **Чтобы обновить разрешения для файла или папки**, используйте следующую команду:
+* **tooupdate hello разрешения для файла или папки**, использовать hello следующую команду:
 
     ```azurecli
     az dls fs access set-permission --account mydatalakestore --path /mynewfolder/vehicle1_09142014.csv --permission 777
     ```
     
-* **Чтобы получить списки ACL для определенного пути**, используйте следующую команду:
+* **hello tooget ACL для определенного пути**, использовать hello следующую команду:
 
     ```azurecli
     az dls fs access show --account mydatalakestore --path /mynewfolder/vehicle1_09142014.csv
     ```
 
-    Должен быть получен результат, аналогичный приведенному ниже:
+    Hello выходные данные должны быть примерно toohello следующее:
 
         {
             "entries": [
@@ -204,38 +204,38 @@ az dls fs list --account mydatalakestore --path /mynewfolder
           "stickyBit": false
         }
 
-* **Чтобы создать запись для ACL**, используйте следующую команду:
+* **tooset запись ACL**, использовать hello следующую команду:
 
     ```azurecli
     az dls fs access set-entry --account mydatalakestore --path /mynewfolder --acl-spec user:6360e05d-c381-4275-a932-5535806bb323:-w-
     ```
 
-* **Чтобы удалить запись для ACL**, используйте следующую команду:
+* **tooremove запись ACL**, использовать hello следующую команду:
 
     ```azurecli
     az dls fs access remove-entry --account mydatalakestore --path /mynewfolder --acl-spec user:6360e05d-c381-4275-a932-5535806bb323
     ```
 
-* **Чтобы удалить весь стандартный список ACL**, используйте следующую команду:
+* **весь список управления Доступом по умолчанию tooremove**, использовать hello следующую команду:
 
     ```azurecli
     az dls fs access remove-all --account mydatalakestore --path /mynewfolder --default-acl
     ```
 
-* **Чтобы удалить весь настраиваемый список ACL**, используйте следующую команду:
+* **tooremove всей нестандартных ACL**, использовать hello следующую команду:
 
     ```azurecli
     az dls fs access remove-all --account mydatalakestore --path /mynewfolder
     ```
     
 ## <a name="delete-a-data-lake-store-account"></a>Удаление учетной записи хранения озера данных
-Чтобы удалить учетную запись хранилища озера данных, используйте следующую команду.
+Используйте следующие команды toodelete учетной записи хранилища Озера данных hello.
 
 ```azurecli
 az dls account delete --account mydatalakestore
 ```
 
-При появлении запроса введите **Y** , чтобы удалить учетную запись.
+При появлении запроса введите **Y** учетной записи toodelete hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

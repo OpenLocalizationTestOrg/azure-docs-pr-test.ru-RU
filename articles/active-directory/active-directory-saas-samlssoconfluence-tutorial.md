@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с SAML SSO for Confluence by resolution GmbH | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход для Azure Active Directory и SAML SSO for Confluence by resolution GmbH."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и единого входа SAML для является точка пересечения постановлением GmbH."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,68 +13,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 9a36d686ba39b5168860a20e8c4db357888df6a7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fe50636709857ec49023e24bdc8c6cd8c58e3c7a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Руководство по интеграции Azure Active Directory с SAML SSO for Confluence by resolution GmbH
 
-В этом руководстве описано, как интегрировать SAML SSO for Confluence by resolution GmbH с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate единого входа SAML для является точка пересечения постановлением GmbH с Azure Active Directory (Azure AD).
 
-Интеграция SAML SSO for Confluence by resolution GmbH с Azure AD предоставляет следующие преимущества.
+Интеграция единого входа SAML для является точка пересечения постановлением GmbH с Azure AD предоставляет hello следующие преимущества:
 
-- Можно управлять доступом пользователей Azure AD к SAML SSO for Confluence by resolution GmbH.
-- Можно включить автоматический вход пользователей в SAML SSO for Confluence by resolution GmbH (единый вход) с учетными записями Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooSAML единого входа для является точка пересечения постановлением GmbH
+- Можно включить на пользователей tooautomatically get вошедшего tooSAML единого входа для является точка пересечения, разрешение GmbH (Single Sign-On) с использованием их учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для настройки интеграции Azure AD с SAML SSO for Confluence by resolution GmbH требуется:
+tooconfigure интеграция Azure AD с помощью единого входа SAML для является точка пересечения постановлением GmbH требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка SAML SSO for Confluence by resolution GmbH с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление SAML SSO for Confluence by resolution GmbH из коллекции
+1. Добавление единого входа SAML для является точка пересечения с разрешением GmbH из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-saml-sso-for-confluence-by-resolution-gmbh-from-the-gallery"></a>Добавление SAML SSO for Confluence by resolution GmbH из коллекции
+## <a name="adding-saml-sso-for-confluence-by-resolution-gmbh-from-hello-gallery"></a>Добавление единого входа SAML для является точка пересечения с разрешением GmbH из галереи hello
 
-Чтобы настроить интеграцию SAML SSO for Confluence by resolution GmbH в Azure AD, необходимо добавить SAML SSO for Confluence by resolution GmbH из коллекции в список управляемых приложений SaaS.
+tooconfigure hello интеграции единого входа SAML для является точка пересечения постановлением GmbH в Azure AD, необходима tooadd единого входа SAML является точка пересечения постановлением GmbH из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить SAML SSO for Confluence by resolution GmbH из коллекции, выполните следующее.**
+**tooadd единого входа SAML для является точка пересечения постановлением GmbH из галереи hello выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **SAML SSO for Confluence by resolution GmbH**.
+4. Введите в поле поиска hello **единого входа SAML для является точка пересечения постановлением GmbH**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_search.png)
 
-5. На панели результатов выберите **SAML SSO for Confluence by resolution GmbH** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **единого входа SAML для является точка пересечения постановлением GmbH**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_addfromgallery.png)
 
@@ -82,50 +82,50 @@ ms.lasthandoff: 07/11/2017
 
 В этом разделе описана настройка и проверка единого входа Azure AD в SAML SSO for Confluence by resolution GmbH с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в SAML SSO for Confluence by resolution GmbH соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в SAML SSO for Confluence by resolution GmbH.
+Для единого входа toowork Azure AD необходима tooknow какой аналог hello пользователь в единый вход SAML для является точка пересечения постановлением GmbH является tooa пользователем в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в единый вход SAML для является точка пересечения для разрешения GmbH должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в SAML SSO for Confluence by resolution GmbH.
+В единый вход SAML для является точка пересечения постановлением GmbH, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в SAML SSO for Confluence by resolution GmbH, требуется выполнить действия в следующих стандартных блоках.
+tooconfigure и выполнить проверку Azure AD единого входа с помощью единого входа SAML является точка пересечения методом GmbH разрешения, необходимые hello toocomplete следующие стандартные блоки.
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя SAML SSO for Confluence by resolution GmbH](#creating-a-saml-sso-for-confluence-by-resolution-gmbh-test-user)** требуется, чтобы создать в SAML SSO for Confluence by resolution GmbH пользователя Britta Simon, связанного с соответствующим пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание единого входа SAML для является точка пересечения теста пользователем разрешение GmbH](#creating-a-saml-sso-for-confluence-by-resolution-gmbh-test-user)**  -toohave аналог Саймон Britta в единый вход SAML для является точка пересечения постановлением GmbH, представление связанных toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В данном разделе описано, как включить единый вход в Azure AD на портале Azure и настроить его в приложении SAML SSO for Confluence by resolution GmbH.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в вашей SAML SSO является точка пересечения постановлением GmbH приложения.
 
-**Чтобы настроить единый вход Azure AD в SAML SSO for Confluence by resolution GmbH, выполните следующее.**
+**tooconfigure Azure AD единого входа с помощью единого входа SAML для является точка пересечения постановлением GmbH, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **SAML SSO for Confluence by resolution GmbH** щелкните **Единый вход**.
+1. В hello в hello портала Azure **единого входа SAML для является точка пересечения постановлением GmbH** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_samlbase.png)
 
-3. Если вы хотите настроить приложение в режиме, инициированном **IdP**, то в разделе **Домены и URL-адреса приложения SAML SSO for Confluence by resolution GmbH** выполните следующие действия.
+3. На hello **единого входа SAML является точка пересечения постановлением GmbH доменов и URL-адреса** статьи, при желании tooconfigure приложения hello в **IDP** инициировал режим:
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_url_1.png)
 
-    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<server-base-url>/plugins/servlet/samlsso`
+    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<server-base-url>/plugins/servlet/samlsso`.
+    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<server-base-url>/plugins/servlet/samlsso`
 
-4. Установите флажок **Показать дополнительные параметры URL-адресов**, если хотите настроить приложение для работы в режиме, инициируемом **поставщиком услуг**.
+4. Установите флажок **Показать дополнительные параметры URL-адресов**, При необходимости приложение hello tooconfigure в **SP** инициировал режим:
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_url_2.png)
 
-    В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<server-base-url>/plugins/servlet/samlsso`
+    В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<server-base-url>/plugins/servlet/samlsso`
      
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените их фактическими значениями идентификатора, URL-адреса ответа и URL-адреса входа. Обратитесь к [группе поддержки SAML SSO for Confluence by resolution GmbH](https://www.resolution.de/go/support) для получения этих значений. 
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический идентификатор, URL-адрес ответа и URL-адрес входа. Обратитесь к [поддержки единого входа SAML для является точка пересечения постановлением GmbH клиента](https://www.resolution.de/go/support) tooget эти значения. 
 
-5. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+5. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_certificate.png) 
 
@@ -133,13 +133,13 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_general_400.png)  
     
-7. В другом окне браузера войдите на **портал администрирования SAML SSO for Confluence by resolution GmbH** с правами администратора.
+7. В другом окне браузера, войдите в tooyour **единого входа SAML для является точка пересечения с портала администрирования GmbH разрешение** с правами администратора.
 
-8. Наведите указатель мыши на шестеренку и щелкните **Add-ons** (Надстройки).
+8. Наведите указатель мыши на шестеренки и выберите hello **надстройки**.
     
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon1.png)
 
-9. Вы перейдете на страницу доступа с правами администратора. Введите пароль и нажмите кнопку **Confirm** (Подтвердить).
+9. Все страницы перенаправленный tooAdministrator доступа. Введите пароль hello и нажмите кнопку **Подтверждение** кнопки.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon2.png)
 
@@ -147,11 +147,11 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon.png)
 
-11. Найдите подключаемый модуль **SAML Single Sign On (SSO) for Confluence** и нажмите кнопку **Install** (Установить), чтобы установить новый подключаемый модуль SAML.
+11. Поиск **SAML единого входа (SSO) для является точка пересечения** и нажмите кнопку **установить** tooinstall кнопку hello нового подключаемого модуля SAML.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon7.png)
 
-12. Начнется установка подключаемого модуля. Нажмите кнопку **Закрыть**
+12. Установка подключаемого модуля Hello начнется. Нажмите кнопку **Закрыть**
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon8.png)
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon10.png)
     
-14. Щелкните **Configure** (Настройка), чтобы настроить новый подключаемый модуль.
+14. Нажмите кнопку **Настройка** tooconfigure hello нового подключаемого модуля.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon11.png)
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon3.png)
     
-16. На странице **SAML SingleSignOn Plugin Configuration** (Конфигурация подключаемого модуля единого входа SAML) нажмите кнопку **Add additional Identity Provider** (Добавить дополнительный поставщик удостоверений), чтобы настроить параметры поставщика удостоверений.
+16. На **конфигурации подключаемый модуль единого входа SAML** щелкните **Добавление дополнительного поставщика удостоверений** кнопку tooconfigure hello параметры поставщика удостоверений.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon4.png)
 
@@ -177,99 +177,99 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon5.png)
  
-    а. Добавьте **имя** поставщика удостоверений (например, Azure AD).
+    а. Добавить **имя** из hello поставщика удостоверений (например, Azure AD).
     
-    b. Добавьте **описание** поставщика удостоверений (например, Azure AD).
+    b. Добавить **описание** из hello поставщика удостоверений (например, Azure AD).
 
-    c. Щелкните **XML** и выберите файл **метаданных**, скачанный с портала Azure.
+    c. Нажмите кнопку **XML** и выберите hello **метаданные** файл, загруженный с портала Azure.
 
-    г) Нажмите кнопку **Load** (Загрузить).
+    d. Нажмите кнопку **Load** (Загрузить).
 
-    д. Будут считаны метаданные поставщика удостоверений и заполнены поля, как показано на снимке экрана. 
-18. Нажмите кнопку **Save settings** (Сохранить параметры), чтобы сохранить параметры.
+    д. Считывает метаданные поставщика удостоверений hello и заполняет поля hello, как показано на снимке экрана приветствия.   
+18. Нажмите кнопку **сохранить параметры** кнопку Параметры toosave hello.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/addon6.png)
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssoconfluence-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-saml-sso-for-confluence-by-resolution-gmbh-test-user"></a>Создание тестового пользователя SAML SSO for Confluence by resolution GmbH
 
-Чтобы пользователи Azure AD могли входить в SAML SSO for Confluence by resolution GmbH, их необходимо подготовить в SAML SSO for Confluence by resolution GmbH.  
+Пользователи toolog tooenable Azure AD в tooSAML единого входа для является точка пересечения постановлением GmbH, их необходимо подготовить в единый вход SAML для является точка пересечения постановлением GmbH.  
 Подготовка в SAML SSO for Confluence by resolution GmbH выполняется вручную.
 
-**Чтобы подготовить учетную запись пользователя, сделайте следующее:**
+**tooprovision учетной записи пользователя, выполните следующие шаги hello.**
 
-1. Войдите на свой корпоративный сайт SAML SSO for Confluence by resolution GmbH с правами администратора.
+1. Войдите в tooyour единого входа SAML для является точка пересечения с разрешением GmbH корпоративный сайт с правами администратора.
 
-2. Наведите указатель мыши на шестеренку и щелкните **User management** (Управление пользователями).
+2. Наведите указатель мыши на шестеренки и выберите hello **Управление пользователями**.
 
     ![Добавление сотрудника](./media/active-directory-saas-samlssoconfluence-tutorial/user1.png) 
 
-3. В разделе "Users" (Пользователи) выберите вкладку **Add users** (Добавление пользователей). На диалоговой странице **Add a User** (Добавление пользователя) выполните следующее.
+3. В разделе "Users" (Пользователи) выберите вкладку **Add users** (Добавление пользователей). На hello **«Добавить пользователя»** диалогового окна выполните следующие шаги hello:
 
     ![Добавление сотрудника](./media/active-directory-saas-samlssoconfluence-tutorial/user2.png) 
 
-    а. В текстовом поле **Username** (Имя пользователя) введите электронный адрес пользователя, например Britta Simon.
+    а. В hello **Username** текстовое поле, адреса электронной почты пользователя, например Саймон Britta для hello типа.
 
-    b. В текстовом поле **Full Name** (Полное имя) введите полное имя пользователя, например Britta Simon.
+    b. В hello **полное имя** текстового поля, типа hello полное имя пользователя как Саймон Britta.
 
-    c. В текстовом поле **Email** (Электронная почта) введите адрес электронной почты пользователя, например Brittasimon@contoso.com.
+    c. В hello **электронной почты** в текстовое поле типа hello адрес электронной почты пользователя, например Brittasimon@contoso.com.
 
-    г) В текстовом поле **Password** (Пароль) введите пароль пользователя Britta Simon.
+    d. В hello **пароль** текстового поля, типа hello пароль для Саймон Britta.
 
-    д. Щелкните **Confirm Password** (Подтвердить пароль) и повторно введите пароль.
+    д. Нажмите кнопку **подтверждение пароля** вводить пароль hello.
     
     f. Нажмите кнопку **Добавить**.    
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как позволить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к SAML SSO for Confluence by resolution GmbH.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooSAML единого входа для является точка пересечения постановлением GmbH.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в SAML SSO for Confluence by resolution GmbH, выполните следующее.**
+**tooassign tooSAML Britta Simon единого входа для является точка пересечения постановлением GmbH, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **SAML SSO for Confluence by resolution GmbH**.
+2. В списке приложений hello выберите **единого входа SAML для является точка пересечения постановлением GmbH**.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -277,7 +277,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -285,14 +285,14 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент SAML SSO for Confluence by resolution GmbH на панели доступа, вы должны автоматически войти в свое приложение SAML SSO for Confluence by resolution GmbH.
+При нажатии кнопки hello единого входа SAML для является точка пересечения, разрешение GmbH плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour единого входа SAML для является точка пересечения постановлением GmbH приложения.
 Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Создание приложения Ruby с помощью веб-приложений на платформе Linux | Документация Майкрософт"
-description: "Узнайте, как создать приложения Ruby с помощью веб-приложений на платформе Linux."
+title: "aaaCreate приложении Ruby, с помощью веб-приложений на платформе Linux | Документы Microsoft"
+description: "Дополнительные сведения toocreate Ruby приложений с Azure web wpp в Linux."
 keywords: "служба приложений azure, linux, oss, ruby"
 services: app-service
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: wesmc;rachelap
-ms.openlocfilehash: 17f3f1a2122c508501134a0c43ab6abce412fb44
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 99ce3b5ee16703a147787387bb02973defce8190
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-ruby-app-with-web-apps-on-linux"></a>Создание приложения Ruby с помощью веб-приложений на платформе Linux 
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
-[Веб-приложения Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) — это служба веб-размещения с самостоятельной установкой исправлений и высоким уровнем масштабируемости. В этом кратком руководстве показано, как создать базовое приложение Ruby on Rails и развернуть его в Azure в качестве веб-приложения на платформе Linux.
+[Веб-приложения Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) — это служба веб-размещения с самостоятельной установкой исправлений и высоким уровнем масштабируемости. Краткого руководства показывает, toocreate основные Ruby на направляющие приложение затем развертывания tooAzure как веб-приложения на платформе Linux.
 
 ![Приложение Hello World](./media/app-service-linux-ruby-get-started/hello-world-updated.png)
 
@@ -37,9 +37,9 @@ ms.lasthandoff: 08/29/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="download-the-sample"></a>Скачивание примера приложения
+## <a name="download-hello-sample"></a>Загрузить образец hello
 
-В окне терминала выполните следующую команду, чтобы клонировать репозиторий с примером приложения на локальный компьютер.
+В окне терминала выполните hello, следующая команда tooclone hello образец приложения репозитория tooyour локального компьютера.
 
 ```bash
 git clone https://github.com/Azure-Samples/ruby-docs-hello-world
@@ -47,24 +47,24 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
-## <a name="run-the-application-locally"></a>Локальный запуск приложения
+## <a name="run-hello-application-locally"></a>Запустите приложение hello локально
 
-Запустите сервер Rails для работы приложения. Перейдите в каталог *hello-world* и запустите сервер, выполнив команду `rails server`.
+Запустите сервер направляющие hello toowork приложения hello. Изменить toohello *hello world* каталога и hello `rails server` команда запускает hello server.
 
 ```bash
 cd hello-world\bin
 rails server
 ```
     
-С помощью веб-браузера перейдите к `http://localhost:3000`, чтобы протестировать приложение локально.    
+С помощью веб-браузере перейдите слишком`http://localhost:3000` tootest приложение hello локально.  
 
 ![Приложение Hello World](./media/app-service-linux-ruby-get-started/hello-world.png)
 
-## <a name="modify-app-to-display-welcome-message"></a>Изменение приложения для отображения приветственного сообщения
+## <a name="modify-app-toodisplay-welcome-message"></a>Измените приложение toodisplay приветственное сообщение
 
-Измените приложение, чтобы оно отображало приветственное сообщение. Затем измените контроллер приложения, чтобы он возвращал сообщение в формате HTML браузеру. 
+Изменения приложения hello, поэтому он отображает приветственное сообщение. Измените контроллера приложения hello, таким образом, чтобы он возвращает сообщение hello как toohello HTML-браузером. 
 
-Откройте файл *~/workspace/hello-world/app/controllers/application_controller.rb* для редактирования. Измените класс `ApplicationController`, как показано в следующем примере кода:
+Откройте файл *~/workspace/hello-world/app/controllers/application_controller.rb* для редактирования. Изменение hello `ApplicationController` toolook класс как hello следующий образец кода:
 
   ```ruby
   class ApplicationController > ActionController :: base
@@ -75,7 +75,7 @@ rails server
   end
   ```
 
-Теперь приложение настроено. С помощью веб-браузера перейдите к `http://localhost:3000`, чтобы проверить корневую целевую страницу.
+Теперь приложение настроено. С помощью веб-браузере перейдите слишком`http://localhost:3000` tooconfirm hello корневой целевая страница.
 
 ![Приложение Hello World настроено](./media/app-service-linux-ruby-get-started/hello-world-configured.png)
 
@@ -83,32 +83,32 @@ rails server
 
 ## <a name="create-a-ruby-web-app-on-azure"></a>Создание веб-приложения Ruby в Azure
 
-Выполните команду [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create), чтобы создать план службы приложений для веб-приложения. 
+Используйте hello [создать план служб приложений az](https://docs.microsoft.com/cli/azure/appservice/plan#create) toocreate команда план служб приложений для веб-приложения. 
  
 ```azurecli-interactive
   az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
 ```
 
-Далее выполните команду [az webapp create](https://docs.microsoft.com/cli/azure/webapp), чтобы создать веб-приложение, использующее созданный план службы. Обратите внимание, что для среды выполнения установлено значение `ruby|2.3`. Не забудьте указать уникальное имя приложения вместо `<app name>`.
+Затем аналогичный hello [создать веб-приложение az](https://docs.microsoft.com/cli/azure/webapp) команда hello toocreate веб-приложения, использующего hello только что созданный план обслуживания. Обратите внимание, среды выполнения hello установлен слишком`ruby|2.3`. Не забывайте tooreplace `<app name>` с именем уникальный приложения.
 
 ```azurecli-interactive
   az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --runtime "ruby|2.3" --deployment-local-git
 ```
 
-После создания веб-приложения страница **обзора** будет доступна для просмотра. Перейдите на эту страницу. Отобразится следующая страница заставки:
+После создания веб-приложения hello **Обзор** страница является доступной tooview. Перейдите tooit. отображается следующая всплывающая страница приветствия.
 
 ![Страница заставки](./media/app-service-linux-ruby-get-started/splash-page.png)
 
 
 ## <a name="deploy-your-application"></a>Развертывание приложения
 
-Используйте Git для развертывания приложения Ruby в Azure. Для веб-приложения уже настроено развертывание Git. Выполните команду [az webapp deployment](https://docs.microsoft.com/cli/azure/webapp/deployment), чтобы извлечь URL-адрес развертывания.  
+Используйте tooAzure Ruby приложения hello toodeploy Git. Hello веб-приложения уже настроен развертывания Git. URL-адрес развертывания hello можно получить путем выполнения [развертывания веб-приложения az](https://docs.microsoft.com/cli/azure/webapp/deployment) команды.  
 
 ```bash
 az webapp deployment source show --name <app name> --resource-group myResourceGroup
 ```
 
-Обратите внимание, что URL-адрес Git имеет следующий вид в соответствии с именем вашего веб-приложения:
+Обратите внимание, что URL-адрес Git hello имеет следующие формы, основанной на имя вашего веб-приложения hello.
 
 ```bash
 https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
@@ -116,7 +116,7 @@ https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
 
 [!INCLUDE [Clean-up section](../../includes/configure-deployment-user-no-h.md)]
 
-Выполните следующие команды, чтобы развернуть локальное приложение на веб-сайте Azure.
+Выполните следующие команды toodeploy hello локальное приложение tooyour веб-сайте Azure hello.
 
 ```bash
 git remote add azure <Git deployment URL from above>
@@ -125,7 +125,7 @@ git commit -m "Initial deployment commit"
 git push azure master
 ```
 
-Убедитесь, что операции удаленного развертывания успешно выполнены. Выходные данные команд будут выглядеть следующим образом:
+Убедитесь, что операции удаленного развертывания hello сообщать об успехе. Hello команды создают выходной аналогичные toohello следующий текст:
 
 ```bash
 remote: Using sass-rails 5.0.6
@@ -136,18 +136,18 @@ remote: ~site/repository
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
+toohttps://<your web app name>.scm.azurewebsites.net/<your web app name>.git
   579ccb....2ca5f31  master -> master
 myuser@ubuntu1234:~workspace/<app name>$
 ```
 
-После завершения развертывания перезапустите веб-приложение, чтобы изменения вступили в силу, выполнив команду [az webapp restart](https://docs.microsoft.com/cli/azure/webapp#restart), как показано ниже.
+После завершения развертывания hello, перезапустите веб-приложения для эффекта tootake hello развертывания с помощью hello [перезапуск веб-приложение az](https://docs.microsoft.com/cli/azure/webapp#restart) команды, как показано ниже:
 
 ```azurecli-interactive 
 az webapp restart --name <app name> --resource-group myResourceGroup
 ```
 
-Перейдите на свой сайт и проверьте результаты.
+Перейдите на сайт tooyour и проверки результатов hello.
 
 ```bash
 http://<your web app name>.azurewebsites.net
@@ -155,7 +155,7 @@ http://<your web app name>.azurewebsites.net
 ![Обновленное веб-приложение](./media/app-service-linux-ruby-get-started/hello-world-updated.png)
 
 > [!NOTE]
-> Во время перезапуска приложения попытка просмотреть сайт приведет к ошибке с кодом состояния HTTP `Error 503 Server unavailable`. На полный перезапуск может потребоваться несколько минут.
+> Во время перезапуска приложение hello попытка toobrowse hello сайта приводит код состояния HTTP `Error 503 Server unavailable`. Может потребоваться несколько минут toofully перезапуска.
 >
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]

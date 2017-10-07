@@ -1,6 +1,6 @@
 ---
 title: "Руководство. Интеграция Azure Active Directory с Citrix ShareFile | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и Citrix ShareFile."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Citrix ShareFile."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,229 +14,229 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
-ms.openlocfilehash: b85680104fe4f33638c559b2a12483a2312a4476
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d7eaf140e56c40f9f621062849dd8558588ffd1c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Руководство. Интеграция Azure Active Directory с Citrix ShareFile
 
-В этом руководстве описано, как интегрировать Citrix ShareFile с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Citrix ShareFile с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с Citrix ShareFile обеспечивает следующие преимущества.
+Интеграция Citrix ShareFile с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Citrix ShareFile.
-- Вы можете включить автоматический вход пользователей в Citrix ShareFile (единый вход) под учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — на портале Azure.
+- Можно управлять в Azure AD, имеющего доступ tooCitrix ShareFile.
+- Можно включить на пользователей tooautomatically get вошедшего tooCitrix ShareFile (Single Sign-On) с помощью своих учетных записей Azure AD.
+- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Citrix ShareFile, вам потребуется:
+tooconfigure интеграция Azure AD с Citrix ShareFile требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Citrix ShareFile с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Citrix ShareFile из коллекции
+1. Добавление Citrix ShareFile из коллекции hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="add-citrix-sharefile-from-the-gallery"></a>Добавление Citrix ShareFile из коллекции
-Чтобы настроить интеграцию Citrix ShareFile с Azure AD, вам нужно добавить Citrix ShareFile из коллекции в список управляемых приложений SaaS.
+## <a name="add-citrix-sharefile-from-hello-gallery"></a>Добавление Citrix ShareFile из коллекции hello
+tooconfigure hello интеграции Citrix ShareFile в Azure AD, вы должны tooadd Citrix ShareFile из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Citrix ShareFile из коллекции, выполните следующие действия.**
+**tooadd Citrix ShareFile из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
-    ![Колонка "Корпоративные приложения"][2]
+    ![Hello корпоративных приложений колонку][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Кнопка нового приложения Hello][3]
 
-4. В поле поиска введите **Citrix ShareFile**, выберите **Citrix ShareFile** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+4. Введите в поле поиска hello **Citrix ShareFile**выберите **Citrix ShareFile** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
 
-    ![Citrix ShareFile в списке результатов](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_addfromgallery.png)
+    ![Список результатов Citrix ShareFile в hello](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в Citrix ShareFile с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Citrix ShareFile соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем Citrix ShareFile.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Citrix ShareFile является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в Citrix ShareFile должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Citrix ShareFile.
+В Citrix ShareFile, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Citrix ShareFile, вам нужно выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с Citrix ShareFile, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Citrix ShareFile](#create-a-citrix-sharefile-test-user)** требуется для создания в Citrix ShareFile пользователя Britta Simon, связанного с соответствующим представлением в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя Citrix ShareFile](#create-a-citrix-sharefile-test-user)**  -toohave аналог Саймон Britta в Citrix ShareFile, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе описывается, как включить единый вход Azure AD на портале Azure и настроить его в приложении Citrix ShareFile.
+В этом разделе вы включите Azure AD единым входом в портал Azure hello и настроить единый вход в приложение Citrix ShareFile.
 
-**Чтобы настроить единый вход Azure AD в Citrix ShareFile, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с Citrix ShareFile, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Citrix ShareFile** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Citrix ShareFile** странице интеграции приложения щелкните **единого входа**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Citrix ShareFile** сделайте следующее.
+3. На hello **URL-адреса и домена Citrix ShareFile** выполните следующие шаги hello:
 
     ![Сведения о домене и URL-адресах единого входа приложения Citrix ShareFile](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_url.png)
     
-    В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<tenant-name>.sharefile.com/saml/login`
+    В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<tenant-name>.sharefile.com/saml/login`
 
     > [!NOTE] 
-    > Это значение приведено для справки. Вместо него необходимо указать фактический URL-адрес входа. Чтобы получить это значение, обратитесь в [службу поддержки клиентов Citrix ShareFile](https://www.citrix.co.in/products/sharefile/support.html). 
+    > Это значение приведено для справки. Измените значение этого параметра hello фактический URL-адрес входа. Обратитесь к [группа поддержки клиента Citrix ShareFile](https://www.citrix.co.in/products/sharefile/support.html) tooget это значение. 
 
-4. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
-    ![Ссылка для скачивания сертификата](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_certificate.png) 
+    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-sharefile-tutorial/tutorial_general_400.png)
 
-6. В разделе **конфигурации Citrix ShareFile** щелкните **Настройка Citrix ShareFile**, чтобы открыть окно **Настройка входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **конфигурации Citrix ShareFile** щелкните **Настройка Citrix ShareFile** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка Citrix ShareFile](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_configure.png) 
 
 7. В другом окне веб-браузера войдите на свой корпоративный веб-сайт **Citrix ShareFile** в качестве администратора.
 
-8. На панели инструментов в верхней части экрана нажмите **Администратор**.
+8. Щелкните hello панели инструментов в верхней части hello **администратора**.
 
-9. В левой области навигации нажмите **Настройка единого входа**.
+9. В области навигации слева hello выберите **настройки единого входа**.
    
     ![Администрирование учетной записи](./media/active-directory-saas-sharefile-tutorial/ic773627.png "Администрирование учетной записи")
 
-10. На странице диалогового окна **Single Sign-On/ SAML 2.0 Configuration** (Настройка единого входа или SAML 2.0) в разделе **Основные параметры** выполните следующие действия:
+10. На hello **единого входа и конфигурации SAML 2.0** в разделе **основные параметры**, выполните следующие шаги hello:
    
     ![Единый вход](./media/active-directory-saas-sharefile-tutorial/ic773628.png "Единый вход")
    
     а. Выберите команду **Enable SAML**(Включить SAML).
     
-    b. В текстовое поле **Your IDP Issuer/ Entity ID** (Поставщик удостоверений/идентификатор сущности) вставьте значение **SAML Entity ID** (Идентификатор сущности SAML), скопированное на портале Azure.
+    b. В **издатель IDP / идентификатор сущности** текстовое значение hello вставить **идентификатор сущности SAML** скопирован из портала Azure.
 
-    c. Нажмите **Изменить** рядом с полем **X.509 Certificate** (Сертификат X.509) и передайте сертификат, скачанный с портала Azure AD.
+    c. Нажмите кнопку **изменений** Далее toohello **сертификат X.509** поле, а затем отправить hello сертификат, загруженный из hello портал Azure.
     
-    d. В текстовое поле **URL-адрес входа** вставьте значение **URL-адреса службы единого входа SAML**, скопированное на портале Azure.
+    d. В **URL-адрес входа** текстовое значение hello вставить **SAML единого входа URL-адрес службы** скопирован из портала Azure.
     
-    д. В текстовое поле **Logout URL** (URL-адрес выхода) вставьте значение **URL-адрес выхода**, скопированное на портале Azure.
+    д. В **URL-адрес выхода** текстовое значение hello вставить **URL-адрес выхода** скопирован из портала Azure.
 
-11. Нажмите **Сохранить** на портале управления Citrix ShareFile.
+11. Нажмите кнопку **Сохранить** на портале управления Citrix ShareFile hello.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
 
-    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-sharefile-tutorial/create_aaduser_01.png)
+    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-sharefile-tutorial/create_aaduser_01.png)
 
-2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
 
-    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-sharefile-tutorial/create_aaduser_02.png)
+    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-sharefile-tutorial/create_aaduser_02.png)
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
 
-    ![Кнопка "Добавить"](./media/active-directory-saas-sharefile-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-sharefile-tutorial/create_aaduser_03.png)
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
 
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-sharefile-tutorial/create_aaduser_04.png)
+    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-sharefile-tutorial/create_aaduser_04.png)
 
-    а. В поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
 
-    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
 
-    г) Щелкните **Создать**.
+    d. Щелкните **Создать**.
  
 ### <a name="create-a-citrix-sharefile-test-user"></a>Создание тестового пользователя Citrix ShareFile
 
-Чтобы пользователи Azure AD могли выполнить вход в Citrix ShareFile, они должны быть подготовлены для Citrix ShareFile. В случае с Citrix ShareFile подготовка выполняется вручную.
+В порядке tooenable toolog пользователей Azure AD в Citrix ShareFile их необходимо подготовить в Citrix ShareFile. В случае hello объекта Citrix ShareFile Подготовка выполняется вручную.
 
-**Чтобы подготовить учетную запись пользователя, сделайте следующее:**
+**tooprovision учетной записи пользователя, выполните следующие шаги hello.**
 
-1. Войдите в клиент **Citrix ShareFile** .
+1. Войдите в tooyour **Citrix ShareFile** клиента.
 
 2. Последовательно выберите пункты **Manage Users \> Manage Users Home \> + Create Employee** (Управление пользователями > Управление домашним ресурсом пользователей > + Создать сотрудника).
    
    ![Создание сотрудника](./media/active-directory-saas-sharefile-tutorial/IC781050.png "Создание сотрудника")
 
-3. В разделе **Basic Information** (Базовые сведения) выполните следующие действия.
+3. На hello **основные сведения** выполните следующие действия:
    
    ![Основные сведения](./media/active-directory-saas-sharefile-tutorial/IC799951.png "Основные сведения")
    
-   а. В текстовое поле **Email Address** (Электронная почта) введите адрес электронной почты учетной записи Britta Simon**brittasimon@contoso.com**.
+   а. В hello **адрес электронной почты** в текстовое поле введите адрес электронной почты hello Саймон Britta как  **brittasimon@contoso.com** .
    
-   b. В текстовое поле **First Name** (Имя) введите **имя пользователя**, например **Britta**.
+   b. В hello **имя** введите **имя** пользователя как **Britta**.
    
-   c. В текстовое поле **Last Name** (Фамилия) введите **фамилию**, например **Simon**.
+   c. В hello **Фамилия** введите **Фамилия** пользователя как **Simon**.
 
 4. Нажмите кнопку **Add User**(Добавить пользователя).
   
    >[!NOTE]
-   >Владелец учетной записи Azure AD получит по электронной почте сообщение со ссылкой для активации учетной записи. Вы можете использовать любые другие инструменты создания учетной записи пользователя Citrix ShareFile или API, предоставляемые Citrix ShareFile для подготовки учетных записей пользователей AAD.
+   >Владелец учетной записи Azure AD Hello получит сообщение электронной почты и выполните их учетных записей tooconfirm ссылку, чтобы она стала активной. Можно использовать любые другие Citrix ShareFile пользователя средства создания учетных записей или интерфейсы API, предоставляемые Citrix ShareFile tooprovision учетных записей пользователей Azure AD.
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как настроить для пользователя Britta Simon единый вход Azure, предоставив этому пользователю доступ к Citrix ShareFile.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooCitrix ShareFile.
 
-![Назначение роли пользователя][200] 
+![Назначение пользователям ролей hello][200] 
 
-**Чтобы назначить пользователя Britta Simon в Citrix ShareFile, сделайте следующее:**
+**tooassign Britta Simon tooCitrix ShareFile, выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Citrix ShareFile**.
+2. В списке приложений hello выберите **Citrix ShareFile**.
 
-    ![Ссылка на ShareFile в списке "Приложения"](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_app.png)  
+    ![Hello Citrix ShareFile ссылку в списке приложений hello](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_app.png)  
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202]
+    ![Hello ссылку «Пользователи и группы»][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Область "Добавление назначения"][203]
+    ![область назначения, добавьте Hello][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -244,14 +244,14 @@ ms.lasthandoff: 08/18/2017
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув плитку Citrix ShareFile на панели доступа, вы автоматически войдете в приложение Citrix ShareFile.
-Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
+При нажатии кнопки hello Citrix ShareFile плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour приложение Citrix ShareFile.
+Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

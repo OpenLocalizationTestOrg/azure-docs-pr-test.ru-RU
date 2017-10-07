@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с LinkedInSalesNavigator | Документы Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в LinkedInSalesNavigator."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и LinkedInSalesNavigator."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,128 +13,128 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: ef26a16e79d9c9b0654634960b57dc59827b2c24
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 443d302d40d7af16aba5114e00963f23ea8d12d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Руководство по интеграции Azure Active Directory с LinkedIn Sales Navigator
 
-В этом руководстве описано, как интегрировать приложение LinkedIn Sales Navigator с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate навигатор продаж LinkedIn с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с LinkedIn Sales Navigator обеспечивает следующие преимущества:
+Интеграция навигатор продаж LinkedIn с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к LinLinkedIn Sales Navigator.
-- Вы можете включить автоматический вход пользователей в LinkedIn Sales Navigator (единый вход) с использованием учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooLinkedIn навигатор продаж
+- Ваш пользователей tooautomatically get вошедшего tooLinkedIn навигатор продаж (Single Sign-On) можно включить с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее об интеграции приложений SaaS с Azure AD можно узнать в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, воспользуйтесь следующей ссылкой [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с LinkedIn Sales Navigator, вам потребуется:
+tooconfigure интеграция Azure AD с навигатор продаж LinkedIn требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка LinkedIn Sales Navigator с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление LinkedIn Sales Navigator из коллекции
+1. Добавление навигатор LinkedIn продаж из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>Добавление LinkedIn Sales Navigator из коллекции
-Чтобы настроить интеграцию LinkedIn Sales Navigator с Azure AD, нужно добавить LinkedIn Sales Navigator из коллекции в список управляемых приложений SaaS.
+## <a name="adding-linkedin-sales-navigator-from-hello-gallery"></a>Добавление навигатор LinkedIn продаж из галереи hello
+tooconfigure hello интеграции навигатор LinkedIn продаж в Azure AD, вы должны tooadd навигатор LinkedIn продаж из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить LinkedIn Sales Navigator из коллекции, выполните следующие действия:**
+**tooadd LinkedIn навигатор продаж из галереи hello выполните hello следующие шаги.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. В верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. Нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна "hello".
 
     ![Приложения][3]
 
-4. В поле поиска введите **LinkedIn Sales Navigator**.
+4. Введите в поле поиска hello **навигатор продаж LinkedIn**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_search.png)
 
-5. На панели результатов выберите **LinkedIn Sales Navigator** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello, выберите **навигатор продаж LinkedIn**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение LinkedIn Sales Navigator с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD нужно знать, какой пользователь в LinkedIn Sales Navigator соответствует пользователю в Azure AD. Иными словами, нужно установить связь между пользователем Azure AD и соответствующим пользователем в LinkedIn Sales Navigator.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в навигаторе LinkedIn продажи является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в навигаторе продаж LinkedIn должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в LinkedIn Sales Navigator.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в навигаторе LinkedIn продаж.
 
-Чтобы настроить и проверить единый вход Azure AD в LinkedIn Sales Navigator, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с навигатор LinkedIn продаж, необходимые hello toocomplete следующие стандартные блоки.
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя LinkedIn Sales Navigator](#creating-a-linkedin-sales-navigator-test-user)** требуется для создания пользователя Britta Simon в LinkedIn Sales Navigator, связанного с соответствующим пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя навигатор продаж LinkedIn](#creating-a-linkedin-sales-navigator-test-user)**  -toohave аналог Саймон Britta в навигаторе LinkedIn продаж, являющийся представлением пользовательского hello связанного toohello Azure AD.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении LinkedIn Sales Navigator.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении навигатор LinkedIn продаж.
 
-**Чтобы настроить единый вход Azure AD в LinkedIn Sales Navigator, выполните следующие действия:**
+**tooconfigure Azure AD единого входа с навигатор LinkedIn продаж, выполните hello следующие шаги.**
 
-1. На портале Azure на странице интеграции с приложением **LinkedIn Sales Navigator** щелкните **Единый вход**.
+1. В hello в hello портала Azure **навигатор продаж LinkedIn** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалоговое окно, в **режим** выберите **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_samlbase.png)
 
-3. В другом окне веб-браузера войдите на свой веб-сайт **LinkedIn Sales Navigator** в качестве администратора.
+3. В другом окне браузера, tooyour входа **навигатор продаж LinkedIn** веб-сайта от имени администратора.
 
-4. В разделе **Параметры** **Центра управления учетной записью** щелкните **Глобальные параметры**. Также выберите **Sales Navigator** в раскрывающемся списке.
+4. В **Account Center** (Центр учетных записей) в разделе **Settings** (Параметры) щелкните **Global Settings** (Глобальные параметры). Кроме того, установите **навигатор Sales** hello в раскрывающемся списке.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
-5. Щелкните **OR Click Here to load and copy individual fields from the form** (Или щелкните здесь, чтобы загрузить и скопировать отдельные поля из формы) и скопируйте значения **Entity Id** (Идентификатор сущности) и **Assertion Consumer Service (ACS) Url** (URL-адрес службы обработчика утверждений (ACS)).
+5. Нажмите кнопку **или щелкните здесь tooload и скопируйте отдельные поля из формы hello** и скопируйте **идентификатор сущности** и **утверждение потребителя доступа (ACS) URL-адрес**.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
-6. Если вы хотите настроить приложение в режиме, инициированном **поставщиком удостоверений**, то в разделе **Домены и URL-адреса приложения LinkedIn Sales Navigator** портала Azure выполните следующие действия:
+6. На портале Azure в разделе **URL-адреса и домена навигатор LinkedIn Sales** выполните hello, выполните действия, при желании tooconfigure приложения hello в **поставщика Удостоверений** инициировал режим.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
 
-    а. В текстовом поле **Идентификатор** введите **идентификатор сущности**, скопированный с портала LinkedIn. 
+    а. В hello **идентификатор** текстовом поле введите hello **идентификатор сущности** копируются LinkedIn портала 
 
-    b. В текстовом поле **URL-адрес ответа** введите **URL-адрес службы обработчика утверждений (ACS)**, скопированный с портала LinkedIn.
+    b. В hello **URL-адрес ответа** текстовом поле введите hello **утверждение потребителя доступа (ACS) URL-адрес** копируются LinkedIn портала
 
-7. Установите флажок **Показать дополнительные параметры URL-адресов**, если хотите настроить приложение для работы в режиме, инициируемом **поставщиком услуг**.
+7. Проверьте **Показывать дополнительные параметры URL-адреса**, если нужно, чтобы приложение hello tooconfigure в **SP** инициировал режим.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
 
-    В текстовом поле **URL-адрес для входа** введите значение в следующем формате: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`.
+    В hello **URL-адрес входа** текстовое значение hello типа, используя следующий шаблон hello:`https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
 
-8. Приложение **LinkedIn Sales Navigator** ожидает утверждения SAML в определенном формате, а для этого вам нужно добавить настраиваемые сопоставления атрибутов в конфигурацию атрибутов токена SAML. На следующем снимке экрана показан пример. По умолчанию **идентификатор пользователя** имеет значение **user.userprincipalname**, но для LinkedIn Sales Navigator требуется сопоставить это значение с адресом электронной почты пользователя. Можно использовать атрибут **user.mail** из списка или соответствующее значение атрибута, основанное на конфигурации организации. 
+8. Ваш **навигатор продаж LinkedIn** приложение ожидает утверждения SAML hello в определенном формате, требующий конфигурация атрибутов токена SAML tooyour сопоставления tooadd настраиваемого атрибута. Следующий снимок экрана приветствия показан пример. значение по умолчанию Hello **идентификатор пользователя** — **user.userprincipalname** , но навигатор продаж LinkedIn ожидает toobe, сопоставленный с адресом электронной почты пользователя hello. Можно использовать **user.mail** атрибут из списка hello, или используйте hello соответствующее значение атрибута на основе конфигурации в организации. 
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/updateusermail.png)
     
-9. В разделе **Атрибуты пользователя** установите флажок **Просмотреть и изменить все другие атрибуты пользователей** и задайте эти атрибуты. Пользователь должен добавить четыре утверждения — **email**, **department**, **firstname** и **lastname**, а их значения должны быть сопоставлены с **user.mail**, **user.department**, **user.givenname** и **user.surname**, соответственно
+9. В **атрибуты пользователя** щелкните **представление и редактировать все остальные атрибуты пользователя** и задавать атрибуты hello. Hello пользователь должен tooadd четыре утверждения с именем **электронной почты**, **отдел**, **firstname**, и **lastname** и hello значение — toobe сопоставлено с **user.mail**, **user.department**, **user.givenname**, и **user.surname** соответственно
 
     | Имя атрибута | Значение атрибута |
     | --- | --- |    
@@ -145,29 +145,29 @@ ms.lasthandoff: 07/11/2017
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/userattribute.png)
     
-    а. Щелкните **Добавить атрибут**, чтобы открыть диалоговое окно атрибута.
+    а. Щелкните **Добавление атрибута** tooopen hello атрибута, диалоговое окно.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_attribute_04.png)
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_attribute_05.png)
    
-    b. В текстовом поле **Имя** введите имя атрибута, отображаемое для этой строки.
+    b. В hello **имя** в текстовое поле имя атрибута типа hello, показанный для этой строки.
     
-    c. В списке **Значение** выберите значение атрибута, отображаемое для этой строки.
+    c. Из hello **значение** списка значение атрибута типа hello, показанный для этой строки.
     
     d. Нажмите кнопку **ОК**.
 
-10. Выполните следующие действия с атрибутом **name**.
+10. Выполните следующие действия на hello hello **имя** атрибута -
 
-    а. Щелкните атрибут, чтобы открыть окно **Изменить атрибут**.
+    а. Щелкните hello атрибут tooopen hello **изменение атрибута** окна.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/url_update.png)
 
-    b. Удалите значение URL-адреса из **пространства имен**.
+    b. Удалить значение URL-адрес hello из hello **пространства имен**.
     
-    c. Нажмите кнопку **ОК**, чтобы сохранить настройки.
+    c. Нажмите кнопку **ОК** toosave приветствия.
 
-11. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните XML-файл на компьютере.
+11. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и сохраните hello XML-файл на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
 
@@ -175,73 +175,73 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_general_400.png)
 
-13. Перейдите в раздел **LinkedIn Admin Settings** (Параметры администратора LinkedIn). Щелкните **Upload XML file** (Отправить XML-файл), чтобы отправить XML-файл метаданных, скачанный с портала Azure.
+13. Go слишком**параметры администрирования LinkedIn** раздела. Нажмите кнопку **отправить XML-файл** tooupload hello метаданных XML-файл, загруженный с портала Azure hello.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
-14. Нажмите кнопку **On** (Включить), чтобы включить единый вход. Состояние единого входа изменяется с **Not Connected** (Не подключено) на **Connected** (Подключено.)
+14. Нажмите кнопку **на** tooenable единого входа. Изменение состояния единого входа с **не подключены** слишком**подключено**
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/create_aaduser_01.png) 
 
-2. Перейдите в раздел **Пользователи и группы** и выберите **Все пользователи**.
+2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/create_aaduser_02.png) 
 
-3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
+3. Вверху hello диалоговое окно приветствия щелкните **добавить** tooopen hello **пользователя** диалогового окна.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-linkedin-sales-navigator-test-user"></a>Создание тестового пользователя LinkedIn Sales Navigator
 
-Приложение LinkedIn Sales Navigator поддерживает JIT-подготовку пользователей, поэтому после проверки подлинности пользователи создаются в приложении автоматически. Включите параметр **Automatically assign licenses** (Автоматически назначать лицензии), чтобы назначить лицензию пользователю.
+Связанное приложение навигатор продаж поддерживает только в подготовки пользователей Time (JIT) и после проверки подлинности пользователей автоматически создаются в приложении hello. Активировать **автоматически назначать лицензии** tooassign toohello лицензии пользователя.
    
    ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/LinkedinUserprovswitch.png)
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к LinkedIn Sales Navigator.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooLinkedIn навигатор продаж.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в LinkedIn Sales Navigator, выполните следующие действия:**
+**tooassign tooLinkedIn Britta Simon навигатор продаж выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **LinkedIn Sales Navigator**.
+2. В списке приложений hello выберите **навигатор продаж LinkedIn**.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -249,7 +249,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -257,13 +257,13 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-При щелчке элемента LinkedIn Sales Navigator на панели доступа должна открыться страница организации, где нужно указать сведения о личной учетной записи LinkedIn. В результате ваша личная учетная запись связывается с вашей рабочей учетной записью LinkedIn. Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586). 
+Если щелкнуть плитку навигатор продаж LinkedIn hello в hello панели доступа, должно быть перенаправленный tooOrganizational страницы, при наличии tooprovide личные сведения учетной записи LinkedIn. В результате ваша личная учетная запись связывается с вашей рабочей учетной записью LinkedIn. Дополнительные сведения о панели доступа hello см. в разделе [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

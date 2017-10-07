@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе со службой DNS Azure с помощью PowerShell | Документация Майкрософт"
-description: "Узнайте, как создать зону и запись DNS в службе DNS Azure. Это пошаговое руководство описывает создание первых зоны и записи DNS, а также управление ими с помощью PowerShell."
+title: "aaaGet работы с DNS Azure с помощью PowerShell | Документы Microsoft"
+description: "Узнайте, как toocreate DNS зоны и записи в Azure DNS. Это toocreate Пошаговое руководство и управлять вашей первой зоны DNS и записи с помощью PowerShell."
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-ms.openlocfilehash: 48f7ba325f61b4a91c0208b4c99058da801bee19
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0f9dead1e4b44fcc74c84a024c41cdfaeb02b5d3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-dns-using-powershell"></a>Приступая к работе со службой DNS Azure с помощью PowerShell
 
@@ -29,15 +29,15 @@ ms.lasthandoff: 07/11/2017
 > * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
 
-Эта статья поможет вам создать свою первую зону и первую запись DNS с помощью Azure PowerShell. Эти действия также можно выполнить с помощью портала Azure или кроссплатформенного интерфейса командной строки Azure (Azure CLI).
+В этой статье описывается toocreate действия hello вашей первой зоны DNS и запись с помощью Azure PowerShell. Также можно выполнить следующие действия с помощью портала Azure hello или hello кросс платформенных Azure CLI.
 
-Зона DNS используется для размещения DNS-записей определенного домена. Чтобы разместить свой домен в Azure DNS, необходимо создать зону DNS для этого доменного имени. Каждая запись DNS для вашего домена создается внутри этой зоны DNS. Наконец, чтобы опубликовать зону DNS в Интернете, необходимо настроить серверы доменных имен для домена. Каждый из этих шагов описан ниже.
+Зоны DNS-записей DNS используется toohost hello для определенного домена. toostart размещение домена в Azure DNS необходимо toocreate зону DNS для этого имени домена. Каждая запись DNS для вашего домена создается внутри этой зоны DNS. Наконец, toopublish toohello Интернета, зоны DNS-сервера требуется tooconfigure hello имя серверов для домена hello. Каждый из этих шагов описан ниже.
 
-При выполнении этих инструкций предполагается, что вы уже установили Azure PowerShell и выполнили вход. Чтобы получить справку, см. статью [Как управлять зонами DNS с помощью PowerShell](dns-operations-dnszones.md).
+Эти инструкции предполагают, вы уже установили и вход выполнен tooAzure PowerShell. Справочные сведения см. в разделе [как toomanage DNS-зоны с помощью PowerShell](dns-operations-dnszones.md).
 
-## <a name="create-the-resource-group"></a>Создание группы ресурсов
+## <a name="create-hello-resource-group"></a>Создать группу ресурсов hello
 
-Перед созданием зоны DNS создается группа ресурсов, которая будет включать эту зону DNS. Ниже показана команда для создания группы ресурсов.
+Перед созданием hello зоны DNS, зоны DNS hello toocontain создания группы ресурсов. Hello ниже показана команда hello.
 
 ```powershell
 New-AzureRMResourceGroup -name MyResourceGroup -location "westus"
@@ -45,7 +45,7 @@ New-AzureRMResourceGroup -name MyResourceGroup -location "westus"
 
 ## <a name="create-a-dns-zone"></a>Создание зоны DNS
 
-Зона DNS создается с помощью командлета `New-AzureRmDnsZone`. В следующем примере будет создана зона DNS *contoso.com* в группе ресурсов *MyResourceGroup*. Пример можно использовать для создания зоны DNS, заменив соответствующие значения собственными.
+Зоны DNS создается с помощью hello `New-AzureRmDnsZone` командлета. Hello следующий пример создает зоны DNS, которая называется *contoso.com* в группе ресурсов hello вызывается *MyResourceGroup*. Используйте toocreate пример hello зону DNS, подставив собственные значения hello.
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
@@ -53,18 +53,18 @@ New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
 
 ## <a name="create-a-dns-record"></a>Создание записи DNS
 
-Для создания наборов записей используется командлет `New-AzureRmDnsRecordSet`. В следующем примере создается запись с относительным именем www в зоне DNS contoso.com, в группе ресурсов MyResourceGroup. Полное доменное имя набора записей — www.contoso.com. Тип записи — A, IP-адрес — 1.2.3.4, а срок жизни составляет 3600 секунд.
+Создание наборов записей с помощью hello `New-AzureRmDnsRecordSet` командлета. Hello в примере создается запись с hello относительное имя «www» в зону DNS «contoso.com» в группе ресурсов «MyResourceGroup» hello. Hello полное имя набора записей hello — «www.contoso.com». Тип записи Hello «A» с IP-адресом «1.2.3.4», который hello TTL 3600 секунд.
 
 ```powershell
 New-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4")
 ```
 
-Сведения о других типах записей, наборах записей с несколькими записями, а также об изменении существующих записей см. в статье [Управление записями DNS в службе DNS Azure с помощью Azure PowerShell](dns-operations-recordsets.md). 
+Для других типов записей для наборов записей с более чем одной записи и toomodify существующие записи, в разделе [Управление DNS-записи и наборы записей с помощью Azure PowerShell](dns-operations-recordsets.md). 
 
 
 ## <a name="view-records"></a>Просмотр записей
 
-Чтобы просмотреть список записей DNS в зоне, используйте следующую команду:
+toolist hello DNS-записи в зоне, используйте:
 
 ```powershell
 Get-AzureRmDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyResourceGroup
@@ -73,9 +73,9 @@ Get-AzureRmDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyResourceGroup
 
 ## <a name="update-name-servers"></a>Обновление серверов доменных имен
 
-Когда вы убедитесь, что зона и записи DNS настроены правильно, необходимо настроить доменное имя для использования серверов доменных имен службы DNS Azure. Это позволит другим пользователям в Интернете находить ваши записи DNS.
+Как только будут выполнены, что DNS-зоны и записи были настроены правильно, необходимо tooconfigure домена имя toouse hello Azure DNS-серверами. Это позволяет другим пользователям на hello Internet toofind DNS-записей.
 
-Для получения списка серверов доменных имен для определенной зоны используется командлет `Get-AzureRmDnsZone`:
+Hello серверы имен для зоны определяются hello `Get-AzureRmDnsZone` командлета:
 
 ```powershell
 Get-AzureRmDnsZone -ZoneName contoso.com -ResourceGroupName MyResourceGroup
@@ -89,11 +89,11 @@ NumberOfRecordSets    : 3
 MaxNumberOfRecordSets : 5000
 ```
 
-Эти серверы доменных имен необходимо настроить с помощью регистратора доменных имен (у которого было приобретено доменное имя). Регистратор предложит вам вариант настройки серверов доменных имен для домена. Дополнительные сведения см. в статье [Делегирование домена в Azure DNS](dns-domain-delegation.md).
+Эти серверы имен должны быть настроены с помощью регистратора доменных имен hello (которого вы приобрели hello доменное имя). Регистратор предлагают tooset параметр hello hello серверов имя домена hello. Дополнительные сведения см. в разделе [делегировать tooAzure вашего домена DNS](dns-domain-delegation.md).
 
 ## <a name="delete-all-resources"></a>Удаление всех ресурсов
 
-Чтобы удалить все ресурсы, созданные при работе с этой статьей, сделайте следующее:
+toodelete все ресурсы созданы в этой статье hello выполните следующий шаг:
 
 ```powershell
 Remove-AzureRMResourceGroup -Name MyResourceGroup
@@ -101,9 +101,9 @@ Remove-AzureRMResourceGroup -Name MyResourceGroup
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о службе DNS Azure см. в статье [Обзор Azure DNS](dns-overview.md).
+toolearn Дополнительные сведения о Azure DNS в разделе [Обзор Azure DNS](dns-overview.md).
 
-Дополнительные сведения об управлении зонами DNS в службе DNS Azure см. в статье [Как управлять зонами DNS с помощью PowerShell](dns-operations-dnszones.md).
+toolearn Дополнительные сведения об управлении зонами DNS в Azure DNS, в разделе [Управление DNS зоны в DNS Azure с помощью PowerShell](dns-operations-dnszones.md).
 
-Дополнительные сведения об управлении записями DNS в службе DNS Azure см. в статье [Управление записями DNS в службе DNS Azure с помощью Azure PowerShell](dns-operations-recordsets.md).
+toolearn Дополнительные сведения об управлении DNS-записи в Azure DNS, в разделе [Управление DNS-записи и записи задает в Azure DNS с помощью PowerShell](dns-operations-recordsets.md).
 

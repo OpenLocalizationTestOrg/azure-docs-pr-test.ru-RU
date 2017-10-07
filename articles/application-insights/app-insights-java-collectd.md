@@ -1,6 +1,6 @@
 ---
-title: "Мониторинг производительности веб-приложения Java в Linux в среде Azure | Документация Майкрософт"
-description: "Расширенный мониторинг производительности приложений на веб-сайте Java с подключаемым модулем CollectD для Application Insights."
+title: "aaaMonitor производительности веб-приложения Java в Linux - Azure | Документы Microsoft"
+description: "Расширенные наблюдение за производительностью приложений Java веб-сайта с hello CollectD подключаемый модуль Application Insights."
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -13,39 +13,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: bwren
-ms.openlocfilehash: 4ea917b068e0242bfb88d7357eca032607a43a3f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f783e8607a83b2b43f67d3a2fc20f100aa2f75ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: метрики производительности Linux в Application Insights
 
 
-Для работы с метриками производительности Linux в [Application Insights](app-insights-overview.md) установите инструмент [collectd](http://collectd.org/) вместе с его подключаемым модулем Application Insights. Это решение с открытым исходным кодом собирает разнообразные данные системной и сетевой статистики.
+метрики производительности системы Linux tooexplore в [Application Insights](app-insights-overview.md), установите [collectd](http://collectd.org/)вместе с его подключаемый модуль Application Insights. Это решение с открытым исходным кодом собирает разнообразные данные системной и сетевой статистики.
 
-Обычно collectd используется, если вы уже [инструментировали веб-службу Java с помощью Application Insights][java]. Это средство предоставляет больше данных, помогая вам повысить производительность приложения или диагностировать неполадки. 
+Обычно collectd используется, если вы уже [инструментировали веб-службу Java с помощью Application Insights][java]. Предоставляет дополнительные данные toohelp вы tooenhance производительность приложения или диагностировать проблемы. 
 
 ![Примеры диаграмм](./media/app-insights-java-collectd/sample.png)
 
 ## <a name="get-your-instrumentation-key"></a>Получение ключа инструментирования
-На [портале Microsoft Azure](https://portal.azure.com) откройте ресурс [Application Insights](app-insights-overview.md), в котором требуется отобразить данные. (Либо [создайте новый ресурс](app-insights-create-new-resource.md).)
+В hello [портал Microsoft Azure](https://portal.azure.com)откройте hello [Application Insights](app-insights-overview.md) место tooappear hello данных ресурсов. (Либо [создайте новый ресурс](app-insights-create-new-resource.md).)
 
-Скопируйте ключ инструментирования, идентифицирующий этот ресурс.
+Использование копии ключа инструментирования hello, который определяет ресурс hello.
 
-![Просмотрите все, откройте свой ресурс и затем в раскрывающемся списке основных компонентов выберите и скопируйте ключ инструментирования](./media/app-insights-java-collectd/02-props.png)
+![Просмотреть все, открыть ресурс и затем в hello Essentials раскрывающегося списка, выберите и скопируйте hello ключ инструментирования](./media/app-insights-java-collectd/02-props.png)
 
-## <a name="install-collectd-and-the-plug-in"></a>Установка collectd и подключаемого модуля
+## <a name="install-collectd-and-hello-plug-in"></a>Установка collectd и hello подключаемого модуля
 На компьютерах с сервером Unix выполните следующие действия.
 
 1. Установите [collectd](http://collectd.org/) 5.4.0 или более поздней версии.
-2. Загрузите [подключаемый модуль записи Application Insights collectd](https://aka.ms/aijavasdk). Запишите номер версии.
-3. Скопируйте подключаемый модуль JAR в `/usr/share/collectd/java`.
+2. Загрузите hello [подключаемый модуль Application Insights collectd записи](https://aka.ms/aijavasdk). Запишите номер версии hello.
+3. Скопируйте подключаемого модуля hello JAR в `/usr/share/collectd/java`.
 4. Отредактируйте файл `/etc/collectd/collectd.conf`:
-   * Убедитесь, что [подключаемый модуль Java](https://collectd.org/wiki/index.php/Plugin:Java) включен.
-   * Обновите JVMArg для java.class.path, включив в него указанный ниже файл JAR. Номер версии должен совпадать с номером версии, которую вы загрузили:
+   * Убедитесь, что [hello подключаемый модуль Java](https://collectd.org/wiki/index.php/Plugin:Java) включен.
+   * Обновите hello JVMArg для hello java.class.path tooinclude hello следующие JAR-ФАЙЛ. Обновление hello версии номеров toomatch hello загруженный один:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
-   * Добавьте следующий фрагмент кода, используя ключ инструментирования из ресурса:
+   * Добавьте этот фрагмент, с помощью hello ключ инструментирования из ресурса:
 
 ```XML
 
@@ -90,47 +90,47 @@ ms.lasthandoff: 08/18/2017
 
 Настройте другие [подключаемые модули collectd](https://collectd.org/wiki/index.php/Table_of_Plugins), которые могут собирать разные данные из разных источников.
 
-Перезапустите collectd в соответствии с его [документацией](https://collectd.org/wiki/index.php/First_steps).
+Перезапустите tooits в соответствии с collectd [вручную](https://collectd.org/wiki/index.php/First_steps).
 
-## <a name="view-the-data-in-application-insights"></a>Просмотр данных в Application Insights
-В ресурсе Application Insights откройте [обозреватель метрик и добавьте диаграммы][metrics], выбрав нужные метрики в пользовательской категории.
+## <a name="view-hello-data-in-application-insights"></a>Просмотр данных hello в Application Insights
+В ресурс Application Insights, откройте [обозревателя метрик и добавьте диаграммы][metrics], выбрав hello метрик требуется toosee из hello пользовательскую категорию.
 
 ![](./media/app-insights-java-collectd/result.png)
 
-По умолчанию метрики со всех хост-компьютеров, которые их поставляют, объединяются. Чтобы просмотреть метрики по хостам, в колонке сведений о диаграмме включите группировку и выберите группировку по параметру CollectD-Host.
+По умолчанию на всех компьютерах узлов, с которых были собраны показатели hello объединяются метрики hello. tooview hello показатели для каждого узла в колонке сведения о диаграмме hello, включите группирования, а затем выберите toogroup CollectD узлом.
 
-## <a name="to-exclude-upload-of-specific-statistics"></a>Исключение загрузки определенных статистических данных
-По умолчанию подключаемый модуль Application Insights отправляет все данные, собранные всеми подключаемыми модулями read collectd. 
+## <a name="tooexclude-upload-of-specific-statistics"></a>Отправка tooexclude заданной статистики
+По умолчанию подключаемый модуль Application Insights hello отправляет все hello данными, собранными все collectd hello включена «read» подключаемые модули. 
 
-Чтобы исключить данные из определенных подключаемых модулей или источников данных, выполните указанные ниже действия.
+tooexclude данные из определенных источников данных или подключаемые модули:
 
-* Измените файл конфигурации. 
+* Измените файл конфигурации hello. 
 * В `<Plugin ApplicationInsightsWriter>`добавьте строки директив следующего вида:
 
 | Директива | Результат |
 | --- | --- |
-| `Exclude disk` |Исключаются все данные, собранные подключаемым модулем `disk` |
-| `Exclude disk:read,write` |Исключаются источники `read` и `write` из подключаемого модуля `disk` |
+| `Exclude disk` |Исключить все данные, собранные hello `disk` подключаемого модуля |
+| `Exclude disk:read,write` |Исключить источники hello с именем `read` и `write` из hello `disk` подключаемого модуля. |
 
 Каждая директива должна начинаться с новой строки.
 
 ## <a name="problems"></a>Проблемы?
-*Данные не отображаются в портале*
+*Я не вижу данных в портале hello*
 
-* Откройте [Поиск][diagnostic] и проверьте поступление необработанных событий. Иногда они появляются в обозревателе метрик не сразу.
-* Вам может понадобиться [указать исключения брандмауэра для исходящих данных](app-insights-ip-addresses.md)
-* Включите трассировку в подключаемом модуле Application Insights. Добавьте в `<Plugin ApplicationInsightsWriter>`следующую строку:
+* Откройте [поиска] [ diagnostic] toosee при доставке hello необработанных событий. Иногда они принимают tooappear больше времени, в обозревателе метрик.
+* Может потребоваться слишком[задать исключения брандмауэра для выходных данных](app-insights-ip-addresses.md)
+* Включите трассировку в подключаемый модуль Application Insights hello. Добавьте в `<Plugin ApplicationInsightsWriter>`следующую строку:
   * `SDKLogger true`
-* Откройте терминал и запустите collectd в режиме подробного протоколирования, чтобы проверить, не сообщает ли он о каких-либо неполадках:
+* Откройте терминал и запустите collectd в подробном режиме toosee отчеты отправляются проблем.
   * `sudo collectd -f`
 
 ## <a name="known-issue"></a>Известная проблема
 
-Подключаемый модуль записи для Application Insights несовместим с некоторыми подключаемыми модулями чтения. Некоторые подключаемые модули иногда отправляют сообщение "не число", когда подключаемый модуль Application Insights ожидает число с плавающей запятой.
+Подключаемый модуль записи аналитики приложения Hello несовместим с определенным подключаемых модулей чтения. Некоторые подключаемые модули иногда отправить «NaN», где подключаемый модуль Application Insights hello ожидает число с плавающей запятой.
 
-Симптом. В журнале collectd содержатся ошибки, в которых есть текст "AI: ... SyntaxError: непредвиденный токен N".
+Симптом: hello collectd журнала видно, что ошибки, включающие «AI:... SyntaxError: непредвиденный токен N".
 
-Обходное решение. Исключите данные, собранные подключаемым модулем записи, с которым связана проблема. 
+Обходной путь: Исключить данные, собираемые подключаемые модули записи проблемы hello. 
 
 <!--Link references-->
 

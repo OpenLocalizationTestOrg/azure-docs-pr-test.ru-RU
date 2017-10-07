@@ -1,13 +1,13 @@
 ---
-title: "Устранение распространенных ошибок развертывания в Azure | Документация Майкрософт"
-description: "Описывается устранение распространенных ошибок при развертывании ресурсов в Azure с помощью Azure Resource Manager."
+title: "распространенные ошибки развертывания Azure aaaTroubleshoot | Документы Microsoft"
+description: "Описывает способ tooresolve распространенных ошибок при развертывании tooAzure ресурсы с помощью диспетчера ресурсов Azure."
 services: azure-resource-manager
 documentationcenter: 
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-keywords: "ошибка развертывания, развертывание Azure, развернуть в Azure"
+keywords: "Ошибка развертывания, развертывания azure, развертывание tooazure"
 ms.assetid: c002a9be-4de5-4963-bd14-b54aa3d8fa59
 ms.service: azure-resource-manager
 ms.devlang: na
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2017
 ms.author: tomfitz
-ms.openlocfilehash: 30adc10d01290f14a3e116813b19916fa36ab0bc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8571e9941879eb5586e4258a785b6a09247da771
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Устранение распространенных ошибок развертывания в Azure с помощью Azure Resource Manager | Microsoft Azure
 В этой статье объясняется, как устранить некоторые распространенные ошибки при развертывании в Azure.
 
-В этом разделе описаны следующие коды ошибок:
+в этом разделе описываются следующие коды ошибок Hello:
 
 * [AccountNameInvalid](#accountnameinvalid);
 * [ошибка авторизации](#authorization-failed).
@@ -48,29 +48,29 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="deploymentfailed"></a>DeploymentFailed
 
-Этот код ошибки указывает на общую ошибку развертывания, но не следует сразу же использовать его для устранения неполадок. Код ошибки, который действительно поможет устранить возникшую проблему, обычно находится на один уровень ниже этой ошибки. Например, на следующем рисунке показан код ошибки **RequestDisallowedByPolicy**, который находится под кодом ошибки развертывания.
+Этот код ошибки указывает ошибку общие развертывания, но это не требуется разрешение toostart код ошибки hello. код ошибки Hello, фактически помогает устранить проблему hello обычно является на один уровень ниже ошибки. Hello следующем рисунке показано, hello **RequestDisallowedByPolicy** код ошибки, который находится под ошибкой развертывания hello.
 
 ![Отображение кода ошибки](./media/resource-manager-common-deployment-errors/error-code.png)
 
 ## <a name="skunotavailable"></a>SkuNotAvailable
 
-При развертывании ресурса (как правило, виртуальной машины) могут появиться код ошибки и сообщение об ошибке:
+При развертывании ресурсов (обычно это виртуальная машина), может появиться следующая ошибка код и сообщение об ошибке hello:
 
 ```
 Code: SkuNotAvailable
-Message: The requested tier for resource '<resource>' is currently not available in location '<location>' 
-for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
+Message: hello requested tier for resource '<resource>' is currently not available in location '<location>' 
+for subscription '<subscriptionID>'. Please try another tier or deploy tooa different location.
 ```
 
-Эта ошибка возникает, когда выбранный номер SKU ресурса (например, размер виртуальной машины) недоступен для указанного расположения. Чтобы устранить эту проблему, необходимо определить номера SKU, доступные в регионе. Для поиска доступных номеров SKU можно использовать PowerShell, портал или операцию REST.
+Эта ошибка возникает, когда ресурс hello SKU выбора (например, размер виртуальной Машины) недоступен для hello расположения, которые вы выбрали. tooresolve эту проблему, необходимо toodetermine которого SKU доступны в области. Можно использовать PowerShell, портал hello или toofind операции REST доступные номера SKU.
 
-- Для PowerShell используйте [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) и фильтрацию по расположению. Эта команда поддерживается только в Azure PowerShell последней версии.
+- Для PowerShell используйте [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) и фильтрацию по расположению. Необходимо иметь hello последней версии PowerShell для этой команды.
 
   ```powershell
   Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("southcentralus")}
   ```
 
-  Результаты включают список номеров SKU для расположения и имеющиеся ограничения для этого номера SKU.
+  Hello результатов включать список номеров SKU для расположения hello и каких-либо ограничений для этого SKU.
 
   ```powershell
   ResourceType                Name      Locations Restriction                      Capability Value
@@ -82,18 +82,18 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
   virtualMachines      Standard_A2 southcentralus
   ```
 
-- Чтобы сделать это с помощью [портала](https://portal.azure.com), войдите на него и добавьте ресурс с помощью пользовательского интерфейса. При настройке значений вы увидите доступные SKU для этого ресурса. Не нужно завершать развертывание.
+- toouse hello [портала](https://portal.azure.com), войдите в портал toohello и добавить ресурс через интерфейс hello. При установке значения hello, отображаются hello доступные номера SKU для этого ресурса. Toocomplete hello развертывания не обязательно.
 
     ![Доступные номера SKU](./media/resource-manager-common-deployment-errors/view-sku.png)
 
-- Чтобы использовать REST API для виртуальных машин, отправьте следующий запрос.
+- hello toouse API-интерфейса REST для виртуальных машин, отправить hello, следующий запрос:
 
   ```HTTP 
   GET
   https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/skus?api-version=2016-03-30
   ```
 
-  Он возвращает доступные номера SKU и регионы в приведенном ниже формате.
+  Возвращает доступные номера SKU и областей в hello следующий формат:
 
   ```json
   {
@@ -123,37 +123,37 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
   }    
   ```
 
-Если вам не удалось найти подходящий номер SKU в этом или любом другом регионе, который соответствует потребностям вашей компании, обратитесь в [службу поддержки Azure](https://aka.ms/skurestriction).
+Если не удается toofind подходящий SKU в этой области или альтернативный область, соответствующий конкретным потребностям, отправить [запрос SKU](https://aka.ms/skurestriction) tooAzure поддержки.
 
 ## <a name="disallowedoperation"></a>DisallowedOperation
 
 ```
 Code: DisallowedOperation
-Message: The current subscription type is not permitted to perform operations on any provider 
+Message: hello current subscription type is not permitted tooperform operations on any provider 
 namespace. Please use a different subscription.
 ```
 
-Если возникла эта ошибка, значит, вы используете подписку, которой запрещен доступ к любым службам Azure, кроме Azure Active Directory. Подписка такого типа может использоваться, когда требуется доступ к классическому порталу, но запрещено развертывание ресурсов. Чтобы устранить эту проблему, необходимо использовать подписку, которая имеет разрешение на развертывание ресурсов.  
+Если эта ошибка возникает, вы используете подписки, не допускается tooaccess любой служб Azure, отличного от Azure Active Directory. Может потребоваться этого типа подписки при необходимости tooaccess hello классического портала, но не допускаются toodeploy ресурсов. tooresolve эту проблему, необходимо использовать подписку, имеющую разрешение toodeploy ресурсов.  
 
-Чтобы просмотреть доступные подписки с помощью PowerShell, используйте следующую команду.
+tooview доступные подписки с помощью PowerShell, используйте:
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Чтобы выбрать текущую подписку, введите приведенную ниже команду.
+Кроме того, tooset hello текущую подписку, используйте:
 
 ```powershell
 Set-AzureRmContext -SubscriptionName {subscription-name}
 ```
 
-Чтобы просмотреть доступные подписки с помощью Azure CLI 2.0, используйте следующую команду.
+tooview доступные подписки с Azure CLI 2.0, используйте:
 
 ```azurecli
 az account list
 ```
 
-Чтобы выбрать текущую подписку, введите приведенную ниже команду.
+Кроме того, tooset hello текущую подписку, используйте:
 
 ```azurecli
 az account set --subscription {subscription-name}
@@ -164,34 +164,34 @@ az account set --subscription {subscription-name}
 
 - Синтаксическая ошибка
 
-   Если появляется сообщение об ошибке, указывающее, что шаблону не удалось пройти аутентификацию, возможно, в нем есть синтаксическая ошибка.
+   Если появится сообщение об ошибке, указывающее hello шаблона не выполнена проверка имеется синтаксическая ошибка в шаблоне.
 
   ```
   Code=InvalidTemplate
   Message=Deployment template validation failed
   ```
 
-   Такую ошибку легко допустить, так как выражения шаблонов могут быть сложными. Например, представленное ниже присвоение имени для учетной записи хранения содержит один набор квадратных скобок, три функции, три набора круглых скобок, один набор одинарных кавычек и одно свойство:
+   Эта ошибка является просто toomake, так как шаблон выражения могут быть сложными. Например hello следующие назначение имени для учетной записи хранения содержит один набор квадратных скобок, три функции, три пары скобок, один набор одинарные кавычки и одно свойство:
 
   ```json
   "name": "[concat('storage', uniqueString(resourceGroup().id))]",
   ```
 
-   Если вы не укажете соответствующий синтаксис, шаблон создаст значение, которое не будет соответствовать ожидаемому значению.
+   Если синтаксис сопоставления hello не указано, hello шаблон создает значение, которое отличается от ваше намерение.
 
-   При получении сообщения об ошибке такого типа тщательно проверьте синтаксис выражения. Рекомендуется использовать редактор JSON, например [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) или [Visual Studio Code](resource-manager-vs-code.md), в котором отображаются предупреждения о синтаксических ошибках.
+   При получении ошибки такого типа, внимательно просмотрите синтаксис выражений hello. Рекомендуется использовать редактор JSON, например [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) или [Visual Studio Code](resource-manager-vs-code.md), в котором отображаются предупреждения о синтаксических ошибках.
 
 - Неправильная длина сегментов
 
-   Шаблон также считается недопустимым, если имя ресурса указано в неправильном формате.
+   Другой недопустимый шаблон ошибка возникает, когда имя ресурса hello не в правильном формате hello.
 
   ```
   Code=InvalidTemplate
-  Message=Deployment template validation failed: 'The template resource {resource-name}'
+  Message=Deployment template validation failed: 'hello template resource {resource-name}'
   for type {resource-type} has incorrect segment lengths.
   ```
 
-   Имя ресурса на корневом уровне должно содержать на один сегмент меньше, чем тип ресурса. Каждый сегмент разделяется косой чертой. В следующем примере тип содержит два сегмента, а имя — один. Так что это **допустимое имя**.
+   Ресурс корневого уровня должны иметь меньше сегмента в hello от имени в типе ресурса hello. Каждый сегмент разделяется косой чертой. В следующем примере hello, hello тип имеет два сегмента и hello имя содержит один сегмент, так что это **допустимое имя**.
 
   ```json
   {
@@ -201,7 +201,7 @@ az account set --subscription {subscription-name}
   }
   ```
 
-   В приведенном ниже примере указано **недопустимое имя** , так как оно содержит такое же количество сегментов, что и тип.
+   Однако следующий пример hello **не является допустимым именем** за hello одинаковое количество сегментов как тип hello.
 
   ```json
   {
@@ -211,7 +211,7 @@ az account set --subscription {subscription-name}
   }
   ```
 
-   В случае дочерних ресурсов тип и имя должны содержать одинаковое количество сегментов. Это целесообразно, так как полное имя и тип дочернего элемента включает имя родительского элемента и его тип. Таким образом в полном имени на один сегмент меньше, чем в полном типе.
+   Дочерние ресурсы hello тип и имя hello иметь одинаковое число сегментов. Это число сегментов смысл, так как hello полное имя и тип для дочерних hello: hello родительское имя и тип. Таким образом полное имя hello по-прежнему содержит один сегмент, меньше, чем полный тип hello.
 
   ```json
   "resources": [
@@ -230,7 +230,7 @@ az account set --subscription {subscription-name}
   ]
   ```
 
-   Разобраться с правильной длиной сегментов сложно при использовании типов Resource Manager, которые применяются для поставщиков ресурсов. Например, для применения блокировки ресурсов на веб-сайте требуется тип с четырьмя сегментами. Поэтому имя содержит три сегмента:
+   Получение hello сегменты справа может быть непростой задачей с типами диспетчера ресурсов, которые применяются для поставщиков ресурсов. Например применение ресурса блокировки tooa веб-сайта требуется тип с помощью четырех сегментов. Таким образом имя hello имеет три сегмента:
 
   ```json
   {
@@ -242,35 +242,35 @@ az account set --subscription {subscription-name}
 
 - Копирование индекса не ожидается
 
-   Ошибка **InvalidTemplate** возникает при применении элемента **copy** к части шаблона, которая не поддерживает этот элемент. Элемент copy можно применять только к типу ресурса. Нельзя применять элемент copy к свойству в типе ресурса. Например, его можно применить к виртуальной машине, но не к дискам операционной системы виртуальной машины. В некоторых случаях можно преобразовывать дочерние ресурсы в родительские для создания цикла копирования. Дополнительные сведения об использовании элемента copy см. в статье [Создание нескольких экземпляров ресурсов в Azure Resource Manager](resource-group-create-multiple.md).
+   Вы столкнулись с этим **InvalidTemplate** ошибка примененный hello **копирования** части элемента tooa hello шаблон, который не поддерживает этот элемент. Можно применять только тип hello копирование элемента tooa ресурсов. Не удается применить свойство tooa копии в пределах типа ресурса. Например применить копирования tooa виртуальной машины, но его невозможно применить toohello ОС диски для виртуальной машины. В некоторых случаях можно преобразовать toocreate ресурсов родительского tooa ресурсов дочерний цикл копирования. Дополнительные сведения об использовании элемента copy см. в статье [Создание нескольких экземпляров ресурсов в Azure Resource Manager](resource-group-create-multiple.md).
 
 - Недопустимый параметр
 
-   Если шаблон указывает допустимые значения для параметра, а вы укажете значение, отличное от одного из указанных, появится сообщение об ошибке, аналогичное следующему:
+   Если шаблон hello указывает допустимые значения для параметра и укажите значение, которое не является одним из этих значений, появится примерно toohello сообщение, следующая ошибка:
 
   ```
   Code=InvalidTemplate;
-  Message=Deployment template validation failed: 'The provided value {parameter value}
-  for the template parameter {parameter name} is not valid. The parameter value is not
-  part of the allowed values
+  Message=Deployment template validation failed: 'hello provided value {parameter value}
+  for hello template parameter {parameter name} is not valid. hello parameter value is not
+  part of hello allowed values
   ``` 
 
-   Внимательно проверьте допустимые значения в шаблоне и укажите одно из них во время развертывания.
+   Проверьте hello допустимые значения в шаблоне hello и предоставляет его во время развертывания.
 
 - Обнаружена циклическая зависимость
 
-   Эта ошибка возникает, когда ресурсы зависят друг от друга таким образом, что это не позволяет начать развертывание. Сочетание взаимозависимостей вынуждает два или более ресурсов ожидать другие ресурсы, которые также находятся в ожидании. Например, resource1 зависит от resource3, resource2 зависит от resource1, а resource3 зависит от resource2. Как правило, эту проблему можно устранить, удалив ненужные зависимости. 
+   Эта ошибка возникает, когда ресурсы зависят друг с другом в виде, не позволяющая развертывать hello запуститься. Сочетание взаимозависимостей вынуждает два или более ресурсов ожидать другие ресурсы, которые также находятся в ожидании. Например, resource1 зависит от resource3, resource2 зависит от resource1, а resource3 зависит от resource2. Как правило, эту проблему можно устранить, удалив ненужные зависимости. 
 
 <a id="notfound" />
 ### <a name="notfound-and-resourcenotfound"></a>NotFound и ResourceNotFound
-Если шаблон содержит имя ресурса, которое не удается разрешить, появится сообщение об ошибке, аналогичное следующему:
+Если шаблон включает hello имя ресурса, которое невозможно устранить, появляется сообщение об ошибке:
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-При попытке развернуть отсутствующий ресурс в шаблоне проверьте, нужно ли добавить зависимость. Resource Manager оптимизирует развертывание, создавая ресурсы параллельно, когда это возможно. Если один ресурс необходимо развернуть после другого, создайте зависимость от другого ресурса, используя в шаблоне элемент **dependsOn** . Например, при развертывании веб-приложения вам нужно создать план службы приложений. Если вы не указали, что веб-приложение зависит от плана службы приложений, Resource Manager создаст оба ресурса одновременно. При попытке указать свойство веб-приложения вы получите сообщение о том, что невозможно найти ресурс плана службы приложений, так как он еще не существует. Чтобы предотвратить эту ошибку, в веб-приложении следует настроить зависимость.
+При попытке hello toodeploy отсутствует ресурс в шаблоне hello, проверьте, следует ли tooadd зависимость. Resource Manager оптимизирует развертывание, создавая ресурсы параллельно, когда это возможно. Если необходимо развернуть один ресурс после другой ресурс, необходимо toouse hello **dependsOn** Здравствуйте, элемент в ваш шаблон toocreate в зависимости от других ресурсов. Например при развертывании веб-приложения, должен существовать hello план служб приложений. Если вы не указали веб-приложения hello зависит от hello план служб приложений, диспетчер ресурсов создает оба ресурса в hello то же время. Появляется сообщение о том, hello, которую не удается найти ресурс план службы приложений, так как он еще не существует при попытке tooset свойство hello веб-приложения. Установив hello зависимостей в веб-приложения hello предотвратить эту ошибку.
 
 ```json
 {
@@ -285,7 +285,7 @@ Message=Cannot find ServerFarm with name exampleplan.
 
 Предложения по устранению ошибок зависимостей доступны в разделе [Проверка последовательности развертывания](#check-deployment-sequence).
 
-Эта ошибка также возникает, если ресурс существует в группе ресурсов, отличной от той, в которую выполняется развертывание. В этом случае используйте [функцию resourceId](resource-group-template-functions-resource.md#resourceid), чтобы получить полное имя ресурса.
+Эта ошибка также возникает, когда hello ресурс существует в другой группе ресурсов более одного развертывания для hello. В этом случае использовать hello [функции resourceId](resource-group-template-functions-resource.md#resourceid) tooget hello полное имя ресурса hello.
 
 ```json
 "properties": {
@@ -294,26 +294,26 @@ Message=Cannot find ServerFarm with name exampleplan.
 }
 ```
 
-При попытке использовать функции [reference](resource-group-template-functions-resource.md#reference) или [listKeys](resource-group-template-functions-resource.md#listkeys) с ресурсом, который не удается разрешить, появится следующая ошибка:
+При попытке toouse hello [ссылки](resource-group-template-functions-resource.md#reference) или [listKeys](resource-group-template-functions-resource.md#listkeys) функции с ресурсом, который не удается разрешить, появится следующая ошибка hello:
 
 ```
 Code=ResourceNotFound;
-Message=The Resource 'Microsoft.Storage/storageAccounts/{storage name}' under resource
+Message=hello Resource 'Microsoft.Storage/storageAccounts/{storage name}' under resource
 group {resource group name} was not found.
 ```
 
-Найдите выражение с функцией **reference**. Убедитесь, что значения параметров правильные.
+Найдите выражение, включающее hello **ссылки** функции. Проверьте правильность значений параметров hello.
 
 ## <a name="parentresourcenotfound"></a>ParentResourceNotFound
 
-Если один ресурс является родительским для другого ресурса, то перед созданием этого дочернего ресурса должен существовать его родительский ресурс. Если он еще не существует, появляется приведенная ниже ошибка.
+При один ресурс является ресурсом родительского tooanother, hello родительского ресурса должна существовать до создания hello дочерний ресурс. Если он еще не существует, появится следующая ошибка hello:
 
 ```
 Code=ParentResourceNotFound;
 Message=Can not perform requested operation on nested resource. Parent resource 'exampleserver' not found."
 ```
 
-Имя дочернего ресурса включает в себя имя родительского ресурса. Например, база данных SQL может быть определена следующим образом.
+Имя Hello hello дочерний ресурс содержит имя родительского hello. Например, база данных SQL может быть определена следующим образом.
 
 ```json
 {
@@ -322,7 +322,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
   ...
 ```
 
-Однако, если не задать зависимость от родительского ресурса, то дочерний ресурс может быть развернут раньше родительского. Чтобы устранить эту ошибку, добавьте соответствующую зависимость.
+Но если не задать зависимость от родительского ресурса hello, может получить до родительского hello развертывание hello дочерний ресурс. tooresolve эту ошибку, включить зависимость.
 
 ```json
 "dependsOn": [
@@ -333,33 +333,33 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 <a id="storagenamenotunique" />
 
 ## <a name="storageaccountalreadyexists-and-storageaccountalreadytaken"></a>StorageAccountAlreadyExists и StorageAccountAlreadyTaken
-Для учетных записей хранения необходимо указывать имя ресурса, уникальное в среде Azure. Если не указать уникальное имя, возникнет такая ошибка:
+Для учетных записей хранилища необходимо указать имя для hello ресурса, который уникален в пределах Azure. Если не указать уникальное имя, возникнет такая ошибка:
 
 ```
 Code=StorageAccountAlreadyTaken
-Message=The storage account named mystorage is already taken.
+Message=hello storage account named mystorage is already taken.
 ```
 
-Уникальное имя можно создать, используя соглашение об именовании и результат функции [uniqueString](resource-group-template-functions-string.md#uniquestring) .
+Можно создать уникальное имя, объединяя вашей соглашение об именовании, с результатом hello hello [uniqueString](resource-group-template-functions-string.md#uniquestring) функции.
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
 
-Если при развертывании учетной записи хранения указать для нее то же имя, что и для существующей учетной записи хранения в подписке, но указать другое расположение, появится сообщение о том, что учетная запись хранения уже существует в другом расположении. Удалите существующую учетную запись хранения или укажите то же расположение, что и для существующей учетной записи хранения.
+При развертывании учетной записи хранилища с hello же name в существующую учетную запись хранилища в подписке, но указать другое расположение, появляется сообщение об ошибке, указывающее учетную запись хранения hello уже существует в другом месте. Удалите существующую учетную запись хранения hello или предоставить hello местоположения как hello существующей учетной записи хранения.
 
 ## <a name="accountnameinvalid"></a>AccountNameInvalid
-Ошибка **AccountNameInvalid** отображается при попытке указать для учетной записи хранения имя, содержащее запрещенные знаки. Имя учетной записи хранения должно содержать от 3 до 24 символов и состоять только из цифр и букв нижнего регистра. Функция [UniqueString](resource-group-template-functions-string.md#uniquestring) возвращает 13 знаков. Если используется сцепка префикса с результатом **uniqueString**, то следует использовать префикс, содержащий не более 11 знаков.
+Вы видите hello **AccountNameInvalid** произошла ошибка при попытке toogive учетную запись хранилища, имя которых содержит запрещенные символы. Имя учетной записи хранения должно содержать от 3 до 24 символов и состоять только из цифр и букв нижнего регистра. Hello [uniqueString](resource-group-template-functions-string.md#uniquestring) функция возвращает 13 символов. Если объединение toohello префикс **uniqueString** привести, укажите префикс, состоящий из 11 символов или меньше.
 
 ## <a name="badrequest"></a>BadRequest
 
-При указании недопустимого значения для свойства может возникнуть состояние BadRequest. Например, если указано неправильное значение SKU для учетной записи хранения, развертывание завершится сбоем. Чтобы определить допустимые значения для свойства, просмотрите сведения о [REST API](/rest/api) для типа развертываемого ресурса.
+При указании недопустимого значения для свойства может возникнуть состояние BadRequest. Например если указано неправильное значение SKU для учетной записи хранения, происходит сбой развертывания hello. toodetermine допустимые значения для свойства, рассмотрим hello [API-интерфейса REST](/rest/api) для типа ресурса hello развертывании.
 
 <a id="noregisteredproviderfound" />
 
 ## <a name="noregisteredproviderfound-and-missingsubscriptionregistration"></a>NoRegisteredProviderFound и MissingSubscriptionRegistration
-При развертывании ресурсов вы можете получить следующий код ошибки и сообщение об ошибке:
+При развертывании ресурсов, может получать hello, следующий код ошибки и сообщения:
 
 ```
 Code: NoRegisteredProviderFound
@@ -371,50 +371,50 @@ and API version {api-version} for type {resource-type}.
 
 ```
 Code: MissingSubscriptionRegistration
-Message: The subscription is not registered to use namespace {resource-provider-namespace}
+Message: hello subscription is not registered toouse namespace {resource-provider-namespace}
 ```
 
 Эти ошибки возникают по одной из следующих причин:
 
-1. Для подписки не зарегистрирован поставщик ресурсов.
-2. Версия API не поддерживается для выбранного типа ресурса.
-3. Расположение не поддерживается для выбранного типа ресурса.
+1. поставщик ресурсов Hello не был зарегистрирован для вашей подписки
+2. Версия API не поддерживается для типа ресурса hello
+3. Расположение не поддерживается для типа ресурса hello
 
-В сообщении об ошибке должны быть указаны поддерживаемые расположения и версии API. Вы можете изменить шаблон, используя одно из предложенных значений. Большинство поставщиков, но не все, регистрируются автоматически порталом Azure или интерфейсом командной строки, который вы используете. Если ранее вы не использовали конкретный поставщик ресурсов, возможно, потребуется зарегистрировать такой поставщик. Дополнительные сведения о поставщиках ресурсов можно получить с помощью PowerShell или интерфейса командной строки Azure.
+сообщение об ошибке Hello следует предоставить предложения для hello поддерживается местоположения и версии API. Вы можете изменить ваш шаблон tooone из hello предложенные значения. Большинство поставщиков регистрируются автоматически hello Azure интерфейс портала или hello командной строки, которую вы используете, но не все. Если ранее не пользовались перед поставщика конкретного ресурса, может потребоваться tooregister этого поставщика. Дополнительные сведения о поставщиках ресурсов можно получить с помощью PowerShell или интерфейса командной строки Azure.
 
 **Портал**
 
-Просмотреть состояние регистрации и зарегистрировать пространство имен поставщика ресурсов можно на портале.
+Можно просмотреть состояние регистрации hello и зарегистрировать пространство имен поставщика ресурсов через портал hello.
 
 1. Для своей подписки выберите **Поставщики ресурсов**.
 
    ![Выбор поставщиков ресурсов](./media/resource-manager-common-deployment-errors/select-resource-provider.png)
 
-2. Просмотрите список поставщиков ресурсов и, при необходимости, щелкните ссылку **Зарегистрировать**, чтобы зарегистрировать поставщик ресурсов типа, который вы пытаетесь развернуть.
+2. Просмотрите список hello поставщиков ресурсов и при необходимости выберите hello **зарегистрировать** поставщика ресурсов hello tooregister ссылку типа hello, которому вы пытаетесь toodeploy.
 
    ![список поставщиков ресурсов](./media/resource-manager-common-deployment-errors/list-resource-providers.png)
 
 **PowerShell**
 
-Чтобы просмотреть состояние регистрации, используйте командлет **Get-AzureRmResourceProvider**.
+toosee состояние регистрации используйте **Get AzureRmResourceProvider**.
 
 ```powershell
 Get-AzureRmResourceProvider -ListAvailable
 ```
 
-Чтобы зарегистрировать поставщик, используйте командлет **Register-AzureRmResourceProvider** и укажите имя поставщика ресурсов, который необходимо зарегистрировать.
+tooregister провайдера, используйте **AzureRmResourceProvider регистра** и укажите имя hello поставщика ресурсов hello нужно tooregister.
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
-Чтобы получить поддерживаемые расположения для определенного типа ресурсов, используйте следующую команду:
+расположения tooget hello поддерживается для определенного типа ресурсов, используйте:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-Чтобы получить поддерживаемые версии API для определенного типа ресурсов, используйте следующую команду:
+tooget hello поддерживаемые версии API для определенного типа ресурсов, используйте:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
@@ -422,19 +422,19 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 
 **Интерфейс командной строки Azure**
 
-Чтобы узнать, зарегистрирован ли поставщик, используйте команду `azure provider list` .
+toosee ли зарегистрирован поставщик hello, использовать hello `azure provider list` команды.
 
 ```azurecli
 az provider list
 ```
 
-Чтобы зарегистрировать поставщик ресурсов, используйте команду `azure provider register` и укажите *пространство имен* , которое следует зарегистрировать.
+поставщик ресурсов tooregister использовать hello `azure provider register` команду и укажите hello *имен* tooregister.
 
 ```azurecli
 az provider register --namespace Microsoft.Cdn
 ```
 
-Чтобы просмотреть поддерживаемые расположения и версии API для типа ресурса, используйте следующую команду.
+Используйте toosee hello поддерживается местоположения и версии API для типа ресурса:
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
@@ -443,10 +443,10 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 <a id="quotaexceeded" />
 
 ## <a name="quotaexceeded-and-operationnotallowed"></a>QuotaExceeded и OperationNotAllowed
-Если развертывание превышает квоту, могут возникнуть проблемы, связанные с группой ресурсов, подписками, учетными записями и другими компонентами. Например, для подписки может быть настроено ограничение числа ядер для региона. При попытке развертывания виртуальной машины с большим количеством ядер, чем разрешено, вы получите сообщение о том, что квота превышена.
+Если развертывание превышает квоту, могут возникнуть проблемы, связанные с группой ресурсов, подписками, учетными записями и другими компонентами. Например, может быть подписки настроены toolimit hello число ядер для области. При попытке toodeploy виртуальную машину с больше ядер, чем разрешено сумма hello, возникает ошибка, превышена квота сообщение о hello.
 Дополнительные сведения о квотах Azure см. в статье [Подписка Azure, границы, квоты и ограничения службы](../azure-subscription-service-limits.md).
 
-Проверить квоты ядер в своей подписке можно с помощью команды `azure vm list-usage` в интерфейсе командной строки Azure. В примере ниже показано, что квота ядер для бесплатной пробной учетной записи равна 4:
+tooexamine вашей подписки квоты ядер, можно использовать hello `azure vm list-usage` в hello Azure CLI. Следующий пример Hello показана Квота на ядра, hello для бесплатной пробной учетной записи — 4:
 
 ```azurecli
 az vm list-usage --location "South Central US"
@@ -468,7 +468,7 @@ az vm list-usage --location "South Central US"
 ]
 ```
 
-При развертывании шаблона, создающего более четырех ядер в западной части США, возникнет ошибка развертывания, аналогичная следующей:
+При развертывании шаблон, создающий более четырех ядер в hello Запад США, возникает ошибка развертывания, выглядит следующим образом:
 
 ```
 Code=OperationNotAllowed
@@ -476,7 +476,7 @@ Message=Operation results in exceeding quota limits of Core.
 Maximum allowed: 4, Current in use: 4, Additional requested: 2.
 ```
 
-Можно также использовать командлет PowerShell **Get-AzureRmVMUsage** .
+В PowerShell, воспользуйтесь hello **Get AzureRmVMUsage** командлета.
 
 ```powershell
 Get-AzureRmVMUsage
@@ -496,53 +496,53 @@ Unit         : null
 ...
 ```
 
-В таких случаях следует перейти на портал и зарегистрировать проблему в службе поддержки, чтобы поднять свою квоту для региона, в котором требуется осуществить развертывание.
+В таких случаях следует go toohello портала и файл квоты для hello области, в которую будут toodeploy tooraise проблемы поддержки.
 
 > [!NOTE]
-> Следует помнить, что для групп ресурсов квоты устанавливаются для каждого отдельного региона, а не для всей подписки. Если необходимо развернуть 30 ядер в западной части США, необходимо запросить 30 ядер управления ресурсами в этом регионе. Если необходимо развернуть 30 ядер в любом из регионов, к которым у вас есть доступ, следует запросить 30 ядер Resource Manager во всех регионах.
+> Помните, что для группы ресурсов hello квоты по каждому отдельному региону, а не для всей подписки hello. Если вам требуется toodeploy 30 ядер на Западе США, у вас есть tooask для 30 ядер диспетчер ресурсов на Западе США. Если вам требуется toodeploy 30 ядер в любой из областей toowhich hello имеется доступ, необходимо обратиться за 30 ядер диспетчера ресурсов во всех регионах.
 >
 >
 
 ## <a name="invalidcontentlink"></a>InvalidContentLink
-При появлении ошибки
+Если появляется сообщение об ошибке hello:
 
 ```
 Code=InvalidContentLink
-Message=Unable to download deployment content from ...
+Message=Unable toodownload deployment content from ...
 ```
 
-скорее всего была предпринята попытка связать недоступный вложенный шаблон. Внимательно проверьте URI, указанный для вложенного шаблона. Если шаблон существует в учетной записи хранения, убедитесь, что URI доступен. Возможно, понадобится передать маркер SAS. Дополнительные сведения см. в статье [Использование связанных шаблонов в диспетчере ресурсов Azure](resource-group-linked-templates.md).
+Скорее всего предпринята вложенных шаблонов tooa toolink, который недоступен. Здравствуйте, проверьте URI, указанный для hello вложенных шаблонов. Если шаблон hello существует в учетной записи хранения, убедитесь, что доступен hello URI. Может потребоваться toopass маркер SAS. Дополнительные сведения см. в статье [Использование связанных шаблонов в диспетчере ресурсов Azure](resource-group-linked-templates.md).
 
 ## <a name="requestdisallowedbypolicy"></a>RequestDisallowedByPolicy
-Эта ошибка возникает, когда подписка включает в себя политику ресурсов, предотвращающую действие, которое вы пытаетесь выполнить во время развертывания. В сообщении об ошибке найдите идентификатор политики.
+Эта ошибка возникает, если ваша подписка включает политику ресурсов, которая предотвращает действие, которое вы пытаетесь tooperform во время развертывания. В сообщении об ошибке hello найдите идентификатор политики hello.
 
 ```
 Policy identifier(s): '/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition'
 ```
 
-В **PowerShell** укажите идентификатор политики как параметр **Id**, чтобы получить сведения о политике, заблокировавшей развертывание.
+В **PowerShell**, предоставить идентификатор политики как hello **идентификатор** параметр tooretrieve подробные сведения о hello политики блокировки развертывания.
 
 ```powershell
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-В **Azure CLI** укажите имя определения политики.
+В **Azure CLI**, укажите имя определения политики hello hello:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
 ```
 
-Дополнительные сведения см. в следующих статьях:
+Дополнительные сведения см. в разделе hello в следующих статьях:
 
-- [Ошибка RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md).
-- [Общие сведения о политике ресурсов](resource-manager-policy.md).
+- [Ошибка RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+- [Использовать политику toomanage ресурсы и управлять доступом](resource-manager-policy.md).
 
 ## <a name="authorization-failed"></a>Ошибка авторизации
-Эта ошибка может возникнуть во время развертывания, если учетная запись или субъект-служба, пытающиеся развернуть ресурсы, не имеют доступа на выполнение этих действий. Azure Active Directory позволяет вам или вашему администратору управлять удостоверениями, которые могут получать доступ к тем или иным ресурсам. Например, если учетной записи назначена роль "Читатель", вы не сможете создавать ресурсы. В таком случае появится сообщение об ошибке авторизации.
+Поскольку hello учетной записи или попытка ресурсы hello toodeploy субъекта-службы не имеет доступа tooperform эти действия, может возникнуть ошибка во время развертывания. Azure Active Directory позволяет вы или ваш администратор toocontrol, идентификаторы, которые можно получить доступ к каким ресурсам с высокую степень точности. Например если учетной записи назначена роль модуля чтения toohello, вы не могли toocreate ресурсов. В таком случае появится сообщение об ошибке авторизации.
 
 Дополнительные сведения об управлении доступом на основе ролей см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](../active-directory/role-based-access-control-configure.md).
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Сведения о действиях аудита см. в статье [Операции аудита с помощью Resource Manager](resource-group-audit.md).
-* Дополнительные сведения об определении ошибок во время развертывания см. в статье [Просмотр операций развертывания с помощью портала Azure](resource-manager-deployment-operations.md).
+* toolearn об аудите действий, в разделе [аудит операций с помощью диспетчера ресурсов](resource-group-audit.md).
+* toolearn об ошибках hello toodetermine действия во время развертывания, в разделе [просмотреть операции развертывания](resource-manager-deployment-operations.md).

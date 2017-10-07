@@ -1,6 +1,6 @@
 ---
-title: "Публикация контейнера Docker с помощью набора средств Azure для IntelliJ | Документация Майкрософт"
-description: "Вы можете узнать, как опубликовать веб-приложение в Microsoft Azure в виде контейнера Docker с помощью набора средств Azure для IntelliJ."
+title: "контейнер Docker с помощью aaaPublish hello Azure Toolkit для IntelliJ | Документы Microsoft"
+description: "Узнайте, как toopublish tooMicrosoft приложения web Azure в качестве контейнера Docker с помощью hello Azure Toolkit для IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,189 +14,189 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 96680319a6c4c0f0a4673cd6303a5b172f428797
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bee94cb269ea707ae7ad55232e23e915aec48c34
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="publish-a-web-app-as-a-docker-container-by-using-the-azure-toolkit-for-intellij"></a>Публикация веб-приложение в виде контейнера Docker с помощью набора средств Azure для IntelliJ
+# <a name="publish-a-web-app-as-a-docker-container-by-using-hello-azure-toolkit-for-intellij"></a>Публикация веб-приложения как контейнер Docker с помощью hello Azure Toolkit для IntelliJ
 
-Контейнеры Docker широко используются при развертывании веб-приложений. При этом разработчики могут объединить все зависимости и файлы проекта в одном пакете, а затем развернуть его на сервере. Набор средств Azure для IntelliJ упрощает этот процесс для разработчиков на языке Java, предоставляя функции *публикации в виде контейнера Docker* при развертывании в Microsoft Azure. В этой статье описаны действия, необходимые для публикации приложений в Azure в качестве контейнеров Docker.
+Контейнеры Docker широко используются при развертывании веб-приложений. При использовании контейнеров Docker разработчиков можно объединить все файлы проекта и зависимости в один пакет для развертывания сервера tooa. набор средств Azure для IntelliJ Hello упрощает этот процесс для разработчиков Java, добавив *опубликовать как контейнер Docker* компоненты для развертывания tooMicrosoft Azure. В этой статье описывается toopublish необходимые шаги hello tooAzure вашего приложения как контейнеры Docker.
 
 > [!NOTE]
 >
-> Дополнительные сведения о Docker см. на [веб-сайте Docker].
+> Дополнительные сведения о Docker доступен на hello [веб-узел Docker].
 >
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="publish-your-web-app-to-azure-by-using-a-docker-container"></a>Публикация веб-приложения в Azure с помощью контейнера Docker
+## <a name="publish-your-web-app-tooazure-by-using-a-docker-container"></a>Публикация вашего tooAzure web app с помощью контейнера Docker
 
 > [!NOTE]
-> * Чтобы опубликовать веб-приложение, необходимо создать готовый к развертыванию артефакт. Дополнительные сведения о создании артефактов см. в [этом разделе](#artifacts).
+> * toopublish веб-приложения необходимо создать артефакт готовым к развертыванию. toolearn. более того, в разделе hello [Дополнительные сведения о создании артефактов](#artifacts) раздела.
 >
-> * После выполнения развертывания с помощью мастера хотя бы один раз большинство указанных параметров будет использоваться по умолчанию при повторном запуске этого мастера.
+> * Мастер развертывания hello выполнено хотя бы один раз, большая часть параметров, используемые по умолчанию, при запуске мастера hello.
 >
 
 1. Откройте проект веб-приложения в IntelliJ.
 
-2. Чтобы запустить мастер **публикации в виде контейнера Docker**, выполните одно из следующих действий:
+2. toostart hello **опубликовать как контейнер Docker** мастер, выполните одно из следующих hello:
 
-   * Щелкните правой кнопкой мыши проект в окне средства **Проект**, щелкните **Azure**, а затем выберите **Publish as Docker Container** (Опубликовать как контейнер Docker):
+   * В hello **проекта** окно инструментов, щелкните правой кнопкой мыши проект, нажмите кнопку **Azure**, а затем нажмите кнопку **опубликовать как контейнер Docker**:
 
-      ![Команда публикации в виде контейнера Docker][PUB01]
+      ![Hello опубликовать как команда контейнера Docker][PUB01]
 
-   * На панели инструментов IntelliJ нажмите кнопку **Publish Group** (Опубликовать группу), а затем выберите **Publish as Docker Container** (Опубликовать как контейнер Docker):
+   * На панели инструментов IntelliJ hello, нажмите кнопку hello **публикации группы** , а затем нажмите **опубликовать как контейнер Docker**:
 
-      ![Команда публикации в виде контейнера Docker][PUB02]  
-    После этого откроется мастер **развертывания контейнера Docker в Azure**.
+      ![Hello опубликовать как команда контейнера Docker][PUB02]  
+    Hello **развертывания контейнера Docker в Azure** откроется мастер.
 
-   ![Мастер развертывания контейнера Docker в Azure][PUB03]
+   ![Развертывание контейнера Docker в Azure мастер Hello][PUB03]
 
-3. В окне **ввода имени образа, выбора пути артефакта и проверки используемого узла Docker** сделайте следующее: 
+3. В hello **введите имя образа, выберите путь артефакта hello и проверьте toobe узла Docker используется** окне hello следующие: 
 
-   а. В текстовом поле **Docker image name** (Имя образа Docker) введите уникальное имя узла Docker. (Мастер создаст это имя автоматически, но его можно изменить.) 
+   а. В hello **имя образа Docker** введите уникальное имя для узла Docker. (hello мастер автоматически создает имя, но ее можно изменить). 
 
-   b. В области **Узлы** отображаются все созданные вами узлы Docker. Выполните одно из приведенных ниже действий. 
-      * Если вы уже создали узел Docker, вы можете развернуть веб-приложение в нем.
-      * Чтобы создать узел Docker, щелкните зеленый знак "плюс" (**+**).  
-       После этого откроется диалоговое окно **Create Docker Host** (Создание узла Docker). 
+   b. Hello **узлов** области отображаются узлы Docker, уже создан. Выполните одно из следующих hello. 
+      * Если у вас есть существующий узел Docker, можно развернуть вашей tooit web app.
+      * toocreate узел Docker, щелкните зеленый hello "плюс" (**+**).  
+       Hello **создать узел Docker** откроется диалоговое окно. 
 
       ![Мастер развертывания контейнера Docker в Azure][PUB04a]
 
-4. В окне **настройки новой виртуальной машины** укажите приведенные ниже параметры узла Docker. (Мастер создаст большинство параметров автоматически, но их можно изменить.) 
+4. В hello **настроить новую виртуальную машину hello** окна, укажите следующую информацию о вашем узле Docker hello. (hello мастер автоматически создает большую часть информации hello для вас, но вы можете изменить любые из них). 
 
-   а. В текстовом поле **Имя** введите уникальное имя узла Docker. (Это не указанное выше имя образа Docker.) 
+   а. В hello **имя** введите уникальное имя для узла Docker hello. (Это не так же, как имя образа Docker, указанный ранее hello hello.) 
     
-   b. В текстовом поле **Подписка** укажите, какая подписка Azure будет использоваться для узла. 
+   b. В hello **подписки** введите hello подписки Azure, которая используется для узла. 
       
-   c. В текстовом поле **Регион** укажите географический регион, где размещен узел.
+   c. В hello **область** введите hello географический регион, где находится вашего узла.
       
-   г) На вкладке **OS and Size** (ОС и размер) сделайте следующее:      
-      * **Host OS** (ОС узла). Укажите операционную систему виртуальной машины, которая содержит узел. 
-      * **Size** (Размер). Укажите размер виртуальной машины узла.   
+   d. На hello **ОС и размер** вкладки, hello следующие:      
+      * **Системы узла**: Введите hello операционной системы для виртуальной машины hello, содержащий вашего узла. 
+      * **Размер**: Введите размер hello виртуальной машины для узла.   
        
-   д. На вкладке **Группа ресурсов** выберите один из следующих вариантов:      
+   д. На hello **группы ресурсов** выберите одно из следующих hello:      
       * **Новая группа ресурсов.** Создайте группу ресурсов для узла.
       * **Существующая группа ресурсов.** Укажите имеющуюся группу ресурсов из учетной записи Azure. 
        
-   f. На вкладке **Сеть** выберите один из следующих вариантов:      
+   f. На hello **сети** выберите одно из следующих hello:      
       * **New virtual network** (Новая виртуальная сеть). Создайте виртуальную сеть для узла.
       * **Existing virtual network** (Имеющаяся виртуальная сеть). Укажите имеющуюся виртуальную сеть из учетной записи Azure. 
        
-   ж. На вкладке **Хранилище** выберите один из следующих вариантов:      
+   ж. На hello **хранения** выберите одно из следующих hello:      
       * **Создать учетную запись хранения.** Создайте учетную запись хранения для узла.
       * **Existing storage account** (Имеющаяся учетная запись хранения). Укажите имеющуюся учетную запись хранения из учетной записи Azure.
        
 5. Щелкните **Далее**.  
-     После этого откроется окно **Configure log in credentials and port settings** (Настройка учетных данных для входа в систему и параметров порта).
+     Hello **настроить журнал учетные данные и параметры порта** открывается окно.
 
-      ![Окно настройки учетных данных для входа в систему и параметров порта][PUB05]
+      ![журнал настройки Hello в учетные данные и окно "Параметры" порт][PUB05]
 
-6. Выберите один из следующих вариантов:
+6. Выберите один из следующих вариантов hello.
 
       * **Import credentials from Azure Key Vault** (Импортировать учетные данные из Azure Key Vault). Укажите сохраненный ранее набор учетных данных, хранящихся в подписке Azure.
 
           > [!NOTE]
-          > Хранилище Azure Key Vault, созданное с помощью определенной учетной записи или определенного субъекта-службы, не становится автоматически доступным для другой учетной записи или субъекта-службы, которые относятся к той же подписке. Чтобы разрешить другой учетной записи или субъекту-службе использовать Key Vault, нужно добавить их на портале Azure.
+          > Хранилище ключей Azure, созданная с определенной учетной записи или субъекта-службы автоматически недоступна по другой учетной записи или субъекта-службы, использующего hello подписки. в хранилище другой учетной записи или служба ключ субъекта toouse hello tooallow, необходимо использовать учетную запись Azure портала tooadd hello hello или участника-службы.
 
-      * **New log in credentials** (Новые учетные данные для входа). Создайте набор учетных данных для входа в систему. Если вы выбрали этот параметр, сделайте следующее:
+      * **New log in credentials** (Новые учетные данные для входа). Создайте набор учетных данных для входа в систему. Если этот флажок установлен, hello следующие:
 
-        а. На вкладке **Учетные данные для виртуальной машины** укажите следующие параметры учетных данных для входа на виртуальную машину узла Docker: * **Имя пользователя** . Укажите имя пользователя для входа на виртуальную машину.
-             * **Пароль** и **Подтверждение**. Укажите пароль для входа на виртуальную машину.
-             * **SSH**. Укажите параметры Secure Shell (SSH) узла Docker. Выберите один из следующих параметров: * **Нет** . Указывает, что виртуальная машина не разрешает SSH-подключения.
-                * **Auto-generate** (Автоматическое создание). Автоматически создает необходимые параметры для SSH-подключения.
-                * **Import from directory** (Импорт из каталога). Позволяет указать каталог, содержащий набор ранее сохраненных параметров SSH. В частности, каталог должен содержать два следующих файла:
+        а. На hello **учетные данные для виртуальной Машины** укажите следующую информацию для hello виртуальной машины учетных данных для узла Docker hello: * **Username**: Введите hello пользователя для имени входа виртуальной машины учетные данные.
+             * **Пароль** и **Подтверждение**: hello пароль для учетных данных входа в систему виртуальной машины.
+             * **SSH**: Введите параметры hello Secure Shell (SSH) для узла Docker. Можно выбрать один из следующих вариантов hello: * **нет**: Указывает, что виртуальная машина не разрешают соединений по протоколу SSH.
+                * **Автоматическое создание**: автоматически создает hello необходимые параметры для подключения по протоколу SSH.
+                * **Импорт из каталога**: позволяет toospecify каталог, содержащий набор ранее сохраненные параметры SSH. Hello каталог должен содержать hello, следующие два файла:
                 
-                  * *id_rsa*: Contains the RSA identification for a user.
-                  * *id_rsa.pub*: Contains the RSA public key that is used for authentication.
+                  * *id_rsa*: Contains hello RSA identification for a user.
+                  * *id_rsa.pub*: Contains hello RSA public key that is used for authentication.
             
-        b. На вкладке **Docker Daemon Access** (Доступ к управляющей программе Docker) укажите следующие сведения:
+        b. На hello **доступа управляющей программы Docker** укажите hello следующую информацию:
 
           ![Окно Create Docker Host (Создание узла Docker)][PUB06]
     
-             * **Docker Daemon port**: Enter the unique TCP port for your Docker host.
-             * **TLS Security**: Enter the Transport Layer Security settings for your Docker host. You can choose from the following options:
+             * **Docker Daemon port**: Enter hello unique TCP port for your Docker host.
+             * **TLS Security**: Enter hello Transport Layer Security settings for your Docker host. You can choose from hello following options:
                 * **None**: Specifies that your virtual machine does not allow TLS connections.
-                * **Auto-generate**: Automatically creates the requisite settings for connecting via TLS.
-                * **Import from directory**: Specifies a directory that contains a set of previously saved TLS settings. The directory must contain the following six files: 
-                   * *ca.pem* and *ca-key.pem*: Contain the certificate and public key for the TLS Certificate Authority.
+                * **Auto-generate**: Automatically creates hello requisite settings for connecting via TLS.
+                * **Import from directory**: Specifies a directory that contains a set of previously saved TLS settings. hello directory must contain hello following six files: 
+                   * *ca.pem* and *ca-key.pem*: Contain hello certificate and public key for hello TLS Certificate Authority.
                    * *cert.pem* and *key.pem*: Contain client certificate and public key which will be used for TLS authentication.
-                   * *server.pem* and *server-key.pem*: Contain the client certificate and public key that is used for TLS authentication.
+                   * *server.pem* and *server-key.pem*: Contain hello client certificate and public key that is used for TLS authentication.
 
-7. Указав необходимые сведения, нажмите кнопку **Готово**.  
-    После этого снова отобразится мастер **развертывания контейнера Docker в Azure**.
+7. После ввода hello необходимые сведения, нажмите кнопку **Готово**.  
+    Hello **развертывания контейнера Docker в Azure** снова появится мастер.
 
    ![Мастер развертывания контейнера Docker в Azure][PUB07]
 
 8. Щелкните **Далее**.  
-    Откроется окно **Configure the Docker container to be created** (Настройка создаваемого контейнера Docker).
+    Hello **Настройка hello Docker контейнера toobe создан** открывается окно.
 
-   ![Окно настройки создаваемого контейнера Docker][PUB08]
+   ![Настройка Hello hello контейнера Docker toobe создания окна][PUB08]
 
-9. В окне **Configure the Docker container to be created** (Настройка создаваемого контейнера Docker) укажите следующие параметры: 
+9. В hello **Настройка hello Docker контейнера toobe создан** окна, предоставляют hello следующую информацию: 
 
-   а. В текстовом поле **Docker container name** (Имя контейнера Docker) введите уникальное имя контейнера Docker.
+   а. В hello **имя контейнера Docker** введите уникальное имя для контейнера Docker.
 
-   b. Выберите один из следующих образов Docker: 
+   b. Выберите один из следующих образов Docker hello. 
 
       * **Predefined Docker image** (Предопределенный образ Docker). Укажите имеющийся образ Docker из Azure. 
 
         > [!NOTE]
-        > Список образов Docker в этом поле состоит из нескольких образов, в которые набор средств Azure устанавливает исправление таким образом, чтобы артефакт развертывался автоматически. 
+        > Hello список образов Docker в этом поле состоит из нескольких изображений, hello, набор средств Azure был настроен toopatch так, что автоматически развертывается на артефакт. 
 
       * **Custom Dockerfile** (Пользовательский Dockerfile). Укажите сохраненный ранее Dockerfile на локальном компьютере.
 
         > [!NOTE]
-        > Это расширенная функция для разработчиков, желающих развернуть собственный Dockerfile. Однако за правильность сборки Dockerfile отвечают сами разработчики, использующие эту возможность. Набор средств Azure не проверяет содержимое пользовательского Dockerfile, поэтому при наличии проблем с этим файлом развертывание может завершиться ошибкой. Кроме того, набор средств Azure ожидает, что пользовательский Dockerfile содержит артефакт веб-приложения, и попытается установить HTTP-подключение. Если разработчики публикуют артефакт другого типа, то после развертывания могут возникнуть некритичные ошибки.
+        > Это еще одна возможность разработчикам, создающим собственные Dockerfile toodeploy. Тем не менее он работает toodevelopers, использующих этот tooensure параметр, правильно ли построено их Dockerfile. Поскольку hello набора средств Azure не проверяет содержимое hello в пользовательских Dockerfile, hello может произойти сбой развертывания Если hello Dockerfile вызывает проблемы. Кроме того поскольку hello набора средств Azure ожидает hello пользовательских Dockerfile toocontain артефакт web app, он предпринимает tooopen HTTP-соединение. Если разработчики публикуют артефакт другого типа, то после развертывания могут возникнуть некритичные ошибки.
 
-   c. В текстовом поле **Port settings** (Параметры порта) укажите уникальную привязку TCP-порта для контейнера Docker. 
+   c. В hello **параметры порта** введите уникальную привязку порта TCP hello для контейнера Docker. 
 
-10. Выполнив все предыдущие действия, нажмите кнопку **Готово**. 
+10. После завершения предыдущих шагах hello нажмите **Готово**. 
 
-Набор средств Azure начинает развертывание веб-приложения в контейнере Docker Azure. Если вы не настроили развертывание IntelliJ в фоновом режиме, появится индикатор выполнения **развертывания в Azure**. 
+Hello набора средств Azure начинается развертывание вашей tooAzure приложения web в контейнер Docker. Если вы настроили toobe IntelliJ, развернутых в фоновом режиме hello, **развертывание tooAzure** отображается индикатор хода выполнения. 
 
-![Индикатор выполнения развертывания][PUB09]
+![индикатор хода выполнения развертывания Hello][PUB09]
 
 <a name="artifacts"></a>
 ## <a name="additional-information-about-creating-artifacts"></a>Дополнительные сведения о создании артефактов
 
-Чтобы создать готовый к развертыванию артефакт, выполните следующее:
+toocreate артефакт готовым к развертыванию hello следующие:
 
 1. Откройте проект веб-приложения в IntelliJ.
 
 2. В меню **File** (Файл) выберите **Project Structure** (Структура проекта).
 
-   ![Команда Project Structure (Структура проекта)][ART01]
+   ![Структура проекта команда Hello][ART01]
 
-3. Чтобы добавить артефакт, щелкните зеленый знак "плюс" (**+**), а затем выберите **Web Application: Artifact** (Веб-приложение: артефакт).
+3. tooadd на артефакт, щелкните зеленый hello "плюс" (**+**), а затем нажмите кнопку **веб-приложения: архив**.
 
-   ![Команда Web Application: Artifact (Веб-приложение: артефакт)][ART02]
+   ![Команда «Архива: веб-приложения» Hello][ART02]
 
-4. В текстовом поле **Имя** укажите имя артефакта ( без расширения *WAR*) и нажмите кнопку **ОК**.
+4. В hello **имя** введите имя для вашей артефакта (не включайте hello *.war* расширения) и нажмите кнопку **ОК**.
 
-   ![Поле "Имя" артефакта][ART03]
+   ![поле "имя" Hello артефакта][ART03]
 
-Дополнительные сведения о создании артефактов в IntelliJ см. в статье [Configuring Artifacts] (Настройка артефактов) на веб-сайте JetBrains.
+Дополнительные сведения о создании артефактов в IntelliJ см. в разделе [Настройка артефакты] на веб-сайте JetBrains hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о наборах средств Azure для Java IDE см. в следующих ресурсах:
+Дополнительные сведения о hello наборы инструментов Azure для Java интегрированные среды разработки см. следующие ресурсы hello:
 
 * [Набор средств Azure для Eclipse]
-  * [Новые возможности набора средств Azure для Eclipse]
-  * [Установка набора средств Azure для Eclipse]
-  * [Инструкции по входу для набора средств Azure для Eclipse]
+  * [Новые возможности средств Azure для Eclipse hello]
+  * [Установка средств Azure для Eclipse hello]
+  * [Инструкции вход для hello средств Azure для Eclipse]
   * [Создание веб-приложения Azure (цен. категория "Базовый") с помощью Eclipse]
 * [Набор средств Azure для IntelliJ]
-  * [Новые возможности набора средств Azure для IntelliJ]
-  * [Установка набора средств Azure для IntelliJ]
-  * [Инструкции по входу для набора средств Azure для IntelliJ]
+  * [Новые возможности средств Azure для IntelliJ hello]
+  * [Установка hello Azure Toolkit для IntelliJ]
+  * [Вход инструкции для hello Azure Toolkit для IntelliJ]
   * [Создание веб-приложения Azure (цен. категория "Базовый") в IntelliJ]
 
-Дополнительные сведения об использовании Azure см. в [центре разработчиков Java для Azure] и на странице [инструментов Java для Visual Studio Team Services].
+Дополнительные сведения об использовании Azure с Java см. в разделе hello [центра разработчиков Java Azure] и hello [Java средств для Visual Studio Team Services].
 
-Дополнительные материалы по Docker доступны на официальном [веб-сайте Docker].
+Дополнительные ресурсы для Docker см. в разделе официальные hello [веб-узел Docker].
 
 <!-- URL List -->
 
@@ -204,18 +204,18 @@ ms.lasthandoff: 07/11/2017
 [Набор средств Azure для IntelliJ]: ./azure-toolkit-for-intellij.md
 [Создание веб-приложения Azure (цен. категория "Базовый") с помощью Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Создание веб-приложения Azure (цен. категория "Базовый") в IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Установка набора средств Azure для Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Установка набора средств Azure для IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Инструкции по входу для набора средств Azure для Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Инструкции по входу для набора средств Azure для IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[Новые возможности набора средств Azure для Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
-[Новые возможности набора средств Azure для IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+[Установка средств Azure для Eclipse hello]: ./azure-toolkit-for-eclipse-installation.md
+[Установка hello Azure Toolkit для IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Инструкции вход для hello средств Azure для Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Вход инструкции для hello Azure Toolkit для IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Новые возможности средств Azure для Eclipse hello]: ./azure-toolkit-for-eclipse-whats-new.md
+[Новые возможности средств Azure для IntelliJ hello]: ./azure-toolkit-for-intellij-whats-new.md
 
-[центре разработчиков Java для Azure]: https://azure.microsoft.com/develop/java/
-[инструментов Java для Visual Studio Team Services]: https://java.visualstudio.com/ (Инструменты Java для Visual Studio Team Services)
+[центра разработчиков Java Azure]: https://azure.microsoft.com/develop/java/
+[Java средств для Visual Studio Team Services]: https://java.visualstudio.com/ (Инструменты Java для Visual Studio Team Services)
 
-[веб-сайте Docker]: https://www.docker.com/
-[Configuring Artifacts]: https://www.jetbrains.com/help/idea/2016.1/configuring-artifacts.html (Настройка артефактов)
+[веб-узел Docker]: https://www.docker.com/
+[Настройка артефакты]: https://www.jetbrains.com/help/idea/2016.1/configuring-artifacts.html (Настройка артефактов)
 
 <!-- IMG List -->
 

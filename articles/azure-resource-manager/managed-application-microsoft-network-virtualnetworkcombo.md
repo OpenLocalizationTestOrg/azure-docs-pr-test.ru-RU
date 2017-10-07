@@ -1,6 +1,6 @@
 ---
-title: "Элемент пользовательского интерфейса VirtualNetworkCombo управляемого приложения Azure | Документация Майкрософт"
-description: "Сведения об элементе пользовательского интерфейса Microsoft.Network.VirtualNetworkCombo для управляемых приложений Azure"
+title: "элемент управляемого пользовательского интерфейса приложения VirtualNetworkCombo aaaAzure | Документы Microsoft"
+description: "Описывает hello элемент пользовательского интерфейса Microsoft.Network.VirtualNetworkCombo для управляемых приложений Azure"
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 8bb255b76ac5c3de570fa569a1cfb3ee953f9687
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1b0fa5360d93306f7a814723f77e42540bdaaa9f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Элемент пользовательского интерфейса Microsoft.Network.VirtualNetworkCombo
 Группа элементов управления для выбора новой или имеющейся виртуальной сети. Этот элемент используется при [создании управляемого приложения Azure](managed-application-publishing.md).
@@ -25,8 +25,8 @@ ms.lasthandoff: 07/11/2017
 ## <a name="ui-sample"></a>Пример элемента пользовательского интерфейса
 ![Элемент пользовательского интерфейса Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
 
-- В верхней области каркаса пользователь выбрал новую виртуальную сеть. Теперь он может настроить префикс адреса и имя каждой подсети. Настройка подсетей в этом случае является необязательной.
-- В нижней области каркаса пользователь выбрал имеющуюся виртуальную сеть. Теперь он должен сопоставить каждую подсеть, необходимую шаблону развертывания, с имеющейся подсетью. Настройка подсетей в этом случае является обязательной.
+- В верхней каркаса hello пользователь hello выбравший новую виртуальную сеть, поэтому hello пользователь может настроить префикса имя и адрес каждой подсети. Настройка подсетей в этом случае является необязательной.
+- В каркас нижней hello hello пользователь, выбравший существующей виртуальной сети, поэтому hello пользователя необходимо сопоставить каждой подсети hello развертывания шаблона требуется tooan существующей подсети. Настройка подсетей в этом случае является обязательной.
 
 ## <a name="schema"></a>Схема
 ```json
@@ -82,15 +82,15 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="remarks"></a>Примечания
-- Если указан, первый префикс адреса размера `defaultValue.addressPrefixSize`, который не перекрывается, автоматически определяется на основе имеющихся виртуальных сетей в подписке пользователя.
-- Значение по умолчанию для параметров `defaultValue.name` и `defaultValue.addressPrefixSize` — **null**.
-- Обязательно должен быть указан параметр `constraints.minAddressPrefixSize`. Любые имеющиеся виртуальные сети с адресным пространством меньше указанного значения являются недоступными.
+- Если указано, hello первый неперекрывающиеся префикс адреса размер `defaultValue.addressPrefixSize` определяется автоматически на основании существующих виртуальных сетей в подписке hello пользователя.
+- Здравствуйте, значение по умолчанию для `defaultValue.name` и `defaultValue.addressPrefixSize` — **null**.
+- Обязательно должен быть указан параметр `constraints.minAddressPrefixSize`. Все существующие виртуальные сети с адресным пространством меньше, чем hello указанное значение, становятся недоступными для выбора.
 - Для каждой подсети должны быть определены `subnets` и `constraints.minAddressPrefixSize`.
-- При создании виртуальной сети префикс адреса каждой подсети определяется автоматически на основе префикса адреса виртуальной сети и `addressPrefixSize` соответственно.
+- При создании новой виртуальной сети, префикс адреса для каждой подсети вычисляется автоматически на основе префикса адреса hello виртуальной сети, а соответствующее `addressPrefixSize`.
 - При использовании имеющейся виртуальной сети любые подсети со значением меньше, чем у `constraints.minAddressPrefixSize`, — недоступны. Кроме того (если указано), подсети, которые не содержат минимальное число доступных адресов (`minAddressCount`), — недоступны.
-Значение по умолчанию — **0**. Чтобы адреса были связанными, задайте значение **true** для `requireContiguousAddresses`. Значение по умолчанию — **true**.
+значение по умолчанию Hello — **0**. tooensure, hello доступных адресов являются смежными, укажите **true** для `requireContiguousAddresses`. значение по умолчанию Hello — **true**.
 - Создание подсетей в имеющейся виртуальной сети не поддерживается.
-- Если для параметра `options.hideExisting` задано значение **true**, пользователь не может выбрать имеющуюся виртуальную сеть. Значение по умолчанию — **false**.
+- Если `options.hideExisting` — **true**, hello пользователь не может выбрать существующую виртуальную сеть. значение по умолчанию Hello — **false**.
 
 ## <a name="sample-output"></a>Пример выходных данных
 ```json
@@ -115,6 +115,6 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Общие сведения об управляемых приложениях Azure см. в [этой статье](managed-application-overview.md).
-* Общие сведения о создании определений пользовательского интерфейса см. в статье [Начало работы с CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Введение toomanaged приложений, в разделе [Обзор управляемого приложения Azure](managed-application-overview.md).
+* Для определения пользовательского интерфейса toocreating Общие сведения см. в разделе [Приступая к работе с CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Дополнительные сведения об общих свойствах элементов пользовательского интерфейса см. в статье [Элементы CreateUiDefinition](managed-application-createuidefinition-elements.md).

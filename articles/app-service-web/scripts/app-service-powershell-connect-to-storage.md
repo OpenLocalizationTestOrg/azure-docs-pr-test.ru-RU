@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария Azure PowerShell. Подключение веб-приложения к учетной записи хранения | Документация Майкрософт"
-description: "Пример сценария Azure PowerShell для подключения веб-приложения к учетной записи хранения."
+title: "Пример сценария PowerShell - aaaAzure подключения приложения web tooa учетной записи хранилища | Документы Microsoft"
+description: "Сценарий Azure PowerShell пример — подключить учетную запись хранения tooa web app"
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -16,25 +16,25 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 481f3efdb1cbbeba328183da7e320c7e5b819b3a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 07693366d32fbaefe92c18df67ded81661e1a2df
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-web-app-to-a-storage-account"></a>Подключение веб-приложения к учетной записи хранения
+# <a name="connect-a-web-app-tooa-storage-account"></a>Подключение приложения web tooa учетной записи хранилища
 
-В этой статье вы узнаете, как создать учетную запись хранения и веб-приложение Azure. Затем вы свяжете учетную запись хранения с веб-приложением, используя параметры приложения.
+В этом сценарии вы узнаете, как toocreate учетную запись хранилища Azure и Azure веб-приложения. Затем будет связан hello хранилища учетной записи toohello веб-приложения с помощью параметров приложения.
 
-При необходимости установите Azure PowerShell с помощью инструкции, приведенной в [руководстве Azure PowerShell](/powershell/azure/overview), а затем выполните команду `Login-AzureRmAccount`, чтобы создать подключение к Azure.
+При необходимости установите Azure PowerShell с помощью инструкции hello, найденные в hello hello [руководство по Azure PowerShell](/powershell/azure/overview), а затем запустите `Login-AzureRmAccount` toocreate соединения с Azure.
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-storage/connect-to-storage.ps1 "Подключение веб-приложения к учетной записи хранения")]
+[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-storage/connect-to-storage.ps1 "Connect a web app tooa storage account")]
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполнив пример сценария, вы можете удалить группу ресурсов, веб-приложение и все связанные ресурсы, используя следующую команду.
+После выполнения сценария образец hello hello, следующая команда может быть группа ресурсов используется tooremove hello, веб-приложения и все связанные ресурсы.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -42,7 +42,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует hello, следующие команды. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
@@ -50,11 +50,11 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 | [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Создает план службы приложений. |
 | [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Создает веб-приложение. |
 | [New-AzureRMStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) | Создает учетную запись хранения. |
-| [Get-AzureRMStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Выводит список ключей доступа для учетной записи хранения Azure. |
+| [Get-AzureRMStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Возвращает hello клавиши доступа для учетной записи хранилища Azure. |
 | [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Изменяет конфигурацию веб-приложения. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о модуле Azure PowerShell см. в [документации по Azure PowerShell](/powershell/azure/overview).
+Дополнительные сведения о hello модуля Azure PowerShell см. в разделе [документация по Azure PowerShell](/powershell/azure/overview).
 
-Дополнительные примеры сценариев Azure PowerShell для веб-приложений службы приложений Azure доступны [здесь](../app-service-powershell-samples.md).
+Дополнительные примеры Azure Powershell для веб-приложениях службы приложений Azure можно найти в hello [примеры Azure PowerShell](../app-service-powershell-samples.md).

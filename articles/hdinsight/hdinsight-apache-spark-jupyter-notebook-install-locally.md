@@ -1,6 +1,6 @@
 ---
-title: "Установка записной книжки Jupyter в локальной среде и ее подключение к кластеру Azure HDInsight Spark | Документы Майкрософт"
-description: "Сведения о том, как установить записную книжку Jupyter на компьютере локально и как подключить ее к кластеру Apache Spark в Azure HDInsight."
+title: "aaaInstall Jupyter локально & подключения кластера Azure HDInsight Spark tooan | Документы Microsoft"
+description: "Узнайте, как книжке Jupyter tooinstall на локальном компьютере и его подключения кластера tooan Apache Spark на Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,66 +16,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: fe9dcdb643aa6a8ee5d55738b7a446e4b0153986
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 95c052110b84b677fd23048597af9511365cacfc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Установка записной книжки Jupyter на компьютере и ее подключение к Apache Spark в HDInsight
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-tooapache-spark-on-hdinsight"></a>Установка книжке Jupyter на вашем компьютере и подключение tooApache Spark в HDInsight
 
-Из этой статьи вы узнаете, как установить записную книжку Jupyter с пользовательскими ядрами PySpark (для Python) и Spark (для Scala) с помощью волшебной команды Spark, а затем подключить эту записную книжку к кластеру HDInsight. Существуют разные причины для установки Jupyter на локальном компьютере, но есть и некоторые трудности. Дополнительные сведения см. в разделе [Зачем устанавливать Jupyter на компьютер?](#why-should-i-install-jupyter-on-my-computer) в конце этой статьи.
+В этой статье вы узнаете, как записной книжки Jupyter tooinstall с hello пользовательских PySpark (для Python) и ядра Spark (для Scala) с усилить magic и подключения кластера HDInsight tooan записной книжки hello. Может быть несколько причин tooinstall Jupyter на локальном компьютере и может быть также некоторые проблемы. Для получения дополнительных сведений в данном разделе hello [Зачем устанавливать Jupyter на моем компьютере](#why-should-i-install-jupyter-on-my-computer) конце hello в этой статье.
 
-Для установки Jupyter и волшебной команды Spark на ваш компьютер необходимо выполнить три основных действия.
+Существует три ключевых действия, участвующие в процессе установки Jupyter и hello Spark magic на компьютере.
 
 * Установка записной книжки Jupyter
-* Установите ядра PySpark и Spark с помощью волшебной команды Spark
-* Настройте волшебную команду Spark для доступа к кластеру Spark в HDInsight
+* Установите hello PySpark и Spark ядер hello Spark magic
+* Настройка Spark magic tooaccess кластера Spark в HDInsight
 
-Дополнительные сведения о пользовательских ядрах и волшебных командах Spark, доступных для записных книжек Jupyter в кластере HDInsight, см. в статье [Ядра, доступные для использования записными книжками Jupyter с кластерами Apache Spark в HDInsight на платформе Linux](hdinsight-apache-spark-jupyter-notebook-kernels.md).
+Дополнительные сведения о пользовательских ядер hello и magic Spark hello для записные книжки Jupyter с кластером HDInsight см. в разделе [кластеры ядер, доступных для записные книжки Jupyter с Apache Spark Linux в HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
-Указанные здесь предварительные требования относятся не к установке Jupyter. Они относятся к подключению записной книжки Jupyter к кластеру HDInsight после установки записной книжки.
+Hello предварительные требования, перечисленные здесь не для установки Jupyter. Это подключение hello кластера HDInsight tooan Jupyter записной книжки после установки записной книжки hello.
 
 * Подписка Azure. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Кластер Apache Spark в HDInsight. Инструкции см. в статье [Начало работы. Создание кластера Apache Spark в HDInsight на платформе Linux и выполнение интерактивных запросов с помощью SQL Spark](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Установка записной книжки Jupyter на компьютер
 
-Перед установкой записных книжек Jupyter необходимо установить Python. Python и Jupyter доступны в составе [дистрибутива Anaconda](https://www.continuum.io/downloads). При установке Anaconda устанавливается дистрибутив Python. После установки Anaconda выполните соответствующие команды для установки Jupyter.
+Перед установкой записных книжек Jupyter необходимо установить Python. Python и Jupyter доступны как часть hello [дистрибутив Anaconda](https://www.continuum.io/downloads). При установке Anaconda устанавливается дистрибутив Python. После установки Anaconda, чтобы добавить hello Jupyter установки, запустите соответствующие команды.
 
-1. Скачайте [установщик Anaconda](https://www.continuum.io/downloads) для своей платформы и запустите программу установки. В мастере установки укажите параметр для добавления Anaconda в переменную PATH.
-2. Выполните следующую команду для установки Jupyter.
+1. Загрузите hello [Anaconda установщика](https://www.continuum.io/downloads) для платформы и hello выполнения установки. Во время выполнения мастера установки hello убедитесь, что выбран hello параметр tooadd Anaconda tooyour переменной PATH.
+2. Выполните следующие команды tooinstall Jupyter hello.
 
         conda install jupyter
 
     Дополнительные сведения об установке Jupyter см. [здесь](http://jupyter.readthedocs.io/en/latest/install.html).
 
-## <a name="install-the-kernels-and-spark-magic"></a>Установка ядер и волшебной команды Spark
+## <a name="install-hello-kernels-and-spark-magic"></a>Установка ядра hello и Spark magic
 
-Инструкции по установке волшебной команды Spark, а также ядер PySpark и Spark, см. в [документации по sparkmagic](https://github.com/jupyter-incubator/sparkmagic#installation) на сайте GitHub. Чтобы начать использовать волшебную команду Spark, ее сначала нужно установить. Это — первый шаг, описанный в документации. Замените этот шаг в ссылке выше приведенными ниже командами с учетом версии кластера HDInsight, к которому вы подключитесь. После этого выполните остальные шаги в соответствии с документацией по волшебной команде Spark. Для установки разных ядер необходимо выполнить шаг 3 из раздела инструкций по установке волшебной команды Spark.
+Инструкции по как tooinstall hello Spark magic, hello PySpark и Spark ядер, следуйте инструкциям по установке hello в hello [sparkmagic документации](https://github.com/jupyter-incubator/sparkmagic#installation) на GitHub. Hello первым шагом в документации magic Spark hello предлагает магическое tooinstall Spark. Замените первый шаг в ссылке hello hello, следующие команды, в зависимости от версии hello hello кластера HDInsight, которую вы будете подключаться. Затем выполните оставшиеся действия, описанные в документации magic Spark hello hello. Если вы хотите tooinstall hello других ядер, необходимо выполнить шаг 3 в hello Spark magic инструкции см.
 
 * Для кластеров версии 3.4 установите sparkmagic версии 0.2.3, выполнив команду `pip install sparkmagic==0.2.3`
 
 * Для кластеров версий 3.5 и 3.6 установите sparkmagic версии 0.11.2, выполнив команду `pip install sparkmagic==0.11.2`
 
-## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>Настройка волшебной команды Spark для подключения к кластеру HDInsight Spark
+## <a name="configure-spark-magic-tooconnect-toohdinsight-spark-cluster"></a>Настройка кластера Spark tooHDInsight magic tooconnect Spark
 
-В этом разделе вы настроите подключение волшебной команды Spark, установленную ранее, к кластеру Apache Spark, который вы уже создали в Azure HDInsight.
+В этом разделе Настройка magic Spark hello, установленного ранее tooconnect tooan Apache Spark кластер, необходимо уже созданных в Azure HDInsight.
 
-1. Сведения о конфигурации Jupyter обычно хранятся в домашнем каталоге пользователей. Чтобы найти домашний каталог, введите следующие команды (они подходят для любой платформы ОС).
+1. Hello Jupyter сведения о конфигурации обычно хранятся в домашнем каталоге hello пользователей. toolocate вашим домашним каталогом на любой платформе операционной системы, тип hello следующие команды.
 
-    Запустите оболочку Python. В командной строке введите следующую команду:
+    Запустите консоль hello Python. В окно командной строки введите ниже hello:
 
         python
 
-    В оболочке Python введите следующую команду, чтобы найти домашний каталог.
+    Hello оболочки Python введите hello, следующая команда toofind hello домашнего каталога.
 
         import os
         print(os.path.expanduser('~'))
 
-2. Перейдите в домашний каталог и создайте папку с именем **.sparkmagic** , если ее еще нет.
-3. В этой папке создайте файл **config.json** и добавьте в него следующий фрагмент кода JSON.
+2. Перейдите в корневой каталог toohello и создайте папку с именем **.sparkmagic** , если он еще не существует.
+3. В папке hello, создайте файл с именем **config.json** и добавьте следующий фрагмент JSON внутри него hello.
 
         {
           "kernel_python_credentials" : {
@@ -90,9 +90,9 @@ ms.lasthandoff: 07/11/2017
           }
         }
 
-4. Замените **{USERNAME}**, **{CLUSTERDNSNAME}** и **{BASE64ENCODEDPASSWORD}** соответствующими значениями. Для создания пароля в кодировке base64 вы можете использовать разные служебные программы на предпочитаемом языке программирования или средства, доступные в Интернете.
+4. Замените **{USERNAME}**, **{CLUSTERDNSNAME}** и **{BASE64ENCODEDPASSWORD}** соответствующими значениями. Фактический пароль можно использовать несколько служебных программ избранные языка программирования и зашифрованный пароль online toogenerate кодировке base64.
 
-5. Правильно настройте параметры пульса в `config.json`. Эти параметры необходимо добавить на одном уровне с фрагментами `kernel_python_credentials` и `kernel_scala_credentials`, которые были добавлены ранее. В этом [примере файла config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json) показано, как и где добавляются параметры пульса.
+5. Настройка параметров правой периодического сигнала hello в `config.json`. Эти параметры следует добавить во же уровня как hello hello `kernel_python_credentials` и `kernel_scala_credentials` фрагменты вашей добавленные ранее. Пример hello как и где tooadd параметры периодических сигналов, см. в этой [config.json пример](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
 
     * Для `sparkmagic 0.2.3` (кластеры версии 3.4) добавьте:
 
@@ -107,39 +107,39 @@ ms.lasthandoff: 07/11/2017
             "heartbeat_retry_seconds": 1
 
     >[!TIP]
-    >Сигналы пульса отправляются, чтобы предотвратить утечку сеансов. При переходе в спящий режим или завершении работы компьютера пульс не отправляется, что приводит к очистке сеанса. Если вы хотите отключить такое поведение для кластеров версии 3.4, то можете настроить для параметра Livy `livy.server.interactive.heartbeat.timeout` значение `0` с помощью пользовательского интерфейса Ambari. Если для кластеров версии 3.5 не настроить соответствующую конфигурацию, приведенную выше, то сеанс не будет удален.
+    >Тактовые импульсы отправляются tooensure сеансы не попадают. При переходит toosleep или завершить работу компьютера, не передается пульса hello, приведет к hello сеанса, удаляются. Для v3.4 кластеров, при желании toodisable такое поведение, можно задать hello Livy config `livy.server.interactive.heartbeat.timeout` слишком`0` из hello Ambari пользовательского интерфейса. Для кластеров версии 3.5 если конфигурации hello 3.5 выше, не устанавливайте hello сеанса не удаляются.
 
-6. Запустите Jupyter. Выполните следующую команду из командной строки.
+6. Запустите Jupyter. Используйте следующую команду из командной строки hello hello.
 
         jupyter notebook
 
-7. Убедитесь, что вы можете подключиться к кластеру с помощью записной книжки Jupyter и использовать волшебную команду Spark с ядрами. Выполните следующие действия.
+7. Убедитесь, что можно подключиться toohello кластер, использующий книжке Jupyter hello и могут использовать доступные magic Spark hello с ядром hello. Выполните следующие шаги hello.
 
-    а. Создайте новую записную книжку. В правом верхнем углу щелкните **Создать**. Вы должны увидеть ядро по умолчанию **Python2** и два новых ядра, которые вы установили: **PySpark** и **Spark**. Щелкните **PySpark**.
+    а. Создайте новую записную книжку. В правом углу hello, выберите **New**. Вы увидите ядра по умолчанию hello **Python2** и hello два новых ядер, которые можно установить **PySpark** и **Spark**. Щелкните **PySpark**.
 
     ![Ядра в записной книжке Jupyter](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Ядра в записной книжке Jupyter")
 
-    b. Запустите следующий фрагмент кода.
+    b. Запустите следующий фрагмент кода hello.
 
         %%sql
         SELECT * FROM hivesampletable LIMIT 5
 
-    Если вы успешно получили выходные данные, подключение к кластеру HDInsight работает.
+    Если можно успешно получить выходные данные hello, проверяется кластеру HDInsight toohello соединения.
 
     >[!TIP]
-    >Если вы хотите обновить конфигурацию записной книжки для подключения к другому кластеру, измените файл config.json, указав новый набор значений, как показано на шаге 3.
+    >Tooupdate hello записной книжки конфигурации tooconnect tooa другой кластер, обновите hello config.json hello новый набор значений, как показано в шаге 3 выше.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Зачем устанавливать Jupyter на моем компьютере?
-Может быть несколько причин, по которым вам потребуется установить на компьютер Jupyter и подключить его к кластеру Spark в HDInsight.
+Может быть несколько причин, почему вы хотите tooinstall Jupyter на вашем компьютере и подключить его кластера tooa Spark на HDInsight.
 
-* Хотя записные книжки Jupyter уже доступны в кластере Spark в Azure HDInsight, после их установки на компьютер вы сможете создавать записные книжки локально, тестировать приложения на работающем кластере и отправлять записные книжки в кластер. Для отправки записных книжек в кластер можно отправить их с помощью записной книжки Jupyter, которая запущена на кластере, или сохранить их в папке /HdiNotebooks в учетной записи хранения, связанной с кластером. Дополнительные сведения о хранении записных книжек в кластере см. в разделе [Где хранятся записные книжки](hdinsight-apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored).
-* С помощью локально доступных записных книжек вы сможете подключиться к различным кластерам Spark в зависимости от потребностей вашего приложения.
-* Можно использовать GitHub для реализации системы управления версиями, чтобы контролировать версии записных книжек. Вы также можете создать среду совместной работы, в которой несколько пользователей будут работать с одной записной книжкой.
-* Вы можете работать с записными книжками локально даже без кластера. Кластер нужен только для тестирования записных книжек, но не обязателен для ручного управления записными книжками или средой разработки.
-* Возможно, вам будет проще настроить локальную среду разработки, чем настраивать установку Jupyter в кластере.  Вы можете спокойно пользоваться любым программным обеспечением, установленным локально, не настраивая удаленные кластеры.
+* Даже если записные книжки Jupyter уже доступны hello кластере Spark в Azure HDInsight, установка Jupyter на компьютере обеспечивает hello toocreate параметр записных книжек локально, протестировать приложение на запущенному кластеру и затем передать hello портативные компьютеры toohello кластера. tooupload hello записных книжек toohello кластера, вы можете отправить их с помощью hello книжке Jupyter, на котором выполняется или hello кластера и сохранить toohello /HdiNotebooks папки в учетной записи хранилища hello, связанной с кластером hello. Дополнительные сведения о хранении портативные компьютеры в кластере hello см. в разделе [записные книжки Jupyter хранения](hdinsight-apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
+* Портативные компьютеры hello доступны локально, позволяет подключаться toodifferent Spark кластеров на основе требований вашего приложения.
+* Можно использовать GitHub tooimplement системы управления версиями и управления версиями для ноутбуков hello. Вы также можете среде совместной работы, где могут работать несколько пользователей с hello же записной книжке.
+* Вы можете работать с записными книжками локально даже без кластера. Требуется только tootest кластера записных книжек от, не toomanually управлять записных книжек, либо в среде разработки.
+* Он может быть проще tooconfigure собственные локальной среде разработки, чем tooconfigure hello Jupyter установки на кластере hello.  Вы сможете использовать все hello программного обеспечения, установленных локально без настройки одного или нескольких удаленных кластеров.
 
 > [!WARNING]
-> Если Jupyter установлен на локальном компьютере, несколько пользователей могут одновременно запустить одну и ту же записную книжку в одном кластере Spark. В такой ситуации создаются несколько сеансов Livy. Если вы столкнетесь с проблемами и начнете их отладку, вам будет сложно определить, какой сеанс Livy какому пользователю принадлежит.
+> С Jupyter установлен на локальном компьютере, несколько пользователей могут запустить hello же записной книжке hello же Spark кластера на hello то же время. В такой ситуации создаются несколько сеансов Livy. Если возникли проблемы и требуется, он будет tootrack сложной задачей, принадлежит какой Livy сеанс пользователя toowhich toodebug.
 >
 >
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="scenarios"></a>Сценарии
 * [Использование Spark со средствами бизнес-аналитики. Выполнение интерактивного анализа данных с использованием Spark в HDInsight с помощью средств бизнес-аналитики](hdinsight-apache-spark-use-bi-tools.md)
 * [Использование Spark с машинным обучением. Использование Spark в HDInsight для анализа температуры в здании на основе данных системы кондиционирования](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Использование Spark с машинным обучением. Использование Spark в HDInsight для прогнозирования результатов контроля качества пищевых продуктов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark с машинного обучения: используйте Spark в HDInsight toopredict food проверки результатов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Потоковая передача Spark. Использование Spark в HDInsight для сборки приложений потоковой передачи данных в режиме реального времени](hdinsight-apache-spark-eventhub-streaming.md)
 * [Анализ журнала веб-сайта с использованием Spark в HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
@@ -158,12 +158,12 @@ ms.lasthandoff: 07/11/2017
 * [Удаленный запуск заданий с помощью Livy в кластере Spark](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Средства и расширения
-* [Использование подключаемого модуля средств HDInsight для IntelliJ IDEA для создания и отправки приложений Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [Удаленная отладка приложений Spark в кластере HDInsight Spark Linux с помощью подключаемого модуля средств HDInsight для IntelliJ IDEA](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Использование подключаемого модуля средства HDInsight для toocreate ИДЕЯ IntelliJ и отправка Spark Scala приложений](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Удаленно использовать подключаемый модуль средства HDInsight для приложений Spark toodebug ИДЕЯ IntelliJ](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Использование записных книжек Zeppelin с кластером Spark в HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Ядра, доступные для записной книжки Jupyter в кластере Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Использование внешних пакетов с записными книжками Jupyter](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 
 ### <a name="manage-resources"></a>Управление ресурсами
-* [Управление ресурсами кластера Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+* [Управление ресурсами кластера hello Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Отслеживание и отладка заданий в кластере Apache Spark в HDInsight на платформе Linux](hdinsight-apache-spark-job-debugging.md)

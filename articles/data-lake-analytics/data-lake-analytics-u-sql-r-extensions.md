@@ -1,6 +1,6 @@
 ---
-title: "Расширение возможностей скриптов U-SQL c R в Azure Data Lake Analytics | Документация Майкрософт"
-description: "Узнайте о том, как выполнять код R в скриптах U-SQL"
+title: "aaaExtend U-SQL скрипты с языком R в аналитике Озера данных Azure | Документы Microsoft"
+description: "Узнайте о том, как код toorun R в скриптах U-SQL"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
-ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 24affd4963a08d30a7111b49af388e9c1268430e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-get-started-with-extending-u-sql-with-r"></a>Руководство. Начало работы с расширением возможностей U-SQL c R
 
-В следующих примерах представлены основные шаги по развертыванию кода R:
-* Используйте инструкцию `REFERENCE ASSEMBLY`, чтобы включить расширения R для скрипта U-SQL.
-* Используйте операцию ` REDUCE` для разделения входных данных в ключе.
-* Расширения R для U-SQL включают встроенное средство редукции (`Extension.R.Reducer`), которое выполняет код R в каждой назначенной ему вершине. 
-* Передача данных между U-SQL и R с использованием выделенных именованных таблиц данных `inputFromUSQL` и `outputToUSQL ` соответственно. Имена идентификаторов входной и выходной таблицы данных исправлены (то есть пользователи не могут изменить эти предопределенные имена идентификаторов входной и выходной таблицы данных).
+Следующий пример Hello рассмотрены основные шаги развертывания кода R hello:
+* Используйте hello `REFERENCE ASSEMBLY` расширения tooenable R инструкции для hello скрипт U-SQL.
+* Используйте` REDUCE` операции toopartition hello входные данные по ключу.
+* расширения Hello R для U-SQL включают в себя встроенные редуктора (`Extension.R.Reducer`), которое будет выполняться код R на каждой вершины назначенный toohello редуктора. 
+* Использование выделенного с именем кадров данных называется `inputFromUSQL` и `outputToUSQL `соответственно toopass данных между U-SQL и R. ввода и вывода исправленные имена идентификаторов кадр данных (то есть, пользователи не могут изменить эти стандартные имена входных данных и вывода кадр данных идентификаторы).
 
-## <a name="embedding-r-code-in-the-u-sql-script"></a>Внедрение кода R в скрипт U-SQL
+## <a name="embedding-r-code-in-hello-u-sql-script"></a>Внедрение кода R в hello скрипт U-SQL
 
-Код R можно встроить в скрипт U-SQL с помощью параметра команды средства `Extension.R.Reducer`. Например, можно объявить скрипт R как строковую переменную и передать его в качестве параметра в Reducer.
+Вы можете hello R во встроенном коде на ваш скрипт U-SQL с помощью параметра команды hello hello `Extension.R.Reducer`. Например можно объявить hello сценария R в переменной строки и передайте его в качестве параметра toohello редуктора.
 
 
     REFERENCE ASSEMBLY [ExtR];
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
     DECLARE @myRScript = @"
     inputFromUSQL$Species = as.factor(inputFromUSQL$Species)
     lm.fit=lm(unclass(Species)~.-Par, data=inputFromUSQL)
-    #do not return readonly columns and make sure that the column names are the same in usql and r scripts,
+    #do not return readonly columns and make sure that hello column names are hello same in usql and r scripts,
     outputToUSQL=data.frame(summary(lm.fit)$coefficients)
     colnames(outputToUSQL) <- c(""Estimate"", ""StdError"", ""tValue"", ""Pr"")
     outputToUSQL
@@ -46,16 +46,16 @@ ms.lasthandoff: 07/11/2017
     
     @RScriptOutput = REDUCE … USING new Extension.R.Reducer(command:@myRScript, rReturnType:"dataframe");
 
-## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>Сохраните код R в отдельном файле и ссылайтесь на него в скрипте U-SQL
+## <a name="keep-hello-r-code-in-a-separate-file-and-reference-it--hello-u-sql-script"></a>Сохранить в отдельном файле кода hello R и ссылок на него скрипт hello U-SQL
 
-В следующем примере демонстрируется более сложное использование. В этом случае код R развертывается как RESOURCE, который является скриптом U-SQL.
+Следующий пример Hello рассмотрены более сложные использования. В этом случае код hello R развертывается как РЕСУРС, который является hello скрипт U-SQL.
 
 Сохраните этот код R как отдельный файл.
 
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence")) 
 
-Используйте скрипт U-SQL для развертывания этого скрипта R с оператором DEPLOY RESOURCE.
+Используйте этот скрипт R toodeploy скрипт U-SQL с hello инструкции РАЗВЕРТЫВАНИЯ РЕСУРСОВ.
 
     REFERENCE ASSEMBLY [ExtR];
 
@@ -90,25 +90,25 @@ ms.lasthandoff: 07/11/2017
         PRODUCE Par, fit double, lwr double, upr double
         READONLY Par
         USING new Extension.R.Reducer(scriptFile:"RinUSQL_PredictUsingLinearModelasDF.R", rReturnType:"dataframe", stringsAsFactors:false);
-        OUTPUT @RScriptOutput TO @OutputFilePredictions USING Outputters.Tsv();
+        OUTPUT @RScriptOutput too@OutputFilePredictions USING Outputters.Tsv();
 
 ## <a name="how-r-integrates-with-u-sql"></a>Интеграция R c U-SQL
 
 ### <a name="datatypes"></a>Типы данных
 * Строковые и числовые столбцы из U-SQL преобразуются без изменений между таблицей данных на R и U-SQL [поддерживаемые типы: `double`, `string`, `bool`, `integer`, `byte`].
-* Тип данных `Factor` не поддерживается в U-SQL.
+* Hello `Factor` тип данных не поддерживается в U-SQL.
 * Тип `byte[]` должен быть сериализован как строка `string` в кодировке Base64.
-* После создания в U-SQL входной таблицы данных R или установки для параметра средства редукции `stringsAsFactors: true` значения true строки U-SQL можно преобразовать в коэффициенты кода R.
+* Строки U-SQL могут быть toofactors, преобразованное в коде R, один раз U-SQL создать входной кадр данных R или параметром задание hello редуктора `stringsAsFactors: true`.
 
 ### <a name="schemas"></a>Схемы
 * Наборы данных U-SQL не могут содержать повторяемые имена столбцов.
 * Имена столбцов в наборах данных U-SQL должны быть строками.
-* Имена столбцов в скриптах U-SQL и R должны совпадать.
-* Столбцы с доступом только для чтения не могут быть частью выходной таблицы данных, так как они автоматически вставляются обратно в таблицу U-SQL (если она является частью выходной схемы определяемых пользователем объектов).
+* Имена столбцов должны hello же U-SQL и R-сценариев.
+* Только для чтения столбец не может быть частью блока hello выходных данных. Так как столбцы только для чтения автоматически добавляются обратно в таблице hello U-SQL, если он является частью схемы вывода данных из определяемого пользователем ОПЕРАТОРА.
 
 ### <a name="functional-limitations"></a>Ограничения функциональных возможностей
-* Ядро R нельзя создать дважды в одном процессе. 
-* В настоящее время U-SQL не поддерживает определяемые пользователем операторы Combiner для прогнозирования с помощью секционированных моделей, созданных с использованием определяемых пользователем операторов Reducer. Пользователи могут объявить секционированные модели как ресурс и использовать их в своих скриптах R (см. пример кода `ExtR_PredictUsingLMRawStringReducer.usql`)
+* Hello модуль R не может быть создан в два раза hello одного процесса. 
+* В настоящее время U-SQL не поддерживает определяемые пользователем операторы Combiner для прогнозирования с помощью секционированных моделей, созданных с использованием определяемых пользователем операторов Reducer. Пользователи могут объявить hello секционированы моделей в качестве ресурса и использовать их в R-сценария (см. пример кода `ExtR_PredictUsingLMRawStringReducer.usql`)
 
 ### <a name="r-versions"></a>Версии R
 Поддерживается только R 3.2.2.
@@ -164,14 +164,14 @@ ms.lasthandoff: 07/11/2017
     XML
 
 ### <a name="input-and-output-size-limitations"></a>Ограничения размера входных и выходных данных
-Каждой вершине назначен ограниченный объем памяти. Так как входящие и исходящие кадры данных должны существовать в памяти кода R, общий размер входных и выходных данных должен находиться в пределах 500 ГБ.
+Каждая вершина имеет ограниченный объем памяти, назначенный tooit. Поскольку hello блоки входных и выходных данных должна существовать в памяти в коде hello R, hello общий размер для hello ввода и вывода не может превышать 500 МБ.
 
 ### <a name="sample-code"></a>Пример кода
-Дополнительные примеры кода доступны в вашей учетной записи Data Lake Store после установки расширений расширенной аналитики U-SQL. Путь к другим примерам кода: `<your_account_address>/usqlext/samples/R`. 
+Несколько примеров кода доступен в вашей учетной записи хранилища Озера данных после установки расширения U-SQL Advanced Analytics hello. несколько примеров кода Hello путь —: `<your_account_address>/usqlext/samples/R`. 
 
 ## <a name="deploying-custom-r-modules-with-u-sql"></a>Развертывание настраиваемых модулей R с помощью U-SQL
 
-Сначала создайте настраиваемый модуль R, заархивируйте его в ZIP-файл, а затем отправьте этот ZIP-файл с настраиваемым модулем в хранилище ADL. В этом примере файл magittr_1.5.zip будет отправлен в корень учетной записи ADLS по умолчанию для используемой учетной записи ADLA. После отправки модуля в хранилище ADL объявите его с помощью DEPLOY RESOURCE, чтобы сделать этот модуль доступным в скрипте U-SQL, затем вызовите метод `install.packages`, чтобы установить его.
+Во-первых создайте настраиваемый модуль R и почтовый индекс, он, а затем отправьте ZIP-хранилище ADL tooyour файла настраиваемого модуля R hello. В примере hello будет передать корень toohello magittr_1.5.zip hello ADLS учетная запись по умолчанию hello ADLA учетную запись, которую мы используем. После загрузки хранилища tooADL модуль hello объявить его как использование РЕСУРСОВ РАЗВЕРТЫВАНИЯ toomake его доступным в скрипт U-SQL и вызовите `install.packages` tooinstall его.
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
@@ -179,13 +179,13 @@ ms.lasthandoff: 07/11/2017
     DECLARE @IrisData string =  @"/usqlext/samples/R/iris.csv";
     DECLARE @OutputFileModelSummary string = @"/R/Output/CustomePackages.txt";
 
-    // R script to run
+    // R script toorun
     DECLARE @myRScript = @"
-    # install the magrittr package,
+    # install hello magrittr package,
     install.packages('magrittr_1.5.zip', repos = NULL),
-    # load the magrittr package,
+    # load hello magrittr package,
     require(magrittr),
-    # demonstrate use of the magrittr package,
+    # demonstrate use of hello magrittr package,
     2 %>% sqrt
     ";
 
@@ -208,7 +208,7 @@ ms.lasthandoff: 07/11/2017
     READONLY Par
     USING new Extension.R.Reducer(command:@myRScript, rReturnType:"charactermatrix");
 
-    OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
+    OUTPUT @RScriptOutput too@OutputFileModelSummary USING Outputters.Tsv();
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * [Обзор аналитики озера данных Microsoft Azure](data-lake-analytics-overview.md)

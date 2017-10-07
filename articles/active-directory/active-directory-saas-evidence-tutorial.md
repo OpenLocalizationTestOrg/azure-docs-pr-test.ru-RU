@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с Evidence.com | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в приложении Evidence.com."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Evidence.com."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,208 +14,208 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: a9c474cfc648fc8a306d736c89a4813d82c133ea
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: eed98c15dca8a6a77f0b5d407bb40ee0037fccad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Руководство. Интеграция Azure Active Directory с Evidence.com
 
-В этом руководстве описано, как интегрировать Evidence.com с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Evidence.com с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением Evidence.com обеспечивает следующие преимущества:
+Интеграция с Azure AD Evidence.com предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Evidence.com.
-- Вы можете включить автоматический вход пользователей в Evidence.com (единый вход) с применением учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — на портале Azure.
+- Можно управлять в Azure AD, имеющего доступ tooEvidence.com.
+- Можно включить на пользователей tooautomatically get вошедшего tooEvidence.com (Single Sign-On) с помощью своих учетных записей Azure AD.
+- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Evidence.com, вам потребуется:
+tooconfigure интеграция Azure AD с Evidence.com требуется hello следующих элементов:
 
 - подписка Azure AD;
 - Подписка Evidence.com с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Evidence.com из коллекции.
+1. Добавление Evidence.com из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-evidencecom-from-the-gallery"></a>Добавление Evidence.com из коллекции
-Чтобы настроить интеграцию Evidence.com с Azure AD, необходимо добавить Evidence.com из коллекции в список управляемых приложений SaaS.
+## <a name="adding-evidencecom-from-hello-gallery"></a>Добавление Evidence.com из галереи hello
+tooconfigure hello интеграции Evidence.com в Azure AD, вы должны tooadd Evidence.com из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Evidence.com из коллекции, сделайте следующее:**
+**tooadd Evidence.com из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
-    ![Колонка "Корпоративные приложения"][2]
+    ![Hello корпоративных приложений колонку][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Кнопка нового приложения Hello][3]
 
-4. В поле поиска введите **Evidence.com**, на панели результатов выберите **Evidence.com** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+4. Введите в поле поиска hello **Evidence.com**выберите **Evidence.com** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
 
-    ![Evidence.com в списке результатов](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_addfromgallery.png)
+    ![Evidence.com в списке результатов hello](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в Evidence.com с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Evidence.com соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Evidence.com.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Evidence.com является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Evidence.com должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Evidence.com.
+В Evidence.com, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Evidence.com, необходимо выполнить действия в следующих стандартных блоках.
+tooconfigure и теста Azure AD единого входа с Evidence.com, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Evidence.com](#create-a-evidencecom-test-user)** требуется для того, чтобы в Evidence.com существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя Evidence.com](#create-a-evidencecom-test-user)**  -toohave аналог Саймон Britta в Evidence.com, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Evidence.com.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Evidence.com.
 
-**Чтобы настроить единый вход Azure AD в Evidence.com, сделайте следующее:**
+**tooconfigure Azure AD единого входа с Evidence.com, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Evidence.com** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Evidence.com** странице интеграции приложения щелкните **единого входа**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Evidence.com** сделайте следующее:
+3. На hello **URL-адреса и домена Evidence.com** выполните следующие шаги hello:
 
     ![Сведения о домене и URL-адресах единого входа для приложения Evidence.com](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_url.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<yourtenant>.evidence.com`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<yourtenant>.evidence.com`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<yourtenant>.evidence.com`
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<yourtenant>.evidence.com`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить их, обратитесь в [службу поддержки клиентов Evidence.com](https://communities.taser.com/support/SupportContactUs?typ=LE). 
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки клиента Evidence.com](https://communities.taser.com/support/SupportContactUs?typ=LE) tooget эти значения. 
 
-4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
-    ![Ссылка для скачивания сертификата](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_certificate.png) 
+    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-evidence-tutorial/tutorial_general_400.png)
 
-6. В разделе **конфигурации Evidence.com** щелкните **Настроить Evidence.com**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML**  из раздела **Краткий справочник**.
+6. На hello **конфигурации Evidence.com** щелкните **Настройка Evidence.com** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Конфигурация Evidence.com](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_configure.png) 
 
-7. В отдельном окне браузера войдите в клиент Evidence.com с правами администратора и перейдите к вкладке **Admin** (Администрирование).
+7. В отдельном окне браузера, tooyour входа Evidence.com клиента с правами администратора и перейдите слишком**администратора** вкладка
 
 8. Щелкните **Agency Single Sign On**
 
 9. Выберите параметр **SAML Based Single Sign On**
 
-10. Скопируйте **идентификатор сущности SAML**, **URL-адрес службы единого входа SAML** и **URL-адрес выхода**, отображаемые на портале Azure, и добавьте их в соответствующие поля в приложении Evidence.com.
+10. Копировать hello **идентификатор сущности SAML**, **SAML единого входа URL-адрес службы** и **URL-адрес выхода** значения, отображаемые в hello портал Azure и соответствующих полей toohello Evidence.com.
 
-11. Откройте скачанный файл сертификата в кодировке Base64 в Блокноте, скопируйте его содержимое в буфер обмена, а затем вставьте его в поле **Security Certificate** (Сертификат безопасности). 
+11. Откройте скачанный файл Certificate(Base64) в блокноте, hello копирования содержимого его в буфер обмена, а затем вставьте его toohello **сертификат безопасности** поле. 
 
-12. Сохраните конфигурацию в Evidence.com.
+12. Сохранение конфигурации hello в Evidence.com.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
 
-    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-evidence-tutorial/create_aaduser_01.png)
+    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-evidence-tutorial/create_aaduser_01.png)
 
-2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
 
-    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-evidence-tutorial/create_aaduser_02.png)
+    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-evidence-tutorial/create_aaduser_02.png)
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
 
-    ![Кнопка "Добавить"](./media/active-directory-saas-evidence-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-evidence-tutorial/create_aaduser_03.png)
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
 
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-evidence-tutorial/create_aaduser_04.png)
+    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-evidence-tutorial/create_aaduser_04.png)
 
-    а. В поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
 
-    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
 
-    г) Щелкните **Создать**.
+    d. Щелкните **Создать**.
  
 ### <a name="create-a-evidencecom-test-user"></a>Создание тестового пользователя Evidence.com
 
-Чтобы пользователи Azure AD могли выполнять вход, нужно подготовить их для доступа в приложении Evidence.com. В этом разделе описано, как создавать учетные записи пользователей Azure AD в Evidence.com.
+Azure AD пользователи toobe может toosign в их необходимо подготовить для доступа внутри hello Evidence.com приложения. В этом разделе описывается, как учетные записи пользователей Azure AD toocreate внутри Evidence.com
 
-**Чтобы подготовить учетную запись пользователя в Evidence.com, выполните следующие действия.**
+**tooprovision учетной записи пользователя в Evidence.com:**
 
 1. В окне веб-браузера войдите на корпоративный веб-сайт Evidence.com в качестве администратора.
 
-2. Перейдите к вкладке **Admin** (Администрирование).
+2. Перейдите в слишком**администратора** вкладки.
 
 3. Щелкните **Add User**(Добавить пользователя).
 
-4. Нажмите кнопку **Add** (Добавить).
+4. Нажмите кнопку hello **добавить** кнопки.
 
-5. Параметр **Email Address** (Адрес электронной почты) для нового пользователя должен совпадать с именем пользователя в Azure AD, которому вы хотите предоставить доступ. Возможно, в вашей организации в качестве имени пользователя не используется адрес электронной почты. Тогда зайдите на портале Azure в раздел **Evidence.com > Атрибуты > Единый вход** и измените параметр nameidentifier (идентификатор имени, отправляемый приложению Evidence.com) так, чтобы передавался именно адрес электронной почты.
+5. Hello **адрес электронной почты** hello added пользователя должно соответствовать пользователя hello hello пользователей в Azure AD, который вы хотите toogive доступа. Если hello имя пользователя и адрес электронной почты не являются hello одинакового значения в вашей организации, можно использовать hello **Evidence.com > атрибуты > Single Sign-On** раздел hello Azure портала toochange hello nameidenitifer отправки адрес электронной почты tooEvidence.com toobe hello.
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к Evidence.com.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooEvidence.com доступа.
 
-![Назначение роли пользователя][200] 
+![Назначение пользователям ролей hello][200] 
 
-**Чтобы назначить пользователя Britta Simon приложению Evidence.com, сделайте следующее:**
+**tooassign tooEvidence.com Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Evidence.com**.
+2. В списке приложений hello выберите **Evidence.com**.
 
-    ![Ссылка Evidence.com в списке приложений](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_app.png)  
+    ![ссылка Evidence.com Hello в списке приложений hello](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_app.png)  
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202]
+    ![Hello ссылку «Пользователи и группы»][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Область "Добавление назначения"][203]
+    ![область назначения, добавьте Hello][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -223,14 +223,14 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент Evidence.com на панели доступа, вы автоматически войдете в приложение Evidence.com.
-Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
+При нажатии кнопки hello Evidence.com плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Evidence.com приложения.
+Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

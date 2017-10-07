@@ -1,6 +1,6 @@
 ---
-title: "Предоставление пользователю разрешений для определенных политик лаборатории | Документация Майкрософт"
-description: "Узнайте, как предоставить пользователю разрешения для определенных политик лаборатории в DevTest Labs исходя из его потребностей."
+title: "политики лаборатории toospecific разрешения пользователя aaaGrant | Документы Microsoft"
+description: "Узнайте, как политики toogrant пользователя разрешения toospecific лаборатории в DevTest Labs исходя из потребностей каждого пользователя"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: tomarcher
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.openlocfilehash: 0bd9f83257834d9681479ba9117c48ffd6d6e166
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 35647ab837243188f06566cdf365b67fe33a3865
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="grant-user-permissions-to-specific-lab-policies"></a>Предоставление пользователю разрешений для определенных политик лаборатории
+# <a name="grant-user-permissions-toospecific-lab-policies"></a>Предоставление разрешений пользователю toospecific лаборатории политики
 ## <a name="overview"></a>Обзор
-В этой статье рассказывается, как с помощью PowerShell предоставить пользователям разрешения для определенной политики лаборатории. Разрешения могут предоставляться в зависимости от потребностей каждого пользователя. Например, определенному пользователю можно разрешить изменить параметры политики виртуальной машины, но не политики затрат.
+В этой статье показано, как toouse PowerShell toogrant пользователей разрешения tooa определенной лабораторной политики. Разрешения могут предоставляться в зависимости от потребностей каждого пользователя. Например может потребоваться toogrant определенного hello возможность toochange hello ВМ параметры политики пользователя, но не hello стоимости политики.
 
 ## <a name="policies-as-resources"></a>Политики как ресурсы
-Как уже обсуждалось в одноименной статье, [управление доступом на основе ролей (RBAC)](../active-directory/role-based-access-control-configure.md) обеспечивает точное управление доступом для Azure. С помощью RBAC вы можете распределить обязанности внутри команды разработчиков и предоставить пользователям доступ на том уровне, который им необходим для выполнения поставленных задач.
+Как было сказано в hello [управления доступом на основе ролей Azure](../active-directory/role-based-access-control-configure.md) статье RBAC разрешение подробного управления доступом ресурсов для Azure. RBAC можно разделять обязанностей в рамках команды DevOps и предоставить только hello объем toousers доступа, необходимых tooperform свою работу.
 
-В DevTest Labs политика — это тип ресурса, который включает действие RBAC **Microsoft.DevTestLab/labs/policySets/policies/**. Каждая политика лаборатории представляет собой ресурс типа "Политика" и может быть назначена в качестве области действия для роли RBAC.
+В DevTest Labs политики является тип ресурса, который включает действие hello RBAC **Microsoft.DevTestLab/labs/policySets/policies/**. Каждой политики лаборатории — это ресурс в hello тип политики ресурсов и могут быть назначены в качестве роли RBAC tooan области.
 
-Например, чтобы предоставить пользователям разрешения на чтение и запись для **размеры виртуальных Машин допускается** политики, необходимо создать пользовательскую роль, которая работает с **Microsoft.DevTestLab/labs/policySets/policies/*** действие, а затем назначить соответствующим пользователям пользовательской роли в области **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
+Например, в порядке toogrant пользователям чтение и запись разрешение toohello **размеры виртуальных Машин допускается** политики, необходимо создать пользовательскую роль, который работает с hello **Microsoft.DevTestLab/labs/policySets/policies/** * действия, а затем назначить соответствующим пользователям hello toothis пользовательской роли hello области **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
 
-Дополнительные сведения о пользовательских ролях в RBAC см. в статье [Пользовательские роли в Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+toolearn Дополнительные сведения о пользовательских ролей, в RBAC, в разделе hello [управления доступом к пользовательских ролей](../active-directory/role-based-access-control-custom-roles.md).
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>Создание пользовательской роли лаборатории с помощью PowerShell
-Чтобы начать работу, прочтите статью [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre), в которой рассказывается, как установить и настроить командлеты Azure PowerShell.
+В порядке tooget к работе, вам потребуется hello tooread следующей статьей, в которой объясняется, как tooinstall и настройте командлеты Azure PowerShell hello: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
 
-Настроив командлеты Azure PowerShell, вы сможете выполнять следующие задачи:
+После настройки hello командлетов Azure PowerShell можно выполнять следующие задачи hello:
 
-* Получать список всех операций и действий по тому или иному поставщику ресурсов.
+* Список всех операций hello или действий для поставщика ресурсов
 * Получать список действий по определенной роли:
 * Создание настраиваемой роли
 
-Примеры выполнения этих задач демонстрирует следующий сценарий PowerShell:
+Следующий сценарий PowerShell Hello рассмотрены примеры tooperform следующие задачи:
 
-    ‘List all the operations/actions for a resource provider.
+    ‘List all hello operations/actions for a resource provider.
     Get-AzureRmProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
 
     ‘List actions in a particular role.
@@ -60,10 +60,10 @@ ms.lasthandoff: 07/11/2017
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
     $policyRoleDef = (New-AzureRmRoleDefinition -Role $policyRoleDef)
 
-## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Предоставление пользователю разрешений в отношении определенной политики с помощью пользовательских ролей
-Определив пользовательские роли, можно назначить их пользователям. Чтобы назначить пользовательскую роль, необходимо получить **ObjectId** соответствующего пользователя. Для этого используйте командлет **Get-AzureRmADUser** .
+## <a name="assigning-permissions-tooa-user-for-a-specific-policy-using-custom-roles"></a>Назначение пользователя tooa разрешения для конкретной политики с помощью пользовательских ролей
+После определения пользовательских ролей, можно назначить их toousers. В порядке tooassign tooa пользовательской роли пользователя, необходимо сначала получить hello **ObjectId** представляющий этого пользователя. toodo, использовать hello **Get AzureRmADUser** командлета.
 
-В следующем примере **ObjectId** пользователя *SomeUser* имеет значение 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3.
+В следующем примере hello, hello **ObjectId** из hello *SomeUser* 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 пользователя.
 
     PS C:\>Get-AzureRmADUser -SearchString "SomeUser"
 
@@ -71,11 +71,11 @@ ms.lasthandoff: 07/11/2017
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-Получив **ObjectId** пользователя и имя пользовательской роли, можно назначить эту роль пользователю с помощью командлета **New-AzureRmRoleAssignment**.
+При наличии hello **ObjectId** для пользователя hello и имя пользовательской роли, можно назначить этого пользователя роль toohello с hello **New AzureRmRoleAssignment** командлета:
 
     PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/policies/AllowedVmSizesInLab
 
-В предыдущем примере использовалась политика **AllowedVmSizesInLab** . Также можно использовать любую из следующих политик:
+В предыдущем примере hello hello **AllowedVmSizesInLab** используется политика. Можно использовать любой из следующих политик hello:
 
 * MaxVmsAllowedPerUser
 * MaxVmsAllowedPerLab
@@ -85,11 +85,11 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-После того как пользователю будут предоставлены разрешения для определенных политик лаборатории, можно выполнить следующие действия.
+Один раз вы предоставили политик лаборатории toospecific разрешения пользователя, ниже приведены некоторые Далее tooconsider действия:
 
-* [Безопасный доступ к лаборатории](devtest-lab-add-devtest-user.md).
+* [Безопасный доступ tooa лаборатории](devtest-lab-add-devtest-user.md).
 * [Определение политик лаборатории](devtest-lab-set-lab-policy.md).
 * [Создание шаблона лаборатории](devtest-lab-create-template.md).
 * [Создание пользовательских артефактов для виртуальных машин](devtest-lab-artifact-author.md).
-* [Добавление виртуальной машины с артефактами в лабораторию](devtest-lab-add-vm-with-artifacts.md).
+* [Добавить виртуальную Машину с артефакты лаборатории tooa](devtest-lab-add-vm-with-artifacts.md).
 
