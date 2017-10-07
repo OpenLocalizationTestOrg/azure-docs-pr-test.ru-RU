@@ -29,8 +29,8 @@
 
 ## Разработка
 ### [Версии API](search-api-versions.md)
-### [Обновление пакета SDK](search-dotnet-sdk-migration.md)
-### [Обновление REST API](search-api-migration.md)
+### [Обновление пакета SDK для hello](search-dotnet-sdk-migration.md)
+### [Обновление hello REST API](search-api-migration.md)
 ### [Моделирование сложных типов данных](search-howto-complex-data-types.md)
 ### [Обработка одновременных обновлений](search-howto-concurrency.md)
 ### [Примеры кода](https://azure.microsoft.com/resources/samples/?service=search)
@@ -50,7 +50,7 @@
 ### [Индексатор базы данных Azure Cosmos](search-howto-index-documentdb.md)
 ### [Индексация больших двоичных объектов с разделителями-запятыми](search-howto-index-csv-blobs.md)
 ### [Индексация больших двоичных объектов JSON](search-howto-index-json-blobs.md)
-### [Настройка подключений индексатора к SQL Server на виртуальной машине Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+### [Настройте индексатор подключений tooSQL сервера на виртуальной Машине Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [Сопоставление полей в индексаторах](search-indexer-field-mappings.md)
 ##  Поиск
 ### [Принцип работы полнотекстового поиска](search-lucene-query-architecture.md)

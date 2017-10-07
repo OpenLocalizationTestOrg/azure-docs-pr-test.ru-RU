@@ -1,6 +1,6 @@
 ---
-title: "Установка службы Mobility Service (из виртуальных машин VMware или физических серверов в Azure) | Документация Майкрософт"
-description: "Узнайте, как установить агент службы Mobility Service для защиты локальных компьютеров."
+title: "aaaInstall службы Mobility Service (VMware или физических tooAzure) | Документы Microsoft"
+description: "Узнайте, как tooinstall hello tooprotect агент службы Mobility Service на локальных компьютерах."
 services: site-recovery
 documentationcenter: 
 author: AnoopVasudavan
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: 848284f37ae2470a169d8f8a8c9c0bb5b926abe3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f7836e6b35d3838bae1eff927838ce4b245b9f56
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="install-mobility-service-vmware-or-physical-to-azure"></a>Установка службы Mobility Service (из виртуальных машин VMware или физических серверов в Azure)
-Служба Mobility Service Azure Site Recovery фиксирует операции записи данных, выполняемые на компьютере, и передает их на сервер обработки. Разверните службу Mobility Service на каждом компьютере (виртуальная машина или физический сервер VMware), который требуется реплицировать в Azure. Службы Mobility Service можно развернуть на серверах, которые необходимо защитить, следующими способами:
+# <a name="install-mobility-service-vmware-or-physical-tooazure"></a>Установка службы Mobility Service (VMware или физических tooAzure)
+Мобильность службе Azure Site Recovery захватывает записи данных на компьютере и пересылает их toohello сервер обработки. Развертывание компьютер tooevery службы Mobility Service (виртуальной Машины VMware или физических серверов), которые должны tooreplicate tooAzure. Можно развернуть серверы toohello службы Mobility Service требуется tooprotect с помощью hello следующие методы:
 
 
 * [Установка с помощью инструментов развертывания программного обеспечения, таких как System Center Configuration Manager](site-recovery-install-mobility-service-using-sccm.md).
 * [Установка с помощью службы автоматизации Azure и настройки требуемого состояния (DSC службы автоматизации)](site-recovery-automate-mobility-service-install.md).
-* [Установка вручную с помощью графического пользовательского интерфейса (GUI)](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-by-using-the-gui).
+* [Установка службы Mobility Service вручную с помощью hello графический интерфейс пользователя (GUI)](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-by-using-the-gui)
 * [Установка Mobility Service в командной строке вручную](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-at-a-command-prompt).
 * [Принудительная установка Mobility Service из Azure Site Recovery](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery).
 
 
 >[!IMPORTANT]
-> Начиная с версии 9.7.0.0, установщик службы Mobility Service также устанавливает последнюю доступную версию [агента виртуальных машин Azure](../virtual-machines/windows/extensions-features.md#azure-vm-agent) на виртуальных машинах Windows. Если при отработке отказа компьютер переходит в Azure, выполняется предварительное требование агента, связанное с использованием любого расширения виртуальной машины.
+> Начиная с версии 9.7.0.0, на виртуальных машинах (ВМ), программу установки службы Mobility hello также устанавливает hello последние доступные [агент ВМ Azure](../virtual-machines/windows/extensions-features.md#azure-vm-agent). При сбое компьютера через tooAzure, hello компьютер соответствует необходимым компонентом для любого расширения виртуальной Машины с помощью установки агента hello.
 
 ## <a name="prerequisites"></a>Предварительные требования
 Перед установкой службы Mobility Service вручную на сервере выполните следующие обязательные действия:
-1. Войдите на сервер конфигурации и откройте окно командной строки с правами администратора.
-2. Измените каталог на папку bin и создайте файл с парольной фразой.
+1. Войдите в сервер tooyour конфигурации, а затем откройте окно командной строки с правами администратора.
+2. Перейдите в папку bin toohello hello каталога и создайте файл с парольной фразой:
 
     ```
     cd %ProgramData%\ASR\home\svsystems\bin
     genpassphrase.exe -v > MobSvc.passphrase
     ```
-3. Сохраните файл парольной фразы в безопасном месте. Используйте файл во время установки службы Mobility Service.
-4. Установщики службы Mobility Service для всех поддерживаемых операционных систем находятся в папке %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository.
+3. Сохраните файл hello парольную фразу в безопасном месте. Файл hello используется во время установки службы Mobility hello.
+4. Мобильные службы установщики для всех поддерживаемых операционных системах, в папке %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository hello.
 
 ### <a name="mobility-service-installer-to-operating-system-mapping"></a>Сопоставление установщика Mobility Service с операционной системой
 
@@ -59,10 +59,10 @@ ms.lasthandoff: 07/11/2017
 |Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04 (только 64-разрядная версия)|
 
 
-## <a name="install-mobility-service-manually-by-using-the-gui"></a>Установка службы Mobility Service вручную с помощью графического пользовательского интерфейса
+## <a name="install-mobility-service-manually-by-using-hello-gui"></a>Установка службы Mobility Service вручную с помощью графического интерфейса пользователя hello
 
 >[!IMPORTANT]
-> Если вы используете **сервер конфигурации** для репликации **виртуальных машин Azure IaaS** из одной подписки (региона) Azure в другую, **воспользуйтесь методом установки с помощью командной строки**.
+> Если вы используете **сервер конфигурации** tooreplicate **виртуальные машины Azure IaaS** из одной подписки Azure или регион tooanother, затем **использовать установки из командной строки на основе hello**  метод
 
 [!INCLUDE [site-recovery-install-mob-svc-gui](../../includes/site-recovery-install-mob-svc-gui.md)]
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="install-mobility-service-by-push-installation-from-azure-site-recovery"></a>Принудительная установка Mobility Service из Azure Site Recovery
-Для принудительной установки службы Mobility Service с использованием Site Recovery все для целевых компьютеров следует выполнить следующие предварительные требования.
+toodo принудительной установки службы Mobility Service с помощью Site Recovery, все целевые компьютеры должны удовлетворять hello следующие необходимые условия.
 
 [!INCLUDE [site-recovery-prepare-push-install-mob-svc-win](../../includes/site-recovery-prepare-push-install-mob-svc-win.md)]
 
@@ -84,18 +84,18 @@ ms.lasthandoff: 07/11/2017
 
 
 > [!NOTE]
-После установки службы Mobility Service на портале Azure нажмите кнопку **Репликация**, чтобы приступить к защите виртуальных машин.
+После установки службы Mobility Service в hello портал Azure, выберите hello **реплицировать** toostart кнопку Защита этих виртуальных машинах.
 
 ## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>Удаление Mobility Service с компьютера Windows Server
-Воспользуйтесь одним из следующих методов для удаления службы Mobility Service на компьютере Windows Server.
+Используйте одну из hello следующие методы toouninstall службы Mobility Service на компьютере Windows Server.
 
-### <a name="uninstall-by-using-the-gui"></a>Удаление с помощью графического пользовательского интерфейса
+### <a name="uninstall-by-using-hello-gui"></a>Удаление с помощью графического интерфейса пользователя hello
 1. На панели управления выберите **Программы**.
 2. Выберите **Microsoft Azure Site Recovery Mobility Service / главный целевой сервер** и нажмите кнопку **Удалить**.
 
 ### <a name="uninstall-at-a-command-prompt"></a>Удаление из командной строки
 1. Откройте окно командной строки с правами администратора.
-2. Выполните следующую команду, чтобы удалить службу Mobility Service.
+2. toouninstall службы Mobility Service, запустите hello следующую команду:
 
 ```
 MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
@@ -103,8 +103,8 @@ MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\
 
 ## <a name="uninstall-mobility-service-on-a-linux-computer"></a>Удаление службы Mobility на компьютере Linux
 1. На сервере Linux войдите как **привилегированный** пользователь.
-2. В разделе "Терминал" перейдите к /user/local/ASR.
-3. Выполните следующую команду, чтобы удалить службу Mobility Service.
+2. В конечном перейдите слишком/пользователя/локальной/ASR.
+3. toouninstall службы Mobility Service, запустите hello следующую команду:
 
 ```
 uninstall.sh -Y

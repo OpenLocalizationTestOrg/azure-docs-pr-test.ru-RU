@@ -1,6 +1,6 @@
 ---
-title: "Использование клиента Office 365 с подпиской Azure | Документация Майкрософт"
-description: "Узнайте, как добавить каталог (клиент) Office 365 в подписку Azure."
+title: "Office 365 aaaUse клиента с подпиской Azure | Документы Microsoft"
+description: "Узнайте, как tooadd Office 365 directory (клиент) tooan подписки Azure."
 services: 
 documentationcenter: 
 author: JiangChen79
@@ -15,34 +15,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: cjiang
-ms.openlocfilehash: 7affb4a83cdb8ababef60e786a3c824e7477ed68
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e560370417bd074a7e37ceb7c60da45dbbbcf775
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="associate-an-office-365-tenant-to-an-azure-subscription"></a>Связывание клиента Office 365 с подпиской Azure
-Свяжите отдельные подписки Azure и Office 365, чтобы иметь доступ к клиенту Office 365 из подписки Azure. Чтобы связать подписки, войдите в Azure, используя учетную запись администратора служб Azure, добавьте каталог, а затем добавьте учетные записи организации Office 365 в клиент Azure Active Directory.
+# <a name="associate-an-office-365-tenant-tooan-azure-subscription"></a>Связать tooan клиента Office 365 подписки Azure
+Свяжите отдельные подписки Azure и Office 365, чтобы доступ к Office 365 hello клиента из подписки Azure. toolink подписок, вход tooAzure с hello учетной записи администратора службы Azure, добавьте каталог и добавить клиент Azure Active Directory toohello учетные записи организации hello Office 365.
 
 Если вам необходима подписка Office 365 для пользователей в экземпляре Azure Active Directory, или у вас есть учетная запись Office 365, но нет учетной записи Azure, то см. статью [Регистрация в Azure с помощью учетной записи Office 365](billing-use-existing-office-365-account-azure-subscription.md). 
 
 ## <a name="before-you-begin"></a>Перед началом работы
-* Необходимо иметь учетные данные администратора служб подписки Azure. Учетная запись соадминистратора не позволяет выполнить некоторые действия, описанные в этой статье. Чтобы изменить администратора службы, см. статью [Добавление или изменение ролей администратора Azure](billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription).
-* Необходимо иметь учетные данные глобального администратора клиента Office 365.
-* Адрес электронной почты администратора служб не должен содержаться на клиенте Office 365.
-* Адрес электронной почты администратора служб не должен совпадать с адресом электронной почты любого из глобальных администраторов клиента Office 365.
-* Если вы используете электронный адрес, который одновременно представляет учетную запись Майкрософт и учетную запись организации, то временно измените роль администратора служб своей подписки Azure, чтобы использовать другую учетную запись Майкрософт. Учетную запись Майкрософт можно создать на [странице регистрации учетных записей Майкрософт](https://signup.live.com/).
+* Необходимо иметь учетные данные администратора службы подписки Azure hello hello. Учетные записи соадминистратора нельзя выполнить некоторые шаги hello в этой статье. toochange администратором службы, в разделе [как tooadd или изменение роли администратора Azure](billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription).
+* Необходимо иметь учетные данные глобального администратора клиента Office 365 hello hello.
+* адрес электронной почты администратора службы hello Hello должен отсутствовать в hello клиента Office 365.
+* адрес электронной почты администратора службы hello Hello не может совпадать с любым глобальным администратором Office 365 hello клиента.
+* Если вы используете адрес электронной почты учетной записи Майкрософт и учетная запись организации, временно измените администратора службы hello из вашей подписки Azure toouse другой учетной записи Майкрософт. Можно создать учетную запись Майкрософт на hello [страницу регистрации учетной записи Майкрософт](https://signup.live.com/).
 
-## <a name="link-office-365-tenant-to-azure-subscription"></a>Связывание клиента Office 365 с подпиской Azure
-Чтобы связать клиент Office 365 с подпиской Azure, выполните описанные ниже действия.
+## <a name="link-office-365-tenant-tooazure-subscription"></a>Привязка подписки tooAzure клиента Office 365
+toohello клиента Office 365 hello tooassociate подписки Azure, выполните следующие действия.
 
-### <a name="step-1-add-office-365-tenant-to-your-azure-subscription"></a>Шаг 1. Добавление клиента Office 365 в подписку Azure
+### <a name="step-1-add-office-365-tenant-tooyour-azure-subscription"></a>Шаг 1: Добавление tooyour клиента Office 365 подписки Azure
 
-1. Войдите на [классический портал Azure](https://manage.windowsazure.com/), используя учетные данные администратора службы.
+1. Войдите в toohello [классический портал Azure](https://manage.windowsazure.com/) с учетными данными администратора службы hello.
 
     ![Снимок экрана входа в Azure](./media/billing-add-office-365-tenant-to-azure-subscription/s313_azure-sign-in-service-admin.png)
 
-2. В области слева выберите **Active Directory**. Клиент Office 365 отображаться не должен. Если он отображается, то перейдите к разделу [Шаг 2. Изменение каталога, связанного с подпиской Azure](#Step2).
+2. Выберите в левой области hello **ACTIVE DIRECTORY**. Не должны видеть клиента hello Office 365. Если вы видите его, пропустите слишком[шаг 2: изменение hello каталог, связанный с hello подписки Azure](#Step2).
    
    ![Снимок экрана записи Active Directory](./media/billing-add-office-365-tenant-to-azure-subscription/s35-classic-portal-active-directory-entry.png)
 
@@ -50,11 +50,11 @@ ms.lasthandoff: 07/11/2017
    
     ![Снимок экрана создания настраиваемого каталога Azure Active Directory](./media/billing-add-office-365-tenant-to-azure-subscription/s37-aad-custom-create.png)
    
-4. На странице **Добавить каталог** в разделе **Каталог** выберите **Использовать существующий каталог**. Выберите **Я готов к выходу из системы** и щелкните **Завершить** ![complete-icon](./media/billing-add-office-365-tenant-to-azure-subscription/s38_complete-icon.png).
+4. На hello **добавить каталог** в разделе **КАТАЛОГА**выберите **использовать существующий каталог**. Выберите **я готов toobe выходу из системы**и выберите **завершить** ![завершения значок](./media/billing-add-office-365-tenant-to-azure-subscription/s38_complete-icon.png).
    
     ![Снимок экрана с параметром "Использовать существующий каталог"](./media/billing-add-office-365-tenant-to-azure-subscription/s39_add-directory-use-existing.png)
    
-5. После выхода из системы войдите в нее с помощью учетных данных глобального администратора клиента Office 365.
+5. После выхода, войдите с использованием учетных данных глобального администратора hello вашего клиента Office 365.
    
     ![Снимок экрана входа глобального администратора Office 365](./media/billing-add-office-365-tenant-to-azure-subscription/s310_sign-in-global-admin-office-365.png)
    
@@ -66,15 +66,15 @@ ms.lasthandoff: 07/11/2017
    
     ![Снимок экрана выхода](./media/billing-add-office-365-tenant-to-azure-subscription/s312_use-contoso-directory-azure-confirm-and-sign-out.png)
    
-8. Войдите на [классический портал Azure](https://manage.windowsazure.com/), используя учетные данные администратора службы.
+8. Войдите в toohello [классический портал Azure](https://manage.windowsazure.com/) с учетными данными администратора службы hello.
    
     ![Снимок экрана входа в Azure](./media/billing-add-office-365-tenant-to-azure-subscription/s313_azure-sign-in-service-admin.png)
    
-9. Клиент Office 365 должен отображаться на панели мониторинга.
+9. Вы увидите клиента Office 365 на панели мониторинга hello.
    
     ![Снимок экрана панели мониторинга](./media/billing-add-office-365-tenant-to-azure-subscription/s314_office-365-tenant-appear-in-azure.png)
 
-### <a name="Step2"></a>Шаг 2. Изменение каталога, связанного с подпиской Azure
+### <a name="Step2"></a>Шаг 2: Изменение каталога hello, hello подписки Azure
    
 1. Выберите элемент **Параметры**.
    
@@ -86,40 +86,40 @@ ms.lasthandoff: 07/11/2017
    
 3. Щелкните **Далее** ![значок "Далее"](./media/billing-add-office-365-tenant-to-azure-subscription/s317_next-icon.png).
    
-    ![Снимок экрана диалогового окна "Изменить связанный каталог"](./media/billing-add-office-365-tenant-to-azure-subscription/s318_azure-change-associated-directory.png)
+    ![Снимок экрана: «Изменение hello связанный каталог»](./media/billing-add-office-365-tenant-to-azure-subscription/s318_azure-change-associated-directory.png)
    
-4. Проверьте учетные записи, затронутые этим изменением. Все соадминистраторы и пользователи [управления доступом на основе ролей (RBAC)](../active-directory/role-based-access-control-configure.md), имеющие назначенные права доступа в существующих группах ресурсов, также удаляются. В предупреждении, которое вы получите, упоминается только об удалении соадминистраторов.
+4. Просмотрите учетные записи для затронутых hello. Все соадминистраторы и [управление доступом на основе ролей (RBAC)](../active-directory/role-based-access-control-configure.md) пользователи с ограниченным доступом к в существующих группах ресурсов hello, удаляются. Предупреждение Hello упоминаются только hello удаление администраторов.
       
-    ![Снимок экрана, показывающий удаляемые учетные записи администратора.](./media/billing-add-office-365-tenant-to-azure-subscription/s322_azure-confirm-directory-mapping.png)
+    ![Снимок экрана, показывающий hello toobe удалены учетные записи соадминистратора.](./media/billing-add-office-365-tenant-to-azure-subscription/s322_azure-confirm-directory-mapping.png)
    
-    ![Снимок экрана, показывающий пример удаляемой учетной записи.](./media/billing-add-office-365-tenant-to-azure-subscription/s325_assigned-users-removed-resource-groups.png)
+    ![Снимок экрана, показывающий toobe учетной записи пользователя примере удаляются.](./media/billing-add-office-365-tenant-to-azure-subscription/s325_assigned-users-removed-resource-groups.png)
    
 5. Щелкните **Завершить** ![complete-icon](./media/billing-add-office-365-tenant-to-azure-subscription/s38_complete-icon.png).
 
-### <a name="step-3-add-your-office-365-organizational-accounts-as-co-administrators-to-the-azure-active-directory-tenant"></a>Шаг 3. Добавление учетных записей Office 365 организации в качестве соадминистраторов в клиент Azure Active Directory
+### <a name="step-3-add-your-office-365-organizational-accounts-as-co-administrators-toohello-azure-active-directory-tenant"></a>Шаг 3: Добавьте учетные записи организации Office 365 в качестве администраторов клиента Azure Active Directory toohello
    
-1. Откройте вкладку **Администраторы**, а затем щелкните **Добавить**.
+1. Выберите hello **АДМИНИСТРАТОРЫ** , а затем выберите **добавить**.
    
     ![Снимок экрана вкладки настройки администраторов на классическом портале Azure](./media/billing-add-office-365-tenant-to-azure-subscription/s319_azure-classic-portal-settings-administrators.png)
    
-2. Укажите в клиенте Office 365 корпоративную учетную запись, выберите подписку Azure и щелкните **Завершить** ![complete-icon](./media/billing-add-office-365-tenant-to-azure-subscription/s38_complete-icon.png).
+2. Укажите учетную запись организации вашего клиента Office 365, выберите hello подписки Azure и затем выберите **завершить** ![завершения значок](./media/billing-add-office-365-tenant-to-azure-subscription/s38_complete-icon.png).
    
     ![Снимок экрана диалогового окна добавления соадминистратора Azure](./media/billing-add-office-365-tenant-to-azure-subscription/s320_azure-add-co-administrator.png)
    
-3. Вернитесь на вкладку **Администраторы**. На ней должна отображаться учетная запись организации как соадминистратор.
+3. Вернитесь к предыдущему окну toohello **АДМИНИСТРАТОРЫ** вкладки. Вы увидите hello учетная запись организации отображается в качестве соадминистратора.
    
     ![Снимок экрана вкладки "Администраторы"](./media/billing-add-office-365-tenant-to-azure-subscription/s321_azure-co-administrator-added.png)
-4.  Проверьте возможность доступа к Azure с помощью учетной записи соадминистратора.
+4.  Тест tooAzure доступ с помощью учетной записи соадминистратора hello.
    
-    а. Выйдите с классического портала Azure.
+    а. Выйдите из hello классический портал Azure.
    
-    b. Откройте [портал Azure](https://portal.azure.com/).
+    b. Откройте hello [портал Azure](https://portal.azure.com/).
    
-    c. Введите учетные данные соадминистратора и щелкните **Вход**.
+    c. Введите учетные данные hello hello совместного администратора, а затем выберите **входа**.
    
     ![Снимок экрана страницы входа в Azure](./media/billing-add-office-365-tenant-to-azure-subscription/s324_azure-sign-in-with-co-admin.png)
 
 ## <a name="need-help-contact-support"></a>Требуется помощь? Обратитесь в службу поддержки.
-Если вам все еще нужна помощь, [обратитесь в службу поддержки](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), которая поможет быстро устранить проблему.
+Если вы по-прежнему нужна помощь, [обратитесь в службу поддержки](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget быстро устранить проблему.
 
 

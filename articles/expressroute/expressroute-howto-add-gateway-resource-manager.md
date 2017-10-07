@@ -1,6 +1,6 @@
 ---
-title: "Добавление шлюза виртуальной сети в виртуальную сеть для канала ExpressRoute с помощью PowerShell в Azure | Документация Майкрософт"
-description: "В этой статье рассматривается добавление шлюза виртуальной сети в уже созданную виртуальную сеть Resource Manager для ExpressRoute."
+title: "Добавление виртуальной сети шлюза tooa виртуальной сети для ExpressRoute: PowerShell: Azure | Документы Microsoft"
+description: "В этой статье описывается добавление tooan шлюза виртуальной сети, уже созданы диспетчера ресурсов виртуальной сети для ExpressRoute."
 documentationcenter: na
 services: expressroute
 author: charwen
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: charwen
-ms.openlocfilehash: 3aeddd03e0be548933775164ae790ba208fc13ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8983430b426ad7c4af766294fa16427c5e9df5c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Настройка шлюза виртуальной сети для ExpressRoute с помощью PowerShell
 > [!div class="op_single_selector"]
@@ -30,14 +30,14 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-В ней описывается добавление, изменение размера и удаление шлюза виртуальной сети для существующей виртуальной сети. Приведенные действия по настройке предназначены для виртуальных сетей, созданных с помощью модели развертывания Resource Manager, которые будут использоваться в конфигурации ExpressRoute. Дополнительные сведения о шлюзах виртуальных сетей и параметрах конфигурации шлюза для ExpressRoute см. в разделе [Сведения о шлюзах виртуальных сетей ExpressRoute](expressroute-about-virtual-network-gateways.md). 
+В этой статье рассматриваются действия tooadd hello, масштабировать и удалить шлюз виртуальной сети (VNet) для существующей виртуальной сети. Hello этапах данной конфигурации предназначены специально для виртуальных сетей, которые были созданы с помощью модели развертывания диспетчера ресурсов hello, который будет использоваться в конфигурации ExpressRoute. Дополнительные сведения о шлюзах виртуальных сетей и параметрах конфигурации шлюза для ExpressRoute см. в разделе [Сведения о шлюзах виртуальных сетей ExpressRoute](expressroute-about-virtual-network-gateways.md). 
 
 
 ## <a name="before-beginning"></a>Подготовка
-Убедитесь, что у вас установлена последняя версия командлетов Azure PowerShell. Если вы еще не установили ее, необходимо сделать это перед началом настройки. Дополнительные сведения см. в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview).
+Убедитесь, что вы установили hello новые командлеты Azure PowerShell. Если вы не установили hello новые командлеты, необходимо toodo так перед началом действия по настройке hello. Дополнительные сведения см. в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview).
 
 [!INCLUDE [expressroute-gateway-rm-ps](../../includes/expressroute-gateway-rm-ps-include.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-После создания шлюза виртуальной сети вы можете связать виртуальную сеть с каналом ExpressRoute. Ознакомьтесь со статьей [Связывание виртуальной сети с каналом ExpressRoute](expressroute-howto-linkvnet-arm.md).
+После создания шлюза виртуальной сети hello, можно связать вашей виртуальной сети tooan канал ExpressRoute. В разделе [связывание виртуальной сети tooan канал ExpressRoute](expressroute-howto-linkvnet-arm.md).
 

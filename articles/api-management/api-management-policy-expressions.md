@@ -1,5 +1,5 @@
 ---
-title: "Выражения политики в службе управления API Azure | Документация Майкрософт"
+title: "выражения политики управления API aaaAzure | Документы Microsoft"
 description: "Сведения о выражениях политики в службе управления API Azure."
 services: api-management
 documentationcenter: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: d96dde8c74141d000c1f7c5fd9ef624ff5e46953
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 79da0d6ca3963307ec811a33aaac3d63a7abd97d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-policy-expressions"></a>Выражения политики в службе управления API
-В выражениях политики используется синтаксис C# 6.0. У каждого выражения есть доступ к неявно заданной переменной [контекста](api-management-policy-expressions.md#ContextVariables) и разрешенному [подмножеству](api-management-policy-expressions.md#CLRTypes) типов .NET Framework.  
+В выражениях политики используется синтаксис C# 6.0. Каждое выражение имеет доступ toohello неявно предоставляется [контекста](api-management-policy-expressions.md#ContextVariables) переменной и допустимому [подмножества](api-management-policy-expressions.md#CLRTypes) типов платформы .NET Framework.  
   
 > [!NOTE]
->  Дополнительные сведения о выражениях политики см. в [этом видео](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/).  
+>  Дополнительные сведения о выражениях политики см. в разделе hello [выражения политики](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/) видео.  
 >   
->  Пример настройки политик с помощью выражений см. в видео [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Облачное покрытие, серия 177. Дополнительные возможности службы управления API с Владом Виноградским). В этом видео приведены следующие примеры использования выражений политики.  
+>  Пример настройки политик с помощью выражений см. в видео [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Облачное покрытие, серия 177. Дополнительные возможности службы управления API с Владом Виноградским). В этом видео содержит следующие демонстрации выражение политики hello.  
 >   
->  -   10:30 — применение политики на уровне API для предоставления контекстной информации для серверной службы с помощью политик [настройки параметра строки запроса](api-management-transformation-policies.md#SetQueryStringParameter) и [настройки HTTP-заголовка](api-management-transformation-policies.md#SetHTTPheader). На отметке времени 12:10 демонстрируется вызов операции на портале разработчика, где можно просмотреть эти политики в действии.  
-> -   13:50 — использование политики [проверки JWT](api-management-access-restriction-policies.md#ValidateJWT) для предварительной авторизации доступа к операциям на основе утверждений маркеров. Перемотайте вперед до отметки времени 15:00, чтобы просмотреть политики, настроенные в редакторе политик, и до 18:50, чтобы просмотреть демонстрацию вызова операции с портала разработчика с обязательным маркером авторизации и без него.  
-> -   21:00 — сведения об использовании трассировки с помощью [инспектора API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) для оценки политик, а также результаты этой оценки.  
-> -   25:25 — сведения об использовании выражений с политиками [получения из кэша](api-management-caching-policies.md#GetFromCache) и [сохранения в кэш](api-management-caching-policies.md#StoreToCache) для настройки в службе управления API периода хранения ответов в кэше, соответствующего длительности кэширования ответа в серверной службе, которая задается директивой `Cache-Control` серверной службы.  
-> -   34:30 — сведения о том, как отфильтровать содержимое путем удаления элементов данных из ответа, полученного из внутренней службы с помощью политик [потока управления](api-management-advanced-policies.md#choose) и [задания текста](api-management-transformation-policies.md#SetBody). Начните с отметки времени 31:50, чтобы узнать общие сведения о [прогнозном API Dark Sky](https://developer.forecast.io/), используемом для этого примера.  
-> -   Чтобы скачать инструкции политики, используемые в этом видеоролике, перейдите к репозиторию GitHub [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).  
+>  -   10:30 — в разделе как tooapply политику на уровне hello API уровня toosupply контекста сведения toohello серверной службы с использованием hello [параметра строки запроса](api-management-transformation-policies.md#SetQueryStringParameter) и [значение HTTP-заголовка](api-management-transformation-policies.md#SetHTTPheader) политики. В 12:10 отсутствует Демонстрация вызова операции на портале разработчиков hello, где можно просмотреть эти политики на работе.  
+> -   В разделе 13:50 - как toouse hello [проверка JWT](api-management-access-restriction-policies.md#ValidateJWT) toopre политики-авторизации toooperations доступа на основе маркеров утверждений. Перемотка вперед too15:00 toosee hello политики, настроенные в редакторе hello политики и затем too18:50 демонстрацию вызова операции из портала разработчиков hello как с и без hello требуется маркер авторизации.  
+> -   В разделе 21:00 - как toouse [инспектора API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) трассировки toosee как политики оцениваются и hello результаты оценки hello.  
+> -   25:25 - см. в разделе как hello выражения политики toouse с [получить из кэша](api-management-caching-policies.md#GetFromCache) и [toocache хранилища](api-management-caching-policies.md#StoreToCache) политики tooconfigure API управления ответа соответствует Здравствуйте, кэширование ответа hello длительность кэширования Серверная служба в соответствии с hello резервные службы `Cache-Control` директивы.  
+> -   34:30 - см. в разделе как фильтрацию, удалив элементы данных из ответа hello tooperform содержимого получил от hello серверной службе hello [поток управления](api-management-advanced-policies.md#choose) и [задать текст](api-management-transformation-policies.md#SetBody) политики. Начинаются с 31:50 toosee Обзор [hello темной API прогноз Sky](https://developer.forecast.io/) для этой демонстрации.  
+> -   toodownload hello политики инструкций, используемых в этом видео. в разделе hello [api--образцов и политики управления](https://github.com/Azure/api-management-samples/tree/master/policies) в репозитории github.  
   
   
 ##  <a name="Syntax"></a> Синтаксис  
@@ -68,13 +68,13 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ##  <a name="PolicyExpressionsUsage"></a> Использование  
- Выражения можно использовать в качестве значений атрибутов или текстовых значений в любой [политике](api-management-policies.md) управления API, если в справочнике по политике не указано иное.  
+ Выражения могут использоваться в качестве значений атрибутов или текстовыми значениями в любой hello API управления [политики](api-management-policies.md), если не указано в ссылке политики hello.  
   
 > [!IMPORTANT]
->  Обратите внимание, что при использовании выражений политики выполняется только ограниченная проверка выражений политики во время ее определения. Так как выражения выполняются шлюзом во время выполнения во входящем или исходящем конвейере, любое исключение выполнения, создаваемое выражениями политики, приведет к ошибке среды выполнения в вызове API.  
+>  Обратите внимание, что при использовании выражения политики только ограниченной проверки выражения политики hello при определении политики hello. Так как выражения hello выполняются во время выполнения в конвейер входящих или исходящих hello шлюзом hello, любой во время выполнения исключения, создаваемые выражения политики hello приведет к ошибку времени выполнения в вызове hello API.  
   
 ##  <a name="CLRTypes"></a> Типы .NET Framework, допустимые в выражениях политики  
- В следующей таблице перечислены типы .NET Framework и их члены, допустимые в выражениях политики.  
+ Hello следующей таблице перечислены типы .NET Framework hello и их члены, которые допускаются в выражениях политики.  
   
 |Тип CLR|Поддерживаемые методы|  
 |--------------|-----------------------|  
@@ -168,7 +168,7 @@ ms.lasthandoff: 07/11/2017
 |System.Xml.XmlNodeType|Все|  
   
 ##  <a name="ContextVariables"></a> Переменная контекста  
- Переменная с именем `context` неявно доступна в каждом [выражении](api-management-policy-expressions.md#Syntax) политики. Ее члены предоставляют сведения, относящиеся к переменной `\request`. Все члены `context` доступны только для чтения.  
+ Переменная с именем `context` неявно доступна в каждом [выражении](api-management-policy-expressions.md#Syntax) политики. Ее члены содержат сведения нужные toohello `\request`. Все hello `context` члены доступны только для чтения.  
   
 |Переменная контекста|Допустимые методы, свойства и значения параметров|  
 |----------------------|-------------------------------------------------------|  
@@ -179,26 +179,26 @@ ms.lasthandoff: 07/11/2017
 |context.Operation|Id: строка<br /><br /> Method: строка<br /><br /> Name: строка<br /><br /> UrlTemplate: строка|  
 |context.Product|Apis: IEnumerable<IApi\><br /><br /> ApprovalRequired: логическое значение<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: строка<br /><br /> Name: строка<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: целое число?<br /><br /> SubscriptionRequired: логическое значение|  
 |context.Request|Body: IMessageBody<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> Headers: IReadOnlyDictionary<string, string[]><br /><br /> IpAddress: строка<br /><br /> MatchedParameters: IReadOnlyDictionary<string, string><br /><br /> Method: строка<br /><br /> OriginalUrl:IUrl<br /><br /> Url: IUrl|  
-|string context.Request.Headers.GetValueOrDefault(headerName: строка, defaultValue: строка)|headerName: строка<br /><br /> defaultValue: строка<br /><br /> Возвращает значения заголовков запросов, разделенные запятыми, или значение `defaultValue`, если заголовок не найден.|  
+|string context.Request.Headers.GetValueOrDefault(headerName: строка, defaultValue: строка)|headerName: строка<br /><br /> defaultValue: строка<br /><br /> Возвращает разделенные запятыми значения заголовка запроса или `defaultValue` Если hello заголовок не найден.|  
 |context.Response|Body: IMessageBody<br /><br /> Headers: IReadOnlyDictionary<string, string[]><br /><br /> StatusCode: целое число<br /><br /> StatusReason: строка|  
-|string context.Response.Headers.GetValueOrDefault(headerName: строка, defaultValue: строка)|headerName: строка<br /><br /> defaultValue: строка<br /><br /> Возвращает значения заголовков ответов, разделенные запятыми, или значение `defaultValue`, если заголовок не найден.|  
+|string context.Response.Headers.GetValueOrDefault(headerName: строка, defaultValue: строка)|headerName: строка<br /><br /> defaultValue: строка<br /><br /> Возвращает значения заголовка ответа с разделителями-запятыми или `defaultValue` Если hello заголовок не найден.|  
 |context.Subscription|CreatedTime: дата и время<br /><br /> EndDate: дата и время?<br /><br /> Id: строка<br /><br /> Key: строка<br /><br /> Name: строка<br /><br /> PrimaryKey: строка<br /><br /> SecondaryKey: строка<br /><br /> StartDate: дата и время?|  
 |context.User|Email: строка<br /><br /> FirstName: строка<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: строка<br /><br /> Identities: IEnumerable<IUserIdentity\><br /><br /> LastName: строка<br /><br /> Note: строка<br /><br /> RegistrationDate: дата и время|  
 |IApi|Id: строка<br /><br /> Name: строка<br /><br /> Path: строка<br /><br /> Protocols: IEnumerable<string\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|  
 |IGroup|Id: строка<br /><br /> Name: строка|  
-|IMessageBody|As<T\>(preserveContent: логическое значение = false). Where T: строка, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Методы `context.Request.Body.As<T>` и `context.Response.Body.As<T>` используются для чтения текста сообщения запроса или ответа в одном из заданных форматов `T`. По умолчанию метод использует исходный поток текста сообщения и делает его недоступным после возвращения. Чтобы избежать этого, задайте для параметра `preserveContent` значение `true`, чтобы метод работал с копией потока текста. Перейдите по [этой](api-management-transformation-policies.md#SetBody) ссылке, чтобы увидеть пример.|  
+|IMessageBody|As<T\>(preserveContent: логическое значение = false). Where T: строка, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Hello `context.Request.Body.As<T>` и `context.Response.Body.As<T>` методы, используемые tooread институтов запроса и ответного сообщения в указанный тип `T`. По умолчанию hello метод использует hello исходное сообщение поток текста и reneders она недоступны после его возвращает. tooavoid, назначив метод hello работать с копией поток текста hello, набор hello `preserveContent` параметр слишком`true`. Go [здесь](api-management-transformation-policies.md#SetBody) toosee пример.|  
 |IUrl|Host: строка<br /><br /> Path: строка<br /><br /> Port: целое число<br /><br /> Query: IReadOnlyDictionary<string, string[]><br /><br /> QueryString: строка<br /><br /> Scheme: строка|  
 |IUserIdentity|Id: строка<br /><br /> Provider: строка|  
 |ISubscriptionKeyParameterNames|Header: строка<br /><br /> Query: строка|  
-|string IUrl.Query.GetValueOrDefault(queryParameterName: строка, defaultValue: строка)|queryParameterName: строка<br /><br /> defaultValue: строка<br /><br /> Возвращает разделенные запятыми значения параметров запроса или значение `defaultValue`, если параметр не найден.|  
-|T context.Variables.GetValueOrDefault<T\>(variableName: строка, defaultValue: T)|variableName: строка<br /><br /> defaultValue: T<br /><br /> Возвращает значение переменной, приведенное к типу `T` или `defaultValue`, если переменная не найдена.<br /><br /> Этот метод выдает исключение, если указанный тип не соответствует фактическому типу возвращаемой переменной.|  
-|BasicAuthCredentials AsBasic(input: this string)|input: строка<br /><br /> Если входной параметр содержит допустимое значение заголовка запроса авторизации для обычной проверки подлинности HTTP, метод возвращает объект типа `BasicAuthCredentials`; в противном случае метод возвращает значение NULL.|  
-|bool TryParseBasic(input: this string, result: out BasicAuthCredentials)|input: строка<br /><br /> result: выходное значение BasicAuthCredentials<br /><br /> Если входной параметр содержит допустимое значение заголовка запроса авторизации для обычной проверки подлинности HTTP, метод возвращает значение `true`, а параметр результата содержит значение типа `BasicAuthCredentials`; в противном случае метод возвращает значение `false`.|  
+|string IUrl.Query.GetValueOrDefault(queryParameterName: строка, defaultValue: строка)|queryParameterName: строка<br /><br /> defaultValue: строка<br /><br /> Возвращает разделенные запятыми значения параметров запроса или `defaultValue` Если параметр hello не найден.|  
+|T context.Variables.GetValueOrDefault<T\>(variableName: строка, defaultValue: T)|variableName: строка<br /><br /> defaultValue: T<br /><br /> Возвращает значение переменной приведения tootype `T` или `defaultValue` Если hello переменная не найдена.<br /><br /> Этот метод вызывает исключение, если hello указанный тип не соответствует hello фактического типа hello возвращается переменная.|  
+|BasicAuthCredentials AsBasic(input: this string)|input: строка<br /><br /> Если hello входной параметр содержит допустимое значение заголовка авторизации запроса HTTP обычной проверки подлинности, hello метод возвращает объект типа `BasicAuthCredentials`; в противном случае hello метод возвращает значение null.|  
+|bool TryParseBasic(input: this string, result: out BasicAuthCredentials)|input: строка<br /><br /> result: выходное значение BasicAuthCredentials<br /><br /> Если hello входной параметр содержит допустимое значение заголовка авторизации запроса HTTP обычной проверки подлинности, метод hello возвращает `true` и hello результат параметр содержит значение типа `BasicAuthCredentials`; в противном случае возвращает метод hello `false`.|  
 |BasicAuthCredentials|Password: строка<br /><br /> UserId: строка|  
-|Jwt AsJwt(input: this string)|input: строка<br /><br /> Если входной параметр содержит допустимое значение маркера JWT, метод возвращает объект типа `Jwt`; в противном случае метод возвращает значение `null`.|  
-|bool TryParseJwt(input: this string, result: out Jwt)|input: строка<br /><br /> result: выходное значение типа Jwt<br /><br /> Если входной параметр содержит допустимое значение маркера JWT, метод возвращает значение `true`, а параметр результата содержит значение типа `Jwt`; в противном случае метод возвращает значение `false`.|  
+|Jwt AsJwt(input: this string)|input: строка<br /><br /> Если hello входной параметр содержит допустимое значение маркера JWT, метод hello возвращает объект типа `Jwt`; в противном случае возвращает метод hello `null`.|  
+|bool TryParseJwt(input: this string, result: out Jwt)|input: строка<br /><br /> result: выходное значение типа Jwt<br /><br /> Если hello входной параметр содержит допустимое значение маркера JWT, метод hello возвращает `true` и hello результат параметр содержит значение типа `Jwt`; в противном случае возвращает метод hello `false`.|  
 |Jwt|Algorithm: строка<br /><br /> Audience: IEnumerable<string\><br /><br /> Claims: IReadOnlyDictionary<string, string[]><br /><br /> ExpirationTime: дата и время?<br /><br /> Id: строка<br /><br /> Issuer: строка<br /><br /> NotBefore: дата и время?<br /><br /> Subject: строка<br /><br /> Type: строка|  
-|string Jwt.Claims.GetValueOrDefault(claimName: string, defaultValue: string)|claimName: строка<br /><br /> defaultValue: строка<br /><br /> Возвращает значения утверждений, разделенные запятыми, или значение `defaultValue`, если заголовок не найден.|
+|string Jwt.Claims.GetValueOrDefault(claimName: string, defaultValue: string)|claimName: строка<br /><br /> defaultValue: строка<br /><br /> Возвращает разделенные запятыми значения утверждения или `defaultValue` Если hello заголовок не найден.|
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Дополнительные сведения о работе с политиками см. в статье со справочными материалами по [политикам в службе управления API](api-management-howto-policies.md).  

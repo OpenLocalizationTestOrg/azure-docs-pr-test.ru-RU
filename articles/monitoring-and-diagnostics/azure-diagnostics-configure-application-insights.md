@@ -1,6 +1,6 @@
 ---
-title: "Настройка диагностики Azure для отправки данных в Application Insights | Документация Майкрософт"
-description: "Обновление открытой конфигурации диагностики Azure для отправки данных в Application Insights."
+title: "aaaConfigure диагностики Azure toosend данных tooApplication аналитики | Документы Microsoft"
+description: "Обновление данных toosend tooApplication аналитики hello Azure Diagnostics общедоступной конфигурации."
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2016
 ms.author: robb
-ms.openlocfilehash: 67dc2d5bbfa2012e4e098616edda593d023c4c1e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7c36f29da8fdc12fa58c17458348a311b900b0f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Отправка в Application Insights диагностических данных облачной службы, виртуальной машины или Service Fabric
-Облачные службы, виртуальные машины, масштабируемые наборы виртуальных машин и Service Fabric используют расширение системы диагностики Azure для сбора данных.  Система диагностики Azure отправляет данные в таблицы службы хранилища Azure.  Тем не менее эти данные можно также полностью или частично передавать в другие расположения, используя расширение системы диагностики Azure 1.5 или более поздней версии.
+# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-tooapplication-insights"></a>Отправить облачной службы, виртуальную машину или Service Fabric tooApplication диагностических данных аналитики
+Облачные службы, виртуальных машин, наборы масштабирования виртуальных машин и Service Fabric использовать данные toocollect расширения системы диагностики Azure hello.  Диагностика Azure отправляет tooAzure данных таблиц хранилища.  Тем не менее вы также можете канала все или часть hello данных tooother расположения с помощью модуля диагностики Azure 1.5 или более поздней версии.
 
-В этой статье описывается, как отправлять данные из расширения системы диагностики Azure в Application Insights.
+В этой статье описывается, как данные toosend из hello tooApplication расширения системы диагностики Azure Insights.
 
 ## <a name="diagnostics-configuration-explained"></a>Описание конфигурации системы диагностики
-Расширение системы диагностики Azure 1.5 вводит понятие приемников — дополнительных расположений, в которые можно отправлять диагностические данные.
+Здравствуйте, приемники расширения 1.5 появились диагностики Azure, являющиеся дополнительные папки, куда можно отправлять диагностические данные.
 
 Ниже приведен пример конфигурации приемника для Application Insights.
 
@@ -63,40 +63,40 @@ ms.lasthandoff: 07/11/2017
     ]
 }
 ```
-- Атрибут **Sink** *name* — это строковое значение, однозначно определяющее приемник.
+- Hello **приемник** *имя* атрибут является строковое значение, однозначно определяющее hello приемника.
 
-- Элемент **ApplicationInsights** указывает ключ инструментирования ресурса Application Insights, в который отправляются диагностические данные Azure.
-    - Если ресурс Application Insights еще не существует, см. статью [Создание нового ресурса Application Insights](../application-insights/app-insights-create-new-resource.md), где содержатся дополнительные сведения о создании ресурса и получении ключа инструментирования.
-    - При разработке облачной службы с использованием пакета SDK для Azure 2.8 и более поздних версий этот ключ инструментирования заполняется автоматически. При упаковке проекта облачной службы это значение задается на основе параметра конфигурации службы **APPINSIGHTS_INSTRUMENTATIONKEY**. См. статью [Устранение неполадок облачных служб с помощью Application Insights](../cloud-services/cloud-services-dotnet-diagnostics-applicationinsights.md).
+- Hello **ApplicationInsights** элемент указывает ключ инструментирования hello ресурс Application insights, куда отправлять данные диагностики Azure hello.
+    - Если у вас нет существующего ресурса Application Insights, см. раздел [создать новый ресурс Application Insights](../application-insights/app-insights-create-new-resource.md) Дополнительные сведения о создании ресурса и получении ключа инструментирования hello.
+    - При разработке облачной службы с использованием пакета SDK для Azure 2.8 и более поздних версий этот ключ инструментирования заполняется автоматически. Hello значение основано на hello **APPINSIGHTS_INSTRUMENTATIONKEY** параметр конфигурации службы при упаковке проекта облачной службы hello. В разделе [проблемы используйте Application Insights с tootroubleshoot диагностики Azure облачной службы](../cloud-services/cloud-services-dotnet-diagnostics-applicationinsights.md).
 
-- Элемент **Channels** содержит один или несколько элементов **Channel**.
-    - Атрибут *name* однозначно ссылается на этот канал.
-    - Атрибут *Loglevel* позволяет указать уровень ведения журнала для канала. Доступны следующие уровни ведения журнала (от наиболее к наименее информативным):
+- Hello **каналы** элемент содержит один или несколько **канала** элементов.
+    - Hello *имя* атрибут однозначно ссылается toothat канала.
+    - Hello *loglevel* атрибут позволяет указать уровень ведения журнала hello, hello канал позволяет. уровни доступное среди резервных Hello в порядке наиболее tooleast сведения являются:
         - Подробная информация
         - Информация
         - Предупреждение
         - Ошибка
         - критические ошибки.
 
-Канал действует как фильтр и позволяет выбрать конкретные уровни ведения журнала для отправки в приемник. Например, можно собирать подробные журналы и отправлять их в хранилище, а в приемник отправлять только журнал ошибок.
+Канал действует как фильтр и предоставляет tooselect определенном журнале уровни toosend toohello целевой приемника. Например может собирать подробные журналы и отправлять их toostorage, но отправлять только ошибки toohello приемника.
 
-Эта взаимосвязь показана на следующем рисунке.
+Hello следующий рисунок демонстрирует эти отношения.
 
 ![Открытая конфигурация диагностики](./media/azure-diagnostics-configure-applicationinsights/AzDiag_Channels_App_Insights.png)
 
-На следующем рисунке показаны значения конфигурации и как они работают. В конфигурацию можно включить несколько приемников на разных уровнях иерархии. Приемник, указанный на верхнем уровне, действует как глобальный параметр, а приемник, указанный на уровне отдельного элемента, действует как переопределение для этого глобального параметра.
+Следующий график Hello перечислены значения конфигурации hello и принципы их работы. Можно включить несколько приемников в hello конфигурации на разных уровнях иерархии hello. приемник Hello на верхнем уровне hello действует как глобальный параметр и hello один указало на отдельных hello элемент ведет себя как глобальные настройки toothat переопределение.
 
 ![Конфигурация приемников системы диагностики с Application Insights](./media/azure-diagnostics-configure-applicationinsights/Azure_Diagnostics_Sinks.png)
 
 ## <a name="complete-sink-configuration-example"></a>Полный пример конфигурации приемника
-Ниже приведен полный пример файла общедоступной конфигурации, которая:
-1. Отправляет все ошибки в службу Application Insights (указанную в узле **DiagnosticMonitorConfiguration**).
-2. Отправляет подробные журналы приложений (указанные в узле **Logs**).
+Ниже приведен полный пример hello открытой конфигурации файла, который
+1. отправляет все ошибки tooApplication аналитики (определено на hello **DiagnosticMonitorConfiguration** узла)
+2. также отправляет подробных журналов уровня для hello журналы приложений (определено на hello **журналы** узла).
 
 ```XML
 <WadCfg>
   <DiagnosticMonitorConfiguration overallQuotaInMB="4096"
-       sinks="ApplicationInsights.MyTopDiagData"> <!-- All info below sent to this channel -->
+       sinks="ApplicationInsights.MyTopDiagData"> <!-- All info below sent toothis channel -->
     <DiagnosticInfrastructureLogs />
     <PerformanceCounters>
       <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" />
@@ -106,7 +106,7 @@ ms.lasthandoff: 07/11/2017
       <DataSource name="Application!*" />
     </WindowsEventLog>
     <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose"
-            sinks="ApplicationInsights.MyLogData"/> <!-- This specific info sent to this channel -->
+            sinks="ApplicationInsights.MyLogData"/> <!-- This specific info sent toothis channel -->
   </DiagnosticMonitorConfiguration>
 
 <SinksConfig>
@@ -124,7 +124,7 @@ ms.lasthandoff: 07/11/2017
 "WadCfg": {
     "DiagnosticMonitorConfiguration": {
         "overallQuotaInMB": 4096,
-        "sinks": "ApplicationInsights.MyTopDiagData", "_comment": "All info below sent to this channel",
+        "sinks": "ApplicationInsights.MyTopDiagData", "_comment": "All info below sent toothis channel",
         "DiagnosticInfrastructureLogs": {
         },
         "PerformanceCounters": {
@@ -150,7 +150,7 @@ ms.lasthandoff: 07/11/2017
         "Logs": {
             "scheduledTransferPeriod": "PT1M",
             "scheduledTransferLogLevelFilter": "Verbose",
-            "sinks": "ApplicationInsights.MyLogData", "_comment": "This specific info sent to this channel"
+            "sinks": "ApplicationInsights.MyLogData", "_comment": "This specific info sent toothis channel"
         }
     },
     "SinksConfig": {
@@ -175,9 +175,9 @@ ms.lasthandoff: 07/11/2017
     }
 }
 ```
-В предыдущей конфигурации приведенные ниже строки имеют следующий смысл.
+В предыдущей конфигурации hello hello следующие строки имеют hello следующие значения:
 
-### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Отправка всех данных, собираемых системой диагностики Azure
+### <a name="send-all-hello-data-that-is-being-collected-by-azure-diagnostics"></a>Отправлять все данные hello, которые собираются системой диагностики Azure
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
@@ -189,7 +189,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Отправка в приемник Application Insights только журналов ошибок
+### <a name="send-only-error-logs-toohello-application-insights-sink"></a>Отправлять только журналы toohello Application Insights приемником ошибок
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
@@ -201,7 +201,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-### <a name="send-verbose-application-logs-to-application-insights"></a>Отправка подробных журналов приложений в Application Insights
+### <a name="send-verbose-application-logs-tooapplication-insights"></a>Отправлять журналы аналитики tooApplication Verbose приложений
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
@@ -216,10 +216,10 @@ ms.lasthandoff: 07/11/2017
 ## <a name="limitations"></a>Ограничения
 
 - **Каналы могут вести журнал типов, но не счетчиков производительности.** Если указать канал с элементом счетчика производительности, он игнорируется.
-- **Уровень ведения журнала для канала не может превышать уровень ведения журнала, данные которого собираются системой диагностики Azure.** Например, нельзя собирать данные об ошибках в журнале приложений в элементе Logs и пытаться отправлять подробные журналы в приемник Application Insight. Атрибут *ScheduledTransferLogLevelFilter* должен всегда собирать равное или большее число журналов, чем число журналов, которые вы пытаетесь отправить в приемник.
-- **В Application Insights нельзя отправлять собранные расширением системы диагностики Azure данные больших двоичных объектов.** Например, данные, указанные в узле *Directories*. Что касается аварийных дампов, фактический аварийный дамп отправляется в хранилище BLOB-объектов, а в Application Insights отправляется только уведомление о том, что аварийный дамп был создан.
+- **Hello уровень ведения журнала для канала не может превышать hello уровень ведения журнала для что собираются с помощью диагностики Azure.** Например нельзя собирать данные об ошибках в журнале приложений в элементе журналы hello и повторите toosend подробных журналов toohello Application Insight приемника. Hello *scheduledTransferLogLevelFilter* атрибута необходимо собрать всегда равно или больше журналов, чем hello журналы вы пытаетесь toosend tooa приемника.
+- **Не удается отправить собранные tooApplication расширения системы диагностики Azure Insights данные большого двоичного объекта.** Например, все, что указывается в разделе hello *каталоги* узла. Аварийные дампы фактическое аварийной копии памяти hello отправляется tooblob хранилища и был создан только уведомление, которое hello аварийный дамп отправляется tooApplication аналитики.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Узнайте, как [просматривать данные диагностики Azure](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events) в Application Insights.
-* Используйте [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md), чтобы включить расширение диагностики Azure для вашего приложения.
-* Используйте [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) , чтобы включить расширение диагностики Azure для вашего приложения.
+* Узнайте, каким образом слишком[Просмотр данных диагностики Azure](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events) в Application Insights.
+* Используйте [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md) tooenable hello расширения службы диагностики Azure для вашего приложения.
+* Используйте [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) tooenable hello расширения службы диагностики Azure для приложения

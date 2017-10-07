@@ -1,6 +1,6 @@
 ---
-title: "Как использовать Azure Service Bus с пакетом SDK для WebJob"
-description: "Информация об использовании очередей и разделов Azure Service Bus с пакетом SDK для WebJob"
+title: "toouse aaaHow Azure Service Bus с hello SDK веб-заданий"
+description: "Узнайте, как toouse Azure Service Bus очереди и разделы с описанием hello SDK веб-заданий."
 services: app-service\web, service-bus
 documentationcenter: .net
 author: ggailey777
@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: glenga
-ms.openlocfilehash: 7cec03cae5d20d1ead9eb24e99415c33d8b76f05
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cb801a9320a20c276da4f48c8941c09d3f09bb1e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-azure-service-bus-with-the-webjobs-sdk"></a>Как использовать Azure Service Bus с пакетом SDK для WebJob
+# <a name="how-toouse-azure-service-bus-with-hello-webjobs-sdk"></a>Как toouse шины обслуживания Azure с hello SDK веб-заданий
 ## <a name="overview"></a>Обзор
-В этом руководстве приведены примеры кода C#, демонстрирующие активацию процесса при получении сообщения служебной шины Azure. В примерах кода используется [пакет SDK для веб-заданий](websites-dotnet-webjobs-sdk.md) версии 1.x.
+В этом руководстве содержатся C# образцы кода, Показать как tootrigger процесса при получении сообщения об Azure Service Bus. Используйте образцы кода Hello [SDK веб-заданий](websites-dotnet-webjobs-sdk.md) версии 1.x.
 
-В этом руководстве предполагается, что вы уже знаете, [как создавать проект веб-заданий в Visual Studio со строками подключения, указывающими на учетную запись хранения](websites-dotnet-webjobs-sdk-get-started.md).
+Hello руководстве предполагается, вы знаете [как проект веб-задания в Visual Studio с подключением toocreate строки этой учетной записи хранения tooyour точки](websites-dotnet-webjobs-sdk-get-started.md).
 
-В фрагментах кода показаны только функции, а не код, создающий объект `JobHost` , как в следующем примере:
+фрагменты кода Hello Показывать только функции, не hello код, создающий hello `JobHost` объекта, как показано в примере:
 
 ```
 public class Program
@@ -41,12 +41,12 @@ public class Program
 }
 ```
 
-[Полный пример кода служебной шины](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Program.cs) можно найти в репозитории azure-webjobs-sdk-samples на сайте GitHub.com.
+Объект [полный пример кода Service Bus](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Program.cs) находится в хранилище azure — веб-заданий sdk примеры hello на GitHub.com.
 
 ## <a id="prerequisites"></a> Предварительные требования
-Для работы со служебной шиной необходимо установить пакет NuGet [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/) , а также другие пакеты SDK для веб-заданий. 
+toowork со служебной шиной имеют tooinstall hello [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/) NuGet пакета Кроме toohello другие пакеты SDK веб-заданий. 
 
-Необходимо также задать строку подключения AzureWebJobsServiceBus и строки подключения для хранилища.  Это можно сделать в разделе `connectionStrings` файла App.config, как показано в примере ниже.
+Также имеется строка подключения AzureWebJobsServiceBus tooset hello в строки подключения хранилища toohello сложения.  Это можно сделать в hello `connectionStrings` раздел файла App.config hello, как показано в следующий пример hello:
 
         <connectionStrings>
             <add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
@@ -54,20 +54,20 @@ public class Program
             <add name="AzureWebJobsServiceBus" connectionString="Endpoint=sb://[yourServiceNamespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[yourKey]"/>
         </connectionStrings>
 
-Пример проекта, который содержит строку подключения служебной шины в файле App.config, доступен в разделе [Пример служебной шины](https://github.com/Azure/azure-webjobs-sdk-samples/tree/master/BasicSamples/ServiceBus). 
+Пример проекта, который включает строку подключения Service Bus hello в файле App.config hello, в разделе [Service Bus пример](https://github.com/Azure/azure-webjobs-sdk-samples/tree/master/BasicSamples/ServiceBus). 
 
-Строки подключения также можно задать в среде выполнения Azure. Эти строки переопределят параметры App.config при выполнении веб-задания в Azure. Дополнительные сведения см. в разделе [Начало работы с пакетом SDK для Azure для веб-заданий](websites-dotnet-webjobs-sdk-get-started.md#configure-the-web-app-to-use-your-azure-sql-database-and-storage-account).
+также можно задать строки подключения Hello в среде выполнения Azure hello, которая затем перекрывает hello App.config при hello веб-задание в Azure; Дополнительные сведения см. в разделе [Приступая к работе с hello SDK веб-задания](websites-dotnet-webjobs-sdk-get-started.md#configure-the-web-app-to-use-your-azure-sql-database-and-storage-account).
 
-## <a id="trigger"></a> Как вызывать функцию при получении сообщения очереди служебной шины
-Чтобы написать функцию, которую пакет SDK для веб-заданий будет вызывать при получении сообщения очереди, используйте атрибут `ServiceBusTrigger` . Конструктор атрибута принимает параметр, который указывает имя очереди для опроса.
+## <a id="trigger"></a>Как происходит получение tootrigger функции, если сообщение очереди Service Bus
+вызывает функцию, которая hello SDK веб-заданий toowrite при получении сообщения в очереди, используйте hello `ServiceBusTrigger` атрибута. Конструктор атрибута Hello принимает параметр, задающий имя hello toopoll очереди hello.
 
 ### <a name="how-servicebustrigger-works"></a>Как действует ServicebusTrigger
-Пакет SDK получает сообщение в режиме `PeekLock` и вызывает метод `Complete` для сообщения, если функция выполнена успешно, или `Abandon` в случае сбоя. Если функция выполняется дольше времени ожидания `PeekLock` , блокировка возобновляется автоматически.
+Hello пакет SDK получает сообщение в `PeekLock` режим и вызовы `Complete` на приветственное сообщение, если функции hello завершается успешно, или вызовы `Abandon` при сбое функции hello. Если функции hello выполняется дольше, чем hello `PeekLock` время ожидания блокировки hello автоматически обновляется.
 
-В служебной шине выполняется собственная обработка очереди подозрительных сообщений, которую нельзя контролировать или настраивать с помощью пакета SDK веб-заданий. 
+Service Bus выполняет собственную обработку очереди подозрительных сообщений, который не может управлять или настройки hello SDK веб-заданий. 
 
 ### <a name="string-queue-message"></a>Строковое сообщение очереди
-Следующий пример кода считывает сообщение очереди, содержащее строку, и записывает строку на панель мониторинга пакета SDK для заданий WebJob.
+Hello следующий код считывает сообщение очереди, которое содержит строку и записывает строку hello toohello панели мониторинга пакета SDK веб-заданий.
 
         public static void ProcessQueueMessage([ServiceBusTrigger("inputqueue")] string message, 
             TextWriter logger)
@@ -75,20 +75,20 @@ public class Program
             logger.WriteLine(message);
         }
 
-**Примечание.** При создании сообщений очереди в приложении, которое не использует пакет SDK для веб-заданий, обязательно задайте для параметра [BrokeredMessage.ContentType](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.contenttype.aspx) значение text/plain.
+**Примечание:** при создании hello очереди сообщений в приложении, которое не использует hello SDK веб-задания, убедитесь, что tooset [BrokeredMessage.ContentType](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.contenttype.aspx) слишком «text/plain».
 
 ### <a name="poco-queue-message"></a>Сообщения очереди POCO
-Пакет SDK автоматически десериализует сообщение очереди, содержащее тип JSON для объекта типа [POCO](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object). Следующий пример кода считывает сообщение очереди, которое содержит объект `BlobInformation` со свойством `BlobName`:
+пакет SDK для Hello автоматически выполнит десериализацию очереди сообщение, содержащее JSON для POCO [(обычный объект CLR](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) типа. Hello следующий пример кода считывает очередь сообщение, содержащее `BlobInformation` объект, имеющий `BlobName` свойство:
 
         public static void WriteLogPOCO([ServiceBusTrigger("inputqueue")] BlobInformation blobInfo,
             TextWriter logger)
         {
-            logger.WriteLine("Queue message refers to blob: " + blobInfo.BlobName);
+            logger.WriteLine("Queue message refers tooblob: " + blobInfo.BlobName);
         }
 
-Примеры кода, в которых показано, как использовать POCO для работы с большими двоичными объектами и таблицами в одной функции, см. в [версии этой статьи для очередей хранилища](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#pocoblobs).
+Образцы кода, показывающий, как же hello toouse свойства toowork POCO hello с BLOB-объектов и таблиц в см. в разделе hello [хранилища очередей версию этой статьи](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#pocoblobs).
 
-Если ваш код, создающий сообщения очереди, основан не на пакете SDK для веб-заданий, используйте код, аналогичный приведенному ниже:
+Если код, создающий приветственных очереди сообщений не использует hello SDK веб-задания, используйте toohello аналогичный код, следующий пример:
 
         var client = QueueClient.CreateFromConnectionString(ConfigurationManager.ConnectionStrings["AzureWebJobsServiceBus"].ConnectionString, "blobadded");
         BlobInformation blobInformation = new BlobInformation () ;
@@ -96,13 +96,13 @@ public class Program
         client.Send(message);
 
 ### <a name="types-servicebustrigger-works-with"></a>Типы, с которыми работает атрибут ServiceBusTrigger
-Помимо `string` и типов POCO атрибут `ServiceBusTrigger` можно использовать с массивом байтов или объектом `BrokeredMessage`.
+Помимо `string` и типами POCO, можно использовать hello `ServiceBusTrigger` атрибута с помощью байтового массива или `BrokeredMessage` объекта.
 
-## <a id="create"></a> Как создавать сообщения очереди служебной шины
-Чтобы написать функцию, которая создает новое сообщение очереди, используйте атрибут `ServiceBus` и передайте имя очереди конструктору атрибута. 
+## <a id="create"></a>Как toocreate Service Bus очередь сообщений
+функция, которая создает новое сообщение очереди toowrite использовать hello `ServiceBus` атрибута и передайте в конструктор атрибута toohello имя очереди hello. 
 
 ### <a name="create-a-single-queue-message-in-a-non-async-function"></a>Создание одного сообщения очереди в неасинхронной функции
-В следующем примере кода используется выходной параметр для создания нового сообщения в очереди с именем outputqueue с тем же содержимым, что и сообщение очереди, поступившее в очередь с именем inputqueue.
+Следующий образец кода Hello использует toocreate выходной параметр, новые сообщения в очереди hello с именем «outputqueue» с таким же содержимое, так как hello сообщения, полученного в очередь hello, с именем «inputqueue» hello.
 
         public static void CreateQueueMessage(
             [ServiceBusTrigger("inputqueue")] string queueMessage,
@@ -111,17 +111,17 @@ public class Program
             outputQueueMessage = queueMessage;
         }
 
-Выходной параметр для создания одного сообщения очереди может принадлежать к любому из следующих типов:
+Hello выходной параметр для создания одной очереди сообщения может быть любой hello следующие типы:
 
 * `string`
 * `byte[]`
 * `BrokeredMessage`
 * Сериализуемый тип POCO, заданный вами Сериализируется как JSON автоматически.
 
-Для параметров типа POCO сообщение очереди всегда создается при завершении функции. Если значение параметра — NULL, пакет SDK создает сообщение очереди, которое вернет значение NULL при получении и десериализации сообщения. Если значение параметра другого типа — NULL, сообщение очереди не создается.
+Для параметров типа POCO сообщения в очереди всегда создается при завершении функции hello; Если параметр hello имеет значение null, hello SDK создает очереди сообщение, которое будет возвращать значение null, при получении сообщения hello и десериализации. Для Здравствуйте других типов, если параметр hello не определен создается сообщение в очереди.
 
 ### <a name="create-multiple-queue-messages-or-in-async-functions"></a>Создание нескольких сообщений очереди или сообщений в асинхронных функциях
-Чтобы создать несколько сообщений, используйте атрибут `ServiceBus` с `ICollector<T>` или `IAsyncCollector<T>`, как показано в следующем примере кода.
+toocreate использовать несколько сообщений hello `ServiceBus` атрибутом `ICollector<T>` или `IAsyncCollector<T>`, как показано в hello следующий образец кода:
 
         public static void CreateQueueMessages(
             [ServiceBusTrigger("inputqueue")] string queueMessage,
@@ -133,10 +133,10 @@ public class Program
             outputQueueMessage.Add(queueMessage + "2");
         }
 
-Каждое сообщение очереди создается сразу после вызова метода `Add` .
+Каждое сообщение очереди создается сразу после hello `Add` вызывается метод.
 
-## <a id="topics"></a>Как работать с разделами служебной шины
-Чтобы написать функцию, которую пакет SDK будет вызывать при получении сообщения в раздел служебной шины, используйте атрибут `ServiceBusTrigger` с конструктором, принимающим имя раздела и подписки, как показано в следующем примере кода:
+## <a id="topics"></a>Как toowork с разделы служебной шины
+вызывает функцию, которая hello SDK toowrite при получении сообщения в раздел служебной шины, используйте hello `ServiceBusTrigger` атрибута с hello конструктор, который принимает имя раздела и имя подписки, как показано в hello следующий образец кода:
 
         public static void WriteLog([ServiceBusTrigger("outputtopic","subscription1")] string message,
             TextWriter logger)
@@ -144,32 +144,32 @@ public class Program
             logger.WriteLine("Topic message: " + message);
         }
 
-Чтобы создать сообщение для раздела, используйте атрибут `ServiceBus` с именем раздела также, как при использовании с именем очереди.
+toocreate сообщения по теме, используйте hello `ServiceBus` атрибутом типа hello имя раздела таким же, как используется с именем очереди.
 
 ## <a name="features-added-in-release-11"></a>Функции, добавленные в версии 1.1
-В версии 1.1 были добавлены следующие возможности:
+Привет, следующие атрибуты были добавлены в версии 1.1:
 
 * Добавлена возможность обширной настройки обработки сообщений с помощью `ServiceBusConfiguration.MessagingProvider`.
-* `MessagingProvider` поддерживает настройку `MessagingFactory` и `NamespaceManager` служебной шины.
-* Шаблон стратегии `MessageProcessor` позволяет указать процессор для каждой очереди или раздела.
+* `MessagingProvider`поддерживает настройку hello Service Bus `MessagingFactory` и `NamespaceManager`.
+* Объект `MessageProcessor` шаблон стратегии позволяет toospecify процессор на очереди или раздела.
 * По умолчанию поддерживается параллелизм обработки сообщений. 
 * Упрощена настройка `OnMessageOptions` через `ServiceBusConfiguration.MessageOptions`.
-* Для `ServiceBusTriggerAttribute`/`ServiceBusAttribute` необходимо предоставить разрешение [AccessRights](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Functions.cs#L71) (для сценариев, в которых возможно управление правами). Обратите внимание, что веб-задания Azure не могут автоматически подготавливать несуществующие очереди и разделы без управления правами AccessRights.
+* Разрешить [права](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Functions.cs#L71) toobe, указанные на `ServiceBusTriggerAttribute` / `ServiceBusAttribute` (для сценариев, где возможно управление правами). Обратите внимание, что веб-заданий Azure не удается tooautomatically подготовки несуществующей очереди и разделы без права на управление.
 
-## <a id="queues"></a>Связанные разделы, которые описаны в практическом руководстве по работе с очередями хранилища
-Информацию о сценариях SDK для веб-заданий, которые не относятся к служебной шине, см. в статье [Использование пакета SDK веб-заданий для работы с хранилищем очередей Azure](websites-dotnet-webjobs-sdk-storage-queues-how-to.md). 
+## <a id="queues"></a>Связанные разделы, охватываемых хранилища очередей hello как tooarticle
+Сведения о сценариях SDK веб-заданий не только tooService шины см. в разделе [как хранилище с hello SDK веб-заданий очередей toouse Azure](websites-dotnet-webjobs-sdk-storage-queues-how-to.md). 
 
-В этой статье рассматриваются следующие вопросы:
+В этой статье рассматриваются следующие hello:
 
 * Асинхронные функции
 * Выполнение на нескольких экземплярах
 * Корректное завершение работы
-* Использование атрибутов пакета SDK для заданий WebJob очереди в теле функции
-* Установка строк подключения пакета SDK в коде.
+* Использование пакета SDK веб-задания атрибутов в теле функции hello
+* Набор строк подключения пакета SDK для hello в коде
 * Установка значений параметров конструктора пакета SDK для заданий WebJob в коде
 * Вызов функции вручную
 * Запись журналов
 
-## <a id="nextsteps"></a>Дальнейшие действия
-В этом руководстве предоставлены примеры кода обработки обычных сценариев для работы со служебной шиной Azure. Дополнительную информацию об использовании веб-заданий Azure и пакета SDK для веб-заданий см. в [рекомендуемых ресурсах для веб-заданий Azure](http://go.microsoft.com/fwlink/?linkid=390226).
+## <a id="nextsteps"></a> Дальнейшие действия
+В этом руководстве предоставила код образцы где показано, как toohandle распространенные сценарии для работы с Azure Service Bus. Дополнительные сведения о статье toouse веб-заданий Azure и hello SDK веб-заданий [рекомендуется заданиям Azure](http://go.microsoft.com/fwlink/?linkid=390226).
 

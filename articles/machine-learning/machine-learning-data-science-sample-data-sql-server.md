@@ -1,5 +1,5 @@
 ---
-title: "Выборка данных на сервере SQL Server в Azure | Документация Майкрософт"
+title: "aaaSample данных в SQL Server в Azure | Документы Microsoft"
 description: "Выборка данных на сервере SQL Server в Azure"
 services: machine-learning
 documentationcenter: 
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
-ms.openlocfilehash: 1bdcc7175dac325de1144d805e977264524b3fbc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dc7f9529c771f6deb633775557e64a04b774f5b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="heading"></a>Выборка данных на сервере SQL Server в Azure
-В этом документе описывается процесс выборки данных, хранящихся на сервере SQL Server в Azure, с помощью SQL или языка программирования Python. В нем также показано, как переместить данные выборки в службу машинного обучения Azure, сохранив их в файл, передав его в BLOB-объект Azure, а затем считав в студии машинного обучения Azure.
+В этом документе показано, как сохранить toosample данных в SQL Server в Azure с помощью SQL или языка программирования Python hello. Здесь также показано, как toomove выборке данных в машинном обучении Azure путем его сохранения файла tooa, поместив его tooan BLOB-объектов Azure и их считывания в студию машинного обучения Azure.
 
-Процедура выборки Python использует библиотеку [pyodbc](https://code.google.com/p/pyodbc/) ODBC для подключения к SQL Server в Azure и библиотеку [Pandas](http://pandas.pydata.org/) для выполнения выборки.
+Выборка Python Hello использует hello [pyodbc](https://code.google.com/p/pyodbc/) tooSQL tooconnect ODBC библиотеки Server в Azure и hello [Pandas](http://pandas.pydata.org/) библиотеки toodo hello выборки.
 
 > [!NOTE]
-> Образец кода SQL в этом документе предполагает, что данные содержатся на сервере SQL Server на платформе Azure. Если это не так, воспользуйтесь инструкциями по переносу данных в SQL Server в среде Azure, изложенными в разделе [Перемещение данных в SQL Server в Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) .
+> Hello пример кода SQL в этом документе предполагается, что hello данных находится в SQL Server в Azure. Если это не так, можно найти слишком[перемещение данных tooSQL Server в Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) инструкции о том, как toomove вашей tooSQL данных сервера в Azure.
 > 
 > 
 
-**Меню** ниже содержит ссылки на разделы, в которых описана выборка данных из различных сред хранения. 
+следующие Hello **меню** связывает tootopics, описывающие как toosample данные из различных средах хранилища. 
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
 **Для чего нужна выборка данных?**
-Если размер набора данных, который планируется проанализировать, слишком большой, обычно рекомендуется уменьшить выборку данных до размера, который останется репрезентативным и будет более управляемым. Это способствует пониманию данных, их исследованию и проектированию характеристик. Роль этой операции в [процессе обработки и анализа данных группы (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) состоит в том, чтобы сделать возможным быстрое прототипирование функций обработки данных и моделей машинного обучения.
+При планировании tooanalyze dataset hello имеет большой размер, это обычно tooreduce данных рекомендуется toodown образец hello его tooa размер меньший, но репрезентативный и управляемость. Это способствует пониманию данных, их исследованию и проектированию характеристик. Ее роль в hello [процесса обработки и анализа данных Team (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) — tooenable быстрого создания прототипов функций обработки данных hello и машинного обучения моделей.
 
-Эта задача выборки является одним из этапов [процесса обработки и анализа данных группы (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Эта задача выборка является этапом hello [процесса обработки и анализа данных Team (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="SQL"></a>Использование SQL
-В этом разделе описываются несколько методов использования SQL для выполнения простой случайной выборки из данных, содержащихся в базе данных. Выберите нужный метод в зависимости от размера ваших данных и их распределения.
+В этом разделе описываются способы, с помощью SQL tooperform простую случайную выборку данных hello базы данных hello. Выберите нужный метод в зависимости от размера ваших данных и их распределения.
 
-Два элемента ниже показывают, как использовать newid в SQL Server для выполнения выборки. Выбор метода зависит от того, насколько случайной требуется сделать выборку (pk_id в образце кода ниже предполагается автоматически генерируемым первичным ключом).
+Hello две следующие пункты показывают, как toouse newid в SQL Server tooperform hello выборки. Hello выбранного метода в зависимости от способа случайных toobe образец hello (pk_id в следующем образце кода hello предполагается toobe автоматического создания первичного ключа).
 
 1. Менее строгая случайная выборка
    
@@ -53,7 +53,7 @@ ms.lasthandoff: 07/11/2017
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
 
-Для выборки можно также использовать предложение TABLESAMPLE, как показано ниже. Этот подход рекомендуется использовать для работы с данными большого размера (предполагается, что данные на разных страницах не коррелируют между собой) и для выполнения запроса в разумные сроки.
+Для выборки можно также использовать предложение TABLESAMPLE, как показано ниже. Это может быть лучшим вариантом, если размер данных велик (предполагается, что данные на разных страницах не сопоставляются) и toocomplete hello запроса слишком много времени.
 
     SELECT *
     FROM <table_name> 
@@ -64,34 +64,34 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-### <a name="sql-aml"></a>Подключение к службе машинного обучения Azure
-Приведенные выше примеры запросов можно использовать непосредственно в модуле [Импорт данных][import-data] Машинного обучения Azure для оперативного сокращения выборки данных и их передачи в эксперимент машинного обучения Azure. Ниже показан снимок экрана при использовании модуля Reader для считывания данных выборки:
+### <a name="sql-aml"></a>Подключение tooAzure машинного обучения
+Вы можете напрямую использовать примеры запросов hello выше hello машинного обучения Azure [импорта данных] [ import-data] данные toodown образец hello модуля на hello полет и переведите его в эксперимент машинного обучения Azure. Ниже приведен снимок экрана с помощью hello чтения модуля tooread hello выборки данных:
 
 ![считыватель sql][1]
 
-## <a name="python"></a>Использование языка программирования Python
-В этом разделе демонстрируется использование [библиотеки pyodbc](https://code.google.com/p/pyodbc/) для установки подключения ODBC к Базе данных SQL Server на языке Python. Строка подключения к базе данных выглядит следующим образом (замените servername, dbname, username и password соответственно именем сервера, именем базы данных, именем пользователя и паролем из вашей конфигурации):
+## <a name="python"></a>С помощью языка программирования Python hello
+В этом разделе демонстрируется использование hello [pyodbc библиотеки](https://code.google.com/p/pyodbc/) tooestablish ODBC подключения tooa базы данных SQL server в Python. строку подключения базы данных Hello таков: (Замените servername, dbname, имя пользователя и пароль конфигурацию):
 
-    #Set up the SQL Azure connection
+    #Set up hello SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Библиотека [Pandas](http://pandas.pydata.org/) в языке Python предоставляет широкий набор структур данных и средств анализа данных для манипуляций с данными при программировании на языке Python. Приведенный ниже код считывает 0,1%-ную выборку данных из таблицы базы данных Azure SQL в данные Pandas:
+Hello [Pandas](http://pandas.pydata.org/) библиотеки в Python предоставляет широкий набор средств анализа данных и структур данных для работы с данными для программирования Python. Приведенный ниже код Hello считывает 0,1% образец hello данных из таблицы в базе данных Azure SQL в данных Pandas:
 
     import pandas as pd
 
-    # Query database and load the returned results in pandas data frame
+    # Query database and load hello returned results in pandas data frame
     data_frame = pd.read_sql('''select column1, cloumn2... from <table_name> tablesample (0.1 percent)''', conn)
 
-Теперь можно работать с данными выборки во фрейме данных Pandas. 
+Теперь можно работать с данными выборки hello в кадре данных Pandas hello. 
 
-### <a name="python-aml"></a>Подключение к службе машинного обучения Azure
-С помощью следующего образца кода можно сохранить данные уменьшенной выборки в файл и передать его в BLOB-объект Azure. Данные из большого двоичного объекта можно считать непосредственно в эксперимент машинного обучения Azure с помощью модуля [Импорт данных][import-data]. Для этого необходимо выполнить следующие шаги: 
+### <a name="python-aml"></a>Подключение tooAzure машинного обучения
+Можно использовать следующие образец кода toosave hello данных уменьшается tooa файл hello и отправьте его tooan BLOB-объектов Azure. Hello данные в большом двоичном объекте hello непосредственно считываются в эксперимента обучения машины Azure с помощью hello [импорта данных] [ import-data] модуля. Ниже приведены шаги Hello. 
 
-1. Запись фрейма данных pandas в локальный файл
+1. Запись hello pandas данных кадра tooa локального файла
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Передача локального файла в BLOB-объект Azure
+2. Отправка больших двоичных объектов tooAzure локального файла
    
         from azure.storage import BlobService
         import tables
@@ -112,12 +112,12 @@ ms.lasthandoff: 07/11/2017
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Считывание данных из большого двоичного объекта Azure с помощью модуля [Импорт данных][import-data] Машинного обучения Azure, как показано на снимке экрана ниже.
+3. Чтение данных из больших двоичных объектов Azure с помощью машинного обучения Azure [импорта данных] [ import-data] модуля, как показано ниже захвата экрана приветствия:
 
 ![большой двоичный объект считывателя][2]
 
-## <a name="the-team-data-science-process-in-action-example"></a>Пример применения процесса обработки и анализа данных группы на практике
-Полноценный пошаговый пример применения процесса обработки и анализа данных группы с использованием общедоступного набора данных см. в статье [Процесс обработки и анализа данных группы на практике: использование SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
+## <a name="hello-team-data-science-process-in-action-example"></a>Hello командного процесса обработки и анализа данных в примере действие
+Пример Пошаговое руководство с начала до конца hello командного процесса обработки и анализа данных с помощью набора общих см [командного процесса обработки и анализа данных в действии: с помощью SQL Sever](machine-learning-data-science-process-sql-walkthrough.md).
 
 [1]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_blob.png

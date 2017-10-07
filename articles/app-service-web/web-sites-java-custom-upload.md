@@ -1,6 +1,6 @@
 ---
-title: "Отправка пользовательского веб-приложения Java в Azure"
-description: "В этом учебнике объясняется, как отправить пользовательское веб-приложение Java в веб-приложения службы приложений Azure."
+title: "aaaUpload пользовательского tooAzure приложения web Java"
+description: "Этом учебнике показано, как tooupload пользовательские Java веб-приложения tooAzure веб-приложений служб приложений."
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
@@ -14,32 +14,32 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 9c8f9ee7780859f7640ac82d6ebce85082170ad7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0cb4a682bb25d86ff08bfd03628c89795c58451e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-a-custom-java-web-app-to-azure"></a>Отправка пользовательского веб-приложения Java в Azure
-В этом разделе объясняется, как отправить пользовательское веб-приложение Java в веб-приложения [службы приложений Azure] . Информация, приведенная здесь, применима к любому веб-сайту или веб-приложению Java, также даны несколько примеров для конкретных приложений.
+# <a name="upload-a-custom-java-web-app-tooazure"></a>Отправка пользовательского tooAzure приложения web Java
+В этом разделе объясняется, как tooupload пользовательские Java веб-приложения слишком[службе приложений Azure] веб-приложений. В состав входит информацию, которая применяется tooany Java веб-сайта или веб-приложения и также некоторые примеры для конкретных приложений.
 
-Обратите внимание, что Azure предоставляет средства для создания веб-приложений Java с помощью пользовательского интерфейса настройки портала Azure, как описано в разделе [Создание веб-приложения Java в службе приложений Azure](web-sites-java-get-started.md). Этот учебник предназначен для ситуаций, в которых не требуется использовать пользовательский интерфейс настройки портала Azure или Azure Marketplace.  
+Обратите внимание, что Azure предоставляет средства для создания веб-приложений Java, используя пользовательский Интерфейс для настройки портала Azure hello и hello Azure Marketplace, как описано в статье [Создание веб-приложения Java в службе приложений Azure](web-sites-java-get-started.md). Этот учебник предназначен для сценариев, в которых не требуется пользовательский Интерфейс конфигурации портала Azure hello toouse или hello Azure Marketplace.  
 
 ## <a name="configuration-guidelines"></a>Инструкции по настройке
-Ниже описаны параметры, которые следует задать для пользовательских веб-приложений Java в Azure.
+Hello ниже описаны параметры hello, ожидаемый для пользовательских веб-приложений Java в Azure.
 
-* HTTP-порт, используемый процессом Java, назначается динамически.  Процесс должен использовать порт из переменной среды `HTTP_PLATFORM_PORT`.
-* Все прослушивающие порты, кроме одного прослушивателя HTTP, должны быть отключены.  В Tomcat сюда относятся порты завершения работы, HTTPS и AJP.
-* Контейнер должен быть настроен на использование исключительно трафика IPv4.
-* В конфигурации для приложения необходимо задать команду **startup** .
-* Приложения, которым требуются каталоги с разрешением на запись, должны находиться в каталоге контента веб-приложения Azure, которым является каталог **D:\home**.  Переменная среды `HOME` ссылается на D:\home.  
+* динамически назначается Hello HTTP-порт, используемый hello процесса Java.  Hello процесс должен использовать порт hello из переменной среды hello `HTTP_PLATFORM_PORT`.
+* Все прослушивать порты Кроме hello один прослушиватель HTTP должен быть отключен.  В Tomcat, который включает завершение hello, HTTPS и AJP портов.
+* контейнер Hello должен toobe настроен только для трафика IPv4.
+* Hello **запуска** команд для hello приложению toobe, заданными в конфигурации hello.
+* Приложения, которым требуется разрешение на запись каталогов с помощью должны toobe, расположенный в каталоге содержимого hello Azure веб-приложения, который является **D:\home**.  переменная среды Hello `HOME` ссылается tooD:\home.  
 
-При необходимости можно задать переменные среды в файле web.config.
+Переменные среды при необходимости можно задать в файле web.config hello.
 
 ## <a name="webconfig-httpplatform-configuration"></a>Конфигурация httpPlatform в Web.config
-Ниже приведена информация о формате **httpPlatform** , используемом в web.config.
+Hello следующие данные описывают hello **httpPlatform** формат в файле web.config.
 
-**arguments** (значение по умолчанию — ""). Аргументы для исполняемого файла или скрипта, указанного в параметре **processPath** .
+**arguments** (значение по умолчанию — ""). Аргументы toohello исполняемый файл или сценарий, указанный в hello **processPath** параметр.
 
 Примеры (показаны с включенным **processPath** ):
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 08/29/2017
     arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP\_PLATFORM\_PORT% -Djetty.base=&quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115&quot; -jar &quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar&quot;"
 
 
-**processPath** — путь к исполняемому файлу или скрипту, который запустит процесс прослушивания для HTTP-запросов.
+**processPath** -toohello путь исполняемый файл или сценарий, который запускает процесс, прослушивающий для HTTP-запросов.
 
 Примеры:
 
@@ -60,31 +60,31 @@ ms.lasthandoff: 08/29/2017
 
     processPath="%HOME%\site\wwwroot\bin\tomcat\bin\catalina.bat"
 
-**rapidFailsPerMinute** (значение по умолчанию — 10). Допустимое количество сбоев в минуту для процесса, указанного в **processPath**. Если этот предел превышен, **HttpPlatformHandler** остановит запуск процесса в течение оставшейся части минуты.
+**rapidFailsPerMinute** (значение по умолчанию — 10). Число вхождений hello процесс, указанный в **processPath** может быть toocrash в минуту. Если этот предел превышен, **HttpPlatformHandler** останавливает запуск процесса hello hello оставшейся части минуты hello.
 
-**requestTimeout** (значение по умолчанию — "00:02:00"). Период ожидания **HttpPlatformHandler** ответа от процесса, прослушивающего `%HTTP_PLATFORM_PORT%`.
+**requestTimeout** (значение по умолчанию — "00:02:00"). Длительность, для которой **HttpPlatformHandler** будет ожидать ответа от процесса hello, прослушивающего `%HTTP_PLATFORM_PORT%`.
 
-**startupRetryCount** (значение по умолчанию — 10). Допустимое число попыток **HttpPlatformHandler** запустить процесс, указанный в **processPath**. Для получения дополнительных сведений ознакомьтесь с описанием **startupTimeLimit**.
+**startupRetryCount** (значение по умолчанию — 10). Сколько раз **HttpPlatformHandler** попытается процесс toolaunch hello, указанный в **processPath**. Для получения дополнительных сведений ознакомьтесь с описанием **startupTimeLimit**.
 
-**startupTimeLimit** (значение по умолчанию — 10 секунд). Период ожидания **HttpPlatformHandler** запуска исполняемым файлом или сценарием процесса прослушивания порта.  Если этот предел достигнут, **HttpPlatformHandler** завершает этот процесс и пробует запустить его столько раз, сколько указано в **startupRetryCount**.
+**startupTimeLimit** (значение по умолчанию — 10 секунд). Длительность, для которой **HttpPlatformHandler** будет ожидать hello исполняемый файл или сценарий toostart процесса, прослушивающего порт hello.  При превышении этого предела **HttpPlatformHandler** будет прервать процесс hello и повторите toolaunch его еще раз **startupRetryCount** раз.
 
-**stdoutLogEnabled** (значение по умолчанию — "true"). Если значение равно true, то **stdout** и **stderr** для процесса, указанного в параметре **processPath**, будут перенаправлены в файл, указанный в **stdoutLogFile** (ознакомьтесь с разделом **stdoutLogFile**).
+**stdoutLogEnabled** (значение по умолчанию — "true"). Значение true, если **stdout** и **stderr** для hello процесс, указанный в hello **processPath** будет иметь значение toohello перенаправленный файл, указанный в  **stdoutLogFile** (см. **stdoutLogFile** раздел).
 
-**stdoutLogFile** (значение по умолчанию — "d:\home\LogFiles\httpPlatformStdout.log"). Абсолютный путь к файлу, для которого будет вестись журнал **stdout** и **stderr** из процесса, указанного в **processPath**.
+**stdoutLogFile** (значение по умолчанию — "d:\home\LogFiles\httpPlatformStdout.log"). Абсолютный путь к файлу для которого **stdout** и **stderr** из процесса hello, указанный в **processPath** будут регистрироваться.
 
 > [!NOTE]
-> `%HTTP_PLATFORM_PORT%` — специальный заполнитель, который должен быть указан как часть **arguments** или как часть списка **httpPlatform** **environmentVariables**. **HttpPlatformHandler** заменит это значение на сформированный системой порт, чтобы указанный в **processPath** процесс мог прослушивать этот порт.
+> `%HTTP_PLATFORM_PORT%`— Это специальный заполнитель, либо как часть должна toospecified **аргументы** или как часть hello **httpPlatform** **переменных среды** списка. Это будет заменен портом внутренними по **HttpPlatformHandler** , чтобы процесс hello заданные **processPath** мог прослушивать этот порт.
 > 
 > 
 
 ## <a name="deployment"></a>Развертывание
-Веб-приложения на основе Java можно легко развернуть с помощью большинства средств, которые используются для веб-приложений на основе служб IIS.  Полностью поддерживаются механизмы развертывания FTP, Git и Kudu, а также встроенная функция SCM для веб-приложений. WebDeploy работает как протокол, однако, поскольку код Java разрабатывается не в Visual Studio, WebDeploy не подходит для развертывания веб-приложений Java.
+Веб-приложений на основе Java можно легко развернуть с помощью большинство означает приветствия, которые используются с hello Internet Information Services (IIS) на основе веб-приложений.  FTP, Git и Kudu все поддерживаются в качестве методов развертывания, как является встроенной функции SCM для веб-приложения "hello". WebDeploy работает как протокол, однако, поскольку код Java разрабатывается не в Visual Studio, WebDeploy не подходит для развертывания веб-приложений Java.
 
 ## <a name="application-configuration-examples"></a>Примеры конфигурации приложений
-Для следующих приложений в качестве примера приводится файл web.config и конфигурация приложения, чтобы показать, как обеспечить работу приложений Java в веб-приложениях службы приложений.
+Для следующих приложений, файл web.config и hello hello конфигурации приложения предоставляется как примеры tooshow как tooenable приложение Java на веб-приложений служб приложений.
 
 ### <a name="tomcat"></a>Tomcat
-Хотя существует два варианта Tomcat, поставляемых с веб-приложениями службы приложений, по-прежнему доступна возможность отправки экземпляров, настроенных для определенного клиента. Ниже приведен пример установки Tomcat с другой виртуальной машиной Java (JVM).
+Хотя существует две разновидности Tomcat, поставляемые с веб-приложений служб приложений, она по-прежнему вполне возможно, что tooupload клиента конкретные экземпляры. Ниже приведен пример установки Tomcat с другой виртуальной машиной Java (JVM).
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -97,25 +97,25 @@ ms.lasthandoff: 08/29/2017
           <environmentVariables>
             <environmentVariable name="CATALINA_OPTS" value="-Dport.http=%HTTP_PLATFORM_PORT%" />
             <environmentVariable name="CATALINA_HOME" value="%HOME%\site\wwwroot\bin\tomcat" />
-            <environmentVariable name="JRE_HOME" value="%HOME%\site\wwwroot\bin\java" /> <!-- optional, if not specified, this will default to %programfiles%\Java -->
+            <environmentVariable name="JRE_HOME" value="%HOME%\site\wwwroot\bin\java" /> <!-- optional, if not specified, this will default too%programfiles%\Java -->
             <environmentVariable name="JAVA_OPTS" value="-Djava.net.preferIPv4Stack=true" />
           </environmentVariables>
         </httpPlatform>
       </system.webServer>
     </configuration>
 
-На стороне Tomcat необходимо внести несколько изменений в конфигурацию. В server.xml необходимо задать следующие параметры:
+На hello Tomcat стороны существует несколько необходимые toobe внесены изменения в конфигурации. Hello server.xml требуется изменить toobe tooset:
 
 * Порт завершения работы = -1.
 * Порт соединителя HTTP = {port.http}.
 * Адрес соединителя HTTP = "127.0.0.1".
 * Закомментируйте соединители HTTPS и AJP.
-* Параметр IPv4 можно также задать в файле catalina.properties, добавив в него `java.net.preferIPv4Stack=true`.
+* параметр Hello IPv4 можно также задать в файле catalina.properties hello, где можно добавить`java.net.preferIPv4Stack=true`
 
-Вызовы Direct3d в веб-приложениях службы приложений не поддерживаются. Если ваше приложение выполняет такие вызовы, то для их отключения добавьте следующий параметр Java: `-Dsun.java2d.d3d=false`
+Вызовы Direct3d в веб-приложениях службы приложений не поддерживаются. toodisable, добавьте следующий параметр Java приложения следует такие вызовы hello:`-Dsun.java2d.d3d=false`
 
 ### <a name="jetty"></a>Jetty
-Как в случае с Tomcat, клиенты могут отправлять собственные экземпляры для Jetty. Если выполняется полная установка Jetty, конфигурация будет выглядеть следующим образом:
+Как hello случае для Tomcat, клиентам можно отправить свои собственные экземпляры для Jetty. В случае выполнения hello полной установки Jetty hello hello конфигурация будет выглядеть следующим образом:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -132,10 +132,10 @@ ms.lasthandoff: 08/29/2017
       </system.webServer>
     </configuration>
 
-Необходимо изменить конфигурацию Jetty в файле start.ini, чтобы задать `java.net.preferIPv4Stack=true`.
+Hello конфигурацию Jetty должен toobe колебаниями hello start.ini tooset `java.net.preferIPv4Stack=true`.
 
 ### <a name="springboot"></a>Springboot
-Чтобы запустить приложение Springboot, необходимо отправить JAR- или WAR-файл и добавить следующий файл web.config. Файл web.config необходимо поместить в папку wwwroot. Настройте аргументы в файле web.config, чтобы он указывал на JAR-файл. В следующем примере JAR-файл также расположен в папке wwwroot.  
+В порядке tooget Springboot приложения, под управлением tooupload файл JAR или ВОЙНЫ и добавьте следующие файл web.config hello. файл web.config Hello попадают в папку wwwroot hello. В файле web.config hello Настройка hello аргументы toopoint tooyour JAR-файл, в hello следующий пример hello JAR-файл находится в папке wwwroot hello также.  
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -151,11 +151,11 @@ ms.lasthandoff: 08/29/2017
 
 
 ### <a name="hudson"></a>Hudson
-В нашем тесте использовался WAR-файл Hudson 3.1.2 и экземпляр Tomcat 7.0.50 по умолчанию, но не использовался пользовательский интерфейс настройки.  Поскольку Hudson представляет собой средство построения программного обеспечения, рекомендуется установить его на выделенных экземплярах, где в веб-приложении можно установить флаг **AlwaysOn** .
+Наш тест используется hello Hudson 3.1.2 war и hello Tomcat 7.0.50 экземпляр по умолчанию, но без использования действия tooset hello пользовательского интерфейса.  Поскольку Hudson — это программное средство построения, это желательно tooinstall ее на выделенный экземпляров, где hello **AlwaysOn** флаг можно установить на веб-приложения hello.
 
 1. В корневом каталоге веб-приложения, например **d:\home\site\wwwroot**, создайте каталог **webapps** (если он отсутствует) и поместите файл Hudson.war в каталог **d:\home\site\wwwroot\webapps**.
 2. Скачайте инструмент apache maven 3.0.5 (совместимый с Hudson) и поместите его в каталог **d:\home\site\wwwroot**.
-3. Создайте файл web.config в каталоге **d:\home\site\wwwroot** и вставьте в него следующее содержимое.
+3. Создайте файл web.config в **d:\home\site\wwwroot** и вставить hello согласно содержимому:
    
         <?xml version="1.0" encoding="UTF-8"?>
         <configuration>
@@ -177,37 +177,37 @@ ms.lasthandoff: 08/29/2017
           </system.webServer>
         </configuration>
    
-    На данном этапе можно перезапустить веб-приложение для вступления изменений в силу.  Подключитесь к узлу http://ваше_веб-приложение/hudson для запуска Hudson.
-4. После самонастройки Hudson должен появиться следующий экран:
+    На этом этапе hello веб-приложения может быть перезапущен tootake hello изменения.  Подключите toohttp://yourwebapp/hudson toostart Hudson.
+4. После Hudson настраивается, появится следующий экран приветствия:
    
     ![Hudson](./media/web-sites-java-custom-upload/hudson1.png)
-5. Перейдите на страницу конфигурации Hudson: выберите **Manage Hudson** (Управление Hudson) и щелкните **Configure System** (Настройка системы).
-6. Настройте JDK, как показано ниже.
+5. Hello доступа к странице конфигурации Hudson: щелкните **управление Hudson**и нажмите кнопку **Настройка системы**.
+6. Настройте hello JDK, как показано ниже:
    
     ![Конфигурация Hudson](./media/web-sites-java-custom-upload/hudson2.png)
 7. Настройте Maven, как показано ниже.
    
     ![Конфигурация Maven](./media/web-sites-java-custom-upload/maven.png)
-8. Сохраните параметры. Теперь продукт Hudson должен быть настроен и готов к использованию.
+8. Сохраните параметры hello. Теперь продукт Hudson должен быть настроен и готов к использованию.
 
 Дополнительные сведения о Hudson см. на сайте [http://hudson-ci.org](http://hudson-ci.org).
 
 ### <a name="liferay"></a>Liferay
-Liferay поддерживается в веб-приложениях службы приложений. Поскольку для работы Liferay может потребоваться значительный объем памяти, веб-приложение должно выполняться в выделенном рабочем процессе среднего или крупного размера, который может предоставить достаточный объем памяти. Запуск Liferay занимает несколько минут. По этой причине рекомендуется установить для веб-приложения значение **Всегда включено**.  
+Liferay поддерживается в веб-приложениях службы приложений. Поскольку Liferay может потребоваться значительный объем, веб-приложения hello должен toorun в средних и крупных выделенный рабочий процесс, который может обеспечить достаточный объем памяти. Liferay занимает несколько минут toostart. По этой причине рекомендуется установить веб-приложение hello слишком**Always On**.  
 
-После загрузки Liferay следующие файлы были изменены с помощью Liferay 6.1.2 Community Edition GA3 из одного пакета с Tomcat:
+С помощью Liferay 6.1.2, объединенными Community Edition GA3 Tomcat, hello следующие файлы были изменены после загрузки Liferay:
 
 **Server.xml**
 
-* Измените порт завершения работы на -1.
-* Измените соединитель HTTP на такой: `<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />`
-* Закомментируйте соединитель AJP.
+* Измените завершении работы порта слишком-1.
+* Изменение соединителя HTTP слишком`<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />`
+* Закомментируйте hello AJP соединителя.
 
-В папке **liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** создайте файл **portal-ext.properties**. Этот файл должен содержать одну строку, как показано ниже:
+В hello **liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** папки, создайте файл с именем **ext.properties портала**. Этот файл должен toocontain одну строку, как показано ниже:
 
     liferay.home=%HOME%/site/wwwroot/liferay
 
-На том же уровне структуры каталогов, где находится папка tomcat-7.0.40, создайте файл с именем **web.config** со следующим содержимым:
+В hello же уровне каталога, что и папка hello tomcat 7.0.40 создать файл с именем **web.config** с hello после содержимого:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -231,11 +231,11 @@ Liferay поддерживается в веб-приложениях служб
       </system.webServer>
     </configuration>
 
-В разделе **httpPlatform** для параметра **requestTimeout** задано значение "00:10:00".  Его можно уменьшить, однако в этом случае повышается вероятность возникновения ошибок времени ожидания при начальной загрузке Liferay.  При изменении этого значения следует также изменить параметр **connectionTimeout** в файле server.xml на стороне tomcat.  
+В разделе hello **httpPlatform** блок hello **requestTimeout** задано слишком "00: 10:00».  Можно сократить, но то, скорее всего, toosee некоторые ошибки времени ожидания при Liferay начальной загрузки.  Если это значение изменяется, затем hello **connectionTimeout** в hello tomcat server.xml также может изменяться.  
 
-Следует отметить, что переменная среды JRE_HOME в приведенном выше файле web.config указывает на 64-разрядную версию JDK. По умолчанию используется 32-разрядная версия, но поскольку Liferay может потребоваться большой объем памяти, рекомендуется использовать 64-разрядную версию JDK.
+Стоит отметить, что varariable среде JRE_HOME hello указывается в hello выше web.config toopoint toohello JDK 64-разрядной. по умолчанию Hello 32 бита, но поскольку Liferay может потребоваться высокая памяти, рекомендуется toouse hello JDK 64-разрядной.
 
-После внесения этих изменений перезапустите веб-сайт с Liferay, а затем откройте адрес http://ваше_веб-приложение. Портал Liferay доступен из корневого каталога веб-приложения. 
+После внесения этих изменений перезапустите веб-сайт с Liferay, а затем откройте адрес http://ваше_веб-приложение. портал Liferay Hello доступен из корня приложения hello web. 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Дополнительные сведения о Liferay см. на сайте [http://www.liferay.com](http://www.liferay.com).
@@ -247,4 +247,4 @@ Liferay поддерживается в веб-приложениях служб
 [!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- External Links -->
-[службы приложений Azure]: http://go.microsoft.com/fwlink/?LinkId=529714
+[службе приложений Azure]: http://go.microsoft.com/fwlink/?LinkId=529714

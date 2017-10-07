@@ -1,6 +1,6 @@
 ---
-title: "Сведения об использовании эмулятора песочницы Hadoop в Azure HDInsight | Документация Майкрософт"
-description: "Чтобы начать ознакомление с экосистемой Hadoop, можно настроить на виртуальной машине Azure песочницу Hadoop с платформы Hortonworks. "
+title: "с помощью изолированной среде Hadoop — эмулятор — Azure HDInsight aaaLearn | Документы Microsoft"
+description: "обучающие материалы по с помощью toostart Здравствуйте экосистема Hadoop, настройкой изолированной среде Hadoop из Hortonworks на виртуальной машине Azure. "
 keywords: "эмулятор hadoop,песочница hadoop"
 editor: cgronlun
 manager: jhubbard
@@ -17,73 +17,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.openlocfilehash: b701879464205860edd1c097651b532f87bae388
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 91e74f0823fd02e9bb812155a7d09357a77b0736
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Начало работы с песочницей Hadoop, эмулятором на виртуальной машине
 
-Узнайте, как настроить на виртуальной машине песочницу Hadoop с платформы Hortonworks, чтобы ознакомиться с экосистемой Hadoop. Песочница представляет собой локальную среду разработки для ознакомления с Hadoop, распределенной файловой системой Hadoop (HDFS) и отправкой заданий. Если вы знакомы с Hadoop, вы можете начать использовать Hadoop в Azure, создав кластер HDInsight. Дополнительные сведения см. в статье [Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux](hdinsight-hadoop-linux-tutorial-get-started.md).
+Узнайте, как tooinstall hello Hadoop «песочнице» Hortonworks на виртуальную машину toolearn о Hadoop экосистема hello. "песочница" Hello предоставляет toolearn среде местного разработки о Hadoop, система распределенного файла Hadoop (HDFS) и отправки заданий. Если вы знакомы с Hadoop, вы можете начать использовать Hadoop в Azure, создав кластер HDInsight. Дополнительные сведения о том, как tooget работы см. в разделе [Приступая к работе с Hadoop в HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 * [Oracle VirtualBox](https://www.virtualbox.org/). Скачайте и установите приложение [отсюда](https://www.virtualbox.org/wiki/Downloads).
 
 
 
-## <a name="download-and-install-the-virtual-machine"></a>Скачивание и установка виртуальной машины
-1. Перейдите на [страницу загрузок Hortonworks](http://hortonworks.com/downloads/#sandbox).
+## <a name="download-and-install-hello-virtual-machine"></a>Загрузите и установите hello виртуальной машины
+1. Обзор toohello [Hortonworks загружает](http://hortonworks.com/downloads/#sandbox).
 
-2. Щелкните **DOWNLOAD FOR VIRTUALBOX** (Файл загрузки для VirtualBox), чтобы скачать последнюю песочницу Hortonworks на виртуальную машину. Перед началом скачивания вам будет предложено зарегистрироваться в Hortonworks. Скачивание может длиться один-два часа в зависимости от скорости сети.
+2. Нажмите кнопку **загрузки VIRTUALBOX** toodownload hello последнюю Hortonworks "песочницы" на виртуальной Машине. Все запрашиваемые tooregister с Hortonworks перед началом загрузки hello. Он принимает один toodownload tootwo часов в зависимости от скорости сети.
    
     ![Изображение ссылки для скачивания песочницы Hortonworks для VirtualBox](./media/hdinsight-hadoop-emulator-get-started/download-sandbox.png)
-3. На этой же веб-странице щелкните ссылку **Import on Virtual Box** (Импорт в VirtualBox), чтобы скачать PDF-файл, содержащий инструкции по установке для виртуальной машины.
+3. Из Здравствуйте одной веб-странице, щелкните hello **импорта на Virtual Box** связать toodownload PDF-ФАЙЛ, содержащий инструкции по установке для hello виртуальной машины.
 
-Чтобы скачать старую песочницу версии HDP, разверните архив:
+toodownload изолированной более старые версии HDP разверните hello архива:
 
 ![Архив песочницы Hortonworks](./media/hdinsight-hadoop-emulator-get-started/hortonworks-sandbox-archive.png)
 
 
-## <a name="start-the-virtual-machine"></a>Запуск виртуальной машины
+## <a name="start-hello-virtual-machine"></a>Запустить виртуальную машину hello
 
 1. Откройте Oracle VirtualBox на виртуальной машине.
-2. В меню **Файл** щелкните **Import Appliance** (Импорт устройства), а затем укажите образ песочницы Hortonworks.
-1. Выберете песочницу Hortonworks, щелкните **Start** (Запустить) > **Normal Start** (Обычный запуск). После завершения процесса загрузки в виртуальной машине отобразятся инструкции для входа.
+2. Из hello **файл** меню, нажмите кнопку **устройство импорта**и укажите hello изображения Hortonworks "песочницы".
+1. Выберите hello Hortonworks "песочницы", нажмите кнопку **запустить**, а затем **Обычный запуск**. После завершения процесса загрузки hello hello виртуальной машины она отображает инструкции имени входа.
    
     ![Normal Start](./media/hdinsight-hadoop-emulator-get-started/normal-start.png)
-2. Откройте веб-браузер и перейдите по отображаемому URL-адресу (как правило, http://127.0.0.1:8888).
+2. Откройте веб-браузер и перейдите toohello URL-адрес отображается (обычно http://127.0.0.1:8888).
 
 ## <a name="set-sandbox-passwords"></a>Задание паролей для песочницы
 
-1. На **начальном шаге** на странице песочницы Hortonworks выберите **View Advanced Options** (Просмотр дополнительных параметров). Используйте сведения на этой странице, чтобы войти в песочницу с помощью SSH. Введите указанные имя и пароль.
+1. Из hello **начать** hello Hortonworks "песочницы", выберите шаг **Дополнительные параметры представления**. Используйте hello сведения на этой странице toolog в песочнице toohello с помощью SSH. Используйте hello имя и пароль.
    
    > [!NOTE]
-   > Если клиент SSH не установлен, можно использовать веб-SSH, предоставляемый виртуальной машиной по адресу **http://localhost:4200/**.
+   > Если у вас установлен клиент SSH, можно использовать веб-SSH, предоставляемые в hello виртуальной машины в hello **http://localhost:4200 /**.
    > 
    
-    При первом подключении с помощью SSH вам будет предложено изменить пароль для учетной записи root. Введите новый пароль, используемый при входе с помощью SSH.
+    Hello при первом подключении с помощью SSH, все запрашиваемые toochange hello пароль для учетной записи root hello. Введите новый пароль, используемый при входе с помощью SSH.
 
-2. После входа в систему введите следующую команду:
+2. После входа введите hello следующую команду:
    
         ambari-admin-password-reset
    
-    При появлении запроса укажите пароль для учетной записи администратора Ambari. Он используется при получении доступа к веб-интерфейсу Ambari.
+    При появлении запроса введите пароль для учетной записи администратора Ambari hello. Это используется при доступе к hello Ambari веб-интерфейса.
 
 ## <a name="use-hive-commands"></a>Использование команд Hive
 
-1. Используя подключение SSH к песочнице, запустите оболочку Hive с помощью следующей команды:
+1. В изолированной toohello SSH подключения используйте следующие командной оболочки Hive hello toostart hello:
    
         hive
-2. После запуска оболочки просмотрите таблицы, представленные в песочнице, используя следующую команду:
+2. После запуска оболочки hello, используйте следующие таблицы tooview hello, имеющиеся в "песочнице" hello hello:
    
         show tables;
-3. Используйте следующую команду, чтобы извлечь 10 строк из таблицы `sample_07` :
+3. Используйте hello следующую tooretrieve 10 строк из hello `sample_07` таблицы:
    
         select * from sample_07 limit 10;
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Использование средств Azure Data Lake для Visual Studio с песочницей Hortonworks](hdinsight-hadoop-emulator-visual-studio.md)
-* [Learning the ropes of the Hortonworks Sandbox](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Узнайте, как toouse Visual Studio с hello Hortonworks "песочницы"](hdinsight-hadoop-emulator-visual-studio.md)
+* [Изучение ropes hello объекта hello Hortonworks "песочницы"](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Hadoop tutorial - Getting started with HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/) (Руководство по началу работы с Hadoop)
 

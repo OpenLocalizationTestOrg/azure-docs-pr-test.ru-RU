@@ -1,6 +1,6 @@
 ---
-title: "Учетные записи хранения в Azure стек | Документы Microsoft"
-description: "Сведения о создании учетной записи хранилища Azure стека."
+title: "учетные записи aaaStorage стека Azure | Документы Microsoft"
+description: "Узнайте, как toocreate Azure стека учетной записи хранилища."
 services: azure-stack
 documentationcenter: 
 author: vhorne
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: victorh
-ms.openlocfilehash: de32c0ce79e8357274cc19cd1ea4ec23b85b918f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5b1f84b15597245cc5ed7e49494dd3abf8d827a0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Учетные записи хранения в Azure Stack
-Учетные записи хранения включают в себя службы BLOB-объектов и таблиц, а также уникальное пространство имен для объектов данных хранилища. По умолчанию данные в учетной записи доступны только владельцу учетной записи хранения.
+Учетные записи хранения включают службы больших двоичных объектов и таблиц и hello уникальное пространство имен для объектов хранилища данных. По умолчанию hello данные в учетной записи — доступны только tooyou hello владелец учетной записи хранилища.
 
-1. На компьютере, подтверждения Концепции стек Azure, войдите на `https://adminportal.local.azurestack.external` как [администратора](azure-stack-connect-azure-stack.md)и нажмите кнопку **New** > **данные + хранилище**  >  **Учетной записи хранилища**.
+1. На компьютере hello подтверждения Концепции стек Azure выполните вход слишком`https://adminportal.local.azurestack.external` как [администратора](azure-stack-connect-azure-stack.md)и нажмите кнопку **New** > **данные + хранилище**  >  **Учетной записи хранилища**.
 
    ![](media/azure-stack-provision-storage-account/image01.png)
-2. В **создать учетную запись хранения** колонки, введите имя для вашей учетной записи. Создайте новый **группы ресурсов**, или выберите существующую, а затем нажмите кнопку **создать** для создания учетной записи хранилища.
+2. В hello **создать учетную запись хранения** колонки, введите имя для вашей учетной записи. Создайте новый **группы ресурсов**, или выберите существующую, а затем нажмите кнопку **создать** toocreate учетной записи хранилища hello.
 
    ![](media/azure-stack-provision-storage-account/image02.png)
-3. Чтобы просмотреть новую учетную запись хранения, щелкните **все ресурсы**, выполните поиск учетной записи хранения и щелкните ее имя.
+3. toosee учетной записи хранения, нажмите кнопку **все ресурсы**, выполните поиск hello учетной записи хранилища и щелкните ее имя.
 
     ![](media/azure-stack-provision-storage-account/image03.png)
 
@@ -38,4 +38,4 @@ ms.lasthandoff: 08/29/2017
 
 [Дополнительные сведения об учетных записях хранилища Azure](../storage/common/storage-create-storage-account.md)
 
-[Загрузить руководство проверки хранилища Azure согласованное стек Azure](http://aka.ms/azurestacktp1doc)
+[Загрузить руководство по Azure согласованное хранилища проверки стека Azure hello](http://aka.ms/azurestacktp1doc)

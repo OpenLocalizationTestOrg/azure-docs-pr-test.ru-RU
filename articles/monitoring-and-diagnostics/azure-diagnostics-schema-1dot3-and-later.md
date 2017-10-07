@@ -1,6 +1,6 @@
 ---
-title: "Схема конфигурации расширения системы диагностики Azure версии 1.3 и более поздней версии | Документация Майкрософт"
-description: "Схема версии 1.3 и более поздние версии для системы диагностики Azure поставляются в составе пакета SDK 2.4 и более поздней версии для Microsoft Azure."
+title: "схема конфигурации 1.3 и более поздних версий расширения диагностики aaaAzure | Документы Microsoft"
+description: "Схема версии 1.3 и более поздней версии Диагностика Azure поставляется как часть hello Microsoft Azure SDK 2.4 и более поздней версии."
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
@@ -14,15 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 0d814825fb08452238a254ccd30bde230380c74c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bd15d3a79ea818fcb3235854717e58d5da36518e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Схема конфигурации системы диагностики Azure версии 1.3 и более поздней
 > [!NOTE]
-> Расширение системы диагностики Azure — это компонент, который используется для сбора данных счетчиков производительности и других статистических данных из:
+> Hello расширения системы диагностики Azure — компонент hello используется toocollect счетчики производительности и другие статистические данные из:
 > - Виртуальные машины Azure 
 > - Наборы для масштабирования виртуальных машин
 > - Service Fabric 
@@ -31,15 +31,15 @@ ms.lasthandoff: 07/11/2017
 > 
 > Данная страница применяется только в том случае, если вы используете одну из этих служб.
 
-Эта страница предназначена для версий 1.3 и более поздних (пакет Azure SDK 2.4 и более поздней версии). Новые разделы конфигурации снабжены комментариями, указывающими, в какой версии они были добавлены.  
+Эта страница предназначена для версий 1.3 и более поздних (пакет Azure SDK 2.4 и более поздней версии). Новые разделы конфигурации являются комментариями tooshow в какой версии, они были добавлены.  
 
-Файл конфигурации, описанный здесь, используется для задания параметров конфигурации диагностики при запуске монитора диагностики.  
+файл конфигурации Hello, описанные здесь — используется tooset диагностические параметры конфигурации, при запуске монитора диагностики hello.  
 
-Расширение используется в сочетании с другими продуктами диагностики корпорации Майкрософт, такими как Azure Monitor, Application Insights и Log Analytics.
+расширение Hello используется в сочетании с другими продуктами Майкрософт диагностики, как монитор Azure, Application Insights и анализа журналов.
 
 
 
-Скачайте общедоступное определение схемы файла конфигурации, выполнив следующую команду PowerShell:  
+Загрузите определение схемы файл открытой конфигурации hello, выполнив следующую команду PowerShell hello:  
 
 ```powershell  
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
@@ -47,8 +47,8 @@ ms.lasthandoff: 07/11/2017
 
 Дополнительные сведения об использовании системы диагностики Azure см. в [этой статье](azure-diagnostics.md).  
 
-## <a name="example-of-the-diagnostics-configuration-file"></a>Пример файла конфигурации диагностики  
- В следующем примере показан типичный файл конфигурации диагностики.  
+## <a name="example-of-hello-diagnostics-configuration-file"></a>Пример файла конфигурации диагностики hello  
+ Следующий пример Hello показан типичный файл конфигурации диагностики:  
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>  
@@ -158,9 +158,9 @@ ms.lasthandoff: 07/11/2017
 
 ```  
 
-Ниже приведен эквивалент предыдущего XML-файла конфигурации в формате JSON. 
+Эквивалент в формате JSON hello предыдущего XML-файла конфигурации. 
 
-Элементы PublicConfig и PrivateConfig разделяются, так как в большинстве примеров использования JSON они передаются как различные переменные. К таким примерам относятся шаблоны Resource Manager, масштабируемый набор виртуальных машин PowerShell и Visual Studio. 
+Поскольку в большинстве случаев использования json, они передаются как переменные разных разделяются Hello PublicConfig и PrivateConfig. К таким примерам относятся шаблоны Resource Manager, масштабируемый набор виртуальных машин PowerShell и Visual Studio. 
 
 ```json
 "PublicConfig" {
@@ -363,10 +363,10 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="reading-this-page"></a>Чтение этой страницы  
- Приведенные ниже теги указаны примерно в том же порядке, что и в предыдущем примере.  Если вы не видите полное описание там, где оно предполагается, найдите соответствующий элемент или атрибут на странице.  
+ Hello следующие теги располагаются примерно в порядке, показанном в предыдущих пример hello.  Если вы не видите полное описание, где ожидается, страница «поиск» hello hello элемента или атрибута.  
 
 ## <a name="common-attribute-types"></a>Общие типы атрибутов  
- Атрибут **scheduledTransferPeriod** присутствует в нескольких элементах. Это интервал между запланированными передачами в службу хранилища, округленный с точностью до ближайшей минуты. Значение относится к [типу данных XML "Duration"](http://www.w3schools.com/schema/schema_dtypes_date.asp).
+ Атрибут **scheduledTransferPeriod** присутствует в нескольких элементах. Это hello интервал между запланированными передачами toostorage округлено в большую сторону toohello ближайшего минуты. значение Hello [XML «Введите данные о длительности».](http://www.w3schools.com/schema/schema_dtypes_date.asp)
 
 
 ## <a name="diagnosticsconfiguration-element"></a>Элемент DiagnosticsConfiguration  
@@ -374,9 +374,9 @@ ms.lasthandoff: 07/11/2017
 
 Добавлен в версии 1.3.  
 
-Элемент верхнего уровня в файле конфигурации диагностики.  
+элемент верхнего уровня Hello hello файла конфигурации диагностики.  
 
-**Атрибут**: xmlns. Пространство имен XML для файла конфигурации диагностики:  
+**Атрибут** xmlns - hello пространство имен XML для файла конфигурации диагностики hello:  
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.  
 
 
@@ -389,19 +389,19 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 ## <a name="publicconfig-element"></a>Элемент PublicConfig  
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig*
 
- Описывает общедоступную конфигурацию диагностики.  
+ Описание конфигурации диагностики открытый hello.  
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
 |**WadCfg**|обязательный параметр. Ознакомьтесь с описанием в другом разделе на этой странице.|  
-|**StorageAccount**|Имя учетной записи хранения Azure для хранения данных. Может также быть указан как параметр при выполнении командлета Set-AzureServiceDiagnosticsExtension.|  
-|**StorageType**|Может быть *таблицей*, *большим двоичным объектом* или *TableAndBlob*. Таблица — это значение по умолчанию. При выборе TableAndBlob диагностические данные записываются дважды (по одному разу на каждый тип).|  
-|**LocalResourceDirectory**|Каталог на виртуальной машине, в котором Monitoring Agent хранит данные событий. Если этот параметр не задан, используется каталог по умолчанию:<br /><br /> для рабочей роли или веб-роли: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> для виртуальной машины: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Ниже перечислены обязательные атрибуты.<br /><br /> - **path**: каталог в системе для использования системой диагностики Azure.<br /><br /> - **expandEnvironment**: позволяет раскрыть переменные среды в пути.|  
+|**StorageAccount**|Имя данных hello toostore учетной записи хранилища Azure hello в Hello. Может также быть указан как параметр при выполнении командлета hello AzureServiceDiagnosticsExtension набор.|  
+|**StorageType**|Может быть *таблицей*, *большим двоичным объектом* или *TableAndBlob*. Таблица — это значение по умолчанию. При выборе TableAndBlob записываются диагностические данные дважды — один раз tooeach типа.|  
+|**LocalResourceDirectory**|Hello каталог на виртуальной машине hello, где hello Monitoring Agent хранятся данные о событиях. Если не задано, используется каталог по умолчанию hello:<br /><br /> для рабочей роли или веб-роли: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> для виртуальной машины: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Ниже перечислены обязательные атрибуты.<br /><br /> - **путь** - hello на toobe системы hello, применяемые в диагностике Azure.<br /><br /> - **expandEnvironment** -управляет ли переменные среды раскрываются в имени пути hello.|  
 
 ## <a name="wadcfg-element"></a>Элемент WadCFG  
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig, WadCFG*
  
- Позволяет определить и настроить сбор данных телеметрии.  
+ Определяет и настраивает hello телеметрии данных toobe собраны.  
 
 
 ## <a name="diagnosticmonitorconfiguration-element"></a>Элемент DiagnosticMonitorConfiguration 
@@ -411,15 +411,15 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 
 |Атрибуты|Описание|  
 |----------------|-----------------|  
-| **overallQuotaInMB** | Максимальный объем пространства на локальном жестком диске, доступный для диагностических данных различного типа, собранных системой диагностики Azure. Значение по умолчанию составляет 5120 МБ.<br />
-|**useProxyServer** | Позволяет настроить систему диагностики Azure для использования параметров прокси-сервера, указанных в настройках IE.|  
+| **overallQuotaInMB** | Максимальный объем дискового пространства, который может использоваться hello Hello различные типы диагностических данных, собранные системой диагностики Azure. Hello по умолчанию составляет 5120 МБ.<br />
+|**useProxyServer** | Параметры диагностики Azure toouse hello прокси-сервера как указано в параметрах IE.|  
 
 <br /> <br />
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
 |**CrashDumps**|Ознакомьтесь с описанием в другом разделе на этой странице.|  
-|**DiagnosticInfrastructureLogs**|Включает сбор журналов, создаваемых системой диагностикой Azure. Журналы инфраструктуры диагностики удобны для устранения неполадок в самой системе диагностики. Необязательные атрибуты:<br /><br /> - **scheduledTransferLogLevelFilter**: задает минимальный уровень серьезности собираемых журналов.<br /><br /> - **scheduledTransferPeriod**: интервал между запланированными передачами в службу хранилища, округленный с точностью до ближайшей минуты. Значение относится к [типу данных XML "Duration"](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
+|**DiagnosticInfrastructureLogs**|Включает сбор журналов, создаваемых системой диагностикой Azure. журналы инфраструктуры диагностики Hello полезны для устранения неполадок hello самой системе диагностики. Необязательные атрибуты:<br /><br /> - **scheduledTransferLogLevelFilter** -настраивает hello минимальную степень серьезности выполняется сбор журналов hello.<br /><br /> - **scheduledTransferPeriod** -hello интервал между запланированными передачами toostorage округляется в сторону увеличения toohello ближайшего минуты. значение Hello [XML «Введите данные о длительности».](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
 |**Directories**|Ознакомьтесь с описанием в другом разделе на этой странице.|  
 |**EtwProviders**|Ознакомьтесь с описанием в другом разделе на этой странице.|  
 |**Метрики**|Ознакомьтесь с описанием в другом разделе на этой странице.|  
@@ -432,30 +432,30 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 ## <a name="crashdumps-element"></a>Элемент CrashDumps  
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig — WadCFG — DiagnosticMonitorConfiguration — CrashDumps*
  
- Включает сбор аварийных дампов.  
+ Включите сбор аварийных дампов hello.  
 
 |Атрибуты|Описание|  
 |----------------|-----------------|  
-|**containerName**|необязательный параметр. Имя контейнера больших двоичных объектов в вашей учетной записи хранения Azure, используемого для хранения аварийных дампов.|  
-|**crashDumpType**|необязательный параметр.  Позволяет настроить систему диагностики Azure для сбора мини-дампов или полных дампов.|  
-|**directoryQuotaPercentage**|необязательный параметр.  Позволяет настроить процент от значения **overallQuotaInMB**, резервируемый для аварийных дампов на виртуальной машине.|  
+|**containerName**|необязательный параметр. Имя Hello hello контейнера BLOB-объектов в вашей toobe учетной записи хранилища Azure используется toostore аварийных дампов.|  
+|**crashDumpType**|необязательный параметр.  Настройка системы диагностики Azure toocollect мини- или полный аварийных дампов.|  
+|**directoryQuotaPercentage**|необязательный параметр.  Настраивает процент hello **overallQuotaInMB** toobe, зарезервированный для аварийные дампы на hello виртуальной Машины.|  
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
-|**CrashDumpConfiguration**|обязательный параметр. Определяет значения конфигурации для каждого процесса.<br /><br /> Следующий атрибут также является обязательным:<br /><br /> **processName**: имя процесса, для которого системе диагностики Azure нужно собирать аварийные дампы.|  
+|**CrashDumpConfiguration**|обязательный параметр. Определяет значения конфигурации для каждого процесса.<br /><br /> требуется также Hello следующий атрибут:<br /><br /> **processName** - hello имя требуется toocollect диагностики Azure аварийного дампа для процесса hello.|  
 
 ## <a name="directories-element"></a>Элемент Directories 
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig — WadCFG — DiagnosticMonitorConfiguration — Directories*
 
- Включает сбор содержимого каталога, журналов невыполненных запросов на вход IIS и (или) журналов IIS.  
+ Включает Здравствуйте коллекцию hello содержимого каталога, IIS не удалось выполнить запрос журналы событий и журналы IIS.  
 
  Необязательный атрибут **scheduledTransferPeriod**. Ознакомьтесь с описанием выше.  
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
-|**IISLogs**|Если добавить этот элемент в конфигурацию, то будет включен сбор журналов IIS.<br /><br /> **containerName**: имя контейнера больших двоичных объектов в вашей учетной записи хранения Azure, используемого для хранения журналов IIS.|   
-|**FailedRequestLogs**|Если добавить этот элемент в конфигурацию, то будет включен сбор журналов о невыполненных запросах к сайту или приложению IIS. Вам также необходимо включить параметры трассировки в разделе **system.WebServer** файла **Web.config**.|  
-|**DataSources**|Задает список отслеживаемых каталогов.| 
+|**IISLogs**|Включая этот элемент в конфигурации hello включает hello сбор журналов IIS:<br /><br /> **Имя контейнера** -журналы IIS hello toostore используется имя hello hello контейнер больших двоичных объектов в вашей toobe учетной записи хранилища Azure.|   
+|**FailedRequestLogs**|Включая этот элемент в конфигурации hello включает сбор журналов обо всех невыполненных запросов tooan сайту или приложению IIS. Вам также необходимо включить параметры трассировки в разделе **system.WebServer** файла **Web.config**.|  
+|**DataSources**|Список каталогов toomonitor.| 
 
 
 
@@ -463,11 +463,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 ## <a name="datasources-element"></a>Элемент DataSources  
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig — WadCFG — DiagnosticMonitorConfiguration — Directories — DataSources*
 
- Задает список отслеживаемых каталогов.  
+ Список каталогов toomonitor.  
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
-|**DirectoryConfiguration**|обязательный параметр. Обязательный атрибут:<br /><br /> **containerName**: имя контейнера больших двоичных объектов в вашей учетной записи хранения Azure, используемого для хранения файлов журнала.|  
+|**DirectoryConfiguration**|обязательный параметр. Обязательный атрибут:<br /><br /> **Имя контейнера** - hello имя контейнера BLOB-объектов hello в вашей учетной записи хранилища Azure, что toobe использовать файлы журнала toostore hello.|  
 
 
 
@@ -476,12 +476,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 ## <a name="directoryconfiguration-element"></a>Элемент DirectoryConfiguration  
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig — WadCFG — DiagnosticMonitorConfiguration — Directories — DataSources — DirectoryConfiguration*
 
- Может содержать только один из элементов **Absolute** и **LocalResource**, но не оба.  
+ Может содержать либо hello **абсолютный** или **LocalResource** элемент, но не оба.  
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
-|**Absolute**|Абсолютный путь к отслеживаемому каталогу. Ниже приведены обязательные атрибуты.<br /><br /> - **Path**: абсолютный путь к отслеживаемому каталогу.<br /><br /> - **expandEnvironment**: позволяет раскрыть переменные среды, указанные в пути.|  
-|**LocalResource**|Путь относительно отслеживаемого локального ресурса. Ниже перечислены обязательные атрибуты.<br /><br /> - **Name**: локальный ресурс, который содержит каталог для отслеживания.<br /><br /> - **relativePath**: путь относительно значения Name, содержащего отслеживаемый каталог.|  
+|**Absolute**|toomonitor directory toohello Hello абсолютный путь. Привет, следующие атрибуты не требуются:<br /><br /> - **Путь** -hello toomonitor directory toohello абсолютный путь.<br /><br /> - **expandEnvironment**: позволяет раскрыть переменные среды, указанные в пути.|  
+|**LocalResource**|Здравствуйте, toomonitor локального ресурса tooa относительный путь. Ниже перечислены обязательные атрибуты.<br /><br /> - **Имя** -hello локального ресурса, содержащего hello directory toomonitor<br /><br /> - **relativePath** -hello tooName относительный путь, содержащий hello directory toomonitor|  
 
 
 
@@ -492,8 +492,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Позволяет настроить сбор событий, создаваемых из [класса EventSource](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Обязательный атрибут:<br /><br /> **provider**: имя класса события EventSource.<br /><br /> Необязательные атрибуты:<br /><br /> - **scheduledTransferLogLevelFilter**: минимальный уровень серьезности события для переноса в вашу учетную запись хранения.<br /><br /> - **scheduledTransferPeriod**: интервал между запланированными передачами в службу хранилища, округленный с точностью до ближайшей минуты. Значение относится к [типу данных XML "Duration"](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
-|**EtwManifestProviderConfiguration**|Обязательный атрибут:<br /><br /> **provider**: GUID поставщика событий.<br /><br /> Необязательные атрибуты:<br /><br /> - **scheduledTransferLogLevelFilter**: минимальный уровень серьезности события для переноса в вашу учетную запись хранения.<br /><br /> - **scheduledTransferPeriod**: интервал между запланированными передачами в службу хранилища, округленный с точностью до ближайшей минуты. Значение относится к [типу данных XML "Duration"](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
+|**EtwEventSourceProviderConfiguration**|Позволяет настроить сбор событий, создаваемых из [класса EventSource](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Обязательный атрибут:<br /><br /> **Поставщик** -hello имя класса событий EventSource hello.<br /><br /> Необязательные атрибуты:<br /><br /> - **scheduledTransferLogLevelFilter** -hello учетной записи хранилища tooyour уровня tootransfer Минимальная важность.<br /><br /> - **scheduledTransferPeriod** -hello интервал между запланированными передачами toostorage округляется в сторону увеличения toohello ближайшего минуты. значение Hello [XML «Введите данные о длительности».](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**EtwManifestProviderConfiguration**|Обязательный атрибут:<br /><br /> **Поставщик** -hello GUID поставщика событий hello<br /><br /> Необязательные атрибуты:<br /><br /> - **scheduledTransferLogLevelFilter** -hello учетной записи хранилища tooyour уровня tootransfer Минимальная важность.<br /><br /> - **scheduledTransferPeriod** -hello интервал между запланированными передачами toostorage округляется в сторону увеличения toohello ближайшего минуты. значение Hello [XML «Введите данные о длительности».](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
 
 
 
@@ -504,8 +504,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
-|**DefaultEvents**|Необязательный атрибут:<br/><br/> **eventDestination**: имя таблицы для хранения событий.|  
-|**Event**|Обязательный атрибут:<br /><br /> **id**: идентификатор события.<br /><br /> Необязательный атрибут:<br /><br /> **eventDestination**: имя таблицы для хранения событий.|  
+|**DefaultEvents**|Необязательный атрибут:<br/><br/> **eventDestination** — hello имя события hello toostore hello таблицы в|  
+|**Event**|Обязательный атрибут:<br /><br /> **Идентификатор** -идентификатор hello hello события.<br /><br /> Необязательный атрибут:<br /><br /> **eventDestination** — hello имя события hello toostore hello таблицы в|  
 
 
 
@@ -514,28 +514,28 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
-|**DefaultEvents**|Необязательный атрибут:<br /><br /> **eventDestination**: имя таблицы для хранения событий.|  
-|**Event**|Обязательный атрибут:<br /><br /> **id**: идентификатор события.<br /><br /> Необязательный атрибут:<br /><br /> **eventDestination**: имя таблицы для хранения событий.|  
+|**DefaultEvents**|Необязательный атрибут:<br /><br /> **eventDestination** — hello имя события hello toostore hello таблицы в|  
+|**Event**|Обязательный атрибут:<br /><br /> **Идентификатор** -идентификатор hello hello события.<br /><br /> Необязательный атрибут:<br /><br /> **eventDestination** — hello имя события hello toostore hello таблицы в|  
 
 
 
 ## <a name="metrics-element"></a>Элемент Metrics  
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig — WadCFG — DiagnosticMonitorConfiguration — Metrics*
 
- Позволяет создать таблицу счетчиков производительности, которая оптимизирована для быстрых запросов. Каждый счетчик производительности, который определен в элементе **PerformanceCounters**, помимо таблицы счетчиков производительности хранится в таблице метрик.  
+ Позволяет toogenerate таблицу счетчика производительности, которая оптимизирована для быстрого запросов. Каждый счетчик производительности, который определен в hello **PerformanceCounters** элемент хранится в таблице показателей hello в таблице счетчиков производительности toohello сложения.  
 
- Атрибут **ResourceId** является обязательным.  Это идентификатор ресурса виртуальной машины, на которую развертывается система диагностики Azure. Значение **resourceID** можно получить на [портале Azure](https://portal.azure.com). Выберите **Обзор** -> **Группы ресурсов** -> **<Имя\>**. Щелкните элемент **Свойства** и скопируйте значение поля **Идентификатор**.  
+ Hello **resourceId** атрибут является обязательным.  Идентификатор ресурса Hello hello развертывании диагностики Azure для виртуальной машины. Получить hello **resourceID** из hello [портал Azure](https://portal.azure.com). Выберите **Обзор** -> **Группы ресурсов** -> **<Имя\>**. Нажмите кнопку hello **свойства** плитку и скопируйте значение hello из hello **идентификатор** поля.  
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
-|**MetricAggregation**|Обязательный атрибут:<br /><br /> **scheduledTransferPeriod**: интервал между запланированными передачами в службу хранилища, округленный с точностью до ближайшей минуты. Значение относится к [типу данных XML "Duration"](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
+|**MetricAggregation**|Обязательный атрибут:<br /><br /> **scheduledTransferPeriod** -hello интервал между запланированными передачами toostorage округляется в сторону увеличения toohello ближайшего минуты. значение Hello [XML «Введите данные о длительности».](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
 
 
 
 ## <a name="performancecounters-element"></a>Элемент PerformanceCounters  
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig — WadCFG — DiagnosticMonitorConfiguration — PerformanceCounters*
 
- Включает сбор данных счетчиков производительности.  
+ Включает сбор hello счетчиков производительности.  
 
  Необязательный атрибут:  
 
@@ -543,7 +543,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 
 |Дочерний элемент|Описание|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|Ниже приведены обязательные атрибуты.<br /><br /> - **counterSpecifier** — имя счетчика производительности. Например, `\Processor(_Total)\% Processor Time`. Чтобы получить список счетчиков производительности на узле, выполните команду `typeperf`.<br /><br /> - **sampleRate**: частота выборки для счетчика.<br /><br /> Необязательный атрибут:<br /><br /> **unit**: единица измерения счетчика.|  
+|**PerformanceCounterConfiguration**|Привет, следующие атрибуты не требуются:<br /><br /> - **counterSpecifier** — hello имя счетчика производительности "hello". Например, `\Processor(_Total)\% Processor Time`. tooget список производительности счетчиков на узле, выполните команду hello `typeperf`.<br /><br /> - **SampleRate содержит** -как часто hello счетчиков должны быть считаны.<br /><br /> Необязательный атрибут:<br /><br /> **Единица** -единица измерения счетчиков hello hello.|  
 
 
 
@@ -551,13 +551,13 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 ## <a name="windowseventlog-element"></a>Элемент WindowsEventLog
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig — WadCFG — DiagnosticMonitorConfiguration — WindowsEventLog*
  
- Включает сбор журналов событий Windows.  
+ Включает сбор hello журналов событий Windows.  
 
  Необязательный атрибут **scheduledTransferPeriod**. Ознакомьтесь с описанием выше.  
 
 |Дочерний элемент|Описание|  
 |-------------------|-----------------|  
-|**DataSource**|Собираемые журналы событий Windows. Обязательный атрибут:<br /><br /> **name** — запрос XPath, описывающий собираемые события Windows. Например:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Для сбора всех событий укажите "*".|  
+|**DataSource**|toocollect журналы событий Windows Hello. Обязательный атрибут:<br /><br /> **имя** -собранные hello запрос XPath, описывающий toobe событий windows hello. Например:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Укажите все события toocollect «*»|  
 
 
 
@@ -567,14 +567,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 
  Используется в версиях 1.0 и 1.1. Отсутствует в версии 1.2. Снова добавлен в версии 1.3.  
 
- Определяет конфигурацию буфера для базовых журналов Azure.  
+ Определяет конфигурацию буфера hello для базовых журналов Azure.  
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|необязательный параметр. Указывает максимальный объем хранилища файловой системы, который доступен для указанных данных.<br /><br /> Значение по умолчанию — 0.|  
-|**scheduledTransferLogLevelFilterr**|**string**|необязательный параметр. Указывает минимальный уровень серьезности для передаваемых записей журнала. Значение по умолчанию — **Undefined**, при котором передаются все журналы. Другие возможные значения (в порядке убывания информативности): **Verbose**, **Information**, **Warning**, **Error** и **Critical**.|  
-|**scheduledTransferPeriod**|**duration**|необязательный параметр. Указывает интервал между запланированными передачами данных, округленный с точностью до ближайшей минуты.<br /><br /> По умолчанию используется значение PT0S.|  
-|**sinks** (добавлен в версии 1.5)|**string**|необязательный параметр. Указывает расположение приемника для отправки диагностических данных. Например, Application Insights.|  
+|**bufferQuotaInMB**|**unsignedInt**|необязательный параметр. Указывает максимальный объем хранилища файловой системы, доступные для указанного hello hello данных.<br /><br /> Hello по умолчанию — 0.|  
+|**scheduledTransferLogLevelFilterr**|**string**|необязательный параметр. Указывает hello минимальную степень серьезности для передаваемых записей журнала. значение по умолчанию Hello — **Undefined**, который передает все журналы. Другие возможные значения (в порядке наиболее сведения tooleast) **Verbose**, **сведения**, **предупреждение**, **ошибка**и **Критические**.|  
+|**scheduledTransferPeriod**|**duration**|необязательный параметр. Hello интервал между запланированными передачами данных, округленный toohello ближайшего минуты.<br /><br /> по умолчанию Hello — PT0S.|  
+|**sinks** (добавлен в версии 1.5)|**string**|необязательный параметр. Приемник расположение точки tooa tooalso отправлять диагностические данные. Например, Application Insights.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig — WadCFG — DiagnosticMonitorConfiguration — DockerSources*
@@ -583,12 +583,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 
 |Имя элемента|Описание|  
 |------------------|-----------------|  
-|**Stats**|Указывает системе, что нужно собрать статистику для контейнеров Docker.|  
+|**Stats**|Сообщает системе hello toocollect статистики для контейнеров Docker|  
 
 ## <a name="sinksconfig-element"></a>Элемент SinksConfig  
  *Дерево: корневой элемент — DiagnosticsConfiguration — PublicConfig — WadCFG — SinksConfig*
 
- Содержит список расположений для отправки диагностических данных и конфигурацию, связанную с этими расположениями.  
+ Список расположений toosend данных tooand hello конфигурация диагностики связанных с этим местам.  
 
 |Имя элемента|Описание|  
 |------------------|-----------------|  
@@ -599,15 +599,15 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 
  Добавлен в версии 1.5.  
 
- Определяет расположение для отправки диагностических данных. Например, это может быть служба Application Insights.  
+ Определяет расположение toosend диагностические данные. Например hello служба Application Insights.  
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**name**|строка|Строка, определяющая имя приемника.|  
+|**name**|string|Строка идентификации hello sinkname.|  
 
 |Элемент|Тип|Описание|  
 |-------------|----------|-----------------|  
-|**Application Insights**|строка|Используется только при отправке данных в Application Insights. Содержит ключ инструментирования для активной учетной записи Application Insights, к которой у вас есть доступ.|  
+|**Application Insights**|string|Используется только при отправке данных tooApplication аналитики. Содержать hello ключ инструментирования для активной, у вас есть доступ к учетной записи Application Insights.|  
 |**Channels**|строка|Указывается для каждой дополнительной фильтрации, используемой при потоковой передаче.|  
 
 ## <a name="channels-element"></a>Элемент Channels  
@@ -626,12 +626,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 
  Добавлен в версии 1.5.  
 
- Определяет расположение для отправки диагностических данных. Например, это может быть служба Application Insights.  
+ Определяет расположение toosend диагностические данные. Например hello служба Application Insights.  
 
 |Атрибуты|Тип|Описание|  
 |----------------|----------|-----------------|  
-|**logLevel**|**string**|Указывает минимальный уровень серьезности для передаваемых записей журнала. Значение по умолчанию — **Undefined**, при котором передаются все журналы. Другие возможные значения (в порядке убывания информативности): **Verbose**, **Information**, **Warning**, **Error** и **Critical**.|  
-|**name**|**string**|Уникальное имя для использования ссылки на канал.|  
+|**logLevel**|**string**|Указывает hello минимальную степень серьезности для передаваемых записей журнала. значение по умолчанию Hello — **Undefined**, который передает все журналы. Другие возможные значения (в порядке наиболее сведения tooleast) **Verbose**, **сведения**, **предупреждение**, **ошибка**и **Критические**.|  
+|**name**|**string**|Уникальное имя toorefer hello канала для|  
 
 
 ## <a name="privateconfig-element"></a>Элемент PrivateConfig 
@@ -641,14 +641,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration.
 
  Необязательно  
 
- Хранит частные сведения об учетной записи хранения (имя, ключ и конечную точку). Эта информация отправляется на виртуальную машину, но извлечь ее из виртуальной машины невозможно.  
+ Хранит hello закрытые сведения учетной записи хранения hello (имя, ключ и конечной точки). Эта информация отправляется toohello виртуальной машины, но не удается получить из него.  
 
 |Дочерние элементы|Описание|  
 |--------------------|-----------------|  
-|**StorageAccount**|Используемая учетная запись хранения. Ниже приведены обязательные атрибуты.<br /><br /> - **name**: имя учетной записи хранения.<br /><br /> - **key**: ключ учетной записи хранения.<br /><br /> - **endpoint**: конечная точка для доступа к учетной записи хранения. <br /><br /> -**sasToken** (добавлен в версии 1.8.1): вы можете указать маркер SAS вместо ключа учетной записи хранения в закрытой конфигурации. Если он указан, ключ учетной записи хранения не учитывается. <br />Требования к маркеру SAS: <br />Поддерживает только маркер SAS учетной записи. <br />Требуемые типы служб: - *b*, *t*. <br /> Требуемые разрешения: - *a*, *c*, *u*, *w*. <br /> Требуемые типы ресурсов: - *c*, *o*. <br /> Поддерживает только протокол HTTPS. <br /> Время начала и окончания срока действия должно быть допустимым.|  
+|**StorageAccount**|toouse учетной записи хранилища Hello. требуются следующие атрибуты Hello<br /><br /> - **имя** - hello имя учетной записи хранения hello.<br /><br /> - **ключ** - hello ключа toohello учетной записи хранилища.<br /><br /> - **Конечная точка** -конечная точка tooaccess hello hello учетной записи хранилища. <br /><br /> -**sasToken** (добавлена 1.8.1)-, можно указать маркер SAS, а не ключа учетной записи хранения в частной конфигурации hello. Если указано, ключ учетной записи хранения hello учитывается. <br />Требования для маркера SAS hello: <br />Поддерживает только маркер SAS учетной записи. <br />Требуемые типы служб: - *b*, *t*. <br /> Требуемые разрешения: - *a*, *c*, *u*, *w*. <br /> Требуемые типы ресурсов: - *c*, *o*. <br /> -Поддерживает только протокол HTTPS hello <br /> Время начала и окончания срока действия должно быть допустимым.|  
 
 
 ## <a name="isenabled-element"></a>Элемент IsEnabled  
  *Дерево: корневой элемент — DiagnosticsConfiguration — IsEnabled*
 
- Логическое значение. Используйте `true`, чтобы включить диагностику, или `false`, чтобы отключить ее.
+ Логическое значение. Используйте `true` tooenable hello диагностики или `false` toodisable hello диагностики.

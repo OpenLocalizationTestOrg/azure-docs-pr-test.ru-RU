@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с хранилищем BLOB-объектов Azure и подключенными службами Visual Studio (ASP.NET) | Документация Майкрософт"
-description: "Как приступить к работе, используя хранилище BLOB-объектов Azure в проекте ASP.NET в Visual Studio после подключения к учетной записи хранения с помощью подключенных служб Visual Studio."
+title: "aaaGet работы с BLOB-объектов Azure и Visual Studio подключения службы (ASP.NET) | Документы Microsoft"
+description: "Как tooget запущена с помощью хранилища BLOB-объектов Azure в проект ASP.NET в Visual Studio после подключения tooa учетной записи хранилища с помощью Visual Studio подключенные службы"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: tarcher
-ms.openlocfilehash: 8fd13efdbdd98c6d7dff1b88a6b232a08aa5a13d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: eb38889f239a63852d6928e8be10c3d3f1746e9c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Приступая к работе с хранилищем BLOB-объектов Azure и подключенными службами Visual Studio (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Обзор
 
-Хранилище BLOB-объектов Azure — это служба, которая хранит неструктурированные данные в облаке в качестве объектов или больших двоичных объектов. В хранилище BLOB-объектов могут храниться текстовые или двоичные данные любого типа, например документы, файлы мультимедиа или установщики приложений. Хранилище BLOB-объектов иногда также называют хранилищем объектов.
+Хранилище больших двоичных объектов — это служба, неструктурированные данные хранятся в облаке hello как большие двоичные объекты и объекты. В хранилище BLOB-объектов могут храниться текстовые или двоичные данные любого типа, например документы, файлы мультимедиа или установщики приложений. Хранилище больших двоичных объектов также является ссылка tooas объекта хранилища.
 
-В этом руководстве показано, как написать код ASP.NET для некоторых распространенных сценариев с использованием хранилища BLOB-объектов Azure. В частности, здесь рассматриваются такие сценарии, как создание контейнера больших двоичных объектов, а также скачивание, получение списка, скачивание и удаление больших двоичных объектов.
+В этом учебнике показано, как toowrite ASP.NET кода в некоторых распространенных сценариях, с помощью хранилища BLOB-объектов Azure. В частности, здесь рассматриваются такие сценарии, как создание контейнера больших двоичных объектов, а также скачивание, получение списка, скачивание и удаление больших двоичных объектов.
 
 ##<a name="prerequisites"></a>Предварительные требования
 
@@ -42,19 +42,19 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="create-an-mvc-controller"></a>Создание контроллера MVC 
 
-1. В **обозревателе решений** щелкните правой кнопкой мыши **Контроллеры** и в контекстном меню выберите **Добавить -> Контроллер**.
+1. В hello **обозревателе решений**, щелкните правой кнопкой мыши **контроллеров**и в контекстном меню hello, выберите **Добавить -> контроллер**.
 
-    ![Добавление контроллера в приложение ASP.NET MVC](./media/vs-storage-aspnet-getting-started-blobs/add-controller-menu.png)
+    ![Добавление контроллера tooan приложение ASP.NET MVC](./media/vs-storage-aspnet-getting-started-blobs/add-controller-menu.png)
 
-1. В диалоговом окне **Добавление шаблона** выберите **Контроллер MVC5 — пустой** и нажмите кнопку **Добавить**.
+1. На hello **Добавление формирования шаблонов** диалогового окна выберите **контроллер MVC 5 - пустой**и выберите **добавить**.
 
     ![Выбор типа контроллера MVC](./media/vs-storage-aspnet-getting-started-blobs/add-controller.png)
 
-1. В диалоговом окне **Добавление контроллера** назовите контроллер *BlobsController* и нажмите кнопку **Добавить**.
+1. На hello **добавления контроллера** диалогового окна, имя контроллера hello *BlobsController*и выберите **добавить**.
 
-    ![Назначение имени для контроллера MVC](./media/vs-storage-aspnet-getting-started-blobs/add-controller-name.png)
+    ![Имя контроллера MVC hello](./media/vs-storage-aspnet-getting-started-blobs/add-controller-name.png)
 
-1. Добавьте в файл `BlobsController.cs` следующие директивы *using*:
+1. Добавьте следующее hello *с помощью* toohello директивы `BlobsController.cs` файла:
 
     ```csharp
     using Microsoft.Azure;
@@ -65,26 +65,26 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="create-a-blob-container"></a>Создание контейнера BLOB-объектов
 
-Контейнер больших двоичных объектов — это вложенная иерархия больших двоичных объектов и папок. Чтобы создать контейнер больших двоичных объектов, выполните следующие действия:
+Контейнер больших двоичных объектов — это вложенная иерархия больших двоичных объектов и папок. Hello ниже показано, как toocreate контейнер больших двоичных объектов:
 
 > [!NOTE]
 > 
-> Прежде чем работать с кодом в этом разделе, выполните все действия, описанные в разделе [Настройка среды разработки](#set-up-the-development-environment). 
+> Hello кода в этом разделе предполагается, что выполнены действия hello в разделе "hello" [настроить среду разработки hello](#set-up-the-development-environment). 
 
-1. Откройте файл `BlobsController.cs` .
+1. Откройте hello `BlobsController.cs` файла.
 
 1. Добавьте метод **CreateBlobContainer**, который возвращает **ActionResult**.
 
     ```csharp
     public ActionResult CreateBlobContainer()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return View();
     }
     ```
  
-1. В рамках метода **CreateBlobContainer** получите объект **CloudStorageAccount**, представляющий сведения об учетной записи хранения. Используйте следующий код, чтобы получить строку подключения и сведения об учетной записи хранения из конфигурации службы Azure. (Замените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой осуществляется доступ.)
+1. В пределах hello **CreateBlobContainer** метода получения **CloudStorageAccount** , представляющий сведения об учетной записи хранения. Используйте следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello hello. (Изменение  *&lt;имя учетной записи хранения >* toohello имя hello вы запрашиваете доступ к учетной записи хранилища Azure.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -97,29 +97,29 @@ ms.lasthandoff: 08/03/2017
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
     ```
 
-1. Получите объект **CloudBlobContainer**, который представляет ссылку на нужное имя контейнера больших двоичных объектов. Метод **CloudBlobClient.GetContainerReference** не выполняет запрос в отношении хранилища BLOB-объектов. Ссылка возвращается вне зависимости от того, существует ли контейнер больших двоичных объектов. 
+1. Получить **CloudBlobContainer** , представляющий имени ссылки toohello требуемый BLOB-объект контейнера. Hello **CloudBlobClient.GetContainerReference** метод не выполняет запрос к хранилищу BLOB-объектов. ли контейнер больших двоичных объектов hello существует, возвращается ссылка Hello. 
    
     ```csharp
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. Вызовите метод **CloudBlobContainer.CreateIfNotExists**, чтобы создать контейнер, если он еще не существует. Метод **CloudBlobContainer.CreateIfNotExists** возвращает значение **true**, если контейнер не существует и если он успешно создан. В противном случае возвращается значение **false**.    
+1. Вызовите hello **CloudBlobContainer.CreateIfNotExists** метод toocreate hello контейнера, если он еще не существует. Hello **CloudBlobContainer.CreateIfNotExists** возвращает **true** Если hello контейнер не существует и успешно создан. В противном случае возвращается значение **false**.    
 
     ```csharp
     ViewBag.Success = container.CreateIfNotExists();
     ```
 
-1. Обновите **ViewBag** именем контейнера больших двоичных объектов.
+1. Обновление hello **ViewBag** с именем hello hello контейнера BLOB-объектов.
 
     ```csharp
     ViewBag.BlobContainerName = container.Name;
     ```
 
-1. В **обозревателе решений** разверните папку **Представления**, щелкните правой кнопкой мыши **BLOB-объекты**, а затем в контекстном меню выберите **Добавить -> Представление**.
+1. В hello **обозреватель решений**, разверните hello **представления** папки, щелкните правой кнопкой мыши **большие двоичные объекты**и в контекстном меню hello выберите **Добавить -> Просмотр**.
 
-1. В диалоговом окне **Добавление представления** введите **CreateBlobContainer** для имени представления и выберите **Добавить**.
+1. На hello **добавить представление** диалоговое окно, введите **CreateBlobContainer** hello имя представления, а также выберите **добавить**.
 
-1. Откройте файл `CreateBlobContainer.cshtml` и измените его таким образом, чтобы он выглядел, как показано ниже.
+1. Откройте `CreateBlobContainer.cshtml`и измените его, чтобы он выглядел hello, следующий фрагмент кода:
 
     ```csharp
     @{
@@ -131,42 +131,42 @@ ms.lasthandoff: 08/03/2017
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
+1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
 
-1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
+1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Create blob container", "CreateBlobContainer", "Blobs")</li>
     ```
 
-1. Запустите приложение и выберите **Create Blob Container** (Создать контейнер больших двоичных объектов), чтобы увидеть результаты, как на снимке экрана ниже.
+1. Запустите приложение hello и выберите **создать контейнер больших двоичных объектов** toosee результаты, аналогичные toohello следующий снимок экрана:
   
     ![Создание контейнера больших двоичных объектов](./media/vs-storage-aspnet-getting-started-blobs/create-blob-container-results.png)
 
-    Как упоминалось ранее, метод **CloudBlobContainer.CreateIfNotExists** возвращает значение **true**, только если контейнер не существует или же уже был создан. Таким образом, если вы запустите приложение, когда контейнер существует, метод вернет значение **false**. Чтобы запустить приложение несколько раз, вам нужно удалить контейнер перед повторным запуском. Удалить контейнер можно с помощью метода **CloudBlobContainer.Delete**. Его также можно удалить на [портале Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040) или в [обозревателе хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
+    Как упоминалось ранее, hello **CloudBlobContainer.CreateIfNotExists** возвращает **true** только когда hello контейнер не существует и создается. Таким образом, если при запуске приложение hello hello контейнер существует, метод hello возвращает **false**. приложение hello toorun несколько раз, необходимо удалить контейнер hello перед повторным запуском приложения hello. Удаление контейнера hello можно сделать с помощью hello **CloudBlobContainer.Delete** метод. Можно также удалить hello контейнера при помощи hello [портал Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040) или hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
 ## <a name="upload-a-blob-into-a-blob-container"></a>Отправка большого двоичного объекта в контейнер
 
-После того как вы создали [контейнер больших двоичных объектов](#create-a-blob-container), вы можете передать в него файлы. В этом разделе показано, как отправить локальные файлы в контейнер больших двоичных объектов. В описанных здесь действиях предполагается, что вы уже создали контейнер больших двоичных объектов с именем *test-blob-container*. 
+После того как вы создали [контейнер больших двоичных объектов](#create-a-blob-container), вы можете передать в него файлы. В этом разделе описывается загрузка контейнер больших двоичных объектов tooa локального файла. Hello предполагается, что вы создали контейнер больших двоичных объектов с именем *тест контейнер больших двоичных объектов*. 
 
 > [!NOTE]
 > 
-> Прежде чем работать с кодом в этом разделе, выполните все действия, описанные в разделе [Настройка среды разработки](#set-up-the-development-environment). 
+> Hello кода в этом разделе предполагается, что выполнены действия hello в разделе "hello" [настроить среду разработки hello](#set-up-the-development-environment). 
 
-1. Откройте файл `BlobsController.cs` .
+1. Откройте hello `BlobsController.cs` файла.
 
 1. Добавьте метод **UploadBlob**, который возвращает **EmptyResult**.
 
     ```csharp
     public EmptyResult UploadBlob()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return new EmptyResult();
     }
     ```
  
-1. В рамках метода **CreateBlobContainer** получите объект **CloudStorageAccount**, который представляет сведения об учетной записи хранения. Используйте следующий фрагмент кода, чтобы получить строку подключения к хранилищу и сведения об учетной записи хранения из конфигурации службы Azure. (Измените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой вы получаете доступ.)
+1. В пределах hello **UploadBlob** метода получения **CloudStorageAccount** , представляющий сведения об учетной записи хранения. Используйте hello следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello: (изменение  *&lt;имя учетной записи хранения >* toohello имя hello хранилища Azure Учетная запись, которой осуществляется доступ.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -179,19 +179,19 @@ ms.lasthandoff: 08/03/2017
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
     ```
 
-1. Получите объект **CloudBlobContainer**, который представляет ссылку на имя контейнера больших двоичных объектов. 
+1. Получить **CloudBlobContainer** , представляющий имя контейнера больших двоичных объектов toohello ссылки. 
    
     ```csharp
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. Как объяснялось ранее, служба хранилища Azure поддерживает различные типы больших двоичных объектов. Чтобы получить ссылку на страничный BLOB-объект, используйте метод **CloudBlobContainer.GetPageBlobReference**. Чтобы получить ссылку на блочный BLOB-объект, используйте метод **CloudBlobContainer.GetBlockBlobReference**. В большинстве случаев рекомендуется использовать блочные BLOB-объекты. (Измените <blob-name>* на имя, которое нужно присвоить загруженному большому двоичному объекту.)
+1. Как объяснялось ранее, служба хранилища Azure поддерживает различные типы больших двоичных объектов. tooretrieve большой двоичный объект страницы ссылка tooa hello вызовов **CloudBlobContainer.GetPageBlobReference** метод. tooretrieve большой двоичный объект блока ссылка tooa hello вызовов **CloudBlobContainer.GetBlockBlobReference** метод. Как правило блочного BLOB-объекта — hello, рекомендуется toouse типа. (Изменение < имя большого двоичного объекта > * имя toohello требуется один раз отправить большой двоичный объект hello toogive.)
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
     ```
 
-1. Получив ссылку на большой двоичный объект, вы можете отправить в него любой поток данных, используя метод **UploadFromStream** для объекта ссылки. Метод **UploadFromStream** создает большой двоичный объект, если он еще не существует, или заменяет уже существующий. (Измените *&lt;file-to-upload>* на полный путь к файлу, который вы хотите передать.)
+1. Получив ссылку на большой двоичный объект, можно передать любой tooit потока данных путем вызова hello большого двоичного объекта ссылка объекта **UploadFromStream** метод. Hello **UploadFromStream** метод создает hello большой двоичный объект, если он не существует, или перезаписывает его, если он существует. (Изменение  *&lt;передачу файла >* tooa полный путь к файлу toohello требуется tooupload.)
 
     ```csharp
     using (var fileStream = System.IO.File.OpenRead(<file-to-upload>))
@@ -200,42 +200,42 @@ ms.lasthandoff: 08/03/2017
     }
     ```
 
-1. В **обозревателе решений** разверните папку **Представления**, щелкните правой кнопкой мыши **BLOB-объекты**, а затем в контекстном меню выберите **Добавить -> Представление**.
+1. В hello **обозреватель решений**, разверните hello **представления** папки, щелкните правой кнопкой мыши **большие двоичные объекты**и в контекстном меню hello выберите **Добавить -> Просмотр**.
 
-1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
+1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
 
-1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
+1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Upload blob", "UploadBlob", "Blobs")</li>
     ```
 
-1. Запустите приложение и выберите **Передать BLOB-объект**.  
+1. Запустите приложение hello и выберите **передачи BLOB-объекта**.  
   
-Сведения о том, как получить список больших двоичных объектов в контейнере, см. в разделе [Получение списка больших двоичных объектов в контейнере](#list-the-blobs-in-a-blob-container).    
+Здравствуйте, раздел - [hello двоичные объекты перечислены в контейнер больших двоичных объектов](#list-the-blobs-in-a-blob-container) -показано, как toolist hello большие двоичные объекты в контейнере больших двоичных объектов.  
 
-## <a name="list-the-blobs-in-a-blob-container"></a>Получение списка больших двоичных объектов в контейнере
+## <a name="list-hello-blobs-in-a-blob-container"></a>Перечисление больших двоичных объектов hello в контейнер больших двоичных объектов
 
-В этом разделе вы узнаете, как получить список больших двоичных объектов в контейнере. Примеры кода приведены для контейнера *test-blob-container*, созданного при работе с разделом [Создание контейнера больших двоичных объектов](#create-a-blob-container).
+В этом разделе показано, как toolist hello большие двоичные объекты в контейнере больших двоичных объектов. код образца Hello ссылается hello *тест контейнер больших двоичных объектов* создан в разделе hello [создать контейнер больших двоичных объектов](#create-a-blob-container).
 
 > [!NOTE]
 > 
-> Прежде чем работать с кодом в этом разделе, выполните все действия, описанные в разделе [Настройка среды разработки](#set-up-the-development-environment). 
+> Hello кода в этом разделе предполагается, что выполнены действия hello в разделе "hello" [настроить среду разработки hello](#set-up-the-development-environment). 
 
-1. Откройте файл `BlobsController.cs` .
+1. Откройте hello `BlobsController.cs` файла.
 
 1. Добавьте метод **ListBlobs**, который возвращает **ActionResult**.
 
     ```csharp
     public ActionResult ListBlobs()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return View();
     }
     ```
  
-1. В рамках метода **ListBlobs** получите объект **CloudStorageAccount**, который представляет сведения об учетной записи хранения. Используйте следующий фрагмент кода, чтобы получить строку подключения к хранилищу и сведения об учетной записи хранения из конфигурации службы Azure. (Измените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой вы получаете доступ.)
+1. В пределах hello **ListBlobs** метода получения **CloudStorageAccount** , представляющий сведения об учетной записи хранения. Используйте hello следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello: (изменение  *&lt;имя учетной записи хранения >* toohello имя hello хранилища Azure Учетная запись, которой осуществляется доступ.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -248,13 +248,13 @@ ms.lasthandoff: 08/03/2017
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
     ```
 
-1. Получите объект **CloudBlobContainer**, который представляет ссылку на имя контейнера больших двоичных объектов. 
+1. Получить **CloudBlobContainer** , представляющий имя контейнера больших двоичных объектов toohello ссылки. 
    
     ```csharp
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. Чтобы получить список больших двоичных объектов в контейнере, используйте метод **CloudBlobContainer.ListBlobs**. Метод **CloudBlobContainer.ListBlobs** возвращает объект **IListBlobItem**, который вы можете преобразовать в **CloudBlockBlob**, **CloudPageBlob** или объект **CloudBlobDirectory**. В следующем фрагменте кода перечисляются все большие двоичные объекты в контейнере. Каждый большой двоичный объект преобразовывается в соответствующий объект в зависимости от его типа, и в список добавляется его имя (или универсальный код ресурса (URI), если это объект **CloudBlobDirectory**).
+1. toolist hello BLOB-объектов в контейнере больших двоичных объектов, используйте hello **CloudBlobContainer.ListBlobs** метод. Hello **CloudBlobContainer.ListBlobs** возвращает **IListBlobItem** объекта приведение tooa **CloudBlockBlob**, **CloudPageBlob**, или **CloudBlobDirectory** объекта. Hello следующий фрагмент кода перечисляет все большие двоичные объекты hello в контейнер больших двоичных объектов. Каждый BLOB-объект — привести toohello соответствующий объект на основе ее типа и его имя (или URI в случае hello **CloudBlobDirectory**) добавляется в список tooa.
 
     ```csharp
     List<string> blobs = new List<string>();
@@ -281,19 +281,19 @@ ms.lasthandoff: 08/03/2017
     return View(blobs);
     ```
 
-    Помимо больших двоичных объектов контейнеры могут также содержать каталоги. Предположим, у вас есть контейнер больших двоичных объектов с именем *test-blob-container* со следующей иерархией:
+    В tooblobs добавление контейнеров больших двоичных объектов может содержать каталоги. Предположим, у вас есть контейнер BLOB-объекта с именем *тест контейнер больших двоичных объектов* с hello следующая иерархия:
 
         foo.png
         dir1/bar.png
         dir2/baz.png
 
-    Исходя из приведенного выше примера кода, список строк **blobs** содержит значения, аналогичные следующим:
+    Здравствуйте, используя предшествующие примере кода hello, **большие двоичные объекты** список строк содержит аналогичные toohello следующие значения:
 
         foo.png
         <storage-account-url>/test-blob-container/dir1
         <storage-account-url>/test-blob-container/dir2
 
-    Как видно, список включает сущности только верхнего уровня и не содержит вложенные сущности (*bar.png* и *baz.png*). Чтобы получить список всех сущностей, которые содержит контейнер больших двоичных объектов, нужно вызвать метод **CloudBlobContainer.ListBlobs** и установить значение **true** для параметра **useFlatBlobListing**.    
+    Как видите, hello список включает только hello сущности верхнего уровня; не hello вложенных областей (*bar.png* и *baz.png*). toolist все hello сущностям в контейнер больших двоичных объектов, необходимо вызвать hello **CloudBlobContainer.ListBlobs** метод и передайте **true** для hello **useFlatBlobListing** параметр.    
 
     ```csharp
     ...
@@ -301,17 +301,17 @@ ms.lasthandoff: 08/03/2017
     ...
     ```
 
-    Если установить для параметра **useFlatBlobListing** значение **true**, будет возвращен неструктурированный список всех сущностей в контейнере:
+    Параметр hello **useFlatBlobListing** параметр слишком**true** возвращает плоский список всех сущностей в контейнер больших двоичных объектов hello и выдает hello следующие результаты:
 
         foo.png
         dir1/bar.png
         dir2/baz.png
 
-1. В **обозревателе решений** разверните папку **Представления**, щелкните правой кнопкой мыши **BLOB-объекты**, а затем в контекстном меню выберите **Добавить -> Представление**.
+1. В hello **обозреватель решений**, разверните hello **представления** папки, щелкните правой кнопкой мыши **большие двоичные объекты**и в контекстном меню hello выберите **Добавить -> Просмотр**.
 
-1. В диалоговом окне **Добавление представления** введите **ListBlobs** для имени представления и выберите **Добавить**.
+1. На hello **добавить представление** диалоговое окно, введите **ListBlobs** hello имя представления, а также выберите **добавить**.
 
-1. Откройте файл `ListBlobs.cshtml` и измените его таким образом, чтобы он выглядел, как показано ниже.
+1. Откройте `ListBlobs.cshtml`и измените его, чтобы он выглядел hello, следующий фрагмент кода:
 
     ```html
     @model List<string>
@@ -329,36 +329,36 @@ ms.lasthandoff: 08/03/2017
     </ul>
     ```
 
-1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
+1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
 
-1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
+1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("List blobs", "ListBlobs", "Blobs")</li>
     ```
 
-1. Запустите приложение и выберите **List Blobs** (Вывод списка больших двоичных объектов	), чтобы увидеть результаты, как на снимке экрана ниже.
+1. Запустите приложение hello и выберите **перечисление больших двоичных объектов** toosee результаты, аналогичные toohello следующий снимок экрана:
   
     ![Получение списка больших двоичных объектов](./media/vs-storage-aspnet-getting-started-blobs/listblobs.png)
 
 ## <a name="download-blobs"></a>Скачивание больших двоичных объектов
 
-В этом разделе рассказывается, как скачать большие двоичные объекты и сохранить их в локальном хранилище или преобразовать содержимое в строку. Примеры кода приведены для контейнера *test-blob-container*, созданного при работе с разделом [Создание контейнера больших двоичных объектов](#create-a-blob-container).
+В этом разделе показано, как toodownload большого двоичного объекта и либо ее сохранения toolocal хранилища или чтения hello содержимое в строку. код образца Hello ссылается hello *тест контейнер больших двоичных объектов* создан в разделе hello [создать контейнер больших двоичных объектов](#create-a-blob-container).
 
-1. Откройте файл `BlobsController.cs` .
+1. Откройте hello `BlobsController.cs` файла.
 
 1. Добавьте метод **DownloadBlob**, который возвращает **ActionResult**.
 
     ```csharp
     public EmptyResult DownloadBlob()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return new EmptyResult();
     }
     ```
  
-1. В рамках метода **DownloadBlob** получите объект **CloudStorageAccount**, который представляет сведения об учетной записи хранения. Используйте следующий фрагмент кода, чтобы получить строку подключения к хранилищу и сведения об учетной записи хранения из конфигурации службы Azure. (Измените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой вы получаете доступ.)
+1. В пределах hello **DownloadBlob** метода получения **CloudStorageAccount** , представляющий сведения об учетной записи хранения. Используйте hello следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello: (изменение  *&lt;имя учетной записи хранения >* toohello имя hello хранилища Azure Учетная запись, которой осуществляется доступ.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -371,19 +371,19 @@ ms.lasthandoff: 08/03/2017
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
     ```
 
-1. Получите объект **CloudBlobContainer**, который представляет ссылку на имя контейнера больших двоичных объектов. 
+1. Получить **CloudBlobContainer** , представляющий имя контейнера больших двоичных объектов toohello ссылки. 
    
     ```csharp
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. Получить объект большого двоичного объекта можно, вызвав следующие методы: **CloudBlobContainer.GetBlockBlobReference** или **CloudBlobContainer.GetPageBlobReference**. (Измените *&lt;blob-name>* на имя большого двоичного объекта, который вы скачиваете.)
+1. Получить объект большого двоичного объекта можно, вызвав следующие методы: **CloudBlobContainer.GetBlockBlobReference** или **CloudBlobContainer.GetPageBlobReference**. (Изменение  *&lt;имя большого двоичного объекта >* toohello имя большого двоичного объекта hello вы загружаете.)
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
     ```
 
-1. Чтобы скачать большой двоичный объект, используйте методы **CloudBlockBlob.DownloadToStream** или **CloudPageBlob.DownloadToStream** в зависимости от типа большого двоичного объекта. В следующем фрагменте кода используется метод **CloudBlockBlob.DownloadToStream**, чтобы передать содержимое большого двоичного объекта в объект потока, который затем сохраняется в локальный файл. (Измените *local-file-name>&lt;* на полное имя файла, куда будет скачан большой двоичный объект.) 
+1. toodownload большого двоичного объекта используйте hello **CloudBlockBlob.DownloadToStream** или **CloudPageBlob.DownloadToStream** метод в зависимости от типа hello большого двоичного объекта. Hello следующий фрагмент кода использует hello **CloudBlockBlob.DownloadToStream** tootransfer метод объект потока tooa содержимое большого двоичного объекта, затем сохраняется локальный файл tooa: (изменение  *&lt;локального файла >* toohello полное имя, представляющее имя файла место загрузки blob hello.) 
 
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
@@ -392,38 +392,38 @@ ms.lasthandoff: 08/03/2017
     }
     ```
 
-1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
+1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
 
-1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
+1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Download blob", "DownloadBlob", "Blobs")</li>
     ```
 
-1. Запустите приложение и выберите **Скачать BLOB-объект**. Большой двоичный объект, указанный в вызове метода **CloudBlobContainer.GetBlockBlobReference**, скачивается в расположение, которое вы указали в вызове метода **File.OpenWrite**. 
+1. Запустите приложение hello и выберите **загрузки больших двоичных объектов** toodownload hello большого двоичного объекта. Hello BLOB-объект, указанный в hello **CloudBlobContainer.GetBlockBlobReference** вызова метода загрузки toohello расположении, указанном в hello **File.OpenWrite** вызова метода. 
 
 ## <a name="delete-blobs"></a>Удаление blob-объектов
 
-Чтобы удалить большой двоичный объект, выполните следующие действия:
+Hello ниже показано, как toodelete большого двоичного объекта:
 
 > [!NOTE]
 > 
-> Прежде чем работать с кодом в этом разделе, выполните все действия, описанные в разделе [Настройка среды разработки](#set-up-the-development-environment). 
+> Hello кода в этом разделе предполагается, что выполнены действия hello в разделе "hello" [настроить среду разработки hello](#set-up-the-development-environment). 
 
-1. Откройте файл `BlobsController.cs` .
+1. Откройте hello `BlobsController.cs` файла.
 
 1. Добавьте метод **DeleteBlob**, который возвращает **ActionResult**.
 
     ```csharp
     public EmptyResult DeleteBlob()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return new EmptyResult();
     }
     ```
 
-1. Получите объект **CloudStorageAccount** , представляющий данные учетной записи хранения. Используйте следующий фрагмент кода, чтобы получить строку подключения к хранилищу и сведения об учетной записи хранения из конфигурации службы Azure. (Измените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой вы получаете доступ.)
+1. Получите объект **CloudStorageAccount** , представляющий данные учетной записи хранения. Используйте hello следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello: (изменение  *&lt;имя учетной записи хранения >* toohello имя hello хранилища Azure Учетная запись, которой осуществляется доступ.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -436,36 +436,36 @@ ms.lasthandoff: 08/03/2017
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
     ```
 
-1. Получите объект **CloudBlobContainer**, который представляет ссылку на имя контейнера больших двоичных объектов. 
+1. Получить **CloudBlobContainer** , представляющий имя контейнера больших двоичных объектов toohello ссылки. 
    
     ```csharp
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. Получить объект большого двоичного объекта можно, вызвав следующие методы: **CloudBlobContainer.GetBlockBlobReference** или **CloudBlobContainer.GetPageBlobReference**. (Измените *&lt;blob-name>* на имя большого двоичного объекта, который вы удаляете.)
+1. Получить объект большого двоичного объекта можно, вызвав следующие методы: **CloudBlobContainer.GetBlockBlobReference** или **CloudBlobContainer.GetPageBlobReference**. (Изменение  *&lt;имя большого двоичного объекта >* имя toohello hello большого двоичного объекта, вы удаляете.)
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
         ```
 
-1. To delete a blob, use the **Delete** method.
+1. toodelete a blob, use hello **Delete** method.
 
     ```csharp
     blob.Delete();
     ```
 
-1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
+1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
 
-1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
+1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Delete blob", "DeleteBlob", "Blobs")</li>
     ```
 
-1. Запустите приложение и выберите **Удалить большой двоичный объект**, чтобы удалить объект, указанный в вызове метода **CloudBlobContainer.GetBlockBlobReference**. 
+1. Запустите приложение hello и выберите **удаления большого двоичного объекта** toodelete hello BLOB-объект, указанный в hello **CloudBlobContainer.GetBlockBlobReference** вызова метода. 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Просмотрите дополнительные руководства, чтобы изучить дополнительные возможности хранения данных в Azure.
+Просмотрите дополнительные toolearn функция руководства о дополнительных параметрах для хранения данных в Azure.
 
   * [Начало работы с хранилищем таблиц Azure и подключенными службами Visual Studio (ASP.NET)](./vs-storage-aspnet-getting-started-tables.md)
   * [Начало работы с хранилищем очередей Azure и подключенными службами Visual Studio](./vs-storage-aspnet-getting-started-queues.md)

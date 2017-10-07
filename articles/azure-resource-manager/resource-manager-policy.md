@@ -1,6 +1,6 @@
 ---
-title: "Политики ресурсов Azure | Документация Майкрософт"
-description: "Использование политик Azure Resource Manager, обеспечивающих согласованную настройку свойств ресурсов при развертывании. Политики можно применять на уровне подписки или группы ресурсов."
+title: "политики ресурсов aaaAzure | Документы Microsoft"
+description: "Описывает, каким образом toouse диспетчера ресурсов Azure политики tooensure согласованное ресурсов задано во время развертывания. Политики могут применяться для групп hello подписка или ресурс."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 0ee2624f45a1de0c23cae4538a38ae3e302eedd3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f1b0bbb5f838f6bb70721e1040ad3eac2d881cea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="resource-policy-overview"></a>Общие сведения о политике ресурсов
-Политики ресурсов позволяют настроить определенные соглашения для ресурсов в организации. Это соглашения помогут вам контролировать расходы и управлять ресурсами. Например, можно указать, что разрешены только определенные типы виртуальных машин. Кроме того, можно требовать наличие определенного тега для каждого ресурса. Политики наследуются всеми дочерними ресурсами. Это значит, что политики, применяемые к группе ресурсов, применяются также ко всем ресурсам в этой группе.
+Политики ресурсов позволяют tooestablish соглашения для ресурсов в вашей организации. Это соглашения помогут вам контролировать расходы и управлять ресурсами. Например, можно указать, что разрешены только определенные типы виртуальных машин. Кроме того, можно требовать наличие определенного тега для каждого ресурса. Политики наследуются всеми дочерними ресурсами. Таким образом Если политика не применяется tooa группы ресурсов, это применимо tooall hello ресурсов в этой группе ресурсов.
 
-При работе с политиками нужно знать две важные концепции:
+Существует два toounderstand основные понятия о политиках.
 
-* определение политики описывает, когда и как политика будет применяться;
-* назначение политики привязывает эту политику к определенной области (к подписке или группе ресурсов).
+* Определение политики — описывается при hello включена политика и какие действия tootake
+* Назначение политики - применить область tooa политики определения hello (подписка или группа ресурсов)
 
-В этой статье рассматривается только определение политики. Сведения о назначении политик см. в статьях [Назначение политик ресурсов и управление ими с помощью портала Azure](resource-manager-policy-portal.md) и [Назначение политик ресурсов и управление ими](resource-manager-policy-create-assign.md).
+В этой статье рассматривается только определение политики. Сведения о назначении политики см. в разделе [tooassign портала используйте Azure и управление политиками ресурсов](resource-manager-policy-portal.md) или [назначение политики и управлять ими через сценарий](resource-manager-policy-create-assign.md).
 
 Политики оцениваются при создании и обновлении ресурсов (операции PUT и PATCH).
 
 > [!NOTE]
-> Сейчас политика не вычисляет типы ресурсов, которые не поддерживают теги, вид и расположение, например тип ресурса Microsoft.Resources/deployments. Их поддержка будет добавлена в будущем. Чтобы избежать проблем с обратной совместимостью, необходимо явно указывать тип при создании политик. Например, политика тегов, которая не указывает типы, применяется для всех типов. В этом случае может произойти ошибка развертывания шаблона, если существует вложенный ресурс, который не поддерживает тег, и в вычисление политики был добавлен тип ресурса развертывания. 
+> В настоящее время политики не вычисляет типы ресурсов, которые не поддерживают теги, тип и расположение, например тип ресурса Microsoft.Resources/deployments hello. Их поддержка будет добавлена в будущем. проблемы совместимости с предыдущими версиями tooavoid, следует явно указать тип при создании политики. Например, политика тегов, которая не указывает типы, применяется для всех типов. В этом случае шаблона-развертывания может завершиться ошибкой, если вложенные ресурс, который не поддерживает теги и тип ресурса развертывания hello добавлен toopolicy оценки. 
 > 
 > 
 
 ## <a name="how-is-it-different-from-rbac"></a>Чем это отличается от управления доступом на основе ролей?
-Существует ряд ключевых различий между политиками и управлением доступом на основе ролей (RBAC). RBAC определяет действия **пользователя** в различных областях. Например, если вам назначена роль участника для группы ресурсов в требуемой области, вы можете вносить изменения в эту группу ресурсов. Политика определяет свойства **ресурсов** во время их развертывания. Например, с помощью политик можно управлять типами ресурсов, которые можно подготовить, или ограничить расположения, в которых можно подготовить ресурсы. В отличие от RBAC, политика представляет собой систему разрешения по умолчанию и явного запрета. 
+Существует ряд ключевых различий между политиками и управлением доступом на основе ролей (RBAC). RBAC определяет действия **пользователя** в различных областях. Например вы добавляются toohello роль участника для группы ресурсов в области hello требуемого для внесения изменений группы ресурсов toothat. Политика определяет свойства **ресурсов** во время их развертывания. Например через политики, можно управлять hello типы ресурсов, которые могут быть подготовлены. Или вы можете ограничить hello расположения, в которых можно подготовить ресурсы hello. В отличие от RBAC, политика представляет собой систему разрешения по умолчанию и явного запрета. 
 
-Чтобы использовать политики, нужно пройти аутентификацию с помощью RBAC. В частности, для учетной записи должны быть предоставлены:
+политики toouse, вы должны пройти проверку подлинности через RBAC. В частности, для учетной записи должны быть предоставлены:
 
-* `Microsoft.Authorization/policydefinitions/write` разрешение на создание политики;
-* `Microsoft.Authorization/policyassignments/write` разрешение на назначение политики. 
+* `Microsoft.Authorization/policydefinitions/write`разрешение toodefine политики
+* `Microsoft.Authorization/policyassignments/write`разрешение tooassign политики 
 
-Эти разрешения не включаются в роль **Участник**.
+Эти разрешения не включаются в hello **участника** роли.
 
 ## <a name="built-in-policies"></a>Встроенные политики
 
-В Azure доступно несколько встроенных определений политик, которые сокращают число соответствующих политик. Прежде чем приступить к работе с определениями политик, следует проверить, не обеспечивает ли какая-либо встроенная политика нужные вам ограничения. Определения встроенных политик приведены ниже:
+Azure предоставляет некоторые определения встроенных политик, которые может сократить число hello политик имеют toodefine. Перед продолжением определения политик, следует ли встроенные политики уже предоставляет определение hello, что нужно. используются Hello встроенная политика определения.
 
 * Allowed locations;
 * Допустимые типы ресурсов
@@ -61,10 +61,10 @@ ms.lasthandoff: 08/18/2017
 * Require SQL Server version 12.0;
 * Require storage account encryption.
 
-Любую из этих политик можно назначить с помощью [портала](resource-manager-policy-portal.md), [PowerShell](resource-manager-policy-create-assign.md#powershell) или [Azure CLI](resource-manager-policy-create-assign.md#azure-cli).
+Можно назначить любой из этих политик через hello [портала](resource-manager-policy-portal.md), [PowerShell](resource-manager-policy-create-assign.md#powershell), или [Azure CLI](resource-manager-policy-create-assign.md#azure-cli).
 
 ## <a name="policy-definition-structure"></a>Структура определения политики
-Для создания определения политики используется JSON. Определение политики содержит следующие элементы:
+Использовании JSON toocreate определения политики. Определение политики Hello содержит элементы для:
 
 * parameters
 * display name
@@ -73,7 +73,7 @@ ms.lasthandoff: 08/18/2017
   * logical evaluation
   * effect
 
-В следующем примере показана политика, которая налагает ограничения на набор расположений для развертывания ресурсов.
+Следующий пример Hello показано политику, которая ограничивает, где развернуты ресурсы.
 
 ```json
 {
@@ -82,14 +82,14 @@ ms.lasthandoff: 08/18/2017
       "allowedLocations": {
         "type": "array",
         "metadata": {
-          "description": "The list of locations that can be specified when deploying resources",
+          "description": "hello list of locations that can be specified when deploying resources",
           "strongType": "location",
           "displayName": "Allowed locations"
         }
       }
     },
     "displayName": "Allowed locations",
-    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+    "description": "This policy enables you toorestrict hello locations your organization can specify when deploying resources.",
     "policyRule": {
       "if": {
         "not": {
@@ -106,7 +106,7 @@ ms.lasthandoff: 08/18/2017
 ```
 
 ## <a name="parameters"></a>Параметры
-Использование параметров помогает упростить управление политиками за счет сокращения числа определений политики. Вы можете определить политику для свойства ресурса (например, чтобы ограничить набор расположений для развертывания этих ресурсов), включив в определение параметры. Затем это определение политики можно неоднократно использовать в разных сценариях, передавая в него разные значения (например, набор расположений для определенной подписки) при назначении политики.
+С помощью параметров помогает упростить управление политики за счет сокращения числа hello определения политик. Определить политику для свойства ресурса (например, ограничение расположения hello, где может развертываться ресурсы) и включения параметров в определении hello. Затем можно повторно использовать определения политик для различных сценариев, передавая различные значения (например, указать один набор расположений для подписки) при назначении политики hello.
 
 А параметры объявляются при создании определения политики.
 
@@ -115,16 +115,16 @@ ms.lasthandoff: 08/18/2017
   "allowedLocations": {
     "type": "array",
     "metadata": {
-      "description": "The list of allowed locations for resources.",
+      "description": "hello list of allowed locations for resources.",
       "displayName": "Allowed locations"
     }
   }
 }
 ```
 
-Типом параметра может быть строка или массив. Свойство метаданных используется в таких инструментах, как портал Azure, для отображения удобных для пользователя сведений. 
+Тип Hello параметра может быть строка или массив. Свойство метаданных Hello используется для средств, таких как Azure портала toodisplay понятные сведения. 
 
-В правилах политики полученные параметры используются так: 
+В правиле политики hello параметры ссылок с hello, используя синтаксис: 
 
 ```json
 { 
@@ -135,11 +135,11 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="display-name-and-description"></a>Отображаемое имя и описание
 
-Параметры **displayName** и **description** позволяют идентифицировать определение политики и описать контекст для ее использования.
+Использовать hello **displayName** и **описание** tooidentify hello определения политики и обеспечения при использовании контекста.
 
 ## <a name="policy-rule"></a>Правило политики
 
-Правило политики состоит из блоков **If** и **Then**. В блоке **If** указываются одно или несколько условий. Они определяют, когда применяется эта политика. В этих условиях можно использовать логические операторы, чтобы точно определить сценарии для использования политики. В блоке **Then** описываются результаты, которые вступают в силу при соблюдении условий из блока **If**.
+правило политики Hello состоит из **Если** и **затем** блоков. В hello **Если** блока, можно определить одно или несколько условий, указывающие, когда применяется политика hello. Логические операторы toothese условия можно применить tooprecisely определить hello сценарий для политики. В hello **затем** блок, определяется hello эффект, который происходит, когда hello **Если** условия будут выполнены.
 
 ```json
 {
@@ -153,15 +153,15 @@ ms.lasthandoff: 08/18/2017
 ```
 
 ### <a name="logical-operators"></a>Логические операторы
-Ниже перечислены поддерживаемые логические операторы.
+Hello поддерживается логическим операторам относятся:
 
 * `"not": {condition  or operator}`
 * `"allOf": [{condition or operator},{condition or operator}]`
 * `"anyOf": [{condition or operator},{condition or operator}]`
 
-Оператор **not** инвертирует результат условия. Оператор **allOf** действует как логическая операция **And**, то есть требует соблюдения всех входящих в него условий. Оператор **anyOf** действует как логическая операция **Or**, то есть проверяет соблюдение хотя бы одного из входящих в него условий.
+Hello **не** синтаксис Инвертирует результат hello hello условия. Hello **все** синтаксис (аналогично toohello логических **и** операции) требует true toobe все условия. Hello **anyOf** синтаксис (аналогично toohello логических **или** операции) требует одного или нескольких toobe условия значение true.
 
-Допускается вложение логических операторов. В следующем примере представлена операция **not**, вложенная в операцию **allOf**. 
+Допускается вложение логических операторов. Следующий пример показывает Hello **не** операции, вложенные в **все** операции. 
 
 ```json
 "if": {
@@ -181,7 +181,7 @@ ms.lasthandoff: 08/18/2017
 ```
 
 ### <a name="conditions"></a>Условия
-Условие определяет, соответствует ли свойство **field** определенным параметрам. Поддерживаются такие условия:
+условие Hello ли **поле** заданным критериям. Hello поддерживается условиям относятся:
 
 * `"equals": "value"`
 * `"like": "value"`
@@ -191,14 +191,14 @@ ms.lasthandoff: 08/18/2017
 * `"containsKey": "keyName"`
 * `"exists": "bool"`
 
-В значении для условия **like** можно использовать подстановочный знак (*).
+При использовании hello **как** условие, можно указать подстановочный знак (*) в значение hello.
 
-При использовании условия **match** для цифры используйте `#`, для буквы — `?` и любые другие соответствующие символы. Примеры приведены в разделе [Применение политик ресурсов для имен и текста](resource-manager-policy-naming-convention.md).
+При использовании hello **соответствует** условия, укажите `#` toorepresent цифры, `?` для письма и любой другой символ toorepresent, фактический символ. Примеры приведены в разделе [Применение политик ресурсов для имен и текста](resource-manager-policy-naming-convention.md).
 
 ### <a name="fields"></a>Поля
-Условия создаются на основе полей. Поле представляет свойства в полезных данных запроса ресурса, используемые для описания состояния ресурса.  
+Условия создаются на основе полей. Поле представляет свойства в полезных данных запроса hello ресурсов, используемых toodescribe hello состояние hello ресурса.  
 
-Поддерживаются следующие поля.
+поддерживаются следующие поля Hello:
 
 * `name`
 * `kind`
@@ -211,154 +211,154 @@ ms.lasthandoff: 08/18/2017
 ### <a name="effect"></a>Результат
 Политика поддерживает три типа результатов — `deny`, `audit` и `append`. 
 
-* **deny** создает событие в журнале аудита и отклоняет запрос.
-* **audit** создает событие в журнале аудита, но выполняет запрос.
-* **append** добавляет в запрос некоторый набор полей. 
+* **Запретить** создает событие в журнал аудита hello и происходит сбой запроса hello
+* **Аудит** приводит к возникновению события предупреждения в журнал аудита, но не позволяет hello запроса
+* **Добавление** добавляет набор hello определенные поля toohello запроса 
 
-Для типа **append**необходимо указать следующие сведения:
+Для **append**, необходимо предоставить hello, приведенные ниже сведения:
 
 ```json
 "effect": "append",
 "details": [
   {
     "field": "field name",
-    "value": "value of the field"
+    "value": "value of hello field"
   }
 ]
 ```
 
-Значением может быть строка или объект формата JSON. 
+Hello значение может быть строка или объект формата JSON. 
 
 ## <a name="aliases"></a>Псевдонимы
 
-Псевдонимы свойств позволяют обращаться к определенным свойствам для типа ресурса. Псевдонимы позволяют ограничить значения или условия, разрешенные для свойства ресурса. Каждый псевдоним сопоставляется с путями в разных версиях API для заданного типа ресурса. Во время оценки политики модуль политики получает путь свойства для этой версии API.
+Используйте свойство псевдонимы tooaccess определенных свойств для типа ресурса. Псевдонимы включают toorestrict, какие значения или условия являются допустимыми для свойства ресурса. Каждый псевдоним сопоставляет toopaths в различных версиях API для заданного типа ресурса. Во время оценки политики hello модуль политики возвращает путь к свойству hello для этой версии API.
 
 **Microsoft.Cache/Redis**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.Cache/Redis/enableNonSslPort | Указывает, включен ли на сервере Redis порт без поддержки SSL (6379). |
-| Microsoft.Cache/Redis/shardCount | Задает число сегментов, создаваемых в кэше кластера уровня "Премиум".  |
-| Microsoft.Cache/Redis/sku.capacity | Задает размер развертываемого кэша Redis.  |
-| Microsoft.Cache/Redis/sku.family | Задает используемое семейство SKU. |
-| Microsoft.Cache/Redis/sku.name | Задает тип развертываемого кэша Redis. |
+| Microsoft.Cache/Redis/enableNonSslPort | Задать ли сервер Redis hello не ssl-порта (6379) включен. |
+| Microsoft.Cache/Redis/shardCount | Задайте количество hello toobe сегментов, созданные на кластер кэша Premium.  |
+| Microsoft.Cache/Redis/sku.capacity | Задать размер hello toodeploy кэша Redis hello.  |
+| Microsoft.Cache/Redis/sku.family | Задать семейства toouse hello SKU. |
+| Microsoft.Cache/Redis/sku.name | Выбор типа hello toodeploy кэша Redis. |
 
 **Microsoft.Cdn/profiles**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.CDN/profiles/sku.name | Задает имя ценовой категории. |
+| Microsoft.CDN/profiles/sku.name | Имя набора hello hello ценовой категории. |
 
 **Microsoft.Compute/disks**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.Compute/imageOffer | Задает предложение образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imagePublisher | Задает издатель образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imageSku | Задает номер SKU образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imageVersion | Задает версию образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
+| Microsoft.Compute/imageOffer | Предложение SET hello hello платформы образа или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/imagePublisher | Набор hello издатель образа платформы hello или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/imageSku | Набор hello номер SKU образа платформы hello или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/imageVersion | Версия набора hello hello платформы образа или образа marketplace используется toocreate hello виртуальной машины. |
 
 
 **Microsoft.Compute/virtualMachines**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.Compute/imageId | Задайте идентификатор образа, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imageOffer | Задает предложение образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imagePublisher | Задает издатель образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imageSku | Задает номер SKU образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imageVersion | Задает версию образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/licenseType | Указывает, используется ли для образа или диска локальная лицензия. Это значение используется только для образов, содержащих операционную систему Windows Server.  |
-| Microsoft.Compute/virtualMachines/imageOffer | Задает предложение образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/virtualMachines/imagePublisher | Задает издатель образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/virtualMachines/imageSku | Задает номер SKU образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/virtualMachines/imageVersion | Задает версию образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/virtualMachines/osDisk.Uri | Задает универсальный код ресурса (URI) виртуального жесткого диска. |
-| Microsoft.Compute/virtualMachines/sku.name | Задайте размер виртуальной машины. |
+| Microsoft.Compute/imageId | Задать идентификатор hello hello изображение, используемое toocreate hello виртуальной машины. |
+| Microsoft.Compute/imageOffer | Предложение SET hello hello платформы образа или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/imagePublisher | Набор hello издатель образа платформы hello или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/imageSku | Набор hello номер SKU образа платформы hello или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/imageVersion | Версия набора hello hello платформы образа или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/licenseType | Заданы, hello образа или диска лицензированного в локальной среде. Это значение используется только для образов, содержащих hello ОС Windows Server.  |
+| Microsoft.Compute/virtualMachines/imageOffer | Предложение SET hello hello платформы образа или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/virtualMachines/imagePublisher | Набор hello издатель образа платформы hello или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/virtualMachines/imageSku | Набор hello номер SKU образа платформы hello или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/virtualMachines/imageVersion | Версия набора hello hello платформы образа или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/virtualMachines/osDisk.Uri | Задайте hello vhd URI. |
+| Microsoft.Compute/virtualMachines/sku.name | Задайте размер hello hello виртуальной машины. |
 
 **Microsoft.Compute/virtualMachines/extensions**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.Compute/virtualMachines/extensions/publisher | Задает имя издателя расширения. |
-| Microsoft.Compute/virtualMachines/extensions/type | Задает тип расширения. |
-| Microsoft.Compute/virtualMachines/extensions/typeHandlerVersion | Задает версию расширения. |
+| Microsoft.Compute/virtualMachines/extensions/publisher | Задайте имя издателя расширения hello hello. |
+| Microsoft.Compute/virtualMachines/extensions/type | Задайте тип hello расширения. |
+| Microsoft.Compute/virtualMachines/extensions/typeHandlerVersion | Задает версию расширения hello hello. |
 
 **Microsoft.Compute/virtualMachineScaleSets**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.Compute/imageId | Задайте идентификатор образа, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imageOffer | Задает предложение образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imagePublisher | Задает издатель образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imageSku | Задает номер SKU образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/imageVersion | Задает версию образа платформы или образа Marketplace, используемого для создания виртуальной машины. |
-| Microsoft.Compute/licenseType | Указывает, используется ли для образа или диска локальная лицензия. Это значение используется только для образов, содержащих операционную систему Windows Server. |
-| Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | Задает префикс имени компьютера для всех виртуальных машин в масштабируемом наборе. |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | Задает универсальный код ресурса (URI) большого двоичного объекта для пользовательского образа. |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | Задает URL-адреса контейнеров, которые используются для хранения ОС для масштабируемого набора. |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.name | Задает размер виртуальных машин в масштабируемом наборе. |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.tier | Задает уровень виртуальных машин в масштабируемом наборе. |
+| Microsoft.Compute/imageId | Задать идентификатор hello hello изображение, используемое toocreate hello виртуальной машины. |
+| Microsoft.Compute/imageOffer | Предложение SET hello hello платформы образа или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/imagePublisher | Набор hello издатель образа платформы hello или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/imageSku | Набор hello номер SKU образа платформы hello или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/imageVersion | Версия набора hello hello платформы образа или образа marketplace используется toocreate hello виртуальной машины. |
+| Microsoft.Compute/licenseType | Заданы, hello образа или диска лицензированного в локальной среде. Это значение используется только для образов, содержащих hello ОС Windows Server. |
+| Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | Задать hello с префиксом имени компьютера для всех виртуальных машин hello в наборе масштабирования hello. |
+| Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | Набор hello URI большого двоичного объекта для пользовательского образа. |
+| Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | Набор hello контейнера URL-адреса, используемые toostore дисков операционной системы для набора масштабирования hello. |
+| Microsoft.Compute/VirtualMachineScaleSets/sku.name | Установите размер hello виртуальных машин в наборе масштабирования. |
+| Microsoft.Compute/VirtualMachineScaleSets/sku.tier | Задайте уровень hello виртуальных машин в наборе масштабирования. |
   
 **Microsoft.Network/applicationGateways**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.Network/applicationGateways/sku.name | Задает размер шлюза. |
+| Microsoft.Network/applicationGateways/sku.name | Задайте размер hello hello шлюза. |
 
 **Microsoft.Network/virtualNetworkGateways**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.Network/virtualNetworkGateways/gatewayType | Задает тип шлюза виртуальной сети. |
-| Microsoft.Network/virtualNetworkGateways/sku.name | Задает номера SKU шлюза. |
+| Microsoft.Network/virtualNetworkGateways/gatewayType | Задайте тип hello этого шлюза виртуальной сети. |
+| Microsoft.Network/virtualNetworkGateways/sku.name | Задайте имя SKU шлюза hello. |
 
 **Microsoft.Sql/servers**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.Sql/servers/version | Задает версию сервера. |
+| Microsoft.Sql/servers/version | Задает версию сервера hello hello. |
 
 **Microsoft.Sql/databases**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.Sql/servers/databases/edition | Задает выпуск базы данных. |
-| Microsoft.Sql/servers/databases/elasticPoolName | Задает имя эластичного пула, в котором размещена база данных. |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveId | Задает идентификатор настроенного целевого уровня обслуживания для базы данных. |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveName | Задает имя настроенного целевого уровня обслуживания для базы данных.  |
+| Microsoft.Sql/servers/databases/edition | Установите выпуск hello hello базы данных. |
+| Microsoft.Sql/servers/databases/elasticPoolName | Имя набора hello hello эластичного пула hello, базы данных находится в. |
+| Microsoft.Sql/servers/databases/requestedServiceObjectiveId | Задайте настройки hello уровня идентификатор цели службы hello базы данных. |
+| Microsoft.Sql/servers/databases/requestedServiceObjectiveName | Имя набора hello hello настроить цель уровня обслуживания базы данных hello.  |
 
 **Microsoft.Sql/elasticpools**
 
 | Alias | Описание |
 | ----- | ----------- |
-| servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Задает совокупное число общих единиц DTU для эластичного пула базы данных. |
-| servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | Задает выпуск эластичного пула. |
+| servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Всего hello набор общих DTU для эластичного пула hello базы данных. |
+| servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | Установите выпуск hello hello эластичного пула. |
 
 **Microsoft.Storage/storageAccounts**
 
 | Alias | Описание |
 | ----- | ----------- |
-| Microsoft.Storage/storageAccounts/accessTier | Задает уровень доступа, используемый для выставления счетов. |
-| Microsoft.Storage/storageAccounts/accountType | Задает имя SKU. |
-| Microsoft.Storage/storageAccounts/enableBlobEncryption | Указывает, шифрует ли служба данные, хранящиеся в службе хранилища BLOB-объектов. |
-| Microsoft.Storage/storageAccounts/enableFileEncryption | Указывает, шифрует ли служба данные, хранящиеся в службе хранилища файлов. |
-| Microsoft.Storage/storageAccounts/sku.name | Задает имя SKU. |
-| Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Позволяет разрешить только передачу трафика HTTPS в службу хранилища. |
+| Microsoft.Storage/storageAccounts/accessTier | Уровень доступа к hello набор используется для выставления счетов. |
+| Microsoft.Storage/storageAccounts/accountType | Задайте имя SKU hello. |
+| Microsoft.Storage/storageAccounts/enableBlobEncryption | Задается ли служба hello шифрует данные, hello, хранящегося в службе хранилища больших двоичных объектов hello. |
+| Microsoft.Storage/storageAccounts/enableFileEncryption | Задается ли служба hello шифрует данные, hello, хранящегося в службе хранилища файла hello. |
+| Microsoft.Storage/storageAccounts/sku.name | Задайте имя SKU hello. |
+| Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Установите службы toostorage трафика tooallow только https. |
 
 
 ## <a name="policy-examples"></a>Примеры политик
 
-Следующие статьи содержат примеры политик.
+Привет, следующие разделы содержат примеры политики:
 
 * Примеры политик для тегов см. в статье [Apply resource policies for tags](resource-manager-policy-tags.md) (Применение политик ресурсов для тегов).
 * Примеры именования и шаблоны текста приведены в разделе [Применение политик ресурсов для имен и текста](resource-manager-policy-naming-convention.md).
-* Примеры политик для хранения см. в статье [Применение политик ресурсов Azure для учетных записей хранения](resource-manager-policy-storage.md).
-* Примеры политик для виртуальных машин есть в статьях о применении политик к виртуальным машинам Azure Resource Manager [для Linux](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) и [для Windows](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
+* Примеры политик хранения см. в разделе [применения учетных записей ресурсов политики toostorage](resource-manager-policy-storage.md).
+* Примеры политик виртуальной машины в разделе [применить tooLinux политики ресурсов виртуальных машин](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) и [применить tooWindows политики ресурсов виртуальных машин](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Определив правило политики, назначьте эту политику для области. Сведения о назначении политик с помощью портала см. в статье [Назначение политик ресурсов и управление ими с помощью портала Azure](resource-manager-policy-portal.md). Сведения о назначении политик с помощью REST API, PowerShell или Azure CLI см. в статье [Назначение политик ресурсов и управление ими](resource-manager-policy-create-assign.md).
-* Руководство по использованию Resource Manager для эффективного управления подписками в организациях см [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Шаблон Azure для организаций. Рекомендуемая система управления подпиской).
-* Схема политики опубликована на странице [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json). 
+* После определения правила политики, назначьте его tooa область. политики tooassign через портал hello см. [tooassign портала используйте Azure и управление политиками ресурсов](resource-manager-policy-portal.md). политики tooassign через API-Интерфейс REST, PowerShell или Azure CLI см. [назначение политики и управлять ими через сценарий](resource-manager-policy-create-assign.md).
+* Для получения рекомендаций по как предприятия могут использовать диспетчер ресурсов tooeffectively управление подписками см. в разделе [корпоративные функции формирования шаблонов - управление конкретные подписки](resource-manager-subscription-governance.md).
+* Схема политики Hello опубликованы по адресу [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json). 
 

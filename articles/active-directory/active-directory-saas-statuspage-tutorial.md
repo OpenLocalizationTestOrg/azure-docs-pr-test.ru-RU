@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory и StatusPage | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и StatusPage."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и StatusPage."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,123 +13,123 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: fa16cdec7b89404c140435fe57d5aa4b08cfa985
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7c6717017984241e9e459273ead4b5e062311120
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Руководство. Интеграция Azure Active Directory и StatusPage
 
-В этом руководстве описано, как интегрировать StatusPage с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate StatusPage с Azure Active Directory (Azure AD).
 
-Интеграция приложения StatusPage с Azure AD обеспечивает следующие преимущества.
+Интеграция с Azure AD StatusPage предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к приложению StatusPage.
-- Вы можете включить автоматический вход пользователей в StatusPage (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooStatusPage
+- Можно включить на пользователей tooautomatically get вошедшего tooStatusPage (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с приложением StatusPage, вам потребуются следующие компоненты:
+tooconfigure интеграция Azure AD с StatusPage требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка StatusPage с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление StatusPage из коллекции.
+1. Добавление StatusPage из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-statuspage-from-the-gallery"></a>Добавление StatusPage из коллекции.
-Чтобы настроить интеграцию приложения StatusPage с Azure AD, вам нужно добавить StatusPage из коллекции в список управляемых приложений SaaS.
+## <a name="adding-statuspage-from-hello-gallery"></a>Добавление StatusPage из галереи hello
+tooconfigure hello интеграции StatusPage в Azure AD, вы должны tooadd StatusPage из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить StatusPage из коллекции, выполните следующие действия.**
+**tooadd StatusPage из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **StatusPage**.
+4. Введите в поле поиска hello **StatusPage**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_search.png)
 
-5. На панели результатов выберите **StatusPage** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello выберите **StatusPage**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в StatusPage с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, Azure AD необходима информация о том, какой пользователь в StatusPage соответствует пользователю в Azure AD. То есть необходимо установить связь между пользователем Azure AD и соответствующим пользователем в StatusPage.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в StatusPage является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в StatusPage должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в StatusPage.
+В StatusPage, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в приложении StatusPage, вам потребуется выполнить действия в следующих стандартных блоках.
+tooconfigure и теста Azure AD единого входа с StatusPage, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя StatusPage](#creating-a-statuspage-test-user)** требуется для того, чтобы в StatusPage существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя StatusPage](#creating-a-statuspage-test-user)**  -toohave аналог Саймон Britta в StatusPage, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении StatusPage.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении StatusPage.
 
-**Чтобы настроить единый вход Azure AD в StatusPage, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с StatusPage, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **StatusPage** щелкните **Единый вход**.
+1. В hello в hello портала Azure **StatusPage** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения StatusPage** выполните следующие действия.
+3. На hello **URL-адреса и домена StatusPage** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_url.png)
 
-    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате:
+    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/` |
     | `https://<subdomain>.statuspage.io/` |
 
-    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: 
+    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello: 
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/sso/saml/consume` |
     | `https://<subdomain>.statuspage.io/sso/saml/consume` |
 
     > [!NOTE]
-    > Обратитесь в службу поддержки StatusPage по адресу [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io), чтобы запросить метаданные, необходимые для настройки единого входа. 
+    > Обратитесь в службу поддержки StatusPage hello в [ SupportTeam@statuspage.io ](mailto:SupportTeam@statuspage.io)toorequest метаданных необходимые tooconfigure единого входа. 
     >
-    >а. В метаданных скопируйте значение издателя и вставьте его в текстовое поле **Идентификатор** .
+    >а. Из метаданных hello, скопируйте значение издателя hello и вставьте его в hello **идентификатор** текстового поля.
     >
-    >b. В полученных метаданных скопируйте значение URL-адреса ответа и вставьте его в текстовое поле **URL-адрес ответа** .
+    >b. Из метаданных hello hello URL-адрес ответа скопируйте и вставьте его в hello **URL-адрес ответа** текстового поля.
 
-4. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_certificate.png) 
 
@@ -137,82 +137,82 @@ ms.lasthandoff: 08/03/2017
 
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_general_400.png)
 
-6. В разделе **Конфигурация StatusPage** щелкните **Настроить StatusPage**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **конфигурации StatusPage** щелкните **Настройка StatusPage** tooopen **Настройка входа** окна. Копировать hello **SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_configure.png) 
 
-7. В другом окне браузера войдите на корпоративный сайт StatusPage с правами администратора.
+7. В другом окне браузера Войдите на сайт компании StatusPage tooyour с правами администратора.
 
-8. На главной панели инструментов щелкните **Manage Account**(Управление учетной записью).
+8. На главной панели инструментов hello, щелкните **Управление учетной записью**.
    
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_06.png) 
 
-10. Выберите вкладку **Single Sign-on** (Единый вход). 
+10. Нажмите кнопку hello **Single Sign-on** вкладки. 
    
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_07.png) 
 
-11. На странице настройки единого входа выполните следующие действия.
+11. На странице настройки единого входа hello выполните следующие шаги hello.
    
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_08.png) 
 
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_09.png) 
  
-    а. В текстовое поле **SSO Target URL** (Целевой URL-адрес единого входа) вставьте значение **SAML Single Sign-On Service URL** (URL-адрес службы единого входа SAML), скопированное на портале Azure.
+    а. В hello **URL-адрес единого входа для целевого** текстовое значение hello вставить **SAML единого входа URL-адрес службы**, который вы скопировали из портала Azure.
 
-    b. Откройте скачанный сертификат в блокноте, скопируйте его содержимое в буфер обмена, а затем вставьте его в текстовое поле **Certificate** (Сертификат). 
+    b. Откройте загруженный сертификат в блокноте, hello копирования содержимого, а затем вставьте его в hello **сертификат** текстового поля. 
 
     c. Щелкните **SAVE CONFIGURATION** (Сохранить конфигурацию).
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-statuspage-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-statuspage-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-statuspage-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-statuspage-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-statuspage-test-user"></a>Создание тестового пользователя в приложении StatusPage
 
-Цель этого раздела — создать в приложении StatusPage пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в StatusPage.
 
 Приложение StatusPage поддерживает JIT-подготовку. Эта функция уже включена в ходе [настройки единого входа в Azure AD](#configuring-azure-ad-single-sign-on).
 
-**Чтобы создать в приложении StatusPage пользователя с именем Britta Simon, выполните следующие действия.**
+**toocreate пользователя с именем Саймон Britta в StatusPage, выполните следующие шаги hello.**
 
-1. Войдите на корпоративный сайт StatusPage с правами администратора.
+1. Корпоративный сайт StatusPage tooyour входа от имени администратора.
 
-2. В меню вверху щелкните **Manage Account**(Управление учетной записью).
+2. В меню в верхней части hello hello выберите **Управление учетной записью**.
 
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_06.png)
 
-3. Перейдите на вкладку **Team Members** (Участники команды). 
+3. Нажмите кнопку hello **члены команды** вкладки. 
    
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_10.png) 
 
@@ -220,7 +220,7 @@ ms.lasthandoff: 08/03/2017
    
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_11.png) 
 
-5. Введите в текстовые поля **Email Address** (Электронный адрес), **First Name** (Имя) и **Sur Name** (Фамилия) соответствующие данные действительного пользователя, которого вы хотите подготовить. 
+5. Тип hello **адрес электронной почты**, **имя**, и **Sur имя** действительного пользователя требуется tooprovision в hello связанные текстовые поля. 
    
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_12.png) 
 
@@ -228,23 +228,23 @@ ms.lasthandoff: 08/03/2017
 
 7. Щелкните **CREATE ACCOUNT** (Создать учетную запись).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к StatusPage.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooStatusPage доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon приложению StatusPage, выполните следующие действия.**
+**tooassign tooStatusPage Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **StatusPage**.
+2. В списке приложений hello выберите **StatusPage**.
 
     ![Настройка единого входа](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -252,7 +252,7 @@ ms.lasthandoff: 08/03/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -260,13 +260,13 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".
 
-Щелкнув элемент StatusPage на панели доступа, вы автоматически войдете в приложение StatusPage.
+При нажатии кнопки hello StatusPage плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour StatusPage приложения.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

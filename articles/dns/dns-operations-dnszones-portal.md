@@ -1,6 +1,6 @@
 ---
-title: "Управление зонами DNS в службе DNS Azure — портал Azure | Документация Майкрософт"
-description: "Зонами DNS можно управлять с помощью портала Azure. В этой статье описывается, как обновлять, удалять и создавать зоны DNS в службе DNS Azure."
+title: "aaaManage DNS-зоны в DNS Azure - портал Azure | Документы Microsoft"
+description: "Можно управлять с помощью портала Azure hello зон DNS. В этой статье описывается, как tooupdate, удалите и создайте зон DNS на Azure DNS"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: gwallace
-ms.openlocfilehash: 69a509612e6204fc93dd42bf2fe69cb165b5777c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d8ce302bb7126dfe8077a6f3e33418e16fcea64
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Как управлять зонами DNS с помощью портала Azure
+# <a name="how-toomanage-dns-zones-in-hello-azure-portal"></a>Как toomanage зоны DNS в hello портал Azure
 
 > [!div class="op_single_selector"]
 > * [Портал](dns-operations-dnszones-portal.md)
@@ -26,38 +26,38 @@ ms.lasthandoff: 07/11/2017
 > * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
-В этой статье объясняется, как управлять зонами DNS с помощью портала Azure. Зонами DNS также можно управлять с помощью кроссплатформенного [Azure CLI](dns-operations-dnszones-cli.md) или Azure [PowerShell](dns-operations-dnszones.md).
+В этой статье показано, как toomanage DNS-зоны с помощью портала Azure hello. Также можно управлять с помощью hello кросс платформенных зон DNS [Azure CLI](dns-operations-dnszones-cli.md) или hello Azure [PowerShell](dns-operations-dnszones.md).
 
 ## <a name="create-a-dns-zone"></a>Создание зоны DNS
 
-1. Выполните вход на портал Azure.
-2. В главном меню щелкните **Создать > Сети**, а затем щелкните **Зона DNS**, чтобы открыть колонку "Создать зону DNS".
+1. Войдите в toohello портал Azure
+2. Hello концентратора меню и нажмите кнопку **Создать > Сетевые подключения >** и нажмите кнопку **зоны DNS** tooopen hello создать DNS-зоны колонку.
 
     ![Зона DNS](./media/dns-operations-dnszones-portal/openzone650.png)
 
-4. В колонке **Создание зоны DNS** введите следующие значения, а затем щелкните **Создать**.
+4. На hello **создать DNS-зоны** колонки введите следующие значения hello, затем щелкните **создать**:
 
 
    | **Параметр** | **Значение** | **Дополнительные сведения** |
    |---|---|---|
-   |**Имя**|contoso.com|Имя зоны DNS.|
-   |**Подписка**|[Ваша подписка]|Выберите подписку для создания зоны DNS.|
-   |**Группа ресурсов**|**Создать:** contosoDNSRG|Создайте группу ресурсов. Имя группы ресурсов должно быть уникальным в пределах выбранной подписки. Дополнительные сведения о группах ресурсов см. в разделе [Группы ресурсов](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) статьи "Общие сведения об Azure Resource Manager".|
+   |**Имя**|contoso.com|Имя зоны DNS hello Hello|
+   |**Подписка**|[Ваша подписка]|Выберите зону DNS toocreate hello подписки в.|
+   |**Группа ресурсов**|**Создать:** contosoDNSRG|Создайте группу ресурсов. Имя группы ресурсов Hello должно быть уникальным в пределах hello подписки, выбранной. Дополнительные сведения о группах ресурсов, чтение hello toolearn [диспетчера ресурсов](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) обзорную статью.|
    |**Расположение**|Запад США||
 
 > [!NOTE]
-> Этот параметр относится к расположению группы ресурсов и никак не влияет на расположение зоны DNS. Расположение зоны DNS всегда является "глобальным" и не отображается.
+> Группа ресурсов Hello относится toohello расположение группы ресурсов hello, а не оказывает влияния на hello зоны DNS. расположение зоны DNS Hello всегда «глобальные» и не отображается.
 
 ## <a name="list-dns-zones"></a>Перечисление зон DNS
 
-На портале Azure последовательно выберите **Больше служб** > **Сети** > **Зоны DNS**. Каждая зона DNS является отдельным ресурсом. В этом представлении отображаются такие сведения, как число наборов записей и серверы имен. Столбец **Серверы имен** не отображается в представлении по умолчанию. Чтобы добавить его, щелкните **Столбцы**, выберите **Серверы имен** и нажмите кнопку **Готово**.
+В hello портал Azure, перейдите в слишком**дополнительные службы** > **сети** > **зон DNS**. Каждая зона DNS является отдельным ресурсом. В этом представлении отображаются такие сведения, как число наборов записей и серверы имен. столбец Hello **СЕРВЕРЫ ИМЕН** не находится в представлении по умолчанию hello tooadd его щелкните **столбцы**выберите **серверов имен** и нажмите кнопку **сделать**.
 
 ![Перечисление зон DNS](./media/dns-operations-dnszones-portal/listzones.png)
 
 ## <a name="delete-a-dns-zone"></a>Удаление зоны DNS
 
-Перейдите к зоне DNS на портале. В колонке **Зона DNS** щелкните **Удалить зону**. Отобразится запрос на подтверждение удаления зоны DNS. При удалении зоны DNS также удаляются все записи, которые содержатся в ней.
+Перейдите tooa зоны DNS в портале hello. На hello **зоны DNS** колонка, щелкните **удалить зону**. Все запрашиваемые tooconfirm Желательное toodelete hello DNS-зоны. Зоны DNS при удалении также удаляются все записи hello, содержащихся в зоне hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Сведения о работе с зоной и записями DNS см. в статье [Приступая к работе со службой DNS Azure с помощью портала Azure](dns-getstarted-portal.md).
+Узнайте, как toowork с зоной DNS и записи, посетив [Приступая к работе с Azure DNS, с помощью портала Azure hello](dns-getstarted-portal.md).

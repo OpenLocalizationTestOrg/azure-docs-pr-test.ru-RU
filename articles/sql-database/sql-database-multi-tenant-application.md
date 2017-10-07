@@ -1,5 +1,5 @@
 ---
-title: "Реализация мультитенантного приложения SaaS с помощью базы данных SQL Azure | Документация Майкрософт"
+title: "aaaImplement многопользовательского приложения SaaS с базой данных SQL Azure | Документы Microsoft"
 description: "Реализация мультитенантного приложения SaaS с помощью базы данных SQL Azure."
 services: sql-database
 documentationcenter: 
@@ -16,23 +16,23 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/08/2017
 ms.author: AyoOlubek
-ms.openlocfilehash: 0aea69d86a51c38c99a72f46737de1eea27bef83
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b87b8f296e2c20a8f674b56375f43fdc92df76d3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="implement-a-multi-tenant-saas-application-using-azure-sql-database"></a>Реализация мультитенантного приложения SaaS с помощью базы данных SQL Azure
 
-Мультитенатное приложение — это приложение, расположенное в облачной среде и предоставляющее одинаковый набор служб сотням или тысячам клиентов, которые не используют данные совместно и не обращаются к данным друг друга. В качестве примера можно привести приложение SaaS, которое предоставляет службы для клиентов в размещенной в облаке среде. Эта модель изолирует данные для каждого клиента и улучшает распределение ресурсов для оптимизации затрат. 
+Многопользовательское приложение — это приложение, размещенных в облачной среде и предоставляющий hello же набор служб toohundreds или тысяч клиентов, которые не используют и не отображаются данные друг друга. Примером является приложение SaaS, которое обеспечивает tootenants службы в среде, размещаемых в облаке. Эта модель изолирует hello данных для каждого клиента и оптимизирует hello распределение ресурсов для затрат. 
 
-В этом руководстве рассматривается создание мультитенантного приложения SaaS с помощью базы данных SQL Azure.
+В этом учебнике показано как toocreate многопользовательского приложения SaaS, с помощью базы данных SQL Azure.
 
 Из этого руководства вы узнаете следующее:
 > [!div class="checklist"]
-> * Как настроить среду базы данных для поддержки мультитенантного приложения SaaS с помощью шаблона базы данных на клиент.
+> * Настройка базы данных среды toosupport многопользовательскому приложению SaaS, с помощью шаблона базы данных каждого клиента hello
 > * Как создать каталог клиента.
-> * Как подготовить клиентскую базу данных и зарегистрировать ее в каталоге клиента.
+> * Подготовка базы данных клиента и зарегистрировать его в каталоге клиента hello
 > * Как настроить пример приложения Java. 
 > * Как получить доступ к клиентским базам данных через простое консольное приложение Java.
 > * Как удалить клиент.
@@ -41,23 +41,23 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-В рамках этого руководства вам потребуются:
+toocomplete этого учебника, убедитесь в наличии:
 
-* Последняя версия PowerShell и [последний выпуск пакета SDK для Azure PowerShell](http://azure.microsoft.com/downloads/).
+* Последнюю версию установленного hello hello и PowerShell [последнего выпуска пакета SDK Azure PowerShell](http://azure.microsoft.com/downloads/)
 
-* Последняя версия [SQL Server Management Studio](http://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). При установке SQL Server Management Studio также устанавливается последняя версия SqlPackage, служебной программы командной строки, которую можно использовать для автоматизации ряда задач по разработке базы данных.
+* Установленные hello последнюю версию [SQL Server Management Studio](http://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Установка SQL Server Management Studio также включает последнюю версию hello SQLPackage, программы командной строки, которое может быть используется tooautomate задачи разработки базы данных.
 
-* [Среда выполнения Java (JRE) версии 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) и [последний пакет JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). 
+* Установленные hello [среда выполнения Java (JRE) 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) и hello [последние JAVA Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) установлены на компьютере. 
 
-* [Apache Maven](https://maven.apache.org/download.cgi). Maven можно использовать для управления зависимостями, сборки, тестирования и запуска примера проекта Java.
+* [Apache Maven](https://maven.apache.org/download.cgi). Будет использоваться maven toohelp Управление зависимостями, создания, тестирования и запуска проекта Java образец hello
 
 ## <a name="set-up-data-environment"></a>Настройка среды данных
 
-Вам необходимо подготовить базу данных для каждого клиента. Модель "база данных на клиент" обеспечивает максимальный уровень изоляции между клиентами и небольшую стоимость разработки и выполнения операций. Чтобы оптимизировать стоимость облачных ресурсов, вам также необходимо подготовить клиентские базы данных для размещения в эластичном пуле, что позволит оптимизировать соотношение цены и производительности для группы баз данных. Дополнительные сведения о других моделях подготовки базы данных см. в разделе [Модели данных мультитенантного приложения](sql-database-design-patterns-multi-tenancy-saas-applications.md#multi-tenant-data-models).
+Вам необходимо подготовить базу данных для каждого клиента. модель базы данных каждого клиента Hello обеспечивает наивысшую степень изоляции между клиентами и низкие затраты на DevOps hello. стоимость hello toooptimize облачных ресурсов, будут также ли администраторы базы данных клиента hello в пуле эластичных БД, позволяющий toooptimize hello цены производительности для группы баз данных. toolearn о другой базе данных, подготовки моделей [см. Здесь](sql-database-design-patterns-multi-tenancy-saas-applications.md#multi-tenant-data-models).
 
-Следуйте инструкциям ниже, чтобы создать SQL Server и эластичный пул для размещения всех клиентских баз данных. 
+Выполните эти шаги toocreate SQL server и эластичного пула, в котором будет размещаться всех баз данных клиента. 
 
-1. Создайте переменные для хранения значений, которые будут использоваться дальше. Измените переменную IP-адреса, добавив свой IP-адрес. 
+1. Создайте переменные toostore значения, которые будут использоваться hello конца hello учебника. Убедитесь, что toomodify hello IP адрес переменной tooinclude IP-адреса 
    
    ```PowerShell 
    # Set an admin login and password for your database
@@ -69,15 +69,15 @@ ms.lasthandoff: 07/11/2017
    $tenant1 = "geolamice"
    $tenant2 = "ranplex"
    
-   # Store current client IP address (modify to include your IP address)
+   # Store current client IP address (modify tooinclude your IP address)
    $startIpAddress = 0.0.0.0 
    $endIpAddress = 0.0.0.0
    ```
    
-2. Войдите в Azure и создайте SQL Server и эластичный пул. 
+2. TooAzure входа и создать пул SQL server и переменной ширины 
    
    ```PowerShell
-   # Login to Azure 
+   # Login tooAzure 
    Login-AzureRmAccount
    
    # Create resource group 
@@ -105,9 +105,9 @@ ms.lasthandoff: 07/11/2017
    
 ## <a name="create-tenant-catalog"></a>Создание каталога клиента 
 
-В мультитенантном приложении SaaS важно знать, где хранятся сведения для клиента. Обычно они хранятся в базе данных каталога. База данных каталога используется для хранения сопоставления между клиентом и базой данных, в которой хранятся данные клиента.  Независимо от того, как база данных используется (мультитенантная или с одним клиентом), применяется основной шаблон.
+В приложении SaaS несколькими клиентами это важные tooknow, в котором хранятся сведения для клиента. Обычно они хранятся в базе данных каталога. База данных каталога Hello является toohold используется сопоставление между клиентом и базы данных, в которой хранятся данные этого клиента.  базовый шаблон Hello применяет ли многопользовательское или использования базы данных одного клиента.
 
-Выполните приведенные ниже инструкции, чтобы создать базу данных каталога для примера приложения SaaS.
+Выполните эти шаги toocreate база данных каталога для приложения SaaS образец hello.
 
 ```PowerShell
 # Create empty database in pool
@@ -116,7 +116,7 @@ New-AzureRmSqlDatabase  -ResourceGroupName "myResourceGroup" `
     -DatabaseName "tenantCatalog" `
     -ElasticPoolName "myElasticPool"
 
-# Create table to track mapping between tenants and their databases
+# Create table tootrack mapping between tenants and their databases
 $commandText = "
 CREATE TABLE Tenants
 (
@@ -138,7 +138,7 @@ Invoke-SqlCmd `
 ```
 
 ## <a name="provision-database-for-tenant1-and-register-in-tenant-catalog"></a>Подготовка базы данных для клиента tenant1 и его регистрация в клиентском каталоге 
-Используйте Powershell, чтобы подготовить базу данных для нового клиента tenant1 и зарегистрировать его в каталоге. 
+Используйте Powershell tooprovision базы данных для нового клиента «клиента (1)» и регистрация этого клиента в каталоге hello. 
 
 ```PowerShell
 # Create empty database in pool for 'tenant1'
@@ -147,7 +147,7 @@ New-AzureRmSqlDatabase  -ResourceGroupName "myResourceGroup" `
     -DatabaseName $tenant1 `
     -ElasticPoolName "myElasticPool"
 
-# Create table WhoAmI and insert tenant name into the table 
+# Create table WhoAmI and insert tenant name into hello table 
 $commandText = "
 CREATE TABLE WhoAmI (TenantName NVARCHAR(128) NOT NULL);
 INSERT INTO WhoAmI VALUES ('Tenant $tenant1');"
@@ -161,7 +161,7 @@ Invoke-SqlCmd `
     -Query $commandText `
     -EncryptConnection
 
-# Register 'tenant1' in the tenant catalog 
+# Register 'tenant1' in hello tenant catalog 
 $commandText = "
 INSERT INTO Tenants VALUES ('$tenant1', '$tenant1');"
 Invoke-SqlCmd `
@@ -175,7 +175,7 @@ Invoke-SqlCmd `
 ```
 
 ## <a name="provision-database-for-tenant2-and-register-in-tenant-catalog"></a>Подготовка базы данных для клиента tenant2 и его регистрация в клиентском каталоге
-Используйте Powershell, чтобы подготовить базу данных для нового клиента tenant2 и зарегистрировать его в каталоге. 
+Используйте Powershell tooprovision базы данных для нового клиента «tenant2» и регистрация этого клиента в каталоге hello. 
 
 ```PowerShell
 # Create empty database in pool for 'tenant2'
@@ -184,7 +184,7 @@ New-AzureRmSqlDatabase  -ResourceGroupName "myResourceGroup" `
     -DatabaseName $tenant2 `
     -ElasticPoolName "myElasticPool"
 
-# Create table WhoAmI and insert tenant name into the table 
+# Create table WhoAmI and insert tenant name into hello table 
 $commandText = "
 CREATE TABLE WhoAmI (TenantName NVARCHAR(128) NOT NULL);
 INSERT INTO WhoAmI VALUES ('Tenant $tenant2');"
@@ -198,7 +198,7 @@ Invoke-SqlCmd `
     -Query $commandText `
     -EncryptConnection
 
-# Register tenant 'tenant2' in the tenant catalog 
+# Register tenant 'tenant2' in hello tenant catalog 
 $commandText = "
 INSERT INTO Tenants VALUES ('$tenant2', '$tenant2');"
 Invoke-SqlCmd `
@@ -213,13 +213,13 @@ Invoke-SqlCmd `
 
 ## <a name="set-up-sample-java-application"></a>Настройка примера приложения Java 
 
-1. Создайте проект Maven. В окне командной строки введите следующее:
+1. Создайте проект Maven. Введите ниже hello в окне командной строки:
    
    ```
    mvn archetype:generate -DgroupId=com.microsoft.sqlserver -DartifactId=mssql-jdbc -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
    
-2. Добавьте зависимость, уровень языка и параметр сборки для поддержки файлов манифестов в JAR в файл pom.xml:
+2. Добавьте этот зависимостей, уровне языка и построения параметр toosupport файлы манифеста в файле pom.xml toohello JAR-файлов:
    
    ```XML
    <dependency>
@@ -251,7 +251,7 @@ Invoke-SqlCmd `
    </build>
    ```
 
-3. В файл App.java добавьте следующее:
+3. Добавьте следующий текст hello в файл App.java hello:
 
    ```java 
    package com.sqldbsamples;
@@ -306,7 +306,7 @@ Invoke-SqlCmd `
    
    System.out.println(" " + CMD_QUERY + " <NAME> - connect and tenant query tenant <NAME>");
    
-   System.out.println(" " + CMD_QUIT + " - quit the application\n");
+   System.out.println(" " + CMD_QUIT + " - quit hello application\n");
    
    try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
    
@@ -352,7 +352,7 @@ Invoke-SqlCmd `
    
    private static void listTenants() {
    
-   // List all tenants that currently exist in the system
+   // List all tenants that currently exist in hello system
    
    String sql = "SELECT TenantName FROM Tenants";
    
@@ -380,7 +380,7 @@ Invoke-SqlCmd `
    
    private static void queryTenant(String name) {
    
-   // Query the data that was previously inserted into the primary database from the geo replicated database
+   // Query hello data that was previously inserted into hello primary database from hello geo replicated database
    
    String url = null;
    
@@ -445,21 +445,21 @@ Invoke-SqlCmd `
    }
    ```
 
-4. Сохраните файл.
+4. Сохраните файл hello.
 
-5. Перейдите в командную консоль и выполните команду ниже.
+5. Перейдите в консоли toocommand и выполнение
 
    ```bash
    mvn package
    ```
 
-6. После ее завершения выполните следующую команду, чтобы запустить приложение: 
+6. После завершения выполнения следующие приложения hello toorun hello 
    
    ```
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
    ```
    
-В случае успешного запуска выходные данные будут выглядеть примерно следующим образом:
+в случае успешного выполнения, Hello выходных данных будет выглядеть следующим образом:
 
 ```
 ############################
@@ -474,15 +474,15 @@ LIST - list tenants
 
 QUERY <NAME> - connect and tenant query tenant <NAME>
 
-QUIT - quit the application
+QUIT - quit hello application
 
-* List the tenants
+* List hello tenants
 
 * Query tenants you created
 ```
 
 ## <a name="delete-first-tenant"></a>Удаление первого клиента 
-Используйте PowerShell, чтобы удалить клиентскую базу данных и запись каталога для первого клиента.
+Используйте PowerShell toodelete hello клиента базы данных и каталога записи для первого клиента hello.
 
 ```PowerShell
 # Remove 'tenant1' from catalog 
@@ -502,15 +502,15 @@ Remove-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" `
     -DatabaseName $tenant1
 ```
 
-Попробуйте подключиться к клиенту tenant1 с помощью приложения Java. Вы получите ошибку с сообщением о том, что клиент не существует.
+Попробуйте подключиться слишком Здравствуйте приложения Java, с помощью клиента «(1)». Вы получите сообщение о том, что этому клиенту hello не существует.
 
 ## <a name="next-steps"></a>Дальнейшие действия 
 
 Из этого руководства вы узнали следующее:
 > [!div class="checklist"]
-> * Как настроить среду базы данных для поддержки мультитенантного приложения SaaS с помощью шаблона базы данных на клиент.
+> * Настройка базы данных среды toosupport многопользовательскому приложению SaaS, с помощью шаблона базы данных каждого клиента hello
 > * Как создать каталог клиента.
-> * Как подготовить клиентскую базу данных и зарегистрировать ее в каталоге клиента.
+> * Подготовка базы данных клиента и зарегистрировать его в каталоге клиента hello
 > * Как настроить пример приложения Java. 
 > * Как получить доступ к клиентским базам данных через простое консольное приложение Java.
 > * Как удалить клиент.

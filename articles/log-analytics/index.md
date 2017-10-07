@@ -1,6 +1,6 @@
 ---
-title: "Документация по управлению Azure Log Analytics. Руководства и справочник по API | Документация Майкрософт"
-description: "Узнайте, как использовать Log Analytics для сбора и анализа данных, создаваемых ресурсами в облачных и локальных средах, независимо от физического расположения."
+title: "aaaAzure документации для аналитика журнала - учебники, справочник по API | Документы Microsoft"
+description: "Узнайте, как toocollect toouse анализа журналов и анализировать данные, созданные ресурсы в облачных и локальных средах независимо от физического расположения."
 services: log-analytics
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 9d5d1ada86a2cb1b6f6f70d9c662708f81b5bcc6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 48b3c1b28d9e3a9eaed34201d6bae2a6fdea90fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="log-analytics-documentation"></a>Документация по Log Analytics
 
-Узнайте, как использовать Log Analytics в Operations Management Suite для сбора и анализа данных, создаваемых ресурсами в облачных и локальных средах. Руководства и другая документация, в которой показано, как получать аналитику в режиме реального времени для рабочих нагрузок и серверов независимо от физического расположения.
+Узнайте, как toouse аналитики журналов в hello toocollect Operations Management Suite и анализировать данные, созданные ресурсы в облачных и локальных средах. Учебники и другую документацию показывается, как в режиме реального времени понимание tooget благодаря рабочих нагрузках и серверах независимо от физического расположения.
 
 <ul class="panelContent cardsFTitle">
     <li>

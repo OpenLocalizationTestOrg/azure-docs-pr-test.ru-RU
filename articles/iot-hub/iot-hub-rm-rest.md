@@ -1,6 +1,6 @@
 ---
-title: "Создание Центра Интернета вещей Azure с помощью REST API поставщика ресурсов | Документация Майкрософт"
-description: "Создание Центра Интернета вещей с помощью REST API поставщика ресурсов."
+title: "Здравствуйте, aaaCreate концентратора Azure IoT с помощью REST API поставщика ресурсов | Документы Microsoft"
+description: "Как toouse hello toocreate API-интерфейса REST поставщика ресурсов центра IoT."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: e443259507aacbefca141be4c9c1688ab19bf6ec
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 98d240ccce47dec13a255bce28943b40f5354ecf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Создание Центра Интернета вещей с помощью REST API поставщика ресурсов (.NET)
+# <a name="create-an-iot-hub-using-hello-resource-provider-rest-api-net"></a>Создать центр IoT с помощью поставщика ресурсов hello REST API (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-[REST API поставщика ресурсов Центра Интернета вещей][lnk-rest-api] можно использовать для создания Центров Интернета вещей Azure и управления ими программными методами. В этом учебнике показано, как использовать REST API поставщика ресурсов Центра Интернета вещей для создания Центра Интернета вещей из программы на C#.
+Можно использовать hello [поставщика ресурсов центра IoT API-интерфейса REST] [ lnk-rest-api] toocreate и программно управлять центры Azure IoT. Этот учебник показывает, как toouse hello toocreate API-интерфейса REST поставщика ресурсов центра IoT центр IoT из программы на C#.
 
 > [!NOTE]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Azure Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md).  В этой статье описывается использование модели развертывания на основе Azure Resource Manager.
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Azure Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md).  В этой статье описан с помощью модели развертывания диспетчера ресурсов Azure hello.
 
-Для работы с этим учебником требуется:
+toocomplete этого учебника требуется hello следующие:
 
 * Visual Studio 2015 или Visual Studio 2017.
 * Активная учетная запись Azure. <br/>Если у вас нет учетной записи, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.
@@ -39,15 +39,15 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="prepare-your-visual-studio-project"></a>Подготовка проекта Visual Studio
 
-1. В Visual Studio создайте проект классического приложения Windows на языке Visual C# с помощью шаблона проекта **консольного приложения (.NET Framework)**. Дайте проекту имя **CreateIoTHubREST**.
+1. В Visual Studio создайте проект Visual C# классического рабочего стола Windows, с помощью hello **консольного приложения (.NET Framework)** шаблона проекта. Имя проекта hello **CreateIoTHubREST**.
 
 2. В обозревателе решений щелкните правой кнопкой мыши свой проект и выберите **Управление пакетами NuGet**.
 
-3. В диспетчере пакетов NuGet выберите **Включить предварительные выпуски** и на странице **Обзор** найдите **Microsoft.Azure.Management.ResourceManager**. Выберите пакет, щелкните **Установить**, на странице **Просмотр изменений** нажмите кнопку **ОК** и выберите **Я принимаю**, чтобы принять условия лицензий.
+3. Проверьте в диспетчере пакетов NuGet **включить предварительный выпуск**, а на hello **Обзор** страница поиска для **Microsoft.Azure.Management.ResourceManager**. Выберите пакет hello, щелкните **установить**в **просмотрите изменения** щелкните **ОК**, нажмите кнопку **я принимаю** tooaccept hello лицензий.
 
-4. В диспетчере пакетов NuGet найдите **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Щелкните **Установить**, на странице **Просмотр изменений** нажмите кнопку **ОК** и выберите **Я принимаю**, чтобы принять условия лицензии.
+4. В диспетчере пакетов NuGet найдите **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Нажмите кнопку **установить**в **просмотрите изменения** щелкните **ОК**, нажмите кнопку **принимаю** tooaccept hello лицензии.
 
-5. Откройте файл Program.cs и замените существующие инструкции **using** следующим кодом:
+5. В Program.cs заменить существующий hello **с помощью** инструкции с hello, следующий код:
 
     ```csharp
     using System;
@@ -63,7 +63,7 @@ ms.lasthandoff: 08/18/2017
     using System.Threading;
     ```
 
-6. В Program.cs добавьте следующие статические переменные, заменив значения заполнителей. Ранее в этом учебнике вы записали **ApplicationId**, **SubscriptionId**, **TenantId** и **Password**. **Resource group name** — это имя группы ресурсов, используемой при создании Центра Интернета вещей. Вы можете использовать существующую группу ресурсов или новую. **IoT Hub name** — это имя создаваемого Центра Интернета вещей, например **MyIoTHub**. Имя Центра Интернета вещей должно быть глобально уникальным. **Deployment name** — это имя развертывания, например **Deployment_01**.
+6. В Program.cs добавьте следующие статические переменные, заменив заполнители значениями hello hello. Ранее в этом учебнике вы записали **ApplicationId**, **SubscriptionId**, **TenantId** и **Password**. **Имя группы ресурсов** hello имя группы ресурсов hello, используемого при создании центра IoT hello. Вы можете использовать существующую группу ресурсов или новую. **Имя центра IoT** — имя hello hello создается, такие как центр IoT **MyIoTHub**. имя вашего центра IoT Hello должно быть глобально уникальным. **Имя развертывания** — это имя для развертывания hello, таких как **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -78,11 +78,11 @@ ms.lasthandoff: 08/18/2017
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>Использование REST API поставщика ресурсов для создания Центра Интернета вещей
+## <a name="use-hello-resource-provider-rest-api-toocreate-an-iot-hub"></a>Используйте API-интерфейса REST поставщика toocreate центр IoT для hello ресурсов
 
-Используйте [REST API поставщика ресурсов Центра Интернета вещей][lnk-rest-api] для создания Центра Интернета вещей в группе ресурсов. REST API поставщика ресурсов также можно использовать для изменения имеющегося Центра Интернета вещей.
+Используйте hello [поставщика ресурсов центра IoT API-интерфейса REST] [ lnk-rest-api] toocreate центр IoT в группе ресурсов. Также можно использовать hello ресурсов поставщик API-интерфейса REST toomake изменения tooan существующий центр IoT.
 
-1. Добавьте в класс Program.cs следующий метод:
+1. Добавьте следующий метод tooProgram.cs hello:
 
     ```csharp
     static void CreateIoTHub(string token)
@@ -91,14 +91,14 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-2. Добавьте в метод **CreateIoTHub** следующий код. Этот код создает объект **HttpClient** с маркером аутентификации в заголовках:
+2. Добавьте следующий код toohello hello **CreateIoTHub** метод. Этот код создает **HttpClient** hello токена проверки подлинности в заголовках hello объекта:
 
     ```csharp
     HttpClient client = new HttpClient();
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
 
-3. Добавьте в метод **CreateIoTHub** следующий код. Этот код описывает создаваемый Центр Интернета вещей и создает представление JSON. Текущий список расположений, которые поддерживают Центр Интернета вещей, указан на странице [Состояние Azure][lnk-status].
+3. Добавьте следующий код toohello hello **CreateIoTHub** метод. Этот код описывает toocreate концентратора IoT hello и создает представление JSON. Текущий список расположений, которые поддерживают Центр IoT hello. в разделе [состояние Azure][lnk-status]:
 
     ```csharp
     var description = new
@@ -116,7 +116,7 @@ ms.lasthandoff: 08/18/2017
     var json = JsonConvert.SerializeObject(description, Formatting.Indented);
     ```
 
-4. Добавьте в метод **CreateIoTHub** следующий код. Этот код отправляет запрос REST в Azure. Затем код проверяет ответ и получает URL-адрес, который можно использовать для контроля состояния задачи развертывания:
+4. Добавьте следующий код toohello hello **CreateIoTHub** метод. Этот код отправляет запрос tooAzure hello REST. затем кода Hello проверяет ответ hello и извлекает hello URL-адрес, состояние hello toomonitor hello задачи развертывания можно использовать:
 
     ```csharp
     var content = new StringContent(JsonConvert.SerializeObject(description), Encoding.UTF8, "application/json");
@@ -132,7 +132,7 @@ ms.lasthandoff: 08/18/2017
     var asyncStatusUri = result.Headers.GetValues("Azure-AsyncOperation").First();
     ```
 
-5. Добавьте в конец метода **CreateIoTHub** следующий код. Этот код ожидает завершения развертывания с помощью адреса **asyncStatusUri**, полученного на предыдущем шаге:
+5. Добавить следующий код toohello конец hello hello **CreateIoTHub** метод. Этот код использует hello **asyncStatusUri** адрес извлекается в toowait предыдущего шага hello для hello toocomplete развертывания:
 
     ```csharp
     string body;
@@ -144,7 +144,7 @@ ms.lasthandoff: 08/18/2017
     } while (body == "{\"status\":\"Running\"}");
     ```
 
-6. Добавьте в конец метода **CreateIoTHub** следующий код. Этот код получает созданные ключи Центра Интернета вещей и выводит их на консоль:
+6. Добавить следующий код toohello конец hello hello **CreateIoTHub** метод. Этот код извлекает ключи hello hello центр IoT был создан и выводит их toohello консоли:
 
     ```csharp
     var listKeysUri = string.Format("https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Devices/IotHubs/{2}/IoTHubKeys/listkeys?api-version=2016-02-03", subscriptionId, rgName, iotHubName);
@@ -153,11 +153,11 @@ ms.lasthandoff: 08/18/2017
     Console.WriteLine("Keys: {0}", keysresults.Content.ReadAsStringAsync().Result);
     ```
 
-## <a name="complete-and-run-the-application"></a>Завершение и запуск приложения
+## <a name="complete-and-run-hello-application"></a>Приложение hello завершения и выполнения
 
-Теперь можно завершить приложение, вызвав метод **CreateIoTHub** , а затем собрать и запустить приложение.
+Теперь вы можете завершить приложение hello, вызывающему Привет **CreateIoTHub** метод перед построением и запустите его.
 
-1. Добавьте в конец метода **Main** следующий код:
+1. Добавить следующий код toohello конец hello hello **Main** метод:
 
     ```csharp
     CreateIoTHub(token.AccessToken);
@@ -166,25 +166,25 @@ ms.lasthandoff: 08/18/2017
 
 2. Щелкните **Построить** и **Построить решение**. Исправьте все ошибки.
 
-3. Щелкните **Отладка** и **Начать отладку** для запуска приложения. Для запуска развертывания может потребоваться несколько минут.
+3. Нажмите кнопку **отладки** и затем **начать отладку** toorun приложения hello. Он может занять несколько минут для развертывания toorun hello.
 
-4. Чтобы убедиться, что в приложение добавлен новый Центр Интернета вещей, посетите [портал Azure][lnk-azure-portal] и просмотрите список ресурсов. Вы также можете воспользоваться командлетом PowerShell **Get-AzureRmResource**.
+4. tooverify добавленный приложения hello новый центр IoT hello посещение [портал Azure] [ lnk-azure-portal] и Просмотр списка ресурсов. Можно также использовать hello **Get-AzureRmResource** командлета PowerShell.
 
 > [!NOTE]
-> В этом примере приложения добавляется стандартный Центр Интернета вещей S1, который подлежит оплате. По завершении можете удалить Центр Интернета вещей через [портал Azure][lnk-azure-portal] или с помощью командлета PowerShell **Remove-AzureRmResource**.
+> В этом примере приложения добавляется стандартный Центр Интернета вещей S1, который подлежит оплате. Когда вы закончите, можно удалить центр IoT hello через hello [портал Azure] [ lnk-azure-portal] или с помощью hello **Remove-AzureRmResource** командлета PowerShell при завершении.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-После развертывания Центра Интернета вещей с использованием REST API вам могут понадобиться дополнительные сведения:
+Теперь развертывания с помощью поставщика ресурсов hello API-интерфейса REST центра IoT можно дополнительно tooexplore:
 
-* Ознакомьтесь с возможностями [REST API поставщика ресурсов Центра Интернета вещей][lnk-rest-api].
-* Сведения о возможностях Azure Resource Manager см. в статье [Общие сведения об Azure Resource Manager][lnk-azure-rm-overview].
+* Узнайте о возможностях hello hello [поставщика ресурсов центра IoT API-интерфейса REST][lnk-rest-api].
+* Чтение [Обзор диспетчера ресурсов Azure] [ lnk-azure-rm-overview] toolearn больше о возможностях hello диспетчера ресурсов Azure.
 
-Дополнительные сведения о разработке для Центра Интернета вещей см. в следующих статьях:
+toolearn Дополнительные сведения о разработке приложений для центра IoT см. следующие статьи hello.
 
-* [Знакомство с пакетом SDK для устройств Azure IoT для C][lnk-c-sdk]
+* [Введение tooC SDK][lnk-c-sdk]
 * [IoT Hub SDKs][lnk-sdks] (Пакеты SDK для Центра Интернета вещей)
 
-Для дальнейшего изучения возможностей Центра Интернета вещей см. следующие статьи:
+Изучение возможностей hello центра IoT toofurther см. в разделе:
 
 * [Отправка сообщений с устройства в облако с помощью имитации устройства (Linux) с использованием Edge Интернета вещей Azure][lnk-iotedge]
 

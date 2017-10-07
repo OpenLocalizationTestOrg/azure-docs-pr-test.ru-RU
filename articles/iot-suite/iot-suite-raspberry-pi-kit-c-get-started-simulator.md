@@ -1,6 +1,6 @@
 ---
-title: "Подключение устройства Raspberry Pi со смоделированными данными телеметрии к Azure IoT Suite с помощью C | Документация Майкрософт"
-description: "Используйте начальный набор Microsoft Azure IoT для Raspberry Pi 3, а также Azure IoT Suite. С помощью C вы можете подключать устройства Raspberry Pi к решению для удаленного мониторинга, отправлять смоделированные данные телеметрии в облако, а также реагировать на методы, вызываемые на панели мониторинга этого решения."
+title: "aaaConnect tooAzure Raspberry Pi IoT Suite с помощью C с имитацию телеметрии | Документы Microsoft"
+description: "Используйте hello Microsoft Azure IoT начального набора для hello Raspberry Pi 3 и Azure IoT Suite. Использовать C tooconnect вашей Raspberry Pi toohello удаленного решением для мониторинга, отправить облака toohello имитацию телеметрии и отвечать toomethods из панели мониторинга hello решения."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -14,95 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 43b82e5fb6a309283979f23d8c87af600595bc55
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3c4fa43b381385d1a7896cada34aa3aa0b8e5fb4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-simulated-telemetry-using-c"></a>Подключение устройства Raspberry Pi 3 к решению для удаленного мониторинга и отправка смоделированных данных телеметрии с помощью C
+# <a name="connect-your-raspberry-pi-3-toohello-remote-monitoring-solution-and-send-simulated-telemetry-using-c"></a>Подключения вашей Raspberry Pi 3 toohello удаленного решением для мониторинга и отправки смоделированные данные телеметрии с помощью C
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-selector](../../includes/iot-suite-raspberry-pi-kit-selector.md)]
 
-В этом руководстве показано, как использовать Raspberry Pi 3 для моделирования данных температуры и влажности для отправки в облако. В руководстве используются следующие ресурсы:
+Этом учебнике показано, как hello toouse Raspberry Pi 3 toosimulate температуры и влажности данных toosend toohello облако. Hello учебнике используется:
 
-- ОС Raspbian, язык программирования C и пакет SDK для Microsoft Azure IoT для C для реализации примера устройства.
-- Предварительно настроенное решение для удаленного мониторинга IoT Suite в качестве облачного сервера.
+- Raspbian ОС, язык программирования hello C и hello пакета SDK Microsoft Azure IoT для C tooimplement устройство образца.
+- удаленный мониторинг Hello IoT Suite предварительно настроить решение в hello облачной серверной части.
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-overview-simulator](../../includes/iot-suite-raspberry-pi-kit-overview-simulator.md)]
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> Решение для удаленного мониторинга подготавливает набор служб Azure в подписке Azure. Развертывание отражает реальную корпоративную архитектуру. Чтобы избежать ненужных расходов на использование ресурсов Azure, удалите экземпляр предварительно настроенного решения на сайте azureiotsuite.com после завершения работы с ним. Если предварительно настроенное решение понадобится снова, его можно легко восстановить. Дополнительные сведения о сокращении затрат во время выполнения решения для удаленного мониторинга см. в статье [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config] (Настройка предварительно настроенных решений Azure IoT Suite для демонстрационных целей).
+> Hello удаленного мониторинга решения подготавливает набор служб Azure в подписке Azure. Развертывание Hello отражает реальные корпоративной архитектуре. плата tooavoid ненужные использование Azure, удаление экземпляра hello предварительно настроенное решение в azureiotsuite.com после завершения с ним. Если предварительно настроенных решений требуется hello еще раз, то ее можно легко восстановить. Дополнительные сведения о снижения объема используемой при hello удаленное наблюдение выполняется решение в разделе [Настройка Azure IoT Suite предварительно настроенных решений в целях демонстрации][lnk-demo-config].
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-solution](../../includes/iot-suite-raspberry-pi-kit-view-solution.md)]
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-prepare-pi-simulator](../../includes/iot-suite-raspberry-pi-kit-prepare-pi-simulator.md)]
 
-## <a name="download-and-configure-the-sample"></a>Скачивание и настройка примера
+## <a name="download-and-configure-hello-sample"></a>Загрузить и настроить образец hello
 
-Теперь можно скачать и настроить клиентское приложение для удаленного мониторинга на устройстве Raspberry Pi.
+Теперь можно загрузить и настроить hello удаленного мониторинга клиентского приложения на ваш Raspberry Pi.
 
-### <a name="clone-the-repositories"></a>Клонирование репозиториев
+### <a name="clone-hello-repositories"></a>Клонирование репозиториев hello
 
-Клонируйте необходимые репозитории (если вы еще не сделали это), выполнив следующие команды в терминале на устройстве Pi:
+Если это еще не сделано, клон hello требуемые hello репозиториев, выполнив следующие команды в конечном на ваш Pi:
 
 ```sh
 cd ~
 git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git
 ```
 
-### <a name="update-the-device-connection-string"></a>Обновление строки подключения устройства
+### <a name="update-hello-device-connection-string"></a>Обновление строки подключения устройства hello
 
-Откройте исходный файл примера в редакторе **nano**, используя следующую команду:
+Привет открыть образец исходного файла в hello **nano** редактора с помощью hello следующую команду:
 
 ```sh
 nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/remote_monitoring/remote_monitoring.c
 ```
 
-Найдите следующие строки:
+Найдите hello следующие строки:
 
 ```c
 static const char* deviceId = "[Device Id]";
 static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
 ```
 
-Замените значения заполнителей сведениями об устройстве и Центре Интернета вещей, созданными и сохраненными в начале этого руководства. Сохраните изменения (клавиши **CTRL+O**, **ВВОД**) и закройте редактор (клавиши **CTRL+X**).
+Замените значения заполнителей hello и информации центр IoT был создан и сохранен в начале этого учебника hello hello устройства. Сохранить изменения (**Ctrl-O**, **ввод**) и редактор hello выхода (**Ctrl-X**).
 
-## <a name="build-the-sample"></a>Сборка примера
+## <a name="build-hello-sample"></a>Построение образца hello
 
-Установите пакеты необходимых компонентов пакет SDK для устройств Microsoft Azure IoT для C, выполнив следующие команды в окне терминала на устройстве Raspberry Pi:
+Установите hello пакеты необходимых компонентов для hello IoT устройство Microsoft Azure SDK для C, выполнив следующие команды в конечном на hello Raspberry Pi hello:
 
 ```sh
 sudo apt-get update
 sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Теперь вы можете выполнить сборку обновленного примера решения на устройстве Raspberry Pi:
+Теперь можно построить образец hello обновление решения на hello Raspberry Pi:
 
 ```sh
 chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh
 ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh
 ```
 
-Теперь вы можете запустить пример программы на устройстве Raspberry Pi. Введите команду:
+Теперь можно запустить образец hello программы для hello Raspberry Pi. Введите команду hello:
 
 ```sh
 sudo ~/cmake/remote_monitoring/remote_monitoring
 ```
 
-Следующий пример с выходными данными отобразится в командной строке на устройстве Raspberry Pi:
+Hello следующий результат приводится пример hello выходные данные, отображаемые на hello Raspberry Pi hello командной строке:
 
 ![Выходные данные приложения Raspberry Pi][img-raspberry-output]
 
-Вы можете в любое время нажать комбинацию клавиш **CTRL+C**, чтобы выйти из программы.
+Нажмите клавишу **Ctrl-C** tooexit программа hello в любое время.
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-telemetry-simulator](../../includes/iot-suite-raspberry-pi-kit-view-telemetry-simulator.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные примеры и документацию по Azure IoT можно найти в [Центре разработчиков Azure IoT](https://azure.microsoft.com/develop/iot/).
+Посетите hello [Центр разработчиков Azure IoT](https://azure.microsoft.com/develop/iot/) Дополнительные примеры и документация по Azure IoT.
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-c-get-started-simulator/appoutput.png
 

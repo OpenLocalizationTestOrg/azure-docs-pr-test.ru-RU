@@ -44,7 +44,7 @@
 ### [Часто задаваемые вопросы](log-analytics-log-search-faq.md)
 ### [Обзор поиска по журналу](log-analytics-log-search-new.md)
 ### [Порталы поиска по журналам](log-analytics-log-search-portals.md)
-#### [Использование портала поиска по журналам](log-analytics-log-search-log-search-portal.md)
+#### [С помощью портала поиска журнала hello](log-analytics-log-search-log-search-portal.md)
 ### [Переход от устаревшего языка](log-analytics-log-search-transition.md)
 ### [Соединитель для Microsoft Flow](log-analytics-flow-tutorial.md)
 

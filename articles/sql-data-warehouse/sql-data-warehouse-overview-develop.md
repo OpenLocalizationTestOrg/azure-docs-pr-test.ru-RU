@@ -1,5 +1,5 @@
 ---
-title: "Ресурсы для разработки хранилища данных в Azure | Документация Майкрософт"
+title: "aaaResources по разработке хранилища данных в Azure | Документы Microsoft"
 description: "Основные понятия разработки, проектные решения, рекомендации и методики программирования для хранилища данных SQL."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,17 +15,17 @@ ms.workload: data-services
 ms.custom: develop
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: b85a4f09e561e429aa5bf46ec680014487fb40c7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 67e3a6a3e2664919c3445ea5d5eba251054de020
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Проектные решения и методики программирования для хранилища данных SQL
-Ознакомьтесь со статьями о разработке, чтобы лучше понять основные проектные решения, рекомендации и методики программирования для хранилища данных SQL.
+Ознакомьтесь со всеми toobetter понимать эти статьи по разработке ключевых проектных решениях, рекомендации и методики написания кода для хранилища данных SQL.
 
 ## <a name="key-design-decisions"></a>Основные проектные решения
-В приведенных ниже статьях описаны основные понятия и проектные решения, с которыми необходимо ознакомиться для разработки распределенного хранилища данных с помощью хранилища данных SQL:
+Hello ниже статьях выделяет некоторые основные понятия hello и проектные решения, необходимые для разработки hello хранилищу распределенных данных, хранилище данных SQL с помощью toounderstand.
 
 * [подключения][connections];
 * [параллелизм][concurrency];
@@ -50,7 +50,7 @@ ms.lasthandoff: 07/11/2017
 * [присвоение значения переменной][variable assignment].
 
 ## <a name="next-steps"></a>Дальнейшие действия
-После ознакомления со статьями о разработке изучите [справочник по Transact-SQL][Transact-SQL reference], чтобы получить дополнительные сведения о поддерживаемом синтаксисе для хранилища данных SQL.
+После через статьи по разработке hello ознакомьтесь со всеми hello [Справочник по Transact-SQL] [ Transact-SQL reference] страницу Дополнительные сведения о синтаксисе hello поддерживается для хранилища данных SQL.
 
 <!--Image references-->
 

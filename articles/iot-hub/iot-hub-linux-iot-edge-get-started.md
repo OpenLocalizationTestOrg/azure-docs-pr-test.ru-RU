@@ -1,6 +1,6 @@
 ---
-title: "Начало работы с Azure IoT Edge (Linux) | Документация Майкрософт"
-description: "Узнайте, как создать шлюз на компьютере Linux, а также ознакомьтесь с основными понятиями Edge Интернета вещей Azure, такими как модули и JSON-файлы конфигурации."
+title: "aaaGet работы с Azure IoT Edge (Linux) | Документы Microsoft"
+description: "Как toobuild шлюза на Linux машины и изучите основные понятия в Azure IoT Edge, например модули и файлы конфигурации JSON."
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/07/2017
 ms.author: andbuc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b02d79fcd9cd2a2ef0041aac4e85528263c8d58a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 40aa9c8ddca6a974c361cbb0b453c7d0ddc71b8d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-azure-iot-edge-architecture-on-linux"></a>Приступая к работе с архитектурой Edge Интернета вещей в Linux
 
@@ -27,16 +27,16 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [iot-hub-iot-edge-install-build-linux](../../includes/iot-hub-iot-edge-install-build-linux.md)]
 
-## <a name="how-to-run-the-sample"></a>Запуск примера
+## <a name="how-toorun-hello-sample"></a>Как toorun hello образца
 
-Скрипт **build.sh** создает выходные данные в папке **build** локальной копии репозитория **iot-edge**. Выходные данные содержат два модуля Edge Интернета вещей, которые используются в данном примере.
+Hello **build.sh** сценарий создает выходные данные в hello **построения** папки в локальной копии hello **iot edge** репозитория. Этот выход включает hello используемый в этом примере два модуля IoT Edge.
 
-Скрипт сборки размещает **liblogger.so** в папке **build/modules/logger/**, а **libhello\_world.so** — в папке **build/modules/hello_world/**. Используйте эти пути для настройки значения **module path**, как указано в приведенном ниже примере файла параметров JSON.
+Здравствуйте местах скрипт построения **liblogger.so** в hello **сборки, модули/logger/** папки и **libhello\_world.so** в hello **построения / модули/hello_world/** папки. Эти пути можно использовать для hello **путь к модулю** значения, как показано в следующий пример файла параметров JSON hello.
 
-Процесс hello\_world\_sample принимает путь к JSON-файлу конфигурации в качестве аргумента командной строки. Приведенный ниже пример JSON-файла размещен в репозитории пакетов SDK по пути **samples/hello\_world/src/hello\_world\_lin.json**. Этот файл конфигурации работает так, как если бы вы не модифицировали сценарий сборки, чтобы разместить модули IoT Edge или образцы исполняемых файлов в местах, отличных от настроек по умолчанию.
+Hello hello\_world\_образец занимает файл конфигурации JSON tooa путь hello аргумента командной строки. Hello следующий файл JSON приведены в репозиторий SDK hello в **образцы/hello\_мира, src/hello\_world\_lin.json**. Это работает файл конфигурации, если только не изменить hello построения hello tooplace сценария IoT Edge модули или образец исполняемые файлы в нестандартные расположения.
 
 > [!NOTE]
-> Пути к модулям зависят от текущего рабочего каталога, в котором запускается исполняемый файл hello\_world\_sample, а не от каталога, где находится исполняемый файл. По умолчанию пример JSON-файла конфигурации предусматривает запись файла log.txt в текущем рабочем каталоге.
+> Hello модуля, пути относительный toohello текущий рабочий каталог откуда hello hello\_world\_запускается исполняемый файл образца, не hello каталог, где находится исполняемый файл hello. Образец Hello значения по умолчанию toowriting файл «log.txt» JSON конфигурации в текущий рабочий каталог.
 
 ```json
 {
@@ -73,9 +73,9 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-1. Перейдите в папку **build** в корневой папке вашей локальной копии репозитория **iot-edge**.
+1. Перейдите toohello **построения** папок в корне hello ваша локальная копия hello **iot edge** репозитория.
 
-1. Выполните следующую команду:
+1. Выполните следующую команду hello.
 
     ```sh
     ./samples/hello_world/hello_world_sample ../samples/hello_world/src/hello_world_lin.json`

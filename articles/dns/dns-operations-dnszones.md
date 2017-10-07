@@ -1,6 +1,6 @@
 ---
-title: "Управление зонами DNS в службе DNS Azure с помощью PowerShell | Документация Майкрософт"
-description: "Зонами DNS можно управлять с помощью Azure Powershell. В этой статье описывается, как обновлять, удалять и создавать зоны DNS в службе DNS Azure."
+title: "aaaManage DNS-зоны в Azure DNS - PowerShell | Документы Microsoft"
+description: "Зонами DNS можно управлять с помощью Azure Powershell. В этой статье описывается, как tooupdate, удалите и создайте зон DNS на Azure DNS"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
-ms.openlocfilehash: 92f1da660d875c76d5d826669d6c1d12018c3d0a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 261b89f72213aa9784034d47ff9d1c55a4e80d65
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-manage-dns-zones-using-powershell"></a>Как управлять зонами DNS с помощью PowerShell
+# <a name="how-toomanage-dns-zones-using-powershell"></a>Как toomanage зон DNS, с помощью PowerShell
 
 > [!div class="op_single_selector"]
 > * [Портал](dns-operations-dnszones-portal.md)
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 > * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
-В этой статье описывается, как управлять зонами DNS с помощью Azure PowerShell. Зонами DNS также можно управлять с помощью кроссплатформенного [интерфейса командной строки Azure](dns-operations-dnszones-cli.md) или портала Azure.
+В этой статье показано, как toomanage DNS-зоны с помощью Azure PowerShell. Также можно управлять с помощью hello кросс платформенных зон DNS [Azure CLI](dns-operations-dnszones-cli.md) или hello портал Azure.
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -36,15 +36,15 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="create-a-dns-zone"></a>Создание зоны DNS
 
-Зона DNS создается с помощью командлета `New-AzureRmDnsZone`.
+Зоны DNS создается с помощью hello `New-AzureRmDnsZone` командлета.
 
-В следующем примере создается зона DNS *contoso.com* в группе ресурсов *MyResourceGroup*:
+Hello следующий пример создает зоны DNS, которая называется *contoso.com* в группе ресурсов hello вызывается *MyResourceGroup*:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-В следующем примере демонстрируется создание зоны DNS с двумя [тегами Azure Resource Manager](dns-zones-records.md#tags) (*project = demo* и *env = test*):
+Hello следующем примере показано, как toocreate DNS зоны с двумя [диспетчера ресурсов Azure теги](dns-zones-records.md#tags), *проекта = Демонстрация* и *env = test*:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
@@ -52,7 +52,7 @@ New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Ta
 
 ## <a name="get-a-dns-zone"></a>Получение зоны DNS
 
-Чтобы получить зону DNS, используйте командлет `Get-AzureRmDnsZone` . Эта операция возвращает объект зоны DNS, соответствующий существующей зоне в Azure DNS. Объект содержит данные о зоне (например, число наборов записей), но не сами наборы записей (см. `Get-AzureRmDnsRecordSet`).
+tooretrieve зоны DNS, используйте hello `Get-AzureRmDnsZone` командлета. Эта операция возвращает объект соответствующего tooan существующей зоны в Azure DNS зоны DNS. Hello объекта содержит данные о зоне hello (например hello число наборов записей), но не содержит наборы записей hello сами (см. `Get-AzureRmDnsRecordSet`).
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
@@ -69,13 +69,13 @@ MaxNumberOfRecordSets : 5000
 
 ## <a name="list-dns-zones"></a>Перечисление зон DNS
 
-Если опустить имя зоны в командлете `Get-AzureRmDnsZone`, можно получить список всех зон в группе ресурсов. Эта операция возвращает массив объектов зоны.
+Имя зоны hello из `Get-AzureRmDnsZone`, можно перечислить все зоны в группе ресурсов. Эта операция возвращает массив объектов зоны.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
 ```
 
-Если опустить имя зоны и имя группы ресурсов в командлете `Get-AzureRmDnsZone`, то можно получить список всех зон в подписке Azure.
+Не указывайте имя зоны hello и имя группы ресурсов hello из `Get-AzureRmDnsZone`, можно перечислить все зоны в hello подписки Azure.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone
@@ -83,24 +83,24 @@ $zoneList = Get-AzureRmDnsZone
 
 ## <a name="update-a-dns-zone"></a>Обновление зоны DNS
 
-Изменить ресурс зоны DNS можно с помощью командлета `Set-AzureRmDnsZone`. При этом ни один набор записей DNS в пределах зоны командлетом не обновляется (см. статью [Управление записями и наборами записей DNS с помощью PowerShell](dns-operations-recordsets.md)). Эта команда используется только для обновления свойств самого ресурса зоны. В настоящее время к записываемым свойствам зоны относятся только [теги Azure Resource Manager для ресурса зоны](dns-zones-records.md#tags).
+Изменения ресурсов зоны DNS можно сделать с помощью tooa `Set-AzureRmDnsZone`. Этот командлет не обновляет hello наборы записей DNS в зоне hello (см. [как DNS-записи tooManage](dns-operations-recordsets.md)). Только свойства tooupdate сам ресурс hello зоны. свойства для записи зоны Hello, в настоящее время составляет toohello [диспетчера ресурсов Azure «теги» для ресурса зоны hello](dns-zones-records.md#tags).
 
-Используйте один из двух описанных ниже способов обновления зоны DNS.
+Используйте один из следующих двух способов tooupdate hello зоны DNS.
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group"></a>Укажите зону с помощью имени и группы ресурсов.
+### <a name="specify-hello-zone-using-hello-zone-name-and-resource-group"></a>Укажите hello зоны с помощью hello зоны имя и группе ресурсов
 
-При этом подходе существующие теги зоны заменяются указанными значениями.
+Этот подход заменяет существующие теги зоны hello значениями hello.
 
 ```powershell
 Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Укажите зону с помощью объекта $zone.
+### <a name="specify-hello-zone-using-a-zone-object"></a>Укажите hello зоны с помощью объекта $zone
 
-При этом подходе извлекается существующий объект зоны, изменяются теги, а затем фиксируются изменения. Благодаря этому существующие теги могут сохраняться.
+Этот подход извлекает существующий объект зоны hello, изменяющий теги hello и затем фиксирует изменения hello. Благодаря этому существующие теги могут сохраняться.
 
 ```powershell
-# Get the zone object
+# Get hello zone object
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
 # Remove an existing tag
@@ -113,61 +113,61 @@ $zone.Tags.Add("status","approved")
 Set-AzureRmDnsZone -Zone $zone
 ```
 
-При использовании командлета `Set-AzureRmDnsZone` с объектом $zone применяются [проверки Etag](dns-zones-records.md#etags), чтобы параллельные изменения не были перезаписаны. Чтобы отменить эти проверки, укажите необязательный параметр `-Overwrite`.
+При использовании `Set-AzureRmDnsZone` с объектом $zone [проверяет Etag](dns-zones-records.md#etags) используются tooensure параллельных изменений не перезаписываются. Можно использовать необязательный hello `-Overwrite` переключения toosuppress этих проверок.
 
 ## <a name="delete-a-dns-zone"></a>Удаление зоны DNS
 
-Зоны DNS можно удалить с помощью командлета `Remove-AzureRmDnsZone`.
+Зоны DNS-сервера могут быть удалены с помощью hello `Remove-AzureRmDnsZone` командлета.
 
 > [!NOTE]
-> При удалении зоны DNS также удаляются все записи DNS в этой зоне. Эту операцию нельзя отменить. Если зона DNS используется, то после ее удаления произойдет сбой служб, которые ее используют.
+> Зоны DNS при удалении также удаляются все записи DNS в зоне hello. Эту операцию нельзя отменить. Если зона DNS hello, службы, используя зоны hello сможет hello зона удаляется.
 >
->Сведения о защите от случайного зоны удаления см. в разделе [How to protect DNS zones and records](dns-protect-zones-recordsets.md) (Как защитить зоны и записи DNS).
+>tooprotect от зоны случайного удаления, в разделе [как tooprotect DNS-зоны и записывает](dns-protect-zones-recordsets.md).
 
 
-Используйте один из двух описанных ниже способов удаления зоны DNS.
+Используйте один из следующих двух способов toodelete hello зоны DNS.
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Укажите зону с помощью имени зоны и имени группы ресурсов.
+### <a name="specify-hello-zone-using-hello-zone-name-and-resource-group-name"></a>Укажите hello зоны с помощью имени зоны hello и имя группы ресурсов
 
 ```powershell
 Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Укажите зону с помощью объекта $zone.
+### <a name="specify-hello-zone-using-a-zone-object"></a>Укажите hello зоны с помощью объекта $zone
 
-Удаляемую зону можно указать с помощью объекта `$zone`, который возвращается командлетом `Get-AzureRmDnsZone`.
+Можно указать toobe зоны hello, удаляются с помощью `$zone` объект, возвращаемый `Get-AzureRmDnsZone`.
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 Remove-AzureRmDnsZone -Zone $zone
 ```
 
-Объект зоны также можно направить в конвейер, а не передавать в качестве параметра:
+Hello объекта зоны также можно направить вместо передан в качестве параметра:
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | Remove-AzureRmDnsZone
 
 ```
 
-Как и для командлета `Set-AzureRmDnsZone`, при указании набора записей с помощью объекта `$zone` вы включаете проверки Etag, чтобы убедиться, что параллельные изменения не удаляются. Чтобы отменить эти проверки, используйте параметр `-Overwrite`.
+Как и в `Set-AzureRmDnsZone`, указав hello зоны с помощью `$zone` объекта включает Etag проверяет tooensure параллельных изменений не удаляются. Используйте hello `-Overwrite` переключения toosuppress этих проверок.
 
 ## <a name="confirmation-prompts"></a>Запросы на подтверждение
 
-Командлеты `New-AzureRmDnsZone`, `Set-AzureRmDnsZone` и `Remove-AzureRmDnsZone` поддерживают запросы на подтверждение.
+Hello `New-AzureRmDnsZone`, `Set-AzureRmDnsZone`, и `Remove-AzureRmDnsZone` все командлеты поддерживают запросы подтверждения.
 
-Оба командлета (`New-AzureRmDnsZone` и `Set-AzureRmDnsZone`) запрашивают подтверждение, если привилегированная переменная `$ConfirmPreference` в PowerShell имеет значение `Medium` или ниже. Из-за того, что удаление зоны DNS может иметь значительные последствия, командлет `Remove-AzureRmDnsZone` запрашивает подтверждение, если переменная PowerShell `$ConfirmPreference` имеет любое значение, отличное от `None`.
+Оба `New-AzureRmDnsZone` и `Set-AzureRmDnsZone` запрашивать подтверждение при hello `$ConfirmPreference` PowerShell Привилегированная переменная имеет значение `Medium` или ниже. Из-за toohello потенциально высокая степень влияния на удаления зоны DNS, hello `Remove-AzureRmDnsZone` командлет запрашивает подтверждение, если hello `$ConfirmPreference` переменной PowerShell имеет любое значение, отличное от `None`.
 
-Поскольку переменная `$ConfirmPreference` по умолчанию имеет значение `High`, то по умолчанию подтверждение запрашивается только командлетом `Remove-AzureRmDnsZone`.
+Так как значение по умолчанию hello `$ConfirmPreference` — `High`только `Remove-AzureRmDnsZone` запрашивает подтверждение по умолчанию.
 
-Текущее значение `$ConfirmPreference` можно переопределить с помощью параметра `-Confirm`. Если вы определите `-Confirm` или `-Confirm:$True`, командлет будет запрашивать подтверждение перед выполнением. Если вы определите `-Confirm:$False`, командлет не будет запрашивать подтверждение.
+Можно переопределить текущего hello `$ConfirmPreference` параметр с помощью hello `-Confirm` параметра. При указании `-Confirm` или `-Confirm:$True` , hello командлет запросит подтверждение перед его запуска. При указании `-Confirm:$False` , командлет hello не запрашивает вашего подтверждения.
 
 Дополнительные сведения об элементах `-Confirm` и `$ConfirmPreference` см. в статье о [привилегированных переменных](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Узнайте, как [управлять наборами записей и записями](dns-operations-recordsets.md) в зоне DNS.
+Узнайте, каким образом слишком[управления наборов записей и записи](dns-operations-recordsets.md) в зоне DNS.
 <br>
-Узнайте, как [делегировать свой домен в Azure DNS](dns-domain-delegation.md).
+Узнайте, каким образом слишком[делегировать tooAzure вашего домена DNS](dns-domain-delegation.md).
 <br>
-Просмотрите [справочную документацию по Azure DNS PowerShell](/powershell/module/azurerm.dns).
+Просмотрите hello [справочная документация по Azure DNS PowerShell](/powershell/module/azurerm.dns).
 

@@ -1,5 +1,5 @@
 ---
-title: "Создание веб-приложения PHP в Azure | Документация Майкрософт"
+title: "aaaCreate PHP, веб-приложения в Azure | Документы Microsoft"
 description: "Разверните свое первое приложение Hello World на языке PHP в веб-приложении службы приложений Azure за считаные минуты."
 services: app-service\web
 documentationcenter: 
@@ -15,53 +15,53 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 3a78e0b485046ad6228bf4819d3908042c298d1a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8e1022889ca162f8f15ce7435cc9393cc6efef06
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Создание веб-приложения PHP в Azure
 
-[Веб-приложения Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) — это служба веб-размещения с самостоятельной установкой исправлений и высоким уровнем масштабируемости.  В этом кратком руководстве объясняется, как развернуть приложение PHP в веб-приложениях Azure. Создайте веб-приложение с помощью [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) в Cloud Shell и разверните пример кода PHP в веб-приложении с помощью Git.
+[Веб-приложения Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) — это служба веб-размещения с самостоятельной установкой исправлений и высоким уровнем масштабируемости.  Этот учебник показывает, как toodeploy tooAzure приложения PHP веб-приложений. Создание веб-приложения hello, с помощью hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) оболочки в облаке и вам использовать Git toodeploy PHP образец кода toohello веб-приложения.
 
 ![Пример приложения, выполняющегося в Azure]](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
-Выполните действия, приведенные ниже, с помощью компьютера Mac, Windows или Linux. После установки необходимых компонентов для выполнения этих шагов потребуется около пяти минут.
+Выполните действия hello ниже, с помощью компьютером Mac, Windows или Linux. После установки необходимых компонентов hello, требует toocomplete около пяти минут hello действия.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для работы с этим кратким руководством сделайте следующее:
+toocomplete краткого руководства:
 
 * [установите Git](https://git-scm.com/);
 * [установите PHP](https://php.net).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="download-the-sample-locally"></a>Скачать пример на локальный компьютер
+## <a name="download-hello-sample-locally"></a>Загрузить образец hello локально
 
-Выполните следующие команды в окне терминала. Так вы клонируете пример приложения на локальный компьютер и перейдете в каталог, содержащий пример кода.
+В окне терминала выполните следующие команды hello. Будут клонировать hello образец приложения tooyour локального компьютера, после чего перейдите toohello каталога содержащий hello образец кода.
 
 ```bash
 git clone https://github.com/Azure-Samples/php-docs-hello-world
 cd php-docs-hello-world
 ```
 
-## <a name="run-the-app-locally"></a>Локальный запуск приложения
+## <a name="run-hello-app-locally"></a>Выполните приложение hello локально
 
-Запустите приложение в локальной среде, открыв окно терминала и выполнив команду `php`, чтобы запустить встроенный веб-сервер PHP.
+Запустите приложение hello локально, откройте окно терминала и с помощью hello `php` команда toolaunch hello встроенного PHP веб-сервера.
 
 ```bash
 php -S localhost:8080
 ```
 
-Откройте браузер и перейдите к примеру приложения по адресу http://localhost:8080.
+Откройте веб-браузер и перейдите toohello пример приложения на http://localhost: 8080.
 
-На странице отобразится сообщение **Hello World!** из примера приложения.
+Вы видите hello **Здравствуй, мир!** сообщение из примера приложения hello, отображаемое на странице приветствия.
 
 ![Пример приложения, выполняющегося локально](media/app-service-web-get-started-php/localhost-hello-world-in-browser.png)
 
-В окне терминала нажмите клавиши **CTRL+C**, чтобы выйти из веб-сервера.
+В окне терминала, нажмите клавишу **Ctrl + C** tooexit hello веб-сервера.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -79,11 +79,11 @@ php -S localhost:8080
 
 [!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push tooAzure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 2, done.
-Delta compression using up to 4 threads.
+Delta compression using up too4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (2/2), 352 bytes | 0 bytes/s, done.
 Total 2 (delta 1), reused 0 (delta 0)
@@ -102,56 +102,56 @@ remote: Ignoring: .git
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+toohttps://<app_name>.scm.azurewebsites.net/<app_name>.git
    cc39b1e..25f1805  master -> master
 ```
 
-## <a name="browse-to-the-app-locally"></a>Переход к приложению на локальном компьютере
+## <a name="browse-toohello-app-locally"></a>Обзор toohello приложения локально
 
-Перейдите в развертываемое приложение с помощью веб-браузера.
+Обзор toohello развернуть приложение с помощью веб-браузере.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Пример кода PHP выполняется в веб-приложении службы приложений Azure.
+Hello PHP образце кода выполняется в веб-приложение службы приложений Azure.
 
 ![Пример приложения, выполняющегося в Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
-**Поздравляем!** Вы развернули свое первое приложение PHP в службе приложений.
+**Поздравляем!** Ваш первый tooApp приложения PHP службы после развертывания.
 
-## <a name="update-locally-and-redeploy-the-code"></a>Обновление на локальном компьютере и повторное развертывание кода
+## <a name="update-locally-and-redeploy-hello-code"></a>Обновлять локально и заново кода hello
 
-В локальном текстовом редакторе в приложении PHP откройте файл `index.php` и внесите небольшое изменение в текстовой строке рядом с `echo`:
+С помощью локального текстовом редакторе откройте hello `index.php` файл включен в приложение PHP hello и сделать текст toohello небольшое изменение в строку hello рядом слишком`echo`:
 
 ```php
 echo "Hello Azure!";
 ```
 
-Зафиксируйте изменения в Git, а затем отправьте изменения кода в Azure.
+Фиксация изменений в Git и затем отправьте tooAzure изменения кода hello.
 
 ```bash
 git commit -am "updated output"
 git push azure master
 ```
 
-После завершения развертывания перейдите в окно браузера, открытое на шаге **перехода в приложение**, и обновите страницу.
+После завершения развертывания переключитесь задней toohello окно браузера, который открыт в hello **toohello приложения обзора** шаг и обновите страницу приветствия.
 
 ![Обновленный пример приложения, выполняющегося в Azure](media/app-service-web-get-started-php/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-web-app"></a>Управление новым веб-приложением Azure
 
-Перейдите на <a href="https://portal.azure.com" target="_blank">портал Azure</a> для управления созданным веб-приложением.
+Go toohello <a href="https://portal.azure.com" target="_blank">портал Azure</a> toomanage hello веб-приложения был создан.
 
-В меню слева выберите **Службы приложений**, а затем щелкните имя своего веб-приложения Azure.
+Hello в левом меню, щелкните **службы приложений**, а затем щелкните имя hello Azure веб-приложения.
 
-![Переход к веб-приложению Azure на портале](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
+![Веб-приложения портала навигации tooAzure](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
 Отобразится страница обзора вашего веб-приложения. Вы можете выполнять базовые задачи управления: обзор, завершение, запуск, перезагрузку и удаление.
 
 ![Колонка службы приложений на портале Azure](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 
-В меню слева доступно несколько страниц для настройки приложения. 
+меню слева Hello предоставляет различные страницы для настройки приложения. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

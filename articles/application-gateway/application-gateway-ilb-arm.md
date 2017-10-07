@@ -1,6 +1,6 @@
 ---
-title: "Использование шлюза приложения Azure с внутренней подсистемой балансировки нагрузки с помощью PowerShell | Документация Майкрософт"
-description: "На этой странице приводятся инструкции по созданию, настройке, запуску и удалению шлюза приложений Azure с внутренним балансировщиком нагрузки (ILB) с помощью диспетчера ресурсов Azure."
+title: "aaaUsing шлюза приложения Azure с внутренним балансировщиком нагрузки - PowerShell | Документы Microsoft"
+description: "На этой странице представлены инструкции toocreate, Настройка, запуск и удалить шлюз приложения Azure с внутренней подсистемы балансировки нагрузки (ILB) для диспетчера ресурсов Azure"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-ms.openlocfilehash: d218eab7e9f124e4825a8a781b4eeb0dcca58b4a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dd0d7e954b1fa219ae6ebe42cb4b479dbcf08653
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb-by-using-azure-resource-manager"></a>Создание шлюза приложений с внутренним балансировщиком нагрузки (ILB) с помощью диспетчера ресурсов Azure
 
@@ -26,39 +26,39 @@ ms.lasthandoff: 08/03/2017
 > * [Классическая модель — Azure PowerShell](application-gateway-ilb.md)
 > * [PowerShell и диспетчер ресурсов Azure](application-gateway-ilb-arm.md)
 
-Шлюз приложений Azure можно настроить на использование виртуального IP-адреса, доступного в Интернете, или внутренней конечной точки, недоступной в Интернете. Эта точка также называется конечной точкой внутреннего балансировщика нагрузки (ILB). Настройка шлюза с ILB подходит для внутренних бизнес-приложений, недоступных в Интернете. Кроме того, этот вариант конфигурации можно использовать для служб и уровней многоуровневого приложения, размещенного в периметре безопасности без доступа к Интернету, но требующего циклического перебора нагрузки, закрепления сеансов или завершения SSL-запросов.
+Шлюз приложения Azure можно настроить для виртуальных IP-адресов из Интернета или с внутренней конечной точки, не предоставляемых toohello Интернета, также называется конечной точкой (ILB) балансировщик внутренней нагрузки. Настройка шлюза hello с ILB полезен для внутренних бизнес-приложений, не предоставляемых toohello Интернета. Также полезно для служб и уровни в многоуровневое приложение, располагаются в пределах границ безопасности, не предоставляемых toohello Internet, но по-прежнему требуется циклическое загрузить распространения, stickiness сеанса или завершение Secure Sockets Layer (SSL).
 
-В этой статье приводятся пошаговые инструкции по настройке шлюза приложений с использованием ILB.
+В этой статье рассматриваются действия hello tooconfigure шлюза приложения с ILB.
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-1. Установите последнюю версию командлетов Azure PowerShell, используя установщик веб-платформы. Последнюю версию можно загрузить и установить в разделе **Windows PowerShell** на [странице загрузок](https://azure.microsoft.com/downloads/).
-2. Вы создадите виртуальную сеть и подсеть для шлюза приложений. Убедитесь, что подсеть не используется виртуальной машиной или облачным развертыванием. Сам шлюз приложений должен находиться в подсети виртуальной сети.
-3. Для использования шлюза приложений настраиваются существующие серверы или серверы, для которых в виртуальной сети созданы конечные точки либо же назначен общедоступный или виртуальный IP-адрес.
+1. Установите последнюю версию hello hello командлетов Azure PowerShell с помощью установщика веб-платформы hello. Можно загрузить и установить последнюю версию hello из hello **Windows PowerShell** раздел hello [страницу загрузки](https://azure.microsoft.com/downloads/).
+2. Вы создадите виртуальную сеть и подсеть для шлюза приложений. Убедитесь, что нет виртуальных машин или развертывания в облаке hello подсети. Сам шлюз приложений должен находиться в подсети виртуальной сети.
+3. должен существовать настройки шлюза приложения hello toouse серверы Hello или назначенные их конечных точек, созданных в hello виртуальной сети или с помощью открытого IP-адрес или VIP.
 
-## <a name="what-is-required-to-create-an-application-gateway"></a>Что необходимо для создания шлюза приложений?
+## <a name="what-is-required-toocreate-an-application-gateway"></a>Что такое необходимые toocreate шлюза приложения
 
-* **Внутренний пул серверов**. Список IP-адресов внутренних серверов. Указанные IP-адреса должны относиться к одной виртуальной сети (но не входить в подсеть шлюза приложений) либо представлять собой общедоступные или виртуальные IP-адреса.
-* **Параметры внутреннего пула серверов**. Каждый пул имеет такие параметры, как порт, протокол и сходство на основе файлов cookie. Эти параметры привязываются к пулу и применяются ко всем серверам в этом пуле.
-* **Интерфейсный порт**. Общедоступный порт, открытый в шлюзе приложений. Трафик поступает на этот порт, а затем перенаправляется на один из тыловых серверов.
-* **Прослушиватель**. У прослушивателя есть интерфейсный порт, протокол (Http или Https — с учетом регистра) и имя SSL-сертификата (в случае настройки разгрузки SSL).
-* **Правило**. Правило связывает прослушиватель и внутренний пул серверов, а также определяет, в какой внутренний пул серверов следует направлять трафик, поступающий на определенный прослушиватель. В настоящее время поддерживается только *основное* правило. *Основное* правило предусматривает циклическое распределение нагрузки.
+* **Пул серверных:** hello список IP-адресов серверов hello серверной части. Hello IP-адресов в списке должны либо относятся toohello виртуальной сети, но в другой подсети для шлюза приложения hello или должен быть открытый IP-адрес или VIP.
+* **Параметры внутреннего пула серверов**. Каждый пул имеет такие параметры, как порт, протокол и сходство на основе файлов cookie. Эти параметры являются связанные tooa пул, а также примененные tooall серверы в пуле hello.
+* **Интерфейсный порт:** этой цели используется порт hello открытый порт, который открыт в шлюзе приложения hello. Трафик обращений к этому порту, а затем возвращает перенаправляется tooone серверов hello серверной части.
+* **Прослушиватель:** hello прослушиватель имеет интерфейсный порт, протокол (Http или Https, они зависят от регистра) и имя сертификата SSL hello (при настройке протокола SSL разгрузки).
+* **Правило:** правило hello привязывает прослушивателя hello и пул серверных hello и определяет, какие серверных пула hello трафику следует применять направленной toowhen попадании конкретного прослушивателя. В настоящее время только hello *основные* правило поддерживается. Hello *основные* правило — распределение нагрузки с циклическим перебором.
 
 ## <a name="create-an-application-gateway"></a>Создание шлюза приложений
 
-Разница между использованием классической модели развертывания Azure и модели Azure Resource Manager заключается в порядке создания шлюза приложения и элементов, которые нужно настроить.
-При использовании Resource Manager все элементы, которые будут включены в единый ресурс шлюза приложений, сначала настраиваются по отдельности.
+Hello различие между использованием классический Azure и Azure Resource Manager — создать шлюз приложения hello и hello элементы, которые должны toobe настроить порядок hello.
+С помощью диспетчера ресурсов все элементы, которые делают шлюза приложения настроен по отдельности, а затем указать ресурс шлюза приложения hello toocreate.
 
-Ниже приведены пошаговые инструкции по созданию шлюза приложений.
+Ниже приведены шаги hello, необходимые toocreate шлюз приложений.
 
-1. Создание группы ресурсов для диспетчера ресурсов.
-2. Создание виртуальной сети и подсети для шлюза приложений.
-3. Создание объекта конфигурации шлюза приложений.
+1. Создание группы ресурсов для диспетчера ресурсов
+2. Создание виртуальной сети и подсети для шлюза приложения hello
+3. Создание объекта конфигурации шлюза приложений
 4. Создание ресурса шлюза приложений.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Создание группы ресурсов для диспетчера ресурсов
 
-Для работы с командлетами диспетчера ресурсов Azure необходимо перейти в режим PowerShell. Дополнительные сведения см. в статье [Использование Windows PowerShell с диспетчером ресурсов](../powershell-azure-resource-manager.md).
+Убедитесь, что переключения командлеты PowerShell режим toouse hello диспетчера ресурсов Azure. Дополнительные сведения см. в статье [Использование Windows PowerShell с диспетчером ресурсов](../powershell-azure-resource-manager.md).
 
 ### <a name="step-1"></a>Шаг 1
 
@@ -68,17 +68,17 @@ Login-AzureRmAccount
 
 ### <a name="step-2"></a>Шаг 2
 
-Просмотрите подписки учетной записи.
+Проверьте hello подписки для учетной записи hello.
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Вам будет предложено указать свои учетные данные для аутентификации.
+С помощью учетных данных, запрашиваемых tooauthenticate.
 
 ### <a name="step-3"></a>Шаг 3.
 
-Выберите подписку Azure.
+Выберите, какие toouse вашей подписки Azure.
 
 ```powershell
 Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
@@ -92,13 +92,13 @@ Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 ```
 
-В диспетчере ресурсов Azure для всех групп ресурсов должно быть указано расположение. Оно используется в качестве расположения по умолчанию для всех ресурсов данной группы. Убедитесь, что во всех командах для создания шлюза приложений используется одна группа ресурсов.
+В диспетчере ресурсов Azure для всех групп ресурсов должно быть указано расположение. Используется как расположение по умолчанию hello для ресурсов в этой группе ресурсов. Убедитесь, что все команды toocreate, использует шлюз приложений hello таким же группе ресурсов.
 
-В приведенном выше примере мы создали группу ресурсов appgw-rg в расположении West US (западная часть США).
+В предыдущих пример hello мы создали группу ресурсов под названием «Appgw rg» и расположение «West US».
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Создание виртуальной сети и подсети для шлюза приложений
+## <a name="create-a-virtual-network-and-a-subnet-for-hello-application-gateway"></a>Создание виртуальной сети и подсети для шлюза приложения hello
 
-В следующем примере показано создание виртуальной сети с помощью диспетчера ресурсов.
+Следующий пример показывает как Hello toocreate виртуальной сети с помощью диспетчера ресурсов:
 
 ### <a name="step-1"></a>Шаг 1
 
@@ -106,7 +106,7 @@ New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 $subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 ```
 
-На этом шаге выполняется назначение диапазона адресов 10.0.0.0/24 переменной подсети, которая будет использоваться для создания виртуальной сети.
+Этот шаг назначает hello диапазон адресов 10.0.0.0/24 tooa подсети переменной toobe используется toocreate виртуальной сети.
 
 ### <a name="step-2"></a>Шаг 2
 
@@ -114,7 +114,7 @@ $subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPre
 $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 ```
 
-На этом шаге создается виртуальная сеть appgwvnet в группе ресурсов appgw-rg для региона West US с помощью префикса 10.0.0.0/16 с подсетью 10.0.0.0/24.
+Этот шаг создает виртуальную сеть с именем «appgwvnet» в ресурс группы «appgw-rg» для области hello Запад США, с 10.0.0.0/16 hello префикс подсети 10.0.0.0/24.
 
 ### <a name="step-3"></a>Шаг 3.
 
@@ -122,7 +122,7 @@ $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -L
 $subnet = $vnet.subnets[0]
 ```
 
-На этом шаге выполняется присвоение объекта подсети переменной $subnet для выполнения следующих действий.
+Этот шаг назначает подсети hello объекта toovariable $subnet hello дальнейшими указаниями.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Создание объекта конфигурации шлюза приложений
 
@@ -132,7 +132,7 @@ $subnet = $vnet.subnets[0]
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 ```
 
-На этом шаге создается конфигурация IP-адреса шлюза приложений с именем gatewayIP01. При запуске шлюз приложений получает IP-адрес из настроенной подсети. Затем шлюз маршрутизирует сетевой трафик на IP-адреса из внутреннего пула IP-адресов. Помните, что для каждого экземпляра требуется отдельный IP-адрес.
+На этом шаге создается конфигурация IP-адреса шлюза приложений с именем gatewayIP01. При запуске шлюза приложения, он принимает IP-адрес из подсети hello настроен и маршрутизацию сетевого трафика toohello IP-адресов в пул IP-адресов серверной части hello. Помните, что для каждого экземпляра требуется отдельный IP-адрес.
 
 ### <a name="step-2"></a>Шаг 2
 
@@ -140,7 +140,7 @@ $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Sub
 $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
-В этом шаге выполняется настройка внутреннего пула IP-адресов pool01 с IP-адресами 10.1.1.8, 10.1.1.9, 10.1.1.10. Эти адреса будут использоваться для получения сетевого трафика от конечной точки с интерфейсным IP-адресом. Замените приведенные выше IP-адреса и добавьте IP-адреса конечных точек своего приложения.
+Этот шаг позволяет настроить hello серверной части IP-адресов с именем «pool01» с IP-адреса «10.1.1.8, 10.1.1.9, 10.1.1.10». Это и есть hello IP-адресов, получения сетевого трафика hello, поступающие от hello переднего плана конечную точку IP. Замените hello предшествующий IP адресов tooadd собственных конечных точек приложения IP адрес.
 
 ### <a name="step-3"></a>Шаг 3.
 
@@ -148,7 +148,7 @@ $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPA
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-На этом шаге осуществляется настройка параметров шлюза приложений poolsetting01 для балансировки нагрузки сетевого трафика в пуле серверной части.
+Этот шаг позволяет настроить приложения шлюза параметр «poolsetting01» для загрузки hello балансировки сетевой трафик в пуле hello серверной части.
 
 ### <a name="step-4"></a>Шаг 4.
 
@@ -156,7 +156,7 @@ $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsettin
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 ```
 
-На этом шаге выполняется настройка внешнего IP-порта с именем frontendport01 для внутренней подсистемы балансировки нагрузки (ILB).
+Этот шаг позволяет настроить hello интерфейсный IP-порта с именем «frontendport01» для hello ILB.
 
 ### <a name="step-5"></a>Шаг 5
 
@@ -164,7 +164,7 @@ $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 ```
 
-На этом шаге выполняется создание конфигурации внешнего IP-адреса с именем fipconfig01 и ее связывание с частным IP-адресом из текущей подсети виртуальной сети.
+Этот шаг создает hello интерфейсный IP-конфигурация называется «fipconfig01» и связывает его с частный IP-адрес в подсети виртуальной сети текущего hello.
 
 ### <a name="step-6"></a>Шаг 6
 
@@ -172,7 +172,7 @@ $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Su
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 ```
 
-На этом шаге выполняется создание прослушивателя listener01 и связывание внешнего порта с конфигурацией внешнего IP-адреса.
+Этот шаг создает hello прослушивателя с именем «listener01» и связывает hello интерфейсный порт toohello интерфейсный IP конфигурации.
 
 ### <a name="step-7"></a>Шаг 7
 
@@ -180,7 +180,7 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protoco
 $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
-На этом шаге выполняется создание правила маршрутизации rule01 для настройки поведения подсистемы балансировки нагрузки.
+На этом шаге создается hello правило подсистемы балансировки нагрузки маршрутизации называется «rule01», предназначенный для настройки поведения подсистемы балансировки нагрузки hello.
 
 ### <a name="step-8"></a>Шаг 8
 
@@ -188,32 +188,32 @@ $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType B
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 ```
 
-На этом шаге выполняется настройка размера экземпляра шлюза приложений.
+Этот шаг позволяет настроить размер экземпляра hello шлюза приложения hello.
 
 > [!NOTE]
-> Значение параметра *InstanceCount* по умолчанию — 2 (максимальное значение — 10). Значение *GatewaySize* (Размер шлюза) по умолчанию — Medium (Средний). Можно выбрать Standard_Small, Standard_Medium или Standard_Large.
+> Здравствуйте, значение по умолчанию для *InstanceCount* 2, с максимальным значением 10. Здравствуйте, значение по умолчанию для *GatewaySize* используется значение Medium. Можно выбрать Standard_Small, Standard_Medium или Standard_Large.
 
 ## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Создание шлюза приложений с помощью командлета New-AzureApplicationGateway
 
-Создайте шлюз приложений со всеми элементами конфигурации, описанными выше. В этом примере шлюз приложений называется "appgwtest".
+Создает все элементы конфигурации из предыдущих шагах hello шлюза приложения. В этом примере шлюза приложения hello называется «appgwtest».
 
 ```powershell
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-На этом шаге создается шлюз приложений со всеми элементами конфигурации, описанными выше. В этом примере шлюз приложений называется appgwtest.
+На этом шаге создается шлюза приложения со всех элементов конфигурации из hello в предыдущих шагах. В примере hello шлюза приложения hello называется «appgwtest».
 
 ## <a name="delete-an-application-gateway"></a>Удаление шлюза приложений
 
-Чтобы удалить шлюз приложений, по порядку выполните указанные ниже действия.
+toodelete шлюза приложения необходимые hello toodo следующие шаги в порядке.
 
-1. Остановите шлюз с помощью командлета `Stop-AzureRmApplicationGateway`.
-2. Удалите шлюз с помощью командлета `Remove-AzureRmApplicationGateway`.
-3. С помощью командлета `Get-AzureApplicationGateway` проверьте, удален ли шлюз.
+1. Используйте hello `Stop-AzureRmApplicationGateway` командлет toostop hello шлюза.
+2. Используйте hello `Remove-AzureRmApplicationGateway` командлет tooremove hello шлюза.
+3. Убедитесь, что hello шлюза был удален с помощью hello `Get-AzureApplicationGateway` командлета.
 
 ### <a name="step-1"></a>Шаг 1
 
-Получите объект шлюза приложений и свяжите его с переменной $getgw.
+Получите объект шлюза приложения hello и связать его переменной tooa «$getgw».
 
 ```powershell
 $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
@@ -221,7 +221,7 @@ $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw
 
 ### <a name="step-2"></a>Шаг 2
 
-С помощью командлета `Stop-AzureRmApplicationGateway` остановите шлюз приложений. В данном примере командлет `Stop-AzureRmApplicationGateway` показан в первой строке, а за ним следуют выходные данные.
+Используйте `Stop-AzureRmApplicationGateway` toostop шлюза приложения hello. В этом примере показано hello `Stop-AzureRmApplicationGateway` на первую строку hello, командлет следуют hello выходных данных.
 
 ```powershell
 Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
@@ -235,7 +235,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 ```
 
-Когда шлюз будет остановлен, удалите службу с помощью командлета `Remove-AzureRmApplicationGateway`.
+После шлюза приложения hello в остановленном состоянии используйте hello `Remove-AzureRmApplicationGateway` командлет tooremove hello службы.
 
 ```powershell
 Remove-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
@@ -250,9 +250,9 @@ Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 ```
 
 > [!NOTE]
-> Если указать параметр **-force** , запрос на подтверждение удаления не появится.
+> Hello **-принудительно** коммутатор может быть сообщение с подтверждением remove используется toosuppress hello.
 
-Для проверки того, удалена ли служба, используйте командлет `Get-AzureRmApplicationGateway`. Этот шаг не является обязательным.
+tooverify, hello службы были удалены, вы можете использовать hello `Get-AzureRmApplicationGateway` командлета. Этот шаг не является обязательным.
 
 ```powershell
 Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
@@ -261,14 +261,14 @@ Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 ```
 VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway
 
-Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
+Get-AzureApplicationGateway : ResourceNotFound: hello gateway does not exist.
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Чтобы настроить разгрузку SSL, ознакомьтесь с [настройкой шлюза приложений для разгрузки SSL](application-gateway-ssl.md).
+Если tooconfigure разгрузки SSL, см. [настройки шлюза приложения для разгрузки SSL](application-gateway-ssl.md).
 
-Указания по настройке шлюза приложений для использования с внутренним балансировщиком нагрузки см. в статье [Создание шлюза приложений с внутренней подсистемой балансировки нагрузки (ILB)](application-gateway-ilb.md).
+Tooconfigure toouse шлюза приложения с ILB см [создать шлюз приложений с внутренней подсистемы балансировки нагрузки (ILB)](application-gateway-ilb.md).
 
 Дополнительные сведения о параметрах балансировки нагрузки в целом см. в статьях:
 

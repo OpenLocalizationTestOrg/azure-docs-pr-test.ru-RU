@@ -1,6 +1,6 @@
 ---
-title: "Создание мобильного приложения для iOS в службе мобильных приложений Azure | Документация Майкрософт"
-description: "Изучите этот учебник, чтобы начать работу с серверным частями мобильных приложений Azure для разработки приложений iOS на Objective-C или Swift"
+title: "aaaCreate приложения iOS на мобильные приложения службы приложений Azure | Документы Microsoft"
+description: "Выполните этот учебник tooget, с помощью серверных системах мобильного приложения Azure для разработки приложений iOS в Objective-C или Swift"
 services: app-service\mobile
 documentationcenter: ios
 author: ggailey777
@@ -14,27 +14,27 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 36936ae66c458fcbedeec95cfa2f573a40c8af53
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 869fa971f7b5ab4a7119bbfa92808185d2ecdf8a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-ios-app"></a>Создание приложения iOS
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Обзор
-В этом руководстве показано, как добавить облачную серверную службу [мобильных приложений Azure](app-service-mobile-value-prop.md)в приложение iOS. Сначала мы создадим новую серверную часть мобильного приложения. Затем мы воспользуемся простым приложением iOS *Список дел* для хранения данных в Azure.
+В этом учебнике показано как tooadd [мобильных приложений Azure](app-service-mobile-value-prop.md), облачной серверной службы, приложение iOS tooan. Сначала мы создадим новую серверную часть мобильного приложения. Затем мы будем использовать простой *Todo list* данные toostore приложения iOS в Azure.
 
-Для работы с этим учебником требуется [учетная запись Azure](https://azure.microsoft.com/pricing/free-trial/)
+toocomplete этого учебника требуется компьютер Mac и [учетная запись Azure](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="step-i-create-a-new-azure-mobile-app-backend"></a>Шаг 1. Создание серверной части мобильного приложения Azure
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="step-ii-configure-the-backend-project"></a>Шаг 2. Настройка проекта серверной части
+## <a name="step-ii-configure-hello-backend-project"></a>Шаг II: Настройка hello серверного проекта
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="step-iii-download-and-run-the-ios-app"></a>Шаг 3. Скачивание и запуск приложения iOS
+## <a name="step-iii-download-and-run-hello-ios-app"></a>Шаг III: Загрузите и запустите приложение hello iOS
 [!INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
 <!-- URLs -->

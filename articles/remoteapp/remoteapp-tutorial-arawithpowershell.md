@@ -1,6 +1,6 @@
 ---
-title: "Использование командлетов PowerShell с Azure RemoteApp | Документация Майкрософт"
-description: "Узнайте, как использовать командлеты Windows PowerShell в Azure RemoteApp."
+title: "aaaUse командлеты PowerShell Azure RemoteApp. | Документы Microsoft"
+description: "Узнайте, как toouse командлеты Windows PowerShell в Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: guscatalano
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 699b20a4dadd4ecaff57e2cc80355fe545360663
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a09cae2093e2c3a4a2ed673b5d148a22ceb935f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-windows-powershell-cmdlets-with-azure-remoteapp"></a>Использование командлетов Windows PowerShell с Azure RemoteApp
 > [!IMPORTANT]
-> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Дополнительные сведения см. в [объявлении](https://go.microsoft.com/fwlink/?linkid=821148).
+> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Чтение hello [объявления](https://go.microsoft.com/fwlink/?linkid=821148) подробные сведения.
 > 
 > 
 
- Для администрирования и обслуживания коллекций можно использовать командлеты PowerShell для Azure RemoteApp. Используйте следующие сведения, чтобы приступить к работе.
+ Можно использовать tooadminister командлеты Azure RemoteApp PowerShell hello и поддерживать вашей коллекции. Используйте следующие сведения tooget работы hello.
 
-## <a name="get-the-cmdlets"></a>Загрузка командлетов
+## <a name="get-hello-cmdlets"></a>Получить командлеты hello
 - - -
-Сначала скачайте командлеты Azure PowerShell [отсюда](http://go.microsoft.com/?linkid=9811175). В их состав уже входят командлеты RemoteApp. 
+Сначала загрузить командлеты Azure Powershell hello [здесь](http://go.microsoft.com/?linkid=9811175), командлетов RemoteApp hello включены в нем. 
 
-Изучите [справку по командлетам Azure RemoteApp](/powershell/module/azure?view=azuresmps-3.7.0).
+Извлечение hello [справки по командлетам Azure RemoteApp](/powershell/module/azure?view=azuresmps-3.7.0).
 
-## <a name="configure-azure-cmdlets-to-use-your-subscription"></a>Настройка командлетов Azure для работы с подпиской
+## <a name="configure-azure-cmdlets-toouse-your-subscription"></a>Настроить подписку toouse командлетов Azure
 - - -
-С помощью [этого руководства](/powershell/azure/overview) вы сможете сделать так, чтобы командлеты можно было использовать с вашей подпиской Azure.
+Выполните [в этом руководстве](/powershell/azure/overview) , можно использовать командлеты hello к подписке Azure.
 
-Чтобы быстро приступить к работе:
+Можно использовать эти действия tooget, быстро начать работу.
 
-1. Скачайте и установите [командлеты Azure PowerShell](http://go.microsoft.com/?linkid=9811175).
+1. Загрузите и установите hello [командлетов Azure PowerShell](http://go.microsoft.com/?linkid=9811175).
 2. Запустите Microsoft Azure PowerShell.
-3. Выполните команду **Add-AzureAccount** для аутентификации в своей подписке Azure. При появлении запроса введите имя пользователя и пароль, которые используются для входа на портал Azure.  
-4. Выполните команду **Get-AzureSubscription** , чтобы получить список подписок, связанных с вашей учетной записью. 
-5. Выполните команду **Select-AzureSubscription -SubscriptionName &lt;название подписки&gt;** или **Select-AzureSubscription -SubscriptionId &lt;ИД подписки&gt;**, чтобы указать подписку, которую следует использовать.
+3. Запустите **Add-AzureAccount** tooauthenticate tooyour подписки Azure. При появлении запроса введите hello же имя пользователя и пароль, использовать toosign tooAzure портала.  
+4. Запустите **Get-AzureSubscription** toolist hello подписок, связанных с вашей учетной записи пользователя. 
+5. Запустите **Select-AzureSubscription - SubscriptionName &lt;имя подписки&gt;**  или **Select-AzureSubscription - SubscriptionId &lt;Код_подписки&gt;**  toouse подписки toospecify hello.
 
-Поздравляем, консоль Azure PowerShell настроена и готова к работе. Имейте в виду, что вам потребуется повторять шаги 2–5 при каждом запуске консоли Azure PowerShell.  
+Поздравляем, в консоли Azure PowerShell toouse настроен и готов. Имейте в виду, что вам требуется toorepeate шаги 2 – 5 каждый раз при запуске консоли Azure PowerShell hello hello.  
 
 
 ## <a name="list-all-collections"></a>Список всех коллекций
@@ -61,24 +61,24 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="create-a-cloud-collection"></a>Создание облачной коллекции
 - - -
-Это просто. Выполните следующую команду:
+Это просто, запустите hello следующую команду:
 
     New-AzureRemoteAppCollection -Collectionname RAppO365Col1 -ImageName "Office 365 ProPlus (Subscription required)" -Plan Basic -Location "West US" - Description "Office 365 Collection."
 
-Приведенная выше команда автоматически публикует приложения Microsoft Office 365 (Excel, OneNote, Outlook, PowerPoint, Visio и Word).
+Hello выше команду автоматически публикует приложения Microsoft Office 365 (Excel, OneNote, Outlook, PowerPoint, Visio и Word).
 
-Для создания коллекции может потребоваться 30 или более минут. В связи с этим команда возвращает идентификатор для отслеживания, который можно использовать следующим образом:
+Создание коллекции может занять 30 минут или дольше toocomplete. В связи с этим команда возвращает идентификатор для отслеживания, который можно использовать следующим образом:
 
     Get-AzureRemoteAppOperationResult -TrackingId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
-После создания коллекции в нее можно добавить пользователей с помощью следующей команды:
+После завершения hello коллекции можно добавить коллекцию toohello пользователей с hello следующую команду:
 
     Add-AzureRemoteAppUser -CollectionName RAppO365Col1 -Type microsoftAccount -UserUpn someone@domain.com
 
-Готово! Этот пользователь сможет подключиться к приложению с помощью клиента Azure RemoteApp, который можно найти [здесь](https://www.remoteapp.windowsazure.com/).
+Готово! Этот пользователь должен быть может tooconnect toohello приложения с помощью клиента Azure RemoteApp hello найден [здесь](https://www.remoteapp.windowsazure.com/).
 
 ## <a name="available-cmdlets"></a>Доступные командлеты
-Доступно множество других команд, документация для которых скоро будет опубликована.
+Существует множество других команд, которые у нас есть, вскоре будет реализована hello документации для них:
 
 Основные командлеты для коллекций RemoteApp 
 

@@ -1,6 +1,6 @@
 ---
-title: "Создание частного реестра контейнеров Docker с помощью Azure CLI | Документация Майкрософт"
-description: "Приступите к созданию частных реестров контейнеров Docker и управлению ими с помощью Azure CLI 2.0"
+title: "aaaCreate частного реестра контейнера Docker - Azure CLI | Документы Microsoft"
+description: "Начать создание и управление ими частных реестрах контейнера Docker с hello Azure CLI 2.0"
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -17,43 +17,43 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2875f4089231ed12a0312b2c2e077938440365c6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f0d876a70b71a5e1bd564fbc9198f693dfe8a347
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>Создание частного реестра контейнеров Docker с помощью Azure CLI 2.0
-Команды в [Azure CLI 2.0](https://github.com/Azure/azure-cli) позволяют создать реестр контейнеров и управлять его параметрами на компьютере Linux, Mac или Windows. Кроме того, эти действия можно выполнять на [портале Azure](container-registry-get-started-portal.md) или программным образом с помощью [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) реестра контейнеров.
+# <a name="create-a-private-docker-container-registry-using-hello-azure-cli-20"></a>Создание частного реестра контейнера Docker, с помощью Azure CLI 2.0 hello
+Использование команд в hello [Azure CLI 2.0](https://github.com/Azure/azure-cli) toocreate реестре контейнеров и управлять его параметрами с компьютера Windows, Mac или Linux. Можно также создать и управлять контейнера реестры с помощью hello [портал Azure](container-registry-get-started-portal.md) или программным путем с контейнер реестра hello [API-интерфейса REST](https://go.microsoft.com/fwlink/p/?linkid=834376).
 
 
-* Общие сведения и основные понятия см. в статье [Общие сведения о службе реестра контейнеров Azure](container-registry-intro.md).
-* Чтобы получить справку по командам интерфейса командной строки для реестра контейнеров (команды `az acr`), добавьте в любую команду параметр `-h`.
+* Сведения и основные понятия, в разделе [Здравствуйте, Обзор](container-registry-intro.md)
+* Для получения справки о командах CLI реестра контейнера (`az acr` команды), передать hello `-h` параметр tooany команды.
 
 
 ## <a name="prerequisites"></a>Предварительные требования
-* **Azure CLI 2.0.** Инструкции по установке Azure CLI 2.0 и началу работы с ним см. [здесь](/cli/azure/install-azure-cli). Войдите в свою подписку Azure, выполнив команду `az login`. Дополнительные сведения см. в статье [Get started with Azure CLI 2.0](/cli/azure/get-started-with-azure-cli) (Приступая к работе с Azure CLI 2.0).
-* **Группа ресурсов.** Перед созданием реестра контейнеров создайте [группу ресурсов](../azure-resource-manager/resource-group-overview.md#resource-groups) или используйте имеющуюся. Группа ресурсов должна находиться в расположении, где [доступна](https://azure.microsoft.com/regions/services/) служба реестра контейнеров. Справочные материалы по созданию группы ресурсов с помощью CLI 2.0 см. [здесь](/cli/azure/group).
-* **Учетная запись хранения (необязательно).** Создайте стандартную [учетную запись хранения](../storage/common/storage-introduction.md) Azure для хранения сведений реестра контейнеров в том же расположении. Учетную запись хранения (если она не задана при создании реестра) можно создать с помощью команды `az acr create`. Справочные материалы по созданию учетной записи хранения с помощью CLI 2.0 см. [здесь](/cli/azure/storage/account). Хранилище класса Premium сейчас не поддерживается.
-* **Субъект-служба (необязательно).** Если реестр создан с помощью интерфейса командной строки, по умолчанию доступ к нему не предоставляется. В зависимости от потребностей для реестра можно назначить имеющийся субъект-службу Azure Active Directory (или создать и назначить новый) или включить учетную запись пользователя с правами администратора. См. следующие разделы этой статьи. Дополнительные сведения о доступе к реестру см. в статье [Authenticate with the container registry](container-registry-authentication.md) (Проверка подлинности с помощью реестра контейнеров).
+* **Azure CLI 2.0**: tooinstall и приступить к работе с hello CLI 2.0 см. в разделе hello [инструкции по установке](/cli/azure/install-azure-cli). Войдите в tooyour подписки Azure, выполнив `az login`. Дополнительные сведения см. в разделе [Приступая к работе с hello CLI 2.0](/cli/azure/get-started-with-azure-cli).
+* **Группа ресурсов.** Перед созданием реестра контейнеров создайте [группу ресурсов](../azure-resource-manager/resource-group-overview.md#resource-groups) или используйте имеющуюся. Убедитесь, что группа ресурсов hello в место, где будет hello реестра контейнера службы [доступных](https://azure.microsoft.com/regions/services/). группы ресурсов с помощью toocreate hello CLI версии 2.0, в разделе [hello CLI 2.0 ссылка](/cli/azure/group).
+* **Учетная запись хранения** (необязательно): создание стандартной Azure [учетной записи хранилища](../storage/common/storage-introduction.md) реестр контейнера hello tooback hello местоположения. Если не указать учетную запись хранилища при создании реестр с помощью `az acr create`, hello команда создает ее автоматически. учетную запись хранилища, используя toocreate hello CLI 2.0 см. в разделе [hello CLI 2.0 ссылка](/cli/azure/storage/account). Хранилище класса Premium сейчас не поддерживается.
+* **Субъект-служба** (необязательно): при создании файла реестра с hello CLI по умолчанию он не настроен для доступа. В зависимости от потребностей, можно назначить существующий реестр tooa основной службы Azure Active Directory (или создать и назначить новый), или включить учетную запись пользователя admin hello реестра. Hello разделах данной статьи. Дополнительные сведения о доступе к реестра см. в разделе [аутентификация с помощью реестра контейнера hello](container-registry-authentication.md).
 
 ## <a name="create-a-container-registry"></a>Создание реестра контейнеров
-Чтобы создать реестр контейнеров, выполните команду `az acr create`.
+Запустите hello `az acr create` toocreate команда реестра контейнера.
 
 > [!TIP]
-> При создании реестра укажите глобально уникальное доменное имя верхнего уровня, содержащее только буквы и цифры. В примерах в качестве имени реестра используется имя `myRegistry1`, но его нужно заменить собственным.
+> При создании реестра укажите глобально уникальное доменное имя верхнего уровня, содержащее только буквы и цифры. Имя реестра Hello в примерах hello `myRegistry1`, но заменить собственным уникальное имя.
 >
 >
 
-Следующая команда создает реестр контейнеров `myRegistry1` в группе ресурсов `myResourceGroup`. При этом используются минимальные параметры и SKU *Базовый*.
+Здравствуйте, следующая команда использует hello минимальные параметры toocreate контейнер реестра `myRegistry1` в группе ресурсов hello `myResourceGroup`и с помощью hello *основные* sku:
 
 ```azurecli
 az acr create --name myRegistry1 --resource-group myResourceGroup --sku Basic
 ```
 
-* `--storage-account-name` является необязательным. Если это не определено, учетная запись хранения создается с именем, состоящим из имени реестра и метки времени в указанной группе ресурсов.
+* `--storage-account-name` является необязательным. Если не указано, учетную запись хранения создается с именем, содержащим имя реестра hello и отметка времени в hello указал группу ресурсов.
 
-При создании реестра выходные данные выглядят так:
+При создании реестра hello hello выводится примерно следующее toohello:
 
 ```azurecli
 {
@@ -81,14 +81,14 @@ az acr create --name myRegistry1 --resource-group myResourceGroup --sku Basic
 
 Обратите внимание на следующее.
 
-* `id` — идентификатор реестра в подписке, необходимый при назначении субъекта-службы.
-* `loginServer` — полное доменное имя, которое необходимо указать для [входа в реестр](container-registry-authentication.md). В рассматриваемом примере это `myregistry1.exp.azurecr.io` (все знаки в нижнем регистре).
+* `id`-Идентификатор для раздела реестра hello в вашей подписке, требуется, если вы хотите tooassign участника службы.
+* `loginServer`-Полное имя hello указании слишком[входа в реестре toohello](container-registry-authentication.md). В этом примере имеет имя hello `myregistry1.exp.azurecr.io` (прописными буквами).
 
 ## <a name="assign-a-service-principal"></a>Назначение субъекта-службы
-Команды в интерфейсе командной строки 2.0 позволяют назначить субъект-службу Azure Active Directory для реестра. В этих примерах субъект-служба имеет роль владельца, но при необходимости можно назначить [другие роли](../active-directory/role-based-access-control-configure.md).
+С помощью команды CLI 2.0 tooassign реестр tooa основной службы Azure Active Directory. Hello участника-службы в этих примерах назначается роль владельца hello, но можно назначить [других ролей](../active-directory/role-based-access-control-configure.md) Если требуется.
 
-### <a name="create-a-service-principal-and-assign-access-to-the-registry"></a>Создание субъекта-службы и назначение доступа к реестру
-Следующая команда назначает новому субъекту-службе роль владельца для доступа к идентификатору реестра, отправленному с помощью параметра `--scopes`. Укажите надежный пароль с помощью параметра `--password`.
+### <a name="create-a-service-principal-and-assign-access-toohello-registry"></a>Создание участника службы и назначение доступа toohello реестра
+В hello следующую команду, субъекта-службы назначается идентификатор владельца роли доступа toohello реестра, переданный с hello `--scopes` параметра. Укажите надежный пароль для hello `--password` параметра.
 
 ```azurecli
 az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --password myPassword
@@ -97,7 +97,7 @@ az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx
 
 
 ### <a name="assign-an-existing-service-principal"></a>Назначение имеющегося субъекта-службы
-Если субъект-службы уже создан и ему необходимо назначить роль владельца для доступа к реестру, выполните команду, аналогичную следующей. Используйте параметр `--assignee`, чтобы передать идентификатор приложения субъекта-службы.
+Если вы уже участника службы и хотите tooassign его владельца роли доступа toohello реестра, запустите команду аналогичные toohello, следующий пример. Передайте идентификатор основного приложения службы hello, с помощью hello `--assignee` параметр:
 
 ```azurecli
 az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --assignee myAppId
@@ -106,7 +106,7 @@ az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx
 
 
 ## <a name="manage-admin-credentials"></a>Управление учетными данными администратора
-Учетная запись администратора автоматически создается для каждого реестра контейнеров, но по умолчанию она отключена. В приведенных ниже примерах показаны команды `az acr` интерфейса командной строки, используемые для управления учетными данными администратора для реестра контейнеров.
+Учетная запись администратора автоматически создается для каждого реестра контейнеров, но по умолчанию она отключена. Здравствуйте, следующие примеры `az acr` CLI команды toomanage hello учетные данные администратора для реестра контейнера.
 
 ### <a name="obtain-admin-user-credentials"></a>Получение учетных данных пользователя с правами администратора
 ```azurecli
@@ -124,25 +124,25 @@ az acr update -n myRegistry1 --admin-enabled false
 ```
 
 ## <a name="list-images-and-tags"></a>Вывод списка образов и тегов
-Используйте команду `az acr` интерфейса командной строки, чтобы запросить образы и теги в репозитории.
+Используйте hello `az acr` CLI команды tooquery hello изображения и теги в репозитории.
 
 > [!NOTE]
-> В настоящее время реестр контейнеров не поддерживает команду `docker search`, используемую для запроса образов и тегов.
+> В настоящее время реестре контейнеров не поддерживает hello `docker search` tooquery команды для изображений и теги.
 
 
 ### <a name="list-repositories"></a>Вывод списка репозиториев
-Следующий пример выводит список репозиториев реестра в формате JSON (нотация объектов JavaScript).
+Hello следующий пример формирует список репозиториев hello в реестре, в формате JSON (JavaScript Object Notation).
 
 ```azurecli
 az acr repository list -n myRegistry1 -o json
 ```
 
 ### <a name="list-tags"></a>Вывод списка тегов
-Следующий пример выводит список тегов репозитория **samples/nginx** в формате JSON.
+Hello следующий пример отображает список тегов hello на hello **образцы/nginx** репозитория, в формате JSON:
 
 ```azurecli
 az acr repository show-tags -n myRegistry1 --repository samples/nginx -o json
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Отправка первого образа с помощью интерфейса командной строки Docker](container-registry-get-started-docker-cli.md)
+* [Принудительная первый образ с помощью hello Docker CLI](container-registry-get-started-docker-cli.md)

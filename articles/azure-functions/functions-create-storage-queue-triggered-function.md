@@ -1,6 +1,6 @@
 ---
-title: "Создание функции, активируемой сообщениями очереди, в Azure | Документация Майкрософт"
-description: "Создавайте независимые от сервера функции, активируемые сообщениями, отправленными в очередь службы хранилища Azure."
+title: "aaaCreate функции в Azure, активируемых сообщений очереди | Документы Microsoft"
+description: "Использовать функции Azure toocreate без сервера функция, вызываемая сообщений отправить tooan очереди службы хранилища Azure."
 services: azure-functions
 documentationcenter: na
 author: ggailey777
@@ -16,21 +16,21 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 92a03154bf5a8945e2de9606afd138803c76fafe
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e9501ed336b502eaeee3fa62ec4ae085c76de0ac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Создание функции, активируемой хранилищем очередей Azure
 
-Узнайте, как создавать функцию, активируемую при отправке сообщений в очередь службы хранилища Azure.
+Узнайте, как toocreate функции, вызываемые при сообщения, отправленные tooan очереди службы хранилища Azure.
 
-![Просмотр сообщения в журналах](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
+![Представление сообщений в журналах hello.](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Скачайте и установите [обозреватель хранилищ Microsoft Azure](http://storageexplorer.com/).
+- Загрузите и установите hello [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 
 - Подписка Azure. Если у вас еще нет подписки Azure, создайте [бесплатную учетную запись](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), прежде чем начать работу.
 
@@ -42,65 +42,65 @@ ms.lasthandoff: 08/29/2017
 
 ![Приложение-функция успешно создана.](./media/functions-create-first-azure-function/function-app-create-success.png)
 
-Затем создайте функцию в новом приложении-функции.
+Создайте функцию в приложение новые функции hello.
 
 <a name="create-function"></a>
 
 ## <a name="create-a-queue-triggered-function"></a>Создание функции, активируемой очередью
 
-1. Разверните приложение-функцию и нажмите кнопку **+** рядом с элементом **Функции**. Если это первая функция в приложении-функции, выберите **Пользовательская функция**. Откроется полный набор шаблонов функций.
+1. Разверните приложения функции и щелкните hello  **+**  рядом слишком**функции**. Если это первая функция hello в приложении функции, выберите **пользовательские функции**. Откроется hello полный набор шаблонов функций.
 
-    ![Страница быстрого начала работы с функциями на портале Azure](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
+    ![Страница быстрого запуска функции в hello портал Azure](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
-2. Выберите шаблон **QueueTrigger** для нужного языка и используйте параметры, как указано в таблице.
+2. Выберите hello **QueueTrigger** шаблона для нужного языка и использовать параметры hello, как указано в таблице hello.
 
-    ![Создайте функцию, активируемую очередью службы хранилища.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    ![Создание функции активации очереди хранилища hello.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
     
     | Настройка | Рекомендуемое значение | Описание |
     |---|---|---|
-    | **Имя очереди**   | myqueue-items    | Имя очереди для подключения к вашей учетной записи хранения. |
-    | **Подключение к учетной записи хранения** | AzureWebJobStorage | Вы можете использовать подключение к учетной записи хранения, которое уже используется вашим приложением-функцией, или создать его.  |
+    | **Имя очереди**   | myqueue-items    | Имя hello очереди tooconnect tooin вашей учетной записи хранилища. |
+    | **Подключение к учетной записи хранения** | AzureWebJobStorage | Можно использовать уже используется приложением функции подключения к учетной записи хранилища hello или создайте новую.  |
     | **Имя функции** | Уникальное для вашего приложения-функции | Имя функции, активируемой очередью. |
 
-3. Щелкните **Создать**, чтобы создать функцию.
+3. Нажмите кнопку **создать** toocreate функции.
 
-Затем необходимо подключиться к своей учетной записи хранения Azure и создать очередь службы хранилища **myqueue-items**.
+Затем подключите учетную запись хранилища Azure tooyour и создать hello **myqueue элементы** очереди хранилища.
 
-## <a name="create-the-queue"></a>Создание очереди
+## <a name="create-hello-queue"></a>Создать очередь hello
 
-1. Щелкните **Интегрировать** в своей функции, затем разверните узел **Документация** и скопируйте **имя учетной записи** и **ключ учетной записи**. Эти учетные данные используются для подключения к учетной записи хранения. Если вы уже подключились к учетной записи хранения, перейдите к шагу 4.
+1. Щелкните **Интегрировать** в своей функции, затем разверните узел **Документация** и скопируйте **имя учетной записи** и **ключ учетной записи**. Можно использовать учетную запись хранения tooconnect toohello эти учетные данные. Если вы уже подключились вашей учетной записи хранилища, пропустите toostep 4.
 
-    ![Получение учетных данных для подключения к учетной записи хранения.](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)v
+    ![Получите учетные данные для подключения учетной записи хранилища hello.](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)v
 
-1. Запустите инструмент [Обозреватель службы хранилища Microsoft Azure](http://storageexplorer.com/), щелкните значок подключения слева, выберите **Use a storage account name and key** (Использовать имя и ключ учетной записи хранения), а затем щелкните **Далее**.
+1. Запустите hello [Microsoft Azure Storage Explorer](http://storageexplorer.com/) инструмент, нажмите кнопку hello значок слева hello подключения, выберите **использовать имя учетной записи хранения и ключ**и нажмите кнопку **Далее**.
 
-    ![Запуск инструмента "Обозреватель учетной записи хранения"](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
+    ![Запустите средство hello обозреватель учетной записи хранилища.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
 
-1. Введите **имя учетной записи** и **ключ учетной записи** из шага 1, щелкните **Далее**, а затем — **Подключить**.
+1. Введите hello **имя учетной записи** и **ключ учетной записи** из шага 1, нажмите кнопку **Далее** и затем **Connect**.
 
-    ![Введите учетные данные хранилища и подключитесь.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
+    ![Введите учетные данные хранилища hello и подключения.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
 
-1. Разверните подключенную учетную запись хранения, щелкните правой кнопкой мыши **Очереди** (Контейнеры больших двоичных объектов), а затем щелкните **Создать очередь**, введите `myqueue-items` и нажмите клавишу ВВОД.
+1. Hello присоединенного учетной записи хранилища, щелкните правой кнопкой **очереди**, нажмите кнопку **создать очередь**, тип `myqueue-items`, и нажмите клавишу ВВОД.
 
     ![Создание очереди службы хранилища](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-create-queue.png)
 
-Теперь, когда вы создали очередь хранилища, испытайте функцию, добавив сообщение в очередь.
+Теперь, когда очередь хранилища можно проверить функции hello, добавив toohello очереди сообщений.
 
-## <a name="test-the-function"></a>Проверка функции
+## <a name="test-hello-function"></a>Проверка функции hello
 
-1. На портале Azure перейдите к вашей функции, в нижней части страницы разверните **Журналы** и убедитесь, что потоковая передача журналов не остановлена.
+1. Обратно в hello портал Azure, функция tooyour обзора разверните hello **журналы** hello нижней части страницы hello и убедитесь, что не приостановлен, журналов потоковой передачи.
 
 1. Разверните свою учетную запись в обозревателе хранилищ, узел **Очереди** и **myqueue-items**, а затем щелкните **Add message** (Добавить сообщение).
 
-    ![Добавление сообщения в очередь](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
+    ![Добавьте toohello очереди сообщений.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
 
 1. Введите сообщение Hello World в поле **Текст сообщения** и щелкните **ОК**.
 
-1. Подождите несколько секунд, а затем вернитесь в журналы функции и убедитесь, что новое сообщение было считано из очереди.
+1. Подождите несколько секунд, а затем вернитесь tooyour журналов функций и убедитесь, что новые сообщения hello уже считаны из очереди hello.
 
-    ![Просмотр сообщения в журналах](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
+    ![Представление сообщений в журналах hello.](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
 
-1. Вернитесь в обозреватель хранилища, щелкните **Обновить** и убедитесь, что сообщение было обработано и больше не находится в очереди.
+1. Назад в обозреватель хранилищ щелкните **обновление** и убедитесь, что приветственное сообщение было обработано и hello очереди больше не.
 
 ## <a name="clean-up-resources"></a>Очистка ресурсов
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Вы создали функцию, которая выполняется при добавлении сообщения в очередь хранилища.
+Вы создали функцию, которая выполняется при добавлении tooa хранилища очереди сообщений.
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

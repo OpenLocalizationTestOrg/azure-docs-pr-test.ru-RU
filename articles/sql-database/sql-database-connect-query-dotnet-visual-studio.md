@@ -1,6 +1,6 @@
 ---
-title: "Использование Visual Studio и .NET для создания запросов к базе данных SQL Azure | Документация Майкрософт"
-description: "В этой статье показано, как использовать Visual Studio для создания программы, которая подключается к базе данных SQL Azure, и создавать к ней запросы с помощью инструкций Transact-SQL."
+title: "aaaUse Visual Studio и .NET tooquery базы данных SQL Azure | Документы Microsoft"
+description: "В этом разделе показано, как Visual Studio toouse toocreate программу, которая соединяет tooan базы данных SQL Azure и запросов с помощью инструкций Transact-SQL."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,67 +15,67 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 105dab17823a7e7f6957a604833f4ecad35c14bd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 038cfb9c680217dfeea5a9996a0abed88cc80559
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>Использование .NET (C#) с Visual Studio для подключения и создания запросов к базе данных SQL Azure
+# <a name="use-net-c-with-visual-studio-tooconnect-and-query-an-azure-sql-database"></a>Использование с tooconnect Visual Studio .NET (C#) и запроса к базе данных Azure SQL
 
-В этом кратком руководстве показано, как использовать [.NET Framework](https://www.microsoft.com/net/) для создания программы C# с помощью Visual Studio для подключения к базе данных SQL Azure, а затем с помощью инструкций Transact-SQL выполнить запрос к данным.
+В этом учебнике быстрого запуска показано как toouse hello [.NET framework](https://www.microsoft.com/net/) toocreate C# программирования с использованием базы данных Azure SQL tooan tooconnect Visual Studio и использовать данные tooquery инструкций Transact-SQL.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Ниже указаны требования для работы с этим кратким руководством.
+toocomplete этом краткое руководство по началу работы, убедитесь, что у вас есть следующие hello:
 
-- База данных SQL Azure. В этом кратком руководстве используются ресурсы, созданные в одном из этих кратких руководств: 
+- База данных SQL Azure. В этом кратком руководстве использует ресурсы hello, созданные в одном из этих краткие руководства: 
 
    - [Создание базы данных с помощью портала](sql-database-get-started-portal.md)
    - [Создание базы данных SQL Azure и отправка к ней запросов с помощью Azure CLI](sql-database-get-started-cli.md)
    - [Создание базы данных с помощью PowerShell](sql-database-get-started-powershell.md)
 
-- [Правило брандмауэра на уровне сервера](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) для общедоступного IP-адреса компьютера, на котором выполняются действия из этого краткого руководства.
+- Объект [правила брандмауэра уровня сервера](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) для hello общедоступный IP-адрес компьютера hello, используйте для этого краткого руководства.
 - Убедитесь, что установлен [Visual Studio Community 2017, Visual Studio Professional 2017 или Visual Studio Enterprise 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="sql-server-connection-information"></a>Сведения о подключении SQL Server
 
-Получите сведения о подключении, необходимые для подключения к базе данных SQL Azure. Вам понадобится следующее: полное имя сервера, имя базы данных и сведения для входа.
+Получите базу данных Azure SQL toohello tooconnect в сведения, необходимые подключения hello. Необходимо будет hello полное имя сервера, имя базы данных и сведения об имени входа в следующих процедурах hello.
 
-1. Войдите на [портал Azure](https://portal.azure.com/).
-2. В меню слева выберите **Базы данных SQL** и на странице **Базы данных SQL** щелкните имя своей базы данных. 
-3. На странице **Обзор** базы данных просмотрите полное имя сервера, как показано на следующем рисунке. Вы можете навести указатель мыши на имя сервера, чтобы отобразился пункт **Щелкните, чтобы скопировать**. 
+1. Войдите в toohello [портал Azure](https://portal.azure.com/).
+2. Выберите **баз данных SQL** hello левом меню и выберите базу данных на hello **баз данных SQL** страницы. 
+3. На hello **Обзор** страницу для базы данных, просмотрите hello полное доменное имя сервера, как показано в hello после изображения. Можно навести на toobring имя сервера hello копирование hello **щелкните toocopy** параметр. 
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Если вы забыли данные для входа на сервер базы данных SQL Azure, перейдите на соответствующую страницу, чтобы просмотреть имя администратора сервера. При необходимости вы можете сбросить пароль.
+4. Если вы забыли учетные данные входа для сервера базы данных SQL Azure, перейдите toohello базы данных SQL server tooview hello server admin имя страницы. При необходимости можно сбросить пароль hello.
 
 5. Щелкните **Показать строки подключения к базам данных**.
 
-6. Просмотрите полную строку подключения **ADO.NET**.
+6. Просмотрите hello завершения **ADO.NET** строку подключения.
 
     ![Строка подключения по протоколу ADO.NET](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
 
 > [!IMPORTANT]
-> Необходимо настроить правила брандмауэра для общедоступного IP-адреса компьютера, на котором выполняются действия из этого руководства. Если вы используете другой компьютер или имеете другой общедоступный IP-адрес, создайте [правила брандмауэра на уровне сервера с помощью портала Azure](sql-database-get-started-portal.md#create-a-server-level-firewall-rule). 
+> Необходимо иметь правила брандмауэра на месте для hello общедоступный IP-адрес hello компьютера, на котором выполняется этот учебник. Если вы на другом компьютере или другой общий IP-адрес, создайте [правило брандмауэра уровня сервера с помощью портала Azure "hello"](sql-database-get-started-portal.md#create-a-server-level-firewall-rule). 
 >
   
 ## <a name="create-a-new-visual-studio-project"></a>Создание проекта Visual Studio
 
 1. В Visual Studio выберите **Файл**, **Создать**, **Проект**. 
-2. Откройте диалоговое окно **Создать проект** и разверните **Visual C#**.
-3. Выберите **Консольное приложение** и введите *sqltest* для имени проекта.
-4. Нажмите кнопку **ОК**, чтобы создать и открыть проект в Visual Studio.
+2. В hello **новый проект** диалоговое окно и разверните **Visual C#**.
+3. Выберите **консольного приложения** и введите *sqltest* hello имени проекта.
+4. Нажмите кнопку **ОК** toocreate и Привет открыть новый проект в Visual Studio
 4. В обозревателе решений щелкните правой кнопкой мыши **sqltest** и щелкните **Управление пакетами NuGet**. 
-5. Щелкните **Обзор**, выполните поиск по запросу ```System.Data.SqlClient``` и выберите его по завершении поиска.
-6. На странице **System.Data.SqlClient** щелкните **Установить**.
-7. После завершения установки просмотрите изменения, а затем нажмите кнопку **ОК**, чтобы закрыть окно **предварительного просмотра**. 
+5. На hello **Обзор**, поиск ```System.Data.SqlClient``` и, если найдено, выберите его.
+6. В hello **System.Data.SqlClient** щелкните **установить**.
+7. По завершении установки hello просмотрите изменения hello и нажмите кнопку **ОК** tooclose hello **предварительного просмотра** окна. 
 8. Если откроется окно **Прием условий лицензионного соглашения**, щелкните **Я принимаю**.
 
-## <a name="insert-code-to-query-sql-database"></a>Вставка кода для отправки запроса к базе данных SQL
-1. Перейдите к (или откройте при необходимости) **Program.cs**.
+## <a name="insert-code-tooquery-sql-database"></a>Вставьте код базы данных SQL tooquery
+1. Переключение слишком (или при необходимости откройте) **Program.cs**
 
-2. Замените содержимое **Program.cs** следующим кодом и добавьте соответствующие значения для сервера, базы данных, пользователя и пароля.
+2. Замените содержимое hello **Program.cs** с hello ниже программный код и добавить hello соответствующие значения для сервера, базы данных, пользователя и пароль.
 
 ```csharp
 using System;
@@ -131,14 +131,14 @@ namespace sqltest
 }
 ```
 
-## <a name="run-the-code"></a>Выполнение кода
+## <a name="run-hello-code"></a>Выполнение кода hello
 
-1. Нажмите клавишу **F5** для запуска приложения.
-2. Убедитесь, что возвращены первые 20 строк, а затем закройте окно приложения.
+1. Нажмите клавишу **F5** toorun приложения hello.
+2. Убедитесь, что возвращаются первые 20 строк hello и закройте окно приложения hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- Узнайте, как [подключиться и отправить запрос к базе данных SQL Azure с помощью .NET Core](sql-database-connect-query-dotnet-core.md) в Windows, Linux и Mac OS.  
-- См. дополнительные сведения о [начале работы с .NET Core в Windows, Linux и Mac OS с помощью командной строки](/dotnet/core/tutorials/using-with-xplat-cli).
-- Узнайте, как спроектировать первую базу данных SQL с помощью [SSMS](sql-database-design-first-database.md) или [.NET](sql-database-design-first-database-csharp.md).
+- Узнайте, каким образом слишком[подключения и запроса к базе данных Azure SQL с помощью .NET core](sql-database-connect-query-dotnet-core.md) на Windows, Linux и macOS.  
+- Дополнительные сведения о [начало работы с .NET Core в Windows и Linux/macOS hello командной строки](/dotnet/core/tutorials/using-with-xplat-cli).
+- Узнайте, каким образом слишком[проектирование первой базы данных Azure SQL с помощью среды SSMS](sql-database-design-first-database.md) или [проектирование первой базы данных Azure SQL с помощью .NET](sql-database-design-first-database-csharp.md).
 - Дополнительные сведения о .NET см. в [этой документации](https://docs.microsoft.com/dotnet/).

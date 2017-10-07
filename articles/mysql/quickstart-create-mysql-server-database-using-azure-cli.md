@@ -1,6 +1,6 @@
 ---
 title: "Краткое руководство. Создание базы данных Azure для сервера MySQL с помощью Azure CLI | Документация Майкрософт"
-description: "В этом кратком руководстве описывается создание сервера базы данных Azure для MySQL в группе ресурсов Azure с помощью Azure CLI."
+description: "Это краткое руководство описывает, как toouse hello Azure CLI toocreate базы данных Azure для сервера MySQL в группе ресурсов Azure."
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
@@ -11,70 +11,70 @@ ms.devlang: azure-cli
 ms.topic: hero-article
 ms.date: 06/13/2017
 ms.custom: mvc
-ms.openlocfilehash: 04fc441aee7a4c8adc4f02d5e51b2d9e64400f55
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 708d0cce12e812cb464adcf7e83e6f85c196bafe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Создание сервера базы данных Azure для MySQL с помощью Azure CLI
-В этом кратком руководстве описывается создание сервера базы данных Azure для MySQL в группе ресурсов Azure с помощью Azure CLI за 5 минут. Azure CLI используется для создания ресурсов Azure и управления ими из командной строки или с помощью скриптов.
+Это краткое руководство описывает, как toouse hello Azure CLI toocreate базы данных Azure для сервера MySQL в группе ресурсов Azure в около пяти минут. Hello Azure CLI — используется toocreate и управления ресурсами Azure hello командной строке или в сценариях.
 
 Если у вас еще нет подписки Azure, создайте [бесплатную](https://azure.microsoft.com/free/) учетную запись Azure, прежде чем начинать работу.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
-Если вы используете несколько подписок, выберите соответствующую подписку, в которой находится ресурс либо в которой за него взимается плата. Выберите конкретный идентификатор подписки вашей учетной записи, выполнив команду [az account set](/cli/azure/account#set).
+Если у вас несколько подписок, выберите нужную подписку hello, в котором hello ресурсов существует, или плата за. Выберите конкретный идентификатор подписки вашей учетной записи, выполнив команду [az account set](/cli/azure/account#set).
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
-Создайте [группу ресурсов Azure](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) с помощью команды [az group create](https://docs.microsoft.com/cli/azure/group#create). Группа ресурсов — это логический контейнер, в котором ресурсы Azure развертываются и администрируются как группа.
+Создание [группы ресурсов Azure](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) с помощью hello [Создание группы az](https://docs.microsoft.com/cli/azure/group#create) команды. Группа ресурсов — это логический контейнер, в котором ресурсы Azure развертываются и администрируются как группа.
 
-В следующем примере создается группа ресурсов с именем `myresourcegroup` в расположении `westus`.
+Hello следующий пример создает группу ресурсов с именем `myresourcegroup` в hello `westus` расположение.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Создание сервера базы данных Azure для MySQL
-Создайте сервер базы данных Azure для MySQL, выполнив команду **az mysql server create**. Сервер может управлять несколькими базами данных. Как правило, для каждого проекта и для каждого пользователя используется отдельная база данных.
+Создание базы данных Azure для сервера MySQL с hello **создать сервер mysql az** команды. Сервер может управлять несколькими базами данных. Как правило, для каждого проекта и для каждого пользователя используется отдельная база данных.
 
-В следующем примере в группе ресурсов `myresourcegroup` создается сервер базы данных Azure для MySQL с именем `myserver4demo`, который расположен в `westus`. Для сервера указано имя администратора для входа `myadmin` и пароль `Password01!`. Он создается с уровнем производительности **Базовый** и **50** единицами вычислений, которые совместно используются всеми базами данных на сервере. В зависимости от потребностей приложения можно увеличить или уменьшить масштаб вычислительных ресурсов и ресурсов хранилища.
+Hello следующий пример создает базы данных Azure для MySQL server, расположенный в `westus` в группе ресурсов hello `myresourcegroup` с именем `myserver4demo`. Hello сервер имеет журнал администратора в с именем `myadmin` и пароль `Password01!`. сервер Hello создается с **основные** уровня производительности и **50** единиц, общим для всех баз данных hello в hello server вычислительных операций. Вычислений и хранилища можно масштабировать вверх или вниз в зависимости от потребностей приложения hello.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name myserver4demo --location westus --admin-user myadmin --admin-password Password01! --performance-tier Basic --compute-units 50
 ```
 
 ## <a name="configure-firewall-rule"></a>Настройка правила брандмауэра
-Создайте правило брандмауэра на уровне сервера базы данных Azure для MySQL, выполнив команду **az mysql server firewall-rule create**. Правило брандмауэра на уровне сервера позволяет внешним приложениям, таким как программа командной строки **mysql.exe** или MySQL Workbench, подключаться к серверу через брандмауэр службы Azure MySQL. 
+Создание базы данных Azure для правила брандмауэра уровня сервера MySQL с помощью hello **az mysql правила брандмауэра для сервера — создание** команды. Правила брандмауэра уровня сервера позволяет внешнему приложению, например hello **mysql.exe** средство командной строки или MySQL Workbench tooconnect tooyour server через брандмауэр службы MySQL в Azure hello. 
 
-В примере ниже показано создание правила брандмауэра для предопределенного диапазона адресов, который в этом примере представляет наиболее полный диапазон IP-адресов.
+Hello следующий пример создает правило брандмауэра для диапазона предопределенный адрес, который в данном примере — hello все возможные диапазон IP-адресов.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myresourcegroup --server myserver4demo --name AllowYourIP --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 ## <a name="configure-ssl-settings"></a>Настройка параметров SSL
-По умолчанию между сервером и клиентскими приложениями применяется SSL-соединение.  Это гарантирует безопасное перемещение данных за счет шифрования потока данных через Интернет.  Чтобы упростить работу с этим руководством, необходимо отключить SSL-соединения для вашего сервера.  Мы не рекомендуем так делать для рабочих серверов.  Дополнительные сведения см. в статье [Настройка SSL-подключений в приложении для безопасного подключения к базе данных Azure для MySQL](./howto-configure-ssl.md).
+По умолчанию между сервером и клиентскими приложениями применяется SSL-соединение.  Это гарантирует безопасность «в движения» Здравствуйте, данных с помощью шифрования hello потока данных через Интернет.  toomake этого быстрого запуска проще, мы отключаем соединений SSL для сервера.  Мы не рекомендуем так делать для рабочих серверов.  Дополнительные сведения см. в разделе [Настройка SSL-подключения в toosecurely вашего приложения подключения tooAzure базы данных MySQL](./howto-configure-ssl.md).
 
-В следующем примере показано, как отключить SSL-соединение на сервере MySQL.
+Hello следующий пример отключает применение SSL для сервера MySQL.
  
  ```azurecli-interactive
  az mysql server update --resource-group myresourcegroup --name myserver4demo -g -n --ssl-enforcement Disabled
  ```
 
-## <a name="get-the-connection-information"></a>Получение сведений о подключении
+## <a name="get-hello-connection-information"></a>Получить сведения о соединении hello
 
-Чтобы подключиться к серверу, необходимо указать сведения об узле и учетные данные для доступа.
+tooconnect tooyour сервера, необходимо иметь учетные данные сведения и доступа узла tooprovide.
 
 ```azurecli-interactive
 az mysql server show --resource-group myresourcegroup --name myserver4demo
 ```
 
-Результаты выводятся в формате JSON. Запишите значения **fullyQualifiedDomainName** и **administratorLogin**.
+Hello получается в формате JSON. Запишите hello **fullyQualifiedDomainName** и **Имя_входа_администратора**.
 ```json
 {
   "administratorLogin": "myadmin",
@@ -99,12 +99,12 @@ az mysql server show --resource-group myresourcegroup --name myserver4demo
 }
 ```
 
-## <a name="connect-to-the-server-using-the-mysqlexe-command-line-tool"></a>Подключение к серверу с помощью программы командной строки mysql.exe
-Подключитесь к серверу с помощью программы командной строки **mysql.exe**. MySQL можно скачать [здесь](https://dev.mysql.com/downloads/) и установить на компьютер. Вместо этого можно также нажать кнопку **Попробуйте!** в примерах кода или кнопку `>_` на панели инструментов в правом верхнем углу портала Azure и запустить **Azure Cloud Shell**.
+## <a name="connect-toohello-server-using-hello-mysqlexe-command-line-tool"></a>Подключение сервера toohello, с помощью средства командной строки mysql.exe hello
+Подключение с помощью hello сервера tooyour **mysql.exe** средство командной строки. MySQL можно скачать [здесь](https://dev.mysql.com/downloads/) и установить на компьютер. Вместо этого можно также щелкнуть hello **попробовать** на образцы кода или hello `>_` кнопку hello верхней правой панели инструментов в hello портал Azure и запуска hello **оболочки облако Azure**.
 
-Введите следующие команды. 
+Введите hello следующей команды: 
 
-1. Подключитесь к серверу с помощью программы командной строки **mysql**:
+1. Подключение с использованием сервера toohello **mysql** средство командной строки:
 ```azurecli-interactive
  mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p
 ```
@@ -113,12 +113,12 @@ az mysql server show --resource-group myresourcegroup --name myserver4demo
 ```sql
  mysql> status
 ```
-Если все работает правильно, в программе командной строки должен отобразиться следующий текст:
+Если все пойдет хорошо, средство командной строки hello должен выводить hello следующий текст:
 
 ```dos
 C:\Users\>mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p
 Enter password: ***********
-Welcome to the MySQL monitor.  Commands end with ; or \g.
+Welcome toohello MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 65512
 Server version: 5.6.26.0 MySQL Community Server (GPL)
 
@@ -128,7 +128,7 @@ Oracle is a registered trademark of Oracle Corporation and/or its
 affiliates. Other names may be trademarks of their respective
 owners.
 
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+Type 'help;' or '\h' for help. Type '\c' tooclear hello current input statement.
 
 mysql> status
 --------------
@@ -158,27 +158,27 @@ mysql>
 > [!TIP]
 > Дополнительные команды см. в [разделе 4.5.1 справочного руководства по MySQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
 
-## <a name="connect-to-the-server-using-the-mysql-workbench-gui-tool"></a>Подключение к серверу с помощью инструмента графического пользовательского интерфейса MySQL Workbench
-1.  Запустите приложение MySQL Workbench на клиентском компьютере. Скачать и установить MySQL Workbench вы можете [здесь](https://dev.mysql.com/downloads/workbench/).
+## <a name="connect-toohello-server-using-hello-mysql-workbench-gui-tool"></a>Подключение сервера toohello, с помощью средства графического интерфейса пользователя MySQL Workbench hello
+1.  Запустите hello MySQL Workbench приложения на клиентском компьютере. Скачать и установить MySQL Workbench вы можете [здесь](https://dev.mysql.com/downloads/workbench/).
 
-2.  В диалоговом окне **настройки нового подключения** на вкладке **Параметры** введите следующие сведения:
+2.  В hello **установки нового подключения** диалогового окна введите следующую информацию hello **параметры** вкладки:
 
    ![Настройка нового подключения](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
 
 | **Параметр** | **Рекомендуемое значение** | **Описание** |
 |---|---|---|
 |   Имя подключения | Мое подключение | Укажите любую метку для этого подключения. |
-| Способ подключения | Выберите стандартный способ (по протоколу TCP/IP). | Используйте протокол TCP/IP для подключения к базе данных Azure для MySQL. |
+| Способ подключения | Выберите стандартный способ (по протоколу TCP/IP). | Используйте для MySQL tooAzure tooconnect протокола TCP/IP базы данных > |
 | имя узла; | myserver4demo.mysql.database.azure.com | Имя сервера, которое вы записали ранее. |
-| Порт | 3306 | Для MySQL используется порт по умолчанию. |
-| Имя пользователя | myadmin@myserver4demo | Имя для входа администратора сервера, которое вы записали ранее. |
-| Пароль | **** | Используйте пароль учетной записи администратора, настроенный ранее. |
+| Порт | 3306 | используется порт по умолчанию Hello для MySQL. |
+| Имя пользователя | myadmin@myserver4demo | Hello сервера имя входа администратора, указанных выше. |
+| Пароль | **** | Используйте пароль учетной записи администратора hello, настроенных ранее. |
 
-Щелкните **Проверить подключение**, чтобы проверить, все ли параметры верно настроены.
-Теперь можно щелкнуть только что созданное подключение, чтобы успешно подключиться к серверу.
+Нажмите кнопку **проверить подключение** tootest, если все параметры настроены правильно.
+Теперь можно щелкнуть подключение hello toosuccessfully подключения toohello сервера.
 
 ## <a name="clean-up-resources"></a>Очистка ресурсов
-Если эти ресурсы не требуются для изучения другого руководства, вы можете их удалить. Для этого выполните следующую команду: 
+Если эти ресурсы не требуется для другой учебник, их можно удалить, выполнив следующую команду hello: 
 
 ```azurecli-interactive
 az group delete --name myresourcegroup

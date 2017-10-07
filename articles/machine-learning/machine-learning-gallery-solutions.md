@@ -1,6 +1,6 @@
 ---
-title: "Решения из коллекции Cortana Intelligence | Документация Майкрософт"
-description: "Поиск решений в коллекции Cortana Intelligence."
+title: "aaaCortana коллекции решений аналитики | Документы Microsoft"
+description: "Найти решения в hello коллекции аналитики Cortana."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 8e180db2ab5fbabf5238b18b1d2866b746eb9994
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2cb6b0892c2eba873fa7e685288dc3b12d1dc981
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="discover-solutions-in-the-cortana-intelligence-gallery"></a>Поиск решений в коллекции Cortana Intelligence
+# <a name="discover-solutions-in-hello-cortana-intelligence-gallery"></a>Найти в коллекции Cortana аналитики hello решения
 [!INCLUDE [machine-learning-gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="solutions"></a>Решения
-**[Решения](https://gallery.cortanaintelligence.com/solutions)** из коллекции позволяют быстро создавать решения Cortana Intelligence из заранее настроенных решений, эталонных архитектур и конструктивных шаблонов.
-Вы можете самостоятельно развернуть решение в своей среде, воспользовавшись приведенными инструкциями, или же обратиться за помощью к одному из партнеров.  
+Объект  **[решения](https://gallery.cortanaintelligence.com/solutions)**  в коллекции предоставляет сборку tooquickly ресурсы, объясняющие решений Cortana аналитики из предварительно настроенных решений hello, ссылаться архитектур, а шаблоны проектирования.
+Убедитесь в их собственных hello включены инструкции или с популярных партнера.  
 
 ## <a name="discover"></a>Поиск
-  Поиск решений в галерее, откройте [коллекции](http://gallery.cortanaintelligence.com) и нажмите кнопку **решения** в верхней части домашней страницы галереи.
+  toobrowse для решений в hello коллекции Привет открыть [коллекции](http://gallery.cortanaintelligence.com) и нажмите кнопку **решения** hello верхней части домашней страницы приветствия галереи.
 
-  **[Решения](https://gallery.cortanaintelligence.com/solutions)**  странице отображается список недавно добавленных решений.
-Щелкните **See all** (Показать все), чтобы просмотреть все решения.
-На этой странице можно просмотреть все решения в коллекции. Кроме того, для поиска можно задать условия фильтра в левой части страницы и ввести условия поиска вверху.
+  **[Решения](https://gallery.cortanaintelligence.com/solutions)**  страницы отображает список hello недавно добавили решения.
+Нажмите кнопку **все** tooview все решения.
+На этой странице можно просмотреть все решения hello коллекции. Также можно найти, выбрав условия фильтра hello левой стороны страницы приветствия и ввода условия поиска в hello top.
 
- Щелкнув любое решение, вы попадете на страницу с его описанием и дополнительными сведениями. На этой странице в разделе комментариев можно оставлять замечания, отзывы и задавать вопросы. Ссылку на страницу можно опубликовать в социальных сетях LinkedIn и Twitter для друзей и коллег. Кроме того, ссылку можно отправить по электронной почте, чтобы другие пользователи также могли просмотреть найденное вами решение.
+ Щелкните любое решение tooopen его страница сведений и получения дополнительных сведений. На этой странице можно комментарий, отправить отзыв или задать вопросы по hello в разделе комментариев. Вы даже можете поделиться с друзьями, или с помощью hello коллеги возможности LinkedIn и Twitter. Также можно направлять ссылку toothe решения tooinvite страница hello tooview других пользователей.
 
 ![Расскажите друзьям о том, что вы нашли](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Добавляйте свои комментарии](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="deploy"></a>Развертывание
-Если вы хотите использовать найденное решение, нажмите кнопку **Deploy** (Развернуть). Выполните описанные действия, чтобы настроить и развернуть решение в своей рабочей области.
+## <a name="deploy"></a>Развернуть
+Toouse решение, нажмите кнопку **развернуть**. Выполните действия hello, представленные tooconfigure и развертывание hello решения в рабочей области.
 
 ![Развертывание решения из коллекции](media/machine-learning-gallery-solutions/deploy-solution.png)
 
-**[ПЕРЕЙТЕ В КОЛЛЕКЦИЮ >>](http://gallery.cortanaintelligence.com)**
+**[ПРИНИМАТЬ МНЕ toohello КОЛЛЕКЦИИ >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

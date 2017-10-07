@@ -26,7 +26,7 @@
 ### [Обзор](active-directory-authentication-scenarios.md#web-application-to-web-api)
 ### [ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)
 ### [NodeJS](active-directory-devquickstarts-webapi-nodejs.md)
-## Вызовы между службами
+## TooService службы
 ### [Обзор](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)
 ### [.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)
 ### [Учетные данные клиента OAuth 2.0](active-directory-protocols-oauth-service-to-service.md)
@@ -59,7 +59,7 @@
 ### [Начало работы с подключенными службами Visual Studio](vs-active-directory-dotnet-getting-started.md)
 ### [Ошибка при обнаружении аутентификации](vs-active-directory-error.md)
 ### [Приступая к работе с WebApi](vs-active-directory-webapi-getting-started.md)
-### [Что произошло с моим проектом веб-API?](vs-active-directory-webapi-what-happened.md)
+### [В каком проекте ошибка toomy веб-API](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 # Справочные материалы
 ## [Примеры кода](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
@@ -69,7 +69,7 @@
 ## [Протоколы аутентификации](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
 ### [OAuth](active-directory-protocols-oauth-code.md)
-### [Вызовы между службами](active-directory-protocols-oauth-service-to-service.md)
+### [Вызовы tooservice службы](active-directory-protocols-oauth-service-to-service.md)
 ### [Поток On-Behalf-Of](active-directory-protocols-oauth-on-behalf-of.md)
 ### [Поддерживаемые маркеры и типы утверждений](active-directory-token-and-claims.md)
 ### [Смена ключей подписывания](active-directory-signing-key-rollover.md)

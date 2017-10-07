@@ -1,6 +1,6 @@
 ---
-title: "Чтение журналов последовательностей NSG | Документация Майкрософт"
-description: "В этой статье показано, как анализировать журналы последовательностей NSG."
+title: "журналы потока aaaRead NSG | Документы Microsoft"
+description: "В этой статье показано, каким образом ведет журнал tooparse NSG потока"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -13,69 +13,69 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: gwallace
-ms.openlocfilehash: 9bb48157b2b8e483e063058f761c3a8f531927f9
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: b4f0f64639c7b2a6b4db50e54d15056bfd809e48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="read-nsg-flow-logs"></a>Чтение журналов последовательностей NSG
 
-Узнайте, как читать записи журналов последовательностей групп безопасности сети (NSG) с помощью PowerShell.
+Узнайте, каким образом tooread NSG потока ведет журнал записей с помощью PowerShell.
 
-Журналы последовательностей NSG хранятся в учетной записи хранения в [блочных BLOB-объектах](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Блочные BLOB-объекты состоят из небольших блоков. Каждый журнал — это отдельный блочный BLOB-объект, который создается один раз в час. Каждый час создается по журналу, а новые записи добавляются в журнал каждые несколько минут, используя самые актуальные данные. В этой статье показано, как читать части этих журналов последовательностей.
+Журналы последовательностей NSG хранятся в учетной записи хранения в [блочных BLOB-объектах](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Блочные BLOB-объекты состоят из небольших блоков. Каждый журнал — это отдельный блочный BLOB-объект, который создается один раз в час. Новые журналы создаются каждый час, журналы hello обновляются новые записи каждые несколько минут hello последние данные. В этой статье вы узнаете, как части tooread hello потока журналы.
 
 ## <a name="scenario"></a>Сценарий
 
-В следующем сценарии используется пример журнала последовательностей, хранящийся в учетной записи хранения. Мы шаг за шагом покажем, как выборочно просматривать последние события в журналах последовательностей NSG. В этой статье мы будем использовать PowerShell, однако описанные здесь концепции не ограничиваются одним языком программирования и применимы для всех языков, которые поддерживаются интерфейсами API службы хранилища Azure.
+Следующие сценарии hello имеется примере потока журнала, хранящиеся в учетной записи хранилища. мы пошагово как выборочно считывать hello последние события в журналах NSG потока. В этой статье мы будем использовать PowerShell, однако hello концепции, описанные в статье hello не ограниченной toohello язык программирования и, применимые tooall языков, поддерживаемых hello API-интерфейсов хранилища Azure
 
 ## <a name="setup"></a>Настройка
 
-Прежде чем мы начнем работу, вам необходимо включить журналы потоков для одной или нескольких групп безопасности сети в вашей учетной записи. Инструкции по включению журналов потоков для групп безопасности сети есть в статье [Introduction to flow logging for Network Security Groups](network-watcher-nsg-flow-logging-overview.md) (Введение в журналы потоков для групп безопасности сети).
+Прежде чем мы начнем работу, вам необходимо включить журналы потоков для одной или нескольких групп безопасности сети в вашей учетной записи. Инструкции по включению сетевой безопасности потока журналов см. в следующей статьей toohello: [ведения журнала tooflow введение для групп безопасности сети](network-watcher-nsg-flow-logging-overview.md).
 
-## <a name="retrieve-the-block-list"></a>Получение списка блоков
+## <a name="retrieve-hello-block-list"></a>Получить список блокировок hello
 
-Следующий сценарий PowerShell задает переменные, которые необходимы для запроса BLOB-объекта журнала последовательностей NSG и отображения списка блоков внутри блочного BLOB-объекта [CloudBlockBlob](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3). Обновите сценарий, указав допустимые значения для своей среды.
+Здравствуйте, следуя PowerShell настраивает переменные hello необходимые hello tooquery NSG потока журнала больших двоичных объектов и список hello блоках hello [CloudBlockBlob](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) блочного большого двоичного объекта. Обновите hello сценария toocontain допустимые значения для вашей среды.
 
 ```powershell
-# The SubscriptionID to use
+# hello SubscriptionID toouse
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
 
-# Resource group that contains the Network Security Group
+# Resource group that contains hello Network Security Group
 $resourceGroupName = "<resourceGroupName>"
 
-# The name of the Network Security Group
+# hello name of hello Network Security Group
 $nsgName = "NSGName"
 
-# The storage account name that contains the NSG logs
+# hello storage account name that contains hello NSG logs
 $storageAccountName = "<storageAccountName>" 
 
-# The date and time for the log to be queried, logs are stored in hour intervals.
+# hello date and time for hello log toobe queried, logs are stored in hour intervals.
 [datetime]$logtime = "06/16/2017 20:00"
 
-# Retrieve the primary storage account key to access the NSG logs
+# Retrieve hello primary storage account key tooaccess hello NSG logs
 $StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0]
 
-# Setup a new storage context to be used to query the logs
+# Setup a new storage context toobe used tooquery hello logs
 $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 # Container name used by NSG flow logs
 $ContainerName = "insights-logs-networksecuritygroupflowevent"
 
-# Name of the blob that contains the NSG flow log
+# Name of hello blob that contains hello NSG flow log
 $BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${nsgName}/y=$($logtime.Year)/m=$(($logtime).ToString("MM"))/d=$(($logtime).ToString("dd"))/h=$(($logtime).ToString("HH"))/m=00/PT1H.json"
 
-# Gets the storage blog
+# Gets hello storage blog
 $Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
-# Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
+# Gets hello block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from hello storage blob
 $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
 
-# Stores the block list in a variable from the block blob.
+# Stores hello block list in a variable from hello block blob.
 $blockList = $CloudBlockBlob.DownloadBlockList()
 ```
 
-Переменная `$blockList` возвращает список блоков в BLOB-объекте. Каждый блочный BLOB-объект содержит не менее двух блоков.  Длина первого блока — `21` байт. Этот блок содержит открывающие скобки журнала JSON. Последний блок содержит закрывающие скобки, а его длина — `9` байт.  Как видите, следующий пример журнала содержит семь записей, каждая из которых является отдельной записью. Все новые записи добавляются в конец журнала, непосредственно перед последним блоком.
+Hello `$blockList` переменная возвращает список блоков hello в большом двоичном объекте hello. Каждый блочный BLOB-объект содержит не менее двух блоков.  Hello первый блок имеет длину `21` байт, этот блок содержит hello открывающей скобкой журнала hello json. Hello других блок hello закрывающие скобки и имеет длину `9` байт.  Как можно видеть hello следующий пример журнала содержит семь записей, каждая отдельная запись выполняется. Все новые записи в журнале hello добавляются окончания toohello прямо перед hello конечный блок.
 
 ```
 Name                                         Length Committed
@@ -91,45 +91,45 @@ Mzk1YzQwM2U0ZWY1ZDRhOWFlMTNhYjQ3OGVhYmUzNjk=   2675      True
 ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      9      True
 ```
 
-## <a name="read-the-block-blob"></a>Чтение блочного BLOB-объекта
+## <a name="read-hello-block-blob"></a>Чтение hello блочный BLOB-объект
 
-Чтобы получить данные, нам необходимо прочитать переменную `$blocklist`. В этом примере мы выполняем итерацию по списку блоков, считываем байты из каждого блока и сохраняем их в массиве. Для извлечения данных мы используем метод [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_).
+Теперь нам нужны tooread hello `$blocklist` переменных tooretrieve hello данных. В этом примере мы итерации hello блокировки считать hello байт из каждого блока и баллов истории их в массиве. Мы используем hello [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) данные hello tooretrieve метода.
 
 ```powershell
-# Set the size of the byte array to the largest block
+# Set hello size of hello byte array toohello largest block
 $maxvalue = ($blocklist | measure Length -Maximum).Maximum
 
-# Create an array to store values in
+# Create an array toostore values in
 $valuearray = @()
 
-# Define the starting index to track the current block being read
+# Define hello starting index tootrack hello current block being read
 $index = 0
 
-# Loop through each block in the block list
+# Loop through each block in hello block list
 for($i=0; $i -lt $blocklist.count; $i++)
 {
 
-# Create a byte array object to story the bytes from the block
+# Create a byte array object toostory hello bytes from hello block
 $downloadArray = New-Object -TypeName byte[] -ArgumentList $maxvalue
 
-# Download the data into the ByteArray, starting with the current index, for the number of bytes in the current block. Index is increased by 3 when reading to remove preceding comma.
+# Download hello data into hello ByteArray, starting with hello current index, for hello number of bytes in hello current block. Index is increased by 3 when reading tooremove preceding comma.
 $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index+3,$($blockList[$i].Length-1)) | Out-Null
 
-# Increment the index by adding the current block length to the previous index
+# Increment hello index by adding hello current block length toohello previous index
 $index = $index + $blockList[$i].Length
 
-# Retrieve the string from the byte array
+# Retrieve hello string from hello byte array
 
 $value = [System.Text.Encoding]::ASCII.GetString($downloadArray)
 
-# Add the log entry to the value array
+# Add hello log entry toohello value array
 $valuearray += $value
 }
 ```
 
-Теперь массив `$valuearray` содержит строковое значение каждого блока. Чтобы проверить запись, получите предпоследнее значение из массива, выполнив команду `$valuearray[$valuearray.Length-2]`. Нам не нужно последнее значение, так как оно содержит только закрывающую скобку.
+Теперь hello `$valuearray` массив содержит строковое значение hello каждого блока. запись tooverify hello, get hello второй toohello последнее значение из массива hello, запустив `$valuearray[$valuearray.Length-2]`. Нам не нужно, последнее значение hello является просто hello закрывающую скобку.
 
-В следующем примере показано полученное значение:
+результаты Hello этого значения отображаются в hello в следующем примере:
 
 ```json
         {
@@ -151,11 +151,11 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
         }
 ```
 
-Этот сценарий является примером того, как прочитать записи в журналах последовательностей NSG, не анализируя весь журнал. Вы можете считывать новые записи в журнале по мере их записывания, используя идентификатор блока или отслеживая длину блоков, сохраненных в блочном BLOB-объекте. Это позволяет считывать только новые записи.
+Этот сценарий является примером направление журналы без необходимости весь журнал целиком hello tooparse tooread записей в NSG. Можно считывать новых записей в журнале hello записываемые с помощью идентификатор блокировки hello или отслеживания длина hello блоков, хранящихся в hello блочного большого двоичного объекта. Это позволяет tooread только hello новых записей.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о других способах просмотра журналов последовательностей NSG см. в статье [Визуализация журнала потоков для групп безопасности сети Наблюдателя за сетями Azure с помощью инструментов с открытым кодом](network-watcher-visualize-nsg-flow-logs-open-source-tools.md).
+Посетите [визуализировать журналы потока NSG Наблюдатель сети Azure, с помощью средств с открытым исходным кодом](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) toolearn Дополнительные сведения о других способах tooview NSG потока журналы.
 
-Дополнительные сведения о больших двоичных объектах хранилища см. в статье [Привязки хранилища BLOB-объектов для Функций Azure](../azure-functions/functions-bindings-storage-blob.md).
+Дополнительные сведения о больших двоичных объектах хранилища посетите toolearn: [привязки хранилища больших двоичных объектов Azure функции](../azure-functions/functions-bindings-storage-blob.md)

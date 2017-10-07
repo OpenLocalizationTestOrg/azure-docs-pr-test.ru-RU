@@ -1,6 +1,6 @@
 ---
-title: "Как проверить ход выполнения задания с помощью REST API | Документация Майкрософт"
-description: "Информация о том, как отслеживать ход выполнения задания."
+title: "Ход выполнения задания toocheck aaaHow с помощью API-интерфейса REST | Документы Microsoft"
+description: "Узнайте, как tootrack задание выполняется."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: fea4383e81f3ca21955252cf1d573f1b347b5a38
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 32f12c81422566d980a7200b1662a3cc3ebc39a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="how-to-check-job-progress"></a>Практическое руководство. Проверка хода выполнения задания
 > [!div class="op_single_selector"]
@@ -28,14 +28,14 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-При выполнении заданий часто требуется способ отслеживания хода выполнения задачи. Состояние задания можно узнать с помощью свойства State задания. Дополнительную информацию о свойстве State см. в разделе [Свойства сущности задания](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+При выполнении заданий часто требуется ход выполнения задания tootrack способом. Состояние задания hello можно узнать с помощью свойства State hello задания. Дополнительные сведения о hello свойства State в разделе [свойства сущности задания](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
 
-## <a name="connect-to-media-services"></a>Подключение к службам мультимедиа
+## <a name="connect-toomedia-services"></a>Подключение служб tooMedia
 
-Сведения о подключении к API AMS см. в разделе [Доступ к API служб мультимедиа Azure с помощью аутентификации Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Сведения о tooconnect toohello AMS API, в статье [hello доступа к API служб мультимедиа Azure с проверкой подлинности Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->После успешного подключения к https://media.windows.net вы получите ошибку 301 (перенаправление), в которой будет указан другой URI служб мультимедиа. Используйте для последующих вызовов новый URI.
+>После успешного подключения toohttps://media.windows.net, будет получено перенаправление 301 указывающее другой URI служб Media Services. Необходимо внести toohello последующих вызовов новый URI.
 
 ## <a name="check-job-progress"></a>Проверка хода выполнения задания
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 08/29/2017
     DataServiceVersion: 3.0;
     Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-    {"odata.metadata":"https://media.windows.net/api/$metadata#Jobs","value":[{"Id":"nb:jid:UUID:f3c43f94-327f-2347-90bb-3bf79f8559f1","Name":"Encoding BigBuckBunny into to H264 Adaptive Bitrate MP4 Set 720p","Created":"2015-02-11T01:46:08.897","LastModified":"2015-02-11T01:46:08.897","EndTime":null,"Priority":0,"RunningDuration":0.0,"StartTime":"2015-02-11T01:46:16.58","State":2,"TemplateId":null,"JobNotificationSubscriptions":[]}]} 
+    {"odata.metadata":"https://media.windows.net/api/$metadata#Jobs","value":[{"Id":"nb:jid:UUID:f3c43f94-327f-2347-90bb-3bf79f8559f1","Name":"Encoding BigBuckBunny into tooH264 Adaptive Bitrate MP4 Set 720p","Created":"2015-02-11T01:46:08.897","LastModified":"2015-02-11T01:46:08.897","EndTime":null,"Priority":0,"RunningDuration":0.0,"StartTime":"2015-02-11T01:46:16.58","State":2,"TemplateId":null,"JobNotificationSubscriptions":[]}]} 
 
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа

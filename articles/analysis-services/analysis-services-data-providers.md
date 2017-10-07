@@ -1,6 +1,6 @@
 ---
-title: "Клиентские библиотеки, требуемые для подключения к службам Azure Analysis Services | Документы Майкрософт"
-description: "Описываются клиентские библиотеки, необходимые для подключения клиентских приложений и средств к службам Azure Analysis Services"
+title: "aaaClient библиотеки, необходимые для соединения служб Analysis Services tooAzure | Документы Microsoft"
+description: "Описывает клиентские библиотеки, необходимые для клиентского приложения и средства tooconnect Azure Analysis Services"
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
-ms.openlocfilehash: a96e7fe671dc051da35168fa7b49ecba53b4c4a5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 74ba5c05ba76c6587c5aed38f200a1ba469aa4f3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Клиентские библиотеки для подключения к службам Azure Analysis Services
+# <a name="client-libraries-for-connecting-tooazure-analysis-services"></a>Клиентские библиотеки для соединения служб Analysis Services tooAzure
 
-Клиентские библиотеки требуются клиентским приложениям и средствам для подключения к серверам служб Analysis Services. 
+Клиентские библиотеки необходимы для клиентских приложений и серверов служб tooAnalysis tooconnect средства. 
 
-Службы Analysis Services используют три типа клиентских библиотек. ADOMD.NET и объекты управления служб Analysis Services — это управляемые клиентские библиотеки. Поставщик OLE DB служб Analysis Services (MSOLAP DLL) — это собственная клиентская библиотека. Как правило, все три библиотеки устанавливаются одновременно. Службам Azure Analysis Services требуются последние версии библиотек. 
+Службы Analysis Services используют три типа клиентских библиотек. ADOMD.NET и объекты управления служб Analysis Services — это управляемые клиентские библиотеки. Поставщик OLE DB служб Analysis Services Hello (MSOLAP DLL) — это библиотека собственного клиента. Как правило, все три устанавливаются в hello то же время. Azure Analysis Services требует hello последних версий. 
 
-Клиентские приложения Майкрософт, такие как Power BI Desktop и Excel, устанавливают все три клиентские библиотеки. Однако в зависимости от версии или частоты обновлений могут устанавливаться устаревшие, а не новые версии клиентских библиотек, необходимые для служб Azure Analysis Services. Это же касается и пользовательских приложений или других интерфейсов, таких как AsCmd, TOM, ADOMD.NET. Для этих приложений клиентские библиотеки требуется устанавливать вручную. Клиентские библиотеки, устанавливаемые вручную, включены в пакеты дополнительных компонентов SQL Server в качестве распространяемых пакетов. Однако они зависят от версии SQL Server, поэтому версия в пакетах может быть не последней.  
+Клиентские приложения Майкрософт, такие как Power BI Desktop и Excel, устанавливают все три клиентские библиотеки. Тем не менее в зависимости от версии hello или частота обновления, клиентские библиотеки не может быть hello последние версии необходимых служб Azure Analysis Services. Hello применимо и к toocustom приложений или другие интерфейсы, такие как AsCmd TOM, ADOMD.NET. Эти приложения требуют установки библиотеки hello вручную. Hello клиентские библиотеки для ручной установки включаются в пакеты дополнительных компонентов SQL Server в качестве распространяемых пакетов. Однако эти клиентские библиотеки равноценных toohello версии SQL Server и не может быть hello последняя версия.  
 
-Клиентские библиотеки для клиентских подключений отличаются от поставщиков данных, требуемых для подключения с сервера служб Azure Analysis Services к источнику данных. Дополнительные сведения о подключениях к источнику данных см. в [этой статье](analysis-services-datasource.md).
+Клиентские библиотеки для клиентских подключений, отличаются от tooconnect необходимые поставщики данных из источника данных tooa сервера Azure Analysis Services. toolearn Дополнительные сведения о подключения источника данных, в разделе [подключения источника данных](analysis-services-datasource.md).
 
-## <a name="download-the-latest-client-libraries"></a>Скачивание последних версий клиентских библиотек  
-Используйте перечисленные ниже клиентские библиотеки, если в рабочей среде требуются полностью выпущенные и поддерживаемые версии.
+## <a name="download-hello-latest-client-libraries"></a>Загрузить последние библиотеки клиента hello  
+Используйте следующие клиентские библиотеки, если в рабочей среде и требующих полностью выпущенных и поддерживаемых версий hello.
 
 [MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)</br>
 [MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)</br>

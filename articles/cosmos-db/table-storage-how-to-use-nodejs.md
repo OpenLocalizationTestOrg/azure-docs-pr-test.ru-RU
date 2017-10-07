@@ -1,6 +1,6 @@
 ---
-title: "Как использовать хранилище таблиц Azure из Node.js | Документация Майкрософт"
-description: "Хранение структурированных данных в облаке в хранилище таблиц Azure (хранилище данных NoSQL)."
+title: "aaaHow toouse хранилище таблиц Azure из Node.js | Документы Microsoft"
+description: "Хранения структурированных данных в облаке hello, с помощью хранилища таблиц Azure, хранилище данных NoSQL."
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -14,35 +14,35 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.openlocfilehash: 539212c6abe7738c022d67245f8992516f0899ff
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 21022491a9a21a5365628de93582ea3a325ed869
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-azure-table-storage-from-nodejs"></a>Использование табличного хранилища Azure из Node.js
+# <a name="how-toouse-azure-table-storage-from-nodejs"></a>Как toouse хранилище таблиц Azure из Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Обзор
-В этом разделе рассматривается реализация типичных сценариев с помощью службы таблиц Azure в приложении Node.js.
+В этом разделе показано, как служба tooperform распространенные сценарии, с помощью hello таблиц Azure в приложение Node.js.
 
-В примерах кода в этом разделе предполагается, что приложение Node.js уже создано. Инструкции по созданию приложения Node.js в Azure см. в любой из следующих статей:
+Примеры кода Hello в этом разделе предполагается, что у вас уже есть приложение Node.js. Сведения о том, как toocreate приложения Node.js в Azure, смотрите в любом из следующих разделов:
 
 * [Создание веб-приложения Node.js в службе приложений Azure](../app-service-web/app-service-web-get-started-nodejs.md)
-* [Создание и развертывание веб-приложения Node.js в Azure с использованием WebMatrix](../app-service-web/web-sites-nodejs-use-webmatrix.md)
-* [Создание и развертывание приложения Node.js в облачной службе Azure](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (с помощью Windows PowerShell)
+* [Построение и развертывание приложения tooAzure web Node.js, с помощью WebMatrix](../app-service-web/web-sites-nodejs-use-webmatrix.md)
+* [Построение и развертывание tooan приложений Node.js облачной службы Azure](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (с помощью Windows PowerShell)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## <a name="configure-your-application-to-access-azure-storage"></a>Настройка приложения для доступа к хранилищу Azure
-Чтобы использовать службу хранилища Azure, вам понадобится пакет SDK службы хранилища Azure для Node.js, который содержит набор полезных библиотек, взаимодействующих со службами REST хранилища.
+## <a name="configure-your-application-tooaccess-azure-storage"></a>Настройка вашего приложения tooaccess хранилища Azure
+toouse хранилища Azure необходимо hello пакет SDK хранилища Azure для Node.js, включающий набор библиотек удобства, взаимодействующих со службами REST hello хранилища.
 
-### <a name="use-node-package-manager-npm-to-install-the-package"></a>Использование диспетчера пакета Node (NPM) для установки пакета
-1. Используя интерфейс командной строки, например **PowerShell** (Windows), **Terminal** (Mac) или **Bash** (Unix), перейдите в папку, в которой вы создали приложение.
-2. Введите в командной строке **npm install azure-storage** . Результат выполнения этой команды будет аналогичен следующему примеру:
+### <a name="use-node-package-manager-npm-tooinstall-hello-package"></a>С помощью диспетчера пакетов узла (NPM) tooinstall hello пакета
+1. Использовать интерфейс командной строки, такие как **PowerShell** (Windows), **терминалов** (Mac), или **Bash** (Unix) и перейдите в папку toohello, где вы создали приложение.
+2. Тип **npm установить хранилища azure** в командном окне приветствия. Выходные данные команды hello — примерно toohello следующий пример.
 
        azure-storage@0.5.0 node_modules\azure-storage
        +-- extend@1.2.1
@@ -54,28 +54,28 @@ ms.lasthandoff: 08/29/2017
        +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
        +-- xml2js@0.2.7 (sax@0.5.2)
        +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
-3. Выполнив команду **ls** вручную, можно убедиться, что папка **node\_modules** создана. В этой папке находится пакет **azure-storage** , содержащий библиотеки, необходимые для доступа к хранилищу.
+3. Вы можете вручную запустить hello **ls** tooverify команды, **узел\_модули** папка была создана. В этой папке можно найти hello **хранилища azure** пакет, который содержит библиотеки hello потребуется tooaccess хранилище.
 
-### <a name="import-the-package"></a>Импорт пакета
-Добавьте следующий код в начало файла **server.js** в приложении:
+### <a name="import-hello-package"></a>Импорт пакета hello
+Добавьте следующий код toohello вверху hello hello **server.js** файл в приложении:
 
 ```nodejs
 var azure = require('azure-storage');
 ```
 
 ## <a name="set-up-an-azure-storage-connection"></a>Настройка подключения к службе хранилища Azure
-Модуль Azure считывает переменные среды AZURE\_STORAGE\_ACCOUNT и AZURE\_STORAGE\_ACCESS\_KEY или AZURE\_STORAGE\_CONNECTION\_STRING, чтобы получить информацию, необходимую для подключения к учетной записи хранения Azure. Если эти переменные среды не заданы, при вызове **TableService**необходимо указать сведения об учетной записи.
+модуль Hello azure будет считывать hello переменных среды AZURE\_ХРАНИЛИЩА\_учетной записи и AZURE\_ХРАНЕНИЯ\_доступа\_ключа или AZURE\_ХРАНЕНИЯ\_подключения \_Строка для tooyour tooconnect сведения, необходимые учетной записи хранилища Azure. Если эти переменные среды не установлены, необходимо указать сведения об учетной записи hello при вызове **TableService**.
 
-Пример настройки переменных среды для веб-сайта Azure на [портале Azure](https://portal.azure.com) см. в статье [Веб-приложение Node.js, использующее службу таблиц Azure](../app-service-web/storage-nodejs-use-table-storage-web-site.md).
+Пример настройки переменных среды hello в hello [портал Azure](https://portal.azure.com) на веб-сайт Azure в разделе [Node.js веб-приложения с использованием hello службы таблиц Azure](../app-service-web/storage-nodejs-use-table-storage-web-site.md).
 
 ## <a name="create-a-table"></a>Создание таблицы
-Следующий код создает объект **TableService** и использует его для создания новой таблицы. Добавьте в начало **server.js**следующий код.
+Hello следующий код создает **TableService** объекта и использует его toocreate новую таблицу. Добавьте следующее hello вверху hello **server.js**.
 
 ```nodejs
 var tableSvc = azure.createTableService();
 ```
 
-Вызов **createTableIfNotExists** создает новую таблицу с определенным именем, если она уже не существует. В следующем примере создается новая таблица с именем "mytable", если она еще не создана:
+Здравствуйте вызов слишком**createTableIfNotExists** создаст новую таблицу с указанным именем hello, если он еще не существует. Hello следующий пример создает новую таблицу с именем «mytable», если он еще не существует:
 
 ```nodejs
 tableSvc.createTableIfNotExists('mytable', function(error, result, response){
@@ -85,45 +85,45 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 });
 ```
 
-`result.created` будет иметь значение `true`, если была создана новая таблица, и `false`, если таблица уже существует. `response` будет содержать информацию о запросе.
+Hello `result.created` будет `true` Если создается новая таблица, и `false` Если hello таблица уже существует. Hello `response` будет содержать сведения о запросе hello.
 
 ### <a name="filters"></a>Фильтры
-Дополнительные операции фильтрации можно применить к выполняемым операциям, используя **TableService**. К операциям фильтрации могут относиться ведение журнала, автоматический повтор и т. д. Фильтры являются объектами, реализующими метод со следующей сигнатурой:
+Необязательный операции фильтрации может быть применен toooperations, выполняемые с помощью **TableService**. К операциям фильтрации могут относиться ведение журнала, автоматический повтор и т. д. Фильтры являются объектами, которые реализуют метод с сигнатурой hello:
 
 ```nodejs
 function handle (requestOptions, next)
 ```
 
-Выполнив предварительную обработку параметров запроса, метод должен вызвать next, передавая функцию обратного вызова со следующей сигнатурой:
+После выполнения его предварительной обработки параметров запроса hello, метод hello должен toocall «Далее», передача обратный вызов с hello следующие подписи:
 
 ```nodejs
 function (returnObject, finalCallback, next)
 ```
 
-В этом примере, а также после обработки returnObject (ответа на запрос к серверу) функция обратного вызова должна вызвать функцию next (если она существует), чтобы продолжить обработку других фильтров. В противном случае она просто вызывает finalCallback, чтобы завершить вызов службы.
+В этот обратный вызов, а после обработки returnObject hello (hello ответ от сервера toohello hello запроса), обратного вызова hello необходимы tooeither рядом вызова, если он существует toocontinue обработки других фильтров, или просто вызвав finalCallback в противном случае tooend hello вызов службы.
 
-В пакет SDK Azure для Node.js включены два фильтра, реализующие логику повторных попыток: **ExponentialRetryPolicyFilter** и **LinearRetryPolicyFilter**. Следующий код создает объект **TableService**, использующий фильтр **ExponentialRetryPolicyFilter**:
+Два фильтра, которые реализовать логику повторных попыток входят в состав hello Azure SDK для Node.js **ExponentialRetryPolicyFilter** и **LinearRetryPolicyFilter**. Hello следующий код создает **TableService** объект, который использует hello **ExponentialRetryPolicyFilter**:
 
 ```nodejs
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var tableSvc = azure.createTableService().withFilter(retryOperations);
 ```
 
-## <a name="add-an-entity-to-a-table"></a>Добавление сущности в таблицу
-Чтобы добавить сущность, сначала создайте объект, который определяет свойства сущности. Все сущности должны содержать ключи **PartitionKey** и **RowKey**, которые выступают ее уникальными идентификаторами.
+## <a name="add-an-entity-tooa-table"></a>Добавьте таблицу tooa сущности
+tooadd сущности, сначала создайте объект, который определяет свойства сущности. Все сущности должны содержать **PartitionKey** и **RowKey**, которые являются уникальные идентификаторы для сущности hello.
 
-* **PartitionKey** — определяет раздел, в котором хранится сущность.
-* **RowKey** — уникально определяет сущность в разделе.
+* **PartitionKey** -определяет hello секции, хранящиеся в сущности hello
+* **RowKey** — уникальным образом идентифицирует сущность hello в секции hello
 
-**PartitionKey** и **RowKey** должны быть строковыми значениями. Дополнительные сведения см. в статье [Understanding the Table Service Data Model](http://msdn.microsoft.com/library/azure/dd179338.aspx) (Общие сведения о модели данных службы таблиц).
+**PartitionKey** и **RowKey** должны быть строковыми значениями. Дополнительные сведения см. в разделе [hello основные сведения о модели данных службы таблиц](http://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Ниже приводится пример задания сущности. Обратите внимание, что **dueDate** определяется как тип **Edm.DateTime**. Задание типа необязательно, типы будут определяться, если они не заданы.
+Hello ниже приведен пример определения сущности. Обратите внимание, что **dueDate** определяется как тип **Edm.DateTime**. Указание типа hello является необязательным, и типы будут будет выводиться, если не указана.
 
 ```nodejs
 var task = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'},
-  description: {'_':'take out the trash'},
+  description: {'_':'take out hello trash'},
   dueDate: {'_':new Date(2015, 6, 20), '$':'Edm.DateTime'}
 };
 ```
@@ -133,19 +133,19 @@ var task = {
 >
 >
 
-Чтобы создать сущность, можно также использовать **entityGenerator** . В следующем примере код создает сущность для той же задачи с использованием **entityGenerator**.
+Можно также использовать hello **entityGenerator** toocreate сущностей. Hello следующий пример создает hello одной сущности задачи с помощью hello **entityGenerator**.
 
 ```nodejs
 var entGen = azure.TableUtilities.entityGenerator;
 var task = {
   PartitionKey: entGen.String('hometasks'),
   RowKey: entGen.String('1'),
-  description: entGen.String('take out the trash'),
+  description: entGen.String('take out hello trash'),
   dueDate: entGen.DateTime(new Date(Date.UTC(2015, 6, 20))),
 };
 ```
 
-Чтобы добавить сущность в таблицу, передайте объект сущности в метод **insertEntity** .
+tooadd таблицу tooyour сущности передать hello сущности объекта toohello **insertEntity** метод.
 
 ```nodejs
 tableSvc.insertEntity('mytable',task, function (error, result, response) {
@@ -155,7 +155,7 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 });
 ```
 
-Если операция успешна, `result` будет содержать [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) вставленной записи, а `response` — информацию об операции.
+Если выполнена операция hello, `result` будет содержать hello [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) из hello вставить запись и `response` будет содержать сведения об операции hello.
 
 Пример ответа:
 
@@ -164,21 +164,21 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 ```
 
 > [!NOTE]
-> По умолчанию метод **insertEntity** не возвращает вставленную сущность как часть информации, содержащейся в `response`. Если вы хотите выполнить другие операции с этой сущностью или кэшировать информацию, необходимо, чтобы она была возвращена как часть `result`. Это можно сделать следующим образом, включив **echoContent** :
+> По умолчанию **insertEntity** не возвращает сущности hello вставлены в рамках hello `response` сведения. Если план для выполнения других операций в этой сущности, или если нужна toocache hello сведения, бывает полезно toohave, он возвращается как часть hello `result`. Это можно сделать следующим образом, включив **echoContent** :
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
 >
 >
 
 ## <a name="update-an-entity"></a>Обновление сущности
-Для обновления имеющейся сущности доступно несколько методов:
+Существует несколько методов, доступных tooupdate существующей сущности.
 
 * **replaceEntity** — обновляет имеющуюся сущность с ее заменой.
-* **mergeEntity** — обновляет сущность посредством объединения новых значений свойств с имеющейся сущностью.
+* **mergeEntity** -обновляет существующую сущность, объединив новых значений свойств в существующей сущности hello
 * **insertOrReplaceEntity** — обновляет имеющуюся сущность с ее заменой. Если сущность не существует, будет вставлена новая сущность.
-* **insertOrMergeEntity** — обновляет сущность посредством объединения новых значений свойств с имеющейся сущностью. Если сущность не существует, будет вставлена новая сущность.
+* **insertOrMergeEntity** -обновляет существующую сущность, объединяя новые значения свойств в существующую hello. Если сущность не существует, будет вставлена новая сущность.
 
-В следующем примере показано обновление сущности с помощью **replaceEntity**.
+Hello ниже приведен пример обновления сущности, используя **replaceEntity**:
 
 ```nodejs
 tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response){
@@ -189,36 +189,36 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 ```
 
 > [!NOTE]
-> По умолчанию обновление сущности не проверяет, были ли обновляемые данные ранее изменены другим процессом. Поддержка одновременных обновлений:
+> По умолчанию обновление сущности не проверяет toosee если обновляемые данные hello ранее был изменен другим процессом. toosupport одновременных обновлений:
 >
-> 1. Получите ETag обновляемого объекта. Он возвращается в составе `response` для всех операций с сущностями и может быть извлечен с помощью `response['.metadata'].etag`.
-> 2. При выполнении операции обновления с сущностью предварительно добавьте информацию ETag, извлеченную для новой сущности. Например:
+> 1. Получение hello ETag обновляемый объект hello. Это значение возвращается как часть hello `response` для любой операции, связанные сущности и можно извлечь с помощью `response['.metadata'].etag`.
+> 2. При выполнении операции обновления на сущность, добавьте новую сущность toohello ранее получить сведения о hello ETag. Например:
 >
 >       entity2['.metadata'].etag = currentEtag;
-> 3. Выполните операцию обновления. Если сущность была изменена с момента получения значения ETag, например, другим экземпляром вашего приложения, будет возвращена ошибка `error` , указывающая, что определенное в запросе условие обновления не выполнено.
+> 3. Выполните операцию обновления hello. Если сущность hello была изменена с момента получения hello значение ETag, такие как другой экземпляр приложения, `error` будет возвращаться о том, что не выполнено условие обновления hello, указанный в запросе hello.
 >
 >
 
-Если при использовании **replaceEntity** и **mergeEntity** обновляемая сущность не существует, операция завершается ошибкой. Поэтому, если вы хотите сохранить сущность независимо от того, существует она или нет, используйте метод **insertOrReplaceEntity** или **insertOrMergeEntity**.
+С **replaceEntity** и **mergeEntity**, если hello сущности, которая обновляется не существует, то произойдет сбой операции обновления hello. Поэтому toostore сущности независимо от того, является ли он уже существует, используйте **insertOrReplaceEntity** или **insertOrMergeEntity**.
 
-`result` должен содержать значение **Etag** обновленной сущности в случае успешного выполнения операций.
+Hello `result` для успешного обновления операции будет содержать hello **Etag** hello обновить сущности.
 
 ## <a name="work-with-groups-of-entities"></a>Работа с группами сущностей
-Иногда имеет смысл отправлять совместно несколько операций в пакете для атомарной обработки сервером. Чтобы сделать это, используйте класс **TableBatch** для создания пакета, а затем метод **executeBatch** из **TableService** для выполнения пакетных операций.
+Иногда он делает toosubmit смысле несколько операций друг с другом в tooensure пакета atomic обработки сервером hello. tooaccomplish, использовать hello **TableBatch** класса toocreate пакета, а затем использовать hello **executeBatch** метод **TableService** tooperform hello пакетные операции.
 
- В следующем примере показана отправка двух сущностей в пакете:
+ Следующий пример Hello демонстрируется отправка две сущности в пакете:
 
 ```nodejs
 var task1 = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'},
-  description: {'_':'Take out the trash'},
+  description: {'_':'Take out hello trash'},
   dueDate: {'_':new Date(2015, 6, 20)}
 };
 var task2 = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '2'},
-  description: {'_':'Wash the dishes'},
+  description: {'_':'Wash hello dishes'},
   dueDate: {'_':new Date(2015, 6, 20)}
 };
 
@@ -234,41 +234,41 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 });
 ```
 
-В успешных пакетных операциях `result` содержит информацию обо всех операциях в пакете.
+Для успешного пакетных операций `result` будет содержать сведения для каждой операции в пакете hello.
 
 ### <a name="work-with-batched-operations"></a>Работа с пакетными операциями
-Операции, добавленные в пакет, можно проверить, просмотрев свойство `operations` . Для работы с операциями можно также использовать следующие методы:
+Операции добавлены tooa пакета можно проверить, просмотрев hello `operations` свойство. Можно также использовать следующие методы toowork с операциями hello:
 
 * **clear** — удаляет все операции из пакета.
-* **getOperations** — получает операцию из пакета.
-* **hasOperations** — возвращает значение true, если пакет содержит операции.
+* **getOperations** -возвращает операции в пакете hello
+* **hasOperations** -возвращает значение true, если пакет hello содержит операции
 * **removeOperations** — удаляет операцию.
-* **size** — возвращает количество операций в пакете.
+* **размер** -возвращает hello количество операций в пакете hello
 
 ## <a name="retrieve-an-entity-by-key"></a>Получение сущности по ключу
-Чтобы возвратить определенную сущность на основе значений ключей **PartitionKey** и **RowKey**, используйте метод **retrieveEntity**.
+определенной сущности на основании hello tooreturn **PartitionKey** и **RowKey**, использовать hello **retrieveEntity** метод.
 
 ```nodejs
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
   if(!error){
-    // result contains the entity
+    // result contains hello entity
   }
 });
 ```
 
-После завершения этой операции `result` будет содержать сущность.
+После завершения этой операции `result` будет содержать сущность hello.
 
 ## <a name="query-a-set-of-entities"></a>Запрос набора сущностей
-Чтобы запросить таблицу, используйте объект **TableQuery** для создания выражения запроса с помощью следующих предложений:
+tooquery таблицы, используйте hello **TableQuery** toobuild выражение запроса, с помощью следующих предложений hello объекта:
 
-* **select** — поля, возвращаемые из запроса.
-* **where** — предложение where.
+* **Выберите** -toobe hello полей, возвращаемых запросом hello
+* **где** — hello где предложения
 
   * **and** — условие `and` в предложении where.
   * **or** — условие `or` в предложении where.
-* **top** — количество извлекаемых элементов.
+* **Начало** -количество элементов toofetch hello
 
-Следующий пример собирает запрос, который возвращает первые пять элементов с использованием ключа PartitionKey со значением hometasks.
+Hello следующий пример строится запрос, возвращающий hello top пяти элементов с PartitionKey «hometasks».
 
 ```nodejs
 var query = new azure.TableQuery()
@@ -276,7 +276,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-Так как параметр **select** не используется, возвращаются все поля. Чтобы выполнить запрос сущности в таблице, используйте **queryEntities**. В следующем примере используется запрос для возврата сущностей из таблицы 'mytable'.
+Так как параметр **select** не используется, возвращаются все поля. tooperform hello запрос к таблице, используйте **queryEntities**. Hello следующий пример использует этот tooreturn запросы к сущностям из «mytable».
 
 ```nodejs
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -286,11 +286,11 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-В случае успешного выполнения `result.entries` будет содержать массив сущностей, соответствующих запросу. Если запросу не удалось вернуть все сущности, `result.continuationToken` не будет иметь значение*null* и его можно будет использовать в качестве третьего параметра **queryEntities** для получения других результатов. В начальном запросе третий параметр должен иметь значение *null* .
+В случае успешного выполнения `result.entries` будет содержать массив объектов, соответствующих запросу hello. Если hello запроса было невозможно tooreturn все сущности `result.continuationToken` будет отличных*null* и может использоваться как hello третий параметр **queryEntities** tooretrieve дополнительных результатов. Начальный запрос hello, используйте *null* для третьего параметра hello.
 
 ### <a name="query-a-subset-of-entity-properties"></a>Запрос подмножества свойств сущности
-Запрос к таблице может получить лишь несколько полей сущности.
-Этот позволяет снизить потребление пропускной способности и может повысить производительность запросов, особенно для крупных сущностей. С помощью предложения **select** передайте имена возвращаемых полей. Например, следующий запрос возвратит только поля **description** и **dueDate**.
+Таблицы tooa запроса можно получить лишь несколько полей из сущности.
+Этот позволяет снизить потребление пропускной способности и может повысить производительность запросов, особенно для крупных сущностей. Используйте hello **выберите** возвращается предложения и передайте hello имена полей toobe hello. Например, hello следующий запрос возвращает только hello **описание** и **dueDate** поля.
 
 ```nodejs
 var query = new azure.TableQuery()
@@ -300,7 +300,7 @@ var query = new azure.TableQuery()
 ```
 
 ## <a name="delete-an-entity"></a>Удаление сущности
-Сущность можно удалить с помощью ее ключей раздела и строки. В этом примере объект **task1** содержит значения ключей **RowKey** и **PartitionKey** удаляемой сущности. Затем этот объект передается в метод **deleteEntity** .
+Сущность можно удалить с помощью ее ключей раздела и строки. В этом примере hello **task1** объект содержит hello **RowKey** и **PartitionKey** значения toobe сущности hello удален. Затем hello объекта передается toohello **deleteEntity** метод.
 
 ```nodejs
 var task = {
@@ -316,12 +316,12 @@ tableSvc.deleteEntity('mytable', task, function(error, response){
 ```
 
 > [!NOTE]
-> Следует рассмотреть использование тегов ETag при удалении элементов, чтобы гарантировать отсутствие в них изменений, внесенных другим процессом. Сведения об использовании тегов ETag см. в разделе [Обновление сущности](#update-an-entity).
+> Рассмотрите возможность использования теги eTag, при удалении элементов, tooensure, hello элемента еще не были изменены другим процессом. Сведения об использовании тегов ETag см. в разделе [Обновление сущности](#update-an-entity).
 >
 >
 
 ## <a name="delete-a-table"></a>Удаление таблицы
-Следующий код удаляет таблицу из учетной записи хранения.
+Привет, следующий код удаляет таблицу из учетной записи хранения.
 
 ```nodejs
 tableSvc.deleteTable('mytable', function(error, response){
@@ -331,14 +331,14 @@ tableSvc.deleteTable('mytable', function(error, response){
 });
 ```
 
-Если неизвестно, существует ли таблица, используйте **deleteTableIfExists**.
+Если неизвестно, существует ли таблица hello, используйте **deleteTableIfExists**.
 
 ## <a name="use-continuation-tokens"></a>Использование маркеров продолжения
-При выполнении запросов к таблицам для получения больших объемов результатов следует искать маркеры продолжения. По вашему запросу может быть найден большой объем данных, который, возможно, не удастся реализовать, если не создать метод определения наличия маркера продолжения.
+При выполнении запросов к таблицам для получения больших объемов результатов следует искать маркеры продолжения. Может существовать больших объемов данных, могут не узнать, если при наличии токен продолжения не создавайте toorecognize запроса.
 
-При наличии такого маркера объект результатов, возвращаемый при запросе сущностей, задает свойство `continuationToken` . В последствии его можно использовать при выполнении запроса для продолжения и перемещения между разделами и сущностями таблицы.
+результаты Hello объекта, возвращенного во время запроса наборов сущностей `continuationToken` свойства при наличии такой токен. Это затем можно использовать при выполнении запроса toocontinue toomove между сущностями hello секции и таблицы.
 
-При выполнении запросов для экземпляра объекта запроса и функции обратного вызова можно указать параметр continuationToken:
+При выполнении запросов, параметр continuationToken может предоставляться между экземпляром объекта запроса hello и функция обратного вызова hello:
 
 ```nodejs
 var nextContinuationToken = null;
@@ -357,16 +357,16 @@ dc.table.queryEntities(tableName,
     });
 ```
 
-Если обратиться к объекту `continuationToken`, то вы обнаружите, что он имеет такие свойства, как `nextPartitionKey`, `nextRowKey` и `targetLocation`, которые можно использовать для итерации по всем результатам.
+Если проверить hello `continuationToken` объект, свойства будут находиться такие как `nextPartitionKey`, `nextRowKey` и `targetLocation`, которую можно использовать tooiterate по результатам всех hello.
 
-Кроме того, на сайте GitHub в репозитории Node.js для службы хранилища Azure есть пример использования маркеров продолжения. Поищите `examples/samples/continuationsample.js`.
+Также есть пример продолжения в пределах репозиторию hello Node.js хранилища Azure на GitHub. Поищите `examples/samples/continuationsample.js`.
 
 ## <a name="work-with-shared-access-signatures"></a>Работа с подписями общего доступа
-Подписанные URL-адреса (SAS) — безопасный способ предоставить детальный доступ к таблицам без указания имени или ключей своей учетной записи хранения. SAS часто используется для предоставления ограниченного доступа к данным, например, позволяет мобильному приложению запрашивать записи.
+Подписи общего доступа (SAS) являются tootables детального доступа tooprovide безопасным способом, без указания имени учетной записи хранения или ключи. SAS чаще используется tooprovide ограниченный доступ tooyour данных, например разрешение записи tooquery мобильного приложения.
 
-Надежное приложение, например облачная служба, создает подписанный URL-адрес с помощью метода **generateSharedAccessSignature** из **TableService** и передает этот адрес ненадежному или частично надежному приложению, например мобильному приложению. Подпись SAS создается с использованием политики, которая описывает даты начала и окончания срока действия SAS, а также уровень доступа, который предоставляется держателю подписи SAS.
+Доверенного приложения, такие как облачная служба создает подписанный URL-адрес с помощью hello **generateSharedAccessSignature** из hello **TableService**и предоставляет его tooan приложения с частичным доверием или без доверия Например, мобильные приложения. Hello SAS создается с помощью политики, которая описывает hello начала и окончания в какой hello действует SAS, а также hello владельца SAS уровня toohello предоставленный доступ.
 
-В следующем примере создается новая общая политика, которая позволяет держателю подписи SAS запрашивать ('r') в таблице в течение 100 минут с момента своего создания.
+Hello следующий пример создает новую политику общего доступа, который позволит hello таблицы hello SAS владельца tooquery («r») и истечения срока действия 100 минут после hello время его создания.
 
 ```nodejs
 var startDate = new Date();
@@ -386,9 +386,9 @@ var tableSAS = tableSvc.generateSharedAccessSignature('mytable', sharedAccessPol
 var host = tableSvc.host;
 ```
 
-Обратите внимание, что также должна быть предоставлена информация узла, поскольку она требуется держателю SAS для совершения попыток доступа к таблице.
+Обратите внимание, что сведения об узле hello должен предоставляемых также, при необходимости при владельца SAS hello попытке tooaccess hello таблицы.
 
-Клиентское приложение далее использует подпись SAS с помощью **TableServiceWithSAS** для выполнения операций с таблицей. Следующий пример выполняет подключение к таблице и выполняет запрос.
+Здравствуйте клиентское приложение, а затем использует hello SAS с **TableServiceWithSAS** tooperform операций hello для таблицы. Следующий пример Hello подключается toohello таблицы и выполняет запрос.
 
 ```nodejs
 var sharedTableService = azure.createTableServiceWithSas(host, tableSAS);
@@ -397,17 +397,17 @@ var query = azure.TableQuery()
 
 sharedTableService.queryEntities(query, null, function(error, result, response) {
   if(!error) {
-    // result contains the entities
+    // result contains hello entities
   }
 });
 ```
 
-Поскольку подпись SAS была создана только для доступа с выполнение запроса, если выполняется попытка вставки, обновления или удаления сущностей, будет возвращена ошибка.
+Поскольку hello SAS был сформирован с использованием только доступ запроса, если были предпринята попытка tooinsert, обновления или удаления сущности, будет возвращена ошибка.
 
 ### <a name="access-control-lists"></a>Списки управления доступом
-Можно также использовать список управления доступом (ACL) для задания политики доступа подписи SAS. Это может оказаться полезным, когда необходимо предоставить доступ к таблице нескольким клиентам, но с различной политикой доступа для каждого из них.
+Также можно использовать политику доступа hello tooset список управления доступом (ACL) для SAS. Это полезно в том случае, если хотите tooallow таблицы hello tooaccess несколько клиентов, но добавлены политики различный уровень доступа для каждого клиента.
 
-ACL реализуется с помощью массива политик доступа, каждая из которых связана со своим идентификатором. В следующем примере определяются две политики, по одной для пользователей user1 и user2:
+ACL реализуется с помощью массива политик доступа, каждая из которых связана со своим идентификатором. Следующий пример Hello определяет две политики: для «user1» и для «user2»:
 
 ```nodejs
 var sharedAccessPolicy = {
@@ -424,7 +424,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-В этом примере код получает текущий список ACL для таблицы **hometasks**, а затем добавляет новые политики с помощью **setTableAcl**. Такой подход допускает выполнение:
+Следующий пример возвращает Hello hello текущего списка управления Доступом для hello **hometasks** таблицы, а затем добавляет hello новые политики с помощью **setTableAcl**. Такой подход допускает выполнение:
 
 ```nodejs
 var extend = require('extend');
@@ -440,16 +440,16 @@ if(!error){
 });
 ```
 
-После задания ACL можно создать подпись SAS на основе идентификатора политики. В следующем примере создается новая подпись SAS для пользователя 'user2':
+Один раз hello ACL было указано, можно создать на основе кода hello политики SAS. Привет, следующий пример создает новый SAS для «user2»:
 
 ```nodejs
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Для получения дополнительных сведений см. следующие ресурсы.
+Дополнительные сведения см. в разделе hello следующие ресурсы.
 
-* [Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) — это бесплатное автономное приложение от корпорации Майкрософт, позволяющее визуализировать данные из службы хранилища Azure на платформе Windows, macOS и Linux.
+* [Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) является бесплатной, отдельное приложение от Майкрософт, позволяющая toowork визуально с помощью данных из хранилища Azure в Windows, macOS и Linux.
 * [Пакет SDK службы хранилища Azure для Node](https://github.com/Azure/azure-storage-node) на веб-сайте GitHub.
-* [центре разработчиков Node.js](/develop/nodejs/)
-* [Создание приложения Node.js и его развертывание на веб-сайт Azure](../app-service-web/app-service-web-get-started-nodejs.md)
+* [Центр разработчиков Node.js.](/develop/nodejs/)
+* [Создание и развертывание tooan приложений Node.js веб-сайте Azure](../app-service-web/app-service-web-get-started-nodejs.md)

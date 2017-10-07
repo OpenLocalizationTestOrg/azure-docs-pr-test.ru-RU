@@ -1,6 +1,6 @@
 ---
-title: "Развертывание шаблонов с помощью PowerShell в стек Azure | Документы Microsoft"
-description: "Дополнительные сведения о развертывании виртуальной машины с помощью шаблона диспетчера ресурсов и PowerShell."
+title: "шаблоны aaaDeploy с помощью PowerShell в стек Azure | Документы Microsoft"
+description: "Узнайте, как toodeploy виртуальной машины с помощью шаблона диспетчера ресурсов и PowerShell."
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: helaw
-ms.openlocfilehash: 1f443898bcb9b422fc2db46f4e389ae51b043d87
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: fb0d4b190e058b3c5c1273b6c91fc3d72dedeb1c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-templates-in-azure-stack-using-powershell"></a>Развертывание шаблонов в Azure Stack с помощью PowerShell
-Использование PowerShell для развертывания пакета средств разработки Azure стека шаблонов диспетчера ресурсов Azure.  Шаблоны диспетчера ресурсов, развертывание и предоставление все ресурсы для приложения в один, согласованной операции.
+С помощью PowerShell toodeploy диспетчера ресурсов Azure шаблоны toohello пакет средств разработки Azure стека.  Шаблоны диспетчера ресурсов, развертывание и предоставление все ресурсы для приложения в один, согласованной операции.
 
 ## <a name="run-azurerm-powershell-cmdlets"></a>Выполнение командлетов PowerShell для AzureRM
-В этом примере выполнить сценарий для развертывания виртуальной машины в комплекте разработки Azure стека с помощью шаблона диспетчера ресурсов.  Прежде чем продолжить, убедитесь в наличии [настроить PowerShell](azure-stack-powershell-configure-user.md)  
+В этом примере выполняется toodeploy сценарий виртуальной машины tooAzure стека пакет средств разработки с помощью шаблона диспетчера ресурсов.  Прежде чем продолжить, убедитесь в наличии [настроить PowerShell](azure-stack-powershell-configure-user.md)  
 
-Виртуальный жесткий ДИСК, используемый в данном примере шаблоне — WindowsServer 2012-R2 Datacenter.
+Hello VHD, используемые в данном примере шаблоне — WindowsServer 2012-R2 Datacenter.
 
-1. Последовательно выберите пункты <http://aka.ms/AzureStackGitHub>, поиск **101-simple-windows-vm** шаблона и сохраните его в следующее расположение: c:\\шаблоны\\ azuredeploy-101-simple-windows-vm.json.
-2. В PowerShell выполните следующий сценарий развертывания. Замените *username* и *пароль* имя пользователя и пароль. При последующем использовании увеличить значение для *$myNum* параметр для предотвращения перезаписи развертывания.
+1. Go слишком<http://aka.ms/AzureStackGitHub>, поиск hello **101-simple-windows-vm** шаблона и сохраните его toohello следующие расположения: c:\\шаблоны\\ azuredeploy-101-simple-windows-vm.json.
+2. В PowerShell запустите следующий скрипт развертывания hello. Замените *username* и *пароль* имя пользователя и пароль. При последующем использовании увеличивать значение hello для hello *$myNum* tooprevent параметр перезаписи развертывания.
    
    ```PowerShell
        # Set Deployment Variables
@@ -52,7 +52,7 @@ ms.lasthandoff: 08/29/2017
            -VmName myVM$myNum `
            -WindowsOSVersion 2012-R2-Datacenter
    ```
-3. Открыть портала, нажмите кнопку Azure стека **Обзор**, нажмите кнопку **виртуальные машины**и найдите на новую виртуальную машину (*myDeployment001*).
+3. Откройте hello Azure стека, щелкните **Обзор**, нажмите кнопку **виртуальные машины**и найдите на новую виртуальную машину (*myDeployment001*).
 
 
 ## <a name="next-steps"></a>Дальнейшие действия

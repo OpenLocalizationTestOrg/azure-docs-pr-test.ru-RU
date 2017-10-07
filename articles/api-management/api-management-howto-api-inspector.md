@@ -1,6 +1,6 @@
 ---
-title: "Трассировка вызовов с помощью инспектора API в службе управления API Azure | Документация Майкрософт"
-description: "Сведения о трассировке вызовов с помощью инспектора API в службе управления API Azure."
+title: "aaaTrace вызовы в инспекторе API - интерфейса API управления Azure | Документы Microsoft"
+description: "Узнайте, как с помощью вызовов tootrace hello инспектора API в Azure API Management."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,65 +14,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: a9d4d3be7f046af975f6dc25670070204848588c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b0c401caa8da1b789f6cfe5edf97a5f118d78f26
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>Как использовать инспектор API для трассировки вызовов в Azure API Management
-Служба управления содержит инспектор API, которое позволяет выполнять отладку и устранять неполадки интерфейсов API. Инспектор API может использоваться на программном уровне, а также напрямую из портала разработчика. 
+# <a name="how-toouse-hello-api-inspector-tootrace-calls-in-azure-api-management"></a>Как hello toouse tootrace инспектора API вызывает в службе управления API Azure
+Управление API предоставляет API инспектор toohelp средство вам отладки и их устранение собственные интерфейсы API. Hello инспектора API можно использовать программно и также может использоваться непосредственно с портала разработчиков hello. 
 
-Помимо операций трассировки, инспектор API также отслеживает оценку [выражений политики](https://msdn.microsoft.com/library/azure/dn910913.aspx). Демонстрацию см. в видеоролике [Cloud Cover, эпизод 177: возможности управления API](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (перемотайте до 21:00).
+Кроме операций tootracing инспектора API также отслеживает [выражение политики](https://msdn.microsoft.com/library/azure/dn910913.aspx) оценок. Демонстрацию см. в разделе [177 серии охватывают облачные: более функции API-Интерфейсов управления](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) и too21:00 Перемотка вперед.
 
 Это руководство содержит пошаговые инструкции по использованию инспектора API.
 
 > [!NOTE]
-> Трассировка инспектором API доступна только для запросов, содержащих ключи подписки, принадлежащие учетной записи [администратора](api-management-howto-create-groups.md) .
+> Инспектор API трассировки только создаются и доступен для запросов, содержащий ключи подписки, принадлежащие toohello [администратора](api-management-howto-create-groups.md) учетной записи.
 > 
 > 
 
-## <a name="trace-call"> </a> Использование инспектора API для трассировки вызова
-Для использования инспектора API добавьте заголовок запроса **ocp-apim-trace: true** в вызов операции, а затем скачайте и проверьте данные трассировки с помощью URL-адреса, указанного в заголовке ответа **ocp-apim-trace-location**. Это можно сделать на программном уровне или прямо на портале разработчика.
+## <a name="trace-call"></a> Tootrace использования API инспектора вызов
+добавить toouse инспектора API **ocp apim трассировки: true** запроса вызова операции tooyour заголовок, а затем загрузите и проверять hello трассировки при помощи URL-адрес hello обозначается hello **ocp apim трассировки расположение** Заголовок ответа. Это можно сделать программным путем и можно также непосредственно с портала разработчиков hello.
 
-В этом руководстве объясняется, как с помощью инспектора API отслеживать операции, используя API "Базовый калькулятор", настроенный с помощью руководства [Начало работы со службой управления Azure API](api-management-get-started.md). Если вы еще не ознакомились с этим учебником, вам понадобится всего несколько секунд, чтобы импортировать базовый API калькулятора. Кроме того, можно использовать другой API по своему выбору, например Echo API. Каждый экземпляр службы API Management поставляется предварительно настроенным с Echo API, с которым можно экспериментировать при изучении API Management. Echo API возвращает всю отправленную в него информацию. Для его использования можно вызвать любую команду HTTP, и возвращаемое значение будет просто содержать все отправленные данные. 
+В этом учебнике показано, как toouse hello API инспектора tootrace операций с использованием hello базовый API калькулятора, настроенного в hello [управление первый API](api-management-get-started.md) учебник по началу работы. Если вы еще не выполнили этого учебника занимает всего несколько секунд tooimport hello базовый API-Интерфейс калькулятора или другой API по своему выбору, например hello Echo API можно использовать. Каждый экземпляр службы управления API поставляется в предварительно настроенную Echo API, который можно использовать tooexperiment с и Дополнительные сведения о службе управления API. Hello Echo API возвращает обратно независимо от входных данных отправляется tooit. toouse, могут вызывать любой HTTP-команда, и hello будет возвращено значение просто был отправлен. 
 
-Чтобы приступить к работе, на портале Azure щелкните **Портал разработчика** для службы управления API. Операции можно вызывать напрямую из портала разработчика, в который встроен удобный способ просмотра и проверки операций API.
+tooget работу, нажмите кнопку **портал разработчиков** в hello портала Azure для службы управления API. Операции могут вызываться непосредственно из портала разработчиков hello, который предоставляет удобный способ tooview и протестировать hello операции API-интерфейса.
 
-> Если вы еще не создали экземпляр службы управления API, см. раздел [Создание экземпляра управления API][Create an API Management service instance] в руководстве [Начало работы со службой управления Azure API][Get started with Azure API Management].
+> Если вы еще не создали экземпляра службы управления API, см. раздел [создания экземпляра службы управления API] [ Create an API Management service instance] в hello [приступить к работе со службой управления API Azure] [ Get started with Azure API Management] учебника.
 > 
 > 
 
 ![Портал разработчика API Management][api-management-developer-portal-menu]
 
-Щелкните **API** в верхнем меню, а затем выберите **Базовый калькулятор**.
+Нажмите кнопку **API-интерфейсы** hello верхнем меню, и нажмите кнопку **калькулятору**.
 
 ![Echo API][api-management-api]
 
-Чтобы вызвать операцию **Сложение двух целых**, нажмите кнопку **Попробовать**.
+Нажмите кнопку **опробовать** tootry hello **добавьте два целых числа** операции.
 
 ![Попробовать][api-management-open-console]
 
-Оставьте значения параметров по умолчанию и выберите ключ подписки для продукта, который необходимо использовать, в раскрывающемся списке **Ключ подписки** .
+Сохранить значения параметров по умолчанию hello и ключ подписки выберите hello hello продукта требуется toouse hello **ключ подписки** раскрывающегося списка.
 
-По умолчанию заголовок **Ocp-Apim-Trace** на портале разработчика уже имеет значение **true**. Этот заголовок указывает, должны ли создаваться трассировки.
+По умолчанию в hello портала разработчиков hello **Ocp Apim трассировке** заголовок уже задан слишком**true**. Этот заголовок указывает, должны ли создаваться трассировки.
 
-![Отправить][api-management-http-get]
+![Отправка][api-management-http-get]
 
-Нажмите кнопку **Отправить** , чтобы выполнить операцию.
+Нажмите кнопку **отправки** tooinvoke hello операции.
 
-![Отправить][api-management-send-results]
+![Отправка][api-management-send-results]
 
-Заголовки ответа будут содержать **ocp-apim-trace-location** со значением, подобным на значение в следующем примере.
+Заголовки ответа hello будет **ocp apim трассировки расположение** с аналогичные toohello значение, следующий пример.
 
 ```
 ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net/apiinspectorcontainer/ZW3e23NsW4wQyS-SHjS0Og2-2?sv=2013-08-15&sr=b&sig=Mgx7cMHsLmVDv%2B%2BSzvg3JR8qGTHoOyIAV7xDsZbF7%2Bk%3D&se=2014-05-04T21%3A00%3A13Z&sp=r&verify_guid=a56a17d83de04fcb8b9766df38514742
 ```
 
-Данные трассировки можно скачать из указанного местоположения и проанализировать, как показано на следующем этапе. Обратите внимание, что сохраняются только последние 100 записей журнала и расположения журналов повторно используются в порядке очереди. Поэтому если сделано более 100 вызовов с включенной трассировкой, то в конечном счете начнут перезаписываться данные первых трассировок.
+Hello трассировки можно загрузить из hello определенное место и проверки, как показано в следующем шаге hello. Обратите внимание, что сохраняются только hello последние 100 записей журнала расположения журнала используются повторно в поворота. Таким образом, если более чем 100 вызовов с включенной трассировкой в конечном итоге сначала перезапись hello первый трассировок на месте.
 
-## <a name="inspect-trace"> </a>Проверка данных трассировки
-Для анализа значений трассировки загрузите файл с результатами трассировки, используя URL-адрес **ocp-apim-trace-location** . Это текстовый файл в формате JSON, который содержит записи, подобные на записи в следующем примере.
+## <a name="inspect-trace"></a>Проверки hello трассировки
+tooreview hello значений в трассировке hello, загрузите файл трассировки hello из hello **ocp apim трассировки расположение** URL-адрес. — Это текстовый файл в формате JSON и содержит аналогичные toohello записей следующий пример.
 
 ```json
 {
@@ -144,7 +144,7 @@ ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net
                 "timestamp": "2015-06-23T19:51:35.2998610Z",
                 "elapsed": "00:00:00.0727522",
                 "data": {
-                    "message": "Request is being forwarded to the backend service.",
+                    "message": "Request is being forwarded toohello backend service.",
                     "request": {
                         "method": "GET",
                         "url": "http://calcapi.cloudapp.net/api/add?a=51&b=49",
@@ -219,7 +219,7 @@ ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net
                 "timestamp": "2015-06-23T19:51:35.4256650Z",
                 "elapsed": "00:00:00.1961112",
                 "data": {
-                    "message": "Response headers have been sent to the caller. Starting to stream the response body."
+                    "message": "Response headers have been sent toohello caller. Starting toostream hello response body."
                 }
             },
             {
@@ -227,7 +227,7 @@ ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net
                 "timestamp": "2015-06-23T19:51:35.4256650Z",
                 "elapsed": "00:00:00.1963155",
                 "data": {
-                    "message": "Response body streaming to the caller is complete."
+                    "message": "Response body streaming toohello caller is complete."
                 }
             }
         ]
@@ -236,14 +236,14 @@ ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net
 ```
 
 ## <a name="next-steps"> </a>Дальнейшие действия
-* Посмотрите видеоруководство по выражениям политики трассировки в ролике [Cloud Cover Episode 177: More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Перемотайте демонстрацию до 21:00.
+* Посмотрите видеоруководство по выражениям политики трассировки в ролике [Cloud Cover Episode 177: More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Демонстрация hello toosee too21:00 перемотки вперед.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Cloud+Cover/Episode-177-More-API-Management-Features-with-Vlad-Vinogradsky/player]
 > 
 > 
 
-[Use API Inspector to trace a call]: #trace-call
-[Inspect the trace]: #inspect-trace
+[Use API Inspector tootrace a call]: #trace-call
+[Inspect hello trace]: #inspect-trace
 [Next steps]: #next-steps
 
 [Configure API settings]: api-management-howto-create-apis.md#configure-api-settings

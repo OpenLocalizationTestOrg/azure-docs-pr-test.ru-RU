@@ -1,6 +1,6 @@
 ---
-title: "Интерфейсы API для выставления счетов Azure корпоративным клиентам: платежи в Marketplace | Документация Майкрософт"
-description: "Узнайте, как с помощью интерфейсов API отчетов для корпоративных клиентов Azure извлекать данные о потреблении программным способом."
+title: "aaaAzure выставления счетов Enterprise API-интерфейсов - о расходах в Marketplace | Документы Microsoft"
+description: "Дополнительные сведения о hello API отчетов, которые программным образом включить корпоративных клиентов toopull потребления данных Azure."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 5539623f7ae35e14b6dafe6fdf9efe4bcaba4fd3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cdf2836b52df06a4bf5ed71a476fe33662c5363c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---marketplace-store-charge"></a>API-интерфейсы отчетов для корпоративных клиентов: платежи в Marketplace
 
-Интерфейс API платежей в Marketplace предоставляет сводку о расходах в Marketplace с разбивкой по дням. Данные основаны на фактическом использовании и отображаются для указанного расчетного периода или дат начала и окончания (однократные сборы не включаются).
+Hello декомпозиции API платы магазина Marketplace возвращает hello marketplace с учетом использования расходов по дням для hello указан период выставления счетов или даты начала и окончания (сборов за один раз, не включены).
 
 ##<a name="request"></a>Запрос 
-Общие свойства заголовка, которые необходимо добавить, указываются [здесь](billing-enterprise-api.md). Если расчетный период не указан, то возвращаются данные за текущий расчетный период. Настраиваемые диапазоны времени можно указать с помощью параметров даты начала и окончания, которые вводятся в формате гггг-ММ-дд. Максимальный поддерживаемый диапазон времени — 36 месяцев.  
+Задаются общие свойства заголовка, которые необходимо добавить toobe [здесь](billing-enterprise-api.md). Если периода выставления счетов не указан, данные для выставления счетов hello для текущего периода возвращается. Пользовательские временных диапазонов могут быть заданы с начала hello и окончания параметры даты, которые находятся в hello формат гггг мм дд максимальное hello поддерживается время диапазон: 36 месяцев.  
 
 |Метод | URI запроса|
 |-|-|
@@ -35,7 +35,7 @@ ms.lasthandoff: 08/03/2017
 |ПОЛУЧЕНИЕ|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/marketplacechargesbycustomdate?startTime=2017-01-01&endTime=2017-01-10|
 
 > [!Note]
-> Чтобы использовать предварительную версию API, измените v2 на v1 в URL-адресе выше.
+> toouse hello предварительную версию API, замените v2 v1 в hello выше URL-адрес.
 >
 
 ## <a name="response"></a>Ответ
@@ -76,29 +76,29 @@ ms.lasthandoff: 08/03/2017
 
 |Имя свойства| Тип| Описание
 |-|-|-|
-|id|string|Уникальный идентификатор для элемента платежа в Marketplace|
-|subscriptionGuid|Guid|Идентификатор GUID подписки|
-|subscriptionName|string|Имя подписки|
-|meterId|string|Идентификатор для генерируемой метрики|
-|usageStartDate|DateTime|Время начала записи использования|
-|usageEndDate|DateTime|Время окончания записи использования|
-|offerName|string|Название предложения|
-|resourceGroup|string|Группа ресурсов|
+|id|string|Уникальный идентификатор для элемента платы hello marketplace|
+|subscriptionGuid|Guid|Hello Guid подписки|
+|subscriptionName|string|Hello имя подписки|
+|meterId|string|Идентификатор для hello создается индикатора|
+|usageStartDate|DateTime|Время начала для записи об использовании hello|
+|usageEndDate|DateTime|Время окончания для записи об использовании hello|
+|offerName|string|имя предложения Hello|
+|resourceGroup|string|Hello ресурсов группы|
 |instanceId|string|Идентификатор экземпляра|
 |additionalInfo|string|Строка JSON с дополнительной информацией|
 |tags|string|Строка JSON с тегами|
-|orderNumber|string|Порядковый номер|
-|unitOfMeasure|string|Единица измерения метрики|
-|costCenter|string|Место возникновения затрат|
-|accountId|int|Идентификатор учетной записи|
-|accountName|string |Имя учетной записи|
-|accountOwnerId|string|Идентификатор владельца учетной записи|
-|departmentId|int|Идентификатор отдела|
-|departmentName|string|Название отдела|
-|publisherName|string|Имя издателя|
-|planName|string|Имя плана|
+|orderNumber|string|Номер заказа Hello|
+|unitOfMeasure|string|Единица измерения для индикатора hello|
+|costCenter|string|Центр затрат Hello|
+|accountId|int|Учетная запись Hello идентификатор|
+|accountName|string |Hello имя учетной записи|
+|accountOwnerId|string|Hello идентификатор владельца учетной записи|
+|departmentId|int|отдел Hello идентификатор|
+|departmentName|string|Название отдела Hello|
+|publisherName|string|Имя издателя Hello|
+|planName|string|Имя плана Hello|
 |consumedQuantity|decimal|Потребленный объем за этот период времени|
-|resourceRate|decimal|Цена единицы для метрики|
+|resourceRate|decimal|Цена единицы для индикатора hello|
 |extendedCost|decimal|Оценка расходов на основе потребленного объема и расширенных затрат|
 <br/>
 ## <a name="see-also"></a>См. также

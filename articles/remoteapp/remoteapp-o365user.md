@@ -1,6 +1,6 @@
 ---
-title: "Как использовать Azure RemoteApp с учетными записями пользователей Office 365 | Документация Майкрософт"
-description: "Узнайте, как использовать Azure RemoteApp с учетными записями пользователей Office 365"
+title: "toouse aaaHow Azure RemoteApp с учетными записями пользователей Office 365 | Документы Microsoft"
+description: "Узнайте, как toouse Azure RemoteApp с мои учетные записи пользователей Office 365"
 services: remoteapp
 documentationcenter: 
 author: piotrci
@@ -13,41 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 1bc8949c236afd03415f961cf7a657d4d3926b07
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d2dbed2a6838adf9bb0f7508eb7dcecb0a74a62f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-azure-remoteapp-with-office-365-user-accounts"></a>Использование Azure RemoteApp с учетными записями пользователей Office 365
+# <a name="how-toouse-azure-remoteapp-with-office-365-user-accounts"></a>Как toouse Azure RemoteApp с учетными записями пользователей Office 365
 > [!IMPORTANT]
-> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Дополнительные сведения см. в [объявлении](https://go.microsoft.com/fwlink/?linkid=821148).
+> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Чтение hello [объявления](https://go.microsoft.com/fwlink/?linkid=821148) подробные сведения.
 > 
 > 
 
-Если у вас есть подписка Office 365, то вы имеете каталог Azure Active Directory, в котором хранятся имена пользователей и пароли, используемые для доступа к службам Office 365. Например, когда пользователи активируют Office 365 ProPlus, они проходят проверку подлинности у Azure AD для подтверждения лицензии. Большинству пользователей хотелось бы использовать тот же каталог с Azure RemoteApp.
+Если у вас есть подписка Office 365, у вас Azure Active Directory, хранит именам пользователей и пароли использовать tooaccess службам Office 365. Например если пользователям активировать Office 365 профессиональный плюс их проверку подлинности toocheck Azure AD для лицензий. Большинство пользователей будет как toouse hello же каталога с Azure RemoteApp.
 
-При развертывании удаленного приложения Azure RemoteApp вы, скорее всего, будете использовать подписку, которая связана с другим каталогом Azure AD. Чтобы использовать каталог Office 365, необходимо переместить подписку Azure в этот каталог.
+При развертывании удаленного приложения Azure RemoteApp вы, скорее всего, будете использовать подписку, которая связана с другим каталогом Azure AD. В заказ toouse каталога Office 365, вы должны будете toomove hello подписки Azure в этот каталог.
 
-Сведения о развертывании клиентских приложений Office 365 см. в статье [Как использовать подписку Office 365 с удаленным приложением Azure RemoteApp](remoteapp-officesubscription.md).
+Сведения о том, как Office 365 toodeploy клиентских приложений, в разделе [как toouse подписки Office 365 в Azure RemoteApp](remoteapp-officesubscription.md).
 
 ## <a name="phase-1-register-your-free-office-365-azure-active-directory-subscription"></a>Этап 1. Регистрация бесплатной подписки Azure Active Directory для Office 365
-При использовании классического портала Azure следуйте инструкциям, приведенным в статье [Регистрация бесплатной подписки Azure Active Directory](https://technet.microsoft.com/library/dn832618.aspx) , чтобы получить административный доступ к Azure AD на портале управления Azure. В результате вы сможете войти на портал Azure и увидеть, что каталог существует — на этом этапе вы не увидите большего, так как полная подписка Azure, которую вы используете с удаленным приложением Azure RemoteApp, связана с другим каталогом.
+Если вы используете hello классический портал Azure, выполните шаги hello в [зарегистрировать бесплатную подписку Azure Active Directory](https://technet.microsoft.com/library/dn832618.aspx) tooyour tooget административного доступа Azure AD через портал управления Azure hello. В результате hello этого процесса необходимо будет toolog в hello портал Azure и видите свой каталог существует — на этом этапе вы не увидите гораздо более поскольку hello полной Azure подписку, которую вы используете Azure RemoteApp. находится в другом каталоге.
 
-Запомните имя и пароль учетной записи администратора, созданные на этом этапе — они потребуются на этапе 2.
+Запомнить hello имя и пароль учетной записи администратора hello, созданный на этом шаге — он понадобится на этапе 2.
 
-Если вы используете портал Azure, то ознакомьтесь со статьей [Регистрация и активация бесплатного каталога Azure Active Directory с помощью портала Office 365](http://azureblogger.com/2016/01/how-to-register-and-activate-a-free-azure-active-directory-using-office-365-portal/).
+При использовании портала Azure hello извлечь [как tooregister и активировать бесплатные Azure Active Directory, с помощью портала Office 365](http://azureblogger.com/2016/01/how-to-register-and-activate-a-free-azure-active-directory-using-office-365-portal/).
 
-## <a name="phase-2-change-the-azure-ad-associated-with-your-azure-subscription"></a>Этап 2. Изменение каталога Azure AD, связанного с вашей подпиской Azure.
-Мы собираемся изменить подписку Azure с текущего каталога подписки на каталог Office 365, с которым мы работали на этапе 1.
+## <a name="phase-2-change-hello-azure-ad-associated-with-your-azure-subscription"></a>Этап 2: Изменение hello Azure AD, связанные с подпиской Azure.
+Мы будем toochange вашей подписке Azure из текущего каталога в каталог hello Office 365, который мы работали на этапе 1.
 
-Следуйте инструкциям, описанным в разделе [Смена клиента Azure Active Directory в Azure RemoteApp](remoteapp-changetenant.md). Обратите особое внимание на следующие шаги:
+Следуйте инструкциям hello, описанным в [изменение клиента Azure Active Directory hello в Azure RemoteApp](remoteapp-changetenant.md). Обратите особое внимание toohello следующие шаги:
 
 * Шаг № 1. Если вы развернули удаленное приложение Azure RemoteApp (ARA) в этой подписке, удалите все учетные записи Azure AD из коллекций ARA перед выполнением дальнейших действий. Также можно удалить все существующие коллекции.
-* Шаг № 2. Этот шаг является особенно важным. В качестве администратора службы для этой подписки необходимо использовать учетную запись Майкрософт (например, @outlook.com). Это связано с тем, что к этой подписке не может быть привязана ни одна учетная запись пользователя из имеющегося каталога Azure AD, подключенная к данной подписке. Если она будет привязана, то мы не сможем переместить ее в другой каталог Azure AD.
-* Шаг № 4. При добавлении существующего каталога система выдаст запрос на вход с учетной записью администратора для этого каталога. Используйте учетную запись администратора, использованную на этапе 1.
-* Шаг № 5. Измените родительский каталог подписки на каталог Office 365. В результате в меню "Параметры" > "Подписки" для вашей подписки должен быть указан каталог Office 365. 
-  ![Изменение родительского каталога подписки](./media/remoteapp-o365user/settings.png)
+* Шаг № 2. Этот шаг является особенно важным. Требуется toouse учетную запись Майкрософт (например @outlook.com) как администратором службы для подписки hello; это, поскольку мы не может иметь все учетные записи пользователей из hello существующие подписки Azure AD присоединенного toohello — в этом мы не будет возможности toomove его tooa другой Azure AD.
+* Шаг #4: При добавлении существующего каталога, hello система выдаст запрос toosign с учетной записью администратора hello для этого каталога. Убедитесь, что учетная запись администратора toouse hello из этапа 1.
+* Шаг #5: Изменение hello родительский каталог tooyour Office 365 directory hello подписки. должен быть Hello конечный результат, что параметры -> подписок, подписки перечислены directory hello Office 365. 
+  ![Перейдите в каталог родительского hello hello подписки](./media/remoteapp-o365user/settings.png)
 
-На этом этапе ваша подписка Azure RemoteApp связана с каталогом Azure AD Office 365, и вы можете использовать существующие учетные записи пользователей Office 365 с Azure RemoteApp.
+На этом этапе подписки Azure RemoteApp связана с Office 365, Azure AD; hello существующих Office 365 учетных записей пользователей можно использовать с Azure RemoteApp!
 

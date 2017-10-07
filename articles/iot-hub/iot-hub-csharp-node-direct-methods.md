@@ -1,6 +1,6 @@
 ---
-title: "Использование прямых методов Центра Интернета вещей Azure (.NET или Node) | Документация Майкрософт"
-description: "Использование прямых методов Центра Интернета вещей Azure. Используйте пакет SDK для устройств Azure IoT для Node.js, чтобы реализовать приложение имитации устройства, включающее прямой метод, и пакет SDK для служб Azure IoT для .NET, чтобы реализовать приложение-службу, вызывающее прямой метод."
+title: "Центр IoT Azure aaaUse прямой методы (.NET или узел) | Документы Microsoft"
+description: "Как toouse центр IoT Azure направлять методы. Использовать устройства Azure IoT hello пакета SDK для Node.js tooimplement приложение имитированное устройство, которое включает прямой метод и hello Azure IoT служба пакета SDK для .NET tooimplement приложение службы, которое вызывает метод прямой hello."
 services: iot-hub
 documentationcenter: 
 author: nberdy
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/10/2017
 ms.author: nberdy
-ms.openlocfilehash: ad705789a153381e21b2ccb05d4e0c17f78671fd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f566f939be840eb308b00ffa4e05c4e5b3fefb39
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-direct-methods-netnode"></a>Использование прямых методов (.NET или Node)
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
 
-В этом руководстве мы разработаем консольное приложение .NET и Node.js.
+В этом учебнике мы будем toodevelop .NET и Node.js консольного приложения:
 
-* **CallMethodOnDevice.sln**, внутреннее приложение для .NET, которое вызывает метод в приложении имитации устройства и выводит ответ;
-* **TwinSimulatedDevice.js** — это приложение Node.js, имитирующее устройство, которое подключается к Центру Интернета вещей с созданным ранее удостоверением устройства и отвечает на метод, вызванный облаком.
+* **CallMethodOnDevice.sln**, приложении серверной части .NET, который вызывает метод в приложение hello имитированное устройство и отображает hello ответа.
+* **SimulatedDevice.js**, Node.js приложение, которое имитирует устройство соединение центра IoT tooyour с помощью удостоверения устройства hello, созданного ранее и отвечает toohello методе, вызванном hello облака.
 
 > [!NOTE]
-> Статья о [пакетах SDK для Центра Интернета вещей Azure][lnk-hub-sdks] содержит сведения о различных пакетах SDK, которые можно использовать для создания приложений, которые будут работать на устройствах и в серверной части решения.
+> статья Hello [пакеты SDK Azure IoT] [ lnk-hub-sdks] предоставляет сведения о hello Azure IoT пакетов SDK, которые можно использовать toobuild toorun обоих приложений на устройствах и серверной части вашего решения.
 > 
 > 
 
-Для работы с этим руководством необходимы указанные ниже компоненты.
+toocomplete этого учебника, необходимо:
 
 * Visual Studio 2015 или Visual Studio 2017.
 * Node.js версии 0.10.x или более поздней.
@@ -44,20 +44,20 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Создание приложения виртуального устройства
-В этом разделе вы создадите консольное приложение для Node.js, отвечающее на метод, вызываемый из серверной части решения.
+В этом разделе создайте консольное приложение Node.js, которое отвечает tooa методе, вызванном обратно в решение hello окончания.
 
-1. Создайте пустую папку с именем **simulateddevice**. В папке **simulateddevice** создайте файл package.json, используя следующую команду в командной строке. Примите значения по умолчанию:
+1. Создайте пустую папку с именем **simulateddevice**. В hello **simulateddevice** папки, создайте файл package.json, используя следующую команду в командной строке hello. Примите все значения по умолчанию hello:
    
     ```
     npm init
     ```
-2. Чтобы установить пакеты **azure-iot-device** и **azure-iot-device-mqtt**, в командной строке в папке **simulateddevice** выполните следующую команду.
+2. В командной строке в hello **simulateddevice** папку, следующая команда tooinstall hello hello **azure iot устройства** и **azure iot устройства mqtt** пакетов:
    
     ```
         npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. В текстовом редакторе создайте в папке **simulateddevice** файл **SimulatedDevice.js**.
-4. Добавьте следующие инструкции `require` в начало файла **SimulatedDevice.js** :
+3. В текстовом редакторе создайте файл в hello **simulateddevice** папки и назовите его **SimulatedDevice.js**.
+4. Добавьте следующее hello `require` инструкции на hello начала hello **SimulatedDevice.js** файла:
    
     ```
     'use strict';
@@ -65,28 +65,28 @@ ms.lasthandoff: 07/11/2017
     var Mqtt = require('azure-iot-device-mqtt').Mqtt;
     var DeviceClient = require('azure-iot-device').Client;
     ```
-5. Добавьте переменную **connectionString**, чтобы создать с ее помощью экземпляр **DeviceClient**. Замените **{device connection string}** строкой подключения устройства, созданной в разделе *Создание удостоверения устройства*.
+5. Добавить **connectionString** переменной и использовать его toocreate **DeviceClient** экземпляра. Замените **{строка подключения устройства}** со строкой подключения устройства hello, созданное в hello *создать удостоверение устройства* раздела:
    
     ```
     var connectionString = '{device connection string}';
     var client = DeviceClient.fromConnectionString(connectionString, Mqtt);
     ```
-6. Чтобы реализовать прямой метод на устройстве, добавьте следующую функцию:
+6. Добавьте следующие функции tooimplement hello прямого метода на устройстве hello hello:
    
     ```
     function onWriteLine(request, response) {
         console.log(request.payload);
    
-        response.send(200, 'Input was written to log.', function(err) {
+        response.send(200, 'Input was written toolog.', function(err) {
             if(err) {
                 console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.' );
             }
         });
     }
     ```
-7. Откройте подключение к Центру Интернета вещей и начните инициализацию прослушивателя метода.
+7. Откройте центр IoT tooyour подключения hello и инициализировать прослушиватель hello метод:
    
     ```
     client.open(function(err) {
@@ -98,38 +98,38 @@ ms.lasthandoff: 07/11/2017
         }
     });
     ```
-8. Сохраните и закройте файл **SimulatedDevice.js** .
+8. Сохраните и закройте hello **SimulatedDevice.js** файла.
 
 > [!NOTE]
-> Для простоты в этом руководстве не реализуются политики повтора. В рабочем коде следует реализовать политики повтора (например, повторную попытку подключения), как указано в статье MSDN [Обработка временного сбоя][lnk-transient-faults].
+> простые действия tookeep, этот учебник не реализует никакую политику повтора. В рабочем коде следует реализовать политики повтора (например, повторного соединения), описанным в статье MSDN hello [обработка временных сбоев][lnk-transient-faults].
 > 
 > 
 
 ## <a name="call-a-direct-method-on-a-device"></a>Вызов прямого метода на устройстве
-В этом разделе вы создадите консольное приложение .NET, которое вызывает метод в приложении виртуального устройства и выводит ответ.
+В этом разделе создайте консольное приложение .NET, которое вызывает метод в приложение hello имитированное устройство, а затем отображает hello ответа.
 
-1. В Visual Studio добавьте в текущее решение проект классического приложения Windows на языке Visual C# с помощью шаблона проекта **консольного приложения** . Убедитесь, что указана версия платформы .NET 4.5.1 или более поздняя версия. Назовите проект **CallMethodOnDevice**.
+1. В Visual Studio, добавить проект Visual C# Windows классического toohello текущее решение с помощью hello **консольное приложение** шаблона проекта. Убедитесь, что hello версии платформы .NET Framework 4.5.1 или более поздней версии. Имя проекта hello **CallMethodOnDevice**.
    
     ![Новый проект классического приложения Windows на языке Visual C#][10]
-2. В обозревателе решений щелкните правой кнопкой мыши проект **CallMethodOnDevice** и выберите **Управление пакетами NuGet**.
-3. В окне **Диспетчер пакетов NuGet** нажмите кнопку **Обзор**, найдите **microsoft.azure.devices**, щелкните **Установить**, чтобы установить пакет **Microsoft.Azure.Devices**, и примите условия использования. В результате выполняется скачивание и установка пакета NuGet [SDK для служб Интернета вещей Azure][lnk-nuget-service-sdk] и его зависимостей, а также добавляется соответствующая ссылка.
+2. В обозревателе решений щелкните правой кнопкой мыши hello **CallMethodOnDevice** проекта, а затем нажмите кнопку **управление пакетами NuGet...** .
+3. В hello **диспетчера пакетов NuGet** выберите **Обзор**, поиск **microsoft.azure.devices**выберите **установить** tooinstall Hello **Microsoft.Azure.Devices** пакета и примите условия использования hello. Эта процедура загрузки, устанавливает и добавляет toohello ссылки [пакета SDK службы Azure IoT] [ lnk-nuget-service-sdk] NuGet пакет и его зависимости.
    
     ![Окно "Диспетчер пакетов NuGet"][11]
 
-4. Добавьте следующие инструкции `using` в начало файла **Program.cs** :
+4. Добавьте следующее hello `using` инструкции вверху hello hello **Program.cs** файла:
    
         using System.Threading.Tasks;
         using Microsoft.Azure.Devices;
-5. Добавьте следующие поля в класс **Program** . Замените значение заполнителя строкой подключения к Центру Интернета вещей, созданному в предыдущем разделе.
+5. Добавьте следующие поля toohello hello **программы** класса. Замените значение заполнителя hello hello центра IoT строку подключения для hello концентратора, созданную в предыдущем разделе hello.
    
         static ServiceClient serviceClient;
         static string connectionString = "{iot hub connection string}";
-6. Добавьте следующий метод в класс **Program** .
+6. Добавьте следующий метод toohello hello **программы** класса:
    
         private static async Task InvokeMethod()
         {
             var methodInvocation = new CloudToDeviceMethod("writeLine") { ResponseTimeout = TimeSpan.FromSeconds(30) };
-            methodInvocation.SetPayloadJson("'a line to be written'");
+            methodInvocation.SetPayloadJson("'a line toobe written'");
 
             var response = await serviceClient.InvokeDeviceMethodAsync("myDeviceId", methodInvocation);
 
@@ -137,41 +137,41 @@ ms.lasthandoff: 07/11/2017
             Console.WriteLine(response.GetPayloadAsJson());
         }
    
-    Этот метод вызывает прямой метод с именем `writeLine` на устройстве `myDeviceId`. Затем он записывает ответ, предоставленный устройством, в консоли. Обратите внимание, что можно указать значение времени ожидания для ответа устройства.
-7. Наконец, добавьте следующие строки в метод **Main** :
+    Этот метод вызывает прямой метод с именем `writeLine` на hello `myDeviceId` устройства. Затем она записывает ответ hello, предоставляемый hello устройства на консоли hello. Обратите внимание, как возможные toospecify значение времени ожидания для hello toorespond устройства.
+7. Наконец, добавьте следующие строки toohello hello **Main** метод:
    
         serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
         InvokeMethod().Wait();
-        Console.WriteLine("Press Enter to exit.");
+        Console.WriteLine("Press Enter tooexit.");
         Console.ReadLine();
 
-## <a name="run-the-applications"></a>Запуск приложений
-Теперь все готово к запуску приложений.
+## <a name="run-hello-applications"></a>Запускать приложения hello
+Теперь вы находитесь toorun готовности приложения hello.
 
-1. В обозревателе решений Visual Studio щелкните правой кнопкой мыши решение и выберите пункт **Назначить запускаемые проекты**. Щелкните **Один запускаемый проект**, а затем в раскрывающемся меню выберите проект **CallMethodOnDevice**.
+1. В обозревателе решений Visual Studio hello, щелкните правой кнопкой мыши решение и нажмите кнопку **назначить запускаемые проекты...** . Выберите **один запускаемый проект**, а затем выберите hello **CallMethodOnDevice** проект в раскрывающемся меню hello.
 
-2. В командной строке в папке **simulateddevice** выполните следующую команду, чтобы начать прослушивать вызовы метода из Центра Интернета вещей:
+2. В командной строке в hello **simulateddevice** папки, запустите следующие команды toostart прослушивание вызовы методов из вашего центра IoT hello:
    
     ```
     node SimulatedDevice.js
     ```
-   Подождите, пока откроется виртуальное устройство: ![][7].
-3. Теперь, когда устройство подключено и ожидает вызовов методов, запустите приложение .NET **CallMethodOnDevice** для вызова метода в приложении виртуального устройства. В консоли отобразится ответ устройства.
+   Ожидание tooopen hello имитируемые устройства.![][7]
+3. Теперь это устройство hello подключен и ожидание вызовов методов, запустите hello .NET **CallMethodOnDevice** метод hello tooinvoke приложения в приложение hello имитированное устройство. Должно появиться hello устройства записи в консоли hello.
    
     ![][8]
-4. Устройство отреагирует на метод, выведя следующее сообщение:
+4. Затем устройство Hello реагирует метод toohello с печати это сообщение:
    
     ![][9]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом руководстве мы настроили новый Центр Интернета вещей на портале Azure и создали удостоверение устройства в реестре удостоверений Центра Интернета вещей. Вы использовали удостоверение устройства, с помощью которого приложение имитации устройства может отвечать на методы, вызванные из облака. Вы также создали приложение, вызывающее методы на устройстве и выводящее ответ устройства. 
+В этом учебнике настроен центр IoT в hello портал Azure и затем создать удостоверение устройства в реестре удостоверений центра IoT hello. Вы использовали этот устройства удостоверения tooenable hello имитируемые устройства приложения tooreact toomethods вызываемая hello облака. Также было создано приложение, которое вызывает методы на устройстве hello и отображает hello ответа от устройства hello. 
 
-Чтобы продолжить знакомство с Центром Интернета вещей и изучить другие сценарии Интернета вещей, см. следующие ресурсы:
+Приступая к работе toocontinue центр IoT и tooexplore других сценариев IoT просмотреть:
 
-* [Начало работы с Центром Интернета вещей]
-* [Планирование заданий на нескольких устройствах (предварительная версия)][lnk-devguide-jobs]
+* [Приступая к работе с Центром Интернета вещей]
+* [Schedule jobs on multiple devices][lnk-devguide-jobs] (Планирование заданий на нескольких устройствах)
 
-Дополнительные сведения о расширении решения Центра Интернета вещей и планировании вызовов методов на нескольких устройствах см. в учебнике [Планирование и трансляция заданий][lnk-tutorial-jobs].
+toolearn tooextend IoT решения и расписание метод вызывает на нескольких устройствах и разделе hello [расписание и широковещательных задания] [ lnk-tutorial-jobs] учебника.
 
 <!-- Images. -->
 [7]: ./media/iot-hub-csharp-node-direct-methods/run-simulated-device.png
@@ -198,4 +198,4 @@ ms.lasthandoff: 07/11/2017
 
 [Send Cloud-to-Device messages with IoT Hub]: iot-hub-csharp-csharp-c2d.md
 [Process Device-to-Cloud messages]: iot-hub-csharp-csharp-process-d2c.md
-[Начало работы с Центром Интернета вещей]: iot-hub-node-node-getstarted.md
+[Приступая к работе с Центром Интернета вещей]: iot-hub-node-node-getstarted.md

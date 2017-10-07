@@ -1,6 +1,6 @@
 ---
-title: "Структурированная потоковая передача Apache Spark с Kafka в Azure HDInsight | Документы Майкрософт"
-description: "Узнайте об использовании потоковой передачи Apache Spark (DStream) для двунаправленного обмена данными с Apache Kafka. В этом примере показано, как выполнить потоковую передачу данных, используя записную книжку Jupyter из Spark в HDInsight."
+title: "Spark структурированных потоковой передачи с Kafka - Azure HDInsight aaaApache | Документы Microsoft"
+description: "Узнайте, как toouse Apache Spark потоковой передачи (DStream) tooget данных в таблицу или из Apache Kafka. В этом примере показано, как выполнить потоковую передачу данных, используя записную книжку Jupyter из Spark в HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,87 +14,87 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/09/2017
 ms.author: larryfr
-ms.openlocfilehash: 02b49e13e8f54c3d55310f4d2b21c7e09c91fe81
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0837e8fc5ea314e644daed029d596feeb2b02c68
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-spark-structured-streaming-with-kafka-preview-on-hdinsight"></a>Использование структурированной потоковой передачи Spark с Kafka (предварительная версия) в HDInsight
 
-Узнайте, как использовать структурированную потоковую передачу Spark для чтения данных из Apache Kafka в Azure HDInsight.
+Узнайте, как toouse Spark структурированных потоковой передачи данных tooread из Kafka Apache на Azure HDInsight.
 
-Структурированная потоковая передача Spark — это механизм обработки потока, встроенный в Spark SQL. Он позволяет выражать потоковые вычисления так же, как пакетные вычисления статических данных. Дополнительные сведения о структурированной потоковой передаче см. в разделе [Руководство по программированию структурированной потоковой передачи [альфа-версия]](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html) на Apache.org.
+Структурированная потоковая передача Spark — это механизм обработки потока, встроенный в Spark SQL. Он позволяет вам вычисления потоковой передачи tooexpress hello то же, что вычисление пакета со статическими данными. Дополнительные сведения о структурированной потоковой передачи. в разделе hello [структурированных потоковой передачи руководство по программированию [альфа]](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html) с программами.
 
 > [!IMPORTANT]
 > В этом примере используется Spark 2.1 в HDInsight 3.6. Структурированная потоковая передача рассматривается как __альфа-версия__ в Spark 2.1.
 >
-> Вы узнаете, как создать группу ресурсов Azure, которая содержит кластеры Spark и Kafka в HDInsight. Оба этих кластера находятся в виртуальной сети Azure, что позволяет кластеру Spark напрямую обмениваться данными с кластером Kafka.
+> Hello в данном пошаговом руководстве создайте другой группы ресурсов Azure, которая содержит как Spark в HDInsight и Kafka в кластере HDInsight. Эти кластеры, что оба, расположенного внутри виртуальной сети Azure, что позволяет hello toodirectly кластера Spark взаимодействовать с hello Kafka кластера.
 >
-> Выполнив инструкции, не забудьте удалить кластеры, чтобы избежать ненужных расходов.
+> После завершения шагов hello в этом документе помните toodelete hello кластеров tooavoid лишних расходов.
 
-## <a name="create-the-clusters"></a>Создание кластеров
+## <a name="create-hello-clusters"></a>Создавать кластеры hello
 
-Apache Kafka в HDInsight не предоставляет доступ к брокерам Kafka через общедоступный сегмент Интернета. Все объекты, обращающиеся к Kafka, должны находиться в той же виртуальной сети Azure, что и узлы в кластере Kafka. В этом примере кластеры Kafka и Spark расположены в виртуальной сети Azure. На следующей схеме показано, как взаимодействуют кластеры.
+Kafka Apache на HDInsight не предоставляет доступа toohello Kafka брокеры через общедоступный Интернет hello. Все, что Здравствуйте, обсуждения tooKafka должен находиться в одной виртуальной сети Azure hello в виде узлов hello Kafka кластера. В этом примере hello Kafka и Spark кластеры расположены в виртуальной сети Azure. Hello следующей схеме показаны связи потоки между кластерами hello:
 
 ![Схема кластеров Spark и Kafka в виртуальной сети Azure](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
 > [!NOTE]
-> Служба Kafka ограничена обменом данными в пределах виртуальной сети. Другие службы в кластере, например SSH и Ambari, могут быть доступны через Интернет. Дополнительные сведения об общих портах, доступных в HDInsight, см. в статье [Порты и универсальные коды ресурсов (URI), используемые кластерами HDInsight](hdinsight-hadoop-port-settings-for-services.md).
+> Hello Kafka службы — ограниченный toocommunication в виртуальной сети hello. Другие службы в кластере hello, такие как SSH и Ambari, могут быть доступны через hello Интернета. Дополнительные сведения о hello открытых портов, доступных с HDInsight см. в разделе [порты и URI, используемый HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
-Хотя виртуальную сеть Azure, а также кластеры Kafka и Spark можно создать вручную, проще использовать шаблон Azure Resource Manager. Выполните следующие действия, чтобы развернуть виртуальную сеть Azure, а также кластеры Kafka и Spark в подписке Azure.
+Вы можете создать виртуальную сеть Azure, Kafka и Spark кластеров вручную, это упрощает toouse шаблона диспетчера ресурсов Azure. Используйте hello следующие шаги toodeploy виртуальной сети Azure, Kafka, и Spark кластеры tooyour подписки Azure.
 
-1. Нажмите эту кнопку, чтобы войти в Azure и открыть шаблон на портале Azure.
+1. Используйте hello toosign кнопки в tooAzure и Привет открыть шаблон в hello портал Azure.
     
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy tooAzure"></a>
     
-    Шаблон Azure Resource Manager находится здесь: **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**.
+    Hello шаблона Azure Resource Manager находится в каталоге **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**.
 
-    Этот шаблон создает следующие ресурсы:
+    Этот шаблон создает hello следующие ресурсы:
 
     * Kafka в кластере HDInsight 3.5;
     * Spark в кластере HDInsight 3.6;
-    * виртуальную сеть Azure, содержащую кластеры HDInsight.
+    * Виртуальная сеть Azure, содержащий hello кластеров HDInsight.
 
     > [!IMPORTANT]
-    > Записная книжка структурированной потоковой передачи, используемая в этом примере, требует Spark в HDInsight 3.6. Если используется более ранняя версия Spark в HDInsight, возникнут ошибки при использовании этой записной книжки.
+    > Hello структурированных потоковой передачи записной книжки используются в этом примере требуется Spark в HDInsight 3.6. При использовании более ранней версии Spark на HDInsight, возникнут ошибки при использовании записной книжки hello.
 
-2. Используйте следующие сведения, чтобы заполнить колонку **Настраиваемое развертывание**.
+2. После записи hello toopopulate сведений на hello hello используйте **развертывания пользовательского** колонки:
    
     ![Настраиваемое развертывание в HDInsight](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
-    * **Группа ресурсов.** Создайте новую группу ресурсов или выберите существующую. Эта группа содержит кластер HDInsight.
+    * **Группа ресурсов.** Создайте новую группу ресурсов или выберите существующую. Эта группа содержит кластер HDInsight hello.
 
-    * **Расположение.** Выберите близкое к вам географическое расположение.
+    * **Расположение**: выберите расположение территориально закрыть tooyou.
 
-    * **Базовое имя кластера**. Это значение будет использоваться в качестве базового имени для кластеров Spark и Kafka. Например, если ввести **hdi**, будет создан кластер Spark с именем spark-hdi__ и кластер Kafka с именем **kafka-hdi**.
+    * **Базовые имена кластеров**: это значение используется как базовое имя hello для hello Spark и Kafka кластеров. Например, если ввести **hdi**, будет создан кластер Spark с именем spark-hdi__ и кластер Kafka с именем **kafka-hdi**.
 
-    * **Cluster Login User Name** (Имя пользователя для входа в кластер). Имя администратора для кластеров Spark и Kafka.
+    * **Имя входа пользователя кластера**: hello имя пользователя администратора для hello Spark и Kafka кластеров.
 
-    * **Cluster Login User Password** (Пароль пользователя для входа в кластер). Имя администратора для кластеров Spark и Kafka.
+    * **Имя входа пароль кластера**: hello пароль пользователя администратора для кластеров Spark и Kafka hello.
 
-    * **Имя пользователя SSH.** Создаваемый пользователь SSH для кластеров Spark и Kafka.
+    * **Имя пользователя SSH**: hello toocreate пользователя SSH для hello Spark и Kafka кластеров.
 
-    * **Пароль SSH.** Пароль пользователя SSH для кластеров Spark и Kafka.
+    * **Пароль SSH**: hello пароль пользователя SSH hello для hello Spark и Kafka кластеров.
 
-3. Прочтите **условия использования** и установите флажок **Я принимаю указанные выше условия**.
+3. Hello чтения **условий**, а затем выберите **я принимаю условия toohello, указанных выше**.
 
-4. Установите флажок **Закрепить на панели мониторинга** и нажмите кнопку **Приобрести**. Процесс создания кластеров занимает около 20 минут.
+4. Наконец, проверьте **toodashboard ПИН-код** , а затем выберите **покупки**. Занимает около 20 минут toocreate hello кластеров.
 
-После создания ресурсов вы будете перенаправлены в колонку группы ресурсов.
+После создания ресурсов hello предпринимается колонки группы ресурсов перенаправленный toohello.
 
-![Колонка группы ресурсов для виртуальной сети и кластеров](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
+![Колонки группы ресурсов для виртуальной сети hello и кластеров](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
-> Обратите внимание, что кластерам HDInsight присвоены имена **spark-BASENAME** и **kafka-BASENAME**, где BASENAME — имя, указанное в шаблоне. Эти имена будут использоваться позже при подключении к кластерам.
+> Обратите внимание, что имена hello hello кластеров HDInsight **базовым ИМЕНЕМ spark** и **базовое имя kafka**, где базовое имя — имя hello указано toohello шаблона. Использовать эти имена на последующих этапах при подключении toohello кластеров.
 
-## <a name="get-the-kafka-brokers"></a>Получение брокеров Kafka
+## <a name="get-hello-kafka-brokers"></a>Получить hello Kafka брокеров
 
-Код в этом примере подключается к узлам брокера Kafka в кластере Kafka. Чтобы найти узлы брокера Kafka, используйте следующий пример PowerShell или Bash.
+Hello кода в этом примере подключается toohello Kafka компонента service broker узлов в кластере Kafka hello. toofind hello Kafka узлов брокера, выполните следующий пример PowerShell или Bash hello.
 
 ```powershell
-$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
-$clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
+$creds = Get-Credential -UserName "admin" -Message "Enter hello HDInsight login"
+$clusterName = Read-Host -Prompt "Enter hello Kafka cluster name"
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
@@ -107,53 +107,53 @@ curl -u admin:$PASSWORD -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clust
 ```
 
 > [!NOTE]
-> В этом примере предполагается, что `$PASSWORD` содержит пароль для входа в кластер, а `$CLUSTERNAME` содержит имя кластера Kafka.
+> В этом примере ожидает `$PASSWORD` toocontain hello пароль для имени входа кластера hello, и `$CLUSTERNAME` toocontain имя hello hello Kafka кластера.
 >
-> В этом примере используется служебная программа [jq](https://stedolan.github.io/jq/) для анализа данных из документа JSON.
+> В этом примере используется hello [jq](https://stedolan.github.io/jq/) программа tooparse данных из документа JSON hello.
 
-Результат будет аналогичен приведенному ниже:
+Hello выходных данных аналогичные toohello следующий текст:
 
 `wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn2-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn3-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
 
-Сохраните эти сведения, так как они вам понадобятся в следующих разделах этого документа.
+Сохраните эти сведения, так как он используется в следующих разделах данного документа hello.
 
-## <a name="get-the-notebooks"></a>Получение записных книжек
+## <a name="get-hello-notebooks"></a>Получить записных книжек hello
 
-Код для примера, описанного в этом документе, доступен по адресу [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming).
+Hello код для примера hello, описанные в этом документе доступен на [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming).
 
-## <a name="upload-the-notebooks"></a>Отправка записных книжек
+## <a name="upload-hello-notebooks"></a>Отправка записных книжек hello
 
-Чтобы отправить записные книжки из проекта в кластер Spark в HDInsight, выполните следующие действия.
+Используйте следующую записных книжек hello tooupload действия из проекта hello tooyour Spark в кластере HDInsight hello.
 
-1. В веб-браузере подключитесь к записной книжке Jupyter в вашем кластере Spark. В следующем URL-адресе замените `CLUSTERNAME` на имя вашего кластера Kafka:
+1. В веб-браузере подключитесь записной книжки Jupyter toohello на свой кластер Spark. В hello URL-адреса, замените `CLUSTERNAME` с именем hello Kafka кластера:
 
         https://CLUSTERNAME.azurehdinsight.net/jupyter
 
-    При появлении запроса введите имя администратора кластера и пароль, которые использовались при создании кластера.
+    При появлении запроса введите hello кластера входа (для администратора) и пароль, используемый при создании кластера hello.
 
-2. В правой верхней части страницы нажмите кнопку __Отправить__, чтобы отправить файл __Stream-Tweets-To_Kafka.ipynb__ в кластер. Нажмите __Открыть__ для запуска отправки.
+2. Hello верхней правой части страницы приветствия, с помощью hello __отправить__ hello tooupload кнопку __поток-Твиты-To_Kafka.ipynb__ файл toohello кластера. Выберите __откройте__ toostart hello передачи.
 
-    ![Использование кнопки "Отправить" для выбора и загрузки блокнота](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-button.png)
+    ![Использовать tooselect кнопка отправки hello и отправка записной книжке](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-button.png)
 
-    ![Выбор файла KafkaStreaming.ipynb](./media/hdinsight-apache-kafka-spark-structured-streaming/select-notebook.png)
+    ![Выберите файл KafkaStreaming.ipynb hello](./media/hdinsight-apache-kafka-spark-structured-streaming/select-notebook.png)
 
-3. Найдите запись __Stream-Tweets-To_Kafka.ipynb__ в списке записных книжек, а затем нажмите расположенную рядом кнопку __Отправка__.
+3. Найти hello __поток-Твиты-To_Kafka.ipynb__ запись в списке hello портативные компьютеры, а затем выберите __отправить__ кнопку рядом с ней.
 
-    ![Использование кнопки "Отправка" рядом с записью KafkaStreaming.ipynb для отправки на сервер Jupyter Notebook](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
+    ![Используйте hello передачи рядом hello KafkaStreaming.ipynb входа tooupload его toohello записной книжки сервера](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
 
-4. Повторите шаги 1–3 для загрузки записной книжки __Spark-Structured-Streaming-From-Kafka.ipynb__.
+4. Повторите шаги 1 – 3 hello tooload __Spark-структурированный-потоковой передачи-в-Kafka.ipynb__ ноутбука.
 
 ## <a name="load-tweets-into-kafka"></a>Загрузка твитов в Kafka
 
-После отправки файлов выберите запись __Stream-Tweets-To_Kafka.ipynb__, чтобы открыть записную книжку. Выполните действия в записной книжке, чтобы загрузить твиты в Kafka.
+После загрузки файлов hello выберите hello __поток-Твиты-To_Kafka.ipynb__ записной книжки hello tooopen входа. Выполните действия hello hello записной книжки tooload твиты в Kafka.
 
 ## <a name="process-tweets-using-spark-structured-streaming"></a>Обработка твитов с помощью структурированной потоковой передачи
 
-На домашней странице записной книжки Jupyter выберите запись __Spark-Structured-Streaming-From-Kafka.ipynb__. Выполните действия в записной книжке, чтобы загрузить твиты из Kafka с помощью структурированной потоковой передачи Spark.
+Hello книжке Jupyter домашнюю страницу, выберите hello __Spark-структурированный-потоковой передачи-в-Kafka.ipynb__ входа. Выполните действия hello hello записной книжки tooload твиты из Kafka, с помощью потоковой передачи структурированных Spark.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Теперь, когда вы узнали, как использовать структурированную потоковую передачу Spark, перейдите к следующим документам для углубленного изучения работы со Spark и Kafka.
+Теперь, когда вы узнали, как toouse Spark структурированных потоковой передачи, см. следующие дополнительные сведения о работе с Spark и Kafka toolearn документы hello:
 
-* [Как использовать потоковую передачу Spark (DStream) с Kafka](hdinsight-apache-spark-with-kafka.md).
+* [Как toouse усилить потоковой передачи (DStream) с Kafka](hdinsight-apache-spark-with-kafka.md).
 * [Начало работы с записной книжкой Jupyter и Spark в HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).

@@ -1,6 +1,6 @@
 ---
-title: "Начало работы с двойниками устройств Центра Интернета вещей (Java) | Документация Майкрософт"
-description: "Добавление тегов и последующее использование запроса Центра Интернета вещей с помощью двойников устройств Центра Интернета вещей. Используйте пакет SDK для устройств Центра Интернета вещей Azure для Java, чтобы реализовать приложение устройства, и пакет SDK для служб Интернета вещей Azure для Java, чтобы реализовать приложение-службу, которое добавит теги и выполнит запрос к Центру Интернета вещей."
+title: "aaaGet к работе с близнецы устройства Azure IoT Hub (Java) | Документы Microsoft"
+description: "Как tooadd близнецы устройства Azure IoT Hub toouse теги и затем использовать запрос центр IoT. Использовать устройства Azure IoT hello SDK для Java tooimplement hello устройства и приложения hello служба Azure IoT SDK для Java tooimplement приложение службы, которое добавляет теги hello и запускает hello центра IoT запроса."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: 583cfcb9442c7be0a41aa1bc0f743bf8cf863665
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 25f6fc81471d59c62bcdc3766bb5c33f5733c930
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-device-twins-java"></a>Начало работы с двойниками устройств (Java)
 
@@ -26,14 +26,14 @@ ms.lasthandoff: 08/18/2017
 В этом руководстве создаются два консольных приложения для Java:
 
 * **add-tags-query** — внутреннее приложение Java, которое добавляет теги и выполняет запросы к двойникам устройств.
-* **simulated-device** — это приложение устройства Java, которое подключается к Центру Интернета вещей и сообщает о его условии подключения c помощью сообщаемого свойства.
+* **имитируемые устройства**, приложения для устройств Java, подключающуюся tooyour центр IoT и отчеты условия его подключения, с помощью свойства отчета.
 
 > [!NOTE]
-> Статья [Общие сведения о пакетах SDK для Azure IoT и их использование](iot-hub-devguide-sdks.md) содержит сведения о разных пакетах SDK для Интернета вещей Azure, с помощью которых можно создать приложения для устройств и внутренние приложения.
+> статья Hello [пакеты SDK Azure IoT](iot-hub-devguide-sdks.md) предоставляет сведения о hello Azure IoT пакетов SDK, которые можно использовать toobuild устройства и серверной части приложения.
 
-Для работы с этим руководством необходимы указанные ниже компоненты.
+toocomplete этого учебника, необходимо:
 
-* Последняя версия [пакета SDK для Java SE 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* Здравствуйте, последняя версия [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * Активная учетная запись Azure. Если ее нет, можно создать [бесплатную учетную запись](http://azure.microsoft.com/pricing/free-trial/) всего за несколько минут.
 
@@ -41,21 +41,21 @@ ms.lasthandoff: 08/18/2017
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-Если требуется создать удостоверение устройства программным способом, см. соответствующий раздел в разделе [Подключение устройства к Центру Интернета вещей с помощью Java](iot-hub-java-java-getstarted.md#create-a-device-identity).
+При желании удостоверения устройства hello toocreate программными средствами чтения hello соответствующий раздел в hello [подключиться с помощью Java концентратор IoT tooyour устройства](iot-hub-java-java-getstarted.md#create-a-device-identity) статьи.
 
-## <a name="create-the-service-app"></a>Создание приложения службы
+## <a name="create-hello-service-app"></a>Создание приложения hello службы
 
-В этом разделе вы создадите приложение Java, которое добавляет метаданные расположения в виде тега в двойник устройства в Центре Интернета вещей, связанный с **myDeviceId**. Сначала приложение запрашивает в Центре Интернета вещей устройства, расположенные в США, а затем устройства, подключенные к сотовой сети.
+В этом разделе создается приложение Java, которое добавляет расположение метаданных, что две устройства тег toohello в центр IoT, связанного с **myDeviceId**. приложение Hello сначала запрашивается центр IoT для устройств, расположенных в hello США, а затем для устройств, сообщающие сотовой сети.
 
-1. На компьютере разработки создайте пустую папку с названием `iot-java-twin-getstarted`.
+1. На компьютере разработки создайте пустую папку с именем `iot-java-twin-getstarted`.
 
-1. В папке `iot-java-twin-getstarted` создайте проект Maven **add-tags-query**, выполнив следующую команду в командной строке. Обратите внимание, что это одна длинная команда.
+1. В hello `iot-java-twin-getstarted` папки, создайте проект с именем Maven **добавить теги запроса** hello следующую команду в командной строке с помощью. Обратите внимание, что это одна длинная команда.
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=add-tags-query -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. В командной строке перейдите к папке `add-tags-query`.
+1. В командной строке перейдите toohello `add-tags-query` папки.
 
-1. Откройте в текстовом редакторе файл `pom.xml` из папки `add-tags-query` и добавьте зависимости, приведенные ниже, в узел **dependencies**. Эта зависимость позволит вам использовать в приложении пакет **iot-service-client** для обмена данными с Центром Интернета вещей:
+1. В текстовом редакторе, откройте hello `pom.xml` файла в hello `add-tags-query` папки и добавьте следующие зависимости toohello hello **зависимости** узла. Эта зависимость позволяет toouse hello **клиента для службы iot** пакет в toocommunicate вашего приложения с вашего центра IoT:
 
     ```xml
     <dependency>
@@ -67,9 +67,9 @@ ms.lasthandoff: 08/18/2017
     ```
 
     > [!NOTE]
-    > Наличие последней версии пакета **iot-service-client** можно проверить с помощью [поиска Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > Вы можете проверить наличие hello последнюю версию **клиента для службы iot** с помощью [Maven поиска](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Добавьте следующий узел, **build**, после узла **dependencies**. Эта конфигурация дает указание Maven использовать Java версии 1.8 для создания приложения:
+1. Добавьте следующее hello **построения** узел после hello **зависимости** узла. Эта конфигурация указывает, что приложение hello 1,8 toobuild Java toouse Maven:
 
     ```xml
     <build>
@@ -87,11 +87,11 @@ ms.lasthandoff: 08/18/2017
     </build>
     ```
 
-1. Сохраните и закройте файл `pom.xml`.
+1. Сохраните и закройте hello `pom.xml` файла.
 
-1. Откройте в текстовом редакторе файл `add-tags-query\src\main\java\com\mycompany\app\App.java`.
+1. В текстовом редакторе, откройте hello `add-tags-query\src\main\java\com\mycompany\app\App.java` файла.
 
-1. Добавьте в файл следующие инструкции **import** .
+1. Добавьте следующее hello **импорта** toohello файл инструкций:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.*;
@@ -102,7 +102,7 @@ ms.lasthandoff: 08/18/2017
     import java.util.Set;
     ```
 
-1. Добавьте в класс **App** . Замените `{youriothubconnectionstring}` строкой подключения к вашему Центру Интернета вещей, которую вы записали, выполняя инструкции в разделе *Создание Центра Интернета вещей*:
+1. Добавьте следующие переменные уровня класса toohello hello **приложения** класса. Замените `{youriothubconnectionstring}` с IoT строку подключения к концентратору нижеприведенного hello *создать центр IoT* раздела:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -112,21 +112,21 @@ ms.lasthandoff: 08/18/2017
     public static final String plant = "Redmond43";
     ```
 
-1. Обновите подпись метода **main**, добавив следующее предложение `throws`:
+1. Обновление hello **основной** следующие hello tooinclude подпись метода `throws` предложения:
 
     ```java
     public static void main( String[] args ) throws IOException
     ```
 
-1. Добавьте следующий код в метод **main** для создания объектов **DeviceTwin** и **DeviceTwinDevice**. Объект **DeviceTwin** обрабатывает взаимодействие с вашим Центром Интернета вещей. Объект **DeviceTwinDevice** представляет двойник устройства, его свойства и теги:
+1. Добавьте следующий код toohello hello **основной** hello метод toocreate **DeviceTwin** и **DeviceTwinDevice** объектов. Hello **DeviceTwin** объект обрабатывает hello взаимодействие с вашего центра IoT. Hello **DeviceTwinDevice** представляет hello двойных устройства с тегами и его свойства:
 
     ```java
-    // Get the DeviceTwin and DeviceTwinDevice objects
+    // Get hello DeviceTwin and DeviceTwinDevice objects
     DeviceTwin twinClient = DeviceTwin.createFromConnectionString(iotHubConnectionString);
     DeviceTwinDevice device = new DeviceTwinDevice(deviceId);
     ```
 
-1. Добавьте следующий блок `try/catch` в метод **main**:
+1. Добавьте следующее hello `try/catch` блокировать toohello **основной** метод:
 
     ```java
     try {
@@ -138,45 +138,45 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-1. Чтобы обновить теги **region** и **plant** двойника устройства, добавьте следующий код в блок `try`:
+1. tooupdate hello **область** и **растение** тегов двойных устройств в двойных вашего устройства, добавьте следующий код в hello hello `try` блока:
 
     ```java
-    // Get the device twin from IoT Hub
+    // Get hello device twin from IoT Hub
     System.out.println("Device twin before update:");
     twinClient.getTwin(device);
     System.out.println(device);
 
     // Update device twin tags if they are different
-    // from the existing values
+    // from hello existing values
     String currentTags = device.tagsToString();
     if ((!currentTags.contains("region=" + region) && !currentTags.contains("plant=" + plant))) {
-      // Create the tags and attach them to the DeviceTwinDevice object
+      // Create hello tags and attach them toohello DeviceTwinDevice object
       Set<Pair> tags = new HashSet<Pair>();
       tags.add(new Pair("region", region));
       tags.add(new Pair("plant", plant));
       device.setTags(tags);
 
-      // Update the device twin in IoT Hub
+      // Update hello device twin in IoT Hub
       System.out.println("Updating device twin");
       twinClient.updateTwin(device);
     }
 
-    // Retrieve the device twin with the tag values from IoT Hub
+    // Retrieve hello device twin with hello tag values from IoT Hub
     System.out.println("Device twin after update:");
     twinClient.getTwin(device);
     System.out.println(device);
     ```
 
-1. Чтобы отправить запрос к двойникам устройств в Центре Интернета вещей, добавьте следующий код в блок `try` после кода, добавленного на предыдущем шаге. Код выполняет два запроса. Каждый запрос возвращает не более 100 устройств:
+1. tooquery близнецы устройства hello в центр IoT добавить следующий код toohello hello `try` блок после кода hello, добавленного на предыдущем шаге hello. Hello код выполняется два запроса. Каждый запрос возвращает не более 100 устройств:
 
     ```java
-    // Query the device twins in IoT Hub
+    // Query hello device twins in IoT Hub
     System.out.println("Devices in Redmond:");
 
-    // Construct the query
+    // Construct hello query
     SqlQuery sqlQuery = SqlQuery.createSqlQuery("*", SqlQuery.FromType.DEVICES, "tags.plant='Redmond43'", null);
 
-    // Run the query, returning a maximum of 100 devices
+    // Run hello query, returning a maximum of 100 devices
     Query twinQuery = twinClient.queryTwin(sqlQuery.getQuery(), 100);
     while (twinClient.hasNextDeviceTwin(twinQuery)) {
       DeviceTwinDevice d = twinClient.getNextDeviceTwin(twinQuery);
@@ -185,10 +185,10 @@ ms.lasthandoff: 08/18/2017
 
     System.out.println("Devices in Redmond using a cellular network:");
 
-    // Construct the query
+    // Construct hello query
     sqlQuery = SqlQuery.createSqlQuery("*", SqlQuery.FromType.DEVICES, "tags.plant='Redmond43' AND properties.reported.connectivityType = 'cellular'", null);
 
-    // Run the query, returning a maximum of 100 devices
+    // Run hello query, returning a maximum of 100 devices
     twinQuery = twinClient.queryTwin(sqlQuery.getQuery(), 3);
     while (twinClient.hasNextDeviceTwin(twinQuery)) {
       DeviceTwinDevice d = twinClient.getNextDeviceTwin(twinQuery);
@@ -196,23 +196,23 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-1. Сохраните и закройте файл `add-tags-query\src\main\java\com\mycompany\app\App.java`.
+1. Сохраните и закройте hello `add-tags-query\src\main\java\com\mycompany\app\App.java` файла
 
-1. Создайте приложение **add-tags-query** и исправьте все ошибки. В командной строке перейдите к папке `add-tags-query` и выполните следующую команду:
+1. Построение hello **добавить теги запроса** приложения и исправьте все ошибки. В командной строке перейдите toohello `add-tags-query` папки и выполнения hello следующую команду:
 
     `mvn clean package -DskipTests`
 
 ## <a name="create-a-device-app"></a>Создание приложения устройства
 
-В этом разделе вы создадите консольное приложение Java, которое задает значение сообщаемого свойства, отправляемое в Центр Интернета вещей.
+В этом разделе создайте консольное приложение Java, которое задает значение свойства отчета, который отправляется tooIoT концентратора.
 
-1. В папке `iot-java-twin-getstarted` создайте проект Maven с именем **simulated-device**, выполнив в командной строке следующую команду. Обратите внимание, что это одна длинная команда.
+1. В hello `iot-java-twin-getstarted` папки, создайте проект с именем Maven **имитируемые устройства** с помощью hello следующую команду в командной строке. Обратите внимание, что это одна длинная команда.
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. В командной строке перейдите к папке `simulated-device`.
+1. В командной строке перейдите toohello `simulated-device` папки.
 
-1. Откройте в текстовом редакторе файл `pom.xml` из папки `simulated-device` и добавьте зависимости, приведенные ниже, в узел **dependencies**. Эта зависимость позволит вам использовать в приложении пакет **iot-device-client** для обмена данными с Центром Интернета вещей:
+1. В текстовом редакторе, откройте hello `pom.xml` файла в hello `simulated-device` папки и добавьте следующие зависимости toohello hello **зависимости** узла. Эта зависимость позволяет toouse hello **клиента для устройства iot** пакет в toocommunicate вашего приложения с вашего центра IoT:
 
     ```xml
     <dependency>
@@ -223,9 +223,9 @@ ms.lasthandoff: 08/18/2017
     ```
 
     > [!NOTE]
-    > Наличие последней версии пакета **iot-device-client** можно проверить с помощью [поиска Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > Вы можете проверить наличие hello последнюю версию **клиента для устройства iot** с помощью [Maven поиска](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Добавьте следующий узел, **build**, после узла **dependencies**. Эта конфигурация дает указание Maven использовать Java версии 1.8 для создания приложения:
+1. Добавьте следующее hello **построения** узел после hello **зависимости** узла. Эта конфигурация указывает, что приложение hello 1,8 toobuild Java toouse Maven:
 
     ```xml
     <build>
@@ -243,11 +243,11 @@ ms.lasthandoff: 08/18/2017
     </build>
     ```
 
-1. Сохраните и закройте файл `pom.xml`.
+1. Сохраните и закройте hello `pom.xml` файла.
 
-1. Откройте в текстовом редакторе файл `simulated-device\src\main\java\com\mycompany\app\App.java`.
+1. В текстовом редакторе, откройте hello `simulated-device\src\main\java\com\mycompany\app\App.java` файла.
 
-1. Добавьте в файл следующие инструкции **import** .
+1. Добавьте следующее hello **импорта** toohello файл инструкций:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -258,7 +258,7 @@ ms.lasthandoff: 08/18/2017
     import java.util.Scanner;
     ```
 
-1. Добавьте в класс **App** . Замените значение `{youriothubname}` именем Центра Интернета вещей, а `{yourdevicekey}` — значением ключа устройства, сформированным при работе с разделом *Создание удостоверения устройства*:
+1. Добавьте следующие переменные уровня класса toohello hello **приложения** класса. Замена `{youriothubname}` на название концентратора IoT и `{yourdevicekey}` со значением ключа устройства hello созданный hello *создать удостоверение устройства* раздела:
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myDeviceID;SharedAccessKey={yourdevicekey}";
@@ -266,34 +266,34 @@ ms.lasthandoff: 08/18/2017
     private static String deviceId = "myDeviceId";
     ```
 
-    При создании экземпляра объекта **DeviceClient** в этом примере приложения используется переменная **protocol**. Сейчас использование функций двойников устройств возможно только с протоколом MQTT.
+    Этот пример приложения использует hello **протокола** переменной, когда он создает **DeviceClient** объекта. В настоящее время toouse двойных функциями устройства необходимо использовать протокол MQTT hello.
 
-1. Добавьте в конец метода **main** следующий код, чтобы:
-    * Создать клиент устройства для взаимодействия с Центром Интернета вещей.
-    * Создать объект **Device** для хранения свойств двойника устройства.
+1. Добавьте следующий код toohello hello **основной** метода:
+    * Создайте toocommunicate клиента устройства с центром IoT.
+    * Создание **устройства** toostore hello устройства двойных свойства объекта.
 
     ```java
     DeviceClient client = new DeviceClient(connString, protocol);
 
-    // Create a Device object to store the device twin properties
+    // Create a Device object toostore hello device twin properties
     Device dataCollector = new Device() {
       // Print details when a property value changes
       @Override
       public void PropertyCall(String propertyKey, Object propertyValue, Object context) {
-        System.out.println(propertyKey + " changed to " + propertyValue);
+        System.out.println(propertyKey + " changed too" + propertyValue);
       }
     };
     ```
 
-1. Добавьте следующий код в метод **main**, чтобы создать сообщаемое свойство **connectivityType** и отправить его в Центр Интернета вещей:
+1. Добавьте следующий код toohello hello **основной** toocreate метод **connectivityType** сообщил свойство и отправлять их tooIoT концентратора:
 
     ```java
     try {
-      // Open the DeviceClient and start the device twin services.
+      // Open hello DeviceClient and start hello device twin services.
       client.open();
       client.startDeviceTwin(new DeviceTwinStatusCallBack(), null, dataCollector, null);
 
-      // Create a reported property and send it to your IoT hub.
+      // Create a reported property and send it tooyour IoT hub.
       dataCollector.setReportedProp(new Property("connectivityType", "cellular"));
       client.sendReportedProperties(dataCollector.getReportedProp());
     }
@@ -305,10 +305,10 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-1. Добавьте в конец метода **main** следующий код: Во время ожидания нажатия клавиши **ВВОД** Центр Интернета вещей сообщает состояние операций двойника устройства:
+1. Добавить следующий код toohello конец hello hello **основной** метод. Ожидание hello **ввод** ключ позволяет время центр IoT tooreport hello состояния операций двойных hello устройства:
 
     ```java
-    System.out.println("Press any key to exit...");
+    System.out.println("Press any key tooexit...");
 
     Scanner scanner = new Scanner(System.in);
     scanner.nextLine();
@@ -317,46 +317,46 @@ ms.lasthandoff: 08/18/2017
     client.close();
     ```
 
-1. Сохраните и закройте файл `simulated-device\src\main\java\com\mycompany\app\App.java`.
+1. Сохраните и закройте hello `simulated-device\src\main\java\com\mycompany\app\App.java` файла.
 
-1. Создайте приложение **simulated-device** и исправьте все ошибки. В командной строке перейдите к папке `simulated-device` и выполните следующую команду:
+1. Построение hello **имитируемые устройства** приложения и исправьте все ошибки. В командной строке перейдите toohello `simulated-device` папки и выполнения hello следующую команду:
 
     `mvn clean package -DskipTests`
 
-## <a name="run-the-apps"></a>Запуск приложений
+## <a name="run-hello-apps"></a>Запускайте приложения hello
 
-Теперь все готово к запуску консоли приложений.
+Теперь вы находитесь готов toorun hello консольных приложениях.
 
-1. В командной строке в папке `add-tags-query` выполните следующую команду, чтобы запустить приложение службы **add-tags-query**:
-
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
-
-    ![Обновление значений тегов и выполнение запросов устройств с помощью приложения службы Центра Интернета вещей](media/iot-hub-java-java-twin-getstarted/service-app-1.png)
-
-    Вы увидите теги **plant** и **region**, добавленные в двойник устройства. Первый запрос возвращает устройство, а второй — нет.
-
-1. В командной строке в папке `simulated-device` выполните следующую команду, чтобы добавить в двойник устройства сообщаемое свойство **connectivityType**:
+1. В командной строке в hello `add-tags-query` папку, следующая команда toorun hello hello **добавить теги запроса** службы приложений:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![Клиент устройства добавляет сообщаемое свойство **connectivityType**](media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![Центр IoT Java службы приложения tooupdate отметки значений и выполнять запросы устройства](media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
-1. В командной строке в папке `add-tags-query` выполните следующую команду, чтобы повторно запустить приложение службы **add-tags-query**:
+    Вы увидите hello **растение** и **область** теги добавлены две toohello устройства. Hello первый запрос возвращает устройства, но hello второй — нет.
+
+1. В командной строке в hello `simulated-device` папку, следующая команда tooadd hello hello **connectivityType** сообщил двойных устройства toohello свойство:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![Обновление значений тегов и выполнение запросов устройств с помощью приложения службы Центра Интернета вещей](media/iot-hub-java-java-twin-getstarted/service-app-2.png)
+    ![Добавляет клиент устройства Hello hello ** connectivityType ** сообщила, свойство](media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
-    Теперь устройство отправило свойство **connectivityType** в Центр Интернета вещей, и второй запрос возвращает устройство.
+1. В командной строке в hello `add-tags-query` папку, следующая команда toorun hello hello **добавить теги запроса** службы приложения еще раз:
+
+    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+
+    ![Центр IoT Java службы приложения tooupdate отметки значений и выполнять запросы устройства](media/iot-hub-java-java-twin-getstarted/service-app-2.png)
+
+    Теперь устройство отправил hello **connectivityType** tooIoT свойство концентратора hello второй запрос возвращает устройство.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом руководстве мы настроили новый Центр Интернета вещей на портале Azure и создали удостоверение устройства в реестре удостоверений Центра Интернета вещей. Вы добавили метаданные устройства в качестве тегов из внутреннего приложения и написали код приложения устройства, чтобы сообщить сведения о подключении в двойнике устройства. Вы также узнали, как запрашивать сведения о двойнике устройства, используя похожий на SQL язык запросов Центра Интернета вещей.
+В этом учебнике настроен центр IoT в hello портал Azure и затем создать удостоверение устройства в реестре удостоверений центра IoT hello. Добавить метаданные устройства как теги из серверной части приложения, а написал приложения tooreport устройства подключения сведений об устройстве в двойных hello устройства. Вы также узнали, как tooquery hello двойных сведений об устройстве, с помощью языка запросов SQL-подобного центра IoT hello.
 
-Ознакомьтесь со следующими материалами, чтобы узнать как:
+Hello используйте следующие ресурсы toolearn как для:
 
-* отправить данные телеметрии с устройств (руководство [Подключение устройства к Центру Интернета вещей с помощью Java](iot-hub-java-java-getstarted.md));
-* управлять устройствами в интерактивном режиме, например включить вентилятор из управляемого пользователем приложения (руководство [Использование прямых методов (Java)](iot-hub-java-java-direct-methods.md)).
+* Отправка данных телеметрии с устройствами с помощью hello [приступить к работе с центром IoT](iot-hub-java-java-getstarted.md) учебника.
+* Управление устройствами интерактивно (такие как включение вентилятор из управляемой пользователем приложения) с hello [использовать прямые методы](iot-hub-java-java-direct-methods.md) учебника.
 
 <!-- Images. -->
 [7]: ./media/iot-hub-java-java-twin-getstarted/invoke-method.png

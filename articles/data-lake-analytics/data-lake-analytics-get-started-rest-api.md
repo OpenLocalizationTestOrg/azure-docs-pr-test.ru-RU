@@ -1,6 +1,6 @@
 ---
-title: "Начало работы с Data Lake Analytics с помощью интерфейсов REST API | Документация Майкрософт"
-description: "Использование интерфейсов REST API WebHDFS для выполнения операций в Data Lake Analytics"
+title: "aaaGet к выполнению аналитики Озера данных с помощью API-интерфейса REST | Документы Microsoft"
+description: "Используйте API-интерфейс REST WebHDFS операции tooperform аналитике Озера данных"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: jgao
-ms.openlocfilehash: 332d7af2539eea8890745005104ac5b0921c2b7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a0b13d521821fd2d74716cc52485585feb7c51b2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-rest-apis"></a>Начало работы с Azure Data Lake Analytics с помощью интерфейсов REST API
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Узнайте, как использовать интерфейсы REST API WebHDFS и Data Lake Analytics, чтобы управлять учетными записями, заданиями и каталогом Data Lake Analytics. 
+Узнайте, как toouse WebHDFS REST API и API-интерфейсы REST аналитика Озера данных toomanage аналитики Озера данных учетных записей, заданий и каталога. 
 
 ## <a name="prerequisites"></a>Предварительные требования
 * **Подписка Azure**. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Создание приложения Azure Active Directory**. Это приложение будет использоваться для проверки подлинности приложения Data Lake Analytics в Azure AD. Есть разные способы проверки подлинности приложения с помощью Azure AD: **проверка подлинности пользователя** и **проверка подлинности со взаимодействием между службами**. Инструкции и дополнительные сведения о проверке подлинности см. в статье [Аутентификация в Data Lake Store с помощью Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
-* [cURL](http://curl.haxx.se/). В этой статье для демонстрации вызовов REST API к учетной записи Data Lake Analytics используется cURL.
+* **Создание приложения Azure Active Directory**. Используйте приложение аналитики Озера данных hello tooauthenticate приложения hello Azure AD с Azure AD. Существуют tooauthenticate различные подходы с Azure AD, которые являются **проверки подлинности для конечных пользователей** или **проверки подлинности службы для службы**. Инструкции и Дополнительные сведения о том, как tooauthenticate, в разделе [аутентификация с помощью аналитики Озера данных Azure Active Directory с помощью](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+* [cURL](http://curl.haxx.se/). В этой статье используется toodemonstrate перелистывание как вызывает toomake API-интерфейса REST для учетной записи аналитики Озера данных.
 
 ## <a name="authenticate-with-azure-active-directory"></a>Проверка подлинности с помощью Azure Active Directory
 Существует два метода проверки подлинности с помощью Azure Active Directory.
 
 ### <a name="end-user-authentication-interactive"></a>Проверка подлинности пользователя (интерактивная)
-Если используется этот метод, в приложении пользователю предлагается войти в систему, и все операции выполняются в контексте пользователя. 
+При использовании этого метода приложение запрашивает toolog пользователя hello в, и все hello операции выполняются в контексте hello hello пользователя. 
 
 Выполните приведенные ниже действия, чтобы использовать интерактивную проверку подлинности.
 
-1. В приложении перенаправьте пользователя на следующий URL-адрес.
+1. Через приложения перенаправить пользователя toohello hello, URL-адреса:
    
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
-   > \<<REDIRECT-URI> должен быть закодирован для использования в URL-адресе. Поэтому для https://localhost используйте `https%3A%2F%2Flocalhost`.
+   > \<URI ПЕРЕНАПРАВЛЕНИЯ > должен toobe кодируется для использования в URL-адрес. Поэтому для https://localhost используйте `https%3A%2F%2Flocalhost`.
    > 
    > 
    
-    В целях обучения можно заменить значения заполнителей в URL-адресе выше и вставить его в адресную строку веб-браузера. Вы перейдете на страницу аутентификации с помощью учетной записи Azure. После входа в систему вы увидите ответ в адресной строке браузера. Ответ имеет следующий формат.
+    Для целей этого учебника hello можно заменить значения заполнителей hello в URL-АДРЕСЕ hello выше и вставьте его в адресной строке веб-браузера. Будет перенаправленный tooauthenticate, с помощью Azure имени входа. После входа в систему можно успешно hello ответ отображается в адресной строке браузера hello. Hello ответ будут иметь hello следующий формат:
    
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
-2. Запишите код авторизации из ответа. В этом учебнике вы можете скопировать код авторизации из адресной строки веб-браузера и передать его в запрос POST к конечной точке маркера, как показано ниже.
+2. Захватить hello код авторизации из ответа hello. В этом учебнике можно скопировать код авторизации hello из адресной строки hello hello веб-браузера и передайте его в hello POST запроса toohello конечную точку токена, как показано ниже:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
@@ -60,13 +60,13 @@ ms.lasthandoff: 07/11/2017
         -F code=<AUTHORIZATION-CODE>
    
    > [!NOTE]
-   > В этом случае кодировать \<REDIRECT-URI> не нужно.
+   > В этом случае hello \<URI ПЕРЕНАПРАВЛЕНИЯ > не должны быть закодированы.
    > 
    > 
-3. Ответ является объектом JSON, содержащим маркер доступа (например, `"access_token": "<ACCESS_TOKEN>"`) и маркер обновления (например, `"refresh_token": "<REFRESH_TOKEN>"`). Приложение использует маркер доступа для обращения к хранилищу озера данных Azure, а маркер обновления — для получения другого маркера доступа, когда срок действия текущего маркера доступа истечет.
+3. Hello ответ — объект JSON, который содержит маркер доступа (например, `"access_token": "<ACCESS_TOKEN>"`) и токена обновления (например, `"refresh_token": "<REFRESH_TOKEN>"`). Приложение использует маркер доступа hello при доступе к хранилищу Озера данных Azure и tooget токена обновления hello другой маркер доступа после истечения срока действия маркера доступа.
    
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
-4. По истечении срока действия маркера доступа можно запросить новый маркер доступа, используя маркер обновления, как показано ниже.
+4. После истечения срока действия маркера доступа hello, вы можете запросить новый токен доступа с помощью токена обновления hello, как показано ниже:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
@@ -77,7 +77,7 @@ ms.lasthandoff: 07/11/2017
 Дополнительные сведения об интерактивной проверке подлинности пользователей см. в статье [Авторизация доступа к веб-приложениям с помощью OAuth 2.0 и Azure Active Directory](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 
 ### <a name="service-to-service-authentication-non-interactive"></a>Проверка подлинности с взаимодействием между службами (неинтерактивная)
-Если используется этот метод, приложение предоставляет свои собственные учетные данные для выполнения операций. В этом случае необходимо отправить запрос POST, аналогичный показанному ниже. 
+При использовании этого метода приложение предоставляет свои собственные учетные данные tooperform hello операции. Для этого необходимо выдать запрос POST, как hello приведенное ниже: 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
       -F grant_type=client_credentials \
@@ -85,20 +85,20 @@ ms.lasthandoff: 07/11/2017
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-Выходные данные этого запроса будут содержать маркер авторизации (обозначен `access-token` в приведенных ниже выходных данных) для дальнейшей передачи в вызовах REST API. Сохраните этот маркер в текстовый файл. Он потребуется в данной статье позднее.
+Hello результат этого запроса будет включать маркер авторизации (обозначается `access-token` в выходных данных hello ниже), впоследствии будет передаваться с вызовы REST API. Сохраните этот маркер в текстовый файл. Он потребуется в данной статье позднее.
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
-В этой статье используется **неинтерактивный** подход. Дополнительные сведения о неинтерактивном подходе (вызовы между службами) см. в [этой статье](https://msdn.microsoft.com/library/azure/dn645543.aspx).
+В этой статье используется hello **неинтерактивной** подход. Дополнительные сведения о пакетном (service to service вызовов) см. в разделе [tooservice вызовы с использованием учетных данных службы](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
 ## <a name="create-a-data-lake-analytics-account"></a>Создание учетной записи аналитики озера данных
 Перед тем как создать учетную запись Data Lake Analytics, необходимо создать группу ресурсов Azure и учетную запись Data Lake Store.  Дополнительные сведения см. в разделе [Создание учетной записи Data Lake Store](../data-lake-store/data-lake-store-get-started-rest-api.md#create-a-data-lake-store-account).
 
-Чтобы создать учетную запись, используйте следующую команду cURL:
+Здравствуйте, следующая команда показывает перелистывание как toocreate учетной записи:
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<NewAzureDataLakeAnalyticsAccountName>?api-version=2016-11-01 -d@"C:\tutorials\adla\CreateDataLakeAnalyticsAccountRequest.json"
 
-Замените \<`REDACTED`\> маркером авторизации, \<`AzureSubscriptionID`\> — идентификатором подписки, \<`AzureResourceGroupName`\> — именем существующей группы ресурсов Azure, а \<`NewAzureDataLakeAnalyticsAccountName`\> — новым именем учетной записи Data Lake Analytics. Полезные данные запроса для этой команды находятся в файле **CreateDatalakeAnalyticsAccountRequest.json**, предоставленном для приведенного выше параметра `-d`. Содержимое файла input.json выглядит следующим образом:
+Замените \< `REDACTED` \> маркером авторизации hello \< `AzureSubscriptionID` \> своим Идентификатором подписки, \< `AzureResourceGroupName` \> с существующим ресурсом Azure Имя группы и \< `NewAzureDataLakeAnalyticsAccountName` \> с новым именем учетной записи аналитики Озера данных. Hello полезные данные запроса для этой команды, содержащиеся в hello **CreateDatalakeAnalyticsAccountRequest.json** файл, предоставленный для hello `-d` описание параметра. Hello содержимое файла input.json hello напоминают hello следующее:
 
     {  
         "location": "East US 2",  
@@ -116,11 +116,11 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="list-data-lake-analytics-accounts-in-a-subscription"></a>Список учетных записей Data Lake Analytics в подписке
-Чтобы получить список учетных записей в подписке, используйте следующую команду cURL:
+Hello следующую команду Curl показано, как toolist учетные записи в подписке.
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/providers/Microsoft.DataLakeAnalytics/Accounts?api-version=2016-11-01
 
-Замените \<`REDACTED`\> маркером авторизации, а \<`AzureSubscriptionID`\> — идентификатором подписки. Выходные данные должны быть следующего вида.
+Замените \< `REDACTED` \> маркером авторизации hello \< `AzureSubscriptionID` \> вашим идентификатором подписки. Hello выходные данные выглядят аналогично:
 
     {
         "value": [
@@ -158,11 +158,11 @@ ms.lasthandoff: 07/11/2017
     }
 
 ## <a name="get-information-about-a-data-lake-analytics-account"></a>Получение сведений об учетной записи Data Lake Analytics
-Чтобы получить сведения об учетной записи, используйте следующую команду cURL:
+Здравствуйте, следующая команда показывает перелистывание как tooget сведения об учетной записи:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<DataLakeAnalyticsAccountName>?api-version=2015-11-01
 
-Замените \<`REDACTED`\> маркером авторизации, \<`AzureSubscriptionID`\> — идентификатором подписки, \<`AzureResourceGroupName`\> — именем существующей группы ресурсов Azure, а \<`DataLakeAnalyticsAccountName`\> — именем существующей учетной записи Data Lake Analytics. Выходные данные должны быть следующего вида.
+Замените \< `REDACTED` \> маркером авторизации hello \< `AzureSubscriptionID` \> своим Идентификатором подписки, \< `AzureResourceGroupName` \> с существующим ресурсом Azure Имя группы и \< `DataLakeAnalyticsAccountName` \> с именем hello существующей учетной записи аналитики Озера данных. Hello выходные данные выглядят аналогично:
 
     {
         "properties": {
@@ -190,11 +190,11 @@ ms.lasthandoff: 07/11/2017
     }
 
 ## <a name="list-data-lake-stores-of-a-data-lake-analytics-account"></a>Список хранилищ Data Lake Store учетной записи Data Lake Analytics
-Чтобы получить список хранилищ Data Lake Store учетной записи, используйте следующую команду cURL:
+Hello следующую команду Curl показано, как toolist Озера данных хранятся в учетной записи:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<DataLakeAnalyticsAccountName>/DataLakeStoreAccounts/?api-version=2016-11-01
 
-Замените \<`REDACTED`\> маркером авторизации, \<`AzureSubscriptionID`\> — идентификатором подписки, \<`AzureResourceGroupName`\> — именем существующей группы ресурсов Azure, а \<`DataLakeAnalyticsAccountName`\> — именем существующей учетной записи Data Lake Analytics. Выходные данные должны быть следующего вида.
+Замените \< `REDACTED` \> маркером авторизации hello \< `AzureSubscriptionID` \> своим Идентификатором подписки, \< `AzureResourceGroupName` \> с существующим ресурсом Azure Имя группы и \< `DataLakeAnalyticsAccountName` \> с именем hello существующей учетной записи аналитики Озера данных. Hello выходные данные выглядят аналогично:
 
     {
         "value": [
@@ -210,11 +210,11 @@ ms.lasthandoff: 07/11/2017
     }
 
 ## <a name="submit-u-sql-jobs"></a>Отправка заданий U-SQL
-Чтобы отправить задание U-SQL, используйте следующую команду cURL:
+Здравствуйте, следующая команда показывает перелистывание как задание toosubmit U-SQL:
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs/<NewGUID>?api-version=2016-03-20-preview -d@"C:\tutorials\adla\SubmitADLAJob.json"
 
-Замените \<`REDACTED`\> маркером авторизации, а \<`DataLakeAnalyticsAccountName`\> — именем существующей учетной записи Data Lake Analytics. Полезные данные запроса для этой команды находятся в файле **SubmitADLAJob.json**, предоставленном для приведенного выше параметра `-d`. Содержимое файла input.json выглядит следующим образом:
+Замените \< `REDACTED` \> маркером авторизации hello \< `DataLakeAnalyticsAccountName` \> с именем hello существующей учетной записи аналитики Озера данных. Hello полезные данные запроса для этой команды, содержащиеся в hello **SubmitADLAJob.json** файл, предоставленный для hello `-d` описание параметра. Hello содержимое файла input.json hello напоминают hello следующее:
 
     {
         "jobId": "8f8ebf8c-4b63-428a-ab46-a03d2cc5b65a",
@@ -226,11 +226,11 @@ ms.lasthandoff: 07/11/2017
             "type": "USql",
             "script": "@searchlog =\n    EXTRACT UserId          int,\n            Start           DateTime,\n            Region          string,\n            Query          
         string,\n            Duration        int?,\n            Urls            string,\n            ClickedUrls     string\n    FROM \"/Samples/Data/SearchLog.tsv\"\n    US
-        ING Extractors.Tsv();\n\nOUTPUT @searchlog   \n    TO \"/Output/SearchLog-from-Data-Lake.csv\"\nUSING Outputters.Csv();"
+        ING Extractors.Tsv();\n\nOUTPUT @searchlog   \n    too\"/Output/SearchLog-from-Data-Lake.csv\"\nUSING Outputters.Csv();"
         }
     }
 
-Выходные данные должны быть следующего вида.
+Hello выходные данные выглядят аналогично:
 
     {
         "jobId": "8f8ebf8c-4b63-428a-ab46-a03d2cc5b65a",
@@ -267,13 +267,13 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="list-u-sql-jobs"></a>Получение списка заданий U-SQL
-Чтобы получить список заданий U-SQL, используйте следующую команду cURL:
+Здравствуйте, следующая команда показывает перелистывание как задания toolist U-SQL:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs?api-version=2016-11-01 
 
-Замените \<`REDACTED`\> маркером авторизации, а \<`DataLakeAnalyticsAccountName`\> — именем существующей учетной записи Data Lake Analytics. 
+Замените \< `REDACTED` \> маркером авторизации hello и \< `DataLakeAnalyticsAccountName` \> с именем hello существующей учетной записи аналитики Озера данных. 
 
-Выходные данные должны быть следующего вида.
+Hello выходные данные выглядят аналогично:
 
     {
     "value": [
@@ -322,11 +322,11 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="get-catalog-items"></a>Получение элементов каталога
-Чтобы получить базы данных из каталога, используйте следующую команду cURL:
+Hello следующую команду Curl показано, как базы данных hello tooget от hello каталога:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/catalog/usql/databases?api-version=2016-11-01
 
-Выходные данные должны быть следующего вида.
+Hello выходные данные выглядят аналогично:
 
     {
     "@odata.context":"https://myadla0831.azuredatalakeanalytics.net/sqlip/$metadata#databases","value":[
@@ -338,11 +338,11 @@ ms.lasthandoff: 07/11/2017
     ]
     }
 
-## <a name="see-also"></a>Дополнительные материалы
-* Более сложный запрос можно посмотреть в статье [Анализ журналов веб-сайта с помощью аналитики озера данных Azure](data-lake-analytics-analyze-weblogs.md).
-* Чтобы приступить к разработке приложений U-SQL, ознакомьтесь со статьей [Разработка скриптов U-SQL с помощью средств озера данных для Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* Для знакомства с U-SQL см. статью о [начале работы с языком U-SQL для Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
+## <a name="see-also"></a>См. также
+* в разделе toosee более сложный запрос, [веб-сайта анализ журналов с помощью аналитики Озера данных Azure](data-lake-analytics-analyze-weblogs.md).
+* tooget к разработке приложений U-SQL, в разделе [сценариев разработки U-SQL, с помощью средства Озера данных для Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+* в разделе toolearn U-SQL [Приступая к работе с Azure аналитика Озера данных U-SQL языка](data-lake-analytics-u-sql-get-started.md).
 * Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).
-* Общие сведения об Azure Data Lake Analytics см. в [этой статье](data-lake-analytics-overview.md).
-* Для просмотра учебника с помощью других средств используйте вкладки-селекторы в верхней части страницы.
+* в разделе tooget содержится обзор аналитики Озера данных, [Обзор аналитики Озера данных Azure](data-lake-analytics-overview.md).
+* toosee hello же учебника при помощи других средств, щелкните селекторы вкладку hello на hello вверху страницы приветствия.
 

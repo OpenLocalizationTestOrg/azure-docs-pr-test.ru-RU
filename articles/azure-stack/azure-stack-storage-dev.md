@@ -1,28 +1,28 @@
 ---
-title: "Начало работы со средствами разработки стек хранилища Azure"
-description: "Рекомендации, как приступить к работе со средствами разработки стек хранилища Azure"
+title: "aaaGet к работе со средствами разработки стек хранилища Azure"
+description: "Руководство по tooget работы со средствами разработки стек хранилища Azure"
 services: azure-stack
 author: xiaofmao
 ms.author: xiaofmao
 ms.date: 7/21/2017
 ms.topic: get-started-article
 ms.service: azure-stack
-ms.openlocfilehash: a4c1c316022f992750fe60d28b9be61b17242a64
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0756ed1b9fad4aed0cca4cfd719ef3334dec6700
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Начало работы со средствами разработки стек хранилища Azure 
 
 Стека Microsoft Azure предоставляет набор служб хранилища, включая хранилище больших двоичных объектов Azure, таблиц и очередей.
 
-Краткое руководство о том, как приступить к использованию средств разработки стек хранилища Azure в этой статье. Более подробные сведения и примеры кода можно найти в хранилище Azure руководства.
+В этой статье приведены рекомендации быстрого toostart средствами разработки стек хранилища Azure. Более подробные сведения и примеры кода можно найти в хранилище Azure руководства hello.
 
 Существуют известные различия между хранилища Azure и стек хранилища Azure, включая определенные требования для каждой платформы. Например существуют определенные клиентские библиотеки и требования суффикс конкретной конечной точки для стека Azure. Дополнительные сведения см. в разделе [стек хранилища Azure: различия и рекомендации](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Клиентские библиотеки Azure
-Поддерживаемая версия интерфейса API REST для стека хранилища Azure — 2015-04-05. Он не имеет полного контроля четности с последней версией API REST хранилища Azure. Поэтому для клиентских библиотек хранилища, необходимо иметь в виду версию, совместимую с REST API 2015-04-05.
+Hello поддерживается API-интерфейса REST для стека хранилища Azure имеет версию 2015-04-05. Он не имеет полного контроля четности с последней версией hello hello API REST хранилища Azure. Так что для клиентских библиотек хранилища hello следует toobe виду hello версии, совместимой с REST API 2015-04-05.
 
 
 |Клиентская библиотека|Стек Azure поддерживаемая версия|Ссылка|Спецификация конечной точки|
@@ -37,8 +37,8 @@ ms.lasthandoff: 08/29/2017
 
 > [!NOTE]
 > Сведения о PHP<br><br>
->Установка через редактор:
->1. Создайте файл с именем `composer.json` в корне проекта со следующим кодом:<br>
+>tooinstall через редактор:
+>1. Создайте файл с именем `composer.json` в корневом каталоге hello hello проекта со следующим кодом:<br>
 >
 >   ```
 >   {
@@ -48,14 +48,14 @@ ms.lasthandoff: 08/29/2017
 >    }
 >   ```
 >
->2. Загрузить [composer.phar](http://getcomposer.org/composer.phar) в корневой папке проекта.
+>2. Загрузить [composer.phar](http://getcomposer.org/composer.phar) в корневой каталог проекта hello.
 >3. Выполните команду `php composer.phar install`.
 >
 
 
 ## <a name="endpoint-declaration"></a>Конечная точка объявления
-Конечную точку Azure стек состоит из двух частей: имя области и домена Azure стека.
-В комплекте разработки Azure стека, конечная точка по умолчанию — **local.azurestack.external**.
+Конечную точку Azure стек состоит из двух частей: hello имя домена, регион и hello Azure стека.
+В hello пакет средств разработки Azure стека является конечной точки по умолчанию hello **local.azurestack.external**.
 Если вы не знаете о конечной точке, обратитесь к администратору облака.
 
 ## <a name="examples"></a>Примеры
@@ -63,7 +63,7 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="net"></a>.NET
 
-Стек Azure суффикс конечной точки необходимо указать в файле app.config:
+Для стека Azure hello суффикс конечной точки должно быть указано в файле app.config hello:
 
 ```
 <add key="StorageConnectionString" 
@@ -72,7 +72,7 @@ EndpointSuffix=local.azurestack.external;" />
 ```
 ### <a name="java"></a>Java
 
-Стек Azure необходимо указать суффикс конечной точки в настройки строки подключения:
+Для стека Azure hello суффикс конечной точки указывается в программе установки hello строки соединения:
 
 ```
 public static final String storageConnectionString =
@@ -84,7 +84,7 @@ public static final String storageConnectionString =
 
 ### <a name="nodejs"></a>Node.js
 
-Стек Azure суффикс конечной точки необходимо указать в объявлении экземпляра:
+Для стека Azure hello суффикс конечной точки должно быть указано в экземпляре объявления hello:
 
 ```
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
@@ -92,7 +92,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 ```
 ### <a name="c"></a>C++
 
-Стек Azure необходимо указать суффикс конечной точки в настройки строки подключения:
+Для стека Azure hello суффикс конечной точки указывается в программе установки hello строки соединения:
 
 ```
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
@@ -103,7 +103,7 @@ EndpointSuffix=local.azurestack.external"));
 
 ### <a name="php"></a>PHP
 
-Стек Azure необходимо указать суффикс конечной точки в настройки строки подключения:
+Для стека Azure hello суффикс конечной точки указывается в программе установки hello строки соединения:
 
 ```
 $connectionString = 'BlobEndpoint=http://<storage account name>.blob.local.azurestack.external/;
@@ -114,7 +114,7 @@ AccountName=<storage account name>;AccountKey=<storage account key>'
 
 ### <a name="python"></a>Python
 
-Стек Azure суффикс конечной точки необходимо указать в объявлении экземпляра:
+Для стека Azure hello суффикс конечной точки должно быть указано в экземпляре объявления hello:
 
 ```
 block_blob_service = BlockBlobService(account_name='myaccount',
@@ -123,7 +123,7 @@ endpoint_suffix='local.azurestack.external')
 ```
 ### <a name="ruby"></a>Ruby
 
-Стек Azure необходимо указать суффикс конечной точки в настройки строки подключения:
+Для стека Azure hello суффикс конечной точки указывается в программе установки hello строки соединения:
 
 ```
 set
@@ -135,41 +135,41 @@ EndpointSuffix=local.azurestack.external
 
 ## <a name="blob-storage"></a>Хранилище BLOB-объектов
 
-Стек Azure применяются следующие учебники хранилища больших двоичных объектов Azure. Определите требования суффикс конкретной конечной точки для Azure стека, описанный в предыдущем [примеры](#examples) раздела.
+Hello следующие учебники хранилища больших двоичных объектов Azure, применимые tooAzure стека. Примечание hello конкретной конечной точки суффикс требования для Azure стека, описанной в предыдущем hello [примеры](#examples) раздела.
 
 * [Приступая к работе с хранилищем BLOB-объектов Azure с помощью .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-* [Использование хранилища BLOB-объектов из Java](../storage/blobs/storage-java-how-to-use-blob-storage.md)
-* [Использование хранилища больших двоичных объектов из Node.js](../storage/blobs/storage-nodejs-how-to-use-blob-storage.md)
-* [Использование хранилища BLOB-объектов из C++](../storage/blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [Использование хранилища BLOB-объектов из PHP](../storage/blobs/storage-php-how-to-use-blobs.md)
-* [Использование хранилища больших двоичных объектов Azure с Python](../storage/blobs/storage-python-how-to-use-blob-storage.md)
-* [Использование хранилища BLOB-объектов из Ruby](../storage/blobs/storage-ruby-how-to-use-blob-storage.md)
+* [Как toouse хранилища BLOB-объектов из Java](../storage/blobs/storage-java-how-to-use-blob-storage.md)
+* [Как toouse хранилища BLOB-объектов из Node.js](../storage/blobs/storage-nodejs-how-to-use-blob-storage.md)
+* [Как toouse хранилища BLOB-объектов из C++](../storage/blobs/storage-c-plus-plus-how-to-use-blobs.md)
+* [Как toouse хранилища BLOB-объектов из PHP](../storage/blobs/storage-php-how-to-use-blobs.md)
+* [Как toouse хранилища больших двоичных объектов Azure с Python](../storage/blobs/storage-python-how-to-use-blob-storage.md)
+* [Как toouse хранилища BLOB-объектов из Ruby](../storage/blobs/storage-ruby-how-to-use-blob-storage.md)
 
 ## <a name="queue-storage"></a>Хранилище очередей
 
-В следующих учебниках хранилища очередей Azure относятся к Azure стека. Определите требования суффикс конкретной конечной точки для Azure стека, описанный в предыдущем [примеры](#examples) раздела.
+Hello следующие учебники хранилища очередей Azure — применимо tooAzure стека. Примечание hello конкретной конечной точки суффикс требования для Azure стека, описанной в предыдущем hello [примеры](#examples) раздела.
 
 * [Приступая к работе с хранилищем очередей Azure с помощью .NET](../storage/queues/storage-dotnet-how-to-use-queues.md)
-* [Использование хранилища очередей из Java](../storage/queues/storage-java-how-to-use-queue-storage.md)
-* [Использование хранилища очередей из Node.js](../storage/queues/storage-nodejs-how-to-use-queues.md)
-* [Использование хранилища очередей из C++](../storage/queues/storage-c-plus-plus-how-to-use-queues.md)
-* [Использование хранилища очередей из PHP](../storage/queues/storage-php-how-to-use-queues.md)
-* [Использование хранилища очередей из Python](../storage/queues/storage-python-how-to-use-queue-storage.md)
-* [Использование хранилища очередей из Ruby](../storage/queues/storage-ruby-how-to-use-queue-storage.md)
+* [Как toouse хранилища очередей из Java](../storage/queues/storage-java-how-to-use-queue-storage.md)
+* [Как toouse хранилища очередей из Node.js](../storage/queues/storage-nodejs-how-to-use-queues.md)
+* [Как toouse хранилища очередей из C++](../storage/queues/storage-c-plus-plus-how-to-use-queues.md)
+* [Как toouse хранилища очередей из PHP](../storage/queues/storage-php-how-to-use-queues.md)
+* [Как toouse хранилища очередей из Python](../storage/queues/storage-python-how-to-use-queue-storage.md)
+* [Как toouse хранилища очередей из Ruby](../storage/queues/storage-ruby-how-to-use-queue-storage.md)
 
 
 ## <a name="table-storage"></a>Хранилище таблиц
 
-В следующих учебниках хранилища таблиц Azure относятся к Azure стека. Определите требования суффикс конкретной конечной точки для Azure стека, описанный в предыдущем [примеры](#examples) раздела.
+Hello следующие учебники хранилища таблиц Azure, применимые tooAzure стека. Примечание hello конкретной конечной точки суффикс требования для Azure стека, описанной в предыдущем hello [примеры](#examples) раздела.
 
 * [Приступая к работе с хранилищем таблиц Azure с помощью .NET](../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [Использование табличного хранилища из Java](../cosmos-db/table-storage-how-to-use-java.md)
-* [Использование хранилища Azure таблицы из Node.js](../cosmos-db/table-storage-how-to-use-nodejs.md)
-* [Как использовать хранилище таблиц из C++](../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Использование табличного хранилища из PHP](../cosmos-db/table-storage-how-to-use-php.md)
-* [Как использовать хранилище таблиц в Python](../cosmos-db/table-storage-how-to-use-python.md)
-* [Использование табличного хранилища из Ruby](../cosmos-db/table-storage-how-to-use-ruby.md)
+* [Как toouse хранилище таблиц из Java](../cosmos-db/table-storage-how-to-use-java.md)
+* [Как toouse хранилище таблиц Azure из Node.js](../cosmos-db/table-storage-how-to-use-nodejs.md)
+* [Как toouse хранилище таблиц из C++](../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [Как toouse хранилище таблиц из PHP](../cosmos-db/table-storage-how-to-use-php.md)
+* [Как toouse хранилища таблиц на Python](../cosmos-db/table-storage-how-to-use-python.md)
+* [Как toouse хранилище таблиц из Ruby](../cosmos-db/table-storage-how-to-use-ruby.md)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Введение в службу хранилища Microsoft Azure](../storage/common/storage-introduction.md)
+* [Введение tooMicrosoft хранилища Azure](../storage/common/storage-introduction.md)

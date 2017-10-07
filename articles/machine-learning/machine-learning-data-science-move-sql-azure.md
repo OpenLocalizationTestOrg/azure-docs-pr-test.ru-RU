@@ -1,6 +1,6 @@
 ---
-title: "Перемещение данных в базу данных SQL Azure для Машинного обучения Azure | Документация Майкрософт"
-description: "Создание таблицы SQL и загрузка данных в таблицу SQL"
+title: "tooan aaaMove данных базы данных SQL Azure для машинного обучения Azure | Документы Microsoft"
+description: "Создать таблицу SQL и загрузить tooSQL данных таблицы"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,67 +14,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: dfd1649b666c3793339f8624bdf77aa92cca4e88
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b33ef836f42c17a56794baf763281e9998b16bef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Перемещение данных в базу данных SQL Azure для машинного обучения Azure
-В этой статье описаны варианты перемещения данных из неструктурированных файлов (в формате CSV или TSV) или с локального сервера SQL Server в базу данных SQL Azure. Эти задачи перемещения данных в облако являются этапом процесса обработки и анализа данных группы.
+# <a name="move-data-tooan-azure-sql-database-for-azure-machine-learning"></a>Перемещение данных tooan базы данных SQL Azure для машинного обучения Azure
+В этом разделе описаны параметры hello для перемещения данных из неструктурированных файлов (форматы CSV или TSV) или из данных, хранящихся в базе данных Azure SQL tooan в локальной среде SQL Server. Эти задачи для облака toohello перемещение данных являются частью hello командного процесса обработки и анализа данных.
 
-Описание вариантов перемещения данных на локальный сервер SQL Server для машинного обучения см. в статье [Перемещение данных в SQL Server на виртуальной машине Azure](machine-learning-data-science-move-sql-server-virtual-machine.md).
+Раздел, описывающий параметры hello tooan перемещение данных в локальной среде SQL Server для машинного обучения см. в разделе [перемещение данных tooSQL Server на виртуальной машине Azure](machine-learning-data-science-move-sql-server-virtual-machine.md).
 
-В следующем **меню** содержатся ссылки на разделы, описывающие прием данных в целевых средах, где они могут храниться и обрабатываться процессом обработки и анализа данных группы (TDSP).
+следующие Hello **меню** связывает tootopics, описывающие, каким образом данные tooingest в целевых средах, где hello данные могут храниться и обрабатываться во время hello процесса обработки и анализа данных Team (TDSP).
 
 [!INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
-В следующей таблице перечислены варианты перемещения данных в базу данных SQL Azure.
+Hello следующей таблице перечислены параметры hello tooan перемещения данных базы данных SQL Azure.
 
-| <b>Источник</b> | <b>Назначение: база данных SQL Azure</b> |
+| <b>ИСТОЧНИК</b> | <b>Назначение: база данных SQL Azure</b> |
 | --- | --- |
 | <b>Неструктурированный файл (в формате CSV или TSV)</b> |<a href="#bulk-insert-sql-query">SQL-запрос на массовую вставку |
-| <b>Локальный сервер SQL Server</b> |1. <a href="#export-flat-file">Экспорт в неструктурированный файл<br> 2. <a href="#insert-tables-bcp">Мастер миграции баз данных SQL<br> 3. <a href="#db-migration">Архивация и восстановление базы данных<br> 4. <a href="#adf"> Фабрика данных Azure |
+| <b>Локальный сервер SQL Server</b> |1. <a href="#export-flat-file">Экспорт файла tooFlat<br> 2. <a href="#insert-tables-bcp">Мастер миграции баз данных SQL<br> 3. <a href="#db-migration">Архивация и восстановление базы данных<br> 4. <a href="#adf"> Фабрика данных Azure |
 
 ## <a name="prereqs"></a>Предварительные требования
-Для выполнения описанных процедур вам необходимы следующие компоненты:
+Приведенные ниже процедуры Hello требуют наличия:
 
-* <seg>
-  **Подписка Azure**.</seg> Если у вас нет подписки, вы можете зарегистрироваться для получения [бесплатной пробной версии](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure storage account**. Учетная запись хранения Azure используется в этом учебнике для хранения данных. Если у вас ее нет, см. раздел [Создание учетной записи хранения](../storage/common/storage-create-storage-account.md#create-a-storage-account). После создания учетной записи хранения необходимо получить ключ, используемый для доступа к хранилищу. Ознакомьтесь с разделом [Управление ключами доступа к хранилищу](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
-* Доступ к **базе данных SQL Azure**. Если требуется настроить базу данных SQL Azure, то обратитесь к статье [Руководство по базам данных SQL: создание базы данных SQL за несколько минут с помощью портала Azure](../sql-database/sql-database-get-started.md) , которая содержит сведения о том, как подготовить новый экземпляр базы данных SQL Azure.
-* Установленная и настроенная локальная среда **Azure PowerShell**. Инструкции см. в статье [Приступая к работе с командлетами Azure PowerShell](/powershell/azure/overview).
+* **Подписка Azure**. Если у вас нет подписки, вы можете зарегистрироваться для получения [бесплатной пробной версии](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure storage account**. Использовать учетную запись хранилища Azure для хранения данных hello в этом учебнике. При отсутствии учетной записи хранилища Azure в разделе hello [создать учетную запись хранилища](../storage/common/storage-create-storage-account.md#create-a-storage-account) статьи. После создания учетной записи хранилища hello необходимо tooobtain hello от имени учетной записи хранилища hello tooaccess использования ключа. Ознакомьтесь с разделом [Управление ключами доступа к хранилищу](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
+* Доступ tooan **базы данных SQL Azure**. Если необходимо настроить базы данных SQL Azure, [Приступая к работе с базой данных SQL Microsoft Azure](../sql-database/sql-database-get-started.md) предоставляет сведения о том, как tooprovision новый экземпляр базы данных SQL Azure.
+* Установленная и настроенная локальная среда **Azure PowerShell**. Инструкции см. в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
 
-**Данные**: процессы миграции демонстрируются с помощью [набора данных о такси Нью-Йорка](http://chriswhong.com/open-data/foil_nyc_taxi/). Набор данных о такси Нью-Йорка содержит сведения о поездках и тарифах и доступен в хранилище BLOB-объектов Azure [здесь](http://www.andresmh.com/nyctaxitrips/). Пример и описание этих файлов приведены в [описании набора данных «Поездки такси Нью-Йорка»](machine-learning-data-science-process-sql-walkthrough.md#dataset).
+**Данные**: демонстрируются hello миграции процессов с помощью hello [NYC такси dataset](http://chriswhong.com/open-data/foil_nyc_taxi/). Hello такси NYC набор данных содержит сведения о данных маршрута и выставки и доступен в хранилище больших двоичных объектов: [NYC такси данных](http://www.andresmh.com/nyctaxitrips/). Пример и описание этих файлов приведены в [описании набора данных «Поездки такси Нью-Йорка»](machine-learning-data-science-process-sql-walkthrough.md#dataset).
 
-Вы можете либо адаптировать описанные здесь процедуры к собственному набору данных, либо выполнить описанные действия с набором данных о такси Нью-Йорка. Для передачи набора данных о такси Нью-Йорка в локальную базу данных SQL Server выполните процедуру, описанную в разделе [Массовый импорт данных в базу данных SQL Server](machine-learning-data-science-process-sql-walkthrough.md#dbload). Эти инструкции предназначены для SQL Server на виртуальной машине Azure. Процедура передачи для локального SQL Server идентична.
+Можно адаптировать hello процедуры описанных здесь tooa набор данных или действуйте hello, как описано с помощью hello такси NYC набора данных. hello tooupload такси NYC набора данных в базу данных SQL Server в локальной среде, выполните процедуру hello, описанные в [массового импорта данных в базу данных SQL Server](machine-learning-data-science-process-sql-walkthrough.md#dbload). Эти инструкции относятся к SQL Server на виртуальной машине Azure, но hello процедур для передачи toohello находится на локальном сервере SQL Server hello таким же.
 
-## <a name="file-to-azure-sql-database"></a> Перемещение данных из неструктурированного файла в базу данных SQL Azure
-Данные в неструктурированных файлах (форматов CSV или TSV) можно переместить в базу данных SQL Azure с помощью SQL-запроса на массовую вставку данных.
+## <a name="file-to-azure-sql-database"></a>Перемещение данных из источника неструктурированного файла tooan базы данных Azure SQL
+Данные в неструктурированные файлы (CSV или TSV в формате) могут быть tooan перемещенной базы данных Azure SQL с помощью Bulk Insert SQL-запроса.
 
 ### <a name="bulk-insert-sql-query"></a>SQL-запрос на массовую вставку
-Этапы выполнения процедуры с использованием SQL-запроса на массовую вставку аналогичны этапам процедуры перемещения данных из неструктурированного файла в SQL Server на виртуальной машине Azure. Дополнительные сведения см. в разделе [SQL-запрос на массовую вставку](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery).
+Hello hello процедурой hello массовой вставки запроса выполняется аналогично toothose, описаны в разделах hello для переноса данных из неструктурированного файла источника tooSQL Server на Виртуальной машине Azure. Дополнительные сведения см. в разделе [SQL-запрос на массовую вставку](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a>Перемещение данных с локального сервера SQL Server в базу данных SQL Azure
-Если источник данных расположен на локальном сервере SQL Server, существуют различные варианты перемещения данных в базу данных Azure SQL:
+## <a name="sql-on-prem-to-sazure-sql-database"></a>Перемещение данных из базы данных Azure SQL в локальной среде SQL Server tooan
+Если hello исходных данных хранится в SQL Server в локальной среде, есть различные возможности для перемещения hello данных tooan базы данных Azure SQL:
 
-1. [Экспорт в неструктурированный файл](#export-flat-file)
+1. [Экспорт файла tooFlat](#export-flat-file)
 2. [Мастер миграции баз данных SQL](#insert-tables-bcp)
 3. [Архивация и восстановление базы данных](#db-migration)
 4. [Фабрика данных Azure](#adf)
 
-Первые три этапа процедуры очень похожи на соответствующие этапы процедуры, описанной в статье [Перемещение данных в SQL Server на виртуальной машине Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) . В следующих инструкциях приводятся ссылки на соответствующие разделы этой статьи.
+Hello действия для первых трех hello, схожий toothose подразделы [перемещение данных tooSQL Server на виртуальной машине Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) , которые охватывают эти же процедуры. Ссылки toohello соответствующие разделы в этом разделе приведены в hello, следуйте инструкциям.
 
-### <a name="export-flat-file"></a>Экспорт в неструктурированный файл
-Этапы экспорта в неструктурированный файл похожи на этапы экспорта, описанные в разделе [Экспорт в неструктурированный файл](machine-learning-data-science-move-sql-server-virtual-machine.md#export-flat-file).
+### <a name="export-flat-file"></a>Экспорт файла tooFlat
+Hello действия для этого экспорта tooa неструктурированного файла, аналогичные toothose охваченных [tooFlat файл экспорта](machine-learning-data-science-move-sql-server-virtual-machine.md#export-flat-file).
 
 ### <a name="insert-tables-bcp"></a>Мастер миграции баз данных SQL
-Этапы использования мастера миграции Базы данных SQL похожи на аналогичные этапы, описанные в разделе [Мастер миграции баз данных SQL](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-migration).
+Hello действия по использованию hello мастер миграции баз данных SQL, аналогичные toothose, охваченных [мастер миграции баз данных SQL](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-migration).
 
 ### <a name="db-migration"></a>Архивация и восстановление базы данных
-Этапы архивации и восстановления базы данных похожи на аналогичные этапы, описанные в разделе [Восстановление и резервное копирование базы данных](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-backup).
+Hello действия по использованию базы данных резервного копирования и восстановления, аналогичные toothose охваченных [базы данных резервное копирование и восстановление](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-backup).
 
 ### <a name="adf"></a>Фабрика данных Azure
-Процедура перемещения данных в базу данных Azure SQL с помощью фабрики данных Azure приведена в разделе [Перенос данных из локального SQL Server в SQL Azure с фабрикой данных Azure](machine-learning-data-science-move-sql-azure-adf.md). В этой статье показано, как перемещать данные из локальной базы данных SQL Server в базу данных SQL Azure через хранилище BLOB-объектов Azure с помощью фабрики данных Azure.
+в разделе hello приведен Hello процедуры для перемещения данных tooan базы данных SQL Azure с фабрикой данных Azure (ADF) [перемещения данных из локальной tooSQL сервера SQL Azure с фабрикой данных Azure](machine-learning-data-science-move-sql-azure-adf.md). В этом разделе показано, как базы данных toomove данные из локальной tooan базы данных SQL Server Azure SQL через хранилище больших двоичных объектов Azure использование ADF.
 
-Фабрику данных Azure стоит использовать в том случае, когда данные нужно постоянно переносить в гибридном сценарии, при котором осуществляется доступ как к локальным, так и к облачным ресурсам, и когда при переносе данные необходимо обработать, изменить или добавить к ним операции бизнес-логики. ADF позволяет выполнять планирование и отслеживание заданий с помощью простых сценариев JSON, управляющих перемещением данных на периодической основе. ADF также обладает другими возможностями, такими как поддержка сложных операций.
+Рассмотрите возможность использования ADF при toobe потребностей данных постоянно миграции в гибридном сценарии, который обращается к локально облачные ресурсы и hello данных в рамках транзакции или необходима toobe изменен или бизнес-логики добавили tooit при переносе. ADF позволяет hello планирования и отслеживания заданий, используя простые сценарии JSON, управлять hello перемещение данных на периодической основе. ADF также обладает другими возможностями, такими как поддержка сложных операций.

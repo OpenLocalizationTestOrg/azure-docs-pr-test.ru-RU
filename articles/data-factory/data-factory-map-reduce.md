@@ -1,6 +1,6 @@
 ---
-title: "Вызов программы MapReduce из фабрики данных Azure"
-description: "Узнайте, как обрабатывать данные путем выполнения программ MapReduce в кластере Azure HDInsight из фабрики данных Azure."
+title: "aaaInvoke программу MapReduce из фабрики данных Azure"
+description: "Узнайте, как кластер tooprocess данных путем запуска на Azure HDInsight программ MapReduce из фабрики данных Azure."
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
-ms.openlocfilehash: 55fc2196cb4ba50eced4a463914ae188217d0fed
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 448ef93a10bd97e7ecd4be4f04f88f8a05decc1d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Вызов программы MapReduce из фабрики данных
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,30 +33,30 @@ ms.lasthandoff: 08/18/2017
 > * [Действие U-SQL в Data Lake Analytics](data-factory-usql-activity.md)
 > * [Настраиваемое действие .NET](data-factory-use-custom-activities.md)
 
-Действие MapReduce HDInsight в [конвейере](data-factory-create-pipelines.md) фабрики данных выполняет программы MapReduce для [вашего собственного](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) кластера HDInsight или кластера HDInsight [по запросу](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) под управлением Windows или Linux. Данная статья основана на материалах статьи о [действиях преобразования данных](data-factory-data-transformation-activities.md) , в которой приведен общий обзор преобразования данных и список поддерживаемых действий преобразования.
+Действие MapReduce в HDInsight в фабрике данных Hello [конвейера](data-factory-create-pipelines.md) выполняет программ MapReduce, на [собственные](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) или [по требованию](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) кластера HDInsight под управлением Windows и Linux. Эта статья основана на hello [действия преобразования данных](data-factory-data-transformation-activities.md) статьи, которая дан обзор преобразования данных и hello поддерживается преобразование действий.
 
 > [!NOTE] 
-> Если вы не знакомы с фабрикой данных Azure, ознакомьтесь со статьей [Введение в фабрику данных Azure](data-factory-introduction.md) и [Руководство. Создание первого конвейера для преобразования данных с помощью кластера Hadoop](data-factory-build-your-first-pipeline.md) перед ознакомлением с этой статьей.  
+> Если новый tooAzure фабрики данных, прочтите [tooAzure введение фабрики данных](data-factory-introduction.md) и hello учебника: [создания вашего первого конвейера данных](data-factory-build-your-first-pipeline.md) перед считыванием в этой статье.  
 
 ## <a name="introduction"></a>Введение
-Конвейер в фабрике данных Azure обрабатывает данные в связанной службе хранилища с помощью связанных вычислительных служб. В нем содержится последовательность действий, каждое из которых выполняет определенную операцию обработки. В этой статье описывается использование действия MapReduce в HDInsight.
+Конвейер в фабрике данных Azure обрабатывает данные в связанной службе хранилища с помощью связанных вычислительных служб. В нем содержится последовательность действий, каждое из которых выполняет определенную операцию обработки. В этой статье описывает использование hello действие MapReduce в HDInsight.
 
 Дополнительную информацию о выполнении сценариев Pig и Hive в кластере HDInsight на основе Windows или Linux из конвейера с помощью действий Pig и Hive в HDInsight см. в статьях [Действие Pig](data-factory-pig-activity.md) и [Действие Hive](data-factory-hive-activity.md). 
 
 ## <a name="json-for-hdinsight-mapreduce-activity"></a>JSON для действия MapReduce в HDInsight
-В определении JSON для действия HDInsight: 
+В hello определение JSON для hello действие HDInsight: 
 
-1. В поле **тип** для **действия** задайте значение **HDInsight**.
-2. Укажите имя класса для свойства **className** .
-3. Укажите путь к JAR-файлу, включив в него имя файла для свойства **jarFilePath** .
-4. Укажите связанную службу, которая обращается к хранилищу больших двоичных объектов Azure, содержащему JAR-файл для свойства **jarLinkedService** .   
-5. Укажите необходимые аргументы для программы MapReduce в разделе **аргументы**. Во время выполнения вы увидите несколько дополнительных аргументов (например, mapreduce.job.tags) платформы MapReduce. Чтобы отличать свои аргументы от аргументов MapReduce, вы можете использовать параметр и значение в качестве аргументов, как показано в следующем примере (-s, --input, --output и т. д — параметры, за которыми сразу следуют их значения).
+1. Набор hello **тип** из hello **действия** слишком**HDInsight**.
+2. Укажите имя hello hello класса для **className** свойство.
+3. Укажите hello путь toohello JAR-файл с именем файла hello для **jarFilePath** свойство.
+4. Укажите hello связаны службы, которая ссылается toohello хранилища больших двоичных объектов, содержащий hello JAR-файл для **jarLinkedService** свойство.   
+5. Укажите необходимые аргументы для программы MapReduce hello в hello **аргументы** раздела. Во время выполнения, появится несколько дополнительных аргументов (например: mapreduce.job.tags) на основе инфраструктуры MapReduce hello. toodifferentiate аргументов с аргументами MapReduce hello, рассмотрите использование параметра и значение в качестве аргументов, как показано в следующий пример hello (- s,--входных данных, — т. д., выходные данные будут сразу следуют значениями параметров).
 
     ```JSON   
     {
         "name": "MahoutMapReduceSamplePipeline",
         "properties": {
-            "description": "Sample Pipeline to Run a Mahout Custom Map Reduce Jar. This job calcuates an Item Similarity Matrix to determine the similarity between 2 items",
+            "description": "Sample Pipeline tooRun a Mahout Custom Map Reduce Jar. This job calcuates an Item Similarity Matrix toodetermine hello similarity between 2 items",
             "activities": [
                 {
                     "type": "HDInsightMapReduce",
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/18/2017
                         "interval": 1
                     },
                     "name": "MahoutActivity",
-                    "description": "Custom Map Reduce to generate Mahout result",
+                    "description": "Custom Map Reduce toogenerate Mahout result",
                     "linkedServiceName": "HDInsightLinkedService"
                 }
             ],
@@ -106,16 +106,16 @@ ms.lasthandoff: 08/18/2017
         }
     }
     ```
-С помощью действия MapReduce можно выполнить JAR-файл MapReduce в кластере HDInsight. В приведенном ниже образце определения конвейера JSON действие HDInsight настроено на запуск JAR-файла Mahout.
+Действие MapReduce в HDInsight toorun hello можно использовать любой файл jar MapReduce в кластере HDInsight. Следующий пример определения JSON конвейера, hello действие HDInsight — hello настроены toorun Mahout JAR-файл.
 
 ## <a name="sample-on-github"></a>Пример на GitHub
-Вы можете скачать пример использования действия MapReduce в HDInsight на странице [примеров фабрики данных на сайте GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  
+Вы можете загрузить пример использования hello действие MapReduce в HDInsight из: [фабрики образцы данных на сайте GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  
 
-## <a name="running-the-word-count-program"></a>Выполнение программы подсчета слов
-Конвейер в этом примере запускает в кластере Azure HDInsight программу подсчета слов MapReduce.   
+## <a name="running-hello-word-count-program"></a>Запуск программы Статистика hello
+конвейер Hello в этом примере запускается hello Статистика Map/Reduce программы в кластере Azure HDInsight.   
 
 ### <a name="linked-services"></a>Связанные службы
-Сначала необходимо создать связанную службу для связи службы хранилища Azure, используемой в кластере Azure HDInsight, с фабрикой данных Azure. При копировании и вставке следующего кода не забудьте заменить **имя** и **ключ учетной записи** именем и ключом хранилища Azure. 
+Сначала необходимо создать hello toolink связанной службы хранилища Azure, используемой фабрики данных Azure toohello кластера Azure HDInsight hello. Если вы скопируйте и вставьте следующий код hello, не забудьте tooreplace **имя учетной записи** и **ключ учетной записи** с именем hello и ключ хранилища Azure. 
 
 #### <a name="azure-storage-linked-service"></a>Связанная служба хранения Azure
 
@@ -132,7 +132,7 @@ ms.lasthandoff: 08/18/2017
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Связанная служба Azure HDInsight
-Далее необходимо создать связанную службу для связи кластера Azure HDInsight с фабрикой данных Azure. При копировании и вставке следующего кода не забудьте заменить **имя кластера HDInsight** на имя вашего кластера HDInsight и изменить значения имени пользователя и пароля.   
+Создайте toolink связанной службы фабрики данных Azure toohello кластера Azure HDInsight. Если вы скопируйте и вставьте следующий код hello, замените **имя кластера HDInsight** с именем hello кластер HDInsight и изменение значения имени пользователя и пароля.   
 
 ```JSON
 {
@@ -149,9 +149,9 @@ ms.lasthandoff: 08/18/2017
 }
 ```
 
-### <a name="datasets"></a>Наборы данных
+### <a name="datasets"></a>НАБОРЫ ДАННЫХ
 #### <a name="output-dataset"></a>Выходной набор данных
-Конвейер в этом примере не принимает никаких входных данных. Следует указать выходной набор данных для действия MapReduce в HDInsight. Это просто фиктивный набор данных, необходимый для соблюдения расписания конвейера.  
+конвейер Hello в этом примере не принимает входные данные. Необходимо указать выходной набор данных для hello действие MapReduce в HDInsight. Этот набор данных — просто пустой набор данных, необходимые toodrive hello конвейера расписание.  
 
 ```JSON
 {
@@ -176,23 +176,23 @@ ms.lasthandoff: 08/18/2017
 ```
 
 ### <a name="pipeline"></a>Конвейер
-Конвейер в этом примере имеет только одно действие с типом HDInsightMapReduce. Ниже приведены некоторые важные свойства в JSON. 
+конвейер Hello в этом примере имеется только одно действие, которое относится к типу: HDInsightMapReduce. Ниже приведены некоторые важные свойства hello в hello JSON. 
 
 | Свойство | Примечания |
 |:--- |:--- |
-| type |Должен быть задан тип **HDInsightMapReduce**. |
-| className |Имя класса: **wordcount** |
-| jarFilePath |Путь к JAR-файлу, содержащему этот класс. Если вы копируете и вставляете приведенный код, не забудьте изменить имя кластера. |
-| jarLinkedService |Служба, связанная со службой хранилища Azure, содержащая JAR-файл. Эта связанная служба ссылается на хранилище, связанное с кластером HDInsight. |
-| arguments |Программа подсчета слов принимает два аргумента, входной и выходной. Входной файл — davinci.txt. |
-| frequency и interval |Значения этих свойств соответствуют результирующему набору данных. |
-| linkedServiceName (имя связанной службы) |Указывает связанную службу HDInsight, созданную ранее. |
+| type |Hello тип должен быть установлен слишком**HDInsightMapReduce**. |
+| className |Имя класса hello: **wordcount** |
+| jarFilePath |Путь toohello jar-файл содержит класс hello. Если вы скопируйте и вставьте следующий код hello, не забывайте toochange hello имя кластера hello. |
+| jarLinkedService |Связанная служба, которая содержит hello jar-файл хранилища Azure. Эта связанная служба ссылается toohello хранилища, связанного с кластером HDInsight hello. |
+| arguments |Программа Hello wordcount принимает два аргумента, входным и выходным. Hello входной файл является файлом davinci.txt hello. |
+| frequency и interval |значения этих свойств Hello соответствует hello выходной набор данных. |
+| linkedServiceName (имя связанной службы) |ссылается toohello связанной службы HDInsight, был создан ранее. |
 
 ```JSON
 {
     "name": "MRSamplePipeline",
     "properties": {
-        "description": "Sample Pipeline to Run the Word Count Program",
+        "description": "Sample Pipeline tooRun hello Word Count Program",
         "activities": [
             {
                 "type": "HDInsightMapReduce",
@@ -230,7 +230,7 @@ ms.lasthandoff: 08/18/2017
 ```
 
 ## <a name="run-spark-programs"></a>Запуск программ Spark
-Действие MapReduce можно использовать для запуска программ Spark в кластере HDInsight Spark. Дополнительные сведения см. в разделе [Вызов программ Spark из фабрики данных](data-factory-spark.md).  
+Можно использовать программы Spark toorun действие MapReduce в кластере HDInsight Spark. Дополнительные сведения см. в разделе [Вызов программ Spark из фабрики данных](data-factory-spark.md).  
 
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456

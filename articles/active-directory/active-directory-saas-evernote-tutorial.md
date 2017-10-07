@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Evernote | Документация Майкрософт"
-description: "Сведения о настройке единого входа между Azure Active Directory и Evernote."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Evernote."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,226 +14,226 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: be94152a84bbbeacb623d7dd8b540e3981931a8e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4d7017e571ed12a0b155aa188c6b0ecb3c9898a2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Руководство по интеграции Azure Active Directory с Evernote
 
-В этом руководстве описано, как интегрировать Evernote с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Evernote с Azure Active Directory (Azure AD).
 
-Интеграция Evernote с Azure AD обеспечивает следующие преимущества:
+Интеграция с Azure AD Evernote предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Evernote.
-- Вы можете включить автоматический вход пользователей в Evernote (единый вход) под учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — на портале Azure.
+- Можно управлять в Azure AD, имеющего доступ tooEvernote.
+- Можно включить на пользователей tooautomatically get вошедшего tooEvernote (Single Sign-On) с помощью своих учетных записей Azure AD.
+- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Evernote, вам потребуется:
+tooconfigure интеграция Azure AD с Evernote требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка с поддержкой единого входа Evernote.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Evernote из коллекции.
+1. Добавление Evernote из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-evernote-from-the-gallery"></a>Добавление Evernote из коллекции
-Чтобы настроить интеграцию Evernote с Azure AD, необходимо добавить Evernote из коллекции в список управляемых приложений SaaS.
+## <a name="adding-evernote-from-hello-gallery"></a>Добавление Evernote из галереи hello
+tooconfigure hello интеграции Evernote в Azure AD, вы должны tooadd Evernote из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Evernote из коллекции, сделайте следующее:**
+**tooadd Evernote из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
-    ![Колонка "Корпоративные приложения"][2]
+    ![Hello корпоративных приложений колонку][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Кнопка нового приложения Hello][3]
 
-4. В поле поиска введите **Evernote**, выберите **Evernote** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+4. Введите в поле поиска hello **Evernote**выберите **Evernote** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
 
-    ![Evernote в списке результатов](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_addfromgallery.png)
+    ![Evernote в списке результатов hello](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение Evernote с использованием тестового пользователя Britta Simon.
 
-Для настройки единого входа в Azure AD необходимо знать, какой пользователь в Evernote соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Evernote.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Evernote является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Evernote должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Evernote.
+В Evernote, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Evernote, необходимо выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с Evernote, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Evernote](#create-an-evernote-test-user)** требуется для создания в Evernote пользователя Britta Simon, связанного с соответствующим представлением в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя, прошедшего Evernote](#create-an-evernote-test-user)**  -toohave аналог Саймон Britta в Evernote, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В данном разделе описано, как включить единый вход в Azure AD на портале Azure и настроить его в приложении Evernote.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Evernote.
 
-**Чтобы настроить единый вход Azure AD в Evernote, сделайте следующее:**
+**tooconfigure Azure AD единого входа с Evernote, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Evernote** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Evernote** странице интеграции приложения щелкните **единого входа**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_samlbase.png)
 
-3. Если вы хотите настроить приложение в режиме, инициированном поставщиком удостоверений, в разделе **Домены и URL-адреса приложения Evernote** выполните следующие действия:
+3. На hello **URL-адреса и домена Evernote** выполните следующие шаги при необходимости приложение hello tooconfigure в IDP инициировал режим hello:
 
     ![Сведения о домене и URL-адресах единого входа приложения Evernote](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_url.png)
 
-    В текстовом поле **Идентификатор** введите URL-адрес `https://www.evernote.com/saml2`.
+    В hello **идентификатор** текстовом поле введите URL-адрес hello:`https://www.evernote.com/saml2`
 
-4. Установите флажок **Показать дополнительные параметры URL-адресов**, и выполните следующее действие, если хотите настроить приложение для работы в режиме, инициируемом **поставщиком услуг**:
+4. Проверьте **Показывать дополнительные параметры URL-адреса** и выполните следующий шаг при желании tooconfigure приложения hello в hello **SP** инициировал режим:
 
     ![Сведения о домене и URL-адресах единого входа приложения Evernote](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_url1.png)
 
-    В текстовом поле **URL-адрес для входа** введите URL-адрес: `https://www.evernote.com/Login.action`   
+    В hello **URL-адрес входа** текстовом поле введите URL-адрес hello:`https://www.evernote.com/Login.action`   
 
-5. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
+5. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
-    ![Ссылка для скачивания сертификата](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_certificate.png) 
+    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_certificate.png) 
 
 6. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-evernote-tutorial/tutorial_general_400.png)
 
-7. В разделе **Настройка Evernote** щелкните **Настроить Evernote**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+7. На hello **конфигурации Evernote** щелкните **Настройка Evernote** tooopen **Настройка входа** окна. Копировать hello **SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка Evernote](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_configure.png) 
 
 8. В другом окне веб-браузера войдите на сайт компании Evernote в качестве администратора.
 
-9. Перейдите в **консоль администрирования**.
+9. Go слишком**«Консоли администрирования»**
 
     ![Консоль администрирования](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-10. Из **консоли администрирования** перейдите в раздел **Безопасность** и выберите **Единый вход**.
+10. Из hello **«Консоли администрирования»**, перейдите в слишком**«Безопасность»** и выберите **"единый вход"**
 
     ![Настройка единого входа](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_sso.png)
 
-11. Задайте следующие значения.
+11. Настройте hello следующие значения:
 
     ![Настройка сертификата](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_certx.png)
     
-    а.  **Включить единый вход**. Единый вход включен по умолчанию (щелкните **Отключить единый вход**, чтобы удалить требование единого входа).
+    а.  **Включение единого входа:** единый вход включен по умолчанию (щелкните **отключить Single Sign-on** требование SSO hello tooremove)
 
-    b. Вставьте **URL-адрес службы единого входа SAML**, скопированный на портале Azure, в текстовое поле **SAML HTTP Request URL** (URL-адрес HTTP-запроса SAML).
+    b. Вставить **SAML единого входа для URL-адрес службы** значение, которое было скопировано из hello портал Azure в hello **URL-адрес SAML HTTP запроса** текстового поля.
 
-    c. Откройте в Блокноте скачанный из Azure AD сертификат и скопируйте его содержимое, включая строки BEGIN CERTIFICATE и END CERTIFICATE, в текстовое поле **X.509 Certificate** (Сертификат X.509). 
+    c. Откройте загруженный сертификат hello из Azure AD в Блокноте и скопируйте содержимое hello, включая «BEGIN» и «END сертификата» и вставьте его в hello **сертификат X.509** текстового поля. 
 
     Щелкните **Сохранить изменения**.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
 
-    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-evernote-tutorial/create_aaduser_01.png)
+    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-evernote-tutorial/create_aaduser_01.png)
 
-2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
 
-    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-evernote-tutorial/create_aaduser_02.png)
+    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-evernote-tutorial/create_aaduser_02.png)
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
 
-    ![Кнопка "Добавить"](./media/active-directory-saas-evernote-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-evernote-tutorial/create_aaduser_03.png)
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
 
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-evernote-tutorial/create_aaduser_04.png)
+    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-evernote-tutorial/create_aaduser_04.png)
 
-    а. В поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
 
-    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
 
-    г) Щелкните **Создать**.
+    d. Щелкните **Создать**.
  
 ### <a name="create-an-evernote-test-user"></a>Создание тестового пользователя Evernote
 
-Чтобы пользователи Azure AD могли выполнять вход в Evernote, они должны быть подготовлены для Evernote.  
-В случае с Evernote подготовка выполняется вручную.
+В порядке tooenable toolog пользователей Azure AD в Evernote их необходимо подготовить в Evernote.  
+В случае Evernote hello Подготовка выполняется вручную.
 
-**Чтобы подготовить учетные записи пользователей, выполните следующие действия.**
+**tooprovision учетных записей пользователей, выполните следующие действия hello:**
 
-1. Войдите на сайт компании Evernote в качестве администратора.
+1. Войдите в систему tooyour Evernote сайт компании как администратор.
 
-2. Щелкните **Консоль администрирования**.
+2. Нажмите кнопку hello **«Консоли администрирования»**.
 
     ![Консоль администрирования](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-3. В **консоли администрирования** выберите **Добавить пользователей**.
+3. Из hello **«Консоли администрирования»**, перейдите в слишком**«Добавление пользователей»**.
 
     ![Добавление тестового пользователя](./media/active-directory-saas-evernote-tutorial/create_aaduser_0001.png)
 
-4. **Добавьте адреса электронной почты участников команды** в **соответствующих полях** и нажмите кнопку **Пригласить**.
+4. **Добавление членов команды** в hello **электронной почты** текстовое поле, введите адрес электронной почты hello учетной записи пользователя и нажмите кнопку **приглашения.**
 
     ![Добавление тестового пользователя](./media/active-directory-saas-evernote-tutorial/create_aaduser_0002.png)
     
-5. После этого владелец учетной записи Azure Active Directory получает сообщение электронной почты, чтобы принять приглашение.
+5. После отправки приглашения hello владельцем учетной записи Azure Active Directory получит по электронной почте приглашение tooaccept hello.
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход в Azure путем предоставления этому пользователю доступа к Evernote.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooEvernote доступа.
 
-![Назначение роли пользователя][200] 
+![Назначение пользователям ролей hello][200] 
 
-**Чтобы назначить пользователя Britta Simon в приложении Evernote, сделайте следующее:**
+**tooassign tooEvernote Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Evernote**.
+2. В списке приложений hello выберите **Evernote**.
 
-    ![Ссылка на Evernote в списке "Приложения"](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_app.png)  
+    ![ссылка Evernote Hello в списке приложений hello](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_app.png)  
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202]
+    ![Hello ссылку «Пользователи и группы»][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Область "Добавление назначения"][203]
+    ![область назначения, добавьте Hello][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -241,13 +241,13 @@ ms.lasthandoff: 08/18/2017
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув плитку Evernote на панели доступа, вы автоматически войдете в приложение. Будет выполнен вход с использованием учетной записи организации, но затем нужно будет войти с помощью личной учетной записи. 
+Если щелкнуть плитку Evernote hello в hello панели доступа, следует получать вошедшего tooyour Evernote приложения. Вы сможете вход как учетная запись организации, но затем toolog необходимость личную учетную запись. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

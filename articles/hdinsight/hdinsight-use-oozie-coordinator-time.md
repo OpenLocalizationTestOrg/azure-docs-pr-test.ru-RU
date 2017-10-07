@@ -1,6 +1,6 @@
 ---
-title: "Использование временного координатора Oozie с Hadoop в Azure HDInsight | Документация Майкрософт"
-description: "Использование временного координатора Oozie с Hadoop в Azure HDInsight — службы для работы с данными большого размера. Узнайте, как определить рабочие процессы и координаторы в Oozie, а также как отправлять задания."
+title: "aaaUse синхронизированного координатора Hadoop Oozie в HDInsight | Документы Microsoft"
+description: "Использование временного координатора Oozie с Hadoop в Azure HDInsight — службы для работы с данными большого размера. Узнайте, как toodefine Oozie рабочие процессы и координаторы и отправлять задания."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,35 +16,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: 600a70c74a16e2601a874f804ac2e8382c8bfa90
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: aecbb5ee94a4234d1a7768bdb6de2a33508b1e4c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Используйте учитывающий время координатор Oozie с Hadoop в HDInsight для определения рабочих процессов и координации заданий
-Узнайте, как определять рабочие процессы и координаторы, а также как по времени запускать задания координатора. Перед чтением этой статьи рекомендуется изучить [Использование Oozie с HDInsight][hdinsight-use-oozie]. Помимо Oozie, задания можно планировать с помощью фабрики данных Azure. Для получения сведений о фабрике данных Azure см. статью [Преобразование данных в фабрике данных Azure](../data-factory/data-factory-data-transformation-activities.md).
+# <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-toodefine-workflows-and-coordinate-jobs"></a>Использовать время под управлением координатора Oozie с Hadoop в рабочих процессах toodefine HDInsight и координации заданий
+В этой статье вы узнаете, как toodefine рабочие процессы и координаторы, и как tootrigger hello заданий координатора, на основе времени. Это полезно toogo через [Oozie использования с HDInsight] [ hdinsight-use-oozie] до чтения в этой статье. В дополнение к этому tooOozie, можно также запланировать задания с помощью фабрики данных Azure. в разделе toolearn фабрики данных Azure, [использование Pig и Hive с фабрикой данных](../data-factory/data-factory-data-transformation-activities.md).
 
 > [!NOTE]
-> В этой статье требуется кластер HDInsight на основе Windows. Дополнительные сведения об использовании Oozie, включая задания на основе времени, в кластере под управлением Linux см. в статье [Использование Oozie с Hadoop для определения и запуска рабочих процессов в HDInsight под управлением Linux](hdinsight-use-oozie-linux-mac.md).
+> В этой статье требуется кластер HDInsight на основе Windows. Дополнительные сведения об использовании Oozie, включая задания времени, в кластере под управлением Linux. в разделе [Oozie использования с Hadoop toodefine и выполнения рабочего процесса на основе Linux HDInsight](hdinsight-use-oozie-linux-mac.md)
 
 ## <a name="what-is-oozie"></a>Что такое Oozie
-Apache Oozie — это система рабочих процессов и координации, управляющая заданиями Hadoop. Это решение интегрировано со стеком Hadoop и поддерживает задания Hadoop Apache MapReduce, Apache Pig, Apache Hive и Apache Sqoop. Его также можно использовать для планирования относящихся к системе заданий, например Java-программ и сценариев оболочки.
+Apache Oozie — это система рабочих процессов и координации, управляющая заданиями Hadoop. Он интегрирован со стеком Hadoop hello и поддерживает заданий Hadoop Apache MapReduce, Apache Pig, Apache Hive и Apache Sqoop. Его также можно использовать tooschedule заданий, определенных tooa системы, таких как Java программ или сценариев оболочки.
 
-На следующем рисунке показан рабочий процесс, который вам потребуется реализовывать:
+Hello иллюстрации показан hello рабочего процесса, которая будет создана.
 
 ![Схема рабочих процессов][img-workflow-diagram]
 
-Рабочий процесс содержит два действия:
+рабочий процесс Hello содержит два действия:
 
-1. Действие Hive запускает сценарий HiveQL для подсчета экземпляров каждого типа уровня журнала в файле журнала log4j. Каждый журнал log4j состоит из строки полей, содержащей поле [LOG LEVEL] для отображения типа и серьезности, например:
+1. Действие Hive выполняется hello toocount сценарий HiveQL вхождения каждого типа уровень ведения журнала в файл журнала log4j. Каждый журнал log4j состоит из строки поля, содержащего [уровень ведения ЖУРНАЛА] поле tooshow hello тип и hello серьезности, например:
 
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
         2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
         ...
 
-    Выходные данные скрипта Hive аналогичны приведенным ниже:
+    Hello выходных данных скрипта Hive похожа на:
 
         [DEBUG] 434
         [ERROR] 3
@@ -54,86 +54,86 @@ Apache Oozie — это система рабочих процессов и ко
         [WARN]  4
 
     Дополнительные сведения о Hive см. в статье [Использование Hive с HDInsight][hdinsight-use-hive].
-2. Действие Sqoop экспортирует выходные данные действия HiveQL в таблицу в базе данных SQL Azure. Дополнительные сведения о Sqoop см. в статье [Использование Sqoop с Hadoop в HDInsight][hdinsight-use-sqoop].
+2. Действие Sqoop экспортирует hello HiveQL действие выходной tooa таблицы в базе данных Azure SQL. Дополнительные сведения о Sqoop см. в статье [Использование Sqoop с Hadoop в HDInsight][hdinsight-use-sqoop].
 
 > [!NOTE]
-> Сведения о поддерживаемых версиях Oozie в кластерах HDInsight см. в статье [Новые возможности версий кластеров, предоставляемых HDInsight][hdinsight-versions].
+> О поддерживаемых версиях Oozie в кластерах HDInsight см. в разделе [новые возможности, предоставляемые HDInsight версии кластера hello?] [hdinsight-versions].
 >
 >
 
 ## <a name="prerequisites"></a>Предварительные требования
-Перед началом работы с этим учебником необходимо иметь следующее:
+Прежде чем начать работу с учебником, необходимо иметь следующие hello.
 
 * **Рабочая станция с Azure PowerShell**.
 
     > [!IMPORTANT]
-    > Поддержка Azure PowerShell для управления ресурсами HDInsight с помощью диспетчера служб Azure (ASM) объявлена **устаревшей** и будет прекращена с 1 января 2017 г. В описанных в этом документе инструкциях используются новые командлеты HDInsight, которые работают с Azure Resource Manager.
+    > Поддержка Azure PowerShell для управления ресурсами HDInsight с помощью диспетчера служб Azure (ASM) объявлена **устаревшей** и будет прекращена с 1 января 2017 г. шаги Hello в этот документ используйте hello новые командлеты для HDInsight, работающие с помощью диспетчера ресурсов Azure.
     >
-    > Чтобы установить последнюю версию Azure PowerShell, выполните действия из статьи [Установка и настройка Azure PowerShell](/powershell/azureps-cmdlets-docs). Если у вас есть сценарии, в которые нужно добавить новые командлеты, работающие с Azure Resource Manager, см. статью [Переход к средствам разработки на основе Azure Resource Manager для кластеров HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
+    > Выполните шаги hello в [Установка и настройка Azure PowerShell](/powershell/azureps-cmdlets-docs) tooinstall hello последнюю версию Azure PowerShell. При наличии скриптов, toobe необходимость изменить toouse hello новые дополнительные командлеты для работы с диспетчером ресурсов Azure см. в разделе [tooAzure перенос разработки на основе диспетчера ресурсов средства для кластеров HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md) для получения дополнительной информации.
 
-* **Кластер HDInsight**. Сведения о создании кластера HDInsight см. в статьях [Создание кластеров Hadoop под управлением Windows в HDInsight][hdinsight-provision] и [Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux][hdinsight-get-started]. Для выполнения учебника необходимы следующие данные:
+* **Кластер HDInsight**. Сведения о создании кластера HDInsight см. в статьях [Создание кластеров Hadoop под управлением Windows в HDInsight][hdinsight-provision] и [Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux][hdinsight-get-started]. Требуется следующая toogo данных в учебнике hello hello:
 
     <table border = "1">
     <tr><th>Свойство кластера</th><th>Имя переменной Windows PowerShell</th><th>Значение</th><th>Описание</th></tr>
-    <tr><td>Имя кластера HDInsight.</td><td>$clusterName</td><td></td><td>Кластер HDInsight, на котором будет выполняться данный учебник.</td></tr>
-    <tr><td>Имя пользователя кластера HDInsigh</td><td>$clusterUsername</td><td></td><td>Имя пользователя кластера HDInsight. </td></tr>
-    <tr><td>Пароль пользователя кластера HDInsight. </td><td>$clusterPassword</td><td></td><td>Пароль пользователя кластера HDInsight.</td></tr>
-    <tr><td>Имя учетной записи хранения Azure</td><td>$storageAccountName</td><td></td><td>Учетная запись хранения Azure, доступная для кластера HDInsight. В этом учебнике используйте учетную запись хранения по умолчанию, указанную в процессе подготовки кластера.</td></tr>
-    <tr><td>Имя контейнера BLOB-объектов Azure</td><td>$containerName</td><td></td><td>Для этого примера применяйте контейнер хранилища BLOB-объектов Azure, используемый для файловой системы кластера HDInsight по умолчанию. По умолчанию его имя совпадает с именем кластера HDInsight.</td></tr>
+    <tr><td>Имя кластера HDInsight.</td><td>$clusterName</td><td></td><td>Hello кластера HDInsight, на котором будут выполняться этого учебника.</td></tr>
+    <tr><td>Имя пользователя кластера HDInsigh</td><td>$clusterUsername</td><td></td><td>имя пользователя кластера HDInsight Hello. </td></tr>
+    <tr><td>Пароль пользователя кластера HDInsight. </td><td>$clusterPassword</td><td></td><td>пароль пользователя кластера HDInsight Hello.</td></tr>
+    <tr><td>Имя учетной записи хранения Azure</td><td>$storageAccountName</td><td></td><td>Кластера HDInsight доступных toohello учетной записи хранилища Azure. В этом учебнике используйте учетную запись хранения hello по умолчанию, указанное во время процесса подготовки кластера hello.</td></tr>
+    <tr><td>Имя контейнера BLOB-объектов Azure</td><td>$containerName</td><td></td><td>Например используйте контейнер хранилища больших двоичных объектов Azure hello, используемый для кластера HDInsight по умолчанию hello с файловой системой. По умолчанию он имеет точно такое же имя, что кластер HDInsight hello hello.</td></tr>
     </table>
-* **База данных SQL Azure.**Необходимо настроить правило брандмауэра для сервера базы данных SQL, чтобы разрешить доступ к рабочей станции. Инструкции по созданию базы данных Azure SQL и настройке брандмауэра см. Инструкции по созданию базы данных Azure SQL и настройке брандмауэра см. в статье [Руководство по базам данных SQL: создание базы данных SQL за несколько минут с помощью портала Azure][sqldatabase-get-started]. Эта статья включает сценарий Windows PowerShell для создания таблицы базы данных Azure SQL, необходимой в рамках этого учебника.
+* **База данных SQL Azure.**Необходимо настроить правило брандмауэра для сервера базы данных SQL, чтобы разрешить доступ к рабочей станции. На рабочей станции, необходимо настроить правило брандмауэра для доступа к базе данных SQL server tooallow hello. Сведения о создании базы данных Azure SQL и настройка брандмауэра hello содержатся в разделе [приступить к работе с базой данных Azure SQL] [sqldatabase-get-started]. Эта статья содержит сценарий Windows PowerShell для создания таблицы базы данных Azure SQL hello, необходимых для этого учебника.
 
     <table border = "1">
     <tr><th>Свойство базы данных SQL</th><th>Имя переменной Windows PowerShell</th><th>Значение</th><th>Описание</th></tr>
-    <tr><td>Имя сервера базы данных SQL</td><td>$sqlDatabaseServer</td><td></td><td>Сервер базы данных SQL, куда Sqoop экспортирует данные. </td></tr>
+    <tr><td>Имя сервера базы данных SQL</td><td>$sqlDatabaseServer</td><td></td><td>Hello SQL базы данных сервера toowhich Sqoop будет экспортировать данные. </td></tr>
     <tr><td>Имя для входа базы данных SQL</td><td>$sqlDatabaseLogin</td><td></td><td>Имя для входа базы данных SQL</td></tr>
     <tr><td>Пароль для входа базы данных SQL</td><td>$sqlDatabaseLoginPassword</td><td></td><td>Пароль для входа базы данных SQL</td></tr>
-    <tr><td>Имя базы данных SQL</td><td>$sqlDatabaseName</td><td></td><td>База данных Azure SQL, куда Sqoop экспортирует данные. </td></tr>
+    <tr><td>Имя базы данных SQL</td><td>$sqlDatabaseName</td><td></td><td>toowhich базы данных Azure SQL Hello Sqoop будет экспортировать данные. </td></tr>
     </table>
 
   > [!NOTE]
-  > По умолчанию в базе данных SQL Azure разрешены подключения из служб Azure, в частности из службы Azure HDInsight. Если этот параметр брандмауэра отключен, нужно включить его на портале Azure. Инструкции по созданию базы данных SQL и настройке правил брандмауэра см. в статье [Начало работы с серверами баз данных SQL Azure, базами данных и правилами брандмауэра с использованием портала Azure и SQL Server Management Studio][sqldatabase-get-started].
+  > По умолчанию в базе данных SQL Azure разрешены подключения из служб Azure, в частности из службы Azure HDInsight. При отключении этого параметра брандмауэра, его необходимо включить из hello портала Azure. Инструкции по созданию базы данных SQL и настройке правил брандмауэра см. в статье [Начало работы с серверами баз данных SQL Azure, базами данных и правилами брандмауэра с использованием портала Azure и SQL Server Management Studio][sqldatabase-get-started].
 
 > [!NOTE]
-> Введите значения в таблицы. Это будет полезно при прохождении данного учебника.
+> Заполнение значений hello в таблицах hello. Это будет полезно при прохождении данного учебника.
 
-## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Определение рабочего процесса Oozie и связанного с ним скрипта HiveQL
-Определения рабочих процессов Oozie записываются в hPDL (язык определения процессов XML). Для файла рабочего процесса по умолчанию используется имя *workflow.xml*.  Позднее в этом учебнике вы сохраните файл рабочего процесса в локальной среде и развернете его в кластере HDInsight с помощью Azure PowerShell.
+## <a name="define-oozie-workflow-and-hello-related-hiveql-script"></a>Определение рабочего процесса Oozie и hello связанных сценарий HiveQL
+Определения рабочих процессов Oozie записываются в hPDL (язык определения процессов XML). Имя файла для рабочего процесса по умолчанию Hello *workflow.xml*.  Вы сохраните файл локально по hello рабочего процесса и затем развернуть его toohello кластера HDInsight с помощью Azure PowerShell далее в этом учебнике.
 
-Действие Hive в рабочем процессе вызывает файл скрипта HiveQL. Этот файл скрипта содержит три инструкции HiveQL:
+Действие Hive в рабочем процессе hello Hello вызывает файл скрипта HiveQL. Этот файл скрипта содержит три инструкции HiveQL:
 
-1. **Инструкция DROP TABLE** удаляет таблицу log4j Hive, если она существует.
-2. **Инструкция CREATE TABLE** создает внешнюю таблицу log4j Hive, указывающую на местоположение файла журнала log4j.
-3. **Расположение файла журнала log4j.** Разделителем поля является ",". Разделителем строки по умолчанию является "\n". Внешняя таблица Hive используется для предотвращения удаления файла данных из исходного расположения данных в случае, когда требуется запустить рабочий процесс Oozie несколько раз.
-4. **Инструкция INSERT OVERWRITE** подсчитывает экземпляры каждого типа уровня журнала в таблице log4j Hive и сохраняет выходные данные в расположение хранилища BLOB-объектов Azure.
+1. **Инструкция DROP TABLE Hello** удалений hello log4j таблицу Hive, если он существует.
+2. **Инструкция CREATE TABLE Hello** создает log4j Hive внешней таблицы, который указывает расположение файла журнала log4j hello; toohello
+3. **Здравствуйте, расположение файла журнала hello log4j**. разделитель полей Hello является «,». Разделитель строк Hello по умолчанию — «\n». Внешней таблицы Hive — файла данных используется tooavoid hello, удаляемый из исходного местоположения hello, если нужно создать рабочий процесс Oozie hello toorun несколько раз.
+4. **Инструкция INSERT ПЕРЕЗАПИСАТЬ Hello** подсчитывающей hello каждого типа уровень ведения журнала из hello log4j таблицу Hive и сохраняет место хранения больших двоичных объектов Azure tooan вывода hello.
 
 > [!NOTE]
-> Существует известная проблема с путем Hive. Эта проблема возникает при отправке задания Oozie. Инструкции по устранению этой проблемы можно найти на вики-сайте TechNet [HDInsight Hive error: Unable to rename][technetwiki-hive-error] (Ошибка Hive HDInsight: не удается переименовать).
+> Существует известная проблема с путем Hive. Эта проблема возникает при отправке задания Oozie. Здравствуйте инструкции для устранения проблемы с hello можно найти на hello вики-сайте TechNet: [Hive в HDInsight ошибка: не удается toorename][technetwiki-hive-error].
 
-**Определение файла сценария HiveQL, вызываемого рабочим процессом**
+**toodefine hello HiveQL сценария файла toobe вызывается рабочий процесс hello**
 
-1. Создайте текстовый файл со следующим содержимым:
+1. Создайте текстовый файл с hello после содержимого:
 
         DROP TABLE ${hiveTableName};
         CREATE EXTERNAL TABLE ${hiveTableName}(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
         INSERT OVERWRITE DIRECTORY '${hiveOutputFolder}' SELECT t4 AS sev, COUNT(*) AS cnt FROM ${hiveTableName} WHERE t4 LIKE '[%' GROUP BY t4;
 
-    Существует три переменные, используемые в данном скрипте:
+    Существует три переменные, используемые в скрипте hello.
 
    * ${hiveTableName}
    * ${hiveDataFolder}
    * ${hiveOutputFolder}
 
-     Файл определения рабочего процесса (workflow.xml в этом учебнике) передает эти значения в данный сценарий HiveQL во время выполнения.
-2. Сохраните файл как **C:\Tutorials\UseOozie\useooziewf.hql** в кодировке ANSI (ASCII). (Используйте Блокнот, если ваш текстовый редактор не предоставляет такую возможность.) Позже в этом учебнике этот файл сценария будет развернут в кластере HDInsight.
+     Эти значения toothis сценарий HiveQL передает файл определения рабочего процесса Hello (workflow.xml в этом учебнике) во время выполнения.
+2. Сохраните файл как файл hello **C:\Tutorials\UseOozie\useooziewf.hql** с кодировкой ANSI (ASCII). (Используйте Блокнот, если ваш текстовый редактор не предоставляет такую возможность.) Этот файл сценария будет кластера HDInsight развернутой toohello далее в учебнике hello.
 
-**Определение рабочего процесса**
+**toodefine рабочего процесса**
 
-1. Создайте текстовый файл со следующим содержимым:
+1. Создайте текстовый файл с hello после содержимого:
 
     ```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
-        <start to = "RunHiveScript"/>
+        <start too= "RunHiveScript"/>
 
         <action name="RunHiveScript">
             <hive xmlns="uri:oozie:hive-action:0.2">
@@ -188,26 +188,26 @@ Apache Oozie — это система рабочих процессов и ко
     </workflow-app>
     ```
 
-    Существует два действия, определенные в рабочем процессе. Первым действием является *RunHiveScript*. Если действие выполняется со статусом *ОК*, запускается следующее действие *RunSqoopExport*.
+    Существует два действия, определенные в рабочем процессе hello. — Hello start-tooaction *RunHiveScript*. Если выполняется действие hello *ОК*, имеет следующее действие hello *RunSqoopExport*.
 
-    RunHiveScript имеет несколько переменных. Вы передадите эти значения при отправке задания Oozie с рабочей станции с помощью Azure PowerShell.
+    Hello RunHiveScript имеет несколько переменных. Вы передаете hello значения при передаче задания Oozie hello с рабочей станции с помощью Azure PowerShell.
 
     Переменные рабочего процесса
 
     <table border = "1">
     <tr><th>Переменные рабочего процесса</th><th>Описание</th></tr>
-    <tr><td>${jobTracker}</td><td>Укажите URL-адрес средства отслеживания заданий Hadoop. Используйте <strong>jobtrackerhost:9010</strong> в кластере HDInsight версии 3.0 и 2.0.</td></tr>
-    <tr><td>${nameNode}</td><td>Укажите URL-адрес узла имен заданий Hadoop. Используйте стандартный адрес для файловой системы wasb://, например <i>wasb://&lt;имя_контейнера&gt;@&lt;имя_учетной_записи_хранения&gt;.blob.core.windows.net</i>.</td></tr>
-    <tr><td>${queueName}</td><td>Указывает имя очереди, в которую будет отправлено задание. Используйте <strong>значение по умолчанию</strong>.</td></tr>
+    <tr><td>${jobTracker}</td><td>Укажите URL-адрес hello hello трекера заданий Hadoop. Используйте <strong>jobtrackerhost:9010</strong> в кластере HDInsight версии 3.0 и 2.0.</td></tr>
+    <tr><td>${nameNode}</td><td>Укажите URL-адрес hello hello Hadoop имя узла. Использовать wasb системы файла по умолчанию hello: / / адрес, например, <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
+    <tr><td>${queueName}</td><td>Указывает, что имя очереди hello, hello задания будут отправлены. Используйте <strong>значение по умолчанию</strong>.</td></tr>
     </table>
 
     Переменные действия Hive
 
     <table border = "1">
     <tr><th>Переменная действия Hive</th><th>Описание</th></tr>
-    <tr><td>${hiveDataFolder}</td><td>Исходный каталог для команды создания таблицы Hive.</td></tr>
-    <tr><td>${hiveOutputFolder}</td><td>Папка результатов для инструкции INSERT OVERWRITE.</td></tr>
-    <tr><td>${hiveTableName}</td><td>Имя таблицы Hive, ссылающейся на файлы данных log4j.</td></tr>
+    <tr><td>${hiveDataFolder}</td><td>Hello исходный каталог для hello команда Hive Create Table.</td></tr>
+    <tr><td>${hiveOutputFolder}</td><td>Hello для hello инструкции INSERT ПЕРЕЗАПИСАТЬ выходную папку.</td></tr>
+    <tr><td>${hiveTableName}</td><td>Имя таблицы Hive hello, ссылки на файлы данных log4j hello Hello.</td></tr>
     </table>
 
     Переменные действия Sqoop
@@ -215,17 +215,17 @@ Apache Oozie — это система рабочих процессов и ко
     <table border = "1">
     <tr><th>Переменная действия Sqoop</th><th>Описание</th></tr>
     <tr><td>${sqlDatabaseConnectionString}</td><td>Строка подключения для базы данных SQL.</td></tr>
-    <tr><td>${sqlDatabaseTableName}</td><td>Таблица базы данных Azure SQL, в которую будут экспортированы данные.</td></tr>
-    <tr><td>${hiveOutputFolder}</td><td>Папка результатов для инструкции Hive INSERT OVERWRITE. Это та же папка, что и каталог для экспорта Sqoop (export-dir).</td></tr>
+    <tr><td>${sqlDatabaseTableName}</td><td>будут экспортированы Hello данные hello toowhere таблицы базы данных Azure SQL.</td></tr>
+    <tr><td>${hiveOutputFolder}</td><td>Hello выходную папку hello Hive вставить ПЕРЕЗАПИСАТЬ инструкции. Это hello же папку для экспорта Sqoop hello (export-dir).</td></tr>
     </table>
 
-    Дополнительные сведения о рабочем процессе Oozie и использовании его действий см. в [документации по Apache Oozie 4.0][apache-oozie-400] (для кластера HDInsight версии 3.0) или [документации по Apache Oozie 3.3.2][apache-oozie-332] (для кластера HDInsight версии 2.1).
+    Дополнительные сведения о Oozie рабочего процесса и использовании hello действия рабочего процесса см. в разделе [документации Apache Oozie 4.0] [ apache-oozie-400] (для кластера HDInsight, версия 3.0) или [Apache Oozie 3.3.2 Документация] [ apache-oozie-332] (для кластера HDInsight, версия 2.1).
 
-1. Сохраните файл как **C:\Tutorials\UseOozie\workflow.xml** в кодировке ANSI (ASCII). (Используйте Блокнот, если ваш текстовый редактор не предоставляет такую возможность.)
+1. Сохраните файл как файл hello **C:\Tutorials\UseOozie\workflow.xml** с кодировкой ANSI (ASCII). (Используйте Блокнот, если ваш текстовый редактор не предоставляет такую возможность.)
 
-**Определение координатора**
+**Координатор toodefine**
 
-1. Создайте текстовый файл со следующим содержимым:
+1. Создайте текстовый файл с hello после содержимого:
 
     ```xml
     <coordinator-app name="my_coord_app" frequency="${coordFrequency}" start="${coordStart}" end="${coordEnd}" timezone="${coordTimezone}" xmlns="uri:oozie:coordinator:0.4">
@@ -237,77 +237,77 @@ Apache Oozie — это система рабочих процессов и ко
     </coordinator-app>
     ```
 
-    В файле определения используется пять переменных:
+    Существует пять переменных, используемых в файле определения hello.
 
    | Переменная | Описание |
    | --- | --- |
    | ${coordFrequency} |Время приостановки заданий. Частота всегда выражается в минутах. |
    | ${coordStart} |Время запуска задания. |
    | ${coordEnd} |Время окончания задания. |
-   | ${coordTimezone} |Oozie обрабатывает задания координатора в фиксированном часовом поясе без перехода на летнее время (обычно представляется в виде времени в формате UTC). Этот часовой пояс называется часовым поясом обработки Oozie. |
-   | ${wfPath} |Путь для workflow.xml.  Если имя файла рабочего процесса не является именем файла по умолчанию (workflow.xml), необходимо его указать. |
-2. Сохраните файл как **C:\Tutorials\UseOozie\coordinator.xml** в кодировке ANSI (ASCII). (Используйте Блокнот, если ваш текстовый редактор не предоставляет такую возможность.)
+   | ${coordTimezone} |Oozie обрабатывает задания координатора в фиксированном часовом поясе без перехода на летнее время (обычно представляется в виде времени в формате UTC). Этот часовой пояс называется hello» Oozie обработки часовой пояс.» |
+   | ${wfPath} |путь Hello hello workflow.xml.  Если имя файла рабочего процесса hello не имя файла по умолчанию hello (workflow.xml), необходимо указать его. |
+2. Сохраните файл как файл hello **C:\Tutorials\UseOozie\coordinator.xml** с кодировкой ANSI (ASCII) hello. (Используйте Блокнот, если ваш текстовый редактор не предоставляет такую возможность.)
 
-## <a name="deploy-the-oozie-project-and-prepare-the-tutorial"></a>Развертывание проекта Oozie и подготовка учебника
-Вы выполните скрипт Azure PowerShell для достижения следующих результатов:
+## <a name="deploy-hello-oozie-project-and-prepare-hello-tutorial"></a>Развертывание проекта Oozie hello и подготовка hello учебника
+Будет выполняться следующее hello tooperform скрипт Azure PowerShell:
 
-* Копирование скрипта HiveQL (useoozie.hql) в хранилище BLOB-объектов Azure, wasb:///tutorials/useoozie/useoozie.hql.
-* Копирование файла workflow.xml в wasb:///tutorials/useoozie/workflow.xml.
-* Копирование файла coordinator.xml в wasb:///tutorials/useoozie/coordinator.xml.
-* Копирование файла данных (/example/data/sample.log) в wasb:///tutorials/useoozie/data/sample.log.
-* Создайте таблицу базы данных Azure SQL для хранения данных экспорта Sqoop. Имя таблицы — *log4jLogCount*.
+* Копировать hello хранилища больших двоичных объектов tooAzure сценария (useoozie.hql) HiveQL, wasb:///tutorials/useoozie/useoozie.hql.
+* Скопируйте workflow.xml toowasb:///tutorials/useoozie/workflow.xml.
+* Скопируйте coordinator.xml toowasb:///tutorials/useoozie/coordinator.xml.
+* Копирование файла данных hello (или example/data/sample.log) toowasb:///tutorials/useoozie/data/sample.log.
+* Создайте таблицу базы данных Azure SQL для хранения данных экспорта Sqoop. Имя таблицы Hello *log4jLogCount*.
 
 **Общие сведения о хранилище HDInsight**
 
-HDInsight использует для хранения данных хранилище BLOB-объектов Azure. wasb:// — это реализация распределенной файловой системы Hadoop (HDFS) в хранилище BLOB-объектов Azure, предоставляемая корпорацией Майкрософт. Дополнительные сведения см. в статье [Использование хранилища BLOB-объектов Azure с HDInsight][hdinsight-storage].
+HDInsight использует для хранения данных хранилище BLOB-объектов Azure. wasb: / / является реализацией Майкрософт hello распределенная файловая система Hadoop (HDFS) в хранилище больших двоичных объектов Azure. Дополнительные сведения см. в статье [Использование хранилища BLOB-объектов Azure с HDInsight][hdinsight-storage].
 
-В процессе подготовки кластера HDInsight в качестве файловой системы по умолчанию устанавливаются учетная запись хранения BLOB-объектов Azure и конкретный контейнер из этой учетной записи, так же как и в HDFS. Помимо этой учетной записи хранения в процессе подготовки можно добавить дополнительные учетные записи хранения из той же или других подписок Azure. Инструкции по добавлению дополнительных учетных записей хранения см. в статье [Создание кластеров Hadoop под управлением Windows в HDInsight][hdinsight-provision]. Чтобы упростить скрипт Azure PowerShell, используемый в этом руководстве, все файлы хранятся в контейнере файловой системы по умолчанию, расположенном в */tutorials/useoozie*. Имя контейнера по умолчанию совпадает с именем кластера HDInsight.
-Синтаксис:
+При подготовке кластера HDInsight учетную запись службы хранилища больших двоичных объектов Azure и конкретному контейнеру с этой учетной записи используется в качестве файловой системы по умолчанию hello, как и в HDFS. В дополнение к этому toothis учетной записи хранилища, можно добавить дополнительные учетные записи хранения из hello же подписки Azure или из разных подписок Azure во время процесса инициализации hello. Инструкции по добавлению дополнительных учетных записей хранения см. в статье [Создание кластеров Hadoop под управлением Windows в HDInsight][hdinsight-provision]. сценарий Azure PowerShell hello toosimplify используемые в этом учебнике, все файлы хранятся в контейнере system файла по умолчанию hello hello расположенный в *useoozie/учебники/*. По умолчанию этот контейнер имеет точно такое же имя, как имя кластера HDInsight hello hello.
+используется синтаксис Hello:
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
 > [!NOTE]
-> Кластер HDInsight версии 3.0 поддерживает только синтаксис *wasb://*. Прежний синтаксис *asv://* поддерживается в кластерах HDInsight 2.1 и 1.6, однако не поддерживается в кластерах HDInsight 3.0.
+> Здравствуйте, только *wasb: / /* синтаксис поддерживается в кластере HDInsight версии 3.0. более старые Hello *asv: / /* 1,6 кластеров и HDInsight 2.1 поддерживается синтаксис, но не поддерживается в кластерах HDInsight 3.0.
 >
-> Путь wasb:// является виртуальным. Дополнительные сведения см. в статье [Использование хранилища BLOB-объектов Azure с HDInsight][hdinsight-storage].
+> Здравствуйте, wasb: / / виртуальный путь. Дополнительные сведения см. в статье [Использование хранилища BLOB-объектов Azure с HDInsight][hdinsight-storage].
 
-Доступ к файлу, хранящемуся в контейнере файловой системы по умолчанию, из HDInsight может осуществляться с помощью любого из следующих URI (workflow.xml используется в качестве примера):
+Файл, который хранится в контейнере system файла по умолчанию hello может осуществляться из HDInsight с помощью любого из hello, следующие идентификаторы URI (используется workflow.xml как пример):
 
     wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/workflow.xml
     wasb:///tutorials/useoozie/workflow.xml
     /tutorials/useoozie/workflow.xml
 
-Если требуется доступ к этому файлу непосредственно из учетной записи хранения, имя BLOB-объекта для файла имеет следующее значение:
+Если требуется файл hello tooaccess непосредственно из учетной записи хранения hello, hello blob hello файл имеет имя:
 
     tutorials/useoozie/workflow.xml
 
 **Общие сведения о внутренней и внешней таблицах Hive**
 
-Есть несколько вещей, которые нужно знать о внутренней и внешней таблицах Hive.
+Существует несколько моментов, которые необходимо tooknow о внутренних и внешних таблицах Hive.
 
-* Команда CREATE TABLE создает внутреннюю таблицу, также известную как управляемая таблица. Файл данных должен находиться в контейнере по умолчанию.
-* Команда CREATE TABLE перемещает файл данных в папку /hive/warehouse/<TableName> в контейнере по умолчанию.
-* Команда CREATE EXTERNAL TABLE создает внешнюю таблицу. Файл данных может находиться за пределами контейнера по умолчанию.
-* Команда CREATE EXTERNAL TABLE не перемещает файл данных.
-* Команда CREATE EXTERNAL TABLE не позволяет использовать вложенные папки в папке, указанной в предложении LOCATION. Именно по этой причине в учебнике создается копия файла sample.log.
+* Hello команда CREATE TABLE создает внутреннюю таблицу, также известные как управляемый таблицы. Hello данных файл должен находиться в контейнере по умолчанию hello.
+* Hello команда CREATE TABLE перемещает данные hello файл toohello/hive илихранилище/<TableName> папки в контейнер по умолчанию hello.
+* Hello команда CREATE EXTERNAL TABLE, создает внешнюю таблицу. файл данных Hello может находиться за пределами контейнер по умолчанию hello.
+* Hello команда CREATE EXTERNAL TABLE не перемещает файл данных hello.
+* Hello команда CREATE EXTERNAL TABLE не позволяет во всех вложенных папках hello папка, указанная в предложении РАСПОЛОЖЕНИЕ hello. Это hello причин, почему hello учебнике создается копия файла sample.log hello.
 
 Дополнительные сведения см. в записи блога [HDInsight: Hive Internal and External Tables Intro][cindygross-hive-tables] (HDInsight: введение во внутренние и внешние таблицы Hive).
 
-**Подготовка учебника**
+**Учебник по tooprepare hello**
 
-1. Откройте интегрированную среду сценариев Windows PowerShell (на начальном экране Windows 8 введите **PowerShell_ISE**, а затем щелкните **Интегрированная среда сценариев Windows PowerShell**. Дополнительные сведения см. в статье [Start Windows PowerShell on Windows 8 and Windows][powershell-start] (Запуск Windows PowerShell в Windows 8 и Windows).
-2. В нижней области выполните следующую команду для подключения к подписке Azure.
+1. Откройте hello интегрированной среды Сценариев Windows PowerShell (в hello 8 рабочий стол Windows, введите **PowerShell_ISE**, а затем нажмите кнопку **интегрированной среды Сценариев Windows PowerShell**. Дополнительные сведения см. в статье [Start Windows PowerShell on Windows 8 and Windows][powershell-start] (Запуск Windows PowerShell в Windows 8 и Windows).
+2. В нижней части окна hello выполните hello, следующая команда tooconnect tooyour подписки Azure.
 
     ```powershell
     Add-AzureAccount
     ```
 
-    Появится запрос на ввод учетных данных учетной записи Azure. Этот метод добавления подключения по подписке имеет срок действия, и после 12 часов вам потребуется снова выполнить командлет.
+    Вам будет tooenter запрашиваемые учетные данные учетной записи Azure. Этот метод добавления подключения к подписке времени ожидания, а через 12 часов будет иметь toorun hello командлет еще раз.
 
    > [!NOTE]
-   > Если имеется несколько подписок Azure и должна использоваться подписка, отличная от подписки по умолчанию, воспользуйтесь командлетом <strong>Select-AzureSubscription</strong> для выбора подписки.
+   > Hello используется, если у вас несколько подписок Azure и подписка по умолчанию hello не hello один требуется toouse <strong>Select-AzureSubscription</strong> tooselect командлет подписки.
 
-3. Скопируйте следующий сценарий в область сценариев и задайте первые шесть переменных
+3. Скопируйте следующий скрипт в области сценариев hello hello и установка hello первые шесть переменных:
 
     ```powershell
     # WASB variables
@@ -321,18 +321,18 @@ HDInsight использует для хранения данных хранил
     $sqlDatabaseName = "<SQLDatabaseName>"
     $sqlDatabaseTableName = "log4jLogsCount"
 
-    # Oozie files for the tutorial
+    # Oozie files for hello tutorial
     $hiveQLScript = "C:\Tutorials\UseOozie\useooziewf.hql"
     $workflowDefinition = "C:\Tutorials\UseOozie\workflow.xml"
     $coordDefinition =  "C:\Tutorials\UseOozie\coordinator.xml"
 
-    # WASB folder for storing the Oozie tutorial files.
-    $destFolder = "tutorials/useoozie"  # Do NOT use the long path here
+    # WASB folder for storing hello Oozie tutorial files.
+    $destFolder = "tutorials/useoozie"  # Do NOT use hello long path here
     ```
 
-    Дополнительные описания переменных см. в разделе [Предварительные требования](#prerequisites) данного руководства.
+    Дополнительные описания переменных hello в разделе hello [необходимые компоненты](#prerequisites) в этом учебнике.
 
-4. Добавьте следующее содержимое в скрипт в области скриптов:
+4. Добавьте следующий сценарий toohello в области сценариев hello hello:
 
     ```powershell
     # Create a storage context object
@@ -349,7 +349,7 @@ HDInsight использует для хранения данных хранил
 
     function prepareHiveDataFile()
     {
-        Write-Host "Make a copy of the sample.log file ... " -ForegroundColor Green
+        Write-Host "Make a copy of hello sample.log file ... " -ForegroundColor Green
         Start-CopyAzureStorageBlob -SrcContainer $containerName -SrcBlob "example/data/sample.log" -Context $destContext -DestContainer $containerName -destBlob "$destFolder/data/sample.log" -DestContext $destContext
     }
 
@@ -365,7 +365,7 @@ HDInsight использует для хранения данных хранил
             )
             )"
 
-        #Create the log4jLogsCount table
+        #Create hello log4jLogsCount table
         Write-Host "Create Log4jLogsCount table ..." -ForegroundColor Green
         $conn = New-Object System.Data.SqlClient.SqlConnection
         $conn.ConnectionString = "Data Source=$sqlDatabaseServer.database.windows.net;Initial Catalog=$sqlDatabaseName;User ID=$sqlDatabaseLogin;Password=$sqlDatabaseLoginPassword;Encrypt=true;Trusted_Connection=false;"
@@ -381,24 +381,24 @@ HDInsight использует для хранения данных хранил
     # upload workflow.xml, coordinator.xml, and ooziewf.hql
     uploadOozieFiles;
 
-    # make a copy of example/data/sample.log to example/data/log4j/sample.log
+    # make a copy of example/data/sample.log tooexample/data/log4j/sample.log
     prepareHiveDataFile;
 
     # create log4jlogsCount table on SQL database
     prepareSQLDatabase;
     ```
 
-5. Для выполнения скрипта щелкните **Run Script** (Выполнить скрипт) или нажмите клавишу **F5**. Результат должен быть аналогичен приведенному ниже:
+5. Нажмите кнопку **выполнить сценарий** или нажмите клавишу **F5** toorun hello скрипта. Hello выходные данные будут выглядеть:
 
     ![Выходные данные подготовки учебника][img-preparation-output]
 
-## <a name="run-the-oozie-project"></a>Запуск проекта Oozie
-В настоящее время Azure PowerShell не предоставляет командлеты для определения заданий Oozie. Вы можете использовать командлет **Invoke-RestMethod** для вызова веб-служб Oozie. API веб-служб Oozie представляет собой API HTTP REST JSON. Дополнительные сведения об API веб-служб Oozie см. в [документации по Apache Oozie 4.0][apache-oozie-400] (для кластера HDInsight версии 3.0) или [документации по Apache Oozie 3.3.2][apache-oozie-332] (для кластера HDInsight версии 2.1).
+## <a name="run-hello-oozie-project"></a>Запустите проект Oozie hello
+В настоящее время Azure PowerShell не предоставляет командлеты для определения заданий Oozie. Можно использовать hello **Invoke-RestMethod** командлет tooinvoke Oozie веб-службы. API веб-служб Oozie Hello представляет собой API HTTP REST JSON. Дополнительные сведения о веб-службах Oozie hello API см. в разделе [документации Apache Oozie 4.0] [ apache-oozie-400] (для кластера HDInsight, версия 3.0) или [документации Apache Oozie 3.3.2] [ apache-oozie-332] (для кластера HDInsight, версия 2.1).
 
-**Отправка задания Oozie**
+**toosubmit задание Oozie**
 
-1. Откройте интегрированную среду сценариев Windows PowerShell (на начальном экране Windows 8 введите **PowerShell_ISE**, а затем щелкните **Интегрированная среда сценариев Windows PowerShell**. Дополнительные сведения см. в статье [Start Windows PowerShell on Windows 8 and Windows][powershell-start] (Запуск Windows PowerShell в Windows 8 и Windows).
-2. Скопируйте следующий сценарий в область сценариев и задайте первые четырнадцать переменных (пропустите **$storageUri**).
+1. Откройте hello интегрированной среды Сценариев Windows PowerShell (в Windows 8 начальный экран, введите **PowerShell_ISE**, а затем нажмите кнопку **интегрированной среды Сценариев Windows PowerShell**. Дополнительные сведения см. в статье [Start Windows PowerShell on Windows 8 and Windows][powershell-start] (Запуск Windows PowerShell в Windows 8 и Windows).
+2. Следующие hello копирования внесена в области сценариев hello, а затем набор hello сначала Четырнадцать переменные (Однако пропустить **$storageUri**).
 
     ```powershell
     #HDInsight cluster variables
@@ -423,7 +423,7 @@ HDInsight использует для хранения данных хранил
     $coordFrequency = "1440"    # in minutes, 24h x 60m = 1440m
     $coordTimezone = "UTC"    #UTC/GMT
 
-    $oozieWFPath="$storageUri/tutorials/useoozie"  # The default name is workflow.xml. And you don't need to specify the file name.
+    $oozieWFPath="$storageUri/tutorials/useoozie"  # hello default name is workflow.xml. And you don't need toospecify hello file name.
     $waitTimeBetweenOozieJobStatusCheck=10
 
     #Hive action variables
@@ -440,10 +440,10 @@ HDInsight использует для хранения данных хранил
     $creds = New-Object System.Management.Automation.PSCredential ($clusterUsername, $passwd)
     ```
 
-    Дополнительные описания переменных см. в разделе [Предварительные требования](#prerequisites) данного руководства.
+    Дополнительные описания переменных hello в разделе hello [необходимые компоненты](#prerequisites) в этом учебнике.
 
-    $coordstart и $coordend — это время начала и окончания рабочего процесса. Чтобы узнать время UTC/GMT, выполните поиск "время utc" с помощью bing.com. Переменная $coordFrequency определяет, через сколько минут следует выполнить рабочий процесс.
-3. Добавьте следующее содержимое в скрипт. Эта часть определяет полезные данные Oozie:
+    $coordstart и $coordend: hello запуск рабочего процесса и времени окончания. toofind out время UTC и GMT hello поиска «в формате UTC» на bing.com. Hello $coordFrequency — периодичность в минутах рабочего процесса toorun hello.
+3. Добавьте следующий скрипт toohello hello. Эта часть определяет полезных данных Oozie hello:
 
     ```powershell
     #OoziePayload used for Oozie web service submission
@@ -541,9 +541,9 @@ HDInsight использует для хранения данных хранил
     ```
 
    > [!NOTE]
-   > Основным различием по сравнению с файлом полезных данных отправки рабочего процесса является переменная **oozie.coord.application.path**. При отправке задания рабочего процесса используйте вместо нее **oozie.wf.application.path** .
+   > Hello основное различие по сравнению toohello рабочий процесс отправки полезных данных файл является переменной hello **oozie.coord.application.path**. При отправке задания рабочего процесса используйте вместо нее **oozie.wf.application.path** .
 
-4. Добавьте следующее содержимое в скрипт. Эта часть проверяет состояние веб-служб Oozie:
+4. Добавьте следующий скрипт toohello hello. Эта часть проверяет состояние hello Oozie веб-службы:
 
     ```powershell
     function checkOozieServerStatus()
@@ -558,19 +558,19 @@ HDInsight использует для хранения данных хранил
 
         if($oozieServerSatus -notmatch "NORMAL")
         {
-            Write-Host "Oozie server status is $oozieServerSatus...cannot submit Oozie jobs. Check the server status and re-run the job."
+            Write-Host "Oozie server status is $oozieServerSatus...cannot submit Oozie jobs. Check hello server status and re-run hello job."
             exit 1
         }
     }
     ```
 
-5. Добавьте следующее содержимое в скрипт. Эта часть создает задание Oozie:
+5. Добавьте следующий скрипт toohello hello. Эта часть создает задание Oozie:
 
     ```powershell
     function createOozieJob()
     {
         # create Oozie job
-        Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
+        Write-Host "Sending hello following Payload toohello cluster:" -ForegroundColor Green
         Write-Host "`n--------`n$OoziePayload`n--------"
         $clusterUriCreateJob = "https://$clusterName.azurehdinsight.net:443/oozie/v2/jobs"
         $response = Invoke-RestMethod -Method Post -Uri $clusterUriCreateJob -Credential $creds -Body $OoziePayload -ContentType "application/xml" -OutVariable $OozieJobName -debug -Verbose
@@ -584,18 +584,18 @@ HDInsight использует для хранения данных хранил
     ```
 
    > [!NOTE]
-   > При отправке задания рабочего процесса необходимо вызвать другую веб-службу, чтобы запустить задание после его создания. В этом случае задание координатора запускается по времени. Задание будет запускаться автоматически.
+   > При отправке задания рабочего процесса, необходимо внести другой веб-службы вызов toostart hello задание после создания задания hello. В этом случае hello координатора задание запускается по времени. Hello задание будет запускаться автоматически.
 
-6. Добавьте следующее содержимое в скрипт. Эта часть проверяет состояние задания Oozie:
+6. Добавьте следующий скрипт toohello hello. Эта часть проверяет состояние задания Oozie hello:
 
     ```powershell
     function checkOozieJobStatus($oozieJobId)
     {
         # get job status
-        Write-Host "Sleeping for $waitTimeBetweenOozieJobStatusCheck seconds until the job metadata is populated in the Oozie metastore..." -ForegroundColor Green
+        Write-Host "Sleeping for $waitTimeBetweenOozieJobStatusCheck seconds until hello job metadata is populated in hello Oozie metastore..." -ForegroundColor Green
         Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
 
-        Write-Host "Getting job status and waiting for the job to complete..." -ForegroundColor Green
+        Write-Host "Getting job status and waiting for hello job toocomplete..." -ForegroundColor Green
         $clusterUriGetJobStatus = "https://$clusterName.azurehdinsight.net:443/oozie/v2/job/" + $oozieJobId + "?show=info"
         $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds
         $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
@@ -603,7 +603,7 @@ HDInsight использует для хранения данных хранил
 
         while($JobStatus -notmatch "SUCCEEDED|KILLED")
         {
-            Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state...waiting $waitTimeBetweenOozieJobStatusCheck seconds for the job to complete..."
+            Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state...waiting $waitTimeBetweenOozieJobStatusCheck seconds for hello job toocomplete..."
             Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
             $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds
             $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
@@ -619,7 +619,7 @@ HDInsight использует для хранения данных хранил
     }
     ```
 
-7. (Необязательно) Добавьте следующее содержимое в скрипт.
+7. (Необязательно) Добавьте следующий скрипт toohello hello.
 
     ```powershell
     function listOozieJobs()
@@ -646,13 +646,13 @@ HDInsight использует для хранения данных хранил
 
     function killOozieJob($oozieJobId)
     {
-        Write-Host "Killing the Oozie job $oozieJobId..." -ForegroundColor Green
-        $clusterUriStartJob = "https://$clusterName.azurehdinsight.net:443/oozie/v2/job/" + $oozieJobId + "?action=kill" #Valid values for the 'action' parameter are 'start', 'suspend', 'resume', 'kill', 'dryrun', 'rerun', and 'change'.
+        Write-Host "Killing hello Oozie job $oozieJobId..." -ForegroundColor Green
+        $clusterUriStartJob = "https://$clusterName.azurehdinsight.net:443/oozie/v2/job/" + $oozieJobId + "?action=kill" #Valid values for hello 'action' parameter are 'start', 'suspend', 'resume', 'kill', 'dryrun', 'rerun', and 'change'.
         $response = Invoke-RestMethod -Method Put -Uri $clusterUriStartJob -Credential $creds | Format-Table -HideTableHeaders -debug
     }
     ```
 
-8. Добавьте следующее содержимое в скрипт.
+8. Добавьте следующий скрипт toohello hello:
 
     ```powershell
     checkOozieServerStatus
@@ -663,23 +663,23 @@ HDInsight использует для хранения данных хранил
     # killOozieJob($oozieJobId)
     ```
 
-    Удалите значки #, если нужно выполнить дополнительные функции.
-9. При наличии кластера HDinsight версии 2.1 замените "https://$clusterName.azurehdinsight.net:443/oozie/v2/" на "https://$clusterName.azurehdinsight.net:443/oozie/v1/". Кластер HDInsight версии 2.1 не поддерживает веб-службы версии 2.
-10. Для выполнения скрипта щелкните **Run Script** (Выполнить скрипт) или нажмите клавишу **F5**. Результат должен быть аналогичен приведенному ниже:
+    Удалите знаки # hello, если требуется, чтобы toorun hello дополнительные функции.
+9. При наличии кластера HDinsight версии 2.1 замените "https://$clusterName.azurehdinsight.net:443/oozie/v2/" на "https://$clusterName.azurehdinsight.net:443/oozie/v1/". Версия кластера HDInsight 2.1 не не поддерживает версию 2 hello веб-служб.
+10. Нажмите кнопку **выполнить сценарий** или нажмите клавишу **F5** toorun hello скрипта. Hello выходные данные будут выглядеть:
 
      ![Выходные данные запуска рабочего процесса в учебнике][img-runworkflow-output]
-11. Подключитесь к базе данных SQL для просмотра экспортированных данных.
+11. Подключите tooyour hello экспортировать данные базы данных SQL toosee.
 
-**Проверка журнала ошибок задания**
+**журнал ошибок задания toocheck hello**
 
-Для устранения неполадок рабочего процесса можно использовать файл журнала Oozie C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log на головном узле кластера. Дополнительные сведения об RDP см. в статье [Управление кластерами Hadoop в HDInsight с помощью портала Azure][hdinsight-admin-portal].
+tootroubleshoot рабочего процесса, файл журнала Oozie hello приведены в C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log из головному узлу кластера hello. Сведения о протокола удаленного рабочего СТОЛА см. в разделе [кластерами HDInsight Администрирование с помощью hello портал Azure][hdinsight-admin-portal].
 
-**Повторное выполнение учебника**
+**Учебник по toorerun hello**
 
-Чтобы запустить рабочий процесс повторно:
+toorerun hello рабочего процесса, необходимо выполнить следующие задачи hello.
 
-* Удалите файл выходных данных сценария Hive.
-* Удалите данные в таблице log4jLogsCount.
+* Удалите hello Hive скрипта выходной файл.
+* Удаление данных hello в таблице log4jLogsCount hello.
 
 Ниже приведен пример сценария PowerShell, который вы можете использовать:
 
@@ -694,12 +694,12 @@ $sqlDatabaseLoginPassword = "<SQLDatabaseLoginPassword>"
 $sqlDatabaseName = "<SQLDatabaseName>"
 $sqlDatabaseTableName = "log4jLogsCount"
 
-Write-host "Delete the Hive script output file ..." -ForegroundColor Green
+Write-host "Delete hello Hive script output file ..." -ForegroundColor Green
 $storageaccountkey = get-azurestoragekey $storageAccountName | %{$_.Primary}
 $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageaccountkey
 Remove-AzureStorageBlob -Context $destContext -Blob "tutorials/useoozie/output/000000_0" -Container $containerName
 
-Write-host "Delete all the records from the log4jLogsCount table ..." -ForegroundColor Green
+Write-host "Delete all hello records from hello log4jLogsCount table ..." -ForegroundColor Green
 $conn = New-Object System.Data.SqlClient.SqlConnection
 $conn.ConnectionString = "Data Source=$sqlDatabaseServer.database.windows.net;Initial Catalog=$sqlDatabaseName;User ID=$sqlDatabaseLogin;Password=$sqlDatabaseLoginPassword;Encrypt=true;Trusted_Connection=false;"
 $conn.open()
@@ -712,12 +712,12 @@ $conn.close()
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом руководстве вы узнали, как определить рабочий процесс Oozie и координатор Oozie и как выполнять задания координатора Oozie с помощью Azure PowerShell. Для получения дополнительных сведений ознакомьтесь со следующими статьями:
+В этом учебнике вы узнали, как toodefine Oozie рабочего процесса и Oozie координатора, и как toorun Oozie координатора задания с помощью Azure PowerShell. toolearn более, см. следующие статьи hello.
 
 * [Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux][hdinsight-get-started]
 * [Использование хранилища BLOB-объектов Azure с HDInsight][hdinsight-storage]
 * [Управление кластерами Hadoop в HDInsight с помощью Azure PowerShell][hdinsight-admin-powershell]
-* [Отправка данных в HDInsight][hdinsight-upload-data]
+* [Отправка данных tooHDInsight][hdinsight-upload-data]
 * [Использование Sqoop с Hadoop в HDInsight][hdinsight-use-sqoop]
 * [Использование Hive с HDInsight][hdinsight-use-hive]
 * [Использование Pig с HDInsight][hdinsight-use-pig]

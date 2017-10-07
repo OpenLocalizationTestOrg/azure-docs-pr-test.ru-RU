@@ -1,6 +1,6 @@
 ---
-title: "Подключение Intel Edison (C) к Интернету вещей Azure. Урок 1. Получение инструментов (macOS) | Документация Майкрософт"
-description: "Скачайте и установите необходимые инструменты и программное обеспечение для работы с примером приложения на устройстве Edison под управлением macOS."
+title: "Connect Intel Edison (C) tooAzure IoT — занятия 1: средства (macOS) | Документы Microsoft"
+description: "Загрузите и установите необходимые средства hello и программное обеспечение для первый пример приложения hello для Edison на macOS."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,75 +17,75 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 27939f731121522f688e606052492bda8ae045fe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4a53331b0dce73c3dd51de91f07df86e28cbb6b2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-macos-1010"></a>Получение инструментов (MacOS 10.10)
+# <a name="get-hello-tools-macos-1010"></a>Получить средства hello (macOS 10.10)
 > [!div class="op_single_selector"]
 > * [Windows 7 или более поздние версии][windows]
 > * [Ubuntu 16.04][ubuntu]
 > * [macOS 10.10][macos]
 
 ## <a name="what-you-will-do"></a>Выполняемая задача
-Скачайте инструменты для разработки и программное обеспечение для работы с примером приложения на устройстве Intel Edison. Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок][troubleshooting].
+Загрузите средства разработки hello и hello программное обеспечение для hello первый образец приложения для вашей Edison Intel. Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок][troubleshooting].
 
 > [!NOTE]
-> Хотя C является языком программирования основного приложения логики, в уроках используются инструменты Node.js, позволяющие ознакомиться со списком устройств, а также выполнить сборку и развертывание примеров приложений.
+> Хотя язык основная логика hello hello C, Node.js tools используются в toobuild занятиях hello и развернуть образец приложения.
 
 ## <a name="what-you-will-learn"></a>Новые знания
 В этой статье вы узнаете следующее:
 
-* Как установить Git и Node.js.
-  * [Git](https://git-scm.com) — это распределенная система управления версиями с открытым исходным кодом. Пример приложения, используемый в этой статье, хранится в репозитории Git.
+* Как tooinstall Git и Node.js.
+  * [Git](https://git-scm.com) — это распределенная система управления версиями с открытым исходным кодом. Пример приложения Hello для данной статьи хранится на Git.
   * [Node.js](https://nodejs.org/en/) — это среда выполнения JavaScript, характеризующаяся экосистемой пакета с широкими возможностями.
-* Как использовать NPM, чтобы установить дополнительные средства разработки для Node.js.
-  * Минимальная требуемая версия Node.js — 4.5 LTS.
-  * [NPM](https://www.npmjs.com) — это один из диспетчеров пакетов для Node.js.
+* Как toouse NPM tooinstall дополнительных Node.js средства разработки.
+  * Минимальная требуемая версия Hello Node.js — 4,5 LTS.
+  * [NPM](https://www.npmjs.com) является одним из hello диспетчеров пакетов для Node.js.
 
 ## <a name="what-you-need"></a>Необходимые элементы
-Для выполнения этой операции требуется:
-* Подключение к Интернету для скачивания средств разработки и программного обеспечения.
+toocomplete этой операции вам потребуется:
+* Toodownload подключения Internet hello средства разработки и hello программного обеспечения.
 * Компьютер Mac под управлением Yosemite macOS (10.10) или более поздней версии.
 
 ## <a name="install-git-and-nodejs"></a>Установка Git и Node.js
-Чтобы установить Git и Node.js, используйте пакет управления [Homebrew](http://brew.sh), выполнив следующие действия.
+tooinstall Git и Node.js, использовать hello [Homebrew](http://brew.sh) пакета управления программы, выполните следующие действия:
 
-1. Установите Homebrew. Если вы уже установили Homebrew, перейдите к шагу 2.
+1. Установите Homebrew. Если Homebrew уже установлен, воспользуйтесь toostep 2.
 
-   1. Нажмите сочетание клавиш `Cmd + Space` и введите `Terminal`, чтобы открыть окно терминала.
-   2. Выполните следующую команду:
+   1. Нажмите клавишу `Cmd + Space` и введите `Terminal` tooopen терминала.
+   2. Выполните следующую команду hello.
 
       ```bash
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
       ```
-2. Установите Git и Node.js, выполнив следующую команду:
+2. Установите Git и Node.js, выполнив следующую команду hello:
 
    ```bash
    brew install node git
    ```
 
 ## <a name="install-additional-nodejs-development-tools"></a>Установка дополнительных средств разработки для Node.js
-Используйте [gulp.js](http://gulpjs.com) для автоматизации развертывания примера приложения на устройстве Edison.
+Используйте [gulp.js](http://gulpjs.com) tooautomate развертывания hello hello образец приложения tooyour Edison.
 
-Установите `gulp`, выполнив следующую команду в окне терминала:
+Установить `gulp` , выполнив следующую команду в терминале hello hello:
 
 ```bash
 sudo npm install -g gulp
 ```
 
-Если у вас возникли проблемы с установкой Node.js и дополнительных инструментов для разработки на компьютер под управлением macOS, способы решения распространенных проблем см. в статье [Troubleshooting][troubleshooting] (Устранение неполадок).
+Если возникают проблемы с установкой Node.js и эти дополнительные средства разработки на macOS. в разделе hello [руководство по устранению неполадок] [ troubleshooting] для решения проблемы toocommon.
 
 ## <a name="install-visual-studio-code"></a>Установка Visual Studio Code
-[Скачайте](https://code.visualstudio.com/docs/setup/osx) и установите Visual Studio Code. Visual Studio Code — это легковесный, но мощный редактор исходного кода для платформ Windows, Linux и macOS. Вы будете использовать этот редактор позже, чтобы изменить кода примера.
+[Скачайте](https://code.visualstudio.com/docs/setup/osx) и установите Visual Studio Code. Visual Studio Code — это легковесный, но мощный редактор исходного кода для платформ Windows, Linux и macOS. Этот редактор используется далее в коде образец hello учебника tooedit hello.
 
 ## <a name="summary"></a>Сводка
-Вы установили требуемые средства разработки и программное обеспечение для работы с примером приложения. Следующей задачей является создание, развертывание и запуск примера приложения на устройстве Edison.
+Установив hello необходимые средства разработки и программное обеспечение для первый пример приложения hello. Hello следующей задачей является toocreate, развернуть и запустить пример приложения hello на Edison.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Создание и развертывание приложения для включения индикатора][create-and-deploy-the-blink-application]
+[Создание и развертывание приложения hello мерцания][create-and-deploy-the-blink-application]
 <!-- Images and links -->
 
 [troubleshooting]: iot-hub-intel-edison-kit-c-troubleshooting.md

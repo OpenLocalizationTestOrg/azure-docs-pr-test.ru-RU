@@ -1,6 +1,6 @@
 ---
-title: "Тест на разницу в пропорциях (устаревшая версия) | Документация Майкрософт"
-description: "Сведения о тесте на разницу в пропорциях (устаревшая версия)."
+title: "Разница в тесте пропорции - Azure AAA(deprecated) | Документы Microsoft"
+description: "Тест на разницу в пропорциях (устаревшая версия)"
 services: machine-learning
 documentationcenter: 
 author: aniedea
@@ -16,47 +16,47 @@ ms.date: 01/06/2017
 ms.author: aniedea
 ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-redirect_document_id: TRUE
-ms.openlocfilehash: a08f91ca76eef2562caeb9eb64cec5e549ed2f5f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 820aad377f9dec12b0ef455974aaa95f6e8d723a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deprecated-difference-in-proportions-test"></a>Тест на разницу в пропорциях (устаревшая версия)
 
 > [!NOTE]
-> Работа Microsoft DataMarket прекращается, и этот API больше не поддерживается. 
+> Hello Microsoft DataMarket прекращено, и этот API устарел. 
 > 
-> Много полезных примеров экспериментов и API можно найти в [коллекции Cortana Intelligence](http://gallery.cortanaintelligence.com). Дополнительные сведения о коллекции см. в статье [Поиск ресурсов в коллекции Cortana Intelligence и обмен ими](machine-learning-gallery-how-to-use-contribute-publish.md).
+> Можно найти множество полезный пример экспериментов и API-интерфейсы в hello [коллекции аналитики Cortana](http://gallery.cortanaintelligence.com). Дополнительные сведения о коллекции hello. в разделе [общего ресурса и поиска ресурсов в коллекции Cortana аналитики hello](machine-learning-gallery-how-to-use-contribute-publish.md).
 
-Существует ли между двумя долями статистическая разница? Предположим, что пользователь хочет сравнить два видеоролика и определить, действительно ли у одного из них доля положительных оценок значимо больше, чем у другого. При большом размере выборки возможна статистически значительная разница между пропорциями 0,50 и 0,51. При малом размере выборки может быть недостаточно данных, чтобы определить, отличаются ли эти пропорции на самом деле. 
+Существует ли между двумя долями статистическая разница? Предположим, что пользователь хочет toocompare двух toodetermine фильмы, если один фильма имеет значительно большее количество «нравится» при сравнении toohello других. С большой образец может быть статистически значимой разницы между hello пропорции 0,50 и 0,51. С небольшой выборкой может отсутствовать toodetermine достаточно данных, если эти пропорции, фактически отличаются. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Эта [веб-служба](https://datamarket.azure.com/dataset/aml_labs/prop_test) проверяет гипотезу различия двух долей на основе введенных пользователем данных о количестве успешных испытаний и общем числе испытаний для двух сравниваемых групп. Например, эту веб-службу может вызывать приложение, которое сравнивает видеоролики и на основе полученных ими оценок сообщает пользователю, действительно ли один из них был более положительно оценен зрителями, чем другой.
+Это [веб-службы](https://datamarket.azure.com/dataset/aml_labs/prop_test) выполняет тест гипотезы hello разницы в двух пропорции, на основе ввода пользователя hello количество успешных и общее количество пробных версий для сравнения групп hello 2 hello. В один из возможных сценариев можно вызывать веб-службу из в приложении сравнения фильм, предписывая пользователя hello ли один фильмов hello «применено» чаще, чем другие, hello на основе фильма оценок.
 
-> Эту веб-службу можно использовать через мобильное приложение, веб-сайт или на локальном компьютере. Веб-служба также служит примером того, как машинное обучение Azure можно использовать для создания веб-служб на основе кода R. Чтобы создать эксперимент с использованием кода R и опубликовать его как веб-службу, достаточно написать несколько строк кода R и нажать несколько кнопок в студии машинного обучения Azure. Затем веб-службу можно опубликовать в Azure Marketplace, и ее смогут применять пользователи и устройства по всему миру, при этом автору веб-службы не придется настраивать инфраструктуру.
+> Эту веб-службу можно использовать через мобильное приложение, веб-сайт или на локальном компьютере. Но hello hello веб-службы служит также tooserve в качестве примера как машинного обучения Azure можно использовать toocreate веб-служб на основе кода R. Чтобы создать эксперимент с использованием кода R и опубликовать его как веб-службу, достаточно написать несколько строк кода R и нажать несколько кнопок в студии машинного обучения Azure. Hello веб-службы может быть опубликованным toohello Azure Marketplace и используемые пользователями и устройствами через Здравствуй, мир без настройки инфраструктуры автором hello hello веб-службы.
 > 
 > 
 
 ## <a name="consumption-of-web-service"></a>Использование веб-службы
 Эта служба принимает 4 аргумента и выполняет проверку гипотезы для долей.
 
-Входные аргументы:
+Hello входными аргументами являются:
 
 * Successes1 — количество успешных испытаний в выборке 1.
 * Successes2 — количество успешных испытаний в выборке 2.
 * Total1 — размер выборки 1.
 * Total2 — размер выборки 2.
 
-На выходе служба выдает результат проверки гипотезы, а также статистику хи-квадрат, значение df, значение p, долю в выборках 1 и 2 и границы доверительного интервала.
+выходные данные Hello hello службы является результатом hello гипотезы hello тестов вместе с значение hello chi-square статистики, df, p и пропорция в пределах 1/2 и доверительный интервал образца.
 
-> Эта служба, размещенная в Azure Marketplace, является службой на основе OData. Вызвать ее можно методами POST и GET. 
+> Эта служба, размещенного на hello Azure Marketplace, — это служба OData; Это может быть вызвана через методы POST или GET. 
 > 
 > 
 
-Есть несколько способов использования службы в автоматическом режиме (см. пример приложения [здесь](http://microsoftazuremachinelearning.azurewebsites.net/DifferenceInProportionsTest.aspx)).
+Существует несколько способов использования службы hello в автоматическом режиме (пример приложения — [здесь](http://microsoftazuremachinelearning.azurewebsites.net/DifferenceInProportionsTest.aspx)).
 
 ### <a name="starting-c-code-for-web-service-consumption"></a>Начало кода C# для использования веб-службы:
     public class Input
@@ -90,11 +90,11 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="creation-of-web-service"></a>Создание веб-службы
-> Эта веб-служба была создана с помощью системы машинного обучения Azure. Чтобы получить бесплатную пробную версию и вводные видеоматериалы по созданию экспериментов и [публикации веб-служб](machine-learning-publish-a-machine-learning-web-service.md), посетите веб-страницу [azure.com/ml](http://azure.com/ml). Ниже приведен снимок экрана эксперимента, в результате которого была создана веб-служба, и пример кода для каждого модуля в эксперименте.
+> Эта веб-служба была создана с помощью системы машинного обучения Azure. Чтобы получить бесплатную пробную версию и вводные видеоматериалы по созданию экспериментов и [публикации веб-служб](machine-learning-publish-a-machine-learning-web-service.md), посетите веб-страницу [azure.com/ml](http://azure.com/ml). Ниже приведен снимок экрана приветствия эксперимента, созданные для каждого из модулей hello в эксперименте hello hello веб-службы и пример кода.
 > 
 > 
 
-В системе машинного обучения Azure был создан пустой эксперимент с двумя модулями [Выполнить сценарий R][execute-r-script]. В первом из них определяется схема данных, а второй использует команду prop.test языка R для проверки гипотезы в отношении двух долей. 
+В системе машинного обучения Azure был создан пустой эксперимент с двумя модулями [Выполнить сценарий R][execute-r-script]. В первый модуль hello hello схемы данных определен, второй модуль hello не используется команда prop.test hello в тест гипотезы hello tooperform R для 2 пропорций. 
 
 ### <a name="experiment-flow"></a>Ход эксперимента:
 ![Ход эксперимента][2]
@@ -102,7 +102,7 @@ ms.lasthandoff: 07/11/2017
 #### <a name="module-1"></a>Модуль 1:
     ####Schema definition  
     data.set=data.frame(successes1=50,successes2=60,total1=100,total2=100);
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
     dataset1 = maml.mapInputPort(1) #read data from input port
 
 
@@ -110,8 +110,8 @@ ms.lasthandoff: 07/11/2017
     test=prop.test(c(dataset1$successes1[1],dataset1$successes2[1]),c(dataset1$total1[1],dataset1$total2[1])) #conduct hypothesis test
 
     result=data.frame(
-    result=ifelse(test$p.value<0.05,"The proportions are different!",
-    "The proportions aren't different statistically."),
+    result=ifelse(test$p.value<0.05,"hello proportions are different!",
+    "hello proportions aren't different statistically."),
     ChiSquarestatistic=round(test$statistic,2),df=test$parameter,
     pvalue=round(test$p.value,4),
     proportion1=round(test$estimate[1],4),
@@ -123,10 +123,10 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="limitations"></a>Ограничения
-Это очень простой пример проверки различия двух долей. Как видно из приведенного выше образца кода, в нем не отслеживаются ошибки, а служба предполагает, что все переменные являются непрерывными.
+Это очень простой пример проверки различия двух долей. Перехват ошибок не реализован как видно в приведенном выше примере кода hello, и служба hello предполагается, что все переменные hello непрерывной.
 
 ## <a name="faq"></a>Часто задаваемые вопросы
-Ознакомиться с часто задаваемыми вопросами по использованию веб-службы и публикации в Azure Marketplace можно [здесь](machine-learning-marketplace-faq.md).
+Часто задаваемые вопросы о потреблении hello веб-службы или публикации toohello Azure Marketplace в разделе [здесь](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-difference-in-two-proportions/hyptest-img1.png
 [2]: ./media/machine-learning-r-csharp-difference-in-two-proportions/hyptest-img2.png

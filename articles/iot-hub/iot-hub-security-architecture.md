@@ -1,5 +1,5 @@
 ---
-title: "Архитектура безопасности Интернета вещей Azure | Документация Майкрософт"
+title: "Архитектура безопасности IoT aaaAzure | Документы Microsoft"
 description: "Рекомендации и советы по архитектуре безопасности Интернета вещей, включая моделирование угроз."
 services: iot-hub
 documentationcenter: 
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.openlocfilehash: 4f9a99fa41406d496db14e8a4f71cfb96dd9b70c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 377226aa88d8700929d553d9862eef780db5356e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
-## <a name="see-also"></a>Дополнительные материалы
-Дополнительные сведения о безопасности решения Центра Интернета вещей см. в статье [Защита развертывания IoT][lnk-security-deployment]
+## <a name="see-also"></a>См. также
+см. Дополнительные сведения о защите вашего решения IoT, toolearn [защите развертывания IoT][lnk-security-deployment]
 
-Для дальнейшего изучения возможностей центра IoT см. следующие статьи:
+Изучение возможностей hello центра IoT toofurther см. в разделе:
 
 * [Отправка сообщений с устройства в облако с помощью имитации устройства (Linux) с использованием Edge Интернета вещей Azure][lnk-iotedge]
 

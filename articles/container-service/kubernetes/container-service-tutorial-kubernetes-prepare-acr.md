@@ -1,5 +1,5 @@
 ---
-title: "Руководство по службе контейнеров Azure — подготовка ACR | Документация Майкрософт"
+title: "Учебник контейнера службы aaaAzure - Подготовка контроля доступа | Документы Microsoft"
 description: "Руководство по службе контейнеров Azure — подготовка ACR"
 services: container-service
 documentationcenter: 
@@ -17,62 +17,62 @@ ms.workload: na
 ms.date: 08/21/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 3e1f7617bf2fc52ee4c15598f51a46276f4dc57d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3980e5ce4eb9836f83c761a2f76c944bb3f13060
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Развертывание реестра контейнеров Azure и его использование
 
-Реестр контейнеров Azure (ACR) является частным реестром на базе Azure для образов контейнеров Docker. В этом руководстве (здесь представлена вторая его часть из семи) рассматриваются основные шаги для развертывания экземпляра реестра контейнеров Azure и отправки в него образов контейнеров. В частности, рассматриваются такие шаги:
+Реестр контейнеров Azure (ACR) является частным реестром на базе Azure для образов контейнеров Docker. Этот учебник, часть два из семи, пошаговое руководство по развертыванию экземпляра реестра контейнера Azure и опубликуйте tooit образа контейнера. В частности, рассматриваются такие шаги:
 
 > [!div class="checklist"]
 > * развертывание экземпляра реестра контейнеров Azure (ACR);
 > * добавление тегов к образу контейнера для ACR;
-> * отправка образа в ACR.
+> * Отправка изображения tooACR hello
 
 В последующих руководствах данный экземпляр ACR интегрируется с кластером Kubernetes службы контейнеров Azure для безопасного выполнения образов контейнеров. 
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В [предыдущей части руководства](./container-service-tutorial-kubernetes-prepare-app.md) мы создали образ контейнера для простого приложения Azure для голосования. Теперь мы поместим этот образ в реестр контейнеров Azure. Если вы еще не создали образ приложения Azure для голосования, выполните инструкции из статьи [Create container images to be used with Azure Container Service](./container-service-tutorial-kubernetes-prepare-app.md) (Создание образов контейнеров с помощью службы контейнеров Azure). Описанные здесь шаги подходят для любого образа контейнера.
+В hello [с предыдущим учебником](./container-service-tutorial-kubernetes-prepare-app.md), образ контейнера был создан для простого приложения Azure с правом голоса. В этом учебнике это изображение помещается tooan реестра контейнера Azure. Если вы не создали образа приложения Azure с правом голоса hello, возвращают слишком[учебник 1 – Создание образов контейнеров](./container-service-tutorial-kubernetes-prepare-app.md). Кроме того действия hello описанный здесь работают с любой образ контейнера.
 
-Для этого руководства требуется Azure CLI версии 2.0.4 или более поздней. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Что вы используете версию Azure CLI hello 2.0.4 упражнений этого учебника нужен или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="deploy-azure-container-registry"></a>Развертывание реестра контейнеров Azure
 
 При развертывании реестра контейнеров Azure сначала необходимо создать группу ресурсов. Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими.
 
-Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). В этом примере создается группа ресурсов с именем *myResourceGroup* в регионе *westeurope*.
+Создание группы ресурсов с hello [Создание группы az](/cli/azure/group#create) команды. В этом примере имя группы ресурсов *myResourceGroup* создается в hello *westeurope* области.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Создайте реестр контейнеров Azure с помощью команды[az acr create](/cli/azure/acr#create). Имя контейнера реестра **должно быть уникальным**.
+Создайте в реестре контейнера Azure с hello [создать az acr](/cli/azure/acr#create) команды. Имя контейнера реестра Hello **должно быть уникальным**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
 ```
 
-В остальной части этого руководства acrname будет заменять в примерах имя контейнера реестра.
+На протяжении hello конца данного учебника «acrname» используется как заполнитель для hello контейнер реестра с выбранным именем.
 
 ## <a name="container-registry-login"></a>Вход в реестр контейнеров
 
-Войдите в свой экземпляр ACR, прежде чем отправлять в него образы. Используйте команду [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#login), чтобы выполнить операцию. Укажите уникальное имя реестра контейнеров, заданное для него при создании.
+Необходимо войти в экземпляре ACR tooyour до отправки tooit изображения. Используйте hello [входа acr az](https://docs.microsoft.com/en-us/cli/azure/acr#login) команды toocomplete hello операции. Необходимо tooprovide hello уникальное имя, заданное реестра toohello контейнера, при его создании.
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-После выполнения эта команда возвращает сообщение Login Succeeded (Вход выполнен).
+Команда Hello возвращает сообщение «Успешно выполнен вход» после завершения.
 
 ## <a name="tag-container-images"></a>Присвоение тегов образам контейнеров
 
-Каждый образ контейнера должен иметь тег с именем сервера входа (loginServer), указанным для реестра. Данный тег используется для маршрутизации при отправке образов контейнеров в реестр образов.
+Каждый образ контейнера должен toobe тегом hello loginServer имя реестра hello. Данный тег используется для маршрутизации при принудительной установке реестра образов tooan образы контейнера.
 
-Чтобы просмотреть список сохраненных образов, используйте команду [docker images](https://docs.docker.com/engine/reference/commandline/images/).
+список текущего изображения, используйте hello toosee [образов docker](https://docs.docker.com/engine/reference/commandline/images/) команды.
 
 ```bash
 docker images
@@ -87,19 +87,19 @@ redis                        latest              a1b99da73d05        7 days ago 
 tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ago        694MB
 ```
 
-Чтобы получить имя loginServer, выполните следующую команду.
+hello loginServer tooget имя, запустите следующую команду hello.
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-Теперь пометьте образ *azure-vote-front* с помощью тега loginServer реестра контейнеров. Кроме того, добавьте `:redis-v1` в конец имени образа. Этот тег обозначает номер версии образа.
+Теперь hello тег *azure голос передней панели* изображение с loginServer hello hello контейнер реестра. Кроме того, добавьте `:redis-v1` toohello конец hello имя образа. Этот тег указывает версию образа hello.
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v1
 ```
 
-Добавив все нужные теги, выполните команду [docker images] (https://docs.docker.com/engine/reference/commandline/images/), чтобы проверить правильность работы.
+После с тегами, выполните операцию hello tooverify (https://docs.docker.com/engine/reference/commandline/images/) [образов docker].
 
 ```bash
 docker images
@@ -115,21 +115,21 @@ redis                                                latest              a1b99da
 tiangolo/uwsgi-nginx-flask                           flask               788ca94b2313        8 months ago        694 MB
 ```
 
-## <a name="push-images-to-registry"></a>Отправка образов в реестр
+## <a name="push-images-tooregistry"></a>Принудительная tooregistry изображений
 
-Отправьте образ *azure-vote-front* в реестр. 
+Принудительная hello *azure голос передней панели* реестра toohello изображения. 
 
-Используйте следующий пример, заменив в нем имя loginServer ACR именем loginServer своей среды.
+Используя следующий пример hello, замените имя loginServer ACR hello loginServer hello из среды.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:redis-v1
 ```
 
-Для завершения операции требуется несколько минут.
+Это занимает несколько минут toocomplete.
 
 ## <a name="list-images-in-registry"></a>Перечисление образов в реестре
 
-Чтобы получить список образов, отправленных в реестр контейнеров Azure, выполните команду [az acr repository list](/cli/azure/acr/repository#list). Укажите в команде имя нужного экземпляра ACR.
+tooreturn список образов, которые передаются реестра tooyour контейнера Azure, пользователь hello [списка репозитория acr az](/cli/azure/acr/repository#list) команды. Обновление hello команды с именем экземпляра ACR hello.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -143,7 +143,7 @@ Result
 azure-vote-front
 ```
 
-Чтобы увидеть теги для конкретного образа, используйте команду [az acr repository show-tags](/cli/azure/acr/repository#show-tags).
+А затем toosee hello тегов для определенного образа, используйте hello [acr репозитория az show теги](/cli/azure/acr/repository#show-tags) команды.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
@@ -157,18 +157,18 @@ Result
 redis-v1
 ```
 
-По завершении работы с этим руководством образ контейнера будет сохранен в частном экземпляре реестра контейнеров Azure. В следующих частях руководства мы развернем этот образ из ACR в кластер Kubernetes.
+По завершении учебника образ контейнера hello хранилось в закрытого экземпляра реестра контейнера Azure. Этот образ развертывается из кластера Kubernetes tooa контроля доступа в последующих учебники.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом руководстве вы подготовили реестр контейнеров Azure для использования в кластере Kubernetes ACS. Были выполнены следующие действия:
+В этом руководстве вы подготовили реестр контейнеров Azure для использования в кластере Kubernetes ACS. Привет, следующие шаги были выполнены:
 
 > [!div class="checklist"]
 > * развертывание экземпляра реестра контейнеров Azure;
 > * добавление тегов к образу контейнера для ACR;
-> * отправка образа в ACR.
+> * Отправленный hello tooACR изображения
 
-Перейдите к следующему руководству, чтобы ознакомиться с развертыванием кластера Kubernetes в Azure.
+Переместить следующий учебник toolearn toohello о развертывании Kubernetes кластера в Azure.
 
 > [!div class="nextstepaction"]
 > [Развертывание кластера Kubernetes в службе контейнеров Azure](./container-service-tutorial-kubernetes-deploy-cluster.md)

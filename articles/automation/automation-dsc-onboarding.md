@@ -1,6 +1,6 @@
 ---
-title: "Подключение компьютеров для управления с помощью Azure Automation DSC | Документация Майкрософт"
-description: "Настройка машин для управления с помощью Azure Automation DSC"
+title: "aaaOnboarding машин для управления с помощью DSC службы автоматизации Azure | Документы Microsoft"
+description: "Как toosetup компьютеров для управления с помощью DSC службы автоматизации Azure"
 services: automation
 documentationcenter: dev-center-name
 author: eslesar
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: eslesar
-ms.openlocfilehash: cc9b1ea19b4e17374d47e12f970cb333a8051559
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ef15801fec2ffea4ba62dcba2fbe9af09268e424
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Подключение компьютеров для управления с помощью Azure Automation DSC
 
 ## <a name="why-manage-machines-with-azure-automation-dsc"></a>В чем преимущества управления компьютерами с помощью службы Azure Automation DSC?
 
-Настройка требуемого состояния (DSC) с помощью службы автоматизации Azure так же проста, как и [настройка требуемого состояния с использованием PowerShell](https://technet.microsoft.com/library/dn249912.aspx). Это мощная служба управления конфигурациями для узлов DSC (физических и виртуальных машин), которую можно использовать в любом облачном или локальном центре обработки данных. Она обеспечивает быструю и простую масштабируемость тысяч компьютеров из безопасного центрального расположения. Вы можете легко переносить компьютеры в облачную среду, присваивать им декларативные конфигурации, а также просматривать отчеты, отражающие соответствие каждого компьютера требуемому состоянию. Слой управления Azure Automation DSC используется для настройки требуемого состояния таким же образом, как слой управления службы автоматизации Azure используется в сценариях PowerShell. Другими словами, служба автоматизации Azure помогает управлять сценариями PowerShell так же, как и конфигурациями DSC. Дополнительные сведения о преимуществах использования DSC службы автоматизации Azure см. в статье [Обзор DSC службы автоматизации Azure](automation-dsc-overview.md).
+Настройка требуемого состояния (DSC) с помощью службы автоматизации Azure так же проста, как и [настройка требуемого состояния с использованием PowerShell](https://technet.microsoft.com/library/dn249912.aspx). Это мощная служба управления конфигурациями для узлов DSC (физических и виртуальных машин), которую можно использовать в любом облачном или локальном центре обработки данных. Она обеспечивает быструю и простую масштабируемость тысяч компьютеров из безопасного центрального расположения. Вы можете легко присоединяться машины, назначьте их декларативной конфигурации и просмотр отчетов, отражающих каждого компьютера, состояние соответствия требуемой toohello указанный. уровень управления Hello Azure Automation DSC — tooDSC какой уровень управления hello Azure Automation является tooPowerShell сценариев. Другими словами в hello аналогично, автоматизация Azure помогает управлять сценариев PowerShell, он также позволяет управлять конфигурациями DSC. toolearn Дополнительные сведения о hello преимущества использования Azure Automation DSC. в разделе [Обзор Azure Automation DSC](automation-dsc-overview.md).
 
-Службу Azure Automation DSC можно использовать для управления разными компьютерами. Их типы перечислены ниже.
+Azure Automation DSC можно использовать toomanage различных компьютерах:
 
 * Виртуальные машины Azure (классические).
 * Виртуальные машины Azure
@@ -33,26 +33,26 @@ ms.lasthandoff: 07/11/2017
 * физические или виртуальные машины под управлением Windows, расположенные локально или в облачной службе, отличной от Azure или AWS;
 * Физические или виртуальные машины под управлением Linux, расположенные локально, в Azure или облачной службе, отличной от Azure.
 
-Кроме того, если вы не готовы управлять конфигурацией компьютера из облака, платформа Azure Automation DSC может также использоваться как конечная точка только для отчетности. Это позволяет задать (отправить) требуемую конфигурацию через DSC локально и просмотреть подробные сведения отчетов о соответствии узла требуемому состоянию в службе автоматизации Azure.
+Кроме того Если вы не готовы toomanage конфигурации машины из облака hello, Azure Automation DSC может также использоваться как конечную точку только для отчетов. Это позволяет tooset (push) требуемой конфигурации с помощью DSC в локальной среде и просмотр сведений широкие возможности отчетности на соответствие узел hello требуемое состояние в службе автоматизации Azure.
 
-В следующих разделах описываются способы подключения каждого типа компьютеров к службе Azure Automation DSC.
+Hello в следующих разделах описываются способы подключения каждого типа машины tooAzure DSC службы автоматизации.
 
 ## <a name="azure-virtual-machines-classic"></a>Виртуальные машины Azure (классические).
 
-Служба Azure Automation DSC позволяет легко подключать виртуальные машины Azure (классические) для управления их настройками с помощью портала Azure или PowerShell. В процессе работы расширение DSC регистрирует виртуальную машину в службе Azure Automation DSC, исключая необходимость выполнения удаленного входа на виртуальную машину администратором. Так как с виртуальными машинами Azure расширение DSC работает асинхронно, можно воспользоваться алгоритмом отслеживания хода выполнения и устранения неполадок, который приведен ниже в разделе [**Устранение неполадок при подключении виртуальной машины Azure**](#troubleshooting-azure-virtual-machine-onboarding) .
+С помощью DSC службы автоматизации Azure можно легко присоединяться виртуальных машинах Azure (классические) для управления конфигурацией с помощью портала Azure hello или PowerShell. Кулисами hello и без администратор, имеющий tooremote в hello ВМ hello расширения для настройки требуемого состояния Azure VM регистрирует hello виртуальной Машины Azure Automation DSC. Поскольку hello расширения для настройки требуемого состояния Azure ВМ выполняется асинхронно, tootrack действия ход его выполнения или устранения неполадок приведены в hello [ **адаптации виртуальной машины Azure, устранение неполадок** ](#troubleshooting-azure-virtual-machine-onboarding)разделе ниже.
 
-### <a name="azure-portal"></a>портале Azure
+### <a name="azure-portal"></a>Портал Azure
 
-На [портале Azure](http://portal.azure.com/) последовательно выберите **Обзор** -> **Виртуальные машины (классика)**. Выберите виртуальную машину Windows, которую необходимо подключить. В колонке панели мониторинга виртуальной машины щелкните **Все параметры** -> **Расширения** -> **Добавить** -> **Azure Automation DSC** -> **Создать**. Введите необходимые [значения локального диспетчера конфигураций DSC PowerShell](https://msdn.microsoft.com/powershell/dsc/metaconfig4), регистрационный ключ вашей учетной записи и URL-адрес регистрации. Кроме того, можно ввести конфигурацию узла, которая будет назначена виртуальной машине.
+В hello [портал Azure](http://portal.azure.com/), нажмите кнопку **Обзор** -> **виртуальные машины (классические)**. Выберите, требуется tooonboard виртуальной Машины Windows hello. На панели мониторинга виртуальной машины hello щелкните **все параметры** -> **расширения** -> **добавить**  ->   **Служба автоматизации Azure DSC** -> **создания**. Введите hello [значения локального диспетчера конфигураций DSC PowerShell](https://msdn.microsoft.com/powershell/dsc/metaconfig4) требуется для вашей учетной записи автоматизации регистрационный ключ и URL-адрес регистрации и при необходимости toohello tooassign конфигурации узла виртуальной Машины.
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
 
-Сведения о поиске URL-адреса регистрации и ключа учетной записи службы автоматизации для подключения компьютера см. ниже в разделе [**Безопасная регистрация**](#secure-registration).
+URL-адрес регистрации toofind hello и ключа для машины hello tooonboard учетной записи автоматизации hello, см. раздел hello [ **Secure регистрации** ](#secure-registration) разделе ниже.
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-# log in to both Azure Service Management and Azure Resource Manager
+# log in tooboth Azure Service Management and Azure Resource Manager
 Add-AzureAccount
 Add-AzureRmAccount
 
@@ -62,14 +62,14 @@ $ServiceName = ""
 $AutomationAccountName = ""
 $AutomationAccountResourceGroup = ""
 
-# fill in the name of a Node Configuration in Azure Automation DSC, for this VM to conform to
+# fill in hello name of a Node Configuration in Azure Automation DSC, for this VM tooconform to
 $NodeConfigName = ""
 
 # get Azure Automation DSC registration info
 $Account = Get-AzureRmAutomationAccount -ResourceGroupName $AutomationAccountResourceGroup -Name $AutomationAccountName
 $RegistrationInfo = $Account | Get-AzureRmAutomationRegistrationInfo
 
-# use the DSC extension to onboard the VM for management with Azure Automation DSC
+# use hello DSC extension tooonboard hello VM for management with Azure Automation DSC
 $VM = Get-AzureVM -Name $VMName -ServiceName $ServiceName
 
 $PublicConfiguration = ConvertTo-Json -Depth 8 @{
@@ -115,99 +115,99 @@ $VM | Update-AzureVM
 
 ## <a name="azure-virtual-machines"></a>Виртуальные машины Azure
 
-Служба Azure Automation DSC позволяет легко подключать виртуальные машины Azure для управления конфигурацией с помощью портала Azure, шаблонов диспетчера ресурсов Azure или PowerShell. В процессе работы расширение DSC регистрирует виртуальную машину в службе Azure Automation DSC, исключая необходимость выполнения удаленного входа на виртуальную машину администратором. Так как с виртуальными машинами Azure расширение DSC работает асинхронно, можно воспользоваться алгоритмом отслеживания хода выполнения и устранения неполадок, который приведен ниже в разделе [**Устранение неполадок при подключении виртуальной машины Azure**](#troubleshooting-azure-virtual-machine-onboarding) .
+Azure Automation DSC позволяет легко присоединять виртуальные машины, Azure для управления конфигурацией с помощью портала Azure hello, шаблоны Azure Resource Manager или PowerShell. Кулисами hello и без администратор, имеющий tooremote в hello ВМ hello расширения для настройки требуемого состояния Azure VM регистрирует hello виртуальной Машины Azure Automation DSC. Поскольку hello расширения для настройки требуемого состояния Azure ВМ выполняется асинхронно, tootrack действия ход его выполнения или устранения неполадок приведены в hello [ **адаптации виртуальной машины Azure, устранение неполадок** ](#troubleshooting-azure-virtual-machine-onboarding)разделе ниже.
 
 ### <a name="azure-portal"></a>Портал Azure
 
-На [портале Azure](https://portal.azure.com/)перейдите к учетной записи службы автоматизации Azure, чтобы подключить виртуальные машины. На панели мониторинга учетной записи службы автоматизации щелкните **Узлы DSC** -> **Добавить виртуальную машину Azure**.
+В hello [портал Azure](https://portal.azure.com/), перейдите toohello учетной записи службы автоматизации Azure место tooonboard виртуальных машин. Щелкните панель мониторинга учетной записи автоматизации hello **узлы DSC** -> **добавить виртуальную Машину Azure**.
 
-На странице **Выбор виртуальных машин для подключения**выберите одну или несколько виртуальных машин Azure для подключения.
+В разделе **выберите виртуальные машины tooonboard**, выберите один или несколько на виртуальные машины Azure tooonboard.
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_2.png)
 
-В разделе **Настроить данные регистрации** введите необходимые вам [значения локального диспетчера конфигураций DSC PowerShell](https://msdn.microsoft.com/powershell/dsc/metaconfig4). Также можно ввести конфигурацию узла, которая будет назначена виртуальной машине.
+В разделе **Настройка регистрационные данные**, введите hello [значения локального диспетчера конфигураций DSC PowerShell](https://msdn.microsoft.com/powershell/dsc/metaconfig4) необходимые для вашего случая использования и при необходимости toohello tooassign конфигурации узла виртуальной Машины.
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_3.png)
 
 ### <a name="azure-resource-manager-templates"></a>Шаблоны диспетчера ресурсов Azure
 
-Виртуальные машины Azure можно разворачивать и подключать к службе Azure Automation DSC с помощью шаблонов диспетчера ресурсов Azure. Пример шаблона, подключающего существующую виртуальную машину к службе автоматизации Azure DSC, см. в статье [Configure a VM via DSC extension and Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) (Настройка виртуальной машины с помощью расширения DSC и Azure Automation DSC). Расположение ключа и URL-адреса регистрации, которые шаблон принимает в качестве входных данных, см. ниже в разделе [**Безопасная регистрация**](#secure-registration).
+Можно развернуть виртуальные машины Azure и tooAzure выставленных DSC службы автоматизации через шаблоны Azure Resource Manager. В разделе [Настройка виртуальной Машины через расширение DSC и Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) для шаблона, onboards tooAzure существующих виртуальных Машин DSC службы автоматизации. toofind hello ключ и регистрации URL-адрес регистрации выполнены как входные данные в этом шаблоне см hello [ **Secure регистрации** ](#secure-registration) разделе ниже.
 
 ### <a name="powershell"></a>PowerShell
 
-На портале Azure виртуальные машины можно подключать с помощью командлета [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) в PowerShell.
+Hello [AzureRmAutomationDscNode регистра](/powershell/module/azurerm.automation/register-azurermautomationdscnode) командлет можно использовать tooonboard виртуальных машин в hello портал Azure с помощью PowerShell.
 
 ## <a name="amazon-web-services-aws-virtual-machines"></a>виртуальные машины Amazon Web Services (AWS);
 
-Вы можете легко подключить виртуальные машины Amazon Web Services для управления конфигурацией с помощью Azure Automation DSC, используя набор инструментов DSC AWS. Дополнительные сведения об этом наборе инструментов см. [здесь](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/).
+Вы можете легко присоединяться Amazon Web Services виртуальных машин для управления конфигурацией с DSC службы автоматизации Azure с помощью hello AWS DSC Toolkit. Дополнительные сведения о hello toolkit [здесь](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/).
 
 ## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>физические или виртуальные машины под управлением Windows, расположенные локально или в облачной службе, отличной от Azure или AWS;
 
-Компьютеры под управлением Windows, расположенные локально или в облачных службах, отличных от Azure (например, в веб-службах Amazon), также можно подключить к службе Azure Automation DSC при наличии на них исходящего доступа к Интернету. Для этого требуется выполнить несколько простых шагов.
+Локальные компьютеры Windows и Windows машин в облаках без использования Azure (например, веб-службы Amazon) также могут tooAzure выставленных DSC службы автоматизации, при условии, что они имеют toohello исходящий доступ к Интернету, через несколько простых шагов:
 
-1. Убедитесь, что на компьютерах, которые будут подключены к службе автоматизации Azure DSC, установлена последняя версия [WMF 5](http://aka.ms/wmf5latest) .
-2. Создайте папку с необходимыми метаконфигурациями DSC, как указано ниже в разделе [**Создание метаконфигураций DSC**](#generating-dsc-metaconfigurations) .
-3. Удаленно примените метаконфигурации PowerShell DSC на компьютерах, которые нужно подключить. **Для выполнения этой команды на компьютере должна быть установлена последняя версия [WMF 5](http://aka.ms/wmf5latest)**.
+1. Убедитесь, что hello последнюю версию [WMF 5](http://aka.ms/wmf5latest) устанавливается на компьютерах hello требуется tooonboard tooAzure DSC службы автоматизации.
+2. Следуйте приведенным инструкциям раздела hello [ **метаконфигурации создания DSC** ](#generating-dsc-metaconfigurations) ниже toogenerate папку, содержащую hello необходимости метаконфигурации DSC.
+3. Удаленно применяются требуется tooonboard toohello машины hello PowerShell DSC метаконфигурации. **компьютер Hello, эта команда выполняется из должен иметь hello последнюю версию [WMF 5](http://aka.ms/wmf5latest) установлен**:
 
     ```powershell
     Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
     ```
 
-4. Если метаконфигурации PowerShell DSC не удалось применить удаленно, скопируйте папку метаконфигураций (см. шаг 2) на каждый компьютер, который нужно подключить. Затем локально вызовите **Set-DscLocalConfigurationManager** на каждом компьютере, который нужно подключить.
-5. С помощью портала Azure или командлетов убедитесь, что все компьютеры, которые нужно подключить, теперь отображаются как узлы DSC, зарегистрированные в вашей учетной записи службы автоматизации Azure.
+4. Если не удается применить метаконфигурации PowerShell DSC hello удаленно, скопируйте папку метаконфигурации hello из шага 2 на каждой машине tooonboard. Затем вызовите **Set-DscLocalConfigurationManager** локально на каждой машине tooonboard.
+5. С помощью hello портал Azure или командлетов, убедитесь, что hello машины tooonboard теперь отображаются как узлы DSC зарегистрирован в вашей учетной записи службы автоматизации Azure.
 
 ## <a name="physicalvirtual-linux-machines-on-premises-in-azure-or-in-a-cloud-other-than-azure"></a>Физические или виртуальные машины под управлением Linux, расположенные локально, в Azure или облачной службе, отличной от Azure.
 
-Компьютеры под управлением Linux, расположенные локально, в Azure или в облачной службе, отличной от Azure, также можно подключить к службе автоматизации Azure DSC при наличии на них исходящего доступа к Интернету. Для этого требуется выполнить несколько простых шагов.
+Компьютеры Linux локальных машин Linux в Azure, и компьютеры Linux в облаках без использования Azure также может быть встроен tooAzure DSC службы автоматизации, при условии, что они имеют toohello исходящий доступ к Интернету, через несколько простых шагов:
 
-1. Убедитесь, что на компьютерах, которые будут подключены к службе Azure Automation DSC, установлена последняя версия платформы[PowerShell Desired State Configuration для Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux).
-2. Если [значения по умолчанию локального диспетчера конфигураций PowerShell DSC](https://msdn.microsoft.com/powershell/dsc/metaconfig4) соответствуют требуемым, а подключаемые компьютеры должны извлекать данные из Azure Automation DSC **и** передавать их туда, сделайте следующее:
+1. Убедитесь, что hello последнюю версию [настройки требуемого состояния PowerShell для Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) устанавливается на компьютерах hello требуется tooonboard tooAzure DSC службы автоматизации.
+2. Если hello [значения по умолчанию локальный диспетчер конфигураций DSC PowerShell](https://msdn.microsoft.com/powershell/dsc/metaconfig4) соответствует вашей вариант использования, и требуется tooonboard машины, например, они **оба** по запросу из и отчетов tooAzure DSC службы автоматизации:
 
-   + На каждом компьютере под управлением Linux, который будет подключен к службе Azure Automation DSC, используйте файл Register.py для подключения с помощью значений по умолчанию локального диспетчера конфигураций DSC PowerShell:
+   + На каждом Linux машины tooonboard tooAzure DSC службы автоматизации используйте tooonboard Register.py hello, который по умолчанию используется локальный диспетчер конфигураций DSC PowerShell с помощью:
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   + Расположение ключа и URL-адреса регистрации для учетной записи службы автоматизации см. ниже в разделе [**Безопасная регистрация**](#secure-registration).
+   + toofind hello регистрации ключа и регистрации URL-адрес для вашей учетной записи автоматизации в разделе hello [ **Secure регистрации** ](#secure-registration) разделе ниже.
 
-     Если значения по умолчанию локального диспетчера конфигураций PowerShell DSC **не** **соответствуют** требуемым или подключаемые компьютеры должны подчиняться службе Azure Automation DSC, но не извлекать из нее параметры конфигурации или модули PowerShell, то выполните шаги 3–6. В противном случае сразу перейдите к шагу 6.
+     Если hello PowerShell DSC локальный диспетчер конфигураций по умолчанию **сделать** **не** соответствует вашей вариант использования, либо требуется tooonboard компьютеров таким образом, что они только о tooAzure DSC службы автоматизации, но не по запросу конфигурации и модули PowerShell, выполните шаги 3 – 6. В противном случае перейдите непосредственно toostep 6.
 
-3. Создайте папку с необходимыми метаконфигурациями DSC, как указано ниже в разделе [**Создание метаконфигураций DSC**](#generating-dsc-metaconfigurations) .
-4. Удаленно примените метаконфигурации PowerShell DSC на компьютерах, которые нужно подключить:
+3. Следуйте приведенным инструкциям hello hello [ **метаконфигурации создания DSC** ](#generating-dsc-metaconfigurations) ниже, в разделе toogenerate папку, содержащую необходимые hello DSC метаконфигурации.
+4. Удаленно применяются требуется tooonboard toohello машины hello PowerShell DSC метаконфигурации.
 
     ```powershell
     $SecurePass = ConvertTo-SecureString -String "<root password>" -AsPlainText -Force
     $Cred = New-Object System.Management.Automation.PSCredential "root", $SecurePass
     $Opt = New-CimSessionOption -UseSsl -SkipCACheck -SkipCNCheck -SkipRevocationCheck
 
-    # need a CimSession for each Linux machine to onboard
+    # need a CimSession for each Linux machine tooonboard
 
     $Session = New-CimSession -Credential $Cred -ComputerName <your Linux machine> -Port 5986 -Authentication basic -SessionOption $Opt
 
     Set-DscLocalConfigurationManager -CimSession $Session -Path C:\Users\joe\Desktop\DscMetaConfigs
     ```
 
-Для выполнения этой команды на компьютере должна быть установлена последняя версия [WMF 5](http://aka.ms/wmf5latest) .
+компьютер Hello, эта команда выполняется из должен иметь hello последнюю версию [WMF 5](http://aka.ms/wmf5latest) установлен.
 
-1. Если не удалось применить метаконфигурации PowerShell DSC удаленно, скопируйте соответствующую метаконфигурацию из папки (шаг 5) на каждый компьютер под управлением Linux, который нужно подключить. Затем вызовите `SetDscLocalConfigurationManager.py` локально на каждом компьютере под управлением Linux, который нужно подключить к службе автоматизации Azure DSC:
+1. Если не удается применить метаконфигурации PowerShell DSC hello удаленно, для каждого tooonboard машины Linux, скопируйте hello метаконфигурации соответствующая toothat машина из папки hello на шаге 5 на компьютере Linux hello. Затем вызовите `SetDscLocalConfigurationManager.py` локально на каждом компьютере Linux требуется tooonboard tooAzure DSC службы автоматизации:
 
-   `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
+   `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path toometaconfiguration file>`
 
-2. С помощью портала Azure или командлетов убедитесь, что все компьютеры, которые нужно подключить, теперь отображаются как узлы DSC, зарегистрированные в вашей учетной записи службы автоматизации Azure.
+2. С помощью hello портал Azure или командлетов, убедитесь, что hello машины tooonboard теперь отображаются как узлы DSC зарегистрирован в вашей учетной записи службы автоматизации Azure.
 
 ## <a name="generating-dsc-metaconfigurations"></a>Создание метаконфигураций DSC
 
-Для универсального внедрения любого компьютера в службу автоматизации Azure DSC можно создать [метаконфигурацию DSC](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig), при использовании которой агент DSC на соответствующем компьютере будет настроен на извлечение данных из службы автоматизации Azure и (или) передачу в эту службу отчетов. Метаконфигурации DSC для службы автоматизации Azure DSC можно создавать, используя либо конфигурацию PowerShell DSC, либо командлеты PowerShell в службе автоматизации Azure.
+toogenerically освоить любой компьютер tooAzure DSC службы автоматизации, [метаконфигурацию DSC](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig) может быть создан, при применения, сообщает hello DSC агента на toopull машины hello из или получении отчета tooAzure DSC службы автоматизации. Метаконфигурации DSC для Azure Automation DSC может быть создан с помощью конфигурации PowerShell DSC или командлеты Azure Automation PowerShell hello.
 
 > [!NOTE]
-> Метаконфигурации DSC содержат секретные данные, необходимые при подключении компьютера к учетной записи службы автоматизации для управления. Обеспечьте должную защиту создаваемых метаконфигураций или удаляйте их сразу после использования.
+> Метаконфигурации DSC содержат tooonboard hello необходимости секретные данные машина tooan учетной записи автоматизации для управления. Убедитесь, что tooproperly защиты любого метаконфигурации DSC, создаваемые вами или удалить их после использования.
 
 ### <a name="using-a-dsc-configuration"></a>Использование конфигурации DSC
 
-1. Запустите на компьютере, входящем в локальную среду, консоль PowerShell ISE от имени администратора. На этом компьютере должна быть установлена последняя версия [WMF 5](http://aka.ms/wmf5latest) .
-2. Локально выполните следующий скрипт. Этот сценарий содержит конфигурацию PowerShell DSC для создания метаконфигураций и команду, запускающую этот процесс.
+1. Откройте hello интегрированной среды Сценариев PowerShell с правами администратора на компьютере в локальной среде. Hello компьютер должен иметь hello последнюю версию [WMF 5](http://aka.ms/wmf5latest) установлен.
+2. Скопируйте следующий скрипт локально hello. Этот скрипт содержит конфигурацию PowerShell DSC для создания метаконфигурации и команда tookick отключение создания метаконфигурации hello.
 
     ```powershell
-    # The DSC configuration that will generate metaconfigurations
+    # hello DSC configuration that will generate metaconfigurations
     [DscLocalConfigurationManager()]
     Configuration DscMetaConfigs
     {
@@ -296,12 +296,12 @@ $VM | Update-AzureVM
         }
     }
 
-    # Create the metaconfigurations
-    # TODO: edit the below as needed for your use case
+    # Create hello metaconfigurations
+    # TODO: edit hello below as needed for your use case
     $Params = @{
         RegistrationUrl = '<fill me in>';
         RegistrationKey = '<fill me in>';
-        ComputerName = @('<some VM to onboard>', '<some other VM to onboard>');
+        ComputerName = @('<some VM tooonboard>', '<some other VM tooonboard>');
         NodeConfigurationName = 'SimpleConfig.webserver';
         RefreshFrequencyMins = 30;
         ConfigurationModeFrequencyMins = 15;
@@ -309,45 +309,45 @@ $VM | Update-AzureVM
         AllowModuleOverwrite = $False;
         ConfigurationMode = 'ApplyAndMonitor';
         ActionAfterReboot = 'ContinueConfiguration';
-        ReportOnly = $False;  # Set to $True to have machines only report to AA DSC but not pull from it
+        ReportOnly = $False;  # Set too$True toohave machines only report tooAA DSC but not pull from it
     }
 
-    # Use PowerShell splatting to pass parameters to the DSC configuration being invoked
+    # Use PowerShell splatting toopass parameters toohello DSC configuration being invoked
     # For more info about splatting, run: Get-Help -Name about_Splatting
     DscMetaConfigs @Params
     ```
 
-3. Введите регистрационный ключ и URL-адрес для учетной записи автоматизации, а также имена виртуальных машин, которые необходимо внедрить. Все остальные параметры являются необязательными. Расположение ключа и URL-адреса регистрации для учетной записи службы автоматизации см. ниже в разделе [**Безопасная регистрация**](#secure-registration).
-4. Если вы хотите, чтобы компьютеры передавали сведения о состоянии DSC в службу Azure Automation DSC, не извлекая конфигурацию или модули PowerShell, установите для параметра **ReportOnly** значение Тrue.
-5. Выполните скрипт. В рабочем каталоге появится папка **DscMetaConfigs**, содержащая метаконфигурации PowerShell DSC для подключаемых компьютеров (в качестве администратора):
+3. Заполните hello регистрационный ключ и URL-адрес для учетной записи автоматизации, а также имена hello tooonboard машины hello. Все остальные параметры являются необязательными. toofind hello регистрации ключа и регистрации URL-адрес для вашей учетной записи автоматизации в разделе hello [ **Secure регистрации** ](#secure-registration) разделе ниже.
+4. Если требуется tooAzure hello машины tooreport DSC состояние сведения DSC службы автоматизации, но не по запросу, конфигурации и модули PowerShell, задайте hello **ReportOnly** tootrue параметра.
+5. Запустите сценарий hello. Вы создали папку с именем **DscMetaConfigs** в рабочий каталог, содержащий hello метаконфигурации PowerShell DSC для tooonboard машин hello (с правами администратора):
 
     ```powershell
     Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
     ```
 
-### <a name="using-the-azure-automation-cmdlets"></a>Использование командлетов службы автоматизации Azure
+### <a name="using-hello-azure-automation-cmdlets"></a>С помощью командлетов службы автоматизации Azure hello
 
-Если значения по умолчанию локального диспетчера конфигураций DSC PowerShell соответствуют требуемым и вы хотите внедрить компьютеры таким образом, чтобы позволить им извлекать данные из службы автоматизации Azure DSC и передавать в эту службу отчеты, легко создать необходимые конфигурации DSC позволят командлеты службы автоматизации Azure:
+Если значения по умолчанию hello локальный диспетчер конфигураций DSC PowerShell соответствует вашей вариант использования, и требуется tooonboard машин таким образом, что они извлекают из и сообщить tooAzure DSC службы автоматизации, командлеты автоматизации Azure hello предоставляют упрощенный метод создания hello DSC метаконфигурации при необходимости:
 
-1. Запустите на компьютере, входящем в локальную среду, консоль PowerShell или PowerShell ISE от имени администратора.
-2. Подключитесь к Azure Resource Manager с помощью командлета **Add-AzureRmAccount**
-3. Из учетной записи службы автоматизации, к которой будут подключены узлы, загрузите метаконфигурации DSC PowerShell для подключаемых компьютеров:
+1. Откройте консоль PowerShell hello или интегрированной среды Сценариев PowerShell с правами администратора на машине в локальной среде.
+2. Подключение с использованием диспетчера ресурсов tooAzure **добавить AzureRmAccount**
+3. Загрузите PowerShell DSC метаконфигурации hello для машин hello требуется tooonboard из hello автоматизации учетной записи toowhich tooonboard узлах:
 
     ```powershell
-    # Define the parameters for Get-AzureRmAutomationDscOnboardingMetaconfig using PowerShell Splatting
+    # Define hello parameters for Get-AzureRmAutomationDscOnboardingMetaconfig using PowerShell Splatting
     $Params = @{
 
-        ResourceGroupName = 'ContosoResources'; # The name of the ARM Resource Group that contains your Azure Automation Account
-        AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
-        ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
+        ResourceGroupName = 'ContosoResources'; # hello name of hello ARM Resource Group that contains your Azure Automation Account
+        AutomationAccountName = 'ContosoAutomation'; # hello name of hello Azure Automation Account where you want a node on-boarded to
+        ComputerName = @('web01', 'web02', 'sql01'); # hello names of hello computers that hello meta configuration will be generated for
         OutputFolder = "$env:UserProfile\Desktop\";
     }
-    # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
+    # Use PowerShell splatting toopass parameters toohello Azure Automation cmdlet being invoked
     # For more info about splatting, run: Get-Help -Name about_Splatting
     Get-AzureRmAutomationDscOnboardingMetaconfig @Params
     ```
     
-4. В рабочем каталоге появится папка ***DscMetaConfigs***, содержащая метаконфигурации PowerShell DSC для подключаемых компьютеров (в качестве администратора):
+4. Вы создали папку с именем ***DscMetaConfigs***, содержащий hello метаконфигурации PowerShell DSC для tooonboard машин hello (с правами администратора):
     
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
@@ -355,36 +355,36 @@ $VM | Update-AzureVM
 
 ## <a name="secure-registration"></a>Безопасная регистрация
 
-Компьютеры можно безопасно подключать к учетной записи службы автоматизации Azure с помощью протокола регистрации DSC WMF 5. Этот протокол позволяет узлу DSC проходить проверку подлинности на сервере отчетов или опрашивающем сервере PowerShell DSC V2 (включая Azure Automation DSC). Узел регистрируется на сервере с использованием **URL-адреса регистрации**, проходя аутентификацию с помощью **Регистрационного ключа**. Во время регистрации узел DSC и сервер отчетов или опрашивающий сервер DSC создают для этого узла уникальный сертификат, который будет использоваться для проверки подлинности после регистрации на сервере. Этот процесс исключает возможность подмены подключенных узлов друг другом, например, если один из узлов взломан и является вредоносным. После регистрации регистрационный ключ повторно не используется для проверки подлинности и удаляется из узла.
+Машины могут безопасно подключить tooan учетной записи службы автоматизации Azure через протокол регистрации hello WMF 5 DSC, что позволяет узел tooauthenticate tooa PowerShell DSC V2 по запросу или службу отчетов сервера DSC (включая Azure Automation DSC). Hello узел регистрируется сервер toohello **URL-адрес регистрации**, выполняющего проверку подлинности с помощью **регистрационный ключ**. Во время регистрации узла hello DSC и сервере запросу DSC-формирования отчетов согласовывать уникальный сертификат для этого узла toouse для проверки подлинности toohello сервера после регистрации. Этот процесс исключает возможность подмены подключенных узлов друг другом, например, если один из узлов взломан и является вредоносным. После регистрации hello регистрационный ключ не используется для проверки подлинности еще раз и удаляется из узла "hello".
 
-Данные, необходимые для протокола регистрации DSC, можно найти в колонке **Управление ключами** на портале предварительной версии Azure. Откройте эту колонку, щелкнув значок ключа на панели **Основные компоненты** в учетной записи службы автоматизации.
+Можно получить hello сведения, необходимые для протокола регистрации hello DSC из hello **управление ключами** колонку на портале Azure предварительной версии hello. Откройте эту колонку, щелкнув значок ключа hello для hello **Essentials** панель для hello учетной записи автоматизации.
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
 
-* «Регистрационный URL-адрес» — это поле «URL-адрес» в колонке «Управление ключами».
-* Регистрационный ключ — это поле «Первичный ключ доступа» или «Вторичный ключ доступа» в колонке «Управление ключами». Можно использовать любой из этих ключей.
+* URL-адрес регистрации — поле URL-адрес hello в колонке hello управление ключами.
+* Ключ регистрации — hello первичный ключ доступа или вторичный ключ доступа в колонке hello управление ключами. Можно использовать любой из этих ключей.
 
-Для повышения безопасности первичный и вторичный ключи доступа учетной записи службы автоматизации можно создавать повторно в любое время (в колонке **Управление ключами**). Это исключает возможность регистрации узла с помощью ранее использованных ключей.
+Для повышения безопасности могут быть повторно созданы hello первичный и вторичный ключи доступа учетной записи автоматизации в любое время (в hello **управление ключами** колонку) tooprevent регистраций будущих узла, с помощью предыдущих ключей.
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Устранение неполадок при подключении виртуальной машины Azure
 
-Служба Azure Automation DSC позволяет легко подключать виртуальные машины Microsoft Azure для управления конфигурациями. Расширение DSC для виртуальных машин Azure используется для регистрации виртуальных машин в службе Azure Automation DSC. Так как с виртуальными машинами Azure расширение DSC работает асинхронно, важно отслеживать ход выполнения и устранять неполадки.
+Служба Azure Automation DSC позволяет легко подключать виртуальные машины Microsoft Azure для управления конфигурациями. Механизме hello hello расширения для настройки требуемого состояния Azure виртуальной Машины — используется tooregister hello виртуальной Машины с помощью DSC службы автоматизации Azure. Поскольку hello расширения для настройки требуемого состояния Azure ВМ выполняется асинхронно, отслеживания хода его выполнения и устранение неполадок выполнения могут быть важны.
 
 > [!NOTE]
-> Независимо от способа подключения виртуальной машины Microsoft Azure к службе Azure Automation DSC с расширением DSC для виртуальных машин Azure, узел будет отображаться как зарегистрированный в службе автоматизации Azure приблизительно через час. Это связано с тем, что расширение DSC для виртуальных машин Azure устанавливает на виртуальную машину платформу Windows Management Framework 5.0, которая требуется для размещения этой виртуальной машины в DSC службы автоматизации Azure.
+> Любой метод адаптации tooAzure виртуальной Машины Windows Azure Automation DSC, использующего расширения настройки требуемого состояния Azure VM hello может занять час tooan tooshow узел hello вверх, зарегистрированного в службе автоматизации Azure. Это происходит из-за установки Windows Management Framework 5.0 toohello на hello ВМ путем расширения Azure VM DSC hello, которое является обязательным tooonboard hello ВМ tooAzure DSC службы автоматизации.
 
-Чтобы устранить неполадки или просмотреть состояние расширения DSC для виртуальных машин Azure, на портале Azure перейдите к подключаемой виртуальной машине и последовательно выберите **Все параметры** -> **Расширения** -> **DSC**. Для получения дополнительных сведений щелкните **Просмотреть подробные сведения о состоянии**.
+tootroubleshoot или представление состояния hello hello расширение настройки требуемого состояния Azure VM hello портал Azure перейдите toohello, выставленных виртуальной Машины, затем щелкните -> **все параметры** -> **расширения**   ->  **DSC**. Для получения дополнительных сведений щелкните **Просмотреть подробные сведения о состоянии**.
 
 [![](./media/automation-dsc-onboarding/DSC_Onboarding_5.png)](https://technet.microsoft.com/library/dn249912.aspx)
 
 ## <a name="certificate-expiration-and-reregistration"></a>Истечение срока действия сертификата и повторная регистрация
 
-Возможно, после регистрации компьютера в качестве узла DSC на платформе Azure Automation DSC этот узел нужно будет зарегистрировать повторно. Такая необходимость может возникнуть по ряду причин.
+После регистрации компьютера в качестве узла DSC в Azure Automation DSC, существует ряд причин, почему может потребоваться tooreregister этого узла в hello будущих:
 
-* После регистрации каждый узел автоматически согласовывает уникальный сертификат для проверки подлинности, срок действия которого составляет один год. В настоящее время протокол регистрации PowerShell DSC не может автоматически обновлять сертификаты при приближении даты окончания срока их действия, поэтому по истечении года необходимо повторно регистрировать узлы. Перед повторной регистрацией убедитесь, что на каждом узле работает Windows Management Framework 5.0 RTM. Если истек срок действия сертификата аутентификации узла и узел не зарегистрирован, то он не сможет взаимодействовать со службой автоматизации Azure и получит пометку "Не отвечает". Повторная регистрация, выполненная не позднее чем через 90 дней с момента истечения срока действия сертификата или в любой момент после истечения срока действия сертификата, приведет к созданию и использованию нового сертификата.
-* Чтобы изменить какие-либо [значения локального диспетчера конфигураций PowerShell DSC](https://msdn.microsoft.com/powershell/dsc/metaconfig4) , заданные при первоначальной регистрации узла, например ConfigurationMode. Сейчас эти значения агента DSC можно изменить только в ходе повторной регистрации. Единственным исключением является конфигурация узла, назначенная узлу, — ее можно изменить на платформе Azure Automation DSC напрямую.
+* После регистрации каждый узел автоматически согласовывает уникальный сертификат для проверки подлинности, срок действия которого составляет один год. В настоящее время hello протокола регистрации PowerShell DSC не удается обновить автоматически сертификаты при они скоро истекает срок действия, требуется tooreregister hello узлы после времени года. Перед повторной регистрацией убедитесь, что на каждом узле работает Windows Management Framework 5.0 RTM. Если истечения срока действия сертификата проверки подлинности узла и узла hello не зарегистрирован, hello узел будет невозможно toocommunicate в службе автоматизации Azure и будут помечены «Неотвечающим.» Перерегистрация выполняется через 90 дней или меньше с момента истечения срока действия сертификата hello, или в любой момент после времени окончания срока действия сертификата hello, приведет к формируются и использовать новый сертификат.
+* toochange любой [значения локального диспетчера конфигураций DSC PowerShell](https://msdn.microsoft.com/powershell/dsc/metaconfig4) , заданные во время первоначальной регистрации hello узел, например ConfigurationMode. Сейчас эти значения агента DSC можно изменить только в ходе повторной регистрации. Единственным исключением Hello hello конфигурации, назначенной toohello узел — это можно изменить в Azure Automation DSC непосредственно.
 
-Повторная регистрация узла выполняется аналогично первоначальной, то есть с помощью любого из средств, описанных в этом документе. Перед повторной регистрацией отменять регистрацию узла на платформе Azure Automation DSC не нужно.
+Перерегистрация могут выполняться в hello так же, как вы зарегистрировали hello узел изначально одним из способов адаптации hello, описанные в этом документе. Прежде чем зарегистрировать его не обязательно toounregister узла из DSC службы автоматизации Azure.
 
 ## <a name="related-articles"></a>Связанные статьи
 

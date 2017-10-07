@@ -1,6 +1,6 @@
 ---
-title: "Свойства проекта Azure"
-description: "Описываются параметры свойств проекта Azure в наборе средств Azure для Eclipse."
+title: "aaaAzure свойства проекта"
+description: "Описание параметров свойств проекта Azure hello в hello средств Azure для Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,30 +14,30 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 9d9eb695b63c2f4efa3ebea97ddb2f2780180bca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d8993ca38e7e03a8c7ebe96d174594aa0ff78e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-project-properties"></a>Свойства проекта Azure
-В наборе средств Azure для Eclipse можно задать различные параметры проекта Azure.
+В рамках hello средств Azure для Eclipse можно задать различные параметры для проекта Azure.
 
 ## <a name="configuring-azure-project-properties"></a>Настройка свойств проекта Azure
-Для настройки свойств проекта Azure используются диалоговые окна свойств проекта Azure. Щелкните правой кнопкой мыши проект в области обозревателя проектов Eclipse, а затем щелкните **Свойства** и выберите подменю **Azure**.
+Настройка свойств проекта Azure достигается благодаря hello диалоговые окна свойств для проекта Azure. Щелкните правой кнопкой мыши проект hello в обозревателе проектов Eclipse, щелкните **свойства**, а затем выберите hello **Azure** подменю.
 
 ![][ic719480]
 
-На этой странице свойств можно изменить следующие элементы: 
+На этой странице свойств можно изменить hello следующих элементов: 
 
-* **Имя службы:** имя проекта Azure.
-* **Сборка для:** проект настроен для выполнения сборки для эмулятора вычислений или развертывания в Azure.
-* **Целевая операционная система:** операционная система, используемая при развертывании проекта в Azure.
+* **Имя службы:** hello имя для своего проекта Azure.
+* **Построение:** установлен ли hello проекта для построения tooAzure toohello вычислительного эмулятора или развертывания.
+* **Целевая ОС:** hello toouse операционной системы при tooAzure развернутого проекта.
 
 ## <a name="see-also"></a>См. также
 [Набор средств Azure для Eclipse][Azure Toolkit for Eclipse]
 
-[Установка набора средств Azure для Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Установка средств Azure для Eclipse hello][Installing hello Azure Toolkit for Eclipse] 
 
 [Создание приложения Hello World для Azure в Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 07/11/2017
 
 [Список учетных записей хранения Azure][Azure Storage Account List]
 
-Дополнительные сведения об использовании Azure с Java можно найти в [Центре разработчиков Java для Azure][Azure Java Developer Center].
+Дополнительные сведения об использовании Azure с Java см. в разделе hello [центра разработчиков Java Azure][Azure Java Developer Center].
 
 <!-- URL List -->
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 07/11/2017
 [Azure Role Properties]: http://go.microsoft.com/fwlink/?LinkID=699525
 [Azure Storage Account List]: http://go.microsoft.com/fwlink/?LinkID=699528
 [Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 

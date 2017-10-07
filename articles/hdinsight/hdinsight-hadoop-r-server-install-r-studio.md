@@ -1,6 +1,6 @@
 ---
-title: "Установка RStudio с R Server в кластере HDInsight — Azure | Документы Майкрософт"
-description: "Сведения об установке RStudio с R Server в кластере HDInsight."
+title: "aaaInstall RStudio с сервером R в HDInsight - Azure | Документы Microsoft"
+description: "Как tooinstall RStudio с сервером R в HDInsight."
 services: hdinsight
 documentationcenter: 
 author: bradsev
@@ -15,61 +15,61 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 416420d855505508735ebd8526e93efdb230ad53
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b3a23021fcf99217e8f551f8b2e89bf1f1e5b967
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="installing-rstudio-with-r-server-on-hdinsight"></a>Установка RStudio с R Server в HDInsight
 
-В этой статье описывается, как установить бесплатную версию [RStudio Server](https://www.rstudio.com/products/rstudio-server/) для сообщества на граничном узле кластера с помощью пользовательского скрипта. RStudio Server предоставляет интегрированную среду разработки (IDE) на основе браузера, предназначенную для удаленных клиентов и широко используемую в Linux. Для языка R в настоящее время доступно множество интегрированных сред разработки, включая следующие:
+В этой статье описывается, как tooinstall hello сообщества (бесплатно) версия [RStudio сервера](https://www.rstudio.com/products/rstudio-server/) на hello граничного узла кластера с помощью пользовательского скрипта. RStudio Server предоставляет интегрированную среду разработки (IDE) на основе браузера, предназначенную для удаленных клиентов и широко используемую в Linux. Для языка R в настоящее время доступно множество интегрированных сред разработки, включая следующие:
 
 - [Инструменты R для Visual Studio](https://www.visualstudio.com/en-us/features/rtvs-vs.aspx) (RTVS) от корпорации Майкрософт 
 - [RStudio Server](https://www.rstudio.com/products/rstudio-server/) 
 - [StatET](http://www.walware.de/goto/statet) на основе Eclipse от компании Walware
 
-Преимуществом установки RStudio Server на граничном узле кластера HDInsight является получение доступа ко всем функциональным возможностям IDE для разработки и выполнения скриптов R с использованием R Server в кластере. Такая конфигурация может обеспечивать значительно более высокую производительность по сравнению с консолью R.
+Hello преимущество установки RStudio сервера на приветствия граничного узла из кластера HDInsight — что она обеспечивает полной интегрированной СРЕДЫ разработки hello разработки и выполнения скриптов R с R Server на кластере hello. Эта конфигурация может быть значительно более производительны, чем использование по умолчанию hello R консоли.
 
 > [!NOTE]
-> Процедура, описанная в этой статье, подходит только в том случае, если вы не выбрали установку выпуска RStudio Server для сообщества при подготовке кластера. Если вы добавили его во время подготовки, то для доступа к нему можете щелкнуть плитку **Панели мониторинга R Server** в записи портала Azure для своего кластера, а затем щелкнуть плитку **R Studio Server**. 
+> Hello процедуру, описанную в данной статье применяется только в том случае, если вы не выбрали tooinstall RStudio Server community edition при подготовке кластера. При добавлении во время инициализации, затем tooaccess его щелкнуть hello **панели мониторинга сервера R** плитки в hello Azure портала запись для кластера, а затем в hello **R Studio Server** плитки. 
 
-Если вы хотите использовать коммерческую версию RStudio Server Pro, необходимо выполнить инструкции по установке из [RStudio Server](https://www.rstudio.com/products/rstudio/download-server/).
+При желании toouse hello коммерчески лицензия Pro версии RStudio Server необходимо выполнить инструкции по установке hello из [RStudio сервера](https://www.rstudio.com/products/rstudio/download-server/).
 
 > [!NOTE]
-> Если вы используете кластер, для которого среда R была установлена с помощью [действия по установке скрипта R](hdinsight-hadoop-r-scripts-linux.md), приведенные в этом документе инструкции не будут работать правильно, так как для них требуется сервер R Server в кластере HDInsight.
+> При использовании кластера HDInsight, для которого R был установлен при помощи hello [действия сценария R установка](hdinsight-hadoop-r-scripts-linux.md), hello шагов в этом документе не будет работать правильно, как они требуют R Server в кластере HDInsight hello.
 >
 > 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 * Кластер Azure HDInsight, на котором установлен R Server. Инструкции см. в статье [Приступая к работе с R Server в HDInsight (предварительная версия)](hdinsight-hadoop-r-server-get-started.md).
-* Клиент SSH. В дистрибутивах Linux и Unix и Macintosh OS X команда `ssh` входит в состав операционной системы. Для Windows мы рекомендуем [Cygwin](http://www.redhat.com/services/custom/cygwin/) (с [параметром OpenSSH](https://www.youtube.com/watch?v=CwYSvvGaiWU)) или [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).  
+* Клиент SSH. Для дистрибутивах Linux и Unix или Macintosh OS X, hello `ssh` команда входит в состав операционной системы hello. Для Windows, мы рекомендуем [Cygwin](http://www.redhat.com/services/custom/cygwin/) с hello [параметр OpenSSH](https://www.youtube.com/watch?v=CwYSvvGaiWU), или [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).  
 
-## <a name="install-rstudio-on-the-cluster-using-a-custom-script"></a>Установка RStudio в кластере с помощью пользовательского скрипта
+## <a name="install-rstudio-on-hello-cluster-using-a-custom-script"></a>Установка RStudio на кластере hello, с помощью пользовательского сценария
 
-Для этого выполните следующие действия:
+Ниже приведены шаги hello.
 
-1. Определите граничный узел кластера. Ниже указано соглашение об именовании головных и граничных узлов для кластера HDInsight с R Server.
+1. Определите hello граничного узла кластера hello. Для кластера HDInsight с сервером R ниже приведен hello соглашение об именовании для головного узла и граничного узла.
    * Головной узел — `CLUSTERNAME-ssh.azurehdinsight.net`
    * Граничный узел — `CLUSTERNAME-ed-ssh.azurehdinsight.net` 
 
-2. Подключитесь к граничному узлу кластера по протоколу SSH, используя схему именования, приведенную в шаге 1. Дополнительные сведения см. в статье [Использование SSH с Hadoop на основе Linux в HDInsight из Linux, Unix или OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+2. SSH в hello граничного узла кластера hello, используя шаблон именования hello, указанных на шаге 1. Дополнительные сведения см. в статье [Использование SSH с Hadoop на основе Linux в HDInsight из Linux, Unix или OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. После подключения используйте учетные данные привилегированного пользователя в кластере. В сеансе SSH используйте следующую команду:
+3. Если вы подключены, становятся привилегированного пользователя на кластере hello. В сеансе SSH hello используйте hello следующую команду:
 
         sudo su -
 
-4. Скачайте пользовательский скрипт для установки RStudio. Используйте следующую команду:
+4. Загрузите пользовательский сценарий hello tooinstall RStudio. Hello используйте следующую команду:
 
         wget http://mrsactionscripts.blob.core.windows.net/rstudio-server-community-v01/InstallRStudio.sh
 
-5. Измените разрешения для файла пользовательского скрипта и запустите скрипт. Используйте следующие команды:
+5. Изменить разрешения hello hello пользовательский файл скрипта и запустите сценарий hello. Используйте hello, следующие команды:
 
         chmod 755 InstallRStudio.sh
         ./InstallRStudio.sh
 
-6. Если при создании кластера HDInsight с R Server использовался пароль SSH, можно пропустить этот шаг и перейти к следующему. Если вместо него для создания кластера использовался ключ SSH, необходимо задать пароль для пользователя SSH. Этот пароль понадобится при подключении к RStudio. Выполните следующие команды:
+6. При использовании пароля SSH во время создания кластера HDInsight с сервером R, можно пропустить этот шаг и продолжить toohello Далее. При использовании ключа SSH вместо toocreate hello кластера, необходимо задать пароль для пользователя SSH. Этот пароль необходимо при подключении tooRStudio. Выполните следующие команды hello.
 
         passwd USERNAME
         Current Kerberos password:
@@ -78,43 +78,43 @@ ms.lasthandoff: 07/11/2017
         Current Kerberos password:
 
 
-7. При появлении запроса на ввод **текущего пароля Kerberos** нажмите клавишу **ВВОД**.  Обратите внимание, что `USERNAME` необходимо заменить именем пользователя SSH для кластера HDInsight. В случае успешной установки пароля появится следующее сообщение:
+7. При появлении запроса на ввод **текущего пароля Kerberos** нажмите клавишу **ВВОД**.  Обратите внимание, что `USERNAME` необходимо заменить именем пользователя SSH для кластера HDInsight. Если пароль успешно установлен, вы увидите hello следующие сообщения:
 
         passwd: password updated successfully
 
-    Выйдите из сеанса SSH.
+    Завершите сеанс SSH hello.
 
-8. Создайте туннель SSH для кластера, сопоставив `ssh -L localhost:8787:localhost:8787 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net` в кластере HDInsight с клиентским компьютером. Туннель SSH следует создать перед открытием нового сеанса браузера.
+8. Создание кластера toohello туннель SSH, сопоставляя `ssh -L localhost:8787:localhost:8787 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net` hello HDInsight кластера toohello клиентского компьютера. Туннель SSH следует создать перед открытием нового сеанса браузера.
 
-   * В клиенте Linux или Windows с [Cygwin](http://www.redhat.com/services/custom/cygwin/) откройте сеанс терминала и введите следующую команду:
+   * На стороне клиента Linux или клиента Windows с [Cygwin](http://www.redhat.com/services/custom/cygwin/), откройте сеанс терминала и использовать hello следующую команду:
 
              ssh -L localhost:8787:localhost:8787 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-       Замените **USERNAME** именем пользователя SSH для кластера HDInsight, а **CLUSTERNAME** — именем кластера HDInsight.
+       Замените **USERNAME** пользователем SSH для кластера HDInsight и замените **CLUSTERNAME** с hello имя кластера HDInsight.
        Можно также использовать ключ SSH, а не пароль, добавив `-i id_rsa_key`.        
    * Если вы используете клиент Windows и PuTTY, выполните следующие действия:
 
      1. Откройте PuTTY и введите информацию о подключении.
-     2. В разделе **Категории** в левой части диалогового окна последовательно разверните **Подключение**, **SSH** и выберите **Туннели**.
-     3. Введите следующую информацию в форме **Параметры, управляющие перенаправлением портов SSH** :
+     2. В hello **категории** toohello раздел левой части диалогового окна hello, разверните **подключения**, разверните **SSH**и выберите **туннели**.
+     3. Укажите следующую информацию на hello hello **перенаправление портов параметры, управляющие SSH** формы:
 
-        * **Порт источника** — порт на стороне клиента, трафик которого нужно перенаправлять. Например, **8787**.
-        * **Назначение** — место назначения, которое следует сопоставить с локальным клиентским компьютером. Например, **localhost:8787**.
+        * **Порт источника** -порт на приветствия клиента обратиться в tooforward hello. Например, **8787**.
+        * **Назначение** - hello назначения, который должен быть сопоставлен toohello локальный клиентский компьютер. Например, **localhost:8787**.
 
             ![Создание туннеля SSH](./media/hdinsight-hadoop-r-server-install-r-studio/createsshtunnel.png "создание туннеля SSH")
 
-     4. Щелкните **Добавить**, чтобы добавить параметры, а затем щелкните **Открыть**, чтобы открыть подключение SSH.
-     5. При появлении запроса войдите на сервер. При этом будет установлен сеанс SSH и включен туннель.
+     4. Нажмите кнопку **добавить** tooadd hello параметры и нажмите кнопку **откройте** tooopen SSH-подключения.
+     5. При появлении запроса выполните вход tooestablish сервера toohello туннель SSH сеанса и включить hello.
 
-9. Откройте браузер и введите следующий URL-адрес с учетом порта, введенного для туннеля:
+9. Откройте веб-браузер и введите URL-адреса учетом порта hello, введенное для hello туннеля hello:
 
         http://localhost:8787/ 
 
-10. Появится запрос на ввод имени пользователя и пароля SSH для подключения к кластеру. Если при создании кластера использовался ключ SSH, необходимо ввести пароль, созданный в шаге 5.
+10. Все запрашиваемые tooenter hello SSH имя пользователя и пароль tooconnect toohello кластера. Если вы использовали SSH-ключ при создании кластера hello, необходимо ввести пароль hello, созданный на шаге 5.
 
-    ![Подключение к R Studio](./media/hdinsight-hadoop-r-server-install-r-studio/connecttostudio.png "создание туннеля SSH")
+    ![Подключение tooR Studio](./media/hdinsight-hadoop-r-server-install-r-studio/connecttostudio.png "создать туннель SSH")
 
-11. Чтобы проверить успешность установки RStudio, можно запустить тестовый скрипт, выполняющий задания MapReduce и Spark на языке R в кластере. Чтобы скачать тестовый скрипт для запуска в RStudio, вернитесь в консоль SSH и введите следующие команды:
+11. tootest ли hello RStudio установки выполнена успешно, можно запустить тестовый сценарий, который выполняется на основе R задания MapReduce и Spark на кластере hello. toorun toodownload hello тестового скрипта в RStudio, вернитесь к предыдущему окну консоли SSH toohello и введите hello, следующие команды:
 
     *    При создании кластера Hadoop на языке R используйте эту команду:
 
@@ -123,13 +123,13 @@ ms.lasthandoff: 07/11/2017
 
             wget http://mrsactionscripts.blob.core.windows.net/rstudio-server-community-v01/testhdi_spark.r
 
-12. В RStudio появится скачанный тестовый скрипт. Дважды щелкните файл, чтобы открыть его, выделите содержимое файла и нажмите кнопку **Run** (Запустить). Результаты появятся в области **Console** (Консоль).
+12. В RStudio просмотреть тестовый сценарий, который вы загрузили hello. Дважды щелкните tooopen файл hello, выберите hello содержимое файла hello и нажмите кнопку **запуска**. Вы должны увидеть результаты hello в hello **консоли** панели:
 
-   ![Проверка установки](./media/hdinsight-hadoop-r-server-install-r-studio/test-r-script.png "проверка установки")
+   ![Проверьте установку hello](./media/hdinsight-hadoop-r-server-install-r-studio/test-r-script.png "протестировать установку hello")
 
-Еще один вариант — ввести `source(testhdi.r)` или `source(testhdi_spark.r)` для выполнения скрипта.
+Можно было бы tootype `source(testhdi.r)` или `source(testhdi_spark.r)` tooexecute hello скрипта.
 
-## <a name="see-also"></a>Дополнительные материалы
+## <a name="see-also"></a>См. также
 
 * [Compute context options for R Server on HDInsight clusters (Параметры контекста вычислений для R Server в кластерах HDInsight)](hdinsight-hadoop-r-server-compute-contexts.md)
 * [Параметры службы хранилища Azure для R Server в HDInsight (предварительная версия)](hdinsight-hadoop-r-server-storage.md)

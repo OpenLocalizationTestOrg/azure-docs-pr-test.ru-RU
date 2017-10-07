@@ -1,5 +1,5 @@
 ---
-title: "Приступая к работе с Azure AD версии 2 для веб-сервера ASP.NET. Настройка | Документация Майкрософт"
+title: "aaaAzure AD v2 ASP.NET Web Server Приступая к работе - Config | Документы Microsoft"
 description: "Реализация входа Майкрософт в решении ASP.NET с традиционным браузерным приложением с использованием стандарта OpenID Connect"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,24 +15,24 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 8a1650a65e7980f4a13fa4edc7918b0099bb5464
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: badc47e131290a56a507592f944a0fc7093260a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="configure-your-aspnet-web-app-with-the-applications-registration-information"></a>Настройка веб-приложения ASP.NET с помощью сведений о регистрации приложения
+## <a name="configure-your-aspnet-web-app-with-hello-applications-registration-information"></a>Настройка веб-приложения ASP.NET с сведения о регистрации приложения hello
 
-На этом шаге вам предстоит настроить проект для использования SSL, а затем использовать URL-адрес SSL для настройки сведений о регистрации приложения. После этого вы добавите сведения о регистрации приложения в свое решение, используя файл *web.config*.
+На этом шаге будет настройка вашего проекта toouse SSL и воспользуйтесь tooconfigure URL-адрес SSL hello сведения о регистрации приложения. После этого добавить приложение hello "решение tooyour для регистрации информации через *web.config*.
 
-1.  В обозревателе решений выберите проект и просмотрите окно `Properties` (если окно свойств не отображается, нажмите клавишу F4).
-2.  Измените `SSL Enabled` на `True`.
-3.  Скопируйте значение указанного выше `SSL URL` и вставьте его в поле `Redirect URL` в верхней части этой страницы, а затем щелкните *Обновление*:<br/><br/>![Свойства проекта](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
-4.  Добавьте следующий код в файл `web.config`, расположенный в корневой папке в разделе `configuration\appSettings`:
+1.  В обозревателе решений выберите проект hello и посмотрите hello `Properties` окна (Если вы не видите окно «Свойства», нажмите клавишу F4)
+2.  Изменение `SSL Enabled` слишком`True`
+3.  Скопируйте значение hello из `SSL URL` выше и вставьте его в hello `Redirect URL` поле на hello верхней части этой страницы, а затем нажмите кнопку *обновление*:<br/><br/>![Свойства проекта](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
+4.  Добавьте следующее hello в `web.config` файл, расположенный в корневой папке, в разделе `configuration\appSettings`:
 
 ```xml
-<add key="ClientId" value="[Enter the application Id here]" />
-<add key="RedirectUri" value="[Enter the Redirect URL here]" />
+<add key="ClientId" value="[Enter hello application Id here]" />
+<add key="RedirectUri" value="[Enter hello Redirect URL here]" />
 <add key="Tenant" value="common" />
 <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" /> 
 ```

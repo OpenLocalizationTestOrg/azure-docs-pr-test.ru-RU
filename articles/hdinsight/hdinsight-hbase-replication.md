@@ -1,6 +1,6 @@
 ---
-title: "Настройка репликации кластера HBase в виртуальных сетях — Azure | Документы Майкрософт"
-description: "Сведения о том, как настроить репликацию HBase для балансировки нагрузки, обеспечения высокого уровня доступности, переноса или обновления с одной версии HDInsight на другую без простоя и аварийного восстановления."
+title: "репликация кластер HBase aaaConfigure внутри виртуальных сетей - Azure | Документы Microsoft"
+description: "Узнайте, как tooconfigure HBase репликации для балансировки нагрузки, высокий уровень доступности, миграция или обновление простоев из одного tooanother версии HDInsight и аварийного восстановления."
 services: hdinsight,virtual-network
 documentationcenter: 
 author: mumian
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: 895709391486acb4a9d7a54ef046956539913f7b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ba1c44f26b7cbf4a7a88159b12b3e064ea9f9a20
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-hbase-cluster-replication-within-virtual-networks"></a>Настройка репликации кластера HBase в виртуальных сетях
 
-В этой статье вы узнаете, как настроить репликацию HBase в одной или между двумя виртуальными сетями.
+Узнайте, как tooconfigure HBase репликации в одной виртуальной сети (VNet) или между двумя виртуальными сетями.
 
-Репликация кластера использует методологию source-push. Кластер HBase может быть исходным, кластером назначения или выполнять обе роли одновременно. Репликация выполняется асинхронно, а целью репликации в конечном итоге является согласованность. При получении источником изменения в семействе столбцов с включенной репликацией такое изменение распространяется на все кластеры назначения. При репликации данных с одного кластера на другой исходный кластер и все кластеры, которые уже потребили данные, отслеживаются для предотвращения циклических репликаций.
+Репликация кластера использует методологию source-push. Кластер HBase может быть исходным, кластером назначения или выполнять обе роли одновременно. Репликация выполняется асинхронно, а целью hello репликации является окончательной согласованности. Получив исходный hello семейство изменить tooa столбца с включенной репликацией, изменению — распространенный tooall конечных кластеров. При репликации данных из одного кластера tooanother hello исходного кластера и всех кластеров, которые уже потреблено hello данных являются отслеживаемых tooprevent циклов репликации.
 
 В этом руководстве показано, как настроить репликацию "источник — назначение". Другие топологии кластеров см. в документе [Справочное руководство по Apache HBase](http://hbase.apache.org/book.html#_cluster_replication).
 
 Примеры использования репликации HBase для одной виртуальной сети:
 
-* Балансировка нагрузки, например выполнения проверки или заданий MapReduce в целевом кластере и приема данных на исходном кластере.
+* Балансировка нагрузки — например, выполнение проверки одного или нескольких заданий MapReduce hello целевом кластере и передаче данных на исходном кластере hello
 * высокую доступность;
-* Перенос данных из одного кластера HBase в другой.
-* Обновление кластера Azure HDInsight до другой версии.
+* Перенос данных из одного tooanother кластер HBase
+* Обновление кластера Azure HDInsight с одной версии tooanother
 
 Примеры использования репликации HBase для двух виртуальных сетей:
 
 * Аварийное восстановление
-* Балансировка нагрузки и секционирование приложения.
+* Балансировка нагрузки и секционирования приложения hello
 * высокую доступность;
 
 Репликация кластеров осуществляется с помощью скриптов [действий сценария](hdinsight-hadoop-customize-cluster-linux.md), которые можно найти на веб-сайте [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication).
@@ -46,136 +46,136 @@ ms.lasthandoff: 07/11/2017
 ## <a name="prerequisites"></a>Предварительные требования
 Прежде чем приступать к изучению этого руководства, необходимо оформить подписку Azure. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-## <a name="configure-the-environments"></a>Настройка сред
+## <a name="configure-hello-environments"></a>Настройка сред hello
 
 Доступны три варианта конфигурации:
 
 - два кластера HBase в одной виртуальной сети Azure;
-- два кластера HBase в двух виртуальных сетях в одном регионе;
+- Два HBase кластеров в двух разных виртуальных сетей в hello одного региона
 - два кластера HBase в двух виртуальных сетях в двух регионах (георепликация).
 
-Чтобы упростить настройку сред, мы создали несколько [шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Если вы предпочитаете настраивать среды с помощью других методов, см. следующие статьи:
+toomake его проще tooconfigure hello средах, мы создали некоторые [шаблоны Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Если вы предпочитаете tooconfigure hello сред с помощью других методов, см.:
 
 - [Создание кластеров Hadoop под управлением Linux в HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 - [Создание кластеров HBase в виртуальной сети Azure](hdinsight-hbase-provision-vnet.md)
 
 ### <a name="configure-one-virtual-network"></a>Настройка одной виртуальной сети
 
-Чтобы создать два кластера HBase в одной виртуальной сети, нажмите расположенную ниже кнопку. Шаблон хранится среди [шаблонов быстрого запуска Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-one-vnet/).
+Выберите следующие изображения toocreate HBase кластерами в hello hello одной виртуальной сети. Hello шаблон хранится в [шаблоны быстрый запуск Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-one-vnet/).
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy tooAzure"></a>
 
-### <a name="configure-two-virtual-networks-in-the-same-region"></a>Настройка двух виртуальных сетей в одном регионе
+### <a name="configure-two-virtual-networks-in-hello-same-region"></a>Настройка двух виртуальных сетей в hello одного региона
 
-Чтобы создать две виртуальные сети с пиринговой связью и два кластера HBase в одном регионе, нажмите расположенную ниже кнопку. Шаблон хранится среди [шаблонов быстрого запуска Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/).
+Выберите следующие изображения toocreate двух виртуальных сетей с пиринга виртуальной сети и два кластера HBase в hello hello одного региона. Hello шаблон хранится в [шаблоны быстрый запуск Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/).
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy tooAzure"></a>
 
 
 
-В этом случае необходима [пиринговая связь между виртуальными сетями](../virtual-network/virtual-network-peering-overview.md). Этот шаблон включает пиринговую связь между виртуальными сетями.   
+В этом случае необходима [пиринговая связь между виртуальными сетями](../virtual-network/virtual-network-peering-overview.md). Hello шаблон позволяет пиринг виртуальной сети.   
 
-Репликация HBase использует IP-адреса виртуальных машин ZooKeeper. Необходимо настроить статические IP-адреса для узлов назначения ZooKeeper HBase.
+Репликация HBase использует IP-адреса виртуальных машин ZooKeeper hello. Необходимо настроить статические IP-адреса для узлов HBase ZooKeeper hello назначения.
 
-**Настройка статических IP-адресов**
+**tooconfigure статические IP-адреса**
 
-1. Войдите на [портал Azure](https://portal.azure.com).
-2. В меню слева щелкните **Группы ресурсов**.
-3. Выберите группу ресурсов, содержащую кластер назначения HBase. Это группа ресурсов, указанная при использовании шаблона Resource Manager для создания среды. Для сужения списка можно использовать фильтр. Вы увидите список ресурсов, содержащий две виртуальные сети.
-4. Выберите виртуальную сеть, содержащую кластер назначения HBase. Например, щелкните **xxxx-vnet2**. Вы увидите три устройства с именами, которые начинаются с **nic-zookeepermode -**. Это три виртуальные машины ZooKeeper.
-5. Щелкните одну из виртуальных машин ZooKeeper.
+1. Войдите в toohello [портал Azure](https://portal.azure.com).
+2. Hello в левом меню, щелкните **групп ресурсов**.
+3. Выберите группу ресурсов, содержащий hello целевой кластер HBase. Это группа ресурсов hello, указанный вами при использовании среды hello toocreate шаблонов диспетчера ресурсов hello. Можно использовать toonarrow фильтра hello списку hello. Вы увидите список ресурсов, содержащий hello двух виртуальных сетей.
+4. Щелкните hello виртуальной сети, содержащей hello целевой кластер HBase. Например, щелкните **xxxx-vnet2**. Вы увидите три устройства с именами, которые начинаются с **nic-zookeepermode -**. Эти устройства, hello трех ZooKeeper ВМ.
+5. Выберите один из виртуальных машин ZooKeeper hello.
 6. Щелкните **IP configurations** (Конфигурации IP).
-7. В списке выберите **ipConfig1**.
-8. Щелкните **Статический** и введите фактический IP-адрес. IP-адрес потребуется вам при выполнении действия сценария для включения репликации.
+7. Нажмите кнопку **ipConfig1** из списка hello.
+8. Нажмите кнопку **статических**и запишите hello фактический IP-адрес. Необходимо будет hello IP-адрес при запуске действия tooenable hello сценария репликации.
 
   ![репликация HDInsight HBase, статический IP-адрес узла ZooKeeper](./media/hdinsight-hbase-replication/hdinsight-hbase-replication-zookeeper-static-ip.png)
 
-9. Повторите шаг 6, чтобы задать статический IP-адрес для двух остальных узлов ZooKeeper.
+9. Повторите шаг 6 tooset hello статический IP-адрес для hello двух остальных узлов ZooKeeper.
 
-Для сценария между виртуальными сетями необходимо использовать параметр **-ip** при вызове действия сценария **hdi_enable_replication.sh**.
+Для сценария виртуальной сети между hello, необходимо использовать hello **- ip** переключение при вызове hello **hdi_enable_replication.sh** записать действие в скрипт.
 
 ### <a name="configure-two-virtual-networks-in-two-different-regions"></a>Настройка двух виртуальных сетей в двух регионах
 
-Чтобы создать две виртуальные сети в двух регионах, нажмите расположенную ниже кнопку. Шаблон хранится в общедоступном контейнере больших двоичных объектов Azure.
+Щелкните hello после изображения toocreate двух виртуальных сетей в двух разных регионах. Hello шаблон хранится в открытый контейнер больших двоичных объектов Azure.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fdeploy-hbase-geo-replication.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fdeploy-hbase-geo-replication.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy tooAzure"></a>
 
-Создайте VPN-шлюз между двумя виртуальными сетями. Инструкции см. в статье [Создание виртуальной сети с подключением типа "сеть — сеть" с помощью портала Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Создайте шлюз VPN между двумя виртуальными сетями hello. Инструкции см. в статье [Создание виртуальной сети с подключением типа "сеть — сеть" с помощью портала Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Репликация HBase использует IP-адреса виртуальных машин ZooKeeper. Необходимо настроить статические IP-адреса для узлов назначения ZooKeeper HBase. Сведения о настройке статического IP-адреса см. в разделе "Настройка двух виртуальных сетей в одном регионе" этой статьи.
+Репликация HBase использует IP-адреса виртуальных машин ZooKeeper hello. Необходимо настроить статические IP-адреса для узлов HBase ZooKeeper hello назначения. tooconfigure статический IP-адрес см. раздел «Настройка двух виртуальных сетей в hello одного региона» hello в этой статье.
 
-Для сценария между виртуальными сетями необходимо использовать параметр **-ip** при вызове действия сценария **hdi_enable_replication.sh**.
+Для сценария виртуальной сети между hello, необходимо использовать hello **- ip** переключение при вызове hello **hdi_enable_replication.sh** записать действие в скрипт.
 
 ## <a name="load-test-data"></a>Загрузка тестовых данных
 
-При репликации кластера необходимо указать реплицируемые таблицы. В этом разделе вы загрузите данные в исходный кластер. В следующем разделе вы включите репликацию между двумя кластерами.
+При репликации кластера, необходимо указать tooreplicate таблиц hello. В этом разделе будет загружать некоторые данные в исходном кластере hello. В следующем разделе hello будет включить репликацию между двумя кластерами hello.
 
-Чтобы создать таблицу **контактов** и вставить в нее данные, следуйте инструкциям, приведенным в статье [Руководство по HBase. Приступая к работе с Apache HBase на Hadoop под управлением Linux в HDInsight](hdinsight-hbase-tutorial-get-started-linux.md).
+Следуйте инструкциям в разделе hello [учебника HBase: начало работы с Apache HBase на основе Linux Hadoop в HDInsight](hdinsight-hbase-tutorial-get-started-linux.md) toocreate **контактов** таблицы и вставить некоторые данные в таблицу hello.
 
 ## <a name="enable-replication"></a>Включение репликации
 
-Ниже показано, как вызвать скрипт действия сценария на портале Azure. Дополнительные сведения о том, как выполнить действие сценария с помощью Azure PowerShell и интерфейса командной строки Azure, см. в статье [Настройка кластеров HDInsight под управлением Linux с помощью действия сценария](hdinsight-hadoop-customize-cluster-linux.md).
+Привет, следующие шаги показывают, как toocall hello сценарий действия сценария из hello портал Azure. Выполняется действие скрипта с помощью Azure PowerShell и hello Azure командной строки (CLI), в разделе [HDInsight под управлением Linux, настроить кластеры, использующие действие сценария](hdinsight-hadoop-customize-cluster-linux.md).
 
-**Включение репликации HBase на портале Azure**
+**репликация HBase tooenable из hello портал Azure**
 
-1. Войдите на [портал Azure](https://portal.azure.com).
-2. Откройте исходный кластер HBase.
-3. В меню кластера щелкните **Действия скрипта**.
-4. В верхней части колонки щелкните **Отправить новое**.
-5. Выберите или введите следующие сведения.
+1. Войдите в toohello [портал Azure](https://portal.azure.com).
+2. Откройте hello исходного HBase кластера.
+3. Меню hello кластера, нажмите кнопку **действия скрипта**.
+4. Нажмите кнопку **отправить новый** из hello верхней части колонки hello.
+5. Выберите или введите hello следующую информацию:
 
   - **Имя:** введите **Включение репликации**.
   - **URL-адрес bash-скрипта:** введите **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
-  - **Головной узел:** выбран. Отмените выбор других типов узлов.
-  - **Параметры:** параметры в следующем примере позволяют включить репликацию для всех существующих таблиц и копировать все данные из исходного кластера в целевой.
+  - **Головной узел:** выбран. Здравствуйте, снимите флажок для других типов узлов.
+  - **Параметры**: hello следующие образцы параметры Включение репликации для всех существующих таблиц hello и скопируйте все данные hello из hello источника toohello назначения кластера:
 
             -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
 
-6. Щелкните **Создать**. Выполнение скрипта может занять некоторое время, особенно при использовании аргумента -copydata.
+6. Щелкните **Создать**. Hello скрипт может занять некоторое время, особенно при использовании аргумента - copydata hello.
 
 Ниже приведены обязательные аргументы.
 
 |Имя|Описание|
 |----|-----------|
-|-s, --src-cluster | Укажите DNS-имя исходного кластера HBase, например -s hbsrccluster, --src-cluster=hbsrccluster. |
-|-d, --dst-cluster | Укажите DNS-имя кластера назначения (реплики) HBase, например -s dsthbcluster, --src-cluster=dsthbcluster. |
-|-sp, --src-ambari-password | Укажите пароль администратора для Ambari в исходном кластере HBase. |
-|-dp, --dst-ambari-password | Укажите пароль администратора для Ambari в целевом кластере HBase.|
+|-s, --src-cluster | Укажите DNS-имя кластера HBase источника hello hello. например -s hbsrccluster, --src-cluster=hbsrccluster. |
+|-d, --dst-cluster | Укажите DNS-имя hello назначения «hello» (реплики) HBase кластера. например -s dsthbcluster, --src-cluster=dsthbcluster. |
+|-sp, --src-ambari-password | Укажите пароль администратора hello для Ambari на кластер HBase источника hello. |
+|-dp, --dst-ambari-password | Укажите пароль администратора hello для Ambari hello целевом кластере HBase.|
 
 Необязательные аргументы для этой команды.
 
 |Имя|Описание|
 |----|-----------|
-|-su, --src-ambari-user | Укажите имя пользователя-администратора для Ambari в исходном кластере HBase. Значение по умолчанию — **admin**. |
-|-du, --dst-ambari-user | Укажите имя пользователя-администратора для Ambari в целевом кластере HBase. Значение по умолчанию — **admin**. |
-|-t, --table-list | Укажите таблицы для репликации, например --table-list="table1;table2;table3". Если не указать таблицы, будут реплицированы все существующие таблицы HBase.|
-|-m, --machine | Укажите головной узел, на котором будет выполняться действие сценария. Значение должно быть hn1 или hn0. Так как узел hn0 обычно более загружен, рекомендуется использовать hn1. Используйте этот параметр при запуске скрипта $0 как действия сценария из портала HDInsight или Azure PowerShell.|
-|-ip | Этот аргумент является обязательным, если вы включаете репликацию между двумя виртуальными сетями. Этот аргумент действует как переключатель на использование статических IP-адресов узлов ZooKeeper реплицированных кластеров вместо полных доменных имен. Статические IP-адреса должны быть предварительно настроены перед включением репликации. |
-|-cp, -copydata | Включает перенос существующих данных для таблиц, где включена репликация. |
+|-su, --src-ambari-user | Укажите имя пользователя администратора hello для Ambari hello источника HBase кластере. значение по умолчанию Hello — **администратора**. |
+|-du, --dst-ambari-user | Укажите имя пользователя администратора hello для Ambari hello целевом кластере HBase. значение по умолчанию Hello — **администратора**. |
+|-t, --table-list | Укажите toobe таблиц hello репликации. например --table-list="table1;table2;table3". Если не указать таблицы, будут реплицированы все существующие таблицы HBase.|
+|-m, --machine | Укажите hello головной узел, где будет выполняться действие сценария hello. значение Hello — hn1 или hn0. Так как узел hn0 обычно более загружен, рекомендуется использовать hn1. Используйте этот параметр при запуске сценария hello $0 как действие сценария с портала HDInsight hello или Azure PowerShell.|
+|-ip | Этот аргумент является обязательным, если вы включаете репликацию между двумя виртуальными сетями. Данный аргумент действует как переключатель toouse hello статические IP-адреса ZooKeeper узлы из кластеров реплики, а не полные ДОМЕННЫЕ имена. Hello статического IP-адреса должны toobe, заранее настроенный перед включением репликации. |
+|-cp, -copydata | Включите hello миграцию существующих данных в таблицах hello, где включена репликация. |
 |-rpm, -replicate-phoenix-meta | Включает репликацию для системных таблиц Phoenix. <br><br>*Используйте этот параметр с осторожностью.* Рекомендуется повторно создать таблицы Phoenix в реплицированных кластерах перед использованием этого скрипта. |
 |-h, --help | Отображает сведения об использовании. |
 
-Раздел [скрипта](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) print_usage() содержит подробное объяснение параметров.
+Здравствуйте, раздел print_usage() hello [сценарий](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) дано подробное описание параметров.
 
-После успешного развертывания действия сценария можно использовать протокол SSH, чтобы подключиться к кластеру назначения HBase и убедиться, что данные реплицированы.
+После hello скрипт действии успешно развернута, можно использовать кластер HBase назначения toohello tooconnect SSH и убедитесь, что были реплицированы данные hello.
 
 ### <a name="replication-scenarios"></a>Сценарии репликации
 
-Ниже перечислены некоторые общие способы применения и используемые параметры.
+Hello следующем списке перечислены некоторые общие способы применения и настройки их параметров.
 
-- **Включение репликации для всех таблиц между двумя кластерами.** Этот сценарий не требует копирования и переноса существующих данных в таблицах и не использует таблицы Phoenix. Используйте следующие параметры:
+- **Включение репликации для всех таблиц между кластерами hello двух**. В этом сценарии требуется копировать hello/миграции существующих данных в таблицах hello и не использует Финиксе таблиц. Используйте hello следующие параметры:
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
 
-- **Включение репликации для отдельных таблиц.** Чтобы включить репликацию для table1, table2 и table3, используйте следующие параметры:
+- **Включение репликации для отдельных таблиц.** Используйте следующие параметры репликации tooenable на table1, table2 и Таблица3 hello.
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
-- **Включение репликации для отдельных таблиц и копирование существующих данных.** Чтобы включить репликацию для table1, table2 и table3, используйте следующие параметры:
+- **Включение репликации для отдельных таблиц и копировать существующие данные hello**. Используйте следующие параметры репликации tooenable на table1, table2 и Таблица3 hello.
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 
-- **Включение репликации для всех таблиц с репликацией метаданных Phoenix из источника в место назначения.** Репликация метаданных Phoenix работает не идеально, ее следует использовать с осторожностью.
+- **Включение репликации для всех таблиц с помощью репликации Финиксе метаданных из источника toodestination**. Репликация метаданных Phoenix работает не идеально, ее следует использовать с осторожностью.
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
 
@@ -183,15 +183,15 @@ ms.lasthandoff: 07/11/2017
 
 Существует два отдельных скрипта действия сценария для копирования или переноса данных после включения репликации:
 
-- [Скрипт для небольших таблиц](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (размером в несколько гигабайт, ожидаемое время копирования — менее часа).
+- [Скрипт для небольших таблиц](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (несколько гигабайт копирования размер, а также общем — ожидаемое toofinish менее чем за один час)
 
-- [Скрипт для больших таблиц](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (копирование занимает больше часа).
+- [Скрипт для больших таблиц](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (требуется больше времени, чем один час toocopy tootake)
 
-Можно выполнить процедуру, описанную в разделе [Включение репликации](#enable-replication), чтобы вызвать действие сценария со следующими параметрами:
+Можно выполнить hello же процедуру в [включить репликацию](#enable-replication) действие сценария hello toocall с hello следующие параметры:
 
     -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
 
-Раздел [скрипта](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) print_usage() содержит подробное описание параметров.
+Здравствуйте, раздел print_usage() hello [сценарий](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) содержит подробное описание параметров.
 
 ### <a name="scenarios"></a>Сценарии
 
@@ -210,11 +210,11 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="disable-replication"></a>Отключение репликации
 
-Чтобы отключить репликацию, используйте другой скрипт действия сценария, расположенный на веб-сайте [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Можно выполнить процедуру, описанную в разделе [Включение репликации](#enable-replication), чтобы вызвать действие сценария со следующими параметрами:
+репликация toodisable, используйте другой сценарий действия сценария, расположенный в [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Можно выполнить hello же процедуру в [включить репликацию](#enable-replication) действие сценария hello toocall с hello следующие параметры:
 
     -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari Password> <-all|-t "table1;table2;...">  
 
-Раздел [скрипта](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) print_usage() содержит подробное объяснение параметров.
+Здравствуйте, раздел print_usage() hello [сценарий](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) дано подробное описание параметров.
 
 ### <a name="scenarios"></a>Сценарии
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом руководстве вы изучили настройку репликации HBase между двумя центрами обработки данных. Для получения дополнительных сведений о HDInsight и HBase см. следующие ресурсы:
+В этом учебнике вы узнали, как tooconfigure HBase репликации между двумя центрами обработки данных. toolearn Дополнительные сведения о HDInsight и HBase, см.:
 
 * [Руководство по HBase. Приступая к работе с Apache HBase на Hadoop под управлением Windows в HDInsight][hdinsight-hbase-get-started]
 * [Что такое HBase в HDInsight: база данных NoSQL, которая предоставляет возможности, схожие с BigTable, для Hadoop][hdinsight-hbase-overview]

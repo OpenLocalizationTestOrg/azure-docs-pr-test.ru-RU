@@ -1,6 +1,6 @@
 ---
-title: "Развертывание приложения Spring Boot в Azure с помощью подключаемого модуля Maven для веб-приложений Azure"
-description: "Сведения о развертываний приложения Spring Boot в Azure с помощью подключаемого модуля Maven для веб-приложений Azure."
+title: "hello toouse aaaHow Maven подключаемого модуля для веб-приложения Azure toodeploy tooAzure Spring загрузки приложения"
+description: "Узнайте, как toouse hello Maven подключаемого модуля для веб-приложения Azure toodeploy tooAzure Spring загрузки приложения."
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
@@ -14,38 +14,38 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: robmcm;kevinzha
-ms.openlocfilehash: dceb7edf788bd87b1de04aa435a12cd5853755b9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 376fe90fe20621e15d7c9856214937c78b66026a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-maven-plugin-for-azure-web-apps-to-deploy-a-spring-boot-app-to-azure"></a>Развертывание приложения Spring Boot в Azure с помощью подключаемого модуля Maven для веб-приложений Azure
+# <a name="how-toouse-hello-maven-plugin-for-azure-web-apps-toodeploy-a-spring-boot-app-tooazure"></a>Как toouse hello Maven подключаемого модуля для веб-приложения Azure toodeploy tooAzure Spring загрузки приложения
 
-[Подключаемый модуль Maven для веб-приложений Azure](https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin) для [Apache Maven](http://maven.apache.org/) обеспечивает эффективную интеграцию службы приложений Azure в проекты Maven и упрощает процесс развертывания веб-приложений в службе приложений Azure.
+Hello [Maven подключаемого модуля для веб-приложения Azure](https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin) для [Apache Maven](http://maven.apache.org/) обеспечивает прозрачную интеграцию службы приложений Azure в проекты Maven и упрощает процесс hello для разработчиков toodeploy веб-приложений tooAzure службы приложений.
 
-В этой статье демонстрируется использование подключаемого модуля Maven для веб-приложений Azure с целью развертывания примера приложения Spring Boot в службы приложений Azure.
+В этой статье демонстрируется использование hello Maven подключаемого модуля для веб-приложения Azure toodeploy tooAzure приложения загрузки Spring образца службы приложений.
 
 > [!NOTE]
 >
-> Подключаемый модуль Maven для веб-приложений Azure в настоящее время доступен в предварительной версии. Сейчас поддерживается только FTP-публикация, но на будущее запланированы дополнительные функции.
+> Hello Maven подключаемого модуля для веб-приложения Azure в настоящее время доступна в предварительной версии. Сейчас поддерживается только FTP-публикации, несмотря на то, что дополнительные функции планируются для будущих hello.
 >
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для работы с этим руководством требуется следующее.
+В порядке toocomplete hello шагов в этом учебнике требуется hello toohave следующие предварительные требования:
 
 * Подписка Azure; если у вас еще нет подписки Azure, вы можете активировать [преимущества для подписчиков MSDN] или зарегистрироваться для получения [бесплатной учетной записи Azure].
-* [Интерфейс командной строки Azure (CLI)].
+* Hello [Azure интерфейс командной строки (CLI)].
 * Актуальный [пакет разработчиков Java (JDK)] версии 1.7 или более поздней.
 * Средство сборки [Maven] (версия 3) от Apache.
 * Клиент [Git].
 
-## <a name="clone-the-sample-spring-boot-web-app"></a>Клонирование примера "Веб-приложение Spring Boot"
+## <a name="clone-hello-sample-spring-boot-web-app"></a>Клонирование hello образец Spring загрузки веб-приложения
 
 В этом разделе представлены сведения о клонировании готового приложения Spring Boot и его тестировании на локальном компьютере.
 
-1. Откройте командную строку или окно терминала и создайте локальный каталог для размещения приложения Spring Boot, после чего перейдите в этот каталог, например:
+1. Откройте командную строку или окно терминала и создайте toohold локальный каталог Spring загрузки приложения и перейдите в каталог toothat; Например:
    ```shell
    md C:\SpringBoot
    cd C:\SpringBoot
@@ -56,52 +56,52 @@ ms.lasthandoff: 08/18/2017
    cd /users/robert/SpringBoot
    ```
 
-1. Клонируйте образец проекта [Spring Boot Getting Started] в созданный каталог, например:
+1. Клон hello [Spring начальной загрузки] образец проекта в каталог hello, вы создали; например:
    ```shell
    git clone https://github.com/microsoft/gs-spring-boot
    ```
 
-1. Перейдите в каталог готового проекта, например:
+1. Изменение каталога toohello завершения проекта; Например:
    ```shell
    cd gs-spring-boot/complete
    ```
 
-1. Выполните сборку файла JAR с помощью Maven, например:
+1. Построение hello JAR-файл с помощью Maven; Например:
    ```shell
    mvn clean package
    ```
 
-1. При создании веб-приложения запустите веб-приложение с помощью Maven; например:
+1. При создании веб-приложения hello запустите веб-приложение hello, с помощью Maven; Например:
    ```shell
    mvn spring-boot:run
    ```
 
-1. Проверьте веб-приложение, перейдя к нему локально с помощью веб-браузера. Например, если имеется Curl, можно использовать следующую команду:
+1. Тестирование веб-приложения hello путем просмотра tooit локально с помощью веб-браузера. Например можно использовать следующую команду, если у вас есть доступные перелистывание hello:
    ```shell
    curl http://localhost:8080
    ```
 
-1. Должно появиться следующее сообщение: **Greetings from Spring Boot!**
+1. Должно появиться сообщение, отображаемое после hello: **Greetings с Spring загрузки!**
 
 ## <a name="create-an-azure-service-principal"></a>Создание субъекта-службы Azure
 
-В этом разделе представлен порядок создания субъекта-службы Azure, которого подключаемый модуль Maven использует при развертывании веб-приложения в Azure.
+В этом разделе создается Azure участника-службы, hello Maven подключаемый модуль использует при развертывании вашей tooAzure web app.
 
 1. Откройте окно командной строки.
 
-1. Войдите в учетную запись Azure с помощью интерфейса командной строки Azure.
+1. Вход в учетную запись Azure с помощью hello Azure CLI:
    ```shell
    az login
    ```
-   Для завершения процесса входа следуйте инструкциям.
+   Выполните hello инструкции toocomplete hello процесса входа.
 
 1. Создайте субъект-службу Azure.
    ```shell
    az ad sp create-for-rbac --name "uuuuuuuu" --password "pppppppp"
    ```
-   Где `uuuuuuuu` — это имя пользователя и `pppppppp` — пароль для субъекта-службы.
+   Где `uuuuuuuu` — имя пользователя hello и `pppppppp` hello пароль для hello участника-службы.
 
-1. В ответ Azure предоставит код JSON, аналогичный приведенному ниже.
+1. Azure в ответ отправляет похожа на следующий пример hello JSON:
    ```json
    {
       "appId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
@@ -114,20 +114,20 @@ ms.lasthandoff: 08/18/2017
 
    > [!NOTE]
    >
-   > При настройке подключаемого модуля Maven для развертывания веб-приложения в Azure используйте значения из этого ответа JSON. `aaaaaaaa`, `uuuuuuuu`, `pppppppp` и `tttttttt` являются значениями заполнителя, которые используются в этом примере с целью упростить сопоставление этих значений с соответствующими им элементами во время настройки файла Maven `settings.xml` в следующем разделе.
+   > Вы будете использовать значения hello из этот ответ JSON, при настройке подключаемого модуля toodeploy hello Maven вашей tooAzure web app. Hello `aaaaaaaa`, `uuuuuuuu`, `pppppppp`, и `tttttttt` являются значения заполнителя, которые используются в этом примере toomake его проще toomap эти значения tootheir соответствующие элементы во время настройки вашей Maven `settings.xml` файл hello рядом раздел.
    >
    >
 
-## <a name="configure-maven-to-use-your-azure-service-principal"></a>Настройка Maven для использования субъекта-службы
+## <a name="configure-maven-toouse-your-azure-service-principal"></a>Настройка Maven toouse, участниками службы Azure
 
-В этом разделе с помощью значений из субъекта службы Azure выполняется настройка проверки подлинности, используемой Maven при развертывании веб-приложения в Azure.
+В этом разделе используется hello значения из hello проверки подлинности участника tooconfigure службы Azure, Maven использует при развертывании вашей tooAzure web app.
 
-1. Откройте файл Maven `settings.xml` в текстовом редакторе; этот файл может находиться по пути, аналогичному указанному в следующих примерах.
+1. Откройте ваш Maven `settings.xml` файл в текстовом редакторе; возможно, этот файл в пути, например hello следующие примеры:
    * `/etc/maven/settings.xml`
    * `%ProgramFiles%\apache-maven\3.5.0\conf\settings.xml`
    * `$HOME/.m2/settings.xml`
 
-1. Добавьте параметры субъекта-службы Azure из предыдущего раздела этого учебника в коллекцию `<servers>` в файле *settings.xml*, например:
+1. Добавить параметры основной службы Azure hello в предыдущем разделе этого учебника toohello `<servers>` коллекции в hello *settings.xml* файла; например:
 
    ```xml
    <servers>
@@ -145,17 +145,17 @@ ms.lasthandoff: 08/18/2017
    Описание
    Элемент | Описание
    ---|---|---
-   `<id>` | Задает уникальное имя, которое Maven использует для поиска параметров безопасности при развертывании веб-приложения в Azure.
-   `<client>` | Содержит значение `appId` из субъекта-службы.
-   `<tenant>` | Содержит значение `tenant` из субъекта-службы.
-   `<key>` | Содержит значение `password` из субъекта-службы.
-   `<environment>` | Определяет целевую облачную среду Azure, которой в этом примере является `AZURE`. (Полный список сред см. в документации по [подключаемому модулю Maven для веб-приложений Azure].)
+   `<id>` | Задает уникальное имя, которое Maven использует toolook копию параметров безопасности при развертывании вашей tooAzure web app.
+   `<client>` | Содержит hello `appId` значение из участника-службы.
+   `<tenant>` | Содержит hello `tenant` значение из участника-службы.
+   `<key>` | Содержит hello `password` значение из участника-службы.
+   `<environment>` | Определяет hello целевой Azure облачной среды, которая представляет `AZURE` в этом примере. (Полный список сред доступен в hello [Maven подключаемого модуля для веб-приложения Azure] документации)
 
-1. Сохраните и закройте файл *settings.xml*.
+1. Сохраните и закройте hello *settings.xml* файла.
 
-## <a name="optional-customize-your-pomxml-before-deploying-your-web-app-to-azure"></a>НЕОБЯЗАТЕЛЬНО. Перед развертыванием веб-приложения в Azure настройте pom.xml.
+## <a name="optional-customize-your-pomxml-before-deploying-your-web-app-tooazure"></a>Необязательно: Настройка вашего pom.xml перед развертыванием вашей tooAzure web app
 
-Откройте файл `pom.xml` для приложения Spring Boot в текстовом редакторе, а затем найдите элемент `<plugin>` для `azure-webapp-maven-plugin`. Этот элемент должен выглядеть примерно следующим образом.
+Откройте hello `pom.xml` файл для загрузки Spring приложения в текстовом редакторе, а затем найдите hello `<plugin>` элемент для `azure-webapp-maven-plugin`. Этот элемент должен быть похож на следующий пример hello.
 
    ```xml
    <plugin>
@@ -191,75 +191,75 @@ ms.lasthandoff: 08/18/2017
    </plugin>
    ```
 
-Существует несколько значений, которые можно изменить для подключаемого модуля Maven. Подробное описание каждого из этих элементов см. в документации по [подключаемому модулю Maven для веб-приложений Azure]. Существует ряд значений, на которые следует обратить внимание в этой статье.
+Имеется несколько значений, которые можно изменять для подключаемого модуля Maven hello и подробное описание каждого из этих элементов доступен в hello [Maven подключаемого модуля для веб-приложения Azure] документации. Существует ряд значений, на которые следует обратить внимание в этой статье.
 
 Элемент | Описание
 ---|---|---
-`<version>` | Версия [подключаемому модулю Maven для веб-приложений Azure]. Обратитесь к списку версий в [центральном репозитории Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22), чтобы убедиться, что вы используете актуальную версию.
-`<authentication>` | Сведения для проверки подлинности для Azure, в которых в данном примере содержится элемент `<serverId>`, который, в свою очередь, содержит `azure-auth`; Maven использует это значение для поиска значений субъекта-службы Azure в файле Maven *settings.xml*, который вы определили в предыдущем разделе этой статьи.
-`<resourceGroup>` | Целевая группа ресурсов, которой в этом примере является `maven-plugin`. Если эта группа ресурсов не существует, она создается во время развертывания.
-`<appName>` | Целевое имя веб-приложения. В этом примере целевое имя — `maven-web-app-${maven.build.timestamp}`, к которому в этом примере добавлен суффикс `${maven.build.timestamp}`, чтобы избежать конфликтов. (Метку времени добавлять необязательно; можно указать любую уникальную строку для имени приложения.)
-`<region>` | Целевой регион, которым в данном примере является `westus`. (Полный список см. в документации по [подключаемому модулю Maven для веб-приложений Azure].)
-`<javaVersion>` | Версия среды выполнения Java для веб-приложения. (Полный список см. в документации по [подключаемому модулю Maven для веб-приложений Azure].)
+`<version>` | Указывает версию hello hello [Maven подключаемого модуля для веб-приложения Azure]. Необходимо проверить версию hello, перечисленные в hello [Maven центрального репозитория](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22) tooensure, в которых используется hello последнюю версию.
+`<authentication>` | Указывает hello сведения для проверки подлинности для Azure, который в данном примере содержит `<serverId>` элемент, содержащий `azure-auth`; Maven использует toolook, значение основного значениями hello службы Azure в вашей Maven *settings.xml* файл, который вы определили в предыдущем разделе этой статьи.
+`<resourceGroup>` | Указывает hello целевой группы ресурсов, который является `maven-plugin` в этом примере. Группа ресурсов Hello создается во время развертывания, если он еще не существует.
+`<appName>` | Указывает имя целевой hello для веб-приложения. В этом примере — имя целевого hello `maven-web-app-${maven.build.timestamp}`, где hello `${maven.build.timestamp}` в конфликт tooavoid примере добавляется суффикс. (метка времени hello необязателен; можно указать любую уникальную строку для имени приложения hello).
+`<region>` | Указывает hello целевой области, которая в данном примере `westus`. (Полный список находится в hello [Maven подключаемого модуля для веб-приложения Azure] документации.)
+`<javaVersion>` | Указывает версию среды выполнения Java hello веб-приложения. (Полный список находится в hello [Maven подключаемого модуля для веб-приложения Azure] документации.)
 `<deploymentType>` | Тип развертывания для веб-приложения. Сейчас поддерживается только `ftp`, хотя поддержка других типов развертывания находится в разработке.
-`<resources>` | Ресурсы и целевые назначения, которые Maven использует при развертывании веб-приложения в Azure. В этом примере два элемента `<resource>` указывают, что Maven развернет JAR-файл для веб-приложения и файл *web.config* из проекта Spring Boot.
+`<resources>` | Указывает ресурсы и получателям, которые Maven использует при развертывании вашей tooAzure web app. В этом примере два `<resource>` элементы указывают, что Maven развернет hello JAR-файл для веб-приложения и hello *web.config* файл из проекта загрузки Spring hello.
 
-## <a name="build-and-deploy-your-web-app-to-azure"></a>Сборка и развертывание веб-приложения в Azure
+## <a name="build-and-deploy-your-web-app-tooazure"></a>Построение и развертывание вашей tooAzure web app
 
-После настройки всех параметров в предыдущих разделах этой статьи можно приступать к развертыванию веб-приложения в Azure. Для этого выполните следующие действия.
+После настройки всех параметров hello в предыдущих подразделах этой статьи hello, вы являетесь toodeploy готовности вашей tooAzure web app. Таким образом, toodo используйте hello следующие шаги:
 
-1. В командной строке или в окне терминала, которые вы использовали ранее, перестройте JAR-файл, используя Maven, если вы внесли изменения в файл *pom.xml*; например:
+1. Из командной строки hello или окно терминала, который использовался ранее, перестройте hello JAR-файл с помощью Maven при внесении любого изменения toohello *pom.xml* файла; например:
    ```shell
    mvn clean package
    ```
 
-1. Разверните веб-приложение в Azure с помощью Maven; например:
+1. Развертывание вашей tooAzure web app с помощью Maven; Например:
    ```shell
    mvn azure-webapp:deploy
    ```
 
-Maven выполнит развертывание веб-приложения в Azure; если веб-приложение еще не существует, оно будет создано.
+Maven развернет ваш веб tooAzure приложения; Если веб-приложение hello еще не существует, он будет создан.
 
-После развертывания веб-приложения вы сможете управлять им с помощью [портала Azure].
+При развертывании веб-узла можно будет toomanage его с помощью hello [портал Azure].
 
 * Веб-приложение будет указано в разделе **Службы приложений**:
 
    ![Веб-приложение в разделе "Службы приложений" на портале Azure][AP01]
 
-* URL-адрес веб-приложения будет указан в разделе **Обзор** для вашего веб-приложения:
+* И hello URL-адрес для веб-приложения будут указаны в hello **Обзор** веб-приложения:
 
-   ![Определение URL-адреса для веб-приложения][AP02]
+   ![Определение hello URL-адрес для веб-приложения][AP02]
 
 <!--
-##  OPTIONAL: Configure the embedded Tomcat server to run on a different port
+##  OPTIONAL: Configure hello embedded Tomcat server toorun on a different port
 
-The embedded Tomcat server in the sample Spring Boot application is configured to run on port 8080 by default. However, if you want to run the embedded Tomcat server to run on a different port, such as port 80 for local testing, you can configure the port by using the following steps.
+hello embedded Tomcat server in hello sample Spring Boot application is configured toorun on port 8080 by default. However, if you want toorun hello embedded Tomcat server toorun on a different port, such as port 80 for local testing, you can configure hello port by using hello following steps.
 
-1. Go to the *resources* directory (or create the directory if it does not exist); for example:
+1. Go toohello *resources* directory (or create hello directory if it does not exist); for example:
    ```shell
    cd src/main/resources
    ```
 
-1. Open the *application.yml* file in a text editor if it exists, or create a new YAML file if it does not exist.
+1. Open hello *application.yml* file in a text editor if it exists, or create a new YAML file if it does not exist.
 
-1. Modify the **server** setting so that the server runs on port 80; for example:
+1. Modify hello **server** setting so that hello server runs on port 80; for example:
    ```yaml
    server:
       port: 80
    ```
 
-1. Save and close the *application.yml* file.
+1. Save and close hello *application.yml* file.
 -->
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о различных технологиях, рассматриваемых в данной статье, см. в следующих статьях.
+Дополнительные сведения о hello различные технологии, описанные в этой статье, см. следующие статьи hello:
 
-* [подключаемому модулю Maven для веб-приложений Azure]
+* [Maven подключаемого модуля для веб-приложения Azure]
 
-* [Вход в Azure из интерфейса командной строки Azure](/azure/xplat-cli-connect)
+* [Войдите в tooAzure из hello Azure CLI](/azure/xplat-cli-connect)
 
-* [Развертывание приложения Spring Boot в Azure с помощью подключаемого модуля Maven для веб-приложений Azure](app-service-web-deploy-containerized-spring-boot-app-with-maven-plugin.md)
+* [Как toouse hello Maven подключаемого модуля для веб-приложения Azure toodeploy контейнерного tooAzure приложения загрузки пружины](app-service-web-deploy-containerized-spring-boot-app-with-maven-plugin.md)
 
 * [Создание субъекта-службы Azure с помощью Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli)
 
@@ -267,9 +267,9 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 
 <!-- URL List -->
 
-[Интерфейс командной строки Azure (CLI)]: /cli/azure/overview
+[Azure интерфейс командной строки (CLI)]: /cli/azure/overview
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[портала Azure]: https://portal.azure.com/
+[портал Azure]: https://portal.azure.com/
 [бесплатной учетной записи Azure]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: https://github.com/
 [Java Developer Kit (JDK)]: http://www.oracle.com/technetwork/java/javase/downloads/
@@ -277,9 +277,9 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 [Maven]: http://maven.apache.org/
 [преимущества для подписчиков MSDN]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [Spring Boot]: http://projects.spring.io/spring-boot/
-[Spring Boot Getting Started]: https://github.com/microsoft/gs-spring-boot
+[Spring начальной загрузки]: https://github.com/microsoft/gs-spring-boot
 [Spring Framework]: https://spring.io/
-[подключаемому модулю Maven для веб-приложений Azure]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin
+[Maven подключаемого модуля для веб-приложения Azure]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin
 
 <!-- IMG List -->
 

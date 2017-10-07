@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Predictix Price Reporting | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в Predictix Price Reporting."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Predictix Reporting цены."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,190 +14,190 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 62280b205f2fd691e8c75134585172b995377311
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c2ba85f613f5a71de72278a0d1916c135b835b60
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Учебник. Интеграция Azure Active Directory с Predictix Price Reporting
 
-В этом учебнике описано, как интегрировать Predictix Price Reporting с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Predictix цена отчетности в Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с Predictix Price Reporting обеспечивает перечисленные ниже преимущества.
+Интеграция с Azure AD Predictix цена Reporting предоставляет следующие преимущества hello:
 
-- С помощью Azure AD вы можете контролировать доступ к Predictix Price Reporting.
-- Вы можете включить автоматический вход пользователей в Predictix Price Reporting (единый вход) с использованием учетных записей Azure AD.
-- Вы можете управлять учетными записями централизованно — на портале Azure.
+- Можно управлять в Azure AD, имеющего доступ tooPredictix Reporting цены.
+- Вы можете включить учетные записи Azure AD вашей пользователей tooautomatically get вошедшего tooPredictix цена Reporting (Single Sign-On).
+- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Predictix Price Reporting, вам потребуется:
+tooconfigure интеграция Azure AD с Predictix цена отчетов необходимо hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Predictix Price Reporting с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление приложения Predictix Price Reporting из коллекции
+1. Добавление Predictix цена отчетов из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-predictix-price-reporting-from-the-gallery"></a>Добавление приложения Predictix Price Reporting из коллекции
-Чтобы настроить интеграцию Predictix Price Reporting с Azure AD, необходимо добавить приложение Predictix Price Reporting из коллекции в список управляемых приложений SaaS.
+## <a name="adding-predictix-price-reporting-from-hello-gallery"></a>Добавление Predictix цена отчетов из галереи hello
+tooconfigure hello интеграции Predictix цена Reporting в Azure AD, вы должны tooadd Predictix цена отчетов из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Predictix Price Reporting из коллекции, выполните указанные ниже действия.**
+**tooadd Predictix цена отчетов из галереи hello выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
-    ![Колонка "Корпоративные приложения"][2]
+    ![Hello корпоративных приложений колонку][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Кнопка нового приложения Hello][3]
 
-4. В поле поиска введите **Predictix Price Reporting**, выберите **Predictix Price Reporting** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+4. Введите в поле поиска hello **Reporting цены Predictix**выберите **Reporting цены Predictix** из панели «результат» нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
-    ![Predictix Price Reporting в списке результатов](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_addfromgallery.png)
+    ![Predictix цена отчетов в списке результатов hello](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в Predictix Price Reporting с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Predictix Price Reporting соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Predictix Price Reporting.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в отчетности Predictix цена является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в службах Reporting цены Predictix должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Predictix Price Reporting.
+В Predictix цена отчетов, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Predictix Price Reporting, вам потребуется выполнить действия в приведенных ниже стандартных блоках.
+tooconfigure и теста Azure AD единого входа с Predictix Reporting цены, необходимые hello toocomplete следующие стандартные блоки.
 
-1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Predictix Price Reporting](#create-a-predictix-price-reporting-test-user)** требуется для создания в Predictix Price Reporting пользователя Britta Simon, связанного с соответствующим представлением в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя Reporting цены Predictix](#create-a-predictix-price-reporting-test-user)**  -toohave аналог Саймон Britta в Predictix цена отчетности, представление связанных toohello Azure AD пользователя.
+4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Predictix Price Reporting.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Predictix Reporting цены.
 
-**Чтобы настроить единый вход Azure AD в Predictix Price Reporting, выполните указанные ниже действия.**
+**tooconfigure Azure AD единого входа с Predictix Reporting цены, выполните hello следующие шаги.**
 
-1. На портале Azure на странице интеграции с приложением **Predictix Price Reporting** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Reporting цены Predictix** странице интеграции приложения щелкните **единого входа**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Predictix Price Reporting** выполните следующие действия.
+3. На hello **URL-адреса и домена Reporting цены Predictix** выполните следующие шаги hello:
 
     ![Сведения о домене и URL-адресах единого входа приложения Predictix Price Reporting](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_url.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<companyname-pricing>.predictix.com/sso/request`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname-pricing>.predictix.com/sso/request`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате:
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:
     | |
     |--|
     | `https://<companyname-pricing>.predictix.com` |
     | `https://<companyname-pricing>.dev.predictix.com` |
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить эти значения, обратитесь в [службу поддержки клиентов Predictix Price Reporting](http://www.infor.com/company/customer-center/). 
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки клиентских отчетов цены Predictix](http://www.infor.com/company/customer-center/) tooget эти значения. 
  
-4. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
-    ![Ссылка для скачивания сертификата](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_certificate.png) 
+    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_400.png)
 
-6. В разделе **Конфигурация Predictix Price Reporting** щелкните **Настроить Predictix Price Reporting**, чтобы открыть окно **Настройка входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **Predictix настройки служб Reporting цены** щелкните **настроить отчеты цены Predictix** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка Predictix Price Reporting](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_configure.png) 
 
-7. Чтобы настроить единый вход на стороне **Predictix Price Reporting**, нужно передать скачанный **сертификат (Base64)**, **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML** в [службу поддержки Predictix Price Reporting](http://www.infor.com/company/customer-center/). Специалисты службы поддержки настроят подключение единого входа SAML на обеих сторонах.
+7. tooconfigure единого входа на **Reporting цены Predictix** стороны, необходимо загрузить hello toosend **сертификата (Base64)**, **URL-адрес выхода, идентификатор сущности SAML и SAML Single Sign-On URL-адрес службы** слишком[Predictix Reporting Цена Группа поддержки](http://www.infor.com/company/customer-center/). Они устанавливаются hello toohave этот параметр задан правильно на обеих сторонах соединения единого входа SAML.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
 
-    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_01.png)
+    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_01.png)
 
-2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
 
-    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_02.png)
+    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_02.png)
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
 
-    ![Кнопка "Добавить"](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_03.png)
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
 
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_04.png)
+    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_04.png)
 
-    а. В поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
 
-    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
 
-    г) Щелкните **Создать**.
+    d. Щелкните **Создать**.
  
 ### <a name="create-a-predictix-price-reporting-test-user"></a>Создание тестового пользователя Predictix Price Reporting
 
-В этом разделе описано, как создать пользователя Britta Simon в приложении Predictix Price Reporting. Чтобы добавить пользователей в платформу Predictix Price Reporting, обратитесь в [службу поддержки Predictix Price Reporting](http://www.infor.com/company/customer-center/).
+В этом разделе описано, как создать пользователя Britta Simon в приложении Predictix Price Reporting. Работать с [Predictix Reporting Цена Группа поддержки](http://www.infor.com/company/customer-center/) tooadd hello пользователей на платформе Reporting цены Predictix hello.
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как позволить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к Predictix Price Reporting.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooPredictix Reporting цены.
 
-![Назначение роли пользователя][200] 
+![Назначение пользователям ролей hello][200] 
 
-**Чтобы назначить пользователя Britta Simon приложению Predictix Price Reporting, выполните указанные ниже действия.**
+**tooassign tooPredictix Britta Simon Reporting цены, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Predictix Price Reporting**.
+2. В списке приложений hello выберите **Reporting цены Predictix**.
 
-    ![Ссылка на Predictix Price Reporting в списке приложений](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_app.png)  
+    ![Hello Reporting цены Predictix ссылку в списке приложений hello](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_app.png)  
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202]
+    ![Hello ссылку «Пользователи и группы»][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Область "Добавление назначения"][203]
+    ![область назначения, добавьте Hello][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -205,13 +205,13 @@ ms.lasthandoff: 08/18/2017
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент Predictix Price Reporting на панели доступа, вы автоматически войдете в приложение Predictix Price Reporting.
+При нажатии кнопки hello Reporting цены Predictix плитки в панели доступа hello, вы должны получить приложение Reporting цены Predictix tooyour автоматически вошедшего.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

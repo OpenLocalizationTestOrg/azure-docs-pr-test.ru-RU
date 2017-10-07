@@ -1,6 +1,6 @@
 ---
-title: "Политики аутентификации в службе управления API Azure | Документация Майкрософт"
-description: "Сведения о политиках аутентификации, доступных для использования в службе управления API Azure."
+title: "политики проверки подлинности API Management aaaAzure | Документы Microsoft"
+description: "Дополнительные сведения о hello политики проверки подлинности, доступные для использования в службе управления API Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 63ef20a56ab7721f9ecc7025d05963cc4b0c27a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ce93cced66cb67520e97c7c15f3685bffb08e1f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-authentication-policies"></a>Политики аутентификации в службе управления API
-В этой статье рассматриваются приведенные ниже политики управления API. Дополнительные сведения о добавлении и настройке политик см. в статье о [политиках в управлении API](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Здесь вы найдете ссылку для hello следующих политиках управления интерфейсами API. Дополнительные сведения о добавлении и настройке политик см. в статье о [политиках в управлении API](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="AuthenticationPolicies"></a> Политики аутентификации  
   
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/11/2017
 -   [Аутентификация с помощью сертификата клиента](api-management-authentication-policies.md#ClientCertificate) – аутентификация внутренней службы с помощью сертификатов клиентов.  
   
 ##  <a name="Basic"></a> Обычная проверка подлинности  
- Используйте политику `authentication-basic` для обычной проверки подлинности внутренней службы. Эта политика задает для заголовка авторизации HTTP значение, соответствующее учетным данным, предоставленным в политике.  
+ Используйте hello `authentication-basic` tooauthenticate политики с помощью серверной службы с использованием обычной проверки подлинности. Эта политика фактически устанавливает toohello заголовок авторизации HTTP hello значение соответствующего toohello учетные данные, указанные в политике hello.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -54,18 +54,18 @@ ms.lasthandoff: 07/11/2017
   
 |Имя|Описание|Обязательно|значение по умолчанию|  
 |----------|-----------------|--------------|-------------|  
-|Имя пользователя|Задает имя пользователя для обычных учетных данных.|Да|Недоступно|  
-|пароль|Задает пароль для обычных учетных данных.|Да|Недоступно|  
+|Имя пользователя|Указывает имя пользователя hello hello основных учетных данных.|Да|Недоступно|  
+|пароль|Указывает пароль hello hello основных учетных данных.|Да|Недоступно|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound.  
   
 -   **Области политики:** API.  
   
 ##  <a name="ClientCertificate"></a> Аутентификация с помощью сертификата клиента  
- Используйте политику `authentication-certificate` для аутентификации внутренней службы с помощью сертификата клиента. Сертификат сначала должен быть [установлен в службу управления API](http://go.microsoft.com/fwlink/?LinkID=511599) и идентифицирован по его отпечатку.  
+ Используйте hello `authentication-certificate` tooauthenticate политики с помощью серверной службы с использованием клиентского сертификата. Hello сертификат должен toobe [установлен в API Management](http://go.microsoft.com/fwlink/?LinkID=511599) первый и определяется его отпечатком.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -89,10 +89,10 @@ ms.lasthandoff: 07/11/2017
   
 |Имя|Описание|Обязательно|значение по умолчанию|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|Отпечаток для сертификата клиента.|Да|Недоступно|  
+|thumbprint|отпечаток сертификата клиента hello Hello.|Да|Недоступно|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound.  
   

@@ -1,6 +1,6 @@
 ---
-title: "Руководство. Использование клиентской библиотеки пакетной службы Azure для Node.js | Документация Майкрософт"
-description: "Изучите основные принципы работы пакетной службы Azure и создайте простое решение с использованием Node.js."
+title: "aaaTutorial - использование клиентской библиотеки hello пакетной службы Azure для Node.js | Документы Microsoft"
+description: "Изучите основные понятия hello пакетной службы Azure и создайте простое решение, с помощью Node.js."
 services: batch
 author: shwetams
 manager: timlt
@@ -11,11 +11,11 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: c48171d8634a651718a0775183414f463c6a468c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d2b0ecbe764e7100affd7b02839aef3077b073cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Приступая к работе с пакетом SDK для пакетной службы для Node.js
 
@@ -26,58 +26,58 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Изучите основы создания клиента пакетной службы в Node.js с помощью [пакета SDK для пакетной службы Azure для Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/). Мы определим ключевые аспекты приложения пакетной службы, а затем настроим его с помощью клиента Node.js.  
+Основы hello построения пакета клиента в Node.js с помощью [Node.js пакета Azure SDK](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/). Мы определим ключевые аспекты приложения пакетной службы, а затем настроим его с помощью клиента Node.js.  
 
 ## <a name="prerequisites"></a>Предварительные требования
-В этой статье предполагается, что вы уже работали с Node.js и знаете, как работать в Linux. Также предполагается, что у вас есть настроенная учетная запись Azure с правами доступа для создания пакетной службы и службы хранилища.
+В этой статье предполагается, что вы уже работали с Node.js и знаете, как работать в Linux. Он также предполагается, что при установке учетная запись Azure с доступом права toocreate пакета службы и службы хранилища.
 
-Перед изучением шагов, описанных в этой статье, советуем ознакомиться со статьей [Выполнение реальных параллельных рабочих нагрузок с использованием пакетной службы](batch-technical-overview.md).
+Мы рекомендуем чтения [Технический обзор пакетной Azure](batch-technical-overview.md) до перехода hello шаги, описанные в этой статье.
 
-## <a name="the-tutorial-scenario"></a>Рассматриваемый сценарий
-Рассмотрим сценарий рабочего процесса пакетной службы. У нас есть простой скрипт, написанный на языке Python, который загружает все CSV-файлы из контейнера хранилища BLOB-объектов Azure и преобразует их в формат JSON. Для параллельной обработки нескольких контейнеров учетных записей хранения можно развернуть скрипт как задание пакетной службы Azure.
+## <a name="hello-tutorial-scenario"></a>сценарий учебника Hello
+Рассмотрим сценарий рабочего процесса пакета hello. У нас есть простой сценарий, написанный на Python, который загружает все csv файлов из контейнер службы хранилища больших двоичных объектов Azure и преобразует их tooJSON. tooprocess несколько учетную запись хранилища, контейнеры параллельно, разворачиваются hello скрипт как задание пакетной службы Azure.
 
 ## <a name="azure-batch-architecture"></a>Архитектура пакетной службы Azure
-На следующей схеме показано, как можно масштабировать скрипт Python с помощью пакетной службы Azure и клиента Node.js.
+Hello следующая диаграмма изображает как можно масштабировать hello сценарий Python, с помощью пакетной службы Azure и клиент Node.js.
 
 ![Сценарий пакетной службы Azure](./media/batch-nodejs-get-started/BatchScenario.png)
 
-Клиент Node.js развертывает задание пакетной службы с задачей подготовки (описанной далее) и набор задач в зависимости от числа контейнеров в учетной записи хранения. Скрипты можно скачать из репозитория GitHub.
+Клиент node.js Hello развертывает пакетного задания с задача «Подготовка» (подробно рассматривается позже) и набор задач, в зависимости от hello количество контейнеров в учетной записи хранения hello. Hello скрипты можно загрузить из репозитория github hello.
 
 * [Клиент Node.js](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
 * [Скрипты оболочки для задач подготовки](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-* [Преобразователь Python CSV в JSON](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+* [Процессор tooJSON csv Python](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
 
 > [!TIP]
-> Клиент Node.js по указанной ссылке не содержит код, который необходимо развертывать в качестве приложения-функции Azure. Перейдите по следующим ссылкам, чтобы ознакомиться с инструкциями по его созданию.
+> Клиент Node.js Hello в ссылке hello указано не содержит развернут как приложение Azure функция toobe конкретного кода. Можно ссылаться toohello ссылкам для инструкции toocreate один.
 > - [Создание приложения-функции](../azure-functions/functions-create-first-azure-function.md)
 > - [Триггер таймера](../azure-functions/functions-bindings-timer.md)
 >
 >
 
-## <a name="build-the-application"></a>Создание приложения
+## <a name="build-hello-application"></a>Создание приложения hello
 
-Рассмотрим пошаговый процесс создания клиента Node.js.
+Теперь давайте Пройдите hello шаг за шагом в построении hello Node.js клиента:
 
 ### <a name="step-1-install-azure-batch-sdk"></a>Шаг 1. Установка пакета SDK для пакетной службы Azure
 
-Пакет SDK для пакетной службы Azure для Node.js можно установить с помощью команды npm install.
+Можно установить пакет Azure SDK для Node.js с помощью команды install npm hello.
 
 `npm install azure-batch`
 
-Эта команда устанавливает последнюю версию пакета SDK узла azure-batch.
+Эта команда устанавливает последнюю версию hello узла пакета azure SDK.
 
 >[!Tip]
-> Для запуска команд npm install в приложении-функции Azure перейдите к консоли Kudu на вкладке параметров функций Azure. В этом случае для установки пакета SDK для пакетной службы Azure для Node.js.
+> В приложении функции Azure, вы можете перейти слишком npm hello toorun вкладку «Kudu консоли» hello Azure функции параметры установки команды. В этом вариантов tooinstall Azure пакета SDK для Node.js.
 >
 >
 
 ### <a name="step-2-create-an-azure-batch-account"></a>Шаг 2. Создание учетной записи пакетной службы Azure
 
-Ее можно создать на портале [Azure](batch-account-create-portal.md) или с помощью командной строки ([PowerShell](batch-powershell-cmdlets-get-started.md)  / [Azure CLI](https://docs.microsoft.com/cli/azure/overview)).
+Вы можете создать на hello [портал Azure](batch-account-create-portal.md) или из командной строки ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure cli](https://docs.microsoft.com/cli/azure/overview)).
 
-Ниже перечислены команды для создания учетной записи пакетной службы Azure с помощью Azure CLI.
+Ниже приведены команды hello toocreate, один через Azure CLI.
 
-Создайте группу ресурсов. (Пропустите этот шаг, если у вас уже есть группа, в которой вы хотите создать учетную запись пакетной службы.)
+Создание группы ресурсов, пропустите этот шаг, если она уже есть место toocreate hello пакетной учетной записи:
 
 `az group create -n "<resource-group-name>" -l "<location>"`
 
@@ -85,14 +85,14 @@ ms.lasthandoff: 07/11/2017
 
 `az batch account create -l "<location>"  -g "<resource-group-name>" -n "<batch-account-name>"`
 
-Каждая учетная запись пакетной службы имеет соответствующие ключи доступа. Эти ключи необходимы для создания дополнительных ресурсов в учетной записи пакетной службы Azure. В рабочей среде рекомендуется использовать Azure Key Vault для хранения этих ключей. Теперь необходимо создать субъект-службу для приложения. С помощью этого субъекта-службы приложение может создать токен OAuth для доступа к ключам из хранилища ключей.
+Каждая учетная запись пакетной службы имеет соответствующие ключи доступа. Эти разделы находятся необходимые toocreate дополнительные ресурсы в учетной записи пакетной службы Azure. Рекомендуется для рабочей среды является toostore toouse хранилище ключей Azure, эти ключи. Затем можно создать службу участника для приложения hello. С помощью этого приложения hello участника службы, можно создать ключи tooaccess токена OAuth из хранилища ключей hello.
 
 `az batch account keys list -g "<resource-group-name>" -n "<batch-account-name>"`
 
-Скопируйте и сохраните ключ, который будет использоваться на последующих шагах.
+Скопируйте и сохраните toobe hello ключа, используемые в последующих шагах hello.
 
 ### <a name="step-3-create-an-azure-batch-service-client"></a>Шаг 3. Создание клиента пакетной службы Azure
-Следующий фрагмент кода сначала импортирует модуль Node.js azure-batch, а затем создает клиент пакетной службы. Сначала необходимо создать объект SharedKeyCredentials, используя ключ учетной записи пакетной службы, скопированный на предыдущем шаге.
+Следующий фрагмент кода сначала импортирует модуль Node.js hello azure пакета, а затем создает клиент пакетной службы. Требуется toofirst создайте объект SharedKeyCredentials и ключ учетной записи пакетной hello, скопированные из предыдущего шага hello.
 
 ```nodejs
 // Initializing Azure Batch variables
@@ -115,64 +115,64 @@ var batch_client = new batch.ServiceClient(credentials,accountUrl);
 
 ```
 
-URI пакетной службы Azure можно найти на вкладке "Обзор" на портале Azure. Он имеет следующий формат:
+Hello Azure URI пакета можно найти в hello игнорировались hello портал Azure. Он имеет формат hello:
 
 `https://accountname.location.batch.azure.com`
 
-См. снимок экрана:
+См. снимок экрана toohello:
 
 ![URI пакетной службы Azure](./media/batch-nodejs-get-started/azurebatchuri.png)
 
 
 
 ### <a name="step-4-create-an-azure-batch-pool"></a>Шаг 4. Создание пула пакетной службы Azure
-Пул пакетной службы Azure состоит из нескольких виртуальных машин (также известных как узлы пакетной службы). На этих узлах пакетная служба Azure развертывает задачи и управляет ими. Задайте следующие параметры конфигурации для пула:
+Пул пакетной службы Azure состоит из нескольких виртуальных машин (также известных как узлы пакетной службы). Служба Azure Batch развертывает hello задачи на этих узлах и управляет ими. Можно определить следующие параметры конфигурации для пула hello.
 
 * тип образа виртуальной машины;
 * размер узлов виртуальной машины;
 * число узлов виртуальной машины.
 
 > [!Tip]
-> Размер и количество узлов виртуальной машины во многом зависит от числа задач, которые требуется выполнить параллельно, а также от самой задачи. Мы советуем провести тестирование для определения идеального количества и размера.
+> размер Hello и количества узлов виртуальных машин во многом зависят от hello число задач, которые требуется toorun в параллельно, а также саму задачу hello. Корпорация Майкрософт рекомендует тестирование toodetermine hello идеальное число и размер.
 >
 >
 
-Следующий фрагмент кода создает объекты параметров конфигурации.
+Hello следующий фрагмент кода создает hello объекты параметров конфигурации.
 
 ```nodejs
 // Creating Image reference configuration for Ubuntu Linux VM
 var imgRef = {publisher:"Canonical",offer:"UbuntuServer",sku:"14.04.2-LTS",version:"latest"}
 
-// Creating the VM configuration object with the SKUID
+// Creating hello VM configuration object with hello SKUID
 var vmconfig = {imageReference:imgRef,nodeAgentSKUId:"batch.node.ubuntu 14.04"}
 
-// Setting the VM size to Standard F4
+// Setting hello VM size tooStandard F4
 var vmSize = "STANDARD_F4"
 
-//Setting number of VMs in the pool to 4
+//Setting number of VMs in hello pool too4
 var numVMs = 4
 ```
 
 > [!Tip]
-> Список образов виртуальных машин Linux для пакетной службы Azure и соответствующие номера SKU см. в разделе [Список образов виртуальных машин](batch-linux-nodes.md#list-of-virtual-machine-images).
+> Hello список образов виртуальных Машин Linux, доступны для пакетной службы Azure и их идентификаторы SKU см. в разделе [список образов виртуальных машин](batch-linux-nodes.md#list-of-virtual-machine-images).
 >
 >
 
-После определения конфигурации можно создать пул пакетной службы Azure. Команда пула пакетной службы создает узлы виртуальных машин Azure и подготавливает их к получению задач для выполнения. Каждый пул должен иметь уникальный идентификатор, чтобы на него можно было ссылаться на последующих шагах.
+После определения конфигурации пула hello, можно создать пул hello пакетной службы Azure. Hello пула Batch, команда создает узлы виртуальной машины Azure и подготовить их tooexecute задачи готовности tooreceive toobe. Каждый пул должен иметь уникальный идентификатор, чтобы на него можно было ссылаться на последующих шагах.
 
-Следующий фрагмент кода создает пул пакетной службы Azure.
+Следующий фрагмент кода Hello создает пул пакетной службы Azure.
 
 ```nodejs
 // Create a unique Azure Batch pool ID
 var poolid = "pool" + customerDetails.customerid;
 var poolConfig = {id:poolid, displayName:poolid,vmSize:vmSize,virtualMachineConfiguration:vmconfig,targetDedicatedComputeNodes:numVms,enableAutoScale:false };
-// Creating the Pool for the specific customer
+// Creating hello Pool for hello specific customer
 var pool = batch_client.pool.add(poolConfig,function(error,result){
     if(error!=null){console.log(error.response)};
 });
 ```
 
-Убедитесь, что пул находится в активном состоянии, прежде чем отправить в него задание.
+Можно проверить состояние hello пула hello создан и убедитесь, что состояние hello в «активный», перед продолжением отправки пула toothat задания.
 
 ```nodejs
 var cloudPool = batch_client.pool.get(poolid,function(error,result,request,response){
@@ -199,7 +199,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
         });
 ```
 
-Ниже приведен пример результирующего объекта, возвращаемого функцией pool.get.
+Ниже приведен пример результирующий объект, возвращенный функцией pool.get hello.
 
 ```
 { id: 'processcsv_201721152',
@@ -261,46 +261,46 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
 
 
 ### <a name="step-4-submit-an-azure-batch-job"></a>Шаг 4. Отправка задания пакетной службы Azure
-Задание пакетной службы Azure представляет собой логическую группу схожих задач. В нашем случае это преобразование CSV в JSON. В нем каждая задача может обрабатывать CSV-файлы, которые присутствуют в каждом контейнере службы хранилища Azure.
+Задание пакетной службы Azure представляет собой логическую группу схожих задач. В нашем случае это «TooJSON csv процесса». В нем каждая задача может обрабатывать CSV-файлы, которые присутствуют в каждом контейнере службы хранилища Azure.
 
-Эти задачи могут выполняться параллельно и развертываться на нескольких узлах, управляемых пакетной службой Azure.
+Эти задачи будут выполняться параллельно и развернуть на нескольких узлах под управлением hello пакетной службы Azure.
 
 > [!Tip]
-> Чтобы указать максимальное число задач, которые могут выполняться параллельно на одном узле, используйте свойство [maxTasksPerNode](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add).
+> Можно использовать hello [maxTasksPerNode](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) свойство toospecify максимальное число задач, которые могут выполняться параллельно на одном узле.
 >
 >
 
 #### <a name="preparation-task"></a>Задача подготовки
 
-Созданные узлы виртуальных машин являются пустыми узлами Ubuntu. Часто необходимо установить набор программ в качестве необходимых компонентов.
-Обычно для узлов Linux можно использовать скрипт оболочки, который устанавливает необходимые компоненты перед запуском фактических задач. Однако это может быть любой программируемый исполняемый файл.
-[Скрипт оболочки](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/startup_prereq.sh) в этом примере устанавливает Python-pip и пакет SDK для службы хранилища Azure для Python.
+Hello узлов виртуальных Машин, созданных являются пустой Ubuntu узлами. Часто требуется tooinstall набор программ, в качестве необходимых компонентов.
+Как правило для узлов Linux может иметь сценарий, который устанавливает компоненты hello перед выполнения фактических задач hello. Однако это может быть любой программируемый исполняемый файл.
+Hello [оболочки сценарий](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/startup_prereq.sh) в этом примере устанавливает Python pip и hello пакет SDK хранилища Azure для Python.
 
-Можно отправить скрипт в учетную запись хранения Azure и создать URI SAS для доступа к нему. Этот процесс можно автоматизировать с помощью пакета SDK для службы хранилища Azure для Node.js.
+Можно загрузить скрипт hello на учетную запись хранилища Azure и создать сценарий hello tooaccess универсальный код Ресурса SAS. Также этот процесс можно автоматизировать с помощью hello пакет SDK для Node.js хранилища Azure.
 
 > [!Tip]
-> Задача подготовки задания выполняется только на узлах виртуальных машин, где необходимо выполнить определенную задачу. Если требуемые компоненты нужно установить на всех узлах независимо от выполняемых задач, при добавлении пула можно использовать свойство [startTask](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add). Для справки можно использовать следующее определение задачи подготовки.
+> Задача «Подготовка» для задания выполняется только на узлах виртуальных Машин hello целей toorun hello конкретной задачи. Если требуется toobe необходимые компоненты установлены на всех узлах, независимо от hello задач, которые выполняются на нем можно использовать hello [startTask](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) свойства во время добавления в пул. Можно использовать hello после определения задачи подготовки для ссылки.
 >
 >
 
-Задача подготовки указывается во время отправки задания пакетной службы Azure. Ниже перечислены параметры конфигурации задачи подготовки.
+Задача «Подготовка» задается во время передачи hello Azure пакетного задания. Параметры конфигурации задачи подготовки Здравствуйте, следующие:
 
-* **ID:** уникальный идентификатор приложения.
-* **commandLine:** командная строка для выполнения исполняемого файла задачи.
-* **resourceFiles:** массив объектов, предоставляющих сведения о файлах, которые нужно скачать для выполнения этой задачи.  Ниже приведены его параметры.
-    - blobSource: URI SAS файла.
-    - filePath: локальный путь для скачивания и сохранения файла.
+* **Идентификатор**: Уникальный идентификатор для задачи подготовки hello
+* **Командная строка**: исполняемый файл задачи hello tooexecute командной строки
+* **resourceFiles**: массив объектов, предоставляющих подробные сведения о файлах требуется загрузить для этой задачи toorun toobe.  Ниже приведены его параметры.
+    - blobSource: hello SAS URI файла hello
+    - filePath: toodownload локальный путь и сохраните файл hello
     - fileMode: применим только для узлов Linux. fileMode имеет восьмеричный формат и значение по умолчанию 0770.
-* **waitForSuccess:** если задано значение true, задача не выполняется при сбое задачи подготовки.
-* **runElevated:** задайте значение true, если для выполнения задачи требуются повышенные привилегии.
+* **waitForSuccess**: Если set tootrue, задачу hello не выполняется при сбое задачи подготовки
+* **runElevated**: задать для него tootrue повышенные привилегии в случае необходимости toorun задачу hello.
 
-В следующем фрагменте кода показан пример конфигурации скрипта задачи подготовки:
+Следующий фрагмент кода показывает образец hello подготовки задачи скрипта конфигурации:
 
 ```nodejs
 var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prereq.sh > startup.log",resourceFiles:[{'blobSource':'Blob SAS URI','filePath':'startup_prereq.sh'}],waitForSuccess:true,runElevated:true}
 ```
 
-Если обязательных компонентов, которые необходимо установить для выполнения задач, нет, задачи подготовки можно пропустить. Следующий код создает задание с отображаемым именем process csv files.
+Если не toobe необходимые компоненты установлены для вашей toorun задачи, можно пропустить задачи подготовки hello. Следующий код создает задание с отображаемым именем process csv files.
 
  ```nodejs
  // Setting up Batch pool configuration
@@ -308,7 +308,7 @@ var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prer
  // Setting up Job configuration along with preparation task
  var jobId = "processcsvjob"
  var job_config = {id:jobId,displayName:"process csv files",jobPreparationTask:job_prep_task_config,poolInfo:pool_config}
- // Adding Azure batch job to the pool
+ // Adding Azure batch job toohello pool
  var job = batch_client.job.add(job_config,function(error,result){
      if(error != null)
      {
@@ -319,14 +319,14 @@ var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prer
 
 ### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>Шаг 5. Отправка задач пакетной службы Azure для задания
 
-Теперь, когда задание преобразования CSV-файлов создано, можно создать задачи для него. Предположим, у нас есть четыре контейнера, для каждого из которых необходимо создать задачу.
+Теперь, когда задание преобразования CSV-файлов создано, можно создать задачи для него. Предположим, что у нас есть четыре контейнеров, у нас есть четыре задачи toocreate, один для каждого контейнера.
 
-[Скрипт Python](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py) принимает два параметра:
+Если взглянуть на hello [сценарий Python](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py), он принимает два параметра:
 
-* container_name: контейнер хранилища, откуда будут скачиваться файлы.
+* Имя контейнера: hello файлы toodownload контейнера хранилища из
 * pattern: необязательный параметр шаблона имени файла.
 
-Предположим, у нас есть четыре контейнера con1, con2, con3, con4. Следующий код отправляет задачи в задание пакетной службы Azure process csv, созданное ранее.
+Предположим, что у нас есть четыре контейнеры «con1», «con2», «con3», «con4» ниже показан отправкой на задачи toohello Azure пакетного задания «процесса csv» созданную ранее.
 
 ```nodejs
 // storing container names in an array
@@ -353,12 +353,12 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-Код добавляет несколько задач в пул. Все задачи выполняются на узле созданного пула виртуальных машин. Если количество задач превышает число виртуальных машин в пуле или значение свойства maxTasksPerNode, задачи ожидают, пока узел станет доступным. Это задание оркестрации пакетная служба Azure обрабатывает автоматически.
+Hello код добавляет пул toohello несколько задач. И каждая из задач hello выполняется на узле в пуле hello создания виртуальных машин. Если hello число задач превышает hello число виртуальных машин в свойстве maxTasksPerNode пула или hello, задачи hello Подождите, пока узел станет доступным. Это задание оркестрации пакетная служба Azure обрабатывает автоматически.
 
-Портал содержит подробные представления задач и состояния заданий. Можно также использовать список, чтобы получить функции в пакете SDK узла Azure. Подробные сведения приведены в документации по [ссылке](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
+портал Hello содержатся подробные представления для задач hello и состояний задания. Можно также использовать список hello и функции получения в hello узла Azure SDK. Подробные сведения приведены в документации hello [ссылку](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- Если вы недавно используете пакетную службу, рекомендуем прочитать статью [с обзором функций пакетной службы Azure](batch-api-basics.md) .
-- Сведения об API пакетной службы см. в статье [Microsoft Azure SDK for Node.js - Batch Service](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) (Пакет Microsoft Azure SDK для Node.js. Пакетная служба).
+- Просмотрите hello [возможности пакетной обработки Обзор Azure](batch-api-basics.md) статьи, которая рекомендуется, если вы новую службу toohello.
+- . В разделе hello [ссылку пакета Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) tooexplore hello API пакета.
 

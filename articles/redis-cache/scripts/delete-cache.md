@@ -1,5 +1,5 @@
 ---
-title: "Пример скрипта Azure CLI. Удаление кэша Redis для Azure | Документы Майкрософт"
+title: "Пример сценария CLI - aaaAzure удалить кэш Azure Redis | Документы Microsoft"
 description: "Пример скрипта Azure CLI. Удаление кэша Redis для Azure"
 services: redis-cache
 documentationcenter: 
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/14/2017
 ms.author: sdanie
-ms.openlocfilehash: f959823b3a7c5b0262f693ecad1e6efc4eec4f35
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 788277f6464d40fedc597ce7f3041130312c07a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="delete-an-azure-redis-cache"></a>Удаление кэша Redis для Azure
 
-В этом сценарии вы узнаете, как удалить кэш Redis для Azure.
+В этом сценарии вы узнаете, как toodelete Redis для Azure кэша.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-azurecli[main](../../../cli_scripts/redis-cache/delete-cache/delete-cache.sh "Кэш Redis для Azure")]
+[!code-azurecli[main](../../../cli_scripts/redis-cache/delete-cache/delete-cache.sh "Azure Redis Cache")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/redis-cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-В этом сценарии используются следующие команды для удаления экземпляра кэша Redis для Azure. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует hello, следующие команды toodelete экземпляр кэша Redis для Azure. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
@@ -44,6 +44,6 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры сценариев Azure CLI для кэша Redis для Azure см. в [документации по кэшу Redis для Azure](../cli-samples.md).
+Дополнительные образцы сценариев CLI кэша Redis Azure можно найти в hello [документации кэш Azure Redis](../cli-samples.md).

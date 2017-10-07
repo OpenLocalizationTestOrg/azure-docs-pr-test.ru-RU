@@ -1,5 +1,5 @@
 ---
-title: "Начало работы с разделами и подписками служебной шины Azure | Документация Майкрософт"
+title: "aaaGet работы с Azure Service Bus разделы и подписки | Документы Microsoft"
 description: "Написание консольного приложения C#, которое использует обмен сообщениями служебной шины для разделов и подписок"
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/30/2017
 ms.author: sethm
-ms.openlocfilehash: 9401ada519f600b0d2817f06a396e16607a24129
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 619d602599d97ecff2ded0681a383b19f1a8b7ad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-service-bus-topics"></a>Начало работы с разделами служебной шины
 
@@ -26,74 +26,74 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="what-will-be-accomplished"></a>Что будет выполнено
 
-В этом руководстве рассматриваются следующие действия:
+В этом учебнике hello следующие шаги:
 
-1. Создание пространства имен служебной шины с помощью портала Azure.
-2. Создание раздела служебной шины с помощью портала Azure.
-3. Создание подписки на этот раздел служебной шины с помощью портала Azure.
-4. Создание консольного приложения для отправки сообщения в раздел.
-5. Создание консольного приложения для получения этого сообщения из подписки.
+1. Создание пространства имен Service Bus, с помощью портала Azure hello.
+2. Создайте раздел служебной шины, с помощью портала Azure hello.
+3. Создайте раздел toothat подписки Service Bus, с помощью hello портал Azure.
+4. Написания приложения консоли toosend раздела toohello сообщения.
+5. Запись tooreceive консольного приложения это сообщение от подписки hello.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-1. [Visual Studio 2015 или более поздней версии.](http://www.visualstudio.com) В описанных в этом руководстве примерах используется Visual Studio 2017.
+1. [Visual Studio 2015 или более поздней версии.](http://www.visualstudio.com) Hello примерах в этом учебнике используется Visual Studio 2017 г.
 2. Подписка Azure.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Создание пространства имен с помощью портала Azure
+## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Создание пространства имен с помощью портала Azure hello
 
-Если пространство имен для обмена сообщениями служебной шины уже создано, перейдите к разделу [Создание раздела с помощью портала Azure](#2-create-a-topic-using-the-azure-portal).
+Если вы уже создали пространство имен обмена сообщениями Service Bus, перехода toohello [создайте раздел с помощью портала Azure hello](#2-create-a-topic-using-the-azure-portal) раздела.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-topic-using-the-azure-portal"></a>2) Создание раздела с помощью портала Azure
+## <a name="2-create-a-topic-using-hello-azure-portal"></a>2. Создайте раздел с помощью портала Azure hello
 
-1. Войдите на [портал Azure][azure-portal].
-2. В левой области навигации портала щелкните **Служебная шина**. Если элемент **Служебная шина** не отображается, щелкните **Больше служб**.
-3. Щелкните пространство имен, в котором хотите создать раздел. Появится колонка обзора пространства имен:
+1. Войдите на toohello [портал Azure][azure-portal].
+2. В области навигации слева hello hello портала щелкните **Service Bus** (Если вы не видите **Service Bus**, нажмите кнопку **дополнительные службы**).
+3. Щелкните hello пространство имен, в котором вы хотите toocreate hello раздела. Откроется колонка Обзор Hello пространство имен:
    
     ![Создание раздела][createtopic1]
-4. В колонке **Пространство имен служебной шины** выберите **Разделы** и щелкните **Добавить раздел**.
+4. В hello **пространства имен Service Bus** колонка, щелкните **разделы**, нажмите кнопку **добавить раздел**.
    
     ![Выбор разделов][createtopic2]
-5. Введите имя темы и снимите флажок для параметра **Включить секционирование**. Для других параметров оставьте значения по умолчанию.
+5. Введите имя для раздела hello и снимите флажок hello **включить секционирование** параметр. Hello других параметров оставьте их значения по умолчанию.
    
     ![Нажмите кнопку "Создать"][createtopic3]
-6. Щелкните кнопку **Создать**в нижней части колонки.
+6. Hello нижней части колонки hello, нажмите кнопку **создать**.
 
-## <a name="3-create-a-subscription-to-the-topic"></a>3. Создание подписки на раздел
+## <a name="3-create-a-subscription-toohello-topic"></a>3. Создание раздела toohello подписки
 
-1. В области ресурсов на портале выберите пространство имен, созданное на этапе 1, и щелкните имя раздела, созданное на этапе 2.
-2. На панели обзора вверху щелкните знак плюса рядом с надписью **Подписка**, чтобы добавить подписку на этот раздел.
+1. В области портала ресурсы hello щелкните hello пространства имен, созданный на шаге 1, а затем щелкните имя раздела hello, созданный на шаге 2.
+2. Hello вверху области "Обзор" hello, щелкните hello плюс рядом входа слишком**подписки** tooadd toothis подписки раздела.
 
     ![Создание подписки][createtopic4]
 
-3. Введите имя подписки. Для других параметров оставьте значения по умолчанию.
+3. Введите имя для подписки hello. Hello других параметров оставьте их значения по умолчанию.
 
-## <a name="4-send-messages-to-the-topic"></a>4. Отправка сообщений в раздел
+## <a name="4-send-messages-toohello-topic"></a>4. Отправить toohello темы о сообщениях
 
-Для отправки сообщений в раздел мы создадим консольное приложение C# с помощью Visual Studio.
+раздел toohello toosend сообщения, мы написать консольное приложение C# с помощью Visual Studio.
 
 ### <a name="create-a-console-application"></a>Создание консольного приложение
 
 Откройте Visual Studio и создайте проект **Консольное приложение (.NET Framework)**.
 
-### <a name="add-the-service-bus-nuget-package"></a>Получение пакета NuGet для служебной шины
+### <a name="add-hello-service-bus-nuget-package"></a>Добавление пакета шины обслуживания NuGet hello
 
-1. Щелкните созданный проект правой кнопкой мыши и выберите **Управление пакетами NuGet**.
-2. Откройте вкладку **Обзор**, выполните поиск по фразе **служебная шина Microsoft Azure** и выберите элемент **WindowsAzure.ServiceBus**. Щелкните **Установить** , чтобы выполнить установку, а затем закройте это диалоговое окно.
+1. Щелкните правой кнопкой мыши только что созданный hello проекта и выберите **управление пакетами NuGet**.
+2. Щелкните hello **Обзор** вкладке выполните поиск **Microsoft Azure Service Bus**и затем выберите hello **WindowsAzure.ServiceBus** элемента. Нажмите кнопку **установить** toocomplete hello установки, а затем закрыть диалоговое окно.
    
     ![Установка пакета NuGet][nuget-pkg]
 
-### <a name="write-some-code-to-send-a-message-to-the-topic"></a>Написание кода для отправки сообщения в раздел
+### <a name="write-some-code-toosend-a-message-toohello-topic"></a>Написания некоторые toosend код раздела toohello сообщения
 
-1. Добавьте следующую инструкцию `using` в начало файла Program.cs.
+1. Добавьте следующее hello `using` инструкции toohello верхней части файла Program.cs hello.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-2. Добавьте в метод `Main` следующий код. Укажите для переменной `connectionString` строку подключения, полученную при создании пространства имен, и задайте для `topicName` имя раздела, которое использовалось при его создании.
+2. Добавьте следующий код toohello hello `Main` метод. Набор hello `connectionString` строка соединения переменной toohello, полученный при создании имен hello, а также задать `topicName` toohello имя, которое использовалось при создании раздела hello.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -107,7 +107,7 @@ ms.lasthandoff: 07/11/2017
 
     client.Send(message);
 
-    Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+    Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
     Console.ReadLine();
     ```
    
@@ -138,25 +138,25 @@ ms.lasthandoff: 07/11/2017
 
                 client.Send(message);
 
-                Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+                Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
                 Console.ReadLine();
             }
         }
     }
     ```
-3. Запустите программу и перейдите на портал Azure. В колонке **Обзор** щелкните имя раздела в пространстве имен. Отобразится колонка раздела **Основные**. Обратите внимание, что для каждой подписки внизу колонки параметр **Количество сообщений** должен иметь значение 1. Каждый раз при запуске приложения отправителя без получения сообщений (как указано в следующем разделе) это значение увеличивается на 1. А при каждом добавлении сообщения в раздел или подписку текущий размер раздела увеличивается, как и значение параметра **Текущий** в колонке **Основные**.
+3. Запустите программу hello и проверьте hello портала Azure: щелкните имя раздела в пространстве имен hello hello **Обзор** колонку. раздел Hello **Essentials** колонке отображается. Hello подписок в списке hello нижней части колонки hello, обратите внимание, что hello **число сообщений** значение для каждой подписки теперь должен быть равен 1. Каждый раз, в случае запуска приложения отправителя hello без получения сообщений hello (как описано в следующем разделе hello), это значение увеличивается на 1. Также Обратите внимание, текущий размер hello hello разделе шагом hello **текущей** значение hello **Essentials** колонке каждый раз, приложение hello добавляет toohello сообщения раздела или подписки.
    
       ![Размер сообщения][topic-message]
 
-## <a name="5-receive-messages-from-the-subscription"></a>5. Получение сообщений из подписки
+## <a name="5-receive-messages-from-hello-subscription"></a>5. Получение сообщений из подписки hello
 
-1. Чтобы получить только что отправленные сообщения, создайте консольное приложение и добавьте ссылку на пакет NuGet служебной шины в соответствии с инструкциями для предыдущего приложения отправителя.
-2. Добавьте следующую инструкцию `using` в начало файла Program.cs.
+1. tooreceive приветственных сообщений или сообщений, который вы отправили, создайте новое консольное приложение и добавить пакет шины обслуживания NuGet toohello ссылку, аналогичные приложения отправителя toohello предыдущего.
+2. Добавьте следующее hello `using` инструкции toohello верхней части файла Program.cs hello.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. Добавьте в метод `Main` следующий код. Укажите для переменной `connectionString` строку подключения, полученную при создании пространства имен, и задайте для `topicName` имя раздела, которое использовалось при его создании.
+3. Добавьте следующий код toohello hello `Main` метод. Набор hello `connectionString` строка соединения переменной toohello, можно получить при создании имен hello и задайте `topicName` toohello имя, которое использовалось при создании раздела hello.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -170,7 +170,7 @@ ms.lasthandoff: 07/11/2017
       Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
     });
    
-    Console.WriteLine("Press ENTER to exit program");
+    Console.WriteLine("Press ENTER tooexit program");
     Console.ReadLine();
     ```
    
@@ -197,13 +197,13 @@ ms.lasthandoff: 07/11/2017
             Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
           });
 
-          Console.WriteLine("Press ENTER to exit program");   
+          Console.WriteLine("Press ENTER tooexit program");   
           Console.ReadLine();
         }
       }
     }
     ```
-4. Запустите программу и перейдите на портал еще раз. Обратите внимание, что параметры **Количество сообщений** и **Текущий** имеют значение 0.
+4. Запустите программу hello и снова проверьте hello портала. Обратите внимание, что hello **число сообщений** и **текущей** значения в данный момент 0.
    
     ![Длина раздела][topic-message-receive]
 
@@ -211,7 +211,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Ознакомьтесь с [примерами в репозитории GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples), демонстрирующими расширенные возможности обмена сообщениями служебной шины.
+Извлечение нашей [репозитории GitHub с примерами](https://github.com/Azure/azure-service-bus/tree/master/samples) , показаны некоторые дополнительные возможности обмена сообщениями Service Bus hello.
 
 <!--Image references-->
 

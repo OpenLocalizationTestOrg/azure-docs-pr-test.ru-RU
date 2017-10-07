@@ -1,6 +1,6 @@
 ---
-title: "Краткое руководство по Azure Cloud Shell (предварительная версия) | Документация Майкрософт"
-description: "Краткое руководство по Azure Cloud Shell"
+title: "Краткое руководство aaaAzure оболочки облака (Предварительная версия) | Документы Microsoft"
+description: "Краткое руководство по hello оболочки облако Azure"
 services: 
 documentationcenter: 
 author: jluk
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: juluk
-ms.openlocfilehash: 75676eb0ab784e2adbfd27b170c1dee5599b74ac
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e60700b92c10c331910dd8bb3c627fe1a024091c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="quickstart-for-using-the-azure-cloud-shell"></a>Краткое руководство по использованию Azure Cloud Shell
+# <a name="quickstart-for-using-hello-azure-cloud-shell"></a>Краткое руководство по использованию hello оболочки облако Azure
 
-В этой статье объясняется, как использовать Azure Cloud Shell на [портале Azure](https://ms.portal.azure.com/).
+В этом документе описаны как toouse hello Azure облачной оболочки в hello [портал Azure](https://ms.portal.azure.com/).
 
 ## <a name="start-cloud-shell"></a>Запуск Cloud Shell
-1. Запустите **Cloud Shell** в верхней панели навигации портала Azure. <br>
+1. Запустите **оболочки облака** hello верхней панели навигации hello портал Azure <br>
 ![](media/shell-icon.png)
-2. Выберите подписку для создания учетной записи хранения и общей папки Azure.
+2. Выберите подписку toocreate учетной записи хранилища и Azure общей папки
 3. Нажмите кнопку "Создать хранилище".
 
 > [!TIP]
@@ -47,21 +47,21 @@ ms.lasthandoff: 08/29/2017
 `az group create -l westus -n MyRG` <br>
 
 ### <a name="create-a-linux-vm"></a>Создание виртуальной машины Linux
-Создайте виртуальную машину Ubuntu в новой группе ресурсов. Azure CLI 2.0 создаст ключи SSH и настроит с их помощью виртуальную машину. <br>
+Создайте виртуальную машину Ubuntu в новой группе ресурсов. Hello Azure CLI 2.0 создаются ключи SSH и hello установки виртуальной Машины с ними. <br>
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
-> Открытый и закрытый ключи, используемые для проверки подлинности виртуальной машины, помещаются в `/User/.ssh/id_rsa` и `/User/.ssh/id_rsa.pub` с помощью Azure CLI 2.0 по умолчанию. Папка в формате SSH сохраняется в образе размером 5 ГБ, размещенном в подключенной общей папке Azure.
+> Здравствуйте, открытый и закрытый ключи, используемые tooauthenticate ВМ, помещаются в `/User/.ssh/id_rsa` и `/User/.ssh/id_rsa.pub` Azure CLI 2.0 по умолчанию. Папка в формате SSH сохраняется в образе размером 5 ГБ, размещенном в подключенной общей папке Azure.
 
 Имя пользователя на этой виртуальной машине будет использоваться в Cloud Shell ($User@Azure:).
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH-подключение к виртуальной машине Linux
-1. Найдите имя виртуальной машины на панели поиска портала Azure.
+1. Поиск по имени виртуальной Машины в строке поиска Azure портала hello
 2. Щелкните "Подключить" и выполните `ssh username@ipaddress`.
 
 ![](media/sshcmd-copy.png)
 
-После установки SSH-подключения отобразится строка приветствия Ubuntu.
+После установки подключения SSH hello, вы должны увидеть hello Ubuntu приветствия приглашения.
 ![](media/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Очистка. 

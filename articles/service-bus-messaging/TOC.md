@@ -53,7 +53,7 @@
 ## Управление
 ### [Библиотеки управления служебной шиной](service-bus-management-libraries.md)
 ### [Использование шаблонов Azure Resource Manager](service-bus-resource-manager-overview.md)
-### [Подготовка сущностей с помощью PowerShell](service-bus-manage-with-ps.md)
+### [С помощью PowerShell tooprovision сущностей](service-bus-manage-with-ps.md)
 
 # Справочные материалы
 ## .NET

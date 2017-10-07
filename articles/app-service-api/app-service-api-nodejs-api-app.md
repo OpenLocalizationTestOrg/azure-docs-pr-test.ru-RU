@@ -1,6 +1,6 @@
 ---
-title: "Приложение API Node.js в службе приложений Azure | Документация Майкрософт"
-description: "Узнайте, как создать API RESTful Node.js и развернуть его в приложении API с помощью службы приложений Azure."
+title: "aaaNode.js API приложения в службе приложений Azure | Документы Microsoft"
+description: "Узнайте, как toocreate Node.js RESTful API и разверните его tooan API приложения в службе приложений Azure."
 services: app-service\api
 documentationcenter: node
 author: bradygaster
@@ -14,16 +14,16 @@ ms.devlang: nodejs
 ms.topic: get-started-article
 ms.date: 06/13/2017
 ms.author: rachelap
-ms.openlocfilehash: 806585edd43b9d2d678bfa41523e4d9d40af8cba
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3b3229c1453b6ca4d06bef26f476e92afda4e244
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Создание API RESTful Node.js и его развертывание в приложении API в Azure
+# <a name="build-a-nodejs-restful-api-and-deploy-it-tooan-api-app-in-azure"></a>Node.js RESTful API и развернет его tooan API приложение в Azure
 [!INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
-В этом кратком руководстве объясняется, как создать REST API, написанный с использованием Node.js, на платформе [Экспресс](http://expressjs.com/) с помощью определения [Swagger](http://swagger.io/), а затем развернуть его в Azure как [приложение API](app-service-api-apps-why-best-platform.md). Вы научитесь создавать приложения, используя программы командной строки, настраивать ресурсы в [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) и развертывать приложения с помощью Git.  Завершив работу, вы получите рабочий образец REST API в Azure.
+Краткого руководства показано, как toocreate REST API, написанные на Node.js [Express](http://expressjs.com/), с использованием [Swagger](http://swagger.io/) определение и развертывание его как [приложения API](app-service-api-apps-why-best-platform.md) в Azure. Создание приложения hello, с помощью средства командной строки, настройте ресурсы с hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)и развертывание приложения hello, с помощью Git.  Завершив работу, вы получите рабочий образец REST API в Azure.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -34,17 +34,17 @@ ms.lasthandoff: 08/18/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="prepare-your-environment"></a>Подготовка среды
 
-1. В окне терминала выполните следующую команду для клонирования образца на локальный компьютер.
+1. В окне терминала запустите hello, следующая команда tooclone hello образец tooyour локального компьютера.
 
     ```bash
     git clone https://github.com/Azure-Samples/app-service-api-node-contact-list
     ```
 
-2. Перейдите в каталог, в котором содержится образец кода.
+2. Изменить toohello каталог, содержащий образец кода hello.
 
     ```bash
     cd app-service-api-node-contact-list
@@ -59,9 +59,9 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="generate-nodejs-code"></a>Создание кода Node.js 
 
-В этом разделе руководства моделируется рабочий процесс разработки API, в котором сначала создаются метаданные Swagger, а затем они используются при формировании (автоматическом создании) серверного кода для API. 
+В этом разделе учебника hello моделирует рабочего процесса разработки API сначала создать метаданные Swagger и использовать этот tooscaffold (автоматическое создание) код сервера hello API. 
 
-Перейдите в каталог *start* и затем запустите `yo swaggerize`. Swaggerize создаст для API проект Node.js из определения Swagger в *api.json*.
+Изменить каталог toohello *запустить* папку, затем запустите `yo swaggerize`. Swaggerize создает проект Node.js для API из определения Swagger hello в *api.json*.
 
 ```bash
 cd start
@@ -73,28 +73,28 @@ yo swaggerize --apiPath api.json --framework express
    ```bash
    Swaggerize Generator
    Tell us a bit about your application
-   ? What would you like to call this project: ContactList
+   ? What would you like toocall this project: ContactList
    ? Your name: Francis Totten
    ? Your github user name: fabfrank
    ? Your email: frank@fabrikam.net
    ```
    
-## <a name="customize-the-project-code"></a>Настройка кода проекта
+## <a name="customize-hello-project-code"></a>Настройка проекта кода hello
 
-1. Скопируйте папку *lib* в папку *ContactList*, созданную с помощью `yo swaggerize`, затем перейдите в каталог *ContactList*.
+1. Hello копирования *lib* папки в hello *ContactList* папки, созданные `yo swaggerize`, затем перейдите в *ContactList*.
 
     ```bash
     cp -r lib/ ContactList/
     cd ContactList
     ```
 
-2. Установите модули NPM: `jsonpath` и `swaggerize-ui`. 
+2. Установка hello `jsonpath` и `swaggerize-ui` модули NPM. 
 
     ```bash
     npm install --save jsonpath swaggerize-ui
     ```
 
-3. Замените код в файле *handlers/contacts.js* следующим кодом: 
+3. Замените код hello в hello *handlers/contacts.js* с hello, следующий код: 
     ```javascript
     'use strict';
 
@@ -106,9 +106,9 @@ yo swaggerize --apiPath api.json --framework express
         }
     };
     ```
-    Этот код использует данные JSON, хранящиеся в файле *lib/contacts.json* (обрабатывается с помощью *lib/contactRepository.js*). Новый код *contacts.js* возвращает все контакты в репозитории как полезные данные JSON. 
+    Этот код использует данные JSON hello, хранятся в *lib/contacts.json* обслуживаемых *lib/contactRepository.js*. новый Hello *contacts.js* код возвращает все контакты в репозитории hello в качестве полезных данных JSON. 
 
-4. Замените код в файле **handlers/contacts/{ИД}.js** следующим кодом:
+4. Замените код hello в hello **handlers/contacts/{id}.js** файл с hello, следующий код:
 
     ```javascript
     'use strict';
@@ -122,9 +122,9 @@ yo swaggerize --apiPath api.json --framework express
     };
     ```
 
-    Этот код позволяет использовать переменную пути исключительно для получения контакта с заданным идентификатором.
+    Этот код позволяет использовать путь переменной tooreturn только hello контакт с заданным идентификатором.
 
-5. Замените код в файле **server.js** следующим кодом:
+5. Замените код hello в **server.js** с hello, следующий код:
 
     ```javascript
     'use strict';
@@ -162,16 +162,16 @@ yo swaggerize --apiPath api.json --framework express
     });
     ```   
 
-    Этот код вносит небольшие изменения, обеспечивая поддержку службы приложений Azure и предоставляя интерактивный веб-интерфейс для API.
+    Этот код делает toolet некоторые небольшие изменения, она будет работать службе приложений Azure и предоставляет интерактивные веб-интерфейса API.
 
-### <a name="test-the-api-locally"></a>Локальное тестирование API
+### <a name="test-hello-api-locally"></a>Тест hello API локально
 
-1. Настройка приложения Node.js
+1. Запустить приложение hello Node.js
     ```bash
     npm start
     ```
     
-2. Перейдите на страницу http://localhost:8000/contacts, чтобы просмотреть JSON-файл с полным списком контактов.
+2. Обзор toohttp://localhost:8000 / обращается tooview hello JSON для hello весь список контактов.
    
    ```json
     {
@@ -191,7 +191,7 @@ yo swaggerize --apiPath api.json --framework express
     }
    ```
 
-3. Перейдите на страницу http://localhost:8000/contacts/2 , чтобы просмотреть контакты с `id` 2.
+3. Обзор toohttp://localhost:8000/contacts/2 tooview hello контакт с `id` двух.
    
     ```json
     { 
@@ -201,21 +201,21 @@ yo swaggerize --apiPath api.json --framework express
     }
     ```
 
-4. Протестируйте API с помощью веб-интерфейса Swagger на странице http://localhost:8000/docs.
+4. С помощью веб-интерфейса Swagger hello в HTTP://localhost: 8000/docs API hello тестов.
    
     ![Веб-интерфейс Swagger](media/app-service-api-nodejs-api-app/swagger-ui.png)
 
 ## <a id="createapiapp"></a> Создание приложения API
 
-В этом разделе с помощью Azure CLI 2.0 мы создадим ресурсы для размещения API в службе приложений Azure. 
+В этом разделе используется hello hello Azure CLI 2.0 toocreate hello ресурсы toohost API в службе приложений Azure. 
 
-1.  Войдите в подписку Azure с помощью команды [az login](/cli/azure/#login) и следуйте инструкциям на экране.
+1.  Войдите в подписку Azure совместно с hello tooyour [входа az](/cli/azure/#login) команды и выполните hello на экране инструкциям.
 
     ```azurecli-interactive
     az login
     ```
 
-2. Если у вас несколько подписок Azure, выберите нужную вместо подписки по умолчанию.
+2. Если у вас несколько подписок Azure, toohello подписки по умолчанию hello изменения требуемого один.
 
     ````azurecli-interactive
     az account set --subscription <name or id>
@@ -228,36 +228,36 @@ yo swaggerize --apiPath api.json --framework express
 5. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
 
 
-## <a name="deploy-the-api-with-git"></a>Развертывание API с помощью Git
+## <a name="deploy-hello-api-with-git"></a>Развертывание hello API с Git
 
-Разверните код в приложении API, отправив фиксации из локального репозитория Git в службу приложений Azure.
+Разверните приложение API toohello кода с помощью принудительной отправки фиксаций из вашей локальной tooAzure репозитория Git службы приложений.
 
 1. [!INCLUDE [Configure your deployment credentials](../../includes/configure-deployment-user-no-h.md)] 
 
-2. Инициализируйте новый репозиторий в каталоге *ContactList*. 
+2. Инициализировать новый репозиторий в hello *ContactList* каталога. 
 
     ```bash
     git init .
     ```
 
-3. Исключите каталог *node_modules*, созданный npm из Git ранее в руководстве. Создайте файл `.gitignore` в текущем каталоге и добавьте следующий текст в новую строку в файле (ее расположение не имеет значения).
+3. Исключить hello *node_modules* каталога, созданных npm в предыдущем шаге, в учебнике hello из Git. Создайте новый `.gitignore` в текущем каталоге hello и добавьте следующий текст на новой строке в любом месте файла hello hello.
 
     ```
     node_modules/
     ```
-    Подтвердите, что папка `node_modules` должна игнорироваться `git status`.
+    Подтвердите hello `node_modules` папку пропускается с `git status`.
 
-4. Зафиксируйте изменения в репозитории.
+4. Зафиксируйте hello изменения toohello репозитория.
     ```bash
     git add .
     git commit -m "initial version"
     ```
 
-5. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
+5. [!INCLUDE [Push tooAzure](../../includes/app-service-api-git-push-to-azure.md)]  
  
-## <a name="test-the-api--in-azure"></a>Тестирование API в Azure
+## <a name="test-hello-api--in-azure"></a>Тест hello API в Azure
 
-1. Откройте в браузере страницу http://app_name.azurewebsites.net/contacts. Как видите, мы получаем тот же JSON-файл, что и ранее при создании локального запроса в рамках этого руководства.
+1. Откройте toohttp://app_name.azurewebsites.net/contacts браузера. Вы увидите hello, возвращенная же JSON как ранее в учебнике hello внесения hello запрос локально.
 
    ```json
    {
@@ -277,15 +277,15 @@ yo swaggerize --apiPath api.json --framework express
    }
    ```
 
-2. В браузере перейдите к конечной точке `http://app_name.azurewebsites.net/docs`, чтобы протестировать работу пользовательского интерфейса Swagger в Azure.
+2. В браузере перейдите toohello `http://app_name.azurewebsites.net/docs` tootry конечной точки ожидания hello Swagger пользовательского интерфейса в Azure.
 
     ![Пользовательский интерфейс Swagger](media/app-service-api-nodejs-api-app/swagger-azure-ui.png)
 
-    Теперь можно развернуть обновления примера API в Azure. Для этого достаточно отправить фиксации в репозиторий Azure Git.
+    Теперь можно развернуть обновления toohello пример API tooAzure просто нажатием toohello фиксации Azure репозитории.
 
 ## <a name="clean-up"></a>Очистка
 
-Чтобы удалить ресурсы, созданные в ходе работы с этим руководством, выполните следующую команду Azure CLI:
+tooclean hello ресурсов, созданные в этом кратком руководстве, запустите следующую команду Azure CLI hello:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

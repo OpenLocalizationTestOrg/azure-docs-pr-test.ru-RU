@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с функцией управления устройствами Центра Интернета вещей Azure (.NET или Node) | Документация Майкрософт"
-description: "Использование функции управления устройствами в Центре Интернета вещей Azure для начала удаленной перезагрузки устройства. Используйте пакет SDK для устройств Azure IoT для Node.js, чтобы реализовать приложение имитации устройства, включающее прямой метод, и пакет SDK для служб Azure IoT для .NET, чтобы реализовать приложение-службу, вызывающее прямой метод."
+title: "aaaGet работы с управлением устройства Azure IoT Hub (.NET или узел) | Документы Microsoft"
+description: "Как tooinitiate управления устройства Azure IoT Hub toouse перезагрузите удаленного устройства. Использовать устройства Azure IoT hello пакета SDK для Node.js tooimplement приложение имитированное устройство, которое включает прямой метод и hello Azure IoT служба пакета SDK для .NET tooimplement приложение службы, которое вызывает метод прямой hello."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
-ms.openlocfilehash: d97fc5493570985f94c23032c870628d6a089dcd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: ea6d50dfac1c222d7836e3bf5503c6c9b8c89dfa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-device-management-netnode"></a>Приступая к работе с управлением устройствами (.NET или Node)
 
@@ -26,43 +26,43 @@ ms.lasthandoff: 08/18/2017
 
 В этом учебнике описаны следующие процедуры.
 
-* Создание экземпляра Центра Интернета вещей на портале Azure и удостоверения устройства в экземпляре Центра Интернета вещей.
-* Создание приложения для имитации устройства с прямым методом, который позволяет выполнить перезагрузку устройства. Прямые методы вызываются из облака.
-* Создание консольного приложения для .NET, вызывающего прямой метод перезагрузки в приложении имитации устройства с помощью Центра Интернета вещей.
+* Используйте hello Azure портала toocreate центр IoT и создать удостоверение устройства в концентратор IoT.
+* Создание приложения для имитации устройства с прямым методом, который позволяет выполнить перезагрузку устройства. Прямой методы вызываются из облака hello.
+* Создайте консольное приложение .NET, которое вызывает метод прямой перезагрузки hello в приложение hello имитированное устройство через концентратор IoT.
 
-По завершении работы с этим руководством у вас будет консольное приложение устройства Node.js и консольное приложение серверной части .NET (C#).
+В конце этого учебника hello у вас есть приложение Node.js консоли устройства и консольного приложения серверной части .NET (C#):
 
-**dmpatterns_getstarted_device.js**, которое подключается к вашему центру Интернета вещей с ранее созданным идентификатором устройства, получает прямой метод перезагрузки, имитирует физическую перезагрузку и сообщает о времени последней перезагрузки.
+**dmpatterns_getstarted_device.js**, который подключает центра IoT tooyour с идентификатором hello устройства, созданный ранее, получает прямой метод перезагрузки, имитирует перезагрузка физического и отчеты hello время последней перезагрузки hello.
 
-**TriggerReboot**, которое вызывает прямой метод в приложении виртуального устройства, выводит ответ и отображает обновленные сообщаемые свойства.
+**TriggerReboot**, прямой метод которого вызывает в приложение hello имитированное устройство, отображает ответ hello, и отображает hello обновлены данные свойства.
 
-Для работы с этим учебником требуется:
+toocomplete этого учебника требуется hello следующие:
 
-* Visual Studio 2015 или Visual Studio 2017.
-* Node.js версии 0.12.x или более поздней. <br/>  В статье [Prepare your development environment][lnk-dev-setup] (Подготовка среды разработки) описывается, как установить Node.js для работы с этим учебником в ОС Windows или Linux.
+* Visual Studio 2015 или Visual Studio 2017.
+* Node.js версии 0.12.x или более поздней. <br/>  [Подготовка среды разработки] [ lnk-dev-setup] описывает способ tooinstall Node.js для этого учебника в Windows или Linux.
 * Активная учетная запись Azure. Если ее нет, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Активация удаленной перезагрузки на устройстве с помощью прямого метода
-В этом разделе вы создадите консольное приложение .NET (с помощью C#), которое инициирует удаленное обновление устройства с помощью прямого метода. Приложение использует запросы двойника устройства для определения времени последней перезагрузки этого устройства.
+## <a name="trigger-a-remote-reboot-on-hello-device-using-a-direct-method"></a>Триггер удаленной перезагрузки на устройстве hello, с помощью прямой метод
+В этом разделе вы создадите консольное приложение .NET (с помощью C#), которое инициирует удаленное обновление устройства с помощью прямого метода. приложение Hello использует устройство двойных запросы toodiscover hello время последней перезагрузки для этого устройства.
 
-1. В Visual Studio добавьте в новое решение проект классического приложения Windows на языке Visual C# с помощью шаблона проекта **консольного приложения (.NET Framework)**. Убедитесь, что указана версия платформы .NET 4.5.1 или более поздняя версия. Назовите проект **TriggerReboot**.
+1. В Visual Studio добавьте новое решение tooa проекта Visual C# Windows классического с помощью hello **консольного приложения (.NET Framework)** шаблона проекта. Убедитесь, что hello версии платформы .NET Framework 4.5.1 или более поздней версии. Имя проекта hello **TriggerReboot**.
 
     ![Новый проект классического приложения Windows на языке Visual C#][img-createapp]
 
-2. В обозревателе решений щелкните правой кнопкой мыши проект **TriggerReboot** и выберите **Управление пакетами NuGet**.
-3. В окне **Диспетчер пакетов NuGet** нажмите кнопку **Обзор**, найдите **microsoft.azure.devices**, щелкните **Установить**, чтобы установить пакет **Microsoft.Azure.Devices**, и примите условия использования. В результате выполняется скачивание и установка пакета NuGet [SDK для служб Интернета вещей Azure][lnk-nuget-service-sdk] и его зависимостей, а также добавляется соответствующая ссылка.
+2. В обозревателе решений щелкните правой кнопкой мыши hello **TriggerReboot** проекта, а затем нажмите кнопку **управление пакетами NuGet**.
+3. В hello **диспетчера пакетов NuGet** выберите **Обзор**, поиск **microsoft.azure.devices**выберите **установить** tooinstall Hello **Microsoft.Azure.Devices** пакета и примите условия использования hello. Эта процедура загрузки, устанавливает и добавляет toohello ссылки [пакета SDK службы Azure IoT] [ lnk-nuget-service-sdk] NuGet пакет и его зависимости.
 
     ![Окно "Диспетчер пакетов NuGet"][img-servicenuget]
-4. Добавьте следующие инструкции `using` в начало файла **Program.cs** :
+4. Добавьте следующее hello `using` инструкции вверху hello hello **Program.cs** файла:
    
         using Microsoft.Azure.Devices;
         using Microsoft.Azure.Devices.Shared;
         
-5. Добавьте следующие поля в класс **Program** . Замените значение заполнителя строкой подключения Центра Интернета вещей, созданного в предыдущем разделе, и целевого устройства.
+5. Добавьте следующие поля toohello hello **программы** класса. Замените значение заполнителя hello hello центра IoT строку подключения для hello концентратора, созданную в предыдущем разделе hello и hello целевое устройство.
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
@@ -70,7 +70,7 @@ ms.lasthandoff: 08/18/2017
         static JobClient jobClient;
         static string targetDevice = "{deviceIdForTargetDevice}";
         
-6. Добавьте следующий метод в класс **Program**.  Этот код получает двойник устройства для перезагрузки устройства и выводит сообщаемые свойства.
+6. Добавьте следующий метод toohello hello **программы** класса.  Это двойных код получает hello устройства для перезагрузки устройства и выходы hello hello сообщил свойства.
    
         public static async Task QueryTwinRebootReported()
         {
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/18/2017
             Console.WriteLine(twin.Properties.Reported.ToJson());
         }
         
-7. Добавьте следующий метод в класс **Program**.  Этот код инициирует удаленную перезагрузку на устройстве с помощью прямого метода.
+7. Добавьте следующий метод toohello hello **программы** класса.  Этот код запускает hello перезагрузки на устройстве hello, с помощью прямого метода.
 
         public static async Task StartReboot()
         {
@@ -91,35 +91,35 @@ ms.lasthandoff: 08/18/2017
             Console.WriteLine("Invoked firmware update on device.");
         }
 
-7. Наконец, добавьте следующие строки в метод **Main** :
+7. Наконец, добавьте следующие строки toohello hello **Main** метод:
    
         registryManager = RegistryManager.CreateFromConnectionString(connString);
         StartReboot().Wait();
         QueryTwinRebootReported().Wait();
-        Console.WriteLine("Press ENTER to exit.");
+        Console.WriteLine("Press ENTER tooexit.");
         Console.ReadLine();
         
-8. Выполните сборку решения.
+8. Выполните сборку решения hello.
 
 ## <a name="create-a-simulated-device-app"></a>Создание приложения виртуального устройства
 В этом разделе вы сделаете следующее:
 
-* создадите консольное приложение Node.js, отвечающее на прямой метод, вызываемый из облака;
+* Создайте консольное приложение Node.js, которое отвечает tooa прямой метод, вызываемый hello облака
 * запустите перезагрузку имитации устройства;
-* используете сообщаемые свойства в запросах двойника устройства для определения устройств и времени последней перезагрузки.
+* Используйте hello выводятся свойства tooenable устройствами двойных запросы tooidentify устройства и при их последней перезагрузки
 
-1. Создайте пустую папку с именем **manageddevice**.  В папке **manageddevice** создайте файл package.json, используя следующую команду в командной строке.  Примите значения по умолчанию:
+1. Создайте пустую папку с именем **manageddevice**.  В hello **manageddevice** папки, создайте файл package.json, используя следующую команду в командной строке hello.  Примите все значения по умолчанию hello:
    
     ```
     npm init
     ```
-2. В командной строке в папке **manageddevice** выполните следующую команду, чтобы установить пакет SDK для устройств **azure-iot-device** и пакет **azure-iot-device-mqtt**.
+2. В командной строке в hello **manageddevice** папку, следующая команда tooinstall hello hello **azure iot устройства** пакета SDK для устройства и **azure-iot устройства mqtt**пакета:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. В текстовом редакторе создайте файл **dmpatterns_getstarted_device.js** в папке **manageddevice**.
-4. Добавьте следующие инструкции require в начале файла **dmpatterns_getstarted_device.js**:
+3. В текстовом редакторе создайте новый **dmpatterns_getstarted_device.js** файла в hello **manageddevice** папки.
+4. Добавьте следующие hello «требовать» операторы в начале hello hello **dmpatterns_getstarted_device.js** файла:
    
     ```
     'use strict';
@@ -127,27 +127,27 @@ ms.lasthandoff: 08/18/2017
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. Добавьте переменную **connectionString**, чтобы создать с ее помощью экземпляр **клиента**.  Замените connection string строкой подключения своего устройства.  
+5. Добавить **connectionString** переменной и использовать его toocreate **клиента** экземпляра.  Замените строку соединения hello строки подключения устройства.  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. Добавьте следующую функцию, чтобы реализовать прямой метод на устройстве:
+6. Добавить следующие функции tooimplement hello прямого метода на устройстве hello hello
    
     ```
     var onReboot = function(request, response) {
    
-        // Respond the cloud app for the direct method
+        // Respond hello cloud app for hello direct method
         response.send(200, 'Reboot started', function(err) {
             if (!err) {
                 console.error('An error occured when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.');
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.');
             }
         });
    
-        // Report the reboot before the physical restart
+        // Report hello reboot before hello physical restart
         var date = new Date();
         var patch = {
             iothubDM : {
@@ -174,7 +174,7 @@ ms.lasthandoff: 08/18/2017
         console.log('Rebooting!');
     };
     ```
-7. Добавьте следующий код, чтобы открыть подключение к Центру Интернета вещей и запустить прослушиватель прямого метода:
+7. Добавьте следующую hello кода hello подключения tooopen tooyour-центр IoT и запустить прослушиватель прямой метод hello:
    
     ```
     client.open(function(err) {
@@ -186,23 +186,23 @@ ms.lasthandoff: 08/18/2017
         }
     });
     ```
-8. Сохраните и закройте файл **dmpatterns_getstarted_device.js**.
+8. Сохраните и закройте hello **dmpatterns_getstarted_device.js** файла.
    
 > [!NOTE]
-> Для простоты в этом руководстве не реализуются политики повтора. В рабочем коде следует реализовать политики повторных попыток (например, с экспоненциальной задержкой), как указано в статье [Обработка временного сбоя][lnk-transient-faults] на сайте MSDN.
+> простые действия tookeep, этот учебник не реализует никакую политику повтора. В рабочем коде следует реализовать политики повтора (например экспоненциальную отсрочку), описанным в статье MSDN hello [обработка временных сбоев][lnk-transient-faults].
 
 
-## <a name="run-the-apps"></a>Запуск приложений
-Теперь все готово к запуску приложений.
+## <a name="run-hello-apps"></a>Запускайте приложения hello
+Теперь вы находитесь toorun готовности приложения hello.
 
-1. В командной строке в папке **manageddevice** выполните следующую команду, чтобы начать прослушивание прямого метода перезагрузки.
+1. В командной строке hello в hello **manageddevice** папки, запустите следующие команды toobegin прослушивание прямой метод перезагрузки hello hello.
    
     ```
     node dmpatterns_getstarted_device.js
     ```
-2. Запустите консольное приложение C# **TriggerReboot**. Щелкните правой кнопкой мыши проект **TriggerReboot**, выберите **Отладка**, а затем щелкните **Запустить новый экземпляр**.
+2. Консольное приложение hello выполнения C# **TriggerReboot**. Щелкните правой кнопкой мыши hello **TriggerReboot** проекта, выберите **отладки**и выберите **запустить новый экземпляр**.
 
-3. В консоли отобразится ответ устройства на прямой метод.
+3. Появиться hello устройства toohello прямой метод ответа в консоли hello.
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 08/18/2017
 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [Azure portal]: https://portal.azure.com/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
+[Using resource groups toomanage your Azure resources]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md

@@ -1,6 +1,6 @@
 ---
-title: "Начало работы с Azure Data Lake Store с помощью пакета SDK для Node.js | Документация Майкрософт"
-description: "Сведения об использовании пакета SDK для Node.js при работе с учетными записями и файловой системой Data Lake Store."
+title: "aaaGet работы с помощью пакета Azure SDK для Node.js хранилища Озера данных Azure | Документы Microsoft"
+description: "Узнайте, как toouse toowork Node.js с учетными записями хранилища Озера данных и hello файловой системы."
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/06/2017
 ms.author: nitinme
-ms.openlocfilehash: 8c7a2e6ca061bbfa077592efb73d592906c3d070
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ce36a2e0de4e091a4e85ed784a3381415ef6f9e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-sdk-for-nodejs"></a>Начало работы с Azure Data Lake Store с помощью пакета Azure SDK для Node.js
 > [!div class="op_single_selector"]
@@ -34,31 +34,31 @@ ms.lasthandoff: 07/11/2017
 > 
 
 > [!NOTE]
-> Для передачи и скачивания больших объемов данных (больших файлов, большого количества файлов или и того, и другого) мы рекомендуем использовать [пакет SDK для Python](data-lake-store-get-started-python.md), [пакет SDK для .NET](data-lake-store-get-started-net-sdk.md), [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md) или [Azure PowerShell](data-lake-store-get-started-powershell.md). Они имеют повышенную производительность, так как используют несколько потоков для параллельной передачи данных.
+> Для загрузки и большого объема данных (больших файлов, большое количество файлов или оба), мы рекомендуем использовать hello [Python SDK](data-lake-store-get-started-python.md), hello [.NET SDK](data-lake-store-get-started-net-sdk.md), [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md), или [Azure PowerShell](data-lake-store-get-started-powershell.md). Эти параметры имеют более высокую производительность, как они используют перемещения данных tooparallelize hello несколько потоков.
 > 
 > 
 
-Узнайте, как с помощью пакета Azure SDK для Node.js создать учетную запись Azure Data Lake Store и выполнять базовые операции, такие как создание папок, передача и загрузка файлов данных, удаление учетной записи и т. д. Дополнительные сведения о хранилище озера данных см. в [обзоре Data Lake Store](data-lake-store-overview.md). В настоящее время пакет SDK поддерживает следующее:
+Узнайте, как toouse hello Azure SDK для Node.js toocreate учетную запись хранилища Озера данных Azure и выполнять основные операции, такие как создавать папки, отправка и загрузка файлов данных, удалите учетную запись, и т. д. Дополнительные сведения о хранилище озера данных см. в [обзоре Data Lake Store](data-lake-store-overview.md). В настоящее время поддерживает SDK hello
 
 * **Node.js версии 0.10.0 или выше;**
 * **версию REST API для учетной записи: 2015-10-01-preview;**
 * **версию REST API для файловой системы: 2015-10-01-preview.**
 
 ## <a name="prerequisites"></a>Предварительные требования
-Перед началом работы с этой статьей необходимо иметь следующее:
+Прежде чем приступать к этой статье, необходимо иметь следующие hello:
 
 * **Подписка Azure**. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Создание приложения Azure Active Directory**. Это приложение будет использоваться для проверки подлинности приложения Data Lake Store в Azure AD. Есть разные способы проверки подлинности приложения с помощью Azure AD: **проверка подлинности пользователя** и **проверка подлинности со взаимодействием между службами**. Инструкции и дополнительные сведения об аутентификации см. в разделах [Аутентификация пользователей](data-lake-store-end-user-authenticate-using-active-directory.md) и [Аутентификация между службами](data-lake-store-authenticate-using-active-directory.md).
+* **Создание приложения Azure Active Directory**. Использовать хранилище Озера данных приложение hello tooauthenticate hello Azure AD приложения с Azure AD. Существуют tooauthenticate различные подходы с Azure AD, которые являются **проверки подлинности для конечных пользователей** или **проверки подлинности службы для службы**. Инструкции и Дополнительные сведения о том, как tooauthenticate, в разделе [проверки подлинности для конечных пользователей](data-lake-store-end-user-authenticate-using-active-directory.md) или [проверки подлинности службы для службы](data-lake-store-authenticate-using-active-directory.md).
 
-## <a name="how-to-install"></a>Установка
+## <a name="how-tooinstall"></a>Как tooInstall
 ```bash
 npm install azure-arm-datalake-store
 ```
 
 ## <a name="authenticate-using-azure-active-directory"></a>Проверка подлинности с помощью Azure Active Directory
-Приведенные ниже фрагменты кода — это два разных варианта проверки подлинности в Data Lake Store с помощью Azure AD. Подробные сведения о разных методах проверки подлинности в Data Lake Store см. в [этой статье](data-lake-store-authenticate-using-active-directory.md).
+фрагменты кода Hello ниже показано два отдельных способов проверки подлинности с помощью хранилища Озера данных, с помощью Azure AD. Подробное рассмотрение на различные методы toouse для проверки подлинности в хранилище Озера данных см. в разделе [аутентификация с помощью хранилища Озера данных Azure Active Directory с помощью](data-lake-store-authenticate-using-active-directory.md).
 
-В приведенный ниже фрагмент кода также необходимо добавить такие входные параметры, как доменное имя Azure AD, идентификатор клиента для приложения Azure AD и т. д. Все эти данные можно получить в созданном приложении Azure AD, сведения о котором также содержатся в указанной выше статье.
+в приведенном ниже фрагменте Hello также требует входных данных, таких как Azure AD доменное имя, идентификатор клиента приложения Azure AD и т. д. Эти сведения можно получить из приложения Azure AD, сначала необходимо создать, hello сведения о которых также включаются в ссылку выше.
 
  ```javascript
  var msrestAzure = require('ms-rest-azure');
@@ -68,7 +68,7 @@ npm install azure-arm-datalake-store
  var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
  ```
 
-## <a name="create-the-data-lake-store-clients"></a>Создание клиентов Data Lake Store
+## <a name="create-hello-data-lake-store-clients"></a>Создание клиентов хранилища Озера данных hello
 ```javascript
 var adlsManagement = require("azure-arm-datalake-store");
 var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, "your-subscription-id");
@@ -82,7 +82,7 @@ var resourceGroupName = 'testrg';
 var accountName = 'testadlsacct';
 var location = 'eastus2';
 
-// account object to create
+// account object toocreate
 var accountToCreate = {
   tags: {
     testtag1: 'testvalue1',
@@ -95,14 +95,14 @@ var accountToCreate = {
 client.account.create(resourceGroupName, accountName, accountToCreate, function (err, result, request, response) {
   if (err) {
     console.log(err);
-    /*err has reference to the actual request and response, so you can see what was sent and received on the wire.
-      The structure of err looks like this:
+    /*err has reference toohello actual request and response, so you can see what was sent and received on hello wire.
+      hello structure of err looks like this:
       err: {
         code: 'Error Code',
         message: 'Error Message',
-        body: 'The response body if any',
-        request: reference to a stripped version of http request
-        response: reference to a stripped version of the response
+        body: 'hello response body if any',
+        request: reference tooa stripped version of http request
+        response: reference tooa stripped version of hello response
       }
     */
   } else {

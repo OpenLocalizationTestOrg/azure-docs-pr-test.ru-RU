@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с LiquidFiles | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в LiquidFiles."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и LiquidFiles."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,113 +13,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: b858c6d26b78be4641a46b3453f53d103b512356
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 67eb888090f81e0ceb791ed45d564b98fe1eb6d2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>Руководство по интеграции Azure Active Directory с LiquidFiles
 
-В этом руководстве описано, как интегрировать приложение LiquidFiles с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate LiquidFiles с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением LiquidFiles обеспечивает следующие преимущества:
+Интеграция с Azure AD LiquidFiles предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к LiquidFiles.
-- Вы можете включить автоматический вход пользователей в LiquidFiles (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooLiquidFiles
+- Можно включить на пользователей tooautomatically get вошедшего tooLiquidFiles (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с LiquidFiles, вам потребуется:
+tooconfigure интеграция Azure AD с LiquidFiles требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка LiquidFiles с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление LiquidFiles из коллекции.
+1. Добавление LiquidFiles из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-liquidfiles-from-the-gallery"></a>Добавление LiquidFiles из коллекции
-Чтобы настроить интеграцию LiquidFiles с Azure AD, необходимо добавить LiquidFiles из коллекции в список управляемых приложений SaaS.
+## <a name="adding-liquidfiles-from-hello-gallery"></a>Добавление LiquidFiles из галереи hello
+tooconfigure hello интеграции LiquidFiles в Azure AD, вы должны tooadd LiquidFiles из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить LiquidFiles из коллекции, сделайте следующее.**
+**tooadd LiquidFiles из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **LiquidFiles**.
+4. Введите в поле поиска hello **LiquidFiles**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-liquidfiles-tutorial/tutorial_liquidfiles_search.png)
 
-5. На панели результатов выберите **LiquidFiles**, а затем нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello выберите **LiquidFiles**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-liquidfiles-tutorial/tutorial_liquidfiles_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в LiquidFiles с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, Azure AD необходима информация о том, какой пользователь в LiquidFiles соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в LiquidFiles.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в LiquidFiles является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в LiquidFiles должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в LiquidFiles.
+В LiquidFiles, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в LiquidFiles, вам потребуется выполнить действия в следующих стандартных блоках.
+tooconfigure и теста Azure AD единого входа с LiquidFiles, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя LiquidFiles](#creating-a-liquidfiles-test-user)** требуется для того, чтобы в LiquidFiles существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя LiquidFiles](#creating-a-liquidfiles-test-user)**  -toohave аналог Саймон Britta в LiquidFiles, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении LiquidFiles.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении LiquidFiles.
 
-**Чтобы настроить единый вход Azure AD в LiquidFiles, сделайте следующее.**
+**tooconfigure Azure AD единого входа с LiquidFiles, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **LiquidFiles** щелкните **Единый вход**.
+1. В hello в hello портала Azure **LiquidFiles** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-liquidfiles-tutorial/tutorial_liquidfiles_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения LiquidFiles** выполните следующие действия.
+3. На hello **URL-адреса и домена LiquidFiles** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-liquidfiles-tutorial/tutorial_liquidfiles_url.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<YOUR_SERVER_URL>/saml/init`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<YOUR_SERVER_URL>/saml/init`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<YOUR_SERVER_URL>`
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<YOUR_SERVER_URL>`
 
-    c. b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<YOUR_SERVER_URL>/saml/consume`.
+    c. b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<YOUR_SERVER_URL>/saml/consume`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Укажите вместо них фактические значения URL-адреса для входа, идентификатора и URL-адреса ответа. Чтобы получить эти значения, обратитесь к [группе поддержки клиентов LiquidFiles](https://www.liquidfiles.com/support.html). 
+    > Эти значения приведены в качестве примера. Обновление, эти значения с hello фактический URL-адрес входа, идентификатор и URL-адрес ответа. Обратитесь к [группа поддержки клиента LiquidFiles](https://www.liquidfiles.com/support.html) tooget эти значения. 
  
-4. В разделе **Сертификат подписи SAML** скопируйте значение **Отпечаток**.
+4. На hello **сертификат подписи SAML** раздел, hello копирования **ОТПЕЧАТОК** значение сертификата.
 
     ![Настройка единого входа](./media/active-directory-saas-liquidfiles-tutorial/tutorial_liquidfiles_certificate.png) 
 
@@ -127,88 +127,88 @@ ms.lasthandoff: 07/29/2017
 
     ![Настройка единого входа](./media/active-directory-saas-liquidfiles-tutorial/tutorial_general_400.png)
 
-6. В разделе **Конфигурация LiquidFiles** щелкните **Настроить LiquidFiles**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода и URL-адрес службы единого входа SAML** из раздела **Quick Reference** (Краткий справочник).
+6. На hello **конфигурации LiquidFiles** щелкните **Настройка LiquidFiles** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-liquidfiles-tutorial/tutorial_liquidfiles_configure.png)
  
-7. Войдите на корпоративный сайт LiquidFiles в качестве администратора.
+7. Корпоративный сайт LiquidFiles tooyour входа от имени администратора.
 
-8. В меню **Admin > Configuration** (Администрирование > Конфигурация) щелкните **Single Sign-On** (Единый вход).
+8. Нажмите кнопку **Single Sign-On** в hello **администрирования > конфигурации** меню "hello".
 
-9. На странице **Single Sign-On Configuration** (Конфигурация единого входа) выполните следующие действия.
+9. На hello **настройки единого входа** выполните следующие шаги hello
 
     ![Настройка единого входа](./media/active-directory-saas-liquidfiles-tutorial/tutorial_single_01.png)
 
     а. Для параметра **Single Sign On Method** (Метод единого входа) выберите значение **SAML 2**.
 
-    b. В текстовое поле **IDP Login URL** (URL-адрес входа IdP) вставьте значение **SAML Single Sign-On Service URL** (URL-адрес службы единого входа SAML), скопированное на портале Azure.
+    b. В hello **URL-адрес входа поставщика Удостоверений** текстовое значение hello вставить **SAML единого входа URL-адрес службы**, который вы скопировали из портала Azure.
 
-    c. В текстовое поле **IDP Logout URL** (URL-адрес выхода IdP) вставьте значение **URL-адреса выхода**, скопированное на портале Azure.
+    c. В hello **URL-адрес выхода поставщика Удостоверений** текстовое значение hello вставить **URL-адрес выхода**, который вы скопировали из портала Azure.
 
-    г) В текстовое поле **IDP Cert Fingerprint** (Отпечаток сертификата IdP) вставьте значение **Отпечаток**, которое вы скопировали на портале Azure.
+    d. В hello **отпечаток сертификата поставщика Удостоверений** текстовое поле, вставить hello **ОТПЕЧАТОК** значение, которое было скопировано из портала Azure...
 
-    д. В текстовое поле "Name Identifier Format" (Формат идентификатора имени) введите значение **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**.
+    д. Введите в текстовое поле hello формат идентификатора имени значение hello **urn: oasis: имена: tc: SAML:1.1:nameid-format: emailAddress**.
 
-    f. В текстовое поле "Authn Context" (Контекст аутентификации) введите значение **urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport**.
+    f. В hello контекста Authn текстовое поле, введите значение hello **urn: oasis: имена: tc: SAML:2.0:ac:classes:PasswordProtectedTransport**.
 
-    g. Щелкните **Сохранить**.  
+    ж. Щелкните **Сохранить**.  
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-liquidfiles-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-liquidfiles-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-liquidfiles-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-liquidfiles-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-liquidfiles-test-user"></a>Создание тестового пользователя LiquidFiles
 
-Цель этого раздела — создать пользователя с именем Britta Simon в LiquidFiles. Обратитесь к администратору сервера LiquidFiles, чтобы он добавил для вас пользователя, после чего выполните вход в приложение LiquidFiles.
+Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в LiquidFiles. Работа с вашей tooget администратора сервера LiquidFiles самостоятельно добавить в качестве пользователя перед входом в приложение LiquidFiles tooyour.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к LiquidFiles.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooLiquidFiles доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в LiquidFiles, выполните следующие действия.**
+**tooassign tooLiquidFiles Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **LiquidFiles**.
+2. В списке приложений hello выберите **LiquidFiles**.
 
     ![Настройка единого входа](./media/active-directory-saas-liquidfiles-tutorial/tutorial_liquidfiles_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 07/29/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -224,13 +224,13 @@ ms.lasthandoff: 07/29/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".
 
-Щелкнув элемент "LiquidFiles" на панели доступа, вы автоматически войдете в приложение LiquidFiles.
+При нажатии кнопки LiquidFiles плитки в панели доступа hello приветствия, вы должны получить автоматически вошедшего tooyour LiquidFiles приложения.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

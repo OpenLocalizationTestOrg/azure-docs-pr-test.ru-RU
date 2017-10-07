@@ -16,8 +16,8 @@
 ### [Java](event-hubs-java-get-started-receive-eph.md)
 ### [Apache Storm](event-hubs-storm-getstarted-receive.md)
 ## Регистрация событий
-### [Использование портала Azure для включения регистрации концентраторов событий](event-hubs-capture-enable-through-portal.md)
-### [Использование шаблона Resource Manager для включения регистрации концентраторов событий](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+### [Использовать hello Azure портала tooenable захвата концентраторов событий](event-hubs-capture-enable-through-portal.md)
+### [Использовать tooenable шаблона диспетчера ресурсов, записать концентраторов событий](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 ## [Руководство по программированию](event-hubs-programming-guide.md)
 
 # Практическое руководство
@@ -37,7 +37,7 @@
 ### Регистрация
 #### [Запись концентраторов событий](event-hubs-capture-overview.md)
 #### [Регистрация данных концентраторов событий с помощью Python](event-hubs-capture-python.md)
-### [Подготовка сущностей с помощью PowerShell](event-hubs-manage-with-ps.md) 
+### [С помощью PowerShell tooprovision сущностей](event-hubs-manage-with-ps.md) 
 ### [Потоковая передача данных системы диагностики Azure с помощью концентраторов событий](event-hubs-streaming-azure-diags-data.md)
 ### [Создание и развертывание концентратора событий c помощью шаблона Resource Manager](event-hubs-resource-manager-namespace-event-hub.md)
 

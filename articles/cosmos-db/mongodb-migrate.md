@@ -1,6 +1,6 @@
 ---
-title: "Использование mongoimport и mongorestore с API Azure Cosmos DB для MongoDB | Документация Майкрософт"
-description: "Узнайте, как использовать mongoimport и mongorestore для импорта данных в учетную запись API для MongoDB."
+title: "aaaUse mongoimport и mongorestore с hello Azure Cosmos DB API для MongoDB | Документы Microsoft"
+description: "Узнайте, как toouse mongoimport и mongorestore tooimport данные tooan API для MongoDB учетной записи"
 keywords: mongoimport, mongorestore
 services: cosmos-db
 author: AndrewHoh
@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 1555f13c3ea88b61be0ea240b51218b83f6f9724
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 921354bc7b09a076a73e0cbf5e4aabcc9e83d5a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: импорт данных MongoDB 
 
-Для переноса данных из MongoDB в учетную запись Azure Cosmos DB для использования с API для MongoDB необходимо выполнить следующие действия:
+toomigrate данные из tooan MongoDB Azure Cosmos DB учетной записи для использования с hello API для MongoDB, необходимо выполнить следующее:
 
-* Скачайте файл *mongoimport.exe* или *mongorestore.exe* из [центра скачивания MongoDB](https://www.mongodb.com/download-center).
+* Загрузите либо *mongoimport.exe* или *mongorestore.exe* из hello [центра загрузки MongoDB](https://www.mongodb.com/download-center).
 * Получите [строку подключения API для MongoDB](connect-mongodb-account.md).
 
-Если вы импортируете данные из MongoDB и планируете использовать их с Azure Cosmos DB, то используйте [средство переноса данных](import-data.md) для их импорта.
+При импорте данных из toouse план и MongoDB с Здравствуйте, Azure Cosmos DB, следует использовать hello [средство переноса данных](import-data.md) tooimport данных.
 
-В рамках этого руководства рассматриваются следующие задачи:
+В этом учебнике hello следующие задачи:
 
 > [!div class="checklist"]
 > * Получение строки подключения
@@ -40,22 +40,22 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* Увеличьте пропускную способность. Продолжительность переноса данных зависит от пропускной способности, настроенной для коллекций. Увеличьте пропускную способность для крупных миграций. После переноса уменьшите пропускную способность для экономии расходов. Дополнительные сведения об увеличении пропускной способности на [портале Azure](https://portal.azure.com) см. в статье [Прекращение использования уровней производительности S1, S2 и S3 в DocumentDB](performance-levels.md).
+* Увеличить пропускную способность: hello продолжительность переноса данных зависит от hello объем пропускной способности, настройка для коллекций. Быть убедиться, что пропускная способность hello tooincrease большего миграции данных. После завершения миграции hello уменьшения затрат toosave hello пропускной способности. Дополнительные сведения об увеличении пропускной способности в hello [портал Azure](https://portal.azure.com), в разделе [уровни производительности и ценовые категории в базе данных Azure Cosmos](performance-levels.md).
 
-* Включите SSL. В Azure Cosmos DB строгие требования к безопасности и стандарты. Обязательно включите SSL при взаимодействии с учетной записью. Процедуры, описанные в оставшейся части статьи, включают инструкции по включению SSL для mongoimport и mongorestore.
+* Включите SSL. В Azure Cosmos DB строгие требования к безопасности и стандарты. Быть tooenable убедиться, что SSL при взаимодействии с вашей учетной записи. следующие процедуры Hello в hello оставшейся части статьи hello как tooenable SSL для mongoimport и mongorestore.
 
 ## <a name="find-your-connection-string-information-host-port-username-and-password"></a>Поиск сведений о строке подключения (узел, порт, имя пользователя и пароль)
 
-1. В левой панели на [портале Azure](https://portal.azure.com) щелкните запись **Azure Cosmos DB**.
-2. На панели **Подписки** выберите имя своей учетной записи.
-3. В колонке **Строка подключения** щелкните **Строка подключения**.  
-На правой панели содержатся все сведения, необходимые для успешного подключения к учетной записи.
+1. В hello [портал Azure](https://portal.azure.com)в левой области hello, щелкнув hello **Azure Cosmos DB** входа.
+2. В hello **подписки** области, выберите имя учетной записи.
+3. В hello **строка подключения** колонка, щелкните **строка подключения**.  
+Hello правой панели содержится вся информация hello, необходимость toosuccessfully подключения tooyour учетной записи.
 
     ![Колонка "Строка подключения"](./media/mongodb-migrate/ConnectionStringBlade.png)
 
-## <a name="import-data-to-the-api-for-mongodb-by-using-mongoimport"></a>Импорт данных в API для MongoDB с помощью mongoimport
+## <a name="import-data-toohello-api-for-mongodb-by-using-mongoimport"></a>Импорт данных toohello API для MongoDB с помощью mongoimport
 
-Чтобы импортировать данные в учетную запись Azure Cosmos DB, используйте следующий шаблон. Укажите *узел*, *имя пользователя* и *пароль* своей учетной записи.  
+tooyour tooimport данных учетной записи Azure Cosmos DB, используйте следующий шаблон hello. Заполните *узла*, *username*, и *пароль* со значениями hello tooyour определенной учетной записи.  
 
 Шаблон:
 
@@ -65,9 +65,9 @@ ms.lasthandoff: 08/03/2017
 
     mongoimport.exe --host anhoh-host.documents.azure.com:10255 -u anhoh-host -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file C:\Users\anhoh\Desktop\*.json
 
-## <a name="import-data-to-the-api-for-mongodb-by-using-mongorestore"></a>Импорт данных в API для MongoDB с помощью mongorestore
+## <a name="import-data-toohello-api-for-mongodb-by-using-mongorestore"></a>Импорт данных toohello API для MongoDB с помощью mongorestore
 
-Чтобы восстановить данные в API для учетной записи MongoDB, используйте следующий шаблон для выполнения импорта. Укажите *узел*, *имя пользователя* и *пароль* своей учетной записи.
+API tooyour toorestore данных MongoDB учетной записи, с помощью hello после импорта hello tooexecute шаблона. Заполните *узла*, *username*, и *пароль* со значениями hello tooyour определенной учетной записи.
 
 Шаблон:
 
@@ -81,15 +81,15 @@ ms.lasthandoff: 08/03/2017
 
 1. Заранее создайте и масштабируйте свои коллекции:
         
-    * По умолчанию Azure Cosmos DB подготавливает новую коллекцию MongoDB, обеспечивающую пропускную способность 1000 единиц запроса в секунду (ЕЗ/с). Прежде чем начать перенос с помощью mongoimport, mongorestore или mongomirror, создайте все свои коллекции с [портала Azure](https://portal.azure.com) или из драйверов и инструментов MongoDB. Если размер коллекции превышает 10 ГБ, то создайте [сегментированную или секционированную коллекцию](partition-data.md) с соответствующим ключом сегмента.
+    * По умолчанию Azure Cosmos DB подготавливает новую коллекцию MongoDB, обеспечивающую пропускную способность 1000 единиц запроса в секунду (ЕЗ/с). Перед началом миграции hello с помощью mongoimport, mongorestore или mongomirror предварительно создать все коллекции из hello [портал Azure](https://portal.azure.com) или из средства и драйверы MongoDB. Если в коллекции больше, чем 10 ГБ, убедитесь, что toocreate [сегментированных и секционированные коллекции](partition-data.md) с ключом соответствующий сегмент.
 
-    * На [портале Azure](https://portal.azure.com) увеличьте показатели пропускной способности своих коллекций (с 1000 ЕЗ/с для односекционной коллекции и 2500 ЕЗ/с для сегментированной коллекции) только на время выполнения переноса. Более высокая пропускная способность позволяет избежать регулирования и выполнить перенос быстрее. Почасовая модель выставления счетов, применяемая в Azure Cosmos DB, позволяет снизить пропускную способность сразу после переноса для сокращения затрат.
+    * Из hello [портал Azure](https://portal.azure.com), увеличить пропускную способность вашей коллекции из 1000 RUs для коллекции одну секцию и 2500 RUs для сегментированной коллекции только для миграции hello. С hello более высокую пропускную способность можно избежать регулирования и перенести за меньшее время. С ежечасное выставление счетов в базе данных Azure Cosmos, можно уменьшить пропускную способность hello сразу после hello миграции toosave затраты.
 
-2. Вычислите приблизительную стоимость ЕЗ при записи одного документа:
+2. Вычислите hello приблизительное RU платы для записи одного документа.
 
-    а. Подключитесь к базе данных MongoDB в Azure Cosmos DB из оболочки MongoDB. Инструкции доступны в статье [Подключение приложения MongoDB к Azure Cosmos DB](connect-mongodb-account.md).
+    а. Подключите базы данных Azure Cosmos DB MongoDB tooyour hello MongoDB оболочки. Инструкции в [подключения tooAzure приложения MongoDB Cosmos DB](connect-mongodb-account.md).
     
-    b. Выполните пример команды insert, используя один из примеров документов из оболочки MongoDB:
+    b. Выполните пример команды insert с помощью одного из документы образец hello MongoDB оболочки:
     
         ```db.coll.insert({ "playerId": "a067ff", "hashedid": "bb0091", "countryCode": "hk" })```
         
@@ -106,27 +106,27 @@ ms.lasthandoff: 08/03/2017
         }
         ```
         
-    г) Запишите значение RequestCharge (стоимость запроса).
+    d. Запишите hello запрос бесплатно.
     
-3. Определите задержку между вашим компьютером и облачной службой Azure Cosmos DB:
+3. Определение задержки hello из вашей машины toohello Azure Cosmos DB облачной службы:
     
-    а. Включите ведение подробного журнала из оболочки MongoDB с помощью команды ```setVerboseShell(true)```.
+    а. Включите подробное ведение журнала из hello MongoDB оболочки с помощью следующей команды:```setVerboseShell(true)```
     
-    b. Выполните простой запрос к базе данных: ```db.coll.find().limit(1)```. В результате будет получен ответ, аналогичный этому:
+    b. Выполнить простой запрос базы данных hello: ```db.coll.find().limit(1)```. В результате будет получен ответ, аналогичный этому:
 
         ```
         Fetched 1 record(s) in 100(ms)
         ```
         
-4. Перед выполнением переноса удалите вставленный документ, чтобы точно не было повторяющихся документов. Для удаления документов можно использовать команду ```db.coll.remove({})```.
+4. Удаление документа hello вставлены до миграции tooensure hello, что нет повторяющихся документов. Для удаления документов можно использовать команду ```db.coll.remove({})```.
 
-5. Вычислите приблизительные значения *batchSize* и *numInsertionWorkers*:
+5. Вычислить приблизительное hello *batchSize* и *numInsertionWorkers* значения:
 
-    * Для расчета *batchSize* поделите общее число подготовленных ЕЗ на число ЕЗ, использованных для записи одного документа (на шаге 3).
+    * Для *batchSize*, деление hello всего подготовить RUs с RUs hello, взятые из записи в один документ на шаге 3.
     
-    * Если полученное значение *batchSize* <= 24, то используйте его в качестве значения *batchSize*.
+    * Если учесть hello *batchSize* < = 24, использовать это число как ваш *batchSize* значение.
     
-    * Если полученное значение *batchSize* > 24, то задайте значение *batchSize* равное 24.
+    * Если учесть hello *batchSize* > 24, набор hello *batchSize* too24 значение.
     
     * Для расчета *numInsertionWorkers* используйте следующую формулу: *numInsertionWorkers = (подготовленная пропускная способность * задержка в секундах) / (размер пакета * число ЕЗ, использованных для одной операции записи)*.
         
@@ -140,7 +140,7 @@ ms.lasthandoff: 08/03/2017
     
     *numInsertionWorkers = (10000 ЕЗ x 0,1 с) / (24 x 10 ЕЗ) = 4,1666*
 
-6. Выполните окончательную команду переноса:
+6. Выполните команду hello окончательной миграции:
 
    ```
    mongoimport.exe --host anhoh-mongodb.documents.azure.com:10255 -u anhoh-mongodb -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
@@ -148,7 +148,7 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Вы можете перейти к следующему руководству, из которого вы узнаете, как запрашивать данные MongoDB с помощью Azure Cosmos DB. 
+Можно продолжить toohello следующее руководство и узнайте, как tooquery данных MongoDB с использованием Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[Как выполнять запросы к данным в базе данных Azure Cosmos DB с помощью API для MongoDB](../cosmos-db/tutorial-query-mongodb.md)
+>[Как tooquery данных MongoDB?](../cosmos-db/tutorial-query-mongodb.md)

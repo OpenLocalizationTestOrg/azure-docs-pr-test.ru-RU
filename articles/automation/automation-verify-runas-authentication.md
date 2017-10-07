@@ -1,6 +1,6 @@
 ---
-title: "Проверка конфигурации учетной записи службы автоматизации Azure | Документация Майкрософт"
-description: "В этой статье описывается проверка правильной настройки конфигурации учетной записи службы автоматизации."
+title: "Настройка учетной записи службы автоматизации Azure aaaValidate | Документы Microsoft"
+description: "Этой статье описывается, как tooconfirm hello конфигурации учетной записи автоматизации настроена правильно."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 804e05f596e1d6d5f650e4c94a18eff6b7c3ba4e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3a990dcc6661cf67c4b62592ce03d55a3791053a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Тестирование проверки подлинности учетной записи запуска от имени службы автоматизации Azure
-После успешного создания учетной записи службы автоматизации можно выполнить простой тест, чтобы убедиться, что вы сможете успешно пройти проверку подлинности в Azure Resource Manager или в классическом развертывании Azure с помощью созданной или обновленной учетной записи запуска от имени службы автоматизации.    
+После успешного создания учетной записи автоматизации можно выполнять tooconfirm простой тест, можно toosuccessfully проверку подлинности в Azure Resource Manager или развертывания Azure классические вновь созданных или обновленных автоматизации Запуск от имени учетной записи.    
 
 ## <a name="automation-run-as-authentication"></a>Проверка подлинности учетной записи запуска от имени службы автоматизации
-Используйте пример кода ниже для [создания Runbook PowerShell](automation-creating-importing-runbook.md), чтобы выполнить проверку подлинности с помощью учетной записи запуска от имени. Используйте этот код и в пользовательских модулях Runbook, чтобы выполнить проверку подлинности ресурсов в диспетчере ресурсов и управлять ими с помощью учетной записи службы автоматизации.   
+Используйте hello в образце кода ниже слишком[создать PowerShell runbook](automation-creating-importing-runbook.md) tooverify проверки подлинности с помощью hello запустите от имени учетной записи, так и в вашей настраиваемой документации по задачам tooauthenticate и управление ресурсами диспетчера ресурсов с помощью учетной записи автоматизации.   
 
     $connectionName = "AzureRunAsConnection"
     try
     {
-        # Get the connection "AzureRunAsConnection "
+        # Get hello connection "AzureRunAsConnection "
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
-        "Logging in to Azure..."
+        "Logging in tooAzure..."
         Add-AzureRmAccount `
            -ServicePrincipal `
            -TenantId $servicePrincipalConnection.TenantId `
@@ -64,50 +64,50 @@ ms.lasthandoff: 08/18/2017
        Write-Output ("")
     } 
 
-Обратите внимание, что командлет **Add-AzureRmAccount**, применяемый для проверки подлинности в модуле Runbook, использует набор параметров *ServicePrincipalCertificate* .  Он выполняет проверку подлинности с помощью сертификата субъекта-службы, а не учетных данных.  
+Обратите внимание, hello командлет, используемый для проверки подлинности в модуле runbook hello - **добавить AzureRmAccount**, использует hello *ServicePrincipalCertificate* набор параметров.  Он выполняет проверку подлинности с помощью сертификата субъекта-службы, а не учетных данных.  
 
-При [запуске модуля Runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) для проверки подлинности учетной записи запуска от имени будет создано [задание Runbook](automation-runbook-execution.md), откроется колонка "Задание", а состояние задания будет отображаться на плитке **Сводка по заданию**. Сначала задание получает состояние *В очереди* , указывающее на то, что задание ожидает, пока рабочая роль Runbook в облаке станет доступной. Как только рабочая роль затребует задание, оно получит состояние *Запущено*, а с началом фактического выполнения модуля Runbook — состояние *Выполняется*.  После выполнения задания Runbook должно отобразиться состояние **Выполнено**.
+При вы [запуска модуля runbook hello](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) toovalidate учетной записи запуска от имени [задание runbook](automation-runbook-execution.md) — создан, отображается колонке hello задания, а состояние задания hello в hello **Сводка заданий**плитки. состояние задания Hello будет запускаться как *в очереди* означает, что он ожидает runbook worker в доступных toobecome облака hello. Он будет двигаться слишком*запуск* когда исполнитель задания hello, а затем *под управлением* при hello runbook фактически начинает выполнение.  После завершения задания runbook hello, мы должны увидеть состояние **завершено**.
 
-Чтобы просмотреть подробные результаты задания Runbook, щелкните плитку **Выходные данные** .  В колонке **Выходные данные** должна быть информация о том, что модуль прошел проверку подлинности и вернул список всех ресурсов во всех группах ресурсов подписки.  
+toosee Здравствуйте подробные результаты hello runbook, щелкните hello **вывода** плитки.  На hello **вывода** колонку, вы увидите ее успешной проверки подлинности и возвращает список всех ресурсов во всех группах ресурсов в вашей подписке.  
 
-Не забудьте удалить блок кода, начиная с комментария `#Get all ARM resources from all resource groups`, при его повторном использовании для модулей Runbook.
+Необходимо помнить tooremove hello блок кода, начиная с комментария hello `#Get all ARM resources from all resource groups` при повторном использовании кода hello для Runbook.
 
 ## <a name="classic-run-as-authentication"></a>Проверка подлинности классической учетной записи запуска от имени
-Используйте пример кода ниже для [создания Runbook PowerShell](automation-creating-importing-runbook.md), чтобы выполнить проверку подлинности с помощью классической учетной записи запуска от имени. Используйте этот код и в пользовательских модулях Runbook, чтобы выполнить проверку подлинности ресурсов и управлять ими в классической модели развертывания.  
+Используйте hello в образце кода ниже слишком[создать PowerShell runbook](automation-creating-importing-runbook.md) tooverify проверки подлинности с помощью классической "hello" запустите от имени учетной записи, так и в вашей настраиваемой документации по задачам tooauthenticate ресурсы и управлять ими в hello классической модели развертывания.  
 
     $ConnectionAssetName = "AzureClassicRunAsConnection"
-    # Get the connection
+    # Get hello connection
     $connection = Get-AutomationConnection -Name $connectionAssetName        
 
-    # Authenticate to Azure with certificate
+    # Authenticate tooAzure with certificate
     Write-Verbose "Get connection asset: $ConnectionAssetName" -Verbose
     $Conn = Get-AutomationConnection -Name $ConnectionAssetName
     if ($Conn -eq $null)
     {
-       throw "Could not retrieve connection asset: $ConnectionAssetName. Assure that this asset exists in the Automation account."
+       throw "Could not retrieve connection asset: $ConnectionAssetName. Assure that this asset exists in hello Automation account."
     }
 
     $CertificateAssetName = $Conn.CertificateAssetName
-    Write-Verbose "Getting the certificate: $CertificateAssetName" -Verbose
+    Write-Verbose "Getting hello certificate: $CertificateAssetName" -Verbose
     $AzureCert = Get-AutomationCertificate -Name $CertificateAssetName
     if ($AzureCert -eq $null)
     {
-       throw "Could not retrieve certificate asset: $CertificateAssetName. Assure that this asset exists in the Automation account."
+       throw "Could not retrieve certificate asset: $CertificateAssetName. Assure that this asset exists in hello Automation account."
     }
 
-    Write-Verbose "Authenticating to Azure with certificate." -Verbose
+    Write-Verbose "Authenticating tooAzure with certificate." -Verbose
     Set-AzureSubscription -SubscriptionName $Conn.SubscriptionName -SubscriptionId $Conn.SubscriptionID -Certificate $AzureCert
     Select-AzureSubscription -SubscriptionId $Conn.SubscriptionID
     
-    #Get all VMs in the subscription and return list with name of each
+    #Get all VMs in hello subscription and return list with name of each
     Get-AzureVM | ft Name
 
-При [запуске модуля Runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) для проверки подлинности учетной записи запуска от имени будет создано [задание Runbook](automation-runbook-execution.md), откроется колонка "Задание", а состояние задания будет отображаться на плитке **Сводка по заданию**. Сначала задание получает состояние *В очереди* , указывающее на то, что задание ожидает, пока рабочая роль Runbook в облаке станет доступной. Как только рабочая роль затребует задание, оно получит состояние *Запущено*, а с началом фактического выполнения модуля Runbook — состояние *Выполняется*.  После выполнения задания Runbook должно отобразиться состояние **Выполнено**.
+При вы [запуска модуля runbook hello](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) toovalidate учетной записи запуска от имени [задание runbook](automation-runbook-execution.md) — создан, отображается колонке hello задания, а состояние задания hello в hello **Сводка заданий**плитки. состояние задания Hello будет запускаться как *в очереди* означает, что он ожидает runbook worker в доступных toobecome облака hello. Он будет двигаться слишком*запуск* когда исполнитель задания hello, а затем *под управлением* при hello runbook фактически начинает выполнение.  После завершения задания runbook hello, мы должны увидеть состояние **завершено**.
 
-Чтобы просмотреть подробные результаты задания Runbook, щелкните плитку **Выходные данные** .  В колонке **Выходные данные** должна быть информация о том, что модуль прошел проверку подлинности и вернул список всех виртуальных машин по имени, развернутых в подписке.  
+toosee Здравствуйте подробные результаты hello runbook, щелкните hello **вывода** плитки.  На hello **вывода** колонку, вы увидите ее успешной проверки подлинности и возвращает список всех виртуальных машин Azure, VMName, развернутых в подписке.  
 
-Не забудьте удалить командлет **Get-AzureVM** при повторном использовании кода для модулей Runbook.
+Необходимо помнить командлет hello tooremove **Get-AzureVM** при повторном использовании кода hello для Runbook.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Сведения о том, как начать работу с модулями Runbook, см. в статье [Мой первый модуль Runbook PowerShell](automation-first-runbook-textual-powershell.md).
-* Дополнительные сведения о графической разработке в службе автоматизации Azure см. в [этой статье](automation-graphical-authoring-intro.md).
+* tooget к работе с PowerShell модули Runbook в разделе [Мой первый runbook PowerShell](automation-first-runbook-textual-powershell.md).
+* toolearn Дополнительные сведения о графических разработки. в разделе [графический разработки в Azure Automation](automation-graphical-authoring-intro.md).

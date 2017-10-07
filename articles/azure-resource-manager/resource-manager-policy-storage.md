@@ -1,6 +1,6 @@
 ---
-title: "Политики ресурсов Azure для учетных записей хранения | Документация Майкрософт"
-description: "Описывает политики Azure Resource Manager для управления развертыванием учетных записей хранения."
+title: "политики aaaAzure ресурсов для учетных записей хранения | Документы Microsoft"
+description: "Описание политик диспетчера ресурсов Azure для управления развертыванием hello учетных записей хранения."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6612ee61f5c50e743241b92030660cea7ae7094d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d37fc4bcf7cdec71b0e14f6231fc138bfb6a7893
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="apply-resource-policies-to-storage-accounts"></a>Применение политик ресурсов к учетным записям хранения
-В этом разделе показано несколько [политик ресурсов](resource-manager-policy.md), которые можно применить к учетным записям хранения Azure. Эти политики обеспечивают согласованность данных в учетных записях хранения, развернутых в организации. 
+# <a name="apply-resource-policies-toostorage-accounts"></a>Применение учетных записей ресурсов политики toostorage
+В этом разделе показано несколько [политики ресурсов](resource-manager-policy.md) можно применить tooAzure учетные записи хранения. Эти политики обеспечения согласованности для учетных записей хранения hello развернута в вашей организации. 
 
 ## <a name="define-permitted-storage-account-types"></a>Определение разрешенных типов учетных записей хранения
 
-Приведенная ниже политика ограничивает [типы развертываемых учетных записей хранения](../storage/common/storage-redundancy.md).
+Hello следующая политика ограничивает которой [типы учетных записей хранения](../storage/common/storage-redundancy.md) можно развернуть:
 
 ```json
 {
@@ -52,11 +52,11 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-Аналогичное правило политики с параметром для принятия допустимых номеров SKU доступно в виде встроенного определения политики. Встроенная политика имеет идентификатор ресурса `/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1`. 
+Аналогичные правила политики с параметром для приема hello допускается SKU доступна как определение встроенной политики. встроенная политика Hello имеет идентификатор ресурса hello `/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1`. 
 
 ## <a name="define-permitted-access-tier"></a>Определение разрешенного уровня доступа
 
-Следующая политика задает тип [уровня доступа](../storage/blobs/storage-blob-storage-tiers.md), который можно указать для учетных записей хранения.
+Hello следующую политику указывает тип hello [уровень доступа к](../storage/blobs/storage-blob-storage-tiers.md) , могут быть указаны для учетных записей хранения:
 
 ```json
 {
@@ -86,7 +86,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="ensure-encryption-is-enabled"></a>Включение шифрования
 
-Следующая политика указывает, что для всех учетных записей хранения должно быть включено [шифрование службы хранилища](../storage/common/storage-service-encryption.md).
+Hello следующая политика требует всех tooenable учетных записей хранилища [шифрование службы хранилища](../storage/common/storage-service-encryption.md):
 
 ```json
 {
@@ -110,9 +110,9 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-Это правило политики также доступно в виде встроенного определения политики с идентификатором ресурса `/providers/Microsoft.Authorization/policyDefinitions/7c5a74bf-ae94-4a74-8fcf-644d1e0e6e6f`.
+Это правило политики также доступна как определение встроенной политики с Идентификатором ресурса hello `/providers/Microsoft.Authorization/policyDefinitions/7c5a74bf-ae94-4a74-8fcf-644d1e0e6e6f`.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* После определения правила политики (как показано в приведенных выше примерах) необходимо создать определение политики и назначить ей область. Областью может быть подписка, группа ресурсов или ресурс. Сведения о назначении политик с помощью портала см. в статье [Назначение политик ресурсов и управление ими с помощью портала Azure](resource-manager-policy-portal.md). Сведения о назначении политик с помощью REST API, PowerShell или Azure CLI см. в статье [Назначение политик ресурсов и управление ими](resource-manager-policy-create-assign.md). 
-* Руководство по использованию Resource Manager для эффективного управления подписками в организациях см [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Шаблон Azure для организаций. Рекомендуемая система управления подпиской).
+* После определения правила политики (как показано в предыдущих примерах hello), требуется определение политики toocreate hello и назначьте его tooa области. Hello область может быть подписки, группы ресурсов или ресурсов. политики tooassign через портал hello см. [tooassign портала используйте Azure и управление политиками ресурсов](resource-manager-policy-portal.md). политики tooassign через API-Интерфейс REST, PowerShell или Azure CLI см. [назначение политики и управлять ими через сценарий](resource-manager-policy-create-assign.md). 
+* Для получения рекомендаций по как предприятия могут использовать диспетчер ресурсов tooeffectively управление подписками см. в разделе [корпоративные функции формирования шаблонов - управление конкретные подписки](resource-manager-subscription-governance.md).
 

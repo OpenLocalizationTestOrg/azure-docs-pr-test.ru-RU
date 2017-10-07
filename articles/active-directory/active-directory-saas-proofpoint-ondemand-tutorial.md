@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Proofpoint on Demand | Документация Майкрософт"
-description: "Сведения о настройке единого входа Azure Active Directory в Proofpoint on Demand."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Proofpoint по требованию."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,113 +13,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: b4c8d8c187fc865a905016f04a41843894249f5e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0f9472ddc01f2c18ffc9e8d2b59a17b3b595515e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>Руководство. Интеграция Azure Active Directory с Proofpoint on Demand
 
-В этом руководстве описано, как интегрировать Proofpoint on Demand с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Proofpoint по запросу в Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением Proofpoint on Demand обеспечивает следующие преимущества:
+Интеграция Proofpoint по запросу с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Proofpoint on Demand.
-- Вы можете включить автоматический вход пользователей в Proofpoint on Demand (единый вход) с использованием учетных записей Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего tooProofpoint доступ по требованию
+- Можно включить на пользователей tooautomatically get вошедшего tooProofpoint по требованию (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Proofpoint on Demand, вам потребуется:
+Интеграция Azure AD tooconfigure Proofpoint по требованию необходимо hello следующих элементов:
 
 - подписка Azure AD;
 - подписка с поддержкой единого входа Proofpoint on Demand.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Proofpoint on Demand из коллекции
+1. Добавление Proofpoint по запросу из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-proofpoint-on-demand-from-the-gallery"></a>Добавление Proofpoint on Demand из коллекции
-Чтобы настроить интеграцию приложения Proofpoint on Demand с Azure AD, необходимо добавить это приложение из коллекции в список управляемых приложений SaaS.
+## <a name="adding-proofpoint-on-demand-from-hello-gallery"></a>Добавление Proofpoint по запросу из галереи hello
+tooconfigure hello интеграции Proofpoint по запросу в Azure AD, вы должны tooadd Proofpoint по запросу из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Proofpoint on Demand из коллекции, выполните следующие действия:**
+**tooadd Proofpoint по запросу из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Proofpoint on Demand**.
+4. Введите в поле поиска hello **Proofpoint по требованию**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_search.png)
 
-5. В области результатов выберите **Proofpoint on Demand** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **Proofpoint по требованию**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 Этот раздел описывает, как настроить и проверить единый вход Azure AD в Proofpoint on Demand с использованием тестового пользователя Britta Simon.
 
-Чтобы настроить единый вход в Azure AD, необходимо знать, какой пользователь в Proofpoint on Demand соответствует пользователю в Azure AD. Иными словами, нужно установить связь между пользователем Azure AD и соответствующим пользователем в Proofpoint on Demand.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Proofpoint по требованию является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Proofpoint по запросу должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Proofpoint on Demand.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в Proofpoint по требованию.
 
-Чтобы настроить и проверить единый вход Azure AD в Proofpoint on Demand, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и Azure AD тестирования единого входа Proofpoint по требованию необходимо hello toocomplete следующие компоненты:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Proofpoint on Demand](#creating-a-proofpoint-on-demand-test-user)** требуется для создания пользователя Britta Simon в Proofpoint on Demand, связанного с соответствующим представлением в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя запросу Proofpoint](#creating-a-proofpoint-on-demand-test-user)**  -toohave аналог Саймон Britta в Proofpoint по запросу, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-Этот раздел описывает, как включить единый вход Azure AD на портале Azure и настроить его в приложении Proofpoint on Demand.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в вашей Proofpoint по запросу приложения.
 
-**Чтобы настроить единый вход Azure AD в Proofpoint on Demand, выполните следующие действия:**
+**tooconfigure Azure AD единого входа с Proofpoint по запросу, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Proofpoint on Demand** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Proofpoint по требованию** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
   
     ![Настройка единого входа](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Proofpoint on Demand** выполните следующие действия:
+3. На hello **Proofpoint на URL-адреса и домена запросу** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_url.png)
 
-    a. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<hostname>.pphosted.com/ppssamlsp_hostname`
+    a.In hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<hostname>.pphosted.com/ppssamlsp_hostname`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<hostname>.pphosted.com/ppssamlsp`
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<hostname>.pphosted.com/ppssamlsp`
 
-    c.  В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`.
+    c.  В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
      
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените их на фактические значения идентификатора, URL-адреса ответа и URL-адреса входа. Чтобы получить эти значения, обратитесь в [службу поддержки клиентов Proofpoint on Demand](https://www.proofpoint.com/us/support-services). 
+    > Эти значения не являются реальными hello. Обновить значения hello фактический идентификатор, URL-адрес ответа и URL-адрес входа. Обратитесь к [Proofpoint в службу поддержки по запросу клиента](https://www.proofpoint.com/us/support-services) tooget эти значения. 
 
-4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_certificate.png) 
 
@@ -127,67 +127,67 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_general_400.png)
     
-6. В разделе **Конфигурация Proofpoint on Demand** щелкните **Настроить Proofpoint on Demand**, чтобы открыть окно **Настройка единого входа**. Скопируйте **идентификатор сущности SAML и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **Proofpoint конфигурации запросу** щелкните **Настройка Proofpoint по требованию** tooopen **Настройка входа** окна. Копировать hello **идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_configure.png) 
 
-7. Чтобы настроить единый вход на стороне **Proofpoint on Demand**, нужно отправить скачанный **сертификат (Base64)**, **идентификатор сущности SAML** и **URL-адрес службы единого входа SAML** [группе поддержки клиентов Proofpoint on Demand](https://www.proofpoint.com/us/support-services).
+7. tooconfigure единого входа на **Proofpoint по требованию** стороны, необходимо загрузить hello toosend **Certificate(Base64)**,**идентификатор сущности SAML**, и **SAML Single Sign On URL-адрес службы** слишком[Proofpoint в службу поддержки по запросу клиента](https://www.proofpoint.com/us/support-services).
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_01.png) 
 
-2. Эти значения приведены в качестве примера. Замените эти значения фактическими значениями.
+2. Эти значения не являются реальными hello. Обновить эти значения с фактическое hello
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_04.png) 
 
-    А. В текстовом поле **Name** (Имя) введите **Britta Simon**.
+    а. В hello **имя** введите **Britta Simon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи Britta Simon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из Саймон Britta.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-proofpoint-on-demand-test-user"></a>Создание тестового пользователя Proofpoint on Demand
 
-В этом разделе описано, как создать пользователя Britta Simon в Proofpoint on Demand. Обратитесь в [службу поддержки клиентов Proofpoint on Demand](https://www.proofpoint.com/us/support-services), чтобы добавить пользователей на платформу Proofpoint on Demand.
+В этом разделе описано, как создать пользователя Britta Simon в Proofpoint on Demand. Работать с [Proofpoint в службу поддержки по запросу клиента](https://www.proofpoint.com/us/support-services) tooadd пользователей в hello Proofpoint на платформе запросу.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив ему доступ к Proofpoint on Demand.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooProofpoint по требованию.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в Proofpoint on Demand, выполните следующие действия:**
+**tooassign tooProofpoint Britta Simon по запросу, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Proofpoint on Demand**.
+2. В списке приложений hello выберите **Proofpoint по требованию**.
 
     ![Настройка единого входа](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -195,7 +195,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -203,14 +203,14 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув плитку **Proofpoint on Demand** на панели доступа, вы автоматически войдете в приложение Proofpoint on Demand.
-Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).  
+При нажатии кнопки hello **Proofpoint по требованию** плитки на панели доступа hello, пользователь должен быть автоматически вход tooyour Proofpoint по запросу приложения.
+Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).  
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

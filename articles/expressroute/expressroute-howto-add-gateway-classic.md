@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
-ms.openlocfilehash: 195a38fa45f1c514a93980e777fb0d8238aa3f3f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6f37d4d9cba546b5416ab99040f5ef6dae273380
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Настройка шлюза виртуальной сети для ExpressRoute с помощью PowerShell (классическая модель)
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Эта статья содержит инструкции по добавлению, изменению размера и удалению шлюза виртуальной сети для существующей виртуальной сети. Приведенные действия по настройке предназначены для виртуальных сетей, созданных с помощью **классической модели развертывания** , которые будут использоваться в конфигурации ExpressRoute. 
+Эта статья посвящена через hello tooadd действия, изменять размер и удалить шлюз виртуальной сети (VNet) для существующей виртуальной сети. Hello этапах данной конфигурации, специально предназначены для сети, которые были созданы с помощью hello **классической модели развертывания** и, которые будут использоваться в конфигурации ExpressRoute. 
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -38,10 +38,10 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-beginning"></a>Подготовка
-Убедитесь, что вы установили командлеты Azure PowerShell, необходимые для этой конфигурации (1.0.2 или более поздней версии). Если вы еще не установили эти командлеты, необходимо сделать это перед началом настройки. Дополнительную информацию об установке Azure PowerShell см. в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview).
+Убедитесь, что вы установили hello командлетов Azure PowerShell, необходимые для этой конфигурации (версии 1.0.2 или более поздней версии). Если вы не установили hello командлеты, вам потребуется toodo так перед началом действия по настройке hello. Дополнительные сведения об установке Azure PowerShell см. в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
 
 [!INCLUDE [expressroute-gateway-classic-ps](../../includes/expressroute-gateway-classic-ps-include.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-После создания шлюза виртуальной сети вы можете связать виртуальную сеть с каналом ExpressRoute. Ознакомьтесь со статьей [Связывание виртуальной сети с каналом ExpressRoute](expressroute-howto-linkvnet-classic.md).
+После создания шлюза виртуальной сети hello, можно связать вашей виртуальной сети tooan канал ExpressRoute. В разделе [связывание виртуальной сети tooan канал ExpressRoute](expressroute-howto-linkvnet-classic.md).
 

@@ -1,12 +1,12 @@
 ---
-title: "Подключение Raspberry Pi (Node.js) к Центру Интернета вещей для передачи данных в облако | Документация Майкрософт"
-description: "Узнайте, как подключить компьютер Raspberry Pi к Центру Интернета вещей Azure и передавать данные с этого компьютера в облако Azure."
+title: "toocloud aaaRaspberry Pi (Node.js) - подключения Pi Raspberry tooAzure центр IoT | Документы Microsoft"
+description: "Узнайте, как toosetup и подключите Raspberry Pi tooAzure центр IoT для Raspberry Pi toosend данные toohello Azure облачной платформы в этом учебнике."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timlt
 tags: 
-keywords: "Raspberry Pi и Центр Интернета вещей Azure, Raspberry Pi и Центр Интернета вещей, отправка данных с Raspberry Pi в облако, подключение Raspberry Pi к облаку"
+keywords: "Azure iot малиновая pi малиновая pi iot hub, малиновая pi отправки данных toocloud, малиновая pi toocloud"
 ms.assetid: b0e14bfa-8e64-440a-a6ec-e507ca0f76ba
 ms.service: iot-hub
 ms.devlang: node
@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 5/27/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f48c4bd27b1df1d02090ed51172f943e50c76c3e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 57a15ab3984021a9c18ff0aa1316a4d4c6ebdec1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Подключение Raspberry Pi к Центру Интернета вещей Azure (Node.js)
+# <a name="connect-raspberry-pi-tooazure-iot-hub-nodejs"></a>Подключение tooAzure Raspberry Pi центр IoT (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-В этом учебнике описано, как начать работу с устройством Raspberry Pi под управлением Raspbian. Также вы узнаете, как можно легко подключать устройства к облаку с помощью [Центра Интернета вещей Azure](iot-hub-what-is-iot-hub.md). Примеры для Windows 10 IoT Базовая представлены в [Центре разработки для Windows](http://www.windowsondevices.com/).
+В этом учебнике сначала hello основы работы с Raspberry Pi, на котором выполняется Raspbian обучения. Затем вы узнаете, как tooseamlessly подключаться toohello облачных устройств с помощью [центр IoT Azure](iot-hub-what-is-iot-hub.md). Примеры Windows 10 IoT базовая go toohello [центра разработчиков Windows](http://www.windowsondevices.com/).
 
 Нет начального набора? Используйте [онлайн-симулятор Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md). Или купите новый комплект [здесь](https://azure.microsoft.com/develop/iot/starter-kits).
 
@@ -36,31 +36,31 @@ ms.lasthandoff: 08/29/2017
 * Создайте Центр Интернета вещей.
 * Зарегистрируем устройство для Pi в Центре Интернета вещей.
 * Настроим Raspberry Pi.
-* Мы запустим пример приложения на Pi для отправки данных в Центр Интернета вещей.
+* Запустите образец приложения на Pi toosend датчиков данных tooyour центр IoT.
 
-Подключим Raspberry Pi к созданному Центру Интернета вещей. Затем запустим пример приложения на Pi, чтобы собрать данные о температуре и влажности, полученные с датчика BME280. После этого отправим данные с датчика в Центр Интернета вещей.
+Подключение центра IoT tooan Raspberry Pi созданного вами. Затем запустите пример приложения на Pi toocollect температуры и влажности данных с использованием BME280 датчиков. Отправьте центра IoT tooyour данных датчика hello.
 
 ## <a name="what-you-learn"></a>Что вы узнаете
 
-* Как создать Центр Интернета вещей Azure и получить строку подключения нового устройства.
-* Как подключать Pi к датчику BME280.
-* Как собирать данные датчика, запустив пример приложения на Pi.
-* Как отправить данные датчика в Центр Интернета вещей.
+* Как toocreate центр Azure IoT и получить новые строки подключения устройства.
+* Как tooconnect числа пи с BME280 датчика.
+* Как toocollect датчиков, выполнив пример приложения на Pi.
+* Как центр IoT tooyour данных датчика toosend.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 
 ![Необходимые элементы](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
-* Плата Raspberry Pi 2 или Raspberry Pi 3.
+* Здравствуйте, Raspberry Pi 2 или Raspberry Pi 3 на доске.
 * Активная подписка Azure. Если ее нет, можно создать [бесплатную пробную учетную запись Azure](https://azure.microsoft.com/free/) всего за несколько минут.
-* Монитор, USB-клавиатура и мышь, подключенные к Pi.
+* Монитор, USB-клавиатуры и мыши подключаются tooPi.
 * ПК или компьютер Mac под управлением Windows или Linux.
 * Подключение к Интернету.
 * Карта microSD емкостью 16 ГБ или больше.
-* Адаптер USB-SD или карта microSD для записи образа операционной системы на карту microSD.
-* Источник питания 5 В 2 A с кабелем Micro USB длиной примерно 1,8 метра.
+* USB-SD адаптер или microSD карты tooburn hello образа операционной системы на карту microSD, hello.
+* Питания 2 amp 5В с hello 6 фут micro USB-кабель.
 
-Ниже приведены необязательные компоненты.
+Привет, следующие элементы являются необязательными.
 
 * Датчик температуры, давления и влажности Adafruit BME280 в сборе.
 * Монтажная плата.
@@ -69,50 +69,50 @@ ms.lasthandoff: 08/29/2017
 
 
 > [!NOTE] 
-Эти компоненты необязательны, поскольку пример кода поддерживает использование смоделированных данных датчиков.
+Эти элементы являются необязательными, поскольку поддержка образец кода hello смоделированные данные датчиков.
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
 ## <a name="setup-raspberry-pi"></a>Настройка Raspberry Pi
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>Установка операционной системы Raspbian на Pi
+### <a name="install-hello-raspbian-operating-system-for-pi"></a>Установка операционной системы Raspbian hello для Pi
 
-Подготовьте карту microSD для установки образа ОС Raspbian.
+Подготовьте карта microSD hello для установки образа Raspbian hello.
 
 1. Скачайте ОС Raspbian.
-   1. [Скачайте Raspbian Jessie with Desktop](https://www.raspberrypi.org/downloads/raspbian/) (ZIP-файл).
-   1. Извлеките образ ОС Raspbian в папку на компьютере.
-1. Установите ОС Raspbian на карту microSD.
-   1. [Скачайте и установите служебную программу Etcher для записи данных на карты SD](https://etcher.io/).
-   1. Запустите Etcher и выберите образ Raspbian, извлеченный на шаге 1.
-   1. Выберите устройство для чтения карт microSD. Обратите внимание, что в программе Etcher уже может быть выбрано правильное устройство для чтения.
-   1. Щелкните Flash (Переключиться), чтобы установить ОС Raspbian на карту microSD.
-   1. По завершении установки удалите карту microSD из компьютера. Удалять карту microSD напрямую безопасно, так как программа Etcher автоматически извлекает или отключает карту microSD после завершения.
-   1. Вставьте карту microSD в устройство Pi.
+   1. [Загрузите детском Raspbian с рабочим столом](https://www.raspberrypi.org/downloads/raspbian/) (hello ZIP-файл).
+   1. Извлеките hello Raspbian изображения tooa папку на локальном компьютере.
+1. Установите карту microSD toohello Raspbian.
+   1. [Загрузите и установите программу записи карты SD гравировальная hello](https://etcher.io/).
+   1. Запустите гравировальная и выберите изображение Raspbian hello, извлеченный на шаге 1.
+   1. Выберите диск, карту microSD hello. Обратите внимание, что гравировальная может уже выбран правильный диск hello.
+   1. Щелкните карту microSD toohello Raspbian tooinstall флэш-памяти.
+   1. Удаление карта microSD hello с компьютера после завершения установки. Это карта microSD безопасные tooremove hello непосредственно из-за гравировальная автоматически извлечение или отключение карта microSD hello после завершения.
+   1. Вставьте карту microSD hello в Pi.
 
 ### <a name="enable-ssh-and-i2c"></a>Включение SSH и I2C
 
-1. Подключите Pi к монитору, клавиатуре и мыши, запустите Pi, а затем войдите в Raspbian, используя `pi` в качестве имени пользователя и `raspberry` в качестве пароля.
-1. Щелкните значок Raspberry и выберите **Preferences** (Параметры) > **Raspberry Pi Configuration** (Конфигурация Raspberry Pi).
+1. Подключение Pi toohello монитора, клавиатуры и мыши, запустите Pi и затем войдите Raspbian с помощью `pi` имени пользователя hello и `raspberry` hello паролем.
+1. Щелкните значок малиновая hello > **предпочтения** > **Raspberry Pi конфигурации**.
 
-   ![Меню параметров Raspbian](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
+   ![меню настройки Raspbian Hello](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
 
-1. На вкладке **Interfaces** (Интерфейсы) установите для параметров **I2C** и **SSH** значение **Enable** (Включить), а затем нажмите кнопку **ОК**. Этот шаг является необязательным, если у вас нет физических датчиков и вы будете использовать симулированные данные датчика.
+1. На hello **интерфейсы** установите **I2C** и **SSH** слишком**включить**, а затем нажмите кнопку **ОК**. Если нет физических датчиков и toouse смоделированные данные датчика, этот шаг является необязательным.
 
    ![Включение I2C и SSH на Raspberry Pi](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-Сведения о том, как включить SSH и I2C, можно найти в дополнительных справочных документах на [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) и [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
+tooenable SSH и I2C, можно найти дополнительные справочные документы на [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) и [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
 
-### <a name="connect-the-sensor-to-pi"></a>Подключение датчика к Pi
+### <a name="connect-hello-sensor-toopi"></a>Подключение tooPi датчик hello
 
-Подключите светодиодный индикатор и датчик BME280 к Pi с помощью монтажной платы и оптоволоконных кабелей, как показано ниже. Если у вас нет датчика, [пропустите этот раздел](#connect-pi-to-the-network).
+Используйте hello breadboard и перемычки проводов tooconnect Светодиодный индикатор и BME280 tooPi. Если у вас нет датчик hello [пропустите этот раздел](#connect-pi-to-the-network).
 
-![Подключение Raspberry Pi и датчика](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
+![Hello Raspberry Pi и датчик подключения](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
-Датчик BME280 может собирать данные о температуре и влажности. Светодиодный индикатор мигает при обмене данными между устройством и облаком. 
+Датчик Hello BME280 можно собирать данные, температуры и влажности. И hello Индикатор мигает, при наличии связи между локальными устройствами и hello. 
 
-Чтобы подключить выводы датчика, используйте следующие кабели:
+Для датчика ПИН-коды используйте hello после подключения:
 
 | Начало (датчик и светодиодный индикатор)     | Конец (плата)            | Цвет кабеля   |
 | -----------------------  | ---------------------- | ------------: |
@@ -123,72 +123,72 @@ ms.lasthandoff: 08/29/2017
 | LED VDD (вывод 18F)        | GPIO 24 (вывод 18)       | Белый кабель   |
 | LED GND (вывод 17F)        | GND (вывод 20)           | Черный кабель   |
 
-Щелкните, чтобы просмотреть [схему соответствия выводов Raspberry Pi 2 и 3](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) для справки.
+Нажмите кнопку tooview [Raspberry Pi 2 и 3 ПИН-код сопоставления](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) для справки.
 
-После успешного подключения датчика BME280 к Raspberry Pi схема должна выглядеть так, как на изображении ниже.
+После успешного соединения BME280 tooyour Raspberry Pi должно быть как под изображением.
 
 ![Подключенный компьютер Pi и датчик BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
-### <a name="connect-pi-to-the-network"></a>Подключение устройства Pi к сети
+### <a name="connect-pi-toohello-network"></a>Подключение к сети toohello Pi
 
-Включите устройство Pi, используя кабель Micro USB и источник питания. Подключите Pi к проводной сети с помощью кабеля Ethernet или выполните [инструкции](https://www.raspberrypi.org/learning/software-guide/wifi/) от Raspberry Pi Foundation для подключения устройства Pi к беспроводной сети. После успешного подключения Pi к сети необходимо запомнить [IP-адрес устройства Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
+Включите Pi при помощи micro USB-кабель hello и hello питания. Используйте hello Ethernet кабель tooconnect Pi tooyour проводной сети, или выполните hello [инструкции hello Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) tooconnect Pi tooyour беспроводной сети. После вашей Pi было успешно выполнено подключение toohello сети, необходимо tootake заметку hello [IP-адрес вашего Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
 
-![Подключение к проводной сети](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
+![Toowired подключенной сети](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
 > [!NOTE]
-> Убедитесь, что плата Pi подключена к той же сети, что и компьютер. Например, если компьютер подключен к беспроводной сети, а плата Pi подключена к проводной сети, то IP-адрес может не отобразиться в выходных данных devdisco.
+> Убедитесь, что Pi подключенных toohello сетевых как на компьютере. Например, если компьютер находится подключенных tooa беспроводной сети при подключенном tooa проводной сети Pi, могут отображаться не hello IP адрес в выходных данных devdisco hello.
 
 ## <a name="run-a-sample-application-on-pi"></a>Запуск примера приложения на Pi
 
-### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>Клонирование примера приложения и установка пакетов необходимых компонентов
+### <a name="clone-sample-application-and-install-hello-prerequisite-packages"></a>Клонирование образца приложения и установите пакеты необходимых компонентов hello
 
-1. Используйте один из следующих SSH-клиентов для подключения к Raspberry Pi с главного компьютера.
+1. Используйте одну из hello следующую SSH клиентов из вашего узла компьютера tooconnect tooyour Raspberry Pi.
    
    **Пользователи Windows**
    1. Скачайте и установите [PuTTY](http://www.putty.org/) для Windows. 
-   1. Скопируйте IP-адрес устройства Pi в разделе с именем узла (или IP-адресом) и выберите SSH как тип подключения.
+   1. Скопируйте hello IP-адрес раздела Pi в hello узел имя (или IP-адрес) и выберите в качестве типа соединения hello SSH.
    
    ![PuTTy](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
    **Пользователи MAC и Ubuntu**
    
-   Используйте SSH-клиент, встроенный в Ubuntu или macOS. Возможно, для подключения устройства Pi по протоколу SSH потребуется выполнить `ssh pi@<ip address of pi>`.
+   Используйте встроенный клиент SSH hello Ubuntu или macOS. Может потребоваться toorun `ssh pi@<ip address of pi>` tooconnect Pi по протоколу SSH.
    > [!NOTE] 
-   Имя пользователя по умолчанию — `pi`, а пароль — `raspberry`.
+   имя пользователя по умолчанию Hello `pi` , и пароль hello `raspberry`.
 
-1. Установите Node.js и NPM на устройстве Pi.
+1. Установите Node.js и NPM tooyour Pi.
    
-   Сначала следует проверить версию Node.js с помощью следующей команды. 
+   Сначала следует проверить вашу версию Node.js с hello следующую команду. 
    
    ```bash
    node -v
    ```
 
-   Если версия меньше 4.x или на устройстве Pi отсутствует Node.js, выполните следующую команду для установки или обновления Node.js.
+   Если версии hello меньше 4.x или нет не Node.js на ваш Pi, запустите следующие команды tooinstall hello, или обновить Node.js.
 
    ```bash
    curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
-1. Создайте клон примера приложения, выполнив следующую команду:
+1. Пример приложения hello клона, выполнив следующую команду hello:
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
    ```
 
-1. Установите все пакеты, в том числе пакет SDK для устройств Azure IoT, библиотеку датчика BME280 и библиотеку Wiring Pi, выполнив следующую команду:
+1. Установите все пакеты, hello следующую команду. в том числе пакет SDK для устройств Azure IoT, библиотеку датчика BME280 и библиотеку Wiring Pi, выполнив следующую команду:
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
    sudo npm install
    ```
    > [!NOTE] 
-   В зависимости от сетевого подключения процесс установки может занять несколько минут.
+   В процессе установки в зависимости от подключения к сети может занять несколько минут toofinish.
 
-### <a name="configure-the-sample-application"></a>Настройка примера приложения
+### <a name="configure-hello-sample-application"></a>Настройка образца приложения hello
 
-1. Откройте файл конфигурации, выполнив следующую команду:
+1. Откройте файл конфигурации hello, запустив hello, следующие команды:
 
    ```bash
    nano config.json
@@ -196,30 +196,30 @@ ms.lasthandoff: 08/29/2017
 
    ![Файл конфигурации](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
-   В этом файле можно настроить два элемента. Первый из них — `interval`. Он определяет время (в миллисекундах) между отправкой двух сообщений в облако. Второй — `simulatedData`, который представляет собой логическое значение, определяющее, будут ли использоваться смоделированные данные датчика.
+   В этом файле можно настроить два элемента. Hello сначала он `interval`, который определяет hello временной интервал (в миллисекундах) между двумя сообщений, передаваемых toocloud. Здравствуйте, вторая — `simulatedData`, — логическое значение для ли toouse смоделированные данные датчиков или нет.
 
-   Если у вас **нет датчика**, задайте для параметра `simulatedData` значение `true`, чтобы пример приложения создал и использовал смоделированные данные датчика.
+   Если вы **нет hello датчика**, задайте hello `simulatedData` значение слишком`true` пример приложения hello toomake создать и использовать имитацию датчиков.
 
 1. Сохраните изменения и закройте окно, нажав клавиши Control-O > ВВОД > Control-X.
 
-### <a name="run-the-sample-application"></a>Запуск примера приложения
+### <a name="run-hello-sample-application"></a>Запустить образец приложения hello
 
-Запустите пример приложения, выполнив следующую команду:
+Выполните пример приложения hello, выполнив следующую команду hello:
 
    ```bash
    sudo node index.js '<YOUR AZURE IOT HUB DEVICE CONNECTION STRING>'
    ```
 
    > [!NOTE] 
-   Обязательно скопируйте и вставьте строку подключения устройства, заключив ее в одинарные кавычки.
+   Убедитесь, что вы скопированные и вставленные строки подключения устройств hello в одинарных кавычках hello.
 
 
-Должны отобразиться следующие результаты, содержащие данные датчика и сообщения, которые отправляются в Центр Интернета вещей.
+Вы увидите следующее hello выходных данных, показано hello датчик данных и hello сообщений, отправляемых tooyour центр IoT.
 
-![Выходные данные — данные датчика, отправленные с Raspberry Pi в Центр Интернета вещей](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
+![Вывод — данные датчика, отправленные из центра IoT tooyour Raspberry Pi](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Вы запустили пример приложения, чтобы собрать данные датчика и отправить их в Центр Интернета вещей. Сведения о том, как просматривать сообщения, отправляемые устройством Raspberry Pi в Центр Интернета вещей, а также как отправлять сообщения на устройство Raspberry Pi в интерфейсе командной строки, см. в руководстве по [управлению обменом сообщениями между облаком и устройством с помощью обозревателя Центра Интернета вещей](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
+Вы впервые запускаете в образце данных датчика toocollect приложения и отправьте его центр IoT tooyour. сообщения приветствия toosee, Pi вашей Raspberry отправленных IoT tooyour концентратор или отправки tooyour сообщений Raspberry Pi в интерфейс командной строки, в разделе hello [управление облака устройство обмен сообщениями с центром IOT учебнике](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

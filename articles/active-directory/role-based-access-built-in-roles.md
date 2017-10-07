@@ -1,6 +1,6 @@
 ---
-title: "Свойства Actions и NotActions в компоненте управления доступом на основе ролей (RBAC) Azure | Документация Майкрософт"
-description: "В этом разделе описаны встроенные роли для управления доступом на основе ролей (RBAC). Роли постоянно добавляются, поэтому проверяйте актуальность документации."
+title: "aaaActions и NotActions - Azure на основе ролей доступ ролей (RBAC) | Документы Microsoft"
+description: "В этом разделе описываются hello, встроенных в роли для управления доступом на основе ролей (RBAC). Hello роли постоянно добавляются, поэтому проверка hello документации актуальность."
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -16,35 +16,35 @@ ms.date: 06/28/2017
 ms.author: andredm
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a5de00793621cfdecea887c53a22d482a25d1b8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0a4ef9923fe05ec38e968534951911eaa4440b88
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Встроенные роли управления доступом на основе ролей в Azure
-Управление доступом на основе ролей Azure (RBAC) поставляется со следующими встроенными ролями, которые могут быть назначены пользователям, группам и службам. Изменить определения встроенных ролей нельзя. Однако можно создать [настраиваемые роли в Azure RBAC](role-based-access-control-custom-roles.md) в соответствии с потребностями вашей организации.
+Azure на основе ролей управления доступом (RBAC) поставляется с hello следующие встроенные роли, которые могут быть назначены toousers, групп и служб. Невозможно изменить hello определения встроенных ролей. Однако можно создать [пользовательских ролей в Azure RBAC](role-based-access-control-custom-roles.md) toofit hello потребностями вашей организации.
 
 ## <a name="roles-in-azure"></a>Роли в Azure
-В таблице ниже содержатся краткие описания встроенных ролей. Щелкните имя роли, чтобы просмотреть подробный список свойств **actions** и **notactions** для этой роли. Свойство **actions** указывает разрешенные действия с ресурсами Azure. В строках действий можно использовать подстановочные знаки. Свойство **notactions** определения роли указывает действия, которые должны быть исключены из списка разрешенных действий.
+Hello ниже приводится краткое описание каждого из hello встроенных ролей. Нажмите кнопку hello роли имя toosee hello подробный список **действия** и **notactions** для роли hello. Hello **действия** свойство указывает hello допускается действий для ресурсов Azure. В строках действий можно использовать подстановочные знаки. Hello **notactions** свойство указывает hello действия, которые исключаются из hello действий.
 
-Действие определяет, какие типы операций можно выполнять с ресурсом заданного типа. Например:
-- **Запись** позволяет выполнять операции PUT, POST, PATCH и DELETE.
-- **Чтение** позволяет выполнять операции GET.
+Действие Hello определяет, какой тип операций, которые можно выполнить для заданного типа ресурса. Например:
+- **Запись** включает вы tooperform PUT, POST, PATCH и операции удаления.
+- **Чтение** позволяет tooperform операции GET.
 
-В данной статье рассматриваются только различные роли, которые существуют на сегодняшний день. При назначении роли пользователю можно точнее ограничить разрешенные действия, определив их область. Это удобно, если вы хотите привлечь какого-либо пользователя к работе над веб-сайтом, но только для одной группы ресурсов.
+В этой статье рассматриваются только hello другой роли, которые существуют сегодня. При назначении роли пользователя tooa, можно ограничить допускается путем определения области действия дальнейшей hello. Это полезно, если требуется, toomake участник веб-сайт, но только для одной группы ресурсов.
 
 > [!NOTE]
-> Определения ролей Azure постоянно развиваются. Эта статья регулярно обновляется для поддержания актуальности сведений, но вы всегда можете найти последние определения ролей в Azure PowerShell. Используйте командлет [Get AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition), чтобы получить список всех текущих ролей. Можно подробнее изучить определенную роль с помощью `(get-azurermroledefinition "<role name>").actions` или `(get-azurermroledefinition "<role name>").notactions`, если это возможно. Выполните командлет [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation), чтобы вывести список операций определенных поставщиков ресурсов Azure.
+> определения ролей Azure Hello постоянно развивается. В этой статье сохраняется как копирование toodate можно, но можно всегда найти hello последних определений ролей в Azure PowerShell. Используйте hello [Get AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) toolist командлет всех текущих ролей. Можно перейти в конкретной роли, используя tooa `(get-azurermroledefinition "<role name>").actions` или `(get-azurermroledefinition "<role name>").notactions` это возможно. Используйте [Get AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) toolist операций поставщиков определенных ресурсов Azure.
 
 
 | Имя роли | Description (Описание) |
 | --- | --- |
-| [Участник службы управления API](#api-management-service-contributor) |Может управлять службой управления API и интерфейсами API. |
-| [Роль оператора службы управления API](#api-management-service-operator-role) | Может управлять службой управления API, но не интерфейсами API. |
-| [Роль читателя данных службы управления API](#api-management-service-reader-role) | Имеет доступ на чтение к службе управления API и интерфейсам API. |
+| [Участник службы управления API](#api-management-service-contributor) |Можно управлять службой управления API и hello API-интерфейсы |
+| [Роль оператора службы управления API](#api-management-service-operator-role) | Можно управлять службой управления API, но hello API-интерфейсы, сами |
+| [Роль читателя данных службы управления API](#api-management-service-reader-role) | Служба управления tooAPI доступ только для чтения и API-интерфейсы |
 | [Участник компонента Application Insights](#application-insights-component-contributor) |Может управлять компонентами Application Insights |
-| [Оператор службы автоматизации](#automation-operator) |Может запускать, останавливать, приостанавливать и возобновлять задания |
+| [Оператор службы автоматизации](#automation-operator) |Может toostart остановка, приостановка и возобновление заданий |
 | [Участник резервного копирования](#backup-contributor) | Может управлять резервным копированием в хранилище служб восстановления |
 | [Оператор резервного копирования](#backup-operator) | Может управлять резервным копированием в хранилище служб восстановления, но не может удалять резервные копии |
 | [Читатель резервных копий](#backup-reader) | Может просматривать все службы управления резервными копиями  |
@@ -73,20 +73,20 @@ ms.lasthandoff: 08/29/2017
 | [Оператор Site Recovery](#site-recovery-operator) | Может управлять операциями отработки отказа и восстановления размещения Site Recovery в хранилище служб восстановления. |
 | [Читатель Site Recovery](#site-recovery-reader) | Может просматривать все операции управления Site Recovery.  |
 | [Участник базы данных SQL](#sql-db-contributor) |Может управлять базами данных SQL, но не их политиками безопасности |
-| [Диспетчер безопасности SQL](#sql-security-manager) |Может управлять политиками безопасности для серверов и баз данных SQL |
+| [Диспетчер безопасности SQL](#sql-security-manager) |Можно управлять hello политики безопасности серверов SQL Server и баз данных |
 | [Участник SQL Server](#sql-server-contributor) |Может управлять серверами и базами данных SQL, но не их политиками безопасности |
 | [Участник классической учетной записи хранения](#classic-storage-account-contributor) |Может управлять классическими учетными записями хранения |
 | [Участник учетной записи хранения](#storage-account-contributor) |Может управлять учетными записями хранения |
 | [Support Request Contributor](#support-request-contributor) (Участник с правом создавать запросы на поддержку) | Может создавать запросы на поддержку и управлять ими. |
-| [Администратор доступа пользователей](#user-access-administrator) |Может управлять доступом пользователей к ресурсам Azure |
-| [Участник классической виртуальной машины](#classic-virtual-machine-contributor) |Может управлять классическими виртуальными машинами, но не виртуальными сетями и учетными записями хранения, к которым они подключены |
-| [Участник виртуальной машины](#virtual-machine-contributor) |Может управлять виртуальными машинами, но не виртуальными сетями и учетными записями хранения, к которым они подключены |
+| [Администратор доступа пользователей](#user-access-administrator) |Можно управлять ресурсами tooAzure доступа пользователя |
+| [Участник классической виртуальной машины](#classic-virtual-machine-contributor) |Можно управлять классических виртуальных машин, но hello виртуальной сети или toowhich учетной записи хранилища, которым они подключены |
+| [Участник виртуальной машины](#virtual-machine-contributor) |Можно управлять виртуальные машины, но не hello виртуальной сети или хранилища учетной записи toowhich которым они подключены |
 | [Участник классической сети](#classic-network-contributor) |Может управлять классическими виртуальными сетями и зарезервированными IP-адресами |
 | [Участник веб-плана](#web-plan-contributor) |Может управлять веб-планами |
-| [Участник веб-сайта](#website-contributor) |Может управлять веб-сайтами, но не веб-планами, к которым они подключены |
+| [Участник веб-сайта](#website-contributor) |Управление веб-сайтов, но не hello web toowhich планы, которым они подключены |
 
 ## <a name="role-permissions"></a>Разрешения ролей
-В следующих таблицах описываются разрешения, предоставленные каждой роли. Это могут быть свойства **Actions**, которые предоставляют разрешения, и свойства **NotActions**, которые их ограничивают.
+Hello следующих таблицах описаны конкретные разрешения hello tooeach назначена роль. Это могут быть свойства **Actions**, которые предоставляют разрешения, и свойства **NotActions**, которые их ограничивают.
 
 ### <a name="api-management-service-contributor"></a>Участник службы управления API
 Может управлять службами управления API
@@ -96,7 +96,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.ApiManagement/Service/* |Создание службы управления API и управление ею |
 | Microsoft.Authorization/*/read |Авторизация на чтение |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение ролей и назначений ролей |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -107,16 +107,16 @@ ms.lasthandoff: 08/29/2017
 | **Действия** |  |
 | --- | --- |
 | Microsoft.ApiManagement/Service/*/read | Чтение экземпляров службы управления API. |
-| Microsoft.ApiManagement/Service/backup/action | Архивация службы управления API в указанный контейнер в предоставленной пользователем учетной записи хранения. |
+| Microsoft.ApiManagement/Service/backup/action | Создать резервную копию службы управления API toohello контейнера, заданного в пользователя, предоставленных учетной записи хранилища |
 | Microsoft.ApiManagement/Service/delete | Удаление экземпляра службы управления API. |
 | Microsoft.ApiManagement/Service/managedeployments/action | Изменение номера SKU или единиц. Добавление или удаление региональных развертываний службы управления API. |
 | Microsoft.ApiManagement/Service/read | Чтение метаданных для экземпляра службы управления API. |
-| Microsoft.ApiManagement/Service/restore/action | Восстановление службы управления API из указанного контейнера в предоставленной пользователем учетной записи хранения. |
+| Microsoft.ApiManagement/Service/restore/action | Восстановление службы управления API из указанного контейнера hello в пользователя, предоставленных учетной записи хранилища |
 | Microsoft.ApiManagement/Service/updatehostname/action | Настройка, обновление или удаление имен личных доменов для службы управления API. |
 | Microsoft.ApiManagement/Service/write | Создание экземпляра службы управления API. |
 | Microsoft.Authorization/*/read |Авторизация на чтение |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение ролей и назначений ролей |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -130,7 +130,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.ApiManagement/Service/read | Чтение метаданных для экземпляра службы управления API. |
 | Microsoft.Authorization/*/read |Авторизация на чтение |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение ролей и назначений ролей |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -144,13 +144,13 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
 | Microsoft.Insights/components/* |Создание компонентов Insights и управление ими |
 | Microsoft.Insights/webtests/* |Создание веб-тестов и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 
 ### <a name="automation-operator"></a>Оператор службы автоматизации
-Может запускать, останавливать, приостанавливать и возобновлять задания
+Может toostart остановка, приостановка и возобновление заданий
 
 | **Действия** |  |
 | --- | --- |
@@ -168,13 +168,13 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Automation/automationAccounts/schedules/read |Чтение расписаний учетных записей службы автоматизации |
 | Microsoft.Automation/automationAccounts/schedules/write |Запись расписаний учетных записей службы автоматизации |
 | Microsoft.Insights/components/* |Создание компонентов Insights и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 
 ### <a name="backup-contributor"></a>Участник резервного копирования
-Может управлять всеми операциями управления резервным копированием, за исключением создания хранилища служб восстановления и предоставления доступа другим пользователям.
+Можно управлять все действия по управлению резервного копирования, за исключением создания хранилище служб восстановления и предоставляя доступ tooothers
 
 | **Действия** | |
 | --- | --- |
@@ -183,14 +183,14 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Создание контейнеров резервных копий внутри структуры резервного копирования хранилища служб восстановления и управление этими контейнерами |
 | Microsoft.RecoveryServices/Vaults/backupJobs/* | Создание заданий резервного копирования и управление ими |
 | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Экспорт заданий резервного копирования в Excel |
-| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Создание метаданных, связанных с управлением резервным копированием, и управление ими |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Создание и управление ими meta данные, связанные toobackup управления |
 | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Создание результатов операций управления резервным копированием и управление ими |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Создание политик резервного копирования и управление ими |
 | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Создание элементов, для которых можно создавать резервные копии, и управление ими |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | Создание элементов, включаемых в резервную копию, и управление ими |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | Создание контейнеров с элементами, включаемыми в резервную копию, и управление такими контейнерами |
-| Microsoft.RecoveryServices/Vaults/certificates/* | Создание сертификатов, связанных с резервной копией в хранилище служб восстановления, и управление ими |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Создание расширенных сведений, связанных с хранилищем, и управление ими |
+| Microsoft.RecoveryServices/Vaults/certificates/* | Создание и управление ими toobackup связанные сертификаты в хранилище служб восстановления |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Создание и управление ими расширенные сведения о связанных toovault |
 | Microsoft.RecoveryServices/Vaults/read | Чтение хранилищ служб восстановления |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Управление операциями обнаружения для получения новых контейнеров |
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | Создание зарегистрированных удостоверений и управление ими |
@@ -201,7 +201,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 
 ### <a name="backup-operator"></a>Оператор резервного копирования
-Может управлять всеми операциями управления резервным копированием, за исключением создания хранилища, удаления резервных копий и предоставления доступа другим пользователям
+Можно управлять всех операций управления резервного копирования, за исключением создания хранилища, удаление резервной копии и предоставления доступа tooothers
 
 | **Действия** | |
 | --- | --- |
@@ -218,21 +218,21 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Чтение контейнеров, содержащих элемент, включенный в резервную копию |
 | Microsoft.RecoveryServices/Vaults/backupJobs/* | Создание заданий резервного копирования и управление ими |
 | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Экспорт заданий резервного копирования в Excel |
-| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Чтение метаданных, связанных с управлением резервным копированием |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Чтение метаданных, связанных с toobackup управления |
 | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Создание результатов операций управления резервным копированием и управление ими |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Чтение результатов операций, выполняемых с политиками резервного копирования |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Чтение политик резервного копирования |
 | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Создание элементов, для которых можно создавать резервные копии, и управление ими |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Чтение элементов, включенных в резервную копию |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Чтение контейнеров, содержащих элементы резервного копирования |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Чтение расширенных сведений, связанных с хранилищем |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/write | Запись расширенных сведений, связанных с хранилищем |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Чтение расширенных сведений, связанных с toovault |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/write | Запись дополнительных сведений, связанных с toovault |
 | Microsoft.RecoveryServices/Vaults/read | Чтение хранилищ служб восстановления |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Управление операциями обнаружения для получения новых контейнеров |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | Чтение результатов операции, выполняемой для зарегистрированных элементов хранилища |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Чтение зарегистрированных элементов хранилища |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Запись зарегистрированных элементов хранилища |
-| Microsoft.RecoveryServices/Vaults/usages/read | Чтение данных об использовании хранилища служб восстановления |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | Чтение результатов операции для зарегистрированного элементов хранилища hello |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Чтение зарегистрированных элементов хранилища hello |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Запись toovault зарегистрированных элементов |
+| Microsoft.RecoveryServices/Vaults/usages/read | Хранилище служб восстановления чтения использования hello |
 | Microsoft.Resources/deployments/* | Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Чтение группы ресурсов |
 | Microsoft.Storage/storageAccounts/read | Чтение учетных записей хранения |
@@ -252,18 +252,18 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read  | Чтение результатов выполнения заданий резервного копирования |
 | Microsoft.RecoveryServices/Vaults/backupJobs/read  | Чтение заданий резервного копирования |
 | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Экспорт заданий резервного копирования в Excel |
-| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read  | Чтение метаданных, связанных с управлением резервным копированием |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read  | Чтение метаданных, связанных с toobackup управления |
 | Microsoft.RecoveryServices/Vaults/backupOperationResults/read  | Чтение результатов операции управления резервным копированием |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read  | Чтение результатов операций, выполняемых с политиками резервного копирования |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/read  | Чтение политик резервного копирования |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read  |  Чтение элементов, включенных в резервную копию |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read  | Чтение контейнеров, содержащих элементы резервного копирования |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Чтение расширенных сведений, связанных с хранилищем |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Чтение расширенных сведений, связанных с toovault |
 | Microsoft.RecoveryServices/Vaults/read  | Чтение хранилищ служб восстановления |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read  | Чтение результатов операции обнаружения для получения новых контейнеров |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | Чтение результатов операции, выполняемой для зарегистрированных элементов хранилища |
-| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | Чтение зарегистрированных элементов хранилища |
-| Microsoft.RecoveryServices/Vaults/usages/read  |  Чтение данных об использовании хранилища служб восстановления |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | Чтение результатов операции для зарегистрированного элементов хранилища hello |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | Чтение зарегистрированных элементов хранилища hello |
+| Microsoft.RecoveryServices/Vaults/usages/read  |  Хранилище служб восстановления чтения использования hello |
 
 ### <a name="billing-reader"></a>Читатель счетов
 Может просматривать все данные о выставлении счетов
@@ -282,7 +282,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.BizTalkServices/BizTalk/* |Создание служб BizTalk и управление ими |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -294,7 +294,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- |
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -320,7 +320,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.DataFactory/dataFactories/* |Создание фабрик данных и дочерних ресурсов внутри их, а также управление ими. |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -331,13 +331,13 @@ ms.lasthandoff: 08/29/2017
 | **Действия** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
-| Microsoft.Compute/availabilitySets/read |Чтение свойств групп доступности |
-| Microsoft.Compute/virtualMachines/*/read |Чтение свойств виртуальной машины (размеры виртуальных машин, состояние среды выполнения, расширения виртуальных машин, и т. д.) |
+| Microsoft.Compute/availabilitySets/read |Чтение свойств hello группы доступности |
+| Microsoft.Compute/virtualMachines/*/read |Чтение свойств hello виртуальной машины (размеры виртуальных Машин, состояние среды выполнения, расширения виртуальной Машины, и т. д.) |
 | Microsoft.Compute/virtualMachines/deallocate/action |Отмена распределения виртуальных машин |
-| Microsoft.Compute/virtualMachines/read |Чтение свойств виртуальной машины |
+| Microsoft.Compute/virtualMachines/read |Чтение свойств hello виртуальной машины. |
 | Microsoft.Compute/virtualMachines/restart/action |Перезапуск виртуальных машин |
 | Microsoft.Compute/virtualMachines/start/action |Запуск виртуальных машин |
-| Microsoft.DevTestLab/*/read |Чтение свойств лаборатории |
+| Microsoft.DevTestLab/*/read |Чтение свойств hello лаборатории |
 | Microsoft.DevTestLab/labs/createEnvironment/action |Создание лабораторной среды |
 | Microsoft.DevTestLab/labs/formulas/delete |Удаление формул |
 | Microsoft.DevTestLab/labs/formulas/read |Чтение формул |
@@ -345,11 +345,11 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action |Оценка политик лаборатории |
 | Microsoft.Network/loadBalancers/backendAddressPools/join/action |Присоединение серверных пулов адресов балансировщиков нагрузки |
 | Microsoft.Network/loadBalancers/inboundNatRules/join/action |Присоединение правила NAT для входящего трафика балансировщиков нагрузки |
-| Microsoft.Network/networkInterfaces/*/read |Чтение свойств сетевого интерфейса (например, всех балансировщиков нагрузки, частью которых является сетевой интерфейс) |
-| Microsoft.Network/networkInterfaces/join/action |Присоединение виртуальной машины к сетевому интерфейсу |
+| Microsoft.Network/networkInterfaces/*/read |Чтение свойств hello сетевого интерфейса (например, все подсистемы балансировки нагрузки hello этот сетевой интерфейс hello является частью) |
+| Microsoft.Network/networkInterfaces/join/action |Присоединение виртуальной машины tooa сетевого интерфейса |
 | Microsoft.Network/networkInterfaces/read |Чтение сетевых интерфейсов |
 | Microsoft.Network/networkInterfaces/write |Запись сетевых интерфейсов |
-| Microsoft.Network/publicIPAddresses/*/read |Чтение свойств общедоступного IP-адреса |
+| Microsoft.Network/publicIPAddresses/*/read |Чтение свойств hello общедоступного IP-адреса |
 | Microsoft.Network/publicIPAddresses/join/action |Присоединение общедоступного IP-адреса |
 | Microsoft.Network/publicIPAddresses/read |Чтение сетевых общедоступных IP-адресов |
 | Microsoft.Network/virtualNetworks/subnets/join/action |Присоединение виртуальной сети |
@@ -366,7 +366,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Authorization/\*/read |Чтение ролей и назначений ролей |
 | Microsoft.Insights/alertRules/\* |Создание правил оповещения и управление ими |
 | Microsoft.Network/dnsZones/\* |Создание зон и записей DNS и управление ими. |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение данных о работоспособности ресурсов. |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение hello работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/\* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/\* |Создание запросов в службу поддержки и управление ими. |
@@ -379,7 +379,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.DocumentDb/databaseAccounts/* |Создание учетных записей DocumentDB и управление ими |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -392,7 +392,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
 | Microsoft.IntelligentSystems/accounts/* |Создание учетных записей интеллектуальных систем и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -415,11 +415,11 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Insights/AlertRules/* |Чтение, запись и удаление правила генерации оповещений. |
 | Microsoft.Insights/components/* |Чтение, запись и удаление компонентов Application Insights. |
 | Microsoft.Insights/DiagnosticSettings/* |Чтение, запись и удаление параметров диагностики. |
-| Microsoft.Insights/eventtypes/* |Вывод списка событий журнала действий (событий управления) в подписке. Это разрешение применяется для доступа к журналу действий посредством кода или портала. |
-| Microsoft.Insights/LogDefinitions/* |Это разрешение необходимо пользователям, которым требуется доступ к журналам действия на портале. Получение списка категорий журнала в журнале действий. |
+| Microsoft.Insights/eventtypes/* |Вывод списка событий журнала действий (событий управления) в подписке. Это разрешение — программный и портала доступ применимо tooboth toohello журнал действий. |
+| Microsoft.Insights/LogDefinitions/* |Это разрешение необходимо для пользователей, которым требуется доступ к журналам tooActivity через портал hello. Получение списка категорий журнала в журнале действий. |
 | Microsoft.Insights/MetricDefinitions/* |Чтение определений метрик (вывод списка доступных типов метрик для ресурса). |
 | Microsoft.Insights/Metrics/* |Чтение метрик для ресурса. |
-| Microsoft.Insights/Register/Action |Регистрация поставщика Microsoft.Insights. |
+| Microsoft.Insights/Register/Action |Регистрация поставщика помощью Microsoft.Insights hello. |
 | Microsoft.Insights/webtests/* |Чтение, запись и удаление веб-тестов Application Insights. |
 | Microsoft.OperationalInsights/workspaces/intelligencepacks/* |Чтение, запись и удаление пакетов решений Log Analytics. |
 | Microsoft.OperationalInsights/workspaces/savedSearches/* |Чтение, запись и удаление сохраненных поисков Log Analytics. |
@@ -435,7 +435,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
 | Microsoft.Network/* |Создание сетей и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -447,7 +447,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- |
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -475,7 +475,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.Cache/redis/* |Создание кэшей Redis и управление ими |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -487,7 +487,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- |
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Scheduler/jobcollections/* |Создание коллекциями заданий и управление ими |
@@ -500,7 +500,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- |
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Search/searchServices/* |Создание служб поиска и управление ими |
@@ -516,23 +516,23 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.ClassicCompute/virtualMachines/*/write |Запись конфигурации для виртуальных машин |
 | Microsoft.ClassicNetwork/*/read |Чтение сведений о конфигурации для классической сети |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Security/* |Создание компонентов и политик безопасности и управление ими |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 
 ### <a name="site-recovery-contributor"></a>Участник Site Recovery
-Может управлять всеми операциями управления Site Recovery, за исключением создания хранилища служб восстановления и назначения прав доступа другим пользователям.
+Можно управлять всех операций управления Site Recovery, за исключением создания хранилище служб восстановления и назначение tooother пользователи с правами доступа
 
 | **Действия** | |
 | --- | --- |
 | Microsoft.Authorization/*/read | Чтение ролей и назначений ролей |
 | Microsoft.Insights/alertRules/* | Создание правил оповещения и управление ими |
 | Microsoft.Network/virtualNetworks/read | Чтение виртуальных сетей |
-| Microsoft.RecoveryServices/Vaults/certificates/write | Обновление сертификата учетных данных хранилища |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Создание расширенных сведений, связанных с хранилищем, и управление ими |
-| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Чтение оповещений для хранилища служб восстановления |
+| Microsoft.RecoveryServices/Vaults/certificates/write | Сертификат учетных данных хранилища hello обновлений |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Создание и управление ими расширенные сведения о связанных toovault |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Чтение предупреждений для hello хранилище служб восстановления |
 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/read  | Чтение конфигурации уведомлений хранилища служб восстановления |
 | Microsoft.RecoveryServices/Vaults/read | Чтение хранилищ служб восстановления |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read | Управление операциями обнаружения для получения новых контейнеров |
@@ -546,22 +546,22 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.RecoveryServices/Vaults/storageConfig/* | Создание конфигурации службы хранилища для хранилища служб восстановления и управление ею |
 | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Чтение сведений о маркере для хранилища служб восстановления |
 | Microsoft.RecoveryServices/Vaults/usages/read | Чтение данных об использовании хранилища служб восстановления |
-| Microsoft.ResourceHealth/availabilityStatuses/read | Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read | Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* | Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Чтение группы ресурсов |
 | Microsoft.Storage/storageAccounts/read | Чтение учетных записей хранения |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 
 ### <a name="site-recovery-operator"></a>Оператор Site Recovery
-Может выполнять отработку отказа и восстановление размещения, но не может выполнять другие действия управления Site Recovery или назначать доступ другим пользователям.
+Можно отработки отказа и восстановления размещения, но можно не выполнять другие действия по управлению Site Recovery или назначать доступ пользователей tooother
 
 | **Действия** | |
 | --- | --- |
 | Microsoft.Authorization/*/read | Чтение ролей и назначений ролей |
 | Microsoft.Insights/alertRules/* | Создание правил оповещения и управление ими |
 | Microsoft.Network/virtualNetworks/read | Чтение виртуальных сетей |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Чтение расширенных сведений, связанных с хранилищем |
-| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Чтение оповещений для хранилища служб восстановления |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Чтение расширенных сведений, связанных с toovault |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Чтение предупреждений для hello хранилище служб восстановления |
 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/read  | Чтение конфигурации уведомлений хранилища служб восстановления |
 | Microsoft.RecoveryServices/Vaults/read | Чтение хранилищ служб восстановления |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read | Управление операциями обнаружения для получения новых контейнеров |
@@ -569,7 +569,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Чтение контейнеров, зарегистрированных для ресурса. |
 | Microsoft.RecoveryServices/vaults/replicationAlertSettings/read | Чтение параметров оповещений репликации. |
 | Microsoft.RecoveryServices/vaults/replicationEvents/read | Чтение событий репликации |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | Проверка согласованности структуры |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | Проверка согласованности структурами hello |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/read | Чтение структуры репликации |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ reassociateGateway/action | Изменение назначения шлюза репликации |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Обновление сертификата структуры репликации |
@@ -587,7 +587,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailover/action | Запуск тестовой отработки отказа защищенного элемента |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ testFailoverCleanup/action | Запуск очистки тестовой отработки отказа |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ unplannedFailover/action | Запуск внеплановой отработки отказа защищенного элемента |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ updateMobilityService/action | Обновление службы Mobility Service |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ updateMobilityService/action | Обновления службы мобильности hello |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/read | Чтение сопоставлений контейнера защиты |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/read | Чтение поставщиков служб восстановления |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider/action | Обновление поставщика служб восстановления |
@@ -606,7 +606,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.RecoveryServices/Vaults/storageConfig/read | Чтение конфигурации службы хранилища для хранилища служб восстановления |
 | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Чтение сведений о маркере для хранилища служб восстановления |
 | Microsoft.RecoveryServices/Vaults/usages/read | Чтение данных об использовании хранилища служб восстановления |
-| Microsoft.ResourceHealth/availabilityStatuses/read | Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read | Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* | Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Чтение группы ресурсов |
 | Microsoft.Storage/storageAccounts/read | Чтение учетных записей хранения |
@@ -618,8 +618,8 @@ ms.lasthandoff: 08/29/2017
 | **Действия** | |
 | --- | --- |
 | Microsoft.Authorization/*/read | Чтение ролей и назначений ролей |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Чтение расширенных сведений, связанных с хранилищем |
-| Microsoft.RecoveryServices/Vaults/monitoringAlerts/read  | Чтение оповещений для хранилища служб восстановления |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Чтение расширенных сведений, связанных с toovault |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/read  | Чтение предупреждений для hello хранилище служб восстановления |
 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/read  | Чтение конфигурации уведомлений хранилища служб восстановления |
 | Microsoft.RecoveryServices/Vaults/read  | Чтение хранилищ служб восстановления |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/read  | Управление операциями обнаружения для получения новых контейнеров |
@@ -654,7 +654,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- |
 | Microsoft.Authorization/*/read |Чтение ролей и назначений ролей |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Sql/servers/databases/* |Создание баз данных SQL и управление ими |
@@ -672,13 +672,13 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Sql/servers/databases/securityMetrics/* |Не может изменять метрики безопасности |
 
 ### <a name="sql-security-manager"></a>Диспетчер безопасности SQL
-Может управлять политиками безопасности для серверов и баз данных SQL
+Можно управлять hello политики безопасности серверов SQL Server и баз данных
 
 | **Действия** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Чтение авторизации Майкрософт |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения Insights и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Sql/servers/auditingPolicies/* |Создание политик аудита SQL Server и управление ими |
@@ -705,7 +705,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- |
 | Microsoft.Authorization/*/read |Авторизация на чтение |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения Insights и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Sql/servers/* |Создание серверов SQL Server и управление ими |
@@ -732,27 +732,27 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Authorization/*/read |Авторизация на чтение |
 | Microsoft.ClassicStorage/storageAccounts/* |Создание учетных записей хранения и управление ими |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения Insights и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 
 ### <a name="storage-account-contributor"></a>Участник учетной записи хранения
-Может управлять учетными записями хранения, но не имеет к ним доступа.
+Можно управлять учетными записями хранилища, но не получить доступ к toothem.
 
 | **Действия** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Авторизация на чтение всех элементов |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения Insights и управление ими |
 | Microsoft.Insights/diagnosticSettings/* |Управление параметрами диагностики |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Storage/storageAccounts/* |Создание учетных записей хранения и управление ими |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 
 ### <a name="support-request-contributor"></a>Support Request Contributor (Участник с правом создавать запросы на поддержку)
-Может создавать запросы в службу поддержки на уровне подписки и управлять ими.
+Создание и управление запросами в службу поддержки в области видимости hello подписки
 
 | **Действия** |  |
 | --- | --- |
@@ -761,7 +761,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Resources/subscriptions/resourceGroups/read | Чтение ролей и назначений ролей |
 
 ### <a name="user-access-administrator"></a>Администратор доступа пользователей
-Может управлять доступом пользователей к ресурсам Azure
+Можно управлять ресурсами tooAzure доступа пользователя
 
 | **Действия** |  |
 | --- | --- |
@@ -770,7 +770,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 
 ### <a name="classic-virtual-machine-contributor"></a>Участник классической виртуальной машины
-Может управлять классическими виртуальными машинами, но не виртуальными сетями и учетными записями хранения, к которым они подключены
+Можно управлять классических виртуальных машин, но hello виртуальной сети или toowhich учетной записи хранилища, которым они подключены
 
 | **Действия** |  |
 | --- | --- |
@@ -787,13 +787,13 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.ClassicStorage/storageAccounts/listKeys/action |Вывод списка ключей учетной записи хранения |
 | Microsoft.ClassicStorage/storageAccounts/read |Чтение классических учетных записей хранения |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения Insights и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 
 ### <a name="virtual-machine-contributor"></a>Участник виртуальной машины
-Может управлять виртуальными машинами, но не виртуальными сетями и учетными записями хранения, к которым они подключены
+Можно управлять виртуальными машинами, но не hello виртуальной сети или хранилища учетной записи toowhich которым они подключены
 
 | **Действия** |  |
 | --- | --- |
@@ -816,7 +816,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Network/publicIPAddresses/read |Чтение сетевых общедоступных IP-адресов |
 | Microsoft.Network/virtualNetworks/read |Чтение виртуальных сетей |
 | Microsoft.Network/virtualNetworks/subnets/join/action |Присоединение подсетей виртуальных сетей |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Storage/storageAccounts/listKeys/action |Вывод списка ключей учетной записи хранения |
@@ -831,7 +831,7 @@ ms.lasthandoff: 08/29/2017
 | Microsoft.Authorization/*/read |Авторизация на чтение |
 | Microsoft.ClassicNetwork/* |Создание классических сетей и управление ими |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения Insights и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
@@ -843,32 +843,32 @@ ms.lasthandoff: 08/29/2017
 | --- | --- |
 | Microsoft.Authorization/*/read |Авторизация на чтение |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения Insights и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 | Microsoft.Web/serverFarms/* |Создание ферм серверов и управление ими |
 
 ### <a name="website-contributor"></a>Участник веб-сайта
-Может управлять веб-сайтами, но не веб-планами, к которым они подключены
+Можно управлять веб-сайтов, но не hello web toowhich планы, которым они подключены
 
 | **Действия** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Авторизация на чтение |
 | Microsoft.Insights/alertRules/* |Создание правил оповещения Insights и управление ими |
 | Microsoft.Insights/components/* |Создание компонентов Insights и управление ими |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Получение данных о работоспособности ресурсов |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Чтение работоспособности ресурсов hello |
 | Microsoft.Resources/deployments/* |Создание развертываний группы ресурсов и управление ими |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Чтение группы ресурсов |
 | Microsoft.Support/* |Создание запросов в службу поддержки и управление ими |
 | Microsoft.Web/certificates/* |Создание сертификатов веб-сайтов и управление ими |
-| Microsoft.Web/listSitesAssignedToHostName/read |Чтение сайтов, назначенных имени узла |
+| Microsoft.Web/listSitesAssignedToHostName/read |Чтение сайтов, назначенных tooa имя узла |
 | Microsoft.Web/serverFarms/join/action |Присоединение ферм серверов |
 | Microsoft.Web/serverFarms/read |Чтение ферм серверов |
-| Microsoft.Web/sites/* |Создание веб-сайтов и управление ими (создание сайта также требует разрешений на запись к связанному плану службы приложений). |
+| Microsoft.Web/sites/* |Создание и управление веб-сайтов (Создание сайта также требуется toohello разрешения записи связанный план служб приложений) |
 
-## <a name="see-also"></a>Дополнительные материалы
-* [Управление доступом на основе ролей](role-based-access-control-configure.md). Начало работы с RBAC на портале Azure.
-* [Пользовательские роли в Azure RBAC](role-based-access-control-custom-roles.md). Сведения о создании пользовательских ролей в соответствии с потребностями доступа.
+## <a name="see-also"></a>См. также
+* [Управление доступом на основе ролей](role-based-access-control-configure.md): Приступая к работе с RBAC в hello портал Azure.
+* [Пользовательские роли в Azure RBAC](role-based-access-control-custom-roles.md): Узнайте, как toofit toocreate пользовательские роли доступ к должен.
 * [Создание отчета по журналу изменений доступа](role-based-access-control-access-change-history-report.md). Отслеживание изменения назначений ролей в RBAC.
 * [Устранение неполадок при управлении доступом на основе ролей](role-based-access-control-troubleshooting.md). Рекомендации по устранению распространенных проблем.

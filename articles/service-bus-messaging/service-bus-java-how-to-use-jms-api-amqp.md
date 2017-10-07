@@ -1,6 +1,6 @@
 ---
-title: "Как использовать AMQP 1.0 с API служебной шины Java | Документация Майкрософт"
-description: "Как использовать службу сообщений Java (JMS) со служебной шиной Azure и протоколом AMQP 1.0."
+title: "toouse aaaHow AMQP 1.0 с помощью API служебной шины Java hello | Документы Microsoft"
+description: "Как toouse hello службу сообщений Java (JMS) с Azure Service Bus и Advanced Message Queuing Protodol (AMQP) 1.0."
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
@@ -14,31 +14,31 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 0848facd764c4fb0d7f95c1ae89ecb02a32257e1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3e1d0329f2675a2273e12bb7389d3ce38b156a5e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Как использовать API службы сообщений Java (JMS) со служебной шиной и AMQP 1.0
-AMQP 1.0 — это эффективный и надежный протокол обмена сообщениями на уровне соединения, который можно использовать для создания надежных кроссплатформенных приложений для обмена сообщениями.
+# <a name="how-toouse-hello-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Как toouse hello службу сообщений Java (JMS) API с Service Bus и AMQP 1.0
+Hello Advanced Message Queuing Protocol (AMQP) 1.0 — это эффективный, надежный, транспортного уровня протокол, которые можно использовать toobuild надежных кроссплатформенных приложений обмена сообщениями.
 
-Поддержка AMQP 1.0 в Service Bus означает, что с помощью эффективного двоичного протокола можно на различных платформах использовать возможности очередей и обмена сообщениями с публикацией/подпиской у брокера. Кроме того, можно создавать приложения, содержащие компоненты, созданные с использованием разнообразных языков, платформ и операционных систем.
+Поддержка AMQP 1.0 в шине обслуживания означает, что можно использовать hello очереди и публикации или подписки через посредника функций обмена сообщениями из диапазона различных платформ, используя эффективный двоичный протокол. Кроме того, можно создавать приложения, содержащие компоненты, созданные с использованием разнообразных языков, платформ и операционных систем.
 
-В этой статье описывается использование функций обмена сообщениями через служебную шину (очередей и публикации разделов или подписки на них) из приложений Java, использующих популярный стандарт API JMS. В [связанной статье](service-bus-amqp-dotnet.md) объясняется, как выполнить те же действия, используя API .NET служебной шины. Эти два руководства можно использовать совместно для изучения обмена сообщениями между различными платформами с помощью AMQP 1.0.
+В этой статье объясняется, как toouse Service Bus функций обмена сообщениями (очередей и публикации или подписки разделов) из приложений Java с помощью hello популярных службу сообщений Java (JMS) стандартный API. Отсутствует [сопутствующая статья](service-bus-amqp-dotnet.md) , объясняется, как toodo hello же с помощью hello API .NET служебной шины. Можно использовать эти два руководства по вместе toolearn, об обмене сообщениями между различными платформами, с помощью AMQP 1.0.
 
 ## <a name="get-started-with-service-bus"></a>Приступая к работе со служебной шиной
-В этом руководстве предполагается, что вы уже создали пространство имен служебной шины, содержащее очередь с именем **queue1**. Если это не так, можно [создать пространство имен и очередь](service-bus-create-namespace-portal.md), используя [портал Azure](https://portal.azure.com). Дополнительные сведения о создании пространства имен и очередей служебной шины см. в статье [Приступая к работе с очередями служебной шины](service-bus-dotnet-get-started-with-queues.md).
+В этом руководстве предполагается, что вы уже создали пространство имен служебной шины, содержащее очередь с именем **queue1**. Если этого не сделать, то вы можете [создать пространство имен hello и очереди](service-bus-create-namespace-portal.md) с помощью hello [портал Azure](https://portal.azure.com). Дополнительные сведения о том, как отображается toocreate пространства имен служебной шины и очереди, [приступить к работе с очередями Service Bus](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
 > Секционированные очереди и разделы также поддерживают AMQP. Дополнительные сведения см. в статьях [Секционированные сущности обмена сообщениями](service-bus-partitioning.md) и [Поддержка AMQP 1.0 для секционированных очередей и разделов служебной шины](service-bus-partitioned-queues-and-topics-amqp-overview.md).
 > 
 > 
 
-## <a name="downloading-the-amqp-10-jms-client-library"></a>Загрузка клиентской библиотеки AMQP 1.0 JMS
-Информацию о том, где скачать последнюю версию клиентской библиотеки Apache Qpid JMS AMQP 1.0, см. на странице [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html).
+## <a name="downloading-hello-amqp-10-jms-client-library"></a>Загрузка клиентской библиотеки AMQP 1.0 JMS hello
+Сведения о котором toodownload hello последнюю версию клиентской библиотеки Apache Qpid JMS AMQP 1.0 hello [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html).
 
-При построении и запуске приложений JMS с использованием служебной шины необходимо добавить следующие 4 JAR-файла из архива распространения Apache Qpid JMS AMQP 1.0 в Java CLASSPATH:
+Необходимо добавить следующие четыре JAR-файла из toohello архива распространения Apache Qpid JMS AMQP 1.0 hello Java CLASSPATH при построении и запуске приложений JMS с Service Bus hello:
 
 * geronimo-jms\_1.1\_spec-1.0.jar
 * qpid-amqp-1-0-client-[version].jar
@@ -47,51 +47,51 @@ AMQP 1.0 — это эффективный и надежный протокол 
 
 ## <a name="coding-java-applications"></a>Создание приложений Java
 ### <a name="java-naming-and-directory-interface-jndi"></a>Интерфейс JNDI
-JMS использует интерфейс JNDI для разделения логических и физических имен. С помощью JNDI разрешаются два типа объектов JMS: ConnectionFactory и Destination. JNDI использует модель поставщика, к которой можно подключить различные службы каталогов для обработки заданий разрешения имен. Библиотека Apache Qpid JMS AMQP 1.0 поставляется с простым файловым поставщиком JNDI, настроенным с помощью файла свойств в следующем формате:
+JMS использует hello именования Java и каталог интерфейс JNDI toocreate разделение логических и физических имен. С помощью JNDI разрешаются два типа объектов JMS: ConnectionFactory и Destination. JNDI использует модель поставщика, в которую можно подключить разрешения имен установки toohandle служб другой каталог. Hello Apache Qpid JMS AMQP 1.0 библиотеки поставляется с простых свойств файловых JNDI поставщика, который настраивается с помощью файла свойств hello следующий формат:
 
 ```
 # servicebus.properties - sample JNDI configuration
 
-# Register a ConnectionFactory in JNDI using the form:
+# Register a ConnectionFactory in JNDI using hello form:
 # connectionfactory.[jndi_name] = [ConnectionURL]
 connectionfactory.SBCF = amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
 
-# Register some queues in JNDI using the form
+# Register some queues in JNDI using hello form
 # queue.[jndi_name] = [physical_name]
 # topic.[jndi_name] = [physical_name]
 queue.QUEUE = queue1
 ```
 
-#### <a name="configure-the-connectionfactory"></a>Настройка ConnectionFactory
-Эта запись используется для определения **ConnectionFactory** в поставщике JNDI файла свойств Qpid в следующем формате:
+#### <a name="configure-hello-connectionfactory"></a>Настройка hello ConnectionFactory
+Здравствуйте записи, используемой toodefine **ConnectionFactory** в hello Qpid JNDI поставщик свойств файла имеет hello следующий формат:
 
 ```
 connectionfactory.[jndi_name] = [ConnectionURL]
 ```
 
-Где **[jndi_name]** и **[ConnectionURL]** означают следующее:
+Где **[jndi_name]** и **[ConnectionURL]** имеют hello следующие значения:
 
-* **[jndi_name]**: логическое имя ConnectionFactory. Это имя, которое будет разрешено в Java-приложении с помощью метода JNDI IntialContext.lookup().
-* **[ConnectionURL]**: URL-адрес, предоставляющий библиотеке JMS сведения, необходимые брокеру AMQP.
+* **[jndi_name]** : hello логическое имя hello ConnectionFactory. Это имя hello, который будет разрешен в hello приложения Java, с помощью метода JNDI IntialContext.lookup() hello.
+* **[ConnectionURL]** : URL-адрес, предоставляющий библиотеке JMS hello сведениями hello необходимые toohello брокера AMQP.
 
-Формат **ConnectionURL** выглядит следующим образом:
+Формат Hello hello **ConnectionURL** выглядит следующим образом:
 
 ```
 amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
 ```
-Где **[namespace]**, **[SASPolicyName]** и **[SASPolicyKey]** означают следующее:
+Где **[пространство имен]**, **[SASPolicyName]** и **[SASPolicyKey]** имеют hello следующие значения:
 
-* **[namespace]**: пространство имен служебной шины;
-* **[SASPolicyName]**: имя политики подписанного URL-адреса;
-* **[SASPolicyKey]**: ключ политики подписанного URL-адреса.
+* **[пространство имен]** : hello пространства имен Service Bus.
+* **[SASPolicyName]** : hello имя политики очереди подписи общего доступа.
+* **[SASPolicyKey]** : hello ключ политики очереди подписи общего доступа.
 
 > [!NOTE]
-> Необходимо применить URL-кодирование к паролю вручную. Полезная служебная программа URL-кодирования доступна по адресу [http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp).
+> URL-кодирование пароля hello необходимо вручную. Полезная служебная программа URL-кодирования доступна по адресу [http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp).
 > 
 > 
 
 #### <a name="configure-destinations"></a>Настройка назначений
-Эта запись используется для определения назначения в поставщике JNDI файла свойств Qpid в следующем формате:
+Здравствуйте, toodefine запись, используемая для копирования в поставщик JNDI файла свойств Qpid hello данных является hello следующая формата:
 
 ```
 queue.[jndi_name] = [physical_name]
@@ -103,21 +103,21 @@ queue.[jndi_name] = [physical_name]
 topic.[jndi_name] = [physical_name]
 ```
 
-Где **[jndi\_name]** и **[physical\_name]** означают следующее:
+Где **[jndi\_имя]** и **[физического\_имя]** имеют hello следующие значения:
 
-* **[jndi_name]**: логическое имя назначения. Это имя, которое будет разрешено в Java-приложении с помощью метода JNDI IntialContext.lookup().
-* **[physical_name]**: имя сущности служебной шины, которой приложение отправляет сообщения или от которого оно получает сообщения.
+* **[jndi_name]** : hello логическое имя назначения «hello». Это имя hello, который будет разрешен в hello приложения Java, с помощью метода JNDI IntialContext.lookup() hello.
+* **[physical_name]** : имя hello hello приложения hello toowhich сущности служебной шины отправлять или получать сообщения.
 
 > [!NOTE]
-> При получении данных из подписки раздела служебной шины физическое имя, указанное в JNDI, должно быть именем раздела. Имя подписки предоставляется при создании устойчивой подписки в коде приложения JMS. В [руководстве разработчика AMQP 1.0 для служебной шины](service-bus-amqp-dotnet.md) содержатся дополнительные сведения о работе с разделами служебной шины в JMS.
+> При получении из подписки раздела Service Bus hello физическое имя, указанное в JNDI следует hello имя раздела hello. имя подписки Hello предоставляется при создании устойчивой подписки hello в коде приложения JMS hello. Hello [Service Bus AMQP 1.0 руководство разработчика](service-bus-amqp-dotnet.md) содержатся дополнительные сведения о работе с разделы служебной шины из JMS.
 > 
 > 
 
-### <a name="write-the-jms-application"></a>Написание приложения JMS
-Не существует специальных API-интерфейсов или параметров для использования JMS с Service Bus. Однако существует несколько ограничений, которые будут рассмотрены ниже. Как и для любого приложения JMS, первое, что необходимо — это конфигурация среды JNDI, позволяющая разрешать **ConnectionFactory** и назначения.
+### <a name="write-hello-jms-application"></a>Написать приложение hello JMS
+Не существует специальных API-интерфейсов или параметров для использования JMS с Service Bus. Однако существует несколько ограничений, которые будут рассмотрены ниже. Как и любого приложения JMS hello первое, что необходимые конфигурации среды JNDI hello, может tooresolve toobe **ConnectionFactory** и назначения.
 
-#### <a name="configure-the-jndi-initialcontext"></a>Настройка исходного контекста JNDI
-Для настройки среды JNDI хэш-таблица со сведениями о конфигурации передаются в конструктор класса javax.naming.InitialContext. Два обязательных элемента в хэш-таблице — это имя класса фабрики исходного контекста и URL-адрес поставщика. В следующем примере кода показано, как настроить среду JNDI для использования поставщика JNDI на основе файла свойств Qpid с именем **servicebus.properties**.
+#### <a name="configure-hello-jndi-initialcontext"></a>Настройка hello JNDI InitialContext
+Hello среды JNDI настраивается путем передачи хэш-таблицу сведений о конфигурации в конструктор hello класса javax.naming.InitialContext hello. Hello двумя обязательными элементами в хэш-таблице hello: имя класса hello hello начальной фабрики контекста и hello URL-адрес поставщика. Hello следующий код показывает, как tooconfigure hello JNDI toouse hello Qpid свойства файла среды на основе поставщика JNDI с свойства файл с именем **servicebus.properties**.
 
 ```java
 Hashtable<String, String> env = new Hashtable<String, String>(); 
@@ -127,7 +127,7 @@ InitialContext context = new InitialContext(env);
 ``` 
 
 ### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Простое приложение JMS, использующее очередь служебной шины
-Следующий пример программы отправляет текстовые сообщения JMS в очередь Service Bus с логическим JNDI-именем QUEUE и получает ответные сообщения.
+Hello следующий пример программы очереди Service Bus tooa JMS TextMessages с hello JNDI логическое имя очереди, отправляет и получает сообщения hello обратно.
 
 ```java
 // SimpleSenderReceiver.java
@@ -185,7 +185,7 @@ public class SimpleSenderReceiver implements MessageListener {
             }
 
             SimpleSenderReceiver simpleSenderReceiver = new SimpleSenderReceiver();
-            System.out.println("Press [enter] to send a message. Type 'exit' + [enter] to quit.");
+            System.out.println("Press [enter] toosend a message. Type 'exit' + [enter] tooquit.");
             BufferedReader commandLine = new java.io.BufferedReader(new InputStreamReader(System.in));
 
             while (true) {
@@ -226,12 +226,12 @@ public class SimpleSenderReceiver implements MessageListener {
 }    
 ```
 
-### <a name="run-the-application"></a>Выполнение приложения
-Запущенное приложение выводит следующие данные:
+### <a name="run-hello-application"></a>Запустите приложение hello
+Запуск приложения hello выводятся данные hello формы:
 
 ```
 > java SimpleSenderReceiver
-Press [enter] to send a message. Type 'exit' + [enter] to quit.
+Press [enter] toosend a message. Type 'exit' + [enter] tooquit.
 
 Sent message with JMSMessageID = ID:2867600614942270318
 Received message with JMSMessageID = ID:2867600614942270318
@@ -245,22 +245,22 @@ exit
 ```
 
 ## <a name="cross-platform-messaging-between-jms-and-net"></a>Межплатформенный обмен сообщениями между JMS и .NET
-В этом руководстве мы рассмотрели, как отправлять и получать сообщения Service Bus с помощью JMS. Однако одно из основных преимуществ использования AMQP 1.0 состоит в том, что этот протокол позволяет приложениям, созданным из компонентов, написанных на разных языках, надежно и точно обмениваться сообщениями.
+В этом руководстве показано, как toosend и получать сообщения tooand с Service Bus с помощью JMS. Одним из ключевых преимуществ hello AMQP 1.0 то, что позволяет приложениям toobe, построенная для компонентов, написанных на разных языках с сообщения, которыми обмениваются надежно и с полной точностью.
 
-Используя пример приложения JMS выше и аналогичное приложение .NET, взятое из связанной статьи [Использование служебной шины на платформе .NET с протоколом AMQP 1.0](service-bus-amqp-dotnet.md), можно организовать обмен сообщениями между .NET и Java. В этой статье представлены сведения о кроссплатформенном обмене сообщениями с помощью служебной шины и AMQP 1.0.
+С помощью JMS hello демонстрационного приложения, описанного выше и аналогичные приложения .NET, взяты из сопутствующая статья [с использованием служебной шины из .NET с AMQP 1.0](service-bus-amqp-dotnet.md), обмен сообщениями между .NET и Java. Эта статья Дополнительные сведения о hello кросс платформенных обмена сообщениями с использованием Service Bus и AMQP 1.0.
 
-### <a name="jms-to-net"></a>Из JMS в .NET
-Для демонстрации отправки сообщении из JMS в .NET выполните следующее:
+### <a name="jms-toonet"></a>JMS too.NET
+toodemonstrate JMS too.NET обмена сообщениями:
 
-* Запустите пример приложения .NET без параметров командной строки.
-* Запустите пример приложения Java с параметром командной строки sendonly. В этом режиме приложение не будет получать сообщения из очереди, оно будет только отправлять сообщения.
-* В консоли приложения Java несколько раз нажмите клавишу **ВВОД**, что приведет к отправке сообщений.
-* Эти сообщения принимаются приложением .NET.
+* Запустите приложение образец hello .NET без аргументов командной строки.
+* Запустите образец приложения Java hello с аргументом командной строки «sendonly» hello. В этом режиме hello приложения не будут получать сообщения из очереди hello, он будет отправлять.
+* Нажмите клавишу **ввод** несколько раз в консоли приложения hello Java, которое может вызвать toobe сообщения отправляются.
+* Эти сообщения принимаются hello приложения .NET.
 
 #### <a name="output-from-jms-application"></a>Вывод приложения JMS
 ```
 > java SimpleSenderReceiver sendonly
-Press [enter] to send a message. Type 'exit' + [enter] to quit.
+Press [enter] toosend a message. Type 'exit' + [enter] tooquit.
 Sent message with JMSMessageID = ID:4364096528752411591
 Sent message with JMSMessageID = ID:459252991689389983
 Sent message with JMSMessageID = ID:1565011046230456854
@@ -270,25 +270,25 @@ exit
 #### <a name="output-from-net-application"></a>Вывод приложения .NET
 ```
 > SimpleSenderReceiver.exe    
-Press [enter] to send a message. Type 'exit' + [enter] to quit.
+Press [enter] toosend a message. Type 'exit' + [enter] tooquit.
 Received message with MessageID = 4364096528752411591
 Received message with MessageID = 459252991689389983
 Received message with MessageID = 1565011046230456854
 exit
 ```
 
-### <a name="net-to-jms"></a>Из .NET в JMS
-Для демонстрации отправки сообщений из .NET в JMS выполните следующее:
+### <a name="net-toojms"></a>.NET tooJMS
+tooJMS .NET toodemonstrate обмена сообщениями:
 
-* Запустите пример приложения .NET с параметром командной строки sendonly. В этом режиме приложение не будет получать сообщения из очереди, оно будет только отправлять сообщения.
-* Запустите пример приложения Java без параметров командной строки.
-* В консоли приложения .NET несколько раз нажмите клавишу **ВВОД**, что приведет к отправке сообщений.
-* Эти сообщения принимаются приложением Java.
+* Запустите пример приложения hello .NET с помощью аргумента командной строки «sendonly» hello. В этом режиме hello приложения не будут получать сообщения из очереди hello, он будет отправлять.
+* Запустите приложение образец hello Java без аргументов командной строки.
+* Нажмите клавишу **ввод** несколько раз в консоли приложения hello .NET, что приведет к toobe сообщения отправляются.
+* Эти сообщения принимаются hello приложения Java.
 
 #### <a name="output-from-net-application"></a>Вывод приложения .NET
 ```
 > SimpleSenderReceiver.exe sendonly
-Press [enter] to send a message. Type 'exit' + [enter] to quit.
+Press [enter] toosend a message. Type 'exit' + [enter] tooquit.
 Sent message with MessageID = d64e681a310a48a1ae0ce7b017bf1cf3    
 Sent message with MessageID = 98a39664995b4f74b32e2a0ecccc46bb
 Sent message with MessageID = acbca67f03c346de9b7893026f97ddeb
@@ -298,7 +298,7 @@ exit
 #### <a name="output-from-jms-application"></a>Вывод приложения JMS
 ```
 > java SimpleSenderReceiver    
-Press [enter] to send a message. Type 'exit' + [enter] to quit.
+Press [enter] toosend a message. Type 'exit' + [enter] tooquit.
 Received message with JMSMessageID = ID:d64e681a310a48a1ae0ce7b017bf1cf3
 Received message with JMSMessageID = ID:98a39664995b4f74b32e2a0ecccc46bb
 Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
@@ -306,22 +306,22 @@ exit
 ```
 
 ## <a name="unsupported-features-and-restrictions"></a>Неподдерживаемые возможности и ограничения
-При использовании JMS по протоколу AMQP 1.0 с Service Bus действуют следующие ограничения:
+При использовании JMS через протокол AMQP 1.0 с Service Bus, а именно существуют Hello следующие ограничения:
 
-* Для одного **сеанса** допускается только один **MessageProducer** или **MessageConsumer**. Если требуется создать несколько **MessageProducers** или **MessageConsumers** в приложении, создайте специальный **сеанс** для каждого из них.
+* Для одного **сеанса** допускается только один **MessageProducer** или **MessageConsumer**. Если вам требуется toocreate несколько **MessageProducers** или **MessageConsumers** в приложении, создать выделенную **сеанса** для каждого из них.
 * Временные подписки раздела в настоящее время не поддерживаются.
 * **MessageSelectors** сейчас не поддерживаются.
-* Временные назначения, например **TemporaryQueue** и **TemporaryTopic**, сейчас не поддерживаются, как и использующие их API-интерфейсы **QueueRequestor** и **TopicRequestor**.
+* Временные назначения; например **TemporaryQueue**, **TemporaryTopic** не поддерживаются в настоящее время, а также hello **QueueRequestor** и **TopicRequestor**API, использовать их.
 * Сеансы транзакций и распределенные транзакции не поддерживаются.
 
 ## <a name="summary"></a>Сводка
-В этом практическом руководстве показано использование функций обмена сообщениями, выполняемых посредством служебной шины (очередей и разделов публикации/подписки), из Java с использованием популярного JMS API и протокола AMQP 1.0.
+Это как tooguide было показано, как toouse через посредника Service Bus функций обмена сообщениями (очередей и публикации или подписки разделов) с помощью Java hello популярные API JMS и AMQP 1.0.
 
-Протокол AMQP 1.0 Service Bus можно также использовать из других языков, в числе которых .NET, C, Python и PHP. Компоненты, созданные с помощью этих языков, могут надежно и точно обмениваться сообщениями, используя AMQP 1.0 в Service Bus.
+Протокол AMQP 1.0 Service Bus можно также использовать из других языков, в числе которых .NET, C, Python и PHP. Компоненты, созданные с помощью этих разных языков могут обмениваться сообщениями надежно и с полной точностью, с помощью поддержки hello AMQP 1.0 в шине обслуживания.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * [Поддержка AMQP 1.0 в служебной шине](service-bus-amqp-overview.md)
-* [Как использовать AMQP 1.0 с API .NET служебной шины](service-bus-dotnet-advanced-message-queuing.md)
+* [Как toouse AMQP 1.0 с hello API .NET служебной шины](service-bus-dotnet-advanced-message-queuing.md)
 * [Руководство разработчика AMQP 1.0 для служебной шины](service-bus-amqp-dotnet.md)
 * [Начало работы с очередями служебной шины](service-bus-dotnet-get-started-with-queues.md)
 * [Центр разработчиков Java](https://azure.microsoft.com/develop/java/)

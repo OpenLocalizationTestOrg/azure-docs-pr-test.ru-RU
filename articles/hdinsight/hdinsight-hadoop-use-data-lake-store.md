@@ -1,6 +1,6 @@
 ---
-title: "Использование Data Lake Store с Hadoop в Azure HDInsight | Документация Майкрософт"
-description: "Узнайте, как запрашивать данные из Azure Data Lake Store и сохранять результаты анализа."
+title: "Хранилище Озера данных в с Hadoop в Azure HDInsight aaaUse | Документы Microsoft"
+description: "Узнайте, как tooquery данные из хранилища Озера данных Azure и toostore результатов анализа."
 keywords: "хранилище BLOB-объектов,hdfs,структурированные данные,неструктурированные данные,data lake store"
 services: hdinsight,storage
 documentationcenter: 
@@ -16,17 +16,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/03/2017
 ms.author: jgao
-ms.openlocfilehash: 28a836aff65636ef0031ac63f633d746436d7e4a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 89633218a37a2fe05043e05d61199dcc0252d7f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Использование Data Lake Store с кластерами Azure HDInsight
 
-Для анализа данных в кластере HDInsight можно сохранить данные в [службе хранилища Azure](../storage/common/storage-introduction.md), в [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) или в обоих этих хранилищах. Оба варианта хранилища позволяют безопасно и без потери пользовательских данных удалять используемые для расчетов кластеры HDInsight.
+данные tooanalyze в кластер HDInsight, данные можно хранить hello либо в [хранилища Azure](../storage/common/storage-introduction.md), [хранилища Озера данных Azure](../data-lake-store/data-lake-store-overview.md), или оба. Оба варианта хранилища позволяют удалить toosafely кластеров HDInsight, которые используются для вычисления без потери данных пользователя.
 
-Из этой статьи вы узнаете, как Data Lake Store работает с кластерами HDInsight. Дополнительные сведения о работе службы хранилища Azure с кластерами HDInsight см. в разделе [Использование службы хранилища Azure с кластерами Azure HDInsight](hdinsight-hadoop-use-blob-storage.md). Дополнительные сведения о создании кластера HDInsight см. в статье [Создание кластеров Hadoop в HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+Из этой статьи вы узнаете, как Data Lake Store работает с кластерами HDInsight. toolearn как хранилище Azure работает с кластерами HDInsight. в разделе [кластеры использования хранилища Azure с Azure HDInsight](hdinsight-hadoop-use-blob-storage.md). Дополнительные сведения о создании кластера HDInsight см. в статье [Создание кластеров Hadoop в HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 > [!NOTE]
 > Доступ к Data Lake Store всегда осуществляется по безопасному каналу, поэтому никогда не применяется имя схемы файловой системы `adls`. Всегда используется `adl`.
@@ -35,59 +35,59 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="availabilities-for-hdinsight-clusters"></a>Сведения о доступности для кластеров HDInsight
 
-В Hadoop поддерживается концепция файловой системы по умолчанию. Файловая система по умолчанию подразумевает использование центра сертификации и схемы по умолчанию. Она также может использоваться для разрешения относительных путей. При создании кластера HDInsight в качестве используемой по умолчанию файловой системы можно указать контейнер больших двоичных объектов в службе хранилища Azure, а в случае использования HDInsight 3.5 и более поздних версий — выбрать службу хранилища Azure или Azure Data Lake Store с некоторыми исключениями. 
+Hadoop поддерживает понятие файловой системы по умолчанию hello. файловой системы по умолчанию Hello подразумевается схема по умолчанию и центром. Его также можно использовать tooresolve относительные пути. Во время процесса создания кластера HDInsight hello, можно указать контейнер больших двоичных объектов в хранилище Azure в качестве файловой системы по умолчанию hello, или с HDInsight 3.5 и более новых версий, можно выбрать хранилище Azure или хранилища Озера данных Azure как система файлов по умолчанию hello с несколько исключений. 
 
 Есть два способа использования Data Lake Store с кластерами HDInsight:
 
-* в качестве хранилища по умолчанию;
+* Как хранилище по умолчанию hello
 * в качестве дополнительного хранилища (при этом в качестве хранилища по умолчанию используется Azure Storage Blob).
 
-Сейчас только некоторые типы и версии кластеров HDInsight поддерживают использование Data Lake Store в качестве хранилища по умолчанию и для дополнительных учетных записей хранения:
+Сейчас или только часть hello HDInsight кластер типы и версии поддерживают использование хранилища Озера данных в качестве хранилища по умолчанию и дополнительные учетные записи хранения.
 
 | Тип кластера HDInsight | Data Lake Store как хранилище по умолчанию | Data Lake Store как дополнительное хранилище| Примечания |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight версии 3.6 | Да | Да | |
-| HDInsight версии 3.5 | Да | Да | За исключением HBase|
+| HDInsight версии 3.5 | Да | Да | Исключением hello HBase|
 | HDInsight версия 3.4 | Нет | Да | |
 | HDInsight версии 3.3 | Нет | Нет | |
 | HDInsight версии 3.2 | Нет | Да | |
 | HDInsight "Премиум" (уровень)| Нет | Нет | |
-| Storm | | |Data Lake Store можно использовать для записи данных из топологии Storm. Data Lake Store также может использоваться для хранения эталонных данных, которые затем можно будет считать с помощью топологии Storm.|
+| Storm | | |Можно использовать данные toowrite хранилища Озера данных из топологии Storm. Data Lake Store также может использоваться для хранения эталонных данных, которые затем можно будет считать с помощью топологии Storm.|
 
-Использование Data Lake Store в качестве дополнительной учетной записи хранения не влияет на производительность либо возможность выполнять чтение или запись в хранилище Azure из кластера.
+С помощью хранилища Озера данных от имени учетной записи дополнительное хранилище не влияет на производительность или возможность tooread hello и записи хранилища tooAzure кластере hello.
 
 
 ## <a name="use-data-lake-store-as-default-storage"></a>Использование Data Lake Store в качестве хранилища по умолчанию
 
-При развертывании HDInsight с Data Lake Store в качестве хранилища по умолчанию относящиеся к кластеру файлы сохраняются в хранилище Data Lake Store в следующем расположении:
+При развертывании HDInsight с помощью хранилища Озера данных в качестве хранилища по умолчанию hello кластера связанные файлы хранятся в хранилище Озера данных hello следующие расположения:
 
     adl://mydatalakestore/<cluster_root_path>/
 
-где `<cluster_root_path>` — это имя папки, которую вы создаете в Data Lake Store. Указав корневую папку для каждого кластера, вы можете использовать одну и ту же учетную запись Data Lake Store для нескольких кластеров. Таким образом, у вас могут получиться такие настройки:
+где `<cluster_root_path>` — hello имя папки, создаваемые в хранилище Озера данных. Указав корневой путь для каждого кластера, можно использовать одну учетную запись хранилища Озера данных для нескольких кластеров hello. Таким образом, у вас могут получиться такие настройки:
 
-* Cluster1 использует путь `adl://mydatalakestore/cluster1storage`;
-* Cluster2 использует путь `adl://mydatalakestore/cluster2storage`.
+* Cluster1 можно использовать путь hello`adl://mydatalakestore/cluster1storage`
+* Cluster2 можно использовать путь hello`adl://mydatalakestore/cluster2storage`
 
-Обратите внимание, что оба кластера используют одну и ту же учетную запись Data Lake Store — **mydatalakestore**. Каждый кластер имеет доступ к собственный корневой файловой системе в Data Lake Store. В частности, при развертывании на портале Azure в качестве корневого пути предлагается использовать имя папки, например **/clusters/\<clustername>**.
+Обратите внимание, что оба hello использование кластеров hello же хранилища Озера данных **mydatalakestore**. Каждый кластер имеет доступ tooits владельцем корневой файловой системы в хранилище Озера данных. Hello опыт развертывания Azure портала в частности предложит toouse имя папки например **/clusters/\<имя_кластера >** для корневого пути hello.
 
-Чтобы использовать Data Lake Store как хранилище по умолчанию, необходимо предоставить субъекту-службе доступ к таким объектам:
+toouse toobe возможности хранилища Озера данных хранения по умолчанию, необходимо предоставить hello службы доступа toohello следующие пути:
 
-- Корень учетной записи Data Lake Store.  Например: adl://mydatalakestore/.
-- Папка для всех папок кластера.  Например: adl://mydatalakestore/clusters.
-- Папка для кластера.  Например: adl://mydatalakestore/clusters/cluster1storage.
+- корневой учетной записи хранилища Озера данных Hello.  Например: adl://mydatalakestore/.
+- Hello папки для всех папок кластера.  Например: adl://mydatalakestore/clusters.
+- Папка Hello для hello кластера.  Например: adl://mydatalakestore/clusters/cluster1storage.
 
 Дополнительные сведения о создании субъекта-службы и предоставлении доступа см. в разделе [Настройка доступа к Data Lake Store](#configure-data-lake-store-access).
 
 
 ## <a name="use-data-lake-store-as-additional-storage"></a>Использование Data Lake Store в качестве дополнительного хранилища
 
-Data Lake Store также можно использовать в качестве дополнительного хранилища кластера. В таких случаях хранилищем кластера по умолчанию может быть Azure Storage Blob или учетная запись Data Lake Store. При выполнении заданий HDInsight с применением данных, хранящихся в Data Lake Store как дополнительном хранилище, необходимо использовать полный путь к файлам. Например:
+Хранилище Озера данных можно использовать как дополнительное хранилище для кластера hello также. В таких случаях хранилище по умолчанию hello кластера может быть BLOB-объект хранилища Azure или учетную запись хранилища Озера данных. При выполнении задания HDInsight к hello данным, хранящимся в хранилище Озера данных как дополнительное хранилище, необходимо использовать файлы toohello hello полный путь. Например:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-Обратите внимание, что в этом URL-адресе нет **cluster_root_path**. Это объясняется тем, что в данном случае Data Lake Store не является хранилищем по умолчанию, поэтому требуется просто указать путь к файлам.
+Следует отметить, что не **cluster_root_path** в URL-АДРЕСЕ hello теперь. Это, так как хранилище Озера данных не хранилища по умолчанию в этом случае поэтому все, что нужно toodo предоставляют файлы toohello путь hello.
 
-Чтобы использовать Data Lake Store как дополнительное хранилище, достаточно предоставить субъекту-службе доступ к расположениям, в которых хранятся файлы.  Например:
+toouse toobe возможности хранилища Озера данных как дополнительное хранилище, требуется только toogrant hello службы доступа toohello пути где хранятся файлы.  Например:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
@@ -96,39 +96,39 @@ Data Lake Store также можно использовать в качеств
 
 ## <a name="use-more-than-one-data-lake-store-accounts"></a>Использование нескольких учетных записей Data Lake Store
 
-Можно добавить учетную запись Data Lake Store в качестве дополнительного хранилища и несколько учетных записей Data Lake Store, предоставив кластеру HDInsight разрешение на доступ к данным в одной или нескольких учетных записях Data Lake Store. См. раздел [Настройка доступа к Data Lake Store](#configure-data-lake-store-access).
+Добавление учетной записи хранилища Озера данных как дополнительный и Добавление более одного хранилища Озера данных выполняется учетных записей, предоставляя разрешение кластера HDInsight hello на данные в учетных записях хранилища Озера данных для одной или нескольких. См. раздел [Настройка доступа к Data Lake Store](#configure-data-lake-store-access).
 
 ## <a name="configure-data-lake-store-access"></a>Настройка доступа к Data Lake Store
 
-Чтобы настроить доступ к Data Lake Store из кластера HDInsight, требуется субъект-служба Azure Active Directory (AAD). Создать субъект-службу может только администратор Azure AD. Для создания субъекта-службы необходим сертификат. Дополнительные сведения см. в разделах [Настройка доступа к Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access) и [Создание субъекта-службы с самозаверяющим сертификатом](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+tooconfigure доступ к хранилищу Озера данных с кластером HDInsight, необходимо иметь Azure Active directory (Azure AD) участника-службы. Создать субъект-службу может только администратор Azure AD. Hello участника-службы должны создаваться с помощью сертификата. Дополнительные сведения см. в разделах [Настройка доступа к Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access) и [Создание субъекта-службы с самозаверяющим сертификатом](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
 
 > [!NOTE]
-> Если вы собираетесь добавить Azure Data Lake Store в качестве дополнительного хранилища для кластера HDInsight, настоятельно рекомендуется сделать это во время создания кластера, как описано в этой статье. Добавление Azure Data Lake Store в качестве дополнительного хранилища для существующего кластера HDInsight — очень сложный процесс, который может привести к ошибкам.
+> Если вы собираетесь хранилища Озера данных Azure toouse как дополнительное хранилище для кластера HDInsight, настоятельно рекомендуется это сделать, при создании кластера hello, как описано в этой статье. Добавление хранилища Озера данных Azure в качестве дополнительного хранилища tooan существующий кластер HDInsight является сложным процессом и ошибкам tooerrors.
 >
 
-## <a name="access-files-from-the-cluster"></a>Доступ к файлам из кластера
+## <a name="access-files-from-hello-cluster"></a>Доступ к файлам из кластера hello
 
-Существует несколько способов доступа к файлам в Data Lake Store из кластера HDInsight.
+Существует несколько способов, можно обратиться к файлам hello в хранилище Озера данных из кластера HDInsight.
 
-* **С помощью полного доменного имени**. При таком подходе необходимо указать полный путь к файлу, к которому требуется доступ.
+* **Используя полное имя hello**. При таком подходе, укажите файл toohello hello полный путь, которые должны tooaccess.
 
         adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/<file_path>
 
-* **Используя сокращенный формат пути**. При таком подходе путь до корня кластера заменяется на adl:///. Таким образом, в приведенном выше примере `adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/` можно заменить на `adl:///`.
+* **С использованием формата сокращенный путь hello**. При таком подходе вы замените hello пути до корневого кластера toohello adl: / / /. Таким образом, в приведенном выше примере hello, можно заменить `adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/` с `adl:///`.
 
         adl:///<file path>
 
-* **С помощью относительного пути**. При таком подходе указывается только относительный путь к файлу, к которому требуется доступ. Например, если полный путь к файлу —
+* **С помощью относительного пути hello**. При таком подходе можно только указать файл toohello hello относительного пути, которые должны tooaccess. Например, если файл toohello hello полный путь:
 
         adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/example/data/sample.log
 
-    то получить доступ к этому же файлу sample.log можно с помощью относительного пути:
+    Вы можете получить доступ к Здравствуйте того же файла sample.log, используя это относительный путь.
 
         /example/data/sample.log
 
-## <a name="create-hdinsight-clusters-with-access-to-data-lake-store"></a>Создание кластеров HDInsight с доступом к Data Lake Store
+## <a name="create-hdinsight-clusters-with-access-toodata-lake-store"></a>Создать кластеры HDInsight с доступа к хранилищу Озера tooData
 
-Перейдите по указанным ниже ссылкам, чтобы просмотреть подробные инструкции о создании кластеров HDInsight с доступом к Data Lake Store.
+Используйте следующие ссылки на подробные инструкции на как toocreate кластеров HDInsight с доступа к хранилищу Озера tooData hello.
 
 * [Использование портала](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Создание кластера HDInsight с Data Lake Store (как хранилище по умолчанию) с помощью Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -137,16 +137,16 @@ Data Lake Store также можно использовать в качеств
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Из этой статьи вы узнали, как использовать HDFS-совместимую службу Azure Data Lake Store с HDInsight. Это позволяет создавать масштабируемые, долгосрочные решения для получения данных архивирования, а также использовать HDInsight для разблокирования информации внутри хранимых структурированных и неструктурированных данных.
+В этой статье вы узнали, каким образом toouse хранилища Озера данных Azure HDFS-совместимой с HDInsight. Это позволяет вам toobuild масштабируемые и долгосрочной, архивация данных приобретения решения и использования HDInsight toounlock hello данные, содержащиеся в hello хранятся структурированные и неструктурированные данные.
 
 Дополнительные сведения можно найти в разделе 
 
 * [Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux][hdinsight-get-started]
 * [Начало работы с Azure Data Lake Store с помощью портала Azure](../data-lake-store/data-lake-store-get-started-portal.md)
-* [Отправка данных в HDInsight][hdinsight-upload-data]
+* [Отправка данных tooHDInsight][hdinsight-upload-data]
 * [Использование Hive с HDInsight][hdinsight-use-hive]
 * [Использование Pig с HDInsight][hdinsight-use-pig]
-* [Использование подписанных URL-адресов хранилища Azure для ограничения доступа к данным с помощью HDInsight][hdinsight-use-sas]
+* [Использование подписей общего доступа Azure хранилища toorestrict доступа toodata с HDInsight][hdinsight-use-sas]
 
 [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
 [powershell-install]: /powershell/azureps-cmdlets-docs

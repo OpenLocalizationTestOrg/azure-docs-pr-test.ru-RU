@@ -1,6 +1,6 @@
 ---
-title: "Использование определяемых пользователем функций Python с Apache Hive и Pig в Azure HDInsight | Документация Майкрософт"
-description: "Узнайте, как использовать пользовательские функции (UDF) технологической платформы Hadoop на базе Azure — Python с Hive и Pig в HDInsight."
+title: "aaaPython определяемой пользователем функции с Apache Hive и Pig - Azure HDInsight | Документы Microsoft"
+description: "Узнайте, как toouse Python пользовательской функции (UDF) из Hive и Pig в HDInsight Hadoop технологии hello стека в Azure."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,37 +16,37 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 9b67ded05a52f1e68580434667495cf6cf939871
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 26d8160cc6ed7fc22c3f06f7c1c9954c224b2366
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Использование пользовательских функций Python с Hive и Pig в Azure HDInsight
 
-Узнайте, как использовать определяемые пользователем функции (UDF) Python с Apache Hive и Pig в Hadoop на кластерах Azure HDInsight.
+Узнайте, как toouse Python определяемой пользователем функции (UDF) с Apache Hive и Pig в Hadoop в Azure HDInsight.
 
 ## <a name="python"></a>Python в HDInsight
 
-По умолчанию на кластерах HDInsight 3.0 и более поздних версиях установлен Python версии 2.7. Apache Hive можно использовать с этой версией Python для потоковой обработки. При этом для передачи данных между Hive и определяемой пользователем функцией используется STDOUT и STDIN.
+По умолчанию на кластерах HDInsight 3.0 и более поздних версиях установлен Python версии 2.7. Apache Hive можно использовать с этой версией Python для потоковой обработки. STDOUT и STDIN toopass данных Hive и hello определяемой пользователем функции используется для обработки потока.
 
-В состав HDInsight также входят Jython, который представляет собой реализацию Python, написанную на Java. Jython выполняется непосредственно на виртуальной машине Java и не использует потоковую передачу. Jython является рекомендуемым интерпретатором Python при использовании Python с Pig.
+В состав HDInsight также входят Jython, который представляет собой реализацию Python, написанную на Java. Jython запускается непосредственно на виртуальной машине Java hello и не использовать потоковую передачу. Jython является hello рекомендуется интерпретатор Python при использовании Python с Pig.
 
 > [!WARNING]
-> Шаги в этом документе основаны на следующих предположениях: 
+> Hello в данном пошаговом руководстве сделать hello следующие допущения: 
 >
-> * Вы создаете скрипты Python в локальной среде разработки.
-> * Вы отправляете скрипты в HDInsight, используя либо команду `scp` из локального сеанса Bash либо предоставленный сценарий PowerShell.
+> * Можно создавать hello сценариев Python в локальной среде разработки.
+> * Отправка tooHDInsight hello сценарии, с помощью либо hello `scp` из локального сеанса Bash или hello, предоставленный скрипт PowerShell.
 >
-> Если вы хотите использовать предварительную версию [Azure Cloud Shell (оболочка)](https://docs.microsoft.com/azure/cloud-shell/overview) для работы с HDInsight, вам необходимо:
+> Если требуется toouse hello [оболочки облако Azure (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) предварительного просмотра toowork с HDInsight, необходимо:
 >
-> * Создать скрипты в среде Cloud Shell.
-> * Использовать `scp` для отправки файлов из Cloud Shell в HDInsight.
-> * Использовать `ssh` из Cloud Shell для подключения к HDInsight и выполнения примеров.
+> * Создайте скрипты hello внутри hello облачной среде оболочки.
+> * Используйте `scp` tooupload hello файлы из hello облако tooHDInsight оболочки.
+> * Используйте `ssh` из tooHDInsight tooconnect оболочки облака hello и примеры выполнения hello.
 
 ## <a name="hivepython"></a>Определяемая пользователем функция Hive
 
-Скрипт Python можно использовать в качестве определяемой пользователем функции из Hive через HiveQL с помощью инструкции `TRANSFORM`. Например, следующий запрос HiveQL вызывает файл `hiveudf.py`, хранящийся в учетной записи хранения Azure по умолчанию для кластера.
+Python можно использовать в качестве определяемой пользователем функции из куста через hello HiveQL `TRANSFORM` инструкции. Например, следующая HiveQL hello вызывает hello `hiveudf.py` файлов, хранящихся в учетной записи хранилища Azure по умолчанию hello для hello кластера.
 
 **HDInsight под управлением Linux**
 
@@ -73,20 +73,20 @@ ORDER BY clientid LIMIT 50;
 ```
 
 > [!NOTE]
-> В кластерах HDInsight под управлением Windows оператор `USING` должен задавать полный путь к python.exe.
+> В кластерах HDInsight под управлением Windows hello `USING` предложение должно содержать полный путь toopython.exe hello.
 
 Вот что делает данный пример:
 
-1. Инструкция `add file` в начале файла добавляет файл `hiveudf.py` в распределенный кэш, и он становится доступен всем узлам кластера.
-2. Инструкция `SELECT TRANSFORM ... USING` выбирает данные из `hivesampletable`. Она также передает параметры clientid, devicemake и devicemodel в скрипт `hiveudf.py`.
-3. Предложение `AS` описывает поля, возвращаемые из `hiveudf.py`.
+1. Hello `add file` инструкция в начале hello hello файла добавляет hello `hiveudf.py` toohello файл распределенный кэш, поэтому оно доступно для всех узлов в кластере hello.
+2. Hello `SELECT TRANSFORM ... USING` инструкция выбирает данные из hello `hivesampletable`. Он также передает hello clientid, devicemake и toohello значения devicemodel `hiveudf.py` сценария.
+3. Hello `AS` предложение описывает hello полей, возвращенных `hiveudf.py`.
 
 <a name="streamingpy"></a>
 
-### <a name="create-the-hiveudfpy-file"></a>Создание файла hiveudf.py
+### <a name="create-hello-hiveudfpy-file"></a>Создайте файл hiveudf.py hello
 
 
-В среде разработки создайте текстовый файл с именем `hiveudf.py`. Используйте следующий код в качестве содержимого файла:
+В среде разработки создайте текстовый файл с именем `hiveudf.py`. Используйте следующий код как hello содержимое файла hello hello.
 
 ```python
 #!/usr/bin/env python
@@ -105,34 +105,34 @@ while True:
     print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])
 ```
 
-Сценарий выполняет следующие действия:
+Скрипт выполняет следующие действия hello.
 
 1. Чтение данных из STDIN.
-2. Стоящий в конце знак новой строки удаляется с помощью `string.strip(line, "\n ")`.
-3. При обработке потока в одной строке будут содержаться все значения, разделенные символом табуляции. Поэтому можно использовать `string.split(line, "\t")` для разделения входящих данных при каждой табуляции, возвращая лишь поля.
-4. По завершении обработки результат должен быть записан в поток STDOUT в виде одной строки, с разделенными символами табуляции полями. Пример: `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
-5. Цикл `while` повторяется до тех пор, пока считывается `line`.
+2. символ перевода строки в конце Hello удаляется при помощи `string.strip(line, "\n ")`.
+3. При выполнении потока обработки, одна строка содержит все значения hello символом табуляции между значениями. Поэтому `string.split(line, "\t")` может быть hello используется toosplit ввода данных на каждой вкладке, возврат только поля hello.
+4. После завершения обработки hello выходные данные должны записываться tooSTDOUT как одна строка с вкладкой между каждого поля. Например, `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
+5. Hello `while` цикл повторяется, пока нет `line` доступен для чтения.
 
-Выходные данные скрипта представляют собой объединенные входные значения для `devicemake` и `devicemodel`, а также хэш для объединенного значения.
+выходные данные сценария Hello представляет собой объединение hello входных значений для `devicemake` и `devicemodel`, и хэш hello объединенному значению.
 
-Сведения о выполнении этого примера в кластере HDInsight см. в разделе [Выполнение примеров](#running).
+В разделе [выполнением примеров hello](#running) как toorun в этом примере в кластере HDInsight.
 
 ## <a name="pigpython"></a>Определяемая пользователем функция Pig
 
-Скрипт Python можно использовать в виде определяемой пользователем функции из Pig с использованием инструкции `GENERATE`. Вы можете запустить скрипт с помощью Jython или CPython.
+Скрипт на Python можно использовать как определяемой пользователем функции из Pig через hello `GENERATE` инструкции. Можно запустить скрипт hello, с помощью Jython или C Python.
 
-* Jython работает на виртуальной машине Java и изначально может вызываться из Pig.
-* CPython является внешним процессом, поэтому данные из Pig на JVM отправляются в скрипт, выполняющийся в процессе Python. Выходные данные скрипта Python отправляются обратно в Pig.
+* Jython выполняется на hello виртуальной машины Java и изначально могут быть вызваны из Pig.
+* C Python является внешний процесс, поэтому hello данные из Pig на hello виртуальной машины Java отправляется toohello скрипт, выполняемый в процессе Python. выходные данные Hello hello сценарий Python отправляется обратно в Pig.
 
-Чтобы указать интерпретатор Python, используйте `register` при указании ссылки на скрипт Python. Следующие примеры регистрируют скрипты с Pig в качестве `myfuncs`:
+интерпретатор Python hello toospecify, используйте `register` при ссылке на сценарий Python hello. Hello следующие примеры зарегистрировать скрипты Pig как `myfuncs`:
 
-* **Для использования Jython:** `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **Для использования CPython:** `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **toouse Jython**:`register '/path/to/pigudf.py' using jython as myfuncs;`
+* **toouse C Python**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]
-> При использовании Jython путь к файлу pig_jython может быть локальным путем или путем WASB://. Но при использовании CPython необходимо указать ссылку на файл в локальной файловой системе узла, который используется для отправки задания Pig.
+> При использовании Jython, toohello pig_jython hello путь к файлу может быть локальным путем или WASB: / / path. Однако при использовании C Python, должны ссылаться на файл hello локальной файловой системе, что вы используете задание Pig toosubmit hello узла hello.
 
-После регистрации язык Pig Latin будет одинаковым для обоих примеров:
+После после регистрации, hello латиница Pig в этом примере hello одинаковым для обоих:
 
 ```pig
 LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
@@ -143,19 +143,19 @@ DUMP DETAILS;
 
 Вот что делает данный пример:
 
-1. Первая строка загружает образец файла данных `sample.log` в `LOGS`. Она также определяет каждую запись как массив символов `chararray`.
-2. Следующая строка отфильтровывает все пустые значения, сохраняя результат работы в `LOG`.
-3. Затем выполняется итерация по записям в `LOG` и используется инструкция `GENERATE` для вызова метода `create_structure`, содержащегося в скрипте Python или Jython, загруженном как `myfuncs`. `LINE` используется для передачи текущей записи в функцию.
-4. Наконец, выходные данные сбрасываются в поток STDOUT командой `DUMP`. После завершения операции эта команда выведет результат.
+1. Первая строка Hello загружает hello образец файла данных `sample.log` в `LOGS`. Она также определяет каждую запись как массив символов `chararray`.
+2. Следующая строка Hello отфильтровывает все пустые значения, хранение hello результат операции hello в `LOG`.
+3. Затем он выполняет перебор записей hello в `LOG` и использует `GENERATE` tooinvoke hello `create_structure` метод, содержащийся в сценарий Python или Jython hello загружен как `myfuncs`. `LINE`— используется toopass текущей записи toohello функции hello.
+4. Наконец, результаты hello являются которого был создан дамп tooSTDOUT, с помощью hello `DUMP` команды. Эта команда отображает результаты hello после завершения операции hello.
 
-### <a name="create-the-pigudfpy-file"></a>Создание файла pigudf.py
+### <a name="create-hello-pigudfpy-file"></a>Создайте файл pigudf.py hello
 
-В среде разработки создайте текстовый файл с именем `pigudf.py`. Используйте следующий код в качестве содержимого файла:
+В среде разработки создайте текстовый файл с именем `pigudf.py`. Используйте следующий код как hello содержимое файла hello hello.
 
 <a name="streamingpy"></a>
 
 ```python
-# Uncomment the following if using C Python
+# Uncomment hello following if using C Python
 #from pig_util import outputSchema
 
 @outputSchema("log: {(date:chararray, time:chararray, classname:chararray, level:chararray, detail:chararray)}")
@@ -166,61 +166,61 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-В примере Pig Latin мы определили вход `LINE` в виде массива строк, потому что для ввода нет согласованной схемы. Скрипт Python выполняет преобразование данных в согласованную схему на выходе.
+В примере hello латиница Pig, мы определили hello `LINE` вводимый в виде chararray, так как нет согласованной схемы для ввода hello. сценарий Python Hello преобразует данные hello в согласованной схеме для выходных данных.
 
-1. Инструкция `@outputSchema` задает формат данных, в котором они возвращаются в Pig. В данном случае это **data bag**, являющийся типом данных Pig. Корзина содержит следующие поля, все они имеют тип "Массив строк" (строки):
+1. Hello `@outputSchema` инструкция определяет формат hello данные, возвращаемые tooPig hello. В данном случае это **data bag**, являющийся типом данных Pig. Hello контейнер содержит hello следующие поля, являющиеся chararray (строк):
 
-   * date — дата создания записи журнала;
-   * date — время создания записи журнала;
-   * classname — имя класса, для которого создана запись;
-   * level — уровень журналирования;
-   * detail — подробная информация о записи журнала.
+   * Дата — hello даты hello запись журнала была создана
+   * время - hello время создания записи журнала hello
+   * className - была создана запись hello имя класса hello для
+   * уровень - hello уровень ведения журнала
+   * Подробные сведения для hello подробности - запись журнала
 
-2. Затем `def create_structure(input)` определяет функцию, в которую Pig отправляет строковые элементы.
+2. Здравствуйте, затем `def create_structure(input)` определяет функцию hello, Pig передает строки элементов.
 
-3. Данные для примера, `sample.log`, в основном соответствуют схеме даты, времени, имени класса, уровня и подробной информации, которую мы хотим возвращать. Однако он содержит несколько строк, начинающихся с `*java.lang.Exception*`. Эти строки должны быть изменены в соответствии со схемой. Инструкция `if` проверяет на наличие таких строк, затем манипулирует входными данными, переставляя строку `*java.lang.Exception*` в конец, формируя данные в соответствии с ожидаемой схемой.
+3. Hello данные примера `sample.log`, главным образом соответствует toohello даты, времени, classname, уровня и подробные сведения о схеме, мы хотим tooreturn. Однако он содержит несколько строк, начинающихся с `*java.lang.Exception*`. Эти строки должны быть измененный toomatch hello схемы. Hello `if` проверке инструкцией наличия их, а затем Массаж hello hello toomove входных данных `*java.lang.Exception*` конец toohello строки, переводя hello данных в строках с нашей ожидаемые выходные данные схемы.
 
-4. Затем команда `split` используется для разделения данных по первым четырем символам пробела. Выходным данным присваиваются значения `date`, `time`, `classname`, `level` и `detail`.
+4. Здравствуйте, затем `split` команда является данных hello используется toosplit в первых четырех пространства символов hello. выходные данные Hello назначается в `date`, `time`, `classname`, `level`, и `detail`.
 
-5. И результаты возвращаются в Pig.
+5. Наконец tooPig возвращаются значения hello.
 
-Когда данные возвращаются в Pig, они имеют согласованную схему, определенную инструкцией `@outputSchema`.
+При возврате данных hello tooPig, как определено в hello имеет согласованных схем `@outputSchema` инструкции.
 
-## <a name="running"></a>Отправка и выполнение примеров
+## <a name="running"></a>Загрузка и запуск примеров hello
 
 > [!IMPORTANT]
-> Действия с **SSH** работают только с кластером HDInsight на базе Linux. Действия с **PowerShell** работают с кластером HDInsight на базе Linux и Windows, но требуют клиента Windows.
+> Hello **SSH** действия работают только с кластером HDInsight под управлением Linux. Hello **PowerShell** шаги работы с кластером HDInsight под управлением Windows или Linux, но требуется клиент Windows.
 
 ### <a name="ssh"></a>SSH
 
 Дополнительные сведения об использовании SSH см. в разделе [Подключение к HDInsight (Hadoop) с помощью SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Используйте `scp` для копирования файлов в кластер HDInsight. Например, следующая команда позволяет скопировать файлы в кластер с именем **mycluster**.
+1. Используйте `scp` toocopy hello файлы tooyour HDInsight кластера. Например, hello следующую команду, копии hello файлы tooa кластер с именем **mycluster**.
 
     ```bash
     scp hiveudf.py pigudf.py myuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-2. Используйте SSH, чтобы подключиться к кластеру.
+2. Использование кластера toohello tooconnect SSH.
 
     ```bash
     ssh myuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. В сеансе SSH добавьте переданные ранее файлы Python в хранилище WASB для кластера.
+3. Из сеанса SSH hello добавьте файлы python hello предварительно передана toohello WASB хранилища для кластера hello.
 
     ```bash
     hdfs dfs -put hiveudf.py /hiveudf.py
     hdfs dfs -put pigudf.py /pigudf.py
     ```
 
-После передачи файлов выполните следующие действия для выполнения заданий Hive и Pig.
+После отправки файлов hello, используйте hello ниже приведены действия, toorun hello Hive и Pig заданий.
 
-#### <a name="use-the-hive-udf"></a>Использование определяемой пользователем функции Hive
+#### <a name="use-hello-hive-udf"></a>Использовать hello Hive определяемой пользователем функции
 
-1. Используйте команду `hive` , чтобы запустить оболочку Hive. После загрузки оболочки вы увидите запрос `hive>` .
+1. Используйте hello `hive` командная оболочка куст toostart hello. Вы увидите `hive>` запрашивать сразу после загрузки hello оболочки.
 
-2. Введите следующий запрос `hive>` в командной строке:
+2. Введите следующий запрос на hello hello `hive>` строки:
 
    ```hive
    add file wasb:///hiveudf.py;
@@ -231,7 +231,7 @@ def create_structure(input):
    ORDER BY clientid LIMIT 50;
    ```
 
-3. После ввода последней строки запустится задание. По завершении задания эта команда возвращает выходные данные следующего вида:
+3. После ввода последней строкой hello, будет запущено задание hello. После завершения задания hello, он возвращает выходные данные примерно toohello следующий пример:
 
         100041    RIM 9650    d476f3687700442549a83fac4560c51c
         100041    RIM 9650    d476f3687700442549a83fac4560c51c
@@ -239,11 +239,11 @@ def create_structure(input):
         100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
         100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-#### <a name="use-the-pig-udf"></a>Использование определяемой пользователем функции Pig
+#### <a name="use-hello-pig-udf"></a>Использовать hello Pig определяемой пользователем функции
 
-1. Используйте команду `pig` , чтобы запустить оболочку. После загрузки оболочки вы увидите запрос `grunt>`.
+1. Используйте hello `pig` командная оболочка toostart hello. Вы видите `grunt>` запрашивать сразу после загрузки hello оболочки.
 
-2. В окне запроса `grunt>` введите следующие операторы:
+2. Введите следующие инструкции на hello hello `grunt>` строки:
 
    ```pig
    Register wasb:///pigudf.py using jython as myfuncs;
@@ -253,7 +253,7 @@ def create_structure(input):
    DUMP DETAILS;
    ```
 
-3. После ввода указанной строки должно запуститься задание. По завершении задания эта команда возвращает выходные данные следующего вида:
+3. После ввода следующей строкой hello, будет запущено задание hello. После завершения задания hello, он возвращает выходные данные примерно toohello следующие данные:
 
         ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
         ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
@@ -261,21 +261,21 @@ def create_structure(input):
         ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
         ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-4. Используйте `quit` для выхода из оболочки Grunt, а затем следующую команду для изменения файла pigudf.py в локальной файловой системе:
+4. Используйте `quit` tooexit hello Grunt оболочки, а затем используйте следующие tooedit hello pigudf.py файл в локальной файловой системе hello hello:
 
     ```bash
     nano pigudf.py
     ```
 
-5. Войдите в редактор и раскомментируйте следующую строку, удалив символ `#` в начале строки.
+5. Один раз в редакторе hello раскомментируйте hello, следующей строкой, удалив hello `#` в начале hello hello строки:
 
     ```bash
     #from pig_util import outputSchema
     ```
 
-    Закончив вносить изменения, нажмите сочетание клавиш CTRL+X, чтобы выйти из редактора. Выберите Y и нажмите ВВОД, чтобы сохранить изменения.
+    После изменения hello, используйте редактор hello tooexit Ctrl + X. Выберите Y, а затем введите toosave hello изменения.
 
-6. Используйте команду `pig` , чтобы снова запустить оболочку. При появлении запроса `grunt>` введите следующие инструкции, чтобы запустить сценарий Python с помощью интерпретатора CPython.
+6. Используйте hello `pig` командная оболочка hello toostart еще раз. После перехода на hello `grunt>` запрос, используйте следующий сценарий Python hello toorun, с помощью интерпретатора C Python hello hello.
 
    ```pig
    Register 'pigudf.py' using streaming_python as myfuncs;
@@ -285,17 +285,17 @@ def create_structure(input):
    DUMP DETAILS;
    ```
 
-    Когда это задание будет выполнено, вы увидите такой же результат, как при запуске сценария с помощью Jython.
+    После завершения этого задания, как при запуске скрипта hello, с помощью Jython должна появиться одинаковые выходные hello.
 
-### <a name="powershell-upload-the-files"></a>PowerShell: отправка файлов
+### <a name="powershell-upload-hello-files"></a>PowerShell: Отправка hello файлов
 
-Вы можете использовать PowerShell для отправки файлов на сервер HDInsight. Используйте следующий скрипт для отправки файлов Python:
+Можно использовать PowerShell tooupload hello файлы toohello HDInsight сервера. Используйте следующие файлы Python hello tooupload сценария hello.
 
 > [!IMPORTANT] 
-> В этом разделе используется Azure PowerShell. Дополнительные сведения об использовании Azure PowerShell см. в статье [How to install and configure Azure PowerShell](/powershell/azure/overview) (Как установить и настроить Azure PowerShell).
+> Hello шаги в этом разделе с помощью Azure PowerShell. Дополнительные сведения об использовании Azure PowerShell см. в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
 
 ```powershell
-# Login to your Azure subscription
+# Login tooyour Azure subscription
 # Is there an active Azure subscription?
 $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
@@ -304,8 +304,8 @@ if(-not($sub))
 }
 
 # Get cluster info
-$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-# Change the path to match the file location on your system
+$clusterName = Read-Host -Prompt "Enter hello HDInsight cluster name"
+# Change hello path toomatch hello file location on your system
 $pathToStreamingFile = "C:\path\to\hiveudf.py"
 $pathToJythonFile = "C:\path\to\pigudf.py"
 
@@ -317,7 +317,7 @@ $storageAccountKey=(Get-AzureRmStorageAccountKey `
     -Name $storageAccountName `
 -ResourceGroupName $resourceGroup)[0].Value
 
-#Create a storage content and upload the file
+#Create a storage content and upload hello file
 $context = New-AzureStorageContext `
     -StorageAccountName $storageAccountName `
     -StorageAccountKey $storageAccountKey
@@ -335,22 +335,22 @@ Set-AzureStorageBlobContent `
     -Context $context
 ```
 > [!IMPORTANT]
-> Измените значение `C:\path\to` на путь к файлам в среде разработки.
+> Изменение hello `C:\path\to` важные файлы toohello toohello пути в среде разработки.
 
-Этот скрипт получает информацию для кластера HDInsight, извлекает учетную запись и ключ для учетной записи хранения по умолчанию и загружает файлы в корневую папку контейнера.
+Этот скрипт возвращает сведения о кластеру HDInsight, а затем извлекает hello учетной записи и ключ учетной записи хранения по умолчанию hello и передачи hello файлы toohello корневого контейнера hello.
 
 > [!NOTE]
-> Дополнительные сведения о загрузке файлов см. в статье [Отправка данных для заданий Hadoop в HDInsight](hdinsight-upload-data.md).
+> Дополнительные сведения о передаче файлов см. в разделе hello [передать данные для заданий Hadoop в HDInsight](hdinsight-upload-data.md) документа.
 
-#### <a name="powershell-use-the-hive-udf"></a>PowerShell: использование определяемой пользователем функции Hive
+#### <a name="powershell-use-hello-hive-udf"></a>PowerShell: Использование hello Hive определяемой пользователем функции
 
-PowerShell также можно использовать для удаленного запуска запросов на использование Hive. Используйте следующий сценарий PowerShell для запуска запроса Hive, который использует скрипт **hiveudf.py**:
+PowerShell можно также используется tooremotely выполнения запросов Hive. Hello используйте следующий сценарий PowerShell toorun запрос Hive, который использует **hiveudf.py** сценария:
 
 > [!IMPORTANT]
-> Перед запуском он предлагает вам ввести сведения об HTTPS и учетной записи администратора для кластера HDInsight.
+> Перед запуском, hello сценарий предложит hello HTTPs/Admin сведения об учетной записи для кластера HDInsight.
 
 ```powershell
-# Login to your Azure subscription
+# Login tooyour Azure subscription
 # Is there an active Azure subscription?
 $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
@@ -359,10 +359,10 @@ if(-not($sub))
 }
 
 # Get cluster info
-$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-$creds=Get-Credential -Message "Enter the login for the cluster"
+$clusterName = Read-Host -Prompt "Enter hello HDInsight cluster name"
+$creds=Get-Credential -Message "Enter hello login for hello cluster"
 
-# If using a Windows-based HDInsight cluster, change the USING statement to:
+# If using a Windows-based HDInsight cluster, change hello USING statement to:
 # "USING 'D:\Python27\python.exe hiveudf.py' AS " +
 $HiveQuery = "add file wasb:///hiveudf.py;" +
                 "SELECT TRANSFORM (clientid, devicemake, devicemodel) " +
@@ -378,25 +378,25 @@ $job = Start-AzureRmHDInsightJob `
     -ClusterName $clusterName `
     -JobDefinition $jobDefinition `
     -HttpCredential $creds
-Write-Host "Wait for the Hive job to complete ..." -ForegroundColor Green
+Write-Host "Wait for hello Hive job toocomplete ..." -ForegroundColor Green
 Wait-AzureRmHDInsightJob `
     -JobId $job.JobId `
     -ClusterName $clusterName `
     -HttpCredential $creds
-# Uncomment the following to see stderr output
+# Uncomment hello following toosee stderr output
 # Get-AzureRmHDInsightJobOutput `
 #   -Clustername $clusterName `
 #   -JobId $job.JobId `
 #   -HttpCredential $creds `
 #   -DisplayOutputType StandardError
-Write-Host "Display the standard output ..." -ForegroundColor Green
+Write-Host "Display hello standard output ..." -ForegroundColor Green
 Get-AzureRmHDInsightJobOutput `
     -Clustername $clusterName `
     -JobId $job.JobId `
     -HttpCredential $creds
 ```
 
-Результат выполнения задания **Hive** должен выглядеть аналогично следующему примеру:
+Здравствуйте, выходные данные для hello **Hive** задания появится примерно toohello в следующем примере:
 
     100041    RIM 9650    d476f3687700442549a83fac4560c51c
     100041    RIM 9650    d476f3687700442549a83fac4560c51c
@@ -406,13 +406,13 @@ Get-AzureRmHDInsightJobOutput `
 
 #### <a name="pig-jython"></a>Pig (Jython)
 
-PowerShell также можно использовать для запуска заданий Pig Latin. Для запуска задания Pig Latin, использующего скрипт **pigudf.py**, используйте следующий сценарий PowerShell:
+PowerShell также может быть используется toorun Pig латиница заданий. Латинская Pig задания, использующего hello toorun **pigudf.py** сценария, используйте следующий сценарий PowerShell hello:
 
 > [!NOTE]
-> При удаленной отправке задания с помощью PowerShell нельзя использовать CPython в качестве интерпретатора.
+> Когда удаленно отправке задания с помощью PowerShell, не возможные toouse C Python интерпретатора hello.
 
 ```powershell
-# Login to your Azure subscription
+# Login tooyour Azure subscription
 # Is there an active Azure subscription?
 $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
@@ -421,8 +421,8 @@ if(-not($sub))
 }
 
 # Get cluster info
-$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-$creds=Get-Credential -Message "Enter the login for the cluster"
+$clusterName = Read-Host -Prompt "Enter hello HDInsight cluster name"
+$creds=Get-Credential -Message "Enter hello login for hello cluster"
 
 $PigQuery = "Register wasb:///pigudf.py using jython as myfuncs;" +
             "LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);" +
@@ -437,25 +437,25 @@ $job = Start-AzureRmHDInsightJob `
     -JobDefinition $jobDefinition `
     -HttpCredential $creds
 
-Write-Host "Wait for the Pig job to complete ..." -ForegroundColor Green
+Write-Host "Wait for hello Pig job toocomplete ..." -ForegroundColor Green
 Wait-AzureRmHDInsightJob `
     -Job $job.JobId `
     -ClusterName $clusterName `
     -HttpCredential $creds
-# Uncomment the following to see stderr output
+# Uncomment hello following toosee stderr output
 # Get-AzureRmHDInsightJobOutput `
 #    -Clustername $clusterName `
 #    -JobId $job.JobId `
 #    -HttpCredential $creds `
 #    -DisplayOutputType StandardError
-Write-Host "Display the standard output ..." -ForegroundColor Green
+Write-Host "Display hello standard output ..." -ForegroundColor Green
 Get-AzureRmHDInsightJobOutput `
     -Clustername $clusterName `
     -JobId $job.JobId `
     -HttpCredential $creds
 ```
 
-Результат выполнения задания **Pig** должен выглядеть аналогично следующим данным:
+Здравствуйте, выходные данные для hello **Pig** задания появится примерно toohello следующие данные:
 
     ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
     ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
@@ -467,13 +467,13 @@ Get-AzureRmHDInsightJobOutput `
 
 ### <a name="errors-when-running-jobs"></a>Ошибки при выполнении заданий
 
-При выполнении задания hive может возникнуть ошибка, аналогичная приведенной ниже:
+При запуске задания hive hello, может появиться ошибка примерно toohello после текста:
 
-    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing tooyour custom script. It may have crashed with an error.
 
-Эта проблема может быть вызвана символами окончания строк в файле Python. Многие редакторы Windows по умолчанию используют символы CRLF, но в приложениях Linux обычно ожидается использование символа LF.
+Это проблема может быть вызвана по hello разрывы строк в файле Python hello. Многие редакторы Windows по умолчанию toousing CRLF конца линии hello, но приложения Linux обычно ожидается, что LF.
 
-Вы можете использовать следующие команды PowerShell для удаления символов CR перед передачей файла в HDInsight:
+Можно использовать следующие PowerShell инструкций tooremove hello CR символы перед отправкой файла tooHDInsight hello hello.
 
 ```powershell
 $original_file ='c:\path\to\hiveudf.py'
@@ -483,7 +483,7 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 
 ### <a name="powershell-scripts"></a>Сценарии PowerShell
 
-Оба примера скриптов PowerShell, используемых для запуска примеров, содержат закомментированную строку, которая отображает вывод ошибок для задания. Если вы не видите ожидаемых результатов задания, раскомментируйте следующую строку и просмотрите информацию об ошибках на предмет отображения проблемы.
+Оба примера hello сценариев PowerShell, используемых toorun hello примеры содержат соответствующей строки, которая отображает вывод ошибок для задания hello. Если выходные данные hello ожидается для задания hello не видны, раскомментируйте hello следующую команду и если hello сведения об ошибке указывает на проблему в разделе.
 
 ```powershell
 # Get-AzureRmHDInsightJobOutput `
@@ -493,18 +493,18 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
         -DisplayOutputType StandardError
 ```
 
-Сведения об ошибках (STDERR) и результат выполнения задания (STDOUT) также записываются в хранилище HDInsight.
+сведения об ошибке Hello (STDERR) и результат hello hello задания (STDOUT), также регистрируется tooyour HDInsight хранилища.
 
-| Для данного задания... | Смотрите эти файлы в контейнере |
+| Для данного задания... | Рассмотрим эти файлы в контейнер больших двоичных объектов hello |
 | --- | --- |
 | Hive |/HivePython/stderr<p>/HivePython/stdout |
 | Pig, |/PigPython/stderr<p>/PigPython/stdout |
 
 ## <a name="next"></a>Дальнейшие действия
 
-Если вам нужно загрузить модули Python, которые не поставляются по умолчанию, см. статью [How to deploy a Python module to Windows Azure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx) (Как развернуть модуль Python в Windows Azure HDInsight).
+При необходимости tooload Python модули, которые не предоставляются по умолчанию. в разделе [как toodeploy модуль tooAzure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
 
-Сведения о других способах использования Pig и Hive и дополнительную информацию об использовании MapReduce см. в следующих документах:
+Другие способы toouse Pig, Hive и toolearn об использовании MapReduce в разделе hello следующие документы:
 
 * [Использование Hive с HDInsight](hdinsight-use-hive.md)
 * [Использование Pig с HDInsight](hdinsight-use-pig.md)

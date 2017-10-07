@@ -1,5 +1,5 @@
 ---
-title: "Пример сценария Azure CLI для выполнения задания с помощью пакетной службы | Документация Майкрософт"
+title: "Образец скрипта CLI - выполнении задания с использованием пакета aaaAzure | Документы Microsoft"
 description: "Пример сценария Azure CLI для выполнения задания в пакетной службе."
 services: batch
 documentationcenter: 
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.openlocfilehash: 5fe1e3595d9459e60b2fd54d6f17f6822731f453
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f73a7cb341e550fd1c92f92201e20b27fa20d238
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="running-jobs-on-azure-batch-with-azure-cli"></a>Выполнение заданий в пакетной службе Azure с помощью Azure CLI
 
-Этот сценарий создает задание пакетной службы и добавляет в него ряд задач. Он также демонстрирует, как отслеживать задание и его задачи. Кроме того, он показывает, как эффективно выполнять запрос к пакетной службе на получение сведений о задачах задания.
+Этот скрипт создает пакетного задания и добавляет ряд задач toohello задания. Он также демонстрирует, как toomonitor задания и его задач. Наконец он показывает, как tooquery hello пакетная служба эффективно для получения сведений о hello рабочих заданий.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Установите Azure CLI с помощью инструкций, приведенных в [руководстве по установке Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), если вы этого еще не сделали.
-- Создайте учетную запись пакетной службы, если у вас ее еще нет. Пример скрипта создания учетной записи см. в статье [Создание учетной записи пакетной службы с помощью Azure CLI](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account).
-- Настройте выполнение приложения из задачи запуска, если вы этого еще не сделали. Пример скрипта создания приложения и отправки пакета приложения в Azure см. в статье [Добавление приложений в пакетную службу Azure с помощью Azure CLI](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application).
-- Настройте пул, в котором будет выполняться задание. Пример скрипта создания пула с использованием конфигурации облачной службы или конфигурации виртуальной машины см. в статье [Управление пулами пакетной службы Azure с помощью Azure CLI](https://docs.microsoft.com/azure/batch/batch-cli-sample-manage-pool).
+- Установка hello Azure CLI с помощью hello следуйте инструкциям в hello [руководство по установке Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), если вы еще не выполнена.
+- Создайте учетную запись пакетной службы, если у вас ее еще нет. В разделе [создать пакетную учетную запись с hello Azure CLI](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account) пример сценария, который создает учетную запись.
+- Настройте toorun приложения из задачи запуска, если это еще не было сделано. В разделе [Добавление приложений tooAzure пакета с помощью Azure CLI](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application) приведен пример скрипта, создающий приложение и отправляет tooAzure пакета приложения.
+- Настройте пул, на какие hello задание будет выполняться. Пример скрипта создания пула с использованием конфигурации облачной службы или конфигурации виртуальной машины см. в статье [Управление пулами пакетной службы Azure с помощью Azure CLI](https://docs.microsoft.com/azure/batch/batch-cli-sample-manage-pool).
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-azurecli[main](../../../cli_scripts/batch/run-job/run-job.sh "Выполнение задания")]
+[!code-azurecli[main](../../../cli_scripts/batch/run-job/run-job.sh "Run Job")]
 
 ## <a name="clean-up-job"></a>Очистка задания
 
-После выполнения представленного выше примера сценария выполните следующую команду, чтобы удалить задание и все его задачи. Обратите внимание, что пул нужно удалить отдельно. Дополнительные сведения о создании и удалении пулов см. в статье [Управление пулами пакетной службы Azure с помощью Azure CLI](./batch-cli-sample-manage-pool.md).
+После запуска hello выше образец скрипта запуска hello, следующая команда tooremove задания и всех его задач. Обратите внимание, что пул hello будет toobe удалена отдельно. Дополнительные сведения о создании и удалении пулов см. в статье [Управление пулами пакетной службы Azure с помощью Azure CLI](./batch-cli-sample-manage-pool.md).
 
 ```azurecli
 az batch job delete --job-id myjob
@@ -45,7 +45,7 @@ az batch job delete --job-id myjob
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Чтобы создать задание и задачи пакетной службы, сценарий использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует следующие команды toocreate hello пакетного задания и задачи. Каждая команда в таблице hello связывает toocommand документации.
 
 | Команда | Примечания |
 |---|---|
@@ -53,12 +53,12 @@ az batch job delete --job-id myjob
 | [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#create) | Создает задание пакетной службы.  |
 | [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#set) | Обновляет свойства задания пакетной службы.  |
 | [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#show) | Получает сведения об указанном задании пакетной службы.  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#create) | Добавляет задачу в указанное задание пакетной службы.  |
-| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#show) | Получает сведения о задаче из указанного задания пакетной службы.  |
-| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#list) | Выводит список задач, связанных с определенным заданием.  |
+| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#create) | Добавляет toohello задач указан пакетного задания.  |
+| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#show) | Извлекает сведения hello задачи из hello указан пакетного задания.  |
+| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#list) | Список задач hello, связанный с указанным заданием hello.  |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры скриптов для интерфейса командной строки пакетной службы см. в [документации по интерфейсу командной строки пакетной службы Azure](../batch-cli-samples.md).
+Дополнительные образцы сценариев CLI пакета можно найти в hello [документации пакета Azure CLI](../batch-cli-samples.md).

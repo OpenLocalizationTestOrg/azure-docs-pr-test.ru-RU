@@ -1,6 +1,6 @@
 ---
 title: "Шаг 1. Создание рабочей области машинного обучения | Документация Майкрософт"
-description: "Первый этап пошагового руководства по разработке прогнозного решения: узнайте, как настроить рабочую область студии машинного обучения Azure."
+description: "Шаг 1 из hello разработка прогнозирующего решения Пошаговое руководство: Узнайте, как tooset копирование новую рабочую область студии машинного обучения Azure."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: 8ca42ef8f5314866301f5c9e93caa90dc837a66e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 93d2e240826db9768e85b00cab0eb62510b4efb7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>Шаг 1. Создание рабочей области машинного обучения
-Это первый этап из пошагового руководства [Разработка решения для прогнозной аналитики в службе машинного обучения Azure](machine-learning-walkthrough-develop-predictive-solution.md).
+Это первый шаг hello hello пошагового руководства, [разрабатывать решения для прогнозирующего анализа в машинном обучении Azure](machine-learning-walkthrough-develop-predictive-solution.md).
 
 1. **Создание рабочей области машинного обучения**
 2. [Отправка существующих данных](machine-learning-walkthrough-2-upload-data.md)
 3. [Создание нового эксперимента](machine-learning-walkthrough-3-create-new-experiment.md)
-4. [Обучение и анализ моделей](machine-learning-walkthrough-4-train-and-evaluate-models.md)
-5. [Развертывание веб-службы](machine-learning-walkthrough-5-publish-web-service.md)
-6. [Доступ к веб-службе](machine-learning-walkthrough-6-access-web-service.md)
+4. [Обучать и оценивать модели hello](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5. [Развернуть веб-службу hello](machine-learning-walkthrough-5-publish-web-service.md)
+6. [Доступ к веб-службе hello](machine-learning-walkthrough-6-access-web-service.md)
 
 - - -
-<!-- This needs to be updated to refer to the new way of creating workspaces in the Ibiza portal -->
+<!-- This needs toobe updated toorefer toohello new way of creating workspaces in hello Ibiza portal -->
 
-Для использования студии машинного обучения требуется рабочая область машинного обучения Microsoft Azure. Такая рабочая область содержит инструменты, необходимые для создания, публикации экспериментов и управления ими.  
+toouse студии машинного обучения, необходимо toohave рабочей области машинного обучения Microsoft Azure. Эта рабочая область содержит hello средства toocreate, управлять и публиковать экспериментов.  
 
 <!--
-## To create a workspace
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com).
-2. In the  Azure services panel, click **MACHINE LEARNING**.  
+## toocreate a workspace
+1. Sign in toohello [Azure classic portal](https://manage.windowsazure.com).
+2. In hello  Azure services panel, click **MACHINE LEARNING**.  
    ![Create workspace][1]
 3. Click **CREATE AN ML WORKSPACE**.
-4. On the **QUICK CREATE** page, enter your workspace information and then click **CREATE AN ML WORKSPACE**.
+4. On hello **QUICK CREATE** page, enter your workspace information and then click **CREATE AN ML WORKSPACE**.
 -->
 
-Администратору подписки Azure нужно создать рабочую область и добавить вас в качестве владельца или участника. Подробные сведения см. в статье [Создание рабочей области машинного обучения Azure и предоставление к ней общего доступа](machine-learning-create-workspace.md).
+Здравствуйте, администратор вашей подписки Azure требуется рабочая область toocreate hello и добавить вас в качестве владельца или участника. Подробные сведения см. в статье [Создание рабочей области машинного обучения Azure и предоставление к ней общего доступа](machine-learning-create-workspace.md).
 
-Создав рабочую область, откройте Студию машинного обучения ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Если у вас несколько рабочих областей, можно выбрать рабочую область на панели инструментов в правом верхнем углу окна.
+Создав рабочую область, откройте Студию машинного обучения ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). При наличии более чем одной рабочей области, можно выбрать hello рабочей области в панели инструментов hello в правом верхнем углу hello окна hello.
 
 ![Выбор рабочей области в Студии][2]
 
 > [!TIP]
-> Владелец рабочей области может предоставить общий доступ к экспериментам, над которыми он работает, пригласив других пользователей в свою рабочую область. Это можно сделать в Студии машинного обучения на странице **ПАРАМЕТРЫ** . Для каждого пользователя необходима учетная запись Майкрософт или учетная запись организации.
+> Если были внесены владельца рабочей области hello, вы можете совместно использовать hello экспериментов, над которыми вы работаете с приглашение других пользователей toohello рабочей области. Это можно сделать в студии машинного обучения на hello **параметры** страницы. Необходимо просто hello учетную запись Майкрософт или организации для каждого пользователя.
 > 
-> На странице **Параметры** щелкните **Пользователи**, а затем — **Invite more users** (Пригласить пользователей) в нижней части окна.
+> На hello **параметры** щелкните **пользователей**, нажмите кнопку **ПРИГЛАШЕНИЯ более пользователей** hello нижней части окна hello.
 > 
 > 
 

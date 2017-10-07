@@ -1,6 +1,6 @@
 ---
-title: "Технические компоненты, необходимые для создания шаблона решения для Marketplace | Документация Майкрософт"
-description: "Общие сведения о требованиях к созданию шаблона решения для развертывания и продажи в Azure Marketplace"
+title: "aaaTechnical предварительные условия для создания шаблона решения для hello Marketplace | Документы Microsoft"
+description: "Обзор hello требования для создания шаблона решения toodeploy и продавать hello Azure Marketplace"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/28/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 40f0e2b1b1b6144b2f9aa5814a4408b4964ede97
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 13fe586ab822e6a9340cd28d873bf0217400aa73
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="technical-prerequisites-for-creating-a-solution-template-for-the-azure-marketplace"></a>Технические компоненты, необходимые для создания шаблона решения для Azure Marketplace
-Прежде чем начать работу, внимательно прочтите описание и разберитесь, где и зачем выполняется каждый шаг. Постарайтесь подготовить максимально подробные сведения о своей компании и другие данные, загрузить необходимые средства и/или создать технические компоненты до того, как начнете создавать предложение.  
+# <a name="technical-prerequisites-for-creating-a-solution-template-for-hello-azure-marketplace"></a>Технические предварительные условия для создания шаблона решения для hello Azure Marketplace
+Чтение hello процесса тщательно перед началом и понять, где и почему каждого шага выполняются. Настолько, насколько возможно, вы должны подготовить сведения о компании и другие данные, загрузить необходимые средства и перед началом процесса создания предложения hello создать технические компоненты.  
 
 ## <a name="developing-building-blocks"></a>Разработка структурных элементов
-Необходимо выбрать основные модули решения, прежде чем переходить к публикации шаблона решения на портале. Ниже приведены некоторые ссылки на документы, которые могут вам помочь.
+Стандартные блоки hello решения необходимо решить, прежде чем продолжить с шаблонами решения на портал публикации hello. Ниже приведены некоторые ссылки toohello документы, которые помогут вам в процессе hello.
 
 1. [Рекомендации по разработке шаблонов диспетчера ресурсов Azure](../azure-resource-manager/best-practices-resource-manager-design-templates.md)
 2. [Создание шаблонов диспетчера ресурсов Azure](../azure-resource-manager/resource-group-authoring-templates.md)
@@ -33,6 +33,6 @@ ms.lasthandoff: 07/11/2017
    * [https://github.com/azure/azure-quickstart-templates](https://github.com/azure/azure-quickstart-templates)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы ознакомились с необходимыми компонентами и выполнили необходимые задачи, можно переходить к созданию предложения шаблона решения, как описано в [руководстве по созданию шаблона решения](marketplace-publishing-solution-template-creation.md). Инструкции по возвращению на главную страницу задач издателя см. в статье [Как опубликовать предложение и управлять им в Azure Marketplace](marketplace-publishing-getting-started.md).
+Знакомства hello предварительные требования и необходимые задачи завершенных hello можно переместить вперед с созданием ваше предложение шаблона решения, как описано в hello [toocreating руководстве шаблон решения](marketplace-publishing-solution-template-creation.md). tooreturn toohello главной странице задачи издателя в разделе [Приступая к работе: как toopublish toohello предложение Azure Marketplace](marketplace-publishing-getting-started.md).
 
 [link-acct]:marketplace-publishing-accounts-creation-registration.md

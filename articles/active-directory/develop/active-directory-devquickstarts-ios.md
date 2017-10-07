@@ -1,6 +1,6 @@
 ---
-title: "Интеграция Azure AD в приложение для iOS | Документы Майкрософт"
-description: "Практическое руководство по созданию приложения для iOS, которое интегрируется с Azure AD для входа в систему и вызывает программные интерфейсы приложения, защищенные Azure AD, по протоколу OAuth."
+title: "aaaIntegrate Azure AD в приложение iOS | Документы Microsoft"
+description: "Как toobuild приложения iOS, которое интегрируется с Azure AD для входа в систему и вызовы Azure AD защищены API-интерфейсов с помощью OAuth."
 services: active-directory
 documentationcenter: ios
 author: brandwe
@@ -15,76 +15,76 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 57f465df99ac234466459b8031f61805d8334b59
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6e05745b2b2b122995dcba896ab0f2ed32509e3a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-azure-ad-into-an-ios-app"></a>Интеграция Azure AD в приложение для iOS
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 > [!TIP]
-> Воспользуйтесь предварительной версией нашего нового [портала разработчиков](https://identity.microsoft.com/Docs/iOS), который поможет вам приступить к работе с Azure Active Directory через несколько минут.  Портал разработчиков поможет зарегистрировать приложение и интегрировать Azure AD в код.  Завершив работу, вы получите простое приложение, с помощью которого выполняется проверка подлинности пользователей в клиенте и на сервере, принимающем маркеры и проводящем проверку. 
+> Испытать предварительную версию hello нашим новым [портал разработчиков](https://identity.microsoft.com/Docs/iOS) , поможет вам приступить к работе с Azure Active Directory через несколько минут!  портал разработчиков Hello поможет выполнить hello регистрации приложения и интеграции Azure AD в коде.  Завершив работу, вы получите простое приложение, с помощью которого выполняется проверка подлинности пользователей в клиенте и на сервере, принимающем маркеры и проводящем проверку. 
 > 
 > 
 
-Клиентские приложения для iOS, которым необходим доступ к защищенным ресурсам, могут использовать библиотеку проверки подлинности Azure AD (ADAL), предоставляемую Azure Active Directory (Azure AD). ADAL упрощает процесс, который приложение использует для получения маркера доступа. Чтобы показать, насколько это просто, в этом руководстве описывается создание приложения "Список дел" на Objective, которое:
+Azure Active Directory (Azure AD) предоставляет hello библиотеку аутентификации Active Directory или ADAL, для операций ввода-вывода клиентов, требующих tooaccess защищенным ресурсам. ADAL упрощает процесс hello, что ваше приложение использует токены доступа tooobtain. toodemonstrate примеры, в этой статье мы создаем список дел C цель приложения:
 
-* получает маркеры доступа для вызова интерфейса API Graph Azure AD с помощью [протокола проверки подлинности OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx);
+* Получает маркеры для вызова API Azure AD Graph hello с помощью hello доступа [протокол проверки подлинности OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 * Осуществляет поиск пользователей в каталоге по псевдониму.
 
-Для создания полного и действующего приложения вам потребуется следующее.
+toobuild hello полное рабочее приложение, необходимо:
 
 1. Зарегистрировать приложение в Azure AD.
 2. Установить и настроить ADAL.
-3. использовать ADAL для получения маркеров из Azure AD.
+3. Используйте ADAL tooget токены из Azure AD.
 
-Чтобы начать работу, [скачайте схему приложения](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) или [скачайте готовый пример](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip). Вам также нужен клиент Azure AD, в котором можно создать пользователей и зарегистрировать приложение. Если клиента нет, [узнайте, как его получить](active-directory-howto-tenant.md).
+tooget к работе, [загрузить каркас приложения hello](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) или [загрузить образец hello завершения](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip). Вам также нужен клиент Azure AD, в котором можно создать пользователей и зарегистрировать приложение. Если у вас еще нет клиента, [Узнайте, как один tooget](active-directory-howto-tenant.md).
 
 
 > [!TIP]
-> Воспользуйтесь предварительной версией нашего нового [портала разработчиков](https://identity.microsoft.com/Docs/iOS), который поможет вам приступить к работе с Azure AD через несколько минут. Портал разработчиков поможет зарегистрировать приложение и интегрировать Azure AD в код. Завершив работу, вы получите простое приложение, с помощью которого выполняется проверка подлинности пользователей в клиенте и на сервере, принимающем маркеры и проводящем проверку. 
+> Испытать предварительную версию hello нашим новым [портал разработчиков](https://identity.microsoft.com/Docs/iOS) , поможет вам приступить к работе с Azure AD через несколько минут. портал разработчиков Hello поможет выполнить hello регистрации приложения и интеграции Azure AD в коде. Завершив работу, вы получите простое приложение, с помощью которого выполняется проверка подлинности пользователей в клиенте и на сервере, принимающем маркеры и проводящем проверку. 
 > 
 > 
 
 ## <a name="1-determine-what-your-redirect-uri-is-for-ios"></a>1. Выбор URI перенаправления для iOS
-Для безопасного запуска приложений в некоторых сценариях использования единого входа требуется создать *URI перенаправления* в определенном формате. URI перенаправления используется, чтобы гарантировать, что маркеры получает именно то приложение, которое их запрашивало.
+toosecurely запуск приложения в определенных сценариях единого входа, необходимо создать *URI перенаправления* в определенном формате. Перенаправление URI является используется tooensure, hello правильного приложения возвращаемого toohello токены, задаваемые для них.
 
 
-Формат URI перенаправления в iOS:
+Hello операций ввода-вывода для перенаправления URI выглядит следующим образом:
 
 ```
 <app-scheme>://<bundle-id>
 ```
 
 * Схема **aap-scheme** регистрируется в проекте XCode и используется для вызова из других приложений. Данные сведения можно найти в файле Info.plist (URL Types -> URL Identifier). Если вы еще не создали или не настроили хотя бы одну схему, следует сделать это.
-* **bundle-id** — это идентификатор пакета, который можно найти в разделе "identity" параметров проекта XCode.
+* **Идентификатор пакета** -это hello пакет идентификатор, найденный в разделе «удостоверение» un параметров проекта в XCode.
 
 Пример для рассматриваемого проекта QuickStart: ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
-## <a name="2-register-the-directorysearcher-application"></a>2) Регистрация приложения DirectorySearcher
-Чтобы настроить приложение для получения маркеров, сначала необходимо его зарегистрировать в клиенте Azure AD и предоставить ему разрешение на доступ к интерфейсу API Graph для Azure AD.
+## <a name="2-register-hello-directorysearcher-application"></a>2. Регистрация приложения hello DirectorySearcher
+tooset копирование маркеры tooget приложения необходимо сначала tooregister его в Azure AD для клиента и предоставить ему разрешение tooaccess hello API Azure AD Graph:
 
-1. Выполните вход на [портал Azure](https://portal.azure.com).
-2. На верхней панели щелкните свою учетную запись. В списке **Каталог** выберите клиент Active Directory для регистрации приложения.
-3. В области навигации слева щелкните **Дополнительные службы**, а затем выберите **Azure Active Directory**.
+1. Войдите в toohello [портал Azure](https://portal.azure.com).
+2. На верхней панели hello выберите свою учетную запись. В разделе hello **каталога** выберите hello клиента Active Directory, где требуется tooregister приложения.
+3. Нажмите кнопку **более служб** в hello панели навигации крайний слева, а затем выберите **Azure Active Directory**.
 4. Щелкните **Регистрация приложений**, а затем выберите **Добавить**.
-5. Следуйте инструкциям на экране, чтобы создать **собственное клиентское приложение**.
-  * **Имя** приложения служит его описанием для конечных пользователей.
-  * **URI перенаправления** представляет собой сочетание схемы и строки, используемое Azure AD для возвращения ответов маркеров.  Введите значение, которое зависит от приложения и основано на предыдущей информации об URI перенаправления.
-6. После завершения регистрации Azure AD присваивает приложению уникальный идентификатор.  Это значение вам понадобится в следующих разделах, поэтому скопируйте его с вкладки приложения.
-7. На странице **Параметры** выберите **Необходимые разрешения** и щелкните **Добавить**. Выберите **Microsoft Graph** в качестве интерфейса API и добавьте разрешение **Чтение данных каталога** в списке **Делегированные разрешения**.  Это позволит приложению запрашивать интерфейс Graph API для пользователей.
+5. Выполните hello предлагает toocreate новый **собственное клиентское приложение**.
+  * Hello **имя** из hello приложения описывает tooend пользователей приложения.
+  * Hello **Uri перенаправления** представляет собой комбинацию схему и строки, Azure AD использует tooreturn маркера ответов.  Введите значение, которое является tooyour конкретного приложения и основан на данных URI перенаправления предыдущего hello.
+6. После завершения регистрации hello Azure AD присваивает приложения уникальный идентификатор приложения.  Это значение необходимо в следующих разделах hello, поэтому скопируйте его с вкладка "приложение" hello.
+7. Из hello **параметры** выберите **требуемые разрешения** , а затем выберите **добавить**. Выберите **Microsoft Graph** как hello API, а затем добавьте hello **чтение данных каталога** разрешение в списке **делегированные разрешения**.  Это настраивает вашего приложения tooquery hello API Azure AD Graph для пользователей.
 
 ## <a name="3-install-and-configure-adal"></a>3. Установка и настройка ADAL
-Теперь, когда приложение зарегистрировано в Azure AD, можно установить библиотеку ADAL и написать код для работы с удостоверением.  Чтобы ADAL могла обмениваться информацией с Azure AD, необходимо предоставить некоторую информацию о регистрации вашего приложения.
+Теперь, когда приложение зарегистрировано в Azure AD, можно установить библиотеку ADAL и написать код для работы с удостоверением.  Для ADAL toocommunicate с Azure AD необходимо tooprovide его с некоторые сведения о регистрации приложения.
 
-1. Для начала добавьте ADAL в проект DirectorySearcher, используя Cocoapods.
+1. Сначала добавьте ADAL toohello DirectorySearcher проекта с помощью CocoaPods.
 
     ```
     $ vi Podfile
     ```
-2. Добавьте в файл Podfile следующий код:
+2. Добавьте следующие toothis podfile hello:
 
     ```
     source 'https://github.com/CocoaPods/Specs.git'
@@ -94,7 +94,7 @@ ms.lasthandoff: 07/11/2017
     pod 'ADALiOS'
     ```
 
-3. Теперь загрузите профиль с помощью CocoaPods. На этом шаге создается новая рабочая область XCode.
+3. Теперь можно Загрузите hello podfile с помощью CocoaPods. На этом шаге создается новая рабочая область XCode.
 
     ```
     $ pod install
@@ -102,15 +102,15 @@ ms.lasthandoff: 07/11/2017
     $ open QuickStart.xcworkspace
     ```
 
-4. В проекте QuickStart откройте файл `settings.plist`.  Замените значения элементов в соответствующем разделе на значения, указанные на портале Azure. Ваш код будет ссылаться на эти значения при каждом использовании ADAL.
-  * `tenant` — это имя вашего клиента Azure AD, например contoso.onmicrosoft.com.
-  * Для `clientId` укажите скопированный на портале идентификатор клиента приложения.
-  * `redirectUri` — это URL-адрес перенаправления, зарегистрированный на портале.
+4. В проекте hello краткое руководство, откройте файл plist hello `settings.plist`.  Замените hello значений элементов hello hello hello раздел tooreflect значения, введенные в hello портал Azure. Ваш код будет ссылаться на эти значения при каждом использовании ADAL.
+  * Hello `tenant` hello домен вашего клиента Azure AD, например, contoso.onmicrosoft.com.
+  * Hello `clientId` hello идентификатор клиента приложения, скопированный из портала hello.
+  * Hello `redirectUri` hello перенаправления URL-адрес, зарегистрированный в портале hello.
 
-## <a name="4----use-adal-to-get-tokens-from-azure-ad"></a>4.    Использование ADAL для получения маркеров из Azure AD
-Основной принцип ADAL состоит в том, что каждый раз, когда вашему приложению необходим маркер доступа, оно будет просто вызывать сompletionBlock `+(void) getToken : `, а библиотека ADAL сделает все остальное.  
+## <a name="4----use-adal-tooget-tokens-from-azure-ad"></a>4.    Используйте ADAL tooget токены из Azure AD
+Hello базовый принцип ADAL является что всякий раз, когда ваше приложение должно маркер доступа, он просто вызывает completionBlock `+(void) getToken : `, и ADAL hello rest.  
 
-1. В проекте `QuickStart` откройте `GraphAPICaller.m` и найдите комментарий "`// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.`" вверху.  Здесь вы указываете координаты, которые требуются библиотеке ADAL для взаимодействия с Azure AD, и сообщаете способ кэширования маркеров.
+1. В hello `QuickStart` откройте проект `GraphAPICaller.m` и найдите hello `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` комментарий верхней hello.  Здесь передать координаты ADAL hello через CompletionBlock toocommunicate с Azure AD и о том, как toocache маркеры.
 
     ```ObjC
     +(void) getToken : (BOOL) clearCache
@@ -134,7 +134,7 @@ ms.lasthandoff: 07/11/2017
                                   redirectUri:redirectUri
                                promptBehavior:AD_PROMPT_AUTO
                                        userId:data.userItem.userInformation.userId
-                        extraQueryParameters: @"nux=1" // if this strikes you as strange it was legacy to display the correct mobile UX. You most likely won't need it in your code.
+                        extraQueryParameters: @"nux=1" // if this strikes you as strange it was legacy toodisplay hello correct mobile UX. You most likely won't need it in your code.
                              completionBlock:^(ADAuthenticationResult *result) {
 
                                   if (result.status != AD_SUCCEEDED)
@@ -151,7 +151,7 @@ ms.lasthandoff: 07/11/2017
 
     ```
 
-2. Мы будем использовать этот маркер для поиска пользователей в графе. Найдите комментарий `// TODO: implement SearchUsersList`. Этот метод выполняет запрос GET в интерфейс Graph API службы Azure AD для запроса списка пользователей, чьи UPN начинаются с данного слова поиска.  Для отправки запросов в Graph API необходимо включить access_token в заголовок `Authorization` запроса. Вот где может пригодиться ADAL.
+2. Теперь нам требуется toouse этот токен toosearch пользователями в hello graph. Найти hello `// TODO: implement SearchUsersList` комментарий. Этот метод делает tooquery toohello API Azure AD Graph запрос GET для пользователей, имя участника-пользователя начинается с заданного условия поиска hello.  tooquery hello Azure AD Graph API, необходимые tooinclude access_token в hello `Authorization` заголовок запроса hello. Вот где может пригодиться ADAL.
 
     ```ObjC
     +(void) searchUserList:(NSString*)searchString
@@ -186,10 +186,10 @@ ms.lasthandoff: 07/11/2017
 
                          NSDictionary *dataReturned = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
-                         // We can grab the JSON node at the top to get our graph data.
+                         // We can grab hello JSON node at hello top tooget our graph data.
                          NSArray *graphDataArray = [dataReturned objectForKey:@"value"];
 
-                         // Don't be thrown off by the key name being "value". It really is the name of the
+                         // Don't be thrown off by hello key name being "value". It really is hello name of the
                          // first node. :-)
 
                          // Each object is a key value pair
@@ -223,25 +223,25 @@ ms.lasthandoff: 07/11/2017
     ```
 
 
-3. Когда приложение запрашивает маркер путем вызова `getToken(...)`, библиотека ADAL пытается вернуть маркер без запроса учетных данных пользователя.  Если ADAL решит, что пользователь должен войти в систему для получения маркера, то служба отобразит диалоговое окно входа, соберет учетные данные пользователя и вернет маркер после успешной проверки подлинности.  Если библиотеке ADAL не удастся по какой-либо причине вернуть маркер, она вызовет исключение `AdalException`.
+3. Когда приложение запрашивает маркер путем вызова `getToken(...)`, ADAL пытается tooreturn маркер без запроса учетных данных пользователя hello.  Если ADAL определит, что данный пользователь hello должен toosign в tooget маркер, он будет отображать диалоговое окно для входа в систему, собирать hello учетные данные пользователя и затем возвращает токен после успешной проверки подлинности.  Если ADAL не может tooreturn маркер по любой причине, он выдает `AdalException`.
 
 > [!Note] 
-> Объект `AuthenticationResult` содержит объект `tokenCacheStoreItem`, который может использоваться для сбора сведений, необходимых приложению. В проекте QuickStart объект `tokenCacheStoreItem` используется, чтобы определить, была ли выполнена проверка подлинности.
+> Hello `AuthenticationResult` объект содержит `tokenCacheStoreItem` объект, который может быть используется toocollect hello сведения, может потребоваться приложения. В hello краткое руководство `tokenCacheStoreItem` — toodetermine используется, если проверка подлинности уже выполняется.
 >
 >
 
-## <a name="5-build-and-run-the-application"></a>5. Создание и запуск приложения
-Поздравляем! Теперь у нас есть рабочее приложение для iOS, которое может проверять подлинность пользователей, безопасно вызывать методы веб-API по протоколу OAuth 2.0 и получать основные сведения о пользователе.  Если же вы этого еще не сделали, пришло время добавить в клиент нескольких пользователей.  Запустите приложение QuickStart и выполните вход как один из пользователей.  Осуществите поиск других пользователей по их имени участника-пользователя.  Закройте приложение и запустите его снова.  Обратите внимание на то, что пользовательский сеанс остался без изменений.
+## <a name="5-build-and-run-hello-application"></a>5. Постройте и запустите приложение hello
+Поздравляем! Теперь у вас есть рабочее приложение iOS, которое может проверять подлинность пользователей, безопасно вызывать веб-API с помощью OAuth 2.0 и получить основные сведения о пользователе hello.  Если это еще не сделано, пришло время toopopulate hello вашего клиента с некоторым пользователям.  Запустите приложение QuickStart и выполните вход как один из пользователей.  Осуществите поиск других пользователей по их имени участника-пользователя.  Закройте приложение hello и запустите его снова.  Обратите внимание, что сеанс пользователя hello остается без изменений.
 
-Библиотека ADAL упрощает включение в приложение всех этих типичных функций работы с удостоверением.  Она отвечает за всю "грязную работу": управление кэшем, поддержку протокола OAuth, предоставление пользователю пользовательского интерфейса для входа и обновление истекших маркеров.  Все, что вам действительно нужно знать, — это вызов интерфейса API `getToken`.
+ADAL упрощает легко tooincorporate все эти общие функции управления удостоверениями в приложения.  Он отвечает за всю работу dirty hello, таких как Управление кэшем поддержку протокола OAuth, представивший hello пользователя toosign пользовательского интерфейса в и обновление маркеры с истекшим сроком действия.  Действительно требуется tooknow всего в одном вызове API `getToken`.
 
-Для справки следует отметить, что готовый пример (без ваших значений конфигурации) находится на [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).  
+Справочник по образец hello завершена (без настройки) предоставляется на [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).  
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь можно приступить к изучению других сценариев.  Можно попробовать:
+Теперь можно переходить на tooadditional сценариев.  Вы можете tootry:
 
 * [Безопасность веб-API с Azure AD для Node.JS](active-directory-devquickstarts-webapi-nodejs.md)
-* См. раздел [Включение единого входа в нескольких приложениях iOS с помощью ADAL](active-directory-sso-ios.md).  
+* Дополнительные сведения [как tooenable SSO нескольких приложений на iOS с помощью ADAL](active-directory-sso-ios.md)  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: "Руководство по устранению неполадок Служб мобильного взаимодействия Azure — API"
+title: "aaaAzure Mobile Engagement Troubleshooting Guide - API-интерфейсы"
 description: "Руководства по устранению неполадок для Служб мобильного взаимодействия Azure —API"
 services: mobile-engagement
 documentationcenter: 
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: piyushjo
-ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5656b6f0f1aaf3e496a168c7cf09b307b9ab2a4c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-guide-for-api-issues"></a>Поиск и устранение неполадок API
-Ниже представлены проблемы, которые могут возникнуть в ходе взаимодействия администраторов со Службами мобильного взаимодействия Azure через интерфейсы API.
+Hello ниже приведены возможные проблемы, которые могут возникнуть с как администраторы взаимодействовать с Azure Mobile Engagement через API-интерфейсы hello.
 
 ## <a name="syntax-issues"></a>Проблемы, связанные с синтаксисом
 ### <a name="issue"></a>Проблема
-* Синтаксические ошибки при использовании API (или неожиданное поведение).
+* Синтаксические ошибки с помощью hello API (или непредвиденное поведение).
 
 ### <a name="causes"></a>Причины
 * Проблемы, связанные с синтаксисом
-  * Проверьте синтаксис определенного API, который вы используете, чтобы подтвердить, что определенная возможность доступна.
-  * Распространенная проблема с использованием API — неправильное использование Reach API и API push-уведомлений (большинство задач необходимо выполнять с помощью Reach API, а не API push-уведомлений). 
-  * Еще одна распространенная проблема с интеграцией пакета SDK и использованием API — неправильное использование ключа пакета SDK и ключа API.
-  * Скрипты, подключающиеся к интерфейсам API, должны отправлять данные по крайней мере каждые 10 минут, в противном случае время ожидания подключения истечет (эта проблема особенно распространена в скриптах Monitor API, прослушивающих данные). Чтобы предотвратить возникновение задержки, ваш скрипт должен отправлять команду ping XMPP каждые 10 минут, чтобы сеанс работы с сервером не завершался.
+  * Сделать убедиться, что toocheck hello синтаксис конкретного API hello использовании tooconfirm, hello параметр доступен.
+  * Распространенные проблемы с использованием API — tooconfuse hello Reach API и hello Push-API (большинство задач должно выполняться с помощью hello Reach API вместо hello Push-API). 
+  * Другой распространенные проблемы с интеграцией пакета SDK и использование API — tooconfuse hello ключ SDK и hello ключ API.
+  * Сценарии, которые подключения toohello API-интерфейсы должны toosend данных каждые 10 минут или подключения hello выдаст ошибку времени ожидания (особенно часто применяется в скриптах API-Интерфейс монитора прослушивает данные). tooprevent истечение времени ожидания, у вашей отправки сценария XMPP ping каждый hello 10 минут tookeep, сеанс проверки активности с сервером hello.
 
-### <a name="see-also"></a>Дополнительные материалы
+### <a name="see-also"></a>См. также
 * [Документация по API-интерфейсам][Link 4]
 * [Сведения о протоколе XMPP](http://xmpp.org/extensions/xep-0199.html)
 
-## <a name="unable-to-use-the-api-to-perform-the-same-action-available-in-the-azure-mobile-engagement-ui"></a>Не удается использовать API для выполнения действия, доступного в пользовательском интерфейсе Служб мобильного взаимодействия Azure.
+## <a name="unable-toouse-hello-api-tooperform-hello-same-action-available-in-hello-azure-mobile-engagement-ui"></a>Не удается toouse hello API tooperform hello же действии, доступном в hello пользовательского интерфейса Azure Mobile Engagement
 ### <a name="issue"></a>Проблема
-* Действие, которое выполняется в пользовательском интерфейсе Служб мобильного взаимодействия Azure, не выполняется в соответствующем API Служб мобильного взаимодействия Azure.
+* Действие, которое работает из пользовательского интерфейса Azure Mobile Engagement не работает с hello приветствия, связанные с Azure Mobile Engagement API.
 
 ### <a name="causes"></a>Причины
-* Подтверждение того, что вы можете выполнять это действие в пользовательском интерфейсе Служб мобильного взаимодействия Azure, свидетельствует о правильной интеграции этой функции Служб мобильного взаимодействия Azure в пакет SDK.
+* Здравствуйте, подтверждающее, что вы сможете выполнять hello показано действие из пользовательского интерфейса Azure Mobile Engagement hello правильно интегрированы этот компонент Azure Mobile Engagement с SDK.
 
-### <a name="see-also"></a>Дополнительные материалы
+### <a name="see-also"></a>См. также
 * [Управление существующими приложениями и проектами][Link 1]
 
 ## <a name="error-messages"></a>сообщения об ошибках
 ### <a name="issue"></a>Проблема
-* Во время выполнения или по завершении в журналах отображаются коды ошибок, связанные с использованием API.
+* Коды ошибок, с помощью API hello, отображаемых во время выполнения или в журналах.
 
 ### <a name="causes"></a>Причины
 * Ниже приведен общий список распространенных кодов состояния API для справки и предварительного устранения неполадок.
   
         200        Success.
-        200        Account updated: device registered, associated, updated, or removed from the current account.
-        200        Returns a list of projects as a JSON object or an authentication token generated and returned in the response’s body.
+        200        Account updated: device registered, associated, updated, or removed from hello current account.
+        200        Returns a list of projects as a JSON object or an authentication token generated and returned in hello response’s body.
         201        Account created.
-        400        Invalid parameter or validation exception (check payload for details). The parameters provided to the API or service are invalid. In this case, the HTTP response will embed more details. Make sure to test for the MIME type of the response as the payload can either be plain text or a JSON object.
-        401        Authentication error. No user is currently authenticated or connected (check the AppID and SDK key).
-        402        Billing lock. The application is either off its quotas or is currently in a bad billing state.
-        403        The application is not enabled or the specific API is disabled for this application.
-        403        Unauthorized access to the project or application, invalid access key (the key must match the one provided when created).
-        403        Campaign specific errors: campaign must be finished (or has already been activated), the suspend action can only be performed on an scheduled campaign, cannot finish a campaign that is not currently “in progress”, campaign must be “in progress” and the campaign’s property named, manual Push must be set to true.
-        403        The email address is already associated to another account (a super user for instance). No authentication token will be generated.
+        400        Invalid parameter or validation exception (check payload for details). hello parameters provided toohello API or service are invalid. In this case, hello HTTP response will embed more details. Make sure tootest for hello MIME type of hello response as hello payload can either be plain text or a JSON object.
+        401        Authentication error. No user is currently authenticated or connected (check hello AppID and SDK key).
+        402        Billing lock. hello application is either off its quotas or is currently in a bad billing state.
+        403        hello application is not enabled or hello specific API is disabled for this application.
+        403        Unauthorized access toohello project or application, invalid access key (hello key must match hello one provided when created).
+        403        Campaign specific errors: campaign must be finished (or has already been activated), hello suspend action can only be performed on an scheduled campaign, cannot finish a campaign that is not currently “in progress”, campaign must be “in progress” and hello campaign’s property named, manual Push must be set tootrue.
+        403        hello email address is already associated tooanother account (a super user for instance). No authentication token will be generated.
         404        Application, device, campaign, or project identifier not found.
         404        Query parameter is invalid JSON or has a field with an unexpected value.
-        404        The email address is not associated with an account. Please create or update the account first.
-        405        Invalid HTTP method (GET, POST, etc.) or trying to edit a read only segment (i.e. add or update or delete a criterion). A segment becomes read only after it has been computed for the first time.
-        409        Name already associated to a different device ID or campaign.
-        413        Too many device identifiers (current limit is 1,000), POST URL encoded entity is over 2MB, or the period is too large to be displayed (the server didn’t retrieve the analytics because the user request is for a period that is too large).
-        503        Analytics not available yet (the requested information is not computed yet for an application).
-        504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
+        404        hello email address is not associated with an account. Please create or update hello account first.
+        405        Invalid HTTP method (GET, POST, etc.) or trying tooedit a read only segment (i.e. add or update or delete a criterion). A segment becomes read only after it has been computed for hello first time.
+        409        Name already associated tooa different device ID or campaign.
+        413        Too many device identifiers (current limit is 1,000), POST URL encoded entity is over 2MB, or hello period is too large toobe displayed (hello server didn’t retrieve hello analytics because hello user request is for a period that is too large).
+        503        Analytics not available yet (hello requested information is not computed yet for an application).
+        504        hello server was not able toohandle your request in a reasonable time (if you make multiple calls tooan API very quickly, try toomake one call at a time and spread hello calls out over time).
 
 ### <a name="see-also"></a>Дополнительные материалы
 * [Mobile Engagement][Link 4]
@@ -83,10 +83,10 @@ ms.lasthandoff: 07/11/2017
 * Действие с использованием API заканчивается сбоем, при этом во время выполнения или по завершении в журналах не отображается сообщение об ошибке.
 
 ### <a name="causes"></a>Причины
-* При неправильной интеграции многие элементы будут отключены в пользовательском интерфейсе Служб мобильного взаимодействия Azure и незаметно завершатся ошибкой в API, поэтому не забудьте проверить определенную функцию в пользовательском интерфейсе, чтобы убедиться, что она работает.
-* Службы мобильного взаимодействия Azure и множество дополнительных функций этих служб, которые вы намереваетесь применять, перед использованием необходимо отдельно интегрировать в приложение с помощью пакета SDK.
+* Многие элементы будут отключены hello пользовательского интерфейса Azure Mobile Engagement, если они не являются правильной интеграции, но будет выполнена из hello API, поэтому необходимо учитывать tootest hello же функциональные возможности пользовательского интерфейса toosee hello, если он работает.
+* Azure Mobile Engagement и несколько дополнительных функций из Azure Mobile Engagement, который вы пытаетесь toouse toobe необходимости по отдельности интегрируется в приложение с помощью пакета SDK для hello как отдельные шаги перед их использованием.
 
-### <a name="see-also"></a>Дополнительные материалы
+### <a name="see-also"></a>См. также
 * [Руководство по поиску и устранению проблем с интеграцией при использовании SDK][Link 25]
 
 <!--Link references-->

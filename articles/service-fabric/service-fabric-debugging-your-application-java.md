@@ -1,6 +1,6 @@
 ---
-title: "Отладка приложения Azure Service Fabric в Eclipse | Документация Майкрософт"
-description: "Повысьте надежность и производительность служб, разрабатывая их в Eclipse и локальном кластере разработки."
+title: "aaaDebug приложения структуры службы Azure в Eclipse | Документы Microsoft"
+description: "Улучшить hello надежность и производительность служб по разработке и отладке их в Eclipse в кластере локальной разработки."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2017
 ms.author: vturecek;mikhegn
-ms.openlocfilehash: f3bcee3794de35005bd387ecfae7e6707f3cb5ee
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ab86254a5c312db40fd631746c89aab0bbb9d1a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Отладка приложения Java Service Fabric с помощью Eclipse
 > [!div class="op_single_selector"]
@@ -26,26 +26,26 @@ ms.lasthandoff: 07/11/2017
 > * [Eclipse и Java](service-fabric-debugging-your-application-java.md)
 > 
 
-1. Запустите кластер локальной разработки, выполнив действия, описанные в статье [Настройка среды разработки Service Fabric](service-fabric-get-started-linux.md).
+1. Запуск разработки локального кластера с помощью инструкции hello в [Настройка среды разработки Service Fabric](service-fabric-get-started-linux.md).
 
-2. Обновите файл entryPoint.sh службы, которую необходимо отладить, таким образом, чтобы он запускал процесс Java с параметрами удаленной отладки. Этот файл можно найти в следующем расположении: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. Для отладки в этом примере задается порт 8001.
+2. Обновить entryPoint.sh hello службы нужно toodebug, таким образом, процесс hello java с параметрами удаленной отладки. Этот файл можно найти в следующие расположения hello: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. Для отладки в этом примере задается порт 8001.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=y -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Обновите манифест приложения, задав для отлаживаемой службы число экземпляров или реплик, равное 1. Эта настройка позволяет избежать конфликтов для порта, используемого для отладки. Например, для служб без отслеживания состояния, задайте ``InstanceCount="1"``, а для служб с отслеживанием состояния задайте целевые и минимальные размеры набора реплик, равные 1, следующим образом: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
+3. Обновить манифест приложения hello, задав число экземпляров hello или hello счетчика реплики для hello службы, для которого создается отлаживать too1. Этот параметр позволяет избежать конфликтов для hello порт, который используется для отладки. Например, для служб без отслеживания состояния, задайте ``InstanceCount="1"`` и для служб с отслеживанием состояния набора hello целевого объекта и min набора реплик размеры too1 следующим образом: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
 
-4. Разверните приложения.
+4. Развертывание приложения hello.
 
-5. В интегрированной среде разработки Eclipse выберите **Запустить-> Debug Configurations (Конфигурации отладки)-> Remote Java Application and input connection properties (Свойства удаленного приложения Java и входных подключений)** и установите свойства следующим образом:
+5. В hello интегрированной среды разработки Eclipse, выберите **выполнения -> Отладка конфигурации -> удаленное приложение Java и входных свойств подключения** и задайте свойства hello следующим образом:
 
    ```
    Host: ipaddress
    Port: 8001
    ```
-6.  Установите точки останова на требуемых точках и запустите отладку приложения.
+6.  Установите точки останова в нужные моменты и отладить приложение hello.
 
-При сбое приложения можно также включить функцию coredumps. Выполните ``ulimit -c`` в оболочке. Если возвращается 0, то функция coredumps не включена. Чтобы функция coredumps работала без ограничений, выполните следующую команду: ``ulimit -c unlimited``. Состояние функции можно проверить с помощью команды ``ulimit -a``.  Если требуется обновить путь создания coredump, выполните следующую команду: ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern``. 
+Если произошло аварийное завершение приложения hello, можно также tooenable coredumps. Выполните ``ulimit -c`` в оболочке. Если возвращается 0, то функция coredumps не включена. tooenable неограниченное coredumps выполните следующую команду hello: ``ulimit -c unlimited``. Можно также проверить состояние hello, с помощью команды hello ``ulimit -a``.  Если требуется путь создания coredump hello tooupdate выполнение ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern``. 
 
 ### <a name="next-steps"></a>Дальнейшие действия
 

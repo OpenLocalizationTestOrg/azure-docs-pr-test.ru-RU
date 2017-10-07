@@ -1,6 +1,6 @@
 ---
-title: "Перемещение данных из Salesforce с помощью фабрики данных | Документация Майкрософт"
-description: "Узнайте, как перемещать данные из Salesforce с использованием фабрики данных Azure."
+title: "aaaMove данные из Salesforce с помощью фабрики данных | Документы Microsoft"
+description: "Дополнительные сведения о том, как toomove данные из Salesforce с помощью фабрики данных Azure."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,122 +14,122 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2017
 ms.author: jingwang
-ms.openlocfilehash: 9390b992bce2dede750c3fc55b7783a6b0db678f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c1bde2a333f5a3c0a995eb8c13ecf585132888b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Перемещение данных из Salesforce с помощью фабрики данных Azure
-В этой статье описано, как переместить данные из Salesforce в любое хранилище данных, указанное в таблице [поддерживаемых хранилищ данных](data-factory-data-movement-activities.md#supported-data-stores-and-formats) (столбец "Приемник"), с использованием действия копирования в фабрике данных Azure. Эта статья основана на статье о [действиях перемещения данных](data-factory-data-movement-activities.md) , в которой приведены общие сведения о перемещении данных с помощью действия копирования и поддерживаемых сочетаниях хранилищ данных.
+В этой статье рассматриваются способы действие копирования данных toocopy фабрики данных Azure из хранилища данных tooany Salesforce, перечислены под заголовком столбца приемник hello hello [поддерживаемые источники и приемники](data-factory-data-movement-activities.md#supported-data-stores-and-formats) таблицы. Эта статья основана на hello [действия перемещения данных](data-factory-data-movement-activities.md) статьи, которая представляет общие сведения о перемещении данных с действием копирования и сочетания поддерживаемых данных хранилища.
 
-Сейчас фабрика данных Azure поддерживает только перемещение данных из Salesforce в другие [поддерживаемые хранилища-приемники](data-factory-data-movement-activities.md#supported-data-stores-and-formats), но не наоборот.
+Фабрика данных Azure в настоящее время поддерживает только для перемещения данных из Salesforce слишком[приемника хранилища данных поддерживается](data-factory-data-movement-activities.md#supported-data-stores-and-formats), но не поддерживает перемещение данных из других tooSalesforce хранилищ данных.
 
 ## <a name="supported-versions"></a>Поддерживаемые версии
-Этот соединитель поддерживает следующие выпуски Salesforce: Developer Edition, Professional Edition, Enterprise Edition или Unlimited Edition. Он также поддерживает копирование из рабочей среды Salesforce, песочницы и пользовательского домена.
+Этот соединитель поддерживает следующие выпусков Salesforce hello: Developer Edition, Professional Edition, Enterprise Edition или выпуск неограниченное. Он также поддерживает копирование из рабочей среды Salesforce, песочницы и пользовательского домена.
 
 ## <a name="prerequisites"></a>Предварительные требования
 * Требуется включить разрешения API. Дополнительные сведения о включении доступа к API в Salesforce с помощью набора разрешений см. [здесь](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/).
-* Чтобы скопировать данные из Salesforce в локальное хранилище данных, в локальной среде необходимо установить шлюз управления данными версии не ниже 2.0.
+* toocopy данные из хранилищ данных Salesforce tooon организациями, необходимо иметь по крайней мере 2.0 шлюза управления данных, установленный в локальной среде.
 
 ## <a name="salesforce-request-limits"></a>Ограничения запросов Salesforce
-Для Salesforce установлены ограничения на общее число запросов API и одновременных запросов API. Обратите внимание на следующие моменты.
+Для Salesforce установлены ограничения на общее число запросов API и одновременных запросов API. Обратите внимание hello после точки.
 
-- Если количество одновременных запросов превышает ограничение, выполняется регулирование и возникают случайные ошибки.
-- В случае превышения ограничения на общее число запросов учетная запись Salesforce блокируется на 24 часа.
+- Если hello число одновременных запросов превышает предел hello, регулирование и вы увидите случайные сбои.
+- Если hello общее число запросов превышает предел hello, hello учетной записи Salesforce будет заблокирован на 24 часа.
 
-Кроме того, в обоих случаях вы можете получить ошибку REQUEST_LIMIT_EXCEEDED. Дополнительные сведения см. в разделе "API Request Limits" (Ограничения запросов API) статьи об [ограничениях для разработчика Salesforce](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf).
+Может также возникать ошибка «REQUEST_LIMIT_EXCEEDED» hello в обоих случаях. Hello» API ограничения запросов» в разделе hello [Salesforce разработчика ограничения](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) Дополнительные сведения см.
 
 ## <a name="getting-started"></a>Приступая к работе
 Вы можете создать конвейер с действием копирования, который перемещает данные из Salesforce, с помощью разных инструментов и интерфейсов API.
 
-Проще всего создать конвейер с помощью **мастера копирования**. В статье [Руководство. Создание конвейера с действием копирования с помощью мастера копирования фабрики данных](data-factory-copy-data-wizard-tutorial.md) приведены краткие пошаговые указания по созданию конвейера с помощью мастера копирования данных.
+toocreate простым способом Hello конвейера — toouse hello **мастер копирования**. В разделе [учебника: создать конвейер, с помощью мастера копирования](data-factory-copy-data-wizard-tutorial.md) краткое Пошаговое руководство по создание с помощью мастера данных копирования hello конвейера.
 
-Также для создания конвейера можно использовать следующие инструменты: **портал Azure**, **Visual Studio**, **Azure PowerShell**, **шаблон Azure Resource Manager**, **API .NET** и **REST API**. Пошаговые инструкции по созданию конвейера с действием копирования см. в [руководстве по действию копирования](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+Также можно использовать следующие средства toocreate конвейера hello: **портал Azure**, **Visual Studio**, **Azure PowerShell**, **шаблона диспетчера ресурсов Azure** , **.NET API**, и **API-интерфейса REST**. В разделе [учебника действия копирования](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) для toocreate пошаговые инструкции конвейера с помощью операции копирования. 
 
-Независимо от используемого средства или API-интерфейса, для создания конвейера, который перемещает данные из источника данных в приемник, выполняются следующие шаги: 
+Независимо от используемого hello инструменты или интерфейсы API, необходимо выполнить следующие шаги toocreate конвейера, который перемещает данные из источника данных хранилище tooa приемник данных hello. 
 
-1. Создайте **связанные службы**, чтобы связать входные и выходные данные с фабрикой данных.
-2. Создайте **наборы данных**, которые представляют входные и выходные данные для операции копирования. 
+1. Создание **связанные службы** toolink ввода-вывода хранилища tooyour данных фабрики данных.
+2. Создание **наборы данных** toorepresent входных и выходных данных для hello операции копирования. 
 3. Создайте **конвейер** с действием копирования, который принимает входной набор данных и возвращает выходной набор данных. 
 
-Если вы используете мастер, то он автоматически создает определения JSON для сущностей фабрики данных (связанных служб, наборов данных и конвейера). При использовании инструментов и интерфейсов API (за исключением API .NET) вы самостоятельно определяете эти сущности фабрики данных в формате JSON.  Пример определений JSON для сущностей фабрики данных, которые используются для копирования данных из Salesforce, доступен в разделе [Пример JSON. Копирование данных из Salesforce в большой двоичный объект Azure](#json-example-copy-data-from-salesforce-to-azure-blob) этой статьи. 
+При использовании мастера hello JSON определения для этих сущностей фабрики данных (связанные службы, наборы данных и hello конвейера) создаются автоматически. При использовании средств и API-интерфейсы (за исключением .NET API), определяются с использованием формата JSON hello этих сущностей фабрики данных.  Пример с определениями JSON для сущностей фабрики данных, используемых toocopy данные из Salesforce в разделе [пример JSON: копирует данные из Salesforce tooAzure большого двоичного объекта](#json-example-copy-data-from-salesforce-to-azure-blob) этой статьи. 
 
-Следующие разделы содержат сведения о свойствах JSON, которые используются для определения сущностей фабрики данных, относящихся к Salesforce. 
+Hello в следующих разделах подробно JSON свойства, которые являются определенной tooSalesforce используется toodefine фабрики данных сущности: 
 
 ## <a name="linked-service-properties"></a>Свойства связанной службы
-В таблице ниже приведены описания элементов JSON, которые относятся к связанной службе Salesforce.
+Привет, в следующей таблице приводится описание элементов JSON, которые зависят от конкретного toohello Salesforce связанные службы.
 
 | Свойство | Описание | Обязательно |
 | --- | --- | --- |
-| type |Для свойства type нужно задать значение **Salesforce**. |Да |
-| environmentUrl | Укажите URL-адрес экземпляра Salesforce. <br><br> — URL-адрес по умолчанию — https://login.salesforce.com. <br> — Чтобы скопировать данные из песочницы, укажите URL-адрес https://test.salesforce.com. <br> — Чтобы скопировать данные из пользовательского домена, укажите URL-адрес, например https://[домен].my.salesforce.com. |Нет |
-| Имя пользователя |Укажите имя пользователя для учетной записи пользователя. |Да |
-| password |Укажите пароль для учетной записи пользователя. |Да |
-| securityToken |Укажите маркер безопасности для учетной записи пользователя. Инструкции по получению и сбросу маркера безопасности см. в статье [Get security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Получение маркера безопасности). Общие сведения о маркере безопасности см. в статье [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm) (Безопасность и API). |Да |
+| type |свойство типа Hello должно быть присвоено: **Salesforce**. |Да |
+| environmentUrl | Укажите URL-адрес Salesforce экземпляр hello. <br><br> — URL-адрес по умолчанию — https://login.salesforce.com. <br> -toocopy данных из "песочницы", укажите «https://test.salesforce.com». <br> -задать toocopy данные из пользовательского домена, например, «https://[domain].my.salesforce.com». |Нет |
+| Имя пользователя |Укажите имя пользователя для учетной записи пользователя hello. |Да |
+| пароль |Укажите пароль для учетной записи пользователя hello. |Да |
+| securityToken |Укажите маркер безопасности для учетной записи пользователя hello. В разделе [получение токена безопасности](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) инструкции tooreset/get маркер безопасности. toolearn о маркерах безопасности, см в разделе [безопасности и hello API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Да |
 
 ## <a name="dataset-properties"></a>Свойства набора данных
-Полный список разделов и свойств, используемых для определения наборов данных, см. в статье [Наборы данных в фабрике данных Azure](data-factory-create-datasets.md). Разделы structure, availability и policy JSON набора данных одинаковы для всех типов наборов данных (SQL Azure, большие двоичные объекты Azure, таблицы Azure и т. д.).
+Полный список разделов и свойства, доступные для определения наборов данных, см. в разделе hello [Создание наборов данных](data-factory-create-datasets.md) статьи. Разделы structure, availability и policy JSON набора данных одинаковы для всех типов наборов данных (SQL Azure, большие двоичные объекты Azure, таблицы Azure и т. д.).
 
-Раздел **typeProperties** во всех типах наборов данных разный. В нем содержатся сведения о расположении данных в хранилище данных. Раздел typeProperties для набора данных типа **RelationalTable** содержит следующие свойства.
+Hello **typeProperties** раздел отличается для каждого типа набора данных и предоставляет информацию о местоположении hello hello данных в хранилище данных hello. Hello typeProperties статьи для набора данных типа hello **RelationalTable** имеет hello следующие свойства:
 
 | Свойство | Описание | Обязательно |
 | --- | --- | --- |
-| tableName |Имя таблицы в Salesforce |Нет (если для свойства **RelationalSource** задано значение **query**). |
+| tableName |Имя таблицы hello в Salesforce. |Нет (если для свойства **RelationalSource** задано значение **query**). |
 
 > [!IMPORTANT]
-> Имя API для любых настраиваемых объектов должно содержать приставку __c.
+> для любого пользовательского объекта требуется Hello «__c» часть hello имя API.
 
 ![Фабрика данных — подключение к Salesforce — имя API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 ## <a name="copy-activity-properties"></a>Свойства действия копирования
-Полный список разделов и свойств, используемых для определения действий, см. в статье [Конвейеры и действия в фабрике данных Azure: создание конвейеров, цепочки действий и расписаний для них](data-factory-create-pipelines.md). Такие свойства, как имя, описание, входные и выходные таблицы, различные политики, доступны для всех типов действий.
+Полный список разделов и свойства, доступные для определения действий см. в разделе hello [Создание конвейеры](data-factory-create-pipelines.md) статьи. Такие свойства, как имя, описание, входные и выходные таблицы, различные политики, доступны для всех типов действий.
 
-С другой стороны, свойства, доступные в разделе typeProperties действия, зависят от конкретного типа действия. Для действия копирования они различаются в зависимости от типов источников и приемников.
+Hello свойства, доступные в Здравствуйте раздел typeProperties hello активности hello другой стороны, могут различаться для каждого типа действия. Для действия копирования они зависят от типов источников и приемников hello.
 
-В случае действия копирования, если источник относится к типу **RelationalSource** (который содержит Salesforce), в разделе typeProperties доступны следующие свойства.
+В действии копирования, когда источник hello типа hello **RelationalSource** (включая Salesforce), hello следующие свойства доступны в разделе "typeProperties":
 
 | Свойство | Описание | Допустимые значения | Обязательно |
 | --- | --- | --- | --- |
-| query |Используйте пользовательский запрос для чтения данных. |Запрос SQL-92 или запрос, написанный на [объектно-ориентированном языке запросов Salesforce (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Пример: `select * from MyTable__c`. |Нет (если для свойства **tableName** задано значение **dataset**). |
+| query |Используйте данные tooread hello пользовательского запроса. |Запрос SQL-92 или запрос, написанный на [объектно-ориентированном языке запросов Salesforce (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Пример: `select * from MyTable__c`. |Нет (если hello **tableName** из hello **dataset** указан) |
 
 > [!IMPORTANT]
-> Имя API для любых настраиваемых объектов должно содержать приставку __c.
+> для любого пользовательского объекта требуется Hello «__c» часть hello имя API.
 
 ![Фабрика данных — подключение к Salesforce — имя API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 ## <a name="query-tips"></a>Советы по запросам
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Получение данных с использованием предложения WHERE в столбце даты и времени
-При указании запроса SOQL или SQL обратите внимание на различие в формате даты и времени. Например:
+Если указать hello SOQL или SQL-запрос toohello внимания оплаты различие формата даты и времени. Например:
 
 * **Пример SOQL**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **Пример SQL**:
-    * **Использование мастера копирования для указания запроса:** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
-    * **Использование редактирования JSON для указания запроса (соответствующие escape-символы):** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
+    * **С помощью запроса hello toospecify мастер копирования:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
+    * **С помощью JSON редактирование запроса hello toospecify (escape-знак правильно):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>Извлечение данных из отчета Salesforce
 Из отчетов Salesforce можно извлекать данные, указывая запросы в формате `{call "<report name>"}`, например: `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Восстановление удаленных записей из корзины Salesforce
-Чтобы запросить из корзины Salesforce обратимо удаленные записи, укажите в своем запросе **"IsDeleted = 1"**. Например,
+записи tooquery hello мягкий удалены из корзины Salesforce, можно указать **«IsDeleted = 1»** в запросе. Например,
 
-* чтобы запросить только удаленные записи, укажите select * from MyTable__c **where IsDeleted= 1**
-* Чтобы запросить все записи, включая существующие и удаленные, укажите select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**
+* Укажите tooquery только записи удалены hello, «выберите * из MyTable__c **где IsDeleted = 1**»
+* Укажите tooquery все hello записей, включая существующие hello и удалении hello» выберите * из MyTable__c **где IsDeleted = 0 или IsDeleted = 1**»
 
-## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>Пример JSON. Копирование данных из Salesforce в большой двоичный объект Azure
-Ниже приведены примеры с определениями JSON, которые можно использовать для создания конвейера с помощью [портала Azure](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) или [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Вы узнаете, как копировать данные из Salesforce в хранилище BLOB-объектов Azure. Тем не менее данные можно копировать в любой из указанных [здесь](data-factory-data-movement-activities.md#supported-data-stores-and-formats) приемников. Это делается с помощью действия копирования в фабрике данных Azure.   
+## <a name="json-example-copy-data-from-salesforce-tooazure-blob"></a>Пример JSON: копирует данные из Salesforce tooAzure больших двоичных объектов
+Hello ниже приведен пример определения JSON можно использовать toocreate конвейера с помощью hello [портал Azure](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), или [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Они показывают как toocopy данные из Salesforce tooAzure хранилища больших двоичных объектов. Тем не менее, данные могут быть скопированный tooany приемников hello указано [здесь](data-factory-data-movement-activities.md#supported-data-stores-and-formats) с помощью hello действие копирования в фабрике данных Azure.   
 
-Ниже приведены артефакты фабрики данных, которые необходимо создать для реализации сценария. В разделах после списка приведены подробные сведения об этих действиях.
+Ниже приведены hello артефактов фабрики данных, вам потребуется toocreate tooimplement hello сценария. последующих список hello Hello разделах содержатся подробные сведения об этих действиях.
 
-* Связанная служба типа [Salesforce](#linked-service-properties)
-* Связанная служба типа [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
-* Входной [набор данных](data-factory-create-datasets.md) типа [RelationalTable](#dataset-properties).
-* Выходной [набор данных](data-factory-create-datasets.md) типа [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* Связанной службы типа hello [Salesforce](#linked-service-properties)
+* Связанной службы типа hello [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+* Входным [dataset](data-factory-create-datasets.md) типа hello [RelationalTable](#dataset-properties)
+* Вывод [dataset](data-factory-create-datasets.md) типа hello [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
 * [Конвейер](data-factory-create-pipelines.md) с действием копирования, в котором используются [RelationalSource](#copy-activity-properties) и [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
 **Связанная служба SalesForce**
 
-В этом примере используется связанная служба **Salesforce**. Список свойств, поддерживаемых этой связанной службой, приведен в разделе [Свойства связанной службы Salesforce](#linked-service-properties).  Инструкции по получению и сбросу маркера безопасности см. в статье [Get security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Получение маркера безопасности).
+В этом примере используется hello **Salesforce** связанной службы. В разделе hello [Salesforce связанная служба](#linked-service-properties) раздел для hello свойств, поддерживаемых этой связанной службы.  В разделе [получение токена безопасности](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) инструкции как tooreset/get hello маркера безопасности.
 
 ```json
 {
@@ -186,16 +186,16 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-Если для параметра **external** задать значение **true**, то фабрика данных воспримет этот набор данных как внешний, который создан не в результате какого-либо действия в фабрике данных.
+Установка **внешних** слишком**true** информирует hello служба фабрики данных, набор данных hello фабрики toohello внешних данных и не был создан из действия в фабрике данных hello.
 
 > [!IMPORTANT]
-> Имя API для любых настраиваемых объектов должно содержать приставку __c.
+> для любого пользовательского объекта требуется Hello «__c» часть hello имя API.
 
 ![Фабрика данных — подключение к Salesforce — имя API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 **Выходной набор данных большого двоичного объекта Azure**
 
-Данные записываются в новый BLOB-объект каждый час (frequency: hour, interval: 1).
+Записывается новый большой двоичный объект tooa каждый час (частота: час, интервал: 1).
 
 ```json
 {
@@ -219,9 +219,9 @@ ms.lasthandoff: 07/11/2017
 
 **Конвейер с действием копирования**
 
-Конвейер содержит действие копирования, которое использует входной и выходной наборы данных и выполняется каждый час. В определении JSON конвейера для типа **source** установлено значение **RelationalSource**, а для типа **sink** — значение **BlobSink**.
+Hello конвейера содержит действие копирования, который настроен toouse hello входные и выходные наборы данных, а — запланированных toorun каждый час. В определении JSON конвейера hello, hello **источника** тип установлен слишком**RelationalSource**и hello **приемник** тип установлен слишком**BlobSink**.
 
-Список свойств, поддерживаемых RelationalSource, см. в разделе [Свойства типа RelationalSource](#copy-activity-properties).
+В разделе [свойства типа RelationalSource](#copy-activity-properties) hello список свойств, которые поддерживаются hello RelationalSource.
 
 ```json
 {  
@@ -233,7 +233,7 @@ ms.lasthandoff: 07/11/2017
         "activities":[  
         {
             "name": "SalesforceToAzureBlob",
-            "description": "Copy from Salesforce to an Azure blob",
+            "description": "Copy from Salesforce tooan Azure blob",
             "type": "Copy",
             "inputs": [
             {
@@ -270,7 +270,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 > [!IMPORTANT]
-> Имя API для любых настраиваемых объектов должно содержать приставку __c.
+> для любого пользовательского объекта требуется Hello «__c» часть hello имя API.
 
 ![Фабрика данных — подключение к Salesforce — имя API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
@@ -299,9 +299,9 @@ ms.lasthandoff: 07/11/2017
 | URL-адрес |Строка |
 
 > [!NOTE]
-> Сведения о сопоставлении столбцов в наборе данных, используемом в качестве источника, со столбцами в приемнике см. в разделе [Сопоставление столбцов исходного набора данных со столбцами целевого набора данных](data-factory-map-columns.md).
+> toomap столбцы из источника toocolumns набора данных из набора данных приемников, в разделе [сопоставление столбцов набора данных в фабрике данных Azure](data-factory-map-columns.md).
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## <a name="performance-and-tuning"></a>Производительность и настройка
-Ознакомьтесь с [руководством по настройке производительности действия копирования](data-factory-copy-activity-performance.md), в котором описываются ключевые факторы, влияющие на производительность перемещения данных (действие копирования) в фабрике данных Azure, и различные способы оптимизации этого процесса.
+. В разделе hello [действие копирования производительности и руководство по настройке](data-factory-copy-activity-performance.md) toolearn о ключе факторы, оказывают влияние на производительность перемещения данных (действие копирования) в фабрике данных Azure и различных способов toooptimize его.

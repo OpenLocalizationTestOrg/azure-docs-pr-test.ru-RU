@@ -1,12 +1,12 @@
 ---
-title: "Подключение Intel Edison (Node) к Интернету вещей Azure. Урок 3. Отслеживание сообщений | Документация Майкрософт"
-description: "Отслеживайте сообщения, передаваемые с устройства в облако, по мере их записывания в хранилище таблиц Azure."
+title: "Подключение Edison Intel (узел) tooAzure IoT — занятия 3: наблюдения за сообщениями | Документы Microsoft"
+description: "Они записываются в хранилище таблиц Azure tooyour наблюдать за сообщений hello устройства в облако."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "данные в облаке, коллекция облачных данных, облачная служба Интернета вещей, данные Интернета вещей"
+keywords: "данные в облако hello, сбор данных облака, iot облачной службы, iot данных"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-node-get-started
 ms.assetid: fa2c7efe-7e34-4e39-bb70-015c15ac69ed
@@ -17,36 +17,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: c1a59227cd2bf9d2c9bcaa4212dd5127a95e2779
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f6371482123bc9aa12db55b38d3e8863645f981
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="read-messages-persisted-in-azure-storage"></a>Чтение сообщений, сохраненных в службе хранилища Azure
 ## <a name="what-you-will-do"></a>Выполняемая задача
-Отслеживание сообщений, передаваемых с устройства в облако (то есть с устройства Intel Edison в центр Интернета вещей), по мере их записывания в Хранилище таблиц Azure. Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок][troubleshooting].
+Монитор hello устройства в облако сообщения, которые отправляются из центра IoT tooyour Intel Edison в виде сообщений hello записываются tooyour хранилище таблиц Azure. Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Новые знания
-В этой статье вы узнаете, как использовать задачу gulp read-message для чтения сообщений, сохраненных в хранилище таблиц Azure.
+В этой статье вы узнаете, как toouse hello gulp задачи чтения сообщений tooread сообщения сохраняются в хранилище таблиц Azure.
 
 ## <a name="what-you-need"></a>Необходимые элементы
-Прежде чем начать, необходимо успешно выполнить инструкции, изложенные в статье [Run a sample application to send device-to-cloud messages][run-the-azure-blink-sample-application-on-intel-edison] (Запуск примера приложения для отправки сообщений с устройства в облако).
+Прежде чем запустить этот процесс, необходимо успешно выполнить [проведение пример приложения hello Azure blink Intel Edison][run-the-azure-blink-sample-application-on-intel-edison].
 
 ## <a name="read-new-messages-from-your-storage-account"></a>Чтение новых сообщений из учетной записи хранения
-В предыдущей статье вы запустили пример приложения на устройстве Edison. Пример приложения отправлял сообщения в центр Интернета вещей Azure. Сообщения, отправленные в центр Интернета вещей, сохраняются в хранилище таблиц Azure с помощью приложения-функции Azure. Для чтения сообщений из хранилища таблиц Azure потребуется строка подключения к хранилищу Azure.
+В предыдущей статье hello выполнена образец приложения для Edison. Пример приложения Hello отправлено центр Azure IoT tooyour сообщений. Центр IoT tooyour сообщения Hello хранятся в хранилище таблиц Azure через приложение Azure функции hello. Вы должны сообщений tooread строку соединения хранения Azure hello от хранилища таблиц Azure.
 
-Чтобы прочитать сообщения, сохраненные в хранилище таблиц Azure, выполните следующие действия:
+tooread сообщения, хранящиеся в хранилище таблиц Azure, выполните следующие действия.
 
-1. Получите строку подключения, выполнив следующую команду:
+1. Получите строку подключения hello, выполнив следующие команды hello:
 
    ```bash
    az storage account list -g iot-sample --query [].name
    az storage account show-connection-string -g iot-sample -n {storage name}
    ```
 
-   Первая команда получает имя `storage name`, которое используется во второй команде для получения строки подключения. Используйте `iot-sample` в качестве значения `{resource group name}`, если вы не меняли это значение.
-2. Откройте файл конфигурации `config-edison.json` в Visual Studio Code, выполнив следующую команду.
+   Первая команда Hello получает hello `storage name` , используемый в hello второй команды tooget hello строки подключения. Используйте `iot-sample` в качестве значения hello `{resource group name}` Если вы не изменили значение hello.
+2. Привет открыть файл конфигурации `config-edison.json` в коде Visual Studio, выполнив следующую команду hello:
 
    ```bash
    # For Windows command prompt
@@ -55,23 +55,23 @@ ms.lasthandoff: 07/11/2017
    # For MacOS or Ubuntu
    code ~/.iot-hub-getting-started/config-edison.json
    ```
-3. Замените `[Azure storage connection string]` строкой подключения, полученной на шаге 1.
-4. Сохраните файл `config-edison.json`.
-5. Отправьте сообщения еще раз и считайте их из хранилища таблиц Azure, выполнив следующую команду.
+3. Замените `[Azure storage connection string]` со строкой подключения hello, полученный на шаге 1.
+4. Сохранить hello `config-edison.json` файла.
+5. Попытку отправки сообщений и их чтения из хранилища таблиц Azure, выполнив следующую команду hello:
 
    ```bash
    gulp run --read-storage
    ```
 
-   Логика чтения из хранилища таблиц Azure содержится в файле `azure-table.js`.
+   Hello логику для чтения из хранилища Azure таблицы находится в hello `azure-table.js` файла.
 
    ![gulp run --read-storage][gulp run]
 
 ## <a name="summary"></a>Сводка
-Вы успешно подключили устройство Edison к Центру Интернета вещей в облаке и с помощью примера приложения для включения индикатора отправили сообщения с устройства в облако. Также вы использовали приложение-функцию Azure для сохранения входящих сообщений из Центра Интернета вещей в хранилище таблиц Azure. Теперь можно перейти к отправке сообщений из облака на устройство, т. е. из Центра Интернета вещей на устройство Edison.
+Вы успешно подключен центра IoT tooyour Edison в облаке hello и использовать сообщения hello blink образец приложения toosend устройства в облако. Можно также использовать hello Azure функция приложения toostore входящих IoT hub сообщения tooyour хранилище таблиц Azure. Теперь можно отправлять сообщения облака на устройство из вашего tooEdison концентратора IoT.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Запуск примера приложения для получения сообщений из облака на устройство][receive-cloud-to-device-messages]
+[Запустите образец приложения tooreceive сообщений облака на устройство][receive-cloud-to-device-messages]
 <!-- Images and links -->
 
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md

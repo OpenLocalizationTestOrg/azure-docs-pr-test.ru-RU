@@ -1,6 +1,6 @@
 ---
-title: "Обработка ошибок в политиках управления API Azure | Документация Майкрософт"
-description: "Информация о том, как следует реагировать на ошибки, возникающие во время обработки запросов в службе управления API Azure."
+title: "Обработка в политики управления API Azure aaaError | Документы Microsoft"
+description: "Узнайте, как toorespond tooerror условия, которые могут возникнуть в процессе hello обработки запросов в службе управления API Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 2fb403cc7454227083dc34d41a6f5f3a5876b1e7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 002c65f21e763fd644da61b6a11685ffd97488c7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="error-handling-in-api-management-policies"></a>Обработка ошибок в политиках управления API
-Управление API Azure позволяет издателям реагировать на ошибки, которые могут возникать во время обработки запросов к прокси-серверу, предоставляя объект `ProxyError`. Доступ к объекту `ProxyError` осуществляется через свойство [context.LastError](api-management-policy-expressions.md#ContextVariables), и его могут использовать политики в разделе `on-error`. Эта статья содержит справочную информацию о возможностях обработки ошибок, которые предоставляет служба управления API Azure.  
+Управления API Azure позволяет издателей toorespond tooerror условия, которые могут возникнуть во время обработки hello прокси-сервера toohello запросы, предоставляя `ProxyError` объекта. Hello `ProxyError` объекту осуществляется через hello [контекста. LastError](api-management-policy-expressions.md#ContextVariables) свойства и может использоваться с политиками hello `on-error` раздел политики. Здесь вы найдете ссылку для ошибки hello возможности обработки в Azure API Management.  
   
 ## <a name="error-handling-in-api-management"></a>Обработка ошибок в службе управления API  
- Политики в службе управления API Azure включают разделы `inbound`, `backend`, `outbound` и `on-error`, как показано в следующем примере.  
+ Политики в службе управления API Azure делятся `inbound`, `backend`, `outbound`, и `on-error` разделов, как показано в следующий пример hello.  
   
 ```xml  
 <policies>  
   <inbound>  
-    <!-- statements to be applied to the request go here -->  
+    <!-- statements toobe applied toohello request go here -->  
   </inbound>  
   <backend>  
-    <!-- statements to be applied before the request is   
-         forwarded to the backend service go here -->  
+    <!-- statements toobe applied before hello request is   
+         forwarded toohello backend service go here -->  
     </backend>  
     <outbound>  
-      <!-- statements to be applied to the response go here -->  
+      <!-- statements toobe applied toohello response go here -->  
     </outbound>  
     <on-error>  
-        <!-- statements to be applied if there is an error   
+        <!-- statements toobe applied if there is an error   
              condition go here -->  
   </on-error>  
 </policies>  
 ```  
   
- Во время обработки запроса встроенные действия выполняются с соблюдением всех политик в области запроса. Если возникает ошибка, обработка немедленно переходит к разделу `on-error` соответствующей политики. Раздел политики `on-error` можно использовать в любой области, и издатели API могут настроить требуемые действия, например запись информации об ошибках в концентраторы событий или создание нового ответа для передачи вызывающему объекту.  
+ Во время обработки запроса hello, встроенные действия выполняются вместе с любой политики, которые находятся в области действия для запроса hello. Если возникает ошибка, обработка немедленно переходит toohello `on-error` раздел политики. Hello `on-error` раздел политики можно использовать в любой области и издателей API можно настроить пользовательское поведение ведения журнала концентраторов tooevent hello ошибки или создание нового вызывающий toohello tooreturn ответа.  
   
 > [!NOTE]
->  Раздел `on-error` в политиках отсутствует по умолчанию. Чтобы добавить в политику раздел `on-error`, перейдите к требуемой политике в редакторе политик и добавьте раздел. Дополнительные сведения о настройке политик см. в статье [Политики в Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).  
+>  Hello `on-error` раздел отсутствует в политике по умолчанию. tooadd hello `on-error` статьи tooa политики, Обзор toohello требуемого политики в редакторе политики hello и добавьте его. Дополнительные сведения о настройке политик см. в статье [Политики в Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).  
 >   
 >  Если в политике нет раздела `on-error`, вызывающий объект при возникновении ошибки получит сообщение с HTTP-кодом 400 или 500.  
   
 ### <a name="policies-allowed-in-on-error"></a>Политики, которые можно использовать в разделе on-error  
- В разделе `on-error` можно использовать следующие политики.  
+ Hello следующие политики могут быть использованы в hello `on-error` раздел политики.  
   
 -   [choose](api-management-advanced-policies.md#choose)  
   
@@ -80,50 +80,50 @@ ms.lasthandoff: 07/11/2017
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)  
   
 ## <a name="lasterror"></a>LastError  
- Когда возникает ошибка и управление переходит к разделу политики `on-error`, информация об ошибке сохраняется в свойстве [context.LastError](api-management-policy-expressions.md#ContextVariables), к которому могут обратиться политики, определенные в разделе `on-error`. Оно имеет следующие свойства.  
+ При возникновении ошибки и управление переходит toohello `on-error` раздел политики ошибки hello хранится в [контекста. LastError](api-management-policy-expressions.md#ContextVariables) свойство, к которому можно получить политиками в hello `on-error` статьи и имеет следующие свойства hello.  
   
 |Имя|Тип|Описание|Обязательно|  
 |----------|----------|-----------------|--------------|  
-|Источник|строка|Указывает имя элемента, в котором произошла ошибка. Это может быть имя политики или встроенного шага конвейера.|Да|  
+|Источник|string|Элемент hello имена, где произошла ошибка hello. Это может быть имя политики или встроенного шага конвейера.|Да|  
 |Причина|строка|Код ошибки в машинном формате, который удобно использовать для обработки ошибок.|Нет|  
 |Сообщение|строка|Описание ошибки в понятном для человека формате.|Да|  
-|Область|строка|Имя области, в которой возникла ошибка. Здесь возможны следующие значения: global, product, api или operation.|Нет|  
+|Область|string|Имя области hello, где произошла ошибка hello и может быть «глобальные», «продукт», «api» или «операция»|Нет|  
 |Раздел|строка|Имя раздела, в котором произошла ошибка. Здесь возможны следующие значения: inbound, backend, outbound или on-error.|Нет|  
 |Путь|строка|Задает вложенные политики, например: choose[3]/when[2].|Нет|  
-|PolicyId|строка|Значение атрибута `id` для политики, в которой произошла ошибка (если указано клиентом).|Нет|  
+|PolicyId|string|Значение hello `id` атрибута, если заданные hello клиента, на которой произошла ошибка политики hello|Нет|  
   
 > [!NOTE]
->  Все политики имеют дополнительный атрибут `id`, который может быть добавлен к корневому элементу политики. Если этот атрибут присутствует в политике, в которой возникает ошибка, его значение можно извлечь с помощью свойства `context.LastError.PolicyId`.  
+>  Все политики иметь дополнительный `id` атрибут, который можно добавить корневой элемент toohello hello политики. Если этот атрибут присутствует в политике, когда происходит ошибка, значение hello hello атрибута может быть получен посредством hello `context.LastError.PolicyId` свойство.  
   
 ## <a name="predefined-errors-for-built-in-steps"></a>Стандартные ошибки для встроенных шагов  
- Далее перечислены стандартные ошибки, которые могут возникать во время оценки встроенных шагов обработки.  
+ Hello следующие ошибки являются стандартными для ошибок, которые могут возникнуть во время вычисления hello встроенные возможности обработки действия.  
   
 |Источник|Условие|Причина|Сообщение|  
 |------------|---------------|------------|-------------|  
-|Конфигурация|URI не соответствует ни одному API или операции|OperationNotFound|Unable to match incoming request to an operation. (Не удалось сопоставить входящий запрос с операцией.)|  
-|authorization|Не предоставлен ключ подписки|SubscriptionKeyNotFound|Access denied due to missing subscription key. Make sure to include subscription key when making requests to this API. (Доступ запрещен из-за отсутствия ключа подписки. Обязательно включайте ключ подписки в запросы к этому API.)|  
-|authorization|Недопустимое значение ключа подписки|SubscriptionKeyInvalid|Access denied due to invalid subscription key. Make sure to provide a valid key for an active subscription. (Доступ запрещен из-за недопустимого ключа подписки. Укажите допустимый ключ активной подписки.)|  
+|Конфигурация|URI не соответствует tooany Api или операция|OperationNotFound|Не удается toomatch входящих tooan операции запроса.|  
+|authorization|Не предоставлен ключ подписки|SubscriptionKeyNotFound|Доступ запрещен из-за toomissing ключ подписки. Сделать убедиться, что ключ tooinclude подписки, при выполнении запросов toothis API.|  
+|authorization|Недопустимое значение ключа подписки|SubscriptionKeyInvalid|Доступ запрещен из-за tooinvalid ключ подписки. Убедитесь, что tooprovide допустимый ключ для активной подписки.|  
   
 ## <a name="predefined-errors-for-policies"></a>Стандартные ошибки для политик  
- Далее перечислены стандартные ошибки, которые могут возникнуть во время оценки политик.  
+ Hello следующие ошибки являются стандартными для ошибок, которые могут возникнуть во время оценки политики.  
   
 |Источник|Условие|Причина|Сообщение|  
 |------------|---------------|------------|-------------|  
 |rate-limit|Превышено ограничение скорости|RateLimitExceeded|Rate limit is exceeded (Превышено ограничение скорости)|  
 |quota|Превышена квота|QuotaExceeded|превышена квота на количество вызовов. Quota will be replenished in xx:xx:xx. (Квота будет пополнена в xx:xx:xx.) -или- Out of bandwidth quota. (Превышена квота пропускной способности.) Quota will be replenished in xx:xx:xx. (Квота будет пополнена в xx:xx:xx.)|  
 |jsonp|Недопустимое значение параметра обратного вызова (содержит неправильные символы)|CallbackParameterInvalid|Value of callback parameter {callback-parameter-name} is not a valid JavaScript identifier. (Значение параметра обратного вызова {имя параметра обратного вызова} не является допустимым идентификатором JavaScript.)|  
-|ip-filter|Не удалось проанализировать IP-адрес вызывающего объекта из запроса|FailedToParseCallerIP|Failed to establish IP address for the caller. Access denied. (Не удалось установить IP-адрес вызывающего объекта. Доступ запрещен.)|  
+|ip-filter|Не удалось tooparse IP вызывающего объекта из запроса|FailedToParseCallerIP|Не удалось выполнить tooestablish IP-адрес для hello вызывающего объекта. Access denied. (Недопустимое значение {значение_утверждения} для утверждения {имя_утверждения}. Доступ запрещен.)|  
 |ip-filter|IP-адрес вызывающего объекта не входит в список разрешенных|CallerIpNotAllowed|Caller IP address {ip-address} is not allowed. Access denied. (Недопустимый IP-адрес вызывающего объекта: {IP-адрес}. Доступ запрещен.)|  
 |ip-filter|IP-адрес вызывающего объекта включен в список заблокированных|CallerIpBlocked|Caller IP address is blocked. Access denied. (IP-адрес вызывающего объекта заблокирован. Доступ запрещен.)|  
-|check-header|Отсутствует обязательный заголовок или его значение|HeaderNotFound|Header {header-name} was not found in the request. Access denied. (Заголовок {имя_заголовка} не найден в запросе. Доступ запрещен.)|  
+|check-header|Отсутствует обязательный заголовок или его значение|HeaderNotFound|В запросе hello не удалось найти заголовок {имя заголовка}. Access denied. (Недопустимое значение {значение_утверждения} для утверждения {имя_утверждения}. Доступ запрещен.)|  
 |check-header|Отсутствует обязательный заголовок или его значение|HeaderValueNotAllowed|Header {header-name} value of {header-value} is not allowed. Access denied. (Недопустимое значение {значение_заголовка} для заголовка {имя_заголовка}. Доступ запрещен.)|  
-|validate-jwt|В запросе отсутствует маркер JWT|TokenNotFound|JWT not found in the request. Access denied. (В запросе не найден маркер JWT. Доступ запрещен.)|  
+|validate-jwt|В запросе отсутствует маркер JWT|TokenNotFound|JWT не найден в запросе hello. Access denied. (Недопустимое значение {значение_утверждения} для утверждения {имя_утверждения}. Доступ запрещен.)|  
 |validate-jwt|Ошибка при проверке подписи|TokenSignatureInvalid|<сообщение из библиотеки jwt\>. Access denied. (Доступ запрещен.)|  
 |validate-jwt|Недопустимая аудитория|TokenAudienceNotAllowed|<сообщение из библиотеки jwt\>. Access denied. (Доступ запрещен.)|  
 |validate-jwt|Недопустимый издатель|TokenIssuerNotAllowed|<сообщение из библиотеки jwt\>. Access denied. (Доступ запрещен.)|  
 |validate-jwt|Истек срок действия маркера|TokenExpired|<сообщение из библиотеки jwt\>. Access denied. (Доступ запрещен.)|  
 |validate-jwt|Ключ подписи не удалось разрешить по идентификатору|TokenSignatureKeyNotFound|<сообщение из библиотеки jwt\>. Access denied. (Доступ запрещен.)|  
-|validate-jwt|В маркере отсутствуют необходимые утверждения|TokenClaimNotFound|JWT token is missing the following claims: <c1\>, <c2\>, … Access denied. (В маркере JWT отсутствуют следующие утверждения: <c1>, <c2>, … Доступ запрещен.)|  
+|validate-jwt|В маркере отсутствуют необходимые утверждения|TokenClaimNotFound|Токен JWT отсутствует hello следующих утверждений: < c1\>, < c2\>,... Access denied. (Недопустимое значение {значение_утверждения} для утверждения {имя_утверждения}. Доступ запрещен.)|  
 |validate-jwt|Несоответствие значений утверждения|TokenClaimValueNotAllowed|Claim {claim-name} value of {claim-value} is not allowed. Access denied. (Недопустимое значение {значение_утверждения} для утверждения {имя_утверждения}. Доступ запрещен.)|  
 |validate-jwt|Прочие сбои при проверке данных|JwtInvalid|<сообщение из библиотеки jwt\>|
 

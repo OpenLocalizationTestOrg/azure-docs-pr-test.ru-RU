@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Kantega SSO for Bamboo | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в Kantega SSO for Bamboo."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Kantega единого входа для Bamboo."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,117 +13,117 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: cc259bb6f9bdb2293b6935e45e2df52b9fee6873
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 8bf637ff440e8e3948db882861bee6e73f8aa879
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Руководство по интеграции Azure Active Directory с Kantega SSO for Bamboo
 
-В этом руководстве описано, как интегрировать Kantega SSO for Bamboo с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Kantega единого входа для Bamboo в Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением Kantega SSO for Bamboo обеспечивает следующие преимущества:
+Интеграция с Azure AD Kantega единого входа для Bamboo предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Kantega SSO for Bamboo.
-- Вы можете включить автоматический вход пользователей в Kantega SSO for Bamboo (единый вход) с использованием учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooKantega единого входа для Bamboo
+- Можно включить на пользователей tooautomatically get вошедшего tooKantega единого входа для Bamboo (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Kantega SSO for Bamboo, вам потребуется:
+tooconfigure интеграция Azure AD с помощью единого входа Kantega для Bamboo требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Kantega SSO for Bamboo с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Kantega SSO for Bamboo из коллекции.
+1. Добавление Kantega единого входа для Bamboo из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-kantega-sso-for-bamboo-from-the-gallery"></a>Добавление Kantega SSO for Bamboo из коллекции
-Чтобы настроить интеграцию Kantega SSO for Bamboo с Azure AD, необходимо добавить Kantega SSO for Bamboo из коллекции в список управляемых приложений SaaS.
+## <a name="adding-kantega-sso-for-bamboo-from-hello-gallery"></a>Добавление Kantega единого входа для Bamboo из галереи hello
+tooconfigure hello интеграции Kantega SSO Bamboo в Azure AD, необходимо tooadd Kantega единого входа для Bamboo из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Kantega SSO for Bamboo из коллекции, сделайте следующее.**
+**tooadd Kantega единого входа для Bamboo из галереи hello выполните hello следующие шаги.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Kantega SSO for Bamboo**.
+4. Введите в поле поиска hello **Kantega единого входа для Bamboo**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_search.png)
 
-5. На панели результатов выберите **Kantega SSO for Bamboo** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello выберите **Kantega единого входа для Bamboo**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Kantega SSO for Bamboo с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, Azure AD необходима информация о том, какой пользователь в Kantega SSO for Bamboo соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Kantega SSO for Bamboo.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Kantega SSO Bamboo является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Kantega SSO Bamboo должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Kantega SSO for Bamboo.
+В Kantega единого входа для Bamboo, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Kantega SSO for Bamboo, вам потребуется выполнить действия в следующих стандартных блоках.
+tooconfigure и выполнить проверку Azure AD единого входа с помощью единого входа Kantega Bamboo, необходимы следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Kantega SSO for Bamboo](#creating-a-kantega-sso-for-bamboo-test-user)** требуется для того, чтобы в Kantega SSO for Bamboo существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание Kantega единого входа для тестового пользователя Bamboo](#creating-a-kantega-sso-for-bamboo-test-user)**  -toohave аналог Саймон Britta в Kantega единого входа для Bamboo, представление связанных toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В данном разделе описано, как включить единый вход в Azure AD на портале Azure и настроить его в приложении Kantega SSO for Bamboo.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в вашей Kantega SSO для Bamboo приложения.
 
-**Чтобы настроить единый вход Azure AD в Kantega SSO for Bamboo, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с помощью единого входа Kantega для Bamboo, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Kantega SSO for Bamboo** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Kantega единого входа для Bamboo** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_samlbase.png)
 
-3. Чтобы использовать режим, инициируемый **IdP**, в разделе **Домены и URL-адреса приложения Kantega SSO for Bamboo** выполните следующие действия.
+3. В **IDP** инициировал режим на hello **Kantega единого входа для домена Bamboo и URL-адреса** выполните следующий шаг hello:
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url1.png)
     
-    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`.
+    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-4. Чтобы использовать режим, инициируемый **поставщиком услуг**, установите флажок **Показать дополнительные параметры URL-адресов**.
+4. В **SP** инициируемых режим, проверка **Показывать дополнительные параметры URL-адреса** и выполните следующий шаг hello:
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url2.png)
     
-    В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
      
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените их фактическими значениями идентификатора, URL-адреса ответа и URL-адреса входа. Эти значения предоставляются во время настройки подключаемого модуля Bamboo, которая описывается далее в этом руководстве.
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический идентификатор, URL-адрес ответа и URL-адрес входа. Эти значения будут получены во время настройки hello Bamboo подключаемого модуля, который описывается далее в учебнике hello.
 
-5. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+5. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_certificate.png) 
 
@@ -131,21 +131,21 @@ ms.lasthandoff: 07/29/2017
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_general_400.png)
     
-7. В другом окне веб-браузера войдите на свой локальный сервер Bamboo в качестве администратора.
+7. В другом окне браузера войдите в tooyour Bamboo на локальном сервере, с правами администратора.
 
-8. Наведите указатель мыши на шестеренку и щелкните **Add-ons** (Надстройки).
+8. Наведите указатель мыши на шестеренки и выберите hello **надстройки**.
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon1.png)
 
-9. На вкладке "Add-ons" (Надстройки) щелкните **Find new add-ons** (Найти новые надстройки). Найдите подключаемый модуль **Kantega SSO for Bamboo (SAML & Kerberos)** и нажмите кнопку **Install** (Установить), чтобы установить новый подключаемый модуль SAML.
+9. На вкладке "Add-ons" (Надстройки) щелкните **Find new add-ons** (Найти новые надстройки). Поиск **Kantega единого входа для Bamboo SAML (Kerberos)** и нажмите кнопку **установить** tooinstall кнопку hello нового подключаемого модуля SAML.
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon2.png)
 
-10. Начнется установка подключаемого модуля.
+10. Установка подключаемого модуля Hello начнется.
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon21.png)
 
-11. Установка завершится. Нажмите кнопку **Закрыть**
+11. После завершения установки hello. Нажмите кнопку **Закрыть**
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon33.png)
 
@@ -153,11 +153,11 @@ ms.lasthandoff: 07/29/2017
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon34.png)
     
-13. Щелкните **Configure** (Настройка), чтобы настроить новый подключаемый модуль.    
+13. Нажмите кнопку **Настройка** tooconfigure hello нового подключаемого модуля.  
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon3.png)
 
-14. В разделе **SAML** сделайте следующее. Выберите **Azure Active Directory (Azure AD)** из раскрывающегося списка **Добавление поставщика удостоверений**.
+14. В hello **SAML** раздела. Выберите **Azure Active Directory (Azure AD)** из hello **добавить поставщик удостоверений** раскрывающегося списка.
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon4.png)
 
@@ -165,15 +165,15 @@ ms.lasthandoff: 07/29/2017
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon5.png)
 
-16. В разделе **Свойства приложения** выполните следующие действия.
+16. На hello **свойства приложения** статьи, выполните следующие шаги:
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon6.png)
 
-    а. Скопируйте значение **App ID URI** (URI кода приложения) и используйте его как **идентификатор, URL-адрес ответа и URL-адрес входа** в разделе **Домены и URL-адреса приложения Kantega SSO for Bamboo** на портале Azure.
+    а. Копировать hello **URI идентификатора приложения** и использовать его как **идентификатор, URL-адрес ответа и URL-адрес входа** на hello **Kantega единого входа для домена Bamboo и URL-адреса** раздела на портале Azure.
 
     b. Щелкните **Далее**.
 
-17. В разделе **Metadata import** (Импорт метаданных) выполните следующие действия.
+17. На hello **импорта метаданных** статьи, выполните следующие шаги:
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon7.png)
 
@@ -181,23 +181,23 @@ ms.lasthandoff: 07/29/2017
 
     b. Щелкните **Далее**.
 
-18. В разделе **Name and SSO location** (Имя и расположение единого входа) выполните следующее.
+18. На hello **расположение единого входа и имя** статьи, выполните следующие шаги:
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon8.png)
 
-    а. В текстовом поле **Provider Name** (Имя поставщика) введите имя поставщика (например, Azure AD).
+    а. Добавьте имя hello поставщика удостоверений в **имя поставщика удостоверений** текстового поля (например, Azure AD).
 
     b. Щелкните **Далее**.
 
-19. Проверьте сертификат для подписи и нажмите кнопку **Next** (Далее).  
+19. Проверьте сертификат подписи hello и нажмите кнопку **Далее**.    
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon9.png)
 
-20. В разделе **Bamboo user accounts** (Учетные записи пользователей Bamboo) выполните следующие действия.
+20. На hello **учетные записи пользователей Bamboo** статьи, выполните следующие шаги:
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon10.png)
 
-    а. Щелкните переключатель **Create users in Bamboo's internal Directory if needed** (При необходимости создать пользователей во внутреннем каталоге Bamboo) и введите соответствующее имя группы пользователей (это может быть несколько групп, разделенных запятой).
+    а. Выберите **при необходимости создайте пользователей в каталоге внутренней Bamboo** и введите соответствующее имя hello hello группы для пользователей (может быть несколько нет. разделенных запятой).
 
     b. Щелкните **Далее**.
 
@@ -205,95 +205,95 @@ ms.lasthandoff: 07/29/2017
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon11.png)
 
-22. В разделе **Known domains for Azure AD** (Известные домены для Azure AD) выполните следующие действия. 
+22. На hello **известные доменов для Azure AD** статьи, выполните следующие шаги:   
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon12.png)
 
-    а. Щелкните **Known domains** (Известные домены) на левой панели страницы.
+    а. Выберите **известные домены** из hello левой панели страницы приветствия.
 
-    b. Введите имя домена в текстовое поле **Known domains** (Известные домены).
+    b. Введите имя домена в hello **известные домены** текстового поля.
 
     c. Щелкните **Сохранить**.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-kantega-sso-for-bamboo-test-user"></a>Создание тестового пользователя Kantega SSO for Bamboo
 
-Чтобы пользователи Azure AD могли выполнять вход в Bamboo, они должны быть подготовлены в Bamboo. В Kantega SSO for Bamboo подготовка выполняется вручную.
+Пользователи toolog tooenable Azure AD в tooBamboo, их необходимо подготовить в Bamboo. В Kantega SSO for Bamboo подготовка выполняется вручную.
 
-**Чтобы подготовить учетную запись пользователя, сделайте следующее:**
+**tooprovision учетной записи пользователя, выполните следующие шаги hello.**
 
-1. Войдите на локальный сервер Bamboo в качестве администратора.
+1. Войдите в tooyour Bamboo на локальном сервере от имени администратора.
 
-2. Наведите указатель мыши на шестеренку и щелкните **User management** (Управление пользователями).
+2. Наведите указатель мыши на шестеренки и выберите hello **Управление пользователями**.
 
     ![Добавление сотрудника](./media/active-directory-saas-kantegassoforbamboo-tutorial/user1.png) 
 
-3. Выберите раздел **Пользователи**. В разделе **Add user** (Добавление пользователя) выполните следующие действия.
+3. Выберите раздел **Пользователи**. В разделе hello **добавить пользователя** выполните следующие действия:
 
     ![Добавление сотрудника](./media/active-directory-saas-kantegassoforbamboo-tutorial/user2.png) 
 
-    а. В текстовом поле **Username** (Имя пользователя) введите электронный адрес пользователя, например Brittasimon@contoso.com.
+    а. В hello **Username** электронной почты hello тип пользователя в текстовое поле, например Brittasimon@contoso.com.
     
-    b. В текстовом поле **Password** (Пароль) введите пароль пользователя.
+    b. В hello **пароль** текстового поля, типа hello пароль пользователя.
 
-    c. В текстовом поле **Confirm Password** (Подтверждение пароля) введите пароль еще раз.
+    c. В hello **подтверждение пароля** текстовом поле введите hello пароль пользователя.
     
-    г) В текстовом поле **Full Name** (Полное имя) введите полное имя пользователя, например Britta Simon.
+    d. В hello **полное имя** текстовое поле, полное имя типа пользователя hello как Саймон Britta.
     
-    д. В текстовом поле **Email** (Электронная почта) введите адрес электронной почты пользователя, например Brittasimon@contoso.com.
+    д. В hello **электронной почты** в текстовое поле типа hello адрес электронной почты пользователя, например Brittasimon@contoso.com.
     
     f. Щелкните **Сохранить**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к Kantega SSO for Bamboo.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooKantega единого входа для Bamboo.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в Kantega SSO for Bamboo, выполните следующие действия.**
+**tooassign tooKantega Britta Simon единого входа для Bamboo, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **Kantega SSO for Bamboo**.
+2. В списке приложений hello выберите **Kantega единого входа для Bamboo**.
 
     ![Настройка единого входа](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 07/29/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -309,14 +309,14 @@ ms.lasthandoff: 07/29/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент "Kantega SSO for Bamboo" на панели доступа, вы автоматически войдете в приложение Kantega SSO for Bamboo.
-Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
+При нажатии кнопки hello Kantega единого входа для Bamboo плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Kantega единого входа для приложения Bamboo.
+Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

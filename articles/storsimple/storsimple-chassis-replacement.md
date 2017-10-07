@@ -1,6 +1,6 @@
 ---
-title: "Замена корпуса устройства StorSimple серии 8000 | Документация Майкрософт"
-description: "Эта статья описывает снятие и установку основного корпуса или корпуса EBOD устройства StorSimple."
+title: "корпус aaaReplace на устройства серии StorSimple 8000 | Документы Microsoft"
+description: "Описывает, как tooremove и замены hello корпуса для StorSimple основного корпуса или корпуса EBOD."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: 5295c5dd039b1d4746ebaaf90372932e4c3e7c26
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f8576d63520a6f7d3267180d2a68d4fc38fd48fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="replace-the-chassis-on-your-storsimple-device"></a>Замена корпуса устройства StorSimple
+# <a name="replace-hello-chassis-on-your-storsimple-device"></a>Замена шасси hello на устройстве StorSimple
 ## <a name="overview"></a>Обзор
-В этом учебнике объясняется, как снять и заменить корпус устройства StorSimple серии 8000. Модель StorSimple 8100 — устройство в отдельном корпусе (один корпус), тогда как модель 8600 состоит из двух корпусов (два корпуса). В модели 8600 неисправность может возникнуть в двух корпусах: в основном корпусе и в корпусе EBOD.
+В этом учебнике описано как tooremove и заменить шасси в устройства серии StorSimple 8000. модель StorSimple 8100 Hello является устройство с одним корпусом (одним шасси), тогда как hello 8600 состоит из двух корпусов (два шасси). В моделях 8600 являются потенциально два шасси, которые может завершиться ошибкой в устройстве hello: hello шасси для основного корпуса hello или hello шасси для корпуса EBOD hello.
 
-В каждом из этих случаев Майкрософт предоставляет на замену пустой корпус. В комплект поставки не входят блоки питания и охлаждения (БПО), модули контроллера, твердотельные дисковые накопители (SSD), жесткие диски (HDD) и модули EBOD.
+В любом случае hello запасное шасси, поставляемое компанией Майкрософт является пустым. В комплект поставки не входят блоки питания и охлаждения (БПО), модули контроллера, твердотельные дисковые накопители (SSD), жесткие диски (HDD) и модули EBOD.
 
 > [!IMPORTANT]
-> Перед снятием и заменой корпуса ознакомьтесь со сведениями о безопасности в разделе [Замена компонентов оборудования StorSimple](storsimple-hardware-component-replacement.md).
+> До удаления и замены шасси hello, просмотрите сведения о безопасности hello в [замена компонентов оборудования StorSimple](storsimple-hardware-component-replacement.md).
 > 
 > 
 
-## <a name="remove-the-chassis"></a>Снятие корпуса
-Выполните следующие действия для снятия корпуса устройства StorSimple.
+## <a name="remove-hello-chassis"></a>Удаление шасси hello
+Выполните следующие шаги tooremove hello корпуса на устройстве StorSimple hello.
 
-#### <a name="to-remove-a-chassis"></a>Снятие корпуса
-1. Убедитесь, что устройство StorSimple выключено и отключено от всех источников питания.
-2. Отключите все сетевые кабели и кабели SAS, если они используются.
-3. Извлеките устройство из стойки.
-4. Извлеките каждый из дисков и запишите номера слотов, из которых они извлекаются. Дополнительные сведения см. в разделе [Снять жесткий диск](storsimple-disk-drive-replacement.md#remove-the-disk-drive).
-5. Для корпуса EBOD (при неисправности корпуса) снимите модули контроллеров EBOD. Дополнительные сведения см. в разделе [Снятие контроллера EBOD](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller). 
+#### <a name="tooremove-a-chassis"></a>tooremove шасси
+1. Убедитесь в том, что это устройство StorSimple hello выключено и отключено от всех источников питания hello.
+2. Удалите все сети hello и кабели SAS, если это применимо.
+3. Удалите устройство hello из стойки hello.
+4. Извлеките каждого из устройств hello и отметьте слоты hello, от которых они будут удалены. Дополнительные сведения см. в разделе [удалить диск hello](storsimple-disk-drive-replacement.md#remove-the-disk-drive).
+5. Удалите hello модулей контроллера EBOD на hello корпуса EBOD (если это hello шасси, сбой). Дополнительные сведения см. в разделе [Снятие контроллера EBOD](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller). 
    
-    Для основного корпуса (при неисправности корпуса) снимите модули контроллеров и запишите номера слотов, в которых они находились. Дополнительные сведения см. в разделе [Снятие контроллера](storsimple-controller-replacement.md#remove-a-controller).
+    На hello основной корпус (если это hello шасси, сбой), удалите hello контроллеры и отметьте слоты hello, от которых они будут удалены. Дополнительные сведения см. в разделе [Снятие контроллера](storsimple-controller-replacement.md#remove-a-controller).
 
-## <a name="install-the-chassis"></a>Установка корпуса
-Чтобы установить корпус устройства StorSimple, выполните следующие действия.
+## <a name="install-hello-chassis"></a>Установка шасси hello
+Выполните следующие шаги tooinstall hello корпуса на устройстве StorSimple hello.
 
-#### <a name="to-install-a-chassis"></a>Установка корпуса
-1. Установите корпус в стойку. Дополнительные сведения см. в разделах [Установка устройства StorSimple 8100 в стойку](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) или [Установка устройства StorSimple 8600 в стойку](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
-2. После установки корпуса в стойку установите модули контроллера так же, как они были установлены ранее.
-3. Установите диски в те же слоты, в которые они были установлены ранее.
+#### <a name="tooinstall-a-chassis"></a>tooinstall шасси
+1. Подключите hello корпуса в стойку hello. Дополнительные сведения см. в разделах [Установка устройства StorSimple 8100 в стойку](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) или [Установка устройства StorSimple 8600 в стойку](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
+2. После hello шасси в стойке hello, установите модули контроллера hello в приветствия же устанавливает, что они были установлены в.
+3. Установка hello дисков в hello же размещает и слотов, они были установлены в.
    
    > [!NOTE]
-   > Рекомендуется сначала устанавливать твердотельные жесткие диски, а затем жесткие диски.
+   > Рекомендуется сначала установить hello SSDs в слотах hello и затем установить HDD hello.
    > 
    > 
-4. После установки корпуса в стойку и установки компонентов подключите устройство к соответствующим источникам питания и включите устройство. Дополнительные сведения см. в разделах [Подключение кабельного хозяйства к устройству StorSimple 8100](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) или [Подключение кабельного хозяйства к устройству StorSimple 8600](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
+4. С hello устройства в стойку hello и установленных компонентов hello подключение вашего устройства toohello соответствующим источниками питания, включите устройство hello. Дополнительные сведения см. в разделах [Подключение кабельного хозяйства к устройству StorSimple 8100](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) или [Подключение кабельного хозяйства к устройству StorSimple 8600](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Узнайте подробнее о [замене компонентов оборудования StorSimple](storsimple-hardware-component-replacement.md).

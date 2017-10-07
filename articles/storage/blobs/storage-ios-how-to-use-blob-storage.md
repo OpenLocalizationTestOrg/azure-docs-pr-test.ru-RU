@@ -1,6 +1,6 @@
 ---
-title: "Как использовать хранилище BLOB-объектов Azure из iOS | Документация Майкрософт"
-description: "Хранение неструктурированных данных в облаке в хранилище BLOB-объектов Azure."
+title: "aaaHow toouse хранилища больших двоичных объектов Azure с iOS | Документы Microsoft"
+description: "Храните неструктурированные данные в облаке hello с хранилищем больших двоичных объектов Azure (хранилище объектов)."
 services: storage
 documentationcenter: ios
 author: michaelhauss
@@ -14,39 +14,39 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: b5f43156d46b1ab9dd10ff5a93427270c1b839ca
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cc08b76b682537a9a51e970c76bd76c7c06a4ccb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-blob-storage-from-ios"></a>Использование хранилища BLOB-объектов из iOS
+# <a name="how-toouse-blob-storage-from-ios"></a>Как toouse хранилища BLOB-объектов из операций ввода-вывода
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Обзор
-В этой статье показано, как реализовать типичные сценарии с использованием хранилища BLOB-объектов Microsoft Azure. Примеры написаны на Objective-C и используют [клиентскую библиотеку службы хранилища Azure для iOS](https://github.com/Azure/azure-storage-ios). Здесь описаны такие сценарии, как **отправка**, **перечисление**, **скачивание** и **удаление** BLOB-объектов. Дополнительные сведения о больших двоичных объектах см. в разделе [Дальнейшие действия](#next-steps). Кроме того, можно загрузить [пример приложения](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample), чтобы просмотреть варианты использования службы хранилища Azure в приложении iOS.
+В этой статье будет показано, как tooperform распространенные сценарии использования хранилища больших двоичных объектов Microsoft Azure. Hello примеры написаны на Objective-C и использовать hello [клиентская библиотека хранилища Azure для операций ввода-вывода](https://github.com/Azure/azure-storage-ios). Hello сценарии включают **передачи**, **вывод**, **Загрузка**, и **удаление** больших двоичных объектов. Дополнительные сведения о больших двоичных объектов см. в разделе hello [дальнейшие действия](#next-steps) раздела. Можно также загрузить hello [пример приложения](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) tooquickly разделе hello использование хранилища Azure в приложении iOS.
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="import-the-azure-storage-ios-library-into-your-application"></a>Импорт библиотеки хранилища Azure для iOS в приложение
-Можно импортировать библиотеку службы хранилища Azure для iOS в приложение, воспользовавшись библиотекой [CocoaPod для службы хранилища Azure](https://cocoapods.org/pods/AZSClient) или импортировав **FRAMEWORK** -файл. Рекомендуется использовать CocoaPod, так как это средство упрощает интеграцию библиотеки. Однако импорт из файла framework является более щадящим для существующего проекта.
+## <a name="import-hello-azure-storage-ios-library-into-your-application"></a>Импортировать приложение библиотеки iOS hello хранилища Azure
+Вы можете импортировать библиотеки iOS hello хранилища Azure в приложение с помощью hello [CocoaPod хранилища Azure](https://cocoapods.org/pods/AZSClient) или путем импорта hello **Framework** файла. CocoaPod — hello, рекомендуется способом, так как он упрощает интеграции библиотеки hello, однако импорт из файла framework hello меньше вмешивается в существующем проекте.
 
-Чтобы использовать эту библиотеку, потребуется следующее:
+toouse эту библиотеку необходимо hello следующие:
 - iOS 8 или более поздней версии
 - XCode 7 или более поздней версии
 
 ## <a name="cocoapod"></a>CocoaPod
-1. Если вы еще этого не сделали, [установите CocoaPod](https://guides.cocoapods.org/using/getting-started.html#toc_3) на компьютере, открыв окно терминала и выполнив следующую команду.
+1. Если вы еще не сделали этого, [установить CocoaPods](https://guides.cocoapods.org/using/getting-started.html#toc_3) на компьютере, открыв окно терминала и выполнив следующую команду hello
     
     ```shell   
     sudo gem install cocoapods
     ```
 
-2. Затем в каталоге проекта (каталог, содержащий ваш XCODEPROJ-файл), создайте новый файл _Podfile_ (без расширения файла). Добавьте следующий код в файл _Podfile_ и сохраните его.
+2. В каталоге проекта hello (hello каталог, содержащий ваш xcodeproj-файл), создайте новый файл с именем _Podfile_(без расширения файла). Добавьте следующие too_Podfile_ hello и сохраните.
 
     ```ruby
     platform :ios, '8.0'
@@ -56,55 +56,55 @@ ms.lasthandoff: 08/29/2017
     end
     ```
 
-3. В окне терминала перейдите в каталог проекта и выполните приведенную ниже команду.
+3. В окне терминала hello перейдите toohello каталог проекта и выполнения hello следующую команду
 
     ```shell    
     pod install
     ```
 
-4. Если XCODEPROJ-файл открыт в Xcode, закройте его. В каталоге проекта откройте только что созданный файл проекта, который будет иметь расширение .xcworkspace. Это файл, с которым вы теперь будете работать.
+4. Если XCODEPROJ-файл открыт в Xcode, закройте его. В файле проекта откройте hello только что созданный каталог проекта, который будет иметь расширение .xcworkspace hello. Это файл hello, мы будем работать с для теперь на.
 
 ## <a name="framework"></a>FRAMEWORK
-Другой способ использования библиотеки заключается в создании файла framework вручную.
+Hello способом, который toouse hello библиотека — платформа hello toobuild вручную:
 
-1. Прежде всего загрузите или клонируйте [репозиторий azure-storage-ios](https://github.com/azure/azure-storage-ios).
+1. First, загрузки или клон hello [репозитория хранилища azure ios](https://github.com/azure/azure-storage-ios).
 2. Перейдите в *azure-storage-ios* -> *Lib*(Библиотеки) -> *Azure Storage Client Library* (Клиентская библиотека службы хранилища Azure) и откройте файл `AZSClient.xcodeproj` в программе Xcode.
-3. В левой верхней части окна Xcode измените активную схему с Azure Storage Client Library (Клиентская библиотека хранилища Azure) на Framework (Платформа).
-4. Выполните сборку проекта (⌘ + B). На рабочем столе будет создан файл `AZSClient.framework`.
+3. В hello верхней левой части Xcode изменение hello active схему из «Клиентская библиотека хранилища Azure» слишком «Framework».
+4. Построение проекта hello (⌘ + B). На рабочем столе будет создан файл `AZSClient.framework`.
 
-После этого можно импортировать файл платформы в приложение следующим образом.
+Затем можно импортировать файл framework hello в приложение, выполнив hello ниже:
 
 1. Создайте новый проект или откройте существующий проект в Xcode.
-2. Перетащите `AZSClient.framework` в навигатор проекта Xcode.
+2. Перетаскивание hello `AZSClient.framework` в навигаторе вашего проекта Xcode.
 3. Выберите *Copy items if needed* (Копировать элементы при необходимости), а затем щелкните *Finish* (Готово).
-4. Щелкните проект на левой панели навигации и перейдите на вкладку *General* (Общие) в верхней части редактора проекта.
-5. В разделе *Linked Frameworks and Libraries* (Связанные платформы и библиотеки) нажмите кнопку добавления (+).
-6. В списке уже предоставленных библиотек найдите библиотеку `libxml2.2.tbd` и добавьте ее в проект.
+4. Щелкните проект в левой навигационной hello и выберите команду hello *Общие* вкладку вверху hello редактор проекта hello.
+5. В разделе hello *связанные платформы и библиотеки* статьи, нажмите кнопку Добавить hello (+).
+6. В список библиотек, предоставляемых уже hello, поиск `libxml2.2.tbd` и добавить его в проект tooyour.
 
-## <a name="import-the-library"></a>Импорт библиотеки 
+## <a name="import-hello-library"></a>Импорт библиотеки hello 
 ```objc
-// Include the following import statement to use blob APIs.
+// Include hello following import statement toouse blob APIs.
 #import <AZSClient/AZSClient.h>
 ```
 
-Если вы используете Swift, потребуется создать промежуточный заголовок и импортировать <AZSClient/AZSClient.h>:
+При использовании Swift, может потребоваться toocreate мост заголовок и импортировать < AZSClient/AZSClient.h > существует:
 
-1. Создайте файл заголовка `Bridging-Header.h` и добавьте приведенный выше оператор импорта.
-2. Откройте вкладку *Параметры сборки* и найдите *Заголовок Objective-C*.
-3. Дважды щелкните поле *Заголовок Objective-C* и добавьте путь к файлу заголовка: `ProjectName/Bridging-Header.h`
-4. Выполните сборку проекта (⌘ + B), чтобы убедиться, что заголовок выбран в Xcode.
-5. Начните использовать библиотеку непосредственно в любом файле Swift. Операторы импорта не требуются.
+1. Создать файл заголовка `Bridging-Header.h`и добавить hello выше инструкции import.
+2. Go toohello *параметры построения* и найдите *заголовка мост Objective-C*.
+3. Дважды щелкните в поле hello *заголовка мост Objective-C* и добавьте файл заголовка tooyour hello путь:`ProjectName/Bridging-Header.h`
+4. Сборки hello проекта (⌘ + B) tooverify, hello мост заголовок был принят Xcode.
+5. Начните использовать hello библиотеки непосредственно в любой Swift файл, нет необходимости в инструкциях импорта.
 
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="asynchronous-operations"></a>Асинхронные операции
 > [!NOTE]
-> Все методы, которые выполняют запрос к службе, являются асинхронными операциями. Из примеров кода понятно, что у этих методов есть завершающий обработчик. Код внутри обработчика завершения выполняется **после** завершения запроса. Код за пределами обработчика завершения (следующий за ним) выполняется **во время** выполнения запроса.
+> Все методы для выполнения запроса к службе hello это асинхронные операции. В образцах кода hello вы найдете, что эти методы имеют обработчик завершения. Код в обработчике завершения hello будет выполняться **после** hello запрос завершается. Код после запустится обработчик завершения hello **при** был выполнен запрос hello.
 > 
 > 
 
 ## <a name="create-a-container"></a>Создание контейнера
-Каждый BLOB-объект в хранилище Azure должен располагаться в контейнере. В следующем примере показано, как в учетной записи хранения создать контейнер с именем *newcontainer*(если такового еще нет). При выборе имени для контейнера следует учитывать правила именования, упомянутые выше.
+Каждый BLOB-объект в хранилище Azure должен располагаться в контейнере. Hello следующий пример показывает, как toocreate контейнера, вызывать *newcontainer*, в учетной записи, если он еще не существует. При выборе имени для контейнера, следует учитывать hello, упомянутых выше правила именования.
 
 ```objc
 -(void)createContainer{
@@ -123,7 +123,7 @@ ms.lasthandoff: 08/29/2017
     // Create a local container object.
     AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"newcontainer"];
 
-    // Create container in your Storage account if the container doesn't already exist
+    // Create container in your Storage account if hello container doesn't already exist
     [blobContainer createContainerIfNotExistsWithCompletionHandler:^(NSError *error, BOOL exists) {
         if (error){
             NSLog(@"Error in creating container.");
@@ -132,16 +132,16 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-Убедиться, что все работает, можно в [обозревателе хранилищ Microsoft Azure](http://storageexplorer.com). Следует проверить, находится ли *newcontainer* в списке контейнеров вашей учетной записи хранения.
+Убедитесь, что все работает, просмотрев hello [Microsoft Azure Storage Explorer](http://storageexplorer.com) и проверки того, что *newcontainer* в hello список контейнеров для учетной записи хранилища.
 
 ## <a name="set-container-permissions"></a>Назначение разрешений контейнера
 Разрешения контейнера, настраиваемые по умолчанию, — это разрешения на **закрытый** доступ. При этом контейнеры предоставляют и другие возможности доступа.
 
-* **Закрытый**: данные контейнера и BLOB-объекта могут быть прочитаны только владельцем учетной записи.
-* **BLOB-объект**: хотя данные BLOB-объекта, содержащиеся в контейнере, могут быть прочитаны через анонимный запрос, данные самого контейнера недоступны. Клиенты не могут перечислять BLOB-объекты внутри с помощью анонимного запроса.
-* **Контейнер**: данные контейнера и BLOB-объекта могут быть прочитаны через анонимный запрос. Клиенты могут перечислять BLOB-объекты внутри контейнера с помощью анонимного запроса, но не могут перечислять контейнеры в учетной записи хранения.
+* **Закрытый**: hello только владельцем учетной записи могут считываться данные контейнера и больших двоичных объектов.
+* **BLOB-объект**: хотя данные BLOB-объекта, содержащиеся в контейнере, могут быть прочитаны через анонимный запрос, данные самого контейнера недоступны. Клиенты не могут перечислять большие двоичные объекты в контейнере hello через анонимный запрос.
+* **Контейнер**: данные контейнера и BLOB-объекта могут быть прочитаны через анонимный запрос. Клиенты могут перечислять большие двоичные объекты в контейнере hello через анонимный запрос, но не могут перечислять контейнеры в учетной записи хранилища hello.
 
-В следующем примере показано, как создать контейнер с разрешениями на доступ к **контейнеру**, предоставляющими открытый доступ только на чтение всем пользователям Интернета:
+Hello следующий пример показывает, как toocreate в контейнер с **контейнера** доступ к разрешений, которые будет разрешать доступ открытым и доступным только для чтения для всех пользователей на hello Интернет:
 
 ```objc
 -(void)createContainerWithPublicAccess{
@@ -160,7 +160,7 @@ ms.lasthandoff: 08/29/2017
     // Create a local container object.
     AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
 
-    // Create container in your Storage account if the container doesn't already exist
+    // Create container in your Storage account if hello container doesn't already exist
     [blobContainer createContainerIfNotExistsWithAccessType:AZSContainerPublicAccessTypeContainer requestOptions:nil operationContext:nil completionHandler:^(NSError *error, BOOL exists){
         if (error){
             NSLog(@"Error in creating container.");
@@ -170,9 +170,9 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Отправка BLOB-объекта в контейнер
-Как упоминалось в разделе [Основные понятия службы BLOB-объектов](#blob-service-concepts) , хранилище BLOB-объектов может содержать три разных типа BLOB-объектов: блочные BLOB-объекты, BLOB-объекты добавления и страничные BLOB-объекты. Библиотека iOS хранилища Azure поддерживает все три типа BLOB-объектов. В большинстве случаев рекомендуется использовать блочные BLOB-объекты.
+Как упоминалось в hello [больших двоичных объектов основные понятия службы](#blob-service-concepts) раздел, хранилище BLOB-объектов предлагает три различных типа больших двоичных объектов: блочные большие двоичные объекты, добавлять большие двоичные объекты и страничные большие двоичные объекты. библиотеки iOS Hello хранилища Azure поддерживает все три типа больших двоичных объектов. В большинстве случаев блочного BLOB-объекта — hello, рекомендуется toouse типа.
 
-В следующем примере показано, как отправить блочный BLOB-объект из NSString. Если BLOB-объект с таким именем уже существует в этом контейнере, содержимое этого объекта будет перезаписано.
+Hello в следующем примере показано, как tooupload блок больших двоичных объектов из NSString. Если большой двоичный объект с таким же именем уже существует в этом контейнере hello hello содержимое этого большого двоичного объекта будет перезаписано.
 
 ```objc
 -(void)uploadBlobToContainer{
@@ -200,8 +200,8 @@ ms.lasthandoff: 08/29/2017
                 // Create a local blob object
                 AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:@"sampleblob"];
 
-                // Upload blob to Storage
-                [blockBlob uploadFromText:@"This text will be uploaded to Blob Storage." completionHandler:^(NSError *error) {
+                // Upload blob tooStorage
+                [blockBlob uploadFromText:@"This text will be uploaded tooBlob Storage." completionHandler:^(NSError *error) {
                     if (error){
                         NSLog(@"Error in creating blob.");
                     }
@@ -211,29 +211,29 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-Убедиться, что все работает, можно в [обозревателе хранилищ Microsoft Azure](http://storageexplorer.com). Следует проверить, содержит ли контейнер *containerpublic* большой двоичный объект *sampleblob*. В этом примере мы использовали открытый контейнер, поэтому проверку работы приложения также можно выполнить, перейдя к URI BLOB-объекта:
+Убедитесь, что все работает, просмотрев hello [Microsoft Azure Storage Explorer](http://storageexplorer.com) и проверке этого контейнера hello *containerpublic*, содержит большой двоичный объект hello, *sampleblob*. В этом примере мы использовали открытого контейнера, вы можете убедиться, что это приложение работает с переходом toohello большие двоичные объекты URI:
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
-Кроме отправки блочного BLOB-объекта из NSString существуют аналогичные методы для NSData, NSInputStream или локального файла.
+В дополнение к этому toouploading большой двоичный объект блока из NSString существуют аналогичные методы NSData, NSInputStream или локальный файл.
 
-## <a name="list-the-blobs-in-a-container"></a>Перечисление BLOB-объектов в контейнере
-В следующем примере показано, как перечислить все BLOB-объекты в контейнере. При выполнении этой операции необходимо учитывать следующие параметры.     
+## <a name="list-hello-blobs-in-a-container"></a>Перечисление hello больших двоичных объектов в контейнере
+Hello следующем примере показано, как toolist все большие двоичные объекты в контейнере. При выполнении этой операции, следует учитывать hello следующие параметры:     
 
-* **continuationToken** — маркер продолжения, который задает начало перечисления. Если маркер не указан, BLOB-объекты будут перечислены с самого начала. Можно перечислить любое количество BLOB-объектов — от нуля до заданного максимума. Даже если этот метод возвращает нулевые результаты, если `results.continuationToken` не равно нулю, это значит, что в службе могут быть дополнительные BLOB-объекты, которые не были перечислены.
-* **prefix** — можно указать префикс, который будет использоваться при перечислении BLOB-объектов. Перечислены будут только BLOB-объекты, начинающиеся с этого префикса.
-* **useFlatBlobListing** — как упоминалось в разделе [Присвоение имен контейнерам и BLOB-объектам, а также создание ссылок на них](#naming-and-referencing-containers-and-blobs) , хотя служба BLOB-объектов представляет собой плоскую схему хранилища, вы можете создать виртуальную иерархию, присваивая BLOB-объектам имена с информацией о пути. Однако неплоское перечисление в настоящее время не поддерживается. Эта функция станет доступной в ближайшее время. Сейчас же это значение должно быть **YES** (Да).
-* **blobListingDetails** — вы можете указать, какие элементы будут включены при перечислении BLOB-объектов.
+* **continuationToken** -hello представляет токен продолжения, начала операции перечисления hello. Если токен не предоставлен, он будет перечисление больших двоичных объектов с начала hello. Может быть указано любое количество больших двоичных объектов от нуля вверх tooa максимального. Даже если этот метод возвращает нулевой результат, если `results.continuationToken` имеет родителя, возможно, имеются большие двоичные объекты в службе hello, не перечислены.
+* **префикс** -можно указать toouse hello префикс для списка больших двоичных объектов. Перечислены будут только BLOB-объекты, начинающиеся с этого префикса.
+* **useFlatBlobListing** — как упоминалось в hello [именование и ссылки на контейнеры и большие двоичные объекты](#naming-and-referencing-containers-and-blobs) раздел, несмотря на то, что hello службы BLOB-объектов является схеме плоского хранилища, можно создать виртуальной иерархии больших двоичных объектов с путем к именованию сведения. Однако неплоское перечисление в настоящее время не поддерживается. Эта функция станет доступной в ближайшее время. Сейчас же это значение должно быть **YES** (Да).
+* **blobListingDetails** -tooinclude какие элементы можно указать при перечислении больших двоичных объектов
   * _AZSBlobListingDetailsNone_: вывод списка только зафиксированных больших двоичных объектов без возвращения их метаданных.
   * _AZSBlobListingDetailsSnapshots_: вывод списка зафиксированных больших двоичных объектов и их моментальных снимков.
-  * _AZSBlobListingDetailsMetadata_: извлечение метаданных каждого большого двоичного объекта, возвращаемого при перечислении.
+  * _AZSBlobListingDetailsMetadata_: получить метаданные большого двоичного объекта для каждого большого двоичного объекта возвращается в списке hello.
   * _AZSBlobListingDetailsUncommittedBlobs_: вывод списка зафиксированных и незафиксированных больших двоичных объектов.
-  * _AZSBlobListingDetailsCopy_: добавление в список свойств копий.
+  * _AZSBlobListingDetailsCopy_: копировался свойства в списке hello.
   * _AZSBlobListingDetailsAll_: вывод списка всех доступных зафиксированных больших двоичных объектов, незафиксированных больших двоичных объектов и моментальных снимков, а также возвращение всех метаданных и состояния копий этих объектов.
-* **maxResults** — максимальное количество результатов, возвращаемых этой операцией. Значение -1 используется для снятия ограничения.
-* **completionHandler** — блок кода, выполняемого с использованием результатов операции перечисления.
+* **maxResults** -hello максимальное количество результатов tooreturn для этой операции. Ограничить toonot используйте -1.
+* **completionHandler** -hello блок кода tooexecute результатами "hello" hello операции перечисления.
 
-В этом примере используется вспомогательный метод для рекурсивного вызова метода перечисления BLOB-объектов при каждом возврате маркера продолжения.
+В этом примере вспомогательный метод способ используется toorecursively вызов hello список больших двоичных объектов каждый раз, возвращается токен продолжения.
 
 ```objc
 -(void)listBlobsInContainer{
@@ -287,7 +287,7 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ## <a name="download-a-blob"></a>Загрузка BLOB-объектов
-В следующем примере показано, как загрузить BLOB-объект в объект NSString.
+Следующий пример показывает как Hello toodownload объект NSString tooa больших двоичных объектов.
 
 ```objc
 -(void)downloadBlobToString{
@@ -322,7 +322,7 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ## <a name="delete-a-blob"></a>Удаление большого двоичного объекта
-В следующем примере показано, как удалить BLOB-объект.
+Следующий пример показывает как Hello toodelete большого двоичного объекта.
 
 ```objc
 -(void)deleteBlob{
@@ -354,7 +354,7 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ## <a name="delete-a-blob-container"></a>Удаление контейнера blob-объектов
-В следующем примере показано, как удалить контейнер.
+Следующий пример показывает как Hello toodelete контейнера.
 
 ```objc
 -(void)deleteContainer{
@@ -383,13 +383,13 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы узнали, как использовать хранилище BLOB-объектов из iOS, используйте следующие ссылки, чтобы узнать больше о библиотеке iOS и службе хранилища.
+Теперь, когда вы узнали, как toouse хранилища BLOB-объектов из iOS, выполните следующие дополнительные сведения о библиотеке iOS hello toolearn ссылки и hello службы хранилища.
 
 * [Клиентская библиотека хранилища Azure для iOS](https://github.com/azure/azure-storage-ios)
 * [Справочная документация по использованию службы хранилища Azure в iOS](http://azure.github.io/azure-storage-ios/)
 * [API-интерфейс REST служб хранилища Azure](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Блог рабочей группы службы хранилища Azure](http://blogs.msdn.com/b/windowsazurestorage)
 
-Если у вас есть вопросы по данной библиотеке, вы можете опубликовать их на нашем [форуме MSDN по Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) или на сайте [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
-Если у вас есть предложения по функциям службы хранилища Azure, вы можете опубликовать их на сайте [отзывов о службе хранилища Azure](https://feedback.azure.com/forums/217298-storage/).
+При наличии вопросов относительно этой библиотеки чувствовать себя свободного toopost tooour [форум MSDN Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) или [переполнения стека](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
+Если у вас есть предложения компонентов для службы хранилища Azure, опубликуйте слишком[отзывы хранилища Azure](https://feedback.azure.com/forums/217298-storage/).
 

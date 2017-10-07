@@ -1,6 +1,6 @@
 ---
-title: "Изменение паролей StorSimple | Документация Майкрософт"
-description: "В этой статье показано, как использовать службу диспетчера устройств StorSimple для изменения паролей Snapshot Manager и администратора устройств StorSimple."
+title: "aaaChange StorSimple паролей | Документы Microsoft"
+description: "Описывает, каким образом toouse hello toochange службы диспетчера StorSimple устройство ваши пароли администратора диспетчера моментальных снимков StorSimple и устройства."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 7762f8499c67672f0a2ffed99e98baea4c940fa0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cf884be31b4bbf9e372c0aa11b9da2eadcda35dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>Изменение паролей StorSimple с помощью службы диспетчера устройств StorSimple
+# <a name="use-hello-storsimple-device-manager-service-toochange-your-storsimple-passwords"></a>Использовать toochange службы диспетчера StorSimple устройство hello паролей StorSimple
 
 ## <a name="overview"></a>Обзор
-В разделе **Параметры устройства** на портале Azure указаны все параметры, которые можно настроить на устройстве StorSimple, контролируемом службой диспетчера устройств StorSimple. В этом руководстве показано, как использовать элемент **Безопасность** в разделе **Параметры устройства**, чтобы изменить в StorSimple пароль администратора устройства или пароль Snapshot Manager.
+Здравствуйте, портал Azure **параметры устройства** параметр содержит все параметры устройств "hello", его необходимо настроить на устройстве StorSimple, которое управляется службой диспетчера StorSimple устройство. В этом учебнике описано, как можно использовать hello **безопасности** под флажком **параметры устройства** toochange администратору устройства или пароль диспетчера моментальных снимков StorSimple.
 
-## <a name="change-the-device-administrator-password"></a>Изменение пароля администратора устройства
-При использовании интерфейса Windows PowerShell для доступа к устройству StorSimple вам потребуется ввести пароль администратора устройства. После регистрации первого устройства StorSimple в службе пароль по умолчанию для этого интерфейса — *Password1*. Для обеспечения безопасности ваших данных необходимо изменить этот пароль в конце регистрации. Закончить регистрацию, не изменив пароль, невозможно. Дополнительные сведения см. в разделе [Шаг 3. Настройка и регистрация устройства средствами Windows PowerShell для StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+## <a name="change-hello-device-administrator-password"></a>Пароль администратора устройства hello изменений
+При использовании устройства StorSimple hello tooaccess интерфейса Windows PowerShell, их необходимо tooenter пароль администратора устройства. После регистрации первого устройства StorSimple hello со службой hello пароль по умолчанию для этого интерфейса — *Password1*. Hello безопасность данных, не требуется toochange этот пароль при hello конце процесса регистрации hello. Не удается выйти из процесса регистрации hello без изменения пароля. Дополнительные сведения см. в разделе [Step 3: Настройка и регистрация hello устройства через Windows PowerShell для StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
-Пароль, который устанавливается через интерфейс Windows PowerShell во время регистрации, можно изменить позднее на портале Azure. Чтобы изменить пароль администратора устройства, выполните следующие действия.
+Hello пароль, который был сначала установлен через интерфейс Windows PowerShell hello во время регистрации могут быть изменены через портал Azure hello. Выполните следующий пароль администратора устройства hello toochange действия hello.
 
-#### <a name="to-change-the-device-administrator-password"></a>Изменение пароля администратора устройства
-1. В службе диспетчера устройств StorSimple выберите **Устройства**.
+#### <a name="toochange-hello-device-administrator-password"></a>пароль администратора устройства toochange hello
+1. Перейдите в службе диспетчера StorSimple устройство tooyour и щелкните **устройств**.
 
-2. В табличном списке устройств выберите и щелкните устройство, для которого требуется изменить пароль.
+2. Hello табличный список устройств, выберите и щелкните устройство hello, пароль которого планируется toochange.
 
     ![](./media/storsimple-8000-change-passwords/changepwd1.png)
 
-3. В колонке **Параметры** выберите **Параметры устройства > Безопасность**.
+3. В hello **параметры** колонке go слишком**параметры устройства > безопасности**.
 
     ![](./media/storsimple-8000-change-passwords/changepwd2.png)
 
-4. В колонке **Параметры безопасности** щелкните **Пароль**, чтобы изменить пароль администратора устройства.
+4. В hello **параметры безопасности** колонка, щелкните **пароль** toochange hello пароль администратора.
 
     ![](./media/storsimple-8000-change-passwords/changepwd3.png)
 
-5. В колонке **Пароль** введите пароль администратора длиной от 8 до 15 символов. Пароль должен содержать не менее 3 букв в верхнем и нижнем регистре, цифр и специальных символов.
+5. В hello **пароль** колонки, введите пароль администратора, содержащий от 8 too15 символов. пароль Hello должны представлять собой сочетание 3 или более верхнем регистре, нижнем регистре, цифры и специальные символы.
 
-6. Подтвердите пароль.
+6. Подтверждение пароля hello.
 
     ![](./media/storsimple-8000-change-passwords/changepwd4.png)
 
@@ -55,33 +55,33 @@ ms.lasthandoff: 07/11/2017
 
     ![](./media/storsimple-8000-change-passwords/changepwd6.png)
 
-Теперь пароль администратора устройства изменен. Этот новый пароль можно использовать для доступа к интерфейсу Windows PowerShell.
+пароль администратора устройства Hello теперь должен быть обновлен. Можно использовать этот интерфейс Windows PowerShell hello tooaccess измененный пароль.
 
-## <a name="set-the-storsimple-snapshot-manager-password"></a>Настройка пароля Snapshot Manager для StorSimple
-Программное обеспечение диспетчера моментальных снимков StorSimple находится на узле Windows и позволяет администраторам управлять созданием резервных копий для устройства StorSimple в виде локальных и облачных моментальных снимков.
+## <a name="set-hello-storsimple-snapshot-manager-password"></a>Установка пароля диспетчера моментальных снимков StorSimple hello
+Программное обеспечение диспетчера моментального снимка StorSimple находится на узле Windows и позволяет администраторам резервные копии toomanage устройства StorSimple в форме hello локальных и облачных моментальных снимков.
 
-При настройке устройства в диспетчере моментальных снимков StorSimple вас попросят указать IP-адрес и пароль устройства для проверки подлинности устройства для хранения данных.
+При настройке устройства диспетчера моментальных снимков StorSimple, вам будет предложено tooprovide hello tooauthenticate устройства IP адрес и пароль устройства хранения.
 
-Вы можете задать или изменить пароль Snapshot Manager для StorSimple через портал Azure. Чтобы задать или изменить пароль Snapshot Manager для StorSimple, выполните следующие действия.
+Можно задать или изменить пароль hello для диспетчера моментальных снимков StorSimple через портал Azure hello. Выполните следующие шаги tooset hello или измените пароль StorSimple Snapshot Manager hello.
 
-#### <a name="to-set-the-storsimple-snapshot-manager-password"></a>Настройка пароля Snapshot Manager для StorSimple
-1. В службе диспетчера устройств StorSimple выберите **Устройства**.
+#### <a name="tooset-hello-storsimple-snapshot-manager-password"></a>пароль диспетчера моментальных снимков StorSimple tooset hello
+1. Перейдите в службе диспетчера StorSimple устройство tooyour и щелкните **устройств**.
 
-2. В табличном списке устройств выберите и щелкните устройство StorSimple, для которого требуется изменить пароль Snapshot Manager.
+2. Hello табличный список устройств, выберите и щелкните hello устройства диспетчера моментальных снимков StorSimple, пароль которого требуется tooset или изменить.
 
      ![](./media/storsimple-8000-change-passwords/changepwd1.png)
 
-3. В колонке **Параметры** выберите **Параметры устройства > Безопасность**.
+3. В hello **параметры** колонке go слишком**параметры устройства > безопасности**.
 
      ![](./media/storsimple-8000-change-passwords/changepwd2.png)
 
-4. В колонке **Параметры безопасности** щелкните **Пароль**, чтобы задать или изменить пароль Snapshot Manager для StorSimple.
+4. В hello **параметры безопасности** колонка, щелкните **пароль** tooset или измените пароль StorSimple Snapshot Manager hello.
 
      ![](./media/storsimple-8000-change-passwords/changepwd3.png) 
 
-5. В колонке **Пароль** введите пароль длиной 14 или 15 символов. Убедитесь в том, что пароль состоит не менее чем из 3 букв в верхнем и нижнем регистре, цифр и специальных символов.
+5. В hello **пароль** колонки, введите пароль, состоящий из 14 или 15 символов. Убедитесь, что этот пароль hello содержит сочетание 3 или верхнем регистре, нижнем регистре, цифры и специальные знаки.
 
-6. Подтвердите пароль.
+6. Подтверждение пароля hello.
 
      ![](./media/storsimple-8000-change-passwords/changepwd5.png)
 
@@ -89,10 +89,10 @@ ms.lasthandoff: 07/11/2017
 
      ![](./media/storsimple-8000-change-passwords/changepwd6.png)
 
-Теперь пароль диспетчера моментальных снимков StorSimple должен быть обновлен.
+пароль диспетчера моментальных снимков StorSimple Hello теперь должен быть обновлен.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * Узнайте больше о [безопасности StorSimple](storsimple-8000-security.md).
 * Узнайте больше об [изменении конфигурации устройства](storsimple-8000-modify-device-config.md).
-* Узнайте больше об [использовании службы диспетчера устройств StorSimple для администрирования устройства StorSimple](storsimple-8000-manager-service-administration.md).
+* Дополнительные сведения о [с помощью hello tooadminister службы диспетчера StorSimple устройство устройства StorSimple](storsimple-8000-manager-service-administration.md).
 

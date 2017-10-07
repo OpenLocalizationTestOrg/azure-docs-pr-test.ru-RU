@@ -1,6 +1,6 @@
 ---
-title: "Обзор шаблонов лицензий PlayReady служб мультимедиа"
-description: "В этом разделе содержится обзор шаблонов лицензий PlayReady, которые используются для настройки лицензий PlayReady."
+title: "Обзор шаблона лицензий PlayReady служб aaaMedia"
+description: "В этом разделе приводится обзор шаблона лицензий PlayReady, который используется tooconfigure лицензии PlayReady."
 author: juliako
 manager: cfowler
 editor: 
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: be19f616e36916655390cd05e738e93c08dcdf68
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5a5ba930c56f70038db204681486ebc4308199fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="media-services-playready-license-template-overview"></a>Обзор шаблонов лицензий PlayReady служб мультимедиа
-Службы мультимедиа Azure теперь обеспечивают доставку лицензий Microsoft PlayReady. Когда проигрыватель конечного пользователя (например, Silverlight) пытается воспроизвести содержимое, защищенное с помощью PlayReady, в службу доставки лицензий отправляется запрос на получение лицензии. Если служба лицензий утверждает запрос, она выдает лицензию, которая отправляется клиенту и может использоваться для расшифровки и воспроизведения указанного содержимого.
+Службы мультимедиа Azure теперь обеспечивают доставку лицензий Microsoft PlayReady. Когда hello проигрывателя конечного пользователя (например, Silverlight) пытается tooplay контент, защищенный PlayReady, запрос был отправлен toohello лицензии доставки службы tooobtain лицензию. Если hello служба лицензий утверждает запрос hello, она выдает лицензии hello отправленных toohello клиента и может быть используется toodecrypt- and -play hello указанным содержимым.
 
-Также службы мультимедиа предоставляют интерфейсы API, которые позволяют настраивать лицензии PlayReady. Лицензии определяют права и ограничения, которые должны применяться в среде выполнения PlayReady DRM при попытке пользователя воспроизвести защищенное содержимое.
+Также службы мультимедиа предоставляют интерфейсы API, которые позволяют настраивать лицензии PlayReady. Лицензии содержат права hello и ограничения, что требуется для hello tooenforce среда выполнения PlayReady DRM, когда пользователь пытается tooplayback защищенного содержимого.
 Ниже приведены некоторые примеры лицензионных ограничений PlayReady, которые вы можете указать.
 
-* Значение даты и времени (DateTime) начала действия лицензии.
-* Значение даты и времени (DateTime) окончания действия лицензии. 
-* Для лицензии, которая будет храниться в постоянном хранилище на стороне клиента. Постоянные лицензии обычно используются для разрешения автономного воспроизведения содержимого.
-* Минимальный уровень безопасности, необходимый для воспроизведения содержимого проигрывателем. 
-* Уровень защиты выходных данных для элементов управления выводом аудио- или видеосодержимого. 
-* Дополнительные сведения см. в разделе "Элементы управления выходными данными" (3.5) в [правилах соответствия PlayReady](https://www.microsoft.com/playready/licensing/compliance/).
+* Hello DateTime, из которого hello лицензия считается действительной.
+* Здравствуйте, значение даты и времени, после истечения срока действия лицензии hello. 
+* Для toobe лицензии hello сохранены в постоянное хранилище на приветствия клиента. Постоянные лицензии являются типовыми tooallow автономного воспроизведения содержимого hello.
+* Hello минимальный уровень безопасности, должен иметь проигрыватель tooplay контента. 
+* Hello выходной уровень защиты для hello выходных элементов управления для видеоконтента. 
+* Дополнительные сведения см элементы вывода hello статьи (3.5) в hello [правила соответствия PlayReady](https://www.microsoft.com/playready/licensing/compliance/) документа.
 
 > [!NOTE]
-> В настоящее время можно настроить только право PlayRight лицензии PlayReady (это право является обязательным). Право PlayRight дает клиенту возможность воспроизводить содержимое. Также PlayRight позволяет настраивать ограничения, касающиеся воспроизведения. Дополнительные сведения см. в разделе [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight).
+> В настоящее время можно настроить только PlayRight лицензии PlayReady hello (это право является обязательным) hello. Hello PlayRight предоставляет клиента hello hello возможность tooplayback hello содержимого. Hello PlayRight также позволяет настраивать tooplayback определенные ограничения. Дополнительные сведения см. в разделе [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight).
 > 
 > 
 
-Чтобы настроить лицензии PlayReady с помощью служб мультимедиа, необходимо настроить шаблон лицензии PlayReady служб мультимедиа. Шаблон определяется в XML-коде.
+лицензии PlayReady tooconfigure с помощью служб мультимедиа, необходимо настроить шаблон лицензии PlayReady служб мультимедиа hello. Hello шаблон определен в XML.
 
-В следующем примере показан самый простой (и наиболее распространенный) шаблон, который позволяет настроить базовую лицензию на потоковую передачу. С этой лицензией клиенты могут воспроизводить защищенное содержимое PlayReady.
+Hello пример hello простой (и самый распространенный) шаблон, который настраивает базовую лицензию потокового воспроизведения. С этой лицензией клиентов будет доступ tooplayback контент, защищенный PlayReady.
 
     <?xml version="1.0" encoding="utf-8"?>
     <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
@@ -53,30 +53,30 @@ ms.lasthandoff: 08/29/2017
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-XML-код соответствует XML-схеме шаблона лицензий PlayReady, определенной в разделе XML-схемы шаблона лицензий PlayReady.
+Hello XML соответствует toohello PlayReady схема XML шаблонов лицензий определенные в шаблоне лицензии PlayReady hello раздела схемы XML.
 
-Службы мультимедиа также определяют набор классов .NET, которые могут использоваться для сериализации в XML и десериализации из XML. Описание основных классов .NET служб мультимедиа см. [здесь](media-services-playready-license-template-overview.md#classes). Эти классы используются для настройки шаблонов лицензий.
+Службы мультимедиа также определяют набор классов .NET, которые могут использоваться tooserialized и десериализованный tooand из hello XML. Описание основных классов .NET служб мультимедиа см. [здесь](media-services-playready-license-template-overview.md#classes). которые используется tooconfigure шаблонов лицензий.
 
-Комплексный пример использования классов .NET для настройки шаблона лицензии PlayReady см. в статье [Использование общего динамического шифрования PlayReady и (или) Widevine DRM](media-services-protect-with-drm.md).
+Пример начала до конца, в котором используется платформа .NET классов шаблон лицензии PlayReady hello tooconfigure см. в разделе [с помощью динамического шифрования PlayReady и службы доставки лицензий](media-services-protect-with-drm.md).
 
-## <a id="classes"></a>Классы .NET служб мультимедиа, используемые для настройки шаблонов лицензий
-Ниже перечислены основные классы .NET, которые используются для настройки шаблонов лицензий PlayReady служб мультимедиа. Эти классы сопоставляются с типами, определенными в [XML-схеме шаблона лицензий PlayReady](media-services-playready-license-template-overview.md#schema).
+## <a id="classes"></a>Классы .NET служб мультимедиа, которые являются tooconfigure используемых шаблонов лицензий
+Hello ниже приведены основные классы .NET hello используется tooconfigure шаблонов лицензий PlayReady служб мультимедиа. Эти классы сопоставлены toohello типы, определенные в [схема XML шаблонов лицензий PlayReady](media-services-playready-license-template-overview.md#schema).
 
-Класс [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) используется для сериализации шаблона лицензии служб мультимедиа в XML-код и десериализации из XML-кода.
+Hello [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) класс используется tooserialize и десериализации tooand из XML шаблонов лицензий служб мультимедиа hello.
 
 ### <a name="playreadylicenseresponsetemplate"></a>PlayReadyLicenseResponseTemplate
-[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx) — этот класс представляет шаблон для ответа, отправляемого конечному пользователю. Он содержит поле для строки пользовательских данных, используемых сервером лицензий и приложением (может быть полезно для настраиваемой логики приложения), а также список из одного или нескольких шаблонов лицензий.
+[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx) -этот класс представляет шаблон hello для hello ответ отправлен назад toohello конечного пользователя. Он содержит поле для строки пользовательских данных между сервером лицензирования hello и приложения hello (может быть полезным для пользовательской логики приложения), а также список из одного или нескольких шаблонов лицензий.
 
-Это класс верхнего уровня в иерархии шаблонов. Это означает, что шаблон ответа включает список шаблонов лицензий, а шаблоны лицензий содержат (напрямую или косвенно) все прочие классы, составляющие сериализуемый шаблон данных.
+Это класс «верхнего уровня» hello в иерархии шаблонов hello. Это означает, что hello шаблон ответа включает список шаблонов лицензий и шаблонов hello лицензий включают (прямо или косвенно) все hello другие классы, которые составляют hello шаблона данных toobe сериализации.
 
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
-[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) — этот класс представляет шаблон лицензии для создания лицензий PlayReady, которые будут возвращены конечным пользователям. Он содержит данные о ключе содержимого в лицензии и возможные права или ограничения, которые должны применяться средой выполнения DRM PlayReady при использовании данного ключа содержимого.
+[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) -hello класс представляет шаблон лицензии для создания toobe лицензии PlayReady, возвращается toohello конечных пользователей. Он содержит данные hello на hello ключа контента в лицензии hello и любые права или ограничения toobe обеспечивается средой hello среда выполнения PlayReady DRM при использовании ключа контента hello.
 
 ### <a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
-[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) — этот класс представляет право PlayRight лицензии PlayReady. Он предоставляет пользователю возможность воспроизводить содержимое с ограничениями и без, что указано в лицензии и самом праве PlayRight (для политики, касающейся воспроизведения). Большая часть политики в PlayRight связана с ограничениями выходных данных. Эти ограничения определяют типы выходных данных, в формате которых возможно воспроизведение содержимого. А также возможные ограничения, которые должны быть установлены при использовании заданных выходных данных. Например, если включено ограничение DigitalVideoOnlyContentRestriction, среда выполнения DRM будет разрешать отображение видео только через цифровые выходы (на аналоговые видеовыходы содержимое нельзя будет передавать).
+[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) -этот класс представляет PlayRight лицензии PlayReady hello. Он предоставляет hello пользователя hello возможность tooplayback hello toohello содержимого субъекта ноль или настроить дополнительные ограничения в лицензии hello и hello PlayRight (для воспроизведения определенной политики). Большая часть политики hello на hello PlayRight имеет toodo с выходным ограничениям, которые hello типы выходных данных, которые может воспроизводиться hello содержимого элементов управления и каких-либо ограничений, которые необходимо применить на месте при использовании заданного выходного потока. Например если параметр DigitalVideoOnlyContentRestriction включен, приветствия затем hello среда выполнения DRM допускает только видео toobe hello отображается через цифровой выход (аналоговые видеосигналы не будут разрешены toopass hello содержимого).
 
 > [!IMPORTANT]
-> Эти типы ограничений могут быть очень мощными, но также могут негативно влиять на возможности, доступные для пользователя. Если указаны слишком строгие правила защиты выходных данных, содержимое может не воспроизводиться на некоторых клиентах. Дополнительные сведения см. [в правилах соответствия PlayReady](https://www.microsoft.com/playready/licensing/compliance/).
+> Эти типы ограничений могут быть очень полезны, но могут также влиять на возможности использования hello. Если hello выходные средства защиты настроены слишком строго, hello контент будет невозможно воспроизвести на некоторых клиентах. Дополнительные сведения см. в разделе hello [правила соответствия PlayReady](https://www.microsoft.com/playready/licensing/compliance/) документа.
 > 
 > 
 

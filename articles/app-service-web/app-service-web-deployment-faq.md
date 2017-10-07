@@ -1,6 +1,6 @@
 ---
-title: "Часто задаваемые вопросы о развертывании в веб-приложениях Azure | Документация Майкрософт"
-description: "Ответы на часто задаваемые вопросы о развертывании в веб-приложениях службы приложений Azure."
+title: "aaaDeployment вопросы и ответы для веб-приложениях Azure | Документы Microsoft"
+description: "Получите ответы toofrequently вопросы и ответы о развертывании для веб-приложений функции hello службе приложений Azure."
 services: app-service\web
 documentationcenter: 
 author: genlin
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/10/2017
 ms.author: genli
-ms.openlocfilehash: 69f8c50f7f5889b75544deca19c54268fbf5eca7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 566e1d7028e678f9679200f436118d27dfb07079
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Часто задаваемые вопросы о развертывании в веб-приложениях Azure
 
-В этой статье приведены ответы на часто задаваемые вопросы о проблемах развертывания в [веб-приложениях службы приложений Azure](https://azure.microsoft.com/services/app-service/web/).
+Данная статья содержит ответы toofrequently, задаваемые вопросы (FAQ) о проблем развертывания для hello [веб-приложений функции службы приложений Azure](https://azure.microsoft.com/services/app-service/web/).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -31,71 +31,71 @@ ms.lasthandoff: 08/03/2017
 
 Опубликовать код можно несколькими способами:
 
-*   Развертывание с помощью Visual Studio. В Visual Studio щелкните проект веб-приложения правой кнопкой мыши и выберите **Опубликовать**.
-*   Развертывание с помощью FTP-клиента. На портале Azure загрузите профиль публикации веб-приложения, в который требуется развернуть код. Затем добавьте файлы в папку \site\wwwroot, используя те же учетные данные профиля публикации FTP.
+*   Развертывание с помощью Visual Studio. Если у вас есть решение Visual Studio hello, щелкните правой кнопкой мыши проект веб-приложения hello и выберите **публикации**.
+*   Развертывание с помощью FTP-клиента. В hello портал Azure, профиль для веб-приложения hello публикации hello загрузки должен toodeploy код. Затем добавьте hello too\site\wwwroot файлы с помощью hello же опубликовать профиль FTP учетные данные.
 
-Дополнительные сведения см. в статье [Развертывание приложения в службе приложений Azure](web-sites-deploy.md).
+Дополнительные сведения см. в разделе [развертывание вашего приложения tooApp службы](web-sites-deploy.md).
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>При попытке выполнить развертывание из Visual Studio отображается сообщение об ошибке. Как решить эту проблему?
+## <a name="i-see-an-error-message-when-i-try-toodeploy-from-visual-studio-how-do-i-resolve-this"></a>Я вижу сообщение об ошибке при попытке toodeploy из Visual Studio. Как решить эту проблему?
 
-При использовании пакета SDK предыдущей версии может появиться следующее сообщение об ошибке: "Ошибка при развертывании для ресурса "имя_ресурса" в группе ресурсов "группа_ресурсов": MissingRegistrationForLocation. Подписка не зарегистрирована для типа ресурсов "компоненты" в расположении "Центральная часть США". Повторно зарегистрируйтесь для данного поставщика, чтобы получить доступ к этому расположению". 
+При появлении следующего сообщением hello, возможно, вы используете старую версию пакета SDK для hello: «ошибка при развертывании для ресурса «YourResourceName» в группе ресурсов «YourResourceGroup»: MissingRegistrationForLocation: hello подписка не зарегистрирована для Hello тип ресурса «components» в расположении hello «Центральной части США». Повторите регистрацию для этого поставщика в порядке toohave доступа toothis расположении.» 
 
-Чтобы устранить эту ошибку, обновите [пакет SDK до последней версии](https://azure.microsoft.com/downloads/). Если вы видите это сообщение и имеете последнюю версию пакета SDK, отправьте запрос на техническую поддержку.
+tooresolve это ошибка, обновления toohello [новейшую версию пакета SDK](https://azure.microsoft.com/downloads/). Если вы видите это сообщение и иметь hello новейшую версию пакета SDK, отправьте запрос на техническую поддержку.
 
-## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Как развернуть приложения ASP.NET в службу приложений из Visual Studio?
+## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-tooapp-service"></a>Развертывание приложений ASP.NET из Visual Studio tooApp службы
 <a id="deployasp"></a>
 
-Сведения о развертывании веб-приложения ASP.NET в веб-приложение службы приложений с помощью Visual Studio 2015 см. в руководстве [Создание веб-приложения ASP.NET в Azure](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-get-started/).
+Учебник Hello [создание первого веб-приложения ASP.NET в Azure в течение пяти минут](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-get-started/) показано, как toodeploy ASP.NET веб-приложения tooa веб-приложения в службе приложений с помощью Visual Studio 2015.
 
-## <a name="what-are-the-different-types-of-deployment-credentials"></a>Каковы различные типы учетных данных развертывания?
+## <a name="what-are-hello-different-types-of-deployment-credentials"></a>Что такое hello различные типы учетных данных развертывания
 
-Служба приложений поддерживает два типа учетных данных для развертывания локальной системы Git и развертывания FTP(S). Дополнительные сведения о настройке учетных данных развертывания см. в статье [Настройка учетных данных развертывания службы приложений Azure](app-service-deployment-credentials.md).
+Служба приложений поддерживает два типа учетных данных для развертывания локальной системы Git и развертывания FTP(S). Дополнительные сведения о том, как tooconfigure учетные данные развертывания, в разделе [настроить учетные данные развертывания для приложения службы](app-service-deployment-credentials.md).
 
-## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Какова структура файла или каталога веб-приложения службы приложений?
+## <a name="what-is-hello-file-or-directory-structure-of-my-app-service-web-app"></a>Что такое hello файл или каталог структуру веб-приложение службы приложений?
 
-Сведения о структуре файла приложения службы приложений см. в [этом репозитории GitHub](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure).
+Сведения о структуре его файла hello приложение службы приложений см. в разделе [файла структуры в Azure](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure).
 
-## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Как устранить ошибку FTP 550 "Недостаточно пространства на диске", которая появляется при попытке доступа к файлам по протоколу FTP?
+## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-hello-disk-when-i-try-tooftp-my-files"></a>Как решить «Ошибка FTP 550 - там не достаточно места на диске hello» при попытке tooFTP Мои файлы?
 
-Если вы видите это сообщение об ошибке, скорее всего, вы превысили дисковую квоту плана обслуживания веб-приложения. Возможно, вам потребуется выбрать более высокий уровень служб в зависимости от необходимого дискового пространства. Дополнительные сведения о ценах на планы и ограничениях ресурсов см. на [этой странице](https://azure.microsoft.com/pricing/details/app-service/).
+Если вы видите это сообщение, вполне вероятно, что выполняется в дисковой квоты в плане обслуживания hello веб-приложения. Может потребоваться tooscale копирование tooa зависимости от потребностей места на диске более высоком уровне службы. Дополнительные сведения о ценах на планы и ограничениях ресурсов см. на [этой странице](https://azure.microsoft.com/pricing/details/app-service/).
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Как настроить непрерывное развертывание веб-приложения служб приложений?
 
-Непрерывное развертывание можно настроить из нескольких ресурсов, в том числе Visual Studio Team Services, OneDrive, GitHub, Bitbucket, Dropbox и других репозиториев Git. Эти параметры доступны на портале. Дополнительные сведения о настройке непрерывного развертывания см. в [этом полезном руководстве](app-service-continuous-deployment.md).
+Непрерывное развертывание можно настроить из нескольких ресурсов, в том числе Visual Studio Team Services, OneDrive, GitHub, Bitbucket, Dropbox и других репозиториев Git. Эти параметры доступны на портале hello. [Непрерывное развертывание tooApp службы](app-service-continuous-deployment.md) является полезным учебник, в котором объясняется, как tooset непрерывное развертывание.
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Как устранить проблемы с непрерывным развертыванием из GitHub и Bitbucket?
 
 Сведения о проблемах с непрерывным развертыванием из GitHub или Bitbucket см. в статье [Investigating continuous deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment) (Изучение непрерывного развертывания).
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>Не удается подключиться к сайту по протоколу FTP и опубликовать код. Как решить эту проблему?
+## <a name="i-cant-ftp-toomy-site-and-publish-my-code-how-do-i-resolve-this"></a>Нельзя FTP-сайта toomy и опубликовать мой код. Как решить эту проблему?
 
-Чтобы устранить проблемы FTP-подключения, сделайте следующее:
+проблемы tooresolve FTP:
 
-1. Убедитесь, что вы ввели правильное имя узла и учетные данные. Подробные сведения о различных типах учетных данных и способе их использования см. в статье [Deployment credentials](https://github.com/projectkudu/kudu/wiki/Deployment-credentials) (Учетные данные развертывания).
-2. Убедитесь, что FTP-порты не заблокированы брандмауэром. Эти порты должны иметь следующие параметры:
+1. Проверка ввода hello правильным именем узла и учетные данные. Подробные сведения о различных типах учетных данных и как toouse, см. статью [учетные данные развертывания](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
+2. Убедитесь, что hello FTP-порты не заблокирован брандмауэром. Hello порты должны иметь следующие параметры:
     * Порт подключения для управления FTP: 21
     * Порт подключения к данным FTP: 989, 10001–10300.
 
-## <a name="how-do-i-publish-my-code-to-app-service"></a>Как опубликовать код в службу приложений?
+## <a name="how-do-i-publish-my-code-tooapp-service"></a>Как опубликовать мой код tooApp службы?
 
-Шаблоны быстрого запуска Azure позволяют развернуть приложение на основе стека развертывания и выбранного метода. Чтобы применить шаблон, перейдите на портал Azure и выберите **Параметры** > **Развертывание приложения**.
+Hello быстрый запуск Azure — спроектированный toohelp развертывания приложения с помощью развертывания стека hello и метод по своему усмотрению. hello toouse краткое руководство, в hello портал Azure перейдите слишком**параметры** > **развертывания приложения**.
 
-## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Почему приложение иногда перезапускается после развертывания в службу приложений?
+## <a name="why-does-my-app-sometimes-restart-after-deployment-tooapp-service"></a>Почему мое приложение иногда перезапускает после развертывания tooApp службы?
 
-Дополнительные сведения об условиях, при которых приложение может перезапускаться после развертывания, см. в статье [Deployment vs. runtime issues](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts") (Проблемы развертывания и среды выполнения). Как упомянуто в этой статье, служба приложений развертывает файлы в папку wwwroot. Она никогда напрямую не перезапускает приложение.
+toolearn об условиях возникновения hello, при которых развертывания приложения может привести к перезагрузка, в разделе [развертывания и проблемам](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts"). Как описано в статье hello, службы приложений развертывает папки wwwroot toohello файлов. Она никогда напрямую не перезапускает приложение.
 
 ## <a name="how-do-i-integrate-visual-studio-team-services-code-with-app-service"></a>Как интегрировать код Visual Studio Team Services с помощью службы приложений?
 
 Реализовать непрерывное развертывание с помощью Visual Studio Team Services можно двумя способами:
 
-*   Используйте проект Git. Подключитесь через службу приложений, используя параметры развертывания этого репозитория.
-*   Используйте проект системы управления версиями Team Foundation (TFVC). Разверните код с помощью агента сборки службы приложений.
+*   Используйте проект Git. Подключение через службы приложений с помощью hello параметры развертывания для этого репозитория.
+*   Используйте проект системы управления версиями Team Foundation (TFVC). Развертывание с помощью hello агент сборки для приложения службы.
 
 В обоих случаях непрерывное развертывание кода зависит от имеющихся рабочих процессов разработчика и процедур проверки. Дополнительные сведения вы найдете в следующих статьях: 
 
-*   [Implement continuous deployment of your app to an Azure website](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs) (Реализация непрерывного развертывания приложения на веб-сайте Azure)
-*   [Set up a Visual Studio Team Services account so it can deploy to a web app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App) (Настройка параметров развертывания в веб-приложение для учетной записи Visual Studio Team Services)
+*   [Реализовать непрерывного развертывания вашего приложения tooan веб-сайте Azure](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
+*   [Настройка учетной записи Visual Studio Team Services, чтобы можно было развернуть tooa веб-приложения](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
 
-## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Как развернуть приложение в службу приложений по протоколу FTP или FTPS?
+## <a name="how-do-i-use-ftp-or-ftps-toodeploy-my-app-tooapp-service"></a>Как использовать FTP или FTPS toodeploy tooApp Мои приложения службы
 
-Сведения о развертывании веб-приложения в службу приложений по протоколу FTP или FTPS см. в [этой статье](app-service-deploy-ftp.md).
+Дополнительные сведения об использовании FTP или FTPS toodeploy вашей tooApp app web Service, в разделе [развертывание вашего приложения tooApp службы с помощью FTP/S](app-service-deploy-ftp.md).

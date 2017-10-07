@@ -1,6 +1,6 @@
 ---
-title: "Создание пользовательской пробы для шлюза приложений Azure с помощью PowerShell | Документация Майкрософт"
-description: "Узнайте, как создать пользовательскую проверку для шлюза приложений с помощью PowerShell в диспетчере ресурсов."
+title: "aaaCreate пользовательской проверки - шлюз приложений Azure — PowerShell | Документы Microsoft"
+description: "Узнайте, как toocreate пользовательской проверки для шлюза приложения с помощью PowerShell в диспетчере ресурсов"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: gwallace
-ms.openlocfilehash: b54fe5267d87a41eb9e81d5d1dc9b1b16c5c5e88
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 44c9ffa75401d6d0db023e66fa82c701fb0cf8bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Создание пользовательской проверки для шлюза приложений с помощью PowerShell для диспетчера ресурсов Azure
 
@@ -28,10 +28,10 @@ ms.lasthandoff: 07/11/2017
 > * [PowerShell и диспетчер ресурсов Azure](application-gateway-create-probe-ps.md)
 > * [Классическая модель — Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
-Следуя инструкциям этой статьи вы добавите пользовательскую пробу в имеющийся шлюз приложений с помощью PowerShell. Пользовательские пробы полезны в приложениях с конкретной страницей проверки работоспособности или приложениях, не предоставляющих успешный ответ веб-приложению по умолчанию.
+В этой статье добавьте пользовательский зонд tooan существующего приложения шлюза с помощью PowerShell. Пользовательские зонды полезны для приложений, имеющих страницы проверки работоспособности конкретного или для приложений, которые не предоставляют успешный ответ на веб-приложения по умолчанию hello.
 
 > [!NOTE]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md).  В этой статье описывается использование модели развертывания c помощью Resource Manager. Для большинства новых развертываний мы рекомендуем использовать эту модель вместо [классической](application-gateway-create-probe-classic-ps.md).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md).  В этой статье описывается использование модели развертывания диспетчера ресурсов hello, который рекомендуется в большинстве случаев новый вместо hello [классической модели развертывания](application-gateway-create-probe-classic-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -39,19 +39,19 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="sign-in-and-create-resource-group"></a>Вход и создание группы ресурсов
 
-1. Используйте `Login-AzureRmAccount` для аутентификации.
+1. Используйте `Login-AzureRmAccount` tooauthenticate.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-1. Получите подписку для учетной записи.
+1. Получите hello подписки для учетной записи hello.
 
   ```powershell
   Get-AzureRmSubscription
   ```
 
-1. Выберите подписку Azure.
+1. Выберите, какие toouse вашей подписки Azure.
 
   ```powershell
   Select-AzureRmSubscription -Subscriptionid '{subscriptionGuid}'
@@ -63,28 +63,28 @@ ms.lasthandoff: 07/11/2017
   New-AzureRmResourceGroup -Name appgw-rg -Location 'West US'
   ```
 
-В диспетчере ресурсов Azure для всех групп ресурсов должно быть указано расположение. Это расположение используется в качестве расположения по умолчанию для всех ресурсов данной группы. Убедитесь, что во всех командах для создания шлюза приложений используется одна группа ресурсов.
+В диспетчере ресурсов Azure для всех групп ресурсов должно быть указано расположение. Это расположение используется в качестве расположения по умолчанию hello для ресурсов в этой группе ресурсов. Убедитесь, что все команды toocreate hello использование шлюза приложений одну группу ресурсов.
 
-В примере выше мы создали группу ресурсов **appgw-RG** в **западной части США**.
+В предыдущих пример hello, мы создали группу ресурсов под названием **appgw RG** в расположении **Запад США**.
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>Создание виртуальной сети и подсети
 
-Следующий пример кода создает виртуальную сеть и подсеть шлюза приложений. Шлюзу приложений требуется собственная подсеть. По этой причине созданная для него подсеть должна быть меньше адресного пространства виртуальной сети. Это позволит создавать и использовать другие подсети.
+Hello следующий пример создает виртуальную сеть и подсети для шлюза приложения hello. Шлюзу приложений требуется собственная подсеть. По этой причине hello подсети для шлюза приложения hello должно быть меньше hello адресном пространстве tooallow hello виртуальной сети для других toobe подсети и использовать его.
 
 ```powershell
-# Assign the address range 10.0.0.0/24 to a subnet variable to be used to create a virtual network.
+# Assign hello address range 10.0.0.0/24 tooa subnet variable toobe used toocreate a virtual network.
 $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
-# Create a virtual network named appgwvnet in resource group appgw-rg for the West US region using the prefix 10.0.0.0/16 with subnet 10.0.0.0/24.
+# Create a virtual network named appgwvnet in resource group appgw-rg for hello West US region using hello prefix 10.0.0.0/16 with subnet 10.0.0.0/24.
 $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-# Assign a subnet variable for the next steps, which create an application gateway.
+# Assign a subnet variable for hello next steps, which create an application gateway.
 $subnet = $vnet.Subnets[0]
 ```
 
-### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Создание общедоступного IP-адреса для конфигурации интерфейсной части
+### <a name="create-a-public-ip-address-for-hello-front-end-configuration"></a>Создать общедоступный IP-адрес для интерфейса конфигурации hello
 
-Создайте ресурс общедоступного IP-адреса с именем **publicIP01** в группе ресурсов **appgw-rg** для региона "Западная часть США". В этом примере для интерфейсных IP-адресов шлюза приложений используются общедоступные IP-адреса.  Шлюзу приложений требуется общедоступный IP-адрес с динамически созданным DNS-именем, поэтому при создании общедоступных IP-адресов нельзя указывать `-DomainNameLabel`.
+Создание общих ресурсов IP **publicIP01** в группе ресурсов **appgw rg** для региона hello Запад США. Этот пример использует общедоступный IP-адрес для hello внешнего IP-адреса шлюза приложения hello.  Шлюз приложений требует toohave IP адрес hello для открытого динамически созданные DNS-имя, поэтому hello `-DomainNameLabel` не может указываться во время создания hello hello общедоступный IP-адрес.
 
 ```powershell
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -92,17 +92,17 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name publicI
 
 ### <a name="create-an-application-gateway"></a>Создание шлюза приложений
 
-Перед созданием шлюза приложений необходимо настроить все элементы конфигурации. Пример кода ниже создает элементы конфигурации, необходимые для ресурса шлюза приложений.
+Настройка всех элементов конфигурации перед созданием шлюза приложения hello. Hello следующий пример создает hello элементы конфигурации, которые необходимы для ресурса шлюза приложения.
 
 | **Компонент** | **Описание** |
 |---|---|
 | **Конфигурация IP-адреса шлюза** | Конфигурация IP-адреса шлюза приложений.|
-| **Серверный пул** | Пул IP-адресов, полное доменное имя или сетевые адаптеры серверов приложений, на которых размещается веб-приложение.|
-| **Проба работоспособности** | Пользовательская проба, используемая для мониторинга работоспособности участников серверного пула.|
-| **Параметры HTTP** | Коллекция параметров, в том числе порта, протокола, сходства на основе файлов cookie, пробы и времени ожидания.  Эти параметры определяют передачу трафика участникам серверного пула.|
-| **Интерфейсный порт** | Порт, на котором шлюз приложений прослушивает трафик.|
+| **Внутренний пул** | Пул IP-адресов, полных доменных ИМЕН и сетевые адаптеры, являются toohello серверы приложений, для размещения веб-приложения hello|
+| **Зонд работоспособности** | Пользовательский зонд используется toomonitor hello работоспособности членов пула внутренних hello|
+| **Параметры HTTP** | Коллекция параметров, в том числе порта, протокола, сходства на основе файлов cookie, пробы и времени ожидания.  Эти параметры определяют, как трафика — члены пула перенаправленное toohello серверной части|
+| **Интерфейсный порт** | порт Hello, hello шлюз приложений прослушивает трафик на|
 | **Прослушиватель** | Сочетание протокола, конфигурации интерфейсного IP-адреса и интерфейсного порта. Это компонент, который прослушивает входящие запросы.
-|**Правило**| Направляет трафик в соответствующую серверную часть на основе параметров HTTP.|
+|**Правило**| Маршруты hello соответствующих серверных toohello трафика на основе параметров HTTP.|
 
 ```powershell
 # Creates a application gateway Frontend IP configuration named gatewayIP01
@@ -114,67 +114,67 @@ $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPA
 # Creates a probe that will check health at http://contoso.com/path/path.htm
 $probe = New-AzureRmApplicationGatewayProbeConfig -Name probe01 -Protocol Http -HostName 'contoso.com' -Path '/path/path.htm' -Interval 30 -Timeout 120 -UnhealthyThreshold 8
 
-# Creates the backend http settings to be used. This component references the $probe created in the previous command.
+# Creates hello backend http settings toobe used. This component references hello $probe created in hello previous command.
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled -Probe $probe -RequestTimeout 80
 
-# Creates a frontend port for the application gateway to listen on port 80 that will be used by the listener.
+# Creates a frontend port for hello application gateway toolisten on port 80 that will be used by hello listener.
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01 -Port 80
 
-# Creates a frontend IP configuration. This associates the $publicip variable defined previously with the front-end IP that will be used by the listener.
+# Creates a frontend IP configuration. This associates hello $publicip variable defined previously with hello front-end IP that will be used by hello listener.
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
 
-# Creates the listener. The listener is a combination of protocol and the frontend IP configuration $fipconfig and frontend port $fp created in previous steps.
+# Creates hello listener. hello listener is a combination of protocol and hello frontend IP configuration $fipconfig and frontend port $fp created in previous steps.
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 
-# Creates the rule that routes traffic to the backend pools.  In this example we create a basic rule that uses the previous defined http settings and backend address pool.  It also associates the listener to the rule
+# Creates hello rule that routes traffic toohello backend pools.  In this example we create a basic rule that uses hello previous defined http settings and backend address pool.  It also associates hello listener toohello rule
 $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
-# Sets the SKU of the application gateway, in this example we create a small standard application gateway with 2 instances.
+# Sets hello SKU of hello application gateway, in this example we create a small standard application gateway with 2 instances.
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-# The final step creates the application gateway with all the previously defined components.
+# hello final step creates hello application gateway with all hello previously defined components.
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location 'West US' -BackendAddressPools $pool -Probes $probe -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-## <a name="add-a-probe-to-an-existing-application-gateway"></a>Добавление проверки для существующего шлюза приложений
+## <a name="add-a-probe-tooan-existing-application-gateway"></a>Добавление шлюза проверки tooan существующего приложения
 
-Следующий фрагмент кода добавляет пробу в имеющийся шлюз приложений.
+Hello следующий фрагмент кода добавляет шлюза проверки tooan существующих приложений.
 
 ```powershell
-# Load the application gateway resource into a PowerShell variable by using Get-AzureRmApplicationGateway.
+# Load hello application gateway resource into a PowerShell variable by using Get-AzureRmApplicationGateway.
 $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
-# Create the probe object that will check health at http://contoso.com/path/path.htm
+# Create hello probe object that will check health at http://contoso.com/path/path.htm
 $getgw = Add-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $getgw -Name probe01 -Protocol Http -HostName 'contoso.com' -Path '/path/custompath.htm' -Interval 30 -Timeout 120 -UnhealthyThreshold 8
 
-# Set the backend HTTP settings to use the new probe
+# Set hello backend HTTP settings toouse hello new probe
 $getgw = Set-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $getgw.BackendHttpSettingsCollection.name -Port 80 -Protocol Http -CookieBasedAffinity Disabled -Probe $probe -RequestTimeout 120
 
-# Save the application gateway with the configuration changes
+# Save hello application gateway with hello configuration changes
 Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 ```
 
 ## <a name="remove-a-probe-from-an-existing-application-gateway"></a>Удаление проверки из существующего шлюза приложений
 
-Следующий фрагмент кода удаляет пробу из имеющегося шлюза приложений.
+Следующий фрагмент кода Hello удаляет зонда из существующего шлюза приложения.
 
 ```powershell
-# Load the application gateway resource into a PowerShell variable by using Get-AzureRmApplicationGateway.
+# Load hello application gateway resource into a PowerShell variable by using Get-AzureRmApplicationGateway.
 $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
-# Remove the probe from the application gateway configuration object
+# Remove hello probe from hello application gateway configuration object
 $getgw = Remove-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $getgw -Name $getgw.Probes.name
 
-# Set the backend HTTP settings to remove the reference to the probe. The backend http settings now use the default probe
+# Set hello backend HTTP settings tooremove hello reference toohello probe. hello backend http settings now use hello default probe
 $getgw = Set-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $getgw.BackendHttpSettingsCollection.name -Port 80 -Protocol http -CookieBasedAffinity Disabled
 
-# Save the application gateway with the configuration changes
+# Save hello application gateway with hello configuration changes
 Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 ```
 
 ## <a name="get-application-gateway-dns-name"></a>Получение DNS-имени шлюза приложений
 
-После создания шлюза следует настроить внешний интерфейс для обмена данными. Если вы используете общедоступный IP-адрес, шлюзу приложений требуется динамически назначаемое непонятное имя DNS. Чтобы гарантировать попадание пользователей на шлюз приложений, можно использовать запись CNAME, чтобы указать общедоступную конечную точку шлюза приложения. [Настройка пользовательского имени домена в Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). Получите информацию о шлюзе приложений и соответствующее IP- или DNS-имя с помощью элемента PublicIPAddress, связанного со шлюзом приложений. DNS-имя шлюза приложений должно использоваться для создания записи CNAME, указывающей двум веб-приложениям на это DNS-имя. Использование записи A не рекомендуется, так как виртуальный IP-адрес может измениться после перезапуска приложения шлюза.
+После создания шлюза hello hello следующим шагом является tooconfigure hello внешнего интерфейса для обмена данными. Если вы используете общедоступный IP-адрес, шлюзу приложений требуется динамически назначаемое непонятное имя DNS. tooensure конечным пользователям возможность нажать шлюза приложения hello, можно использовать запись CNAME toopoint toohello общедоступную конечную точку шлюза приложения hello. [Настройка пользовательского имени домена в Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). toodo сведения, получение шлюза приложения hello и соответствующее IP или DNS-имя с помощью шлюза hello PublicIPAddress элемент toohello подключенных приложений. шлюз приложения Hello DNS-имя должно быть используется toocreate запись CNAME, какие точки hello двух web приложений toothis DNS-имя. Использование Hello записи A не рекомендуется, поскольку hello виртуального IP-адреса могут изменяться при перезагрузке шлюз приложений.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -204,5 +204,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Сведения о настройке разгрузки SSL см. в статье [Настройка шлюза приложений для разгрузки SSL с помощью диспетчера ресурсов Azure](application-gateway-ssl-arm.md)
+Узнайте, tooconfigure разгрузки SSL, посетив: [Настройка разгрузки SSL](application-gateway-ssl-arm.md)
 

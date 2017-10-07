@@ -1,6 +1,6 @@
 ---
-title: "Создание первой функции на портале Azure | Документация Майкрософт"
-description: "Узнайте, как создать первую функцию Azure, выполняемую без сервера, с помощью портала Azure."
+title: "aaaCreate функции первого из hello портал Azure | Документы Microsoft"
+description: "Узнайте, как первый Azure функции для выполнения без сервера с помощью toocreate hello портал Azure."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -16,59 +16,59 @@ ms.workload: na
 ms.date: 08/07/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3ec1f278f21d89782137625aff200f07f15fd9fb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 84283d7d4bc6015061946af4589f9a70ae61f36b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-your-first-function-in-the-azure-portal"></a>Создание первой функции на портале Azure
+# <a name="create-your-first-function-in-hello-azure-portal"></a>Создание первой функции в hello портал Azure
 
-Функции Azure позволяют вам выполнять свой код в бессерверной среде без необходимости создавать виртуальную машину или публиковать веб-приложение. В этой статье вы узнаете, как создать функцию Hello World на портале Azure с помощью Функций.
+Функции Azure позволяет выполнять код в среде без сервера без необходимости toofirst создания виртуальной Машины или публикации веб-приложения. В этом разделе рассказано, как toouse функционирует toocreate функции «hello world» в hello портал Azure.
 
-![Создание приложения-функции на портале Azure](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
+![Создание функции приложения в hello портал Azure](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-azure"></a>Вход в Azure
+## <a name="log-in-tooazure"></a>Войдите в tooAzure
 
-Войдите на [портал Azure](https://portal.azure.com/).
+Войдите в toohello [портал Azure](https://portal.azure.com/).
 
 ## <a name="create-a-function-app"></a>Создание приложения-функции
 
-Для выполнения функций вам понадобится приложение-функция, позволяющее группировать функции в логические единицы и упростить развертывание и совместное использование ресурсов, а также управление ими. 
+Требуется выполнение функции приложения toohost hello функций. позволяющее группировать функции в логические единицы и упростить развертывание и совместное использование ресурсов, а также управление ими. 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-Затем создайте функцию в новом приложении-функции.
+Создайте функцию в приложение новые функции hello.
 
 ## <a name="create-function"></a>Создание функции, активируемой HTTP
 
-1. Разверните новое приложение-функцию, нажмите кнопку **+** рядом с **Функции**.
+1. Разверните приложение новые функции, а затем щелкните hello  **+**  рядом слишком**функции**.
 
-2.  На странице **быстрого начала работы** щелкните **Веб-перехватчик + API**, **выберите язык для функции** и щелкните **Создать функцию**. 
+2.  В hello **быстро приступить к работе** выберите **веб-перехватчика + API**, **выбрать язык** функции, а затем щелкните **создания этой функции** . 
    
-    ![Быстрое начало работы с Функциями на портале Azure.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
+    ![Примеры использования функций в hello портал Azure.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-С помощью шаблона функции, активируемой HTTP, будет создана функция на выбранном вами языке. Вы можете запустить новую функцию, отправив HTTP-запрос.
+Функция создается в выбранный язык с помощью шаблона hello для функции активации HTTP. Можно запустить новые функции hello, отправив запрос HTTP.
 
-## <a name="test-the-function"></a>Проверка функции
+## <a name="test-hello-function"></a>Проверка функции hello
 
 1. В новой функции щелкните **</> Получить URL-адрес функции**, выберите **По умолчанию (ключ функции)**и нажмите кнопку **Копировать**. 
 
-    ![Копирование URL-адреса функции с портала Azure](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
+    ![Скопируйте URL-адрес функции hello из hello портал Azure](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-2. Вставьте URL-адрес функции в адресную строку браузера. Добавьте строку запроса `&name=<yourname>` в этот URL-адрес и нажмите клавишу `Enter` на клавиатуре, чтобы выполнить этот запрос. Ниже приведен пример ответа, возвращаемого функцией в браузере Edge:
+2. Вставьте URL-адрес функции hello в адресной строке браузера. Добавить строку hello запроса `&name=<yourname>` toothis hello URL-адрес и нажмите клавишу `Enter` ключа запроса hello tooexecute клавиатуры. Hello ниже приведен пример hello ответ, возвращаемый функцией "hello" в браузере Edge hello:
 
-    ![Ответ функции в браузере.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
+    ![Функция ответа в браузер hello.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
-    URL-адрес запроса включает ключ, который по умолчанию необходим для доступа к функции по протоколу HTTP.   
+    URL-адрес содержит ключ, который требуется, по умолчанию tooaccess запрос Hello работу по протоколу HTTP.   
 
-3. При выполнении функции сведения о трассировке записываются в журналы. Для просмотра выходных данных трассировки из предыдущего выполнения вернитесь к своей функции на портале и щелкните стрелку вверх в нижней части экрана, чтобы развернуть **Журналы**. 
+3. При выполнении функции сведения трассировки записываются журналы toohello. выходные данные трассировки hello toosee из предыдущего выполнения hello, вернитесь tooyour функции hello портала и нажмите кнопку hello стрелкой hello нижней части экрана tooexpand hello **журналы**. 
 
-   ![Средство просмотра журналов Функций на портале Azure.](./media/functions-create-first-azure-function/function-view-logs.png)
+   ![Функции просмотра журнала в hello портал Azure.](./media/functions-create-first-azure-function/function-view-logs.png)
 
 ## <a name="clean-up-resources"></a>Очистка ресурсов
 
