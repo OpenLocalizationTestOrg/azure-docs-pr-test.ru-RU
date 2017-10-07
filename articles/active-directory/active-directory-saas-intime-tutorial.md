@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с InTime | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в InTime."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и InTime."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,109 +14,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 4bb22c92ad7f6963be6ca15073f7f01da99ba2bb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 63652f0f098aeac95e89a2500b46a18440e34698
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>Руководство по интеграции Azure Active Directory с InTime
 
-В этом руководстве описано, как интегрировать InTime с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate InTime с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением InTime обеспечивает следующие преимущества:
+Интеграция с Azure AD InTime предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к InTime.
-- Вы можете включить автоматический вход пользователей в InTime (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — на портале Azure.
+- Можно управлять в Azure AD, имеющего доступ tooInTime.
+- Можно включить на пользователей tooautomatically get вошедшего tooInTime (Single Sign-On) с помощью своих учетных записей Azure AD.
+- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с InTime, вам потребуется:
+tooconfigure интеграция Azure AD с InTime требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка InTime с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление InTime из коллекции.
+1. Добавление InTime из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-intime-from-the-gallery"></a>Добавление InTime из коллекции
-Чтобы настроить интеграцию InTime с Azure AD, необходимо добавить InTime из коллекции в список управляемых приложений SaaS.
+## <a name="adding-intime-from-hello-gallery"></a>Добавление InTime из галереи hello
+tooconfigure hello интеграции InTime в Azure AD, вы должны tooadd InTime из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить InTime из коллекции, сделайте следующее.**
+**tooadd InTime из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
-    ![Колонка "Корпоративные приложения"][2]
+    ![Hello корпоративных приложений колонку][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Кнопка нового приложения Hello][3]
 
-4. В поле поиска введите **InTime**, выберите **InTime** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+4. Введите в поле поиска hello **InTime**выберите **InTime** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
 
-    ![InTime в списке результатов](./media/active-directory-saas-intime-tutorial/tutorial_intime_addfromgallery.png)
+    ![В списке результатов hello inTime](./media/active-directory-saas-intime-tutorial/tutorial_intime_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение InTime с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в InTime соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в InTime.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в InTime является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в InTime должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в InTime.
+В InTime, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в InTime, вам потребуется выполнить действия в следующих стандартных блоках.
+tooconfigure и теста Azure AD единого входа с InTime, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя InTime](#create-a-intime-test-user)** требуется для того, чтобы в InTime существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание InTime тестового пользователя](#create-a-intime-test-user)**  -toohave аналог Саймон Britta в InTime, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении InTime.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении InTime.
 
-**Чтобы настроить единый вход Azure AD в InTime, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с InTime, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **InTime** щелкните **Единый вход**.
+1. В hello в hello портала Azure **InTime** странице интеграции приложения щелкните **единого входа**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-intime-tutorial/tutorial_intime_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения InTime** выполните следующие действия.
+3. На hello **InTime доменов и URL-адреса** выполните следующие шаги hello:
 
     ![Сведения о домене и URL-адресах единого входа приложения InTime](./media/active-directory-saas-intime-tutorial/tutorial_intime_url.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес: `https://intime6.intimesoft.com/mytime/login/login.xhtml`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес hello:`https://intime6.intimesoft.com/mytime/login/login.xhtml`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес: `https://auth.intimesoft.com/auth/realms/master`
+    b. В hello **идентификатор** текстовом поле введите URL-адрес hello:`https://auth.intimesoft.com/auth/realms/master`
 
-4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
-    ![Ссылка для скачивания сертификата](./media/active-directory-saas-intime-tutorial/tutorial_intime_certificate.png) 
+    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-intime-tutorial/tutorial_intime_certificate.png) 
 
-5. Приложение InTime ожидает утверждения SAML в определенном формате, который требует добавить настраиваемые сопоставления атрибутов в вашу конфигурацию атрибутов токена SAML. На следующем снимке экрана приведен пример. По умолчанию **идентификатор пользователя** имеет значение **user.userprincipalname**, но для InTime требуется сопоставить это значение с адресом электронной почты пользователя. Для этого можно использовать атрибут **user.mail** из списка или соответствующее значение атрибута, основанное на конфигурации организации. 
+5. Приложение InTime ожидает утверждения SAML hello в определенном формате, требующий вы tooadd настраиваемого атрибута сопоставления tooyour атрибутов токена конфигурация SAML. пример Hello следующий снимок экрана для этого. значение по умолчанию Hello **идентификатор пользователя** — **user.userprincipalname** , но InTime ожидает этот toobe, сопоставленный с адресом электронной почты пользователя hello. Для этого можно использовать **user.mail** атрибут из списка hello, или используйте hello соответствующее значение атрибута на основе конфигурации в организации 
 
     ![Настройка атрибута](./media/active-directory-saas-intime-tutorial/tutorial_intime_attribute.png)
 
@@ -124,77 +124,77 @@ ms.lasthandoff: 08/18/2017
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-intime-tutorial/tutorial_general_400.png)
 
-7. В разделе **Конфигурация InTime** щелкните **Настроить InTime**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода и URL-адрес службы единого входа SAML** из раздела **Quick Reference** (Краткий справочник).
+7. На hello **InTime конфигурации** щелкните **Настройка InTime** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Конфигурация InTime](./media/active-directory-saas-intime-tutorial/tutorial_intime_configure.png) 
 
-8. Чтобы настроить единый вход на стороне **InTime**, нужно передать скачанный **XML-файл метаданных**, а также **URL-адрес выхода и URL-адрес службы единого входа SAML** [группе поддержки InTime](mailto:hdollard@intimesoft.com). Специалисты службы поддержки настроят подключение единого входа SAML на обеих сторонах.
+8. tooconfigure единого входа на **InTime** стороны, необходимо загрузить hello toosend **метаданные в формате XML**, **URL-адрес выхода и SAML единого входа URL-адрес службы** слишком[InTime поддержки](mailto:hdollard@intimesoft.com). Они устанавливаются hello toohave этот параметр задан правильно на обеих сторонах соединения единого входа SAML.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
 
-    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-intime-tutorial/create_aaduser_01.png)
+    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-intime-tutorial/create_aaduser_01.png)
 
-2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
 
-    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-intime-tutorial/create_aaduser_02.png)
+    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-intime-tutorial/create_aaduser_02.png)
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
 
-    ![Кнопка "Добавить"](./media/active-directory-saas-intime-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-intime-tutorial/create_aaduser_03.png)
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
 
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-intime-tutorial/create_aaduser_04.png)
+    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-intime-tutorial/create_aaduser_04.png)
 
-    а. В поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
 
-    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
 
-    г) Щелкните **Создать**.
+    d. Щелкните **Создать**.
  
 ### <a name="create-a-intime-test-user"></a>Создание тестового пользователя InTime
 
-В этом разделе описано, как создать пользователя Britta Simon в приложении InTime. Обратитесь к [группе поддержки InTime](mailto:hdollard@intimesoft.com), чтобы добавить пользователей на платформу InTime. Перед использованием единого входа необходимо создать и активировать пользователей.
+В этом разделе описано, как создать пользователя Britta Simon в приложении InTime. Работать с [InTime поддержки](mailto:hdollard@intimesoft.com) tooadd hello пользователей на платформе InTime hello. Перед использованием единого входа необходимо создать и активировать пользователей.
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к InTime.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooInTime доступа.
 
-![Назначение роли пользователя][200] 
+![Назначение пользователям ролей hello][200] 
 
-**Чтобы назначить пользователя Britta Simon в InTime, сделайте следующее.**
+**tooassign tooInTime Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **InTime**.
+2. В списке приложений hello выберите **InTime**.
 
-    ![Ссылка на InTime в списке "Приложения"](./media/active-directory-saas-intime-tutorial/tutorial_intime_app.png)  
+    ![Hello InTime ссылку в списке приложений hello](./media/active-directory-saas-intime-tutorial/tutorial_intime_app.png)  
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202]
+    ![Hello ссылку «Пользователи и группы»][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Область "Добавление назначения"][203]
+    ![область назначения, добавьте Hello][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -202,13 +202,13 @@ ms.lasthandoff: 08/18/2017
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Если щелкнуть элемент "InTime" на панели доступа, должна появиться страница входа в приложение InTime. Нажмите кнопку **Login** (Вход), после чего в списке кнопок отобразится несколько IdP. Нажмите кнопку с **именем IdP**, предоставленным [группой поддержки InTime](mailto:hdollard@intimesoft.com), чтобы войти в приложение InTime. Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
+При нажатии кнопки InTime плитки hello в Здравствуйте панели доступа, должно появиться страница входа hello InTime приложения. Нажмите кнопку hello **входа** кнопку ряд IdPs будет отображаться на список кнопок. Нажмите кнопку **имя поставщика Удостоверений** предоставленные [InTime поддержки](mailto:hdollard@intimesoft.com) toologin в InTime приложение. Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

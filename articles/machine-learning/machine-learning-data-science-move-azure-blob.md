@@ -1,6 +1,6 @@
 ---
-title: "Перемещение данных в хранилище BLOB-объектов Azure и из него | Документация Майкрософт"
-description: "Перемещение данных в хранилище больших двоичных объектов Azure и из него"
+title: "aaaMove tooand данных из хранилища больших двоичных объектов Azure | Документы Microsoft"
+description: "Tooand перемещения данных из хранилища больших двоичных объектов"
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;sachouks
-ms.openlocfilehash: d9a626cccd3cdfcdc85f000bd3192aef2881e9a6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e12b8c157955195e826f8b108075afaf25ca7bd9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-data-to-and-from-azure-blob-storage"></a>Перемещение данных в хранилище BLOB-объектов Azure и из него
+# <a name="move-data-tooand-from-azure-blob-storage"></a>Tooand перемещения данных из хранилища больших двоичных объектов
 [!INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
-<!-- just in case, adding this to separate these two include references -->
+<!-- just in case, adding this tooseparate these two include references -->
 
 [!INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
-Выбор метода зависит от сценария. Статья [Сценарии для расширенной аналитики в Машинном обучении Azure](machine-learning-data-science-plan-sample-scenarios.md) поможет определить ресурсы, необходимые для различных рабочих процессов обработки и анализа данных в рамках расширенного аналитического процесса.
+Выбор метода зависит от сценария. Hello [сценариев для расширенной аналитики в машинном обучении Azure](machine-learning-data-science-plan-sample-scenarios.md) статья поможет вам определить hello ресурсы, необходимые для различных рабочих процессов обработки и анализа данных, используемых в hello advanced analytics процесса.
 
 > [!NOTE]
-> Полное описание базовых принципов использования хранилища BLOB-объектов Azure см. в статьях [Приступая к работе с хранилищем BLOB-объектов Azure с помощью .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) и [Основные понятия службы BLOB-объектов](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> Хранилище больших двоичных объектов tooAzure подробное введение, см. в разделе слишком[основы больших двоичных объектов Azure](../storage/blobs/storage-dotnet-how-to-use-blobs.md) и слишком[больших двоичных объектов Azure](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 > 
 > 
 
 В качестве альтернативы можно использовать [фабрику данных Azure](https://azure.microsoft.com/services/data-factory/) для выполнения следующих действий: 
 
 * создание и планирование конвейера, который скачивает данные из хранилища BLOB-объектов Azure; 
-* передача данных в опубликованную веб-службу Машинного обучения Azure; 
-* получение результатов прогнозной аналитики; 
-* отправка результатов в хранилище. 
+* передайте его tooa опубликованные веб-службы машинного обучения Azure 
+* получить результаты прогнозирующего анализа hello, и 
+* Отправка результатов toostorage hello. 
 
 Дополнительные сведения см. в статье [Создание прогнозных конвейеров с помощью действий Машинного обучения Azure](../data-factory/data-factory-azure-ml-batch-execution-activity.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
-Для выполнения указаний в этом документе у вас должна быть подписка Azure, учетная запись хранения и соответствующий ключ к хранилищу данных для этой учетной записи. Чтобы отправлять и скачивать данные, необходимо знать имя учетной записи хранения Azure и ее ключ.
+В этом документе предполагается, что подписка Azure, учетная запись хранения и hello соответствующий ключ хранилища для этой учетной записи. Чтобы отправлять и скачивать данные, необходимо знать имя учетной записи хранения Azure и ее ключ.
 
-* Сведения о настройке подписки Azure см. на странице [Создайте бесплатную учетную запись Azure уже сегодня](https://azure.microsoft.com/pricing/free-trial/).
+* tooset копирование подписку Azure, см. [бесплатной пробной версии один месяц](https://azure.microsoft.com/pricing/free-trial/).
 * Инструкции по созданию учетной записи хранения и получению сведений об учетной записи и ключах см. в статье [Об учетных записях хранения Azure](../storage/common/storage-create-storage-account.md).
 

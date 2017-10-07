@@ -1,5 +1,5 @@
 ---
-title: "Пример сценария Azure PowerShell. Создание управляемого диска из VHD-файла в учетной записи хранения в той же или другой подписке | Документация Майкрософт"
+title: "aaaAzure образец скрипта PowerShell - Создание управляемого диска из VHD-файла в учетную запись хранилища в подписке на одном или разных | Документы Microsoft"
 description: "Пример сценария Azure PowerShell для создания управляемого диска из VHD-файла в учетной записи хранения в той же или другой подписке."
 services: virtual-machines-windows
 documentationcenter: storage
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 728def40a3eb132537decbd099fa71f4544c6b87
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 47acff274cdf79d6fc3cd685cda01cad3d14ca8e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-same-or-different-subscription-with-powershell"></a>Создание управляемого диска из VHD-файла в учетной записи хранения в той же или другой подписке с помощью PowerShell
 
-Этот сценарий создает управляемый диск на основе VHD-файла в учетной записи хранения в той же или другой подписке. Этот сценарий можно использовать, чтобы импортировать специализированный (не универсальный и не подготовленный командой Sysprep) VHD в управляемый диск ОС для создания виртуальной машины. Кроме того, с его помощью можно импортировать VHD данных в управляемый диск данных. 
+Этот сценарий создает управляемый диск на основе VHD-файла в учетной записи хранения в той же или другой подписке. Используйте этот скрипт tooimport специальных (не обобщенный или командой Sysprep) виртуального жесткого диска toomanaged ОС диска toocreate виртуальной машины. Кроме того используйте tooimport диск данных виртуального жесткого диска toomanaged данных. 
 
-Не создавайте несколько идентичных управляемых дисков из VHD-файла за небольшой промежуток времени. При создании управляемых дисков из VHD-файла создается моментальный снимок большого двоичного объекта VHD-файла, который затем используется для этой операции. За минуту может быть создан только один большой двоичный объект, что приводит к сбоям при создании дисков из-за регулирования. Во избежание этого регулирования создайте [управляемый моментальный снимок из VHD-файла](virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json), а затем используйте его для создания нескольких управляемых дисков за короткий промежуток времени. 
+Не создавайте несколько идентичных управляемых дисков из VHD-файла за небольшой промежуток времени. toocreate управляемых дисков из VHD-файл, создается моментальный снимок большого двоичного объекта hello VHD-файл и будет используется toocreate управляемых дисков. Только один большой двоичный объект может быть создано в минуту, которое вызывает сбои при создании диска из-за toothrottling. tooavoid повтор, создайте [управляемого моментального снимка из файла виртуального жесткого диска hello](virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json) и затем используйте hello управляемых toocreate моментального снимка несколько дисков, управляемых за короткий промежуток времени. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -33,22 +33,22 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-managed-disks-from-vhd-in-different-subscription/create-managed-disks-from-vhd-in-different-subscription.ps1 "Создание управляемого диска на основе VHD")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-managed-disks-from-vhd-in-different-subscription/create-managed-disks-from-vhd-in-different-subscription.ps1 "Create managed disk from VHD")]
 
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот сценарий использует приведенные ниже команды для создания управляемого диска на основе VHD. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует следующие команды toocreate управляемого диска из VHD в другую подписку. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
-| [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/New-AzureRmDiskConfig) | Создает конфигурацию диска, которая используется для создания диска. Она содержит тип хранилища, расположение, идентификатор ресурса учетной записи хранения, в которой хранится родительский VHD, и универсальный код ресурса (URI) родительского VHD. |
+| [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/New-AzureRmDiskConfig) | Создает конфигурацию диска, которая используется для создания диска. Он включает тип хранилища, расположение, идентификатор hello учетной записи хранилища хранения hello родительского виртуального жесткого диска, hello родительского виртуального жесткого диска VHD URI ресурса. |
 | [New-AzureRmDisk](/powershell/module/azurerm.compute/New-AzureRmDisk) | Создает диск с помощью конфигурации диска, имени диска и имени группы ресурсов, которые передаются в качестве параметров. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
 [Создание виртуальной машины путем подключения управляемого диска как диска ОС](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Дополнительные сведения о модуле Azure PowerShell см. в [документации по Azure PowerShell](/powershell/azure/overview).
+Дополнительные сведения о hello модуля Azure PowerShell см. в разделе [документация по Azure PowerShell](/powershell/azure/overview).
 
-Дополнительные примеры сценариев PowerShell для виртуальных машин представлены в [документации по виртуальным машинам Azure под управлением Windows](../../app-service-web/app-service-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Примеры сценариев PowerShell дополнительную виртуальную машину можно найти в hello [документации виртуальной Машины Windows Azure](../../app-service-web/app-service-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

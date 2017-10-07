@@ -1,6 +1,6 @@
 ---
-title: "Создание кластеров HBase в виртуальной сети Azure | Документация Майкрософт"
-description: "Приступите к работе с HBase в Azure HDInsight. Узнайте, как создать кластеры HDInsight HBase в виртуальной сети Azure."
+title: "aaaCreate HBase кластеров в виртуальной сети - Azure | Документы Microsoft"
+description: "Приступите к работе с HBase в Azure HDInsight. Узнайте, как кластеров HDInsight HBase toocreate в виртуальной сети Azure."
 keywords: 
 services: hdinsight,virtual-network
 documentationcenter: 
@@ -16,33 +16,33 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/17/2017
 ms.author: jgao
-ms.openlocfilehash: 668bd494ce3274188af56cf7d6253cec7af9abbc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 097338a5a650bb607a9f6f9ddb59bb88d098b56f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Создание кластеров HBase в HDInsight в виртуальной сети Azure
-Узнайте, как создавать кластеры Azure HDInsight HBase в [виртуальной сети Azure][1].
+Узнайте, как toocreate Azure HDInsight HBase кластеров в [виртуальной сети Azure][1].
 
-Благодаря интеграции виртуальной сети кластеры HBase могут быть развернуты в той же виртуальной сети, что и приложения. Это позволяет приложениям взаимодействовать с HBase непосредственно. К преимуществам относятся:
+Благодаря интеграции виртуальной сети, HBase кластеров может быть развернутой toohello виртуальных сетевых как приложения таким образом, приложения могут взаимодействовать с HBase напрямую. Hello имеет следующие преимущества:
 
-* прямое подключение веб-приложения к узлам кластера HBase, который обеспечивает обмен данными с помощью интерфейсов API удаленного вызова процедур (RPC) Java для HBase;
+* Прямое подключение узлов toohello приложения hello web hello HBase кластера, который обеспечивает взаимодействие через HBase Java удаленной процедуры вызова API (RPC).
 * повышение производительности без необходимости организации пропуска трафика через множество шлюзов и подсистемы балансировки нагрузки;
-* возможность обработки конфиденциальной информации более безопасным способом, без необходимости организации общедоступной конечной точки.
+* Hello возможность tooprocess конфиденциальные сведения в более безопасном режиме без предоставления общедоступную конечную точку.
 
 ### <a name="prerequisites"></a>Предварительные требования
-Перед началом работы с этим руководством необходимо иметь следующее:
+Прежде чем начать работу с учебником, необходимо иметь hello следующих элементов:
 
 * **Подписка Azure**. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * <seg>
   **Рабочая станция с Azure PowerShell**.</seg> Обратитесь к разделу [Установка и использование Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/).
 
 ## <a name="create-hbase-cluster-into-virtual-network"></a>Создание кластера HBase в виртуальной сети
-В этом разделе мы создадим кластер HBase под управлением Linux с зависимой учетной записью службы хранилища Azure в виртуальной сети Azure c помощью [шаблона Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md). Сведения о других способах создания кластеров и их параметрах см. в статье [Создание кластеров Hadoop под управлением Linux в HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Дополнительные сведения о создании в HDInsight кластеров Hadoop с помощью шаблонов ARM см. в статье [Создание кластеров Hadoop под управлением Windows в HDInsight с помощью шаблонов Azure Resource Manager](hdinsight-hadoop-create-windows-clusters-arm-templates.md).
+В этом разделе создать кластер HBase под управлением Linux с hello зависимых учетной записи хранилища Azure в виртуальной сети Azure с помощью [шаблона Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md). Для других методов создания кластера и см. в основные сведения о настройке hello, [HDInsight, создания кластеров](hdinsight-hadoop-provision-linux-clusters.md). Дополнительные сведения об использовании шаблона toocreate Hadoop кластеров в HDInsight, см. в разделе [кластеров создать Hadoop в HDInsight с помощью шаблонов диспетчера ресурсов Azure](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
 
 > [!NOTE]
-> Некоторые свойства жестко заданы в шаблоне. Например:
+> Некоторые свойства жестко запрограммированы в шаблон hello. Например:
 >
 > * **Расположение**: восточный регион США 2.
 > * **Версия кластера**: 3.5.
@@ -53,66 +53,66 @@ ms.lasthandoff: 08/29/2017
 > * **Имя подсети**: subnet1
 > * **Диапазон адресов подсети**: 10.0.0.0/24.
 >
-> Заполнитель &lt;имя_кластера> будет заменен именем кластера, которое вы укажете при использовании шаблона.
+> &lt;Имя кластера > заменяется именем кластера hello, указываемые при использовании шаблона hello.
 >
 >
 
-1. Щелкните следующее изображение, чтобы открыть шаблон на портале Azure. Шаблон находится в [шаблонах быстрого запуска Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
+1. Щелкните hello следующий шаблон hello tooopen изображения в hello портал Azure. Hello шаблон находится в [шаблоны быстрый запуск Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. В колонке **Настраиваемое развертывание** укажите следующие свойства.
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy tooAzure"></a>
+2. Из hello **развертывания пользовательского** колонке введите hello следующие свойства:
 
-   * **Подписка**. Выберите подписку Azure, которая использовалась для создания кластера HDInsight, зависимой учетной записи хранения и виртуальной сети Azure.
+   * **Подписки**: выберите кластер HDInsight подписку Azure, используемую toocreate hello, hello зависимых учетной записи хранилища и hello виртуальной сети Azure.
    * **Группа ресурсов**.Щелкните **Создать** и укажите имя новой группы ресурсов.
-   * **Расположение**. Выберите расположение группы ресурсов.
-   * **Имя_кластера**. Введите имя создаваемого кластера Hadoop.
-   * **Имя для входа и пароль кластера**: имя для входа по умолчанию — **admin**.
-   * **Имя пользователя SSH и пароль**: по умолчанию используется имя **sshuser**.  Это имя можно изменить.
-   * **Я принимаю указанные выше условия**. Установите этот флажок.
-3. Щелкните **Приобрести**. Процесс создания кластера занимает около 20 минут. Когда кластер будет создан, щелкните его колонку на портале, чтобы открыть его.
+   * **Расположение**: выберите расположение для группы ресурсов hello.
+   * **Имя_кластера**: Введите имя для hello Hadoop кластера toobe создан.
+   * **Имя входа и пароль кластера**: имя для входа по умолчанию hello **администратора**.
+   * **SSH имя пользователя и пароль**: имя пользователя по умолчанию hello **sshuser**.  Это имя можно изменить.
+   * **Я принимаю условия hello, указанных выше, toohello**: (флажок)
+3. Щелкните **Приобрести**. Это занимает около toocreate около 20 минут кластера. После создания кластера hello hello кластера колонки в hello портала tooopen можно щелкнуть его.
 
-После завершения работы с этим руководством кластер можно удалить. В случае с HDInsight ваши данные хранятся в службе хранилища Azure, что позволяет безопасно удалить неиспользуемый кластер. Плата за кластеры HDInsight взимается, даже когда они не используются. Поскольку стоимость кластера во много раз превышает стоимость хранилища, экономически целесообразно удалять неиспользуемые кластеры. Инструкции по удалению кластера см. в статье [Управление кластерами Hadoop в HDInsight с помощью портала Azure](hdinsight-administer-use-management-portal.md#delete-clusters).
+После завершения учебника hello, может потребоваться toodelete hello кластера. В случае с HDInsight ваши данные хранятся в службе хранилища Azure, что позволяет безопасно удалить неиспользуемый кластер. Плата за кластеры HDInsight взимается, даже когда они не используются. Поскольку плата hello для кластера hello много раз больше, чем hello плата за хранилище, экономически выгодно toodelete кластеры, когда они не используются. Hello инструкции удаления кластера см. в разделе [кластеров управление Hadoop в HDInsight с помощью hello портал Azure](hdinsight-administer-use-management-portal.md#delete-clusters).
 
-Чтобы начать работу с новым HBase кластером, можно использовать процедуры, которые представлены в разделе [Приступая к работе с HBase с Hadoop в HDInsight](hdinsight-hbase-tutorial-get-started.md).
+Работа с на новый кластер HBase toobegin можно использовать процедуры hello в [приступить к работе с базой HBase на Hadoop в HDInsight](hdinsight-hbase-tutorial-get-started.md).
 
-## <a name="connect-to-the-hbase-cluster-using-hbase-java-rpc-apis"></a>Подключитесь к кластеру HBase с помощью API-интерфейсов удаленного вызова процедур Java HBase
-1. Создайте виртуальную машину IaaS в той же виртуальной сети Azure и той же подсети. Инструкции по созданию виртуальной машины IaaS см. в статье [Создание первой виртуальной машины Windows на портале Azure](../virtual-machines/virtual-machines-windows-hero-tutorial.md). При выполнении действий, описанных в этом документе, необходимо использовать следующие значения для конфигурации сети.
+## <a name="connect-toohello-hbase-cluster-using-hbase-java-rpc-apis"></a>Подключите кластер HBase toohello, с помощью API-интерфейсов RPC Java HBase
+1. Создавать инфраструктуру как услугу (IaaS) виртуальной машины в одной виртуальной сети Azure hello и hello одной подсети. Инструкции по созданию виртуальной машины IaaS см. в статье [Создание первой виртуальной машины Windows на портале Azure](../virtual-machines/virtual-machines-windows-hero-tutorial.md). При следующие hello в данном пошаговом руководстве, необходимо использовать следующие значения для конфигурации сети hello hello:
 
    * **Виртуальная сеть**: &lt;имя_кластера>-vnet.
    * **Подсеть**: subnet1
 
    > [!IMPORTANT]
-   > Замените &lt;имя_кластера> именем, использованным при создании кластера HDInsight на предыдущих шагах.
+   > Замените &lt;имя кластера > с именем hello использовалась при создании кластера HDInsight hello в предыдущих шагах.
    >
    >
 
-   Благодаря этим значениям виртуальная машина будет размещена в той же виртуальной сети и подсети, что и кластер HDInsight. Эта конфигурация позволит им напрямую взаимодействовать друг с другом. Существует возможность создания кластера HDInsight с пустым граничным узлом. Граничный узел можно использовать для управления кластером.  Подробные сведения см. в статье [Использование пустых граничных узлов в HDInsight](hdinsight-apps-use-edge-node.md).
+   При использовании этих значений hello виртуальная машина размещается в hello же виртуальной сети и подсети, что и кластер HDInsight hello. Эта конфигурация позволяет им toodirectly взаимодействовать друг с другом. Нет toocreate способом с пустым граничного узла кластера HDInsight. Hello граничного узла может быть кластера используется toomanage hello.  Подробные сведения см. в статье [Использование пустых граничных узлов в HDInsight](hdinsight-apps-use-edge-node.md).
 
-2. При использовании Java-приложения для удаленного подключения к HBase необходимо использовать полное доменное имя (FQDN). Чтобы определить это, вам необходимо получить DNS-суффикс кластера HBase. Для этого используйте один из следующих методов.
+2. При использовании tooHBase tooconnect приложения Java удаленно, необходимо использовать hello полное доменное имя (FQDN). toodetermine это, необходимо получить hello подключения DNS-суффикс hello HBase кластера. toodo, можно использовать один из следующих методов hello:
 
-   * С помощью веб-браузера сделайте вызов Ambari.
+   * Используйте Web браузера toomake вызова Ambari:
 
-     Перейдите по адресу: https://&lt;имя_кластера>.azurehdinsight.net/api/v1/clusters/&lt;имя_кластера>/hosts?minimal_response=true. Он вернет файл JSON с DNS-суффиксами.
-   * Используйте веб-сайт Ambari.
+     Обзор toohttps: / /&lt;Имя_кластера >.azurehdinsight.net/api/v1/clusters/&lt;Имя_кластера > / размещает? minimal_response = true. Он включает файл JSON со hello DNS-суффиксов.
+   * Используйте веб-сайт Ambari hello:
 
-     1. Перейдите по адресу: https://&lt;имя_кластера>.azurehdinsight.net.
-     2. В верхнем меню щелкните **Hosts** (Узлы).
-   * Используйте Curl, чтобы выполнить вызовы REST:
+     1. Обзор слишком https://&lt;Имя_кластера >. azurehdinsight.net.
+     2. Нажмите кнопку **узлов** hello верхнем меню.
+   * Используйте вызовы REST перелистывание toomake:
 
     ```bash
         curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
     ```
 
-     В возвращенных данных JSON найдите запись «host_name». Она содержит полные доменные имена узлов в кластере. Например:
+     В hello вернул данные нотации объектов JavaScript (JSON), найдите запись «host_name» hello. Он содержит hello полное доменное имя для hello узлов в кластере hello. Например:
 
          ...
          "host_name": "wordkernode0.<clustername>.b1.cloudapp.net
          ...
 
-     Часть доменного имени, начинающаяся с имени кластера, является DNS-суффиксом. Например, mycluster.b1.cloudapp.net.
+     Hello часть hello доменных имен, начинающихся с имени кластера hello является hello DNS-суффикс. Например, mycluster.b1.cloudapp.net.
    * Использование Azure PowerShell
 
-     Используйте следующий скрипт Azure PowerShell для регистрации функции **Get-ClusterDetail** , которую можно использовать для возвращения DNS-суффикса.
+     Используйте hello, следуя hello tooregister скрипт Azure PowerShell **Get ClusterDetail** функции, которая может быть DNS-суффикс используется tooreturn hello:
 
     ```powershell
         function Get-ClusterDetail(
@@ -132,29 +132,29 @@ ms.lasthandoff: 08/29/2017
         {
         <#
             .SYNOPSIS
-            Displays information to facilitate an HDInsight cluster-to-cluster scenario within the same virtual network.
+            Displays information toofacilitate an HDInsight cluster-to-cluster scenario within hello same virtual network.
             .Description
-            This command shows the following 4 properties of an HDInsight cluster:
+            This command shows hello following 4 properties of an HDInsight cluster:
             1. ZookeeperQuorum (supports only HBase type cluster)
-                Shows the value of HBase property "hbase.zookeeper.quorum".
+                Shows hello value of HBase property "hbase.zookeeper.quorum".
             2. ZookeeperClientPort (supports only HBase type cluster)
-                Shows the value of HBase property "hbase.zookeeper.property.clientPort".
+                Shows hello value of HBase property "hbase.zookeeper.property.clientPort".
             3. HBaseRestServers (supports only HBase type cluster)
-                Shows a list of host FQDNs that run the HBase REST server.
+                Shows a list of host FQDNs that run hello HBase REST server.
             4. FQDNSuffix (supports all cluster types)
-                Shows the FQDN suffix of hosts in the cluster.
+                Shows hello FQDN suffix of hosts in hello cluster.
             .EXAMPLE
             Get-ClusterDetail -ClusterDnsName {clusterDnsName} -Username {username} -Password {password} -PropertyName ZookeeperQuorum
-            This command shows the value of HBase property "hbase.zookeeper.quorum".
+            This command shows hello value of HBase property "hbase.zookeeper.quorum".
             .EXAMPLE
             Get-ClusterDetail -ClusterDnsName {clusterDnsName} -Username {username} -Password {password} -PropertyName ZookeeperClientPort
-            This command shows the value of HBase property "hbase.zookeeper.property.clientPort".
+            This command shows hello value of HBase property "hbase.zookeeper.property.clientPort".
             .EXAMPLE
             Get-ClusterDetail -ClusterDnsName {clusterDnsName} -Username {username} -Password {password} -PropertyName HBaseRestServers
-            This command shows a list of host FQDNs that run the HBase REST server.
+            This command shows a list of host FQDNs that run hello HBase REST server.
             .EXAMPLE
             Get-ClusterDetail -ClusterDnsName {clusterDnsName} -Username {username} -Password {password} -PropertyName FQDNSuffix
-            This command shows the FQDN suffix of hosts in the cluster.
+            This command shows hello FQDN suffix of hosts in hello cluster.
         #>
 
             $DnsSuffix = ".azurehdinsight.net"
@@ -206,33 +206,33 @@ ms.lasthandoff: 08/29/2017
         }
     ```
 
-     После запуска сценария Azure PowerShell используйте следующую команду, чтобы вернуть DNS-суффикс с помощью функции **Get-ClusterDetail** . При использовании этой команды укажите имя кластера HDInsight HBase, имя и пароль администратора.
+     После выполнения скрипта hello Azure PowerShell, используйте hello следующая команда tooreturn hello DNS-суффикс, используя hello **Get ClusterDetail** функции. При использовании этой команды укажите имя кластера HDInsight HBase, имя и пароль администратора.
 
     ```powershell
         Get-ClusterDetail -ClusterDnsName <yourclustername> -PropertyName FQDNSuffix -Username <clusteradmin> -Password <clusteradminpassword>
     ```
 
-     Эта команда возвращает DNS-суффикс. Например, **yourclustername.b4.internal.cloudapp.net**.
+     Эта команда возвращает DNS-суффикс hello. Например, **yourclustername.b4.internal.cloudapp.net**.
 
 
 <!--
-3.    Change the primary DNS suffix configuration of the virtual machine. This enables the virtual machine to automatically resolve the host name of the HBase cluster without explicit specification of the suffix. For example, the *workernode0* host name will be correctly resolved to workernode0 of the HBase cluster.
+3.    Change hello primary DNS suffix configuration of hello virtual machine. This enables hello virtual machine tooautomatically resolve hello host name of hello HBase cluster without explicit specification of hello suffix. For example, hello *workernode0* host name will be correctly resolved tooworkernode0 of hello HBase cluster.
 
-    To make the configuration change:
+    toomake hello configuration change:
 
-    1. RDP into the virtual machine.
-    2. Open **Local Group Policy Editor**. The executable is gpedit.msc.
+    1. RDP into hello virtual machine.
+    2. Open **Local Group Policy Editor**. hello executable is gpedit.msc.
     3. Expand **Computer Configuration**, expand **Administrative Templates**, expand **Network**, and then click **DNS Client**.
-    - Set **Primary DNS Suffix** to the value obtained in step 2:
+    - Set **Primary DNS Suffix** toohello value obtained in step 2:
 
         ![hdinsight.hbase.primary.dns.suffix][img-primary-dns-suffix]
     4. Click **OK**.
-    5. Reboot the virtual machine.
+    5. Reboot hello virtual machine.
 -->
 
-Чтобы проверить обмен данными между виртуальной машиной и кластером HBase, используйте следующую команду `ping headnode0.<dns suffix>` на виртуальной машине. Например, ping headnode0.mycluster.b1.cloudapp.net.
+tooverify, hello виртуальной машины могут взаимодействовать с hello кластер HBase, используйте команду hello `ping headnode0.<dns suffix>` hello виртуальной машины. Например, ping headnode0.mycluster.b1.cloudapp.net.
 
-Чтобы использовать эту информацию в Java-приложении, для создания приложения можно придерживаться шагов, представленных в разделе [Использование Maven для создания Java-приложений, использующих HBase с HDInsight (Hadoop)](hdinsight-hbase-build-java-maven.md) . Чтобы приложение подключилось к удаленному серверу HBase, измените файл **hbase-site.xml** в этом примере, чтобы использовать полное доменное имя для ZooKeeper. Например:
+toouse эту информацию в приложении Java, можно выполнить действия hello в [Maven использовать toobuild Java приложений, использующих HBase с HDInsight (Hadoop)](hdinsight-hbase-build-java-maven.md) toocreate приложения. приложение hello toohave подключения удаленного сервера HBase tooa, измените hello **hbase-site.xml** файл в этот примере toouse hello полное доменное имя для Zookeeper. Например:
 
     <property>
         <name>hbase.zookeeper.quorum</name>
@@ -240,12 +240,12 @@ ms.lasthandoff: 08/29/2017
     </property>
 
 > [!NOTE]
-> Чтобы получить дополнительную информацию о разрешении имен в виртуальных сетях Azure, а также об использовании своего​ собственного DNS-сервера, ознакомьтесь со статьей [Разрешение имен для ВМ и экземпляров ролей](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+> Дополнительные сведения о разрешении имен в виртуальных сетях Azure включая то, как toouse собственного DNS-сервера в разделе [разрешения имен (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 >
 >
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Из этого руководства вы узнали, как создать кластер HBase. Дополнительные сведения см. на следующих ресурсах:
+В этом учебнике вы узнали, каким образом toocreate кластер HBase. toolearn более, см.:
 
 * [Приступая к работе с HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [Использование пустых граничных узлов в HDInsight](hdinsight-apps-use-edge-node.md)
@@ -296,7 +296,7 @@ ms.lasthandoff: 08/29/2017
 
 [img-dns-surffix]: ./media/hdinsight-hbase-provision-vnet/DNSSuffix.png
 [img-primary-dns-suffix]: ./media/hdinsight-hbase-provision-vnet/PrimaryDNSSuffix.png
-[img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "Подготовка сведений для нового кластера HBase"
-[img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Использование действия сценария для настройки кластера HBase"
+[img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "Подробности подготовить новый кластер HBase hello"
+[img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Используйте действие скрипта toocustomize кластер HBase"
 
 [azure-preview-portal]: https://portal.azure.com

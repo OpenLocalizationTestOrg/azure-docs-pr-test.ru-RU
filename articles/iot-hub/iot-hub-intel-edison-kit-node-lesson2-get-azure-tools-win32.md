@@ -1,6 +1,6 @@
 ---
-title: "Подключение Intel Edison (Node) к Интернету вещей Azure. Урок 2. Получение инструментов Azure (Windows) | Документация Майкрософт"
-description: "С помощью этой статьи вы установите Python и интерфейс командной строки Azure (Azure CLI) в Windows 7 и более поздних версиях."
+title: "Подключения Edison Intel (узел) tooAzure IoT — Lesson 2: инструменты Azure (Windows) | Документы Microsoft"
+description: "Установите Python и hello Azure командной строки (CLI Azure) на Windows 7 и более поздних версиях."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 7257fe98fa1075456de620ca46b4e10c34e06574
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0a2e941119f9106add708591d52f32eb9ed08451
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-azure-tools-windows-7-and-later"></a>Получение инструментов Azure (Windows 7 и более поздние версии)
 > [!div class="op_single_selector"]
@@ -30,46 +30,46 @@ ms.lasthandoff: 07/11/2017
 > * [macOS 10.10][macos]
 
 ## <a name="what-you-will-do"></a>Выполняемая задача
-Установка Python и интерфейса командной строки Azure (Azure CLI). Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок][troubleshooting].
+Установите Python и hello Azure командной строки (CLI Azure). Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Новые знания
 В этой статье вы узнаете следующее:
-* Как установить Python.
-* Как установить интерфейс командной строки Azure.
+* Как tooinstall Python.
+* Как tooinstall hello Azure CLI.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 * Компьютер под управлением Windows с подключением к Интернету.
 * Активная подписка Azure. Если ее нет, можно создать [бесплатную пробную учетную запись Azure](http://azure.microsoft.com/pricing/free-trial/) всего за несколько минут.
 
 ## <a name="install-python"></a>Установка Python
-[Установите Python](https://www.python.org/downloads/) на компьютере под управлением Windows. Установить можно такие версии Python: 2.7, 3.4 или 3.5. Это руководство основано на версии Python 2.7. Если вы уже установили Python, перейдите к следующему разделу и установите интерфейс командной строки Azure.
+[Установите Python](https://www.python.org/downloads/) на компьютере под управлением Windows. Установить можно такие версии Python: 2.7, 3.4 или 3.5. Это руководство основано на версии Python 2.7. Если Python уже установлен, перейдите следующему разделу toohello и установите hello Azure CLI.
 
-Кроме того, в системную переменную среды `PATH` необходимо добавить путь к папкам установки python.exe и pip.exe. По умолчанию файл python.exe устанавливается в папку `C:\Python27`, а pip.exe — в `C:\Python27\Scripts`.
+Необходимо также tooadd hello путь к папкам hello, где python.exe и pip.exe — установленных toohello системы `PATH` переменной среды. По умолчанию файл python.exe устанавливается в папку `C:\Python27`, а pip.exe — в `C:\Python27\Scripts`.
 
-## <a name="install-the-azure-cli"></a>Установка Azure CLI
-Azure CLI — это кроссплатформенное средство для работы с командной строкой. С его помощью можно подготавливать ресурсы для Azure и управлять ими непосредственно в командной строке.
+## <a name="install-hello-azure-cli"></a>Установка hello Azure CLI
+Hello Azure CLI обеспечивает многоплатформенного командной строки для Azure. Работа непосредственно из вашего tooprovision командной строки и управления ресурсами.
 
-Для установки Azure CLI выполните следующие действия:
+tooinstall hello Azure CLI, выполните следующие действия.
 
 1. Откройте окно командной строки с правами администратора.
-2. Выполните следующие команды:
+2. Выполните следующие команды hello.
 
    ```cmd
    pip install --upgrade azure-cli
    pip install --upgrade azure-cli-iot
    ```
-3. Проверьте установку, выполнив следующую команду:
+3. Проверка установки hello, выполнив следующую команду hello:
 
    ```cmd
    az iot -h
    ```
 
-Если установка прошла успешно, отобразятся следующие сведения:
+Вы увидите, что hello следующие выходные данные, если hello успешно установлен.
 
 ![Выходные данные, указывающие на успешное выполнение](media/iot-hub-intel-edison-lessons/lesson2/az_iot_help_win.png)
 
 ## <a name="summary"></a>Сводка
-Вы установили интерфейс командной строки Azure. Перейдите к следующей задаче: создайте Центр Интернета вещей Azure и удостоверение устройства с помощью интерфейса командной строки Azure.
+После установки hello Azure CLI. Следующего задач toocreate вашу личность Azure IoT hub и устройств с помощью hello Azure CLI.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Создание Центра Интернета вещей и регистрация Intel Edison][create-your-iot-hub-and-register-intel-edison]

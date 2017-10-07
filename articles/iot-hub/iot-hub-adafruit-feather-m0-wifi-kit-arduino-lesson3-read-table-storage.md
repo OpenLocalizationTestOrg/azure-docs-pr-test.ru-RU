@@ -1,12 +1,12 @@
 ---
-title: "Подключение Arduino (C) к Интернету вещей Azure. Урок 3. Хранилище таблиц | Документация Майкрософт"
-description: "Отслеживайте сообщения, передаваемые с устройства в облако, по мере их записывания в хранилище таблиц Azure."
+title: "Connect Arduino (C) tooAzure IoT — занятия 3: хранилище таблиц | Документы Microsoft"
+description: "Они записываются в хранилище таблиц Azure tooyour наблюдать за сообщений hello устройства в облако."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "данные в облаке, коллекция облачных данных, облачная служба Интернета вещей, данные Интернета вещей"
+keywords: "данные в облако hello, сбор данных облака, iot облачной службы, iot данных"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: 386083e0-0dbb-48c0-9ac2-4f8fb4590772
@@ -17,38 +17,38 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 29fb97f5cf0669acb9e68d8a829294ee64c9cf04
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9fef18bc9e780e78d95f0c643a5f193125130a5b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="read-messages-persisted-in-azure-storage"></a>Чтение сообщений, сохраненных в службе хранилища Azure
 ## <a name="what-you-will-do"></a>Выполняемая задача
-Отслеживание сообщений, передаваемых с устройства в облако (то есть с платы Adafruit Feather M0 WiFi Arduino в центр Интернета вещей), по мере их записывания в Хранилище таблиц Azure.
+Монитор hello устройства в облако сообщений, отправляемых из вашего центра IoT Adafruit Растушевка M0 Wi-Fi Arduino tooyour плата как сообщений hello записываются tooyour хранилище таблиц Azure.
 
-Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок][troubleshooting].
+Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Новые знания
-В этой статье вы узнаете, как использовать задачу gulp read-message для чтения сообщений, сохраненных в хранилище таблиц Azure.
+В этой статье вы узнаете, как toouse hello gulp задачи чтения сообщений tooread сообщения сохраняются в хранилище таблиц Azure.
 
 ## <a name="what-you-need"></a>Необходимые элементы
-Прежде чем начинать, необходимо успешно выполнить инструкции статьи, посвященной [запуску примера приложения Azure для включения индикатора на плате Arduino][run-blink-application].
+Прежде чем запустить этот процесс, необходимо успешно выполнить [запустить пример приложения hello Azure blink на доске Arduino][run-blink-application].
 
 ## <a name="read-new-messages-from-your-storage-account"></a>Чтение новых сообщений из учетной записи хранения
-В предыдущей статье вы запустили пример приложения на плате Arduino. Пример приложения отправлял сообщения в центр Интернета вещей Azure. Сообщения, отправленные в центр Интернета вещей, сохраняются в хранилище таблиц Azure с помощью приложения-функции Azure. Для чтения сообщений из хранилища таблиц Azure потребуется строка подключения к хранилищу Azure.
+В предыдущей статье hello на доске Arduino запуска примера приложения. Пример приложения Hello отправлено центр Azure IoT tooyour сообщений. Центр IoT tooyour сообщения Hello хранятся в хранилище таблиц Azure через приложение Azure функции hello. Вы должны сообщений tooread строку соединения хранения Azure hello от хранилища таблиц Azure.
 
-Чтобы прочитать сообщения, сохраненные в хранилище таблиц Azure, выполните следующие действия:
+tooread сообщения, хранящиеся в хранилище таблиц Azure, выполните следующие действия.
 
-1. Получите строку подключения, выполнив следующую команду:
+1. Получите строку подключения hello, выполнив следующие команды hello:
 
    ```bash
    az storage account list -g iot-sample --query [].name
    az storage account show-connection-string -g iot-sample -n {storage name}
    ```
 
-   Первая команда получает имя `storage name`, которое используется во второй команде для получения строки подключения. Используйте `iot-sample` в качестве значения `{resource group name}`, если вы не меняли это значение.
-2. Откройте файл конфигурации `config-arduino.json` в Visual Studio Code, выполнив следующую команду.
+   Первая команда Hello получает hello `storage name` , используемый в hello второй команды tooget hello строки подключения. Используйте `iot-sample` в качестве значения hello `{resource group name}` Если вы не изменили значение hello.
+2. Привет открыть файл конфигурации `config-arduino.json` в коде Visual Studio, выполнив следующую команду hello:
 
    ```bash
    # For Windows command prompt
@@ -57,26 +57,26 @@ ms.lasthandoff: 07/11/2017
    # For MacOS or Ubuntu
    code ~/.iot-hub-getting-started/config-arduino.json
    ```
-3. Замените `[Azure storage connection string]` строкой подключения, полученной на шаге 1.
-4. Сохраните файл `config-arduino.json`.
-5. Отправьте сообщения еще раз и считайте их из хранилища таблиц Azure, выполнив следующую команду.
+3. Замените `[Azure storage connection string]` со строкой подключения hello, полученный на шаге 1.
+4. Сохранить hello `config-arduino.json` файла.
+5. Попытку отправки сообщений и их чтения из хранилища таблиц Azure, выполнив следующую команду hello:
 
    ```bash
    gulp run --read-storage
 
-   # You can monitor the serial port by running listen task:
+   # You can monitor hello serial port by running listen task:
    gulp listen
 
    # Or you can combine above two gulp tasks into one:
    gulp run --read-storage --listen
    ```
 
-   Логика чтения из хранилища таблиц Azure содержится в файле `azure-table.js`.
+   Hello логику для чтения из хранилища Azure таблицы находится в hello `azure-table.js` файла.
 
    ![gulp run --read-storage][gulp-run]
 
 ## <a name="summary"></a>Сводка
-Вы успешно подключили плату Arduino к центру Интернета вещей в облаке и отправили сообщения с устройства в облако с помощью примера приложения для включения индикатора. Также вы использовали приложение-функцию Azure для сохранения входящих сообщений из Центра Интернета вещей в хранилище таблиц Azure. Теперь можно перейти к отправке сообщений из облака на устройство, т. е. из Центра Интернета вещей на плату Arduino.
+Вы успешно подключен концентратор IoT tooyour Arduino платы в облаке hello и использовать сообщения hello blink образец приложения toosend устройства в облако. Можно также использовать hello Azure функция приложения toostore входящих IoT hub сообщения tooyour хранилище таблиц Azure. Теперь можно отправлять сообщения облака на устройство из вашего tooyour концентратора IoT Arduino платы.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Отправка сообщений из облака на устройство][send-cloud-to-device-messages]

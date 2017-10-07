@@ -1,6 +1,6 @@
 ---
-title: "Разработка Функций Azure с помощью служб мультимедиа"
-description: "В этой статье описывается разработка Функций Azure с помощью служб мультимедиа на портале Azure."
+title: "aaaDevelop функции Azure с помощью служб мультимедиа"
+description: "В этом разделе показано, как toostart разработки Azure работают с помощью служб мультимедиа hello портал Azure."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,47 +14,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: juliako
-ms.openlocfilehash: 35d539855572fef6c00de614a4e57738a8abd075
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3b2c2fb498fea399c862dfbdb63033d06cabf6d0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="develop-azure-functions-with-media-services"></a>Разработка Функций Azure с помощью служб мультимедиа
 
-В этой статье описывается создание Функций Azure, использующих службы мультимедиа. Функция Azure, определенная в этом разделе, отслеживает контейнер учетной записи хранения **input** на наличие новых MP4-файлов. После попадания файла в контейнер хранилища триггер большого двоичного объекта выполнит функцию.
+В этом разделе показано, как tooget работу с создания функций Azure, использование служб мультимедиа. Hello Azure функцию, определенную в этом разделе отслеживает контейнер учетной записи хранилища с именем **ввода** для новых файлов MP4. После удаления файла в контейнер хранилища hello hello больших двоичных объектов будет выполняться триггер функции hello.
 
-Если вы хотите изучить и развернуть существующие службы "Функции Azure", использующие службы мультимедиа Azure, ознакомьтесь с [функциями Azure для служб мультимедиа](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Этот репозиторий содержит примеры, которые используют службы мультимедиа, чтобы показать рабочие процессы, связанные с приемом содержимого напрямую от хранилища BLOB-объектов, шифрованием и записью содержимого обратно в хранилище BLOB-объектов. В нем также содержатся примеры отслеживания уведомлений заданий через объекты webhook и очереди Azure. Можно также разработать свои функции на основе примеров из репозитория [Функций Azure для служб мультимедиа](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Для развертывания функций нажмите кнопку **Развертывание в Azure**.
+Извлечение tooexplore и развернуть существующих функций Azure, использование служб мультимедиа Azure, [функции Azure Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Этот репозиторий содержит примеры использования служб мультимедиа tooshow рабочие процессы связанных tooingesting содержимого непосредственно из хранилища больших двоичных объектов, кодирования и записи содержимого резервное хранилище tooblob. Он также включает примеры как toomonitor задания уведомления через веб-перехватчиков и очереди Azure. Предусмотрена также возможность разрабатывать в виде примеров hello в hello функций [функции Azure Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) репозитория. функции hello toodeploy, нажмите клавишу hello **развертывание tooAzure** кнопки.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Чтобы создавать функции, вам нужна активная учетная запись Azure. Если у вас ее нет, воспользуйтесь [бесплатной учетной записью Azure](https://azure.microsoft.com/free/).
-- Если вы хотите создать Функции Azure, которые выполняют определенные действия в учетной записи служб мультимедиа Azure (AMS) или прослушивают события, отправляемые службами мультимедиа, вам необходимо создать учетную запись AMS, следуя приведенным [здесь](media-services-portal-create-account.md) инструкциям.
-- Общие сведения об [использовании Функций Azure](../azure-functions/functions-overview.md). Кроме того, ознакомьтесь со следующими разделами:
+- Перед созданием первой функции, необходимо toohave активную учетную запись Azure. Если у вас ее нет, воспользуйтесь [бесплатной учетной записью Azure](https://azure.microsoft.com/free/).
+- Если вы собираетесь функции toocreate Azure, выполнять действия в вашей учетной записи служб мультимедиа Azure (AMS) или прослушивания tooevents, отправленные службами мультимедиа, следует создать учетную запись AMS, как описано [здесь](media-services-portal-create-account.md).
+- Понимание [как toouse Azure функции](../azure-functions/functions-overview.md). Кроме того, ознакомьтесь со следующими разделами:
     - [Привязки HTTP и webhook в функциях Azure](../azure-functions/functions-triggers-bindings.md)
-    - [Настройка параметров приложения-функции Azure](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
+    - [Как параметры приложения Azure функция tooconfigure](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
     
 ## <a name="considerations"></a>Рекомендации
 
--  Функции Azure, стоимость которых рассчитывается, исходя из плана потребления, имеют ограничение времени ожидания 5 минут.
+-  Функции Azure, выполняемых в рамках плана потребления hello имеют ограничения времени ожидания 5 минут.
 
 ## <a name="create-a-function-app"></a>Создание приложения-функции
 
-1. Перейдите на [портал Azure](http://portal.azure.com) и войдите, используя свою учетную запись Azure.
+1. Go toohello [портал Azure](http://portal.azure.com) и войдите с учетной записью Azure.
 2. Создайте приложение-функцию, как описано [здесь](../azure-functions/functions-create-function-app-portal.md).
 
 >[!NOTE]
-> Учетная запись хранения, указанная в переменной среды **StorageConnection** (см. следующий шаг), должна находиться в том же регионе, что и ваше приложение.
+> Учетная запись хранения, указанной в hello **StorageConnection** переменной среды (см. следующий шаг hello) должны находиться в hello же регионе, что ваше приложение.
 
 ## <a name="configure-function-app-settings"></a>Настройка параметров приложения-функции
 
-При разработке функций служб мультимедиа удобно добавить переменные среды, которые будут использоваться в функциях. Чтобы настроить параметры приложения, щелкните ссылку "Настроить параметры приложения". Дополнительную информацию см. в разделе [Настройка параметров приложения-функции Azure](../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
+При разработке функций служб мультимедиа, бывает удобно tooadd переменные среды, которые будут использоваться во всей функции. Параметры приложения tooconfigure, щелкните ссылку настроить параметры приложения hello. Дополнительные сведения см. в разделе [как параметры приложения Azure функция tooconfigure](../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
 
 Например:
 
-![Параметры](./media/media-services-azure-functions/media-services-azure-functions001.png)
+![данных](./media/media-services-azure-functions/media-services-azure-functions001.png)
 
-В функции, определенной в этой статье, предполагается, что в параметрах приложения настроены следующие переменные среды.
+функции Hello, определенные в этой статье предполагается, что у вас есть следующие переменные среды в параметрах приложения hello.
 
 **AMSAccount**: *имя учетной записи AMS* (например, testams).
 
@@ -71,12 +71,12 @@ ms.lasthandoff: 08/29/2017
 После развертывания приложения-функции его можно найти в Функциях Azure **службы приложений**.
 
 1. Выберите свое приложение-функцию и щелкните **Новая функция**.
-2. Выберите язык **C#** и сценарий **Обработка данных**.
-3. Выберите шаблон **BlobTrigger**. Эта функция активируется каждый раз, когда в контейнер **input** передается большой двоичный объект. На следующем шаге в **Path** указывается имя **input**.
+2. Выберите hello **C#** языка и **обработки данных** сценария.
+3. Выберите шаблон **BlobTrigger**. Эта функция будет применяться всякий раз, когда большой двоичный объект загружается в hello **ввода** контейнера. Hello **ввода** имя задается в hello **путь**, в следующем шаге hello.
 
     ![файлов](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
-4. После выбора **BlobTrigger** на странице появится несколько дополнительных элементов управления.
+4. После выбора **BlobTrigger**, некоторые дополнительные элементы управления будут отображаться на странице приветствия.
 
     ![файлов](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
@@ -85,16 +85,16 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="files"></a>Файлы
 
-Функция Azure связана с файлами кода и другими файлами, описание которых представлено в данной статье. По умолчанию она связана с файлами **function.json** и **run.csx** (C#). Вам потребуется добавить файл **project.json**. Ниже приведены определения этих файлов.
+Функция Azure связана с файлами кода и другими файлами, описание которых представлено в данной статье. По умолчанию она связана с файлами **function.json** и **run.csx** (C#). Вам потребуется tooadd **project.json** файла. Hello оставшейся части этого раздела показаны hello определения для этих файлов.
 
 ![файлов](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
-Файл function.json определяет привязки функций и другие параметры конфигурации. В среде выполнения этот файл используется для определения событий, которые необходимо отслеживать, и способа передачи данных в выполнение функции и возвращения данных из него. Дополнительные сведения см. в статье [Привязки HTTP и webhook в функциях Azure](../azure-functions/functions-reference.md#function-code).
+файл function.json Hello определяет привязки функций hello и других параметров конфигурации. Hello среды выполнения использует этот файл toodetermine hello события toomonitor и функционировать как toopass и возврат данных из выполнения. Дополнительные сведения см. в статье [Привязки HTTP и webhook в функциях Azure](../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
->Чтобы функция не выполнялась, задайте для свойства **disabled** значение **true**. 
+>Набор hello **отключено** свойство слишком**true** функции hello tooprevent выполнение. 
 
 
 Ниже приведен пример файла **function.json**.
@@ -114,7 +114,7 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="projectjson"></a>project.json
 
-Файл project.json содержит зависимости. Ниже приведен пример файла **project.json**, содержащего необходимые пакеты служб мультимедиа Azure для .NET из NuGet. Обратите внимание, что номера версий изменятся после выпуска последних обновлений для пакетов, поэтому следует убедиться в наличии самых последних версий. 
+файл project.json Hello содержит зависимости. Ниже приведен пример **project.json** файл, который включает службы мультимедиа Azure .NET hello необходимые пакеты из Nuget. Обратите внимание, что номера версий hello изменится с последними обновлениями toohello пакетов, таким образом следует проверить hello самых последних версий. 
 
     {
       "frameworks": {
@@ -129,14 +129,14 @@ ms.lasthandoff: 08/29/2017
     
 ### <a name="runcsx"></a>run.csx
 
-Это код C# для функции.  Функция, определенная ниже, отслеживает контейнер учетной записи хранения **input** (который был указан в пути) на наличие новых MP4-файлов. После попадания файла в контейнер хранилища триггер большого двоичного объекта выполнит функцию.
+Это hello C# кода для функции.  функции Hello указанных ниже мониторы контейнер учетной записи хранилища с именем **ввода** (это то, что был указан в пути hello) для новых файлов MP4. После удаления файла в контейнер хранилища hello hello больших двоичных объектов будет выполняться триггер функции hello.
     
-В примере, определенном в этом разделе, демонстрируется, 
+демонстрирует пример Hello, заданные в этом разделе 
 
-1. как принять ресурс в учетной записи служб мультимедиа (скопировать большой двоичный объект в ресурс AMS) и 
-2. как отправить задание кодирования, использующее предустановку Adaptive Streaming из Media Encoder Standard.
+1. учетной записи tooingest актива в службы мультимедиа (например, копирование большого двоичного объекта в актив AMS) и 
+2. как toosubmit предварительно задание кодирования, использующего носителя кодировщика Standard «адаптивной потоковой передачи».
 
-В реальном сценарии скорее всего потребуется отслеживать ход выполнения задания, а затем опубликовать закодированный ресурс. Дополнительные сведения см. в статье [Использование объектов Webhook Azure для наблюдения за уведомлениями о заданиях служб мультимедиа с использованием .NET](media-services-dotnet-check-job-progress-with-webhooks.md). Дополнительные примеры приведены в разделе [функций Azure для служб мультимедиа](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
+В сценарии реальной жизни hello скорее всего, вы хотите tootrack ход выполнения задания, а затем опубликовать кодировке актива. Дополнительные сведения см. в разделе [служб мультимедиа Azure использование веб-перехватчиков toomonitor задания уведомления](media-services-dotnet-check-job-progress-with-webhooks.md). Дополнительные примеры приведены в разделе [функций Azure для служб мультимедиа](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
 После определения функции щелкните **Сохранить и запустить**.
 
@@ -171,12 +171,12 @@ ms.lasthandoff: 08/29/2017
 
     public static void Run(CloudBlockBlob myBlob, string fileName, TraceWriter log)
     {
-        // NOTE that the variables {fileName} here come from the path setting in function.json
-        // and are passed into the  Run method signature above. We can use this to make decisions on what type of file
-        // was dropped into the input container for the function. 
+        // NOTE that hello variables {fileName} here come from hello path setting in function.json
+        // and are passed into hello  Run method signature above. We can use this toomake decisions on what type of file
+        // was dropped into hello input container for hello function. 
 
-        // No need to do any Retry strategy in this function, By default, the SDK calls a function up to 5 times for a 
-        // given blob. If the fifth try fails, the SDK adds a message to a queue named webjobs-blobtrigger-poison.
+        // No need toodo any Retry strategy in this function, By default, hello SDK calls a function up too5 times for a 
+        // given blob. If hello fifth try fails, hello SDK adds a message tooa queue named webjobs-blobtrigger-poison.
 
         log.Info($"C# Blob trigger function processed: {fileName}.mp4");
         log.Info($"Using Azure Media Services account : {_mediaServicesAccountName}");
@@ -184,16 +184,16 @@ ms.lasthandoff: 08/29/2017
 
         try
         {
-        // Create and cache the Media Services credentials in a static class variable.
+        // Create and cache hello Media Services credentials in a static class variable.
         _cachedCredentials = new MediaServicesCredentials(
                 _mediaServicesAccountName,
                 _mediaServicesAccountKey);
 
-        // Used the chached credentials to create CloudMediaContext.
+        // Used hello chached credentials toocreate CloudMediaContext.
         _context = new CloudMediaContext(_cachedCredentials);
 
-        // Step 1:  Copy the Blob into a new Input Asset for the Job
-        // ***NOTE: Ideally we would have a method to ingest a Blob directly here somehow. 
+        // Step 1:  Copy hello Blob into a new Input Asset for hello Job
+        // ***NOTE: Ideally we would have a method tooingest a Blob directly here somehow. 
         // using code from this sample - https://azure.microsoft.com/en-us/documentation/articles/media-services-copying-existing-blob/
 
         StorageCredentials mediaServicesStorageCredentials =
@@ -203,25 +203,25 @@ ms.lasthandoff: 08/29/2017
 
         // Step 2: Create an Encoding Job
 
-        // Declare a new encoding job with the Standard encoder
+        // Declare a new encoding job with hello Standard encoder
         IJob job = _context.Jobs.Create("Azure Function - MES Job");
 
-        // Get a media processor reference, and pass to it the name of the 
-        // processor to use for the specific task.
+        // Get a media processor reference, and pass tooit hello name of hello 
+        // processor toouse for hello specific task.
         IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-        // Create a task with the encoding details, using a custom preset
+        // Create a task with hello encoding details, using a custom preset
         ITask task = job.Tasks.AddNew("Encode with Adaptive Streaming",
             processor,
             "Adaptive Streaming",
             TaskOptions.None); 
 
-        // Specify the input asset to be encoded.
+        // Specify hello input asset toobe encoded.
         task.InputAssets.Add(newAsset);
 
-        // Add an output asset to contain the results of the job. 
+        // Add an output asset toocontain hello results of hello job. 
         // This output is specified as AssetCreationOptions.None, which 
-        // means the output asset is not encrypted. 
+        // means hello output asset is not encrypted. 
         task.OutputAssets.AddNew(fileName, AssetCreationOptions.None);
 
         job.Submit();
@@ -266,13 +266,13 @@ ms.lasthandoff: 08/29/2017
     }
 
     /// <summary>
-    /// Creates a new asset and copies blobs from the specifed storage account.
+    /// Creates a new asset and copies blobs from hello specifed storage account.
     /// </summary>
-    /// <param name="blob">The specified blob.</param>
-    /// <returns>The new asset.</returns>
+    /// <param name="blob">hello specified blob.</param>
+    /// <returns>hello new asset.</returns>
     public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, string assetName, TraceWriter log)
     {
-         //Get a reference to the storage account that is associated with the Media Services account. 
+         //Get a reference toohello storage account that is associated with hello Media Services account. 
         StorageCredentials mediaServicesStorageCredentials =
         new StorageCredentials(_storageAccountName, _storageAccountKey);
         _destinationStorageAccount = new CloudStorageAccount(mediaServicesStorageCredentials, false);
@@ -286,7 +286,7 @@ ms.lasthandoff: 08/29/2017
         ILocator destinationLocator = _context.Locators.CreateLocator(LocatorType.Sas, asset, writePolicy);
         CloudBlobClient destBlobStorage = _destinationStorageAccount.CreateCloudBlobClient();
 
-        // Get the destination asset container reference
+        // Get hello destination asset container reference
         string destinationContainerName = (new Uri(destinationLocator.Path)).Segments[1];
         CloudBlobContainer assetContainer = destBlobStorage.GetContainerReference(destinationContainerName);
 
@@ -300,7 +300,7 @@ ms.lasthandoff: 08/29/2017
 
         log.Info("Created asset.");
 
-        // Get hold of the destination blob
+        // Get hold of hello destination blob
         CloudBlockBlob destinationBlob = assetContainer.GetBlockBlobReference(blob.Name);
 
         // Copy Blob
@@ -334,15 +334,15 @@ ms.lasthandoff: 08/29/2017
     }
 ##<a name="test-your-function"></a>Тестирование функции
 
-Чтобы протестировать функцию, необходимо передать MP4-файл в контейнер учетной записи хранения **input**, указанный в строке подключения.  
+tootest функции, необходимые MP4-файл в hello tooupload **ввода** контейнера hello учетной записи хранения, указанной в строке подключения hello.  
 
 ## <a name="next-step"></a>Дальнейшие действия
 
-На этом этапе вы готовы начать разработку приложения служб мультимедиа. 
+На этом этапе вы являются готов toostart разработки приложений служб мультимедиа. 
  
-Дополнительные сведения и полные примеры и решения на основе Функций Azure и Logic Apps с использованием служб мультимедиа Azure, предназначенные для создания рабочих процессов, создающих пользовательское содержимое, можно изучить на [примере интеграции Функций Azure и служб мультимедиа с помощью .NET, приведенном на сайте GitHub](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
+Дополнительные сведения и полный образцы и решений с помощью функции Azure и логика приложений с рабочими процессами создания пользовательского содержимого toocreate служб мультимедиа Azure см. в разделе hello [пример интеграции функций .NET служб мультимедиа на GitHub](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
-Кроме того, ознакомьтесь с разделом [Использование объектов Webhook Azure для наблюдения за уведомлениями о заданиях служб мультимедиа с использованием .NET](media-services-dotnet-check-job-progress-with-webhooks.md). 
+Кроме того, в разделе [служб мультимедиа Azure использование веб-перехватчиков toomonitor задания уведомления с помощью .NET](media-services-dotnet-check-job-progress-with-webhooks.md). 
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

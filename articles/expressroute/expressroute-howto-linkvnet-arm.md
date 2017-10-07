@@ -1,6 +1,6 @@
 ---
-title: "Связывание виртуальной сети с каналом ExpressRoute с помощью PowerShell и Azure | Документация Майкрософт"
-description: "В этом документе содержатся общие сведения о связывании виртуальных сетей с каналами ExpressRoute с помощью модели развертывания Resource Manager и PowerShell."
+title: "Связывание виртуальной сети tooan канал ExpressRoute: PowerShell: Azure | Документы Microsoft"
+description: "Этот документ содержит общие сведения о том, как toolink виртуальных сетей (Vnet) tooExpressRoute каналов с помощью модели развертывания диспетчера ресурсов hello и PowerShell."
 services: expressroute
 documentationcenter: na
 author: ganesr
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2017
 ms.author: ganesr
-ms.openlocfilehash: 8c2f3036f754a98090ab860f95900416690ebf83
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e75a9f6b42fa8e1a579e4f19882ec99b277b545f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Подключение виртуальной сети к каналу ExpressRoute
+# <a name="connect-a-virtual-network-tooan-expressroute-circuit"></a>Подключение виртуальной сети tooan канал ExpressRoute
 > [!div class="op_single_selector"]
 > * [Портал Azure](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
@@ -30,24 +30,24 @@ ms.lasthandoff: 08/03/2017
 > * [PowerShell (классическая модель)](expressroute-howto-linkvnet-classic.md)
 >
 
-Эта статья поможет вам связать виртуальные сети с каналами Azure ExpressRoute с помощью модели развертывания Resource Manager и PowerShell. Виртуальные сети могут входить в одну и ту же подписку или в разные подписки. В этой статье также показано, как обновить связь виртуальной сети. 
+Эта статья поможет вам связать каналы ExpressRoute tooAzure виртуальных сетей (Vnet) с помощью модели развертывания диспетчера ресурсов hello и PowerShell. Виртуальные сети может быть либо в hello же часть другую подписку или подписку. В этой статье также показано, как связать tooupdate виртуальной сети. 
 
 ## <a name="before-you-begin"></a>Перед началом работы
-* Установите последние версии модулей Azure PowerShell. Дополнительные сведения см. в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview).
-* Прежде чем приступить к настройке, изучите [предварительные требования](expressroute-prerequisites.md), [требования к маршрутизации](expressroute-routing.md) и [рабочие процессы](expressroute-workflows.md).
+* Установите последнюю версию hello hello модули Azure PowerShell. Дополнительные сведения см. в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
+* Просмотрите hello [необходимые компоненты](expressroute-prerequisites.md), [требования к маршрутизации](expressroute-routing.md), и [рабочих процессов](expressroute-workflows.md) перед началом настройки.
 * Вам потребуется активный канал ExpressRoute. 
-  * Следуйте инструкциям, чтобы [создать канал ExpressRoute](expressroute-howto-circuit-arm.md) и включить его на стороне поставщика услуг подключения. 
-  * Убедитесь, что для вашего канала настроен частный пиринг Azure. Инструкции по маршрутизации см. в статье [Настройка маршрутизации](expressroute-howto-routing-arm.md). 
-  * Для создания сквозного подключения обязательно настройте частный пиринг Azure, а также пиринг BGP между вашей сетью и сетью Майкрософт.
-  * Вам необходимо создать и полностью подготовить виртуальную сеть и шлюз виртуальной сети. Следуйте инструкциям по [созданию шлюза виртуальной сети для ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Для ExpressRoute используется шлюз виртуальной сети типа ExpressRoute, а не VPN.
+  * Следуйте инструкциям hello слишком[создать канал ExpressRoute](expressroute-howto-circuit-arm.md) и иметь цепи hello, предоставляемой поставщиком соединения. 
+  * Убедитесь, что для вашего канала настроен частный пиринг Azure. В разделе hello [Настройка маршрутизации](expressroute-howto-routing-arm.md) маршрутизации инструкции. 
+  * Убедитесь, что настроен открытого пиринга Azure и hello пиринга BGP между вашей сетью и Майкрософт работает так, чтобы можно было включить подключение начала до конца.
+  * Вам необходимо создать и полностью подготовить виртуальную сеть и шлюз виртуальной сети. Следуйте инструкциям hello слишком[создать шлюз виртуальной сети для ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Шлюз виртуальной сети для ExpressRoute использует hello «ExpressRoute», тип шлюза не VPN.
 
-* К стандартному каналу ExpressRoute можно подключить не более 10 виртуальных сетей. Если используется стандартный канал ExpressRoute, все виртуальные сети должны находиться в одном геополитическом регионе. 
+* Объедините too10 виртуальных сетей tooa стандартные каналом expressroute. Все виртуальные сети должны быть в hello геополитические совпадают при использовании стандартных канал ExpressRoute. 
 
-* Если включить надстройку ExpressRoute Premium, вы сможете подключить к каналу ExpressRoute больше виртуальных сетей, включая сети из других геополитических регионов. Дополнительную информацию о надстройке Premium см. в разделе [Вопросы и ответы](expressroute-faqs.md).
+* Можно связать виртуальных сетей за пределами области геополитические hello объекта hello канал ExpressRoute или подключения большее количество виртуальных сетей tooyour канал ExpressRoute, если вы включили hello ExpressRoute премиальное дополнение. Проверьте hello [часто задаваемые вопросы о](expressroute-faqs.md) Дополнительные сведения о премиальное дополнение hello.
 
 
-## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Подключение к каналу виртуальной сети в той же подписке
-Вы можете связать шлюз виртуальной сети с каналом ExpressRoute, используя следующий командлет. Убедитесь в наличии шлюза виртуальной сети и его готовности к связыванию, прежде чем выполнять командлет.
+## <a name="connect-a-virtual-network-in-hello-same-subscription-tooa-circuit"></a>Подключить виртуальную сеть в Привет одному каналу tooa подписки
+Tooan шлюза виртуальной сети канал ExpressRoute можно подключиться с помощью hello, выполнив командлет. Убедитесь, что шлюз виртуальной сети, hello создается и готов для связывания перед запуском командлета hello:
 
 ```powershell
 $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
@@ -55,13 +55,13 @@ $gw = Get-AzureRmVirtualNetworkGateway -Name "ExpressRouteGw" -ResourceGroupName
 $connection = New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName "MyRG" -Location "East US" -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute
 ```
 
-## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Подключение к каналу виртуальной сети в другой подписке
-Канал ExpressRoute может совместно использоваться несколькими подписками. На рисунке ниже схематично показан способ совместного использования каналов ExpressRoute несколькими подписками.
+## <a name="connect-a-virtual-network-in-a-different-subscription-tooa-circuit"></a>Подключить виртуальную сеть в цепи tooa другой подписке
+Канал ExpressRoute может совместно использоваться несколькими подписками. Следующий рисунок Hello показана простая схема способ управления доступом подходит для каналов ExpressRoute в нескольких подписках.
 
-Каждое маленькое облако внутри большого облака представляет подписки, принадлежащие различным подразделениям одной организации. Любое подразделение в организации может использовать свою собственную подписку для развертывания служб. Кроме того, оно может совместно использовать один выделенный канал ExpressRoute для подключения к корпоративной сети. Владельцем канала ExpressRoute может выступать одно подразделение (в данном примере — ИТ-подразделение). Другие подписки в организации могут использовать канал ExpressRoute.
+Каждый из hello маленькие облака в облако hello является используется toorepresent подписках, которые принадлежат toodifferent отделам в организации. Каждый из отделов hello hello организации можно использовать собственную подписку для развертывания своих служб--, но они могут совместно использовать одной ExpressRoute цепи tooconnect tooyour назад в локальной сети. Одному отделу (в этом примере: ИТ) может быть владельцем hello канал ExpressRoute. Другие подписки в hello организации можно использовать канал ExpressRoute hello.
 
 > [!NOTE]
-> Плата за подключение канала ExpressRoute и использование полосы пропускания будет взиматься с владельца подписки. Полоса пропускания распределяется между всеми виртуальными сетями.
+> Плата за подключение и пропускную способность для hello канал ExpressRoute будет применен toohello владельца подписки. Все виртуальные сети совместно использовать hello же пропускной способности.
 > 
 > 
 
@@ -70,17 +70,17 @@ $connection = New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -R
 
 ### <a name="administration---circuit-owners-and-circuit-users"></a>Администрирование: владельцы канала и его пользователи
 
-Владельцем канала является уполномоченный опытный пользователь ресурса канала ExpressRoute. Владелец канала может создавать разрешения, которые могут быть активированы пользователями канала. Пользователи канала являются владельцами шлюзов виртуальных сетей (которые находятся в разных подписках с каналом ExpressRoute). Пользователи канала могут активировать разрешения (по одному разрешению для каждой виртуальной сети).
+Hello «владелец схемы» зарегистрирован как авторизованный пользователь питания, для hello ресурсов цепь ExpressRoute. Владелец канала Hello можно создать авторизацию, может быть активирован с «канала пользователи». Пользователи канала являются владельцами виртуальной сети hello шлюзов, которые не находятся в одной подписке, как hello канал ExpressRoute. Пользователи канала могут активировать разрешения (по одному разрешению для каждой виртуальной сети).
 
-Владелец канала имеет право изменить или отменить авторизацию в любое время. Отмена разрешения приводит к удалению всех связывающих подключений из подписки, доступ к которой был отменен.
+Владелец канала Hello имеет авторизаций toomodify и revoke power hello в любое время. Отмена авторизации приведет все подключения ссылку, удаляемый из подписки hello, доступ к которым был отозван.
 
 ### <a name="circuit-owner-operations"></a>Действия владельца канала
 
-**Создание разрешения**
+**toocreate авторизации**
 
-Владелец канала создает разрешение. Это приводит к созданию ключа разрешения, который может использоваться пользователем канала для подключения шлюзов виртуальной сети к каналу ExpressRoute. Разрешение действительно только для одного подключения.
+Владелец канала Hello создает авторизации. Это приведет к создание hello ключ авторизации, которое может быть используемые схемы пользователя tooconnect их toohello шлюзы виртуальной сети канал ExpressRoute. Разрешение действительно только для одного подключения.
 
-В следующем фрагменте показано создание разрешения с помощью командлета.
+Hello в следующем фрагменте кода показан командлет как toocreate авторизации:
 
 ```powershell
 $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
@@ -92,7 +92,7 @@ $auth1 = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circu
 ```
 
 
-Ответ будет содержать ключ и состояние разрешения.
+Hello toothis ответ будет содержать ключ авторизации hello и состояние:
 
     Name                   : MyAuthorization1
     Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
@@ -103,18 +103,18 @@ $auth1 = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circu
 
 
 
-**Просмотр разрешений**
+**tooreview авторизации**
 
-Владелец канала может просмотреть все разрешения, выданные для определенного канала, выполнив следующий командлет.
+Владелец канала Hello, можно просмотреть все разрешения, выданные для конкретного канала, выполнив следующий командлет hello.
 
 ```powershell
 $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 $authorizations = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 ```
 
-**Добавление разрешений**
+**tooadd авторизации**
 
-Владелец канала может добавлять разрешения с помощью следующего командлета.
+Владелец канала Hello можно добавить параметры авторизации с помощью hello, выполнив командлет:
 
 ```powershell
 $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
@@ -125,9 +125,9 @@ $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "
 $authorizations = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 ```
 
-**Удаление разрешений**
+**toodelete авторизации**
 
-Владелец канала может отзывать (удалять) разрешения, выданные пользователю, с помощью следующего командлета.
+Владелец канала Hello можно revoke и удаление авторизации пользователя toohello, выполнив следующий командлет hello:
 
 ```powershell
 Remove-AzureRmExpressRouteCircuitAuthorization -Name "MyAuthorization2" -ExpressRouteCircuit $circuit
@@ -136,17 +136,17 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 
 ### <a name="circuit-user-operations"></a>Действия пользователя канала
 
-Пользователь канала должен получить от владельца канала идентификатор однорангового узла и ключ разрешения. Ключ разрешения представляет собой идентификатор GUID.
+пользователь канала Hello должен идентификатор однорангового hello и ключ авторизации от владельца канала hello. ключ авторизации Hello представляет собой идентификатор GUID.
 
-Идентификатор однорангового узла можно проверить с помощью следующей команды.
+Идентификатор однорангового узла можно проверить из hello следующую команду:
 
 ```powershell
 Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
-**Активация разрешения на подключение**
+**tooredeem авторизации подключения**
 
-Пользователь канала может активировать разрешение на связь, выполнив следующий командлет.
+пользователя канала Hello можно выполнить следующий командлет tooredeem hello авторизации:
 
 ```powershell
 $id = "/subscriptions/********************************/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/MyCircuit"    
@@ -154,16 +154,16 @@ $gw = Get-AzureRmVirtualNetworkGateway -Name "ExpressRouteGw" -ResourceGroupName
 $connection = New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName "RemoteResourceGroup" -Location "East US" -VirtualNetworkGateway1 $gw -PeerId $id -ConnectionType ExpressRoute -AuthorizationKey "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 ```
 
-**Освобождение разрешения на подключение**
+**toorelease авторизации подключения**
 
-Разрешение можно освободить, удалив подключение, связывающее канал ExpressRoute и виртуальную сеть.
+Авторизации можно освободить путем удаления соединений hello, связывающий hello цепь ExpressRoute toohello виртуальной сети.
 
 ## <a name="modify-a-virtual-network-connection"></a>Изменение подключения к виртуальной сети
 Вы можете изменить определенные свойства подключения к виртуальной сети. 
 
-**Изменение веса подключения**
+**Вес подключения tooupdate hello**
 
-Виртуальная сеть может подключаться к нескольким каналам ExpressRoute. Одинаковый префикс может быть получен из нескольких каналов ExpressRoute. Чтобы выбрать подключение для отправки трафика, предназначенного для этого префикса, можно изменить значение *RoutingWeight* подключения. Трафик будет отправляться через подключение с самым высоким значением *RoutingWeight*.
+Виртуальная сеть может быть подключенных toomultiple каналы ExpressRoute. Может появиться hello одинаковые префиксы из более чем один канал ExpressRoute. toochoose, какой трафик toosend подключения, предназначенные для этого префикса, вы можете изменить *недопустимо* соединения. Трафик будет отправляться по соединению, hello с наивысшим hello *недопустимо*.
 
 ```powershell
 $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name "MyVirtualNetworkConnection" -ResourceGroupName "MyRG"
@@ -171,7 +171,7 @@ $connection.RoutingWeight = 100
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ```
 
-Диапазон значений *RoutingWeight*: 0 до 32 000. Значение по умолчанию — 0.
+Здравствуйте, диапазон *недопустимо* — 0 too32000. значение по умолчанию Hello — 0.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения об ExpressRoute см. в статье [Вопросы и ответы по ExpressRoute](expressroute-faqs.md).
+Дополнительные сведения об ExpressRoute см. в разделе hello [часто задаваемые вопросы о ExpressRoute](expressroute-faqs.md).

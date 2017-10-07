@@ -1,6 +1,6 @@
 ---
-title: "Разработка для хранилища файлов Azure на языке Java | Документация Майкрософт"
-description: "Узнайте, как разрабатывать приложения и службы Java, использующие хранилище файлов Azure для хранения файлов данных."
+title: "aaaDevelop для хранения файлов Azure с Java | Документы Microsoft"
+description: "Узнайте, как данные файлов toodevelop Java приложений и служб, использующих toostore хранилище файлов Azure."
 services: storage
 documentationcenter: java
 author: robinsh
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: robinsh
-ms.openlocfilehash: 16924599e49990265e07f7a58613756d93c46942
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b50703815daf2c829e7e9a9a4196c31a2b8727e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-for-azure-file-storage-with-java"></a>Разработка для хранилища файлов Azure на языке Java
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/03/2017
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="about-this-tutorial"></a>О данном учебнике
-В этом руководстве мы рассмотрим основы использования Java для разработки приложений и служб, использующих хранилище файлов Azure для хранения данных файлов. В рамках этого руководства мы создадим простое консольное приложение, а также покажем, как выполнять базовые действия с Java и хранилищем файлов Azure.
+Этот учебник продемонстрируют hello основные принципы использования Java toodevelop приложений или служб, которые используют данные файла toostore хранилище файлов Azure. В этом учебнике мы создайте простое консольное приложение и Показать как tooperform базовые действия с хранилищем, Java и файлов Azure:
 
 * Создание и удаление общих папок Azure.
 * Создание и удаление каталогов.
@@ -34,25 +34,25 @@ ms.lasthandoff: 08/03/2017
 * Передача, загрузка и удаление файлов.
 
 > [!Note]  
-> Так как к хранилищу файлов Azure можно обращаться через SMB, вы можете создавать простые приложения, которые получают доступ к общей папке Azure с использованием стандартных классов ввода-вывода в Java. Из этой статьи вы узнаете, как применять в приложениях пакет SDK Java для службы хранилища Azure, который использует [REST API хранилища файлов Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) для взаимодействия с хранилищем файлов Azure.
+> Поскольку хранилище файлов Azure может осуществляться по протоколу SMB, вполне возможно toowrite простых приложений, получающих доступ к папке файлов Azure hello, с помощью стандартных классов ввода-вывода Java hello. В этой статье описывается, как toowrite приложения, использующие hello SDK Java хранилища Azure, которая использует hello [хранилища Azure File API-интерфейса REST](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) tootalk tooAzure хранилища файлов.
 
 ## <a name="create-a-java-application"></a>Создание приложения Java
-Для создания примеров вам потребуется комплект разработчика Java (JDK) и [Пакет SDK для службы хранилища Azure для Java][]. Вам также необходимо создать учетную запись хранилища Azure.
+образцы toobuild hello, необходимо будет hello Java Development Kit (JDK) и hello [пакет SDK хранилища Azure для Java] []. Вам также необходимо создать учетную запись хранилища Azure.
 
-## <a name="setup-your-application-to-use-azure-file-storage"></a>Настройка приложения для работы с хранилищем файлов Azure
-Чтобы использовать API-интерфейсы хранилища Azure, добавьте следующую инструкцию в верхнюю часть файла Java, откуда планируется осуществлять доступ к службе хранилища.
+## <a name="setup-your-application-toouse-azure-file-storage"></a>Настройка вашего приложения toouse хранилища Azure File
+hello toouse хранилища Azure API-интерфейсы, добавить hello, следующая инструкция toohello вверху hello файл Java, где планируется службы хранения hello tooaccess из.
 
 ```java
-// Include the following imports to use blob APIs.
+// Include hello following imports toouse blob APIs.
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.file.*;
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Настройка строки подключения к службе хранилища Azure
-Чтобы начать работу с хранилищем файлов Azure, необходимо подключиться к учетной записи хранения Azure. Для начала потребуется настроить строку подключения, которая будет использоваться для подключения к учетной записи хранилища. Для этого определим статическую переменную.
+toouse хранилища Azure File, необходима учетная запись хранилища Azure tooyour tooconnect. Hello первым шагом будет tooconfigure строку подключения, которая будет использоваться учетная запись хранения tooyour tooconnect. Определим статических переменных toodo.
 
 ```java
-// Configure the connection-string with your values
+// Configure hello connection-string with your values
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account_name;" +
@@ -60,40 +60,40 @@ public static final String storageConnectionString =
 ```
 
 > [!NOTE]
-> Замените your_storage_account_name и your_storage_account_key на фактические значения для вашей учетной записи.
+> Замените your_storage_account_name и your_storage_account_key hello фактические значения для вашей учетной записи.
 > 
 > 
 
-## <a name="connecting-to-an-azure-storage-account"></a>Подключение к учетной записи хранилища Azure
-Чтобы подключиться к учетной записи хранения, необходимо использовать объект **CloudStorageAccount**, передав строку подключения для метода **parse**.
+## <a name="connecting-tooan-azure-storage-account"></a>Учетной записи хранилища Azure tooan подключения
+Учетная запись хранения tooyour tooconnect необходимо toouse hello **CloudStorageAccount** объекта, передавая tooits строка подключения **синтаксический анализ** метод.
 
 ```java
-// Use the CloudStorageAccount object to connect to your storage account
+// Use hello CloudStorageAccount object tooconnect tooyour storage account
 try {
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 } catch (InvalidKeyException invalidKey) {
-    // Handle the exception
+    // Handle hello exception
 }
 ```
 
-**CloudStorageAccount.parse** вызывает прерывание InvalidKeyException, поэтому необходимо поместить его в блок try-catch.
+**CloudStorageAccount.parse** выдает InvalidKeyException, поэтому вам понадобится tooput его внутри try/catch блока.
 
 ## <a name="create-an-azure-file-share"></a>Создание файлового ресурса Azure
-Все файлы и каталоги в хранилище файлов Azure размещаются в контейнере, который называется общей папкой (**Share**). Учетная запись хранения может иметь столько общих папок, насколько позволяет емкость вашей учетной записи. Чтобы получить доступ к общей папке и ее содержимому, необходимо использовать клиент хранилища файлов Azure.
+Все файлы и каталоги в хранилище файлов Azure размещаются в контейнере, который называется общей папкой (**Share**). Учетная запись хранения может иметь столько общих папок, насколько позволяет емкость вашей учетной записи. tooobtain доступа tooa общей папки и ее содержимое, необходимо toouse клиент хранилища файлов Azure.
 
 ```java
-// Create the Azure File storage client.
+// Create hello Azure File storage client.
 CloudFileClient fileClient = storageAccount.createCloudFileClient();
 ```
 
-С помощью клиента хранилища файлов Azure вы получите ссылку на общую папку.
+С помощью клиента хранилища Azure файл hello, это позволяет получить общую папку tooa ссылки.
 
 ```java
-// Get a reference to the file share
+// Get a reference toohello file share
 CloudFileShare share = fileClient.getShareReference("sampleshare");
 ```
 
-Чтобы создать общий ресурс, используйте метод **createIfNotExists** объекта CloudFileShare.
+tooactually создать общий ресурс hello, используйте hello **createIfNotExists** метод объекта CloudFileShare hello.
 
 ```java
 if (share.createIfNotExists()) {
@@ -101,10 +101,10 @@ if (share.createIfNotExists()) {
 }
 ```
 
-На этом этапе объект **share** содержит ссылку на общую папку с именем **sampleshare**.
+На этом этапе **совместное использование** содержит общую папку tooa ссылку с именем **sampleshare**.
 
 ## <a name="delete-an-azure-file-share"></a>Удаление общей папки Azure
-Удалить общую папку можно путем вызова метода **deleteIfExists** объекта CloudFileShare. Ниже приведен пример кода, который выполняет это действие.
+Удаление общей папки выполняется путем вызова hello **deleteIfExists** метод на объекте CloudFileShare. Ниже приведен пример кода, который выполняет это действие.
 
 ```java
 try
@@ -112,10 +112,10 @@ try
     // Retrieve storage account from connection-string.
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the file client.
+    // Create hello file client.
    CloudFileClient fileClient = storageAccount.createCloudFileClient();
 
-   // Get a reference to the file share
+   // Get a reference toohello file share
    CloudFileShare share = fileClient.getShareReference("sampleshare");
 
    if (share.deleteIfExists()) {
@@ -127,13 +127,13 @@ try
 ```
 
 ## <a name="create-a-directory"></a>Создайте каталог
-Вы также можете организовать хранилище, помещая файлы в подкаталоги вместо их размещения в корневом каталоге. Хранилище файлов Azure позволяет создать столько каталогов, сколько допускает учетная запись. В следующем примере кода в корневом каталоге создается вложенный каталог с именем **sampledir** .
+Кроме того, можно организовать хранилища путем помещения файлов в подкаталоги вместо их все в корневом каталоге hello. Хранилище файлов Azure позволяет toocreate как разрешить много каталоги, как будет вашей учетной записи. Приведенный ниже код Hello будет создавать вложенный каталог с именем **sampledir** в корневом каталоге hello.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-//Get a reference to the sampledir directory
+//Get a reference toohello sampledir directory
 CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
 
 if (sampleDir.createIfNotExists()) {
@@ -147,23 +147,23 @@ if (sampleDir.createIfNotExists()) {
 Удаление каталога является достаточно простой задачей, однако следует отметить, что нельзя удалить каталог, по-прежнему содержащий файлы или другие каталоги.
 
 ```java
-// Get a reference to the root directory for the share.
+// Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-// Get a reference to the directory you want to delete
+// Get a reference toohello directory you want toodelete
 CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
 
-// Delete the directory
+// Delete hello directory
 if ( containerDir.deleteIfExists() ) {
     System.out.println("Directory deleted");
 }
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Перечисление файлов и каталогов в файловом ресурсе Azure
-Получить список файлов и каталогов в общей папке довольно просто, вызвав метод **listFilesAndDirectories** по ссылке CloudFileDirectory. Метод возвращает список объектов ListFileItem, с которым вы можете производить дальнейшие действия. Например следующий код отображает все файлы и каталоги, содержащиеся в корневом каталоге.
+Получить список файлов и каталогов в общей папке довольно просто, вызвав метод **listFilesAndDirectories** по ссылке CloudFileDirectory. метод Hello возвращает список объектов ListFileItem, которые можно выполнять итерацию по. В качестве примера hello следующий код будет список файлов и каталогов в корневой каталог hello.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
 for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
@@ -172,19 +172,19 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 ```
 
 ## <a name="upload-a-file"></a>Отправить файл.
-Общая папка Azure содержит по меньшей мере один каталог для размещения файлов (корневой каталог). В этом разделе вы узнаете, как отправить файл из локального хранилища в корневой каталог общего ресурса.
+Общая папка содержит в hello очень бы файл Azure, корневой каталог, где находятся файлы, можно. В этом разделе вы узнаете, как tooupload файла из локального хранилища на hello корневой каталог общего ресурса.
 
-Первым шагом при отправке файла является получение ссылки на каталог, где файл будет находиться. Это делается путем вызова метода **getRootDirectoryReference** объекта общей папки.
+Первым шагом Hello в передаче файла является tooobtain каталог toohello ссылок, где он находится. Это делается путем вызова hello **getRootDirectoryReference** метод hello объекта общей папки.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 ```
 
-Теперь, когда у вас имеется ссылка на корневой каталог общего ресурса, вы можете отправить туда файл с помощью следующего кода.
+Теперь, когда имеется ссылка toohello корневой каталог общего ресурса hello, можно отправить файл на него с помощью hello, следующий код.
 
 ```java
-        // Define the path to a local file.
+        // Define hello path tooa local file.
         final String filePath = "C:\\temp\\Readme.txt";
     
         CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
@@ -192,30 +192,30 @@ CloudFileDirectory rootDir = share.getRootDirectoryReference();
 ```
 
 ## <a name="download-a-file"></a>Скачивание файла
-Одной из наиболее частых операций, которые выполняются с хранилищем файлов Azure, является операция скачивания файлов. В следующем примере происходит скачивание файла SampleFile.txt с последующим отображением его содержимого.
+Одной из более частая операции, которые будут выполняться с хранилища Azure File hello является toodownload файлов. В следующем примере hello hello код загружает SampleFile.txt и отображает его содержимое.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-//Get a reference to the directory that contains the file
+//Get a reference toohello directory that contains hello file
 CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
 
-//Get a reference to the file you want to download
+//Get a reference toohello file you want toodownload
 CloudFile file = sampleDir.getFileReference("SampleFile.txt");
 
-//Write the contents of the file to the console.
+//Write hello contents of hello file toohello console.
 System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>Удаление файла
-Следующая распространенная операция в хранилище файлов Azure — это удаление файлов. Следующий пример программы удаляет файл с именем SampleFile.txt, хранящийся в каталоге с именем **sampledir**.
+Следующая распространенная операция в хранилище файлов Azure — это удаление файлов. Hello следующий код удаляет файл с именем SampleFile.txt, хранящийся в каталоге с именем **sampledir**.
 
 ```java
-// Get a reference to the root directory for the share.
+// Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-// Get a reference to the directory where the file to be deleted is in
+// Get a reference toohello directory where hello file toobe deleted is in
 CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
 
 String filename = "SampleFile.txt"
@@ -228,7 +228,7 @@ if ( file.deleteIfExists() ) {
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Если вы хотите узнать больше о других API-интерфейсах Azure, пожалуйста перейдите по следующим ссылкам.
+Если вы хотите toolearn Дополнительные сведения о других хранилища Azure API-интерфейсы, приведены по следующим ссылкам.
 
 * [Центр разработчика Java](http://azure.microsoft.com/develop/java/)
 * [Пакет SDK для службы хранилища Azure для Java](https://github.com/azure/azure-storage-java)
@@ -236,4 +236,4 @@ if ( file.deleteIfExists() ) {
 * [справочнике по пакету SDK для клиента службы хранилища Azure](http://dl.windowsazure.com/storage/javadoc/)
 * [API-интерфейс REST служб хранилища Azure](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Блог рабочей группы службы хранилища Azure](http://blogs.msdn.com/b/windowsazurestorage/)
-* [Приступая к работе со служебной программой командной строки AzCopy](storage-use-azcopy.md)
+* [Перенесите данные с помощью служебной программы командной строки AzCopy hello](storage-use-azcopy.md)

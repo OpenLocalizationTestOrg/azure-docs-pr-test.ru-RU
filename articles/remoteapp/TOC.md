@@ -25,15 +25,15 @@
 # Практическое руководство
 
 ## [Перенос данных пользователя из Azure RemoteApp](remoteapp-migrate.md)
-## [Миграция в MyCloudIT](remoteapp-migrate-mycloudit.md)
-## [Миграция в Citrix XenApp Essentials](remoteapp-migrate-citrix.md)
+## [Перенос tooMyCloudIT](remoteapp-migrate-mycloudit.md)
+## [Перенос tooCitrix XenApp Essentials](remoteapp-migrate-citrix.md)
 ## Создание коллекции RemoteApp
 ### [Какая коллекция вам нужна?](remoteapp-collections.md)
 ### [Создание облачной коллекции](remoteapp-create-cloud-deployment.md)
 ### [Создание гибридной коллекции](remoteapp-create-hybrid-deployment.md)
 ### [Обновление коллекции](remoteapp-update.md)
 ### [Создание образа RemoteApp](remoteapp-imageoptions.md)
-### [Что такое образ шаблона?](remoteapp-images.md)
+### [Новые возможности в образе шаблона hello](remoteapp-images.md)
 ### [Требования к образам](remoteapp-imagereqs.md)
 ### [Передача образа](remoteapp-uploadimage.md)
 ### [Создание образа на основе виртуальной машины Azure](remoteapp-image-on-azurevm.md)
@@ -41,13 +41,13 @@
 ### [Планирование виртуальной сети](remoteapp-planvnet.md)
 ### [Сведения о портах и URL-адресах](remoteapp-ports.md)
 ### [Проверка виртуальной сети](remoteapp-vnet.md)
-### [Переход в виртуальную сеть Azure](remoteapp-migratevnet.md)
+### [Перенос tooan виртуальной сети Azure](remoteapp-migratevnet.md)
 ## Публикация приложений
-### [Как опубликовать приложение](remoteapp-publish.md)
+### [Как toopublish приложения](remoteapp-publish.md)
 ## Управление пользователями
-### [Как добавлять пользователей](remoteapp-user.md)
+### [Каким образом пользователи tooadd](remoteapp-user.md)
 ### [Настройка Active Directory](remoteapp-ad.md)
-### [Изменение клиента Azure AD](remoteapp-changetenant.md)
+### [Изменение клиента hello Azure AD](remoteapp-changetenant.md)
 ### [Учетные записи пользователей Office 365](remoteapp-o365user.md)
 ### [Обеспечение безопасности данных](remoteapp-secureaccess.md)
 ### [Пользовательские данные](remoteapp-upd.md)

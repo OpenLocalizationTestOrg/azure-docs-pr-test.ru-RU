@@ -1,6 +1,6 @@
 ---
-title: "Передача или копирование настраиваемой виртуальной машины Linux с помощью Azure CLI 2.0 | Документация Майкрософт"
-description: "Передача или копирование настраиваемой виртуальной машины, используя модель развертывания Resource Manager и Azure CLI 2.0."
+title: "копирования пользовательских виртуальной Машины Linux с помощью Azure CLI 2.0 или aaaUpload | Документы Microsoft"
+description: "Загрузки или копирования настраиваемую виртуальную машину с помощью модели развертывания диспетчера ресурсов hello и hello Azure CLI 2.0"
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,19 +15,19 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
-ms.openlocfilehash: 7c297725c26ea6c44403a10ecdcc3542f89f10b4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 79af897120a6ba7f4a427ba6c7d0c31b7b870bd7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Создание виртуальной машины Linux на основе настраиваемого диска с помощью Azure CLI 2.0
+# <a name="create-a-linux-vm-from-custom-disk-with-hello-azure-cli-20"></a>Создайте виртуальную Машину Linux из пользовательского диска с hello Azure CLI 2.0
 
-<!-- rename to create-vm-specialized -->
+<!-- rename toocreate-vm-specialized -->
 
-В этой статье показано, как передать настраиваемый виртуальный жесткий диск (VHD) или скопировать имеющейся VHD в Azure и создавать на основе настраиваемого диска виртуальные машины Linux. Вы можете установить и настроить дистрибутив Linux в соответствии с требованиями, а затем использовать этот VHD для быстрого создания виртуальной машины Azure.
+В этой статье показано, как tooupload настроенного виртуального жесткого диска (VHD) или скопировать существующий VHD в Azure и создания новых виртуальных машин Linux (ВМ) с hello пользовательского диска. Можно установить и настроить требования tooyour дистрибутив Linux и затем использовать этот ДИСК tooquickly создания новой виртуальной машины Azure.
 
-Если необходимо создать несколько виртуальных машин на основе настраиваемого диска, создайте образ на основе виртуальной машины или VHD. Дополнительные сведения см. в статье [Создание пользовательского образа виртуальной машины Azure с помощью интерфейса командной строки](tutorial-custom-images.md).
+Следует toocreate несколько виртуальных машин с настроенные диска следует создать образ виртуальной Машины или виртуального жесткого диска. Дополнительные сведения см. в разделе [создать образ виртуальной машины Azure с помощью hello CLI](tutorial-custom-images.md).
 
 Существует два варианта.
 * [Передача VHD](#option-1-upload-a-specialized-vhd)
@@ -35,7 +35,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="quick-commands"></a>Быстрые команды
 
-При создании виртуальной машины, используя команду [az vm create](/cli/azure/vm#create), на основе настраиваемого или специализированного диска, вы **подключаете** диск (--attach-os-disk), вместо того чтобы указать настраиваемый образ или образ Marketplace (--image). В следующем примере создается виртуальная машина с именем *myVM* на основе управляемого диска *myManagedDisk*, созданного из настраиваемого VHD.
+При создании новой виртуальной Машины с помощью [создания виртуальной машины az](/cli/azure/vm#create) с специальную или специализированного диска вы **присоединения** hello диска (--присоединить os диск) вместо указания нестандартной проверки подлинности или marketplace изображения (--изображения). Hello следующий пример создает Виртуальную машину с именем *myVM* с помощью hello управляемого диска с именем *myManagedDisk* создан из вашего настроенного виртуального жесткого диска:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location eastus --name myVM \
@@ -43,28 +43,28 @@ az vm create --resource-group myResourceGroup --location eastus --name myVM \
 ```
 
 ## <a name="requirements"></a>Требования
-Чтобы выполнить приведенные ниже действия, требуется:
+toocomplete hello следующие действия, необходимо:
 
-* Виртуальная машина Linux, которая была подготовлена для использования в Azure. Раздел [Подготовка виртуальной машины](#prepare-the-vm) этой статьи содержит сведения о том, как найти информацию для конкретного дистрибутива касательно установки агента Linux для Azure (waagent), необходимого для правильной работы виртуальной машины в Azure, и сведения о том, как к ней подключиться по протоколу SSH.
-* VHD-файл на основе имеющегося [рекомендуемого для Azure дистрибутива Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (или см. [сведения о нерекомендованных дистрибутивах](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) на виртуальном диске в формате VHD. Для создания VHD-файлов существует несколько средств.
-  * Установите и настройте [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) или [KVM](http://www.linux-kvm.org/page/RunningKVM), используя VHD в качестве формата образа. При необходимости вы можете [преобразовать образ](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) с помощью команды **qemu-img convert**.
+* Виртуальная машина Linux, которая была подготовлена для использования в Azure. Hello [hello подготовки виртуальной Машины](#prepare-the-vm) данной статьи рассматриваются как toofind дистрибутив определенные сведения об установке hello Azure Linux Agent (waagent) необходимый для toowork ВМ hello должным образом в Azure и вы toobe может tooconnect tooit с помощью SSH.
+* Hello VHD-файл из существующего [дистрибутив Linux в одобренных Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (или в разделе [сведения для распределений, отличных от одобренных](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) tooa виртуальный диск в формате VHD hello. Несколько средств существует toocreate виртуальной Машины и виртуального жесткого диска:
+  * Установка и настройка [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) или [KVM](http://www.linux-kvm.org/page/RunningKVM), отвечающий за toouse виртуальный жесткий ДИСК в формате изображения. При необходимости вы можете [преобразовать образ](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) с помощью команды **qemu-img convert**.
   * Кроме того, можно использовать Hyper-V [в Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) или [Windows Server 2012 и 2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
 > [!NOTE]
-> Более новый формат VHDX не поддерживается в Azure. При создании виртуальной машины укажите формат VHD. При необходимости можно преобразовать диски VHDX в диски VHD с помощью команды [qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) или командлета PowerShell [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx). Кроме того, Azure не поддерживает отправку динамических дисков VHD, поэтому перед отправкой необходимо преобразовать такие диски в статические диски VHD. Для преобразования динамических дисков во время передачи в Azure можно использовать [служебные программы Azure VHD для GO](https://github.com/Microsoft/azure-vhd-utils-for-go) .
+> Hello более новый формат VHDX не поддерживается в Azure. При создании виртуальной Машины, задайте hello формат виртуального жесткого диска. При необходимости можно преобразовать tooVHD диски VHDX с помощью [qemu img преобразовать](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) или hello [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) командлета PowerShell. Кроме того Azure не поддерживает передачи динамических виртуальных жестких дисков, поэтому требуется tooconvert toostatic такие диски VHD перед отправкой. Можно использовать средства, такие как [утилиты Azure виртуального жесткого диска для GO](https://github.com/Microsoft/azure-vhd-utils-for-go) tooconvert динамических дисков во время процесса hello передачи tooAzure.
 > 
 > 
 
 
-* Обязательно установите последнюю версию [Azure CLI 2.0](/cli/azure/install-az-cli2) и войдите в учетную запись Azure с помощью команды [az login](/cli/azure/#login).
+* Убедитесь, что hello последней [Azure CLI 2.0](/cli/azure/install-az-cli2) установлен и войти в систему с учетной записью Azure tooan [входа az](/cli/azure/#login).
 
-В следующих примерах замените имена параметров собственными значениями. Примеры имен параметров: *myResourceGroup*, *mystorageaccount* и *mydisks*.
+В hello следующих примерах замените примеры имен параметров собственные значения. Примеры имен параметров: *myResourceGroup*, *mystorageaccount* и *mydisks*.
 
 <a id="prepimage"> </a>
 
-## <a name="prepare-the-vm"></a>Подготовка виртуальной машины
+## <a name="prepare-hello-vm"></a>Подготовка виртуальной Машины hello
 
-Azure поддерживает различные дистрибутивы Linux (см. раздел [Рекомендованные дистрибутивы](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). В следующих статьях описывается подготовка различных дистрибутивов Linux, которые поддерживаются в Azure.
+Azure поддерживает различные дистрибутивы Linux (см. раздел [Рекомендованные дистрибутивы](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). следующие статьи Hello проводит пользователя через как tooprepare hello различных дистрибутивов Linux, которые поддерживаются в Azure:
 
 * [Подготовка виртуальной машины на основе CentOS для Azure](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Подготовка виртуального жесткого диска Debian для Azure](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -74,33 +74,33 @@ Azure поддерживает различные дистрибутивы Linux
 * [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Информация о нерекомендованных дистрибутивах](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Другие общие советы по подготовке образов Linux для Azure см. в разделе [Общие замечания по установке Linux](create-upload-generic.md#general-linux-installation-notes).
+См. также hello [замечания по установке Linux](create-upload-generic.md#general-linux-installation-notes) Общие рекомендации по подготовке образов Linux для Azure.
 
 > [!NOTE]
-> [Соглашение об уровне обслуживания платформы Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) применяется к виртуальным машинам, работающим под управлением Linux, только в том случае, если используется один из рекомендуемых дистрибутивов из раздела "Поддерживаемые версии" статьи [Linux в Azure — рекомендованные дистрибутивы](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) с заданными параметрами конфигурации.
+> Hello [платформы Azure соглашения об уровне ОБСЛУЖИВАНИЯ](https://azure.microsoft.com/support/legal/sla/virtual-machines/) применяется tooVMs под управлением Linux, если один из hello одобренных распределения используется с данными конфигурации hello, как указано в списке поддерживаемых версиях только в [Linux в одобренных Azure Распределения](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 > 
 
 ## <a name="option-1-upload-a-vhd"></a>Вариант 1. Передача VHD
 
-Вы можете передать настраиваемый VHD, выполняемый на локальном компьютере или который вы экспортировали из другого облака. Чтобы создать виртуальную машину Azure с помощью VHD, необходимо передать VHD в учетную запись хранения и создать управляемый диск на основе VHD. 
+Вы можете передать настраиваемый VHD, выполняемый на локальном компьютере или который вы экспортировали из другого облака. виртуальный жесткий ДИСК toocreate hello toouse новой виртуальной Машины Azure, потребуется tooupload hello VHD tooa хранилище учетной записи и создания управляемой дисковой из hello виртуального жесткого диска. 
 
 ### <a name="create-a-resource-group"></a>Создание группы ресурсов
 
-Перед отправкой пользовательского диска и созданием виртуальных машин необходимо создать группу ресурсов с помощью команды [az group create](/cli/azure/group#create).
+Перед загрузкой пользовательского диска и создании виртуальных машин, необходимо сначала toocreate группу ресурсов с [Создание группы az](/cli/azure/group#create).
 
-В указанном ниже примере создается группа ресурсов с именем *myResourceGroup* в расположении *eastus*. [Обзор управляемых дисков Azure](../windows/managed-disks-overview.md).
+Hello следующий пример создает группу ресурсов с именем *myResourceGroup* в hello *eastus* расположение: [Общие сведения о дисках управляемых Azure](../windows/managed-disks-overview.md)
 ```azurecli
 az group create \
     --name myResourceGroup \
     --location eastus
 ```
 
-### <a name="create-a-storage-account"></a>Создайте учетную запись хранения.
+### <a name="create-a-storage-account"></a>Создать учетную запись хранения
 
 Создайте учетную запись хранения для пользовательского диска и виртуальных машин с помощью команды [az storage account create](/cli/azure/storage/account#create). 
 
-В следующем примере создается учетная запись хранения с именем *mystorageaccount* в ранее созданной группе ресурсов:
+Hello следующий пример создает учетную запись хранения с именем *mystorageaccount* в ранее созданную группу ресурсов hello:
 
 ```azurecli
 az storage account create \
@@ -112,9 +112,9 @@ az storage account create \
 ```
 
 ### <a name="list-storage-account-keys"></a>Вывод списка ключей учетной записи хранения
-Azure создает два 512-разрядных ключа доступа для каждой учетной записи хранения. Эти ключи используются при проверке подлинности в учетной записи хранения, например, для выполнения операций записи. Узнайте больше об управлении доступом к хранилищу [здесь](../../storage/common/storage-create-storage-account.md#manage-your-storage-account). Просмотрите список ключей доступа с помощью команды [az storage account keys list](/cli/azure/storage/account/keys#list).
+Azure создает два 512-разрядных ключа доступа для каждой учетной записи хранения. Эти ключи доступа используются при проверке подлинности учетной записи хранилища toohello, как и выполнения операций записи. Дополнительные сведения о [управление доступ здесь toostorage](../../storage/common/storage-create-storage-account.md#manage-your-storage-account). Просмотреть ключи доступа hello с [список ключей учетной записи хранилища az](/cli/azure/storage/account/keys#list).
 
-Просмотрите ключи доступа для созданной учетной записи хранения.
+Просмотр ключей доступа к hello для hello хранилища созданную учетную запись:
 
 ```azurecli
 az storage account keys list \
@@ -122,7 +122,7 @@ az storage account keys list \
     --account-name mystorageaccount
 ```
 
-Выходные данные должны быть следующего вида.
+Hello выходные данные выглядят аналогично:
 
 ```azurecli
 info:    Executing command storage account keys list
@@ -133,12 +133,12 @@ data:    key1  d4XAvZzlGAgWdvhlWfkZ9q4k9bYZkXkuPCJ15NTsQOeDeowCDAdB80r9zA/tUINAp
 data:    key2  Ww0T7g4UyYLaBnLYcxIOTVziGAAHvU+wpwuPvK4ZG0CDFwu/mAxS/YYvAQGHocq1w7/3HcalbnfxtFdqoXOw8g==  Full
 info:    storage account keys list command OK
 ```
-Запишите значение **key1**, так как оно будет использоваться для работы с учетной записью хранения на следующих шагах.
+Запомните или запишите **key1** как он будет использоваться toointeract с вашей учетной записи хранения в hello дальнейшие действия.
 
 ### <a name="create-a-storage-container"></a>Создание контейнера хранилища
-Точно так же, как вы создаете различные каталоги для логической организации локальной файловой системы, вы создаете контейнеры в учетной записи хранения, чтобы упорядочить диски. Учетная запись хранения может содержать любое количество контейнеров. Создайте контейнер с помощью команды [az storage container create](/cli/azure/storage/container#create).
+В hello так же, создания разных каталогах toologically организации локальной файловой системе, создайте контейнерам внутри tooorganize учетной записи хранения на дисках. Учетная запись хранения может содержать любое количество контейнеров. Создайте контейнер с помощью команды [az storage container create](/cli/azure/storage/container#create).
 
-В следующем примере создается контейнер с именем *mydisks*.
+Hello следующий пример создает контейнер с именем *mydisks*:
 
 ```azurecli
 az storage container create \
@@ -146,10 +146,10 @@ az storage container create \
     --name mydisks
 ```
 
-### <a name="upload-the-vhd"></a>Отправка виртуального жесткого диска
+### <a name="upload-hello-vhd"></a>Отправка hello виртуального жесткого диска
 Теперь передайте пользовательский диск с помощью команды [az storage blob upload](/cli/azure/storage/blob#upload). Пользовательский диск передается и хранится как страничный BLOB-объект.
 
-Укажите ключ доступа, созданный на предыдущем шаге контейнер и путь к пользовательскому диску на локальном компьютере:
+Укажите ваш ключ доступа, контейнер hello, созданный на предыдущем шаге hello и затем hello toohello пользовательского диска на локальном компьютере:
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -159,12 +159,12 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd \
     --name myDisk.vhd
 ```
-Передача VHD может занять некоторое время.
+Отправка hello виртуального жесткого диска может занять некоторое время.
 
 ### <a name="create-a-managed-disk"></a>Создание управляемого диска
 
 
-Создайте управляемый диск из VHD, выполнив команду [az disk create](/cli/azure/disk#create). В следующем примере создается управляемый диск с именем *myManagedDisk* из виртуального жесткого диска, переданного в учетную запись хранения и сохраненного в контейнере:
+Создание управляемого диска из hello виртуального жесткого диска с помощью [создать диск az](/cli/azure/disk#create). Hello следующий пример создает управляемого диска с именем *myManagedDisk* из hello виртуальный жесткий ДИСК отправлен tooyour с именем учетной записи хранилища и контейнера:
 
 ```azurecli
 az disk create \
@@ -174,7 +174,7 @@ az disk create \
 ```
 ## <a name="option-2-copy-an-existing-vm"></a>Вариант 2. Копирование имеющейся виртуальной машины
 
-Вы также можете создать настраиваемую виртуальную машину в Azure, а затем скопировать диск операционной системы и подключить его к новой виртуальной машине для создания другой копии. Это нормально для тестирования, однако если вы хотите использовать имеющуюся виртуальную машину Azure в качестве модели для нескольких новых виртуальных машин, вместе этого вам необходимо будет создать **образ**. Дополнительные сведения о создании образа на основе имеющейся виртуальной машины Azure см. в статье [Создание пользовательского образа виртуальной машины Azure с помощью интерфейса командной строки](tutorial-custom-images.md).
+Можно также создать hello настроенных ВМ в Azure, а затем Копировать диск ОС hello и присоединить ее новой виртуальной Машины toocreate tooa другую копию. Это хорошо работает для тестирования, но если требуется toouse существующей ВМ Azure как модель hello несколько новых виртуальных машин, действительно следует создать **изображения** вместо него. Дополнительные сведения о создании образа на основе существующей виртуальной Машине Azure см. в разделе [создать образ виртуальной машины Azure с помощью hello CLI](tutorial-custom-images.md)
 
 ### <a name="create-a-snapshot"></a>Создание моментального снимка
 
@@ -187,17 +187,17 @@ az snapshot create \
     --source "$osDiskId" \
     --name osDiskSnapshot
 ```
-###  <a name="create-the-managed-disk"></a>Создание управляемого диска
+###  <a name="create-hello-managed-disk"></a>Создание управляемого диска hello
 
-Создайте управляемый диск из моментального снимка.
+Создание нового управляемого диска из моментального снимка hello.
 
-Получите идентификатор моментального снимка. В этом примере используется моментальный снимок с именем *osDiskSnapshot*, который находится в группе ресурсов *myResourceGroup*.
+Получите идентификатор hello hello моментального снимка. В этом примере имя моментального снимка hello *osDiskSnapshot* и hello *myResourceGroup* группы ресурсов.
 
 ```azure-cli
 snapshotId=$(az snapshot show --name osDiskSnapshot --resource-group myResourceGroup --query [id] -o tsv)
 ```
 
-Создайте управляемый диск. В этом примере мы создадим управляемый диск с именем *myManagedDisk* на основе моментального снимка размером в 128 ГБ, который хранится в хранилище уровня "Стандартный".
+Создание управляемого диска hello. В этом примере мы создадим управляемый диск с именем *myManagedDisk* на основе моментального снимка размером в 128 ГБ, который хранится в хранилище уровня "Стандартный".
 
 ```azure-cli
 az disk create \
@@ -208,9 +208,9 @@ az disk create \
     --source $snapshotId
 ```
 
-## <a name="create-the-vm"></a>Создание виртуальной машины
+## <a name="create-hello-vm"></a>Создание виртуальной Машины hello
 
-Теперь создайте виртуальную машину, выполнив команду [az vm create](/cli/azure/vm#create), и подключите (--attach-os-disk) управляемый диск как диск операционной системы. В следующем примере создается виртуальная машина с именем *myNewVM* на основе управляемого диска, созданного из отправленного ранее виртуального жесткого диска.
+Теперь создайте ВМ с [создания виртуальной машины az](/cli/azure/vm#create) и присоединения (--присоединить os диск) hello управляемых диск как диск ОС hello. Hello следующий пример создает Виртуальную машину с именем *myNewVM* с помощью hello управляемого диск, созданный из вашего загруженного VHD-файла:
 
 ```azurecli
 az vm create \
@@ -221,8 +221,8 @@ az vm create \
     --attach-os-disk myManagedDisk
 ```
 
-Вы должны иметь возможность подключиться к виртуальной машине по протоколу SSH, используя учетные данные исходной виртуальной машины. 
+После этого можно будет tooSSH в hello виртуальной Машины с помощью учетных данных hello из hello исходной виртуальной Машины. 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-После подготовки и передачи пользовательского виртуального диска ознакомьтесь с дополнительными сведениями об [использовании Resource Manager и шаблонов](../../azure-resource-manager/resource-group-overview.md). Возможно, вам также потребуется [добавить диск данных](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) для новых виртуальных машин. Если на виртуальных машинах запущены приложения, к которым необходим доступ, [откройте порты и конечные точки](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+После подготовки и передачи пользовательского виртуального диска ознакомьтесь с дополнительными сведениями об [использовании Resource Manager и шаблонов](../../azure-resource-manager/resource-group-overview.md). Вы также можете слишком[добавьте диск данных](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) tooyour новые виртуальные машины. При наличии приложений, выполняющихся на виртуальные машины, необходимо tooaccess, нужно убедиться, что слишком[открыть порты и конечные точки](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

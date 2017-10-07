@@ -1,6 +1,6 @@
 ---
-title: "Создание виртуальной машины на основе специализированного диска в Azure | Документация Майкрософт"
-description: "Создание виртуальной машины на основе подключенного специализированного неуправляемого диска в модели развертывания диспетчера ресурсов."
+title: "aaaCreate виртуальной Машины из специализированного диска в Azure | Документы Microsoft"
+description: "Создание новой виртуальной Машины путем присоединения неуправляемые специализированного диска, в модели развертывания диспетчера ресурсов hello."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 974d89aa96cba94fedfd1acbaf4f1d30ac8e6257
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c88f213b6629a6c1d6ff5845e76c2f7719672714
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Создание виртуальной машины на основе специализированного VHD в учетной записи хранения
 
-Создайте виртуальную машину, подключив специализированный неуправляемый диск в качестве диска ОС с помощью PowerShell. Специализированный диск — это копия виртуального жесткого диска виртуальной машины, в которой сохраняются учетные записи пользователей, приложения и другие данные о состоянии исходной виртуальной машины. 
+Создание новой виртуальной Машины путем присоединения специализированный неуправляемым диск как диск ОС hello, с помощью Powershell. Специализированного диска представляет собой копию виртуального жесткого диска из существующей виртуальной Машины, который поддерживает учетные записи пользователей hello, приложений и других данных о состоянии из исходной виртуальной Машины. 
 
 Существует два варианта.
 * [Передача VHD](create-vm-specialized.md#option-1-upload-a-specialized-vhd)
-* [Копирование VHD, имеющейся виртуальной машины Azure](create-vm-specialized.md#option-2-copy-an-existing-azure-vm).
+* [Скопируйте hello виртуальный жесткий ДИСК существующей виртуальной Машине Azure](create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
 
 ## <a name="before-you-begin"></a>Перед началом работы
-Если вы используете PowerShell, убедитесь, что у вас установлена последняя версия модуля PowerShell AzureRM.Compute. Выполните следующую команду, чтобы установить ее.
+При использовании PowerShell убедитесь, что последняя версия модуля AzureRM.Compute PowerShell hello hello. Запустите hello следующие tooinstall команды.
 
 ```powershell
 Install-Module AzureRM.Compute 
@@ -40,50 +40,50 @@ Install-Module AzureRM.Compute
 
 ## <a name="option-1-upload-a-specialized-vhd"></a>Вариант 1. Передача специализированного VHD
 
-Вы можете передать VHD из специализированной виртуальной машины, созданной с помощью локального средства виртуализации, например, Hyper-V или виртуальная машина, экспортированная из другого облака.
+Можно передать hello создания виртуального жесткого диска от виртуальной Машины, специализированный со средством виртуализации в локальной среде, как Hyper-V или виртуальной Машины экспортирован из другого облака.
 
-### <a name="prepare-the-vm"></a>Подготовка виртуальной машины
-Вы можете передать специализированный VHD, созданный с помощью локальной виртуальной машины, или VHD, экспортированный из другого облака. На специализированном VHD сохраняются учетные записи пользователей, приложения и другие данные о состоянии исходной виртуальной машины. Если вы планируете использовать виртуальный жесткий диск "как есть" для создания виртуальной машины, то необходимо выполнить следующие действия: 
+### <a name="prepare-hello-vm"></a>Подготовка виртуальной Машины hello
+Вы можете передать специализированный VHD, созданный с помощью локальной виртуальной машины, или VHD, экспортированный из другого облака. Специализированные виртуальный жесткий ДИСК поддерживает учетные записи пользователей hello, приложений и других данных о состоянии из исходной виртуальной Машины. Если предполагается toouse hello VHD как-является toocreate новой виртуальной Машины, убедитесь, выполняются следующие шаги hello. 
   
-  * [Подготовьте виртуальный жесткий диск Windows к передаче в Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Не выполняйте** подготовку виртуальной машины к использованию с помощью Sysprep.
-  * Удалите все гостевые инструменты и агенты виртуализации, которые установлены на виртуальной машине (т. е. инструменты VMware).
-  * Убедитесь, что виртуальная машина настроена на получение IP-адреса и параметров DNS через DHCP. Таким образом, сервер будет получать IP-адрес в виртуальной сети при запуске. 
+  * [Подготовка виртуального жесткого диска Windows tooupload tooAzure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Нет** generalize hello виртуальную Машину с помощью Sysprep.
+  * Удалите все гостевой средств виртуализации и агентов, установленных на hello виртуальной Машины (т. е. средства VMware).
+  * Обеспечить hello виртуальной Машины является настроенным toopull его IP-адрес и параметры DNS через DHCP. Это гарантирует, что этот сервер hello получает IP-адрес в пределах hello виртуальной сети при запуске. 
 
 
-### <a name="get-the-storage-account"></a>Получение учетной записи хранения
-Вам необходима учетная запись хранения Azure для хранения переданного образа виртуальной машины. Можно использовать существующую учетную запись хранения или создать новую. 
+### <a name="get-hello-storage-account"></a>Получение учетной записи хранилища hello
+Требуется учетная запись хранения в образе виртуальной Машины Azure toostore hello отправлен. Можно использовать существующую учетную запись хранения или создать новую. 
 
-Чтобы отобразить список доступных учетных записей хранения, введите:
+tooshow hello доступных учетных записей хранилища, введите следующую команду:
 
 ```powershell
 Get-AzureRmStorageAccount
 ```
 
-Если вы хотите использовать существующую учетную запись хранения, то перейдите к разделу [Отправка образа виртуальной машины](#upload-the-vm-vhd-to-your-storage-account).
+Toouse существующую учетную запись хранения следует продолжить toohello [загрузку образа виртуальной Машины hello](#upload-the-vm-vhd-to-your-storage-account) раздела.
 
-Если требуется создать учетную запись хранения, то выполните описанные ниже действия.
+Если вам требуется toocreate учетной записи хранилища, выполните следующие действия.
 
-1. Необходимо указать имя группы ресурсов, в которой будет создана учетная запись хранения. Чтобы найти все группы ресурсов, существующие в вашей подписке, введите:
+1. Требуется имя hello hello группы ресурсов, которой должен быть создан hello учетной записи хранилища. toofind out все hello группы ресурсов в вашей подписке типа:
    
     ```powershell
     Get-AzureRmResourceGroup
     ```
 
-    Чтобы создать группу ресурсов с именем **myResourceGroup** в регионе **Западная часть США**, введите:
+    Группа ресурсов с именем toocreate **myResourceGroup** в hello **Запад США** региона, введите:
 
     ```powershell
     New-AzureRmResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. С помощью командлета [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) создайте в этой группе ресурсов учетную запись хранения с именем **mystorageaccount**:
+2. Создать учетную запись хранилища с именем **mystorageaccount** в этой группе ресурсов с помощью hello [New AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) командлета:
    
     ```powershell
     New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
         -SkuName "Standard_LRS" -Kind "Storage"
     ```
    
-### <a name="upload-the-vhd-to-your-storage-account"></a>Передача виртуального жесткого диска в учетную запись хранения
-Используйте командлет [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd), чтобы передать образ в контейнер в учетной записи хранения. В этом примере файл **myVHD.vhd** передается из расположения `"C:\Users\Public\Documents\Virtual hard disks\"` в учетную запись хранения **mystorageaccount**, входящую в группу ресурсов **myResourceGroup**. Файл будет помещен в контейнер с именем **mycontainer**; новое имя файла — **myUploadedVHD.vhd**.
+### <a name="upload-hello-vhd-tooyour-storage-account"></a>Отправка виртуального жесткого диска для hello tooyour учетной записи хранилища
+Используйте hello [AzureRmVhd добавить](/powershell/module/azurerm.compute/add-azurermvhd) контейнера командлет tooupload hello изображения tooa вашей учетной записи хранилища. В этом примере файл hello передачи **myVHD.vhd** из `"C:\Users\Public\Documents\Virtual hard disks\"` tooa учетной записи хранилища с именем **mystorageaccount** в hello **myResourceGroup** группы ресурсов. Hello файла будут помещены в контейнер hello **mycontainer** и hello новый файл будет называться **myUploadedVHD.vhd**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -93,12 +93,12 @@ Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
 ```
 
 
-В случае успешного выполнения отобразится ответ, который выглядит следующим образом.
+В случае успешного выполнения вы получаете ответ, который выглядит примерно toothis:
 
 ```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
+MD5 hash is being calculated for hello file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
 MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
+Elapsed time for hello operation: 00:03:35
 Creating new page blob of size 53687091712...
 Elapsed time for upload: 01:12:49
 
@@ -107,59 +107,59 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-В зависимости от сетевого подключения и размера VHD-файла выполнение этой команды может занять некоторое время.
+В зависимости от сетевого подключения и hello размер файла виртуального жесткого диска, эта команда может занять некоторое время toocomplete.
 
 
-## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>Вариант 2. Копирование VHD из имеющейся виртуальной машины Azure
+## <a name="option-2-copy-hello-vhd-from-an-existing-azure-vm"></a>Вариант 2: Скопируйте hello виртуального жесткого диска из существующей виртуальной Машине Azure
 
-Вы можете скопировать VHD в другую учетную запись хранения, чтобы использовать его при создании дублируемых виртуальных машин.
+При создании новой, повторяющиеся ВМ можно скопировать toouse учетной записи хранилища tooanother виртуального жесткого диска.
 
 ### <a name="before-you-begin"></a>Перед началом работы
 Убедитесь, что выполнены следующие условия.
 
-* У вас есть сведения об **исходной и целевой учетных записях хранения**. Для исходной виртуальной машины необходимы имена учетной записи хранения и контейнера. Как правило, имя контейнера — **vhds**. Необходимо также иметь целевую учетную запись хранения. Если вы ее еще не создали, то это можно сделать через портал (**Больше служб** > Учетные записи хранения > Добавить) или с помощью командлета [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount). 
-* Вы скачали и установили [инструмент AzCopy](../../storage/common/storage-use-azcopy.md). 
+* Сведения о hello **источника и назначения учетных записей хранения**. Hello исходной виртуальной Машины необходимо toohave hello учетной записи и контейнер имена хранилища. Как правило, будет имя контейнера hello **виртуальные жесткие диски**. Необходимо также toohave целевой учетной записью хранения. Если у вас еще нет один, можно создать один с помощью портала hello (**более служб** > учетные записи хранения > Добавить) или с помощью hello [New AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) командлета. 
+* Загружено и установлено hello [средство AzCopy](../../storage/common/storage-use-azcopy.md). 
 
-### <a name="deallocate-the-vm"></a>Освобождение виртуальной машины
-Освободите виртуальную машину, что позволит скопировать VHD. 
+### <a name="deallocate-hello-vm"></a>DEALLOCATE hello виртуальной Машины
+Неудачная попытка освобождения hello виртуальную Машину, которая освобождает toobe VHD hello копируются. 
 
 * **Портал**: щелкните **Виртуальные машины** > **myVM** > Остановить
-* **PowerShell.** Выполните командлет [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm), чтобы остановить виртуальную машину с именем **myVM** или отменить ее подготовку в группе ресурсов **myResourceGroup**.
+* **PowerShell**: использование [Stop AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) toostop (освобождении) виртуальной Машины с именем hello **myVM** в группе ресурсов **myResourceGroup**.
 
 ```powershell
 Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
-**Состояние** виртуальной машины на портале Azure изменится с **Остановлено** на **Остановлено (освобождено)**.
+Hello **состояние** для hello ВМ в hello Azure портал изменения из **остановлена** слишком**остановлена (освобождена)**.
 
-### <a name="get-the-storage-account-urls"></a>Получение URL-адресов учетной записи хранения
-Необходимо получить URL-адреса исходной и целевой учетных записей хранения. URL-адреса выглядят следующим образом: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Если вы уже знаете имена учетной записи хранения и контейнера, то можете просто подставить эти данные в скобки, чтобы создать URL-адрес. 
+### <a name="get-hello-storage-account-urls"></a>Получение URL-адреса учетной записи хранилища hello
+Требуется URL-адреса hello hello источника и назначения учетных записей хранения. Hello URL-адреса выглядеть следующим образом: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Если известно имя учетной записи и контейнера хранилища hello, можно просто замените hello информации между toocreate скобки hello URL-адрес. 
 
-Для получения URL-адреса можно использовать портал Azure или Azure PowerShell:
+Можно использовать hello портал Azure или Azure Powershell tooget hello, URL-адрес:
 
-* **Портал.** Щелкните **>** **Больше служб** > **Учетные записи хранения** > *учетная запись хранения* > **Большие двоичные объекты**. Ваш исходный VHD-файл скорее всего будет находиться в контейнере **vhds**. Щелкните **Свойства** контейнера и скопируйте текст с пометкой **URL-адрес**. Вам понадобятся URL-адреса исходного и целевого контейнеров. 
-* **PowerShell.** Выполните командлет [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm), чтобы получить сведения о виртуальной машине с именем **myVM** в группе ресурсов **myResourceGroup**. В результатах просмотрите раздел **Storage profile** (Профиль хранилища) и найдите в нем **URI VHD**. Первая часть URI является URL-адресом контейнера, а последняя часть — именем VHD операционной системы для виртуальной машины.
+* **Портал**: щелкните hello  **>**  для **дополнительные службы** > **учетные записи хранения**  >   *Учетная запись хранения* > **большие двоичные объекты** и исходного файла виртуального жесткого диска, возможно, находится в hello **виртуальные жесткие диски** контейнера. Нажмите кнопку **свойства** для контейнера hello и копировать текст hello с меткой **URL-адрес**. Вам потребуется hello URL-адреса источника и назначения контейнеров обеих hello. 
+* **PowerShell**: использование [Get AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) tooget hello сведения для виртуальной Машины с именем **myVM** в группе ресурсов hello **myResourceGroup**. В результатах hello папка hello **профиль хранилища** раздел для hello **Uri VHD-файла**. Первая часть Hello hello Uri — контейнер toohello hello URL-адрес и hello последней части — hello имени виртуального жесткого диска операционной системы для виртуальной Машины hello.
 
 ```powershell
 Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
-## <a name="get-the-storage-access-keys"></a>Получение ключей доступа к хранилищу
-Найдите ключи доступа для исходной и целевой учетных записей хранения. Дополнительные сведения о ключах доступа см. в статье [Об учетных записях хранения Azure](../../storage/common/storage-create-storage-account.md).
+## <a name="get-hello-storage-access-keys"></a>Получить ключи доступа к хранилищу hello
+Найти hello ключи доступа для hello источника и назначения учетные записи хранения. Дополнительные сведения о ключах доступа см. в статье [Об учетных записях хранения Azure](../../storage/common/storage-create-storage-account.md).
 
-* **Портал.** Щелкните **Больше служб** > **Учетные записи хранения** > *учетная запись хранения* > **Ключи доступа**. Скопируйте ключ с пометкой **key1**.
-* **PowerShell.** Выполните командлет [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey), чтобы получить сведения о ключе к хранилищу данных для учетной записи хранения **mystorageaccount** в группе ресурсов **myResourceGroup**. Скопируйте ключ с пометкой **key1**.
+* **Портал.** Щелкните **Больше служб** > **Учетные записи хранения** > *учетная запись хранения* > **Ключи доступа**. Копировать ключ hello помечены как **key1**.
+* **PowerShell**: использование [Get AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) tooget hello хранилища ключ учетной записи хранения hello **mystorageaccount** в группе ресурсов hello  **myResourceGroup**. Копировать hello ключ с меткой **key1**.
 
 ```powershell
 Get-AzureRmStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
 ```
 
-### <a name="copy-the-vhd"></a>Копирование виртуального жесткого диска
-С помощью AzCopy можно копировать файлы между учетными записями хранения. Если у вас нет указанного целевого контейнера, то он будет создан для вас. 
+### <a name="copy-hello-vhd"></a>Скопируйте hello виртуального жесткого диска
+С помощью AzCopy можно копировать файлы между учетными записями хранения. Для hello конечный контейнер Если hello указанный контейнер не существует, он создается автоматически. 
 
-Чтобы воспользоваться AzCopy, откройте окно командной строки на локальном компьютере и перейдите к папке, в которой установлен инструмент AzCopy. Это будет папка вида *C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy*. 
+toouse AzCopy, откройте командную строку на локальном компьютере и перейдите в папку toohello для установки AzCopy. Он будет выглядеть слишком*\Microsoft SDKs\Azure\AzCopy C:\Program Files (x86)*. 
 
-Чтобы скопировать все файлы внутри контейнера, используйте параметр **/S**. Это действие можно использовать для копирования VHD операционной системы и всех дисков данных, если они находятся в одном контейнере. В этом примере показано, как скопировать все файлы из контейнера **mysourcecontainer** в учетной записи хранения **mysourcestorageaccount** в контейнер **mydestinationcontainer** в учетной записи хранения **mydestinationstorageaccount**. Замените имена учетных записей хранения и контейнеров своими собственными. Замените ключи `<sourceStorageAccountKey1>` и `<destinationStorageAccountKey1>` своими собственными.
+toocopy hello все файлы в контейнере, используйте hello **/S** переключения. Это может быть hello используется toocopy виртуального жесткого диска операционной системы и Здравствуйте, все диски данных hello, если они находятся в одном контейнере. В этом примере показано, как все hello файлы в контейнере hello toocopy **mysourcecontainer** в учетной записи хранения **mysourcestorageaccount** toohello контейнера **mydestinationcontainer**  в hello **mydestinationstorageaccount** учетной записи хранилища. Замените приветствия имен учетных записей хранилища hello и контейнеры свои собственные. Замените ключи `<sourceStorageAccountKey1>` и `<destinationStorageAccountKey1>` своими собственными.
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -167,7 +167,7 @@ AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecont
     /SourceKey:<sourceStorageAccountKey1> /DestKey:<destinationStorageAccountKey1> /S
 ```
 
-Если требуется скопировать только один VHD из контейнера с несколькими файлами, то можно указать имя файла с помощью параметра /Pattern. В данном примере будет скопирован только файл с именем **myFileName.vhd**.
+Требуется только toocopy конкретного виртуального жесткого диска в контейнере с несколькими файлами, также можно указать имя файла hello, с помощью переключателя /Pattern hello. В этом примере hello только файл с именем **myFileName.vhd** будут скопированы.
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -191,24 +191,24 @@ Elapsed time:            00.00:13:07
 ```
 
 ### <a name="troubleshooting"></a>Устранение неполадок
-* Если при использовании AZCopy отображается сообщение об ошибке "Серверу не удалось проверить подлинность этого запроса", убедитесь, что значение заголовка авторизации составлено правильно (содержит подпись). Если используется ключ key2 или вторичный ключ к хранилищу данных, попробуйте воспользоваться первичным ключом или первым ключом к хранилищу данных.
+* При использовании AZCopy, при возникновении ошибки hello «Серверу не удалось tooauthenticate hello запроса», убедитесь, что hello значение заголовка авторизации hello имеет правильный формат, включая подпись hello. При использовании 2 ключ или ключ hello дополнительного хранилища, попробуйте использовать ключ хранилища первичной или 1-го hello.
 
-## <a name="create-the-new-vm"></a>Создание виртуальной машины 
+## <a name="create-hello-new-vm"></a>Создание новой виртуальной Машины hello 
 
-Необходимо создать сетевые ресурсы и другие ресурсы виртуальной машины, которые будет использовать новая виртуальная машина.
+Требуется toocreate сети и другие ресурсы toobe виртуальных Машин, используемых hello новой виртуальной Машины.
 
-### <a name="create-the-subnet-and-vnet"></a>Создание виртуальной сети и подсети
+### <a name="create-hello-subnet-and-vnet"></a>Создание подсети hello и виртуальной сети
 
-Создайте виртуальную сеть и подсеть [виртуальной сети](../../virtual-network/virtual-networks-overview.md).
+Создание виртуальной сети hello и подсеть hello [виртуальной сети](../../virtual-network/virtual-networks-overview.md).
 
-1. Создайте подсеть. В этом примере создается подсеть с именем **mySubnet** в группе ресурсов **myResourceGroup** и задается префикс адреса подсети **10.0.0.0/24**.
+1. Создайте подсеть hello. В этом примере создается подсеть с именем **mySubNet**, в группе ресурсов hello **myResourceGroup**, и задает hello префикс адреса подсети слишком**10.0.0.0/24**.
    
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubNet"
     $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Создайте виртуальную сеть. В этом примере задается имя виртуальной сети **myVnetName**, расположение **западная часть США** и префикс адреса виртуальной сети **10.0.0.0/16**. 
+2. Создание виртуальной сети hello. В этом примере задает hello toobe имя виртуальной сети **myVnetName**, hello расположение слишком**Запад США**, и hello префикс адреса для виртуальной сети hello слишком**10.0.0.0/16**. 
    
     ```powershell
     $location = "West US"
@@ -218,16 +218,16 @@ Elapsed time:            00.00:13:07
     ```    
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Создание общедоступного IP-адреса и сетевой карты
-Чтобы обеспечить обмен данными с виртуальной машиной в виртуальной сети, требуются [общедоступный IP-адрес](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) и сетевой интерфейс.
+требуется tooenable взаимодействия с виртуальной машиной hello в виртуальной сети hello, [общедоступный IP-адрес](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) и сетевого интерфейса.
 
-1. Создайте общедоступный IP-адрес. В этом примере открытому IP-адресу присвоено имя **myIP**.
+1. Создайте hello общедоступный IP-адрес. В этом примере имя hello открытый IP-адреса задано слишком**myIP**.
    
     ```powershell
     $ipName = "myIP"
     $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Создание сетевой карты. В этом примере сетевой карте присвоено имя **myNicName**.
+2. Создайте сетевую карту hello. В этом примере имя сетевого Адаптера hello задано слишком**myNicName**.
    
     ```powershell
     $nicName = "myNicName"
@@ -235,9 +235,9 @@ Elapsed time:            00.00:13:07
     -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Создание группы безопасности сети и правила RDP
-Чтобы войти на виртуальную машину по протоколу удаленного рабочего стола, необходимо настроить правило безопасности, которое разрешает доступ по этому протоколу через порт 3389. Так как VHD для новой виртуальной машины создан на основе имеющейся специализированной виртуальной машины, то и существующую учетную запись (у которой есть разрешение на вход по протоколу удаленного рабочего стола) можно использовать для обеих этих виртуальных машин.
-В этом примере для NSG задается имя **myNsg**, а для правила протокола удаленного рабочего стола — имя **myRdpRule**.
+### <a name="create-hello-network-security-group-and-an-rdp-rule"></a>Создание группы безопасности сети hello и правило протокола удаленного рабочего СТОЛА
+возможности toolog toobe в tooyour виртуальную Машину с помощью протокола удаленного рабочего СТОЛА, необходимо toohave правило безопасности, которое разрешает доступ RDP через порт 3389. Поскольку специальным hello виртуального жесткого диска для создания новой виртуальной Машины из существующего hello виртуальной Машины, после создания вы hello виртуальной Машины можно использовать существующую учетную запись из hello исходной виртуальной машины было toolog разрешение на использование протокола удаленного рабочего СТОЛА.
+В этом примере задает hello NSG имя слишком**myNsg** и hello RDP имя правила слишком**myRdpRule**.
 
 ```powershell
 $nsgName = "myNsg"
@@ -251,53 +251,53 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
     
 ```
 
-Дополнительные сведения о конечных точках и правилах NSG см. в статье [Открытие портов для виртуальной машины в Azure с помощью PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Дополнительные сведения о конечных точках и правила NSG см. в разделе [Открытие портов tooa ВМ в Azure с помощью PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-### <a name="set-the-vm-name-and-size"></a>Задание имени и размера виртуальной машины
+### <a name="set-hello-vm-name-and-size"></a>Задайте имя виртуальной Машины hello и размер
 
-В этом примере для имени виртуальной машины задается значение myVM, а для ее размера — Standard_A2.
+В этом примере задает hello имя виртуальной Машины слишком «myVM» и hello ВМ размер слишком «Standard_A2».
 ```powershell
 $vmName = "myVM"
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A2"
 ```
 
-### <a name="add-the-nic"></a>Добавление сетевой карты
+### <a name="add-hello-nic"></a>Добавить hello сетевого Адаптера
     
 ```powershell
 $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
     
     
-### <a name="configure-the-os-disk"></a>Настройка диска операционной системы
+### <a name="configure-hello-os-disk"></a>Настройка диска hello ОС
 
-1. Задайте универсальный код ресурса (URI) VHD, который вы передали или скопировали. В этом примере VHD-файл **myOsDisk.vhd** хранится в учетной записи **myStorageAccount** в контейнере **myContainer**.
+1. Задайте hello URI для виртуального жесткого диска, загруженного или скопированного hello. В этом примере hello VHD-файл с именем **myOsDisk.vhd** сохраняется в учетную запись хранения с именем **myStorageAccount** в контейнер с именем **myContainer**.
 
     ```powershell
     $osDiskUri = "https://myStorageAccount.blob.core.windows.net/myContainer/myOsDisk.vhd"
     ```
-2. Добавьте диск операционной системы. В этом примере при создании диска ОС к имени виртуальной машины добавляется термин osDisk, формируя таким образом имя диска ОС. В этом примере также указывается, что этот виртуальный жесткий диск на платформе Windows должен быть подключен к виртуальной машине в качестве диска ОС.
+2. Добавьте диск hello ОС. В этом примере при создании диска ОС hello hello термин «osDisk» — appened toohello ВМ имя toocreate hello имя диска ОС. В этом примере также указывает, этого виртуального жесткого диска на основе Windows должно быть вложенных toohello виртуальную Машину в качестве диска ОС hello.
     
     ```powershell
     $osDiskName = $vmName + "osDisk"
     $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption attach -Windows
     ```
 
-(Необязательно.) При наличии дисков данных, которые необходимо подключить к виртуальной машине, добавьте их, используя URL-адреса виртуальных жестких дисков данных и соответствующий логический номер устройства (LUN).
+Необязательно: При наличии дисков с данными, toobe необходимость присоединенного toohello виртуальной Машины, добавьте hello диски с данными с помощью URL-адреса hello данных виртуальные жесткие диски и hello соответствующий логический номер устройства (Lun).
 
 ```powershell
 $dataDiskName = $vmName + "dataDisk"
 $vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
-При использовании учетной записи хранения URL-адреса дисков данных и дисков ОС выглядят так: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. Их можно узнать на портале. Для этого найдите целевой контейнер хранилища, щелкните скопированный виртуальный жесткий диск операционной системы или данных, а затем скопируйте содержимое URL-адреса.
+При использовании учетной записи хранилища, hello данные и URL-адреса для диска операционной системы выглядеть примерно следующим образом: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. Его можно найти на портале hello путем просмотра контейнера хранилища целевой toohello, щелкнув hello операционной системы или виртуального жесткого диска, который был скопирован, данные и скопировав в нее содержимое hello hello URL-адрес.
 
 
-### <a name="complete-the-vm"></a>Завершение процесса подготовки виртуальной машины 
+### <a name="complete-hello-vm"></a>Завершить hello виртуальной Машины 
 
-Создайте виртуальную машину, используя созданную конфигурацию.
+Создайте виртуальную Машину с помощью hello конфигураций, которые мы только что создали hello.
 
 ```powershell
-#Create the new VM
+#Create hello new VM
 New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
@@ -310,8 +310,8 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ```
 
-### <a name="verify-that-the-vm-was-created"></a>Проверка создания виртуальной машины
-Созданная виртуальная машина должна отображаться на [портале Azure](https://portal.azure.com) (выберите **Обзор** > **Виртуальные машины**). Ее можно также увидеть, выполнив следующие команды PowerShell:
+### <a name="verify-that-hello-vm-was-created"></a>Убедитесь, что hello создания виртуальной Машины
+Вы увидите hello вновь созданные ВМ в hello [портал Azure](https://portal.azure.com)в разделе **Обзор** > **виртуальные машины**, или с помощью следующих PowerShell hello команды:
 
 ```powershell
 $vmList = Get-AzureRmVM -ResourceGroupName $rgName
@@ -319,5 +319,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Чтобы войти на новую виртуальную машину, найдите ее на [портале](https://portal.azure.com), нажмите кнопку **Подключение**и откройте RDP-файл "Удаленный рабочий стол". Для входа на новую виртуальную машину используйте учетные данные для входа в новую виртуальную машину. Дополнительные сведения см. в статье [Как подключиться к виртуальной машине Azure под управлением Windows и войти на нее](connect-logon.md).
+toosign в новой виртуальной машины tooyour, toohello обзор виртуальных Машин в hello [портала](https://portal.azure.com), нажмите кнопку **Connect**и откройте hello файл удаленного рабочего СТОЛА. Используйте учетные данные учетной записи hello объекта к исходной виртуальной машины toosign tooyour новой виртуальной машине. Дополнительные сведения см. в разделе [как tooconnect и вход в систему tooan Azure виртуальные машины под управлением Windows](connect-logon.md).
 

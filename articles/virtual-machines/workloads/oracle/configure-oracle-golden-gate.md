@@ -1,5 +1,5 @@
 ---
-title: "Реализация Oracle Golden Gate на виртуальной машине Azure под управлением Linux | Документация Майкрософт"
+title: "aaaImplement Oracle золотые шлюза в виртуальной Машине Linux Azure | Документы Microsoft"
 description: "Быстрое создание и запуск Oracle Golden Gate в среде Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rclaus
-ms.openlocfilehash: a05711357d345267647c02e42336fd37c09e1bff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 320cafd5d23ee472f0af9f92577bc6f432f65778
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Реализация Oracle Golden Gate на виртуальной машине Azure под управлением Linux 
 
-Azure CLI используется для создания ресурсов Azure и управления ими из командной строки или с помощью скриптов. В этом руководстве описывается, как с помощью Azure CLI развернуть базу данных Oracle 12c, используя образ из коллекции Azure Marketplace. 
+Hello Azure CLI — используется toocreate и управления ресурсами Azure hello командной строке или в сценариях. В этом руководстве рассматривается как toouse hello Azure CLI toodeploy Oracle 12c базы данных из коллекции образов Azure Marketplace hello. 
 
-В этом документе демонстрируется пошаговое создание, установка и настройка Oracle Golden Gate на виртуальной машине Azure.
+В данном документе описывается пошаговые как toocreate, установки и настройки шлюза золотые Oracle на Виртуальной машине Azure.
 
-Перед началом работы убедитесь, что вы установили Azure CLI. Дополнительные сведения см. в [руководстве по установке Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Прежде чем начать, убедитесь, что hello Azure CLI был установлен. Дополнительные сведения см. в [руководстве по установке Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-## <a name="prepare-the-environment"></a>Подготовка среды
+## <a name="prepare-hello-environment"></a>Подготовка среды hello
 
-Чтобы выполнить установку Oracle Golden Gate, вам необходимо создать две виртуальные машины Azure в одной и той же группе доступности. Образ Marketplace, который вы будете использовать для создания виртуальных машин, — **Oracle:Oracle-Database-Ee:12.1.0.2:latest**.
+Установка шлюза золотые Oracle tooperform hello, необходимо toocreate две виртуальные машины Azure на hello одной группе доступности. — использовать toocreate hello ВМ образа Marketplace Hello **Oracle: Oracle-базы данных-Ee:12.1.0.2:latest**.
 
-Кроме того, необходимо уметь работать с редактором Unix и иметь базовое представление об x11 (X Windows).
+Также требуется знание Unix редактор vi toobe и иметь базовое понимание x11 (X Windows).
 
-Ниже приводится сводка конфигурации среды.
+Hello ниже приводится сводка hello среды конфигурации:
 > 
 > |  | **Основной сайт** | **Сайт репликации** |
 > | --- | --- | --- |
@@ -48,9 +48,9 @@ Azure CLI используется для создания ресурсов Azur
 > | **Процесс Golden Gate** |EXTORA |REPORA|
 
 
-### <a name="sign-in-to-azure"></a>Вход в Azure 
+### <a name="sign-in-tooazure"></a>Войдите в tooAzure 
 
-Войдите в подписку Azure, используя команду [az login](/cli/azure/#login). Затем выполните инструкции на экране.
+Войдите в подписку Azure совместно с hello tooyour [входа az](/cli/azure/#login) команды. Затем выполните hello на экране инструкциям.
 
 ```azurecli
 az login
@@ -58,17 +58,17 @@ az login
 
 ### <a name="create-a-resource-group"></a>Создание группы ресурсов
 
-Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
+Создание группы ресурсов с hello [Создание группы az](/cli/azure/group#create) команды. Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
 
-В следующем примере создается группа ресурсов с именем `myResourceGroup` в расположении `westus`.
+Hello следующий пример создает группу ресурсов с именем `myResourceGroup` в hello `westus` расположение.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-### <a name="create-an-availability-set"></a>"Создать группу доступности"
+### <a name="create-an-availability-set"></a>Создать группу доступности
 
-Следующий шаг необязателен, но мы рекомендуем его выполнить. Дополнительные сведения см. в статье [Рекомендации по группам доступности Azure для виртуальных машин Windows](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Привет, даст необязательно, но рекомендуется. Дополнительные сведения см. в статье [Рекомендации по группам доступности Azure для виртуальных машин Windows](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
 
 ```azurecli
 az vm availability-set create \
@@ -80,9 +80,9 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Создание виртуальной машины
 
-Создайте виртуальную машину с помощью команды [az vm create](/cli/azure/vm#create). 
+Создайте виртуальную Машину с hello [создания виртуальной машины az](/cli/azure/vm#create) команды. 
 
-В следующем примере создаются две виртуальные машины — `myVM1` и `myVM2`, а также ключи SSH, если они еще не существуют в расположении ключей по умолчанию. Чтобы использовать определенный набор ключей, используйте параметр `--ssh-key-value`.
+Hello следующий пример создает две виртуальные машины с именем `myVM1` и `myVM2`. а также ключи SSH, если они еще не существуют в расположении ключей по умолчанию. toouse конкретный набор ключей, используйте hello `--ssh-key-value` параметр.
 
 #### <a name="create-myvm1-primary"></a>Создайте myVM1 (основная):
 ```azurecli
@@ -95,7 +95,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-После создания виртуальной машины в Azure CLI отображается информация следующего вида. (Запишите значение `publicIpAddress`. Этот адрес используется для доступа к виртуальной машине.)
+После hello создания виртуальной Машины hello Azure CLI показано toohello аналогичные сведения, следующий пример. (Обратите внимание hello `publicIpAddress`. Этот адрес будет hello используется tooaccess виртуальной Машины.)
 
 ```azurecli
 {
@@ -121,13 +121,13 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Запишите `publicIpAddress` после его создания.
+Запишите hello `publicIpAddress` также после его создания.
 
-### <a name="open-the-tcp-port-for-connectivity"></a>Открытие TCP-порта для возможности подключения
+### <a name="open-hello-tcp-port-for-connectivity"></a>Привет открыть TCP-порт для подключения к
 
-Следующий шаг — настройка внешних конечных точек, после чего вы сможете получить удаленный доступ к базе данных Oracle. Чтобы настроить внешние конечные точки, выполните следующие команды.
+Hello следующим шагом является tooconfigure внешних конечных точек, которые позволяют базы данных Oracle hello tooaccess удаленно. tooconfigure hello внешние конечные точки, запустите следующие команды hello.
 
-#### <a name="open-the-port-for-myvm1"></a>Откройте порт для myVM1:
+#### <a name="open-hello-port-for-myvm1"></a>Откройте порт hello для myVM1:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -137,7 +137,7 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-Результат должен выглядеть следующим образом:
+Hello результаты должны выглядеть примерно toohello следующий ответ:
 
 ```bash
 {
@@ -158,7 +158,7 @@ az network nsg rule create --resource-group myResourceGroup\
 }
 ```
 
-#### <a name="open-the-port-for-myvm2"></a>Откройте порт для myVM2:
+#### <a name="open-hello-port-for-myvm2"></a>Откройте порт hello для myVM2:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -168,25 +168,25 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-### <a name="connect-to-the-virtual-machine"></a>Подключение к виртуальной машине
+### <a name="connect-toohello-virtual-machine"></a>Подключение toohello виртуальной машины
 
-Используйте следующую команду для создания сеанса SSH с виртуальной машиной. Замените IP-адрес общедоступным IP-адресом виртуальной машины (значение `publicIpAddress`).
+Используйте hello следующая команда toocreate сеанс SSH с виртуальной машиной hello. Замените hello hello IP-адрес `publicIpAddress` вашей виртуальной машины.
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-### <a name="create-the-database-on-myvm1-primary"></a>Создание базы данных на myVM1 (основная)
+### <a name="create-hello-database-on-myvm1-primary"></a>Создать hello базы данных на myVM1 (основной)
 
-Программное обеспечение Oracle уже установлено в образе Marketplace, поэтому следующим шагом является установка базы данных. 
+Hello программное обеспечение Oracle уже установлен на образа Marketplace hello, поэтому hello следующим шагом является база данных tooinstall hello. 
 
-Запустите программное обеспечение с правами суперпользователя oracle:
+Запустите программное обеспечение hello как суперпользователь «oracle» hello:
 
 ```bash
 sudo su - oracle
 ```
 
-Создание базы данных
+Создайте базу данных hello:
 
 ```bash
 $ dbca -silent \
@@ -207,7 +207,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Результат должен выглядеть следующим образом:
+Выходные данные должен выглядеть примерно toohello следующий ответ:
 
 ```bash
 Copying database files
@@ -236,10 +236,10 @@ Completing Database Creation
 Creating Pluggable Databases
 78% complete
 100% complete
-Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for more details.
+Look at hello log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for more details.
 ```
 
-Задайте переменные ORACLE_SID и ORACLE_HOME.
+Установка переменных ORACLE_SID и ORACLE_HOME hello.
 
 ```bash
 $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
@@ -247,7 +247,7 @@ $ ORACLE_SID=gg1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
-При необходимости можно добавить ORACLE_HOME и ORACLE_SID в файл BASHRC, чтобы эти параметры сохранились для последующих входов в систему:
+При необходимости можно добавить ORACLE_HOME и ORACLE_SID файла toohello .bashrc, чтобы эти параметры сохраняются для будущих входа в систему:
 
 ```bash
 # add oracle home
@@ -264,12 +264,12 @@ $ sudo su - oracle
 $ lsnrctl start
 ```
 
-### <a name="create-the-database-on-myvm2-replicate"></a>Создание базы данных на myVM2 (репликация)
+### <a name="create-hello-database-on-myvm2-replicate"></a>Создание базы данных hello на myVM2 (репликация)
 
 ```bash
 sudo su - oracle
 ```
-Создание базы данных
+Создайте базу данных hello:
 
 ```bash
 $ dbca -silent \
@@ -290,7 +290,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Задайте переменные ORACLE_SID и ORACLE_HOME.
+Установка переменных ORACLE_SID и ORACLE_HOME hello.
 
 ```bash
 $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
@@ -298,7 +298,7 @@ $ ORACLE_SID=cdb1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
-При необходимости можно добавить ORACLE_HOME и ORACLE_SID в файл BASHRC, чтобы эти параметры сохранились для последующих входов в систему.
+При необходимости можно добавлены ORACLE_HOME и ORACLE_SID toohello .bashrc файла, чтобы эти параметры сохраняются для будущих входа в систему.
 
 ```bash
 # add oracle home
@@ -316,7 +316,7 @@ $ lsnrctl start
 ```
 
 ## <a name="configure-golden-gate"></a>Настройка Golden Gate 
-Чтобы настроить Golden Gate, выполните действия в этом разделе.
+tooconfigure золотые шлюзом, примите меры hello в этом разделе.
 
 ### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Включение режима журнала архивирования на myVM1 (основная)
 
@@ -346,24 +346,24 @@ SQL> EXIT;
 ```
 
 ### <a name="download-golden-gate-software"></a>Загрузка программного обеспечения Golden Gate
-Чтобы загрузить и подготовить программное обеспечение Oracle Golden Gate, сделайте следующее:
+toodownload и подготовки программного обеспечения Oracle золотые шлюза hello, полный hello, следующие шаги:
 
-1. Загрузите файл **fbo_ggs_Linux_x64_shiphome.zip** из [страницы скачивания Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Под заголовком загрузки **12.x.x.x Oracle GoldenGate для Oracle Linux x86-64** должен быть набор ZIP-файлов, которые нужно загрузить.
+1. Загрузите hello **fbo_ggs_Linux_x64_shiphome.zip** файл из hello [страницу скачивания шлюза золотые Oracle](http://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Разделе hello Загрузите заголовок **12.x.x.x Oracle GoldenGate для Oracle Linux x86-64**, должен быть набором toodownload файлы .zip.
 
-2. Загрузив ZIP-файлы на клиентском компьютере, скопируйте файлы на виртуальную машину по протоколу SCP.
+2. После загрузки hello .zip файлы tooyour клиентского компьютера, используйте протокол Secure копии (SCP) toocopy hello файлы tooyour виртуальной Машины:
 
   ```bash
   $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
   ```
 
-3. Переместите ZIP-файлы в папку **/opt**. Затем измените владельца файлов следующим образом:
+3. Перемещение файлов toohello hello .zip **/ opt** папки. Затем измените владельца hello hello файлов следующим образом:
 
   ```bash
   $ sudo su -
   # mv <folder>/*.zip /opt
   ```
 
-4. Распакуйте файлы (установите служебную программу Linux для распаковки, если она еще не установлена):
+4. Распакуйте файлы hello (hello установки Linux Распакуйте программы, если она еще не установлена):
 
   ```bash
   # yum install unzip
@@ -377,24 +377,24 @@ SQL> EXIT;
   # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
   ```
 
-### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>Подготовка клиента и виртуальной машины для запуска X11 (только для клиентов Windows)
+### <a name="prepare-hello-client-and-vm-toorun-x11-for-windows-clients-only"></a>Подготовить клиент hello и ВМ toorun x11 (только для клиентов Windows)
 Этот параметр является необязательным. Если вы используете клиента Linux или уже установили x11, этот шаг можно пропустить.
 
-1. Скачайте PuTTY и Xming на компьютер с Windows:
+1. Загрузите компьютер Windows tooyour PuTTY и Xming:
 
   * [Скачать PuTTY](http://www.putty.org/).
   * [Скачать Xming](https://xming.en.softonic.com/).
 
-2.  Установив PuTTY в папке PuTTY (например, C:\Program Files\PuTTY), запустите файл puttygen.exe (генератор ключей PuTTY).
+2.  После установки PuTTY в hello PuTTY папку (например, C:\Program Files\PuTTY), запустите puttygen.exe (генератор ключа PuTTY).
 
 3.  В генераторе ключей PuTTY сделайте следующее:
 
-  - Чтобы создать ключ, нажмите кнопку **Создать**.
-  - Скопируйте содержимое ключа (**CTRL+C**).
-  - Нажмите кнопку **Save private key** (Сохранить закрытый ключ).
-  - Игнорируйте предупреждение, появившееся на экране, и нажмите кнопку **ОК**.
+  - toogenerate ключей, выберите hello **формирования** кнопки.
+  - Скопируйте содержимое hello hello ключа (**Ctrl + C**).
+  - Выберите hello **Сохранить закрытый ключ** кнопки.
+  - Игнорируйте сообщения hello появится, а затем выберите **ОК**.
 
-    ![Снимок экрана со страницей генератора ключей PuTTY](./media/oracle-golden-gate/puttykeygen.png)
+    ![Снимок экрана со страницей hello PuTTY генератор ключей](./media/oracle-golden-gate/puttykeygen.png)
 
 4.  В виртуальной машине выполните следующие команды:
 
@@ -404,61 +404,61 @@ SQL> EXIT;
   $ cd .ssh
   ```
 
-5. Создайте файл с именем **authorized_keys**. Вставьте содержимое ключа в этот файл и сохраните файл.
+5. Создайте файл с именем **authorized_keys**. Вставьте содержимое hello hello ключ в этом файле, а затем сохраните файл hello.
 
   > [!NOTE]
-  > Ключ должен содержать строку `ssh-rsa`. Кроме того, содержимое ключа должно быть одной строкой текста.
+  > Hello ключ должен содержать строку hello `ssh-rsa`. Кроме того содержимое hello hello ключа должно быть одну строку текста.
   >  
 
-6. Запустите PuTTY. В области **Категория** выберите **Подключение** > **SSH** > **Проверка подлинности**. В поле **Private key file for authentication** (Файл закрытого ключа для проверки подлинности) выберите созданный ранее ключ.
+6. Запустите PuTTY. В hello **категории** выберите **подключения** > **SSH** > **Auth**. В hello **файла закрытого ключа для проверки подлинности** поле, найдите toohello ключ, который был создан ранее.
 
-  ![Снимок экрана со страницей настройки закрытого ключа](./media/oracle-golden-gate/setprivatekey.png)
+  ![Снимок экрана со страницей hello задать закрытый ключ](./media/oracle-golden-gate/setprivatekey.png)
 
-7. В области **Категория** выберите **Подключение** > **SSH** > **X11**. Установите флажок **Enable X11 forwarding** (Включить перенаправление X11).
+7. В hello **категории** выберите **подключения** > **SSH** > **X11**. Затем выберите hello **включить X11 пересылку** поле.
 
-  ![Снимок экрана со страницей включения X11](./media/oracle-golden-gate/enablex11.png)
+  ![Снимок экрана со страницей Enable X11 hello](./media/oracle-golden-gate/enablex11.png)
 
-8. В области **Категория** выберите **Сеанс**. Введите сведения об узле, а затем нажмите кнопку **Открыть**.
+8. В hello **категории** панели перейдите слишком**сеанса**. Введите сведения об узле hello, а затем выберите **откройте**.
 
-  ![Снимок экрана со страницей "Сеанс"](./media/oracle-golden-gate/puttysession.png)
+  ![Снимок экрана: страница приветствия сеанса](./media/oracle-golden-gate/puttysession.png)
 
 ### <a name="install-golden-gate-software"></a>Установка программного обеспечения Golden Gate
 
-Чтобы установить Oracle Golden Gate, сделайте следующее:
+tooinstall шлюзом золотые Oracle, полный hello, следующие шаги:
 
-1. Выполните вход в качестве пользователя oracle. Вы сможете войти, не вводя пароль. Перед установкой убедитесь, что Xming работает.
+1. Выполните вход в качестве пользователя oracle. (Вы должны иметь доступ toosign в без необходимости вводить пароль.) Убедитесь, что запущен Xming перед началом установки hello.
  
   ```bash
   $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
   $ ./runInstaller
   ```
-2. Выберите Oracle GoldenGate for Oracle Database 12c (Oracle GoldenGate для базы данных Oracle 12c). Нажмите кнопку **Далее**, чтобы продолжить.
+2. Выберите Oracle GoldenGate for Oracle Database 12c (Oracle GoldenGate для базы данных Oracle 12c). Выберите **Далее** toocontinue.
 
-  ![Снимок экрана со страницей выбора установки в установщике](./media/oracle-golden-gate/golden_gate_install_01.png)
+  ![Снимок экрана: страница установки выберите установщик hello](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. Измените расположение программного обеспечения. Установите флажок **Start Manager** (Запустить диспетчер) и введите расположение базы данных. Нажмите кнопку **Далее**, чтобы продолжить.
+3. Изменить расположение hello программного обеспечения. Затем выберите hello **запустить диспетчер** и введите расположение базы данных hello. Выберите **Далее** toocontinue.
 
-  ![Снимок экрана со страницей выбора установки](./media/oracle-golden-gate/golden_gate_install_02.png)
+  ![Снимок экрана: страница приветствия выберите установки](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. Перейдите в каталог инвентаризации, а затем выберите **Далее**, чтобы продолжить.
+4. Измените каталог инвентаризации hello, а затем выберите **Далее** toocontinue.
 
-  ![Снимок экрана со страницей выбора установки](./media/oracle-golden-gate/golden_gate_install_03.png)
+  ![Снимок экрана: страница приветствия выберите установки](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. На экране **Сводка** выберите **Установить**, чтобы продолжить.
+5. На hello **Сводка** выберите **установить** toocontinue.
 
-  ![Снимок экрана со страницей выбора установки в установщике](./media/oracle-golden-gate/golden_gate_install_04.png)
+  ![Снимок экрана: страница установки выберите установщик hello](./media/oracle-golden-gate/golden_gate_install_04.png)
 
-6. Может потребоваться выполнить скрипт в качестве корневого. В этом случае откройте отдельный сеанс, подключитесь к виртуальной машине по протоколу SSH, используйте sudo, чтобы сделать скрипт корневым, а затем выполните его. Чтобы продолжить, нажмите кнопку **ОК**.
+6. Запрос toorun сценарий может быть как «root». В этом случае откройте отдельный сеанс, ssh toohello ВМ sudo tooroot и запустите сценарий hello. Чтобы продолжить, нажмите кнопку **ОК**.
 
-  ![Снимок экрана со страницей выбора установки](./media/oracle-golden-gate/golden_gate_install_05.png)
+  ![Снимок экрана: страница приветствия выберите установки](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. По завершении установки нажмите кнопку **Закрыть**, чтобы завершить процесс.
+7. По завершении установки hello выберите **закрыть** toocomplete hello процесса.
 
-  ![Снимок экрана со страницей выбора установки](./media/oracle-golden-gate/golden_gate_install_06.png)
+  ![Снимок экрана: страница приветствия выберите установки](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>Настройка службы на myVM1 (основная)
 
-1. Создайте или обновите файл tnsnames.ora:
+1. Создать или обновить файл tnsnames.ora hello:
 
   ```bash
   $ cd $ORACLE_HOME/network/admin
@@ -491,29 +491,29 @@ SQL> EXIT;
     )
   ```
 
-2. Создайте учетные записи владельца и пользователя Golden Gate.
+2. Создайте hello шлюза золотые владельца и учетные записи пользователей.
 
   > [!NOTE]
-  > Учетная запись владельца должна иметь префикс C##.
+  > Учетная запись владельца Hello должна иметь префикс C ##.
   >
 
     ```bash
     $ sqlplus / as sysdba
     SQL> CREATE USER C##GGADMIN identified by ggadmin;
     SQL> EXEC dbms_goldengate_auth.grant_admin_privilege('C##GGADMIN',container=>'ALL');
-    SQL> GRANT DBA to C##GGADMIN container=all;
+    SQL> GRANT DBA tooC##GGADMIN container=all;
     SQL> connect C##GGADMIN/ggadmin
     SQL> ALTER SESSION SET CONTAINER=PDB1;
     SQL> EXIT;
     ```
 
-3. Создайте тестовую учетную запись пользователя Golden Gate:
+3. Создайте шлюз золотые hello тестовую учетную запись пользователя:
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ sqlplus system/OraPasswd1@pdb1
   SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-  SQL> GRANT connect, resource, dba TO test;
+  SQL> GRANT connect, resource, dba tootest;
   SQL> ALTER USER test QUOTA 100M on USERS;
   SQL> connect test/test@pdb1
   SQL> @demo_ora_create
@@ -521,9 +521,9 @@ SQL> EXIT;
   SQL> EXIT;
   ```
 
-4. Настройте файл параметров извлечения.
+4. Настройте файл параметров извлечения hello.
 
- Запустите интерфейс командной строки Golden Gate (ggsci):
+ Запуск командной строки золотой шлюза hello (ggsci):
 
   ```bash
   $ sudo su - oracle
@@ -537,7 +537,7 @@ SQL> EXIT;
 
   GGSCI> EDIT PARAMS EXTORA
   ```
-5. Добавьте следующий файл параметров EXTRACT (с помощью команды vi). Нажмите клавишу ESC, ":wq!" чтобы сохранить файл. 
+5. Добавьте следующий параметр ИЗВЛЕЧЬ toohello файлов (с помощью команды vi) hello. Нажмите клавишу ESC, ":wq!" файл toosave. 
 
   ```bash
   EXTRACT EXTORA
@@ -578,7 +578,7 @@ SQL> EXIT;
 
   GGSCI>  START EXTRACT EXTORA
 
-  Sending START request to MANAGER ...
+  Sending START request tooMANAGER ...
   EXTRACT EXTORA starting
 
   GGSCI > info all
@@ -588,7 +588,7 @@ SQL> EXIT;
   MANAGER     RUNNING
   EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
   ```
-На этом шаге найдите начальный сайт SCN, который будет использоваться позже в другом разделе:
+На этом шаге найти hello начиная уведомлений SCN, который будет использоваться позже в другом разделе:
 
   ```bash
   $ sqlplus / as sysdba
@@ -620,7 +620,7 @@ SQL> EXIT;
 ### <a name="set-up-service-on-myvm2-replicate"></a>Настройка службы на myVM2 (репликация)
 
 
-1. Создайте или обновите файл tnsnames.ora:
+1. Создать или обновить файл tnsnames.ora hello:
 
   ```bash
   $ cd $ORACLE_HOME/network/admin
@@ -659,7 +659,7 @@ SQL> EXIT;
   $ sqlplus / as sysdba
   SQL> alter session set container = pdb1;
   SQL> create user repuser identified by rep_pass container=current;
-  SQL> grant dba to repuser;
+  SQL> grant dba toorepuser;
   SQL> exec dbms_goldengate_auth.grant_admin_privilege('REPUSER',container=>'PDB1');
   SQL> connect repuser/rep_pass@pdb1 
   SQL> EXIT;
@@ -671,14 +671,14 @@ SQL> EXIT;
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ sqlplus system/OraPasswd1@pdb1
   SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-  SQL> GRANT connect, resource, dba TO test;
+  SQL> GRANT connect, resource, dba tootest;
   SQL> ALTER USER test QUOTA 100M on USERS;
   SQL> connect test/test@pdb1
   SQL> @demo_ora_create
   SQL> EXIT;
   ```
 
-4. Файл параметров REPLICAT для репликации изменений: 
+4. Изменения tooreplicate файл параметров REPLICAT: 
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -718,22 +718,22 @@ SQL> EXIT;
   GGSCI> ADD REPLICAT INITREP, SPECIALRUN
   ```
 
-### <a name="set-up-the-replication-myvm1-and-myvm2"></a>Настройка репликации (myVM1 и myVM2)
+### <a name="set-up-hello-replication-myvm1-and-myvm2"></a>Настройка репликации hello (myVM1 и myVM2)
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. Настройка репликации на myVM2 (репликация)
+#### <a name="1-set-up-hello-replication-on-myvm2-replicate"></a>1. Настройка репликации hello на myVM2 (репликация)
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ ./ggsci
   GGSCI> EDIT PARAMS MGR
   ```
-Обновите файл с использованием следующего содержимого:
+Обновите файл hello hello следующее:
 
   ```bash
   PORT 7809
   ACCESSRULE, PROG *, IPADDR *, ALLOW
   ```
-Затем перезапустите службу диспетчера:
+Затем перезапустите службу диспетчера hello:
 
   ```bash
   GGSCI> STOP MGR
@@ -741,9 +741,9 @@ SQL> EXIT;
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2) Настройка репликации на myVM1 (основная)
+#### <a name="2-set-up-hello-replication-on-myvm1-primary"></a>2. Настройка репликации hello на myVM1 (основной)
 
-Запустите начальную нагрузку и проверьте наличие ошибок:
+Запуск начальной загрузки hello и проверьте наличие ошибок:
 
 ```bash
 $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -751,53 +751,53 @@ $ ./ggsci
 GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. Настройка репликации на myVM2 (репликация)
+#### <a name="3-set-up-hello-replication-on-myvm2-replicate"></a>3. Настройка репликации hello на myVM2 (репликация)
 
-Измените номер SCN на полученный ранее номер:
+Изменить hello SCN номер с номером hello получен до:
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ ./ggsci
   START REPLICAT REPORA, AFTERCSN 1857887
   ```
-Репликация началась и вы можете протестировать ее, вставив новые записи в таблицы TEST.
+начало репликации Hello и протестируйте его путем вставки новых записей tooTEST таблиц.
 
 
 ### <a name="view-job-status-and-troubleshooting"></a>Просмотр состояния задания и устранение неполадок
 
 #### <a name="view-reports"></a>Просмотр отчетов
-Чтобы просмотреть отчеты на myVM1, выполните следующие команды:
+tooview сообщает myVM1, запустите следующие команды hello.
 
   ```bash
   GGSCI> VIEW REPORT EXTORA 
   ```
  
-Чтобы просмотреть отчеты на myVM2, выполните следующие команды:
+tooview сообщает myVM2, запустите следующие команды hello.
 
   ```bash
   GGSCI> VIEW REPORT REPORA
   ```
 
 #### <a name="view-status-and-history"></a>Просмотр сведений о состоянии и журналов
-Чтобы просмотреть сведения о состоянии и журналы на myVM1, выполните следующие команды:
+tooview состояние и журнал на myVM1, запустите hello, следующие команды:
 
   ```bash
   GGSCI> dblogin userid c##ggadmin, password ggadmin 
   GGSCI> INFO EXTRACT EXTORA, DETAIL
   ```
 
-Чтобы просмотреть сведения о состоянии и журналы на myVM2, выполните следующие команды:
+tooview состояние и журнал на myVM2, запустите hello, следующие команды:
 
   ```bash
   GGSCI> dblogin userid repuser@pdb1 password rep_pass 
   GGSCI> INFO REP REPORA, DETAIL
   ```
-Теперь вы завершили установку и настройку Golden Gate на Oracle Linux.
+На этом завершается hello установки и настройки шлюза золотые в Oracle linux.
 
 
-## <a name="delete-the-virtual-machine"></a>Удаление виртуальной машины
+## <a name="delete-hello-virtual-machine"></a>Удалить виртуальную машину hello
 
-Вы можете удалить ставшие ненужными группу ресурсов, виртуальную машину и все связанные с ней ресурсы, использовав следующую команду.
+Когда оно больше не нужно, может быть hello следующую команду, группа ресурсов используется tooremove hello, виртуальных Машин и все связанные ресурсы.
 
 ```azurecli
 az group delete --name myResourceGroup

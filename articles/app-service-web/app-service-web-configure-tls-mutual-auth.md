@@ -1,6 +1,6 @@
 ---
-title: "Настройка взаимной проверки подлинности TLS для веб-приложения"
-description: "Узнайте, как настроить веб-приложение для использования проверки подлинности сертификата клиента на TLS."
+title: "aaaHow tooConfigure TLS взаимной проверки подлинности для веб-приложения"
+description: "Узнайте, как при tooconfigure веб-приложение клиента toouse сертификат проверки подлинности TLS."
 services: app-service
 documentationcenter: 
 author: naziml
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: db69852cffd1ff331ac4a640b04ea4360d00bf75
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8aeb9b35058fac50b8b38f6428207ad4a82d8637
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Настройка взаимной проверки подлинности TLS для веб-приложения
+# <a name="how-tooconfigure-tls-mutual-authentication-for-web-app"></a>Как tooConfigure TLS взаимной проверки подлинности для веб-приложения
 ## <a name="overview"></a>Обзор
-Можно ограничить доступ к веб-приложению Azure, используя разные способы проверки подлинности. Один из них — проверка подлинности с помощью сертификата клиента, если запрос поступает по протоколу TLS/SSL. Этот механизм называется взаимной проверкой подлинности TLS или проверкой подлинности сертификата клиента. В этой статье описано, как настроить веб-приложение для использования проверки подлинности сертификата клиента.
+Вы можете ограничить доступ tooyour веб-приложение Azure, позволяя разные типы проверки подлинности для него. Одним из способов toodo случае tooauthenticate, с помощью сертификата клиента при получении запроса hello через TLS/SSL. Этот механизм называется TLS взаимной проверки подлинности или проверка подлинности сертификата клиента и в этой статье подробно рассматриваются как toosetup вашей web app toouse проверка подлинности сертификата клиента.
 
-> **Примечание.** Если для доступа к сайту используется протокол HTTP, а не HTTPS, вы не получите сертификат клиента. Поэтому, если ваше приложение требует клиентские сертификаты, не следует разрешать запросы к приложению по протоколу HTTP.
+> **Примечание.** Если для доступа к сайту используется протокол HTTP, а не HTTPS, вы не получите сертификат клиента. Поэтому если приложению требуются клиентские сертификаты не следует разрешать запросы tooyour приложения по протоколу HTTP.
 > 
 > 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="configure-web-app-for-client-certificate-authentication"></a>Настройка веб-приложения для проверки подлинности сертификата клиента
-Чтобы веб-приложение требовало клиентские сертификаты, необходимо добавить параметр сайта clientCertEnabled для веб-приложения и присвоить ему значение true. Сейчас этот параметр недоступен через интерфейс управления на портале, и в этих целях следует использовать REST API.
+toosetup вашей веб-приложения toorequire клиентских сертификатов, необходимые tooadd hello clientCertEnabled сайта для веб-приложения и задать для него tootrue. Этот параметр не доступен через интерфейс управления hello в hello портала и hello API-интерфейса REST понадобится использовать toobe tooaccomplish.
 
-Для быстрого создания вызова REST API можно воспользоваться [средством ARMClient](https://github.com/projectkudu/ARMClient) . После входа с помощью средства необходимо выполнить следующую команду:
+Можно использовать hello [ARMClient средство](https://github.com/projectkudu/ARMClient) toomake его легко toocraft hello вызова интерфейса API REST. После входа в систему средства hello требуется hello tooissue следующую команду:
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
 
-Замените все содержимое в скобках {} сведениями для своего веб-приложения и создайте файл с именем enableclientcert.json со следующим JSON-содержимым:
+заменяя все содержимое {} для веб-приложения и создание файла с именем enableclientcert.json с hello, следуя JSON содержимого:
 
     {
         "location": "My Web App Location",
@@ -46,19 +46,19 @@ ms.lasthandoff: 07/11/2017
         }
     }
 
-Обязательно измените значение location на расположение своего веб-приложения, например Северо-Центральный регион США или Запад США и т. п.
+Убедитесь, что значение hello toochange toowherever «местоположение» является веб-приложения, которые находятся например North Central US или Запад США и т. д.
 
-Можно использовать https://resources.azure.com, чтобы переключить свойство `clientCertEnabled` в значение `true`.
+Можно также использовать https://resources.azure.com tooflip hello `clientCertEnabled` свойство слишком`true`.
 
-> **Примечание.** При запуске ARMClient из PowerShell необходимо экранировать знак @ для JSON-файла с помощью грависа (`).
+> **Примечание:** при запуске ARMClient из Powershell для hello JSON-файла с обратной кавычки потребуется hello tooescape символа @ ".
 > 
 > 
 
-## <a name="accessing-the-client-certificate-from-your-web-app"></a>Доступ к сертификату клиента из веб-приложения
-Если используется ASP.NET, и приложение настроено для аутентификации на основе сертификата клиента, то сертификат будет доступен через свойство **HttpRequest.ClientCertificate** . Для других стеков приложений сертификат клиента в вашем приложении будет доступен через значение заголовка запроса X-ARR-ClientCert, закодированное в base64. Приложение может создать сертификат из этого значения и использовать его для проверки подлинности и авторизации.
+## <a name="accessing-hello-client-certificate-from-your-web-app"></a>Доступ к hello клиентского сертификата из вашего веб-приложения
+Если используется ASP.NET и настройки проверки подлинности сертификата клиента toouse приложения hello сертификат будет доступно hello **HttpRequest.ClientCertificate** свойство. Для других стеки приложения будут доступны в приложения с помощью значение в кодировке base64 в заголовке запроса «X ARR ClientCert» hello hello сертификат клиента. Приложение может создать сертификат из этого значения и использовать его для проверки подлинности и авторизации.
 
 ## <a name="special-considerations-for-certificate-validation"></a>Дополнительные рекомендации для проверки сертификата
-Сертификат клиента, который отправляется в приложение, не проходит проверку платформой веб-приложений Azure. За проверку этого сертификата отвечает веб-приложение. Ниже приведен пример кода ASP.NET, который проверяет свойства сертификата для проверки подлинности.
+Hello сертификат клиента, который отправляется toohello приложения не проходит через проверку платформой hello веб-приложения Azure. Проверку этого сертификата лежит hello hello веб-приложения. Ниже приведен пример кода ASP.NET, который проверяет свойства сертификата для проверки подлинности.
 
     using System;
     using System.Collections.Specialized;
@@ -81,8 +81,8 @@ ms.lasthandoff: 07/11/2017
             public bool isValidCert = false;
 
             //
-            // Read the certificate from the header into an X509Certificate2 object
-            // Display properties of the certificate on the page
+            // Read hello certificate from hello header into an X509Certificate2 object
+            // Display properties of hello certificate on hello page
             //
             protected void Page_Load(object sender, EventArgs e)
             {
@@ -124,13 +124,13 @@ ms.lasthandoff: 07/11/2017
             //
             private bool IsValidClientCertificate()
             {
-                // In this example we will only accept the certificate as a valid certificate if all the conditions below are met:
-                // 1. The certificate is not expired and is active for the current time on server.
-                // 2. The subject name of the certificate has the common name nildevecc
-                // 3. The issuer name of the certificate has the common name nildevecc and organization name Microsoft Corp
-                // 4. The thumbprint of the certificate is 30757A2E831977D8BD9C8496E4C99AB26CB9622B
+                // In this example we will only accept hello certificate as a valid certificate if all hello conditions below are met:
+                // 1. hello certificate is not expired and is active for hello current time on server.
+                // 2. hello subject name of hello certificate has hello common name nildevecc
+                // 3. hello issuer name of hello certificate has hello common name nildevecc and organization name Microsoft Corp
+                // 4. hello thumbprint of hello certificate is 30757A2E831977D8BD9C8496E4C99AB26CB9622B
                 //
-                // This example does NOT test that this certificate is chained to a Trusted Root Authority (or revoked) on the server 
+                // This example does NOT test that this certificate is chained tooa Trusted Root Authority (or revoked) on hello server 
                 // and it allows for self signed certificates
                 //
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 07/11/2017
                 // 4. Check thumprint of certificate
                 if (String.Compare(certificate.Thumbprint.Trim().ToUpper(), "30757A2E831977D8BD9C8496E4C99AB26CB9622B") != 0) return false;
 
-                // If you also want to test if the certificate chains to a Trusted Root Authority you can uncomment the code below
+                // If you also want tootest if hello certificate chains tooa Trusted Root Authority you can uncomment hello code below
                 //
                 //X509Chain certChain = new X509Chain();
                 //certChain.Build(certificate);

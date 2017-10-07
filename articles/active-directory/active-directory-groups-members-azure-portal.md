@@ -1,6 +1,6 @@
 ---
-title: "Управление участниками группы в Azure Active Directory | Документы Майкрософт"
-description: "Сведения о том, как добавлять или удалять пользователей и устройства, которые входят в группу в Azure Active Directory"
+title: "aaaManage hello членов группы в Azure Active Directory | Документы Microsoft"
+description: "Как tooadd или удаление пользователей и устройств из группы в Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 044e88f95712e1cc5b5532f5492c78d711a8d858
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4cb16ee63828003da251423a04736f7174dd4896
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>Управление участниками групп в клиенте Azure Active Directory
-В этой статье объясняется, как управлять участниками группы в Azure Active Directory (Azure AD).
+В этой статье объясняется, как toomanage hello членов группы в Azure Active Directory (Azure AD).
 
-## <a name="how-do-i-find-the-members-and-manage-them"></a>Как можно найти участников и управлять ими?
-1. Войдите на [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Больше служб**, введите **Пользователи и группы** в текстовое поле, а затем нажмите клавишу **ВВОД**.
+## <a name="how-do-i-find-hello-members-and-manage-them"></a>Как найти члены hello и управлять ими?
+1. Войдите в toohello [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **пользователей и групп** в hello текстовое поле, а затем выберите **ввод**.
 
    ![Открытие страницы "Управление пользователями"](./media/active-directory-groups-members-azure-portal/search-user-management.png)
-3. В колонке **Пользователи и группы** выберите **Все группы**.
+3. На hello **пользователей и групп** колонке выберите **все группы**.
 
-   ![Открытие колонки группы](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
-4. Выберите группу в колонке **Пользователи и группы — Все группы** .
-5. В колонке **Группа — *имя_группы*** выберите **Участники**.
+   ![Открытие hello групп колонку](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
+4. На hello **пользователей и групп — все группы** колонки, выберите группу.
+5. На hello **группа — *groupname***  колонке выберите **элементы**.
 
-   ![Открытие колонки "Участники"](./media/active-directory-groups-members-azure-portal/view-group-members.png)
-6. Чтобы добавить участников в группу, в колонке **Группа — Участники** щелкните **Добавить участников**.
+   ![Открытие hello члены колонку](./media/active-directory-groups-members-azure-portal/view-group-members.png)
+6. группы toohello элементы tooadd на hello **группы - члены** колонке выберите **добавить членов**.
 
    ![Команда "Добавить участников"](./media/active-directory-groups-members-azure-portal/add-group-members-command.png)
-7. В колонке **Участники** выберите одного или несколько пользователей или устройств для добавления в группу, а затем нажмите кнопку **Выбрать**, расположенную в нижней части колонки, чтобы добавить их в группу. В поле **Пользователь** можно ввести часть имени пользователя или устройства, чтобы отфильтровать по нему список отображенных элементов. Подстановочные знаки в поле не допускаются.
-8. Чтобы удалить участника из группы, выберите его в колонке **Группы — Участники** .
-9. В колонке ***имя_участника*** выберите команду **Удалить** и подтвердите свой выбор при появлении соответствующего запроса.
+7. На hello **элементы** колонки, выберите один или несколько пользователей или устройств группы toohello tooadd и выберите hello **выберите** кнопку внизу hello hello колонке tooadd их toohello группы. Hello **пользователя** поле фильтры Здравствуйте, отображаемое на основе сопоставления вашей записи tooany часть имени пользователя или устройства. Подстановочные знаки в поле не допускаются.
+8. tooremove членов из группы hello на hello **группы - члены** колонке выберите член.
+9. На hello ***membername*** колонки, выберите hello **удалить** команду и подтвердите перемещение в строке приветствия.
 
    ![Команда "Удалить участников"](./media/active-directory-groups-members-azure-portal/remove-group-members-command.png)
-10. Завершив изменение состава группы, щелкните **Сохранить**.
+10. Завершив изменение состава группы hello, выберите **Сохранить**.
 
 ## <a name="additional-information"></a>Дополнительная информация
 В следующих статьях содержатся дополнительные сведения об Azure Active Directory.

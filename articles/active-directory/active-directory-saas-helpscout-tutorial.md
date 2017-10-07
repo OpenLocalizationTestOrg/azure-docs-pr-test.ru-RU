@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с Help Scout | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в приложении Help Scout."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и помочь Scout."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 84cee39c28a0f7e6b9878441e504131795673020
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 58edd140eb1eb5980796ca743b5f7acd891729a1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Учебник. Интеграция Azure Active Directory с Help Scout
 
-В этом учебнике описано, как интегрировать Help Scout с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate помочь агент с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с Help Scout обеспечивает следующие преимущества:
+Вы получаете следующие преимущества от интеграции с Azure AD помогают Scout hello:
 
-- С помощью Azure AD вы можете контролировать доступ к Help Scout.
-- Вы можете включить автоматический вход пользователей в Help Scout с помощью единого входа и учетной записи пользователя Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- В Azure AD можно контролировать, кто имеет доступ tooHelp Scout.
+- Можно автоматически войти вашей пользователей tooHelp Scout с помощью единого входа и учетная запись пользователя Azure AD.
+- Вы можете управлять учетными записями в один, централизованно, hello портал Azure.
 
-Дополнительные сведения об интеграции приложений SaaS с Azure AD см. в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+toolearn Дополнительные сведения о программное обеспечение как услуга (SaaS) интеграции приложений с Azure AD, в разделе [доступ к приложению и единый вход в Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Help Scout, вам потребуется:
+tooset интеграции с Azure AD с Scout справки требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Help Scout с включенным единым входом. 
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий, выполняемых в этом руководстве.
+> Если вы тестируете hello шаги в этом учебнике, мы рекомендуем не проверяют их в рабочей среде.
 
-Для проверки действий в этом руководстве соблюдайте следующие рекомендации:
+Рекомендации для тестирования hello шаги в этом учебнике.
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить бесплатную пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
@@ -50,172 +50,172 @@ ms.lasthandoff: 08/29/2017
 ## <a name="scenario-description"></a>Описание сценария
 В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. 
 
-Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Help Scout из галереи.
+1. Добавление справки Scout из коллекции hello.
 2. Настройка и проверка единого входа Azure AD.
 
-## <a name="add-help-scout-from-the-gallery"></a>Добавление Help Scout из галереи
-Чтобы настроить интеграцию Help Scout с Azure AD, в галерее необходимо добавить Help Scout в список управляемых приложений SaaS.
+## <a name="add-help-scout-from-hello-gallery"></a>Добавление справки Scout из коллекции hello
+tooset копирование hello интеграция справки Scout с Azure AD в галерее hello, добавление справки Scout tooyour список управляемых приложений SaaS.
 
-Чтобы добавить Help Scout из галереи, сделайте следующее:
+tooadd Scout справки из галереи hello:
 
-1. На [портале Azure](https://portal.azure.com) в меню слева щелкните **Azure Active Directory**. 
+1. В hello [портал Azure](https://portal.azure.com)в левом меню hello, выберите **Azure Active Directory**. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
 2. Перейдите в колонку **Корпоративные приложения** и выберите **Все приложения**.
 
-    ![Страница "Корпоративные приложения"][2]
+    ![страница приложений корпоративного Hello][2]
     
-3. Чтобы добавить новое приложение, выберите **Новое приложение**.
+3. Выберите новое приложение tooadd **новое приложение**.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Кнопка нового приложения Hello][3]
 
-4. В поле поиска введите **Help Scout**. В результатах поиска выберите **Help Scout**, а затем щелкните **Добавить**.
+4. Введите в поле поиска hello, **Scout справки**. В результатах поиска hello, выберите **справки Scout**, а затем выберите **добавить**.
 
-    ![Help Scout в списке результатов](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_addfromgallery.png)
+    ![Справка Scout в списке результатов hello](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_addfromgallery.png)
 
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в Help Scout с использованием тестового имени пользователя *Britta Simon*.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Azure AD соответствует пользователю в Help Scout. Необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Help Scout.
+Для единого входа toowork Azure AD необходима пользователя Azure AD аналог tooknow hello в Scout справки. Связи между пользователя Azure AD и связанных пользователей hello в справке Scout должно быть установлено.
 
-Для этого назначьте **имя пользователя** Azure AD в качестве значения **имени пользователя** в Help Scout.
+tooestablish hello ссылка связи в Scout справки, **Username**, присвойте значение hello hello **имя пользователя** в Azure AD.
 
-Чтобы настроить и проверить единый вход Azure Active Directory в Help Scout, вам потребуется выполнить следующие действия:
+tooconfigure и теста Azure AD единого входа с Scout справки, полный hello следующие задачи:
 
-1. [Настройка единого входа Azure AD](#set-up-azure-ad-single-sign-on) необходима, чтобы пользователи могли использовать эту функцию.
-2. [Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user) требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. [Создание тестового пользователя Help Scout](#create-a-help-scout-test-user) требуется, чтобы в Help Scout существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. [Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user) позволяет пользователю Britta Simon использовать единый вход Azure AD.
-5. [Проверка единого входа](#test-single-sign-on) необходима, чтобы убедиться, что конфигурация работает правильно.
+1. [Настройка единого входа Azure AD](#set-up-azure-ad-single-sign-on) Настраивает эту функцию toouse пользователя.
+2. [Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user) Тесты Azure AD единого входа с пользователем hello Саймон Britta.
+3. [Создание тестового пользователя Help Scout](#create-a-help-scout-test-user) Создает аналог Саймон Britta Scout справки, связанный toohello представление hello пользователя Azure AD.
+4. [Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user). Устанавливает toouse Britta Simon Azure AD единого входа.
+5. [Проверка единого входа](#test-single-sign-on) Подтверждает, что эта конфигурация hello работает.
 
 ### <a name="set-up-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе вы включите единый вход Azure AD на портале Azure, а затем настроите его в приложении Help Scout.
+В этом разделе можно настроить Azure AD единым входом в портал Azure hello. а затем настроите его в приложении Help Scout.
 
-Чтобы настроить единый вход Azure AD в Help Scout, сделайте следующее:
+tooset копирование Azure AD единого входа с Scout справки:
 
-1. На портале Azure на странице интеграции с приложением **Help Scout** выберите **Единый вход**.
+1. В hello в hello портала Azure **справки Scout** странице интеграции приложений выберите **единого входа**.
  
     ![Ссылка "Настройка единого входа"][4]
 
-2. На странице **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**.
+2. На hello **единого входа** страницы, для **режим**выберите **входа на базе SAML**.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_samlbase.png)
 
-3. Если вы хотите настроить приложение в режиме, инициированном поставщиком удостоверений, в разделе **Домены и URL-адреса приложения Help Scout** сделайте следующее:
+3. В разделе **URL-адреса и помочь домена Scout**, если требуется tooset приложения hello в режиме инициированный IDP, полный hello, следующие шаги:
 
-    1. В поле **Идентификатор** введите URL-адрес в следующем формате: `urn:auth0:helpscout:<instancename>`.
+    1. В hello **идентификатор** введите URL-адрес, имеющий hello следующий шаблон:`urn:auth0:helpscout:<instancename>`
 
-    2. В поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://helpscout.auth0.com/login/callback?connection=<instancename>`.
+    2. В hello **URL-адрес ответа** введите URL-адрес, имеющий hello следующий шаблон:`https://helpscout.auth0.com/login/callback?connection=<instancename>`
 
     ![Сведения о домене и URL-адресах единого входа приложения Help Scout](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url.png)
 
-4. Если вы хотите настроить приложение в режиме, инициируемом поставщиком услуг, установите флажок **Показать дополнительные настройки URL-адресов** и сделайте следующее:
+4. Tooset приложения hello в режиме, инициированные SP, установите hello **Показывать дополнительные параметры URL-адреса** флажок, а затем hello следующие:
 
-    * В поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://secure.helpscout.net/members/login/`.
+    * В hello **URL-адрес входа** введите URL-адрес, имеющий следующий формат hello:`https://secure.helpscout.net/members/login/`
 
     ![Сведения о домене и URL-адресах единого входа приложения Help Scout](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url1.png)
  
     > [!NOTE] 
-    > Значения этих URL-адресов приведены только в качестве примера. Измените их на фактические значения идентификатора и URL-адреса ответа. Чтобы получить их, обратитесь в [службу поддержки клиентов Help Scout](mailto:help@helpscout.com). 
+    > значения Hello в эти URL-адреса являются исключительно для демонстрационных целей. Обновление значений hello hello фактический идентификатор URL-адреса и URL-адрес ответа. обратитесь в службу tooget эти значения [Scout помочь группе поддержки](mailto:help@helpscout.com). 
 
-5. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните файл метаданных на компьютере.
+5. В разделе **сертификат подписи SAML**выберите **метаданные в формате XML**и затем сохраните файл метаданных hello на вашем компьютере.
 
-    ![Ссылка для скачивания сертификата](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_certificate.png) 
+    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_certificate.png) 
 
 6. Щелкните **Сохранить**.
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-helpscout-tutorial/tutorial_general_400.png)
     
-7. Чтобы настроить единый вход на стороне Help Scout, отправьте скачанный XML-файл метаданных в [службу поддержки Help Scout](mailto:help@helpscout.com). Специалисты службы поддержки Help Scout используют этот параметр для правильной настройки подключения единого входа SAML с обеих сторон.
+7. tooset копирование одного входа на стороне справки Scout hello, отправлять hello загружены метаданные XML файл toohello [Scout помочь группе поддержки](mailto:help@helpscout.com). Группа поддержки справки Scout Hello применяется этот параметр, чтобы правильно настроенной hello SAML единого входа для соединения с обеих сторон.
 
 > [!TIP]
-> Краткую версию этих инструкций можно также прочесть на [портале Azure](https://portal.azure.com) во время настройки приложения. После добавления этого приложения из раздела **Active Directory** > **Корпоративные приложения** выберите вкладку **Единый вход**. Откройте встроенную документацию в разделе **Настройка** в нижней части страницы. Чтобы узнать больше, ознакомьтесь со [встроенной документацией по Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Можно прочитать краткое версии этих инструкций в hello [портал Azure](https://portal.azure.com), тогда как при настройке приложения! После добавления приложения hello, выбрав **Active Directory** > **корпоративных приложений**выберите hello **Single Sign-On** вкладки. Можно получить доступ к документации hello внедрены в hello **конфигурации** раздел hello нижней части страницы приветствия. Чтобы узнать больше, ознакомьтесь со [встроенной документацией по Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-В этом разделе описано, как на портале Azure создать тестового пользователя с именем Britta Simon.
+В этом разделе в hello портал Azure Создание тестового пользователя с именем Саймон Britta.
 
 ![Создание тестового пользователя Azure AD][100]
 
-Чтобы создать тестового пользователя в Azure AD, сделайте следующее:
+toocreate тестового пользователя в Azure AD:
 
-1. На портале Azure в меню слева щелкните **Azure Active Directory**.
+1. В hello в левом меню hello, портале Azure выберите **Azure Active Directory**.
 
-    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-helpscout-tutorial/create_aaduser_01.png)
+    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-helpscout-tutorial/create_aaduser_01.png)
 
-2. Чтобы открыть список пользователей, выберите **Пользователи и группы**, а затем — **Все пользователи**.
+2. toodisplay hello список пользователей, выберите **пользователей и групп**, а затем выберите **всех пользователей**.
 
     ![Выбор элементов "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-helpscout-tutorial/create_aaduser_02.png)
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части страницы **Все пользователи** щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговом вверху hello hello **всех пользователей** выберите **добавить**.
 
-    ![Кнопка "Добавить"](./media/active-directory-saas-helpscout-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-helpscout-tutorial/create_aaduser_03.png)
 
-4. В диалоговом окне **Пользователь** сделайте следующее:
+4. В hello **пользователя** диалоговое окно, полный hello, следующие шаги:
 
-    1. В поле **Имя** введите **BrittaSimon**.
+    1. В hello **имя** введите **BrittaSimon**.
 
-    2. В поле **Имя пользователя** введите адрес электронной почты пользователя Britta Simon.
+    2. В hello **имя пользователя** введите электронный адрес пользователя Саймон Britta hello.
 
-    3. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+    3. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
 
     4. Нажмите кнопку **Создать**.
 
-        ![Диалоговое окно "Пользователь"](./media/active-directory-saas-helpscout-tutorial/create_aaduser_04.png)
+        ![диалоговое окно приветствия пользователя](./media/active-directory-saas-helpscout-tutorial/create_aaduser_04.png)
 
  
 ### <a name="create-a-help-scout-test-user"></a>Создание тестового пользователя Help Scout
 
-Цель этого раздела — создать пользователя с именем Britta Simon в Help Scout. Help Scout поддерживает JIT-подготовку. Эта функция включена по умолчанию.
+Hello объекта этого раздела — toocreate пользователя с именем Саймон Britta в Scout справки. Help Scout поддерживает JIT-подготовку. Эта функция включена по умолчанию.
 
-В этом разделе не нужно ничего делать. Если пользователь еще не существует в Help Scout, он создается при попытке доступа к приложению Help Scout.
+В этом разделе нет не toocomplete действие или задача. Если пользователь еще не существует в Scout справки, новый создается при попытке tooaccess Scout справки.
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-Здесь описано, как разрешить пользователю Britta Simon использовать единый вход Azure AD, предоставив доступ учетным записям пользователя к Help Scout.
+В этом разделе позволяют hello пользователя Britta Simon toouse Azure AD единого входа путем предоставления hello пользователя учетной записи доступа к tooHelp Scout.
 
-![Назначение роли пользователя][200] 
+![Назначение пользователям ролей hello][200] 
 
-Чтобы назначить пользователя Britta Simon в Help Scout, сделайте следующее:
+tooassign tooHelp Britta Simon Scout:
 
-1. На портале Azure откройте представление приложений и перейдите к представлению каталога. Перейдите в колонку **Корпоративные приложения** и выберите **Все приложения**.
+1. В hello портал Azure откройте представление приложения hello, а затем перейдите toohello представления каталога. Перейдите в колонку **Корпоративные приложения** и выберите **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Help Scout**.
+2. В списке приложений hello выберите **Scout справки**.
 
-    ![Ссылка на Help Scout в списке "Приложения"](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_app.png)  
+    ![ссылку справки Scout Hello в списке приложений hello](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_app.png)  
 
-3. В меню слева выберите **Пользователи и группы**.
+3. Выберите в меню слева hello, **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202]
+    ![Hello пользователей и групп каналу][202]
 
-4. Выберите **Добавить**. Затем на странице **Добавление назначения** выберите **Пользователи и группы**.
+4. Выберите **Добавить**. Затем на hello **добавить назначение** выберите **пользователей и групп**.
 
-    ![Область "Добавление назначения"][203]
+    ![область назначения, добавьте Hello][203]
 
-5. На странице **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На hello **пользователей и групп** страницы в список пользователей, выберите hello **Britta Simon**.
 
-6. На странице **Пользователи и группы** щелкните **Выбрать**.
+6. На hello **пользователей и групп** выберите **выберите**.
 
-7. На странице **Добавление назначения** выберите **Назначить**.
+7. На hello **добавить назначение** выберите **назначить**.
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Выбрав плитку Help Scout на панели доступа, вы должны автоматически войти в приложение Help Scout.
+При выборе плитки помогают Scout hello в панель доступа hello вы должны автоматически входить в tooyour Scout справки приложения.
 
-Дополнительные сведения о панели доступа см. в статье [Что такое панель доступа?](active-directory-saas-access-panel-introduction.md). 
+Дополнительные сведения о панели доступа см. в разделе [панели доступа введение toohello](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по toointegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

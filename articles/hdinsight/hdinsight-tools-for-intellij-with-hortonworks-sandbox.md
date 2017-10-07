@@ -1,6 +1,6 @@
 ---
-title: "Использование набора средств Azure для IntelliJ с песочницей Hortonworks | Документация Майкрософт"
-description: "Узнайте, как использовать инструменты HDInsight в наборе средств Azure для IntelliJ с песочницей Hortonworks."
+title: "набор средств Azure для IntelliJ с песочницей Hortonworks aaaUse | Документы Microsoft"
+description: "Дополнительные сведения о том, как toouse HDInsight средства в набор средств Azure для IntelliJ с Hortonworks \"песочницы\"."
 keywords: "инструменты hadoop,запрос hive,intellij,песочница hortonworks,набор средств azure для intellij"
 services: HDInsight
 documentationcenter: 
@@ -17,81 +17,81 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c49f185db5a035f70a711bf309b973182d94a2b0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2bf97068a9cec99fcc7b4ff9469b91d8cbe2a8d8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Использование инструментов HDInsight для IntelliJ с песочницей Hortonworks
 
-Узнайте, как использовать инструменты HDInsight для IntelliJ при разработке приложений Apache Scala и их тестировании в [песочнице Hortonworks](http://hortonworks.com/products/sandbox/), запущенной на рабочей станции. 
+Узнайте, как toouse средства HDInsight для приложений Apache Scala toodevelop IntelliJ и проверки hello приложений на [Hortonworks "песочницы"](http://hortonworks.com/products/sandbox/) на рабочей станции. 
 
-[IntelliJ IDEA](https://www.jetbrains.com/idea/) — это интегрированная среда разработки (IDE) Java для разработки программного обеспечения для компьютеров. После разработки и тестирования приложений в песочнице Hortonworks их можно переместить в [Azure HDInsight](hdinsight-hadoop-introduction.md).
+[IntelliJ IDEA](https://www.jetbrains.com/idea/) — это интегрированная среда разработки (IDE) Java для разработки программного обеспечения для компьютеров. После разработки и тестирования приложения в "песочнице" Hortonworks, вы можете переместить их слишком[Azure HDInsight](hdinsight-hadoop-introduction.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 Для работы с этим руководством вам потребуется:
 
-- Платформа данных Hortonworks Data Platform 2.4 (HDP) в песочнице Hortonworks, выполняемая в локальной среде. Сведения о настройке см. в статье [Начало работы с песочницей Hadoop, эмулятором на виртуальной машине](hdinsight-hadoop-emulator-get-started.md). 
+- Платформа данных Hortonworks Data Platform 2.4 (HDP) в песочнице Hortonworks, выполняемая в локальной среде. в разделе tooconfigure HDP, [приступить к работе в экосистеме hello Hadoop с изолированной среде Hadoop на виртуальной машине](hdinsight-hadoop-emulator-get-started.md). 
     >[!NOTE]
-    >Средства HDInsight для IntelliJ были протестированы только с HDP 2.4. Чтобы получить HDP 2.4, разверните **архив песочницы Hortonworks** на [сайте скачивания песочницы Hortonworks](http://hortonworks.com/downloads/#sandbox).
+    >Средства HDInsight для IntelliJ были протестированы только с HDP 2.4. Разверните tooget HDP 2.4 **Hortonworks "песочницы" архив** на hello [сайта загрузки для "песочницы" Hortonworks](http://hortonworks.com/downloads/#sandbox).
 
-- [Java Developer Kit (JDK) версии 1.8 или более поздней версии](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). JDK необходим для набора средств Azure для IntelliJ.
+- [Java Developer Kit (JDK) версии 1.8 или более поздней версии](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). JDK требуется hello Azure Toolkit для IntelliJ.
 
-- [Выпуск IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download) с подключаемым модулем [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) и подключаемым модулем [Набор средств Azure для IntelliJ](../azure-toolkit-for-intellij.md). Средства HDInsight для IntelliJ доступны в составе набора средств Azure для IntelliJ. 
+- [ИДЕЯ IntelliJ community edition](https://www.jetbrains.com/idea/download) с hello [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) подключаемого модуля и hello [средств Azure для IntelliJ](../azure-toolkit-for-intellij.md) подключаемого модуля. Средства HDInsight для IntelliJ доступен как часть средств Azure для IntelliJ hello. 
 
-  Чтобы установить подключаемые модули, выполните такие действия:
+  tooinstall hello подключаемые модули, hello следующие:
 
   1. Откройте IntelliJ IDEA.
-  2. На экране **Welcome** (Добро пожаловать) выберите **Configure** (Настройка), а затем **Plugins** (Подключаемые модули).
-  3. Выберите **Install JetBrains plugin** (Установить подключаемый модуль JetBrains) в левом нижнем углу.
-  4. Используйте функцию поиска, чтобы найти **Scala**, а затем выберите **Install** (Установить).
-  5. Чтобы завершить установку, щелкните **Restart IntelliJ IDEA** (Перезапустить IntelliJ IDEA).
-  6. Чтобы установить **набор средств Azure для IntelliJ**, повторите шаги 4 и 5. Дополнительные сведения см. в статье [Установка набора средств Azure для IntelliJ](../azure-toolkit-for-intellij-installation.md).
+  2. На hello **приветствия** выберите **Настройка**, а затем выберите **подключаемых модулей**.
+  3. Выберите **JetBrains установить подключаемый модуль** в левом нижнем углу hello.
+  4. Использовать hello toosearch функции поиска для **Scala**, а затем выберите **установить**.
+  5. Выберите **перезапустите ИДЕЯ IntelliJ** toocomplete hello установки.
+  6. Повторите шаг 4 и 5 hello tooinstall **средств Azure для IntelliJ**. Дополнительные сведения см. в разделе [hello установки набора средств Azure для IntelliJ](../azure-toolkit-for-intellij-installation.md).
 
 ## <a name="create-a-spark-scala-application"></a>Создание приложения Spark Scala
 
-В этом разделе с помощью IntelliJ IDEA создается пример проекта Scala. В следующем разделе IntelliJ IDEA связывается с песочницей Hortonworks (эмулятором) до отправки проекта.
+В этом разделе с помощью IntelliJ IDEA создается пример проекта Scala. В следующем разделе hello свяжите ИДЕЯ IntelliJ toohello Hortonworks "песочницы" (эмулятора) перед отправкой hello проекта.
 
-1. Откройте IntelliJ IDEA со своей рабочей станции. В диалоговом окне **Новый проект** сделайте следующее:
+1. Откройте IntelliJ IDEA со своей рабочей станции. В hello **новый проект** диалогового окна поле, hello следующие:
 
    а. Выберите **HDInsight** > **Spark on HDInsight (Scala)** (Spark в HDInsight (Scala)).
 
-   b. В списке **средств сборки** выберите один из следующих вариантов:
+   b. В hello **инструмент сборки** выберите либо hello следующие, tooyour потребность в соответствии с:
 
     * **Maven.** Для поддержки мастера создания проекта Scala.
-    * **SBT.** Для управления зависимостями и создания проекта Scala.
+    * **SBT**, для управления зависимостями hello и построения для проекта Scala hello
 
-   ![Диалоговое окно нового проекта](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
+   ![диалоговое окно нового проекта Hello](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. Щелкните **Далее**.
 
-3. В диалоговом окне **New Project** (Новый проект) сделайте следующее:
+3. В hello Далее **новый проект** диалогового окна поле, hello следующие:
 
     ![Создание свойств проекта IntelliJ Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
-    а. В поле **Project name** (Имя проекта) введите имя проекта.
+    а. В hello **имя проекта** введите имя проекта.
 
-    b. В поле **Project location** (Расположение проекта) введите расположение проекта.
+    b. В hello **расположение проекта** введите расположение проекта.
 
-    c. Рядом с раскрывающимся списком **Project SDK** (Пакет SDK проекта) выберите **New** (Создать), а затем **JDK** и укажите папку пакета Java JDK версии 1.7 или более поздней. Выберите **Java 1.8** для кластера Spark 2.x или **Java 1.7** для кластера Spark 1.x. Расположение по умолчанию: C:\Program Files\Java\jdk1.8.x_xxx.
+    c. Далее toohello **проекта SDK** раскрывающемся списке выберите **New**выберите **JDK**, и укажите папку hello Java JDK версии 1.7 или более поздней версии. Выберите **Java 1.8** для кластера 2.x Spark hello, или выберите **Java 1.7** для hello Spark 1.x кластера. расположение по умолчанию Hello — C:\Program Files\Java\jdk1.8.x_xxx.
 
-    d. В раскрывающемся списке для параметра **Spark version** (Версия Spark) мастер создания проекта Scala интегрирует правильную версию пакета SDK для Spark и пакета SDK для Scala. Если версия кластера Spark ниже 2.0, выберите **Spark 1.x**. В противном случае выберите **Spark 2.x**. В этом примере используется Spark 1.6.2 (Scala 2.10.5). Убедитесь, что используется репозиторий, помеченный Scala 2.10.x. Не используйте репозиторий, помеченный Scala 2.11.x.
+    d. В hello **версии Spark** раскрывающегося списка, мастер создания проекта Scala интегрируется hello правильной версии пакета SDK Spark и Scala SDK. Если версия кластера Spark hello является более ранней, чем 2.0, выберите **усилить 1.x**. В противном случае выберите **Spark 2.x**. В этом примере используется Spark 1.6.2 (Scala 2.10.5). Убедитесь, что вы используете помечен Scala репозитория hello 2.10.x. Не используйте репозиторий hello помечен Scala 2.11.x.
 
 4. Выберите **Готово**.
 
-5. Если представление **Project** (Проект) еще не открыто, нажмите клавиши **ALT+1**, чтобы открыть его.
+5. Если hello **проекта** представление еще не открыта, нажмите клавишу **Alt + 1** tooopen его.
 
-6. В **обозревателе проектов** разверните проект и выберите **src**.
+6. В **обозревателя проектов**, разверните проект hello и выберите **src**.
 
-7. Щелкните правой кнопкой мыши **src**, наведите указатель мыши на пункт **New** (Создать), а затем щелкните **Scala Class** (Класс Scala).
+7. Щелкните правой кнопкой мыши **src**, слишком точки**New**и выберите **Scala класса**.
 
-8. В поле **Name** (Имя) введите имя, а в поле **Kind** (Тип) выберите **Object** (Объект), а затем нажмите кнопку **ОК**.
+8. В hello **имя** введите имя в hello **тип** выберите **объекта**, а затем выберите **ОК**.
 
-    ![Окно создания нового класса Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
+    ![Создайте новый класс Scala окна Hello](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
 
-9. Скопируйте приведенный ниже код и вставьте его в файл с расширением SCALA.
+9. В файле .scala hello вставьте hello, следующий код:
 
         import java.util.Random
         import org.apache.spark.{SparkConf, SparkContext}
@@ -127,55 +127,55 @@ ms.lasthandoff: 08/29/2017
             }
         }
 
-10. В меню **Build** (Сборка) выберите **Build project** (Собрать проект). Убедитесь, что компиляция завершилась успешно.
+10. На hello **построения** последовательно выберите пункты **построения проекта**. Убедитесь, что успешно завершена hello компиляции.
 
 
-## <a name="link-to-the-hortonworks-sandbox"></a>Связь с песочницей HortonWorks
+## <a name="link-toohello-hortonworks-sandbox"></a>Связать "песочницы" Hortonworks toohello
 
-Прежде чем устанавливать связь с песочницей Hortonworks (эмулятором), необходимо иметь приложение IntelliJ.
+Прежде чем связывать tooa Hortonworks "песочницы" (эмулятора), необходимо иметь приложение IntelliJ.
 
-Чтобы установить связь с эмулятором, выполните следующее:
+Эмулятор tooan toolink, hello следующие:
 
-1. Откройте проект в IntelliJ.
+1. Привет открыть проект в IntelliJ.
 
-2. В меню **View** (Вид) выберите **Tool Windows** (Окна инструментов) и выберите **Azure Explorer**.
+2. На hello **представление** выберите пункт **средства Windows**, а затем выберите **обозреватель Azure**.
 
 3. Разверните **Azure**, щелкните правой кнопкой мыши **HDInsight**, а затем выберите **Link an Emulator** (Установить связь с эмулятором).
 
-4. В окне **Link A New Emulator** (Установить связь с новым эмулятором) введите пароль, который был настроен для учетной записи привилегированного пользователя песочницы Hortonworks, введите значения, аналогичные приведенным на следующем снимке экрана, а затем нажмите кнопку **OK**. 
+4. В hello **новый эмулятор ссылку** окно, введите пароль hello, настроенных для учетной записи корневой hello hello Hortonworks "песочницы", введите примерно toothose значения в следующий снимок экрана приветствия и выберите **ОК** . 
 
-   ![Окно Link a New Emulator (Установить связь с новым эмулятором)](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
+   ![окна «Связи новый эмулятор» Hello](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
 
-5. Чтобы настроить эмулятор, выберите **Yes** (Да).
+5. Эмулятор hello tooconfigure, выберите **Да**.
 
-При успешном подключении эмулятор (песочница Hortonworks) будет внесен в узел HDInsight.
+Если подключения эмулятора hello hello эмулятор (Hortonworks "песочницы") отображается в узел HDInsight hello.
 
-## <a name="submit-the-spark-scala-application-to-the-hortonworks-sandbox"></a>Отправка приложения Spark Scala в песочницу Hortonworks
+## <a name="submit-hello-spark-scala-application-toohello-hortonworks-sandbox"></a>Отправить toohello приложения hello Spark Scala Hortonworks "песочницы"
 
-Когда среда IntelliJ IDEA связана с эмулятором, можно отправить проект.
+После связывания IntelliJ ИДЕЯ toohello эмулятора, вы можете отправить проекта.
 
-Чтобы отправить проект на эмулятор, выполните следующее:
+toosubmit симулятор tooan проекта hello следующие:
 
-1. В **обозревателе проектов** щелкните проект правой кнопкой мыши и выберите **Submit Spark Application to HDInsight** (Отправить приложение Spark в HDInsight).
+1. В **обозревателя проектов**, щелкните правой кнопкой мыши проект hello и выберите **tooHDInsight приложения отправить Spark**.
 
-2. Выполните следующее:
+2. Здравствуйте, следующие:
 
-    а. В раскрывающемся списке **Spark cluster (Linux only)** (Кластер Spark (только для Linux)) выберите локальную песочницу Hortonworks.
+    а. В hello **кластера Spark (Linux)** раскрывающегося списка выберите локальный "песочницы" Hortonworks.
 
-    b. В поле **Main class name** (Имя класса Main) введите имя класса Main. В этом руководстве имя — **GroupByTest**.
+    b. В hello **имя класса Main** выберите или введите имя основного класса hello. В этом учебнике — имя hello **GroupByTest**.
 
-3. Нажмите кнопку **Submit** (Отправить). Журналы отправки заданий отображаются в окне инструмента отправки Spark.
+3. Нажмите кнопку **Submit** (Отправить). журналы отправки заданий Hello отображаются в окне инструментов отправки Spark hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- Сведения о создании приложений Spark для HDInsight с помощью инструментов HDInsight для IntelliJ см. в статье [Создание приложений Spark для кластера HDInsight с помощью набора средств Azure для IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md).
+- как toocreate приложений Spark для HDInsight с помощью средства HDInsight для IntelliJ, перейдите в слишком toolearn[используйте средства HDInsight в набор средств Azure для приложений Spark toocreate IntelliJ для кластера HDInsight Spark Linux](hdinsight-apache-spark-intellij-tool-plugin.md).
 
-- Просмотрите видеоролик [Introduce HDInsight Tools for IntelliJ for Spark Development](https://www.youtube.com/watch?v=YTZzYVgut6c) (Вводные сведения об инструментах HDInsight для IntelliJ для разработки Spark).
+- слишком go toowatch видео средства HDInsight для IntelliJ,[вводит средства HDInsight для IntelliJ для разработки Spark](https://www.youtube.com/watch?v=YTZzYVgut6c).
 
-- Сведения об удаленной отладке приложений Spark в HDInsight по протоколу SSH см. в статье [Удаленная отладка приложений Spark в кластере HDInsight с помощью набора средств Azure для IntelliJ через SSH](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md).
+- toolearn как toodebug Spark приложений с помощью hello toolkit удаленно на HDInsight через SSH, перейдите слишком[удаленно отлаживать приложения Spark в кластере HDInsight с помощью набора средств Azure для IntelliJ через SSH](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md).
 
-- Сведения об удаленной отладке приложений Spark через VPN с помощью набора средств в HDInsight см. в статье [Удаленная отладка приложений в HDInsight Spark через VPN с помощью набора средств Azure для IntelliJ](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
+- toolearn как toodebug Spark приложений с помощью hello toolkit удаленно на HDInsight через виртуальную частную сеть, перейдите слишком[используйте средства HDInsight в набор средств Azure для приложений Spark toodebug IntelliJ удаленно в кластере HDInsight Spark Linux](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
 
-- Сведения об использовании средств HDInsight для Eclipse для создания приложений Spark см. в статье [Создание приложений Spark для кластера HDInsight с помощью набора средств Azure для Eclipse](hdinsight-apache-spark-eclipse-tool-plugin.md).
+- как toouse средства HDInsight для Eclipse toocreate приложении Spark go слишком toolearn[используйте средства HDInsight в набор средств Azure для Eclipse toocreate Spark приложений](hdinsight-apache-spark-eclipse-tool-plugin.md).
 
-- Просмотрите видеоролик [Use HDInsight Tool for Eclipse to create Spark applications](https://mix.office.com/watch/1rau2mopb6fha) (Использование средств HDInsight для Eclipse для создания приложений Spark).
+- toowatch видео средства HDInsight для Eclipse, go слишком[использовать инструмент HDInsight Spark приложений Eclipse toocreate](https://mix.office.com/watch/1rau2mopb6fha).

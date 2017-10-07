@@ -1,6 +1,6 @@
 ---
-title: "Состояние сеанса с кэшем Redis для Azure в службе приложений Azure"
-description: "Узнайте, как использовать службу кэша Azure для поддержки кэширования состояний сеансов ASP.NET."
+title: "состояние aaaSession с кэшем Azure Redis в службе приложений Azure"
+description: "Узнайте, как toouse hello кэширования по состояния сеанса для службы кэша Azure toosupport ASP.NET."
 services: app-service\web
 documentationcenter: .net
 author: Rick-Anderson
@@ -14,36 +14,36 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 06/27/2016
 ms.author: riande
-ms.openlocfilehash: 64fa909daf92b2b1f0cf4c7b334edba807fe7228
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f689b6754ea072aa195f822ab6482f4bf2748375
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="session-state-with-azure-redis-cache-in-azure-app-service"></a>Состояние сеанса с кэшем Redis для Azure в службе приложений Azure
-В этом разделе объясняется, как использовать службу кэша Redis для Azure для состояния сеанса.
+В этом разделе объясняется, как toouse hello служба кэша Redis Azure для хранения состояния сеанса.
 
-Если ваше веб-приложение ASP.NET использует состояние сеанса, вам потребуется настроить поставщик состояния внешнего сеанса (либо службу Redis Cache или поставщик состояния сеанса SQL Server). Если вы используете дату сеанса и не используете внешний поставщик, вы будете ограничены одним экземпляром вашего веб-приложения. Служба Redis Cache самая простая, и включить ее можно очень быстро.
+Если веб-приложения ASP.NET использует состояние сеанса, необходимо будет tooconfigure поставщик состояния сеанса внешних (hello служба кэша Redis или поставщик состояния сеанса SQL Server). Если используются состояние сеанса, а не использовать внешнего поставщика, можно только tooone экземпляр веб-приложения. Hello служба кэша Redis является быстрым и простым tooenable hello.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a id="createcache"></a>Создание кэша
-Следуйте [этим инструкциям](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-cache), чтобы создать кэш.
+## <a id="createcache"></a>Создать hello кэша
+Выполните [этим указаниям](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-cache) toocreate hello кэша.
 
-## <a id="configureproject"></a>Добавление пакета NuGet RedisSessionStateProvider в веб-приложение
-Установите пакет NuGet `RedisSessionStateProvider` .  Используйте следующую команду, чтобы установить из консоли менеджера пакетов (**Инструменты** > **Диспетчер пакетов NuGet** > **Консоль диспетчера пакетов**):
+## <a id="configureproject"></a>Добавить hello RedisSessionStateProvider NuGet пакета tooyour веб-приложения
+Установка hello NuGet `RedisSessionStateProvider` пакета.  Используйте hello следующая команда tooinstall из консоли диспетчера пакетов hello (**средства** > **диспетчера пакетов NuGet** > **консоль диспетчера пакетов**):
 
   `PM> Install-Package Microsoft.Web.RedisSessionStateProvider`
 
-Чтобы выполнить установку из меню **Сервис** > **Диспетчер пакетов NuGet** > **Управление пакетами NugGet для решения**, выполните поиск по запросу `RedisSessionStateProvider`.
+tooinstall из **средства** > **диспетчера пакетов NuGet** > **управление фрагментом пакетами для решения**, поиск `RedisSessionStateProvider`.
 
-Для получения дополнительных сведений см. [страницу NuGet RedisSessionStateProvider](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/) и [Настройка клиента кэша](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#NuGet).
+Дополнительные сведения см. hello [NuGet RedisSessionStateProvider страницы](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/) и [Настройка клиента кэша hello](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#NuGet).
 
-## <a id="configurewebconfig"></a>Изменение файла Web.Config
-Кроме внесения ссылки на сборку для кэша, NuGet-пакет добавляет записи заглушки в файл *web.config* . 
+## <a id="configurewebconfig"></a>Изменение файла Web.Config hello
+Кроме ссылается на сборку toomaking для кэша, hello пакет NuGet добавляет записи в заглушки hello *web.config* файла. 
 
-1. Откройте *web.config* и найдите элемент **sessionState** .
-2. Введите значения для `host`, `accessKey`, `port` (необходимо указать 6380 в качестве порта SSL) и установите `SSL` в значение `true`. Эти значения можно получить в выноске для экземпляра кэша на [портале Azure](http://go.microsoft.com/fwlink/?LinkId=529715). Дополнительные сведения см. в разделе [Подключение к кэшу](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache). Обратите внимание, для новых кэшей все порты, кроме SSL, по умолчанию запрещены. Дополнительные сведения о том, как настроить использование порта без SSL, см. в статье [Настройка кэша Redis для Azure](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts) в разделе [Порты доступа](https://msdn.microsoft.com/library/azure/dn793612.aspx). В следующем примере показана изменения *web.config* файла, в частности изменения *порт*, *узла*, accessKey * и *ssl* .
+1. Откройте hello *web.config* и найти hello hello **sessionState** элемента.
+2. Введите значения hello для `host`, `accessKey`, `port` (hello SSL-порт должен быть 6380) и задайте `SSL` слишком`true`. Эти значения можно получить из hello [портала Azure](http://go.microsoft.com/fwlink/?LinkId=529715) колонку для экземпляра кэша. Дополнительные сведения см. в разделе [подключения кэша toohello](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache). Обратите внимание, что порт не SSL hello отключен по умолчанию для нового кэша. Дополнительные сведения о включении порта без поддержки SSL hello см. в разделе hello [порты доступа](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts) раздела hello [Настройка кэша в кэше Redis для Azure](https://msdn.microsoft.com/library/azure/dn793612.aspx) раздела. Hello следующую разметку показывает hello изменения toohello *web.config* файла, в частности hello изменения слишком*порт*, *узла*, accessKey * и *ssl*.
    
           <system.web>;
             <customErrors mode="Off" />;
@@ -73,32 +73,32 @@ ms.lasthandoff: 07/11/2017
             </sessionState>;
           </system.web>;
 
-## <a id="usesessionobject"></a> Использование объекта сеанса в коде
-Последним шагом является начало использования объекта сеанса в коде ASP.NET. Добавление объектов к состоянию сеанса выполняется с помощью метода **Session.Add** . Этот метод использует пары "ключ-значение" для хранения элементов в кэше состояния сеанса.
+## <a id="usesessionobject"></a>Использование hello объекта сеанса в коде
+последним шагом Hello является toobegin, используя объект сеанса hello в коде ASP.NET. Добавление состояния toosession объектов с помощью hello **Session.Add** метод. Этот метод использует элементы toostore пары "ключ значение" в кэш состояния сеанса hello.
 
     string strValue = "yourvalue";
     Session.Add("yourkey", strValue);
 
-Следующий код извлекает значение из состояния сеанса.
+Привет, следующий код получает это значение из состояния сеанса.
 
     object objValue = Session["yourkey"];
     if (objValue != null)
        strValue = (string)objValue;    
 
-Вы можете также использовать Redis Cache для кэширования объектов в вашем веб-приложении. Дополнительные сведения см. в статье о [приложении для обработки фильмов MVC с кэшем Redis для Azure за 15 минут](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/).
-См. дополнительные сведения об [использовании состояния сеанса ASP.NET][ASP.NET Session State Overview].
+Можно также использовать объекты toocache кэша Redis hello в веб-приложения. Дополнительные сведения см. в статье о [приложении для обработки фильмов MVC с кэшем Redis для Azure за 15 минут](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/).
+Дополнительные сведения о том, как состояние сеанса ASP.NET toouse, в разделе [Общие сведения о состоянии сеанса ASP.NET][ASP.NET Session State Overview].
 
 > [!NOTE]
-> Чтобы приступить к работе со службой приложений Azure до создания учетной записи Azure, перейдите к разделу [Пробное использование службы приложений](https://azure.microsoft.com/try/app-service/), где вы можете быстро создать кратковременное веб-приложение начального уровня в службе приложений. Никаких кредитных карт и обязательств.
+> Tooget работы в службе приложений Azure перед регистрацией учетную запись Azure, перейдите слишком[повторите служб приложений](https://azure.microsoft.com/try/app-service/), в котором можно немедленно создать кратковременных начальный веб-приложения в службе приложений. Никаких кредитных карт и обязательств.
 > 
 > 
 
 ## <a name="whats-changed"></a>Изменения
-* Руководство по переходу от веб-сайтов к службе приложений см. в статье [Служба приложений Azure и существующие службы Azure](http://go.microsoft.com/fwlink/?LinkId=529714).
+* Toohello руководство изменений из tooApp веб-сайтов службы. в разделе: [службе приложений Azure и ее влияние на существующие службы Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
   
   *Автор: [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT)*
 
-[installed the latest]: http://www.windowsazure.com/downloads/?sdk=net  
+[installed hello latest]: http://www.windowsazure.com/downloads/?sdk=net  
 [ASP.NET Session State Overview]: http://msdn.microsoft.com/library/ms178581.aspx
 
 [NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png

@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок в HBase с помощью Azure HDInsight | Документация Майкрософт"
-description: "Получите ответы на распространенные вопросы о работе с HBase и Azure HDInsight."
+title: "aaaTroubleshoot HBase с помощью Azure HDInsight | Документы Microsoft"
+description: "Ответы toocommon вопросов о работе с HBase и Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: nitinver
@@ -13,70 +13,70 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.openlocfilehash: 15412c3853a2b8436c5e96034c9a92a2a1094662
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5210184f8ea95628952a95df8c98f5b98e37c53e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Устранение неполадок в HBase с помощью Azure HDInsight
 
-Ознакомьтесь с основными проблемами и их разрешением при работе с полезными данными Apache HBase в Apache Ambari.
+Дополнительные сведения о hello основные проблемы и способы их устранения при работе с полезными данными Apache HBase Apache Ambari.
 
 ## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Как запускать отчеты о командах hbck с несколькими неназначенными регионами
 
-При выполнении команды `hbase hbck` часто можно увидеть сообщение об ошибке "multiple regions being unassigned or holes in the chain of regions" (несколько регионов не назначены, или присутствуют пропуски в цепочке регионов).
+Общие сообщение об ошибке, может видеть при выполнении hello `hbase hbck` команда является «несколько областей назначение которых отменено или уязвимости в цепочке областей hello.»
 
-В пользовательском интерфейсе главного узла HBase можно увидеть количество регионов, которые не сбалансированы по всем региональным серверам. Затем можно выполнить команду `hbase hbck`, чтобы увидеть пропуски в цепочке регионов.
+В hello HBase Master пользовательского интерфейса вы увидите номер hello областей Несбалансированная по всем серверам области. Затем можно выполнить `hbase hbck` команды toosee уязвимости в цепочке области hello.
 
-Пропуски могут возникнуть по причине отключенных регионов, поэтому сначала следует исправить назначения. 
+Уязвимости в системе могут вызываться hello автономного регионов, поэтому назначения hello исправление сначала. 
 
-Чтобы вернуть неназначенные регионы в нормальное состояние, выполните такие действия:
+toobring Здравствуйте неназначенные областей задней tooa нормальное состояние, выполните следующие шаги hello:
 
-1. Войдите в кластер HDInsight HBase с помощью SSH.
-2. Для подключения к оболочке ZooKeeper выполните команду `hbase zkcli`.
-3. Выполните команду `rmr /hbase/regions-in-transition` или `rmr /hbase-unsecure/regions-in-transition`.
-4. Для выхода из оболочки `hbase zkcli` используйте команду `exit`.
-5. Откройте пользовательский интерфейс Ambari Apache и перезапустите службу активного главного узла HBase.
-6. Выполните команду `hbase hbck` еще раз (без каких-либо параметров). Проверьте выходные данные этой команды и убедитесь, что все регионы назначены.
+1. Войдите в toohello кластеров HDInsight HBase с помощью SSH.
+2. tooconnect с оболочкой ZooKeeper hello, запустите hello `hbase zkcli` команды.
+3. Запустите hello `rmr /hbase/regions-in-transition` команды или hello `rmr /hbase-unsecure/regions-in-transition` команды.
+4. tooexit из hello `hbase zkcli` оболочки, используйте hello `exit` команды.
+5. Откройте hello пользовательского интерфейса Ambari Apache и затем перезапустите службу Master HBase активный hello.
+6. Запустите hello `hbase hbck` команду еще раз (без параметров). Проверьте выходные данные этой команды tooensure, которому назначаются все области hello.
 
 
 ## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Как устранить проблемы с временем ожидания при использовании команд hbck для назначения регионов
 
 ### <a name="issue"></a>Проблема
 
-Потенциальной причиной проблем с временем ожидания при использовании команды `hbck` может быть то, что несколько регионов находятся в состоянии "идет переход" в течение долгого времени. Эти регионы можно увидеть как отключенные в пользовательском интерфейсе главного узла HBase. Так как большое количество областей пытается выполнить переход, главный узел HBase может превысить время ожидания и не сможет вернуть регионы обратно в оперативное состояние.
+Может вызвать проблемы с временем ожидания при использовании hello `hbck` команда может быть несколько областей принадлежат hello «переходными» состоянии в течение долгого времени. Вы увидите этих областей, как вне сети в hello HBase Master пользовательского интерфейса. Так как большое количество областей пытаетесь tootransition, HBase Master может время ожидания и будет невозможно toobring этих областей обратно в оперативный режим.
 
 ### <a name="resolution-steps"></a>Способы устранения
 
-1. Войдите в кластер HDInsight HBase с помощью SSH.
-2. Для подключения к оболочке ZooKeeper выполните команду `hbase zkcli`.
-3. Выполните команду `rmr /hbase/regions-in-transition` или `rmr /hbase-unsecure/regions-in-transition`.
-4. Чтобы выйти из оболочки `hbase zkcli`, используйте команду `exit`.
-5. Перезапустите службу активного главного узла HBase в пользовательском интерфейсе Ambari.
-6. Выполните команду `hbase hbck -fixAssignments` еще раз.
+1. Войдите в toohello кластеров HDInsight HBase с помощью SSH.
+2. tooconnect с оболочкой ZooKeeper hello, запустите hello `hbase zkcli` команды.
+3. Запустите hello `rmr /hbase/regions-in-transition` или hello `rmr /hbase-unsecure/regions-in-transition` команды.
+4. tooexit hello `hbase zkcli` оболочки, используйте hello `exit` команды.
+5. В hello Ambari пользовательского интерфейса перезапустите службу Master HBase активный hello.
+6. Запустите hello `hbase hbck -fixAssignments` еще раз.
 
 ## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Как принудительно отключить безопасный режим HDFS в кластере
 
 ### <a name="issue"></a>Проблема
 
-Локальная распределенная файловая система Hadoop (HDFS) зависла в безопасном режиме в кластере HDInsight.
+Здравствуйте, локальный Hadoop распределенных файл системы (HDFS) застряла в безопасном режиме, в кластере HDInsight hello.
 
 ### <a name="detailed-description"></a>Подробное описание
 
-Эта ошибка может быть вызвана сбоем при выполнении такой команды HDFS:
+Эта ошибка может быть вызвана сбоя при запустите следующую команду HDFS hello:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-Ошибка, которую вы могли увидеть при попытке запустить команду, выглядит так:
+Ошибка может появиться при попытке команды hello toorun Hello выглядит следующим образом:
 
 ```apache
 hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
 org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
-It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
+It was turned on manually. Use "hdfs dfsadmin -safemode leave" tooturn safe mode off.
         at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1359)
         at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:4010)
         at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1102)
@@ -126,11 +126,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Возможные причины
 
-Кластер HDInsight был уменьшен до небольшого числа узлов. Число узлов ниже фактора репликации HDFS или близко к нему.
+Hello кластера HDInsight был уменьшен tooa очень небольшое число узлов. Hello количество узлов ниже или закройте коэффициентом репликации toohello HDFS.
 
 ### <a name="resolution-steps"></a>Способы устранения 
 
-1. Получите состояние HDFS в кластере HDInsight, выполнив следующие команды:
+1. Получите состояние hello hello HDFS на hello HDInsight кластера, запустив hello, следующие команды:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -171,14 +171,14 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
    ...
 
    ```
-2. Также можно проверить целостность HDFS в кластере HDInsight с помощью следующих команд:
+2. Также можно проверить целостность hello hello HDFS на hello HDInsight кластера с использованием hello, следующие команды:
 
    ```apache
    hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
    ```
 
    ```apache
-   Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
+   Connecting toonamenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
    FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
    ....................................................................................................
 
@@ -201,10 +201,10 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
    Number of racks:               1
    FSCK ended at Wed Apr 05 16:40:28 UTC 2017 in 187 milliseconds
 
-   The filesystem under path '/' is HEALTHY
+   hello filesystem under path '/' is HEALTHY
    ```
 
-3. Если вы определили, что отсутствующих, поврежденных, либо нереплицированных блоков нет или что такие блоки можно игнорировать, выполните следующую команду, чтобы вывести узел имен из безопасного режима:
+3. Если вы установили, нет нет отсутствует, поврежден или under-реплицированных блоков, игнорирование этих блоков, выполните hello, следующая команда tootake hello имя узла из безопасного режима:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
@@ -215,30 +215,30 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="resolution-steps"></a>Способы устранения
 
-Чтобы подключиться к Phoenix, необходимо предоставить IP-адрес активного узла ZooKeeper. Убедитесь, что служба Zookeeper, к которой подключается sqlline.py, запущена и работает.
-1. Войдите в кластер HDInsight с помощью SSH.
-2. Введите следующую команду:
+tooconnect с Финиксе необходимо указать IP-адрес hello ZooKeeper активного узла. Убедитесь, что hello ZooKeeper sqlline.py toowhich служба пытается tooconnect он работоспособен.
+1. Войдите в toohello кластера HDInsight с помощью SSH.
+2. Введите следующую команду hello:
                 
    ```apache
            "/usr/hdp/current/phoenix-client/bin/sqlline.py <IP of machine where Active Zookeeper is running"
    ```
 
    > [!Note] 
-   > IP-адрес активного узла ZooKeeper можно получить из пользовательского интерфейса Ambari. Последовательно выберите **HBase** > **Quick Links** (Быстрые ссылки) > **ZK\* (Активно)** > **Zookeeper Info** (Сведения о Zookeeper). 
+   > Можно получить IP-адрес hello hello активного узла ZooKeeper hello Ambari пользовательского интерфейса. Go слишком**HBase** > **быстрые ссылки** > **ZK\* (активный)** > **Zookeeper сведения**. 
 
-3. Если sqlline.py подключается к Phoenix и время ожидания не истекает, выполните следующую команду, чтобы проверить доступность и работоспособность Phoenix:
+3. Если hello sqlline.py подключается tooPhoenix и времени ожидания, выполнения hello следующая команда, toovalidate hello доступность и работоспособность Финиксе:
 
    ```apache
            !tables
            !quit
    ```      
-4. Если эта команда работает, проблемы нет. IP-адрес, предоставленный пользователем, может быть неправильным. Однако если команда приостанавливается на длительное время, а затем отображается следующая ошибка, перейдите к шагу 5.
+4. Если эта команда работает, проблемы нет. Hello IP-адрес, предоставленный пользователем hello могут быть неправильными. Однако если команда hello приостанавливается на длительное время, а затем отображает hello следующая ошибка, по-прежнему toostep 5.
 
    ```apache
-           Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings. 
+           Error while connecting toosqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting toojdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings. 
    ```
 
-5. Выполните следующие команды на головном узле (hn0) для диагностики состояния таблицы Phoenix SYSTEM.CATALOG:
+5. Выполните следующие команды из головного узла (hn0) hello toodiagnose условие hello hello Финиксе системы hello. Таблица КАТАЛОГА:
 
    ```apache
             hbase shell
@@ -246,23 +246,23 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
            count 'SYSTEM.CATALOG'
    ```
 
-   Команда должна вернуть следующую ошибку: 
+   Команда Hello должен возвращать ошибки аналогичные toohello следующее: 
 
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
    ```
-6. В пользовательском интерфейсе Ambari выполните следующие действия, чтобы перезапустить службу HMaster на всех узлах ZooKeeper:
+6. В hello Ambari пользовательского интерфейса выполните следующие шаги toorestart hello HMaster службы на всех узлах ZooKeeper hello.
 
-    1. В разделе **Summary** (Сводка) HBase перейдите к **HBase** > **Active HBase Master** (Активный главный узел HBase). 
-    2. В разделе **Components** (Компоненты) перезапустите службу главного узла HBase.
+    1. В hello **Сводка** раздел из HBase, перейти слишком**HBase** > **Active HBase Master**. 
+    2. В hello **компоненты** статьи, перезапустите службу HBase Master hello.
     3. Повторите описанные выше шаги для остальных служб **главного узла HBase в режиме ожидания**. 
 
-Для стабилизации и завершения процесса восстановления службы главного узла HBase может потребоваться до пяти минут. Через несколько минут повторите команды sqlline.py, чтобы убедиться, что таблица SYSTEM.CATALOG включена и может запрашиваться. 
+Он может занять несколько минут toofive toostabilize службы HBase образец hello и завершения процесса восстановления hello. Через несколько минут повторите tooconfirm команды sqlline.py hello, hello системы. КАТАЛОГ таблицы работает и что он может запрашиваться. 
 
-Когда таблица SYSTEM.CATALOG вернется к нормальной работе, проблема подключения к Phoenix должна быть автоматически разрешена.
+Здравствуйте, когда система. КАТАЛОГ таблицы обратной toonormal, tooPhoenix проблема подключения hello должен быть автоматически разрешено.
 
 
-## <a name="what-causes-a-master-server-to-fail-to-start"></a>Что вызывает сбой запуска главного сервера
+## <a name="what-causes-a-master-server-toofail-toostart"></a>В каком случае toofail toostart главного сервера
 
 ### <a name="error"></a>Ошибка 
 
@@ -270,19 +270,19 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="detailed-description"></a>Подробное описание
 
-Во время запуска HMaster выполняет многоэтапную инициализацию, включая перенос данных из временной папки (.tmp) в папку данных, а также проверяет в папке WAL (упреждающее протоколирование) наличие неработающих региональных серверов и т. д. 
+Во время выполнения процесса запуска hello HMaster выполняет многие действия для инициализации. К ним относятся перемещение данных с нуля hello (.tmp) папки toohello данных. HMaster также просматривает папки toosee hello упреждающей журналы (WALs) при наличии серверам отвечать на запросы области и т. д. 
 
 Во время запуска HMaster выполняет базовую команду `list` в этих папках. Каждый раз, когда в любой из этих папок обнаруживается непредвиденный файл, возникает исключение и сервер не будет запущен.  
 
 ### <a name="probable-cause"></a>Возможные причины
 
-В журналах регионального сервера попытайтесь определить время ожидания создания файла, а затем посмотрите, произошел ли сбой во время создания файла. (Обратитесь в службу поддержки HBase, чтобы она могла помочь вам в этом.) Это поможет нам предоставить более надежные механизмы защиты от таких ошибок и обеспечить надлежащий процесс завершения работы.
+В журналах сервера hello регион попробуйте временная шкала hello tooidentify hello создания файла, а затем посмотреть в случае отсутствия сбоя процесса вокруг файла hello hello времени создания. (Обратитесь в службу поддержки tooassist HBase вы таким образом.) Это поможет нам предоставить более надежные механизмы защиты от таких ошибок и обеспечить надлежащий процесс завершения работы.
 
 ### <a name="resolution-steps"></a>Способы устранения
 
-Проверьте стек вызовов и попытайтесь определить папку, которая может быть причиной проблемы (например, это может быть папка WAL или папка .tmp). Затем в Cloud Explorer или с помощью команд HDFS попытайтесь найти файл с ошибкой. Обычно это файл \*-renamePending.json. (Файл \*-renamePending.json является файлом журнала, который используется для реализации атомарной операции переименования в драйвере WASB. Из-за ошибок в реализации такие файлы могут оставаться в случае сбоя процесса и т. д.) Принудительно удалите этот файл в Cloud Explorer или с помощью команд HDFS. 
+Стек вызовов hello и повторите toodetermine папку, которой может причиной hello (например, бывает hello WAL, журналы или hello .tmp папки). В Cloud Explorer или с помощью команд HDFS, запустите файл с ошибкой toolocate hello. Обычно это файл \*-renamePending.json. (hello \*-renamePending.json файл является файлом журнала, которое использовалось в WASB драйвер hello tooimplement hello atomic переименование. Из-за toobugs в этой реализации можно оставить эти файлы после сбоев process и т. д.) Принудительно удалите этот файл в Cloud Explorer или с помощью команд HDFS. 
 
-В этом расположении в некоторых случаях может иметься временный файл с именем наподобие *$$$.$$$*. Чтобы увидеть этот файл, необходимо использовать команду `ls` HDFS. Этот файл не отображается в Cloud Explorer. Чтобы удалить этот файл, используйте команду HDFS `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
+В этом расположении в некоторых случаях может иметься временный файл с именем наподобие *$$$.$$$*. У вас есть toouse HDFS `ls` команду toosee этот файл; файлов hello в Cloud Explorer не отображаются. toodelete этот файл, используйте hello HDFS команда `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
 
 После выполнения этих команд HMaster должен сразу запуститься. 
 
@@ -292,11 +292,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="detailed-description"></a>Подробное описание
 
-В кластере Linux может появиться сообщение, которое указывает, что таблица *hbase: meta* находится в автономном режиме. При выполнении `hbck` может появиться сообщение "hbase: meta table replicaId 0 is not found on any region" (Таблица метаданных HBase реплики 0 не найдена ни в одном из регионов). Проблема может заключаться в том, что серверу HMaster не удалось выполнить инициализацию после перезагрузки HBase. В журналах HMaster может появиться сообщение: "No server address listed in hbase: meta for region hbase: backup \<region name\>" (Отсутствуют адреса серверов в метаданных hbase для региона hbase: резервное копирование <имя региона>).  
+Сообщение может появиться в кластере Linux, которое указывает, что hello *hbase: meta* таблицы находится в автономном режиме. При выполнении `hbck` может появиться сообщение "hbase: meta table replicaId 0 is not found on any region" (Таблица метаданных HBase реплики 0 не найдена ни в одном из регионов). Hello проблема может быть что HMaster не удалось инициализировать после перезагрузки HBase. В журналах HMaster hello, может появиться сообщение hello: «не адрес сервера, перечисленные в hbase: метаданные для региона hbase: резервного копирования \<название региона\>».  
 
 ### <a name="resolution-steps"></a>Способы устранения
 
-1. В оболочке HBase введите следующие команды (при необходимости измените на фактические значения):  
+1. Введите следующие команды (Изменение фактических значений как применимое) hello в hello оболочки HBase:  
 
    ```apache
    > scan 'hbase:meta'  
@@ -306,11 +306,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
    > delete 'hbase:meta','hbase:backup <region name>','<column name>'  
    ```
 
-2. Удалите запись *пространства имен HBase*. Эта запись может быть той же ошибкой, о которой сообщалось в отчете при сканировании таблицы *пространства имен HBase*.
+2. Удалить hello *hbase: пространство имен* входа. Эта запись может быть hello же ошибка, которая сообщается при hello *hbase: пространство имен* сканирование таблицы.
 
-3. Чтобы вернуть HBase в состояние выполнения, в пользовательском интерфейсе Ambari перезапустите службу активного главного узла HMaster.  
+3. toobring копирование HBase в состоянии выполнения, в hello Ambari пользовательского интерфейса, перезапустите службу Active HMaster hello.  
 
-4. В оболочке HBase выполните следующую команду, чтобы подключиться ко всем автономным таблицам:
+4. Hello оболочки HBase, toobring всех таблиц вне сети, выполните следующую команду hello:
 
    ```apache 
    hbase hbck -ignorePreCheckPermission -fixAssignments 
@@ -318,46 +318,46 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="additional-reading"></a>Дополнительные материалы
 
-[Не удается обработать таблицу HBase](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table).
+[Не удается tooprocess таблице HBase hello](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Ошибка
 
-Время ожидания HMaster истекает, и возникает неустранимое исключение следующего вида "java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned" (java.io.IOException: истекло время ожидания назначения таблицы пространства имен (300 000 мс)).
+HMaster время ожидания, и аналогичные too"java.io.IOException неустранимое исключение: ожидание toobe таблицы имен назначенный 300000ms Timedout.»
 
 ### <a name="detailed-description"></a>Подробное описание
 
-Такая проблема может возникнуть при наличии большого количества таблиц и регионов, которые не были удалены при перезагрузке служб HMaster. Перезапуск может завершиться ошибкой, и вы увидите сообщение об ошибке, которое указано выше.  
+Такая проблема может возникнуть при наличии большого количества таблиц и регионов, которые не были удалены при перезагрузке служб HMaster. Перезапуск может завершиться ошибкой, и вы увидите hello предшествующий сообщение об ошибке.  
 
 ### <a name="probable-cause"></a>Возможные причины
 
-Это известная проблема со службой HMaster. Общие задачи запуска кластера могут занять много времени. Служба HMaster завершает работу, так как таблица пространства имен еще не назначена. Это происходит только в том случае, если имеется большой объем неочищенных данных и пять минут ожидания недостаточно.
+Это известная проблема с hello HMaster службы. Общие задачи запуска кластера могут занять много времени. HMaster завершает работу, так как таблица пространства имен hello еще не связана. Это происходит только в том случае, если имеется большой объем неочищенных данных и пять минут ожидания недостаточно.
   
 ### <a name="resolution-steps"></a>Способы устранения
 
-1. В пользовательском интерфейсе Ambari перейдите к **HBase** > **Configs** (Конфигурации). В пользовательском файле hbase-site.xml file добавьте следующий параметр: 
+1. В hello Ambari пользовательского интерфейса, перейдите слишком**HBase** > **Configs**. В файле пользовательских hbase-site.xml hello добавьте hello следующий параметр: 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
    ```
 
-2. Перезапустите необходимые службы (HMaster или другие службы HBase).  
+2. Перезапустите службы требуется hello (HMaster и другие службы HBase).  
 
 
 ## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Что вызывает сбой перезапуска на сервере региона
 
 ### <a name="issue"></a>Проблема
 
-Сбой перезапуска на региональном сервере можно предотвратить, следуя рекомендациям. Рекомендуется приостановить действие высокой рабочей нагрузки при планировании перезагрузки региональных серверов HBase. Если приложение продолжит подключаться к региональным серверам во время завершения работы, это замедлит перезапуск регионального сервера на несколько минут. Кроме того рекомендуется сначала очистить все таблицы. Подробные сведения об очистке таблиц см. в статье [HDInsight HBase: How to improve the HBase cluster restart time by flushing tables](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) (HDInsight HBase: как уменьшить время перезапуска кластера HBase с помощью очистки таблиц).
+Сбой перезапуска на региональном сервере можно предотвратить, следуя рекомендациям. Рекомендуется приостановить действие высокой рабочей нагрузки при планировании серверов области toorestart HBase. Если приложение продолжает tooconnect с серверами области во время завершения работы, операция перезапуска сервера hello области будет работать медленнее на несколько минут. Кроме того это toofirst смысл, записи на диск всех hello таблиц. Справочную информацию о том, как таблицы tooflush см. [HDInsight HBase: как кластер HBase tooimprove hello перезапустите времени, Очистка таблиц](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-При запуске операции перезапуска на региональных серверах HBase в пользовательском интерфейсе Ambari региональные серверы будут сразу же отключены, но они не будут немедленно перезапущены. 
+Если запустить операцию перезапуска hello серверы области HBase hello Ambari пользовательского интерфейса, сразу же видеть серверы области hello вышел из строя, что не перезапустить прямо сейчас. 
 
-Вот, что происходит в этот момент: 
+Вот, что происходит в фоновом hello. 
 
-1. Агент Ambari отправляет запрос на завершение работы к региональному серверу.
-2. Агент Ambari ожидает 30 секунд, пока региональный сервер завершит работу надлежащим образом. 
-3. Если приложение продолжает подключаться к региональному серверу, его работа не будет завершена немедленно. Перед завершением работы должно истечь 30-секундное время ожидания. 
-4. Через 30 секунд агент Ambari отправляет команду force-kill (`kill -9`) на региональный сервер. Это можно увидеть в журнале агента Ambari (в каталоге /var/log/ соответствующего рабочего узла):
+1. Hello Ambari агент отправляет toohello области остановки запроса сервера.
+2. Hello Ambari агент ожидает в течение 30 секунд для hello области сервера tooshut работу надлежащим образом. 
+3. Если приложение продолжает работать tooconnect с hello области сервера, сервер hello не завершает работу немедленно. время ожидания 30 секунд Hello истекает до завершения работы. 
+4. Через 30 секунд hello Ambari агент отправляет force-kill (`kill -9`) команда toohello области сервера. Вы увидите в журнале агента ambari hello (в hello/var/журнала или каталог hello соответствующих рабочий узел):
 
    ```apache
            2017-03-21 13:22:09,171 - Execute['/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh --config /usr/hdp/current/hbase-regionserver/conf stop regionserver'] {'only_if': 'ambari-sudo.sh  -H -E t
@@ -371,7 +371,7 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-Из-за аварийного завершения работы порт, связанный с процессом, может не освободиться несмотря на завершение процесса на региональном сервере. В результате при запуске регионального сервера может возникнуть AddressBindException, как показано в следующих журналах. Это можно проверить это в файле region-server.log в каталоге /var/log/hbase на рабочих узлах, где региональный сервер не запускается. 
+Из-за аварийного завершения работы hello hello порт, связанный с процессом hello не может быть освобождена, несмотря на то, что hello области серверный процесс остановлен. Такая ситуация может привести tooan AddressBindException при запуске сервера hello области, как показано в следующие журналы hello. Это можно проверить в области server.log hello в каталоге /var/log/hbase hello на hello рабочих узлов отказом toostart hello области сервера. 
 
    ```apache
 
@@ -392,7 +392,7 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
    at org.apache.hadoop.hbase.regionserver.HRegionServer.constructRegionServer(HRegionServer.java:2634)
    ... 5 more
         
-   Caused by: java.net.BindException: Problem binding to /10.2.0.4:16020 : Address already in use
+   Caused by: java.net.BindException: Problem binding too/10.2.0.4:16020 : Address already in use
    at org.apache.hadoop.hbase.ipc.RpcServer.bind(RpcServer.java:2497)
    at org.apache.hadoop.hbase.ipc.RpcServer$Listener.<init>(RpcServer.java:580)
    at org.apache.hadoop.hbase.ipc.RpcServer.<init>(RpcServer.java:1982)
@@ -413,8 +413,8 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="resolution-steps"></a>Способы устранения
 
-1. Попробуйте уменьшить нагрузку на региональные серверы HBase перед выполнением перезапуска. 
-2. Также можно (если шаг 1не помог) попробовать выполнить перезапуск региональных серверов на рабочих узлах вручную с помощью следующих команд:
+1. Попробуйте tooreduce hello нагрузку на серверы области HBase hello, прежде чем начать перезагрузку. 
+2. Можно также (Если шаг 1 не имеет смысла), попробуйте toomanually перезапуска региона hello серверов на hello рабочих узлов с помощью следующих команд:
 
    ```apache
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"

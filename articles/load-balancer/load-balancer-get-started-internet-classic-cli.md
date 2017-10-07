@@ -1,6 +1,6 @@
 ---
-title: "Создание доступной в Интернете внутренней подсистемы балансировки нагрузки с помощью Azure CLI | Документация Майкрософт"
-description: "Узнайте, как создать балансировщик нагрузки для Интернета в классической модели развертывания с помощью интерфейса командной строки Azure."
+title: "Подсистема балансировки - нагрузки на aaaCreate из Интернета, Azure CLI классический | Документы Microsoft"
+description: "Узнайте, как toocreate с выходом подсистемы балансировки нагрузки Интернета в классическом развертывании модели с помощью hello Azure CLI"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: da3a908f17ff5c6d3923549a884ecc0a13cb8e9e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e6070cbc574f74bca0cccb960ff192847d6511bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-cli"></a>Приступая к созданию балансировщика нагрузки (классический режим) для Интернета в Azure CLI
+# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-hello-azure-cli"></a>Приступая к созданию подсистемы балансировки нагрузки (классические) в hello Azure CLI с выходом в Интернет
 
 > [!div class="op_single_selector"]
-> * [Классический портал Azure](../load-balancer/load-balancer-get-started-internet-classic-portal.md)
+> * [классическом портале Azure](../load-balancer/load-balancer-get-started-internet-classic-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-classic-ps.md)
 > * [Интерфейс командной строки Azure](../load-balancer/load-balancer-get-started-internet-classic-cli.md)
 > * [облачных служб Azure](../load-balancer/load-balancer-get-started-internet-classic-cloud.md)
@@ -31,16 +31,16 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Прежде чем приступить к работе с ресурсами Azure, обратите внимание на то, что в настоящее время в Azure существует две модели развертывания: классическая модель развертывания и модель развертывания с помощью Azure Resource Manager. Обязательно изучите [модели и инструменты развертывания](../azure-classic-rm.md) , прежде чем приступить к работе с какими бы то ни было ресурсами Azure. Для просмотра документации о средствах развертывания выбирайте соответствующие вкладки в верхней части данной статьи. В этой статье рассматривается классическая модель развертывания. Вы также можете [узнать, как создать балансировщик нагрузки для Интернета с помощью диспетчера ресурсов Azure](load-balancer-get-started-internet-arm-ps.md).
+> Перед началом работы с ресурсами Azure, он является важным toounderstand, что Azure в данный момент существуют две модели развертывания: диспетчера ресурсов Azure и классическом. Обязательно изучите [модели и инструменты развертывания](../azure-classic-rm.md) , прежде чем приступить к работе с какими бы то ни было ресурсами Azure. Для просмотра документации hello для различных средств, щелкнув вкладки hello hello верхней части этой статьи. В этой статье рассматриваются hello классической модели развертывания. Вы также можете [Узнайте, как с помощью диспетчера ресурсов Azure подсистемы балансировки нагрузки, toocreate из Интернета](load-balancer-get-started-internet-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="step-by-step-creating-an-internet-facing-load-balancer-using-cli"></a>Пошаговая процедура создания балансировщика нагрузки для Интернета с помощью интерфейса командной строки
 
-Это руководство описывает создание балансировщика нагрузки для Интернета на основе приведенного выше сценария.
+В этом руководстве показано, как toocreate Internet балансировки нагрузки на основе hello сценарии выше.
 
-1. Если вы еще не пользовались Azure CLI, ознакомьтесь со статьей [Установка и настройка CLI Azure](../cli-install-nodejs.md) и следуйте инструкциям вплоть до выбора учетной записи Azure и подписки.
-2. Выполните команду **azure config mode** , чтобы переключиться в классический режим, как показано ниже.
+1. Если ранее не пользовались Azure CLI, см. раздел [Установка и настройка hello Azure CLI](../cli-install-nodejs.md) и следуйте инструкциям hello toohello точку, где выбирается учетная запись Azure и подписки.
+2. Запустите hello **azure конфигурации режима** режим tooclassic команд tooswitch, как показано ниже.
 
     ```azurecli
     azure config mode asm
@@ -52,12 +52,12 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="create-endpoint-and-load-balancer-set"></a>Создание набора балансировщика нагрузки и конечной точки
 
-Сценарий предполагает, что были созданы виртуальные машины "web1" и "web2".
-В этом руководстве будет создан набор балансировщика нагрузки с использованием общего порта 80 и локального порта 80. Для пробы также задается порт 80, а набору балансировщика нагрузки присваивается имя lbset.
+Hello сценарий предполагает hello виртуальных машин «web1» и «web2» были созданы.
+В этом руководстве будет создан набор балансировщика нагрузки с использованием общего порта 80 и локального порта 80. Порт пробы настроен на порт 80 и балансировки нагрузки hello именованный набор «набор балансировки нагрузки».
 
 ### <a name="step-1"></a>Шаг 1
 
-Создайте первую конечную точку и набор балансировщика нагрузки, используя `azure network vm endpoint create` для виртуальной машины web1.
+Создайте конечную точку hello для первой и задать с помощью подсистемы балансировки нагрузки `azure network vm endpoint create` для виртуальной машины «web1».
 
 ```azurecli
 azure vm endpoint create web1 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
@@ -65,7 +65,7 @@ azure vm endpoint create web1 80 --local-port 80 --protocol tcp --probe-port 80 
 
 ## <a name="step-2"></a>Шаг 2
 
-Добавьте в набор балансировщика нагрузки вторую виртуальную машину "web2".
+Добавьте второй набор балансировки нагрузки виртуальной машины «web2» toohello.
 
 ```azurecli
 azure vm endpoint create web2 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
@@ -73,13 +73,13 @@ azure vm endpoint create web2 80 --local-port 80 --protocol tcp --probe-port 80 
 
 ## <a name="step-3"></a>Шаг 3.
 
-Проверьте конфигурацию балансировщика нагрузки с помощью `azure vm show` .
+Проверьте hello нагрузки балансировки конфигурации с помощью `azure vm show` .
 
 ```azurecli
 azure vm show web1
 ```
 
-Выходные данные должны выглядеть следующим образом:
+Hello выходные данные будут:
 
     data:    DNSName "contoso.cloudapp.net"
     data:    Location "East US"
@@ -125,7 +125,7 @@ azure vm show web1
 
 ## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>Создание конечной точки удаленного рабочего стола для виртуальной машины
 
-Вы можете создать конечную точку удаленного рабочего стола для пересылки трафика с общего порта на локальный порт для конкретной виртуальной машины с помощью `azure vm endpoint create`.
+Вы можете создать удаленного рабочего стола конечной точки tooforward сетевого трафика на локальный порт tooa открытый порт для конкретной виртуальной машины с помощью `azure vm endpoint create`.
 
 ```azurecli
 azure vm endpoint create web1 54580 -k 3389
@@ -133,16 +133,16 @@ azure vm endpoint create web1 54580 -k 3389
 
 ## <a name="remove-virtual-machine-from-load-balancer"></a>Удаление виртуальной машины из балансировщика нагрузки
 
-Вам необходимо удалить конечную точку, сопоставленную с набором балансировщика нагрузки, из виртуальной машины. После удаления конечной точки виртуальная машина больше не входит в набор балансировщика нагрузки.
+У вас есть toodelete hello конечная точка, связанная toohello набору балансировки нагрузки из hello виртуальной машины. После удаления конечной точки hello hello виртуальной машины не принадлежит набор больше toohello с балансировкой нагрузки.
 
-Используя приведенный выше пример, можно удалить конечную точку, созданную для виртуальной машины "web1", из "lbset" балансировщика нагрузки с помощью команды `azure vm endpoint delete`.
+Используя пример hello выше, можно удалить hello конечной точки, созданной для виртуальной машины «web1» из балансировки нагрузки набор балансировки» нагрузки» с помощью команды hello `azure vm endpoint delete`.
 
 ```azurecli
 azure vm endpoint delete web1 tcp-80-80
 ```
 
 > [!NOTE]
-> Вы можете отобразить дополнительные параметры для управления конечными точками с помощью команды `azure vm endpoint --help`.
+> Вы можете просматривать параметры toomanage конечных точек с помощью команды hello`azure vm endpoint --help`
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

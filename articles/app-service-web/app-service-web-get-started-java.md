@@ -1,6 +1,6 @@
 ---
-title: "Создание первого веб-приложения Java в Azure"
-description: "Узнайте, как запускать веб-приложения в службе приложений, развернув базовое приложение Java."
+title: "aaaCreate первый веб-приложения Java в Azure"
+description: "Узнайте, как toorun веб-приложений в службе приложений путем развертывания базовое приложение Java."
 services: app-service\web
 documentationcenter: 
 author: rmcmurray
@@ -15,24 +15,24 @@ ms.topic: quickstart
 ms.date: 6/7/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc
-ms.openlocfilehash: b91b9bde5eb8ea0d7e2196056b635fe54095e748
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 81315c07b5aa84cbec50a17b2cb3914927b19c00
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Создание первого веб-приложения Java в Azure
 
-[Веб-приложения](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) [службы приложений Azure](../app-service/app-service-value-prop-what-is.md) — это служба веб-размещения с самостоятельной установкой исправлений и высоким уровнем масштабируемости. В этом кратком руководстве показано, как развернуть веб-приложение Java в службе приложений с помощью [интегрированной среды разработки Eclipse для разработчиков Java EE](http://www.eclipse.org/).
+Hello [веб-приложений](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) функция [службе приложений Azure](../app-service/app-service-value-prop-what-is.md) предоставляет высокую степень масштабируемости, самостоятельно исправления веб-службе размещения. Краткого руководства показано, как toodeploy Java веб-приложения tooApp службы с помощью hello [интегрированной среды разработки Eclipse для разработчиков Java EE](http://www.eclipse.org/).
 
 !["Hello Azure!" Пример веб-приложения](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для работы с этим кратким руководством установите:
+toocomplete краткого руководства, установить:
 
-* Бесплатную [интегрированную среду разработки Eclipse для разработчиков Java EE](http://www.eclipse.org/downloads/). В этом кратком руководстве используется Eclipse Neon.
-* [Набор средств Azure для Eclipse](/azure/azure-toolkit-for-eclipse-installation).
+* Hello свободного [интегрированной среды разработки Eclipse для разработчиков Java EE](http://www.eclipse.org/downloads/). В этом кратком руководстве используется Eclipse Neon.
+* Hello [средств Azure для Eclipse](/azure/azure-toolkit-for-eclipse-installation).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/18/2017
 
 В Eclipse щелкните **File** (Файл) > **New** (Создать) > **Dynamic Web Project** (Динамический веб-проект).
 
-В диалоговом окне **New Dynamic Web Project** (Новый динамический веб-проект) присвойте проекту имя **MyFirstJavaOnAzureWebApp** и нажмите кнопку **Finish** (Готово).
+В hello **динамический веб-проект** диалоговое окно, имя проекта hello **MyFirstJavaOnAzureWebApp**и выберите **Готово**.
    
 ![Диалоговое окно создания динамического веб-проекта](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
@@ -50,19 +50,19 @@ ms.lasthandoff: 08/18/2017
 
 ![Рабочая область Java EE для Eclipse](./media/app-service-web-get-started-java/pe.png)
 
-В обозревателе проектов разверните проект **MyFirstJavaOnAzureWebApp**.
+В обозревателе проектов разверните hello **MyFirstJavaOnAzureWebApp** проекта.
 Щелкните правой кнопкой мыши **WebContent**, а затем щелкните **New** (Создать) > **JSP File** (JSP-файл).
 
 ![Меню для нового JSP-файла в обозревателе проектов](./media/app-service-web-get-started-java/new-jsp-file-menu.png)
 
-В диалоговом окне **New JSP File** (Создание JSP-файла):
+В hello **Создание JSP-файла** диалоговое окно:
 
-* Назовите файл **index.jsp**.
+* Имя файла hello **index.jsp**.
 * Выберите **Готово**.
 
   ![Диалоговое окно New JSP File (Создание JSP-файла)](./media/app-service-web-get-started-java/new-jsp-file-dialog-box-page-1.png)
 
-В файле index.jsp замените элемент `<body></body>` следующей разметкой:
+В файле index.jsp hello замените hello `<body></body>` элемент с hello следующая разметка:
 
 ```jsp
 <body>
@@ -70,21 +70,21 @@ ms.lasthandoff: 08/18/2017
 </body>
 ```
 
-Сохраните изменения.
+Сохраните изменения hello.
 
-## <a name="publish-the-web-app-to-azure"></a>Публикация веб-приложения в Azure
+## <a name="publish-hello-web-app-tooazure"></a>Публикация приложения tooAzure hello web
 
-В обозревателе проектов щелкните правой кнопкой мыши проект и выберите **Azure** > **Publish as Azure Web App** (Опубликовать как веб-приложение Azure).
+В обозревателе решений, правой кнопкой мыши проект hello и выберите **Azure** > **опубликовать как веб-приложения Azure**.
 
 ![Контекстное меню Publish as Azure Web App (Опубликовать как веб-приложение Azure)](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-В диалоговом окне **Azure Sign In** (Вход в Azure) оставьте параметр **Interactive** (Интерактивный), а затем выберите **Sign in** (Войти).
+В hello **входа в Azure** диалоговое окно, поддержания hello **Interactive** , а затем установите **входа**.
 
-Следуйте инструкциям по входу.
+Следуйте инструкциям hello вход.
 
 ### <a name="deploy-web-app-dialog-box"></a>Диалоговое окно развертывания веб-приложения
 
-После входа в учетную запись Azure отобразится диалоговое окно **Deploy Web App** (Развертывание веб-приложения).
+После входа в учетную запись Azure tooyour hello **развертывание веб-приложения** откроется диалоговое окно.
 
 Нажмите кнопку **Создать**.
 
@@ -92,20 +92,20 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="create-app-service-dialog-box"></a>Диалоговое окно "Создание службы приложений"
 
-Откроется диалоговое окно **Create App Service** (Создание службы приложений) со значениями по умолчанию. Число **170602185241**, показанное на следующем изображении, отличается от числа, которое появится в вашем диалоговом окне.
+Hello **Создание приложения службы** откроется диалоговое окно со значениями по умолчанию. Здравствуйте, номер **170602185241** показано в следующих hello изображения отличается диалогового окна.
 
 ![Диалоговое окно "Создание службы приложений"](./media/app-service-web-get-started-java/cas1.png)
 
-В диалоговом окне **Create App Service** (Создание службы приложений):
+В hello **Создание приложения службы** диалоговое окно:
 
-* Оставьте созданное имя для веб-приложения. Это имя должно быть уникальным в Azure. Имя является частью URL-адреса веб-приложения. Например, если имя веб-приложения — **MyJavaWebApp**, то URL-адрес будет *myjavawebapp.azurewebsites.net*.
-* Оставьте веб-контейнер по умолчанию.
+* Оставьте имя hello созданный для веб-приложения hello. Это имя должно быть уникальным в Azure. Имя Hello является частью hello URL-адрес для веб-приложения hello. Например: Если имя веб-приложения hello **MyJavaWebApp**, URL-адрес является hello *myjavawebapp.azurewebsites.net*.
+* Сохраните контейнер web по умолчанию hello.
 * Выберите подписку Azure.
-* На вкладке **App service plan** (План службы приложений):
+* На hello **план обслуживания приложений** вкладки:
 
-  * **Create new** (Создать). Оставьте имя по умолчанию, которое является именем плана службы приложений.
+  * **Создать новый**: сохранить по умолчанию hello, которое является именем hello объекта hello план служб приложений.
   * **Location** (Расположение): Выберите **West Europe** (Западная Европа) или ближайшее расположение.
-  * **Pricing tier** (Ценовая категория). Выберите бесплатный вариант. Сведения о функциях см. на странице [цен на службу приложений](https://azure.microsoft.com/pricing/details/app-service/).
+  * **Ценовая категория**: выберите hello свободного параметр. Сведения о функциях см. на странице [цен на службу приложений](https://azure.microsoft.com/pricing/details/app-service/).
 
    ![Диалоговое окно "Создание службы приложений"](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="resource-group-tab"></a>Вкладка Resource group (Группа ресурсов)
 
-Выберите вкладку **Resource group** (Группа ресурсов). Оставьте значение по умолчанию для группы ресурсов.
+Выберите hello **группы ресурсов** вкладки. Оставьте значение по умолчанию создается hello hello группы ресурсов.
 
 ![Вкладка Resource group (Группа ресурсов)](./media/app-service-web-get-started-java/create-app-service-resource-group.png)
 
@@ -122,38 +122,38 @@ ms.lasthandoff: 08/18/2017
 Нажмите кнопку **Создать**.
 
 <!--
-### The JDK tab
+### hello JDK tab
 
-Select the **JDK** tab. Keep the default, and then select **Create**.
+Select hello **JDK** tab. Keep hello default, and then select **Create**.
 
 ![Create App Service plan](./media/app-service-web-get-started-java/create-app-service-specify-jdk.png)
 -->
 
-Набор средств Azure создает веб-приложение и отображает диалоговое окно хода выполнения.
+Hello набора средств Azure создает веб-приложение hello и отображает диалоговое окно хода выполнения.
 
 ![Диалоговое окно Create App Service Progress (Прогресс создания службы приложений)](./media/app-service-web-get-started-java/create-app-service-progress-bar.png)
 
 ### <a name="deploy-web-app-dialog-box"></a>Диалоговое окно развертывания веб-приложения
 
-В диалоговом окне **Deploy Web App** (Развертывание веб-приложения) установите флажок **Deploy to root** (Развернуть в корень). Если у вас есть служба приложений в *wingtiptoys.azurewebsites.net* и вы не выполните развертывание в корневой каталог, тогда веб-приложение **MyFirstJavaOnAzureWebApp** будет развернуто в каталоге *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp*.
+В hello **развертывание веб-приложения** выберите **развертывание tooroot**. Если вы создали службу приложений в *wingtiptoys.azurewebsites.net* и не следует развертывать toohello корень, hello веб-приложения с именем **MyFirstJavaOnAzureWebApp** развертывается слишком *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp*.
 
 ![Диалоговое окно развертывания веб-приложения](./media/app-service-web-get-started-java/deploy-web-app-to-root.png)
 
-В диалоговом окне отображаются выбранные значения Azure, JDK и веб-контейнера.
+показывает диалоговое окно приветствия hello Azure, JDK и выбора контейнера web.
 
-Нажмите кнопку **Deploy** (Развернуть) для публикации веб-приложения в Azure.
+Выберите **развернуть** toopublish hello web app tooAzure.
 
-После завершения публикации щелкните ссылку **Опубликовано** в диалоговом окне **Журнал действий Azure**.
+По завершении публикации hello выберите hello **опубликовано** ссылку в hello **журнал действий Azure** диалоговое окно.
 
 ![Диалоговое окно "Журнал действий Azure"](./media/app-service-web-get-started-java/aal.png)
 
-Поздравляем! Веб-приложение успешно развернуто в Azure. 
+Поздравляем! Успешно завершены вашей tooAzure web app. 
 
 !["Hello Azure!" Пример веб-приложения](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
-## <a name="update-the-web-app"></a>Обновление веб-приложения
+## <a name="update-hello-web-app"></a>Обновить веб-приложение hello
 
-Измените пример кода JSP на другое сообщение.
+Изменение hello образец JSP кода tooa другое сообщение.
 
 ```jsp
 <body>
@@ -161,35 +161,35 @@ Select the **JDK** tab. Keep the default, and then select **Create**.
 </body>
 ```
 
-Сохраните изменения.
+Сохраните изменения hello.
 
-В обозревателе проектов щелкните правой кнопкой мыши проект и выберите **Azure** > **Publish as Azure Web App** (Опубликовать как веб-приложение Azure).
+В обозревателе решений, правой кнопкой мыши проект hello и выберите **Azure** > **опубликовать как веб-приложения Azure**.
 
-Появится диалоговое окно **Deploy Web App** (Развертывание веб-приложения) с ранее созданной службой приложений. 
+Hello **развертывание веб-приложения** откроется диалоговое окно и отображает hello службы приложений, созданный ранее. 
 
 > [!NOTE]
-> Устанавливайте флажок **Deploy to root** (Развернуть в корень) при каждой публикации.
+> Выберите **развертывание tooroot** каждый раз при публикации.
 >
 
-Выберите веб-приложение и щелкните **Deploy** (Развернуть) для публикации изменений.
+Выберите веб-приложение hello и выберите **развернуть**, который публикует изменения hello.
 
-Когда появится ссылка **Publishing** (Публикация), щелкните ее и перейдите к веб-приложению, чтобы увидеть изменения.
+Здравствуйте, когда **публикации** появляется ссылка, выберите его toobrowse toohello веб-приложение и просмотреть изменения hello.
 
-## <a name="manage-the-web-app"></a>Управление веб-приложением
+## <a name="manage-hello-web-app"></a>Управление веб-приложения hello
 
-Перейдите на <a href="https://portal.azure.com" target="_blank">портал Azure</a>, чтобы увидеть созданное веб-приложение.
+Go toohello <a href="https://portal.azure.com" target="_blank">портал Azure</a> toosee hello веб-приложения, созданный вами.
 
-В меню слева выберите **Группы ресурсов**.
+Hello в левом меню, выберите **групп ресурсов**.
 
-![Переход к группе ресурсов](media/app-service-web-get-started-java/rg.png)
+![Tooresource группы переходов портала](media/app-service-web-get-started-java/rg.png)
 
-Выберите группу ресурсов. На странице отображаются ресурсы, созданные в этом кратком руководстве.
+Выберите группу ресурсов hello. Страница приветствия показывает hello ресурсы, созданные в этом кратком руководстве.
 
 ![Группа ресурсов myresourcegroup.](media/app-service-web-get-started-java/rg2.png)
 
-Выберите веб-приложение (**webapp-170602193915** на предыдущем рисунке).
+Выберите hello веб-приложения (**170602193915 веб-приложение** в hello предшествующий изображения).
 
-Появится страница **Обзор**. Здесь вы можете наблюдать за работой приложения. Вы можете выполнять базовые задачи управления: обзор, завершение, запуск, перезагрузку и удаление. На вкладках в левой части страницы отображаются различные конфигурации, которые можно открыть. 
+Hello **Обзор** появится страница. Эта страница позволяет получить представление о том, как это приложение hello. Вы можете выполнять базовые задачи управления: обзор, завершение, запуск, перезагрузку и удаление. закладки Hello hello левой части страницы приветствия показывают hello различных конфигураций, которые можно открыть. 
 
 ![Страница службы приложений на портале Azure](media/app-service-web-get-started-java/web-app-blade.png)
 

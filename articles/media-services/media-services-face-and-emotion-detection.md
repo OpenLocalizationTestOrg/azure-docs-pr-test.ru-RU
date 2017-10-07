@@ -1,6 +1,6 @@
 ---
-title: "Обнаружение лиц и определение эмоций с помощью медиа-аналитики Azure | Документация Майкрософт"
-description: "В этом разделе содержатся сведения об обнаружении лиц и определении эмоций с помощью медиа-аналитики Azure."
+title: "aaaDetect начертания и эмоций с медиа-аналитика Azure | Документы Microsoft"
+description: "В этом разделе показано, как грани toodetect и эмоций с медиа-аналитика Azure."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,45 +14,45 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: d7f3bc6c0d21db7adbb0c16c752d4ce49e99da5a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f58d81d82dde08a694cdb4d92c6bab6a40a9c157
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Обнаружение лиц и определение эмоций с помощью медиа-аналитики Azure
 ## <a name="overview"></a>Обзор
-Обработчик мультимедиа (MP) **Azure Media Face Detector (детектор лиц мультимедиа Azure)** позволяет подсчитывать и отслеживать движения и даже определять заинтересованность и реакции людей с помощью выражений лиц. В этой службе реализованы две функции: 
+Hello **детектор лицевой стороны Azure Media** обработчик мультимедиа (MP) позволяет toocount, перемещений отслеживания и даже участие аудитории датчика и реакция через выражения лица. В этой службе реализованы две функции: 
 
 * **Обнаружение лиц**
   
-    Функция обнаружения лиц используется для обнаружения и отслеживания человеческих лиц на видео. Поддерживается одновременное обнаружение множества лиц и их отслеживание по мере перемещения, в результате чего в JSON-файле будут возвращены метаданные времени и расположения. Во время отслеживания и перемещения человека на экране предпринимается попытка получения согласованного ИД для одного и того же лица, даже если это лицо загораживает какой-либо объект или человек ненадолго выходит из кадра.
+    Функция обнаружения лиц используется для обнаружения и отслеживания человеческих лиц на видео. Несколько фрагментов могут быть обнаружены и впоследствии отслеживаются перемещения, с hello времени и расположение метаданных, возвращаемых в файле JSON. Во время отслеживания, он попытается toogive согласованного toohello идентификатор же сталкиваются при hello пользователь перемещается на экране, даже в том случае, если они являются действия или кратко оставьте hello кадра.
   
   > [!NOTE]
-  > Эта служба не поддерживает распознавание лиц. Человек, который выходит из кадра или остается закрытым каким-либо объектом в течение слишком долгого времени, после возвращения в кадр получит новый идентификатор.
+  > Эта служба не поддерживает распознавание лиц. Лицо, которое отправляется hello кадра или становится действия для слишком долго получает новый идентификатор при подключении.
   > 
   > 
 * **Определение эмоций**
   
-    Определение эмоций представляет собой дополнительный компонент обработчика мультимедиа для обнаружения лиц. Он анализирует несколько выражений эмоций на обнаруженных лицах и определяет реакцию (или чувство) человека, например счастье, печаль, страх, гнев и многое другое. 
+    Обнаружение эмоций — это необязательный компонент hello обработчик мультимедиа обнаружения начертания, возвращающий анализа на несколько атрибутов этому из hello гарнитуры обнаружено, включая счастье, sadness, опасаясь, anger и многое другое. 
 
-Сейчас обработчик мультимедиа **Azure Media Face Detector** доступен в предварительной версии.
+Hello **детектор лицевой стороны Azure Media** MP в настоящее время находится в предварительной версии.
 
-В этой статье приводятся сведения об обработчике **Azure Media Face Detector** и демонстрируется его использование с пакетом SDK служб мультимедиа для .NET.
+В этом разделе приведены подробные сведения о **детектор лицевой стороны Azure Media** и показано, как toouse с помощью пакета SDK служб мультимедиа для .NET.
 
 ## <a name="face-detector-input-files"></a>Входные файлы детектора лиц
-Видеофайлы. Сейчас поддерживаются следующие форматы: MP4, MOV и WMV.
+Видеофайлы. В настоящее время поддерживаются следующие форматы hello: MP4, MOV и WMV.
 
 ## <a name="face-detector-output-files"></a>Выходные файлы детектора лиц
-API обнаружения и отслеживания лиц обеспечивает высокую точность обнаружения и отслеживания лиц с возможностью определения до 64 человеческих лиц на видео. Лица в анфас позволяют получить лучшие результаты, тогда как значения по лицам в профиль или небольшим лицам (не более 24 x 24 пикселей) могут быть неточными.
+API обнаружения и отслеживания начертания Hello предоставляет высокой точности начертания расположение обнаружения и отслеживания для определения вверх too64 человека фрагменты в видео. Распознавания фронтальных видов лица предоставляют hello лучшей при боковые и небольшие фрагменты (меньше или равно too24x24 пикселей) не может быть точным.
 
-Обнаруженные и отслеживаемые лица возвращаются с указанием координат (слева, вверху, ширина и высота), которые обозначают расположение лиц на изображении в пикселях, а также с идентификационным номером лица, означающим отслеживание этого человека. Если лицо в анфас теряется или перекрывается в кадре, его идентификационный номер может быть сброшен, в результате чего нескольким людям назначаются несколько идентификаторов.
+Hello обнаружены и отслеживаемых гарнитуры возвращаются с координатами (left, top, ширину и высоту), указывающий положение hello граней в hello изображения в пикселях, а также начертания идентификатор число, указывающее, hello, отдельные отслеживание. Идентификаторы начертания, имеют ошибкам tooreset обстоятельствах при утере или перекрываются в кадре hello фронтального лица hello в результате некоторых пользователей, назначении нескольких идентификаторов.
 
-## <a id="output_elements"></a>Элементы выходного JSON-файла
+## <a id="output_elements"></a>Элементы hello выходных данных JSON-файла
 
 [!INCLUDE [media-services-analytics-output-json](../../includes/media-services-analytics-output-json.md)]
 
-Детектор лиц использует методы фрагментации (с разделением метаданных на временные фрагменты и возможностью загрузки только необходимых частей) и сегментации (с разделением событий в случае, если они становятся слишком продолжительными). Выполнив простые вычисления, вы сможете преобразовать данные. Например, если событие началось в 6 300 (тактов) с шкалой времени 2 997 (тактов в секунду) и частотой кадров 29,97 (кадров в секунду), то:
+Детектор начертания использует методы фрагментации (где hello метаданные могут быть классифицированы фрагментами синхронизированного и можно загрузить только необходимые) и сегментации (где hello события сгруппированы в случае, если они получают слишком большое). Несколько простых вычислений поможет вам преобразовывать данные hello. Например, если событие началось в 6 300 (тактов) с шкалой времени 2 997 (тактов в секунду) и частотой кадров 29,97 (кадров в секунду), то:
 
 * начало/шкала времени = 2,1 секунды
 * Время (с) x частота кадров = 63 кадра
@@ -62,7 +62,7 @@ API обнаружения и отслеживания лиц обеспечив
 [Входные видеоданные](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Конфигурация задачи (предустановка)
-При создании задачи с помощью **Azure Media Face Detector**необходимо указать предустановку конфигурации. Следующая предустановка конфигурации предназначена только для обнаружения лиц.
+При создании задачи с помощью **Azure Media Face Detector**необходимо указать предустановку конфигурации. Привет, следующая Предустановка конфигурации необходимо только для обнаружения лицевой стороны.
 
     {
       "version":"1.0",
@@ -77,7 +77,7 @@ API обнаружения и отслеживания лиц обеспечив
 | Режим |Fast: быстрая скорость обработки, но с меньшей точностью (по умолчанию).|
 
 ### <a name="json-output"></a>Выходные данные JSON
-Следующий пример выходных данных JSON был сокращен.
+Следующий пример выходных данных JSON Hello был усечен.
 
     {
     "version": 1,
@@ -131,7 +131,7 @@ API обнаружения и отслеживания лиц обеспечив
 [Входные видеоданные](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Конфигурация задачи (предустановка)
-При создании задачи с помощью **Azure Media Face Detector**необходимо указать предустановку конфигурации. Следующая предустановка конфигурации используется для создания JSON на основе определения эмоций.
+При создании задачи с помощью **Azure Media Face Detector**необходимо указать предустановку конфигурации. следующие конфигурации Предустановка Hello указывает toocreate JSON на основании обнаружения эмоций hello.
 
     {
       "version": "1.0",
@@ -147,11 +147,11 @@ API обнаружения и отслеживания лиц обеспечив
 | Имя атрибута | Описание |
 | --- | --- |
 | Режим |Faces: только обнаружение лиц.<br/>PerFaceEmotion: эмоции возвращаются отдельно для каждого обнаружения лиц.<br/>AggregateEmotion. Возвращаются средние значения эмоций для всех лиц в кадре. |
-| AggregateEmotionWindowMs |Используется, если выбран режим AggregateEmotion. Указывает длину видео для получения каждого совокупного результата в миллисекундах. |
-| AggregateEmotionIntervalMs |Используется, если выбран режим AggregateEmotion. Указывает частоту для получения совокупных результатов. |
+| AggregateEmotionWindowMs |Используется, если выбран режим AggregateEmotion. Указывает длину hello видео используется tooproduce каждого итоговый результат, в миллисекундах. |
+| AggregateEmotionIntervalMs |Используется, если выбран режим AggregateEmotion. Указывает агрегат tooproduce какие частоты приводит. |
 
 #### <a name="aggregate-defaults"></a>Совокупные значения по умолчанию
-Ниже приведены рекомендуемые значения для совокупных параметров окна и интервала. Значение AggregateEmotionWindowMs должно быть больше значения AggregateEmotionIntervalMs.
+Ниже, рекомендуется использовать значения статистической оконной hello и параметры интервала. Значение AggregateEmotionWindowMs должно быть больше значения AggregateEmotionIntervalMs.
 
 || Значения по умолчанию | Минимальные | Максимальные |
 |--- | --- | --- | --- |
@@ -313,26 +313,26 @@ API обнаружения и отслеживания лиц обеспечив
                  "fear": 0,
 
 ## <a name="limitations"></a>Ограничения
-* Поддерживаемые входные видеоформаты: MP4, MOV и WMV.
-* Диапазон размеров обнаруживаемых лиц — от 24 x 24 до 2048 x 2048 пикселей. Лица вне этого диапазона не обнаруживаются.
-* Максимальное количество возвращаемых лиц для каждого видео — 64.
-* Некоторые лица могут не обнаруживаться из-за технических проблем, например слишком большой лицевой угол (поворот головы) и существенное перекрытие. Лучшие результаты определяются для лиц в анфас или практически в анфас.
+* формат ввода видео Hello поддерживается включают MP4, MOV и WMV.
+* размер диапазона Hello выявляемых лицевой стороны — too2048x2048 24 x 24 пикселя. не будет обнаружен гарнитуры Hello за пределами этого диапазона.
+* Для каждого видео hello гарнитуры возвращается не более 64.
+* Некоторые лица могут не обнаруживаться из-за проблем tootechnical; Например очень больших углы лицевой стороны (head позы) и больших перекрытия. Фрагменты фронтальных и около фронтальных имеют hello наилучших результатов.
 
 ## <a name="net-sample-code"></a>Пример кода .NET
 
-В следующей программе показано, как выполнить следующие задачи.
+Hello следующей программе показано как:
 
-1. Создание ресурса-контейнера и отправка в него файла мультимедиа.
-2. Создание задания с задачей обнаружения лиц на основе файла конфигурации, содержащего следующую предустановку JSON. 
+1. Создание актива и отправка файла мультимедиа в актив hello.
+2. Создание задания с задачу обнаружения лиц на основе файла конфигурации, содержащий hello, следующая Предустановка json. 
    
         {
             "version": "1.0"
         }
-3. Загрузка выходных JSON-файлов. 
+3. Загрузка файлов JSON hello выходных данных. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Создание и настройка проекта Visual Studio
 
-Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
+Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Пример
 
@@ -363,17 +363,17 @@ API обнаружения и отслеживания лиц обеспечив
 
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-                // Run the FaceDetection job.
+                // Run hello FaceDetection job.
                 var asset = RunFaceDetectionJob(@"C:\supportFiles\FaceDetection\BigBuckBunny.mp4",
                                             @"C:\supportFiles\FaceDetection\config.json");
 
-                // Download the job output asset.
+                // Download hello job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\FaceDetection\Output");
             }
 
             static IAsset RunFaceDetectionJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload the input media file to storage.
+                // Create an asset and upload hello input media file toostorage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My Face Detection Input Asset",
                     AssetCreationOptions.None);
@@ -381,38 +381,38 @@ API обнаружения и отслеживания лиц обеспечив
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My Face Detection Job");
 
-                // Get a reference to Azure Media Face Detector.
+                // Get a reference tooAzure Media Face Detector.
                 string MediaProcessorName = "Azure Media Face Detector";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from the specified file.
+                // Read configuration from hello specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with the encoding details, using a string preset.
+                // Create a task with hello encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My Face Detection Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify the input asset.
+                // Specify hello input asset.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset to contain the results of the job.
+                // Add an output asset toocontain hello results of hello job.
                 task.OutputAssets.AddNew("My Face Detectoion Output Asset", AssetCreationOptions.None);
 
-                // Use the following event handler to check job progress.  
+                // Use hello following event handler toocheck job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch the job.
+                // Launch hello job.
                 job.Submit();
 
-                // Check job execution and wait for job to finish.
+                // Check job execution and wait for job toofinish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, the event handling
+                // If job state is Error, hello event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

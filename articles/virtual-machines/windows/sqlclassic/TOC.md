@@ -4,21 +4,21 @@
 ## [Часто задаваемые вопросы](../sql/virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 
 # Начало работы
-## [Подготовка виртуальной машины на портале Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
+## [Подготовка виртуальной Машины в hello портала Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 ## [Подготовка виртуальной машины с помощью Azure PowerShell](virtual-machines-windows-classic-ps-sql-create.md)
-## [Подключение к виртуальной машине](virtual-machines-windows-classic-sql-connect.md)
+## [Подключение tooa виртуальной Машины](virtual-machines-windows-classic-sql-connect.md)
 ## [Перенос базы данных SQL Server](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 
 # Практическое руководство
 ## Настройка высокой доступности
 ### [Варианты высокой доступности](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json) 
-### [Настройка группы доступности AlwaysOn на классическом портале](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
+### [Настройка группы доступности AlwaysOn в классическом портале hello](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 ### [Настройка группы доступности AlwaysOn с помощью PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
 ### [Настройка внутреннего прослушивателя для группы доступности](virtual-machines-windows-classic-ps-sql-int-listener.md)
 ### [Настройка внешнего прослушивателя для группы доступности](virtual-machines-windows-classic-ps-sql-ext-listener.md)
-### [Расширение локальной группы доступности в Azure](virtual-machines-windows-classic-sql-onprem-availability.md)
+### [Расширить tooAzure группы доступности в локальной среде](virtual-machines-windows-classic-sql-onprem-availability.md)
 ## Управление
-### [Использование расширения агента IaaS для SQL Server](virtual-machines-windows-classic-sql-server-agent-extension.md)
+### [Использовать hello расширения агента SQL Server IaaS](virtual-machines-windows-classic-sql-server-agent-extension.md)
 ### [Автоматическое исправление](virtual-machines-windows-classic-sql-automated-patching.md)
 ### [Настройка интеграции с хранилищем ключей Azure](virtual-machines-windows-classic-ps-sql-keyvault.md)
 ### [Использование хранилища класса Premium](virtual-machines-windows-classic-sql-server-premium-storage.md)
@@ -30,7 +30,7 @@
 ## бизнес-аналитика;
 ### [Бизнес-аналитика SQL Server на виртуальной машине Azure](virtual-machines-windows-classic-ps-sql-bi.md)
 ### [Использование ReportViewer для веб-сайта, размещенного в Azure](virtual-machines-windows-classic-sql-server-reportviewer.md)
-### [Использование PowerShell для создания виртуальной машины Azure с помощью сервера отчетов](virtual-machines-windows-classic-ps-sql-report.md)
+### [Используйте PowerShell toocreate ВМ Azure с сервером отчетов](virtual-machines-windows-classic-ps-sql-report.md)
 ## [Рекомендации по производительности](../sql/virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 ## [Шаблоны приложений](../sql/virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 

@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария Azure CLI. Создание управляемого диска на основе VHD-файла в учетной записи хранения в той же подписке | Документы Майкрософт"
-description: "Пример сценария Azure CLI. Создание управляемого диска на основе VHD-файла в учетной записи хранения в той же подписке"
+title: "aaaAzure образец скрипта CLI - Создание управляемого диска из VHD-файла в учетную запись хранилища в hello одной подписке | Документы Microsoft"
+description: "Сценарий Azure CLI пример — создание управляемого диска из VHD-файла в учетную запись хранилища в hello одной подписке"
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
-ms.openlocfilehash: 448636e87db126defc804a613bb61ff19a086ad9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6cfb3c54a7692b0f3999c585861340c1a6b4d348
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>Создание управляемого диска на основе VHD-файла в учетной записи хранения в той же подписке с помощью интерфейса командной строки
+# <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-hello-same-subscription-with-cli"></a>Создание управляемого диска из VHD-файла в учетную запись хранилища в hello одной подписке с CLI
 
-Этот сценарий создает управляемый диск на основе VHD-файла в учетной записи хранения в той же подписке. Этот сценарий можно использовать для импорта специализированного (не универсального и не обработанного командой Sysprep) виртуального жесткого диска в управляемый диск операционной системы для создания виртуальной машины. Кроме того, с его помощью можно импортировать виртуальный жесткий диск данных в управляемый диск данных. 
+Этот скрипт создает управляемого диска из VHD-файла в учетную запись хранилища в hello одной подписке. Используйте этот скрипт tooimport специальных (не обобщенный или командой Sysprep) виртуального жесткого диска toomanaged ОС диска toocreate виртуальной машины. Или использовать его tooimport диск данных виртуального жесткого диска toomanaged данных. 
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -32,21 +32,21 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/create-managed-data-disks-from-vhd/create-managed-data-disks-from-vhd.sh "Создание управляемого диска на основе VHD")]
+[!code-azurecli[main](../../../cli_scripts/virtual-machine/create-managed-data-disks-from-vhd/create-managed-data-disks-from-vhd.sh "Create managed disk from VHD")]
 
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот сценарий использует следующие команды для создания управляемого диска на основе VHD-файла. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует следующие команды toocreate управляемого диска с виртуального жесткого диска. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#create) | Создает управляемый диск на основе URI виртуального жесткого диска в учетной записи хранения в той же подписке. |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk#create) | Создает управляемый диска с использованием URI виртуального жесткого диска в учетной записи хранения в hello одной подписке |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-[Создание виртуальной машины путем подключения управляемого диска как диска операционной системы](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
+[Создание виртуальной машины путем подключения управляемого диска как диска ОС](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры сценариев интерфейса командной строки для виртуальных машин и управляемых дисков см. в [документации по виртуальным машинам Azure под управлением Linux](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Установить дополнительную виртуальную машину и управляемых дисков CLI образцы скриптов можно найти в hello [документации виртуальной Машине Linux Azure](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

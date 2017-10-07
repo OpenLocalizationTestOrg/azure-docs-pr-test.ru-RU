@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Atlassian Cloud | Документация Майкрософт"
-description: "Сведения о настройке единого входа Azure Active Directory в приложении Atlassian Cloud."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и облаком Atlassian."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,249 +13,249 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 2891838b56dd15cb5f97dcae391770143a80c781
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f679e8b3306bf0efb9373d8baa0cfe095b760aaf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Руководство по интеграции Azure Active Directory с Atlassian Cloud
 
-В этом руководстве описано, как интегрировать приложение Atlassian Cloud с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Atlassian облака в Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением Atlassian Cloud обеспечивает следующие преимущества.
+Интеграция с Azure AD облака Atlassian предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Atlassian Cloud.
-- Вы можете включить автоматический вход пользователей в Atlassian Cloud (единый вход) с использованием учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooAtlassian облака
+- Можно включить на пользователей tooautomatically get вошедшего tooAtlassian облака (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с приложением Atlassian Cloud, вам потребуется:
+tooconfigure интеграция Azure AD с облаком Atlassian требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Atlassian Cloud с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. добавление Atlassian Cloud из коллекции;
+1. Добавление Atlassian облака из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-atlassian-cloud-from-the-gallery"></a>Добавление Atlassian Cloud из коллекции
-Чтобы настроить интеграцию Atlassian Cloud с Azure AD, необходимо добавить Atlassian Cloud из коллекции в список управляемых приложений SaaS.
+## <a name="adding-atlassian-cloud-from-hello-gallery"></a>Добавление Atlassian облака из галереи hello
+tooconfigure hello интеграция Atlassian облака в Azure AD, вы должны tooadd Atlassian облако из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Atlassian Cloud из коллекции, сделайте следующее:**
+**tooadd Atlassian облака из галереи hello выполните hello следующие шаги.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Atlassian Cloud**.
+4. Введите в поле поиска hello **Atlassian облака**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_search.png)
 
-5. На панели результатов выберите **Atlassian Cloud** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello, выберите **облака Atlassian**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Atlassian Cloud с использованием тестового пользователя Britta Simon.
 
-Чтобы настроить единый вход в Azure AD необходимо знать, какой пользователь в Atlassian Cloud соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Atlassian Cloud.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в облаке Atlassian является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в облаке Atlassian должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Atlassian Cloud.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в облаке Atlassian.
 
-Чтобы настроить и проверить единый вход Azure AD в Atlassian Cloud, выполните действия в следующих стандартных блоках.
+tooconfigure и тестирования Azure AD единого входа с облаком Atlassian, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Atlassian Cloud](#creating-an-atlassian-cloud-test-user)** требуется для создания в Atlassian Cloud пользователя Britta Simon, связанного с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя, прошедшего облака Atlassian](#creating-an-atlassian-cloud-test-user)**  -toohave аналог Саймон Britta в облаке Atlassian, представление связанных toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале и настроить его в приложении Atlassian Cloud.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в Atlassian облачного приложения.
 
-**Чтобы настроить единый вход Azure AD в Atlassian Cloud, сделайте следующее:**
+**tooconfigure Azure AD единого входа с облаком Atlassian выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Atlassian Cloud** щелкните **Единый вход**.
+1. В hello в hello портала Azure **облака Atlassian** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
 
-3. Если вы хотите настроить приложение в **режиме, инициированном поставщиком удостоверений**, то в разделе **Домены и URL-адреса приложения Atlassian Cloud** выполните указанные ниже действия.
+3. На hello **Atlassian облака домена и URL-адреса** выполните hello, выполните действия, при желании tooconfigure приложения hello в **IDP** инициировал режим:
 
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
 
-    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<instancename>.atlassian.net/admin/saml/edit`
+    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<instancename>.atlassian.net/admin/saml/edit`
 
-    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем виде: `https://id.atlassian.com/login/saml/acs`
+    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес как:`https://id.atlassian.com/login/saml/acs`
 
-4. Установите флажок **Показать дополнительные параметры URL-адресов**, и выполните следующее действие, если хотите настроить приложение для работы в режиме, инициируемом **поставщиком услуг**:
+4. Проверьте **Показывать дополнительные параметры URL-адреса** и выполните следующий шаг при желании tooconfigure приложения hello в hello **SP** инициировал режим:
 
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
 
-    В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<instancename>.atlassian.net`
+    В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<instancename>.atlassian.net`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Измените их на фактические значения идентификатора и URL-адреса единого входа. Точные значения можно получить на экране настройки SAML для Atlassian Cloud.
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический идентификатор и URL-адрес входа. Hello точные значения можно получить из конфигурации SAML облака Atlassian экрана.
  
-5. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
+5. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_certificate.png) 
 
-6. В разделе **Настройка Atlassian Cloud** щелкните **Настроить Atlassian Cloud**, чтобы открыть окно **Настройка единого входа**. Скопируйте **идентификатор сущности SAML и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **конфигурации облака Atlassian** щелкните **Настройка облака Atlassian** tooopen **Настройка входа** окна. Копировать hello **идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_configure.png) 
 
-7. Чтобы настроить единый вход для вашего приложения, войдите на портал Atlassian с правами администратора.
+7. tooget SSO настроен для вашего приложения, toohello входа Atlassian портал, используя права администратора hello.
 
-8. В левой области навигации в разделе Authentication (Проверка подлинности) выберите пункт **Domains** (Домены).
+8. В разделе проверки подлинности hello hello навигации слева щелкните **домены**.
 
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_06.png)
 
-    а. В текстовом поле введите имя домена, а затем нажмите кнопку **Add domain** (Добавить домен).
+    а. В текстовом поле «hello» введите имя домена и нажмите кнопку **добавить домен**.
         
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_07.png)
 
-    b. Чтобы проверить домен, нажмите кнопку **Verify** (Проверить). 
+    b. tooverify hello домена, нажмите кнопку **проверьте**. 
 
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_08.png)
 
-    c. Скачайте HTML-файл проверки домена, передайте его в корневую папку веб-сайта в домене и нажмите кнопку **Verify domain** (Проверить домен).
+    c. Загрузить файл html проверки домена hello, отправьте его в корневую папку toohello вашего домена веб-сайта и нажмите кнопку **Проверка домена**.
     
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_09.png)
 
-    г) После проверки домена значение в поле **Status** (Состояние) изменится на **Verified** (Проверено).
+    d. После проверки домена hello hello значение hello **состояние** поле является **проверено**.
 
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_10.png)
 
-9. В левой панели навигации щелкните **SAML**.
+9. В левой навигационной панели hello, щелкните **SAML**.
  
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_11.png)
 
-10. Создайте конфигурацию SAML и задайте параметры поставщика удостоверений.
+10. Создание конфигурации SAML и добавление hello конфигурация поставщика удостоверений.
 
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
 
-    а. В текстовое поле **Identity Provider Entity ID** (Идентификатор сущности поставщика удостоверений) вставьте значение **Идентификатор сущности SAML**, скопированное на портале Azure.
+    а. В hello **поставщика удостоверений идентификатор сущности** текстовое поле, вставить значение hello **идентификатор сущности SAML** скопирован из портала Azure.
 
-    b. В текстовое поле **Identity Provider SSO URL** (URL-адрес единого входа поставщика удостоверений) вставьте значение **URL-адрес службы единого входа SAML**, скопированное на портале Azure.
+    b. В hello **поставщика удостоверений URL-адрес SSO** текстовое поле, вставить значение hello **SAML единого входа URL-адрес службы** скопирован из портала Azure.
 
-    c. Откройте сертификат, скачанный с портала Azure, скопируйте значения без строк Begin и End и вставьте их в поле **Public X509 certificate** (Общий сертификат X509).
+    c. Откройте сертификат hello загружаются из Azure portal и скопировать значения hello без hello начало и конец строки и вставьте его в hello **X509 открытый сертификат** поле.
     
-    г) Чтобы сохранить параметры, нажмите кнопку **Save Configuration** (Сохранить конфигурацию).
+    d. Нажмите кнопку **сохранить конфигурацию** tooSave hello параметры.
      
-11. В параметрах Azure AD задайте правильный URL-адрес идентификатора.
+11. Обновите hello Azure AD параметры toomake наличие установки hello исправьте идентификатор URL-адрес.
   
-    а. Скопируйте **идентификатор удостоверения поставщика услуг** на экране SAML и вставьте его в Azure AD в качестве значения поля **Идентификатор**.
+    а. Копировать hello **идентификатор удостоверений SP** hello SAML экране и вставьте его в Azure AD в качестве hello **идентификатор** значение.
 
-    b. URL-адрес входа является URL-адресом клиента приложения Atlassian Cloud.   
+    b. На URL-адрес входа — URL-адрес клиента hello Atlassian облака.     
 
      ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
     
-12. На портале Azure нажмите кнопку **Сохранить**.
+12. В hello портал Azure, щелкните **Сохранить** кнопки.
 
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_400.png)
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-an-atlassian-cloud-test-user"></a>Создание тестового пользователя Atlassian Cloud
 
-Чтобы пользователи Azure AD могли выполнять вход в Atlassian Cloud, они должны быть подготовлены в Atlassian Cloud.  
+Пользователи toolog tooenable Azure AD в tooAtlassian облака, их необходимо подготовить в облаке Atlassian.  
 В случае Atlassian Cloud подготовка выполняется вручную.
 
-**Чтобы подготовить учетную запись пользователя, сделайте следующее:**
+**tooprovision учетной записи пользователя, выполните следующие шаги hello.**
 
-1. В разделе "Site administration" (Администрирование сайта) нажмите кнопку **Users** (Пользователи).
+1. В hello раздел администрирования сайта щелкните hello **пользователей** кнопки
 
     ![Создание пользователя Atlassian Cloud](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_14.png) 
 
-2. Нажмите кнопку **Create User** (Создать пользователя), чтобы создать пользователя в приложении Atlassian Cloud.
+2. Нажмите кнопку hello **Create User** кнопку toocreate пользователя в hello Atlassian облака
 
     ![Создание пользователя Atlassian Cloud](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_15.png) 
 
-3. Введите **адрес электронной почты**, **имя пользователя** и **полное имя** и предоставьте доступ к приложению. 
+3. Введите пользователя hello **адрес электронной почты**, **Username**, и **полное имя** и назначить доступ приложения hello. 
 
     ![Создание пользователя Atlassian Cloud](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_16.png)
  
-4. Нажмите кнопку **Create user** (Создать пользователя). После этого пользователю будет отправлено приглашение по электронной почте. Как только пользователь примет приглашение, он станет активным в системе. 
+4. Нажмите кнопку **создать пользователя** кнопка, он отправляет приглашение toohello hello электронной почты пользователя и после принятия hello приглашения hello пользователя будет активным в системе hello. 
 
 >[!NOTE] 
->Вы также можете создать несколько пользователей, нажав кнопку **Bulk Create** (Массовое создание) в разделе "Users" (Пользователи).
+>Можно также создать hello массового пользователей, щелкнув hello **массового создания** кнопку в разделе "пользователи" hello.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к Atlassian Cloud.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooAtlassian облака.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в Atlassian Cloud, сделайте следующее:**
+**tooassign tooAtlassian Britta Simon облака, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Atlassian Cloud**.
+2. В списке приложений hello выберите **Atlassian облака**.
 
     ![Настройка единого входа](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -263,7 +263,7 @@ ms.lasthandoff: 08/03/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -271,13 +271,13 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе Проверьте конфигурацию единого входа Azure AD с помощью панели доступа hello.
 
-Щелкнув плитку Atlassian Cloud на панели доступа, вы автоматически войдете в приложение Atlassian Cloud. Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
+При нажатии кнопки hello облака Atlassian плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Atlassian облачного приложения. Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

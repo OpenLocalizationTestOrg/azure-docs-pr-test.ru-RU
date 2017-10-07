@@ -1,6 +1,6 @@
 ---
-title: "Операционный канал Azure Service Fabric | Документы Майкрософт"
-description: "Полный список журналов, созданных в операционном канале кластеров Azure Service Fabric."
+title: "aaaAzure канал операционного структуры службы | Документы Microsoft"
+description: "Полный список журналов, созданных в кластерах оперативной канала из Azure Service Fabric hello."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: dekapur
-ms.openlocfilehash: 934719868ab9968db352db2b440014d35dbc0274
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 358782420ed62b202d6a89fe0f200b5ef0384c9c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="operational-channel"></a>Операционный канал 
 
-Операционный канал состоит из журналов действий высокого уровня, выполняемых Service Fabric на узлах и в кластере. При включении "Диагностики" для кластера агент системы диагностики Azure развертывается в кластере и по умолчанию настраивается для чтения журналов из операционного канала. Дополнительные сведения о настройке агента для изменения конфигурации диагностики кластера с целью выбора дополнительных журналов или счетчиков производительности см. в разделе [Агент системы диагностики Azure](service-fabric-diagnostics-event-aggregation-wad.md). 
+Операционный канал Hello состоит из журналов из высокоуровневые действия, выполняемые Service Fabric на узлах и кластера. При включении «Диагностика» для кластера, hello агента диагностики Azure развертывается в кластере и по умолчанию настроен tooread в журналы из hello операционный канал. Дополнительные сведения о настройке hello [агент Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) конфигурации диагностики hello toomodify toopick вашего кластера дополнительные журналы или счетчики производительности. 
 
 ## <a name="operational-channel-logs"></a>Журналы операционного канала 
 
-Ниже приведен полный список журналов, созданных Service Fabric в операционном канале. 
+Ниже приведен полный список журналов, предоставляемых Service Fabric в операционный канал hello. 
 
 | EventId | Имя | Источник (задача) | Уровень |
 | --- | --- | --- | --- |
@@ -56,6 +56,6 @@ ms.lasthandoff: 07/29/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Дополнительные сведения о создании событий на уровне платформы в Service Fabric см. в [этом разделе](service-fabric-diagnostics-event-generation-infra.md).
-* Изменение конфигурации [системы диагностики Azure](service-fabric-diagnostics-event-aggregation-wad.md) для сбора дополнительных журналов
-* [Настройка Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) для просмотра журналов операционного канала
+* Дополнительные сведения об общем [созданием события на уровне платформы hello](service-fabric-diagnostics-event-generation-infra.md) в Service Fabric
+* Изменение вашей [диагностики Azure](service-fabric-diagnostics-event-aggregation-wad.md) более журналы конфигурации toocollect
+* [Настройка Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) toosee вашей операционный канал журналы

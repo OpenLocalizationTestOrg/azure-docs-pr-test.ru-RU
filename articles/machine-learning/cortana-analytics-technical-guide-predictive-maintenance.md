@@ -1,6 +1,6 @@
 ---
-title: "Диагностическое обслуживание в авиакосмической отрасли с помощью Azure. Техническое руководство по решению Cortana Intelligence | Документация Майкрософт"
-description: "Техническое руководство по шаблону решения с использованием Microsoft Cortana Intelligence для прогнозируемого обслуживания в аэрокосмических, транспортных и обслуживающих компаниях."
+title: "обслуживание aaaPredictive аэрокосмическое оборудование с Azure — техническое руководство решения аналитики Cortana | Документы Microsoft"
+description: "Техническое руководство по toohello шаблон решения с помощью Cortana аналитики Microsoft для превентивного обслуживания в аэрокосмическое оборудование, программы и транспортировки."
 services: cortana-analytics
 documentationcenter: 
 author: fboylu
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: fboylu
-ms.openlocfilehash: d878a9b4d2e614070b5e0bf0cee5a2871963d6ef
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 30ddc1c101007546ae1b303bccebae3ecdacb442
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Техническое руководство по шаблону решения Cortana Intelligence для прогнозируемого обслуживания в аэрокосмических и других компаниях
+# <a name="technical-guide-toohello-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Техническое руководство по toohello шаблон решения аналитики Cortana для превентивного обслуживания в аэрокосмическое оборудование и других организаций
 
 ## <a name="important"></a>**Важно!**
-Эта статья считается устаревшей. Содержащиеся в ней сведения по-прежнему актуальны для указанной темы, т. е. для диагностического обслуживания в авиакосмической отрасли, однако вы также можете найти последнюю версию статьи с обновленными сведениями [здесь](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace). 
+Эта статья считается устаревшей. сведения Hello проблема все еще актуальны toohello под рукой, т. е. превентивного обслуживания в аэрокосмическое оборудование, но последней статье hello с hello наиболее вверх toodate сведения можно найти [здесь](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace). 
 
 ## <a name="acknowledgements"></a>**Благодарности**
 Авторами этой статьи являются специалисты по обработке и анализу данных Ян Цанг (Yan Zhang), Гаухер Шахин (Gauher Shaheen), Фидан Бойлу Юз (Fidan Boylu Uz) и инженер по программному обеспечению в корпорации Майкрософт Дэн Греко (Dan Grecoe).
 
 ## <a name="overview"></a>**Обзор**
-Шаблоны решений позволяют ускорить процесс создания демонстрации E2E на основе Cortana Intelligence Suite. Развернутый шаблон подготовит подписку, добавив необходимые компоненты Cortana Intelligence, и создаст связи между ними. Он также заполняет конвейер данных образцами данных, созданными из приложения генератора данных, которое будет скачано и установлено на локальном компьютере после развертывания шаблона решения. Данные, созданные из генератора, будут заполнять конвейер данных и начнут создавать прогнозы машинного обучения, которые можно визуализировать на панели мониторинга Power BI. Процесс развертывания поможет выполнить несколько шагов, чтобы настроить учетные данные решения. Убедитесь, что записали учетные данные, такие как имя решения, имя пользователя и пароль, предоставленные во время развертывания.  
+Шаблоны решений предназначены tooaccelerate hello процесс построения E2E Демонстрация поверх набора аналитики Cortana. Развернутого шаблона будет подготовить подписку с необходимых компонентов Cortana аналитики и построения hello связи между ними. Он также заполняет конвейера данных hello с образцами данных, созданные из приложения генератора данных, который будет загрузить и установить на локальном компьютере, после развертывания шаблона решения hello. Hello данные, созданные из генератора hello будет заполнить конвейера данных hello и приступить к созданию прогнозов машинного обучения, которые можно представить на панели мониторинга Power BI hello. процесс развертывания Hello поможет выполнить несколько шагов tooset копии решения учетные данные. Убедитесь, что записывать эти учетные данные, такие как имя решения, имя пользователя и пароль, предоставленные во время развертывания hello.  
 
-Цель данного документа — объяснить эталонную архитектуру и различные компоненты, подготовленные в подписке в рамках этого шаблона решения. Документ также рассказывает о том, как заменить образец данных вашими реальными данными, чтобы видеть мнения и прогнозы на основе ваших данных. Кроме того, в этом документе рассматриваются части шаблона решения, которые необходимо изменить, если вы хотите настроить решение с собственными данными. Инструкции по созданию панели мониторинга Power BI для этого шаблона решения приведены в конце.
+Hello цель данного документа — Эталонная архитектура tooexplain hello и различные компоненты подготовлены в вашей подписке, в рамках этого решения шаблона. Hello документ также рассказывается о том, как tooreplace образец данных с реальными данными аналитики может toosee toobe и прогнозы на основе собственных данных. Кроме того hello документе рассматриваются части решения шаблон, который необходимо изменить, если требуется, чтобы решение hello toocustomize с собственными данными toobe hello. В конце hello приведены инструкции как toobuild hello панели мониторинга Power BI для этого шаблона решения.
 
 > [!TIP]
 > Можно скачать и распечатать [PDF-версию этого документа](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf).
@@ -41,197 +41,197 @@ ms.lasthandoff: 07/11/2017
 ## <a name="big-picture"></a>**Общая картина**
 ![Архитектура прогнозируемого обслуживания](media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
 
-При развертывании решения активируются различные службы Azure в Cortana Analytics Suite (*т. е.* концентратор событий, Stream Analytics, HDInsight, фабрика данных, машинное обучение *и т. д.*). Схема архитектуры выше на высоком уровне демонстрирует создание шаблона решения для прогнозируемого обслуживания в аэрокосмических компаниях от начала до конца. Вы сможете изучить эти службы на портале Azure. Для этого следует щелкнуть их на схеме шаблона решения, созданной с развертыванием решения. Исключением является HDInsight, так как эта служба подготавливается по требованию, когда после выполнения связанные действия конвейера удаляются.
-Вы можете скачать [полноразмерную схему](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
+При развертывании решения hello различных служб Azure в Cortana Analytics Suite активируются (*т. е.* концентратор событий, Stream Analytics, HDInsight, фабрика данных, машинное обучение *и т. д.*). Hello архитектура приведенной выше схеме показаны, в общем, создание hello превентивного обслуживания для Аэрокосмических шаблон решения от начала до конца. Можно будет tooinvestigate этих служб на портале hello azure, щелкнув их hello решения шаблона схемой, созданной с помощью развертывания hello hello решения с исключением hello hdinsight, как данная служба предоставляется по запросу, когда hello связаны действия конвейера являются необходимые toorun и удалены после него.
+Вы можете загрузить [полноэкранному hello схемы](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
 
-В следующих разделах описан каждый фрагмент.
+Hello в следующих разделах описывается каждый из сегментов.
 
 ## <a name="data-source-and-ingestion"></a>**Источник данных и прием**
 ### <a name="synthetic-data-source"></a>Источник искусственных данных
-Для этого шаблона используется источник данных, созданный настольным приложением, которое вы загрузите и запустите локально после успешного развертывания. Вы найдете инструкции по загрузке и установке этого приложения на панели свойств при выборе первого узла, который на схеме шаблонов решений называется генератором данных диагностического обслуживания. Это приложение передает [концентратору событий Azure](#azure-event-hub) точки данных или события, которые будут использоваться в оставшейся части потока решения. Этот источник данных состоит или извлекается из общедоступных данных из [репозитория данных NASA](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/) с помощью [набора данных для симуляции деградации турбореактивного двигателя](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
+Для этого шаблона, данные hello используемого источника формируется из приложения рабочего стола, который будет загружать и запускать локально, после успешного развертывания. Будет найти toodownload инструкции hello и установить это приложение hello панели свойств при выборе hello первый узел, называемый прогнозной генератора данных обслуживания на схеме шаблона решения hello. Это приложение веб-каналы hello [концентратор событий Azure](#azure-event-hub) службой точек данных или событий, которые будут использоваться hello конца потока hello решения. Этот источник данных состоит из или производным от общедоступные данные из [репозитория данных NASA](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/) с помощью hello [набор данных имитации снижение ядра Turbofan](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
 
-Приложение для создания событий будет заполнять концентратор событий Azure только при выполнении на компьютере.
+Создание приложения Hello событий будет заполнять hello концентратор событий Azure только при выполнении на компьютере.
 
 ### <a name="azure-event-hub"></a>концентратору событий Azure
-Служба [Концентратор событий Azure](https://azure.microsoft.com/services/event-hubs/) является получателем входных данных, предоставленных искусственным источником данных, описанным выше.
+Hello [концентратор событий Azure](https://azure.microsoft.com/services/event-hubs/) службы — получатель hello hello входных данных, предоставленных hello искусственного источника данных, описанных выше.
 
 ## <a name="data-preparation-and-analysis"></a>**Подготовка и анализ данных**
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-Служба [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) используется для предоставления аналитики практически в режиме реального времени для входного потока службы [Концентратор событий Azure](#azure-event-hub) и публикации результатов на панели мониторинга [Power BI](https://powerbi.microsoft.com), а также для архивирования всех входящих событий [службы хранилища Azure](https://azure.microsoft.com/services/storage/) для последующей обработки службой [Фабрика данных Azure](https://azure.microsoft.com/documentation/services/data-factory/).
+Hello [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) служба является используемым tooprovide рядом с аналитикой в реальном времени на hello входного потока из hello [концентратор событий Azure](#azure-event-hub) службы и опубликовать результаты на [Power BI](https://powerbi.microsoft.com) панели мониторинга, а также архивирование все необработанные входящие события toohello [хранилища Azure](https://azure.microsoft.com/services/storage/) службу для последующей обработки hello [фабрики данных Azure](https://azure.microsoft.com/documentation/services/data-factory/) службы.
 
 ### <a name="hd-insights-custom-aggregation"></a>Пользовательская агрегация HD Insights
-Служба Azure HD Insight используется для запуска сценариев [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) (оркестрация с помощью фабрики данных Azure) и предоставления сводных данных необработанных событий, которые были заархивированы с помощью службы Azure Stream Analytics.
+Hello службы анализ HD Azure — используется toorun [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) агрегаты tooprovide скриптов (под управлением фабрики данных Azure) на hello необработанные события, которые были архивированы, с помощью службы Azure Stream Analytics hello.
 
 ### <a name="azure-machine-learning"></a>Машинное обучение Azure
-Служба [Машинное обучение Azure](https://azure.microsoft.com/services/machine-learning/) используется (оркестрация с помощью фабрики данных Azure) для создания прогнозов на оставшийся период эксплуатации (RUL) конкретного двигателя самолета с учетом полученных входных данных.
+Hello [машинного обучения Azure](https://azure.microsoft.com/services/machine-learning/) (под управлением фабрики данных Azure) используется служба toomake прогнозов на оставшийся срок службы (RUL) определенного самолет engine, в основе полученных входных данных hello hello.
 
 ## <a name="data-publishing"></a>**Публикация данных**
 ### <a name="azure-sql-database-service"></a>Служба базы данных SQL Azure
-Служба [База данных SQL Azure](https://azure.microsoft.com/services/sql-database/) используется для хранения (управляется фабрикой данных Azure) прогнозов, полученных службой машинного обучения Azure, которая будет использоваться на панели мониторинга [Power BI](https://powerbi.microsoft.com).
+Hello [базы данных SQL Azure](https://azure.microsoft.com/services/sql-database/) службы — прогнозы hello используется toostore (управляемые фабрикой данных Azure), полученных hello службы машинного обучения Azure, которая будет использоваться в hello [Power BI](https://powerbi.microsoft.com) панели мониторинга.
 
 ## <a name="data-consumption"></a>**Использование данных**
 ### <a name="power-bi"></a>Power BI
-Служба [Power BI](https://powerbi.microsoft.com) используется для отображения информационной панели, которая содержит сводные данные и предупреждения, предоставляемые службой [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/), а также прогнозы сроков эксплуатации, хранящиеся в [Базе данных SQL Azure](https://azure.microsoft.com/services/sql-database/) и полученные с помощью службы [Машинного обучения Azure](https://azure.microsoft.com/services/machine-learning/). Инструкции по созданию панели мониторинга Power BI для этого шаблона решения приведены в следующем разделе.
+Hello [Power BI](https://powerbi.microsoft.com) служба является tooshow используется панель мониторинга, которая содержит статистические выражения и оповещения, предоставляемые hello [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) службы, а также RUL прогнозов, хранящиеся в [Azure SQL База данных](https://azure.microsoft.com/services/sql-database/) , полученных с помощью hello [машинного обучения Azure](https://azure.microsoft.com/services/machine-learning/) службы. Инструкции по как toobuild hello панели мониторинга Power BI для этого шаблона решения см. ниже toohello.
 
-## <a name="how-to-bring-in-your-own-data"></a>**Способы добавления собственных данных**
-В этом разделе описывается, как внести свои данные в Azure и какие области потребуют изменения в случае данных, которые вы добавляете в эту архитектуру.
+## <a name="how-toobring-in-your-own-data"></a>**Как toobring свои данные**
+В этом разделе описываются toobring tooAzure собственных данных и области, которые может потребоваться изменение hello данных можно перевести в этой архитектуре.
 
-Маловероятно, что любой добавленный вами набор данных будет соответствовать [набору данных для симуляции деградации турбореактивного двигателя](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) , используемому в этом шаблоне решения. Понимание данных и требований очень важно для того, чтобы изменить этот шаблон для работы с собственными данными. Если это ваш первый опыт работы со службой машинного обучения Azure, введение к ней можно получить с помощью примера в разделе [Создание первого эксперимента](machine-learning-create-experiment.md).
+Маловероятно, что любой набор данных, вставленные будет соответствовать hello набор данных, используемый hello [набор данных имитации снижение ядра Turbofan](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) используется для этого шаблона решения. Основные сведения о данных и требования будут важны в изменении toowork этого шаблона с собственными данными. Если это ваш первый toohello уязвимость службы машинного обучения Azure, tooit Общие сведения можно получить с помощью пример hello в [как toocreate эксперимента первый](machine-learning-create-experiment.md).
 
-В следующих разделах описываются части шаблона, которые потребуется изменить, когда появится новый набор данных.
+Hello в следующих разделах обсуждаются разделах hello hello шаблона, который потребуется изменить при появился новый набор данных.
 
 ### <a name="azure-event-hub"></a>концентратору событий Azure
-Служба концентратора событий Azure весьма универсальна, поэтому данные можно внести в концентратор в формате CSV или JSON. В концентраторе событий Azure никакой специальной обработки не происходит, но важно понимать суть поступающих в него данных.
+Hello концентратор событий Azure service является универсальным, таким образом, что данные могут быть разнесены концентратора toohello в формате CSV или JSON. Никакая специальная обработка происходит в hello концентратор событий Azure, но важно понимать hello данных, возвращаемых в него.
 
-В этом документе не рассматривается способ ввода данных, но вы легко можете отправлять события или данные в концентратор событий Azure с помощью API концентратора событий.
+В этом документе не описывается, как tooingest данных, но можно легко отправлять события или концентратор событий Azure tooan данных с помощью hello интерфейс API концентратора событий.
 
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-Служба Azure Stream Analytics используется для обеспечения аналитики практически в режиме реального времени путем чтения из потоков данных и вывода данных в любое количество источников.
+Hello службой Azure Stream Analytics является чтение из потоков данных и вывода данных tooany количество источников используется tooprovide практически в режиме реального времени.
 
-В случае шаблона решения для прогнозируемого обслуживания в аэрокосмических компаниях запрос Azure Stream Analytics состоит из четырех вложенных запросов, каждый из которых потребляет события из концентратора событий Azure и записывает выходные данные в четыре различных места. Эти выходные данные состоят из трех наборов данных Power BI и одного места хранения Azure.
+Для hello превентивного обслуживания для Аэрокосмических шаблон решения Azure Stream Analytics запрос состоит из четырех вложенные запросы, каждый потребитель события из hello концентратор событий Azure service и необходимости выходные данные в четырех различных расположениях. Эти выходные данные состоят из трех наборов данных Power BI и одного места хранения Azure.
 
-Чтобы найти запрос Azure Stream Analytics, необходимо сделать следующее.
+запрос Hello Azure Stream Analytics можно найти по:
 
-* Войти на портал Azure
-* Найти задания Stream Analytics ![Значок Stream Analytics](media/cortana-analytics-technical-guide-predictive-maintenance/icon-stream-analytics.png), созданные при развертывании решения (*например*, **maintenancesa02asapbi** и **maintenancesa02asablob** в случае решения для прогнозируемого обслуживания).
+* Вход в портал Azure hello
+* Поиск заданий Stream Analytics hello ![Stream Analytics значок](media/cortana-analytics-technical-guide-predictive-maintenance/icon-stream-analytics.png) , созданные при развертывании решения hello (*например*, **maintenancesa02asapbi** и **maintenancesa02asablob** для решения превентивного обслуживания)
 * Выбрать
   
-  * ***INPUTS*** для просмотра входных данных запроса.
-  * ***QUERY*** для просмотра самого запроса.
-  * ***OUTPUTS*** для просмотра разных выходных данных.
+  * ***Входные данные*** tooview входных данных запроса hello
+  * ***ЗАПРОС*** сам запрос tooview hello
+  * ***ВЫВОДИТ*** tooview hello различные выходы
 
-Сведения о построении запросов Azure Stream Analytics можно найти в [справочнике по запросам Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx) на сайте MSDN.
+Сведения о построении запросов Azure Stream Analytics находятся в hello [Справка запросов Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx) на сайте MSDN.
 
-В этом решении запросы выводят три набора данных с собранной практически в режиме реального времени аналитической информацией о потоках входящих данных на панель мониторинга Power BI, которая предоставляется как часть этого шаблона решения. Поскольку есть неявные сведения о формате входящих данных, эти запросы потребуется изменить в зависимости от вашего формата данных.
+В этом решении запросы hello вывода трех наборов данных с рядом с аналитикой в реальном времени сведения о hello входящих данных потока tooa панели мониторинга Power BI, предоставляется как часть этого шаблона решения. Поскольку неявные сведения о входящих данных формате hello, эти запросы потребуется изменить toobe на основе вашего формата данных.
 
-Запрос во втором задании Stream Analytics **maintenancesa02asablob** просто выводит все события [концентратора событий](https://azure.microsoft.com/services/event-hubs/) в [службу хранилища Azure](https://azure.microsoft.com/services/storage/) и поэтому не требует изменения вне зависимости от вашего формата данных, так как все данные о событии передаются в хранилище.
+запрос Hello в задании Stream Analytics второй hello **maintenancesa02asablob** просто выводит все [концентратора событий](https://azure.microsoft.com/services/event-hubs/) событий для [хранилища Azure](https://azure.microsoft.com/services/storage/) и поэтому требует без изменения независимо от того, в формат данных, что hello сведения событий является потоковым toostorage.
 
 ### <a name="azure-data-factory"></a>Фабрика данных Azure
-Служба [Фабрика данных Azure](https://azure.microsoft.com/documentation/services/data-factory/) управляет перемещением и обработкой данных. В шаблоне решения для прогнозируемого обслуживания в аэрокосмических компаниях фабрика данных состоит из трех [конвейеров](../data-factory/data-factory-create-pipelines.md) для перемещения и обработки данных с помощью различных технологий.  Чтобы получить доступ к своей фабрике данных, необходимо открыть узел фабрики данных в нижней части на схеме шаблона решения, созданной в ходе развертывания решения. Откроется фабрика данных на портале Azure. При появлении ошибок в наборах данных можно пропустить их, так как они возникают из-за фабрики данных, развернутой до запуска генератора данных. Эти ошибки не мешают работе фабрики данных.
+Hello [фабрики данных Azure](https://azure.microsoft.com/documentation/services/data-factory/) управляет служба перемещения hello и обработку данных. Диагностическое обслуживание данных hello Аэрокосмических шаблон решения фабрики состоит из трех [конвейеры](../data-factory/data-factory-create-pipelines.md) , перемещения и обработки данных hello, с использованием различных технологий.  Фабрики данных можно открыть, открыв узел фабрики данных hello hello внизу hello hello решения шаблона схемой, созданной с помощью развертывания hello hello решения. Это займет вы toohello фабрики данных на портале Azure. При обнаружении ошибок в наборах данных, можно пропустить те как из-за toodata фабрики развертывания до запуска генератора данных hello. Эти ошибки не мешают работе фабрики данных.
 
 ![Ошибки наборов данных фабрики данных](media/cortana-analytics-technical-guide-predictive-maintenance/data-factory-dataset-error.png)
 
-В этом разделе рассматриваются необходимые [конвейеры](../data-factory/data-factory-create-pipelines.md) и [действия](../data-factory/data-factory-create-pipelines.md) в [фабрике данных Azure](https://azure.microsoft.com/documentation/services/data-factory/). Ниже представлена схема решения.
+В этом разделе рассматриваются необходимые hello [конвейеры](../data-factory/data-factory-create-pipelines.md) и [действия](../data-factory/data-factory-create-pipelines.md) содержащихся в hello [фабрики данных Azure](https://azure.microsoft.com/documentation/services/data-factory/). Ниже приведен представление диаграммы hello hello решения.
 
 ![Фабрика данных Azure](media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
 
-Два конвейера этой фабрики содержат сценарии [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) , которые используются для секционирования и агрегирования данных. Если указано, сценарии будут находиться в учетной записи [хранения Azure](https://azure.microsoft.com/services/storage/) , созданной во время установки. Их расположение: maintenancesascript\\\\script\\\\hive\\\\ (или https://[имя вашего решения].blob.core.windows.net/maintenancesascript).
+Содержит два конвейеров hello этой фабрики [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) скрипты, используемые toopartition и hello статистические данные. Если отмечено, hello скриптов будет находиться в hello [хранилища Azure](https://azure.microsoft.com/services/storage/) учетную запись, созданную во время установки. Их расположение: maintenancesascript\\\\script\\\\hive\\\\ (или https://[имя вашего решения].blob.core.windows.net/maintenancesascript).
 
-Аналогично запросам [Azure Stream Analytics](#azure-stream-analytics-1) сценарии [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) имеют неявные сведения о формате входящих данных. Эти запросы нужно будет изменить в зависимости от вашего формата данных и требований [проектирования признаков](machine-learning-feature-selection-and-engineering.md).
+Аналогичные toohello [Azure Stream Analytics](#azure-stream-analytics-1) запросы, [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) скрипты имеют неявные сведения о входящих данных формате hello, эти запросы потребуется изменить toobe на основе формата данных и [компонентов engineering](machine-learning-feature-selection-and-engineering.md) требования.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-Этот [конвейер](../data-factory/data-factory-create-pipelines.md) содержит одно действие — действие [HDInsightHive](../data-factory/data-factory-hive-activity.md) с использованием службы [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx), которая выполняет сценарий [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) для секционирования данных в [службе хранилища Azure](https://azure.microsoft.com/services/storage/) во время задания [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/).
+Это [конвейера](../data-factory/data-factory-create-pipelines.md) содержит одно действие - [HDInsightHive](../data-factory/data-factory-hive-activity.md) действия с помощью [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , на котором запущена [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) сценарий toopartition hello данные помещаются в [хранилища Azure](https://azure.microsoft.com/services/storage/) во время [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) задания.
 
 Сценарий [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) для этой задачи секционирования — ***AggregateFlightInfo.hql***.
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
-Этот [конвейер](../data-factory/data-factory-create-pipelines.md) содержит несколько действий, и его конечным результатом является оцененный прогноз из эксперимента [Машинного обучения Azure](https://azure.microsoft.com/services/machine-learning/), связанного с этим шаблоном решения.
+Это [конвейера](../data-factory/data-factory-create-pipelines.md) содержит несколько действий и которого конечным результатом является hello оцененных прогнозы на основании hello [машинного обучения Azure](https://azure.microsoft.com/services/machine-learning/) эксперимент, связанный с этим шаблоном решения.
 
-Ниже перечислены действия, которые содержатся в этом конвейере.
+Hello действия, содержащиеся в этом являются:
 
-* Действие [HDInsightHive](../data-factory/data-factory-hive-activity.md) с использованием службы [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx), которая выполняет сценарий [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) для агрегирования и проектирования характеристик, необходимых для эксперимента [Машинного обучения Azure](https://azure.microsoft.com/services/machine-learning/).
+* [HDInsightHive](../data-factory/data-factory-hive-activity.md) действия с помощью [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , на котором запущена [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) сценариев tooperform агрегаты и возможностей разработки, необходимые для hello [Azure Машинное Обучение](https://azure.microsoft.com/services/machine-learning/) поэкспериментировать.
   Сценарий [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) для этой задачи секционирования — ***PrepareMLInput.hql***.
-* Действие [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx), которое перемещает результаты действия [HDInsightHive](../data-factory/data-factory-hive-activity.md) в один большой двоичный объект [службы хранилища Azure](https://azure.microsoft.com/services/storage/), к которому может получить доступ действие [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx).
-* Действие [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx), которое вызывает эксперимент [Машинного обучения Azure](https://azure.microsoft.com/services/machine-learning/), приводящий к результатам, размещаемым в одном большом двоичном объекте [службы хранилища Azure](https://azure.microsoft.com/services/storage/).
+* [Копировать](https://msdn.microsoft.com/library/azure/dn835035.aspx) действие, перемещающее hello результаты из [HDInsightHive](../data-factory/data-factory-hive-activity.md) tooa действия один [хранилища Azure](https://azure.microsoft.com/services/storage/) больших двоичных объектов, которым можно получить доступ по [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) действия.
+* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) действия, которое вызывает hello [машинного обучения Azure](https://azure.microsoft.com/services/machine-learning/) эксперимент, что приводит к результаты hello был помещен в одном [хранилища Azure](https://azure.microsoft.com/services/storage/) больших двоичных объектов.
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
-Этот [конвейер](../data-factory/data-factory-create-pipelines.md) содержит одно действие — действие [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx), которое перемещает результаты эксперимента [Машинного обучения Azure](#azure-machine-learning) из ***MLScoringPipeline*** в [Базу данных SQL Azure](https://azure.microsoft.com/services/sql-database/), созданную в процессе установки шаблона решений.
+Это [конвейера](../data-factory/data-factory-create-pipelines.md) содержит одно действие - [копирования](https://msdn.microsoft.com/library/azure/dn835035.aspx) действие, перемещающее hello результаты hello [машинного обучения Azure](#azure-machine-learning) поэкспериментировать с *** MLScoringPipeline*** toohello [базы данных SQL Azure](https://azure.microsoft.com/services/sql-database/) , была создана как часть установки шаблона решения.
 
 ### <a name="azure-machine-learning"></a>Машинное обучение Azure
-Эксперимент [машинного обучения Azure](https://azure.microsoft.com/services/machine-learning/) , используемый для этого шаблона решения, предоставляет оставшийся период эксплуатации двигателя самолета. Эксперимент относится к потребляемому набору данных и поэтому потребует изменения или замены в зависимости от вводимых данных.
+Hello [машинного обучения Azure](https://azure.microsoft.com/services/machine-learning/) эксперимента используется для этого шаблона решение обеспечивает hello оставшиеся полезные жизни (RUL) самолет ядра. Hello эксперимента является набор данных конкретного toohello потребляет и потребует изменения или замены определенных toohello данных, получаемых в.
 
-Сведения о создании эксперимента машинного обучения Azure см. в статье [Predictive Maintenance: Step 1 of 3, data preparation and feature engineering](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2) (Прогнозируемое обслуживание: шаг 1 из 3, подготовка данных и проектирование характеристик).
+Сведения о создании hello эксперимента машинного обучения Azure см. в разделе [превентивного обслуживания: шаг 1 из 3 подготовки данных и конструируются](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
 
 ## <a name="monitor-progress"></a>**Отслеживание хода выполнения**
- После запуска генератора данных начинается расконсервация конвейера, и различные компоненты решения вводят в действие следующие команды, выданные фабрикой данных. Существует два способа мониторинга конвейера.
+ После запуска hello генератора данных hello конвейера начинает tooget структура данных, а hello различные компоненты решения запускать в самом начале, в действие, следующие команды hello выданный hello фабрики данных. Вы можете отслеживать конвейера hello двумя способами.
 
-1. Одно из заданий Stream Analytics записывает необработанные входные данные в хранилище BLOB-объектов. После щелчка компонента "Хранилище BLOB-объектов" решения на экране, где успешно развернуто решение, и нажатия кнопки "Открыть" на правой панели откроется [портал управления](https://portal.azure.com/). На портале щелкните "BLOB-объекты". На следующей панели появится список контейнеров. Щелкните **maintenancesadata**. На следующей панели появится папка **rawdata**. В папке rawdata вы hour=17, hour=18 и т. д. Если вы видите эти папки, это значит, что на вашем компьютере успешно формируются необработанные данные, которые затем сохраняются в хранилище BLOB-объектов. Вы должны увидеть CSV-файлы, которые должны иметь в этих папках ограничение по размерам (в МБ).
-2. На последнем шаге конвейера выполняется запись данных (например, прогнозов из системы машинного обучения) в базу данных SQL. Появление данных в базе данных SQL может занять не более трех часов. Одним из способов мониторинга объема данных, доступных в Базе данных SQL, является использование [портала Azure](https://manage.windowsazure.com/). На левой панели найдите элемент "Базы данных SQL" ![Значок SQL](media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png) и щелкните его. Затем найдите базу данных **pmaintenancedb** и щелкните ее. На следующей странице в нижней части щелкните "УПРАВЛЕНИЕ"
+1. Одно из задания Stream Analytics hello записывает hello необработанные входящие tooblob хранения данных. Если вы щелкните хранилище больших двоичных объектов компонент решения от экрана приветствия вы успешно развернутое приложение hello решения и затем нажмите кнопку "Открыть" в правой панели hello, займет toohello [портала управления](https://portal.azure.com/). На портале щелкните "BLOB-объекты". В следующей панели hello вы увидите список контейнеров. Щелкните **maintenancesadata**. В следующей панели hello, вы увидите hello **rawdata** папки. В папке rawdata hello, вы увидите папки с именами, например час = 17, час = 18 и т. д. При появлении этих папок, он указывает, hello необработанные данные успешно выполняется на компьютере и сохраняется в хранилище больших двоичных объектов. Вы должны увидеть CSV-файлы, которые должны иметь в этих папках ограничение по размерам (в МБ).
+2. Последний шаг Hello hello конвейера — toowrite данных (например, прогнозы на основании машинного обучения) в базу данных SQL. Может потребоваться toowait до трех часов hello tooappear данных в базе данных SQL. Одним из способов toomonitor объем данных в базе данных SQL — через [портал azure](https://manage.windowsazure.com/). На левой панели hello найдите баз данных SQL ![значок SQL](media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png) и щелкните его. Затем найдите базу данных **pmaintenancedb** и щелкните ее. На следующей странице hello внизу hello щелкните УПРАВЛЕНИЕ
    
     ![Значок "Управление"](media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png).
    
-    Здесь можно щелкнуть "Создать запрос" и создать запрос на количество строк (например, select count(*) из PMResult). По мере роста базы данных количество строк в таблице должно увеличиваться.
+    Здесь можно щелкнуть нового запроса и запрос для hello число строк (например select count(*) из PMResult). По мере роста базы данных, следует увеличить hello количество строк в таблице hello.
 
 ## <a name="power-bi-dashboard"></a>**Панель мониторинга Power BI**
 ### <a name="overview"></a>Обзор
-В этом разделе описывается настройка панели мониторинга Power BI для визуализации данных реального времени из Azure Stream Analytics (горячий путь), а также результатов прогноза пакета машинного обучения Azure (холодный путь).
+В этом разделе описываются отображением tooset копирование toovisualize панели мониторинга Power BI данные реальном времени, из Azure Stream Analytics (Горячий путь), а также пакетный прогноз результатов из машинного обучения Azure (холодный путь).
 
 ### <a name="setup-cold-path-dashboard"></a>Настройка холодного пути панели мониторинга
-В случае конвейера данных холодного пути основной целью является получение прогнозируемого оставшегося срока эксплуатации каждого двигателя самолета после завершения рейса (цикла). Результат прогноза обновляется каждые 3 часа для оценки двигателя самолета, который завершил рейс за последние 3 часа.
+В конвейере данных hello холодного путь hello essential предназначена tooget прогнозной RUL (оставшегося срока) каждой подсистемы самолет после ее завершения рейса (цикла). результат прогноза Hello обновляется каждые 3 часа для прогнозирования обработчиков самолет hello, после завершения определенного рейса во время hello за последние 3 часа.
 
-Power BI подключается к базе данных Azure SQL в качестве источника данных, где хранятся результаты прогноза. Примечание. 1) При развертывании решения реальный прогноз будет отображаться в базе данных в течение 3 часов.
-PBIX-файл, поставляемый с загрузкой генератора, содержит некоторые начальные данные, поэтому можно сразу создать панель мониторинга Power BI. 2. На этом шаге необходимо скачать и установить бесплатное программное обеспечение [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/).
+Power BI подключается tooan базы данных Azure SQL в качестве источника данных, где хранятся результаты прогноза. Примечание: (1) при развертывании решения, реальные прогноз будет отображаться в hello базы данных в течение 3 часов.
+Hello pbix-файл, поставляемый с hello генератор загрузки содержит некоторые данные начальное значение, поэтому может создавать панели мониторинга Power BI hello сразу. (2) на этом шаге условием hello toodownload и установите hello программное обеспечение предоставляется бесплатно [Power BI desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/).
 
-Следующие шаги помогут вам подключить PBIX-файл к Базе данных SQL, которая развертывается во время развертывания решения, содержащего данные (*например*, результаты прогноза) для визуализации.
+Hello следующие шаги помогут вам в как файл tooconnect hello pbix hello базы данных SQL, зацикливается во время развертывания решения, содержащего данные hello (*например*. результаты прогноза) для визуализации.
 
-1. Получите учетные данные базы данных.
+1. Получите учетные данные базы данных hello.
    
-   Прежде чем перейти к следующим действиям, вам потребуются **имя сервера базы данных, имя базы данных, имя пользователя и пароль** . Ниже приведены шаги, которые помогут вам их найти.
+   Вам потребуется **базы данных, имя сервера, имя базы данных, имя пользователя и пароль** перед перемещением toonext действия. Ниже приведены шаги tooguide hello вы как toofind их.
    
    * Когда элемент **База данных SQL Azure** на схеме шаблона решения станет зеленым, щелкните его и нажмите кнопку **Открыть**.
-   * Появится новая вкладка или окно браузера со страницей портала Azure. Щелкните **Группы ресурсов** на левой панели.
-   * Выберите подписку, которую вы используете для развертывания решения, а затем — **YourSolutionName\_ResourceGroup**.
-   * На новой всплывающей панели щелкните ![значок SQL](media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) для доступа к базе данных. Имя базы данных отображается рядом с этим значком (*например*, **pmaintenancedb**), а **имя сервера базы данных** указано в свойстве имени сервера и будет выглядеть аналогично **YourSoutionName.database.windows.net**.
-   * Параметры **username** и **password** соответствуют имени пользователя и паролю, ранее записанным во время развертывания решения.
-2. Обновите источник данных файла отчета холодного пути с помощью Power BI Desktop.
+   * Вы увидите новое вкладка или окно браузера, отображающий hello странице портала Azure. Нажмите кнопку **«Группы ресурсов»** на левой панели hello.
+   * Выберите hello подписку, которую вы используете для развертывания решения hello, а затем выберите **"YourSolutionName\_ResourceGroup"**.
+   * В hello новый в новом окне панели, щелкните hello ![значок SQL](media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) tooaccess значок базы данных. Имя базы данных является Далее toohello этим значком (*например*, **«pmaintenancedb»**) и hello **имя сервера базы данных** находится в списке hello свойство имени сервера и должен выглядеть аналогичные слишком**YourSoutionName.database.windows.net**.
+   * Базы данных **username** и **пароль** : hello так же, как hello имени пользователя и пароля с заранее записанным во время развертывания решения hello.
+2. Обновление источника данных hello hello холодного путь отчета файла с Power BI Desktop.
    
-   * В папке вашего компьютера, в которую был скачан и распакован файл генератора, дважды щелкните файл **PowerBI\\PredictiveMaintenanceAerospace.pbix**. Если вы видите какие-либо предупреждающие сообщения при открытии файла, их можно пропустить. В верхней части файла нажмите кнопку **Запросы на изменение**.
+   * В папке hello на вашем Компьютере, в которую был загружен и распаковал файл генератора, дважды щелкните **PowerBI\\PredictiveMaintenanceAerospace.pbix** файла. Если вы видите все предупреждающие сообщения, при открытии файла hello, их можно пропустите. В верхней части hello hello файла, нажмите кнопку **изменить запросы**.
      
      ![Изменение запросов](media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
-   * Вы увидите две таблицы — **RemainingUsefulLife** и **PMResult**. Выберите первую таблицу и щелкните ![Значок "Параметры запроса"](media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) рядом с пунктом **Источник** в разделе **Примененные шаги** на правой панели **Параметры запроса**. Игнорируйте все предупреждающие сообщения, которые отображаются.
-   * Во всплывающем окне замените **Сервер** и **База данных** на собственные имена сервера и базы данных и нажмите кнопку **ОК**. Убедитесь, что для имени сервера указан порт 1433 (**YourSoutionName.database.windows.net, 1433**). В поле базы данных оставьте **pmaintenancedb**. Игнорируйте предупреждения, которые отображаются на экране.
-   * В следующем всплывающем окне вы увидите два варианта на левой панели (**Windows** и **База данных**). Щелкните **База данных**, введите свое **имя пользователя** и **пароль** в соответствующих полях (это имя пользователя и пароль, введенные при первом развертывании решения и создании экземпляра Базы данных SQL Azure). В разделе ***Выберите уровень, к которому следует применить эти параметры:*** выберите уровень базы данных. Щелкните **Подключить**.
-   * Щелкните вторую таблицу **PMResult**, щелкните ![Значок навигации](media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) рядом с пунктом **Источник** в разделе **Примененные шаги** на правой панели **Параметры запроса** и измените имена сервера и базы данных, как в описанных выше шагах, а затем нажмите кнопку "ОК".
-   * Когда вы будете направлены на предыдущую страницу, закройте окно. В появившемся сообщении нажмите кнопку **Применить**. Наконец, нажмите кнопку **Сохранить** , чтобы сохранить изменения. Теперь файл Power BI установил подключение к серверу. Если представления пусты, убедитесь, что очистили выбранные элементы для визуализации, чтобы отобразить все данные, щелкнув значок резинки в правом верхнем углу условных обозначений. Используйте кнопку "Обновить" для отображения новых данных в представлении. Сначала вы увидите в представлениях только начальные данные, так как фабрика данных обновляется каждые 3 часа. Через 3 часа вы увидите в представлении новые прогнозы при обновлении данных.
-3. (Необязательно) Опубликуйте панель мониторинга холодного пути в [Power BI Online](http://www.powerbi.com/). Обратите внимание, что этот шаг требует учетной записи Power BI (или учетной записи Office 365).
+   * Вы увидите две таблицы — **RemainingUsefulLife** и **PMResult**. Выберите первую таблицу hello и нажмите кнопку ![значок параметров запроса](media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) Далее слишком**«Источник»** под **ПРИМЕНЕННЫХ ДЕЙСТВИЙ** на правом hello **«Параметры запроса»**панель. Игнорируйте все предупреждающие сообщения, которые отображаются.
+   * В окне pop hello, замените **«Сервер»** и **'Database'** с собственные имена сервера и базы данных, а затем щелкните **«OK»**. Для имени сервера, убедитесь, что указан hello порт 1433 (**YourSoutionName.database.windows.net 1433**). Оставьте поле hello базы данных как **pmaintenancedb**. Игнорируйте hello предупреждающие сообщения, которые отображаются на экране приветствия.
+   * В hello далее в новом окне окно, вы увидите два варианта на левой панели hello (**Windows** и **базы данных**). Нажмите кнопку **'Database'**, заполните вашей **«Username»** и **«Пароль»** (это hello имя пользователя и пароль, введенный при развертывании решения hello и создании База данных Azure SQL). В ***выберите которой уровня tooapply эти параметры требуется***, проверьте параметр уровня базы данных. Щелкните **Подключить**.
+   * Щелкните вторую таблицу hello **PMResult** нажмите кнопку ![значка навигации](media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) Далее слишком**«Источник»** под **ПРИМЕНЕННЫЕ действия** на hello вправо **«Параметры запроса»** панели обновления сервера hello и имена баз данных как hello выше действия и нажмите кнопку ОК.
+   * После того, как интерактивная задней toohello предыдущую страницу, закройте окно приветствия. В появившемся сообщении нажмите кнопку **Применить**. Наконец, нажмите кнопку hello **Сохранить** кнопку toosave hello изменения. Файл Power BI теперь установил toohello соединения сервера. Если визуализаций пусты, убедитесь, что снимите hello выбранных элементов на toovisualize визуализации hello все данные hello, щелкнув значок ластика hello в верхнем правом углу hello условных обозначений hello. Используйте новые данные кнопки обновления tooreflect hello на визуализации hello. Изначально вы увидите только hello начального значения данных в визуализации как фабрика данных hello запланированных toorefresh каждые 3 часа. После 3 часа будет отображено новые прогнозы, отражаются в визуализации, при обновлении данных hello.
+3. (Необязательно) Публикация мониторинга hello холодного путь слишком[Power BI в Интернете](http://www.powerbi.com/). Обратите внимание, что этот шаг требует учетной записи Power BI (или учетной записи Office 365).
    
-   * Щелкните **Опубликовать** , и через несколько секунд откроется окно "Публикация Power BI прошла успешно!" с зеленой галочкой. Щелкните ссылку "Открыть PredictiveMaintenanceAerospace.pbix в Power BI". Подробные инструкции см. в разделе [Публикация из Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Для создания панели мониторинга щелкните знак **+** рядом с разделом **Панели мониторинга** на левой панели. Введите имя "Демонстрация прогнозируемого обслуживания" для этой новой панели мониторинга.
-   * После открытия отчета щелкните ![Значок "Закрепить"](media/cortana-analytics-technical-guide-predictive-maintenance/icon-pin.png), чтобы закрепить все визуализации на панели мониторинга. Подробные инструкции см. в статье [Закрепление плитки на панели мониторинга Power BI из отчета](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
-     Перейдите на страницу панели мониторинга и измените размер и расположение представлений, а также отредактируйте их заголовки. Подробные инструкции по изменению плиток см. в статье [Редактирование плитки — изменение размера, перемещение, переименование, закрепление, удаление, добавление гиперссылки](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Ниже приведен пример панели мониторинга с представлениями холодного пути, прикрепленными к ней.  В зависимости от того, как долго работает ваш генератор данных, на визуализациях могут отображаться другие значения.
+   * Нажмите кнопку **«Опубликовать»** и несколько секунд позже, появляется окно отображения «Публикация tooPower BI успехов!» Щелкните ссылку "Открыть PredictiveMaintenanceAerospace.pbix в Power BI". Щелкните ссылку hello под «Открыть PredictiveMaintenanceAerospace.pbix в Power BI». toofind подробные инструкции см. в разделе [публикация из Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
+   * toocreate новую панель мониторинга: щелкните hello  **+**  входа Далее toothe **панелей мониторинга** раздел в левой области hello. Введите имя hello «Прогнозной Demo обслуживания» для этой новой панели мониторинга.
+   * После открытия отчета hello щелкните ![значок БУЛАВКИ](media/cortana-analytics-technical-guide-predictive-maintenance/icon-pin.png) toopin все панели мониторинга tooyour визуализации. toofind подробные инструкции см. в разделе [Закрепление панели мониторинга Power BI tooa плитки из отчета](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
+     Переход на страницу панели мониторинга toohello и настроить hello размер и расположение визуализации и изменить их заголовки. toofind подробные инструкции, как tooedit плиток, см. статью [редактирование плитки — изменение размера, перемещение, переименование, ПИН-код, удалить, добавить гиперссылку](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Ниже приведен пример панели мониторинга с помощью некоторых tooit визуализации закрепленные холодного путь.  В зависимости от того, как долго запуске генератора данных может отличаться на визуализации hello эти номера.
      <br/>
      ![Окончательное представление](media/cortana-analytics-technical-guide-predictive-maintenance/final-view.png)
      <br/>
-   * Чтобы запланировать обновление данных, наведите указатель мыши на набор данных **PredictiveMaintenanceAerospace**, щелкните ![Значок многоточия](media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png) и выберите **Запланировать обновление**.
+   * Обновление tooschedule hello данных, наведите указатель мыши hello **PredictiveMaintenanceAerospace** набора данных, нажмите кнопку ![значок многоточия](media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png) и выберите **запланировать обновление**.
      <br/>
-     **Примечание.** При появлении предупреждения нажмите кнопку **Изменить учетные данные** и убедитесь, что учетные данные базы данных являются такими же, как описано на шаге 1.
+     **Примечание:** появление массаже предупреждение, щелкните **изменение учетных данных** и убедитесь, что учетные данные базы данных являются Здравствуйте таким же, как описано в шаге 1.
      <br/>
      ![Планирование обновления](media/cortana-analytics-technical-guide-predictive-maintenance/schedule-refresh.png)
      <br/>
-   * Разверните раздел **Запланировать обновление** . Включите параметр "Поддерживать актуальность данных".
+   * Разверните hello **запланировать обновление** раздела. Включите параметр "Поддерживать актуальность данных".
      <br/>
-   * Запланируйте обновления в зависимости от потребностей. Дополнительные сведения см. в статье [Обновление данных в Power BI](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi).
+   * Запланировать обновление hello, в соответствии со своими потребностями. toofind Дополнительные сведения см. в разделе [обновление данных в Power BI](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi).
 
 ### <a name="setup-hot-path-dashboard"></a>Настройка панели мониторинга горячего пути
-Следующее пошаговое руководстве поможет вам реализовать визуализацию в реальном времени выходных данных заданий Stream Analytics, созданных во время развертывания решения. Для выполнения следующих действий требуется учетная запись [Power BI Online](http://www.powerbi.com/) . Если у вас нет учетной записи, вы можете [создать ее](https://powerbi.microsoft.com/pricing).
+Hello следующие шаги помогут вам как данных реального времени toovisualize выходные данные Stream Analytics заданий, которые были созданы во время развертывания решения hello. Объект [Power BI в Интернете](http://www.powerbi.com/) учетная запись является обязательным tooperform hello следующие шаги. Если у вас нет учетной записи, вы можете [создать ее](https://powerbi.microsoft.com/pricing).
 
 1. Добавьте выходные данные Power BI в Azure Stream Analytics (ASA).
    
-   * Чтобы настроить выходные данные задания Azure Stream Analytics в качестве информационной панели Power BI, следуйте инструкциям, приведенным в статье [Azure Stream Analytics и Power BI: панель оперативного мониторинга аналитики для визуализации потоковой передачи данных в режиме реального времени](../stream-analytics/stream-analytics-power-bi-dashboard.md).
-   * Настройте три варианта выходных данных запроса ASA: **aircraftmonitor**, **aircraftalert** и **flightsbyhour**. Запрос можно просмотреть, щелкнув вкладку запроса. Согласно каждой из этих таблиц потребуется добавить выходные данные в ASA. При добавлении первых выходных данных (*например*, **aircraftmonitor**) убедитесь, что **выходной псевдоним**, **имя набора данных** и **имя таблицы** такие же (**aircraftmonitor**). Повторите шаги, чтобы добавить выходные данные для **aircraftalert** и **flightsbyhour**. После добавления всех трех таблиц выходных данных и запуска задания ASA вы должны получить сообщение с подтверждением (*например*, "Успешный запуск задания Stream Analytics maintenancesa02asapbi").
-2. Войдите в [Power BI Online](http://www.powerbi.com)
+   * Вам потребуется toofollow hello инструкциям [Azure Stream Analytics и Power BI: панель мониторинга в режиме реального времени для потоковой передачи данных в реальном](../stream-analytics/stream-analytics-power-bi-dashboard.md) tooset hello выходной файл задания Azure Stream Analytics как Power Бизнес-АНАЛИТИКИ панели мониторинга.
+   * Hello ASA запрос имеет три выхода, которые являются **aircraftmonitor**, **aircraftalert**, и **flightsbyhour**. Выберите на вкладке запросов можно просмотреть запрос hello. Соответствующий tooeach из этих таблиц требуется tooadd tooASA выходных данных. При добавлении первого выхода hello (*например* **aircraftmonitor**) убедитесь, что hello **Псевдоним выхода**, **имя набора данных** и  **Имя таблицы** являются одинаковыми hello (**aircraftmonitor**). Выводит tooadd hello повторите шаги для **aircraftalert**, и **flightsbyhour**. После добавления всех трех выходные таблицы и запустил задание ASA hello, вы должны получить сообщение с подтверждением (*например*, «Запуск задания Stream Analytics успешно maintenancesa02asapbi»).
+2. Войдите в слишком[Power BI в Интернете](http://www.powerbi.com)
    
-   * На левой панели раздела "Наборы данных" в области "Моя рабочая область" должны отображаться имена **aircraftmonitor**, **aircraftalert** и **flightsbyhour** ***набора данных***. Это потоковые данные, переданные из Azure Stream Analytics на предыдущем шаге. Набор данных **flightsbyhour** может не отображаться одновременно с другими двумя наборами из-за характера связанного SQL-запроса. Однако он должен появиться через час.
-   * Убедитесь, что область ***Визуализации*** открыта и отображается в правой части экрана.
-3. После получения данных, поступающих в Power BI, можно начать визуализацию потоковых данных. Ниже приведен пример панели мониторинга с визуализациями горячего пути, прикрепленными к ней. На основе соответствующих наборов данных можно создать другие плитки панели мониторинга. В зависимости от того, как долго работает ваш генератор данных, на визуализациях могут отображаться другие значения.
+   * На левой панели наборов данных в "Мои представления" hello ***DATASET*** имена **aircraftmonitor**, **aircraftalert**, и **flightsbyhour**должны отображаться. Это hello потоковой передачи данных при передаче из Azure Stream Analytics в hello предыдущего набора данных step.hello **flightsbyhour** могут не отображаться в hello же время, как другие два набора данных из-за характера toohello hello SQL-запроса за hello его. Однако он должен появиться через час.
+   * Убедитесь, что hello ***визуализации*** области открыт и отображается в правой части экрана приветствия.
+3. После получения данных hello, поступающих в Power BI можно запустить, визуализация hello потоковой передачи данных. Ниже приведен пример панели мониторинга с визуализации Горячий путь закрепленные tooit. На основе соответствующих наборов данных можно создать другие плитки панели мониторинга. В зависимости от того, как долго запуске генератора данных может отличаться на визуализации hello эти номера.
 
     ![Представление панели мониторинга](media\cortana-analytics-technical-guide-predictive-maintenance\dashboard-view.png)
 
-1. Ниже приведен ряд действий по созданию одной из приведенных выше плиток — Fleet View of Sensor 11 vs. Threshold 48.26":
+1. Ниже приведены некоторые действия toocreate одной плитки приветствия выше — hello «парк представление датчик 11 vs. Threshold 48.26":
    
-   * Щелкните набор данных **aircraftmonitor** на левой панели раздела "Наборы данных".
-   * Щелкните значок **График** .
-   * Щелкните **Обработано** в области **Поля**, чтобы они отображались в разделе "Ось" области **Визуализации**.
-   * Нажмите кнопку s11 и s11alert\_alert, чтобы они отображались в группе "Значения". Щелкните маленькую стрелку рядом с **s11** и **s11\_alert**, измените "Сумма" на "Среднее".
-   * В верхней части нажмите кнопку **Сохранить** сверху и назовите отчет "aircraftmonitor". Отчет с именем aircraftmonitor будет отображаться в разделе **Отчеты** в области **Навигатор** слева.
-   * Щелкните значок **Закрепить визуальный элемент** в правом верхнем углу этого графика. Может отобразиться окно "ПИН-код для панели мониторинга" для выбора панели мониторинга. Выберите "Демонстрация прогнозируемого обслуживания", а затем нажмите кнопку "Закрепить".
-   * Наведите указатель мыши на эту плитку на панели мониторинга, щелкните значок "изменить" в правом верхнем углу, чтобы изменить ее название на "Fleet View of Sensor 11 vs. Threshold 48.26" и подзаголовок на "Average across fleet over time".
+   * Выберите набор данных **aircraftmonitor** на hello слева панели наборов данных.
+   * Нажмите кнопку hello **график** значок.
+   * Нажмите кнопку **обработано** в hello **поля** области, поэтому что он отображается в области «Ось» hello **визуализации** области.
+   * Нажмите кнопку s11 и s11alert\_alert, чтобы они отображались в группе "Значения". Щелкните маленькую стрелку hello рядом слишком**s11** и **s11\_предупреждение**, измените «Сумма» слишком «среднее».
+   * Нажмите кнопку **Сохранить** на верхней hello и назовите hello отчета «aircraftmonitor». Отчет с именем «aircraftmonitor» будет отображаться в hello **отчеты** раздела hello **Навигатор** hello левую панель.
+   * Нажмите кнопку hello **ПИН-кода Visual** значок в верхнем правом углу hello этого графика. Окно «TooDashboard ПИН-код» может отображаться для выбора панели мониторинга. Выберите "Демонстрация прогнозируемого обслуживания", а затем нажмите кнопку "Закрепить".
+   * Наведите указатель мыши hello этой плитки на панели мониторинга hello, щелкните значок «edit» hello в правом верхнем углу toochange hello слишком его название «флот представление датчик 11 vs. Пороговое значение 48,26" и подзаголовок слишком «среднее значение между флот во времени».
 
-## <a name="how-to-delete-your-solution"></a>**Удаление решения**
-Убедитесь, что генератор данных остановлен, если решение используется неактивно, так как работа генератора данных связана с высокими расходами. Если вы не используете решение, удалите его. При удалении решения будут удалены все компоненты, подготовленные в подписке при развертывании решения. Чтобы удалить решение, щелкните имя решения на левой панели шаблона решения и щелкните "Удалить".
+## <a name="how-toodelete-your-solution"></a>**Как toodelete решения**
+Убедитесь, что остановка hello генератора данных при использовании не активно hello решений при запуске генератора данных hello повлечет за собой более высокими затратами. Удалите hello решение, если оно не используется. Удаление решения приведет к удалению всех компонентов hello подготовлены в вашей подписке при развертывании решения hello. решение hello toodelete щелкните свое имя решения в левой панели hello hello шаблон решения и нажмите кнопку Удалить.
 
 ## <a name="cost-estimation-tools"></a>**Средства для оценки затрат**
-Следующие два инструмента помогут вам лучше оценить общие затраты, задействованные в выполнении шаблона решения для прогнозируемого обслуживания в аэрокосмических компаниях в вашей подписке:
+Hello следующие два средства, доступные toohelp лучше понять общее затраты, связанные с запуском hello превентивного обслуживания для Аэрокосмических шаблон решения в вашей подписки:
 
 * [Средство оценки затрат Azure Microsoft (в сети)](https://azure.microsoft.com/pricing/calculator/)
 * [Средство оценки затрат Azure Microsoft (на рабочем столе)](http://www.microsoft.com/download/details.aspx?id=43376)

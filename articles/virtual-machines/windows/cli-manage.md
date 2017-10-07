@@ -1,6 +1,6 @@
 ---
-title: "Основные команды интерфейса командной строки для задач виртуальных машин Windows | Документация Майкрософт"
-description: "Основные команды интерфейса командной строки Azure для создания виртуальных машин Windows и управления ими в Azure Resource Manager"
+title: "aaaBasic CLI команд для выполнения задач на виртуальной Машине Windows | Документы Microsoft"
+description: "Основные Azure CLI команды toocreate и управление виртуальными машинами Windows в диспетчере ресурсов Azure"
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/23/2016
 ms.author: danlep
-ms.openlocfilehash: 1ec1e0d5499e0a4da02a26bfb71a1117d920e7f5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3b5db7ae0017cb4713785539c96f7550b5a9bdab
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="common-azure-cli-commands-for-virtual-machine-tasks-in-the-resource-manager-deployment-model"></a>Распространенные команды интерфейса командной строки Azure для выполнения задач виртуальной машины в модели развертывания Resource Manager
-В этой статье перечислены распространенные команды интерфейса командной строки Azure (Azure CLI) для создания виртуальных машин и управления ими в модели развертывания Resource Manager. 
+# <a name="common-azure-cli-commands-for-virtual-machine-tasks-in-hello-resource-manager-deployment-model"></a>Стандартные команды Azure CLI для виртуальной машины задач в модели развертывания диспетчера ресурсов hello
+В этой статье показаны общие toocreate команды Azure командной строки (CLI Azure) и управление виртуальными машинами в модели развертывания диспетчера ресурсов hello. 
 
 [!INCLUDE [virtual-machines-common-cli-manage](../../../includes/virtual-machines-common-cli-manage.md)]
 

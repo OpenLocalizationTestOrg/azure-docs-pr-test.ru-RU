@@ -1,5 +1,5 @@
 ---
-title: "Сброс пароля для пользователя в Azure Active Directory | Документация Майкрософт"
+title: "aaaReset hello пароля для пользователя в Azure Active Directory | Документы Microsoft"
 description: "Сведения о процедуре сброса пароля пользователя в Azure Active Directory, выполняемой администратором."
 services: active-directory
 documentationcenter: 
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: deec642a240cb6f088210748b0ef3a3636a88405
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8ed7643d9ad375b1e46bac8f5aa610b03fccf3fc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reset-a-password-for-a-user-in-the-azure-classic-portal"></a>Сброс пароля пользователя на классическом портале Azure
+# <a name="reset-a-password-for-a-user-in-hello-azure-classic-portal"></a>Сброс пароля для пользователя в hello классический портал Azure
 > [!div class="op_single_selector"]
 > * [Портал Azure](active-directory-users-reset-password-azure-portal.md)
-> * [классический портал Azure](active-directory-create-users-reset-password.md)
+> * [классическом портале Azure](active-directory-create-users-reset-password.md)
 >
 >
 
-Azure Active Directory (Azure AD) упрощает процесс сброса пароля пользователя, если пользователь забыл пароль и доступ к его учетной записи заблокирован или при выполнении рутинной процедуры по обеспечению безопасности. 
+Azure Active Directory (Azure AD) упрощает процесс сброса пароля пользователя, если они забыли и блокируются out или при выполнении процедуры безопасности обслуживания hello. 
 
 > [!IMPORTANT]
-> Для управления службой Azure AD мы рекомендуем использовать [Центр администрирования Azure AD](https://aad.portal.azure.com) на портале Azure, а не классический портал Azure, который упоминается в этой статье. См. дополнительные сведения о [сбросе пароля пользователя в центре администрирования Azure Active Directory](active-directory-users-reset-password-azure-portal.md).
+> Корпорация Майкрософт рекомендует управлять Azure AD, используя hello [Центр администрирования Azure AD](https://aad.portal.azure.com) в hello портал Azure, вместо использования hello классический портал Azure, в этой статье. Для tooreset пароль пользователя в центре администрирования hello Azure AD, в статье [Сброс hello пароля для пользователя в Azure Active Directory](active-directory-users-reset-password-azure-portal.md).
 
 1. Откройте свой каталог.
-2. Перейдите на вкладку **Пользователи** , а затем выберите отображаемое имя пользователя, которое нужно изменить.
-3. На панели команд выберите **Сбросить пароль**.
-4. Щелкните **сбросить**в диалоговом окне сброса.
-5. Чтобы завершить сброс пароля, установите флажок.
+2. Выберите hello **пользователей** вкладку и выберите hello отображаемым именем hello нужного toochange пользователя.
+3. В панели команд hello, выберите **Смена пароля**.
+4. В диалоговом окне приветствия сброса пароля, нажмите кнопку **Сброс**.
+5. Установите флажок toofinish hello, сброс пароля hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Добавление новых пользователей в Azure Active Directory](active-directory-create-users.md)
+* [Добавить новый tooAzure пользователей Active Directory](active-directory-create-users.md)
 * [Администрирование Azure AD](active-directory-administer.md)
 * [Управление паролями в Azure AD](active-directory-manage-passwords.md)
 * [Управление группами в Azure AD](active-directory-manage-groups.md)

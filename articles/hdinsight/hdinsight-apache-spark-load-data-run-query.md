@@ -1,6 +1,6 @@
 ---
-title: "Выполнение интерактивных запросов в кластере Azure HDInsight Spark | Документация Майкрософт"
-description: "Краткое руководство HDInsight Spark по созданию кластера Apache Spark в HDInsight."
+title: "aaaRun интерактивной обработки запросов на кластере Azure HDInsight Spark | Документы Microsoft"
+description: "Примеры использования HDInsight Spark на как кластер toocreate Apache Spark в HDInsight."
 keywords: "краткое руководство Spark,интерактивный запрос Spark,интерактивный запрос,Hdinsight Spark,Azure Spark"
 services: hdinsight
 documentationcenter: 
@@ -16,68 +16,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: nitinme
-ms.openlocfilehash: ada1c3d1482c68834dbbf5eabbd045a7e0c01f9f
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 3864eba50eb3828a9ecb657ded88080e1974585f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-interactive-queries-on-an-hdinsight-spark-cluster"></a>Выполнение интерактивных запросов в кластере HDInsight Spark
 
-В этой статье описано, как с помощью записной книжки Jupyter выполнять интерактивные запросы Spark SQL к кластеру Spark. Записная книжка Jupyter представляет собой браузерное приложение, которое позволяет использовать интерактивный интерфейс на базе консоли в Интернете. Дополнительные сведения см. в [документации по записным книжкам Jupyter](http://jupyter-notebook.readthedocs.io/en/latest/notebook.html).
+В этой статье используется Jupyter записной книжки toorun интерактивного Spark SQL-запросов к кластера Spark. Книжке Jupyter является приложением на основе браузера, расширяющий toohello интерактивное взаимодействие с помощью консоли hello Web. Дополнительные сведения см. в разделе [книжке Jupyter hello](http://jupyter-notebook.readthedocs.io/en/latest/notebook.html).
 
-В ходе работы с этим руководством вы выполните интерактивный SQL-запрос к Spark с помощью ядра **PySpark** в записной книжке Jupyter. Записные книжки Jupyter в кластерах HDInsight поддерживают еще две версии ядер — **PySpark3** и **Spark**. Дополнительные сведения об этих ядрах и о преимуществах **PySpark** см. в статье [Ядра для записной книжки Jupyter в кластерах Spark в Azure HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md).
+В этом учебнике используется hello **PySpark** ядра в toorun записной книжки Jupyter hello интерактивный Spark SQL-запроса. Записные книжки Jupyter в кластерах HDInsight поддерживают еще две версии ядер — **PySpark3** и **Spark**. Дополнительные сведения о ядрах hello и преимущества использования hello **PySpark**, в разделе [кластеров ядер записной книжки Jupyter использования с Apache Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 * **Кластер Azure HDInsight Spark**. Инструкции см. в статье [Создание кластера Apache Spark в Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
-## <a name="create-a-jupyter-notebook-to-run-interactive-queries"></a>Создание записной книжки Jupyter для выполнения интерактивных запросов
+## <a name="create-a-jupyter-notebook-toorun-interactive-queries"></a>Создание записной книжке Jupyter toorun интерактивной обработки запросов
 
-Чтобы выполнять запросы, мы воспользуемся тестовым набором данных, который по умолчанию всегда доступен в хранилище, связанном с кластером. Но эти данные нужно сначала загрузить в Spark в виде кадра данных. Когда кадр данных будет готов, вы сможете отправлять запросы к нему с помощью записной книжки Jupyter. Из этого раздела вы узнаете, как выполнять следующие действия:
+запросы toorun мы используем образец данных, по умолчанию, доступные в hello хранилище, связанное с кластером hello. Но эти данные нужно сначала загрузить в Spark в виде кадра данных. При наличии hello кадр данных можно выполнять запросы на его с помощью книжке Jupyter hello. Из этого раздела вы узнаете, как выполнять следующие действия:
 
 * регистрация тестового набора данных в качестве кадра данных Spark;
-* выполнение запросов к кадру данных.
+* Выполнять запросы на кадр данных hello.
 
-1. Откройте [портал Azure](https://portal.azure.com/). Если закрепили кластер на панели мониторинга, щелкните элемент кластера на панели мониторинга, чтобы открыть колонку кластера.
+1. Откройте hello [портал Azure](https://portal.azure.com/). Если вы выбрали мониторинга toohello toopin hello кластера, щелкните плитку кластера hello из hello мониторинга toolaunch hello кластера колонки.
 
-    Если вы не закрепили кластер на панели мониторинга, в области слева щелкните **Кластеры HDInsight**, а затем выберите созданный кластер.
+    Если не закрепить мониторинга toohello кластера hello hello левой панели, нажмите кнопку **кластеров HDInsight**и нажмите кнопку hello кластера, вы создали.
 
-3. В разделе **Быстрые ссылки** щелкните **Панели мониторинга кластера**, а затем — **Записная книжка Jupyter**. При появлении запроса введите учетные данные администратора для кластера.
+3. В разделе **Быстрые ссылки** щелкните **Панели мониторинга кластера**, а затем — **Записная книжка Jupyter**. При появлении запроса введите учетные данные администратора hello hello кластера.
 
-   ![Открытие записной книжки Jupyter для выполнения интерактивного запроса Spark SQL](./media/hdinsight-apache-spark-load-data-run-query/hdinsight-spark-start-jupyter-interactive-spark-sql-query.png "Открытие записной книжки Jupyter для выполнения интерактивного запроса Spark SQL")
+   ![Откройте Jupyter записной книжки toorun интерактивного Spark SQL-запроса](./media/hdinsight-apache-spark-load-data-run-query/hdinsight-spark-start-jupyter-interactive-spark-sql-query.png "откройте Jupyter записной книжки toorun интерактивного Spark SQL-запроса")
 
    > [!NOTE]
-   > Также можно открыть записную книжку Jupyter для своего кластера, открыв следующий URL-адрес в браузере. Замените **CLUSTERNAME** именем кластера:
+   > Также может обращаться к записной книжки Jupyter hello для кластера, открыв hello следующий URL-адрес в браузере. Замените **CLUSTERNAME** с hello имя кластера:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
 3. Создайте записную книжку. Щелкните **Создать**, а затем выберите **PySpark**.
 
-   ![Создание записной книжки Jupyter для выполнения интерактивного запроса Spark SQL](./media/hdinsight-apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-Spark-SQL-query.png "Создание записной книжки Jupyter для выполнения интерактивного запроса Spark SQL")
+   ![Создать интерактивный запрос Spark SQL Jupyter записной книжки toorun](./media/hdinsight-apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-Spark-SQL-query.png "создания Jupyter записной книжки toorun интерактивного Spark SQL-запроса")
 
-   Будет создана и открыта записная книжка с именем Untitled (Untitled.pynb).
+   Создается и открывается с именем hello Untitled(Untitled.pynb) новый блокнот.
 
-4. Щелкните имя записной книжки вверху и по желанию введите понятное имя.
+4. Щелкните имя записной книжки hello вверху hello и введите понятное имя, если требуется.
 
-    ![Указание имени записной книжки Jupter, из которой будет выполняться интерактивный запрос Spark](./media/hdinsight-apache-spark-load-data-run-query/hdinsight-spark-jupyter-notebook-name.png "Указание имени записной книжки Jupter, из которой будет выполняться интерактивный запрос Spark")
+    ![Введите имя для hello Jupter записной книжки toorun интерактивных Spark запросов из](./media/hdinsight-apache-spark-load-data-run-query/hdinsight-spark-jupyter-notebook-name.png "укажите имя для hello Jupter записной книжки toorun интерактивных Spark запросов из")
 
-5. Вставьте указанный ниже код в пустую ячейку и нажмите сочетание клавиш **SHIFT + ВВОД**, чтобы выполнить код. Код импортирует типы, необходимые для этого сценария:
+5. Ниже hello вставить код в пустой ячейке и нажмите клавишу **SHIFT + ВВОД** toorun кода hello. Код Hello импортирует hello типы, необходимые для этого сценария:
 
         from pyspark.sql.types import *
 
-    Так как записная книжка была создана с помощью ядра PySpark, задавать контексты явно необязательно. Контексты Spark и Hive будут созданы автоматически при выполнении первой ячейки кода.
+    Поскольку вы создали записной книжке с использованием ядра PySpark hello, вы не обязательно toocreate контекстов явным образом. контексты Spark и Hive Hello автоматически создаются при выполнении первой ячейке кода hello.
 
     ![Состояние интерактивного запроса Spark SQL](./media/hdinsight-apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Состояние интерактивного запроса Spark SQL")
 
-    При каждом запуске интерактивного запроса в Jupyter в заголовке окна веб-браузера будет отображаться состояние **(Занято)**, а также название записной книжки. Кроме того, рядом с надписью **PySpark** в верхнем правом углу окна будет показан закрашенный кружок. После завершения задания он изменится на кружок без заливки.
+    Показывает каждый раз при выполнении интерактивных запросов в Jupyter, заголовок окна обозревателя вашей веб **(Busy)** состояния вместе с hello записной книжки заголовка. Появится следующий toohello сплошной кружок **PySpark** текст в верхнем правом углу hello. По завершении задания hello изменяется tooa полый круг.
 
-6. Прежде чем загружать данные в кластер Spark, давайте немного изучим их. Тестовые данные, используемые в этом руководстве, доступны на всех кластерах HDInsight Spark в виде CSV-файла по адресу **\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv**. Эти данные демонстрируют колебания температуры в здании. Ниже вы видите несколько первых строк из этого набора данных.
+6. Перед загрузкой данных hello в кластере Spark, сообщите нам найти моментальный снимок. Hello образцы данных, используемые в этом учебнике доступен в виде CSV-файла на всех кластерах HDInsight Spark на **\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv**. Hello данных захватывает hello температуры различные виды здания. Ниже приведены несколько первых строк данных hello hello.
 
     ![Моментальный снимок данных для интерактивных запросов Spark SQL](./media/hdinsight-apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Snapshot of data for interactive Spark SQL query")
 
-6. Создайте кадр данных и временную таблицу **hvac**, выполнив следующий код: Для целей этого руководства нам не нужно создавать во временной таблице все столбцы, присутствующие в необработанных данных в формате CSV. 
+6. Создайте кадр данных и временную таблицу (**кондиционирования**), выполнив следующий код hello. В этом учебнике мы не создавайте все столбцы hello в hello временную таблицу сравнения toohello в виде столбцов hello необработанных данных в формате CSV. 
 
         # Create an RDD from sample data
         hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -85,36 +85,36 @@ ms.lasthandoff: 07/29/2017
         # Create a schema for our data
         Entry = Row('Date', 'Time', 'TargetTemp', 'ActualTemp', 'BuildingID')
 
-        # Parse the data and create a schema
+        # Parse hello data and create a schema
         hvacParts = hvacText.map(lambda s: s.split(',')).filter(lambda s: s[0] != 'Date')
         hvac = hvacParts.map(lambda p: Entry(str(p[0]), str(p[1]), int(p[2]), int(p[3]), int(p[6])))
         
-        # Infer the schema and create a table       
+        # Infer hello schema and create a table       
         hvacTable = sqlContext.createDataFrame(hvac)
         hvacTable.registerTempTable('hvactemptable')
         dfw = DataFrameWriter(hvacTable)
         dfw.saveAsTable('hvac')
 
-7. Когда таблица будет готова, выполните интерактивный запрос к данным с помощью следующего кода.
+7. После создания таблицы hello построения интерактивных запросов на основе данных hello, с помощью hello, следующий код.
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
-   Так как вы используете ядро PySpark, вы можете отправить интерактивный SQL-запрос непосредственно к временной таблице **hvac**, которую вы создали с помощью волшебной команды `%%sql`. Дополнительные сведения о магической команде `%%sql`, а также других магических командах, доступных в ядре PySpark, приведены в статье [Ядра для записных книжек Jupyter с кластерами Apache Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+   Так как вы используете ядра PySpark, теперь можно напрямую запустить интерактивный SQL-запроса для временной таблицы hello **кондиционирования** , созданного с помощью hello `%%sql` магическое значение. Дополнительные сведения о hello `%%sql` magic и другие доступные ядра PySpark hello, magics. в разделе [ядер, доступных на записные книжки Jupyter с кластерами Spark HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
-   По умолчанию выводятся следующие табличные данные.
+   по умолчанию отображаются следующие табличного вывода Hello.
 
      ![Таблица результатов интерактивного запроса Spark](./media/hdinsight-apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Таблица результатов интерактивного запроса Spark")
 
-    Результаты также можно просмотреть и в других визуализациях. Например, диаграмма областей для тех же выходных данных будет выглядеть следующим образом.
+    Можно также посмотреть результаты hello в другие представления, а также. Например график для приветствия такие же выходные данные выглядят hello следующее.
 
     ![Диаграмма с областями результата интерактивного запроса Spark](./media/hdinsight-apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Диаграмма с областями результата интерактивного запроса Spark")
 
-9. Завершив работу с приложением, можно закрыть записную книжку, чтобы освободить ресурсы кластера. Для этого в записной книжке в меню **Файл** выберите пункт **Close and Halt** (Закрыть и остановить).
+9. Завершение работы ресурсов кластера hello toorelease записной книжки hello, после завершения работы приложения hello. toodo так, hello **файл** меню на ноутбуке hello щелкните **закрыть и остановить**.
 
 ## <a name="next-step"></a>Дальнейшие действия
 
-Из этой статьи вы узнали, как выполнять интерактивные запросы в Spark с помощью записной книжки Jupyter. Теперь переходите к следующей статье, в которой объясняется, как перенести зарегистрированные в Spark данные в средство бизнес-аналитики, например в Power BI или Tableau. 
+В этой статье вы узнали, каким образом toorun интерактивной обработки запросов в Spark с помощью книжке Jupyter. Далее в статье toosee toohello как извлечь данные hello, зарегистрированное в Spark приращения в средство анализа бизнес-Аналитики, таких как Power BI и Tableau. 
 
 > [!div class="nextstepaction"]
 >[Использование средств визуализации данных с помощью Apache Spark BI в Azure HDInsight](hdinsight-apache-spark-use-bi-tools.md)

@@ -1,5 +1,5 @@
 ---
-title: "Вычисление результатов теста производительности для виртуальных машин Windows | Документация Майкрософт"
+title: "тест производительности aaaCompute оценок для виртуальных машин Windows | Документы Microsoft"
 description: "Сравнение результатов теста производительности SPECint для виртуальных машин Azure под управлением Windows Server."
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cynthn
-ms.openlocfilehash: dc715a9bf4e5366e1719de7c649feb06b0c4bee7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3037d69790cb193161122b902e85fb838285cf81
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Вычисление результатов теста производительности для виртуальных машин Windows
-Ниже приведены результаты теста производительности SPECInt линейки высокопроизводительных виртуальных машин Azure под управлением Windows Server. Вы можете также ознакомиться с результатами теста производительности для [виртуальных машин Linux](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+следующие Показать оценок производительности показателям SPECInt Hello вычислений производительности для виртуальной Машины разметки с высокой производительности Azure под управлением Windows Server. Вы можете также ознакомиться с результатами теста производительности для [виртуальных машин Linux](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="a-series---compute-intensive"></a>Серия А: для ресурсоемких вычислений
 | Размер | Число виртуальных ЦП | Число узлов NUMA | ЦП | Запуски | Ср. базовая производительность | StdDev |
@@ -65,7 +65,7 @@ ms.lasthandoff: 07/11/2017
 | Standard_H16mr |16 |2 |Intel Xeon E5-2667 вер. 3 с тактовой частотой 3,2 ГГц |7 |569,6 |2.8 |
 
 ## <a name="about-specint"></a>О SPECint
-Полученные результаты для Windows были вычислены посредством запуска [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) в Windows Server. Для запуска SPECint был использован режим базовой производительности (SPECint_rate2006) с одной копией на ядро. SPECint содержит 12 отдельных тестов, каждый из которых выполняется трижды, после чего срединное значение каждого теста взвешивается для получения составного показателя. Эти тесты были выполнены на нескольких виртуальных машинах для получения приведенных средних показателей.
+Полученные результаты для Windows были вычислены посредством запуска [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) в Windows Server. Показателям SPECint была запущена с помощью параметра базовой ставки hello (SPECint_rate2006), с одной копии на ядро. Показателям SPECint состоит из 12 отдельных тестов, каждый выполняться три раза, принимающий значение медианы hello из каждого теста и взвешивание их tooform составной показатель. Затем эти тесты выполнялись между несколькими виртуальными машинами tooprovide hello средних оценок показано.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * Сведения о емкости хранилища, подробности о дисках и дополнительные рекомендации по выбору размера виртуальной машины см. в статье [Размеры виртуальных машин в Azure](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

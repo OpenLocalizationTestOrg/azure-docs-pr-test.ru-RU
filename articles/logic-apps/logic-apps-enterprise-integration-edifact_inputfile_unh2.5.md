@@ -1,5 +1,5 @@
 ---
-title: "Декодирование EDIFACT с разрешением UNH2.5 для Logic Apps B2B в Azure Logic Apps | Документация Майкрософт"
+title: "aaaLogic приложения B2B декодировать edifact разрешить UNH2.5 - приложения логики Azure | Документы Microsoft"
 description: "Декодирование EDIFACT с разрешением UNH2.5 для Azure Logic Apps B2B"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 62ad8183cc6e9f56255b2729a04ee7710d00a21a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d85242d0f828fa52cdc9689938f3ba1e51b1183
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-handle-edifact-documents-having-unh25-segment"></a>Как обрабатывать документы EDIFACT при наличии сегмента UNH2.5
-При наличии сегмента UNH2.5 в документе EDIFACT он используется для поиска схемы. 
+# <a name="how-toohandle-edifact-documents-having-unh25-segment"></a>Как документы с UNH2.5 toohandle EDIFACT сегмент
+При наличии в документ EDIFACT hello UNH2.5 он используется для просмотра схемы. 
 
-Например, поле UNH представляет **EAN008** в сообщении EDIFACT.  
+Пример: hello UNH поле является **EAN008** в сообщения EDIFACT hello  
 UNH+SSDD1+ORDERS:D:03B:UN:**EAN008**'  
 
-Чтобы обработать сообщение, сделайте следующее: 
-1. Обновите схему.
-2. Проверьте параметры соглашения.  
+Сообщение hello toohandle toofollow действия 
+1. Обновление схемы hello
+2. Проверьте параметры соглашения hello  
 
-## <a name="update-the-schema"></a>Обновление схемы
-Чтобы обработать сообщение, вам необходимо развернуть схему с именем корневого узла UNH2.5.  В этом примере корневое имя схемы будет выглядеть так: **EFACT_D03B_ORDERS_EAN008**  
+## <a name="update-hello-schema"></a>Обновление схемы hello
+tooprocess приветственное сообщение, необходимо toodeploy схема с имя hello UNH2.5 корневого узла.  Для данного примера, будет корневым именем схемы hello **EFACT_D03B_ORDERS_EAN008**  
 
-Для каждого D03B_ORDERS с разными сегментами UNH2.5 вам понадобится развернуть отдельную схему.  
+Для каждого D03B_ORDERS с другой сегмент UNH2.5 потребовалось бы toodeploy отдельных схем.  
 
-## <a name="add-schema-to-the-edifact-agreement"></a>Добавление схемы в соглашение EDIFACT
+## <a name="add-schema-toohello-edifact-agreement"></a>Добавить соглашения EDIFACT toohello схемы
 ### <a name="edifact-decode"></a>Декодирование EDIFACT
-Чтобы декодировать входящее сообщение, настройте схему в параметрах получения для соглашения EDIFACT.
-1. Добавьте схему в учетную запись интеграции.    
-2. Настройте схему в параметрах получения для соглашения EDIFACT. 
-3. Выберите соглашение EDIFACT и щелкните **Редактирование в качестве JSON**.  Добавьте значение UNH2.5 в **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png) для соглашения получения.
+tooDecode Здравствуйте входящее сообщение, настроить схему hello в hello EDIFACT параметров получения соглашения
+1. Добавление учетной записи интеграции toohello схемы hello    
+2. Настройка схемы hello в hello EDIFACT параметров получения соглашения. 
+3. Выберите соглашение EDIFACT и щелкните **Редактирование в качестве JSON**.  Добавить значение UNH2.5 в соглашении о получении hello **schemaReferences**
+![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)
 
 ### <a name="edifact-encode"></a>Кодирование EDIFACT
-Чтобы выполнить кодирование входящего сообщения, настройте схему в параметрах отправки для соглашения EDIFACT.
-1. Добавьте схему в учетную запись интеграции.    
-2. Настройте схему в параметрах отправки для соглашения EDIFACT. 
-3. Выберите соглашение EDIFACT и щелкните **Редактирование в качестве JSON**.  Добавьте значение UNH2.5 в **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png) для соглашения отправки.
+tooEncode Здравствуйте входящее сообщение, настроить схему hello в параметры отправки соглашения EDIFACT hello
+1. Добавление учетной записи интеграции toohello схемы hello    
+2. Настройка схемы hello в параметры отправки соглашения EDIFACT hello. 
+3. Выберите соглашение EDIFACT и щелкните **Редактирование в качестве JSON**.  Добавить значение UNH2.5 в hello соглашение отправки **schemaReferences**
+![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * [Дополнительные сведения о соглашениях учетных записей интеграции](../logic-apps/logic-apps-enterprise-integration-agreements.md "Дополнительные сведения о корпоративных соглашениях интеграции")  

@@ -1,6 +1,6 @@
 ---
-title: "Использование партнеров для доставки лицензий Widevine для служб мультимедиа Azure | Документация Майкрософт"
-description: "В этой статье описывается использование служб мультимедиа Azure (AMS) для доставки потока, который зашифрован динамически службой AMS, с помощью лицензий DRM PlayReady и Widevine. Лицензию PlayReady выдает сервер лицензирования служб мультимедиа PlayReady, а лицензию Widevine — сервер лицензирования castLabs."
+title: "партнеры aaaUsing toodeliver Widevine лицензий tooAzure Media Services | Документы Microsoft"
+description: "В этой статье описывается, как можно использовать toodeliver служб мультимедиа Azure (AMS) поток, который зашифрован динамически AMS с помощью PlayReady и Widevine DRMs. лицензии PlayReady Hello поступают из сервера лицензий PlayReady служб мультимедиа и лицензии Widevine доставляется сервером лицензирования castLabs."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 6867e4f910970121df3858516c6bab3114c3c6f9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3c18a8a22ced239931dea5385020194bd6d83f28
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-partners-to-deliver-widevine-licenses-to-azure-media-services"></a>Использование партнеров для доставки лицензий Widevine для служб мультимедиа Azure
+# <a name="using-partners-toodeliver-widevine-licenses-tooazure-media-services"></a>С помощью лицензии Widevine tooAzure служб мультимедиа для партнеров toodeliver
 ## <a name="overview"></a>Обзор
-Службы мультимедиа Microsoft Azure позволяет доставлять MPEG-DASH c защитой по технологии Widevine DRM, который соответствует спецификации общего шифрования (CENC).
+Службы мультимедиа Microsoft Azure позволяет вам toodeliver MPEG-DASH уровень защиты с Widevine DRM, который зашифрован за hello спецификации Common Encryption (CENC).
 
-Начиная с версии 3.5.2 пакета SDK служб мультимедиа для .NET, службы мультимедиа позволяют настраивать шаблоны лицензии Widevine и получать лицензии Widevine. Для доставки лицензий Widevine можно использовать следующих партнеров AMS: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
+Начиная с пакета SDK .NET служб мультимедиа версии 3.5.2 hello, Media Services позволяет вам tooconfigure Widevine шаблон лицензии и получить лицензии Widevine. Можно также использовать следующие toohelp партнеров AMS доставки лицензии Widevine hello: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
 
 ## <a name="castlabs"></a>castLabs
-Для доставки лицензий Widevine можно использовать [castLabs](http://castlabs.com/company/partners/azure/). Дополнительные сведения см. в статье [Использование castLabs для доставки лицензий DRM в службы мультимедиа Azure](media-services-castlabs-integration.md).
+Можно использовать [castLabs](http://castlabs.com/company/partners/azure/) лицензии Widevine toodeliver. Дополнительные сведения см. в разделе [лицензии с помощью castLabs toodeliver DRM tooAzure Media Services](media-services-castlabs-integration.md)
 
 ## <a name="axinom"></a>Axinom
-Для доставки лицензий Widevine можно использовать [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/). Дополнительные сведения см. в статье [Использование Axinom для доставки лицензий DRM в службы мультимедиа Azure](media-services-axinom-integration.md).
+Можно использовать [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/) лицензии Widevine toodeliver. Дополнительные сведения см. в разделе [toodeliver с помощью Axinom DRM лицензирует tooAzure Media Services](media-services-axinom-integration.md)
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

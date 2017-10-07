@@ -1,6 +1,6 @@
 ---
-title: "Администрирование виртуального массива с помощью диспетчера Microsoft Azure StorSimple | Документация Майкрософт"
-description: "Сведения об управлении локальным виртуальным массивом StorSimple с помощью службы диспетчера устройств StorSimple на портале Azure."
+title: "aaaMicrosoft администрирования Azure диспетчера StorSimple Virtual Array | Документы Microsoft"
+description: "Узнайте, как toomanage StorSimple локального виртуального массива с помощью службы диспетчера StorSimple устройство hello в hello портал Azure."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: a74a160eae88a2d03460a1346479c333d8f9d524
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1fabf9ca524b461266346a6cabf49aef772032ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Администрирование виртуального массива StorSimple с помощью службы диспетчера устройств StorSimple
+# <a name="use-hello-storsimple-device-manager-service-tooadminister-your-storsimple-virtual-array"></a>Использовать tooadminister службы диспетчера StorSimple устройство hello виртуального массива StorSimple
 ![последовательность операций процесса настройки](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
 
 ## <a name="overview"></a>Обзор
-В этой статье описываются интерфейс службы диспетчера устройств StorSimple, способы подключения, разные доступные параметры и др. Здесь также приведены ссылки на некоторые рабочие процессы, которые можно выполнять через этот пользовательский интерфейс.
+В этой статье описывается интерфейс службы диспетчера StorSimple устройство hello, включая как tooconnect tooit и hello различные параметры недоступны и предоставляет конкретные рабочие процессы toohello ссылки, могут быть выполнены пользовательском Интерфейсе.
 
 Прочитав эту статью, вы научитесь:
 
-* подключаться к службе диспетчера устройств StorSimple;
-* работать с пользовательским интерфейсом службы диспетчера устройств StorSimple;
-* управлять виртуальным массивом StorSimple с помощью службы диспетчера устройств StorSimple.
+* Служба диспетчера StorSimple устройство toohello подключения
+* Перейдите hello пользовательского интерфейса диспетчера устройств StorSimple
+* Администрирование виртуального массива StorSimple через hello службой диспетчера устройств StorSimple
 
 > [!NOTE]
-> Сведения о работе с устройствами StorSimple 8000 см. в статье [Использование службы диспетчера StorSimple для администрирования устройства StorSimple](storsimple-manager-service-administration.md).
+> Параметры управления hello tooview, доступные для устройства серии StorSimple 8000 hello, go слишком[используйте hello tooadminister службы диспетчера StorSimple устройство StorSimple](storsimple-manager-service-administration.md).
 > 
 > 
 
-## <a name="connect-to-the-storsimple-device-manager-service"></a>Подключение к службе диспетчера устройств StorSimple
-Служба диспетчера устройств StorSimple работает в Microsoft Azure и подключается к нескольким виртуальным массивам StorSimple. Для управления этими устройствами используется центральный портал Microsoft Azure в браузере. Чтобы подключиться к службе диспетчера устройств StorSimple, выполните следующие действия.
+## <a name="connect-toohello-storsimple-device-manager-service"></a>Служба диспетчера StorSimple устройство toohello подключения
+Hello службы диспетчера StorSimple устройство работает в Microsoft Azure и подключение виртуальных массивов toomultiple StorSimple. Используется центральный портал Microsoft Azure, работающих в toomanage браузера этих устройств. tooconnect toohello службы диспетчера StorSimple устройство hello следующие.
 
-#### <a name="to-connect-to-the-service"></a>Подключение к службе
-1. Перейдите на страницу [https://ms.portal.azure.com](https://ms.portal.azure.com).
-2. С помощью учетной записи Майкрософт войдите на портал Microsoft Azure (расположен в правой верхней части панели).
-3. Для просмотра всех диспетчеров устройств в данной подписки щелкните "Больше служб" и примените фильтр "Диспетчеры устройств StorSimple".
+#### <a name="tooconnect-toohello-service"></a>Служба toohello tooconnect
+1. Go слишком[https://ms.portal.azure.com](https://ms.portal.azure.com).
+2. Используя учетные данные учетной записи Microsoft, войдите на портал Microsoft Azure toohello (расположена в hello правой верхней части панели hello).
+3. Перейдите tooBrowse--> «Фильтр» в диспетчере устройств StorSimple tooview все диспетчеры устройств в данной подписке.
 
-## <a name="use-the-storsimple-device-manager-service-to-perform-management-tasks"></a>Выполнение задач управления с помощью службы диспетчера устройств StorSimple
-В следующей таблице собраны все стандартные задачи управления и сложные рабочие процессы, которые могут быть выполнены в колонке сводных данных службы диспетчера устройств StorSimple. Эти задачи организованы по колонкам, на которых они инициируются.
+## <a name="use-hello-storsimple-device-manager-service-tooperform-management-tasks"></a>Использование задач управления tooperform службы диспетчера StorSimple устройство hello
+Hello следующей таблице отображается сводка всех hello общие задачи управления и сложных рабочих процессов, которые могут быть выполнены в колонке сводки службы диспетчера StorSimple устройство hello. Эти задачи упорядочены по колонках hello, на которых они инициируются.
 
-Чтобы получить дополнительные сведения о каждом рабочем процессе, щелкните соответствующую процедуру в таблице.
+Дополнительные сведения о каждом рабочем процессе щелкните hello действия, описанные в таблице hello.
 
 #### <a name="storsimple-device-manager-workflows"></a>Рабочие процессы диспетчера устройств StorSimple
-| Если вы хотите... | Статья с описанием процедуры |
+| Если требуется toodo... | Статья с описанием процедуры |
 | --- | --- | --- |
-| Создание службы</br>удаление службы;</br>Получение регистрационного ключа службы</br>повторное создание ключа регистрации службы. |[Развертывание службы диспетчера устройств StorSimple](storsimple-virtual-array-manage-service.md) |
-| Просмотр журналов действий |[Использование колонки сводки службы StorSimple](storsimple-virtual-array-service-summary.md) |
+| Создание службы</br>удаление службы;</br>Получить ключ регистрации службы hello</br>Повторное создание ключа регистрации службы hello |[Развертывание службы диспетчера StorSimple устройство hello](storsimple-virtual-array-manage-service.md) |
+| Просмотр журналов действие hello |[Использование службы StorSimple hello сводки](storsimple-virtual-array-service-summary.md) |
 | Отключение виртуального массива</br>Удаление виртуального массива |[Отключение или удаление виртуального массива](storsimple-virtual-array-deactivate-and-delete-device.md) |
 | Аварийное восстановление и отработка отказа устройства</br>Необходимые условия для отработки отказа</br>Аварийное восстановление непрерывности бизнеса (BCDR)</br>Ошибки во время аварийного восстановления |[Аварийное восстановление и отработка отказа устройства для виртуального массива StorSimple](storsimple-virtual-array-failover-dr.md) |
-| Архивация общих папок и томов</br>Создание резервной копии вручную</br>Изменение расписания резервного копирования</br>Просмотр существующих резервных копий |[Резервное копирование виртуального массива StorSimple (предварительная версия)](storsimple-virtual-array-backup.md) |
+| Архивация общих папок и томов</br>Создание резервной копии вручную</br>Расписание резервного копирования изменений hello</br>Просмотр существующих резервных копий |[Резервное копирование виртуального массива StorSimple (предварительная версия)](storsimple-virtual-array-backup.md) |
 | Клонирование общих ресурсов из резервного набора данных</br>Клонирование томов из резервного набора данных</br>Восстановление на уровне отдельных объектов (только для файлового сервера) |[Клонирование из резервной копии виртуального массива StorSimple](storsimple-virtual-array-clone.md) |
-| Об учетных записях хранения</br>добавление учетной записи хранения;</br>изменение учетной записи хранения;</br>Удаление учетной записи хранения |[Использование службы диспетчера StorSimple для управления учетной записью хранения (предварительная версия)](storsimple-virtual-array-manage-storage-accounts.md) |
-| Получение сведений о записях контроля доступа</br>Добавление или изменение записи контроля доступа </br>Удаление записи контроля доступа |[Управление записями контроля доступа для виртуального массива StorSimple (предварительная версия) с помощью службы диспетчера StorSimple](storsimple-virtual-array-manage-acrs.md) |
-| Просмотр сведений о задании |[Управление заданиями виртуального массива StorSimple](storsimple-virtual-array-manage-jobs.md) |
-| Настройка параметров оповещений</br>Получать уведомления об оповещениях</br>Управление оповещениями</br>Просмотр оповещений |[Просмотр оповещений для виртуального массива StorSimple (предварительная версия) и управление ими с помощью службы диспетчера StorSimple](storsimple-virtual-array-manage-alerts.md) |
-| Изменение пароля администратора устройства |[Изменение пароля администратора для устройства виртуального массива StorSimple (предварительная версия)](storsimple-virtual-array-change-device-admin-password.md) |
+| Об учетных записях хранения</br>добавление учетной записи хранения;</br>изменение учетной записи хранения;</br>Удаление учетной записи хранения |[Управление учетными записями хранилища для hello StorSimple Virtual Array](storsimple-virtual-array-manage-storage-accounts.md) |
+| Получение сведений о записях контроля доступа</br>Добавление или изменение записи контроля доступа </br>Удаление записи контроля доступа |[Управлении записями управления доступом для hello StorSimple Virtual Array](storsimple-virtual-array-manage-acrs.md) |
+| Просмотреть сведения о задании |[Управление заданиями виртуального массива StorSimple](storsimple-virtual-array-manage-jobs.md) |
+| Настройка параметров оповещений</br>Получать уведомления об оповещениях</br>Управление оповещениями</br>Просмотр оповещений |[Просмотр оповещений и управление ими для hello StorSimple Virtual Array](storsimple-virtual-array-manage-alerts.md) |
+| Измените пароль администратора устройства hello |[Измените пароль администратора устройства StorSimple Virtual Array hello](storsimple-virtual-array-change-device-admin-password.md) |
 | Установка обновлений программного обеспечения |[Обновление виртуального массива](storsimple-virtual-array-install-update.md) |
 
 > [!NOTE]
-> Следующие задачи выполняются только в [локальном веб-интерфейсе](storsimple-ova-web-ui-admin.md) :
+> Необходимо использовать hello [локальный веб-Интерфейс](storsimple-ova-web-ui-admin.md) для hello следующие задачи:
 > 
-> * [получение ключа шифрования данных службы;](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)
+> * [Получить ключ шифрования данных службы hello](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)
 > * [создание пакета журналов;](storsimple-ova-web-ui-admin.md#generate-a-log-package)
 > * [остановка и повторный запуск виртуального массива.](storsimple-ova-web-ui-admin.md#shut-down-and-restart-your-device)
 > 
 > 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Сведения о веб-интерфейсе и способах его использования см. в статье [Использование веб-интерфейса для администрирования виртуального массива StorSimple](storsimple-ova-web-ui-admin.md).
+Сведения о hello веб-Интерфейсе и как toouse, перейти слишком[используйте hello tooadminister пользовательского интерфейса web StorSimple виртуального массива StorSimple](storsimple-ova-web-ui-admin.md).
 

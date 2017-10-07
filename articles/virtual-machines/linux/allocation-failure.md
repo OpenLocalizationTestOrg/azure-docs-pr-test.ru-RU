@@ -1,5 +1,5 @@
 ---
-title: "Устранение ошибок выделения ресурсов для виртуальных машин Linux | Документация Майкрософт"
+title: "aaaTroubleshooting ВМ Linux ошибок выделения | Документы Microsoft"
 description: "Устраните ошибки выделения ресурсов при создании, перезагрузке или изменении размера виртуальных машин Linux в Azure."
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2016
 ms.author: cjiang
-ms.openlocfilehash: c65ede134971c034006781e058c05a82ffb68a19
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 502fbb406b0b4acf086c2586795f69a44cc1a004
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-linux-vms-in-azure"></a>Устранение ошибок выделения ресурсов при создании, перезагрузке или изменении размера виртуальных машин Linux в Azure
-При создании виртуальной машины или изменении ее размера, а также при перезагрузке остановленных (освобожденных) виртуальных машин Microsoft Azure выделяет вычислительные ресурсы для вашей подписки. Иногда во время выполнения этих операций могут возникать ошибки, даже если еще не достигнуты ограничения подписки Azure. В этой статье объясняются причины возникновения некоторых распространенных ошибок выделения, а также представлены возможные способы их устранения. Эта информация также может быть полезна при планировании развертывания служб. Вы также можете [устранить ошибки выделения ресурсов при создании, перезапуске или изменении размера виртуальных машин Windows в Azure](../windows/allocation-failure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+После создания виртуальной Машины, перезапустите остановлена (освобождена) виртуальных машин или изменить размер виртуальной Машины Microsoft Azure выделяет вычислительные ресурсы tooyour подписки. Иногда может получать ошибки, при выполнении этих операций — даже в том случае, прежде чем достигнет hello ограничения подписки Azure. В этой статье объясняется причины hello некоторых распространенных ошибок выделения hello и предлагает возможные исправления. Hello сведения также можно использовать при планировании развертывания hello служб. Вы также можете [устранить ошибки выделения ресурсов при создании, перезапуске или изменении размера виртуальных машин Windows в Azure](../windows/allocation-failure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-allocation-failure](../../../includes/virtual-machines-common-allocation-failure.md)]
 

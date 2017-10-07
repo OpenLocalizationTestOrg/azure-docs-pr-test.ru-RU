@@ -1,6 +1,6 @@
 ---
-title: "Использование REST API службы импорта и экспорта Azure | Документация Майкрософт"
-description: "Узнайте, где найти документацию по использованию REST API службы импорта и экспорта Azure, включая практические руководства и справочные материалы."
+title: "hello aaaUsing REST API службы импорта и экспорта Azure | Документы Microsoft"
+description: "Узнайте, где toofind ресурсы для hello импорта и экспорта Azure с помощью службы REST API, включая обоих tooand как справочные материалы."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: e4f5ca289f4bd87574e448d37a1154b222f221f5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a01c170b1bc9c2b2ce9086d39de78a39fafb2c8b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-azure-importexport-service-rest-api"></a>Использование REST API службы импорта и экспорта Azure
+# <a name="using-hello-azure-importexport-service-rest-api"></a>С помощью REST API службы импорта и экспорта Azure hello
 
-Служба импорта и экспорта Microsoft Azure предоставляет REST API для программного управления заданиями импорта и экспорта. REST API можно использовать для всех операций импорта и экспорта, которые можно выполнять с помощью [портала Azure](https://portal.azure.com/). Кроме того, с помощью REST API можно выполнять определенные детализированные операции (например, запросить процент завершения задания), которые в настоящее время недоступны на классическом портале.
+Hello службы импорта и экспорта Microsoft Azure предоставляет API-Интерфейс REST tooenable программное управление заданиями импорта и экспорта. Можно использовать API-Интерфейс REST hello tooperform все hello импорта и экспорта операций, которые можно выполнять с hello [портал Azure](https://portal.azure.com/). Кроме того можно использовать tooperform API-интерфейса REST hello определенных детализированных операций, таких как запрос hello процент завершения задания, которые в настоящее время недоступны в классическом портале hello.
 
-Общие сведения о службе импорта и экспорта, а также руководство по использованию классического портала Azure для создания заданий импорта и экспорта и управления ими см. в статье [Использование службы импорта и экспорта Azure для передачи данных в хранилище BLOB-объектов](storage-import-export-service.md).
+В разделе [tooBlob hello импорта и экспорта Microsoft Azure службы tooTransfer данные хранилища с помощью](storage-import-export-service.md) Обзор службы импорта и экспорта hello и учебник, в котором показано, как toouse hello классического портала toocreate и управления импортом и задания экспорта.
 
 ## <a name="service-endpoints"></a>Конечные точки службы
 
-Служба импорта и экспорта Azure представляет собой поставщик ресурсов для Azure Resource Manager. Она предоставляет набор интерфейсов REST API для управления заданиями импорта и экспорта в следующей конечной точке HTTPS:
+Hello службы импорта и экспорта Azure — это поставщик ресурсов для диспетчера ресурсов Azure и предоставляет набор интерфейсов API REST в hello, следующая конечная точка HTTPS для управления заданиями импорта и экспорта:
 
 ```
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ImportExport/jobs/<job-name>
@@ -36,7 +36,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ## <a name="versioning"></a>Управление версиями
 
-В запросах к службе импорта и экспорта необходимо указать параметр `api-version` со значением `2016-11-01`.
+Запросы, toohello службы импорта и экспорта необходимо указать hello `api-version` параметр и присвойте ему значение слишком`2016-11-01`.
 
 ## <a name="importexport-service-operations"></a>Операции службы импорта и экспорта
 

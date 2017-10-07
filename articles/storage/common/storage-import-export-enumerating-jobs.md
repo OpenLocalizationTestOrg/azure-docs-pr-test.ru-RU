@@ -1,6 +1,6 @@
 ---
-title: "Вывод списка всех заданий импорта и экспорта Azure | Документация Майкрософт"
-description: "Узнайте, как вывести список всех заданий службы импорта и экспорта Azure в подписке."
+title: "aaaList всех заданий импорта и экспорта Azure | MicrosoftDocs"
+description: "Узнайте, как toolist все службы импорта и экспорта Azure hello заданий в подписке."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 1977bfc0e516088310f45ecdd960287eeed2c2d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0e12bf3dc3f2084a1987ac362cf8d1041059543c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enumerating-jobs-in-the-azure-importexport-service"></a>Перечисление заданий в службе импорта и экспорта Azure
-Чтобы перечислить все задания в подписке, вызовите операцию [List Jobs](/rest/api/storageimportexport/jobs#Jobs_List). `List Jobs` возвращает список заданий, а также перечисленные ниже атрибуты:
+# <a name="enumerating-jobs-in-hello-azure-importexport-service"></a>Перечисление заданий в hello службы импорта и экспорта Azure
+tooenumerate все задания в подписке, вызов hello [список заданий](/rest/api/storageimportexport/jobs#Jobs_List) операции. `List Jobs`Возвращает список заданий, а также hello следующие атрибуты:
 
--   тип задания (импорт или экспорт);
+-   Hello тип задания (Импорт или экспорт)
 
--   текущее состояние задания;
+-   Текущее состояние задания Hello
 
--   связанная с задание учетная запись хранения.
+-   Задание Hello соответствующей учетной записи
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Использование REST API службы импорта и экспорта Azure](storage-import-export-using-the-rest-api.md)
+* [С помощью REST API службы импорта и экспорта hello](storage-import-export-using-the-rest-api.md)

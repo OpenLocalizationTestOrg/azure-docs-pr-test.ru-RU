@@ -1,6 +1,6 @@
 ---
-title: "Примеры для службы хранилища Azure с использованием .NET | Документация Майкрософт"
-description: "Просмотрите, загрузите и запустите образцы кода и приложений для хранилища Azure. Воспользуйтесь примерами для начала работы с большими двоичными объектами, очередями, таблицами и файлами с помощью клиентских библиотек хранилища .NET."
+title: "Примеры для хранилища aaaAzure с помощью .NET | Документы Microsoft"
+description: "Просмотрите, загрузите и запустите образцы кода и приложений для хранилища Azure. Обнаружение, Приступая к работе образцы для больших двоичных объектов, очередей, таблиц и файлов, с помощью клиентских библиотек хранилища .NET hello."
 services: storage
 documentationcenter: na
 author: seguler
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: d2b6b3d9483f230ad25ae47255a4f28c1a67e064
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9a7055645b0f0658b850f024b8b19ab19840330e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-samples-using-net"></a>Примеры для службы хранилища Azure с использованием .NET
 
 ## <a name="net-sample-index"></a>Указатель по примерам для .NET
 
-В таблице ниже приведен обзор репозитория примеров и сценарии, описанные в каждом примере. Щелкните ссылки для просмотра соответствующего примера кода на сайте GitHub.
+Hello следующей таблице представлены общие сведения о наши примеры репозитория и hello сценарии, описанные в каждой выборке. Щелкните hello ссылки tooview hello соответствующие примеры кода в GitHub.
 
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Конечная точка</th><th style="font-size:110%">Сценарий</th><th style="font-size:110%">Пример кода</th></tr></thead><tbody> 
 <tr> 
@@ -197,13 +197,13 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="azure-code-samples-library"></a>Библиотека примеров кода Azure
 
-Чтобы просмотреть полную библиотеку примеров, перейдите в [библиотеку примеров кода Azure](https://azure.microsoft.com/resources/samples/?service=storage), включающую примеры для службы хранилища Azure, которые можно скачать и запустить локально. Пример библиотеки кода содержит пример кода в формате ZIP. Кроме того, можно просмотреть и клонировать репозиторий GitHub для каждого примера.
+Полный образец библиотеки tooview hello перейдите toohello [образцы кода Azure](https://azure.microsoft.com/resources/samples/?service=storage) библиотеку, которая включает примеры для хранилища Azure, можно загрузить и запустить его локально. Hello кода образца библиотеки содержит пример кода в формате ZIP. Кроме того можно просмотреть и клонирование репозитория GitHub hello для каждого образца.
 
 [!INCLUDE [storage-dotnet-samples-include](../../includes/storage-dotnet-samples-include.md)]
 
 ## <a name="getting-started-guides"></a>Руководства по началу работы
 
-Ознакомьтесь со следующими руководствами, если вам нужны инструкции по установке клиентских библиотек службы хранилища Azure и началу работы с ними.
+Извлечение hello следующие руководства, если вам нужны дополнительные сведения о tooinstall и приступить к работе с hello клиентских библиотек хранилища Azure.
 
 * [Приступая к работе со службой BLOB-объектов Azure в .NET](storage-dotnet-how-to-use-blobs.md)
 * [Приступая к работе со службой очередей Azure в .NET](storage-dotnet-how-to-use-queues.md)

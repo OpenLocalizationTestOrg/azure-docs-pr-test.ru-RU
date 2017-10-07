@@ -5,7 +5,7 @@
 ## [Часто задаваемые вопросы](faq.md)
 
 # Начало работы
-## [Создание виртуальной машины Linux с помощью портала](createportal.md)
+## [Создание виртуальной Машины Linux с помощью портала hello](createportal.md)
 ## [Установка Azure CLI](../../../cli-install-nodejs.md)
 ## [Создание ключей SSH](../mac-create-ssh-keys.md)
 
@@ -16,21 +16,21 @@
 ### [Использование удаленного рабочего стола с виртуальной машиной Linux](remote-desktop.md)
 ### [Управление расширениями виртуальной машины](manage-extensions.md)
 ### [Управление виртуальными машинами с помощью Visual Studio](manage-visual-studio.md)
-### [Мониторинг виртуальных машин с помощью диагностического расширения виртуальной машины](../diagnostic-extension.md)
-### [Мониторинг виртуальных машин с помощью диагностического расширения виртуальной машины версии v2.x](diagnostic-extension-v2.md)
+### [Мониторинг виртуальных машин с помощью hello диагностического расширения виртуальных Машин](../diagnostic-extension.md)
+### [Мониторинг виртуальных машин с помощью v2.x из hello диагностического расширения виртуальных Машин](diagnostic-extension-v2.md)
 ### [Вставка пользовательских данных](inject-custom-data.md)
 ### [Сброс паролей или ключей Linux, исправление ошибок SSH и проверка дисков](reset-access.md)
 ### [Обслуживание](planned-maintenance-schedule.md)
-### [Создание узла Docker с помощью интерфейса командной строки](cli-use-docker.md)
-### [Создание узла Docker с помощью портала](portal-use-docker.md)
-### [Как использовать Docker со Swarm](../../virtual-machines-linux-docker-swarm.md)
+### [Создание узла Docker с помощью hello CLI](cli-use-docker.md)
+### [Создать узел Docker с помощью портала hello](portal-use-docker.md)
+### [Как toouse Docker с группу мелких объектов](../../virtual-machines-linux-docker-swarm.md)
 
 ## Использование хранилища
 ### [Подключение диска данных](attach-disk.md)
 ### [Отключение диска данных](detach-disk.md)
 
 ## Сеть
-### [Открытие портов для доступа к виртуальной машине](setup-endpoints.md)
+### [Открыть порты tooyour виртуальной Машины](setup-endpoints.md)
 ### [Подключение виртуальных машин с помощью виртуальной сети или облачной службы](connect-vms.md)
 
 ## Развертывание образов
@@ -43,7 +43,7 @@
 ### MySQL и MariaDB
 #### [Учебник по кластерам MariaDB](mariadb-mysql-cluster.md)
 #### [Установка MySQL на виртуальную машину OpenSUSE](mysql-on-opensuse.md)
-#### [Использование наборов балансировки нагрузки для кластеризации MySQL](mysql-cluster.md)
+#### [С помощью наборов с балансировкой нагрузки tooclusterize MySQL](mysql-cluster.md)
 #### [Оптимизация производительности MySQL](optimize-mysql.md)
 
 ## Запуск приложений
@@ -52,8 +52,8 @@
 ### [Стек LAMP](lamp-script.md)
 ### [Tomcat](setup-tomcat.md)
 ### [Создание веб-приложения с помощью Visual Studio](web-app-visual-studio.md)
-### [Кластер RDMA для выполнения приложений MPI](rdma-cluster.md)
-### [Как использовать подчиненный подключаемый модуль Azure с непрерывной интеграцией Hudson](../../virtual-machines-azure-slave-plugin-for-hudson.md)
+### [Приложения MPI toorun RDMA кластера](rdma-cluster.md)
+### [Как toouse hello Azure подчиненного подключаемого модуля с непрерывной Интеграции Hudson](../../virtual-machines-azure-slave-plugin-for-hudson.md)
 ### Пакет HPC
 #### [Создание кластера для рабочих нагрузок Linux](hpcpack-cluster-powershell-script.md)
 #### [Управление кластером с узлами Linux](hpcpack-cluster.md)
@@ -64,7 +64,7 @@
 ## Устранение неполадок
 ### [Развернутые виртуальные машины](troubleshoot-deployment-new-vm.md)
 ### [Перезапуск или изменение размера виртуальной машины](restart-resize-error-troubleshooting.md)
-### [Подключение виртуального жесткого диска для устранения неполадок виртуальной машины](troubleshoot-recovery-disks-portal.md)
+### [Подключить виртуальный жесткий диск tootroubleshooting виртуальной Машины](troubleshoot-recovery-disks-portal.md)
 
 # Справочные материалы
 ## [PowerShell](/powershell/azure/overview)

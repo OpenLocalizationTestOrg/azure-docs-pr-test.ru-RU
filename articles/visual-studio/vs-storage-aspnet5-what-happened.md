@@ -1,6 +1,6 @@
 ---
-title: "Что произошло с моим проектом ASP.NET 5 (подключенные службы Visual Studio) | Документация Майкрософт"
-description: "Сведения о том, что происходит после подключения к учетной записи хранения Azure в проекте Visual Studio ASP.NET 5 с помощью подключенных служб Visual Studio"
+title: "проект ASP.NET 5 toomy произошло aaaWhat (Visual Studio подключенные службы) | Документы Microsoft"
+description: "Описывает, что происходит после подключения tooan учетной записи хранилища Azure в проекте Visual Studio ASP.NET 5 с помощью Visual Studio подключенные службы"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 2a25c24fd7625374d269622a805f386fcd52bb5f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 75ce3bfb59e085bf08d98d9b0cd9442722d7566b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Что произошло с моим проектом ASP.NET 5 (подключенными к службе хранилища Azure службами Visual Studio)?
+# <a name="what-happened-toomy-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>В каком проекте ошибка toomy ASP.NET 5 (хранилища Azure для Visual Studio подключенные службы)?
 ## <a name="references-added"></a>Добавлены ссылки
-Пакет NuGet хранилища Azure был добавлен в проект Visual Studio.  
-Этот пакет добавляет следующие ссылки .NET:
+пакет NuGet хранилища Azure Hello был добавлен tooyour проекта Visual Studio.  
+Этот пакет добавляет hello следующие ссылки .NET:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -34,10 +34,10 @@ ms.lasthandoff: 08/29/2017
 * **System.Data**
 * **System.Spatial**
 
-Кроме того, добавлен пакет NuGet **Microsoft.Framework.Configuration.Json** .
+Кроме того, пакет NuGet hello **Microsoft.Framework.Configuration.Json** был добавлен.
 
 ## <a name="connection-string-for-azure-storage-added"></a>Добавлена строка подключения к хранилищу Azure
-В файле config.json проекта был создан элемент с ключом и строкой подключения выбранной учетной записи хранилища.
+В файле config.json hello проекта элемент был создан с строку подключения и ключ учетной записи хранения выбран hello.
 
 Дополнительные сведения см. на сайте [ASP.NET 5](http://www.asp.net/vnext).
 

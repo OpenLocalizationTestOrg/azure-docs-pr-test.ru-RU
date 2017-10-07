@@ -1,6 +1,6 @@
 ---
-title: "Выбор разрешений для заданного API | Документы Майкрософт"
-description: "Здесь описано, как найти конечные точки проверки подлинности для пользовательского приложения, которое вы разрабатываете или регистрируете в Azure AD."
+title: "aaaHow tooselect разрешения для данного API | Документы Microsoft"
+description: "Способ проверки подлинности конечных точек hello toofind для пользовательского приложения вы разрабатываете или регистрации в Azure AD."
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 6966cf145375bf3d830d476564c428502ae40fd4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 303793eae96872c37b4de00e757ed0256494afa4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-select-permissions-for-a-given-api"></a>Выбор разрешений для заданного API
+# <a name="how-tooselect-permissions-for-a-given-api"></a>Как tooselect разрешения для данного API
 
-Конечные точки проверки подлинности для приложения можно найти на [портале Azure](https://portal.azure.com).
+Hello можно найти конечные точки проверки подлинности для приложения hello [портал Azure](https://portal.azure.com).
 
--   Перейдите на [портал Azure](https://portal.azure.com).
+-   Перейдите toohello [портал Azure](https://portal.azure.com).
 
--   В области навигации слева щелкните **Azure Active Directory**.
+-   Hello левой области навигации щелкните **Azure Active Directory**.
 
 -   Щелкните **Регистрация приложений** и выберите **Конечные точки**.
 
--   Откроется страница **Конечные точки** со списком всех конечных точек проверки подлинности для клиента.
+-   Откройте этот hello **конечные точки** страницу, что перечислены все конечные точки hello проверки подлинности для вашего клиента.
 
--   Используйте соответствующую конечную точку для протокола аутентификации в сочетании с идентификатором приложения, чтобы создать запрос на аутентификацию для своего приложения.
+-   Протокол hello конечной точки определенного toohello проверки подлинности используемой, вместе с hello идентификатор toocraft hello проверки подлинности запроса tooyour конкретного приложения.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Руководство разработчика по Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide#authentication-and-authorization-protocols)

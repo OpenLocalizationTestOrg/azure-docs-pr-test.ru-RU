@@ -1,6 +1,6 @@
 ---
-title: "Репликация виртуальных машин Hyper-V из VMM на вторичный сайт с помощью PowerShell (Azure Resource Manager) | Документация Майкрософт"
-description: "Описывается, как развернуть Azure Site Recovery, чтобы управлять репликацией, отработкой отказа и восстановлением виртуальных машин Hyper-V в облаках VMM на вторичный сайт VMM с помощью PowerShell (Resource Manager)."
+title: "aaaReplicate виртуальных машин Hyper-V в VMM tooa вторичного сайта с помощью PowerShell (диспетчера ресурсов Azure) | Документы Microsoft"
+description: "Описывает, каким образом tooa с помощью PowerShell (диспетчера ресурсов) вторичный сайт VMM облаков toodeploy Azure Site Recovery tooorchestrate репликации, отработки отказа и восстановления виртуальных машин Hyper-V в VMM"
 services: site-recovery
 documentationcenter: 
 author: sujaytalasila
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: sutalasi
-ms.openlocfilehash: 5a6e00877b0a2b139d5322f610c1901ad76a710f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a769dcc68d66c18b9dc47539071f4d0e0f1db70f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-powershell-resource-manager"></a>Репликация виртуальных машин Hyper-V из облаков VMM на вторичный сайт VMM с помощью PowerShell (Resource Manager)
+# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-tooa-secondary-vmm-site-using-powershell-resource-manager"></a>Реплицировать виртуальные машины Hyper-V в VMM облаков tooa вторичный сайт VMM с помощью PowerShell (диспетчера ресурсов)
 > [!div class="op_single_selector"]
 > * [Портал Azure](site-recovery-vmm-to-vmm.md)
 > * [Классический портал](site-recovery-vmm-to-vmm-classic.md)
@@ -28,71 +28,71 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Вас приветствует служба Azure Site Recovery! Эта статья поможет вам выполнить репликацию локальных виртуальных машин Hyper-V, управляемых в облаках System Center Virtual Machine Manager (VMM), на дополнительный сайт.
+Вас приветствует tooAzure Site Recovery. В этой статье следует используйте, если необходимо, чтобы tooreplicate локальных виртуальных машин Hyper-V управляются в облаках диспетчера виртуальных машин System Center (VMM): tooa вторичного сайта.
 
-В этой статье показано, как использовать PowerShell для автоматизации распространенных задач, которые необходимо выполнять при настройке Azure Site Recovery для репликации виртуальных машин Hyper-V из облаков VMM System Center в облака VMM System Center на вторичном сайте.
+В этой статье показано, как toouse PowerShell tooautomate общие задачи должны tooperform при настройке Azure Site Recovery tooreplicate Hyper-V виртуальных машин в облаках VMM System Center VMM облаков центра tooSystem вторичном сайте.
 
-В этой статье рассматриваются необходимые условия для реализации сценария, а также описываются следующие действия.
+включает описание необходимых условий для сценария hello Hello статьи, а также демонстрируется
 
-* Настройка хранилища служб восстановления.
-* Установка на исходном и целевом серверах VMM поставщика Azure Site Recovery.
-* Регистрация серверов VMM в хранилище.
-* Настройка политики репликации для облака VMM. Параметры репликации в политике будут применены ко всем защищенным виртуальным машинам.
-* Включение защиты виртуальных машин.
-* Тестирование отработки отказа виртуальных машин по отдельности или по плану восстановления, позволяющее убедиться в том, что все работает ожидаемым образом.
-* Выполнение плановой или внеплановой отработки отказа виртуальных машин по отдельности или по плану восстановления, позволяющее убедиться в том, что все работает ожидаемым образом.
+* Как tooset копирование хранилище служб восстановления
+* Установите hello поставщика Azure Site Recovery на исходном сервере VMM hello и целевой сервер VMM hello
+* Зарегистрируйте серверы VMM hello в хранилище hello
+* Настройте политику репликации для облака VMM hello. параметры репликации Hello hello политики будет применен tooall защищенные виртуальные машины
+* Включите защиту для виртуальных машин hello.
+* Тестовая отработка отказа hello виртуальных машин, отдельно или как часть toomake для плана восстановления, убедиться, что все работает должным образом.
+* Выполнение плановой или незапланированной отработки отказа виртуальных машин по отдельности или в составе toomake для плана восстановления, убедиться, что все работает должным образом.
 
-Если у вас возникают проблемы, опубликуйте свои вопросы на [форуме по Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Если возникли проблемы с установкой этого сценария опубликовать вопросы на hello [форум по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 > [!NOTE]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Azure Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md) . Кроме того, Azure предоставляет два портала — классический портал Azure, поддерживающий классическую модель развертывания, и портал Azure, поддерживающий обе модели развертывания. В этой статье описывается модель развертывания с использованием менеджера ресурсов.
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Azure Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md) . Azure также содержит два портала — hello классический портал Azure, поддерживающий hello классической модели развертывания и hello портал Azure с поддержкой обе модели развертывания. В этой статье рассматриваются hello модели развертывания диспетчера ресурсов.
 >
 >
 
 ## <a name="on-premises-prerequisites"></a>Предварительные требования для локальной среды
-Вот что потребуется на первичных и вторичных локальных сайтах для развертывания этого сценария.
+Вот что вам понадобится в hello первичного и вторичного локальных сайтов toodeploy этот сценарий:
 
 | **Предварительные требования** | **Дополнительные сведения** |
 | --- | --- |
-| **VMM** |Рекомендуется развернуть по серверу VMM на первичном и вторичном сайтах.<br/><br/> Вы можете также [выполнять репликацию между облаками на отдельном сервере VMM](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment). Для этого вам потребуется, чтобы на сервере VMM было настроено по крайней мере два облака.<br/><br/> На серверах VMM должен выполняться как минимум System Center 2012 с пакетом обновления 1 (SP1) с последними обновлениями.<br/><br/> Для каждого сервера VMM должно быть настроено одно или несколько облаков, и для каждого облака должен быть задан профиль загрузки Hyper-V. <br/><br/>Облака должны содержать одну или несколько групп узлов VMM.<br/><br/>Дополнительные сведения о настройке облаков VMM см. в разделах [Настройка структуры облака VMM](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric) и [Пошаговое руководство. Создание частных облаков с помощью VMM в System Center 2012 с пакетом обновления 1](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx).<br/><br/> Серверы VMM должны иметь доступ к Интернету. |
-| **Hyper-V** |Серверы Hyper-V должны работать под управлением Windows Server 2012 (или более поздних версий) с ролью Hyper-V и установленными последними обновлениями.<br/><br/> Сервер Hyper-V должен содержать одну или несколько виртуальных машин.<br/><br/>  Серверы узлов Hyper-V должны быть размещены в первичном и вторичном облаках VMM.<br/><br/> Если вы используете Hyper-V в кластере на платформе Windows Server 2012 R2, то необходимо установить [обновление 2961977](https://support.microsoft.com/kb/2961977).<br/><br/> Если вы используете Hyper-V в кластере на платформе Windows Server 2012, то учтите, что брокер кластера не создается автоматически при использовании кластера на основе статических IP-адресов. Вам потребуется настроить брокер кластера вручную. [Подробная информация](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx). |
-| **Поставщик** |Во время развертывания службы Site Recovery установите на серверы VMM поставщик Azure Site Recovery. Поставщик обменивается данными со службой Site Recovery через порт HTTPS 443 для управления репликацией. Репликация данных осуществляется между сервером-источником и сервером-приемником Hyper-V через локальную сеть или VPN-подключение.<br/><br/> Поставщику, запущенному на сервере VMM, нужен доступ к следующим URL-адресам: *.hypervrecoverymanager.windowsazure.com, *.accesscontrol.windows.net, *.backup.windowsazure.com, *.blob.core.windows.net, *.store.core.windows.net.<br/><br/> Кроме того, разрешите в брандмауэре обмен данными между серверами VMM и [диапазонами IP-адресов центра обработки данных Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653) , а также разрешите использовать протокол HTTPS (443). |
+| **VMM** |Мы рекомендуем развернуть сервер VMM в первичном сайте hello и сервера VMM на вторичном сайте hello.<br/><br/> Вы можете также [выполнять репликацию между облаками на отдельном сервере VMM](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment). toodo это необходимо по крайней мере два облака, настроенные на сервере VMM hello.<br/><br/> Серверы VMM должен работать под управлением System Center 2012 SP1 с последними обновлениями hello.<br/><br/> Каждый сервер VMM, должна иметь на один или несколько облаков настроен и все должен иметь набор профилей hello емкости Hyper-V. <br/><br/>Облака должны содержать одну или несколько групп узлов VMM.<br/><br/>Дополнительные сведения о настройке облаков VMM в [hello Настройка VMM облако структуры](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric), и [Пошаговое руководство: создание частных облаков с помощью System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx).<br/><br/> Серверы VMM должны иметь доступ к Интернету. |
+| **Hyper-V** |Серверы Hyper-V должны работать под управлением Windows Server 2012 с ролью Hyper-V hello и иметь hello установлены последние обновления.<br/><br/> Сервер Hyper-V должен содержать одну или несколько виртуальных машин.<br/><br/>  Серверы узла Hyper-V должны находиться в группах узлов в hello Первичное и вторичное облака VMM.<br/><br/> Если вы используете Hyper-V в кластере на платформе Windows Server 2012 R2, то необходимо установить [обновление 2961977](https://support.microsoft.com/kb/2961977).<br/><br/> Если вы используете Hyper-V в кластере на платформе Windows Server 2012, то учтите, что брокер кластера не создается автоматически при использовании кластера на основе статических IP-адресов. Брокер кластера hello tooconfigure вам потребуется вручную. [Подробная информация](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx). |
+| **Поставщик** |Во время развертывания службы восстановления сайтов установите hello поставщика Azure Site Recovery на серверах VMM. Hello поставщик взаимодействует с Site Recovery через HTTPS 443 tooorchestrate репликации. Репликация данных между hello основной и дополнительный серверы Hyper-V через hello локальной сети или VPN-подключения.<br/><br/> Hello поставщик, запущенный на сервере VMM hello должен получить доступ к URL-адреса toothese: *. hypervrecoverymanager.windowsazure.com; *. accesscontrol.windows.net; *. backup.windowsazure.com; *. blob.core.windows.net; *. store.core.windows.net.<br/><br/> Разрешить связь брандмауэра из toohello серверы VMM hello, кроме [диапазоны IP-адресов центра обработки данных Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653) и разрешить hello протокола HTTPS (443). |
 
 ### <a name="network-mapping-prerequisites"></a>Предварительные требования сетевого сопоставления
-При сетевом сопоставлении сопоставляются сети виртуальных машин VMM первичного и вторичного серверов VMM. Вот для чего это делается:
+Сети сопоставление между сетями виртуальных Машин VMM на hello первичных и вторичных серверов VMM для:
 
 * Оптимальное размещение виртуальных машин реплик на вторичных узлах Hyper-V после отработки отказа.
-* Подключение виртуальных машин реплик к соответствующим сетям виртуальных машин.
-* Если не настроить сетевое сопоставление, виртуальные машины реплик не будут подключены к каким-либо сетям после отработки отказа.
-* Вот что понадобится, если вы хотите настроить сетевое сопоставление во время развертывания службы Site Recovery.
+* Подключение сети виртуальных Машин tooappropriate виртуальные машины реплики.
+* Если не настроить сетевое сопоставление реплики виртуальных машин не будет tooany подключенной сети после отработки отказа.
+* Если требуется, чтобы tooset сети сопоставления во время восстановления сайта здесь это вам потребуется:
 
-  * Виртуальные машины на сервере узла Hyper-V должны быть подключены к сети виртуальных машин VMM. Эта сеть должна быть подключена к логической сети, которая связана с облаком.
-  * Проверьте, настроена соответствующая сеть виртуальной машины для вторичного облака, которое будет использоваться для восстановления. Эта сеть виртуальной машины должна быть связана с логической сетью, которая связана с вторичным облаком.
+  * Убедитесь tooa подключенной сети виртуальной Машины VMM виртуальные машины на исходном hello сервер узла Hyper-V. Сеть должна быть связанной tooa логической сети, связанной с облаком hello.
+  * Убедитесь, что hello вторичное облако, которое будет использоваться для восстановления настроена соответствующая сеть ВМ. Сеть виртуальной Машины должна была tooa связанной логической сети, связанной с hello вторичное облако.
 
-Узнайте больше о настройке сетей VMM в следующих статьях:
+Дополнительные сведения о настройке сетей в VMM в hello ниже статьи
 
-* [Настройка логических сетей в VMM](http://go.microsoft.com/fwlink/p/?LinkId=386307)
-* [Настройка сетей виртуальных машин и шлюзов в VMM](http://go.microsoft.com/fwlink/p/?LinkId=386308)
+* [Как tooconfigure логических сетей в VMM](http://go.microsoft.com/fwlink/p/?LinkId=386307)
+* [Как tooconfigure ВМ сетей и шлюзов в VMM](http://go.microsoft.com/fwlink/p/?LinkId=386308)
 
 [Узнайте больше](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) о принципе действия сетевого сопоставления.
 
 ### <a name="powershell-prerequisites"></a>Необходимые компоненты PowerShell
-Перед началом работы убедитесь, что среда Azure PowerShell готова к работе. Если вы уже используете PowerShell, необходимо выполнить обновление до версии 0.8.10 или более поздней версии. Дополнительные сведения о настройке PowerShell см. в статье [Установка и настройка Azure PowerShell](/powershell/azureps-cmdlets-docs). После установки и настройки PowerShell все доступные командлеты для службы можно просмотреть [здесь](/powershell/azure/overview).
+Убедитесь, что у вас есть toogo готовности Azure PowerShell. Если вы уже используете PowerShell, вам потребуется tooupgrade tooversion 0.8.10 или более поздней версии. Сведения о настройке PowerShell см. в разделе hello [проводят tooinstall и настройка Azure PowerShell](/powershell/azureps-cmdlets-docs). После установки и настройки PowerShell вы можете просматривать все hello доступных командлетов для службы hello [здесь](/powershell/azure/overview).
 
-Дополнительные сведения об использовании командлетов, например о типовой обработке значений параметров, входных и выходных параметров в Azure PowerShell, приведены в статье [Начало работы с командлетами Azure](/powershell/azure/get-started-azureps).
+toolearn советы, помогающие использовать командлеты hello, например как значения параметров, входы и выходы обычно обрабатываются в Azure PowerShell, в разделе hello [руководство по работе с командлетами Azure tooget](/powershell/azure/get-started-azureps).
 
-## <a name="step-1-set-the-subscription"></a>Шаг 1. Настройка подписки
-1. В Azure Powershell войдите в свою учетную запись Azure с помощью следующих командлетов:
+## <a name="step-1-set-hello-subscription"></a>Шаг 1: Задайте подписку hello
+1. Из Azure powershell, tooyour входа учетной записи Azure: с помощью следующих командлетов hello
 
         $UserName = "<user@live.com>"
         $Password = "<password>"
         $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
         $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
         Login-AzureRmAccount #-Credential $Cred
-2. Получите список своих подписок. При этом также отобразится список идентификаторов subscriptionID для каждой подписки. Запишите идентификатор subscriptionID подписки, в которой хотите создать хранилище служб восстановления.    
+2. Получите список своих подписок. Выводит также список hello subscriptionIDs для каждой из подписок hello. Запишите subscriptionID hello hello подписки, в котором вы хотите хранилище служб восстановления toocreate hello    
 
         Get-AzureRmSubscription
-3. Задайте подписку, в которой будет создано хранилище служб восстановления, указав идентификатор подписки.
+3. Задать hello подписки, в какие hello хранилище служб восстановления является toobe созданные упомянуть hello идентификатор подписки
 
         Set-AzureRmContext –SubscriptionID <subscriptionId>
 
@@ -100,27 +100,27 @@ ms.lasthandoff: 07/11/2017
 1. Если у вас еще нет группы ресурсов Azure Resource Manager, создайте ее.
 
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
-2. Создайте новое хранилище служб восстановления и сохраните созданный объект хранилища ASR в переменной, которая будет использоваться далее. Объект хранилища ASR также можно получить после создания с помощью командлета Get-AzureRMRecoveryServicesVault:-
+2. Создайте новое хранилище служб восстановления и сохраните hello, созданном объекте хранилища ASR в переменной (будет использоваться позднее). Вы также можете получить hello ASR хранилища объекта post создания с помощью командлета Get-AzureRMRecoveryServicesVault hello:-
 
         $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>Шаг 3. Настройка контекста для хранилища служб восстановления
-1. Если хранилище уже создано, выполните следующую команду, чтобы получить его.
+## <a name="step-3-set-hello-recovery-services-vault-context"></a>Шаг 3: Установка контекста hello хранилище служб восстановления
+1. Если хранилище уже создан, запустите hello ниже команда tooget hello хранилища.
 
        $vault = Get-AzureRmRecoveryServicesVault -Name #vaultname
-2. Задайте контекст хранилища, выполнив указанную ниже команду.
+2. Задайте контекст хранилища hello, выполнив hello ниже команду.
 
        Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
-## <a name="step-4-install-the-azure-site-recovery-provider"></a>Шаг 4. Установка поставщика Azure Site Recovery
-1. На компьютере с VMM создайте каталог, выполнив следующую команду:
+## <a name="step-4-install-hello-azure-site-recovery-provider"></a>Шаг 4: Установка поставщика Azure Site Recovery hello
+1. На виртуальной машине VMM hello создайте каталог, выполнив следующую команду hello:
 
        New-Item c:\ASR -type directory
-2. Распакуйте файлы с помощью загруженного поставщика, выполнив следующую команду:
+2. Извлеките файлы hello, с помощью поставщика загружаются hello, выполнив следующую команду hello
 
        pushd C:\ASR\
        .\AzureSiteRecoveryProvider.exe /x:. /q
-3. Используйте следующую команду для установки провайдера:
+3. Установите поставщик hello, с помощью hello, следующие команды:
 
        .\SetupDr.exe /i
        $installationRegPath = "hklm:\software\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter"
@@ -133,44 +133,44 @@ ms.lasthandoff: 07/11/2017
          }
        }While($isNotInstalled)
 
-   Дождитесь завершения процесса установки.
-4. Зарегистрируйте сервер в хранилище, используя следующую команду:
+   Дождитесь установки toofinish hello.
+4. Зарегистрируйте сервер hello в хранилище hello, с помощью hello следующую команду:
 
        $BinPath = $env:SystemDrive+"\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin"
        pushd $BinPath
        $encryptionFilePath = "C:\temp\".\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
 
 ## <a name="step-5-create-and-associate-a-replication-policy"></a>Шаг 5. Создание и связывание политики репликации
-1. Создайте политику репликации Hyper-V 2012 R2, выполнив следующую команду.
+1. Создайте политику репликации Hyper-V 2012 R2, запустив следующую команду hello.
 
         $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
         $PolicyName = “replicapolicy”
         $RepProvider = HyperVReplica2012R2
-        $Recoverypoints = 24                    #specify the number of hours to retain recovery pints
-        $AppConsistentSnapshotFrequency = 4 #specify the frequency (in hours) at which app consistent snapshots are taken
+        $Recoverypoints = 24                    #specify hello number of hours tooretain recovery pints
+        $AppConsistentSnapshotFrequency = 4 #specify hello frequency (in hours) at which app consistent snapshots are taken
         $AuthMode = "Kerberos"  #options are "Kerberos" or "Certificate"
-        $AuthPort = "8083"  #specify the port number that will be used for replication traffic on Hyper-V hosts
+        $AuthPort = "8083"  #specify hello port number that will be used for replication traffic on Hyper-V hosts
         $InitialRepMethod = "Online" #options are "Online" or "Offline"
 
         $policyresult = New-AzureRmSiteRecoveryPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod
 
     > [!NOTE]
-    > Облако VMM может содержать узлы Hyper-V под управлением разных версий Windows Server (как уже упоминалось в предварительных требованиях к Hyper-V), но политика репликации зависит от версии ОС. Если вы используете узлы с разными версиями операционных систем, то создайте отдельные политики репликации для каждого типа версии ОС. Пример. Если у вас есть пять узлов с Windows Server 2012 и три с Windows Server 2012 R2, то создайте две политики репликации — по одной для каждого типа версии ОС.
+    > Hello облака VMM может содержать узлы Hyper-V под управлением других версий Windows Server (согласно hello требования Hyper-V), но политика репликации hello — версии операционной системы. Если вы используете узлы с разными версиями операционных систем, то создайте отдельные политики репликации для каждого типа версии ОС. Пример. Если у вас есть пять узлов с Windows Server 2012 и три с Windows Server 2012 R2, то создайте две политики репликации — по одной для каждого типа версии ОС.
 
-1. Получите первичный контейнер защиты (основного облака VMM) и контейнер защиты для восстановления (облако VMM восстановления), выполнив следующие команды.
+1. Получите, выполнив следующие команды hello hello основную защиту (основное облако VMM) и восстановления защиты контейнер (восстановление облака VMM):
 
        $PrimaryCloud = "testprimarycloud"
        $primaryprotectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $PrimaryCloud;  
 
        $RecoveryCloud = "testrecoverycloud"
        $recoveryprotectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $RecoveryCloud;  
-2. Получите политику, созданную на шаге 1, указав ее понятное имя.
+2. Получить политику hello, созданный на шаге 1, с помощью hello понятное имя политики hello
 
        $policy = Get-AzureRmSiteRecoveryPolicy -FriendlyName $policyname
-3. Запустите связывание контейнера защиты (облака VMM) с политикой репликации.
+3. Запуск сопоставления hello hello контейнера защиты (облака VMM) с политикой репликации hello:
 
        $associationJob  = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy     $Policy -PrimaryProtectionContainer $primaryprotectionContainer -RecoveryProtectionContainer $recoveryprotectionContainer
-4. Дождитесь завершения задания связывания политики. Проверить, завершено ли это задание, можно с помощью следующего фрагмента кода PowerShell.
+4. Дождитесь toocomplete задания связи политики hello. Можно проверить, если hello задание завершено с помощью hello, следующий фрагмент команды PowerShell.
 
        $job = Get-AzureRmSiteRecoveryJob -Job $associationJob
 
@@ -179,7 +179,7 @@ ms.lasthandoff: 07/11/2017
          $isJobLeftForProcessing = $true;
        }
 
-   После завершения обработки задания выполните следующую команду:
+   После завершения обработки задания hello, выполните следующую команду hello:
 
        if($isJobLeftForProcessing)
        {
@@ -187,80 +187,80 @@ ms.lasthandoff: 07/11/2017
        }
        }While($isJobLeftForProcessing)
 
-Для проверки выполнения операции выполните действия, описанные в разделе [Мониторинг активности](#monitor).
+toocheck hello завершения операции hello, следуйте указаниям hello [наблюдение за активностью](#monitor).
 
 ## <a name="step-6-configure-network-mapping"></a>Шаг 6. Настройка сетевого сопоставления
-1. Первая команда возвращает серверы для текущего хранилища Azure Site Recovery. Команда сохраняет серверы Microsoft Azure Site Recovery в массиве $Servers.
+1. Первая команда Hello возвращает серверов для hello текущее хранилище Azure Site Recovery. Hello команда сохраняет серверы Microsoft Azure Site Recovery hello в переменной hello $Servers массива.
 
         $Servers = Get-AzureRmSiteRecoveryServer
-2. Приведенные ниже команды получают сеть Site Recovery для исходного и целевого серверов VMM.
+2. Hello ниже команды получить hello сети восстановления сайта для hello исходный сервер VMM и hello целевой сервер VMM.
 
         $PrimaryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]        
 
         $RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
 
     > [!NOTE]
-    > Исходный сервер VMM может быть первым или вторым в массиве серверов. Проверьте имена серверов VMM и получите соответствующие сети.
+    > Hello исходный сервер VMM может hello первый или hello второй массив серверов один в hello. Проверьте имена hello серверов VMM hello и соответствующим образом получить hello сети
 
 
-1. Последний командлет создает сопоставление между основной сетью и сетью восстановления. Этот командлет указывает основную сеть в качестве первого элемента $PrimaryNetworks, а сеть восстановления — в качестве первого элемента $RecoveryNetworks.
+1. Hello окончательного создает сопоставление между hello основной сети и сети восстановления hello. командлет Hello указывает hello основной сети как первый элемент $PrimaryNetworks и hello сети восстановления как первый элемент $RecoveryNetworks hello hello.
 
         New-AzureRmSiteRecoveryNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
 
 ## <a name="step-7-configure-storage-mapping"></a>Шаг 7. Настройка сопоставления хранилищ
-1. Приведенная ниже команда получает список классификаций хранилищ в переменную $storageclassifications.
+1. Hello ниже команда получает список hello классификации хранилища в переменную $storageclassifications.
 
         $storageclassifications = Get-AzureRmSiteRecoveryStorageClassification
-2. Следующие команды получают классификацию источников в переменную $SourceClassification, а классификацию целей — в переменную $TargetClassification.
+2. Классификация источников hello в переменную $SourceClassificaion и целевой классификации в переменную $TargetClassification, получить Hello ниже команды.
 
         $SourceClassificaion = $storageclassifications[0]
 
         $TargetClassification = $storageclassifications[1]
 
     > [!NOTE]
-    > Классификации источников и целей могут быть любым элементом в массиве. Обратитесь к выходным данным приведенной ниже команды, чтобы определить индекс классификаций источников и целей в массиве $storageclassifications.
+    > Hello исходных и целевых классификаций может быть любой элемент в массиве hello. См. выходные данные toohello hello ниже индекс hello toofigure команды исходных и целевых классификаций $storageclassifications массива.
 
     > Get-AzureRmSiteRecoveryStorageClassification | Select-Object -Property FriendlyName, Id | Format-Table
 
 
-1. Приведенный ниже командлет создает сопоставление между классификациями источников и целей.
+1. Hello ниже командлет создает сопоставление между hello классификации источника и целевой классификацией hello.
 
         New-AzureRmSiteRecoveryStorageClassificationMapping -PrimaryStorageClassification $SourceClassificaion -RecoveryStorageClassification $TargetClassification
 
 ## <a name="step-8-enable-protection-for-virtual-machines"></a>Шаг 8. Включение защиты для виртуальных машин
-После успешной настройки серверов, облаков и сетей можно включить защиту для виртуальных машин в облаке.
+После надлежащей настройки серверов hello, облаков и сетей, можно включить защиту для виртуальных машин в облаке hello.
 
-1. Чтобы включить защиту, выполните следующую команду для получения контейнера защиты:
+1. Защита tooenable выполнения hello следующая команда контейнера защиты tooget hello:
 
           $PrimaryProtectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $PrimaryCloudName
-2. Получите объект защиты (виртуальную машину), выполнив следующую команду:
+2. Получите сущность защиты hello (VM), выполнив следующую команду hello:
 
            $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -friendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
-3. Включите репликацию для виртуальной машины, выполнив следующую команду.
+3. Включите репликацию для виртуальной Машины hello, выполнив следующую команду hello:
 
           $jobResult = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
 
 ## <a name="test-your-deployment"></a>Выполните тестирование развертывания
-Чтобы протестировать развертывание, можно запустить тестовую отработку отказа для отдельной виртуальной машины или создать план восстановления, состоящий из нескольких виртуальных машин, и запустить тестовую отработку отказа плана. Тестовая обработка отказа имитирует механизм отработки отказа и восстановления в изолированной сети.
+Планирование развертывания можно запустить тестовую отработку отказа для одной виртуальной машины или создайте план восстановления, состоящий из нескольких виртуальных машин и запустите тестовую отработку отказа для hello tootest. Тестовая обработка отказа имитирует механизм отработки отказа и восстановления в изолированной сети.
 
 > [!NOTE]
 > Можно создать план восстановления для приложения на портале Azure.
 >
 >
 
-Для проверки выполнения операции выполните действия, описанные в разделе [Мониторинг активности](#monitor).
+toocheck hello завершения операции hello, следуйте указаниям hello [наблюдение за активностью](#monitor).
 
 ### <a name="run-a-test-failover"></a>Запуск тестовой отработки отказа
-1. Выполните приведенные ниже командлеты, чтобы получить сеть виртуальных машин, отработку отказа виртуальных машин в которую вы хотите проверить.
+1. Запустите hello ниже командлеты tooget hello ВМ сети toowhich требуется tootest отработки отказа виртуальные машины.
 
        $Servers = Get-AzureRmSiteRecoveryServer
        $RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
-2. Выполните тестовую отработку отказа виртуальной машины следующим образом.
+2. Выполните тестовую отработку отказа виртуальной машины, выполнив следующие hello.
 
        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -FriendlyName $VMName -ProtectionContainer $PrimaryprotectionContainer
 
        $jobIDResult =  Start-AzureRmSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -VMNetwork $RecoveryNetworks[1]
-3. Выполните тестовую отработку отказа по плану восстановления следующим образом.
+3. Выполните тестовую отработку отказа плана восстановления, выполнив следующие hello.
 
        $recoveryplanname = "test-recovery-plan"
 
@@ -269,12 +269,12 @@ ms.lasthandoff: 07/11/2017
        $jobIDResult =  Start-AzureRmSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan -VMNetwork $RecoveryNetworks[1]
 
 ### <a name="run-a-planned-failover"></a>Запуск запланированной отработки отказа
-1. Выполните плановую отработку отказа виртуальной машины следующим образом.
+1. Выполните Плановую отработку отказа виртуальной машины, выполнив следующие hello.
 
         $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
 
         $jobIDResult =  Start-AzureRmSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
-2. Выполните плановую отработку отказа по плану восстановления следующим образом.
+2. Выполните Плановую отработку отказа плана восстановления, выполнив следующие hello.
 
         $recoveryplanname = "test-recovery-plan"
 
@@ -283,13 +283,13 @@ ms.lasthandoff: 07/11/2017
         $jobIDResult =  Start-AzureRmSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan
 
 ### <a name="run-an-unplanned-failover"></a>Запуск незапланированной отработки отказа
-1. Выполните внеплановую отработку отказа виртуальной машины следующим образом.
+1. Выполните незапланированную отработку отказа виртуальной Машины, выполнив hello ниже:
 
         $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
 
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
 
-2. Выполните внеплановую отработку отказа по плану восстановления следующим образом.
+2. выполните незапланированной отработки отказа плана восстановления, выполнив следующие hello.
 
         $recoveryplanname = "test-recovery-plan"
 
@@ -298,7 +298,7 @@ ms.lasthandoff: 07/11/2017
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
 
 ## <a name=monitor></a> Мониторинг активности
-Используйте следующие команды для мониторинга активности. Обратите внимание, что между обработкой заданий необходимы паузы для ожидания завершения обработки.
+Используйте следующие команды toomonitor hello действие hello. Обратите внимание, что на toowait между задания для обработки toofinish hello.
 
     Do
     {

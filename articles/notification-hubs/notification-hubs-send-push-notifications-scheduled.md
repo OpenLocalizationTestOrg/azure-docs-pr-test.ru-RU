@@ -1,5 +1,5 @@
 ---
-title: "Как отправлять запланированные уведомления | Документация Майкрософт"
+title: "уведомлений о запланированных aaaHow toosend | Документы Microsoft"
 description: "В этом разделе описывается использование запланированных уведомлений с помощью центров уведомлений Azure."
 services: notification-hubs
 documentationcenter: .net
@@ -15,17 +15,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: efac6e1ecc00359f1622d380333140bc055c83e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9b3ba715dad6f5d824a615e83f2863b0db47b533
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="how-to-send-scheduled-notifications"></a>Практическое руководство. Отправка запланированных уведомлений
 ## <a name="overview"></a>Обзор
-Предположим, возникла необходимость отправить уведомление в какой-либо момент в будущем, но у вас нет простого способа пробудить внутренней код для отправки уведомления. Центры уведомлений уровня "Стандартный" поддерживает функцию, которая позволяет запланировать уведомления на будущее до 7 дней.
+Если у вас есть сценарии, в котором требуется будущих toosend уведомление в определенный момент hello, но нет toowake простой способ копирования уведомления hello toosend серверного кода. Уровень Standard концентраторов уведомлений поддерживает функцию, которая позволяет вам уведомления tooschedule копирование too7 дней в будущем hello.
 
-При отправке уведомления просто используйте класс [ScheduledNotification](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx) из пакета SDK центров уведомлений, как показано в следующем примере.
+При отправке уведомления просто используйте hello [ScheduledNotification](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx) класса в hello SDK концентраторов уведомлений, как показано в следующий пример hello:
 
     Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");
     var scheduled = await hub.ScheduleNotificationAsync(notification, new DateTime(2014, 7, 19, 0, 0, 0));
@@ -34,5 +34,5 @@ ms.lasthandoff: 07/11/2017
 
     await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
 
-Количество запланированных уведомлений, которые можно отправлять, не ограничено.
+Нет никаких ограничений на количество запланированных уведомлений, которые можно отправить в hello.
 

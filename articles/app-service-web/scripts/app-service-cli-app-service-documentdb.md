@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария Azure CLI. Подключение веб-приложения к Cosmos DB | Документация Майкрософт"
-description: "Пример сценария Azure CLI для подключения веб-приложения к Cosmos DB."
+title: "Образец скрипта CLI - aaaAzure подключения tooCosmos приложения web DB | Документы Microsoft"
+description: "Сценарий Azure CLI пример — подключить web app tooCosmos DB"
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,15 +16,15 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: ff5e7a794033cc51120831e09b055a86affb28a4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1f2123378b9d5812fa793730f7fa5a5bc9ab63c1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-web-app-to-cosmos-db"></a>Подключение веб-приложения к Cosmos DB
+# <a name="connect-a-web-app-toocosmos-db"></a>Подключение web app tooCosmos DB
 
-В этом сценарии вы узнаете, как создать учетную запись Azure Cosmos DB и веб-приложение Azure. Затем вы свяжете Cosmos DB с веб-приложением, используя параметры приложения.
+В этом сценарии вы узнаете, как toocreate учетную запись Azure Cosmos DB и Azure веб-приложения. Затем будет связан hello Cosmos DB toohello веб-приложения с помощью параметров приложения.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -32,7 +32,7 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Пример скрипта
 
@@ -42,19 +42,19 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Для создания группы ресурсов, веб-приложений, базы данных Cosmos DB и всех связанных ресурсов этот сценарий использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует hello следующие команды toocreate группы ресурсов, веб-приложения, Cosmos DB и все связанные ресурсы. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | Создает группу ресурсов, в которой хранятся все ресурсы. |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | Создает план службы приложений. Это как ферма сервера для веб-приложения Azure. |
 | [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Создает веб-приложение Azure. |
-| [az cosmosdb create](https://docs.microsoft.com/en-us/cli/azure/cosmosdb#create) | Создает учетную запись Cosmos DB. Здесь будут храниться данные. |
-| [az cosmosdb list-keys](https://docs.microsoft.com/en-us/cli/azure/cosmosdb#list-keys) | Выводит список ключей доступа для указанной учетной записи базы данных база данных. |
+| [az cosmosdb create](https://docs.microsoft.com/en-us/cli/azure/cosmosdb#create) | Создает учетную запись Cosmos DB. Это происходит, где будут храниться данные hello. |
+| [az cosmosdb list-keys](https://docs.microsoft.com/en-us/cli/azure/cosmosdb#list-keys) | Ключи доступа hello списки hello указана учетная запись Cosmos DB. |
 | [az webapp config appsettings set](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#set) | Создает или обновляет параметр приложения для веб-приложения Azure. Параметры приложения представляются в качестве переменных среды для приложения. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры скриптов Azure CLI для службы приложений см. в [документации по службе приложений Azure](../app-service-cli-samples.md).
+Дополнительные образцы сценариев CLI приложения службы можно найти в hello [документации по службе приложений Azure](../app-service-cli-samples.md).

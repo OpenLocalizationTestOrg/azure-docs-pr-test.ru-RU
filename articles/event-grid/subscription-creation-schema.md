@@ -1,6 +1,6 @@
 ---
-title: "Схема подписки для службы \"Сетка событий Azure\""
-description: "В этой статье описаны свойства для подписки на событие в службе \"Сетка событий Azure\"."
+title: "Схема подписки aaaAzure сетки событий"
+description: "Описание свойств hello для подписки tooan события с сеткой событий Azure."
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,49 +8,49 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: babanisa
-ms.openlocfilehash: eff2352066a76010d6d882a7b7e1961870cd2d46
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 6a96d67975a5a733c5ea3c56ea54501f94ea4cd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-grid-subscription-schema"></a>Схема подписки для службы "Сетка событий"
 
-Чтобы создать подписку для службы "Сетка событий", отправьте запрос на выполнение операции по созданию подписки на события. Используйте следующий формат:
+toocreate подписку на событие сетки, следует отправить запрос toohello операция Create Event подписки. Hello используйте следующий формат:
 
 ```
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2017-06-15-preview
 ``` 
 
-Например, чтобы создать подписку на события для учетной записи хранения с именем `examplestorage` в группе ресурсов `examplegroup`, используйте следующий формат:
+Например, toocreate подписку на событие с именем учетной записи хранения `examplestorage` в группу ресурсов с именем `examplegroup`, используйте hello следующий формат:
 
 ```
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2017-06-15-preview
 ``` 
 
-В этой статье приведены свойства и схема для основного текста запроса.
+Hello статье описаны свойства hello и схемы для hello тексте hello запроса.
  
 ## <a name="event-subscription-properties"></a>Свойства подписки на события
 
 | Свойство | Тип | Описание |
 | -------- | ---- | ----------- |
-| ресурс destination | object | Объект, который определяет конечную точку. |
-| фильтр | object | Необязательное поле для фильтрации событий по типам. |
+| ресурс destination | object | Hello объекта, который определяет конечную точку hello. |
+| фильтр | object | Необязательное поле для фильтрации hello типов событий. |
 
 ### <a name="destination-object"></a>Объект destination
 
 | Свойство | Тип | Описание |
 | -------- | ---- | ----------- |
-| endpointType | string | Тип конечной точки для подписки (веб-перехватчик или HTTP, концентратор событий либо очередь). | 
+| endpointType | string | Hello тип конечной точки для hello подписки (веб-перехватчика/HTTP, концентратора событий или очереди). | 
 | endpointUrl | string |  | 
 
 ### <a name="filter-object"></a>Объект filter
 
 | Свойство | Тип | Описание |
 | -------- | ---- | ----------- |
-| includedEventTypes | array | Выполняет сопоставление, если тип события, указанный в сообщении о событии, полностью соответствует одному из этих типов. Вызывает ошибку, если имя события не соответствует зарегистрированному имени типа для источника события. По умолчанию соответствует всем типам событий. |
-| subjectBeginsWith | string | Фильтр соответствия префиксу для поля темы в сообщении о событии. Строка по умолчанию или пустая строка соответствует всем типам. | 
-| subjectEndsWith | string | Фильтр соответствия суффиксу для поля темы в сообщении о событии. Строка по умолчанию или пустая строка соответствует всем типам. |
+| includedEventTypes | array | Совпадать, если тип события hello в сообщение о событии hello: точное совпадение tooone этих имен типов событий. Вызывает ошибку, если не совпадает с именем события hello зарегистрированные имена типов событий для источника событий hello. По умолчанию соответствует всем типам событий. |
+| subjectBeginsWith | string | Соответствие префикса фильтра toohello поле subject hello сообщения о событии. по умолчанию Hello или пустая строка соответствует всем. | 
+| subjectEndsWith | string | Суффикс match фильтра toohello поле subject hello сообщения о событии. по умолчанию Hello или пустая строка соответствует всем. |
 | subjectIsCaseSensitive | string | Управляет сопоставлением с учетом регистра в фильтрах. |
 
 
@@ -77,4 +77,4 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* См. дополнительные сведения о [службе "Сетка событий Azure"](overview.md).
+* Введение tooEvent сетки. в разделе [возможности сетки событий?](overview.md)

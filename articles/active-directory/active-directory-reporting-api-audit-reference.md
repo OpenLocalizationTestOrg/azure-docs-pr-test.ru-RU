@@ -1,6 +1,6 @@
 ---
-title: "Справочник по API аудита Azure Active Directory | Документация Майкрософт"
-description: "Как начать работу с API аудита Azure Active Directory"
+title: "Аудит Active Directory aaaAzure Справочник по API | Документы Microsoft"
+description: "Как tooget работу с hello API аудита Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,22 +15,22 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 573e940c5390e7b990d889681eb37b73c5b253d9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5f33b62ede9be445f35704739e328580dc454368
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Справочник по API аудита Azure Active Directory
-Эта статья входит в серию статей об API отчетов Azure Active Directory.  
-Инструмент создания отчетов Azure AD предоставляет API, с помощью которого можно получить доступ к данным аудита, используя код или связанные инструменты.
-Цель этой статьи — предоставить справочные сведения об **API аудита**.
+Этот раздел является частью коллекции разделов, посвященных hello Azure Active Directory reporting API.  
+Отчетами Azure AD предоставляет API, который позволяет tooaccess данные аудита, с помощью кода или связанные средства.
+Hello в этом разделе относится tooprovide вам справочные сведения о hello **audit API**.
 
 См.:
 
 * Основные сведения см. в разделе [Журналы аудита](active-directory-reporting-azure-portal.md#activity-reports).
 
-* Дополнительные сведения об API отчетов см. в статье [Приступая к работе с API отчетов Azure Active Directory](active-directory-reporting-api-getting-started.md).
+* [Приступая к работе с Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md) Дополнительные сведения о hello reporting API.
 
 
 Сведения:
@@ -40,32 +40,32 @@ ms.lasthandoff: 08/03/2017
 - При возникновении проблем [создайте запрос в службу поддержки](active-directory-troubleshooting-support-howto.md). 
 
 
-## <a name="who-can-access-the-data"></a>Кто может получить доступ к данным?
-* Пользователи с ролью администратора безопасности или читателя безопасности
+## <a name="who-can-access-hello-data"></a>Кто имеет доступ к данным hello?
+* Пользователи с ролью администратора безопасности или безопасность чтения hello
 * Глобальные администраторы
-* Любое приложение с разрешением на доступ к API (авторизацию приложения можно настроить только на основе разрешения глобального администратора)
+* Любое приложение, которое имеет авторизации tooaccess hello API (авторизации приложения может быть установки, только на основе разрешения глобального администратора)
 
 ## <a name="prerequisites"></a>Предварительные требования
-Для доступа к этому отчету с помощью API отчетов нужно:
+В порядке tooaccess это подчиненности hello Reporting API, должен иметь:
 
 * установить [Azure Active Directory Free или более поздней версии](active-directory-editions.md)
-* выполнить [предварительные требования для доступа к API отчетов Azure AD](active-directory-reporting-api-prerequisites.md). 
+* Завершенная hello [API отчетов hello Azure AD tooaccess необходимых компонентов](active-directory-reporting-api-prerequisites.md). 
 
-## <a name="accessing-the-api"></a>Получение доступа к API
-Получить доступ к API можно с помощью [песочницы Graph](https://graphexplorer2.cloudapp.net) или программным путем, используя, например, PowerShell. Чтобы программа PowerShell правильно интерпретировала синтаксис фильтров OData, используемых в вызовах REST AAD Graph, необходимо использовать обратный апостроф и отделить знак $ escape-символами. Обратный апостроф выступает в качестве [escape-символа PowerShell](https://technet.microsoft.com/library/hh847755.aspx), позволяя PowerShell выполнить точную интерпретацию знака $ и не спутать его с именем переменной PowerShell (т. е. $filter).
+## <a name="accessing-hello-api"></a>Доступ к hello API
+Этот API можно получить либо через hello [Graph Explorer](https://graphexplorer2.cloudapp.net) или программно, используя, например, PowerShell. В порядке для PowerShell toocorrectly интерпретировать синтаксис фильтра OData hello, используемых при вызове AAD Graph REST необходимо использовать обратный апостроф hello (также называемого: апостроф) символ слишком «escape» символа "$" hello. служит Hello апострофа [escape-символа PowerShell](https://technet.microsoft.com/library/hh847755.aspx), позволяя PowerShell toodo литерала интерпретацию символа $ hello и не путать его как имя переменной PowerShell (ie: $filter).
 
-В этой статье внимание уделяется Graph Explorer. Пример PowerShell см. в этом [сценарии PowerShell](active-directory-reporting-api-audit-samples.md#powershell-script).
+Hello в этом разделе нацелено на hello Graph Explorer. Пример PowerShell см. в этом [сценарии PowerShell](active-directory-reporting-api-audit-samples.md#powershell-script).
 
 ## <a name="api-endpoint"></a>Конечная точка API
-Доступ к этому API можно получить, используя следующий URI:  
+Вы можете использовать этот API, с помощью hello, следующий URI:  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta
 
-Количество записей, возвращаемых API аудита Azure AD (с помощью разбиения на страницы OData), не ограничено.
+Нет ограничений на hello число записей, возвращаемых API аудита hello Azure AD (с помощью OData разбиение на страницы).
 Сведения о периоде удержания данных отчетов приведены в статье [Политики периода удержания отчетов](active-directory-reporting-retention.md).
 
-Этот вызов возвращает данные в пакетах. В каждом пакете содержится не более 1000 записей.  
-Чтобы получить следующий пакет записей, используйте ссылку "Следующий". Получите сведения о маркере пропуска из первого набора полученных записей. Маркер пропуска можно найти в конце результирующего набора.  
+Этот вызов возвращается hello данных в пакетах. В каждом пакете содержится не более 1000 записей.  
+tooget hello следующего пакета записей, используйте hello следующей ссылки. Получение сведений токен skiptoken hello из первого набора hello возвращенных записей. в конце hello hello результирующий набор будет токен пропуска Hello.  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta&%24skiptoken=-1339686058
 
@@ -73,26 +73,26 @@ ms.lasthandoff: 08/03/2017
 
 
 ## <a name="supported-filters"></a>Поддерживаемые фильтры
-Можно сократить число записей, возвращаемых после вызова API, в виде фильтра.  
-Данные, связанные с API входа, поддерживают следующие фильтры:
+Можно сузить hello число записей, возвращаемых API вызова в форме фильтра.  
+Для входа в API поддерживаются связанные данные hello следующие фильтры:
 
-* **$top=\<число возвращаемых записей\>** позволяет ограничить количество возвращаемых записей. Это дорогостоящая операция. Этот фильтр не следует использовать, если нужно возвратить большое количество объектов.     
-* **$filter=\<оператор фильтра\>** позволяет указать тип требуемых записей на основе полей фильтра.
+* **$top =\<возвращается число записей toobe\>**  -toolimit hello количество возвращаемых записей. Это дорогостоящая операция. Этот фильтр не следует использовать, если требуется, чтобы tooreturn тысяч объектов.     
+* **$filter =\<инструкцию фильтра\>**  -toospecify на основе hello поддерживаемый фильтр поля, типа hello записей, важные для вас
 
 ## <a name="supported-filter-fields-and-operators"></a>Поддерживаемый поля и операторы фильтров
-Чтобы указать тип требуемых записей, можно создать оператор фильтра, который может содержать одно или несколько из следующих полей фильтра:
+Тип hello toospecify записей, которые вас интересуют, можно построить инструкцию фильтра, который может содержать один или сочетание hello следующие поля фильтра:
 
 * [activityDate](#activitydate) определяет дату или диапазон дат;
-* [category](#category) определяет категорию, по которой необходимо отфильтровать;
-* [activityStatus](#activitystatus) определяет состояние действия;
-* [activityType](#activitytype) определяет тип действия;
-* [activity](#activity) определяет действие в виде строки;  
-* [actor/name](#actorname) определяет субъект в виде имени субъекта;
-* [actor/objectid](#actorobjectid) определяет субъект в виде идентификатора субъекта;   
-* [actor/upn](#actorupn) определяет субъект в виде имени участника-пользователя (UPN); 
-* [target/name](#targetname) определяет целевой объект в виде имени субъекта;
-* [target/objectid](#targetobjectid) определяет целевой объект в виде идентификатора целевого объекта;  
-* [target/upn](#targetupn) определяет целевой объект в виде основного имени пользователя (UPN) субъекта.   
+* [Категория](#category) — определяет категорию hello требуются toofilter.
+* [activityStatus](#activitystatus) -определяет hello состояние действия
+* [Тип действия](#activitytype) -определяет тип hello действия
+* [Действие](#activity) -определяет действие hello в виде строки  
+* [в имя субъекта](#actorname) -определяет субъект hello в форме имени субъекта hello
+* [Субъект/objectid](#actorobjectid) -определяет субъект hello в виде идентификатора субъекта hello   
+* [субъект или имя участника-пользователя](#actorupn) -определяет субъект hello в форме hello субъекта имя участника-пользователя (UPN) 
+* [Имяцелевого/](#targetname) -определяет целевой hello в форме имени субъекта hello
+* [целевой/objectid](#targetobjectid) -определяет цель hello в виде идентификатора целевого hello  
+* [целевой/upn](#targetupn) -определяет субъект hello в форме hello субъекта имя участника-пользователя (UPN)   
 
 - - -
 ### <a name="activitydate"></a>activityDate
@@ -212,8 +212,8 @@ ms.lasthandoff: 08/03/2017
 
 **Примечания**
 
-* Без учета регистра
-* При запросе Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity необходимо добавить полное пространство имен.
+* Не учитывает регистр.
+* Требуется полное пространство имен hello tooadd при запросе Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity
 
 - - -
 ### <a name="targetobjectid"></a>target/objectid
@@ -234,10 +234,10 @@ ms.lasthandoff: 08/03/2017
 **Примечания**
 
 * Не учитывает регистр. 
-* При запросе Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity необходимо добавить полное пространство имен.
+* Требуется полное пространство имен hello tooadd при запросе Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity
 
 - - -
 ## <a name="next-steps"></a>Дальнейшие действия
-* Хотите увидеть примеры отфильтрованных системных операций? См. [примеры API аудита Azure Active Directory](active-directory-reporting-api-audit-samples.md).
-* Хотите узнать больше об API отчетов Azure AD? См. статью [Приступая к работе с API отчетов Azure Active Directory](active-directory-reporting-api-getting-started.md).
+* Вы хотите toosee примеры для отфильтрованных системных действий? Извлечение hello [примеры аудита API Azure Active Directory](active-directory-reporting-api-audit-samples.md).
+* Вы хотите, чтобы tooknow Дополнительные сведения об API отчетов hello Azure AD? В разделе [Приступая к работе с Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md).
 

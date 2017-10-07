@@ -1,6 +1,6 @@
 ---
-title: "Выбор образов виртуальных машин Linux с помощью Azure CLI | Документация Майкрософт"
-description: "Узнайте, как использовать Azure CLI для определения издателя, предложения, номера SKU и версии для образов виртуальных машин из Marketplace."
+title: "aaaSelect образы виртуальных Машин Linux, с hello Azure CLI | Документы Microsoft"
+description: "Узнайте, как toouse hello Azure CLI toodetermine hello издателя, предложение, SKU и версия для образов виртуальных Машин Marketplace."
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -16,41 +16,41 @@ ms.workload: infrastructure
 ms.date: 08/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e0c27a7ee9e9a7ab1a3b004e070fa556b56a36a5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0b115b8654bc156b5bfadba53a6b002a105acb68
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Поиск образов виртуальных машин Linux в Azure Marketplace с помощью Azure CLI
-В этой статье описывается, как с помощью Azure CLI 2.0 находить образы виртуальных машин в Azure Marketplace. Воспользуйтесь этими сведениями, чтобы указать образ из Marketplace при создании виртуальной машины Linux.
+# <a name="how-toofind-linux-vm-images-in-hello-azure-marketplace-with-hello-azure-cli"></a>Как образы виртуальных Машин Linux toofind в hello Azure Marketplace с hello Azure CLI
+В этом разделе описывается, как toouse hello образов виртуальных Машин Azure CLI 2.0 toofind в hello Azure Marketplace. При создании виртуальной Машины Linux, используйте этот сведения toospecify образа Marketplace.
 
-Убедитесь, что у вас установлена последняя версия [Azure CLI 2.0](/cli/azure/install-az-cli2), и войдите в учетную запись Azure с помощью команды `az login`.
+Убедитесь, что последняя версия установлена hello [Azure CLI 2.0](/cli/azure/install-az-cli2) и регистрируются в tooan учетная запись Azure (`az login`).
 
 ## <a name="terminology"></a>Терминология
 
-Образы Marketplace определяются в интерфейсе командной строки и других инструментах Azure с учетом следующей иерархии:
+Marketplace образов идентифицируются в hello CLI и другие средства Azure в соответствии с tooa иерархии:
 
-* **Издатель.** Организация, создавшая образ. Пример: Canonical.
+* **Издатель** -hello организация, создавшие hello изображения. Пример: Canonical.
 * **Предложение.** Группа связанных образов, созданных издателем. Пример: Ubuntu Server.
 * **Номер SKU.** Экземпляр предложения, например основной выпуск дистрибутива. Пример: 16.04-LTS.
-* **Версия.** Номер версии образа SKU. При указании образа его номер версии можно заменить ключевым словом latest. В этом случае будет выбрана последняя версия дистрибутива.
+* **Версия** -hello номер версии образа SKU. При указании изображения hello, можно заменить hello номер версии с «последние», который выбирает последнюю версию hello hello распространения.
 
-Образ Marketplace обычно определяется на основе образа *URN*. В URN эти значения объединены (в качестве разделителя используется двоеточие): *Издатель*:*Предложение*:*Номер SKU*:*Версия*. 
+toospecify образа Marketplace, обычно используется изображение hello *URN*. Hello URN объединяет этих значений, разделенных символом двоеточия (:) hello: *издатель*:*предлагают*:*Sku*:*версии*. 
 
 
 ## <a name="list-popular-images"></a>Просмотр списка популярных образов
 
-Выполните команду [az vm image list](/cli/azure/vm/image#list) без параметра `--all`, чтобы просмотреть список популярных образов виртуальных машин в Azure Marketplace. Например, чтобы увидеть кэшированный список популярных образов виртуальных машин в формате таблицы, выполните следующую команду:
+Запустите hello [списка изображений ВМ az](/cli/azure/vm/image#list) команду без hello `--all` параметр, toosee образы список популярных ВМ в Azure Marketplace hello. Например выполните следующие команды toodisplay hello кэшированный список популярных образов в табличном формате:
 
 ```azurecli
 az vm image list --output table
 ```
 
-Выходные данные содержат URN (значение в столбце *URN*). На основе этого значения указывается образ. При создании виртуальной машины с помощью одного из популярных образов Marketplace в качестве альтернативы можно указать псевдоним URN, например *UbuntuLTS*.
+Вывод Hello включает hello URN (hello значение в hello *Urn* столбца), который вы используете образ toospecify hello. При создании виртуальной Машины с одним из этих популярных Marketplace образов, в качестве альтернативы такие как указать псевдоним URN hello, *UbuntuLTS*.
 
 ```
-You are viewing an offline list of images, use --all to retrieve an up-to-date list
+You are viewing an offline list of images, use --all tooretrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -65,9 +65,9 @@ UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServe
 
 ## <a name="find-specific-images"></a>Поиск определенных образов
 
-Чтобы найти конкретный образ виртуальной машины в Marketplace, выполните команду `az vm image list` с параметром `--all`. Этот процесс занимает некоторое время и может возвращать большие объемы выходных данных. Поэтому вы можете отфильтровать список по `--publisher` или другому параметру. 
+toofind конкретных образа виртуальной Машины в hello Marketplace, использовать hello `az vm image list` с hello `--all` параметр. Этот вариант команды hello занимает некоторое время toocomplete и может возвращать длинных выходных данных, поэтому вы обычно фильтровать список hello по `--publisher` или другого параметра. 
 
-Например, приведенная ниже команда отображает предложения для Debian (помните, что без параметра `--all` поиск выполняется только в локальном кэше общих образов).
+Например, hello, следующая команда отображает все предложения Debian (следует помнить, что без hello `--all` переключиться, поиск выполняется только локальный кэш hello общих образов):
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
@@ -102,11 +102,11 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201708040        
 ...
 ```
 
-Примените аналогичные фильтры, используя параметры `--location`, `--publisher` и `--sku`. Можно даже искать частичные совпадения по фильтру. Так, с помощью параметра `--offer Deb` можно найти все образы Debian.
+Применяются аналогичные фильтров с hello `--location`, `--publisher`, и `--sku` параметры. Можно даже выполнять частичные совпадения в фильтре; например, поиск `--offer Deb` toofind все Debian изображения.
 
-Если с помощью параметра `--location` не указать определенное расположение, то по умолчанию возвращаются значения для региона `westus`. (Задайте другое расположение по умолчанию с помощью команды `az configure --defaults location=<location>`.)
+Если не указать определенное место с hello `--location` , hello значения параметров для `westus` возвращаются по умолчанию. (Задайте другое расположение по умолчанию с помощью команды `az configure --defaults location=<location>`.)
 
-Например, следующая команда возвращает список всех номеров SKU для Debian 8 в регионе `westeurope`:
+Например, следующую команду hello перечислены все Debian номера SKU 8 в `westeurope`:
 
 ```azurecli
 az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
@@ -133,15 +133,15 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 ...
 ```
 
-## <a name="navigate-the-images"></a>Переход к образам 
-Еще один способ поиска образа в определенном расположении — это выполнить по-очереди команды [az vm image list-publishers](/cli/azure/vm/image#list-publishers), [az vm image list-offers](/cli/azure/vm/image#list-offers) и [az vm image list-skus](/cli/azure/vm/image#list-skus). С помощью этих команд определяются следующие значения:
+## <a name="navigate-hello-images"></a>Перейдите hello изображений 
+Другой способ toofind изображения в расположении — toorun hello [образ виртуальной машины az список от издателей](/cli/azure/vm/image#list-publishers), [образ виртуальной машины az список предложений](/cli/azure/vm/image#list-offers), и [az ВМ образа списка SKU по](/cli/azure/vm/image#list-skus) команд в последовательности. С помощью этих команд определяются следующие значения:
 
-1. Получить список издателей образов.
+1. Список hello изображения издателей.
 2. Получить список предложений нужного издателя.
 3. Получить список номеров SKU для требуемого предложения.
 
 
-Например, следующая команда позволяет получить список издателей образов в расположении "Западная часть США":
+Например, hello следующая команда выводит список издателей изображения hello в hello расположение Западная часть США:
 
 ```azurecli
 az vm image list-publishers --location westus --output table
@@ -166,7 +166,7 @@ westus      activeeon
 westus      adatao
 ...
 ```
-Используйте эти сведения, чтобы найти предложения от определенного издателя. Например, если компания Canonical — издатель образов из западной части США, то найти ее предложения можно, выполнив команду `azure vm image list-offers`. Укажите расположение и издателя, как показано в следующем примере:
+Используйте этот toofind сведения предлагает с определенным издателем. Например, если канонические издателя образа в hello расположение Запад США, найти их предложений, запустив `azure vm image list-offers`. Передайте расположение hello и издатель hello как hello в следующем примере:
 
 ```azurecli
 az vm image list-offers --location westus --publisher Canonical --output table
@@ -185,7 +185,7 @@ westus      Ubuntu_Core
 westus      Ubuntu_Snappy_Core
 westus      Ubuntu_Snappy_Core_Docker
 ```
-Вы видите, что издатель Canonical из западной части США предлагает **UbuntuServer** для Azure. Однако нам также нужны номера SKU. Чтобы получить их значения, выполните команду `azure vm image list-skus` и укажите обнаруженные расположение, издателя и предложение:
+Вы видите, что в области Запад США hello канонические публикует hello **UbuntuServer** предлагают в Azure. Но какие? Запустите эти значения tooget `azure vm image list-skus` и задайте расположение hello, издателя и предложения, выполнить обнаружение:
 
 ```azurecli
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
@@ -219,7 +219,7 @@ westus      17.04-DAILY
 westus      17.10-DAILY
 ```
 
-Наконец, выполните команду `az vm image list`, чтобы найти определенную версию номера SKU, например **16.04-LTS**:
+Наконец, используйте hello `az vm image list` toofind команда конкретной версии hello SKU, требуется, например, **16.04 LTS**:
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 16.04-LTS --all --output table
@@ -257,4 +257,4 @@ UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201
 UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201708151  16.04.201708151
 ```
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь по значению URN мы можем выбрать именно тот образ, который нам нужен. Передайте это значение с параметром `--image` при создании виртуальной машины с помощью команды [az vm create](/cli/azure/vm#create). Помните, что при необходимости можно заменить номер версии в URN словом latest. В этом случае всегда будет выбираться последняя версия дистрибутива. Инструкции по быстрому созданию виртуальной машины на основе данных URN см. в статье [Создание виртуальных машин Linux и управление ими с помощью Azure CLI](tutorial-manage-vm.md).
+Теперь вы можете точно hello образа необходимо toouse путем перевода заметку hello значение универсального имени РЕСУРСА. Передает это значение с hello `--image` параметр при создании виртуальной Машины с hello [создания виртуальной машины az](/cli/azure/vm#create) команды. Помните, что можно при необходимости заменить hello номер версии в hello URN «последней». Эта версия всегда является последней версии hello hello распределения. toocreate виртуальной машины быстро с помощью hello URN сведения см. в разделе [Создание и управление виртуальными машинами Linux с hello Azure CLI](tutorial-manage-vm.md).

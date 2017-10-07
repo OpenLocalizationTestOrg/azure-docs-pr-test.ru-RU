@@ -1,6 +1,6 @@
 ---
-title: "Проверка XML в Azure Logic Apps | Документация Майкрософт"
-description: "Проверка XML с помощью схем для Azure Logic Apps и сценариев B2B с использованием пакета интеграции Enterprise"
+title: "aaaValidate XML - приложения логики Azure | Документы Microsoft"
+description: "Проверка XML с помощью схем для сценариев приложения логики Azure и B2B с помощью hello пакет интеграции Enterprise"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 8558efffa354cc4bb93820c837077ee997924c95
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 81f662d0ddf908657b54de8af0a75fff55782ef7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="validate-xml-for-enterprise-integration"></a>Проверка XML для интеграции Enterprise
 
-Часто в сценариях B2B партнерам, участвующим в соглашении, необходимо убедиться в допустимости сообщений, которыми они обмениваются. И это нужно сделать до начала обработки данных. В пакете интеграции Enterprise можно использовать соединитель проверки XML, чтобы проверять документы на соответствие предопределенной схеме.
+Часто в сценарии B2B hello партнеров в соглашении убедитесь обмена сообщений hello допустимы, до начала обработки данных. Документы с предварительно определенной схемой можно проверить с помощью hello проверки XML hello использование соединителя в пакет интеграции Enterprise hello.
 
-## <a name="validate-a-document-with-the-xml-validation-connector"></a>Проверка документа с помощью соединителя проверки XML
+## <a name="validate-a-document-with-hello-xml-validation-connector"></a>Проверить документ с соединителем hello Проверка XML
 
-1. Создайте приложение логики и [свяжите его с учетной записью интеграции](../logic-apps/logic-apps-enterprise-integration-accounts.md "Дополнительные сведения о связывании учетной записи интеграции с приложением логики"), которая содержит схему для проверки данных XML.
+1. Создание логики приложения, и [связать учетную запись для интеграции toohello приложения hello](../logic-apps/logic-apps-enterprise-integration-accounts.md "узнать toolink tooa логики интеграции учетной записи приложения") , содержащее схему hello, требуется toouse для проверки XML-данных.
 
-2. Добавьте триггер **Request - When an HTTP request is received** (Запрос: при получении HTTP-запроса) в свое приложение логики.
+2. Добавить **запрос — при HTTP-запрос получен** триггер tooyour логику приложения.
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-1.png)
 
-3. Добавьте действие **Проверка XML**, щелкнув **Добавить действие**.
+3. tooadd hello **проверки XML** действия, выберите **добавить действие**.
 
-4. Введите *xml* в поле поиска, чтобы отфильтровать все действия и оставить только необходимые. Выберите действие **Проверка XML**.
+4. Введите все hello toohello действия, который вы хотите toofilter *xml* в поле поиска hello. Выберите действие **Проверка XML**.
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-2.png)
 
-5. Чтобы указать содержимое XML, которое будет проверено, выберите **Содержимое**.
+5. Выберите toospecify hello XML-содержимое, которое следует toovalidate, **СОДЕРЖИМОГО**.
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-1-5.png)
 
-6. Выберите тег body в качестве содержимого, которое будет проверено.
+6. Выберите тег текст hello в качестве содержимого, которое следует toovalidate hello.
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-3.png)
 
-7. Чтобы определить схему для проверки ввода предыдущего *содержимого*, выберите **Имя схемы**.
+7. требуется toouse проверки hello предыдущей схемы hello toospecify *содержимого* ввода, выберите **имя СХЕМЫ**.
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-4.png)
 
@@ -54,10 +54,10 @@ ms.lasthandoff: 07/11/2017
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-5.png)
 
-Вы закончили работу с настройкой соединителя проверки. В реальном приложении вам нужно будет передать проверенные данные в бизнес-приложение (например, SalesForce). Чтобы отправить проверенные выходные данные в Salesforce, добавьте действие.
+Вы закончили работу с настройкой соединителя проверки. В приложении реального мира может потребоваться toostore hello проверки данных в бизнес-приложения (LOB), например SalesForce. toosend Здравствуйте tooSalesforce проверенные выходных данных, добавить действие.
 
-Теперь можно протестировать действие проверки, выполнив запрос к конечной точке HTTP.
+tootest действие проверки, создадим конечную точку toohello HTTP запроса.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Обзор пакета интеграции Enterprise](../logic-apps/logic-apps-enterprise-integration-overview.md "Обзор пакета интеграции Enterprise")   
+[Дополнительные сведения о hello пакет интеграции Enterprise](../logic-apps/logic-apps-enterprise-integration-overview.md "Дополнительные сведения о пакет интеграции Enterprise")   
 

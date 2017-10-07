@@ -1,6 +1,6 @@
 ---
-title: "Автоматическое включение параметров диагностики с помощью шаблона Resource Manager | Документация Майкрософт"
-description: "Узнайте, как использовать шаблон Resource Manager для создания параметров диагностики, которые позволят передавать журналы диагностики в концентраторы событий или сохранять их в учетной записи хранения."
+title: "aaaAutomatically Включение параметров диагностики с помощью шаблона диспетчера ресурсов | Документы Microsoft"
+description: "Узнайте, как toouse диспетчера ресурсов шаблона toocreate параметров диагностики, позволяющие toostream вашей диагностики журналы tooEvent концентраторов и сохранять их в учетной записи хранилища."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2017
 ms.author: johnkem
-ms.openlocfilehash: dde2435e976bbd14ca35cccc714ea21dcc5817b7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8f38731107029928029c6d940da7bd076fea5d49
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Автоматическое включение параметров диагностики при создании ресурса из шаблона Resource Manager
-В этой статье мы покажем, как применить [шаблон Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) для настройки параметров диагностики при создании ресурса. Это позволит автоматически запускать потоковую передачу журналов диагностики и метрик в концентраторы событий, архивировать их в учетной записи хранения ли отправлять в Log Analytics при создании ресурса.
+В этой статье показано, как можно использовать [шаблона Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) tooconfigure параметров диагностики для ресурса при его создании. Это позволяет tooautomatically начала потоковой передачи в журналы диагностики и метрики tooEvent концентраторов архивации их в учетной записи хранения или отправке tooLog Analytics, при создании ресурса.
 
-Для разных типов ресурсов журналы диагностики включаются с помощью шаблона Resource Manager по-разному.
+метод Hello для включения журналов диагностики с помощью шаблона диспетчера ресурсов, зависит от типа ресурса hello.
 
 * **Невычислительные** ресурсы (например, группы безопасности сети, Logic Apps или служба автоматизации) используют [параметры диагностики, описанные в этой статье](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
-* **Вычислительные** ресурсы (на основе WAD/LAD) используют [файл конфигурации WAD/LAD, описанный в этой статье](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
+* **Вычислений** (WAD/LAD на основе) ресурсы используют hello [WAD/LAD файл конфигурации, описанной в этой статье](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
 
-В этой статьей объясняется, как настроить диагностику с помощью каждого из этих методов.
+В этой статье описывается как tooconfigure диагностики с помощью любого метода.
 
-Основные этапы:
+Ниже приведены основные шаги Hello.
 
-1. Создайте шаблон в виде файла JSON, который описывает, как создать ресурс и включить диагностику.
-2. [Разверните шаблон с помощью любого метода развертывания](../azure-resource-manager/resource-group-template-deploy.md).
+1. Создание шаблона в формате JSON, описывающий, как toocreate hello ресурсов и включить диагностику.
+2. [Развертывание с помощью любой метод развертывания шаблона hello](../azure-resource-manager/resource-group-template-deploy.md).
 
-Ниже приведены примеры файла JSON шаблона для создания вычислительных и невычислительных ресурсов.
+Ниже мы предоставляем пример hello шаблона JSON-файла необходимо toogenerate для Невычислительными и вычислительные ресурсы.
 
 ## <a name="non-compute-resource-template"></a>Шаблон для невычислительных ресурсов
-Для невычислительных ресурсов выполните два действия.
+Для не вычислительных ресурсов вам потребуется toodo две вещи:
 
-1. Добавьте в большой двоичный объект параметров параметры имени учетной записи хранения, идентификатора правила служебной шины и (или) идентификатор рабочей области OMS Log Analytics. Это позволит архивировать журналы диагностики в учетную запись хранения, передавать поток журналов в концентраторы событий и (или) отправлять журналы в Log Analytics.
+1. Добавление BLOB-объект параметров toohello параметры для имени учетной записи хранения hello, ИД правила service bus и/или идентификатор рабочей области аналитики журналов OMS (Включение архивации журналы диагностики в учетную запись хранилища, потоковую передачу журналов tooEvent концентраторы или отправляя tooLog журналы аналитики).
    
     ```json
     "storageAccountName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
+        "description": "Name of hello Storage Account in which Diagnostic Logs should be saved."
       }
     },
     "serviceBusRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Service Bus Rule Id for hello Service Bus Namespace in which hello Event Hub should be created or streamed to."
       }
     },
     "workspaceId":{
       "type": "string",
       "metadata": {
-        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+        "description": "Log Analytics workspace ID for hello Log Analytics workspace toowhich logs will be sent."
       }
     }
     ```
-2. Добавьте ресурс с типом `[resource namespace]/providers/diagnosticSettings`в массив ресурсов того ресурса, для которого нужно включить журналы диагностики.
+2. В массиве ресурсы hello hello ресурса, для которого требуется tooenable журналы диагностики, добавьте ресурс типа `[resource namespace]/providers/diagnosticSettings`.
    
     ```json
     "resources": [
@@ -102,9 +102,9 @@ ms.lasthandoff: 08/18/2017
     ]
     ```
 
-Свойства большого двоичного объекта для параметров диагностики соответствуют [формату, который описан в этой статье](https://msdn.microsoft.com/library/azure/dn931931.aspx). Добавление свойства `metrics` позволит также передавать метрики ресурса в эти же выходные данные, если [этот ресурс поддерживает метрики Azure Monitor](monitoring-supported-metrics.md).
+Hello свойства большого двоичного объекта для hello параметра диагностики следует [hello формата, описанные в этой статье](https://msdn.microsoft.com/library/azure/dn931931.aspx). Добавление hello `metrics` свойство включения tooalso отправки ресурса метрики toothese же выходные данные, при условии, что [метрик мониторинга Azure поддерживает ресурс hello](monitoring-supported-metrics.md).
 
-Ниже приведен полный пример, в котором создается приложение логики, а также включается потоковая передача в концентраторы событий и хранение в учетной записи хранения.
+Ниже приведен полный пример, создает приложение логики и Включение потоковой передачи tooEvent концентраторов и хранилища в учетной записи хранилища.
 
 ```json
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 08/18/2017
     "logicAppName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Logic App that will be created."
+        "description": "Name of hello Logic App that will be created."
       }
     },
     "testUri": {
@@ -125,19 +125,19 @@ ms.lasthandoff: 08/18/2017
     "storageAccountName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
+        "description": "Name of hello Storage Account in which Diagnostic Logs should be saved."
       }
     },
     "serviceBusRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Service Bus Rule Id for hello Service Bus Namespace in which hello Event Hub should be created or streamed to."
       }
     },
     "workspaceId": {
       "type": "string",
       "metadata": {
-        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+        "description": "Log Analytics workspace ID for hello Log Analytics workspace toowhich logs will be sent."
       }
     }
   },
@@ -224,20 +224,20 @@ ms.lasthandoff: 08/18/2017
 ```
 
 ## <a name="compute-resource-template"></a>Шаблон для вычислительных ресурсов
-Чтобы включить диагностику для вычислительных ресурсов, например виртуальной машины или Service Fabric, выполните эти действия.
+Диагностика tooenable на вычислительных ресурсов, например виртуальной машины или кластера Service Fabric нужно:
 
-1. Добавьте расширение системы диагностики Azure в определение ресурсов для виртуальной машины.
+1. Добавьте определения ресурсов виртуальной Машины toohello расширения hello диагностики Azure.
 2. Укажите в качестве параметра учетную запись хранения и (или) концентратор событий.
-3. Добавьте содержимое XML-файла WADCfg в свойство XMLCfg, правильно экранируя все XML-символы.
+3. Добавьте hello содержимое файла WADCfg XML в свойстве XMLCfg hello, правильно экранирование все символы XML.
 
 > [!WARNING]
-> Этот этап может оказаться непростой задачей. [В этой статье](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) приводится пример разбиения схемы конфигурации диагностики на переменные, которые правильно экранируются и форматируются.
+> Этот последний шаг может быть непростой задачей tooget справа. [См. в статье](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) пример hello, разбиений схема конфигурации системы диагностики в переменные, находящиеся в escape-последовательность и правильный формат.
 > 
 > 
 
-Весь процесса описан [в этом документе](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)с примерами.
+Hello всего процесса, включая примеры, описанное [в настоящем документе](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * [Дополнительные сведения о журналах диагностики Azure](monitoring-overview-of-diagnostic-logs.md)
-* [Потоковая передача журналов диагностики Azure в концентраторы событий](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Журналы диагностики Azure поток tooEvent концентраторы](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

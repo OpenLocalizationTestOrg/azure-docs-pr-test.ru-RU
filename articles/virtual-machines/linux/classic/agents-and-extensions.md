@@ -1,6 +1,6 @@
 ---
-title: "Агент и расширения виртуальной машины Linux в Azure | Документация Майкрософт"
-description: "Обзор агента и расширений, а также способов установки агента с помощью классической модели развертывания на виртуальной машине Linux."
+title: "aaaLinux ВМ агент и расширения в Azure | Документы Microsoft"
+description: "Обзор hello агент и расширения, и как tooinstall hello агента, с помощью hello классической модели развертывания на виртуальной Машине Linux."
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 03/02/2017
 ms.author: rasquill
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06b802c408ea5d1b2b40d05321e1a0014e99ca8b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a50cfe9964a44986f681e2cecb0c09a54ccdca75
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="about-the-virtual-machine-agent-and-extensions-for-linux"></a>Сведения об агенте и расширениях виртуальной машины для Linux
+# <a name="about-hello-virtual-machine-agent-and-extensions-for-linux"></a>Об агенте виртуальной машины hello и расширения для Linux
 > [!IMPORTANT]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов. Дополнительные сведения об использовании агентов и расширений виртуальных машин с моделью Resource Manager см. [здесь](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов. Дополнительные сведения об использовании агентов и расширений виртуальных машин с моделью Resource Manager см. [здесь](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-agents-and-extensions](../../../../includes/virtual-machines-common-classic-agents-and-extensions.md)]

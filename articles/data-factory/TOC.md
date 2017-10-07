@@ -1,20 +1,20 @@
 # Обзор
-## [Общие сведения о службе фабрики данных Azure, службе интеграции данных в облаке](data-factory-introduction.md)
+## [Введение tooAzure фабрики данных](data-factory-introduction.md)
 ## Основные понятия
 ### [Конвейеры и действия](data-factory-create-pipelines.md)
 ### [Наборы данных](data-factory-create-datasets.md)
 ### [Планирование и исполнение с использованием фабрики данных](data-factory-scheduling-and-execution.md)
 
 # Начало работы
-## [Учебник. Создание конвейера для копирования данных](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+## [Учебник: Создание данных toocopy конвейера](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 ### [Мастер копирования](data-factory-copy-data-wizard-tutorial.md)
 ### [Портал Azure](data-factory-copy-activity-tutorial-using-azure-portal.md)
 ### [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 ### [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 ### [Шаблон Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 ### [ИНТЕРФЕЙС REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
-### [API для .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-## [Учебник. Создание конвейера для преобразования данных](data-factory-build-your-first-pipeline.md)
+### [API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+## [Учебник: Создание данных tootransform конвейера](data-factory-build-your-first-pipeline.md)
 ### [Портал Azure](data-factory-build-your-first-pipeline-using-editor.md)
 ### [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 ### [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
@@ -64,7 +64,7 @@
 ### Шлюз управления данными
 #### [Обзор](data-factory-data-management-gateway.md)
 #### [Высокий уровень доступности и масштабируемости (предварительная версия)](data-factory-data-management-gateway-high-availability-scalability.md)
-#### [Пошаговое руководство по перемещению данных из локальной базы данных SQL Server в хранилище BLOB-объектов Azure](data-factory-move-data-between-onprem-and-cloud.md)
+#### [Пошаговое руководство: Перемещение данных из локального SQL Server tooAzure хранилища больших двоичных объектов](data-factory-move-data-between-onprem-and-cloud.md)
 
 
 ## [Преобразование данных](data-factory-data-transformation-activities.md)
