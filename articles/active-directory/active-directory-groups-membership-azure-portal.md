@@ -1,6 +1,6 @@
 ---
-title: "Управление группами, к которым относится ваша группа, в Azure Active Directory | Документы Майкрософт"
-description: "В Azure Active Directory группы могут содержать другие группы. Вот как можно управлять членством такого типа."
+title: "группы hello aaaManage группе принадлежит tooin Azure Active Directory | Документы Microsoft"
+description: "В Azure Active Directory группы могут содержать другие группы. Вот как toomanage членство в этих группах."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08e04a6590176c4084ca47b4bd6cbb22500eca2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0a0a1967084de0968e1e802559f9cdfd7ca6ae4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Управление тем, к каким группам относится группа в клиенте Azure Active Directory
-В Azure Active Directory группы могут содержать другие группы. Вот как можно управлять членством такого типа.
+# <a name="manage-toowhich-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Управление группами toowhich, который принадлежит группа в клиенте Azure Active Directory
+В Azure Active Directory группы могут содержать другие группы. Вот как toomanage членство в этих группах.
 
-## <a name="how-do-i-find-the-groups-my-group-is-a-member-of"></a>Как можно узнать, участником каких групп является моя группа?
-1. Войдите на [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Больше служб**, введите **Пользователи и группы** в текстовое поле, а затем нажмите клавишу **ВВОД**.
+## <a name="how-do-i-find-hello-groups-my-group-is-a-member-of"></a>Как найти hello Моя группа является членом группы?
+1. Войдите в toohello [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **пользователей и групп** в hello текстовое поле, а затем выберите **ввод**.
 
    ![Открытие страницы "Управление пользователями"](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
-3. В колонке **Пользователи и группы** выберите **Все группы**.
+3. На hello **пользователей и групп** колонке выберите **все группы**.
 
-   ![Открытие колонки группы](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
-4. Выберите группу в колонке **Пользователи и группы — Все группы** .
-5. В колонке ***Группа —* имя_группы** выберите **Членства в группах**.
+   ![Открытие hello групп колонку](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
+4. На hello **пользователей и групп — все группы** колонки, выберите группу.
+5. На hello **группа — *groupname***  колонке выберите **членство в группе**.
 
-   ![Открытие колонки "Участие в группах"](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-6. Чтобы добавить группу в качестве участника в другую группу, в колонке **Группа — Членства в группах** выберите команду **Добавить**.
-7. Выберите группу в колонке **Выбор группы** и нажмите кнопку **Выбрать**, расположенную в нижней части колонки. Одним действием группу можно добавить только в одну другую группу. В поле **Пользователь** можно ввести часть имени пользователя или устройства, чтобы отфильтровать по нему список отображенных элементов. Подстановочные знаки в поле не допускаются.
+   ![Открытие hello группы членства колонку](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
+6. tooadd вашей группы в качестве члена другой группы, на hello **групповой - членство в группе** колонки, выберите hello **добавить** команды.
+7. Выберите группу из hello **Выбор группы** и, при необходимости выберите hello **выберите** кнопку в нижней части hello колонка hello. Одновременно можно добавить одну группу tooonly группы. Hello **пользователя** поле фильтры Здравствуйте, отображаемое на основе сопоставления вашей записи tooany часть имени пользователя или устройства. Подстановочные знаки в поле не допускаются.
 
    ![Добавление членства в группе](./media/active-directory-groups-membership-azure-portal/add-group-membership.png)
-8. Чтобы удалить группу из другой группы, участником которой она является, в колонке **Группа — Принадлежность к группам** выберите удаляемую группу.
-9. В колонке ***имя_группы*** выберите команду **Удалить** и подтвердите свой выбор при появлении соответствующего запроса.
+8. tooremove вашей группы в качестве члена другой группы, на hello **групповой - членство в группе** колонки, выберите группу.
+9. На hello ***groupname*** колонки, выберите hello **удалить** команду и подтвердите перемещение в строке приветствия.
 
    ![Команда "Удаление членства"](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
 10. Завершив изменение членства группы в других группах, щелкните **Сохранить**.

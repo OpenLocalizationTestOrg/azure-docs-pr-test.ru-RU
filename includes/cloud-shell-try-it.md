@@ -1,13 +1,13 @@
 
 ## <a name="launch-azure-cloud-shell"></a>Запуск Azure Cloud Shell
 
-Azure Cloud Shell — это бесплатная оболочка Bash, которую можно запускать непосредственно на портале Azure. Она включает предварительно установленный интерфейс Azure CLI и настроена для использования с вашей учетной записью. Нажмите кнопку меню **Cloud Shell** в правом верхнем углу [портала Azure](https://portal.azure.com).
+Hello оболочки облако Azure — это бесплатные Bash, который выполняется непосредственно в hello портал Azure. Он имеет hello Azure CLI предварительно установить и настроить toouse с вашей учетной записью. Щелкните hello **оболочки облака** кнопку меню hello в верхнем правом hello объекта hello [портал Azure](https://portal.azure.com).
 
 [![Cloud Shell](./media/cloud-shell-try-it/cloud-shell-menu.png)](https://portal.azure.com)
 
-Кнопка запускает интерактивную оболочку, с помощью которой можно выполнять действия, описанные в этом разделе:
+Hello запускает оболочкой интерактивной, можно использовать toorun hello все шаги в этом разделе:
 
-[![Снимок экрана с окном Azure Cloud Shell на портале](./media/cloud-shell-try-it/cloud-shell-safari.png)](https://portal.azure.com)
+[![Снимок экрана окна оболочки облака hello отображение hello портала](./media/cloud-shell-try-it/cloud-shell-safari.png)](https://portal.azure.com)
 
 
 
